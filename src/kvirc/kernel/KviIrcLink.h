@@ -95,7 +95,7 @@ private:
 	KviIrcSocket * m_pSocket;           // owned, may be null!
 	KviMexLinkFilter * m_pLinkFilter;   // owned, may be null!
 
-	State m_eState;
+	State m_eState = Idle;
 
 	char * m_pReadBuffer;
 	unsigned int m_uReadBufferLen;
@@ -109,7 +109,7 @@ public:
 	* May be null!
 	* \return KviIrcSocket *
 	*/
-	KviIrcSocket * socket() { return m_pSocket; };
+	KviIrcSocket * socket() const { return m_pSocket; }
 
 	/**
 	* \brief Returns the connection object
@@ -117,7 +117,7 @@ public:
 	* Never null
 	* \return KviIrcConnection *
 	*/
-	KviIrcConnection * connection() { return m_pConnection; };
+	KviIrcConnection * connection() const { return m_pConnection; }
 
 	/**
 	* \brief Returns the console
@@ -125,13 +125,13 @@ public:
 	* Never null
 	* \return KviConsoleWindow *
 	*/
-	KviConsoleWindow * console() { return m_pConsole; };
+	KviConsoleWindow * console() const { return m_pConsole; }
 
 	/**
 	* \brief Returns the state of the socket
 	* \return State
 	*/
-	State state() { return m_eState; };
+	State state() const { return m_eState; }
 protected:
 	/**
 	* \brief Sends a data packet

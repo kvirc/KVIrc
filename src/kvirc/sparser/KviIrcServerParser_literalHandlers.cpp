@@ -852,6 +852,15 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 	QString szSourceNick, szSourceUser, szSourceHost;
 	msg->decodeAndSplitPrefix(szSourceNick, szSourceUser, szSourceHost);
 
+	// update the user entry in the database right away
+	KviIrcUserDataBase * db = msg->connection()->userDataBase();
+	KviIrcUserEntry * e = db->find(szSourceNick);
+	if (e)
+	{
+		e->setUser(szSourceUser);
+		e->setHost(szSourceHost);
+	}
+
 	QString szTarget = msg->connection()->decodeText(msg->safeParam(0));
 	QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
 
@@ -1233,6 +1242,15 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 	//Check is it's a server notice (szNick = irc.xxx.net)
 	if(szHost == "*" && szUser == "*" && szNick.indexOf('.') != -1)
 		bIsServerNotice = true;
+
+	// update the user entry in the database right away
+	KviIrcUserDataBase * db = msg->connection()->userDataBase();
+	KviIrcUserEntry * e = db->find(szNick);
+	if (e)
+	{
+		e->setUser(szUser);
+		e->setHost(szHost);
+	}
 
 	// FIXME: "DEDICATED CTCP WINDOW ?"
 
@@ -1688,7 +1706,7 @@ void KviIrcServerParser::parseLiteralTopic(KviIrcMessage * msg)
 	const char * txtptr;
 	int msgtype;
 
-	DECRYPT_IF_NEEDED(chan, msg->safeTrailing(), KVI_OUT_QUERYPRIVMSG, KVI_OUT_QUERYPRIVMSGCRYPTED, szBuffer, txtptr, msgtype)
+	DECRYPT_IF_NEEDED(chan, msg->safeTrailing(), KVI_OUT_TOPIC, KVI_OUT_TOPICCRYPTED, szBuffer, txtptr, msgtype)
 
 	QString szTopic = chan->decodeText(txtptr);
 
@@ -1720,7 +1738,7 @@ void KviIrcServerParser::parseLiteralTopic(KviIrcMessage * msg)
 
 	if(!msg->haltOutput())
 	{
-		chan->output(KVI_OUT_TOPIC,
+		chan->output(msgtype,
 		    __tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""),
 		    &szNick, &szUser, &szHost, &szTopic, KviControlCodes::Reset);
 	}
@@ -1854,6 +1872,15 @@ void KviIrcServerParser::parseLiteralInvite(KviIrcMessage * msg)
 	// :source INVITE <target> <channel>
 	QString szNick, szUser, szHost;
 	msg->decodeAndSplitPrefix(szNick, szUser, szHost);
+
+	// update the user entry in the database right away
+	KviIrcUserDataBase * db = msg->connection()->userDataBase();
+	KviIrcUserEntry * e = db->find(szNick);
+	if (e)
+	{
+		e->setUser(szUser);
+		e->setHost(szHost);
+	}
 
 	QString szTarget = msg->connection()->decodeText(msg->safeParam(0));
 	QString szChannel = msg->connection()->decodeText(msg->safeParam(1));

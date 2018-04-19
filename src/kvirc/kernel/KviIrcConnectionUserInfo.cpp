@@ -25,9 +25,7 @@
 #include "KviIrcConnectionUserInfo.h"
 
 KviIrcConnectionUserInfo::KviIrcConnectionUserInfo()
-{
-	m_bAway = false;
-}
+    = default;
 
 bool KviIrcConnectionUserInfo::hasUserMode(const QChar & m)
 {
@@ -44,8 +42,7 @@ bool KviIrcConnectionUserInfo::addUserMode(const QChar & m)
 
 bool KviIrcConnectionUserInfo::removeUserMode(const QChar & m)
 {
-	int idx = m_szUserMode.indexOf(m, 0);
-	if(idx == -1)
+	if(!hasUserMode(m))
 		return false;
 	m_szUserMode.replace(m, QString(""));
 	return true;

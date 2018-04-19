@@ -168,6 +168,7 @@ static DH * my_get_dh(int keylength)
 	unsigned char * g = nullptr;
 	int sp = 0;
 	int sg = 0;
+	BIGNUM *bp, *bg;
 	switch(keylength)
 	{
 		case 512:
@@ -209,13 +210,21 @@ static DH * my_get_dh(int keylength)
 	dh = DH_new();
 	if(!dh)
 		return nullptr;
-	dh->p = BN_bin2bn(p, sp, nullptr);
-	dh->g = BN_bin2bn(g, sg, nullptr);
-	if((dh->p == nullptr) || (dh->g == nullptr))
+	bp = BN_bin2bn(p, sp, nullptr);
+	bg = BN_bin2bn(g, sg, nullptr);
+	if((p == nullptr) || (g == nullptr))
 	{
+		BN_free(bp);
+		BN_free(bg);
 		DH_free(dh);
 		return nullptr;
 	}
+#if OPENSSL_VERSION_NUMBER >= 0x10100005L
+	DH_set0_pqg(dh, bp, nullptr, bg);
+#else
+	dh->p = bp;
+	dh->g = bg;
+#endif
 	return dh;
 }
 
@@ -313,8 +322,8 @@ void KviSSL::shutdown()
 {
 	if(m_pSSL)
 	{
-//avoid to die on a SIGPIPE if the connection has close (SSL_shutdown can call send())
-//see bug #440
+		//avoid to die on a SIGPIPE if the connection has close (SSL_shutdown can call send())
+		//see bug #440
 
 #if !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
 		// ignore SIGPIPE
@@ -695,11 +704,17 @@ int KviSSLCertificate::fingerprintDigestId()
 	if(!m_pX509)
 		return -1;
 
-	int NID = OBJ_obj2nid(m_pX509->sig_alg->algorithm);
+	const X509_ALGOR * alg;
+#if OPENSSL_VERSION_NUMBER >= 0x10100005L
+	X509_get0_signature(nullptr, &alg, m_pX509);
+#else
+	alg = m_pX509->sig_alg;
+#endif
+
+	int NID = OBJ_obj2nid(alg->algorithm);
 	if(NID == NID_undef)
 	{
 		return 0; // unknown digest function: it means the signature can't be verified: the certificate can't be trusted
-
 	}
 
 	const EVP_MD * mdType = nullptr;
@@ -710,7 +725,7 @@ int KviSSLCertificate::fingerprintDigestId()
 		return 0; // Unknown digest
 	}
 
-	return mdType->type;
+	return EVP_MD_type(mdType);
 }
 
 const char * KviSSLCertificate::fingerprintDigestStr()
@@ -828,8 +843,14 @@ void KviSSLCertificate::extractPubKeyInfo()
 	EVP_PKEY * p = X509_get_pubkey(m_pX509);
 	if(p)
 	{
+		int type;
+#if OPENSSL_VERSION_NUMBER >= 0x10100005L
+		type = EVP_PKEY_base_id(p);
+#else
+		type = EVP_PKEY_type(p->type);
+#endif
 		m_iPubKeyBits = EVP_PKEY_bits(p);
-		m_szPubKeyType = (p->type == NID_undef) ? __tr("Unknown") : OBJ_nid2ln(p->type);
+		m_szPubKeyType = (type == NID_undef) ? __tr("Unknown") : OBJ_nid2ln(type);
 		//		getPKeyType(p->type,m_szPubKeyType);
 	}
 	else
@@ -841,28 +862,48 @@ void KviSSLCertificate::extractPubKeyInfo()
 
 void KviSSLCertificate::extractSerialNumber()
 {
+	m_szSerialNumber.clear();
 	ASN1_INTEGER * i = X509_get_serialNumber(m_pX509);
 	if(i)
-		m_iSerialNumber = ASN1_INTEGER_get(i);
-	else
-		m_iSerialNumber = -1;
+	{
+		BIGNUM * bn = ASN1_INTEGER_to_BN(i, nullptr);
+		if(bn)
+		{
+			char * str = BN_bn2dec(bn);
+			if(str)
+			{
+				m_szSerialNumber = KviCString(str);
+				OPENSSL_free(str);
+			}
+			BN_free(bn);
+		}
+	}
 }
 
 void KviSSLCertificate::extractSignature()
 {
 	static char hexdigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
-	int i = OBJ_obj2nid(m_pX509->sig_alg->algorithm);
+	const ASN1_BIT_STRING * sig;
+	const X509_ALGOR * alg;
+#if OPENSSL_VERSION_NUMBER >= 0x10100005L
+	X509_get0_signature(&sig, &alg, m_pX509);
+#else
+	sig = m_pX509->signature;
+	alg = m_pX509->sig_alg;
+#endif
+
+	int i = OBJ_obj2nid(alg->algorithm);
 	m_szSignatureType = (i == NID_undef) ? __tr("Unknown") : OBJ_nid2ln(i);
 
 	m_szSignatureContents = "";
 
-	for(i = 0; i < m_pX509->signature->length; i++)
+	for(i = 0; i < sig->length; i++)
 	{
 		if(m_szSignatureContents.hasData())
 			m_szSignatureContents.append(":");
-		m_szSignatureContents.append(hexdigits[(m_pX509->signature->data[i] & 0xf0) >> 4]);
-		m_szSignatureContents.append(hexdigits[(m_pX509->signature->data[i] & 0x0f)]);
+		m_szSignatureContents.append(hexdigits[(sig->data[i] & 0xf0) >> 4]);
+		m_szSignatureContents.append(hexdigits[(sig->data[i] & 0x0f)]);
 	}
 }
 

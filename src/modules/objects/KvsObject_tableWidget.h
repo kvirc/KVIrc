@@ -60,8 +60,8 @@ public:
 	bool paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index);
 
 protected:
-	KviKvsRunTimeContext * m_pContext;
-	KviCellItemDelegate * m_pCellItemDelegate;
+	KviKvsRunTimeContext * m_pContext = nullptr;
+	KviCellItemDelegate * m_pCellItemDelegate = nullptr;
 
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);

@@ -52,8 +52,8 @@ QT_BEGIN_NAMESPACE
 
 struct Document
 {
+	Document() = default;
 	Document(int d, int f) : docNumber(d), frequency(f) {}
-	Document() : docNumber(-1), frequency(0) {}
 	bool operator==(const Document & doc) const
 	{
 		return docNumber == doc.docNumber;
@@ -70,8 +70,8 @@ struct Document
 	{
 		return frequency < doc.frequency;
 	}
-	qint16 docNumber;
-	qint16 frequency;
+	qint16 docNumber = -1;
+	qint16 frequency = 0;
 };
 
 QDataStream & operator>>(QDataStream & s, Document & l);
@@ -104,8 +104,8 @@ public:
 	void setDocListFile(const QString &);
 	void setDocList(const QStringList &);
 
-	const QStringList & documentList() { return docList; };
-	const QStringList & titlesList() { return titleList; };
+	const QStringList & documentList() const { return docList; };
+	const QStringList & titlesList() const { return titleList; };
 
 signals:
 	void indexingStart(int);
@@ -127,19 +127,21 @@ private:
 	QVector<Document> setupDummyTerm(const QStringList &);
 	bool searchForPattern(const QStringList &, const QStringList &, const QString &);
 	void buildMiniDict(const QString &);
+
 	QString getCharsetForDocument(QFile *);
 	QStringList docList;
 	QStringList titleList;
 	QHash<QString, Entry *> dict;
 	QHash<QString, PosEntry *> miniDict;
-	uint wordNum;
+	uint wordNum = 0;
 	QString docPath;
-	QString dictFile, docListFile;
+	QString dictFile;
+	QString docListFile;
 	bool alreadyHaveDocList;
-	bool lastWindowClosed;
+	bool lastWindowClosed = false;
 	QHash<QString, QString> documentTitleCache;
-	QTimer * m_pTimer;
-	int m_iCurItem;
+	QTimer * m_pTimer = nullptr;
+	int m_iCurItem = 0;
 };
 
 #endif

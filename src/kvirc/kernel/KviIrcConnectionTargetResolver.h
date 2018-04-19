@@ -25,6 +25,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
+#include "KviError.h"
 #include "KviQString.h"
 
 #include <QObject>
@@ -70,28 +71,24 @@ public:
 	};
 
 private:
-	KviIrcConnection * m_pConnection;   // shallow, never null
-	KviIrcConnectionTarget * m_pTarget; // shallow, never null
-	KviConsoleWindow * m_pConsole;      // shallow, never null
-	Status m_eStatus;
-	State m_eState;
+	KviIrcConnection * m_pConnection;             // shallow, never null
+	KviIrcConnectionTarget * m_pTarget = nullptr; // shallow, never null
+	KviConsoleWindow * m_pConsole;                // shallow, never null
+	Status m_eStatus = Success;
+	State m_eState = Idle;
 
 	// Auxiliary stuff
-	QTimer * m_pStartTimer;        // timer used to start the connection
-	KviDnsResolver * m_pProxyDns;  // the dns object for the proxy hostnames
-	KviDnsResolver * m_pServerDns; // the dns object for the server hostnames
+	QTimer * m_pStartTimer = nullptr;        // timer used to start the connection
+	KviDnsResolver * m_pProxyDns = nullptr;  // the dns object for the proxy hostnames
+	KviDnsResolver * m_pServerDns = nullptr; // the dns object for the server hostnames
 
-	char * m_pReadBuffer;
-	unsigned int m_uReadBufferLen;
-	unsigned int m_uReadPackets;
-
-	int m_iLastError;
+	int m_iLastError = KviError::Success;
 
 public:
 	void start(KviIrcConnectionTarget * t);
 	// valid only after the terminated() signal
-	Status status() { return m_eStatus; };
-	int lastError() { return m_iLastError; };
+	Status status() const { return m_eStatus; }
+	int lastError() const { return m_iLastError; }
 	// causes the resolver to terminate with iLastError == KviError_operationAborted
 	// the terminated() signal is emitted.
 	void abort();

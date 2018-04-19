@@ -30,7 +30,6 @@
 
 class KVIRC_API KviIrcConnectionStatistics
 {
-	friend class KviConsoleWindow; // to be removed
 	friend class KviIrcConnection;
 
 public:
@@ -38,14 +37,14 @@ public:
 	~KviIrcConnectionStatistics();
 
 protected:
-	kvi_time_t m_tConnectionStart; // (valid only when Connected or LoggingIn)
-	kvi_time_t m_tLastMessage;     // last message received from server
+	kvi_time_t m_tConnectionStart = 0; // (valid only when Connected or LoggingIn)
+	kvi_time_t m_tLastMessage = 0;     // last message received from server
 public:
-	kvi_time_t connectionStartTime() { return m_tConnectionStart; };
-	kvi_time_t lastMessageTime() { return m_tLastMessage; };
+	kvi_time_t connectionStartTime() const { return m_tConnectionStart; }
+	kvi_time_t lastMessageTime() const { return m_tLastMessage; }
 protected:
-	void setLastMessageTime(kvi_time_t t) { m_tLastMessage = t; };
-	void setConnectionStartTime(kvi_time_t t) { m_tConnectionStart = t; };
+	void setLastMessageTime(kvi_time_t t) { m_tLastMessage = t; }
+	void setConnectionStartTime(kvi_time_t t) { m_tConnectionStart = t; }
 };
 
 #endif //!_KVI_IRCCONNECTIONSTATISTICS_H_

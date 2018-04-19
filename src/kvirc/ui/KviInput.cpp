@@ -58,6 +58,7 @@
 #include <QHBoxLayout>
 #include <QMenu>
 #include <QPushButton>
+#include <QFontMetrics>
 
 #include <ctype.h>
 #include <stdlib.h>
@@ -381,7 +382,7 @@ void KviInput::focusInEvent(QFocusEvent *)
 
 int KviInput::heightHint() const
 {
-	return m_pMultiLineEditor ? 120 : m_pInputEditor->heightHint();
+	return m_pMultiLineEditor ? (m_pInputEditor->heightHint() * 6) : m_pInputEditor->heightHint();
 }
 
 void KviInput::setText(const QString & szText)
@@ -465,7 +466,6 @@ void KviInput::toggleMultiLine()
 		The idea is simple: anything that starts with a slash [b]/[/b] character
 		is interpreted as a command. Anything else is plain text that is
 		sent to the target of the window (channel, query, DCC chat etc.).
-		[br]
 		[big]The two operating modes[/big]
 		[br]
 		The commandline input has two operating modes: the [i]user friendly mode[/i] and

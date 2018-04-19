@@ -41,14 +41,14 @@
 	@short:
 		Crypt/text transformation engines and how to use them
 	@body:
-		[big]Introduction[/big][br]
+		[big]Introduction[/big]
 		Well, there is a concrete background noise about security around the net.
 		And I've thought that adding a little cryptography support to KVIrc wasn't
 		a bad idea. So I first came up with the [i]crypt engines[/i], that
 		allowed secure conversations in channels, queries and DCC chats;
 		then found out that the realized structure was perfect to be [i]generalized[/i]
-		into [i]text transformation[/i] support.[br][br]
-		[big]The concept[/big][br]
+		into [i]text transformation[/i] support.
+		[big]The concept[/big]
 		In few words, the [i]text transformation[/i] engine is a layer between the user and the
 		IRC connection. You type some text in the input line of a query window (for example),
 		the engine transforms the text in some way and then sends it to the remote target.
@@ -68,8 +68,8 @@
 		in a way that it is still readable but has a different look. This engine
 		would not require a back transformation (so no [i]decrypt stage[/i]). A [i]symmetric[/i]
 		idea could be an engine that strips the color codes from the incoming text: this
-		engine would not require an encrypting stage.[br][br]
-		[big]The name of this stuff[/big][br]
+		engine would not require an encrypting stage.
+		[big]The name of this stuff[/big]
 		Initially all this was named [i]cryptography support[/i].
 		Then [i]cryptography[/i] was no longer enough to describe
 		the framework, so [i]text transformation[/i] is a more generic term.
@@ -78,14 +78,14 @@
 		KviCryptEngine in the sources. So actually the terms [i]crypt[/i]
 		and text transformation refer to the same thing.
 		You will often find the term [i]encrypt[/i] standing for [i]outgoing text
-		transformation[/i] and [i]decrypt[/i] standing for [i]incoming text transformation[/i].[br][br]
-		[big]Yes, but why cryptography (on IRC)?[/big][br]
+		transformation[/i] and [i]decrypt[/i] standing for [i]incoming text transformation[/i].
+		[big]Yes, but why cryptography (on IRC)?[/big]
 		Because it MAY be useful. More than once people have asked me to add some
 		encryption support to the DCC chats. Yes, I know that there are other
 		[i]secure communication[/i] tools, but actually I can't find one that is able to
 		implement a [i]secure real time conversation[/i]. And what about a MULTIPLE real
-		time secure conversation? This can be done on an IRC channel now.[br][br]
-		[big]The working things[/big][br]
+		time secure conversation? This can be done on an IRC channel now.
+		[big]The working things[/big]
 		KVIrc can use a text transformation engine on IRC channels, in queries
 		and in DCC chats. At the time I am writing, only the [module:rijndael]Rijndael[/module] crypt engine
 		is available: this is a private key encryption algorithm that assures
@@ -107,8 +107,8 @@
 		The key is user specified, so you have to find a secure way to negotiate
 		it with your communication endpoints. If you can meet these people in real life,
 		this is the best way to exchange the keys, otherwise you can use mail & PGP.
-		Yes, this is a shortcoming of the crypt protocol: it is missing a public key handshake.[br][br]
-		[big]The first test[/big][br]
+		Yes, this is a shortcoming of the crypt protocol: it is missing a public key handshake.
+		[big]The first test[/big]
 		A cool way to test an encryption engine is to use a [i]self query[/i]: connect to
 		any IRC server, and execute [cmd]query[/cmd] <yournickname>; a query window
 		with you both as source and target will popup; activate a crypt engine
@@ -118,8 +118,8 @@
 		Then you can try to activate encryption only and leaving decryption disabled:
 		you will see how the text would appear to a possible [i]man in the middle[/i].
 		You can also try to use different keys for encrypting and decrypting,
-		and play with the Ctrl+P escape.[br][br]
-		[big]The protocol[/big][br]
+		and play with the Ctrl+P escape.
+		[big]The protocol[/big]
 		Well, there is no protocol actually, only the existing implementations, that
 		can be accessed by anyone that wants to reproduce them. There are only some
 		points relating to the encryption engines that need to be cleared:[br][br]
@@ -141,8 +141,8 @@
 		The escape character is not needed if the engine performs non-encrypting
 		tasks: a charset mapper will produce text that is meant to be read by
 		anyone on the channel, a text colorizer will act in a similar way too.
-		So the escape character is used for the encryption engines only.[br][br]
-		[big]An idea for future implementations[/big][br]
+		So the escape character is used for the encryption engines only.
+		[big]An idea for future implementations[/big]
 		A [i]public key[/i] handshake protocol could be implemented.
 */
 

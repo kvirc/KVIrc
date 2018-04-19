@@ -313,7 +313,7 @@ void KviApplication::getTmpFileName(QString & szBuffer, const QString & szEnding
 	KviQString::ensureLastCharIs(tmp, KVI_PATH_SEPARATOR_CHAR);
 
 	struct timeval tmv;
-	kvi_gettimeofday(&tmv, nullptr);
+	kvi_gettimeofday(&tmv);
 
 	QString szFileName = szEndingFileName.isNull() ? QString("file.tmp") : szEndingFileName;
 	do
@@ -443,7 +443,7 @@ bool KviApplication::mapImageFile(QString & szRetPath, const QString & filename)
 
 	QString szBestMatch;
 
-	while(szRetPath.indexOf(KVI_PATH_SEPARATOR) != -1)
+	while(szRetPath.contains(KVI_PATH_SEPARATOR))
 	{
 		KviQString::cutToFirst(szRetPath, KVI_PATH_SEPARATOR);
 

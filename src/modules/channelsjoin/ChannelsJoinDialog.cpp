@@ -61,8 +61,6 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 	setWindowTitle(__tr2qs("Join Channels - KVIrc"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 
-	m_pConsole = nullptr;
-
 	QGridLayout * g = new QGridLayout(this);
 
 	m_pTreeWidget = new ChannelsJoinDialogTreeWidget(this);

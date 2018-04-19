@@ -407,7 +407,7 @@ void DccChatWindow::ownAction(const QString & text)
 			return;
 		KviCString buf(KviCString::Format, "%cACTION %s%c\r\n", 0x01, d, 0x01);
 		m_pSlaveThread->sendRawData(buf.ptr(), buf.len());
-		output(KVI_OUT_ACTION, "%Q %Q", &(m_pDescriptor->szLocalNick), &szTmpBuffer);
+		output(KVI_OUT_OWNACTION, "%Q %Q", &(m_pDescriptor->szLocalNick), &szTmpBuffer);
 	}
 	else
 	{

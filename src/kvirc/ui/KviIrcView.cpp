@@ -105,6 +105,7 @@
 #include <QFontDialog>
 #include <QByteArray>
 #include <QMenu>
+#include <QWindow>
 
 #include <time.h>
 
@@ -369,6 +370,23 @@ KviIrcView::~KviIrcView()
 	delete m_pToolTip;
 	delete m_pWrappedBlockSelectionInfo;
 }
+
+void KviIrcView::showEvent(QShowEvent * e)
+{
+	QWindow * pWin = topLevelWidget()->windowHandle();
+	if(!pWin)
+		return; // huh ?
+
+	QObject::disconnect(pWin,SIGNAL(screenChanged(QScreen *)),this,SLOT(screenChanged(QScreen *)));
+	QObject::connect(pWin,SIGNAL(screenChanged(QScreen *)),this,SLOT(screenChanged(QScreen *)));
+}
+
+void KviIrcView::screenChanged(QScreen *)
+{
+	// Changing screen can change DPI. Reset font so metrics are recomputed.
+	setFont(font());
+}
+
 
 //
 // The IrcView : options
@@ -758,6 +776,8 @@ bool KviIrcView::messageShouldGoToMessageView(int iMsgType)
 		case KVI_OUT_CHANNELNOTICECRYPTED:
 		case KVI_OUT_ACTION:
 		case KVI_OUT_ACTIONCRYPTED:
+		case KVI_OUT_OWNACTION:
+		case KVI_OUT_OWNACTIONCRYPTED:
 		case KVI_OUT_OWNPRIVMSG:
 		case KVI_OUT_OWNPRIVMSGCRYPTED:
 		case KVI_OUT_HIGHLIGHT:
@@ -1265,8 +1285,8 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 						}
 						bacWasTransp = (aux == KviControlCodes::Transparent);
 						break;
-						//case KviControlCodes::Icon:
-						//case KviControlCodes::UnIcon:
+					//case KviControlCodes::Icon:
+					//case KviControlCodes::UnIcon:
 						// does nothing
 						//qDebug("Have a block with ICON/UNICON attr");
 						//break;

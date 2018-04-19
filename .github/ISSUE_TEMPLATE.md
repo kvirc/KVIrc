@@ -1,21 +1,16 @@
-### Expected behavior
+<!--
+Is this a bug report?
+==============================
 
+Describe what the problem is. Attach screenshots if you feel like they will help explain the issue better.
+If you can, click "Help → About KVIrc", go to the "Executable Information" tab and copy its contents here. That may help us diagnose the issue.
+If you're experiencing a crash and you think we might not be able to reproduce it for some reason, a backtrace will be very helpful: https://github.com/kvirc/KVIrc/wiki/Grabbing-a-useful-backtrace
 
-### Actual behavior
+Is this a feature request?
+==============================
 
+Describe what you'd like to see implemented, and why you think it's a good idea.
 
-[//]:# (Besides the text description, include any screenshots that help us visualize the issue you're facing)
+Thank you for helping us improve KVIrc!
 
-### Steps to reproduce the issue
-1.
-2.
-3.
-
-### System information
-[//]:# (Type ```/about.kvirc``` or click "Help → About KVIrc" and copy & paste the details from the "Executable Information" tab below between ``` marks)  
-[//]:# (Also Enter any OS information the "Executable Information" tab doesn't contain, e.g. KDE, Gentoo, Linux Mint, etc.)
-
-```
-
-```
-[//]:# (If you experienced crashes or segfaults please also include a stacktrace below, For how-to read: https://github.com/kvirc/KVIrc/wiki/Grabbing-a-useful-backtrace.)
+-->

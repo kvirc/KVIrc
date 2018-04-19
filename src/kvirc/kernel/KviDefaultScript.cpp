@@ -46,8 +46,6 @@ unsigned int KviDefaultScriptManager::m_uCount = 0;
 KviDefaultScriptManager::KviDefaultScriptManager()
     : QObject()
 {
-	m_bNoNeedToRestore = false;
-
 	// Check if versions' file exists in personal settings
 	QString szLocal;
 	g_pApp->getLocalKvircDirectory(szLocal, KviApplication::Config, "default.kvc");
@@ -60,18 +58,12 @@ KviDefaultScriptManager::KviDefaultScriptManager()
 			QString szGlobal;
 			g_pApp->getGlobalKvircDirectory(szGlobal, KviApplication::DefScript, "default.kvc");
 			QFile::copy(szGlobal, szLocal);
-
-			m_bConfigFileMissing = false;
 		}
 		else
 		{
 			// update from a < 4.2.0 (previous installation)
 			m_bConfigFileMissing = true;
 		}
-	}
-	else
-	{
-		m_bConfigFileMissing = false;
 	}
 }
 
@@ -141,7 +133,7 @@ void KviDefaultScriptManager::restore()
 
 void KviDefaultScriptManager::restoreInternal()
 {
-	QString szConfig, szTmp;
+	QString szConfig;
 	g_pApp->getGlobalKvircDirectory(szConfig, KviApplication::DefScript, "default.kvc");
 	KviConfigurationFile oConfig(szConfig, KviConfigurationFile::Read);
 
@@ -223,15 +215,13 @@ void KviDefaultScriptManager::restoreInternal()
 
 bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszError)
 {
-	QString szTmp, szTmp2;
-
 	if(pszError)
 		*pszError = "";
 
 	KviConfigurationFile oConfig(szConfig, KviConfigurationFile::Read);
 
-	szTmp = "Date";
-	szTmp2 = oConfig.readEntry(szTmp);
+	QString szTmp = "Date";
+	QString szTmp2 = oConfig.readEntry(szTmp);
 	QDate cfgDate = QDate::fromString(szTmp2, "yyyy-MM-dd");
 	QDate userDate = QDate::fromString(m_szDate, "yyyy-MM-dd");
 
@@ -365,9 +355,7 @@ void KviDefaultScriptManager::save(const QString & szConfigFile)
 
 void KviDefaultScriptManager::saveInternal(KviConfigurationFile * pCfg)
 {
-	QString szTmp;
-
-	szTmp = "Version";
+	QString szTmp = "Version";
 	pCfg->writeEntry(szTmp, m_szVersion);
 
 	szTmp = "Date";

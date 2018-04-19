@@ -30,22 +30,7 @@
 KviIrcConnectionServerInfo::KviIrcConnectionServerInfo()
 {
 	// default assumptions
-	m_szSupportedChannelTypes = "#&!+";
-	m_szSupportedModePrefixes = "@+";
-	m_szSupportedModeFlags = "ov";
-	m_pModePrefixTable = nullptr;
 	buildModePrefixTable();
-	m_bSupportsWatchList = false;
-	m_bSupportsCodePages = false;
-	m_bSupportsCap = false;
-	m_iMaxTopicLen = -1;
-	m_iMaxModeChanges = 3;
-	m_szListModes = "b";
-	m_szParameterModes = "k";
-	m_szParameterWhenSetModes = "l";
-	m_szPlainModes = "pstnmi";
-	m_szSupportedChannelModes = "pstnmiklb";
-	m_bSupportsWhox = false;
 	m_pServInfo = new KviBasicIrcServerInfo(this);
 }
 
@@ -57,7 +42,7 @@ KviIrcConnectionServerInfo::~KviIrcConnectionServerInfo()
 		KviMemory::free(m_pModePrefixTable);
 }
 
-bool KviIrcConnectionServerInfo::isSupportedChannelType(QChar c)
+bool KviIrcConnectionServerInfo::isSupportedChannelType(QChar c) const
 {
 	return m_szSupportedChannelTypes.contains(c);
 }
@@ -173,7 +158,7 @@ void KviIrcConnectionServerInfo::buildModePrefixTable()
 	}
 }
 
-bool KviIrcConnectionServerInfo::isSupportedModePrefix(QChar c)
+bool KviIrcConnectionServerInfo::isSupportedModePrefix(QChar c) const
 {
 	if(!m_pModePrefixTable)
 		return false;
@@ -185,7 +170,7 @@ bool KviIrcConnectionServerInfo::isSupportedModePrefix(QChar c)
 	return false;
 }
 
-bool KviIrcConnectionServerInfo::isSupportedModeFlag(QChar c)
+bool KviIrcConnectionServerInfo::isSupportedModeFlag(QChar c) const
 {
 	if(!m_pModePrefixTable)
 		return false;
@@ -197,7 +182,7 @@ bool KviIrcConnectionServerInfo::isSupportedModeFlag(QChar c)
 	return false;
 }
 
-QChar KviIrcConnectionServerInfo::modePrefixChar(kvi_u32_t flag)
+QChar KviIrcConnectionServerInfo::modePrefixChar(kvi_u32_t flag) const
 {
 	if(!m_pModePrefixTable)
 		return QChar(0);
@@ -209,7 +194,7 @@ QChar KviIrcConnectionServerInfo::modePrefixChar(kvi_u32_t flag)
 	return QChar(0);
 }
 
-QChar KviIrcConnectionServerInfo::modeFlagChar(kvi_u32_t flag)
+QChar KviIrcConnectionServerInfo::modeFlagChar(kvi_u32_t flag) const
 {
 	if(!m_pModePrefixTable)
 		return QChar(0);
@@ -221,7 +206,7 @@ QChar KviIrcConnectionServerInfo::modeFlagChar(kvi_u32_t flag)
 	return QChar(0);
 }
 
-kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromPrefixChar(QChar c)
+kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromPrefixChar(QChar c) const
 {
 	if(!m_pModePrefixTable)
 		return 0;
@@ -233,7 +218,7 @@ kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromPrefixChar(QChar c)
 	return 0;
 }
 
-kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromModeChar(QChar c)
+kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromModeChar(QChar c) const
 {
 	if(!m_pModePrefixTable)
 		return 0;
@@ -290,9 +275,8 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 }
 
 KviBasicIrcServerInfo::KviBasicIrcServerInfo(KviIrcConnectionServerInfo * pParent, const QString & version)
+    : m_pParent(pParent), m_szServerVersion(version)
 {
-	m_szServerVersion = version;
-	m_pParent = pParent;
 }
 
 KviBasicIrcServerInfo::~KviBasicIrcServerInfo()
@@ -302,7 +286,7 @@ KviBasicIrcServerInfo::~KviBasicIrcServerInfo()
 // User modes
 //
 
-const QString & KviBasicIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviBasicIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -352,7 +336,7 @@ const QString & KviBasicIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviQString::Empty;
 }
 
-const QString & KviHybridServerInfo::getUserModeDescription(QChar mode)
+const QString & KviHybridServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -420,7 +404,7 @@ const QString & KviHybridServerInfo::getUserModeDescription(QChar mode)
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviIrcdRatboxIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviIrcdRatboxIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -464,7 +448,7 @@ const QString & KviIrcdRatboxIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviHybridServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviCharybdisServerInfo::getUserModeDescription(QChar mode)
+const QString & KviCharybdisServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -493,7 +477,7 @@ const QString & KviCharybdisServerInfo::getUserModeDescription(QChar mode)
 	return KviIrcdRatboxIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviIrcdSevenIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviIrcdSevenIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -507,7 +491,7 @@ const QString & KviIrcdSevenIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviCharybdisServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviPlexusIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviPlexusIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -542,7 +526,7 @@ const QString & KviPlexusIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviHybridServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviOftcIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviOftcIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -562,7 +546,7 @@ const QString & KviOftcIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviHybridServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviIrcuIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviIrcuIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -591,7 +575,7 @@ const QString & KviIrcuIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviSnircdIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviSnircdIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -611,7 +595,7 @@ const QString & KviSnircdIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviIrcuIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviDarenetIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviDarenetIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -640,7 +624,7 @@ const QString & KviDarenetIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviIrcuIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviUnreal32IrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviUnreal32IrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -720,7 +704,21 @@ const QString & KviUnreal32IrcServerInfo::getUserModeDescription(QChar mode)
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviCritenIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviUnreal40IrcServerInfo::getUserModeDescription(QChar mode) const
+{
+	switch(mode.unicode())
+	{
+		case 'D':
+			return __tr2qs("D: Only receive private messages from opers, servers, or services");
+			break;
+		case 'Z':
+			return __tr2qs("Z: Only receive private messages from users with SSL");
+			break;
+	}
+	return KviUnreal32IrcServerInfo::getUserModeDescription(mode);
+}
+
+const QString & KviCritenIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -779,7 +777,7 @@ const QString & KviCritenIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviBahamutIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviBahamutIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -850,7 +848,7 @@ const QString & KviBahamutIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviHyperionIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviHyperionIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1004,7 +1002,7 @@ const QString & KviHyperionIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviInspIRCdIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviInspIRCdIrcServerInfo::getUserModeDescription(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1083,7 +1081,7 @@ const QString & KviInspIRCdIrcServerInfo::getUserModeDescription(QChar mode)
 // by the user.
 //
 // Cases returning QChar::Null are free to set by the user without restrictions.
-QChar KviBasicIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviBasicIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1112,7 +1110,7 @@ QChar KviBasicIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviHybridServerInfo::getUserModeRequirement(QChar mode)
+QChar KviHybridServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1144,7 +1142,7 @@ QChar KviHybridServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviIrcdRatboxIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviIrcdRatboxIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1170,7 +1168,7 @@ QChar KviIrcdRatboxIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviCharybdisServerInfo::getUserModeRequirement(QChar mode)
+QChar KviCharybdisServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1191,7 +1189,7 @@ QChar KviCharybdisServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviIrcdSevenIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviIrcdSevenIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1214,7 +1212,7 @@ QChar KviIrcdSevenIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviPlexusIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviPlexusIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1250,7 +1248,7 @@ QChar KviPlexusIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviOftcIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviOftcIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1280,7 +1278,7 @@ QChar KviOftcIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviIrcuIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviIrcuIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1301,7 +1299,7 @@ QChar KviIrcuIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviSnircdIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviSnircdIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1324,7 +1322,7 @@ QChar KviSnircdIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviDarenetIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviDarenetIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1353,7 +1351,7 @@ QChar KviDarenetIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviUnreal32IrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviUnreal32IrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1401,7 +1399,7 @@ QChar KviUnreal32IrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviCritenIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviCritenIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1435,7 +1433,7 @@ QChar KviCritenIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviBahamutIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviBahamutIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1474,13 +1472,12 @@ QChar KviBahamutIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviHyperionIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviHyperionIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
 		case 'e':
 			return '!';
-
 		case 'A':
 		case 'B':
 		case 'D':
@@ -1534,7 +1531,7 @@ QChar KviHyperionIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-QChar KviInspIRCdIrcServerInfo::getUserModeRequirement(QChar mode)
+QChar KviInspIRCdIrcServerInfo::getUserModeRequirement(QChar mode) const
 {
 	switch(mode.unicode())
 	{
@@ -1557,7 +1554,7 @@ QChar KviInspIRCdIrcServerInfo::getUserModeRequirement(QChar mode)
 // Channel modes
 //
 
-const QString & KviBasicIrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviBasicIrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1604,7 +1601,7 @@ const QString & KviBasicIrcServerInfo::getChannelModeDescription(char mode)
 	return KviQString::Empty;
 }
 
-const QString & KviHybridServerInfo::getChannelModeDescription(char mode)
+const QString & KviHybridServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1639,7 +1636,7 @@ const QString & KviHybridServerInfo::getChannelModeDescription(char mode)
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviIrcdRatboxIrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviIrcdRatboxIrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1651,7 +1648,7 @@ const QString & KviIrcdRatboxIrcServerInfo::getChannelModeDescription(char mode)
 	return KviHybridServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviCharybdisServerInfo::getChannelModeDescription(char mode)
+const QString & KviCharybdisServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1710,7 +1707,7 @@ const QString & KviCharybdisServerInfo::getChannelModeDescription(char mode)
 	return KviIrcdRatboxIrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviPlexusIrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviPlexusIrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1736,7 +1733,7 @@ const QString & KviPlexusIrcServerInfo::getChannelModeDescription(char mode)
 	return KviHybridServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviOftcIrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviOftcIrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1750,7 +1747,7 @@ const QString & KviOftcIrcServerInfo::getChannelModeDescription(char mode)
 	return KviHybridServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviIrcuIrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviIrcuIrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1785,7 +1782,7 @@ const QString & KviIrcuIrcServerInfo::getChannelModeDescription(char mode)
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviSnircdIrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviSnircdIrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1805,7 +1802,7 @@ const QString & KviSnircdIrcServerInfo::getChannelModeDescription(char mode)
 	return KviIrcuIrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviDarenetIrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviDarenetIrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1837,7 +1834,7 @@ const QString & KviDarenetIrcServerInfo::getChannelModeDescription(char mode)
 	return KviIrcuIrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviUnrealIrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviUnrealIrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1902,7 +1899,7 @@ const QString & KviUnrealIrcServerInfo::getChannelModeDescription(char mode)
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviUnreal32IrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviUnreal32IrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1937,7 +1934,7 @@ const QString & KviUnreal32IrcServerInfo::getChannelModeDescription(char mode)
 	return KviUnrealIrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviUnreal40IrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviUnreal40IrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1954,7 +1951,7 @@ const QString & KviUnreal40IrcServerInfo::getChannelModeDescription(char mode)
 	return KviUnreal32IrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -1992,7 +1989,7 @@ const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode)
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviBahamutIrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviBahamutIrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{
@@ -2047,7 +2044,7 @@ const QString & KviBahamutIrcServerInfo::getChannelModeDescription(char mode)
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviInspIRCdIrcServerInfo::getChannelModeDescription(char mode)
+const QString & KviInspIRCdIrcServerInfo::getChannelModeDescription(char mode) const
 {
 	switch(mode)
 	{

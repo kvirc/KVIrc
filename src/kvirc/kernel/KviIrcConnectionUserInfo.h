@@ -25,8 +25,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviQString.h"
 #include "KviTimeUtils.h"
+
+#include <QString>
 
 class KVIRC_API KviIrcConnectionUserInfo
 {
@@ -36,7 +37,7 @@ class KVIRC_API KviIrcConnectionUserInfo
 
 protected:
 	KviIrcConnectionUserInfo();
-	~KviIrcConnectionUserInfo(){};
+	~KviIrcConnectionUserInfo() = default;
 
 private:
 	QString m_szRealName;    // the actual real name sent from the server
@@ -48,7 +49,7 @@ private:
 	QString m_szHostName;    // the local host name that the server reports
 	QString m_szHostIp;      // the host name above resolved, if possible
 	QString m_szAwayReason;
-	bool m_bAway;               // is the user away ?
+	bool m_bAway = false;       // is the user away ?
 	kvi_time_t m_tAway;         // time at that the user went away
 	QString m_szNickBeforeAway; // the nickname that the user had just before going away
 	// From bugtrack:
@@ -60,33 +61,33 @@ private:
 	QString m_szUnmaskedHostName;
 
 public:
-	const QString & realName() { return m_szRealName; };
-	const QString & nickName() { return m_szNickName; };
-	const QString & userMode() { return m_szUserMode; };
-	const QString & userName() { return m_szUserName; };
-	const QString & password() { return m_szPassword; };
-	const QString & localHostIp() { return m_szLocalHostIp; };
-	const QString & hostName() { return m_szHostName; };
-	const QString & unmaskedHostName() { return m_szUnmaskedHostName; };
-	const QString & hostIp() { return m_szHostIp; };
-	const QString & awayReason() { return m_szAwayReason; };
+	const QString & realName() const { return m_szRealName; }
+	const QString & nickName() const { return m_szNickName; }
+	const QString & userMode() const { return m_szUserMode; }
+	const QString & userName() const { return m_szUserName; }
+	const QString & password() const { return m_szPassword; }
+	const QString & localHostIp() const { return m_szLocalHostIp; }
+	const QString & hostName() const { return m_szHostName; }
+	const QString & unmaskedHostName() const { return m_szUnmaskedHostName; }
+	const QString & hostIp() const { return m_szHostIp; }
+	const QString & awayReason() const { return m_szAwayReason; }
 	bool hasUserMode(const QChar & m);
-	bool isAway() { return m_bAway; };
-	time_t awayTime() { return m_tAway; };
-	const QString & nickNameBeforeAway() { return m_szNickBeforeAway; };
+	bool isAway() const { return m_bAway; }
+	kvi_time_t awayTime() const { return m_tAway; }
+	const QString & nickNameBeforeAway() const { return m_szNickBeforeAway; }
 protected:
-	void setRealName(const QString & szRealName) { m_szRealName = szRealName; };
-	void setNickName(const QString & szNickName) { m_szNickName = szNickName; };
-	void setUserMode(const QString & szUserMode) { m_szUserMode = szUserMode; };
-	void setUserName(const QString & szUserName) { m_szUserName = szUserName; };
-	void setPassword(const QString & szPassword) { m_szPassword = szPassword; };
-	void setHostName(const QString & szHostName) { m_szHostName = szHostName; };
-	void setUnmaskedHostName(const QString & szHostName) { m_szUnmaskedHostName = szHostName; };
-	void setHostIp(const QString & szHostIp) { m_szHostIp = szHostIp; };
-	void setLocalHostIp(const QString & szLocalHostIp) { m_szLocalHostIp = szLocalHostIp; };
+	void setRealName(const QString & szRealName) { m_szRealName = szRealName; }
+	void setNickName(const QString & szNickName) { m_szNickName = szNickName; }
+	void setUserMode(const QString & szUserMode) { m_szUserMode = szUserMode; }
+	void setUserName(const QString & szUserName) { m_szUserName = szUserName; }
+	void setPassword(const QString & szPassword) { m_szPassword = szPassword; }
+	void setHostName(const QString & szHostName) { m_szHostName = szHostName; }
+	void setUnmaskedHostName(const QString & szHostName) { m_szUnmaskedHostName = szHostName; }
+	void setHostIp(const QString & szHostIp) { m_szHostIp = szHostIp; }
+	void setLocalHostIp(const QString & szLocalHostIp) { m_szLocalHostIp = szLocalHostIp; }
 	bool addUserMode(const QChar & m);    // returns false if the mode was already there
 	bool removeUserMode(const QChar & m); // returns fales if the mode was not there
-	void setAwayReason(const QString & szReazon) { m_szAwayReason = szReazon; };
+	void setAwayReason(const QString & szReazon) { m_szAwayReason = szReazon; }
 	void setAway();
 	void setBack();
 };

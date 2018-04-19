@@ -36,12 +36,12 @@ public:
 	~KviKvsScriptWindowWindow();
 
 protected:
-	KvsObject_widget * m_pCentralWidgetObject;
-	QWidget * m_pCentralWidget;
-	QPixmap * m_pIcon;
+	KvsObject_widget * m_pCentralWidgetObject = nullptr;
+	QWidget * m_pCentralWidget = nullptr;
+	QPixmap * m_pIcon = nullptr;
 
 public:
-	virtual QPixmap * myIconPtr();
+	QPixmap * myIconPtr() override;
 	void setIcon(QPixmap * pPixmap) { m_pIcon = pPixmap; };
 	void setCentralWidget(KvsObject_widget * o, QWidget * w);
 	void setWindowTitleString(const QString & s)
@@ -49,7 +49,7 @@ public:
 		setFixedCaption(s);
 		fillCaptionBuffers();
 	};
-	virtual void resizeEvent(QResizeEvent * e);
+	void resizeEvent(QResizeEvent * e) override;
 protected slots:
 	void centralWidgetObjectDestroyed();
 	void centralWidgetDestroyed();
@@ -60,7 +60,7 @@ class KvsObject_window : public KvsObject_widget
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_window)
 public:
-	QWidget * widget() { return (QWidget *)object(); };
+	QWidget * widget() { return (QWidget *)object(); }
 
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);

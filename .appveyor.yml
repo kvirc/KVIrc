@@ -1,97 +1,83 @@
 version: 0.0.0.0.1-branch-{branch}-build-{build}
+image: Visual Studio 2017
 cache:
-    - c:\deps -> .appveyor.yml
     - c:\spellcheck-dicts -> .appveyor.yml
+    - c:\Tools\vcpkg\installed -> .appveyor.yml
 environment:
     matrix:
-        - cmake_build_type: Debug
-          target_arch: x86_64
-          ssl_arch: Win64
-          nuget_arch: x64
-          vc_arch: amd64
-          choco_arch:
-          qt_ver: 5.8\msvc2015_64
-          MSYSTEM: MINGW64
-          mingw_fourple: mingw64/mingw-w64-x86_64
-          mingw_root: c:/msys64/mingw64
-          mingw_libgcc: libgcc_s_seh-1.dll
-
-        - cmake_build_type: Debug
-          target_arch: x86
-          ssl_arch: Win32
-          nuget_arch: Win32
-          vc_arch: amd64_x86  # cross-compile from amd64 to x86
-          choco_arch: --x86
-          qt_ver: 5.8\msvc2015
-          MSYSTEM: MINGW32
-          mingw_fourple: mingw32/mingw-w64-i686
-          mingw_root: c:/msys64/mingw32
-          mingw_libgcc: libgcc_s_dw2-1.dll
-
         - cmake_build_type: Release
+          arch: x64
           target_arch: x86_64
           ssl_arch: Win64
           nuget_arch: x64
           vc_arch: amd64
           choco_arch:
-          qt_ver: 5.8\msvc2015_64
+          qt_ver: 5.9\msvc2017_64
           MSYSTEM: MINGW64
           mingw_fourple: mingw64/mingw-w64-x86_64
           mingw_root: c:/msys64/mingw64
           mingw_libgcc: libgcc_s_seh-1.dll
 
         - cmake_build_type: Release
+          arch: x86
           target_arch: x86
           ssl_arch: Win32
           nuget_arch: Win32
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
           choco_arch: --x86
-          qt_ver: 5.8\msvc2015
+          qt_ver: 5.9\msvc2015 # no official Qt VS2017 32bit, use VS2015(ABI compatible, answer from Qt)
           MSYSTEM: MINGW32
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
           mingw_libgcc: libgcc_s_dw2-1.dll
+
+        - cmake_build_type: Debug
+          arch: x64
+          target_arch: x86_64
+          ssl_arch: Win64
+          nuget_arch: x64
+          vc_arch: amd64
+          choco_arch:
+          qt_ver: 5.9\msvc2017_64
+          MSYSTEM: MINGW64
+          mingw_fourple: mingw64/mingw-w64-x86_64
+          mingw_root: c:/msys64/mingw64
+          mingw_libgcc: libgcc_s_seh-1.dll
+
+        - cmake_build_type: Debug
+          arch: x86
+          target_arch: x86
+          ssl_arch: Win32
+          nuget_arch: Win32
+          vc_arch: amd64_x86  # cross-compile from amd64 to x86
+          choco_arch: --x86
+          qt_ver: 5.9\msvc2015 # no official Qt VS2017 32bit, use VS2015(ABI compatible, answer from Qt)
+          MSYSTEM: MINGW32
+          mingw_fourple: mingw32/mingw-w64-i686
+          mingw_root: c:/msys64/mingw32
+          mingw_libgcc: libgcc_s_dw2-1.dll
+matrix:
+    fast_finish: true
 install:
-    - systeminfo
-    - c:\cygwin\bin\uname -a
-    - c:\cygwin\bin\cat /proc/cpuinfo
-    - c:\cygwin\bin\cat /proc/meminfo
-    - c:\cygwin\bin\ls -l /cygdrive/c
-    - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files (x86)"
-    - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files"
-    - c:\cygwin\bin\ls -l /cygdrive/c/Tools
-    - c:\cygwin\bin\ls -l /cygdrive/c/Libraries
-    - c:\cygwin\bin\ls -l /cygdrive/c/ProgramData
-    - c:\cygwin\bin\env
-    - nuget install zlib -OutputDirectory c:\deps
-    - nuget install Gettext.Tools -OutputDirectory c:\deps
-    - c:\cygwin\bin\find /cygdrive/c/deps "-type" f
+    # - systeminfo
+    # - c:\cygwin\bin\uname -a
+    # - c:\cygwin\bin\cat /proc/cpuinfo
+    # - c:\cygwin\bin\cat /proc/meminfo
     - ps: |
-        if ((Test-Path "c:\OpenSSL-$env:ssl_arch") -And ((Get-Item "c:\OpenSSL-$env:ssl_arch\bin\ssleay32.dll").VersionInfo.ProductVersion -eq '1.0.2j')) {
+        if ((Test-Path "c:\OpenSSL-$env:ssl_arch") -And ((Get-Item "c:\OpenSSL-$env:ssl_arch\bin\ssleay32.dll").VersionInfo.ProductVersion -eq '1.0.2o')) {
             echo "using preinstalled openssl"
         } else {
             echo "preinstalled openssl not found or not present in requested version, this is pretty sad."
-            echo "downloading openssl 1.0.2l package, don't worry, be happy!"
-            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2L.exe" -OutFile c:\openssl-setup.exe
+            echo "downloading openssl 1.0.2o package, don't worry, be happy!"
+            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2o.exe" -OutFile c:\openssl-setup.exe
             echo "installing openssl"
             Start-Process -Wait -FilePath c:\openssl-setup.exe -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes"
         }
     - c:\cygwin\bin\find /cygdrive/c/OpenSSL-%ssl_arch% "-type" f
     - ps: |
-        if (Test-Path "c:/Program Files (x86)/NSIS/makensis.exe") {
-            echo "using preinstalled nsis"
-        } else {
-            choco install nsis -y
-        }
-    - ps: |
-        if (Test-Path "c:/Strawberry/kvirc_workaround") {
-            echo "using perl from cache"
-        } else {
-            choco install strawberryperl -y $env:choco_arch
-            # Strawberry perl doesn't support MSVC, but we force the support.
-            c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
-            c:\cygwin\bin\touch /cygdrive/c/Strawberry/kvirc_workaround
-        }
+        choco install strawberryperl -y $env:choco_arch
+        # Strawberry perl doesn't support MSVC, but we force the support.
+        c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
     - ps: |
         c:\msys64\usr\bin\pacman -Q
         c:\msys64\usr\bin\pacman -S --noconfirm $env:mingw_fourple-enchant
@@ -102,59 +88,48 @@ install:
         if (Test-Path "c:/spellcheck-dicts/zip/ru.zip") { # LGPL
             echo "using ru dict from cache"
         } else {
-            Invoke-WebRequest https://extensions.libreoffice.org/extensions/russian-spellcheck-dictionary.-based-on-works-of-aot-group/0.4.0/@@download/file/dict_ru_ru-aot-0-4-0.oxt -OutFile c:\spellcheck-dicts\zip\ru.zip
+            Invoke-WebRequest https://extensions.libreoffice.org/extensions/russian-spellcheck-dictionary.-based-on-works-of-aot-group/0-4.1/@@download/file/dict_ru_ru-aot-0.4.1.oxt -OutFile c:\spellcheck-dicts\zip\ru.zip
             c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/ru; 7z x -y ../zip/ru.zip"
         }
     - ps: |
         if (Test-Path "c:/spellcheck-dicts/zip/en_US.zip") {
             echo "using en dict from cache"
         } else {
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2017.01.22/hunspell-en_US-2017.01.22.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2017.01.22/hunspell-en_GB-ize-2017.01.22.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2017.01.22/hunspell-en_GB-ise-2017.01.22.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2017.08.24/hunspell-en_US-2017.08.24.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2017.08.24/hunspell-en_GB-ize-2017.08.24.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2017.08.24/hunspell-en_GB-ise-2017.08.24.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
             c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/unzip; 7z x -y ../zip/en_US.zip; 7z x -y ../zip/en_GB-ize.zip; 7z x -y ../zip/en_GB-ise.zip"
         }
-    - c:\cygwin\bin\ls -lR /cygdrive/c/spellcheck-dicts
+    - ps: |
+        (New-Object Net.WebClient).DownloadFile('https://github.com/lordmulder/stdutils/releases/download/1.13/StdUtils.2018-03-29.zip', 'c:\StdUtils.2018-03-29.zip')
+        7z e -o"C:\Program Files (x86)\NSIS\Plugins\x86-unicode" c:\StdUtils.2018-03-29.zip Plugins\Unicode\*.dll
+        7z e -o"C:\Program Files (x86)\NSIS\Include" c:\StdUtils.2018-03-29.zip Include\*.nsh
+    # - c:\cygwin\bin\find "/cygdrive/c/Program Files (x86)/NSIS" "-type" f
 build_script:
     - mkdir build
     - cd build
-    - '"c:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/vcvarsall" %vc_arch%'
+    - '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %vc_arch%'
     - path
+    - vcpkg remove --outdated
+    - vcpkg install gettext:%arch%-windows
+    - vcpkg install zlib:%arch%-windows
     - ps: |
-        $zlibinc = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v140*/zlib.h'
-        $zlibinc = c:\cygwin\bin\dirname $zlibinc
-        $zlibinc = c:\cygwin\bin\cygpath -m $zlibinc
-        if ($env:cmake_build_type -eq "Debug") {
-            $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Debug/zlibd.lib"
-        } else {
-            $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Release/zlib.lib"
-        }
-        $zliblib = c:\cygwin\bin\cygpath -m $zliblib
-        $gettext = c:\cygwin\bin\find /cygdrive/c/deps/ -name xgettext.exe
-        $gettext = c:\cygwin\bin\dirname $gettext
-        $gettext = c:\cygwin\bin\cygpath -m $gettext
-        $env:Path += ";" + $gettext
-        c:\cygwin\bin\find $env:ChocolateyInstall
-        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=$env:cmake_build_type" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DOPENSSL_ROOT_DIR=c:/OpenSSL-$env:ssl_arch" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES" "-DWANT_QTWEBKIT=NO"
+        cmake .. "-GNMake Makefiles" "-DCMAKE_TOOLCHAIN_FILE=C:/Tools/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DCMAKE_BUILD_TYPE=$env:cmake_build_type" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DOPENSSL_ROOT_DIR=c:/OpenSSL-$env:ssl_arch" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES" "-DWANT_QTWEBKIT=NO"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - nmake install VERBOSE=1
-    - c:\cygwin\bin\ls -l release/
+    # - c:\cygwin\bin\ls -l release/
     - ps: |
         $env:Path += ";c:/Qt/$env:qt_ver/bin"
         if ($env:cmake_build_type -eq "Debug") {
             windeployqt "--pdb" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
         } else {
             windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
-        } 
-    - c:\cygwin\bin\ls -l release/
+        }
     - ps: |
         if ($env:cmake_build_type -eq "Debug") {
-            $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Debug/zlibd.dll"
-            $zlibpdb = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Debug/zlibd.pdb"
-            c:\cygwin\bin\cp -pv "$zlib" "$zlibpdb" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/bin/msvcr120.dll" release/
+            c:\cygwin\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/zlibd.pdb" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/zlibd1.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/bin/msvcr120.dll" "c:/Program Files (x86)/Windows Kits/10/bin/$env:arch/ucrt/ucrtbased.dll" release/
         } else {
-            $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Release/zlib.dll"
-            c:\cygwin\bin\cp -pv "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/bin/msvcr120.dll" release/
+            c:\cygwin\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/bin/zlib1.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/bin/msvcr120.dll" release/
         }
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant.dll release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libpcre-1.dll release/
@@ -178,12 +153,14 @@ build_script:
         c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.aff release/share/myspell/dicts/en_GB_ise.aff
         c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.dic release/share/myspell/dicts/en_GB_ize.dic
         c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.aff release/share/myspell/dicts/en_GB_ize.aff
-    - c:\cygwin\bin\ls -l release/
     - '"c:\Program Files (x86)\NSIS\makensis.exe" KVIrc.nsi'
-    - c:\cygwin\bin\ls -l
     - ps: |
         $exe = dir -name *.exe
-        $new_name = $exe.Replace(".exe", "-$env:target_arch.exe")
+        if ($env:cmake_build_type -eq "Debug") {
+            $new_name = $exe.Replace(".exe", "-$env:target_arch-$env:cmake_build_type.exe")
+        } else {
+            $new_name = $exe.Replace(".exe", "-$env:target_arch.exe")
+        }
         Push-AppveyorArtifact $exe -FileName $new_name
         $cmake_name = $exe.Replace(".exe", "-$env:target_arch.cmake.txt")
         Push-AppveyorArtifact CMakeCache.txt -FileName $cmake_name

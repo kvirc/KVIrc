@@ -67,6 +67,7 @@ bool kvi_signalHandlerSetup()
 	new KviSignalHandler();
 
 	struct sigaction sa;
+	::memset(&sa,0,sizeof(sa));
 
 	sa.sa_handler = KviSignalHandler::unixSignalHandler;
 	sigemptyset(&sa.sa_mask);

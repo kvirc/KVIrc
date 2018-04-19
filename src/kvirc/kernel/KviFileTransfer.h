@@ -50,18 +50,18 @@ public:
 
 protected:
 	std::vector<KviFileTransfer *> m_pTransferList;
-	KviWindow * m_pTransferWindow;
+	KviWindow * m_pTransferWindow = nullptr;
 
 protected:
 	static void cleanup();
 	void registerTransfer(KviFileTransfer * t);
 	void unregisterTransfer(KviFileTransfer * t);
-	void setTransferWindow(KviWindow * wnd) { m_pTransferWindow = wnd; };
+	void setTransferWindow(KviWindow * wnd) { m_pTransferWindow = wnd; }
 public:
 	// might be zero!
-	KviWindow * transferWindow() { return m_pTransferWindow; };
+	KviWindow * transferWindow() const { return m_pTransferWindow; }
 	static KviFileTransferManager * instance();
-	std::vector<KviFileTransfer *> transferList() { return m_pTransferList; };
+	std::vector<KviFileTransfer *> transferList() const { return m_pTransferList; }
 	void invokeTransferWindow(bool bCreateMinimized = false, bool bNoRaise = false);
 	void killAllTransfers();
 	void killTerminatedTransfers();
@@ -83,19 +83,19 @@ public:
 
 protected:
 	int m_iId;
-	KviTalTableWidgetItemEx * m_pDisplayItem;
+	KviTalTableWidgetItemEx * m_pDisplayItem = nullptr;
 
 public:
 	// This is called by KviFileTransferItem at any time
-	void setDisplayItem(KviTalTableWidgetItemEx * i) { m_pDisplayItem = i; };
-	int id() { return m_iId; };
+	void setDisplayItem(KviTalTableWidgetItemEx * i) { m_pDisplayItem = i; }
+	int id() const { return m_iId; }
 	// this is just a convenience function : it's equivalent to !active()
 	bool terminated();
 	// This may be used to invoke the transfer window
 	void invokeTransferWindow(bool bCreateMinimized = false, bool bNoRaise = false);
-	KviFileTransferManager * manager() { return KviFileTransferManager::instance(); };
+	KviFileTransferManager * manager() const { return KviFileTransferManager::instance(); }
 	// this returns the pointer to the transfer window : may be 0!
-	KviWindow * transferWindow() { return manager()->transferWindow(); };
+	KviWindow * transferWindow() const { return manager()->transferWindow(); }
 	// this returns transferWindow() if not 0, otherwise the application's active window
 	KviWindow * outputWindow();
 

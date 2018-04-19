@@ -39,7 +39,7 @@
 	@keyterms:
 		irc masks, nickname, username, hostname, wildcard
 	@body:
-		[big]Simple masks[/big][br]
+		[big]Simple masks[/big]
 		An IRC mask is a string in a special format that identifies a user on IRC.[br]
 		The standard basic format is:[br]
 		[b]<nick>!<username>@<host>[/b][br]
@@ -55,12 +55,12 @@
 		this is rather server specific protocol, but the prefixes are somewhat standardized and
 		the common meanings of them are:[br]
 		[pre]
-			noprefix: I line with Ident[br]
-			^: I line with OTHER type Ident[br]
-			~: I line, no Ident[br]
-			+: i line with Ident[br]
-			=: i line with OTHER type Ident[br]
-			-: i line, no Ident[br]
+			noprefix: I line with Ident
+			^: I line with OTHER type Ident
+			~: I line, no Ident
+			+: i line with Ident
+			=: i line with OTHER type Ident
+			-: i line, no Ident
 		[/pre]
 		So finally you can find <username> strings like [i]~pragma[/i] or [i]^pragma[/i], where [i]pragma[/i]
 		is the system username of the irc-user and ~ and ^ are prefixes.[br]
@@ -76,9 +76,8 @@
 		luke!=skywalker@212.213.41.12[br]
 		HAN!^solo@ff0f:a0a0:1011::ea80:1[br]
 		Darth!vader@210.11.12.XXX[br]
-		The irc-masks are [b]case insensitive[/b].[br]
-		[br]
-		[big]Wildcard masks[/big][br]
+		The irc-masks are [b]case insensitive[/b].
+		[big]Wildcard masks[/big]
 		In some contexts the irc-masks can contain [b]*[/b] and [b]?[/b] wildcards.[br]
 		The wild masks are used to [i]match[/i] a user within a set of them.[br]
 		[b]*[/b] matches any sequence (eventually empty) of characters and [b]?[/b] matches a single character.[br]

@@ -105,6 +105,7 @@ echo "Exporting git dir into ${TEMPSRCDIR}..."
 # Ensure the prefix parameter has a slash at the end, or bad things could happen
 git checkout-index -a -f --prefix="${TEMPSRCDIR}/"
 
+
 #################################################################################################
 # Figure out the git revision
 
@@ -113,6 +114,12 @@ REVISION=$(git log -1 --date=short "--pretty=%h")
 
 echo "Revision is $REVISION"
 echo $REVISION > "$TEMPSRCDIR/.gitrevision"
+
+#################################################################################################
+# Remove stuff that should not be there
+
+echo "Removing unused stuff..."
+rm -f "${TEMPSRCDIR}/dist/secret.enc"
 
 #################################################################################################
 # Make room for the output files

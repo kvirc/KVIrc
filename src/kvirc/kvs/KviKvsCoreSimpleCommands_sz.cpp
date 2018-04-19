@@ -69,10 +69,10 @@ namespace KviKvsCoreSimpleCommands
 			The switch -x will make say evaluate and execute arbitrary commands, too:
 			if <text> begins with a slash then it will be treated as a command
 			to be evaluated and executed (after parsing the identifiers etc.).[br]
-			If this happens, the executed command will not be send to the active channel.[br]
+			If this happens, the executed command will not be send to the active channel.
 			[example]
 				/say -x /[cmd]echo[/cmd] foo
-			[/example][br]
+			[/example]
 			will just print "foo".[br]
 			Please note that using /say -x with a <text> that isn't a constant
 			in the script but comes from some unidentified external source (e.g. the network)
@@ -152,6 +152,7 @@ namespace KviKvsCoreSimpleCommands
 			entry too).
 			!sw: -s | --ssl
 			Activates the SSL support for this connection (if OpenSSL support has been compiled in).
+			If SSL is enabled and no port is specified, the connection will be made to port 6697.
 			!sw: -u | --unused-context
 			Forces the connection to be attempted in the first IRC context that has
 			no connection in progress. If all the IRC contexts have connections in progress
@@ -288,6 +289,8 @@ namespace KviKvsCoreSimpleCommands
 			d->bUseSSL = (KVSCSC_pSwitches->find('s', "ssl") != nullptr);
 			d->bSTARTTLS = false;
 			d->szServer = szServer;
+			// if the user wants to connect using ssl but didn't specify a port, default to 6697
+			if (d->bUseSSL && !(uPort > 0))uPort = 6697;
 			d->uPort = (kvi_u32_t)uPort;
 			d->szLinkFilter = szSocketFilter;
 			d->bPortIsOk = (uPort > 0);

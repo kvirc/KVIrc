@@ -1,41 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the KVIrc package.
 #
-# , 2010.
+# Translators:
+# , 2010
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2012-07-08 12:48+0100\n"
-"Last-Translator: Fibinger Ádám <vfiber[at]gmail dot com>\n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-23 21:28+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
+"Language-Team: Hungarian (http://www.transifex.com/kvirc/KVIrc/language/"
+"hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/addon/libkviaddon.cpp:151
-#, fuzzy
 msgid "%cAddon ID %Q, version %Q%c"
-msgstr "%cBővítmény Azonosító %Q, verzió: %Q%c"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:180
-#, fuzzy
 msgid "Addon Packaging - KVIrc"
-msgstr "Bővítmény Csomag Készítése - KVIrc"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:576
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Addon registration failed"
 msgstr "Bővítmény regisztráció sikertelen"
 
-#: src/modules/addon/libkviaddon.cpp:581
+#: src/modules/addon/libkviaddon.cpp:578
 msgid "Addon successfully registered"
 msgstr "Bővítmény sikeresen regisztrálva"
 
-#: src/modules/addon/libkviaddon.cpp:548
+#: src/modules/addon/libkviaddon.cpp:545
 msgid "Attempting to register addon \"%Q\" with version %Q"
 msgstr "\"%Q\" bővítmény regisztrációja %Q verzióval"
 
@@ -52,23 +52,20 @@ msgid "Close"
 msgstr "Bezár"
 
 #: src/modules/addon/AddonManagementDialog.cpp:119
-#, fuzzy
 msgid "Configure addon..."
-msgstr "Bővítmény beállítása..."
+msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:282
-#, fuzzy
 msgid "Confirm Addon Uninstallation - KVIrc"
-msgstr "Bővítmény eltávolításának megerősítése"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:50
 msgid "Create Addon Package - KVIrc"
 msgstr "Bővítmény Csomag Készítése - KVIrc"
 
 #: src/modules/addon/AddonManagementDialog.cpp:141
-#, fuzzy
 msgid "Create an addon as a distributable package"
-msgstr "Bővítmény Készítése Terjeszthető Csomagként"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:123
 msgid "Created at"
@@ -79,9 +76,8 @@ msgid "Created with"
 msgstr "Felhasznált szoftverek"
 
 #: src/modules/addon/AddonManagementDialog.cpp:131
-#, fuzzy
 msgid "Delete selected addon"
-msgstr "Kiválasztott Bővítmények Törlése"
+msgstr ""
 
 #: src/modules/addon/libkviaddon.cpp:153
 msgid "Description: %Q"
@@ -92,46 +88,40 @@ msgid "Do Not Install"
 msgstr "Ne Telepítsd"
 
 #: src/modules/addon/AddonManagementDialog.cpp:277
-#, fuzzy
 msgid "Do you really want to uninstall the addon \"%1\"?"
-msgstr "Tényleg szeretnéd az alábbi bővítményt eltávolítani: \"%1\" ?"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:195
-#, fuzzy
 msgid "Do you want to proceed with the installation?"
-msgstr "Folytassam a telepítést?"
+msgstr ""
 
 #: src/modules/addon/WebAddonInterfaceDialog.cpp:42
-#, fuzzy
 msgid "Download Addons - KVIrc"
-msgstr "Bővítmény Telepítése - KVIrc"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:655
+#: src/modules/addon/libkviaddon.cpp:652
 msgid "Empty file list"
 msgstr "Üres fájl lista"
 
-#: src/modules/addon/libkviaddon.cpp:803
+#: src/modules/addon/libkviaddon.cpp:800
 msgid "Error installing addon package: %Q"
 msgstr "Hiba a bővítmény csomag telepítése közben: %Q"
 
 #: src/modules/addon/PackAddonDialog.cpp:185
-#, fuzzy
 msgid "Exporting Addon Completed - KVIrc"
-msgstr "Bővítmény Exportálása - KVIrc"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:158
-#, fuzzy
 msgid "Exporting Addon Confirmation - KVIrc"
-msgstr "Bővítmény Exportálása - KVIrc"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:244
 msgid "Failed to delete the directory '%1'"
 msgstr "'%1' Könyvtár törlése sikertelen"
 
 #: src/modules/addon/AddonFunctions.cpp:321
-#, fuzzy
 msgid "Failed to load the image at %1"
-msgstr "'%1' Könyvtár törlése sikertelen"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:231
 msgid "Failed to unpack the selected file: %1"
@@ -142,9 +132,8 @@ msgid "File %1 already exists. Do you want to overwrite it?"
 msgstr "%1 már létezik. Szeretnéd felülírni?"
 
 #: src/modules/addon/PackAddonDialog.cpp:389
-#, fuzzy
 msgid "File Summary Review - KVIrc"
-msgstr "Fájl Összegzés"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:325
 msgid "Final Information"
@@ -155,30 +144,21 @@ msgid "Finish"
 msgstr "Befejezés"
 
 #: src/modules/addon/AddonManagementDialog.cpp:157
-#, fuzzy
 msgid "Get more addons..."
-msgstr "További bővítmények beszerzése.."
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:326
-#, fuzzy
 msgid ""
 "Here are the details you provided. If this information is correct, hit the "
 "\"Finish\" button to complete the packaging operations."
 msgstr ""
-"Itt vannak az általad megadott információk. Ha ezek helyesek, kattints a "
-"\"Befejezés\" gombra, hogy a csomag elkészüljön."
 
 #: src/modules/addon/PackAddonDialog.cpp:396
-#, fuzzy
 msgid ""
 "Here are the files found in the directories you provided.\n"
 "If the files listed below are correct, hit the \"Finish\" button to complete "
 "the packaging operation."
 msgstr ""
-"Itt vannak a fájlok a mappából, amelyet te adtál meg.\n"
-"Ha ezek és az előző oldalon megadott információk helyesek, kattints a "
-"\"Befejezés\" gombra a csomagolás.\n"
-"véglegesítéséhez."
 
 #: src/modules/addon/PackAddonDialog.cpp:195
 msgid ""
@@ -189,26 +169,23 @@ msgstr ""
 "rövid leírást a csomagról amit csinálsz."
 
 #: src/modules/addon/PackAddonDialog.cpp:284
-#, fuzzy
 msgid ""
 "Here you need to provide the path where to save the created addon package"
-msgstr "Itt meg kell adnod egy útvonalat ahova a csomagot menteni szeretnéd"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:259
-#, fuzzy
 msgid ""
 "Here you need to select the directory where the addon files to be packed are "
 "located."
-msgstr "Itt meg kell adnod a mappát ahol az bővítmény fájljai találhatóak."
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:96
 msgid "Hit the \"Next\" button to begin."
 msgstr "Kattints a \"Következő\" gombra a kezdéshez."
 
 #: src/modules/addon/PackAddonDialog.cpp:370
-#, fuzzy
 msgid "Image file"
-msgstr "Csomag Fájlok"
+msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:324
 #: src/modules/addon/AddonManagementDialog.cpp:339
@@ -220,32 +197,28 @@ msgid "Install Addon Pack - KVIrc"
 msgstr "Bővítmény Csomag Telepítése - KVIrc"
 
 #: src/modules/addon/AddonManagementDialog.cpp:151
-#, fuzzy
 msgid "Install addon package from disk"
-msgstr "Bővítmény Csomag Telepítése Merevlemezről"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:745
+#: src/modules/addon/libkviaddon.cpp:742
 msgid "Installing file '%1' into '%2'"
 msgstr "'%1'Fájl telepítése: '%2'"
 
-#: src/modules/addon/libkviaddon.cpp:522
+#: src/modules/addon/libkviaddon.cpp:519
 msgid "Internal error: call a head-shrinker"
 msgstr "Belső hiba: szólj egy agyturkásznak"
 
 #: src/modules/addon/AddonManagementDialog.cpp:97
-#, fuzzy
 msgid "Manage Addons - KVIrc"
-msgstr "Bővítmény Telepítése - KVIrc"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:235
-#, fuzzy
 msgid "Minimum &KVIrc version:"
-msgstr "Minimális KVIrc Verzió:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:366
-#, fuzzy
 msgid "Minimum KVIrc version"
-msgstr "Minimum KVIrc Verzió"
+msgstr ""
 
 #: src/modules/addon/libkviaddon.cpp:152
 msgid "Name: %Q"
@@ -256,29 +229,24 @@ msgid "No"
 msgstr "Nem"
 
 #: src/modules/addon/PackAddonDialog.cpp:212
-#, fuzzy
 msgid "No spaces allowed"
-msgstr "Szóköz nem engedélyezett, mint AzÉnBővítményem"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:200
-#, fuzzy
 msgid "Package &author:"
-msgstr "Csomag Készítője:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:226
-#, fuzzy
 msgid "Package &description:"
-msgstr "Csomag Leírása:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:208
-#, fuzzy
 msgid "Package &name:"
-msgstr "Csomag &Neve:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:217
-#, fuzzy
 msgid "Package &version:"
-msgstr "Csomag &Verzió:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:258
 msgid "Package Files"
@@ -289,153 +257,136 @@ msgid "Package Information"
 msgstr "Csomag Információi"
 
 #: src/modules/addon/PackAddonDialog.cpp:350
-#, fuzzy
 msgid "Package author"
-msgstr "Csomag Készítő"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:362
-#, fuzzy
 msgid "Package description"
-msgstr "Csomag Leírás"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:354
-#, fuzzy
 msgid "Package name"
-msgstr "Csomag Név"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:358
-#, fuzzy
 msgid "Package version"
-msgstr "Csomag Verzió"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:283
 msgid "Save Package"
 msgstr "Csomag Mentése"
 
 #: src/modules/addon/PackAddonDialog.cpp:378
-#, fuzzy
 msgid "Save path"
-msgstr "Mentési Útvonal"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:367
 msgid "Save path is empty"
 msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:311
-#, fuzzy
 msgid "Select a Installation File - KVIrc"
-msgstr "Bővítmény Telepítése - KVIrc"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:291
 msgid "Select save path:"
 msgstr "Mentés útvonala:"
 
 #: src/modules/addon/PackAddonDialog.cpp:268
-#, fuzzy
 msgid "Select the image file:"
-msgstr "Ikon fájl kiválasztása:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:264
 msgid "Select the source directory:"
 msgstr "Forrás mappa kiválasztása:"
 
 #: src/modules/addon/AddonManagementDialog.cpp:125
-#, fuzzy
 msgid "Show help"
-msgstr "Súgó Megjelenítése"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:719
+#: src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping invalid entry '%1'"
 msgstr "Helytelen elem kihagyása: '%1'"
 
-#: src/modules/addon/libkviaddon.cpp:688 src/modules/addon/libkviaddon.cpp:710
-#, fuzzy
+#: src/modules/addon/libkviaddon.cpp:685 src/modules/addon/libkviaddon.cpp:707
 msgid "Skipping non-existent entry '%1'"
-msgstr "'%1' nem létező elem kihagyása"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:374
-#, fuzzy
 msgid "Source directory"
-msgstr "Forrás Mappa"
+msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:185
-#, fuzzy
-msgid "The Package was saved successfully in %1"
-msgstr "Csomag sikeresen mentve: %1"
-
-#: src/modules/addon/libkviaddon.cpp:207 src/modules/addon/libkviaddon.cpp:257
-#: src/modules/addon/libkviaddon.cpp:308 src/modules/addon/libkviaddon.cpp:356
-#: src/modules/addon/libkviaddon.cpp:405 src/modules/addon/libkviaddon.cpp:642
-#, fuzzy
+#: src/modules/addon/libkviaddon.cpp:206 src/modules/addon/libkviaddon.cpp:256
+#: src/modules/addon/libkviaddon.cpp:307 src/modules/addon/libkviaddon.cpp:355
+#: src/modules/addon/libkviaddon.cpp:404 src/modules/addon/libkviaddon.cpp:639
 msgid "The addon \"%1\" doesn't exist"
-msgstr "Bővítmény nem létezik: %1"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:247
+#: src/modules/addon/libkviaddon.cpp:246
 msgid "The addon \"%1\" has no configure callback set"
 msgstr "A %1 bővítménynek nincsenek konfiguráló függvényei"
 
-#: src/modules/addon/libkviaddon.cpp:298
+#: src/modules/addon/libkviaddon.cpp:297
 msgid "The addon \"%1\" has no help callback set"
 msgstr "\"%1\" bővítménynek nincsen súgója"
 
-#: src/modules/addon/libkviaddon.cpp:560
+#: src/modules/addon/libkviaddon.cpp:557
 msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
 msgstr "A \"%Q\" bővítmény már telepítve van %Q verzióval ami újabb, mint a %Q"
 
-#: src/modules/addon/libkviaddon.cpp:686
+#: src/modules/addon/libkviaddon.cpp:683
 msgid "The directory '%1' doesn't exist"
 msgstr "A '%1' mappa nem létezik"
 
-#: src/modules/addon/libkviaddon.cpp:717
+#: src/modules/addon/libkviaddon.cpp:714
 msgid "The entry '%1' is not a file"
 msgstr "'%1' elem nem fájl"
 
-#: src/modules/addon/libkviaddon.cpp:708
+#: src/modules/addon/libkviaddon.cpp:705
 msgid "The file '%1' doesn't exist"
 msgstr "'%1' fájl nem létezik"
 
 #: src/modules/addon/AddonFunctions.cpp:287
-#, fuzzy
 msgid "The initialization script (install.kvs) doesn't exist."
-msgstr "Az inicializáló szkript (install.kvs) nem létezik."
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:339
 msgid "The package file list is empty"
 msgstr "A csomagfájl lista üres"
 
+#: src/modules/addon/PackAddonDialog.cpp:185
+msgid "The package was saved successfully in %1"
+msgstr ""
+
 #: src/modules/addon/AddonFunctions.cpp:280
-#, fuzzy
 msgid "The selected directory doesn't exist."
-msgstr "A kiválasztott mappa nem létezik"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:53
-#, fuzzy
 msgid "The selected file doesn't seem to be a valid KVIrc addon package"
 msgstr ""
-"A kiválasztott fájl nem úgy néz ki mint egy érvényes KVIrc bővítmény csomag"
 
 #: src/modules/addon/AddonFunctions.cpp:74
-#, fuzzy
 msgid "The selected file doesn't seem to be a valid KVIrc package: %1"
-msgstr "A kiválasztott fájl nem úgy néz ki mint egy érvényes KVIrc csomag: %1"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:537
+#: src/modules/addon/libkviaddon.cpp:534
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 msgstr "A megadott KVIrc verzió \"%Q\" nem érvényes verziószám"
 
-#: src/modules/addon/libkviaddon.cpp:531
+#: src/modules/addon/libkviaddon.cpp:528
 msgid "The specified version \"%Q\" is not a valid version string"
 msgstr "A  megadott %Q verzió nem érvényes verziószám"
 
-#: src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:644
 msgid "The target path can't be empty"
 msgstr "A cél útvonala nem lehet üres"
 
-#: src/modules/addon/libkviaddon.cpp:650
+#: src/modules/addon/libkviaddon.cpp:647
 msgid "The target path can't contain .."
 msgstr "A cél útvonal nem tartalmazhat .."
 
-#: src/modules/addon/libkviaddon.cpp:543
+#: src/modules/addon/libkviaddon.cpp:540
 msgid ""
 "This KVIrc executable is too old to run this addon (minimum version required "
 "is %Q)"
@@ -448,20 +399,17 @@ msgid "This is what I will check for:"
 msgstr "Ezeket fogom leellenőrízni:"
 
 #: src/modules/addon/PackAddonDialog.cpp:88
-#, fuzzy
 msgid ""
 "This procedure allows you to export the selected addon to a single package."
 "<br>It is useful when you want to distribute your addon to the public."
 msgstr ""
-"Ez az eljárás lehetővé teszi a bővítményed exportálását egy önálló csomagba. "
-"Hasznos, ha szeretnéd megosztani a munkád másokkal is."
 
 #: src/modules/addon/libkviaddon.cpp:159
 #, c-format
 msgid "Total: %d addons installed"
 msgstr "Összesen: %d bővítmény telepítve"
 
-#: src/modules/addon/libkviaddon.cpp:199 src/modules/addon/libkviaddon.cpp:566
+#: src/modules/addon/libkviaddon.cpp:198 src/modules/addon/libkviaddon.cpp:563
 msgid "Uninstalling existing addon version %Q"
 msgstr "%Q verziójú bővítmény eltávolítása"
 
@@ -498,42 +446,3 @@ msgstr ""
 #: src/modules/addon/AddonFunctions.cpp:194
 msgid "You're about to install the following addon package"
 msgstr "A következő bővítmény csomagot fogod teleíteni"
-
-#~ msgid "Addon Packaging Error"
-#~ msgstr "Bővítmény Csomagolási Hiba"
-
-#~ msgid "Addon Packaging Warning"
-#~ msgstr "Addon Csomagolási Figyelmeztető"
-
-#~ msgid "Addon Unpack Warning"
-#~ msgstr "Bővítmény Csomagolási Figyelmeztető"
-
-#~ msgid "Cannot open file for writing."
-#~ msgstr "Fájl megnyitása írásra sikertelen."
-
-#~ msgid "Cannot write to the file descriptor."
-#~ msgstr "A fájlleíró írása nem lehetséges."
-
-#~ msgid "Icon File"
-#~ msgstr "Ikon Fájl"
-
-#~ msgid "KVIrc : Download Addons"
-#~ msgstr "KVIrc: Bővítmények letöltése"
-
-#~ msgid "Manage Script-Based Addons"
-#~ msgstr "Szkript Alapú Bővítmények Kezelése"
-
-#~ msgid "One or more files can't be deleted"
-#~ msgstr "Egy vagy több fájl nem törölhető"
-
-#~ msgid "Packaging failed"
-#~ msgstr "Csomagolás sikertelen"
-
-#~ msgid "Please select the addon installation file"
-#~ msgstr "Kérlek válaszd ki a bővítmény telepítőfájlt"
-
-#~ msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
-#~ msgstr "A verzió ilyen formában x.y[.z], például 1.0 vagy 2.0.3"
-
-#~ msgid "Your name here"
-#~ msgstr "A neved ide írd"

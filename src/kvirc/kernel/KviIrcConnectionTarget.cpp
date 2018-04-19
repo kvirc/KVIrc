@@ -36,7 +36,8 @@ KviIrcConnectionTarget::KviIrcConnectionTarget(
 {
 	m_pNetwork = new KviIrcNetwork(*pNetwork);
 	m_pServer = new KviIrcServer(*pServer);
-	m_pProxy = pProxy ? new KviProxy(*pProxy) : nullptr;
+	if(pProxy)
+		m_pProxy = new KviProxy(*pProxy);
 	m_szBindAddress = szBindAddress;
 }
 

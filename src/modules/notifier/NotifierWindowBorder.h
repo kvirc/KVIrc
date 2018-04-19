@@ -26,9 +26,9 @@
 
 #include "NotifierSettings.h"
 
-#include <QSize>
-#include <QRect>
 #include <QPixmap>
+#include <QRect>
+#include <QSize>
 
 class QPainter;
 
@@ -38,9 +38,6 @@ public:
 	NotifierWindowBorder(QSize = QSize(WDG_MIN_WIDTH, WDG_MIN_HEIGHT));
 	~NotifierWindowBorder();
 
-	// ================================
-	// Put members declaration below...
-	// ================================
 private:
 	QRect m_rct;
 	QPoint m_pnt;
@@ -52,18 +49,18 @@ private:
 	QRect m_titleRect;
 
 	// Pictures
-	QPixmap * m_pixSX;
-	QPixmap * m_pixDX;
-	QPixmap * m_pixDWN;
-	QPixmap * m_pixDWNSX;
-	QPixmap * m_pixDWNDX;
-	QPixmap * m_pixCaptionSX;
-	QPixmap * m_pixCaptionDX;
-	QPixmap * m_pixCaptionBKG;
-	QPixmap * m_pixIconClose_out;
-	QPixmap * m_pixIconClose_over;
-	QPixmap * m_pixIconClose_clicked;
-	QPixmap * m_pixIconClose;
+	QPixmap * m_pixSX = nullptr;
+	QPixmap * m_pixDX = nullptr;
+	QPixmap * m_pixDWN = nullptr;
+	QPixmap * m_pixDWNSX = nullptr;
+	QPixmap * m_pixDWNDX = nullptr;
+	QPixmap * m_pixCaptionSX = nullptr;
+	QPixmap * m_pixCaptionDX = nullptr;
+	QPixmap * m_pixCaptionBKG = nullptr;
+	QPixmap * m_pixIconClose_out = nullptr;
+	QPixmap * m_pixIconClose_over = nullptr;
+	QPixmap * m_pixIconClose_clicked = nullptr;
+	QPixmap * m_pixIconClose = nullptr;
 
 	QPixmap m_pixSX_N;
 	QPixmap m_pixDX_N;
@@ -105,23 +102,23 @@ public:
 	{
 		setWidth(w);
 		setHeight(h);
-	};
+	}
 	void resize(QSize r)
 	{
 		setWidth(r.width());
 		setHeight(r.height());
-	};
+	}
 	void setGeometry(QRect r)
 	{
 		r.topLeft();
-		r.size(); /*qDebug("x,y: %d,%d", r.x(), r.y()); qDebug("w,h: %d,%d", r.width(), r.height());*/
-	};
+		r.size();
+	}
 	void setGeometry(QPoint p, QSize s)
 	{
 		setPoint(p.x(), p.y());
 		setWidth(s.width());
 		setHeight(s.height());
-	};
+	}
 
 	void setPoint(int x, int y)
 	{
@@ -129,23 +126,23 @@ public:
 		m_pnt.setY(y);
 		m_rct.setX(x);
 		m_rct.setY(y);
-	};
+	}
 
 	void setCloseIcon(int state);
 	void resetIcons();
 
 	// writing methods...
-	inline int x() const { return m_pnt.x(); };
-	inline int y() const { return m_pnt.y(); };
-	inline int width() const { return m_rct.width(); };
-	inline int height() const { return m_rct.height(); };
-	inline int baseLine() const { return (y() + height()); };
+	inline int x() const { return m_pnt.x(); }
+	inline int y() const { return m_pnt.y(); }
+	inline int width() const { return m_rct.width(); }
+	inline int height() const { return m_rct.height(); }
+	inline int baseLine() const { return (y() + height()); }
 
-	inline QRect bodyRect() const { return m_bodyRect; };
-	inline QRect captionRect() const { return m_captionRect; };
-	inline QRect rect() const { return m_rct; };
-	inline QRect closeRect() const { return m_closeIconRect; };
-	inline QRect titleRect() const { return m_titleRect; };
+	inline QRect bodyRect() const { return m_bodyRect; }
+	inline QRect captionRect() const { return m_captionRect; }
+	inline QRect rect() const { return m_rct; }
+	inline QRect closeRect() const { return m_closeIconRect; }
+	inline QRect titleRect() const { return m_titleRect; }
 
 	void draw(QPainter *, bool b = false);
 	void setPics(bool b = false);

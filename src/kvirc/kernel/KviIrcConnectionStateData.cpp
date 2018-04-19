@@ -26,18 +26,8 @@
 
 KviIrcConnectionStateData::KviIrcConnectionStateData()
 {
-	m_bSentStartTls = false;
-	m_bSentQuit = false;
-	m_bInsideInitialCapLs = false;
-	m_bInsideInitialCapReq = false;
-	m_bInsideInitialStartTls = false;
-	m_bIgnoreOneYouHaveNotRegisteredError = false;
-	m_eLoginNickNameState = UsedConnectionSpecificNickName;
-	m_bSimulateUnexpectedDisconnect = false;
 	m_tLastReceivedChannelWhoReply = kvi_unixTime();
 	m_tLastSentChannelWhoRequest = m_tLastReceivedChannelWhoReply;
-	m_tLastReceivedWhoisReply = 0;
-	m_bIdentifyMsgCapabilityEnabled = false;
 }
 
 KviIrcConnectionStateData::~KviIrcConnectionStateData()
@@ -45,16 +35,12 @@ KviIrcConnectionStateData::~KviIrcConnectionStateData()
 
 void KviIrcConnectionStateData::changeEnabledCapList(const QString & szCapList)
 {
-	QStringList lTmp = szCapList.split(' ', QString::SkipEmptyParts);
-	foreach(QString szCap, lTmp)
+	for(auto szCap : szCapList.split(' ', QString::SkipEmptyParts))
 	{
 		// cap modifiers are:
 		//  '-' : disable a capability (should not be present in a LS message...)
 		//  '=' : sticky (can't be disabled once enabled)
 		//  '~' : needs ack for modification
-
-		if(szCap.length() < 1)
-			continue; // shouldn't happen
 
 		bool bRemove = false;
 
@@ -78,13 +64,8 @@ void KviIrcConnectionStateData::changeEnabledCapList(const QString & szCapList)
 			m_bIdentifyMsgCapabilityEnabled = !bRemove;
 
 		if(bRemove)
-		{
 			m_lEnabledCaps.removeAll(szCap);
-		}
-		else
-		{
-			if(!m_lEnabledCaps.contains(szCap))
-				m_lEnabledCaps.append(szCap);
-		}
+		else if(!m_lEnabledCaps.contains(szCap))
+			m_lEnabledCaps.append(szCap);
 	}
 }

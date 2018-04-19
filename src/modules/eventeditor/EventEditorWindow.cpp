@@ -39,6 +39,7 @@
 #include "KviQString.h"
 #include "KviKvsEventManager.h"
 #include "KviTalVBox.h"
+#include "KviTalHBox.h"
 
 #include <QMessageBox>
 #include <QSplitter>
@@ -110,11 +111,25 @@ EventEditor::EventEditor(QWidget * par)
 	box->setSpacing(0);
 	box->setMargin(0);
 
-	m_pNameEditor = new QLineEdit(box);
+	KviTalHBox * hbox = new KviTalHBox(box);
+	hbox->setContentsMargins(10, 0, 10, 0);
+
+	m_pIsEnabled = new QCheckBox(hbox);
+	m_pIsEnabled->setText(__tr2qs_ctx("E&nabled", "editor"));
+	m_pIsEnabled->setEnabled(false);
+	connect(m_pIsEnabled, SIGNAL(clicked(bool)), this, SLOT(toggleCurrentHandlerEnabled()));
+
+	m_pNameEditor = new QLineEdit(hbox);
+	m_pNameEditor->setText(__tr2qs_ctx("No item selected", "editor"));
 	m_pNameEditor->setToolTip(__tr2qs_ctx("Edit the event handler name.", "editor"));
+	m_pNameEditor->setEnabled(false);
+	QRegExpValidator * pValidator = new QRegExpValidator(QRegExp(KVI_KVS_EVENT_HANDLER_NAME_REG_EXP), this);
+	m_pNameEditor->setValidator(pValidator);
+	m_pNameEditor->setEnabled(false);
 
 	m_pEditor = KviScriptEditor::createInstance(box);
 	m_pEditor->setFocus();
+	m_pEditor->setEnabled(false);
 	m_bOneTimeSetupDone = false;
 	m_pLastEditedItem = nullptr;
 }
@@ -163,6 +178,14 @@ void EventEditor::eventHandlerDisabled(const QString & szHandler)
 	QString szEventName = szHandler.split("::")[0];
 	QString szHandlerName = szHandler.split("::")[1];
 	qDebug("Handler %s of event %s : disabled", szHandlerName.toUtf8().data(), szEventName.toUtf8().data());
+
+	QTreeWidgetItem * pSelectedItem = nullptr;
+	QList <QTreeWidgetItem *> itemList = m_pTreeWidget->selectedItems();
+	if (!itemList.isEmpty())
+	{
+		pSelectedItem = itemList.first();
+	}
+
 	for(int i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
 	{
 		EventEditorEventTreeWidgetItem * pItem = (EventEditorEventTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
@@ -173,6 +196,8 @@ void EventEditor::eventHandlerDisabled(const QString & szHandler)
 			if(KviQString::equalCI(szHandlerName, ((EventEditorHandlerTreeWidgetItem *)pItem->child(j))->name()))
 			{
 				((EventEditorHandlerTreeWidgetItem *)pItem->child(j))->setEnabled(false);
+				if (pItem->child(j) == pSelectedItem)
+					m_pIsEnabled->setChecked(false);
 				return;
 			}
 		}
@@ -310,6 +335,7 @@ void EventEditor::removeCurrentHandler()
 				parent->setIcon(0, QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::EventNoHandlers))));
 		}
 
+		m_pIsEnabled->setEnabled(false);
 		m_pEditor->setEnabled(false);
 		m_pNameEditor->setEnabled(false);
 	}
@@ -320,6 +346,7 @@ void EventEditor::toggleCurrentHandlerEnabled()
 	KVI_ASSERT(m_bOneTimeSetupDone);
 	if(m_pLastEditedItem)
 	{
+		m_pIsEnabled->setChecked(!(m_pLastEditedItem->m_bEnabled));
 		m_pLastEditedItem->setEnabled(!(m_pLastEditedItem->m_bEnabled));
 		m_pTreeWidget->repaint(m_pTreeWidget->visualItemRect(m_pLastEditedItem));
 		currentItemChanged(m_pLastEditedItem, nullptr);
@@ -368,8 +395,7 @@ void EventEditor::saveLastEditedItem()
 		return;
 	((EventEditorHandlerTreeWidgetItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 	QString buffer = m_pNameEditor->text();
-	//not-so elaborate fix for #218, we'd better rework this
-	buffer.replace(QRegExp("[^A-Za-z0-9_]"), "");
+	KviKvsEventManager::instance()->cleanHandlerName(buffer);
 	if(!KviQString::equalCI(buffer, m_pLastEditedItem->m_szName))
 	{
 		getUniqueHandlerName((EventEditorEventTreeWidgetItem *)(m_pLastEditedItem->parent()), buffer);
@@ -398,6 +424,8 @@ void EventEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 	if(it->parent())
 	{
 		m_pLastEditedItem = (EventEditorHandlerTreeWidgetItem *)it;
+		m_pIsEnabled->setEnabled(true);
+		m_pIsEnabled->setChecked(m_pLastEditedItem->isEnabled());
 		m_pNameEditor->setEnabled(true);
 		m_pNameEditor->setText(m_pLastEditedItem->name());
 		m_pEditor->setEnabled(true);
@@ -408,8 +436,10 @@ void EventEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 	else
 	{
 		m_pLastEditedItem = nullptr;
+		m_pIsEnabled->setEnabled(false);
+		m_pIsEnabled->setChecked(false);
 		m_pNameEditor->setEnabled(false);
-		m_pNameEditor->setText("");
+		m_pNameEditor->setText(__tr2qs_ctx("No item selected", "editor"));
 		m_pEditor->setEnabled(false);
 		QString parms = ((EventEditorEventTreeWidgetItem *)it)->m_szParams;
 		if(parms.isEmpty())

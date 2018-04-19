@@ -26,9 +26,8 @@
 #include "KviIrcContext.h"
 
 KviIrcDataStreamMonitor::KviIrcDataStreamMonitor(KviIrcContext * pContext)
-    : KviHeapObject()
+    : KviHeapObject(), m_pMyContext(pContext)
 {
-	m_pMyContext = pContext;
 	m_pMyContext->registerDataStreamMonitor(this);
 }
 

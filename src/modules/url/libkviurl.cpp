@@ -675,7 +675,7 @@ UrlDlgList * findFrame()
 	@description:
 		This command opens a configuration window where it is possible
 		to setup plugin's parameters.[br]
-		You can also open this window by using popup menu in the URL list window[br]
+		You can also open this window by using popup menu in the URL list window
 		[big]Configure dialog options:[/big]
 		There is also a ban list widget, which allows to have a list of words that plugin must not catch.[br][br]
 		[i]e.g. if the word "ftp" is inserted in the ban list and if in a window there is an output like "ftp.kvirc.net",

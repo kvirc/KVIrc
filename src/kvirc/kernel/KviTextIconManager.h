@@ -33,9 +33,9 @@
 */
 
 #include "kvi_settings.h"
-#include "KviPointerHashTable.h"
 #include "KviAnimatedPixmap.h"
 #include "KviIconManager.h"
+#include "KviPointerHashTable.h"
 
 #include <QPixmap>
 
@@ -46,11 +46,11 @@
 * \struct _KviTextIconAssocEntry
 * \brief A struct that contains the icon association entries
 */
-typedef struct _KviTextIconAssocEntry
+struct KviTextIconAssocEntry
 {
 	const char * name; /**< the name of the icon */
 	int iVal;          /**< the id of the icon */
-} KviTextIconAssocEntry;
+};
 
 /**
 * \class KviTextIcon
@@ -61,7 +61,7 @@ class KVIRC_API KviTextIcon
 protected:
 	KviIconManager::SmallIcon m_eIcon;
 	QString m_szFileName;
-	KviAnimatedPixmap * m_pAnimatedPixmap;
+	KviAnimatedPixmap * m_pAnimatedPixmap = nullptr;
 
 public:
 	/**
@@ -76,7 +76,7 @@ public:
 	* \param szFile The filename the icon
 	* \return KviTextIcon
 	*/
-	KviTextIcon(QString szFile);
+	KviTextIcon(const QString & szFile);
 
 	/**
 	* \brief Constructs the icon object
@@ -95,7 +95,7 @@ public:
 	* \brief Returns the id of the icon
 	* \return KviIconManager::SmallIcon
 	*/
-	inline KviIconManager::SmallIcon id() { return m_eIcon; };
+	KviIconManager::SmallIcon id() const { return m_eIcon; }
 
 	/**
 	* \brief Sets the id of the icon
@@ -117,13 +117,13 @@ public:
 	* \param szFileName The filename of the icon
 	* \return void
 	*/
-	void setFilename(QString szFileName);
+	void setFilename(const QString & szFileName);
 
 	/**
 	* \brief Returns the filename of the icon
 	* \return QString
 	*/
-	inline QString filename() { return m_szFileName; };
+	const QString & filename() const { return m_szFileName; }
 
 	/**
 	* \brief Returns the pixmap associated to the icon
@@ -137,7 +137,7 @@ public:
 	* \brief Returns the animated pixmap associated to the icon
 	* \return KviAnimatedPixmap *
 	*/
-	inline KviAnimatedPixmap * animatedPixmap() { return m_pAnimatedPixmap; };
+	KviAnimatedPixmap * animatedPixmap() const { return m_pAnimatedPixmap; }
 };
 
 /**
@@ -169,7 +169,7 @@ public:
 	* \brief Returns the dictionary of the icons
 	* \return KviPointerHashTable<QString,KviTextIcon> *
 	*/
-	inline KviPointerHashTable<QString, KviTextIcon> * textIconDict() { return m_pTextIconDict; };
+	KviPointerHashTable<QString, KviTextIcon> * textIconDict() const { return m_pTextIconDict; }
 
 	/**
 	* \brief Checks and updates the default associations
@@ -204,7 +204,7 @@ public:
 	* \param szName The name of the icon
 	* \return KviTextIcon *
 	*/
-	inline KviTextIcon * lookupTextIcon(const QString & szName) { return m_pTextIconDict->find(szName); };
+	KviTextIcon * lookupTextIcon(const QString & szName) { return m_pTextIconDict->find(szName); }
 
 	/**
 	* \brief Loads the dictionary

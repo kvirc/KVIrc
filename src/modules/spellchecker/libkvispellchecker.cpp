@@ -158,6 +158,9 @@ static void spellchecker_reload_dicts()
 	const QStringList & wantedDictionaries = KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries);
 	foreach(QString szLang, wantedDictionaries)
 	{
+		if(szLang.isEmpty())
+			continue;
+
 		EnchantDict * pDict = enchant_broker_request_dict(g_pEnchantBroker, szLang.toUtf8().data());
 		if(pDict)
 		{

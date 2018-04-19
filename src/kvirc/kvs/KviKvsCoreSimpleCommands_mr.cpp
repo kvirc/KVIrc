@@ -390,7 +390,8 @@ namespace KviKvsCoreSimpleCommands
 		{
 			szCommand = KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand);
 		}
-		else if(KviQString::equalCIN(szUrl, "ftp", 3))
+		else if(KviQString::equalCIN(szUrl, "ftp", 3) || KviQString::equalCIN(szUrl, "sftp", 4) ||
+		        KviQString::equalCIN(szUrl, "ftps", 4) || KviQString::equalCIN(szUrl, "ftpes", 4))
 		{
 			szCommand = KVI_OPTION_STRING(KviOption_stringUrlFtpCommand);
 			if(KviQString::equalCIN(szUrl, "ftp.", 4))
@@ -1313,8 +1314,8 @@ namespace KviKvsCoreSimpleCommands
 				rebind %winid[br]
 				echo "Again in this window :)"
 			[/example]
-			[note][br]
-				[big]Deprecated switches:[/big][br]
+			[note]
+				[big]Deprecated switches:[/big]
 				From version 3.0.0, the standard -r switch support to commands was removed.
 			[/note]
 	*/

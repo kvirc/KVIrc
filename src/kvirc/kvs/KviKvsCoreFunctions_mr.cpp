@@ -568,7 +568,7 @@ namespace KviKvsCoreFunctions
 			<real> $real(<data:variant>)
 		@description:
 			Forces <data> to be a [i]real[/i] data type with the following
-			semantics:[br]
+			semantics:
 			[ul]
 				[li]If <data> is a real, <data> itself is returned.[/li]
 				[li]If <data> is an integer, <data> itself is returned, in its real form.[/li]

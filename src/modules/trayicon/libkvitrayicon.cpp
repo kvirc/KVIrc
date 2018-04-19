@@ -688,7 +688,7 @@ static bool trayicon_kvs_cmd_hide(KviKvsModuleCommandCall *)
 		Hides the window, associated with trayicon
 	@syntax:
 		trayicon.hidewindow
-	@description
+	@description:
 		Hides the window, associated with trayicon
 	@seealso:
 		[cmd]trayicon.show[/cmd], [cmd]trayicon.hide[/cmd]

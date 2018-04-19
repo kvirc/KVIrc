@@ -32,11 +32,11 @@
 
 #include "kvi_settings.h"
 
-#include <QObject>
 #include <QDialog>
+#include <QObject>
 
-class QGroupBox;
 class QCheckBox;
+class QGroupBox;
 class KviConfigurationFile;
 class KviDefaultScriptDialog;
 
@@ -62,9 +62,9 @@ public:
 private:
 	static KviDefaultScriptManager * m_pSelf;
 	static unsigned int m_uCount;
-	bool m_bNoNeedToRestore;
-	bool m_bConfigFileMissing;
-	KviDefaultScriptDialog * m_pDialog;
+	bool m_bNoNeedToRestore = false;
+	bool m_bConfigFileMissing = false;
+	KviDefaultScriptDialog * m_pDialog = nullptr;
 	QString m_szVersion;
 	QString m_szDate;
 	QString m_szAction;
@@ -99,7 +99,7 @@ public:
 	* \brief Returns the number of instances of the class
 	* \return unsigned int
 	*/
-	unsigned int count() { return m_uCount; };
+	unsigned int count() const { return m_uCount; }
 
 	/**
 	* \brief Checks if the local defscript is up to date
@@ -238,7 +238,7 @@ protected slots:
 	* Called when the user clicks on 'Ok'
 	* \return void
 	*/
-	virtual void accept();
+	void accept() override;
 
 	/**
 	* \brief Rejects the dialog
@@ -247,7 +247,7 @@ protected slots:
 	* decoration or pressing ESC
 	* \return void
 	*/
-	virtual void reject();
+	void reject() override;
 };
 
 #endif // _KVI_DEFAULTSCRIPT_H_

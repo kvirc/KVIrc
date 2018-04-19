@@ -47,8 +47,8 @@
                                                   \
 	public:                                       \
 		_cname(const QString & n, _type o, int f) \
-		    : name(n), option(o), flags(f){};     \
-		~_cname(){};                              \
+		    : name(n), option(o), flags(f){}      \
+		~_cname() = default;                      \
 	};
 
 DECLARE_OPTION_STRUCT(KviBoolOption, bool)
@@ -154,7 +154,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolCreateMinimizedDccSendWhenAutoAccepted 62                /* dcc::send */
 #define KviOption_boolCreateMinimizedDccChatWhenAutoAccepted 63                /* dcc::chat */
 #define KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable 64             /* dcc */
-//#define KviOption_boolShowRegisteredUsersDialogAsToplevel 65                   /* interface::features::global */ //UNUSED
+#define KviOption_boolColorNicksWithBackground 65                              /* interface::features::components::ircview */
 #define KviOption_boolAutoLogQueries 66                                        /* ircengine::logging */
 #define KviOption_boolAutoLogChannels 67                                       /* ircendine::logging */
 #define KviOption_boolAutoLogDccChat 68                                        /* ircengine::logging */
@@ -212,7 +212,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolDccSendFakeAddressByDefault 120                          /* dcc::general */
 #define KviOption_boolUseWindowListActivityMeter 121                           /* irc::output */
 #define KviOption_boolCloseServerWidgetAfterConnect 122                        /* IMPLEMENTATION NEEDED !!! */
-//#define KviOption_boolShowIdentityDialogAsToplevel 123                         /* ??? */  //UNUSED
+#define KviOption_boolPrioritizeLastActionTime 123
 #define KviOption_boolShowUserChannelIcons 124                                 /* look & feel::interface features::userlist */
 #define KviOption_boolShowUserChannelState 125                                 /* look & feel::interface features::userlist */
 #define KviOption_boolEnableIgnoreOnPrivMsg 126                                /* irc::ignore */
@@ -632,7 +632,7 @@ namespace KviIdentdOutputMode
 #define KVI_MSGTYPE_OPTIONS_PREFIX "msgtype"
 #define KVI_MSGTYPE_OPTIONS_PREFIX_LEN 7
 
-#define KVI_NUM_MSGTYPE_OPTIONS 146
+#define KVI_NUM_MSGTYPE_OPTIONS 149
 
 #define KVI_MIRCCOLOR_OPTIONS_PREFIX "mirccolor"
 #define KVI_MIRCCOLOR_OPTIONS_PREFIX_LEN 9

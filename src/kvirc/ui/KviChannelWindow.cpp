@@ -103,9 +103,9 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	connect(m_pTopicWidget, SIGNAL(topicSelected(const QString &)),
 	    this, SLOT(topicSelected(const QString &)));
 	// mode label follows the topic widget
-	m_pModeWidget = new KviModeWidget(m_pTopSplitter, this, "mode_");
+	m_pModeWidget = new KviModeWidget(m_pTopSplitter, *this, "mode_");
 	KviTalToolTip::add(m_pModeWidget, __tr2qs("Channel modes"));
-	connect(m_pModeWidget, SIGNAL(setMode(QString &)), this, SLOT(setMode(QString &)));
+	connect(m_pModeWidget, SIGNAL(setMode(const QString &)), this, SLOT(setMode(const QString &)));
 
 	createTextEncodingButton(m_pButtonContainer);
 
@@ -271,6 +271,8 @@ KviChannelWindow::~KviChannelWindow()
 	for(auto i : m_ModeLists)
 		for(auto ii : i.second)
 			delete ii;
+
+	qDeleteAll(m_lActionHistory);
 }
 
 void KviChannelWindow::toggleToolButtons()
@@ -501,7 +503,7 @@ void KviChannelWindow::toggleModeEditor()
 	else
 	{
 		m_pModeEditor = new KviModeEditor(m_pSplitter, m_pModeEditorButton, "mode_editor", this);
-		connect(m_pModeEditor, SIGNAL(setMode(QString &)), this, SLOT(setMode(QString &)));
+		connect(m_pModeEditor, SIGNAL(setMode(const QString &)), this, SLOT(setMode(const QString &)));
 		connect(m_pModeEditor, SIGNAL(done()), this, SLOT(modeSelectorDone()));
 		m_pModeEditor->show();
 		//setFocusHandlerNoClass(m_pInput,m_pModeEditor,"QLineEdit");
@@ -516,7 +518,7 @@ void KviChannelWindow::modeSelectorDone()
 		toggleModeEditor();
 }
 
-void KviChannelWindow::setMode(QString & szMode)
+void KviChannelWindow::setMode(const QString & szMode)
 {
 	if(!connection())
 		return;
@@ -690,7 +692,7 @@ void KviChannelWindow::setChannelModeWithParam(char cMode, QString & szParam)
 	if(szParam.isEmpty())
 		m_szChannelParameterModes.erase(cMode);
 	else
-		m_szChannelParameterModes.emplace(cMode, szParam);
+		m_szChannelParameterModes[cMode] = szParam;
 	updateModeLabel();
 	updateCaption();
 }
@@ -717,13 +719,15 @@ void KviChannelWindow::getChannelModeString(QString & szBuffer)
 		szBuffer.append(QChar(iter.first));
 }
 
-void KviChannelWindow::getChannelModeStringWithEmbeddedParams(QString & szBuffer)
+QString KviChannelWindow::getChannelModeStringWithEmbeddedParams()
 {
-	szBuffer = m_szChannelMode;
+	QString szBuffer = m_szChannelMode;
 
 	//add modes that use a parameter
 	for(auto iter : m_szChannelParameterModes)
 		szBuffer.append(QString(" %1:%2").arg(QChar(iter.first)).arg(iter.second));
+
+	return szBuffer;
 }
 
 bool KviChannelWindow::setOp(const QString & szNick, bool bOp, bool bIsMe)
@@ -757,7 +761,8 @@ void KviChannelWindow::setDeadChan()
 
 	m_pTopicWidget->reset();
 
-	m_ActionHistory.clear();
+	qDeleteAll(m_lActionHistory);
+	m_lActionHistory.clear();
 	m_uActionHistoryHotActionCount = 0;
 
 	m_szChannelMode = "";
@@ -1369,7 +1374,11 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 					if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
 						return;
 
-					output(KVI_OUT_ACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
+					QString szBuf = "\r!nc\r";
+					szBuf += szMyName;
+					szBuf += "\r ";
+					szBuf += szTmpBuffer;
+					outputMessage(KVI_OUT_OWNACTIONCRYPTED, szBuf);
 				}
 				break;
 				case KviCryptEngine::Encoded:
@@ -1380,7 +1389,11 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 					// ugly, but we must redecode here
 					QString szRedecoded = decodeText(szEncrypted.ptr());
 
-					output(KVI_OUT_ACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szRedecoded);
+					QString szBuf = "\r!nc\r";
+					szBuf += szMyName;
+					szBuf += "\r ";
+					szBuf += szRedecoded;
+					outputMessage(KVI_OUT_OWNACTIONCRYPTED, szBuf);
 				}
 				break;
 				default:
@@ -1474,7 +1487,7 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 				szBuf += connection()->currentNickName();
 				szBuf += "\r ";
 				szBuf += szTmp.data();
-				outputMessage(KVI_OUT_ACTION, szBuf);
+				outputMessage(KVI_OUT_OWNACTION, szBuf);
 				userAction(connection()->currentNickName(), KVI_USERACTION_ACTION);
 			}
 			else
@@ -1497,7 +1510,7 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 		szBuf += connection()->currentNickName();
 		szBuf += "\r ";
 		szBuf += szTmpBuffer;
-		outputMessage(KVI_OUT_ACTION, szBuf);
+		outputMessage(KVI_OUT_OWNACTION, szBuf);
 		userAction(connection()->currentNickName(), KVI_USERACTION_ACTION);
 	}
 }
@@ -1539,7 +1552,7 @@ bool KviChannelWindow::activityMeter(unsigned int * puActivityValue, unsigned in
 	unsigned int uHotActionPercent;
 	double dActionsPerMinute;
 
-	if(m_ActionHistory.size() < 1)
+	if(m_lActionHistory.count() < 1)
 	{
 		// nothing is happening
 		uHotActionPercent = 0;
@@ -1549,11 +1562,11 @@ bool KviChannelWindow::activityMeter(unsigned int * puActivityValue, unsigned in
 	{
 		kvi_time_t tNow = kvi_unixTime();
 
-		KviChannelAction * pAction = m_ActionHistory.back();
+		KviChannelAction * pAction = m_lActionHistory.last();
 
 		double dSpan = (double)(tNow - pAction->tTime);
 
-		if(m_ActionHistory.size() < KVI_CHANNEL_ACTION_HISTORY_MAX_COUNT)
+		if(m_lActionHistory.count() < KVI_CHANNEL_ACTION_HISTORY_MAX_COUNT)
 		{
 			if(m_joinTime.secsTo(QDateTime::currentDateTime()) < KVI_CHANNEL_ACTION_HISTORY_MAX_TIMESPAN)
 			{
@@ -1569,11 +1582,11 @@ bool KviChannelWindow::activityMeter(unsigned int * puActivityValue, unsigned in
 		} // else the actions have been pushed out of the history because they were too much
 
 		if(dSpan > 0.0)
-			dActionsPerMinute = (((double)(m_ActionHistory.size())) / (dSpan)) * 60.0;
+			dActionsPerMinute = (((double)(m_lActionHistory.count())) / (dSpan)) * 60.0;
 		else
-			dActionsPerMinute = (double)(m_ActionHistory.size()); // ???
+			dActionsPerMinute = (double)(m_lActionHistory.count()); // ???
 
-		uHotActionPercent = (m_uActionHistoryHotActionCount * 100) / (m_ActionHistory.size());
+		uHotActionPercent = (m_uActionHistoryHotActionCount * 100) / (m_lActionHistory.count());
 	}
 
 	if(dActionsPerMinute < 0.3)
@@ -1618,28 +1631,28 @@ void KviChannelWindow::channelAction(const QString & szNick, unsigned int uActio
 	if(iTemperature > 0)
 		m_uActionHistoryHotActionCount++;
 
-	m_ActionHistory.push_back(pAction);
+	m_lActionHistory.append(pAction);
 	fixActionHistory();
 }
 
 void KviChannelWindow::fixActionHistory()
 {
-	while(m_ActionHistory.size() > KVI_CHANNEL_ACTION_HISTORY_MAX_COUNT)
-		m_ActionHistory.erase(m_ActionHistory.begin(), m_ActionHistory.begin() + 1);
+	while(m_lActionHistory.count() > KVI_CHANNEL_ACTION_HISTORY_MAX_COUNT)
+		delete m_lActionHistory.takeFirst();
 
-	if(m_ActionHistory.empty())
+	if(m_lActionHistory.isEmpty())
 		return;
 
-	KviChannelAction * pAction = m_ActionHistory.back();
+	KviChannelAction * pAction = m_lActionHistory.last();
 	kvi_time_t tMinimum = pAction->tTime - KVI_CHANNEL_ACTION_HISTORY_MAX_TIMESPAN;
 
-	KviChannelAction * pAct = m_ActionHistory.front();
+	KviChannelAction * pAct = m_lActionHistory.first();
 	while(pAct && (pAct->tTime < tMinimum))
 	{
 		if(pAct->iTemperature > 0)
 			m_uActionHistoryHotActionCount--;
-		m_ActionHistory.erase(m_ActionHistory.begin(), m_ActionHistory.begin() + 1);
-		pAct = m_ActionHistory.front();
+		delete m_lActionHistory.takeFirst();
+		pAct = m_lActionHistory.first();
 	}
 }
 
@@ -1656,7 +1669,7 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 {
 	fixActionHistory();
 
-	pStats->uActionCount = m_ActionHistory.size();
+	pStats->uActionCount = m_lActionHistory.count();
 	pStats->iAverageActionTemperature = 0;
 	pStats->uActionsInTheLastMinute = 0;
 	pStats->uHotActionCount = 0;
@@ -1675,10 +1688,10 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 
 	kvi_time_t tNow = kvi_unixTime();
 
-	KviChannelAction * pAction = m_ActionHistory.back();
+	KviChannelAction * pAction = m_lActionHistory.last();
 	pStats->uLastActionTimeSpan = tNow - pAction->tTime;
 
-	pAction = m_ActionHistory.front();
+	pAction = m_lActionHistory.first();
 	pStats->uFirstActionTimeSpan = tNow - pAction->tTime;
 
 	double dSpan = (double)pStats->uFirstActionTimeSpan;
@@ -1713,9 +1726,9 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 	pStats->lTalkingUsers.clear();
 	pStats->lWereTalkingUsers.clear();
 
-	for(unsigned i = m_ActionHistory.size(); i-- > 0; )
+	for(unsigned i = m_lActionHistory.count(); i-- > 0; )
 	{
-		pAction = m_ActionHistory[i];
+		pAction = m_lActionHistory[i];
 
 		if(pAction->tTime >= tNow)
 			pStats->uActionsInTheLastMinute++;

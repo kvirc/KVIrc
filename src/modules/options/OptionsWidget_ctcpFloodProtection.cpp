@@ -33,7 +33,7 @@
 /*
 	@doc: ctcpfloodprotectionoptions
 	@type:
-		widget
+		generic
 	@title:
 		CTCP flood protection options
 	@short:

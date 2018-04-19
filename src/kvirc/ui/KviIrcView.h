@@ -40,6 +40,7 @@ class QLineEdit;
 class QFile;
 class QFontMetrics;
 class QMenu;
+class QScreen;
 
 class KviWindow;
 class KviMainWindow;
@@ -220,6 +221,7 @@ protected:
 	virtual void timerEvent(QTimerEvent * e);
 	virtual void dragEnterEvent(QDragEnterEvent * e);
 	virtual void dropEvent(QDropEvent * e);
+	virtual void showEvent(QShowEvent * e);
 	virtual bool event(QEvent * e);
 	virtual void wheelEvent(QWheelEvent * e);
 	virtual void keyPressEvent(QKeyEvent * e);
@@ -259,6 +261,7 @@ public slots:
 	void resetBackground();
 protected slots:
 	virtual void scrollBarPositionChanged(int newValue);
+	void screenChanged(QScreen *);
 	void masterDead();
 	void animatedIconChange();
 signals:

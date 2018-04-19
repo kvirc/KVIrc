@@ -875,7 +875,7 @@ static bool dialog_kvs_fnc_yesno(KviKvsModuleFunctionCall * c)
 		is open the whole world can change: you can return from the dialog call and discover
 		that the server connection no longer exists and the application is about to quit.[br]
 		This may happen even with non-blocking dialogs,but in non-blocking mode you have
-		a way to handle this event. Consider the following snippet of code:[br]
+		a way to handle this event. Consider the following snippet of code:
 		[example]
 			echo My name is $?
 		[/example]

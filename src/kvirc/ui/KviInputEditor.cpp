@@ -1672,7 +1672,7 @@ void KviInputEditor::handleDragSelection()
 
 	QPoint pnt = mapFromGlobal(QCursor::pos());
 
-	m_iCursorPosition = charIndexFromXPosition(pnt.x());
+	m_iCursorPosition = std::min(charIndexFromXPosition(pnt.x()), m_szTextBuffer.length());
 
 	if(m_iCursorPosition == m_iSelectionAnchorChar)
 		clearSelection();
@@ -2001,7 +2001,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			return;
 		}
 
-		m_bLastCompletionFinished = 1;
+		m_bLastCompletionFinished = true;
 	}
 
 	switch(e->key())
@@ -2373,7 +2373,7 @@ void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, boo
 			m_iLastCompletionCursorPosition = m_iCursorPosition;
 			m_szLastCompletedNick = szBuffer;
 			standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
-			m_bLastCompletionFinished = 0;
+			m_bLastCompletionFinished = false;
 			// REPAINT CALLED FROM OUTSIDE!
 		} // else no match at all
 
@@ -2399,12 +2399,12 @@ void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, boo
 			// completed
 			m_szLastCompletedNick = szBuffer;
 			standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
-			m_bLastCompletionFinished = 0;
+			m_bLastCompletionFinished = false;
 			// REPAINT CALLED FROM OUTSIDE!
 		}
 		else
 		{
-			m_bLastCompletionFinished = 1;
+			m_bLastCompletionFinished = true;
 			m_szLastCompletedNick = "";
 		}
 
@@ -2424,12 +2424,12 @@ void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, boo
 		m_iLastCompletionCursorPosition = m_iCursorPosition;
 		m_szLastCompletedNick = szBuffer;
 		standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
-		m_bLastCompletionFinished = 0;
+		m_bLastCompletionFinished = false;
 		// REPAINT CALLED FROM OUTSIDE!
 	}
 	else
 	{
-		m_bLastCompletionFinished = 1;
+		m_bLastCompletionFinished = true;
 		m_szLastCompletedNick = "";
 	}
 }
@@ -3186,10 +3186,10 @@ void KviInputEditor::clearSelection()
 
 void KviInputEditor::homeInternal()
 {
+	clearSelection();
+
 	if(m_iCursorPosition <= 0)
 		return;
-
-	clearSelection();
 
 	home();
 }

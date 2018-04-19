@@ -33,13 +33,11 @@
 #include "KviWindow.h"
 
 KviCustomToolBarDescriptor::KviCustomToolBarDescriptor(const QString & szId, const QString & szLabelCode)
+    : m_szId(szId)
 {
 	m_iInternalId = g_pApp->getGloballyUniqueId();
-	m_szId = szId;
 	m_pActions = new KviPointerList<QString>;
 	m_pActions->setAutoDelete(true);
-	m_pToolBar = nullptr;
-	m_bVisibleAtStartup = false;
 	createLabelScript(szLabelCode);
 }
 
@@ -66,7 +64,7 @@ const QString & KviCustomToolBarDescriptor::label()
 	return m_szParsedLabel;
 }
 
-const QString & KviCustomToolBarDescriptor::labelCode()
+const QString & KviCustomToolBarDescriptor::labelCode() const
 {
 	return m_pLabelScript->code();
 }
@@ -205,13 +203,9 @@ bool KviCustomToolBarDescriptor::load(KviConfigurationFile * cfg)
 		tmp.setNum(i);
 		QString * p = new QString(cfg->readEntry(tmp));
 		if(p->isEmpty())
-		{
 			delete p;
-		}
 		else
-		{
 			m_pActions->append(p);
-		}
 	}
 	return true;
 }

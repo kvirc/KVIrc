@@ -72,9 +72,9 @@ static const int mode_cod[] = {
 		!fn: $setEchoMode(<echo_mode:string>)
 		Sets the line edit's echo mode. Possible value are:[br]
 		[pre]
-			-Normal: display chars as they entered[br]
-			-Noecho: do not display anything[br]
-			-Password: display asterisks instead of the characters actually entered[br]
+			-Normal: display chars as they entered
+			-Noecho: do not display anything
+			-Password: display asterisks instead of the characters actually entered
 		[/pre]
 		See also [classfnc]$echoMode[/classfnc]().
 		!fn: <string> $echoMode()
@@ -133,14 +133,14 @@ static const int mode_cod[] = {
 		Sets the lineedit to read-only mode.
 		!fn: $setInputMask(<mask:string>)
 		Sets the validation input mask to inputMask.[br]
-		[b]Example:[/b][br]
+		[b]Example:[/b]
 		[example]
 			%ledit_example->$setInputMask( "+99 99 99 99 99;_" );[br]
 			%ledit_example->$setInputMask( "000.000.000.000;_" );[br]
 			%ledit_example->IP Number Mask.[br]
 			%ledit_example->setInputMask( ">AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#" );
 		[/example]
-		The mask format understands these mask characters:[br]
+		The mask format understands these mask characters:
 		[example]
 			[b][comment]Character	Meaning[/comment][/b][br]
 			A	-	ASCII alphabetic character required. A-Z, a-z.[br]

@@ -50,7 +50,7 @@
 		The [i]file offers[/i] are a simple way to share your files with other IRC users.[br]
 		Basically, you setup an offer by selecting a local file, choosing a [i]visible name[/i] for it.
 		Remote users will be able to request you the file and download it automatically by
-		issuing a simple DCC GET request.[br]
+		issuing a simple DCC GET request.
 		[big]Details[/big]
 		Each offer refers to an existing file on one of your locally mounted file systems.
 		The offer is given a visible name that the remote users will effectively request.
@@ -64,7 +64,7 @@
 		Each offer can have an expire time: the offer will be automatically removed after
 		a defined number of seconds. An expire time of '0' seconds means that the offer should never expire.[br]
 		If you have two file offers with the same name and different file, the remote user can
-		use an additional [i]size[/i] parameter in the DCC GET request.[br]
+		use an additional [i]size[/i] parameter in the DCC GET request.
 		[big]Security issues[/big]
 		This is a nice but unsecure method of sharing files.[br]
 		The user mask is a good protection but you have to use it properly![br]

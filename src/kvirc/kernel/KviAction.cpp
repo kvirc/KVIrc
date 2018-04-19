@@ -23,14 +23,14 @@
 //=============================================================================
 
 #include "KviAction.h"
-#include "KviCustomToolBar.h"
-#include "KviMainWindow.h"
-#include "KviIrcContext.h"
 #include "KviApplication.h"
-#include "KviWindow.h"
 #include "KviChannelWindow.h"
-#include "KviQueryWindow.h"
+#include "KviCustomToolBar.h"
+#include "KviIrcContext.h"
+#include "KviMainWindow.h"
 #include "KviOptions.h"
+#include "KviQueryWindow.h"
+#include "KviWindow.h"
 
 #include <QAction>
 #include <QMenu>

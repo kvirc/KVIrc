@@ -87,6 +87,7 @@
 #include "KviSignalHandler.h"
 #include "KviPtrListIterator.h"
 #include "KviIrcNetwork.h"
+#include "KviRuntimeInfo.h"
 
 #include <QMenu>
 #include <algorithm>
@@ -448,16 +449,8 @@ void KviApplication::setup()
 	// Script object controller
 	//g_pScriptObjectController = new KviScriptObjectController(); gone
 
-	QString szStylesheetFile;
-	getGlobalKvircDirectory(szStylesheetFile, Config, "style.css");
-	if(KviFileUtils::fileExists(szStylesheetFile))
-	{
-		QString szStyleData;
-		KviFileUtils::readFile(szStylesheetFile, szStyleData);
-		szStyleData.replace("global://", m_szGlobalKvircDir);
-		szStyleData.replace("local://", m_szLocalKvircDir);
-		setStyleSheet(szStyleData);
-	}
+	// Cache the QStyle theme before it's overriden
+	(void)KviRuntimeInfo::qtTheme();
 
 	// create the frame window, we're almost up and running...
 	createFrame();
@@ -1076,6 +1069,14 @@ void KviApplication::ipcMessage(char * pcMessage)
 		if(iIdx != -1)
 			szCmd.cutRight(szCmd.len() - (iIdx + 1));
 		pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Remote command received (%s ...)"), szCmd.ptr());
+	}
+	if (kvi_strEqualCIN(pcMessage, "openurl ", 8))
+	{
+		// there actually is no reliable way of raising the main window, but we try our best!
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		SetForegroundWindow((HWND)g_pMainWindow->winId());
+#endif
+		g_pMainWindow->activateWindow();
 	}
 	KviKvsScript::run(pcMessage, pConsole);
 }

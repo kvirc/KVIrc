@@ -36,13 +36,13 @@
 
 class KviKvsObjectFunctionCall;
 
-typedef struct _KviKvsObjectConnection
+struct KviKvsObjectConnection
 {
-	KviKvsObject * pSourceObject; // source object (owner of the struct)
-	KviKvsObject * pTargetObject; // target object
-	QString szSignal;             // source signal name
-	QString szSlot;               // target slot function
-} KviKvsObjectConnection;
+	KviKvsObject * pSourceObject = nullptr; // source object (owner of the struct)
+	KviKvsObject * pTargetObject = nullptr; // target object
+	QString szSignal;                       // source signal name
+	QString szSlot;                         // target slot function
+};
 
 typedef KviPointerList<KviKvsObjectConnection> KviKvsObjectConnectionList;
 typedef KviPointerListIterator<KviKvsObjectConnection> KviKvsObjectConnectionListIterator;
@@ -58,45 +58,45 @@ public:
 
 protected:
 	// main data
-	QString m_szName;             // object name
-	kvs_hobject_t m_hObject;      // global object handle
-	KviKvsObjectClass * m_pClass; // the class definition
+	QString m_szName;                        // object name
+	kvs_hobject_t m_hObject;                 // global object handle
+	KviKvsObjectClass * m_pClass = nullptr;  // the class definition
 
-	KviKvsHash * m_pDataContainer; // member variables
+	KviKvsHash * m_pDataContainer = nullptr; // member variables
 
-	KviPointerList<KviKvsObject> * m_pChildList;
+	KviPointerList<KviKvsObject> * m_pChildList = nullptr;
 
-	KviPointerHashTable<QString, KviKvsObjectFunctionHandler> * m_pFunctionHandlers; // our function handlers
+	KviPointerHashTable<QString, KviKvsObjectFunctionHandler> * m_pFunctionHandlers = nullptr; // our function handlers
 
-	KviPointerHashTable<QString, KviKvsObjectConnectionList> * m_pSignalDict; // our signals connected to other object functions
+	KviPointerHashTable<QString, KviKvsObjectConnectionList> * m_pSignalDict = nullptr; // our signals connected to other object functions
 
-	KviKvsObjectConnectionList * m_pConnectionList; // signals connected to this object functions
+	KviKvsObjectConnectionList * m_pConnectionList = nullptr; // signals connected to this object functions
 
 	// this is valid when processing one of our slots
 	kvs_hobject_t m_hSignalSender;
 	QString m_szSignalName;
 
 	// if this object wraps a qt one, it is here
-	QObject * m_pObject;
-	bool m_bObjectOwner; // do we have to destroy it ?
+	QObject * m_pObject = nullptr;
+	bool m_bObjectOwner = true; // do we have to destroy it ?
 
 	// We're going to die soon after the control is given back to the event loop
-	bool m_bInDelayedDeath;
+	bool m_bInDelayedDeath = false;
 	// We're going to die BEFORE the control is given back to the event loop
-	bool m_bAboutToDie;
+	bool m_bAboutToDie = false;
 	// Did we already call the destructor ?
-	bool m_bDestructorCalled;
+	bool m_bDestructorCalled = false;
 
 public:
-	kvs_hobject_t handle() { return m_hObject; };
+	kvs_hobject_t handle() { return m_hObject; }
 
 	// the wrapped Qt object (may be 0!)
-	QObject * object() const { return m_pObject; };
+	QObject * object() const { return m_pObject; }
 	void setObject(QObject * o, bool bIsOwned = true);
 
-	const QString & getName() { return m_szName; };
+	const QString & getName() const { return m_szName; }
 
-	KviKvsObject * parentObject() { return (KviKvsObject *)parent(); };
+	KviKvsObject * parentObject() { return (KviKvsObject *)parent(); }
 	QWidget * parentScriptWidget();
 
 	bool connectSignal(const QString & sigName, KviKvsObject * target, const QString & slotName);
@@ -111,18 +111,18 @@ public:
 	// should be generated inside object functions (either from scripting or by core calls)
 	int emitSignal(const QString & sigName, KviKvsObjectFunctionCall * pOuterCall, KviKvsVariantList * pParams = 0);
 
-	void setSignalSender(kvs_hobject_t hObject) { m_hSignalSender = hObject; };
-	kvs_hobject_t signalSender() { return m_hSignalSender; };
-	void setSignalName(const QString & szSigName) { m_szSignalName = szSigName; };
+	void setSignalSender(kvs_hobject_t hObject) { m_hSignalSender = hObject; }
+	kvs_hobject_t signalSender() { return m_hSignalSender; }
+	void setSignalName(const QString & szSigName) { m_szSignalName = szSigName; }
 
-	KviPointerHashTable<QString, KviKvsObjectFunctionHandler> * functionHandlers() { return m_pFunctionHandlers; };
+	KviPointerHashTable<QString, KviKvsObjectFunctionHandler> * functionHandlers() { return m_pFunctionHandlers; }
 
-	KviKvsHash * dataContainer() { return m_pDataContainer; };
+	KviKvsHash * dataContainer() { return m_pDataContainer; }
 
 	bool die();
 	bool dieNow();
 
-	KviKvsObjectClass * getExactClass() { return m_pClass; };
+	KviKvsObjectClass * getExactClass() { return m_pClass; }
 	KviKvsObjectClass * getClass(const QString & classOverride = QString());
 	bool inheritsClass(KviKvsObjectClass * pClass);
 	bool inheritsClass(const QString & szClass);

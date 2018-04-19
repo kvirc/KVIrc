@@ -671,7 +671,7 @@ namespace KviKvsCoreSimpleCommands
 		if(szCtcpCmd.compare("PING", Qt::CaseInsensitive) == 0 && szCtcpData.isEmpty())
 		{
 			struct timeval tv;
-			kvi_gettimeofday(&tv, nullptr);
+			kvi_gettimeofday(&tv);
 			KviQString::appendFormatted(szCtcpData, "%d.%d", tv.tv_sec, tv.tv_usec);
 		}
 		else if (szCtcpCmd.compare("ACTION", Qt::CaseInsensitive) == 0 && !KVSCSC_pSwitches->find('n', "notice"))
@@ -845,9 +845,6 @@ namespace KviKvsCoreSimpleCommands
 		@switches:
 			!sw: -q | --quiet
 			Causes the command to run quietly
-			!sw: -i | --immediate
-			Causes the object to be destroyed immediately
-			instead of simply scheduling its later deletion.
 		@description:
 			Schedules for destruction the object designed by <objectHandle>.
 			This command is internally aliased to [cmd]destroy[/cmd].
@@ -861,13 +858,6 @@ namespace KviKvsCoreSimpleCommands
 			the signals may be still emitted after the delete call.
 			You have to disconnect the signals explicitly if you don't want it
 			to happen.[br]
-			Alternatively you can use the -i switch: it causes the object
-			to be destructed immediately but is intrinsicly unsafe:
-			in complex script scenarios it may lead to a SIGSEGV;
-			usually when called from one of the deleted object function
-			handlers, or from a slot connected to one of the deleted object
-			signals. Well, it actually does not SIGSEGV, but I can't guarantee it;
-			so, if use the -i switch, test your script 10 times before releasing it.
 			The -q switch causes the command to run a bit more silently: it still
 			complains if the parameter passed is not an object reference, but
 			it fails silently if the reference just points to an inexistent object (or is null).
@@ -883,7 +873,7 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			destroy
 		@syntax:
-			destroy [-q] [-i] <objectHandle>
+			destroy [-q] <objectHandle>
 		@short:
 			Destroys an object
 		@description:
@@ -911,10 +901,14 @@ namespace KviKvsCoreSimpleCommands
 			}
 			else
 			{
-				if(KVSCSC_pSwitches->find('i', "immediate"))
-					o->dieNow();
-				else
-					o->die();
+				// -i | --immediate was too annoying. People were writing self-destructive scripts
+				// and then were complaining about -i causing their KVIrc to crash.
+				//
+				//if(KVSCSC_pSwitches->find('i', "immediate"))
+				//	o->dieNow();
+				//else
+				
+				o->die();
 			}
 		}
 		return true;
@@ -1498,6 +1492,7 @@ namespace KviKvsCoreSimpleCommands
 		}
 		else
 		{
+			KviKvsEventManager::instance()->cleanHandlerName(szHandlerName);
 			iNumber = KviKvsEventManager::instance()->findAppEventIndexByName(szEventName);
 			if(!KviKvsEventManager::instance()->isValidAppEvent(iNumber))
 			{

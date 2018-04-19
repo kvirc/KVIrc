@@ -101,10 +101,10 @@ const char * const sockerrors_tbl[] = {
 		[pre]
 			0 = Unconnected
 			1 = HostLookUp
-			2 = Connecting[br]
-			3 = Connected[br]
-			4 = Bound[br]
-			5 = Closing[br]
+			2 = Connecting
+			3 = Connected
+			4 = Bound
+			5 = Closing
 			6 = Listening
 		[/pre]
 		!fn: $connect(<host>,<port>)

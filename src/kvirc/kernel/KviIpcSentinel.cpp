@@ -123,7 +123,7 @@ static Window kvi_x11_findIpcSentinel(Window win)
 
 	Window found = 0;
 
-	for(int i = nChildren - 1; (!found) && (i >= 0); i--)
+	for(size_t i = 0; !found && i < nChildren; ++i)
 		found = kvi_x11_findIpcSentinel(children[i]);
 
 	if(children)
@@ -296,7 +296,7 @@ typedef struct
 	kvi_u32_t full_sequence;
 } fake_xcb_generic_event_t;
 
-typedef struct xcb_property_notify_event_t
+typedef struct
 {
 	kvi_u8_t response_type;
 	kvi_u8_t pad0;

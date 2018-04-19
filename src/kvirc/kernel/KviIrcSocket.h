@@ -31,36 +31,38 @@
 */
 
 #include "kvi_settings.h"
-#include "KviCString.h"
+#include "kvi_socket.h"
 #include "kvi_sockettype.h"
-#include "KviTimeUtils.h"
-#include "KviPointerList.h"
+#include "KviCString.h"
 #include "KviError.h"
+#include "KviPointerList.h"
+#include "KviTimeUtils.h"
 
-#include <memory>
 #include <QObject>
 
-class QTimer;
-class QSocketNotifier;
-class KviIrcServer;
-class KviProxy;
+#include <memory>
+
+class KviConsoleWindow;
+class KviDataBuffer;
 class KviIrcConnection;
 class KviIrcConnectionTarget;
 class KviIrcLink;
+class KviIrcServer;
+class KviProxy;
 class KviSSL;
-class KviConsoleWindow;
-class KviDataBuffer;
+class QSocketNotifier;
+class QTimer;
 
 /**
 * \typedef KviIrcSocketMsgEntry
 * \struct _KviIrcSocketMsgEntry
 * \brief Holds the messages entries
 */
-typedef struct _KviIrcSocketMsgEntry
+struct KviIrcSocketMsgEntry
 {
 	KviDataBuffer * pData;
-	struct _KviIrcSocketMsgEntry * next_ptr;
-} KviIrcSocketMsgEntry;
+	struct KviIrcSocketMsgEntry * next_ptr;
+};
 
 /**
 * \class KviIrcSocket
@@ -108,103 +110,100 @@ protected:
 	unsigned int m_uId;
 	KviIrcLink * m_pLink;
 	KviConsoleWindow * m_pConsole;
-	kvi_socket_t m_sock;
-	SocketState m_state;
-	QSocketNotifier * m_pWsn;
-	QSocketNotifier * m_pRsn;
-	KviIrcServer * m_pIrcServer;
-	KviProxy * m_pProxy;
-	QTimer * m_pTimeoutTimer;
-	unsigned int m_uReadBytes;
-	unsigned int m_uSentBytes;
-	KviError::Code m_eLastError;
-	unsigned int m_uSentPackets;
-	KviIrcSocketMsgEntry * m_pSendQueueHead;
-	KviIrcSocketMsgEntry * m_pSendQueueTail;
+	kvi_socket_t m_sock = KVI_INVALID_SOCKET; // socket
+	SocketState m_state = Idle;            // current socket state
+	QSocketNotifier * m_pWsn = nullptr;    // read socket notifier
+	QSocketNotifier * m_pRsn = nullptr;    // write socket notifier
+	KviIrcServer * m_pIrcServer = nullptr; // current server data
+	KviProxy * m_pProxy = nullptr;         // current proxy data
+	QTimer * m_pTimeoutTimer = nullptr;    // timeout for connect()
+	unsigned int m_uReadBytes = 0;         // total read bytes per session
+	unsigned int m_uSentBytes = 0;         // total sent bytes per session
+	unsigned int m_uSentPackets = 0;       // total packets sent per session
+	KviError::Code m_eLastError = KviError::Success;
+	KviIrcSocketMsgEntry * m_pSendQueueHead = nullptr; // data queue
+	KviIrcSocketMsgEntry * m_pSendQueueTail = nullptr;
 	std::unique_ptr<QTimer> m_pFlushTimer;
 	struct timeval m_tAntiFloodLastMessageTime;
-	bool m_bInProcessData;
+	bool m_bInProcessData = false;
 #ifdef COMPILE_SSL_SUPPORT
-	KviSSL * m_pSSL;
+	KviSSL * m_pSSL = nullptr;
 #endif
 public:
 	/**
 	* \brief Returns the console
 	* \return KviConsoleWindow *
 	*/
-	KviConsoleWindow * console() { return m_pConsole; };
+	KviConsoleWindow * console() const { return m_pConsole; }
 
 	/**
 	* \brief Returns the link
 	* \return KviIrcLink *
 	*/
-	KviIrcLink * link() { return m_pLink; };
+	KviIrcLink * link() const { return m_pLink; }
 
 	/**
 	* \brief Returns the state of the socket
 	* \return SocketState
 	*/
-	SocketState state() { return m_state; };
+	SocketState state() const { return m_state; }
 
 	/**
 	* \brief Returns the last error
 	* \return int
 	*/
-	int lastError() { return m_eLastError; };
+	int lastError() const { return m_eLastError; }
 
 	/**
 	* \brief Returns the id of the socket
 	* \return unsigned int
 	*/
-	unsigned int id() { return m_uId; };
+	unsigned int id() const { return m_uId; }
 
 /**
 	* \brief Returns true if the socket is a Secure Socket Layer (SSL)
 	* \return bool
 	*/
+	bool usingSSL() const
+	{
 #ifdef COMPILE_SSL_SUPPORT
-	bool usingSSL()
-	{
 		return m_pSSL;
-	};
 #else
-	bool usingSSL()
-	{
 		return false;
-	};
 #endif
+	}
 
 #ifdef COMPILE_SSL_SUPPORT
 	/**
 	* \brief Returns the current SSL object for this socket
 	* \return bool
 	*/
-	KviSSL * getSSL() { return m_pSSL; };
+	KviSSL * getSSL() const { return m_pSSL; }
 #endif
 	/**
 	* \brief Returns the number of bytes read
 	* \return unsigned int
 	*/
-	unsigned int readBytes() { return m_uReadBytes; };
+	unsigned int readBytes() const { return m_uReadBytes; }
 
 	/**
 	* \brief Returns the number of bytes sent
 	* \return unsigned int
 	*/
-	unsigned int sentBytes() { return m_uSentBytes; };
+	unsigned int sentBytes() const { return m_uSentBytes; }
 
 	/**
 	* \brief Returns the number of packets sent
 	* \return unsigned int
 	*/
-	unsigned int sentPackets() { return m_uSentPackets; };
-	//unsigned int readPackets(){ return m_uReadPackets; };
+	unsigned int sentPackets() const { return m_uSentPackets; }
+	//unsigned int readPackets() const { return m_uReadPackets; }
 
 	/**
 	* \brief Returns true if the socket is connected
 	* \return bool
 	*/
-	bool isConnected() { return m_state == Connected; };
+	bool isConnected() const { return m_state == Connected; }
 
 	/**
 	* \brief Starts the connection
@@ -213,7 +212,7 @@ public:
 	* \param pcBindAddress The address to bind the connection to
 	* \return int
 	*/
-	KviError::Code startConnection(KviIrcServer * pServer, KviProxy * pProxy = 0, const char * pcBindAddress = 0);
+	KviError::Code startConnection(KviIrcServer * pServer, KviProxy * pProxy = nullptr, const char * pcBindAddress = nullptr);
 
 #ifdef COMPILE_SSL_SUPPORT
 	/**

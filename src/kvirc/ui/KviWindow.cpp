@@ -74,6 +74,7 @@
 #include <QInputMethodEvent>
 #include <QFileInfo>
 
+#include <array>
 #include <tuple>
 #include <vector>
 
@@ -139,6 +140,8 @@ KviWindow::KviWindow(Type eType, const QString & szName, KviConsoleWindow * lpCo
 	//setAutoFillBackground(false);
 	setFocusPolicy(Qt::StrongFocus);
 	connect(g_pApp, SIGNAL(reloadImages()), this, SLOT(reloadImages()));
+
+	setAttribute(Qt::WA_InputMethodEnabled, true);
 }
 
 KviWindow::~KviWindow()
@@ -702,9 +705,9 @@ void KviWindow::createSystemTextEncodingPopup()
 		pAction->setMenu(g_pMdiWindowSystemTextEncodingPopupSmartUtf8);
 
 		// second level menus (encoding groups)
-		QMenu * pPopupStandard[KVI_NUM_ENCODING_GROUPS];
-		QMenu * pPopupSmart[KVI_NUM_ENCODING_GROUPS];
-		QMenu * pPopupSmartUtf8[KVI_NUM_ENCODING_GROUPS];
+		std::array<QMenu *, KVI_NUM_ENCODING_GROUPS> pPopupStandard = {};
+		std::array<QMenu *, KVI_NUM_ENCODING_GROUPS> pPopupSmart = {};
+		std::array<QMenu *, KVI_NUM_ENCODING_GROUPS> pPopupSmartUtf8 = {};
 
 		uint u = 0;
 		const char * pcEncodingGroup = KviLocale::instance()->encodingGroup(u);

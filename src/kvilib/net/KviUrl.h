@@ -35,7 +35,7 @@ public:
 	KviUrl();
 	KviUrl(const char * szUrl);
 	KviUrl(const QString & szUrl);
-	KviUrl(const KviUrl & u);
+	KviUrl(const KviUrl &);
 	~KviUrl();
 
 protected:
@@ -61,7 +61,7 @@ public:
 	kvi_u32_t port() const { return m_uPort; };
 
 	KviUrl & operator=(const QString & szUrl);
-	KviUrl & operator=(const KviUrl & u);
+	KviUrl & operator=(const KviUrl &);
 };
 
 #endif //_KVI_URL_H_

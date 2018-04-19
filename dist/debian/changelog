@@ -1,3 +1,346 @@
+kvirc (4:4.9.3~git-7269-g7689d8b21-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 7689d8b2100f3077b647d8de6915473e511993ed
+  * Date: 1520200190
+  * git changelog:
+  *  7689d8b21 - Revert "Remove gzipped logs as an option"
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 16 Mar 2018 11:11:08 +0300
+
+kvirc (4:4.9.3~git-7268-gaa64034f9-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: aa64034f955f6b8221e8e844363009dfba738553
+  * Date: 1520026828
+  * git changelog:
+  *  aa64034f9 - Remove gzipped logs as an option
+  *  a5e2ea29c - Lag Meter: Change units to the more standard
+    millisecond. Fixes #1577
+  *  4d87c75b4 - CMakeLists: Detect and use libenchant 2.x
+  *  9d4c5a651 - spellchecker: Stop trying to load invalid dictionaries.
+  *  53ee86788 - Add option to prioritize nick tab completion by last
+    action time. Implements #2216
+  *  1f2f28f90 - KviChannelWindow: Fix encrypted own CTCP ACTION
+    messages being sent to the wrong split view.
+  *  235542674 - Adjust defaults for avatar settings. Fixes #2340
+  *  eb0d1f79e - I/O themes: Fix highlights not being logged in I/O
+    themes
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 03 Mar 2018 16:16:10 +0300
+
+kvirc (4:4.9.3~git-7260-g166f0f553-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 166f0f5534f90b14abd5b1fde1905ce926e149cc
+  * Date: 1518631003
+  * git changelog:
+  *  166f0f553 - PPA update:
+  *  4f3cd78f2 - Update Freenode server locations for "asimov", "adams"
+    & "pratchett". Replace dead "zelazny" with "niven" (London). (#2348)
+  *  bed7de9c1 - QRegExp: Enable greedy quantifiers in regex pattern
+    matching.
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sun, 18 Feb 2018 12:29:20 +0300
+
+kvirc (4:4.9.2~git-7257-g7c3520fef-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 7c3520fef7c59844c2d68344ec2e501bbdb2010a
+  * Date: 1517307905
+  * git changelog:
+  *  7c3520fef - orwell.freenode.net is in Amsterdam, not Helsinki
+    (#2347)
+  *  16ac0a1c8 - KviModeWidget: Remove commented out code
+  *  b7224d1f4 - KviModeWidget: Fix two bugs and refactor class
+  *  8458d1b7a - fix appveyor build
+  *  b819876aa - KviWindowStack: Fix bug when attempting to focus
+    undocked windows Fixes #2109
+  *  0a54a61fe - KviNotifyList: Fix bug in notify property parsing with
+    multiple consecutive spaces
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sun, 04 Feb 2018 00:30:10 +0300
+
+kvirc (4:4.9.2~git-7251-gf9e6b4de3-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: f9e6b4de3f1edd8e688a913e1b05ccf71afd12fa
+  * Date: 1516006358
+  * git changelog:
+  *  f9e6b4de3 - KviIrcContext: Re-add missing `return`
+  *  9a5477560 - KviOptions: Set the default bantype to *!*@host.name
+    (#2343)
+  *  26c8981e8 - KviIconManager: Use double-braces for array
+    initialization
+  *  f784e7a7f - General code cleanup for kernel code
+  *  42d65780d - IrcConnection: Use initiailizer lists and member
+    initializers
+  *  e4a0332b9 - fix typo in libkvidcc.cpp
+  *  e2a7b9ec1 - Move Class Window List option to its proper location
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Thu, 18 Jan 2018 21:12:42 +0300
+
+kvirc (4:4.9.2~git-7244-gce3c9017b-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: ce3c9017b3c0b9e795744139c496fcef8e2b76ac
+  * Date: 1514557979
+  * git changelog:
+  *  ce3c9017b - Revert "Add an option to order nick completion by last
+    action time. Resolves #2216."
+  *  6ef18f91d - Revert "Add uintNickCompletionOrder to the options
+    widget."
+  *  48b433181 - Revert "Allow adding tooltips to other widgets in the
+    options dialogs."
+  *  f82482448 - Revert "Address @IceN9ne's review."
+  *  c84f8c42d - Correct README
+  *  0b83828f2 - Fix makedist script. Add a super-minimal readme entry.
+  *  70e487854 - Fix about text
+  *  848868048 - Bump version number to 4.9.3 for release
+  *  f042a155e - Fix about text
+  *  d2d559c71 - Fix #2240
+  *  bb3cad37a - Remove --immediate switch from delete
+  *  e9bd8809c - Restore Juanjo's name
+  *  e69587aee - Fix macOS Travis build
+  *  ca59d4d98 - Fix more memory leaks
+  *  cb8897ae4 - Fix some memory leaks
+  *  c2d7675dc - Fix uninitialized variable access
+  *  f743f315a - Address @IceN9ne's review.
+  *  2f723938d - Allow adding tooltips to other widgets in the options
+    dialogs.
+  *  6a0906274 - Add uintNickCompletionOrder to the options widget.
+  *  446bff05a - Add an option to order nick completion by last action
+    time. Resolves #2216.
+  *  de836715d - Tabs need to stay in a block on their own
+  *  e337d6e5c - Better handling of tabs in KviIrcView. Not perfect but
+    at least they aren't floating around and messing up with the
+    selection. Fixes #1855
+  *  63e9e485a - Pull in wodim's fix for #1959
+  *  d0ea547a8 - Maybe fix #2320. Needs testing on high DPI monitors.
+  *  a575f61e2 - Attempt to work on #2302. Needs testing.
+  *  582252f69 - Fix the sound system autodetection (#2278)
+  *  b5d9ba9c1 - Workaround to vc_redist #2335 (#2336)
+  *  5e6fc725e - Remove the default stylesheet.
+  *  8745aa849 - AppVeyor: update Qt to 5.9, upgrade to VS2017
+  *  7ad56c988 - Fix #2323 (#2331)
+  *  6d28ddb44 - Updated OpenSSL version to 1.0.2n
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 29 Dec 2017 20:00:46 +0300
+
+kvirc (4:4.9.2~git-7213-ged2a15689-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: ed2a156892c5ce9a1ab54c50031ba59a9a34485f
+  * Date: 1512986801
+  * git changelog:
+  *  ed2a15689 - Support OpenSSL 1.1.0 (#2223)
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 15 Dec 2017 23:33:14 +0300
+
+kvirc (4:4.9.2~git-7212-g33fcac555-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 33fcac55574a004e4ae793f595af0e20406bc522
+  * Date: 1509929924
+  * git changelog:
+  *  33fcac555 - AppVeyor: Updated OpenSSL version to 1.0.2m
+  *  323e498a4 - KviInputEditor: Fix issue with clicking at the end of
+    the line causing a selection to be made
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Thu, 16 Nov 2017 07:59:15 +0300
+
+kvirc (4:4.9.2~git-7210-g0f76c9b0c-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 0f76c9b0c706764c334c1b0fa49842ccaddd8d94
+  * Date: 1508643301
+  * git changelog:
+  *  0f76c9b0c - General code cleanup and coverity fixes - mostly fixes
+    uninitialized members
+  *  1a10b787f - Fix typo introduced in e9f3c22
+  *  2d6418e62 - OptionsWidget: Fix auto enabling/disabling of smart
+    nickname color same text selector
+  *  e9f3c2248 - notifier module: general code cleanup
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Thu, 02 Nov 2017 08:02:14 +0300
+
+kvirc (4:4.9.2~git-7206-g4bbda1e58-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 4bbda1e58fb3418187bd3170e3bb49f498108744
+  * Date: 1506968696
+  * git changelog:
+  *  4bbda1e58 - Make the issue/PR templates much simpler. (#2301)
+  *  b3dfeb912 - bug in example of manual (#2315)
+  *  150eeeab9 - Another typo in the manual (#2312)
+  *  cc931168a - IPC: Fix unsigned issue in for loop
+  *  0f6968307 - Fix typo in manual & bug in alias (#2311)
+  *  463c4c3d0 - sound: Fix jumping
+  *  b1c726c73 - IPC: Fix casting with XQueryTree
+  *  abf6b42d4 - Minor cleanups
+  *  ada6c8f57 - gettimeofday(): Remove timezone argument
+  *  f8b44d565 - ChannelWindow: Match return type of maskCount()
+  *  620840a12 - ServerInfo: Add missing usermodes for unreal4
+  *  58557a06e - gitignore: Ignore vscode
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 06 Oct 2017 19:09:17 +0300
+
+kvirc (4:4.9.2~git-7194-g9322d59cd-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 9322d59cd43e8e5d1da878747860e8daf04d4e30
+  * Date: 1506019088
+  * git changelog:
+  *  9322d59cd - Cmake updates
+  *  100f7dad5 - Fix invalid IP integer for DCC RSEND request (#2252)
+  *  ebd8fd302 - small typo (#2305)
+  *  6fbd3ca40 - Work around the 'disappearing console' problem. Setting
+    a style sheet on QComboBox has always been problematic.
+  *  5db1c7a8e - test: remove hack cmake_policy(SET CMP0026 OLD) this
+    breaks appveyor builds (#2304)
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 22 Sep 2017 07:19:18 +0300
+
+kvirc (4:4.9.2~git-7189-ge7e2f4048-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: e7e2f4048920ca2da10ccb5c1b00781fcd895d39
+  * Date: 1504652637
+  * git changelog:
+  *  e7e2f4048 - Revert "Escape things in the class editor. Fixes #2211.
+    (#2243)"
+  *  3021bb31b - OptionsWidget_message: fix label text "Use specified
+    smart colors for own nick:"
+  *  208d97992 - OptionsWidget_message: fix enabling/disabling of
+    selector.
+  *  5f0e41272 - Improve the script tester a little bit (#2282)
+  *  20efc5d86 - KviKvsPopupMenu: Code cleanup
+  *  9c3295d27 - style.css: remove the Dreaded Dark Slate Gray Colour
+    from Hell
+  *  f6dcefbc4 - PackAddonDialog: Show the output path when an addon is
+    exported.
+  *  15b40fdd5 - Add an option to allow the use of smart nickname
+    colours with no background (#2284)
+  *  692d10d9d - KviTreeWindowList: Fix the broken background color if a
+    stylesheet has been loaded.
+  *  144981f2b - Don't crash on reguser.add if the provided mask is
+    already assigned to other user.
+  *  f5e68adfb - Overriding this misspelling
+  *  921d7ecbc - Show if the current theme has been overriden with a
+    stylesheet
+  *  b007b25bd - KviRuntimeInfo: Fix the Qt theme detection
+  *  9defac5f5 - Fix wrapping of <pre> in the docs.
+  *  ab3a530f1 - Allow the user to bypass the default stylesheet.
+  *  ed718b00f - Clean up properly after the search field in the
+    settings dialog is emptied.
+  *  d09814dd9 - Handle ftpes:// links too.
+  *  0315e6cfe - Make the "window list type" selector a combobox instead
+    of a checkbox.
+  *  b9e966095 - Fix the global stylesheet not being copied when
+    installing.
+  *  e4ef82fcf - Add OwnAction, OwnActionCrypted and TopicCrypted
+    message types.
+  *  571e2adba - misc doc fixes
+  *  06e936af2 - Fix black on black when using mirc reverse in the topic
+    widget.
+  *  61cc3ebb9 - Add "search as you type" functionality to the settings
+    dialogs.
+  *  53d76db32 - Make the current mouse position the origin of the
+    tooltips of the user list.
+  *  931641f50 - Switch the order of creation of debug and release
+    builds
+  *  5ce339050 - Use https for sourceforge
+  *  fd7f8989d - Raise the main window when an irc link is opened from a
+    browser. (#2279)
+  *  5d1b8667f - Make the default ftp client open sftp:// and ftps://
+    links.
+  *  c3dc09c62 - Add ucrtbased.dll to the release directory for Windows
+    debug builds. Closes #2227
+  *  f395f4216 - Remove EventEditorWindow.setCurrentHandlerEnabled.
+    (#2275)
+  *  8ddb763c9 - defscript popups: improvements and fixes (#2241)
+  *  1d63565bc - Update the user's username and host as soon as he sends
+    us something.
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Thu, 07 Sep 2017 19:16:45 +0300
+
+kvirc (4:4.9.2~git-7157-g82f44408f-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 82f44408f63075903c6fd9ff1fb4765caf840d47
+  * Date: 1503797051
+  * git changelog:
+  *  82f44408f - Add a checkbox in the event editor to enable or disable
+    event handlers.
+  *  a8c8e0bd6 - Allow code examples in docs to wrap
+  *  47c6af326 - Enable appveyor's fast_fail strategy (#2272)
+  *  32c9b9ce8 - Fix for #1749
+  *  355dcfcce - When "/server -s" is used, default to port 6697.
+  *  9433e78da - Fix the second parameter of $context.getSSLCertInfo not
+    being optional
+  *  5d20afae2 - remove blank part of the splash img
+  *  cd3bf0ef5 - [KviKvsEventTable] parameters naming fix between docs <-
+    > displayed entries (#2265)
+  *  bff6c4d1d - Remove lots of redundant line feeds around block
+    elements in the docs.
+  *  9293b1410 - Fix the text of all links in the documentation being
+    lowercase.
+  *  95cf7934a - Add missing include on some versions of Qt
+  *  e05d3393d - Make our docs work better with the QTextBrowser.
+  *  2e57fc1dd - error in spanish translation (#2268)
+  *  457ae5b36 - [KviKvsEventTable]  Capitalize some remaining
+    parameters (#2264)
+  *  e51fe37e7 - disabled handler: match color style to kvirc (#2261)
+  *  b54b2127c - Update KviIrcServerParser_numericHandlers.cpp (#2260)
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sun, 27 Aug 2017 11:25:53 +0300
+
+kvirc (4:4.9.2~git-7141-gcd585fa-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: cd585fa3149dc414604af59e38f550cabeacc944
+  * Date: 1502372442
+  * git changelog:
+  *  cd585fa - Fix #2087
+  *  e467c53 - Fix manual typos (#2259)
+  *  3ea9f85 - KviIrcView: Fix double-click for channels with formatting
+    in the text
+  *  1a22896 - Improve RPL_CHANURL handling. Resolves #2255. (#2256)
+  *  96520ce - Small typo. (#2257)
+  *  2b85a4c - PPA: add Ubuntu Zesty & Artful
+  *  aa9a7c7 - Appveyor: Fix OpenSSL download link for Windows
+  *  4b274d0 - Update README.md (#2254)
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 11 Aug 2017 21:02:23 +0300
+
 kvirc (4:4.9.2~git-7133-g549d6f1-1) unstable; urgency=medium
 
   * Compile

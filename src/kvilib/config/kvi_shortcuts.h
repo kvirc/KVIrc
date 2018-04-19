@@ -253,8 +253,7 @@
 		[li]shortcuts can be adapted to the OS: Help is F1 under Windows and Linux, ⌘? on macOS[/li]
 		[/ul]
 		A full list of available combinations is available at the [anchorlink:http://doc.qt.nokia.com/latest/qkeysequence.html#standard-shortcuts] Qt documentation[/anchorlink]
-		[br]
-		[big]All the standard keys alphabetically ordered[/big][br]
+		[big]All the standard keys alphabetically ordered[/big]
 		[b]F1:[/b] Help Index (Window)[br]
 		[b]Ctrl+A:[/b] Select all[br]
 		[b]Ctrl+B:[/b] Insert Bold control character[br]
@@ -302,9 +301,9 @@
 		[b]Ctrl+Shift+S:[/b] Open Script tester[br]
 		[b]Ctrl+Shift+T:[/b] Open [i]Theme Options[/i] dialog[br]
 		[b]Ctrl+Shift+X:[/b] Open [i]Execute Script[/i] dialog[br]
-		[b]Ctrl+Shift+Z:[/b] Redo last action[br]
+		[b]Ctrl+Shift+Z:[/b] Redo last action
 
-		[big]Window handling related keys:[/big][br]
+		[big]Window handling related keys:[/big]
 		[b]Alt+UpArrow:[/b] Previous window[br]
 		[b]Alt+DownArrow:[/b] Next window[br]
 		[b]Alt+Shift+UpArrow:[/b] Previous window in the same IRC context[br]
@@ -318,9 +317,9 @@
 		[b]Shift+PageUp:[/b] Scroll the output window up one line[br]
 		[b]Shift+PageDown:[/b] Scroll the output window down one line[br]
 		[b]Ctrl+L:[/b] Scroll to the last read line[br]
-		[b]Ctrl+W:[/b] Close current window[br]
+		[b]Ctrl+W:[/b] Close current window
 
-		[big]Text editing related hotkeys:[/big][br]
+		[big]Text editing related hotkeys:[/big]
 		[b]Shift+LeftArrow:[/b] Select the previous character[br]
 		[b]Shift+RightArrow:[/b] Select the next character[br]
 		[b]Ctrl+LeftArrow:[/b] Move to the beginning of the previous word[br]
@@ -351,7 +350,7 @@
 		[b]Alt+Enter:[/b] Show/hide the multi-line editor[br]
 		[b]Ctrl+Enter:[/b] Send message as plain text, ignoring / commands[br]
 		[b]Shift+Enter:[/b] Send message as a kvs command[br]
-		[b]Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]
+		[b]Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code
 		[example]
 			[b]Alt+32:[/b] Inserts ASCII/Unicode character 32: ' ' (a space)
 			[b]Alt+00032:[/b] Same as above :)
@@ -360,7 +359,7 @@
 			[b]Alt+23566:[/b] Inserts Unicode character 23566 (an ideogram)
 		[/example]
 
-		[big]Completion hotkeys[/big][br]
+		[big]Completion hotkeys[/big]
 		[b]Tab in the first word of input:[/b] Complete nicknames in the current channel or query[br]
 		[b]Shift+Tab after the first word of input:[/b] Complete nicknames with full mask in the current channel or query[br]
 		[b]Tab after a leading /:[/b] Complete commands[br]

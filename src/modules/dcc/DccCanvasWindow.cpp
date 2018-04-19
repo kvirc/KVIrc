@@ -177,7 +177,7 @@ void DccCanvasWindow::ownAction(const char * text)
 {
 	KviCString buf(KviCString::Format, "%cACTION %s%c\r\n", text);
 	//	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
-	output(KVI_OUT_ACTION, "%Q %s", &(m_pDescriptor->szLocalNick), text);
+	output(KVI_OUT_OWNACTION, "%Q %s", &(m_pDescriptor->szLocalNick), text);
 }
 
 bool DccCanvasWindow::event(QEvent * e)

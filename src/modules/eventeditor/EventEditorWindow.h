@@ -31,6 +31,7 @@
 #include <QLineEdit>
 #include <QTreeWidget>
 #include <QMenu>
+#include <QCheckBox>
 
 class KviScriptEditor;
 
@@ -66,13 +67,13 @@ public:
 	const int & cursorPosition() { return m_cPos; };
 	void setCursorPosition(const int & cPos)
 	{
-		qDebug("set cursor to %d", cPos);
 		m_cPos = cPos;
 	};
 
 	void setName(const QString & szName);
 	QString name() const { return m_szName; };
 	void setEnabled(const bool bEnabled);
+	bool isEnabled() { return m_bEnabled; };
 };
 
 class EventEditorTreeWidget : public QTreeWidget
@@ -99,7 +100,8 @@ public:
 	KviScriptEditor * m_pEditor;
 	EventEditorTreeWidget * m_pTreeWidget;
 	QLineEdit * m_pNameEditor;
-	QMenu * m_pContextPopup;
+	QCheckBox * m_pIsEnabled;
+	QMenu * m_pContextPopup = nullptr;
 	EventEditorHandlerTreeWidgetItem * m_pLastEditedItem;
 	bool m_bOneTimeSetupDone;
 

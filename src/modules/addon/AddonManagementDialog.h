@@ -47,8 +47,6 @@ public:
 
 protected:
 	KviKvsScriptAddon * m_pAddon;
-	QTextDocument * m_pText;
-	QPixmap * m_pIcon;
 	QListWidget * m_pListWidget;
 	QString m_szKey;
 

@@ -26,8 +26,6 @@
 
 KviIrcConnectionStatistics::KviIrcConnectionStatistics()
 {
-	m_tConnectionStart = 0;
-	m_tLastMessage = 0;
 }
 
 KviIrcConnectionStatistics::~KviIrcConnectionStatistics()

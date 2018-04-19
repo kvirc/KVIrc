@@ -182,7 +182,7 @@ protected:
 	QString m_szNameWithUserFlag;
 	QStringList * m_pTmpHighLighted;
 	unsigned int m_uActionHistoryHotActionCount;
-	std::vector<KviChannelAction *> m_ActionHistory;
+	QList<KviChannelAction *> m_lActionHistory;
 	kvi_time_t m_tLastReceivedWhoReply;
 	QList<int> m_VertSplitterSizesList;
 	QList<int> m_SplitterSizesList;
@@ -307,9 +307,9 @@ public:
 
 	/**
 	* \brief Returns the number of masks is a channel mode list
-	* \return unsigned int
+	* \return size_t
 	*/
-	unsigned int maskCount(char cMode) const { return this->modeMasks(cMode).size(); };
+	size_t maskCount(char cMode) const { return this->modeMasks(cMode).size(); };
 
 	/**
 	* \brief Called when someone sets a channel mode that is stored in a list; these modes require a parameter that is tipically a mask
@@ -807,7 +807,7 @@ public:
 	* \param szBuffer The buffer :)
 	* \return void
 	*/
-	void getChannelModeStringWithEmbeddedParams(QString & szBuffer);
+	QString getChannelModeStringWithEmbeddedParams();
 
 	/**
 	* \brief Sets a channel mode with a parameter; an empty parameter unsets the mode (eg: +k password)
@@ -1050,7 +1050,7 @@ private slots:
 	* \param szMode The modes selected, including any plus/minus sign and parameters
 	* \return void
 	*/
-	void setMode(QString & szMode);
+	void setMode(const QString & szMode);
 
 	/**
 	* \brief Called when we right-click the irc view.
