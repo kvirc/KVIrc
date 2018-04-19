@@ -246,7 +246,6 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 			 * MAXLIST -> Maximum number entries in the list per mode (e.g. MAXLIST=beI:30)
 			 * WALLCHOPS -> The server supports messaging channel operators (deprecated by STATUSMSG, e.g. usage: NOTICE @#channel)
 			 * WALLVOICES -> The server supports messaging channel voiced users (deprecated by STATUSMSG, e.g. usage: NOTICE +#channel)
-			 * STATUSMSG -> The server supports messaging a particular class of channel users (e.g. STATUSMSG=+@)
 			 * CASEMAPPING -> Case mapping used for nick- and channel name comparing (e.g. CASEMAPPING=rfc1459)
 			 * ELIST -> search extensions to list modes, like mask search, topic search, creation time search (e.g. ELIST=MNUCT)
 			 * KICKLEN -> Maximum kick comment length (e.g. KICKLEN=80)
@@ -283,6 +282,13 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 				KviCString szModePrefixes = p;
 				if(szModePrefixes.hasData() && (szModePrefixes.len() == szModeFlags.len()))
 					msg->connection()->serverInfo()->setSupportedModePrefixes(szModePrefixes.ptr(), szModeFlags.ptr());
+			}
+			else if(kvi_strEqualCIN("STATUSMSG=", p, 10))
+			{
+				p += 10;
+				KviCString tmp = p;
+				if(tmp.hasData())
+					msg->connection()->serverInfo()->setSupportedStatusMsgPrefixes(tmp.ptr());
 			}
 			else if(kvi_strEqualCIN("CHANTYPES=", p, 10))
 			{

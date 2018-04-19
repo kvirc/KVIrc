@@ -304,6 +304,7 @@ private:
 	QString m_szSupportedUserModes;    // the supported user modes
 	QString m_szSupportedChannelModes = "pstnmiklb"; // the supported channel modes (all of them)
 	QString m_szSupportedModePrefixes = "@+";        // the actually used mode prefixes  @+
+	QString m_szSupportedStatusMsgPrefixes;          // mode prefixes that can be used to target messages (from the STATUSMSG ISUPPORT token)
 	kvi_u32_t * m_pModePrefixTable = nullptr;        // the mode prefixes above in a table
 	unsigned int m_uPrefixes;
 	QString m_szSupportedModeFlags = "ov";      // the actually used mode flags     ov
@@ -334,6 +335,7 @@ public:
 	const QString & supportedChannelModes() const { return m_szSupportedChannelModes; }
 	const QString & supportedChannelTypes() const { return m_szSupportedChannelTypes; }
 	const QString & supportedModePrefixes() const { return m_szSupportedModePrefixes; }
+	const QString & supportedStatusMsgPrefixes() const { return m_szSupportedStatusMsgPrefixes; }
 	const QString & supportedModeFlags() const { return m_szSupportedModeFlags; }
 	const QString & supportedListModes() const { return m_szListModes; }
 	const QString & supportedParameterModes() const { return m_szParameterModes; }
@@ -371,6 +373,7 @@ protected:
 	void setSupportedUserModes(const QString & szSupportedUserModes) { m_szSupportedUserModes = szSupportedUserModes; }
 	void setSupportedChannelModes(const QString & szSupportedChannelModes);
 	void setSupportedModePrefixes(const QString & szSupportedModePrefixes, const QString & szSupportedModeFlags);
+	void setSupportedStatusMsgPrefixes(const QString & szSupportedStatusMsgPrefixes) { m_szSupportedStatusMsgPrefixes = szSupportedStatusMsgPrefixes; }
 	void setSupportedChannelTypes(const QString & szSupportedChannelTypes) { m_szSupportedChannelTypes = szSupportedChannelTypes; }
 	void setSupportsWatchList(bool bSupportsWatchList) { m_bSupportsWatchList = bSupportsWatchList; }
 	void setSupportsCodePages(bool bSupportsCodePages) { m_bSupportsCodePages = bSupportsCodePages; }
