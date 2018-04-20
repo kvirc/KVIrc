@@ -319,32 +319,10 @@ void register_core_actions(KviActionManager * m)
 	    KVI_SHORTCUTS_HELP);
 
 	SCRIPT_ACTION(
-	    KVI_COREACTION_KVIRCMAILINGLIST,
-	    "openurl http://www.kvirc.net/?id=mailinglist",
-	    __tr2qs("Subscribe to the Mailing List"),
-	    __tr2qs("Allows subscribing to the KVIrc mailing list"),
-	    KviActionManager::categoryGeneric(),
-	    "kvi_bigicon_mailinglist.png",
-	    KviIconManager::Message,
-	    0,
-	    QString());
-
-	SCRIPT_ACTION(
 	    KVI_COREACTION_KVIRCHOMEPAGE,
 	    "openurl http://www.kvirc.net",
 	    __tr2qs("KVIrc WWW"),
 	    __tr2qs("Opens the KVIrc homepage"),
-	    KviActionManager::categoryGeneric(),
-	    "kvi_bigicon_homepage.png",
-	    KviIconManager::HomePage,
-	    0,
-	    QString());
-
-	SCRIPT_ACTION(
-	    KVI_COREACTION_KVIRCRUHOMEPAGE,
-	    "openurl http://www.kvirc.ru",
-	    __tr2qs("KVIrc Russian WWW"),
-	    __tr2qs("Opens the KVIrc homepage in Russian"),
 	    KviActionManager::categoryGeneric(),
 	    "kvi_bigicon_homepage.png",
 	    KviIconManager::HomePage,
