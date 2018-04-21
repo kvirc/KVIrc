@@ -330,6 +330,17 @@ void register_core_actions(KviActionManager * m)
 	    QString());
 
 	SCRIPT_ACTION(
+	    KVI_COREACTION_KVIRCRUHOMEPAGE,
+	    "openurl http://www.kvirc.ru",
+	    __tr2qs("KVIrc Russian WWW"),
+	    __tr2qs("Opens the KVIrc homepage in Russian"),
+	    KviActionManager::categoryGeneric(),
+	    "kvi_bigicon_homepage.png",
+	    KviIconManager::HomePage,
+	    0,
+	    QString());
+
+	SCRIPT_ACTION(
 	    KVI_COREACTION_SCREENSHOT,
 	    "theme.screenshot",
 	    __tr2qs("Acquire Screenshot"),
