@@ -44,7 +44,7 @@ override_dh_install:
 	dh_install
 
 override_dh_makeshlibs:
-	dh_makeshlibs -V -plibkvilib4
+	dh_makeshlibs -V -plibkvilib5
 
 %:
 	dh $@ --parallel

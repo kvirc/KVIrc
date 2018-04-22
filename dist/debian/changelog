@@ -1,3 +1,59 @@
+kvirc (4:4.9.3~git-7299-c44e6e613-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: c44e6e6130103ec99964f629681328e4e4f7f644
+  * Date: 1523459248
+  * git changelog:
+  *  c44e6e613 - revert issue template to plain text
+  *  068949475 - fix issue template link
+  *  9cede0a0a - readme changes
+  *  639427b59 - irc-hispano no longer exists
+  *  4f0c52b9e - serverdb.kvc: Applied general cleanup and network fixes
+  *  bbe89482c - Support 64-bit X509 certificate serial numbers (#2363)
+  *  97121890e - use the StdUtils NSIS plugin (#2369)
+  *  d8854cf51 - fix doc folder cleanup fallout (#2370)
+  *  00935f130 - Docs folder cleanup (#2366)
+  *  bb9a85e41 - PPA: fix script
+  *  5461d7b6c - KviAntiSpam: Remove undefined behavior
+  *  54a8a36e2 - update dicts
+  *  8d130b34c - push and pull po{t}s, unbreak a string in german
+  *  9544cb6f7 - don't use the NSIS plugin
+  *  46ebdbdd4 - remove unused CheckUserInstallRights function
+  *  1e69d14da - Remove Winamp installer option
+  *  9a91d3f41 - remove autostart related functions
+  *  2dbe3558f - Fixed the finish page so it will launch KVIrc as the
+    user that ran the install before UAC privilege escalation.
+  *  182b6a1d0 - AliasEditorWindow: Add "Export All to ..." button for
+    more consistent UI
+  *  1ed020290 - AppVeyor: grab gettext from vcpkg and clean up a bit
+    (#2364)
+  *  b4fc37c0f - KviInputEditor: Fix home key not clearing selection in
+    certain situations
+  *  98f9af6a1 - doc: Allow to override build date
+  *  dd4b14ee0 - Use cmake TIMESTAMP
+  *  e6915e5ed - Appveyor: Updated OpenSSL version to 1.0.2o
+  *  1885eb6ea - PPA update: revert description
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 13 Apr 2018 18:36:43 +0300
+
+kvirc (4:4.9.3~git-7273-g8a6e45abc-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 8a6e45abc582cd38cef6039042fedefa3de32e79
+  * Date: 1522372136
+  * git changelog:
+  *  8a6e45abc - KviChannelWindow: Fix bug in modes with parameters not
+    being updated properly
+  *  9f0906858 - AppVeyor: get zlib from vcpkg
+  *  7e8ba1b11 - PPA update: update version
+  *  d54498820 - PPA update: lintian fix
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 31 Mar 2018 22:22:51 +0300
+
 kvirc (4:4.9.3~git-7269-g7689d8b21-1) unstable; urgency=medium
 
   * Compile
