@@ -74,7 +74,6 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS] = {
 	"options.edit OptionsWidget_servers",
 	"url.list",
 	"openurl http://www.kvirc.net/?id=themes",
-	"openurl http://www.kvirc.net/?id=mailinglist",
 	"openurl https://github.com/kvirc/KVIrc/issues",
 	"raweditor.open",
 	"popupeditor.open",
