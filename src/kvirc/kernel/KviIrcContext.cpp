@@ -450,14 +450,6 @@ void KviIrcContext::connectToCurrentServer()
 		return;
 	}
 
-	if(!net)
-	{
-		// BUG
-		m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR, __tr2qs("Oops! You've hit a bug in the servers database... I have found a server but not a network..."));
-		destroyAsynchronousConnectionData();
-		return;
-	}
-
 	KviProxy * prx = srv->proxyServer(g_pProxyDataBase);
 
 	if(!prx && (srv->proxy() != -1) && KVI_OPTION_BOOL(KviOption_boolUseProxyHost))

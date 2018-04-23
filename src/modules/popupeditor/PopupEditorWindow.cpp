@@ -450,15 +450,10 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint & pos)
 	    __tr2qs_ctx("Paste Inside", "editor"), this, SLOT(contextPasteInside()))
 	    ->setEnabled(it && bIsMenu && m_pClipboard);
 
-	bool bSeparatorInserted = false;
-
 	m_pContextPopup->addSeparator();
-	bSeparatorInserted = true;
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Prologue)),
 	    __tr2qs_ctx("New Menu Prologue", "editor"), this, SLOT(contextNewPrologue()));
 
-	if(!bSeparatorInserted)
-		m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Epilogue)),
 	    __tr2qs_ctx("New Menu Epilogue", "editor"), this, SLOT(contextNewEpilogue()));
 

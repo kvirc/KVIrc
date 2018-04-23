@@ -2295,7 +2295,7 @@ void KviIrcServerParser::parseNumericBackFromAway(KviIrcMessage * msg)
 
 		if(bWasAway)
 		{
-			int uTimeDiff = bWasAway ? (kvi_unixTime() - msg->connection()->userInfo()->awayTime()) : 0;
+			int uTimeDiff = kvi_unixTime() - msg->connection()->userInfo()->awayTime();
 			pOut->output(KVI_OUT_AWAY, __tr2qs("[Leaving away status after %ud %uh %um %us]: %Q"),
 			    uTimeDiff / 86400, (uTimeDiff % 86400) / 3600, (uTimeDiff % 3600) / 60, uTimeDiff % 60,
 			    &szWText);
