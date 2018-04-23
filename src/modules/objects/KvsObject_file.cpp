@@ -335,8 +335,8 @@ KVSO_CLASS_FUNCTION(file, putch)
 	KVSO_PARAMETERS_END(c)
 	if(szChar.length() > 1)
 		c->warning(__tr2qs_ctx("Argument too long, using only first char", "objects"));
-	const char * ch = szChar.toUtf8().data();
-	if(!m_pFile->putChar(ch[0]))
+	QByteArray szCh = szChar.toUtf8();
+	if(!m_pFile->putChar(szCh[0]))
 		c->warning(__tr2qs_ctx("Write error occurred!", "objects"));
 	return true;
 }
@@ -375,8 +375,8 @@ KVSO_CLASS_FUNCTION(file, unGetch)
 	KVSO_PARAMETERS_END(c)
 	if(szChar.length() > 1)
 		c->warning(__tr2qs_ctx("Argument too long, using only the first char", "objects"));
-	const char * ch = szChar.toUtf8().data();
-	m_pFile->ungetChar(ch[0]);
+	QByteArray szCh = szChar.toUtf8();
+	m_pFile->ungetChar(szCh[0]);
 	return true;
 }
 
@@ -554,8 +554,8 @@ KVSO_CLASS_FUNCTION(file, writeBlock)
 			}
 			QString szBlock;
 			pVariantData->asString(szBlock);
-			const char * block = szBlock.toUtf8().data();
-			int rlen = m_pFile->write(block, uLen);
+			QByteArray block = szBlock.toUtf8();
+			int rlen = m_pFile->write(block.data(), uLen);
 			c->returnValue()->setInteger(rlen);
 		}
 	}
