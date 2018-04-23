@@ -247,8 +247,6 @@ namespace KviFileUtils
 		if(!f.open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 			return false;
 		QByteArray szTmp = szData.toUtf8();
-		if(!szTmp.data())
-			return true;
 		if(f.write(szTmp.data(), szTmp.length()) != ((unsigned int)(szTmp.length())))
 			return false;
 		return true;
@@ -266,8 +264,6 @@ namespace KviFileUtils
 		if(!f.open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 			return false;
 		QByteArray szTmp = QTextCodec::codecForLocale()->fromUnicode(szData);
-		if(!szTmp.data())
-			return true;
 		if(f.write(szTmp.data(), szTmp.length()) != ((unsigned int)(szTmp.length())))
 			return false;
 		return true;

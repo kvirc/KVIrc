@@ -236,8 +236,6 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_REQUIRE_CONNECTION
 
 		QByteArray szData = KVSCSC_pConnection->encodeText(szNick);
-		if(!szData.data())
-			szData = "";
 
 		if(!KVSCSC_pConnection->sendFmtData("NICK %s", szData.data()))
 			return KVSCSC_pContext->warningNoIrcConnection();
@@ -288,10 +286,6 @@ namespace KviKvsCoreSimpleCommands
 
 		QByteArray szT = KVSCSC_pConnection->encodeText(szTarget);
 		QByteArray szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
-		if(!szT.data())
-			szT = ""; // encoding problems ?
-		if(!szD.data())
-			szD = ""; // encoding problems ?
 
 		if(!(KVSCSC_pConnection->sendFmtData("NOTICE %s :%s", szT.data(), szD.data())))
 			return KVSCSC_pContext->warningNoIrcConnection();
@@ -1266,8 +1260,6 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_REQUIRE_CONNECTION
 
 		QByteArray szData = KVSCSC_pConnection->encodeText(szRawCommand);
-		if(!szData.data())
-			szData = "";
 
 		if(!KVSCSC_pConnection->sendData(szData.data()))
 			return KVSCSC_pContext->warningNoIrcConnection();

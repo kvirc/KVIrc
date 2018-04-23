@@ -535,7 +535,6 @@ void KviIrcServerParser::parseNumericNames(KviIrcMessage * msg)
 				    mask.hasUser() ? mask.user() : QString(),
 				    mask.hasHost() ? mask.host() : QString(),
 				    iFlags);
-			*aux = ' ';
 			*aux = save;
 			// run to the next nick (or the end)
 			while((*aux) && (*aux == ' '))
