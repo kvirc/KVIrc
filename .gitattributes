@@ -1,5 +1,10 @@
 * text=auto
 
+# These files are text and should be normalized
+*.gitattributes text
+.gitignore text
+*.md text
+
 # Compiled Object files
 *.slo binary
 *.lo binary
