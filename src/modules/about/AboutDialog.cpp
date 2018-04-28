@@ -42,6 +42,10 @@
 #include <QEvent>
 #include <QCloseEvent>
 
+#ifdef COMPILE_SSL_SUPPORT
+#include <openssl/crypto.h>
+#endif //COMPILE_SSL_SUPPORT
+
 extern AboutDialog * g_pAboutDialog;
 /*
 "<font color=\"#FFFF00\"><b>KVIrc public releases :</b></font><br>\n" \
@@ -191,6 +195,33 @@ AboutDialog::AboutDialog()
 	infoString += __tr2qs_ctx("Features", "about");
 	infoString += ": ";
 	infoString += KviBuildInfo::features();
+	infoString += "<br>";
+#ifdef COMPILE_SSL_SUPPORT
+	infoString += __tr2qs_ctx("OpenSSL version", "about");
+	infoString += ": ";
+#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
+	infoString += SSLeay_version(OPENSSL_VERSION);
+#else
+	infoString += OpenSSL_version(OPENSSL_VERSION);
+#endif
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("OpenSSL compiler flags", "about");
+	infoString += ": ";
+#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
+	infoString += SSLeay_version(OPENSSL_CFLAGS);
+#else
+	infoString += OpenSSL_version(OPENSSL_CFLAGS);
+#endif
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("OpenSSL build on", "about");
+	infoString += ": ";
+#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
+	infoString += SSLeay_version(OPENSSL_BUILT_ON);
+#else
+	infoString += OpenSSL_version(OPENSSL_BUILT_ON);
+#endif
+	infoString += "<br>";
+#endif //COMPILE_SSL_SUPPORT
 
 	v->setText(infoString);
 
