@@ -108,14 +108,14 @@ Section !$(KVIrc) KVIrc_IDX
 
 	WriteUninstaller "$INSTDIR\uninstall.exe"
 
-	IfFileExists "$INSTDIR\vcredist_x86.exe" VcRedist86Exists PastVcRedist86Check
+	IfFileExists "$INSTDIR\vc_redist.x86.exe" VcRedist86Exists PastVcRedist86Check
 	VcRedist86Exists:
-		ExecWait '"$INSTDIR\vcredist_x86.exe"  /quiet /norestart'
+		ExecWait '"$INSTDIR\vc_redist.x86.exe"  /quiet /norestart'
 	PastVcRedist86Check:
 
-	IfFileExists "$INSTDIR\vcredist_x64.exe" VcRedist64Exists PastVcRedist64Check
+	IfFileExists "$INSTDIR\vc_redist.x64.exe" VcRedist64Exists PastVcRedist64Check
 	VcRedist64Exists:
-		ExecWait '"$INSTDIR\vcredist_x64.exe"  /quiet /norestart'
+		ExecWait '"$INSTDIR\vc_redist.x64.exe"  /quiet /norestart'
 	PastVcRedist64Check:
 
 SectionEnd
