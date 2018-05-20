@@ -195,8 +195,8 @@ AboutDialog::AboutDialog()
 	infoString += __tr2qs_ctx("Features", "about");
 	infoString += ": ";
 	infoString += KviBuildInfo::features();
-	infoString += "<br>";
 #ifdef COMPILE_SSL_SUPPORT
+	infoString += "<br>";
 	infoString += __tr2qs_ctx("OpenSSL version", "about");
 	infoString += ": ";
 #if (OPENSSL_VERSION_NUMBER < 0x10100000L)
