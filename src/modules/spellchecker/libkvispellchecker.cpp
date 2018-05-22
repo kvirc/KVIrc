@@ -142,8 +142,7 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall * c)
 
 	KviKvsArray * pArray = new KviKvsArray();
 
-	QList<QString> lSuggestions = hAllSuggestions.keys();
-	Q_FOREACH(QString szSuggestion, lSuggestions)
+	for(const auto & szSuggestion : hAllSuggestions.keys())
 		pArray->append(new KviKvsVariant(szSuggestion));
 
 	c->returnValue()->setArray(pArray);
