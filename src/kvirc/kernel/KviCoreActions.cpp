@@ -89,7 +89,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 	    KVI_COREACTION_SERVEROPTIONS,
-	    "options.edit OptionsWidget_servers",
+	    "options.edit -n OptionsWidget_servers",
 	    __tr2qs("Configure Servers..."),
 	    __tr2qs("Allows you to configure the servers and eventually to connect to them"),
 	    KviActionManager::categorySettings(),
@@ -897,7 +897,7 @@ KviConnectToServerAction::KviConnectToServerAction(QObject * pParent)
     : KviSubmenuAction(
           pParent,
           QString(KVI_COREACTION_SERVERMENU),
-          QString("options.edit OptionsWidget_servers"),
+          QString("options.edit -n OptionsWidget_servers"),
           __tr2qs("Connect to"),
           __tr2qs("Shows a popup menu that allows quickly connecting to a server"),
           KviActionManager::categoryIrc(),

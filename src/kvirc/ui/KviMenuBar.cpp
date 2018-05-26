@@ -268,7 +268,7 @@ void KviMenuBar::newConnectionToServer(QAction * pAction)
 	{
 		if(text == __tr2qs("&Other..."))
 		{
-			KviKvsScript::run("options.edit OptionsWidget_servers", m_pFrm->firstConsole());
+			KviKvsScript::run("options.edit -n OptionsWidget_servers", m_pFrm->firstConsole());
 		}
 		else
 		{

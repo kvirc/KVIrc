@@ -443,7 +443,7 @@ void KviIrcContext::connectToCurrentServer()
 	if(!srv)
 	{
 		if(g_pServerDataBase->networkCount())
-			KviKvsScript::run("options.edit OptionsWidget_servers", m_pConsole);
+			KviKvsScript::run("options.edit -n OptionsWidget_servers", m_pConsole);
 		else
 			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR, __tr2qs("No servers available. Check the options dialog or use the /SERVER command"));
 		destroyAsynchronousConnectionData();
