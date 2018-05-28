@@ -291,7 +291,7 @@ namespace KviKvsCoreSimpleCommands
 			return KVSCSC_pContext->warningNoIrcConnection();
 
 		if(!KVSCSC_pSwitches->find('q', "quiet"))
-			KVSCSC_pWindow->output(KVI_OUT_OWNPRIVMSG, "[NOTICE >>> %Q\r]: %Q", &szTarget, &szText);
+			KVSCSC_pWindow->output(KVI_OUT_OWNPRIVMSG, "[NOTICE >>> \r!nc\r%Q\r]: %Q", &szTarget, &szText);
 
 		return true;
 	}
@@ -1020,7 +1020,7 @@ namespace KviKvsCoreSimpleCommands
 				return KVSCSC_pContext->warningNoIrcConnection();
 
 			if(!KVSCSC_pSwitches->find('q', "quiet"))
-				KVSCSC_pWindow->output(KVI_OUT_OWNPRIVMSG, "[PRIVMSG >>> %Q\r]: %Q", &szTarget, &szText);
+				KVSCSC_pWindow->output(KVI_OUT_OWNPRIVMSG, "[PRIVMSG >>> \r!nc\r%Q\r]: %Q", &szTarget, &szText);
 		}
 
 		return true;
