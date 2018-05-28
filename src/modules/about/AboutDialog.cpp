@@ -213,8 +213,7 @@ AboutDialog::AboutDialog()
 	infoString += OpenSSL_version(OPENSSL_CFLAGS);
 #endif
 	infoString += "<br>";
-	infoString += __tr2qs_ctx("OpenSSL built on", "about");
-	infoString += ": ";
+	infoString += __tr2qs_ctx("OpenSSL ", "about");
 #if (OPENSSL_VERSION_NUMBER < 0x10100000L)
 	infoString += SSLeay_version(SSLEAY_BUILT_ON);
 #else
