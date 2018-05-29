@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the KVIrc package.
 #
 # Translators:
 # Sölve Svartskogen <solaizen@gmail.com>, 2016
@@ -8,16 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2016-05-26 21:14+0000\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-22 12:41+0000\n"
 "Last-Translator: Sölve Svartskogen <solaizen@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/kvirc/KVIrc/language/pl/)\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: src/modules/addon/libkviaddon.cpp:151
 msgid "%cAddon ID %Q, version %Q%c"
@@ -27,15 +28,15 @@ msgstr "%cID dodatku %Q, wersja %Q%c"
 msgid "Addon Packaging - KVIrc"
 msgstr "Pakowanie dodatku - KVIrc"
 
-#: src/modules/addon/libkviaddon.cpp:576
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Addon registration failed"
 msgstr "Rejestracja dodatku nie powiodła się"
 
-#: src/modules/addon/libkviaddon.cpp:581
+#: src/modules/addon/libkviaddon.cpp:578
 msgid "Addon successfully registered"
 msgstr "Dodatek pomyślnie zarejestrowany"
 
-#: src/modules/addon/libkviaddon.cpp:548
+#: src/modules/addon/libkviaddon.cpp:545
 msgid "Attempting to register addon \"%Q\" with version %Q"
 msgstr "Próba rejestracji dodatku \"%Q\" w wersji %Q"
 
@@ -99,11 +100,11 @@ msgstr "Kontynuować instalację?"
 msgid "Download Addons - KVIrc"
 msgstr "Pobierz dodatki - KVIrc"
 
-#: src/modules/addon/libkviaddon.cpp:655
+#: src/modules/addon/libkviaddon.cpp:652
 msgid "Empty file list"
 msgstr "Pusta lista plików"
 
-#: src/modules/addon/libkviaddon.cpp:803
+#: src/modules/addon/libkviaddon.cpp:800
 msgid "Error installing addon package: %Q"
 msgstr "Błąd podczas instalacji pakietu dodatku: %Q"
 
@@ -204,11 +205,11 @@ msgstr "Instalacja pakietu dodatku - KVIrc"
 msgid "Install addon package from disk"
 msgstr "Zainstaluj pakiet dodatku z dysku"
 
-#: src/modules/addon/libkviaddon.cpp:745
+#: src/modules/addon/libkviaddon.cpp:742
 msgid "Installing file '%1' into '%2'"
 msgstr "Instalacja pliku '%1' w '%2'"
 
-#: src/modules/addon/libkviaddon.cpp:522
+#: src/modules/addon/libkviaddon.cpp:519
 msgid "Internal error: call a head-shrinker"
 msgstr "Błąd wewnętrzny: zadzwoń do psychiatry"
 
@@ -308,11 +309,11 @@ msgstr "Wybierz katalog źródłowy:"
 msgid "Show help"
 msgstr "Pokaż pomoc"
 
-#: src/modules/addon/libkviaddon.cpp:719
+#: src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping invalid entry '%1'"
 msgstr "Pomijanie nieprawidłowego wpisu '%1'"
 
-#: src/modules/addon/libkviaddon.cpp:688 src/modules/addon/libkviaddon.cpp:710
+#: src/modules/addon/libkviaddon.cpp:685 src/modules/addon/libkviaddon.cpp:707
 msgid "Skipping non-existent entry '%1'"
 msgstr "Pomijanie nieistniejącego wpisu '%1'"
 
@@ -320,37 +321,33 @@ msgstr "Pomijanie nieistniejącego wpisu '%1'"
 msgid "Source directory"
 msgstr "Katalog źródłowy"
 
-#: src/modules/addon/PackAddonDialog.cpp:185
-msgid "The Package was saved successfully in %1"
-msgstr "Pakiet został pomyślnie zapisany w %1"
-
-#: src/modules/addon/libkviaddon.cpp:207 src/modules/addon/libkviaddon.cpp:257
-#: src/modules/addon/libkviaddon.cpp:308 src/modules/addon/libkviaddon.cpp:356
-#: src/modules/addon/libkviaddon.cpp:405 src/modules/addon/libkviaddon.cpp:642
+#: src/modules/addon/libkviaddon.cpp:206 src/modules/addon/libkviaddon.cpp:256
+#: src/modules/addon/libkviaddon.cpp:307 src/modules/addon/libkviaddon.cpp:355
+#: src/modules/addon/libkviaddon.cpp:404 src/modules/addon/libkviaddon.cpp:639
 msgid "The addon \"%1\" doesn't exist"
 msgstr "Dodatek \"%1\" nie istnieje"
 
-#: src/modules/addon/libkviaddon.cpp:247
+#: src/modules/addon/libkviaddon.cpp:246
 msgid "The addon \"%1\" has no configure callback set"
 msgstr "Dodatek \"%1\" nie ma wywołania zwrotnego konfiguracji"
 
-#: src/modules/addon/libkviaddon.cpp:298
+#: src/modules/addon/libkviaddon.cpp:297
 msgid "The addon \"%1\" has no help callback set"
 msgstr "Dodatek \"%1\" nie ma wywołania zwrotnego pomocy"
 
-#: src/modules/addon/libkviaddon.cpp:560
+#: src/modules/addon/libkviaddon.cpp:557
 msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
 msgstr "Dodatek \"%Q\" już istnieje w wersji %Q, która jest wyższa od %Q"
 
-#: src/modules/addon/libkviaddon.cpp:686
+#: src/modules/addon/libkviaddon.cpp:683
 msgid "The directory '%1' doesn't exist"
 msgstr "Katalog \"%1\" nie istnieje"
 
-#: src/modules/addon/libkviaddon.cpp:717
+#: src/modules/addon/libkviaddon.cpp:714
 msgid "The entry '%1' is not a file"
 msgstr "Wpis '%1' nie jest plikiem"
 
-#: src/modules/addon/libkviaddon.cpp:708
+#: src/modules/addon/libkviaddon.cpp:705
 msgid "The file '%1' doesn't exist"
 msgstr "Plik \"%1\" nie istnieje"
 
@@ -361,6 +358,11 @@ msgstr "Skrypt inicjalizacyjny (install.kvs) nie istnieje."
 #: src/modules/addon/AddonFunctions.cpp:339
 msgid "The package file list is empty"
 msgstr "Lista plików pakietu jest pusta"
+
+#: src/modules/addon/PackAddonDialog.cpp:185
+#, fuzzy
+msgid "The package was saved successfully in %1"
+msgstr "Pakiet został pomyślnie zapisany w %1"
 
 #: src/modules/addon/AddonFunctions.cpp:280
 msgid "The selected directory doesn't exist."
@@ -374,23 +376,23 @@ msgstr "Wybrany plik nie jest prawidłowym pakietem dodatku KVIrc"
 msgid "The selected file doesn't seem to be a valid KVIrc package: %1"
 msgstr "Wybrany plik nie jest prawidłowym pakietem KVIrc: %1"
 
-#: src/modules/addon/libkviaddon.cpp:537
+#: src/modules/addon/libkviaddon.cpp:534
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 msgstr "Określona wersja KVIrc \"%Q\" jest nieprawidłowym łańcuchem wersji"
 
-#: src/modules/addon/libkviaddon.cpp:531
+#: src/modules/addon/libkviaddon.cpp:528
 msgid "The specified version \"%Q\" is not a valid version string"
 msgstr "Określona wersja \"%Q\" jest nieprawidłowym łańcuchem wersji"
 
-#: src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:644
 msgid "The target path can't be empty"
 msgstr "Ścieżka docelowa nie może być pusta"
 
-#: src/modules/addon/libkviaddon.cpp:650
+#: src/modules/addon/libkviaddon.cpp:647
 msgid "The target path can't contain .."
 msgstr "Ścieżka docelowa nie może zawierać .."
 
-#: src/modules/addon/libkviaddon.cpp:543
+#: src/modules/addon/libkviaddon.cpp:540
 msgid ""
 "This KVIrc executable is too old to run this addon (minimum version required "
 "is %Q)"
@@ -415,7 +417,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Podsumowanie: zainstalowano %d dodatków"
 
-#: src/modules/addon/libkviaddon.cpp:199 src/modules/addon/libkviaddon.cpp:566
+#: src/modules/addon/libkviaddon.cpp:198 src/modules/addon/libkviaddon.cpp:563
 msgid "Uninstalling existing addon version %Q"
 msgstr "Deinstalacja istniejącego dodatku w wersji %Q"
 

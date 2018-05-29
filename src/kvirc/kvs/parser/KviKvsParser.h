@@ -60,12 +60,12 @@ public:
 	~KviKvsParser();
 
 private:
-	const QChar * m_pBuffer; // the local pointer to the beginning of the buffer
-	const QChar * m_ptr;     // the parsing pointer
+	const QChar * m_pBuffer = nullptr; // the local pointer to the beginning of the buffer
+	const QChar * m_ptr = nullptr;     // the parsing pointer
 	// parsing state
 	KviPointerHashTable<QString, QString> * m_pGlobals; // the dict of the vars declared with global in this script
-	int m_iFlags;                                       // the current parsing flags
-	bool m_bError;                                      // error(..) was called ?
+	int m_iFlags = 0;                                   // the current parsing flags
+	bool m_bError = false;                              // error(..) was called ?
 	// this stuff is used only for reporting errors and warnings
 	KviKvsScript * m_pScript; // parent script
 	KviWindow * m_pWindow;    // output window

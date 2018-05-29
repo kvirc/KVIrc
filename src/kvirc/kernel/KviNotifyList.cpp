@@ -362,22 +362,8 @@ void KviIsOnNotifyListManager::buildRegUserDict()
 		QString notify;
 		if(u->getProperty("notify", notify))
 		{
-			notify = notify.trimmed();
-			while(!notify.isEmpty())
-			{
-				int idx = notify.indexOf(' ');
-				if(idx > 0)
-				{
-					QString single = notify.left(idx);
-					m_pRegUserDict.emplace(single, u->name());
-					notify.remove(0, idx + 1);
-				}
-				else
-				{
-					m_pRegUserDict.emplace(notify, u->name());
-					notify = "";
-				}
-			}
+			for(const auto & single : notify.trimmed().split(' ', QString::SkipEmptyParts))
+				m_pRegUserDict.emplace(single, u->name());
 		}
 		++it;
 	}

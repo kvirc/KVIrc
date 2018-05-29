@@ -1,56 +1,52 @@
-# Czech translation of Kvirc.
-# Copyright (C) 2004 THE Kvirc'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Kvirc package.
-# Dušan Hokův <dusan@mirc.cz>, 2004.
-# , fuzzy
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
 #
-#
+# Translators:
+# Dušan Hokův <dusan@mirc.cz>, 2004
 msgid ""
 msgstr ""
-"Project-Id-Version: Kvirc\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2007-12-05 18:02+0100\n"
-"Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-22 12:41+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
+"Language-Team: Czech (http://www.transifex.com/kvirc/KVIrc/language/cs/)\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: src/modules/logview/LogViewWindow.cpp:366
-#, fuzzy
 msgid "%1 on %2"
-msgstr "%1 na %2"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:173
-#, fuzzy
 msgid "Apply Filter"
-msgstr "Použít filtr"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:120
 msgid "Can't log to file '%1'"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:104
-#, fuzzy
 msgid "Cancel"
-msgstr "Kanál"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:69
 msgid "Channel"
 msgstr "Kanál"
 
-#: src/modules/logview/LogViewWindow.cpp:686
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:689
 msgid "Channel %1 on %2"
-msgstr "%1 na %2"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:475
+#: src/modules/logview/LogViewWindow.cpp:478
 msgid "Confirm Current User Log Deletion"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:493
+#: src/modules/logview/LogViewWindow.cpp:496
 msgid "Confirm Current User Logs Deletion"
 msgstr ""
 
@@ -58,40 +54,37 @@ msgstr ""
 msgid "Console"
 msgstr "Konzole"
 
-#: src/modules/logview/LogViewWindow.cpp:689
+#: src/modules/logview/LogViewWindow.cpp:692
 msgid "Console on %1"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:142
-#, fuzzy
 msgid "Contents Filter"
-msgstr "Filtr obsahu"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:77
 msgid "DCC Chat"
 msgstr "DCC Chat"
 
-#: src/modules/logview/LogViewWindow.cpp:695
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:698
 msgid "DCC Chat with: %1"
-msgstr "DCC Chat"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:494
+#: src/modules/logview/LogViewWindow.cpp:497
 msgid "Do you really wish to delete all these logs?"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:476
+#: src/modules/logview/LogViewWindow.cpp:479
 msgid "Do you really wish to delete this log?"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:606
+#: src/modules/logview/LogViewWindow.cpp:609
 msgid "Export Log - KVIrc"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:456
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:459
 msgid "Export Log File to"
-msgstr "Soubor logů"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:331
 msgid "Failed to export the log '%1'"
@@ -110,9 +103,8 @@ msgid "HTML Archive"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:109
-#, fuzzy
 msgid "Index"
-msgstr "Obsah"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:70
 msgid "Log File"
@@ -136,41 +128,36 @@ msgid "Missing window ID after the 'w' switch"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:165
-#, fuzzy
 msgid "Only newer than:"
-msgstr "Pouze novější než"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:157
-#, fuzzy
 msgid "Only older than:"
-msgstr "Pouze starší než"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "Ostatní"
 
 #: src/modules/logview/LogViewWindow.cpp:192
-#, fuzzy
 msgid "Plain Text File"
-msgstr "Filtr obsahu"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:73
 msgid "Query"
 msgstr "Query"
 
-#: src/modules/logview/LogViewWindow.cpp:692
+#: src/modules/logview/LogViewWindow.cpp:695
 msgid "Query with: %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:452
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:455
 msgid "Remove All Log Files Within This Folder"
-msgstr "Smazat soubor"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:457
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:460
 msgid "Remove Log File"
-msgstr "Smazat soubor"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:133
 msgid "Show DCC chat logs"
@@ -192,7 +179,7 @@ msgstr "Zobrazit ostatní logy"
 msgid "Show query logs"
 msgstr "Zobrazit query logy"
 
-#: src/modules/logview/LogViewWindow.cpp:698
+#: src/modules/logview/LogViewWindow.cpp:701
 msgid "Something on: %1"
 msgstr ""
 
@@ -208,13 +195,3 @@ msgstr ""
 #: src/modules/log/libkvilog.cpp:273
 msgid "Window with ID '%1' not found, returning empty string"
 msgstr ""
-
-#~ msgid "Abort filtering"
-#~ msgstr "Přerušit filtrování"
-
-#, fuzzy
-#~ msgid "Browse Log Files"
-#~ msgstr "Prohlížet soubory &logů"
-
-#~ msgid "Filtering files..."
-#~ msgstr "Filtrování souborů..."

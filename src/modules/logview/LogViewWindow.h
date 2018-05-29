@@ -89,7 +89,6 @@ protected:
 	QDateEdit * m_pFromDateEdit;
 	QDateEdit * m_pToDateEdit;
 
-	QStringList * m_pFileNames;
 	QTabWidget * m_pTabWidget;
 	KviTalVBox * m_pIndexTab;
 	KviTalVBox * m_pLeftLayout;
@@ -98,10 +97,10 @@ protected:
 	QPushButton * m_pCancelButton;
 	KviTalHBox * m_pBottomLayout;
 	QProgressBar * m_pProgressBar;
-	LogListViewItem * m_pLastCategory;
-	LogListViewItemFolder * m_pLastGroupItem;
+	LogListViewItem * m_pLastCategory = nullptr;
+	LogListViewItemFolder * m_pLastGroupItem = nullptr;
 	QString m_szLastGroup;
-	bool m_bAborted;
+	bool m_bAborted = false;
 	QTimer * m_pTimer;
 	QMenu * m_pExportLogPopup;
 

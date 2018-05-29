@@ -275,7 +275,7 @@ set_property(TARGET ${KVIRC_BINARYNAME} PROPERTY CXX_STANDARD 11)
 set_property(TARGET ${KVIRC_BINARYNAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 
 if(Qt5Widgets_FOUND)
-	qt5_use_modules(${KVIRC_BINARYNAME} ${qt5_kvirc_modules})
+	target_link_libraries(${KVIRC_BINARYNAME} ${qt5_kvirc_modules})
 endif()
 
 if(MINGW)

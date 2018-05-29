@@ -65,16 +65,16 @@ class KvsObject_webView : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_webView)
 protected:
-	KviKvsRunTimeContext * m_pContext;
-	int elementMapId;
+	KviKvsRunTimeContext * m_pContext = nullptr;
+	int elementMapId = 1;
 	int insertElement(const QWebElement & ele);
 	QWebElement getElement(int iIdx);
 	int getElementId(const QWebElement &);
 	QHash<int, QWebElement> m_elementMapper;
-	KviPointerList<KviKvsObject> * lWebelement;
+	KviPointerList<KviKvsObject> * lWebelement = nullptr;
 	QHash<QString, QWebElement *> m_dictCache;
-	KviPointerList<QNetworkReply> * m_pReplyList;
-	QNetworkAccessManager * m_pNetworkManager;
+	KviPointerList<QNetworkReply> * m_pReplyList = nullptr;
+	QNetworkAccessManager * m_pNetworkManager = nullptr;
 	QWebElementCollection m_webElementCollection;
 	QWebElement m_currentElement;
 

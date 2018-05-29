@@ -191,7 +191,7 @@ protected:
 
 protected:
 	QString m_szQuery;
-	KviDnsResolver::QueryType m_queryType;
+	KviDnsResolver::QueryType m_queryType = KviDnsResolver::Any;
 	KviDnsResolver * m_pParentDns;
 
 public:

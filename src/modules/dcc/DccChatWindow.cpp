@@ -904,9 +904,9 @@ bool DccChatThread::tryFlushOutBuffers()
 			{
 				int err = kvi_socket_error();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-				if((err != EAGAIN) || (err != EINTR) || (err != WSAEWOULDBLOCK))
+				if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
 #else
-				if((err != EAGAIN) || (err != EINTR))
+				if((err != EAGAIN) && (err != EINTR))
 #endif
 				{
 					postErrorEvent(KviError::translateSystemError(err));

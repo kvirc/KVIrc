@@ -1,29 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# This file is distributed under the same license as the KVIrc package.
 #
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: kvirc 4.3\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2012-06-26 18:54+0100\n"
-"Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
-"Language-Team: Esperanto <eo@li.org>\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-22 12:41+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
+"Language-Team: Esperanto (http://www.transifex.com/kvirc/KVIrc/language/"
+"eo/)\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/logview/LogViewWindow.cpp:366
 msgid "%1 on %2"
 msgstr "%1 sur %2"
 
 #: src/modules/logview/LogViewWindow.cpp:173
-#, fuzzy
 msgid "Apply Filter"
-msgstr "Apliki filtrilon"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:120
 msgid "Can't log to file '%1'"
@@ -37,58 +38,53 @@ msgstr "Rezigni"
 msgid "Channel"
 msgstr "Kanalo"
 
-#: src/modules/logview/LogViewWindow.cpp:686
+#: src/modules/logview/LogViewWindow.cpp:689
 msgid "Channel %1 on %2"
 msgstr "Kanalo %1 sur %2"
 
-#: src/modules/logview/LogViewWindow.cpp:475
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:478
 msgid "Confirm Current User Log Deletion"
-msgstr "Konfirmi nunan uzulan protokolan forigon"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:493
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:496
 msgid "Confirm Current User Logs Deletion"
-msgstr "Konfirmi nunan uzulan protokolan forigon"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:81
 msgid "Console"
 msgstr "Konzolo"
 
-#: src/modules/logview/LogViewWindow.cpp:689
+#: src/modules/logview/LogViewWindow.cpp:692
 msgid "Console on %1"
 msgstr "Konzolo sur %1"
 
 #: src/modules/logview/LogViewWindow.cpp:142
-#, fuzzy
 msgid "Contents Filter"
-msgstr "Enhava filtrilo"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:77
 msgid "DCC Chat"
 msgstr "DCC Babilado"
 
-#: src/modules/logview/LogViewWindow.cpp:695
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:698
 msgid "DCC Chat with: %1"
-msgstr "DCC Babilo kun %1"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:494
+#: src/modules/logview/LogViewWindow.cpp:497
 msgid "Do you really wish to delete all these logs?"
 msgstr "Ĉu vi vere volas forigi ĉi ĉiujn protokolojn?"
 
-#: src/modules/logview/LogViewWindow.cpp:476
+#: src/modules/logview/LogViewWindow.cpp:479
 msgid "Do you really wish to delete this log?"
 msgstr "Ĉu vi vere volas forigi ĉi tiun protokolon?"
 
-#: src/modules/logview/LogViewWindow.cpp:606
+#: src/modules/logview/LogViewWindow.cpp:609
 msgid "Export Log - KVIrc"
 msgstr "Eksporta Protokolo - KVIrc"
 
-#: src/modules/logview/LogViewWindow.cpp:456
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:459
 msgid "Export Log File to"
-msgstr "Eksporti protokolan dosieron al"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:331
 msgid "Failed to export the log '%1'"
@@ -103,9 +99,8 @@ msgid "Filter"
 msgstr "Filtri"
 
 #: src/modules/logview/LogViewWindow.cpp:194
-#, fuzzy
 msgid "HTML Archive"
-msgstr "HTML arĥivo"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:109
 msgid "Index"
@@ -129,47 +124,40 @@ msgstr "Protokola noma masko"
 
 #: src/modules/log/libkvilog.cpp:109 src/modules/log/libkvilog.cpp:167
 #: src/modules/log/libkvilog.cpp:219
-#, fuzzy
 msgid "Missing window ID after the 'w' switch"
-msgstr "Mankanta fenestra id post la 'w' ŝaltilo"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:165
-#, fuzzy
 msgid "Only newer than:"
-msgstr "Nur pli nova ol"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:157
-#, fuzzy
 msgid "Only older than:"
-msgstr "Nur pli malnova ol"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "Alia"
 
 #: src/modules/logview/LogViewWindow.cpp:192
-#, fuzzy
 msgid "Plain Text File"
-msgstr "plata teksta dosiero"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:73
 msgid "Query"
 msgstr "Demando"
 
-#: src/modules/logview/LogViewWindow.cpp:692
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:695
 msgid "Query with: %1 on %2"
-msgstr "Demando kun %1 sur %2"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:452
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:455
 msgid "Remove All Log Files Within This Folder"
-msgstr "Forigi ĉiujn protokolajn dosierojn en ĉi tiu dosierujo"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:457
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:460
 msgid "Remove Log File"
-msgstr "Forigi protokolan dosieron"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:133
 msgid "Show DCC chat logs"
@@ -191,10 +179,9 @@ msgstr "Montri aliajn protokolojn"
 msgid "Show query logs"
 msgstr "Montri demandajn protokolojn"
 
-#: src/modules/logview/LogViewWindow.cpp:698
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:701
 msgid "Something on: %1"
-msgstr "Io sur %1"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:124
 msgid "This window has no logging capabilities"
@@ -206,9 +193,5 @@ msgid "Window '%1' not found"
 msgstr "Fenestro '%1' ne trovita"
 
 #: src/modules/log/libkvilog.cpp:273
-#, fuzzy
 msgid "Window with ID '%1' not found, returning empty string"
-msgstr "Fenestro kun id '%1' ne trovita, revenigas malplenan ĉenon"
-
-#~ msgid "File '%1' already exists. Do you want to overwrite it?"
-#~ msgstr "Dosiero '%1' jam ekzistas. Ĉu vi volas anstataŭigi ĝin?"
+msgstr ""

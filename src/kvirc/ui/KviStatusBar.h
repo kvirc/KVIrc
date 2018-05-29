@@ -131,7 +131,6 @@ public:
 	~KviStatusBar();
 
 protected:
-	KviTalHBox * m_pBox;
 	KviMainWindow * m_pFrame;
 	KviPointerList<KviStatusBarMessage> * m_pMessageQueue;
 	QTimer * m_pMessageTimer;
@@ -143,7 +142,6 @@ protected:
 	KviStatusBarApplet * m_pClickedApplet;
 	int m_iLastMinimumHeight;
 	bool m_bStopLayoutOnAddRemove;
-	KviDynamicToolTip * m_pToolTip;
 
 public:
 	/**

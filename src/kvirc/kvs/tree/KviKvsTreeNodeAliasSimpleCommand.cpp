@@ -88,8 +88,6 @@ bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 				goto no_way_to_send_as_raw;
 
 			szData = c->window()->connection()->encodeText(szAll);
-			if(!szData.data())
-				szData = "";
 
 			if(!c->window()->connection()->sendData(szData.data()))
 				goto no_way_to_send_as_raw;

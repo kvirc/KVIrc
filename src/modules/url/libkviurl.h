@@ -80,7 +80,7 @@ public:
 
 private:
 	KviTalMenuBar * m_pMenuBar;
-	QMenu * m_pListPopup; // dynamic popup menu
+	QMenu * m_pListPopup = nullptr; // dynamic popup menu
 	QString m_szUrl;      // used to pass URLs to sayToWin slot
 protected:
 	QPixmap * myIconPtr();

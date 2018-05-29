@@ -627,6 +627,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 	{
 		error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of command in binding operation, at least one slash is missing", "kvs"));
 		delete pFirst;
+		delete pSecond;
 		return nullptr;
 	}
 
@@ -634,6 +635,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 	{
 		error(KVSP_curCharPointer, __tr2qs_ctx("Found character '%q' (Unicode %x) where a slash '/' was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 		delete pFirst;
+		delete pSecond;
 		return nullptr;
 	}
 

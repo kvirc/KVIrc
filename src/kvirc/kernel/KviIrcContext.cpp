@@ -443,17 +443,9 @@ void KviIrcContext::connectToCurrentServer()
 	if(!srv)
 	{
 		if(g_pServerDataBase->networkCount())
-			KviKvsScript::run("options.edit OptionsWidget_servers", m_pConsole);
+			KviKvsScript::run("options.edit -n OptionsWidget_servers", m_pConsole);
 		else
 			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR, __tr2qs("No servers available. Check the options dialog or use the /SERVER command"));
-		destroyAsynchronousConnectionData();
-		return;
-	}
-
-	if(!net)
-	{
-		// BUG
-		m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR, __tr2qs("Oops! You've hit a bug in the servers database... I have found a server but not a network..."));
 		destroyAsynchronousConnectionData();
 		return;
 	}

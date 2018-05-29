@@ -101,7 +101,7 @@ public:
 	EventEditorTreeWidget * m_pTreeWidget;
 	QLineEdit * m_pNameEditor;
 	QCheckBox * m_pIsEnabled;
-	QMenu * m_pContextPopup;
+	QMenu * m_pContextPopup = nullptr;
 	EventEditorHandlerTreeWidgetItem * m_pLastEditedItem;
 	bool m_bOneTimeSetupDone;
 

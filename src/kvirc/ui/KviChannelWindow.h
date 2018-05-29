@@ -807,7 +807,7 @@ public:
 	* \param szBuffer The buffer :)
 	* \return void
 	*/
-	void getChannelModeStringWithEmbeddedParams(QString & szBuffer);
+	QString getChannelModeStringWithEmbeddedParams();
 
 	/**
 	* \brief Sets a channel mode with a parameter; an empty parameter unsets the mode (eg: +k password)
@@ -1050,7 +1050,7 @@ private slots:
 	* \param szMode The modes selected, including any plus/minus sign and parameters
 	* \return void
 	*/
-	void setMode(QString & szMode);
+	void setMode(const QString & szMode);
 
 	/**
 	* \brief Called when we right-click the irc view.

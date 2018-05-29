@@ -74,7 +74,7 @@ bool KviKvsAliasManager::removeNamespace(const QString & szName)
 	if(lKill.isEmpty())
 		return false;
 
-	Q_FOREACH(QString szKill, lKill)
+	for(auto & szKill : lKill)
 		remove(szKill);
 
 	return true;

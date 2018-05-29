@@ -1,42 +1,42 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# Igor Paliychuk <mansonigor@gmail.com>, 2012.
+# This file is distributed under the same license as the KVIrc package.
+#
+# Translators:
+# igorko <mansonigor@gmail.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2012-04-13 12:49+0300\n"
-"Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-22 12:41+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/kvirc/KVIrc/language/"
+"uk/)\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.1\n"
 
 #: src/modules/addon/libkviaddon.cpp:151
-#, fuzzy
 msgid "%cAddon ID %Q, version %Q%c"
-msgstr "%c id Аддона %Q, версія %Q%c"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:180
-#, fuzzy
 msgid "Addon Packaging - KVIrc"
-msgstr "Створити Пакунок Аддону - KVIrc"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:576
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Addon registration failed"
 msgstr "Реєстрація аддона не вдалась"
 
-#: src/modules/addon/libkviaddon.cpp:581
+#: src/modules/addon/libkviaddon.cpp:578
 msgid "Addon successfully registered"
 msgstr "Аддон зареєстровано успішно"
 
-#: src/modules/addon/libkviaddon.cpp:548
+#: src/modules/addon/libkviaddon.cpp:545
 msgid "Attempting to register addon \"%Q\" with version %Q"
 msgstr "Намагаюсь зареєструвати аддон \"%Q\" версії %Q"
 
@@ -53,23 +53,20 @@ msgid "Close"
 msgstr "Закрити"
 
 #: src/modules/addon/AddonManagementDialog.cpp:119
-#, fuzzy
 msgid "Configure addon..."
-msgstr "Налаштувати аддон..."
+msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:282
-#, fuzzy
 msgid "Confirm Addon Uninstallation - KVIrc"
-msgstr "Підтвердіть видалення аддону"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:50
 msgid "Create Addon Package - KVIrc"
 msgstr "Створити Пакунок Аддону - KVIrc"
 
 #: src/modules/addon/AddonManagementDialog.cpp:141
-#, fuzzy
 msgid "Create an addon as a distributable package"
-msgstr "Створити Аддон як Пакунок для роповсюдження"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:123
 msgid "Created at"
@@ -80,9 +77,8 @@ msgid "Created with"
 msgstr "Створено в"
 
 #: src/modules/addon/AddonManagementDialog.cpp:131
-#, fuzzy
 msgid "Delete selected addon"
-msgstr "Видалити вибрані аддони"
+msgstr ""
 
 #: src/modules/addon/libkviaddon.cpp:153
 msgid "Description: %Q"
@@ -93,46 +89,40 @@ msgid "Do Not Install"
 msgstr "Не встановлювати"
 
 #: src/modules/addon/AddonManagementDialog.cpp:277
-#, fuzzy
 msgid "Do you really want to uninstall the addon \"%1\"?"
-msgstr "Ви дійсно хочете видалити аддон \"%1\" ?"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:195
-#, fuzzy
 msgid "Do you want to proceed with the installation?"
-msgstr "Ви хочете продовжити встановлення?"
+msgstr ""
 
 #: src/modules/addon/WebAddonInterfaceDialog.cpp:42
-#, fuzzy
 msgid "Download Addons - KVIrc"
-msgstr "Встановити Аддон - KVIrc"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:655
+#: src/modules/addon/libkviaddon.cpp:652
 msgid "Empty file list"
 msgstr "Список файлів порожній"
 
-#: src/modules/addon/libkviaddon.cpp:803
+#: src/modules/addon/libkviaddon.cpp:800
 msgid "Error installing addon package: %Q"
 msgstr "Помилка встановлення пакунка аддону: %Q"
 
 #: src/modules/addon/PackAddonDialog.cpp:185
-#, fuzzy
 msgid "Exporting Addon Completed - KVIrc"
-msgstr "Експорт аддону - KVIrc"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:158
-#, fuzzy
 msgid "Exporting Addon Confirmation - KVIrc"
-msgstr "Експорт аддону - KVIrc"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:244
 msgid "Failed to delete the directory '%1'"
 msgstr "Помилка видалення каталогу '%1'"
 
 #: src/modules/addon/AddonFunctions.cpp:321
-#, fuzzy
 msgid "Failed to load the image at %1"
-msgstr "Помилка видалення каталогу '%1'"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:231
 msgid "Failed to unpack the selected file: %1"
@@ -143,9 +133,8 @@ msgid "File %1 already exists. Do you want to overwrite it?"
 msgstr "Файл %1 вже існує. Хочете переписати його?"
 
 #: src/modules/addon/PackAddonDialog.cpp:389
-#, fuzzy
 msgid "File Summary Review - KVIrc"
-msgstr "Про файл"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:325
 msgid "Final Information"
@@ -156,30 +145,21 @@ msgid "Finish"
 msgstr "Готово"
 
 #: src/modules/addon/AddonManagementDialog.cpp:157
-#, fuzzy
 msgid "Get more addons..."
-msgstr "Отримати ще аддонів..."
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:326
-#, fuzzy
 msgid ""
 "Here are the details you provided. If this information is correct, hit the "
 "\"Finish\" button to complete the packaging operations."
 msgstr ""
-"Тут знаходиться вказана вами інформація. Якщо ця інформація вірна, натисніть "
-"кнопку \"Готово\" щоб завершити операції пакування."
 
 #: src/modules/addon/PackAddonDialog.cpp:396
-#, fuzzy
 msgid ""
 "Here are the files found in the directories you provided.\n"
 "If the files listed below are correct, hit the \"Finish\" button to complete "
 "the packaging operation."
 msgstr ""
-"Ось файли, які я знайшов в вказаних вами каталогах.\n"
-"Якщо файли і інформація, показана на попередній сторінці правильні, "
-"натисніть кнопку \"Готово\" для завершення\n"
-"операцій пакування."
 
 #: src/modules/addon/PackAddonDialog.cpp:195
 msgid ""
@@ -190,26 +170,23 @@ msgstr ""
 "пакету, який ви створюєте."
 
 #: src/modules/addon/PackAddonDialog.cpp:284
-#, fuzzy
 msgid ""
 "Here you need to provide the path where to save the created addon package"
-msgstr "Тут вам треба вказати шлях, де буде збережений пакет з аддоном"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:259
-#, fuzzy
 msgid ""
 "Here you need to select the directory where the addon files to be packed are "
 "located."
-msgstr "Тут вам треба вибрати каталог, де знаодяться файли аддонів."
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:96
 msgid "Hit the \"Next\" button to begin."
 msgstr "Натисніть кнопку \"Далі\" щоб почати."
 
 #: src/modules/addon/PackAddonDialog.cpp:370
-#, fuzzy
 msgid "Image file"
-msgstr "Файли пакунків"
+msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:324
 #: src/modules/addon/AddonManagementDialog.cpp:339
@@ -221,32 +198,28 @@ msgid "Install Addon Pack - KVIrc"
 msgstr "Встановити Пакет Аддону - KVIrc"
 
 #: src/modules/addon/AddonManagementDialog.cpp:151
-#, fuzzy
 msgid "Install addon package from disk"
-msgstr "Встановити пакунок аддону з диску"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:745
+#: src/modules/addon/libkviaddon.cpp:742
 msgid "Installing file '%1' into '%2'"
 msgstr "Встановлюю файл '%1' в '%2'"
 
-#: src/modules/addon/libkviaddon.cpp:522
+#: src/modules/addon/libkviaddon.cpp:519
 msgid "Internal error: call a head-shrinker"
 msgstr "Внутрішня помилка: виклик обрізаного заголовку"
 
 #: src/modules/addon/AddonManagementDialog.cpp:97
-#, fuzzy
 msgid "Manage Addons - KVIrc"
-msgstr "Встановити Аддон - KVIrc"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:235
-#, fuzzy
 msgid "Minimum &KVIrc version:"
-msgstr "Мінімальна версія &KVIrc:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:366
-#, fuzzy
 msgid "Minimum KVIrc version"
-msgstr "Мінімальна версія KVIrc"
+msgstr ""
 
 #: src/modules/addon/libkviaddon.cpp:152
 msgid "Name: %Q"
@@ -257,29 +230,24 @@ msgid "No"
 msgstr "Ні"
 
 #: src/modules/addon/PackAddonDialog.cpp:212
-#, fuzzy
 msgid "No spaces allowed"
-msgstr "Пробіли не дозволені, як MyAddon"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:200
-#, fuzzy
 msgid "Package &author:"
-msgstr "&Автор пакунка:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:226
-#, fuzzy
 msgid "Package &description:"
-msgstr "&Опис Пакунку:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:208
-#, fuzzy
 msgid "Package &name:"
-msgstr "&Назва пакунка:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:217
-#, fuzzy
 msgid "Package &version:"
-msgstr "Версія &Пакунка:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:258
 msgid "Package Files"
@@ -290,152 +258,136 @@ msgid "Package Information"
 msgstr "Інформація про пакунок"
 
 #: src/modules/addon/PackAddonDialog.cpp:350
-#, fuzzy
 msgid "Package author"
-msgstr "Автор пакунку"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:362
-#, fuzzy
 msgid "Package description"
-msgstr "Опис Пакунка"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:354
-#, fuzzy
 msgid "Package name"
-msgstr "Назва Пакунка"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:358
-#, fuzzy
 msgid "Package version"
-msgstr "Версія Пакунка"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:283
 msgid "Save Package"
 msgstr "Зберегти пакунок"
 
 #: src/modules/addon/PackAddonDialog.cpp:378
-#, fuzzy
 msgid "Save path"
-msgstr "Шлях Збереження"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:367
 msgid "Save path is empty"
 msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:311
-#, fuzzy
 msgid "Select a Installation File - KVIrc"
-msgstr "Встановити Аддон - KVIrc"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:291
 msgid "Select save path:"
 msgstr "Вкажіть шлях для збереження:"
 
 #: src/modules/addon/PackAddonDialog.cpp:268
-#, fuzzy
 msgid "Select the image file:"
-msgstr "Виберіть файл значка:"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:264
 msgid "Select the source directory:"
 msgstr "Виберіть каталог з джерелом:"
 
 #: src/modules/addon/AddonManagementDialog.cpp:125
-#, fuzzy
 msgid "Show help"
-msgstr "Показати Довідку"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:719
+#: src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping invalid entry '%1'"
 msgstr "Пропускаю невірний об'єкт '%1'"
 
-#: src/modules/addon/libkviaddon.cpp:688 src/modules/addon/libkviaddon.cpp:710
-#, fuzzy
+#: src/modules/addon/libkviaddon.cpp:685 src/modules/addon/libkviaddon.cpp:707
 msgid "Skipping non-existent entry '%1'"
-msgstr "Пропускаю неіснуючий об'єкт '%1'"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:374
-#, fuzzy
 msgid "Source directory"
-msgstr "Початкова тека"
+msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:185
-#, fuzzy
-msgid "The Package was saved successfully in %1"
-msgstr "Пакет успішно збережений в %1"
-
-#: src/modules/addon/libkviaddon.cpp:207 src/modules/addon/libkviaddon.cpp:257
-#: src/modules/addon/libkviaddon.cpp:308 src/modules/addon/libkviaddon.cpp:356
-#: src/modules/addon/libkviaddon.cpp:405 src/modules/addon/libkviaddon.cpp:642
-#, fuzzy
+#: src/modules/addon/libkviaddon.cpp:206 src/modules/addon/libkviaddon.cpp:256
+#: src/modules/addon/libkviaddon.cpp:307 src/modules/addon/libkviaddon.cpp:355
+#: src/modules/addon/libkviaddon.cpp:404 src/modules/addon/libkviaddon.cpp:639
 msgid "The addon \"%1\" doesn't exist"
-msgstr "Аддон \"%1\" не існує"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:247
+#: src/modules/addon/libkviaddon.cpp:246
 msgid "The addon \"%1\" has no configure callback set"
 msgstr "Аддон \"%1\" не має заданого зворотнього виклику конфігурації"
 
-#: src/modules/addon/libkviaddon.cpp:298
+#: src/modules/addon/libkviaddon.cpp:297
 msgid "The addon \"%1\" has no help callback set"
 msgstr "Аддон \"%1\" не має заданого зворотнього виклику довідки"
 
-#: src/modules/addon/libkviaddon.cpp:560
+#: src/modules/addon/libkviaddon.cpp:557
 msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
 msgstr "Аддон \"%Q\" вже існує і має версію %Q, що вище, ніж %Q"
 
-#: src/modules/addon/libkviaddon.cpp:686
+#: src/modules/addon/libkviaddon.cpp:683
 msgid "The directory '%1' doesn't exist"
 msgstr "Каталог '%1' не існує"
 
-#: src/modules/addon/libkviaddon.cpp:717
+#: src/modules/addon/libkviaddon.cpp:714
 msgid "The entry '%1' is not a file"
 msgstr "Об’єкт '%1' не є файлом"
 
-#: src/modules/addon/libkviaddon.cpp:708
+#: src/modules/addon/libkviaddon.cpp:705
 msgid "The file '%1' doesn't exist"
 msgstr "Файл '%1' не існує"
 
 #: src/modules/addon/AddonFunctions.cpp:287
-#, fuzzy
 msgid "The initialization script (install.kvs) doesn't exist."
-msgstr "Скрипт ініціалізації (install.kvs) не існує."
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:339
 msgid "The package file list is empty"
 msgstr "Список файлів пакунку порожній"
 
+#: src/modules/addon/PackAddonDialog.cpp:185
+msgid "The package was saved successfully in %1"
+msgstr ""
+
 #: src/modules/addon/AddonFunctions.cpp:280
-#, fuzzy
 msgid "The selected directory doesn't exist."
-msgstr "Вибраний каталог не існує."
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:53
-#, fuzzy
 msgid "The selected file doesn't seem to be a valid KVIrc addon package"
-msgstr "Здається, вибраний файл не є коректним пакетом аддону KVIrc"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:74
-#, fuzzy
 msgid "The selected file doesn't seem to be a valid KVIrc package: %1"
-msgstr "Здається, вибраний файл не є коректним пакетом KVIrc: %1"
+msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:537
+#: src/modules/addon/libkviaddon.cpp:534
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 msgstr "Вказана версія \"%Q\" KVIrc не є вірним рядком версії"
 
-#: src/modules/addon/libkviaddon.cpp:531
+#: src/modules/addon/libkviaddon.cpp:528
 msgid "The specified version \"%Q\" is not a valid version string"
 msgstr "Вказана версія \"%Q\" не є вірним рядком версії"
 
-#: src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:644
 msgid "The target path can't be empty"
 msgstr "Цільовий шлях не може бути порожнім"
 
-#: src/modules/addon/libkviaddon.cpp:650
+#: src/modules/addon/libkviaddon.cpp:647
 msgid "The target path can't contain .."
 msgstr "Цільовий шлях не може містити .."
 
-#: src/modules/addon/libkviaddon.cpp:543
+#: src/modules/addon/libkviaddon.cpp:540
 msgid ""
 "This KVIrc executable is too old to run this addon (minimum version required "
 "is %Q)"
@@ -448,20 +400,17 @@ msgid "This is what I will check for:"
 msgstr "Я провірю це:"
 
 #: src/modules/addon/PackAddonDialog.cpp:88
-#, fuzzy
 msgid ""
 "This procedure allows you to export the selected addon to a single package."
 "<br>It is useful when you want to distribute your addon to the public."
 msgstr ""
-"Ця процедура дозволить вам експортувати вмбраний аддон до пакету. Це корисно "
-"коли ви хочете поділитись вашим аддоном з громадськістю."
 
 #: src/modules/addon/libkviaddon.cpp:159
 #, c-format
 msgid "Total: %d addons installed"
 msgstr "Всього: %d аддонів встановлено"
 
-#: src/modules/addon/libkviaddon.cpp:199 src/modules/addon/libkviaddon.cpp:566
+#: src/modules/addon/libkviaddon.cpp:198 src/modules/addon/libkviaddon.cpp:563
 msgid "Uninstalling existing addon version %Q"
 msgstr "Деінсталюю існуючий аддон версії %Q"
 
@@ -496,36 +445,3 @@ msgstr ""
 #: src/modules/addon/AddonFunctions.cpp:194
 msgid "You're about to install the following addon package"
 msgstr "Ви збираєтесь встановити наступний пакет з аддоном"
-
-#~ msgid "Addon Packaging Error"
-#~ msgstr "Помилка пакування аддону"
-
-#~ msgid "Addon Unpack Warning"
-#~ msgstr "Попередження розпакування аддону"
-
-#~ msgid "Cannot open file for writing."
-#~ msgstr "Не можу відкрити файл на запис."
-
-#~ msgid "Cannot write to the file descriptor."
-#~ msgstr "Не можу записати до файлового дескриптора."
-
-#~ msgid "Icon File"
-#~ msgstr "Файл значка"
-
-#~ msgid "KVIrc : Download Addons"
-#~ msgstr "KVIrc: Завантажити Аддони"
-
-#~ msgid "Manage Script-Based Addons"
-#~ msgstr "Керування скриптовими аддонами"
-
-#~ msgid "Packaging failed"
-#~ msgstr "Пакування завершене невдало"
-
-#~ msgid "Please select the addon installation file"
-#~ msgstr "Будь ласка виберіть файл встановлення аддону"
-
-#~ msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
-#~ msgstr "Версія у формі x.y[.z], наприклад 1.0 або 2.0.3"
-
-#~ msgid "Your name here"
-#~ msgstr "Ваше ім'я"

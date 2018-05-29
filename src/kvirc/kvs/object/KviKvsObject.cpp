@@ -1184,7 +1184,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
-	if(!p)
+	if(!p->isValid())
 	{
 		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist", "kvs"), &szName, &m_szName, &(m_pClass->name()));
 		return true;
@@ -1444,7 +1444,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	}
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
-	if(!p)
+	if(!p->isValid())
 	{
 		c->returnValue()->setNothing();
 		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist", "kvs"), &szName, &m_szName, &(m_pClass->name()));

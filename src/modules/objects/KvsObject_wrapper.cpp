@@ -285,19 +285,16 @@ QWidget * KvsObject_wrapper::findTopLevelWidgetToWrap(const QString & szClass, c
 	if(list.isEmpty())
 		return nullptr;
 
-	Q_FOREACH(QWidget * w, list)
+	for(QWidget * w : list)
 	{
-		//qDebug("TLW: %s::%s (look for %s::%s)",w->metaObject()->className(),w->objectName().toUtf8().data(),szClass.toUtf8().data(),szName.toUtf8().data());
-		if(
-		    (
-		        szClass.isEmpty() || KviQString::equalCI(w->metaObject()->className(), szClass))
+		if((szClass.isEmpty() || KviQString::equalCI(w->metaObject()->className(), szClass))
 		    && (szName.isEmpty() || KviQString::equalCI(w->objectName(), szName)))
 			return w;
 	}
 
 	if(bRecursive)
 	{
-		Q_FOREACH(QWidget * w, list)
+		for(QWidget * w : list)
 		{
 			w = findWidgetToWrap(szClass, szName, w, bRecursive);
 			if(w)
@@ -314,22 +311,20 @@ QWidget * KvsObject_wrapper::findWidgetToWrap(const QString & szClass, const QSt
 	if(list.isEmpty())
 		return nullptr;
 
-	Q_FOREACH(QObject * obj, list)
+	for(QObject * obj : list)
 	{
 		if(!obj->isWidgetType())
 			continue;
 
 		QWidget * w = (QWidget *)obj;
-		if(
-		    (
-		        szClass.isEmpty() || KviQString::equalCI(w->metaObject()->className(), szClass))
+		if((szClass.isEmpty() || KviQString::equalCI(w->metaObject()->className(), szClass))
 		    && (szName.isEmpty() || KviQString::equalCI(w->objectName(), szName)))
 			return w;
 	}
 
 	if(bRecursive)
 	{
-		Q_FOREACH(QObject * obj, list)
+		for(QObject * obj : list)
 		{
 			if(!obj->isWidgetType())
 				continue;

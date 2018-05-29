@@ -483,7 +483,6 @@ KVSO_CLASS_FUNCTION(sql, queryRecord)
 			pValue = new KviKvsVariant(QString());
 		pHash->set(record.fieldName(i), pValue);
 		KviKvsVariant * value2 = pHash->get(record.fieldName(i));
-		value2->type();
 	}
 	c->returnValue()->setHash(pHash);
 	return true;

@@ -1,24 +1,38 @@
 #! /usr/bin/make -f
+DH_VERBOSE = 1
 
-export DH_ALWAYS_EXCLUDE := kvirc-config:LICENSE-GPLV2:LICENSE-GPLV3:LICENSE-OPENSSL:kvirc-config
+include /usr/share/dpkg/pkg-info.mk
+export VERSION=$(DEB_VERSION_UPSTREAM_REVISION)
 
-REV=$(shell dpkg-parsechangelog | awk '/^Version: / {print $$2}' | sed 's/.*~git/git/' | sed 's/ppa.*//g'| rev | cut -c 3- | rev)
+REV=$(shell echo $${VERSION} | sed 's/.*~git/git/' | sed 's/ppa.*//g'| rev | cut -c 3- | rev)
 DATE_UNIX=$(shell cat debian/changelog |grep '* Date' | sed 1q |awk -F ': ' '{print $$2}')
 DATE=$(shell date -d@$(DATE_UNIX) +%F | sed 's/-//g')
 
 DEBIAN_CODENAME = $(shell echo $$DIST)
 ifeq "$(DEBIAN_CODENAME)" ""
-	DEBIAN_CODENAME = $(shell dpkg-parsechangelog | awk '/^Distribution: / {print $$2}')
-endif
-ifneq (,$(filter $(DEBIAN_CODENAME), buster sid stretch))
-	CONTROL = control.sid
-else
-	CONTROL = control.jessie
+	DEBIAN_CODENAME = $(DEB_DISTRIBUTION)
 endif
 
+ifneq (,$(filter $(DEBIAN_CODENAME),jessie trusty xenial))
+	#no export
+else
+	export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+	export DEB_CXXFLAGS_MAINT_APPEND = $(shell dpkg-buildflags --get CPPFLAGS)
+	export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+endif
+
+# We don't install all files upstream wants to. Those files get added to
+# the following variable which gives us a cleaner buildd output (idea taken
+# from the mesa package).
+NOT_INSTALLED := \
+				usr/lib/$(DEB_HOST_MULTIARCH)/libkvilib.so \
+				usr/bin/kvirc-config \
+				usr/share/kvirc/5.0/license/ABOUT-LICENSE \
+				usr/share/kvirc/5.0/license/LICENSE-OPENSSL \
+				usr/share/pixmaps/kvirc.png
+
 override_dh_auto_configure:
-	cp debian/$(CONTROL) debian/control
-	dh_auto_configure --parallel -- -DCMAKE_BUILD_TYPE=Release \
+	dh_auto_configure -- -DCMAKE_BUILD_TYPE=RelWithDebInfo \
 			-DWANT_COEXISTENCE=OFF \
 			-DWANT_ESD=OFF -DWANT_OSS=OFF \
 			-DWANT_STRIP=OFF \
@@ -26,19 +40,12 @@ override_dh_auto_configure:
 			-DLIB_SUFFIX="/$(DEB_HOST_MULTIARCH)"
 
 override_dh_install:
-	rm debian/tmp/usr/share/pixmaps/kvirc.png debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libkvilib.so
+	set -e; for file in $(NOT_INSTALLED); do rm debian/tmp/$$file; done
 	dh_install
 
-#override_dh_builddeb:
-#	dh_builddeb -- -Zxz -z9
-
 override_dh_makeshlibs:
-	dh_makeshlibs -V -plibkvilib4
-
-override_dh_auto_clean:
-	cp debian/$(CONTROL) debian/control
-	dh_auto_clean
+	dh_makeshlibs -V -plibkvilib5
 
 %:
-	dh $@ --parallel --dbg-package=kvirc-dbg
+	dh $@ --parallel
 

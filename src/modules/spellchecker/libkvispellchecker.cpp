@@ -142,8 +142,7 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall * c)
 
 	KviKvsArray * pArray = new KviKvsArray();
 
-	QList<QString> lSuggestions = hAllSuggestions.keys();
-	Q_FOREACH(QString szSuggestion, lSuggestions)
+	for(const auto & szSuggestion : hAllSuggestions.keys())
 		pArray->append(new KviKvsVariant(szSuggestion));
 
 	c->returnValue()->setArray(pArray);
@@ -158,6 +157,9 @@ static void spellchecker_reload_dicts()
 	const QStringList & wantedDictionaries = KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries);
 	foreach(QString szLang, wantedDictionaries)
 	{
+		if(szLang.isEmpty())
+			continue;
+
 		EnchantDict * pDict = enchant_broker_request_dict(g_pEnchantBroker, szLang.toUtf8().data());
 		if(pDict)
 		{

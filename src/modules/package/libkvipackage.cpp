@@ -154,7 +154,7 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 
 	QStringList sl = KviFileUtils::getFileListing(szUnpackPath);
 
-	Q_FOREACH(QString fn, sl)
+	for(const auto & fn : sl)
 		pFilesArray->append(new KviKvsVariant(fn));
 
 	// delete the random tmp dir

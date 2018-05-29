@@ -270,13 +270,10 @@ bool KviPerlInterpreter::execute(
 		int idx = 0;
 		for(auto tmp : args)
 		{
-			const char * val = tmp.toUtf8().data();
-			if(val)
-			{
-				pArg = newSVpv(val, tmp.length());
-				if(!av_store(pArgs, idx, pArg))
-					SvREFCNT_dec(pArg);
-			}
+			QByteArray szVal = tmp.toUtf8();
+			pArg = newSVpv(szVal.data(), tmp.length());
+			if(!av_store(pArgs, idx, pArg))
+				SvREFCNT_dec(pArg);
 			idx++;
 		}
 	}

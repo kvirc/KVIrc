@@ -27,12 +27,12 @@ DIR=$(pwd)
 BUILDDIR="${DIR}/build"
 cd .. && GITDIR=$(pwd)
 PKG_NAME=kvirc
-SVNGITBZR="~"
-VERSION='4:4.9.2'
-VERSION1='4.9.2'
+SVNGITBZR="~git-"
+VERSION='4:5.0.0'
+VERSION1='5.0.0'
 TMPFILE=$(mktemp)
 TMPGPG=$(mktemp)
-DIST_PPA="trusty xenial zesty artful"
+DIST_PPA="trusty xenial artful bionic"
 PPANAME=kvirc
 
 dchppa_pkg(){
@@ -90,12 +90,15 @@ gpg --allow-secret-key-import --import ${DIR}/secret.gpg
 test -d $BUILDDIR && rm -rf ${BUILDDIR}
 mkdir -p $BUILDDIR
 cd $GITDIR
-dat=$(git describe --dirty)
+abbrevcommit=$(git log -1 --abbrev-commit | grep -i "^commit" | awk '{print $2}')
+numcommit=$(git log | grep "^Date:" | wc -l)
+dat="${numcommit}-${abbrevcommit}"
+#dat=$(git describe --dirty)
 branch=$(git branch | grep "\*" | sed 's/\* //g')
 commit=$(git log -1 | grep -i "^commit" | awk '{print $2}')
 datct=$(git log -n 1 --format=%ct)
 
-test -z "${dat}" && dat="git-9999-$(git describe --always)"
+test -z "${dat}" && dat="git-99999-$(git describe --always)"
 test -z "${branch}" && branch="travis_debian"
 
 if [ ! -z "$PPA" ]
@@ -123,21 +126,11 @@ else
     gpgkey
     tmpgpg
     test -f ~/.dput.cf || dputcf
-    sed "s/Release/Debug/g" -i debian/rules
     dchppa_pkg
     rm -f ../*ppa*
     DIST_PPA="trusty"
     PPANAME=kvirc-qt5.5
     dchppa_pkg
-    #DIST_PPA="trusty wily xenial"
-    #rm -f ../*ppa*
-    #PPANAME=kvirc-dbg
-    #dch -a "DCMAKE_BUILD_TYPE=Debug"
-    #cat >> debian/rules << EOF
-#override_dh_strip:
-#
-#EOF
-#    dchppa_pkg
 fi
 
 

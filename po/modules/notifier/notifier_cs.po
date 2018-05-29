@@ -1,78 +1,75 @@
-# Czech translation of Kvirc 3.0.
-# Copyright (C) 2004 THE Kvirc 3.0'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Kvirc 3.0 package.
-# Dušan Hokův <dusan@mirc.cz>, 2004.
-# , fuzzy
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
 #
-#
+# Translators:
+# Dušan Hokův <dusan@mirc.cz>, 2004
 msgid ""
 msgstr ""
-"Project-Id-Version: Kvirc 3.0\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2004-07-12 10:00+0200\n"
-"Last-Translator: Dušan Hokův <dusan@mirc.cz>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-22 12:41+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
+"Language-Team: Czech (http://www.transifex.com/kvirc/KVIrc/language/cs/)\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: src/modules/notifier/NotifierWindow.cpp:995
+#: src/modules/notifier/NotifierWindow.cpp:937
 msgid "1 Hour"
 msgstr "1 hodina"
 
-#: src/modules/notifier/NotifierWindow.cpp:991
+#: src/modules/notifier/NotifierWindow.cpp:933
 msgid "1 Minute"
 msgstr "1 ninuta"
 
-#: src/modules/notifier/NotifierWindow.cpp:993
+#: src/modules/notifier/NotifierWindow.cpp:935
 msgid "15 Minutes"
 msgstr "15 minut"
 
-#: src/modules/notifier/NotifierWindow.cpp:994
+#: src/modules/notifier/NotifierWindow.cpp:936
 msgid "30 Minutes"
 msgstr "30 minut"
 
-#: src/modules/notifier/NotifierWindow.cpp:992
+#: src/modules/notifier/NotifierWindow.cpp:934
 msgid "5 Minutes"
 msgstr "5 minut"
 
-#: src/modules/notifier/NotifierWindow.cpp:1000
+#: src/modules/notifier/NotifierWindow.cpp:942
 msgid "Disable"
 msgstr "Vypnout"
 
-#: src/modules/notifier/NotifierWindow.cpp:988
+#: src/modules/notifier/NotifierWindow.cpp:930
 msgid "Hide"
 msgstr "Schovat"
 
-#: src/modules/notifier/NotifierWindow.cpp:998
+#: src/modules/notifier/NotifierWindow.cpp:940
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "Pemanentně (Dokud je explicitně povolen)"
 
-#: src/modules/notifier/NotifierWindow.cpp:987
+#: src/modules/notifier/NotifierWindow.cpp:929
 msgid "Show/Hide input line"
 msgstr ""
 
-#: src/modules/notifier/libkvinotifier.cpp:156
+#: src/modules/notifier/libkvinotifier.cpp:154
 msgid "The -t switch expects a timeout in seconds"
 msgstr "Přepínač -t očekává prodlevu v sekundách"
 
-#: src/modules/notifier/libkvinotifier.cpp:151
+#: src/modules/notifier/libkvinotifier.cpp:149
 msgid "The specified timeout is not valid, assuming 0"
 msgstr "Zadaná prodleva je neplatná, nastavuji 0"
 
-#: src/modules/notifier/libkvinotifier.cpp:137
+#: src/modules/notifier/libkvinotifier.cpp:135
 msgid "The specified window does not exist"
 msgstr "Zadané okno neexistuje"
 
-#: src/modules/notifier/NotifierWindow.cpp:997
+#: src/modules/notifier/NotifierWindow.cpp:939
 msgid "Until KVIrc is Restarted"
 msgstr "Dokud se KVIrc nerestartuje"
 
-#: src/modules/notifier/NotifierWindow.cpp:1074
+#: src/modules/notifier/NotifierWindow.cpp:1016
 msgid "Write text or commands to window"
 msgstr "Napíše text nebo příkaz do okna"
-
-#~ msgid "The command parser raised an error"
-#~ msgstr "Parser příkazu vyvolal chybu"

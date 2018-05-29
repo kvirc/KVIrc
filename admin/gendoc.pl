@@ -28,8 +28,8 @@
 # GLOBAL CONFIGS
 #################################################################################################
 
-$g_currenttime=gmtime;
-$g_currentuser = getlogin || getpwuid($<) || "Unknown";
+$g_currenttime = gmtime($ENV{SOURCE_DATE_EPOCH} || time);
+$g_currentuser = $ENV{USER} || getlogin || getpwuid($<) || "Unknown";
 $g_syntaxcolor="#802000";
 
 $g_kvssyntaxcolor="#802000";

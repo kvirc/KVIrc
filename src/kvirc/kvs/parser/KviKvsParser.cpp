@@ -35,9 +35,6 @@
 
 KviKvsParser::KviKvsParser(KviKvsScript * pScript, KviWindow * pOutputWindow)
 {
-	// no need to initialize m_pBuffer
-	// no need to initialize m_ptr
-	// no need to initialize m_bError
 	m_pGlobals = nullptr;
 	m_pScript = pScript;
 	m_pWindow = pOutputWindow;

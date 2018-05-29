@@ -715,6 +715,11 @@ public:
 	void emitDoubleClick();
 
 	/**
+	* \brief Completes the nick prioritizing last active first
+	*/
+	bool completeNickLastAction(const QString & szBegin, const QString & szSkipAfter, QString & szBuffer, bool bAppendMask);
+
+	/**
 	* \brief Completes the nick in normal behaviour
 	*
 	* It looks for the letters typed, if it found at least a result, it

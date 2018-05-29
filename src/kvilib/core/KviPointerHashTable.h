@@ -457,7 +457,7 @@ protected:
 	unsigned int m_uCount;
 	bool m_bCaseSensitive;
 	bool m_bDeepCopyKeys;
-	unsigned int m_uIteratorIdx;
+	unsigned int m_uIteratorIdx = 0;
 
 public:
 	/**

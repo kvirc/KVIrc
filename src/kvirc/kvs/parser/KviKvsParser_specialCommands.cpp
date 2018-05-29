@@ -1812,7 +1812,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			EXTRACT_POPUP_LABEL_CONDITION
 			if(KVSP_curCharUnicode == ';')
 				KVSP_skipChar;
-			QString * pItemName = pParameters ? pParameters->first() : nullptr;
+			QString * pItemName = pParameters->first();
 			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(pLabelBegin, szCondition, pItemName ? *pItemName : QString()));
 			delete pParameters;
 		}

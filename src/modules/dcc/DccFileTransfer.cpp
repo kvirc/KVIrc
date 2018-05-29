@@ -1035,13 +1035,6 @@ void DccSendThread::run()
 												goto handle_system_error;
 												break;
 											case KviSSL::SyscallError:
-												if(written == 0)
-												{
-													raiseSSLError();
-													postErrorEvent(KviError::RemoteEndClosedConnection);
-													goto exit_dcc;
-												}
-												else
 												{
 													int iSSLErr = m_pSSL->getLastError(true);
 													if(iSSLErr != 0)
@@ -2386,12 +2379,6 @@ bool DccFileTransfer::doResume(const char * filename, const char * port, quint64
 
 	if(!bFileNameMatches)
 	{
-		// bad file name
-		if(!bPortMatches)
-			return false; // neither filename nor port match
-
-		// port matches (this is very likely to be the right transfer)
-
 		if(!KVI_OPTION_BOOL(KviOption_boolAcceptBrokenFileNameDccResumeRequests))
 		{
 			if(_OUTPUT_VERBOSE)

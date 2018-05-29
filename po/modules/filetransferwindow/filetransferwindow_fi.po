@@ -1,136 +1,124 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# This file is distributed under the same license as the KVIrc package.
 #
-#, fuzzy
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: filetransferwindow_fi\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Santeri Piippo\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-22 12:41+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/kvirc/KVIrc/language/fi/)\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:531
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:537
 msgid "&Clear Terminated"
 msgstr "Tyhjää p&äättyneet"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:500
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:506
 msgid "&Copy Path to Clipboard"
 msgstr "&Kopioi polku leikepöydälle"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:502
-#, fuzzy
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:508
 msgid "&Delete File"
-msgstr "&Poista tiedosto"
+msgstr ""
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:459
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:490
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:465
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:496
 msgid "&Open"
 msgstr "&Avaa"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:478
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:484
 msgid "&Other..."
 msgstr "&Muuta..."
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:538
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:544
 msgid "Clear &All"
 msgstr "Tyhjää &kaikki"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:820
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:826
 msgid "Clear all transfers, including any in progress?"
 msgstr ""
 "Tyhjää kaikki siirrot, mukaanlukien ne, jotka eivät ole vielä valmiita?"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:824
-#, fuzzy
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:830
 msgid "Confirm Clearing All Transfers - KVIrc"
-msgstr "Tyhjää kaikki siirrot? - KVIrc"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:640
-#, fuzzy
-msgid "Confirm File Delete - KVIrc"
-msgstr "Varmista poisto"
+msgstr ""
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:646
+msgid "Confirm File Delete - KVIrc"
+msgstr ""
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:652
 msgid "Deleting File Failed - KVIrc"
 msgstr ""
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:638
-#, fuzzy
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:644
 msgid "Do you really want to delete the file %1?"
-msgstr "Haluatko varmasti poistaa tiedoston %1?"
+msgstr ""
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:647
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:653
 msgid "Failed to remove the file"
 msgstr "Ei voitu poistaa tiedostoa"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:857
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:863
 msgid "File Transfers"
 msgstr "Tiedostosiirrot"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:143
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:145
 msgid "Information"
 msgstr "Tietoa"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:504
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:510
 msgid "Local &File"
 msgstr "Paikallis&tiedosto"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:496
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:502
 msgid "MS-DOS Prompt at Location"
 msgstr "MS-DOS -komentotulkki kohteeseen"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:641
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:824
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:647
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:830
 msgid "No"
 msgstr "Ei"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:648
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:654
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:483
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:495
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:489
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:501
 msgid "Open &Location"
 msgstr "Avaa &sijainti"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:481
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:487
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:499
 msgid "Open &With"
 msgstr "Avaa &ohjelmalla..."
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:144
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:146
 msgid "Progress"
 msgstr "Edistyminen"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:438
-#, fuzzy
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:440
 msgid "Size: %1"
-msgstr "Koko: %1 tavua"
+msgstr ""
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:484
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:490
 msgid "Terminal at Location"
 msgstr "Komentotulkki kohteeseen"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:142
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:144
 msgid "Type"
 msgstr "Tyyppi"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:641
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:824
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:647
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:830
 msgid "Yes"
 msgstr "Kyllä"
-
-#~ msgid "Delete failed"
-#~ msgstr "Poisto epäonnistui"
-
-#, fuzzy
-#~ msgid "Manage File &Transfers"
-#~ msgstr "Tiedostosiirrot"

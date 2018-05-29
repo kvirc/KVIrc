@@ -521,11 +521,7 @@ namespace KviKvsCoreSimpleCommands
 		else
 		{
 			QByteArray szT = KVSCSC_pConnection->encodeText(szTarget);
-			QByteArray szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
-			if(!szT.data())
-				szT = ""; // encoding problems ?
-			if(!szD.data())
-				szD = ""; // encoding problems ?
+			QByteArray szD = KVSCSC_pConnection->encodeText(szText);
 
 			if(!(KVSCSC_pConnection->sendFmtData("SQUERY %s :%s", szT.data(), szD.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();

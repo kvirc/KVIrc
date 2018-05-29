@@ -1,53 +1,45 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# This file is distributed under the same license as the KVIrc package.
 #
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: python_fr\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2010-07-18 12:29+0100\n"
-"Last-Translator: \n"
-"Language-Team: Français <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-23 21:28+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/kvirc/KVIrc/language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/modules/pythoncore/libkvipythoncore.cpp:113
-#, fuzzy
 msgid "Internal error: Python interpreter not initialized"
-msgstr "Erreur interne : l'interpréteur de Python n'est pas initialisé"
+msgstr ""
 
-#: src/modules/python/libkvipython.cpp:429
+#: src/modules/python/libkvipython.cpp:419
 msgid "Python execution error:"
 msgstr "Erreur d'exécution de Python :"
 
 #: src/modules/python/libkvipython.cpp:42
-#, fuzzy
 msgid "The pythoncore module can't be loaded: Python support not available"
 msgstr ""
-"Le module pythoncore ne peux pas être chargé : la gestion de Python n'est "
-"pas disponible"
 
-#: src/modules/python/libkvipython.cpp:417
-#: src/modules/python/libkvipython.cpp:483
-#, fuzzy
+#: src/modules/python/libkvipython.cpp:407
+#: src/modules/python/libkvipython.cpp:473
 msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
 "the Python support"
 msgstr ""
-"Le module pythoncore n'a pas réussi à exécuter le code : un problème est "
-"survenu dans la gestion de Python"
 
 #: src/modules/python/libkvipython.cpp:56
-#, fuzzy
 msgid ""
 "This KVIrc executable has been compiled without Python scripting support"
 msgstr ""
-"Cet exécutable KVIrc n'a pas été compilé avec la gestion des scripts Python"
 
 #: src/modules/python/libkvipython.cpp:43
 msgid "To see more details about loading failure try /pythoncore.load"

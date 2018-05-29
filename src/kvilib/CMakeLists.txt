@@ -136,7 +136,7 @@ set_property(TARGET ${KVILIB_BINARYNAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 
 
 if(Qt5Widgets_FOUND)
-	qt5_use_modules(${KVILIB_BINARYNAME} ${qt5_kvirc_modules})
+	target_link_libraries(${KVILIB_BINARYNAME} ${qt5_kvirc_modules})
 endif()
 
 set_target_properties(${KVILIB_BINARYNAME} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")

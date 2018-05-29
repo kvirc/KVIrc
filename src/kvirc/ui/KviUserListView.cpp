@@ -485,8 +485,81 @@ void KviUserListView::completeNickBashLike(const QString & szBegin, std::vector<
 	}
 }
 
+bool KviUserListView::completeNickLastAction(const QString & szBegin, const QString & szSkipAfter, QString & szBuffer, bool bAppendMask)
+{
+	KviUserListEntry * pLastMatch = findEntry(szSkipAfter);
+	KviUserListEntry * pBestMatch = nullptr;
+
+	bool bUseNextEqual = false;
+	KviUserListEntry * pEntry = m_pHeadItem;
+	while(pEntry)
+	{
+		if(pLastMatch && pEntry == pLastMatch)
+			bUseNextEqual = true;
+		else if(pEntry->m_szNick.length() >= szBegin.length())
+		{
+			bool bEqual = KviQString::equalCIN(szBegin, pEntry->m_szNick, szBegin.length());
+			if(!bEqual && KVI_OPTION_BOOL(KviOption_boolIgnoreSpecialCharactersInNickCompletion))
+			{
+				QString szTmp = pEntry->m_szNick;
+				szTmp.remove(QRegExp("[^a-zA-Z0-9]"));
+				bEqual = KviQString::equalCIN(szBegin, szTmp, szBegin.length());
+			}
+
+			if(bEqual)
+			{
+				if(!pLastMatch && !pBestMatch)
+					pBestMatch = pEntry;
+				else if(!pLastMatch && pBestMatch)
+				{
+					if(pEntry->m_lastActionTime > pBestMatch->m_lastActionTime)
+						pBestMatch = pEntry;
+				}
+				else if(!pBestMatch)
+				{
+					if(pLastMatch->m_lastActionTime > pEntry->m_lastActionTime)
+						pBestMatch = pEntry;
+					else if(bUseNextEqual && pLastMatch->m_lastActionTime == pEntry->m_lastActionTime)
+					{
+						pBestMatch = pEntry;
+						bUseNextEqual = false;
+					}
+				}
+				else
+				{
+					if((pLastMatch->m_lastActionTime > pEntry->m_lastActionTime) && (pEntry->m_lastActionTime > pBestMatch->m_lastActionTime))
+						pBestMatch = pEntry;
+					else if(bUseNextEqual && pLastMatch->m_lastActionTime == pEntry->m_lastActionTime)
+					{
+						pBestMatch = pEntry;
+						bUseNextEqual = false;
+					}
+				}
+			}
+		}
+		pEntry = pEntry->m_pNext;
+	}
+
+	if(pBestMatch)
+	{
+		szBuffer = pBestMatch->m_szNick;
+		if(bAppendMask)
+		{
+			szBuffer += "!";
+			szBuffer += pBestMatch->m_pGlobalData->user();
+			szBuffer += "@";
+			szBuffer += pBestMatch->m_pGlobalData->host();
+		}
+		return true;
+	}
+	return false;
+}
+
 bool KviUserListView::completeNickStandard(const QString & szBegin, const QString & szSkipAfter, QString & szBuffer, bool bAppendMask)
 {
+	if(KVI_OPTION_BOOL(KviOption_boolPrioritizeLastActionTime))
+		return completeNickLastAction(szBegin, szSkipAfter, szBuffer, bAppendMask);
+
 	KviUserListEntry * pEntry = m_pHeadItem;
 
 	if(!szSkipAfter.isEmpty())

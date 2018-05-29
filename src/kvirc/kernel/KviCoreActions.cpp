@@ -89,7 +89,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 	    KVI_COREACTION_SERVEROPTIONS,
-	    "options.edit OptionsWidget_servers",
+	    "options.edit -n OptionsWidget_servers",
 	    __tr2qs("Configure Servers..."),
 	    __tr2qs("Allows you to configure the servers and eventually to connect to them"),
 	    KviActionManager::categorySettings(),
@@ -317,17 +317,6 @@ void register_core_actions(KviActionManager * m)
 	    KviIconManager::Help,
 	    0,
 	    KVI_SHORTCUTS_HELP);
-
-	SCRIPT_ACTION(
-	    KVI_COREACTION_KVIRCMAILINGLIST,
-	    "openurl http://www.kvirc.net/?id=mailinglist",
-	    __tr2qs("Subscribe to the Mailing List"),
-	    __tr2qs("Allows subscribing to the KVIrc mailing list"),
-	    KviActionManager::categoryGeneric(),
-	    "kvi_bigicon_mailinglist.png",
-	    KviIconManager::Message,
-	    0,
-	    QString());
 
 	SCRIPT_ACTION(
 	    KVI_COREACTION_KVIRCHOMEPAGE,
@@ -908,7 +897,7 @@ KviConnectToServerAction::KviConnectToServerAction(QObject * pParent)
     : KviSubmenuAction(
           pParent,
           QString(KVI_COREACTION_SERVERMENU),
-          QString("options.edit OptionsWidget_servers"),
+          QString("options.edit -n OptionsWidget_servers"),
           __tr2qs("Connect to"),
           __tr2qs("Shows a popup menu that allows quickly connecting to a server"),
           KviActionManager::categoryIrc(),
