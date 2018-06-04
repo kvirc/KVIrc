@@ -12,7 +12,7 @@ environment:
           nuget_arch: x64
           vc_arch: amd64
           choco_arch:
-          qt_ver: 5.9\msvc2017_64
+          qt_ver: latest\msvc2017_64
           MSYSTEM: MINGW64
           mingw_fourple: mingw64/mingw-w64-x86_64
           mingw_root: c:/msys64/mingw64
@@ -25,7 +25,7 @@ environment:
           nuget_arch: Win32
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
           choco_arch: --x86
-          qt_ver: 5.9\msvc2015 # no official Qt VS2017 32bit, use VS2015(ABI compatible, answer from Qt)
+          qt_ver: latest\msvc2015 # no official Qt VS2017 32bit, use VS2015(ABI compatible, answer from Qt)
           MSYSTEM: MINGW32
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
@@ -38,7 +38,7 @@ environment:
           nuget_arch: x64
           vc_arch: amd64
           choco_arch:
-          qt_ver: 5.9\msvc2017_64
+          qt_ver: latest\msvc2017_64
           MSYSTEM: MINGW64
           mingw_fourple: mingw64/mingw-w64-x86_64
           mingw_root: c:/msys64/mingw64
@@ -51,7 +51,7 @@ environment:
           nuget_arch: Win32
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
           choco_arch: --x86
-          qt_ver: 5.9\msvc2015 # no official Qt VS2017 32bit, use VS2015(ABI compatible, answer from Qt)
+          qt_ver: latest\msvc2015 # no official Qt VS2017 32bit, use VS2015(ABI compatible, answer from Qt)
           MSYSTEM: MINGW32
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
