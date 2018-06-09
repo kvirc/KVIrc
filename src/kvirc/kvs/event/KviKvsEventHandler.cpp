@@ -24,6 +24,8 @@
 
 #include "KviKvsEventHandler.h"
 
+#include <utility>
+
 KviKvsEventHandler::KviKvsEventHandler(Type t)
     : KviHeapObject(), m_type(t)
 {
@@ -32,8 +34,10 @@ KviKvsEventHandler::KviKvsEventHandler(Type t)
 KviKvsEventHandler::~KviKvsEventHandler()
     = default;
 
-KviKvsScriptEventHandler::KviKvsScriptEventHandler(const QString & szHandlerName, const QString & szContextName, const QString & szCode, bool bEnabled)
-    : KviKvsEventHandler(KviKvsEventHandler::Script), m_szName(szHandlerName), m_bEnabled(bEnabled)
+KviKvsScriptEventHandler::KviKvsScriptEventHandler(QString szHandlerName, const QString & szContextName, const QString & szCode, bool bEnabled)
+    : KviKvsEventHandler(KviKvsEventHandler::Script)
+    , m_szName(std::move(szHandlerName))
+    , m_bEnabled(bEnabled)
 {
 	m_pScript = new KviKvsScript(szContextName, szCode);
 }

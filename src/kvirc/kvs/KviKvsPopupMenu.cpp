@@ -34,6 +34,7 @@
 #include "KviOptions.h"
 
 #include <QWidgetAction>
+#include <utility>
 // popup names
 
 // rootname : the root popup
@@ -53,8 +54,9 @@ KviKvsPopupMenuItem::KviKvsPopupMenuItem(Type t, const QString & szItemName, con
 	}
 }
 
-KviKvsPopupMenuItem::KviKvsPopupMenuItem(Type t, const QString & szItemName, const KviKvsScript * pCondition)
-    : m_szItemName{szItemName}, m_eType{t}
+KviKvsPopupMenuItem::KviKvsPopupMenuItem(Type t, QString szItemName, const KviKvsScript * pCondition)
+    : m_szItemName{ std::move(szItemName) }
+    , m_eType{ t }
 {
 	if(pCondition)
 		m_pKvsCondition = new KviKvsScript(*pCondition);
@@ -392,8 +394,9 @@ void KviKvsPopupMenuItemMenu::clear()
 	m_pMenu->clearMenuContents();
 }
 
-KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemName, const QString & szMenuName, const QString & szText, const QString & szIcon, const QString & szCondition)
-    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::ExtMenu, szItemName, szText, szIcon, szCondition), m_szMenuName{szMenuName}
+KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemName, QString szMenuName, const QString & szText, const QString & szIcon, const QString & szCondition)
+    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::ExtMenu, szItemName, szText, szIcon, szCondition)
+    , m_szMenuName{ std::move(szMenuName) }
 {
 	if(m_szMenuName[0] == '"' && m_szMenuName[m_szMenuName.length() - 1] == '"')
 	{
@@ -402,8 +405,9 @@ KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemNam
 	}
 }
 
-KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemName, const QString & szMenuName, const KviKvsScript * pText, const KviKvsScript * pIcon, const KviKvsScript * pCondition)
-    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::ExtMenu, szItemName, pText, pIcon, pCondition), m_szMenuName{szMenuName}
+KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemName, QString szMenuName, const KviKvsScript * pText, const KviKvsScript * pIcon, const KviKvsScript * pCondition)
+    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::ExtMenu, szItemName, pText, pIcon, pCondition)
+    , m_szMenuName{ std::move(szMenuName) }
 {
 	if(m_szMenuName[0] == '"' && m_szMenuName[m_szMenuName.length() - 1] == '"')
 	{

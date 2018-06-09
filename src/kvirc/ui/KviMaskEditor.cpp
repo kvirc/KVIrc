@@ -71,7 +71,7 @@ KviMaskInputDialog::KviMaskInputDialog(const QString & szMask, KviMaskEditor * p
 {
 	m_pChannel = pChannel;
 	m_pEditor = pEditor;
-	setModal(1);
+	setModal(true);
 	m_szOldMask = szMask;
 
 	setWindowTitle(__tr2qs("Mask Editor - KVIrc"));

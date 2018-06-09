@@ -29,7 +29,7 @@
 
 #include <QRegExp>
 
-#include <math.h>
+#include <cmath>
 
 KviKvsTreeNodeOperation::KviKvsTreeNodeOperation(const QChar * pLocation)
     : KviKvsTreeNodeInstruction(pLocation)

@@ -72,7 +72,7 @@ KviIrcMessage::KviIrcMessage(const char * message, KviIrcConnection * pConnectio
 			if(*m_ptr == ':')
 			{
 				++m_ptr;
-				m_pParams.push_back(KviCString(m_ptr));
+				m_pParams.emplace_back(m_ptr);
 				break; // this was the last
 			}
 			else
@@ -80,7 +80,7 @@ KviIrcMessage::KviIrcMessage(const char * message, KviIrcConnection * pConnectio
 				aux = m_ptr;
 				while(*m_ptr && (*m_ptr != ' '))
 					++m_ptr;
-				m_pParams.push_back(KviCString(aux, m_ptr));
+				m_pParams.emplace_back(aux, m_ptr);
 				while(*m_ptr == ' ')
 					++m_ptr;
 			}
@@ -122,8 +122,7 @@ KviIrcMessage::KviIrcMessage(const char * message, KviIrcConnection * pConnectio
 }
 
 KviIrcMessage::~KviIrcMessage()
-{
-}
+    = default;
 
 void KviIrcMessage::decodeAndSplitMask(char * b, QString & szNick, QString & szUser, QString & szHost)
 {

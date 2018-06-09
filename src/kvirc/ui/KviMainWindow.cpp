@@ -75,7 +75,7 @@
 #include <QCheckBox>
 #include <QString>
 
-#include <time.h>
+#include <ctime>
 #include <algorithm>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -1301,32 +1301,32 @@ void KviMainWindow::recreateWindowList()
 // Some accelerators
 //
 
-void KviMainWindow::switchToPrevWindow(void)
+void KviMainWindow::switchToPrevWindow()
 {
 	m_pWindowList->switchWindow(false, false);
 }
 
-void KviMainWindow::switchToNextWindow(void)
+void KviMainWindow::switchToNextWindow()
 {
 	m_pWindowList->switchWindow(true, false);
 }
 
-void KviMainWindow::switchToPrevHighlightedWindow(void)
+void KviMainWindow::switchToPrevHighlightedWindow()
 {
 	m_pWindowList->switchWindow(false, false, true);
 }
 
-void KviMainWindow::switchToNextHighlightedWindow(void)
+void KviMainWindow::switchToNextHighlightedWindow()
 {
 	m_pWindowList->switchWindow(true, false, true);
 }
 
-void KviMainWindow::switchToPrevWindowInContext(void)
+void KviMainWindow::switchToPrevWindowInContext()
 {
 	m_pWindowList->switchWindow(false, true);
 }
 
-void KviMainWindow::switchToNextWindowInContext(void)
+void KviMainWindow::switchToNextWindowInContext()
 {
 	m_pWindowList->switchWindow(true, true);
 }

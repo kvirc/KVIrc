@@ -43,38 +43,32 @@
 
 #include "qurl.h"
 #include "qdir.h"
-#include <limits.h>
+#include <climits>
 
 QT_BEGIN_NAMESPACE
 
 class QUrlInfoPrivate
 {
 public:
-	QUrlInfoPrivate() : permissions(0),
-	                    size(0),
-	                    isDir(false),
-	                    isFile(true),
-	                    isSymLink(false),
-	                    isWritable(true),
-	                    isReadable(true),
-	                    isExecutable(false)
+	QUrlInfoPrivate()
+
 	{
 	}
 
 	QString name;
-	int permissions;
+	int permissions{ 0 };
 	QString owner;
 	QString group;
-	qint64 size;
+	qint64 size{ 0 };
 
 	QDateTime lastModified;
 	QDateTime lastRead;
-	bool isDir;
-	bool isFile;
-	bool isSymLink;
-	bool isWritable;
-	bool isReadable;
-	bool isExecutable;
+	bool isDir{ false };
+	bool isFile{ true };
+	bool isSymLink{ false };
+	bool isWritable{ true };
+	bool isReadable{ true };
+	bool isExecutable{ false };
 };
 
 /*!

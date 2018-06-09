@@ -1882,9 +1882,9 @@ QString DccFileTransfer::tipText()
 {
 	QString s;
 
-	s = QString("<table><tr><td bgcolor=\"#000000\"><font color=\"#FFFFFF\"><b>DCC %1 (ID %2)</b></font></td></tr>").arg(m_szDccType.ptr()).arg(id());
+	s = QString(R"(<table><tr><td bgcolor="#000000"><font color="#FFFFFF"><b>DCC %1 (ID %2)</b></font></td></tr>)").arg(m_szDccType.ptr()).arg(id());
 
-	s += "<tr><td bgcolor=\"#404040\"><font color=\"#FFFFFF\">";
+	s += R"(<tr><td bgcolor="#404040"><font color="#FFFFFF">)";
 	s += __tr2qs_ctx("Transfer Log", "dcc");
 	s += "</font></td></tr>";
 	s += "<tr><td bgcolor=\"#C0C0C0\">";

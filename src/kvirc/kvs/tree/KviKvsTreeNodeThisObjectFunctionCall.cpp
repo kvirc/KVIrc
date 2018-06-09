@@ -35,7 +35,7 @@ KviKvsTreeNodeThisObjectFunctionCall::~KviKvsTreeNodeThisObjectFunctionCall()
 
 void KviKvsTreeNodeThisObjectFunctionCall::contextDescription(QString & szBuffer)
 {
-	szBuffer = "\"This\" Object Function Call \"";
+	szBuffer = R"("This" Object Function Call ")";
 	szBuffer += m_szFunctionName;
 	szBuffer += "\"";
 }

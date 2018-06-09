@@ -38,7 +38,7 @@ class KVIRC_API KviCustomToolBarDescriptor
 	friend class KviCustomToolBarManager;
 
 protected:
-	KviCustomToolBarDescriptor(const QString & szId, const QString & szLabelCode);
+	KviCustomToolBarDescriptor(QString szId, const QString & szLabelCode);
 
 public:
 	~KviCustomToolBarDescriptor();

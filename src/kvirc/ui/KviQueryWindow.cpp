@@ -200,7 +200,7 @@ QString KviQueryWindow::getInfoLabelText()
 
 				szTmp += "\n";
 
-				if(connection()->getCommonChannels(m_szName, szChans, 0))
+				if(connection()->getCommonChannels(m_szName, szChans, false))
 					szTmp += __tr2qs("Common channels: %2").arg(szChans);
 				else
 					szTmp += __tr2qs("No common channels");
@@ -629,7 +629,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 
 			// first part (optimization): quickly find an high index that is _surely_lesser_
 			// than the correct one
-			while(1)
+			while(true)
 			{
 				iC++;
 				szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
@@ -647,7 +647,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 
 			// now, do it the simple way: increment our index until we perfectly fit into the
 			// available space
-			while(1)
+			while(true)
 			{
 				iC++;
 

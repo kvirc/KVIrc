@@ -34,7 +34,7 @@
 #include <winsock2.h> // for the WSAE* error codes
 #endif
 
-#include <errno.h>
+#include <cerrno>
 
 #ifdef HAVE_STRERROR
 #include <string.h> // for strerror()

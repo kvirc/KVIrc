@@ -1175,7 +1175,7 @@ static void dccModuleParseDccList(KviDccRequest *)
 	// FIXME!
 }
 
-typedef void (*dccParseProc)(KviDccRequest *);
+using dccParseProc = void (*)(KviDccRequest *);
 typedef struct _dccParseProcEntry
 {
 	const char * type;

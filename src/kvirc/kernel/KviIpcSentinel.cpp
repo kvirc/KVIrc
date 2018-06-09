@@ -41,8 +41,8 @@
 
 #include <unistd.h>    // for getuid, getpid
 #include <sys/types.h> // for getuid, getpid
-#include <string.h>    // for memcpy
-#include <stdlib.h>    // for malloc
+#include <cstring>     // for memcpy
+#include <cstdlib>     // for malloc
 
 #include <QX11Info>
 

@@ -26,8 +26,7 @@
 #include "KviKvsScript.h"
 
 KviAsyncWhoisInfo::KviAsyncWhoisInfo()
-{
-}
+    = default;
 
 KviAsyncWhoisInfo::~KviAsyncWhoisInfo()
 {

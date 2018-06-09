@@ -40,7 +40,7 @@ protected:
 	KviIrcConnectionServerInfo * m_pParent;
 
 public:
-	KviBasicIrcServerInfo(KviIrcConnectionServerInfo * pParent = nullptr, const QString & version = KviQString::Empty);
+	KviBasicIrcServerInfo(KviIrcConnectionServerInfo * pParent = nullptr, QString version = KviQString::Empty);
 	virtual ~KviBasicIrcServerInfo();
 
 public:

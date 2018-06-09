@@ -23,6 +23,8 @@
 //=============================================================================
 
 #include "KviIrcConnectionServerInfo.h"
+
+#include <utility>
 #include "KviLocale.h"
 #include "KviMemory.h"
 #include "KviIrcUserDataBase.h"
@@ -185,7 +187,7 @@ bool KviIrcConnectionServerInfo::isSupportedModeFlag(QChar c) const
 QChar KviIrcConnectionServerInfo::modePrefixChar(kvi_u32_t flag) const
 {
 	if(!m_pModePrefixTable)
-		return QChar(0);
+		return { 0 };
 	for(unsigned int i = 0; i < m_uPrefixes; i++)
 	{
 		if(m_pModePrefixTable[i * 3 + 2] & flag)
@@ -197,7 +199,7 @@ QChar KviIrcConnectionServerInfo::modePrefixChar(kvi_u32_t flag) const
 QChar KviIrcConnectionServerInfo::modeFlagChar(kvi_u32_t flag) const
 {
 	if(!m_pModePrefixTable)
-		return QChar(0);
+		return { 0 };
 	for(unsigned int i = 0; i < m_uPrefixes; i++)
 	{
 		if(m_pModePrefixTable[i * 3 + 2] & flag)
@@ -274,8 +276,9 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviBasicIrcServerInfo(this, version);
 }
 
-KviBasicIrcServerInfo::KviBasicIrcServerInfo(KviIrcConnectionServerInfo * pParent, const QString & version)
-    : m_pParent(pParent), m_szServerVersion(version)
+KviBasicIrcServerInfo::KviBasicIrcServerInfo(KviIrcConnectionServerInfo * pParent, QString version)
+    : m_pParent(pParent)
+    , m_szServerVersion(std::move(version))
 {
 }
 

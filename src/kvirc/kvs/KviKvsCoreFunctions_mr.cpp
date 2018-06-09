@@ -37,7 +37,7 @@
 #include "KviApplication.h"
 #include "KviQueryWindow.h"
 
-#include <stdlib.h> // rand & srand
+#include <cstdlib> // rand & srand
 
 namespace KviKvsCoreFunctions
 {

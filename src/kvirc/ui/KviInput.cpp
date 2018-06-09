@@ -60,8 +60,8 @@
 #include <QPushButton>
 #include <QFontMetrics>
 
-#include <ctype.h>
-#include <stdlib.h>
+#include <cctype>
+#include <cstdlib>
 
 //This comes from KviApplication.cpp
 extern KviColorWindow * g_pColorWindow;

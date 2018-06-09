@@ -25,7 +25,7 @@
 #include "KviKvsTreeNodeExpression.h"
 #include "KviLocale.h"
 
-#include <math.h>
+#include <cmath>
 
 KviKvsTreeNodeExpression::KviKvsTreeNodeExpression(const QChar * pLocation)
     : KviKvsTreeNodeData(pLocation)

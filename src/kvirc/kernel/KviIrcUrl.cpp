@@ -112,7 +112,7 @@ void KviIrcUrl::split(const QString & url, KviIrcUrlParts & result)
 	result.iPort = 6667;
 	result.iError = 0;
 
-	QRegExp rx("^(irc(s)?(6)?://)?\\[?([\\w\\d\\.-]*|[\\d:a-f]*)\\]?(:(\\d*))?(/(.*))?$");
+	QRegExp rx(R"(^(irc(s)?(6)?://)?\[?([\w\d\.-]*|[\d:a-f]*)\]?(:(\d*))?(/(.*))?$)");
 
 	if(rx.indexIn(url) < 0)
 	{

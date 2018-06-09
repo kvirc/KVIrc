@@ -23,6 +23,8 @@
 //=============================================================================
 
 #include "KviKvsReport.h"
+
+#include <utility>
 #include "KviControlCodes.h"
 #include "KviWindow.h"
 #include "kvi_out.h"
@@ -31,8 +33,12 @@
 #include "KviDebugWindow.h"
 #include "KviOptions.h"
 
-KviKvsReport::KviKvsReport(Type t, const QString & szContext, const QString & szMessage, const QString & szLocation, KviWindow * pWindow)
-    : m_eType(t), m_szContext(szContext), m_szMessage(szMessage), m_szLocation(szLocation), m_pWindow(pWindow)
+KviKvsReport::KviKvsReport(Type t, QString szContext, QString szMessage, QString szLocation, KviWindow * pWindow)
+    : m_eType(t)
+    , m_szContext(std::move(szContext))
+    , m_szMessage(std::move(szMessage))
+    , m_szLocation(std::move(szLocation))
+    , m_pWindow(pWindow)
 {
 	m_pCallStack = nullptr;
 	m_pCodeListing = nullptr;

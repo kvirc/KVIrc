@@ -33,7 +33,7 @@
 #include "KviMainWindow.h"
 #include "KviPointerHashTable.h"
 
-#include <time.h>
+#include <ctime>
 
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 

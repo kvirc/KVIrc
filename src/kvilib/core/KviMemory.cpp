@@ -31,7 +31,7 @@
 #define _KVI_MALLOC_CPP_
 #include "KviMemory.h"
 
-#include <stdio.h>
+#include <cstdio>
 
 #ifdef COMPILE_MEMORY_PROFILE
 #include "KviPointerList.h"

@@ -248,7 +248,7 @@ void FileTransferItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & 
 QSize FileTransferItemDelegate::sizeHint(const QStyleOptionViewItem &, const QModelIndex &) const
 {
 	// FIXME fixed width
-	return QSize(((FileTransferWidget *)parent())->viewport()->size().width(), 68);
+	return { ((FileTransferWidget *)parent())->viewport()->size().width(), 68 };
 }
 
 FileTransferWindow::FileTransferWindow(

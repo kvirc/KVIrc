@@ -861,7 +861,7 @@ void KviIrcView::doMarkerToolTip()
 	QString tip;
 
 	tip += "<table>";
-	tip += "<tr><td style=\"white-space: pre; padding-left: 2px; padding-right: 2px; valign=\"middle\">";
+	tip += R"(<tr><td style="white-space: pre; padding-left: 2px; padding-right: 2px; valign="middle">)";
 	tip += __tr2qs("Scroll up to read from the last read line");
 	tip += "</td></tr></table>";
 

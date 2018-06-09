@@ -149,8 +149,8 @@ DO NOT REMOVE THEM EVEN IF THEY ARE DEFINED ALSO IN KviApplication.h
 
 #include <QDir>
 
-#include <stdlib.h> // rand & srand
-#include <time.h>   // time() in srand()
+#include <cstdlib>  // rand & srand
+#include <ctime>    // time() in srand()
 #include <map>      // std::map<>
 
 // Global application pointer

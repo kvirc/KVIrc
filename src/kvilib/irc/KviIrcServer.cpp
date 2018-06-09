@@ -32,7 +32,7 @@
 
 #include <memory>
 #include <vector>
-#include <stdlib.h>
+#include <cstdlib>
 
 // This is not allowed on windows unless we force the symbol to be undefined
 // It works on linux since gcc allows undefined symbols by default

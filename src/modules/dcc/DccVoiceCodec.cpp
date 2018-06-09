@@ -29,8 +29,7 @@
 #include <QBuffer>
 
 DccVoiceCodec::DccVoiceCodec()
-{
-}
+    = default;
 
 DccVoiceCodec::~DccVoiceCodec()
     = default;
@@ -95,8 +94,7 @@ int DccVoiceNullCodec::decodedFrameSize()
 }
 
 DccVideoCodec::DccVideoCodec()
-{
-}
+    = default;
 
 DccVideoCodec::~DccVideoCodec()
     = default;

@@ -72,6 +72,7 @@
 #include <QtGlobal>
 
 #include <algorithm>
+#include <memory>
 
 extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
@@ -88,7 +89,7 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext, KviIrcConnectionTar
 	m_pAntiCtcpFloodData = new KviIrcConnectionAntiCtcpFloodData();
 	m_pNetsplitDetectorData = new KviIrcConnectionNetsplitDetectorData();
 	m_pAsyncWhoisData = new KviIrcConnectionAsyncWhoisData();
-	m_pStatistics = std::unique_ptr<KviIrcConnectionStatistics>(new KviIrcConnectionStatistics);
+	m_pStatistics = std::make_unique<KviIrcConnectionStatistics>();
 	m_pRequestQueue = new KviIrcConnectionRequestQueue();
 	setupSrvCodec();
 	setupTextCodec();

@@ -27,6 +27,7 @@
 #include "KviQString.h"
 
 #include <QString>
+#include <memory>
 
 KviPixmap::KviPixmap()
     = default;
@@ -55,7 +56,7 @@ bool KviPixmap::load(const QString & path)
 		return false;
 	}
 
-	m_pPix.reset(new QPixmap(path));
+	m_pPix = std::make_unique<QPixmap>(path);
 
 	if(m_pPix->isNull())
 	{
@@ -76,7 +77,7 @@ void KviPixmap::set(const QPixmap & pix, const QString & szPath)
 		return;
 	}
 
-	m_pPix.reset(new QPixmap(pix));
+	m_pPix = std::make_unique<QPixmap>(pix);
 	m_szPath = szPath;
 }
 
@@ -96,7 +97,7 @@ KviPixmap & KviPixmap::operator=(const KviPixmap & pix)
 	if(!pix.path().isEmpty() && !pix.isNull())
 	{
 		m_szPath = pix.path();
-		m_pPix.reset(new QPixmap(*(pix.pixmap())));
+		m_pPix = std::make_unique<QPixmap>(*(pix.pixmap()));
 	}
 	else
 		setNull();

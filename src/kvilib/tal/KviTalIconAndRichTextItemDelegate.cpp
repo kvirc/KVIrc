@@ -121,5 +121,5 @@ QSize KviTalIconAndRichTextItemDelegate::sizeHint(const QStyleOptionViewItem & o
 	if(h < m_oMinimumSize.height())
 		h = m_oMinimumSize.height();
 
-	return QSize(w, h);
+	return { w, h };
 }

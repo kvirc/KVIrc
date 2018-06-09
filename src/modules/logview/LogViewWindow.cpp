@@ -58,7 +58,7 @@
 #include <QCheckBox>
 #include <QMenu>
 
-#include <limits.h> //for INT_MAX
+#include <climits> //for INT_MAX
 
 extern LogViewWindow * g_pLogViewWindow;
 
@@ -739,7 +739,7 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 				// insert msgtype icon at start of the current text line
 				KviMessageTypeSettings msg(KVI_OPTION_MSGTYPE(iMsgType));
 				QString szIcon = g_pIconManager->getSmallIconResourceName((KviIconManager::SmallIcon)msg.pixId());
-				szTmp.prepend("<img src=\"" + szIcon + "\" alt=\"\" /> ");
+				szTmp.prepend("<img src=\"" + szIcon + R"(" alt="" /> )");
 
 				/*
 				 * Check if the nick who has talked is the same of the above line.

@@ -450,7 +450,7 @@ inline const QString * KviModeEditor::getModeDescription(char cMode)
 inline bool KviModeEditor::modeNeedsParameterOnlyWhenSet(char cMode)
 {
 	if(!m_pChannel)
-		return 0;
+		return false;
 	KviIrcConnectionServerInfo * pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
 		return pServerInfo->supportedParameterWhenSetModes().contains(cMode);

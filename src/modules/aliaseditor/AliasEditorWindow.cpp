@@ -364,7 +364,7 @@ void AliasEditorWidget::itemRenamed(QTreeWidgetItem * it, int col)
 
 bool AliasEditorWidget::hasSelectedItems()
 {
-	return m_pTreeWidget->selectedItems().count() ? 1 : 0;
+	return m_pTreeWidget->selectedItems().count() ? true : false;
 }
 
 bool AliasEditorWidget::itemExists(QTreeWidgetItem * pSearchFor)

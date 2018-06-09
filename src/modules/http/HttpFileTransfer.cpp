@@ -304,11 +304,11 @@ int HttpFileTransfer::displayHeight(int iLineSpacing)
 QString HttpFileTransfer::tipText()
 {
 	QString s;
-	s = QString("<table><tr><td bgcolor=\"#000000\"><font color=\"#FFFFFF\"><b>HTTP Transfer (ID %1)</b></font></td></tr>").arg(id());
+	s = QString(R"(<table><tr><td bgcolor="#000000"><font color="#FFFFFF"><b>HTTP Transfer (ID %1)</b></font></td></tr>)").arg(id());
 
 	if(m_lRequest.count() > 0)
 	{
-		s += "<tr><td bgcolor=\"#404040\"><font color=\"#FFFFFF\">Request Headers</font></td></tr>";
+		s += R"(<tr><td bgcolor="#404040"><font color="#FFFFFF">Request Headers</font></td></tr>)";
 		s += "<tr><td bgcolor=\"#C0C0C0\">";
 		for(QStringList::ConstIterator it = m_lRequest.begin(); it != m_lRequest.end(); ++it)
 		{
@@ -321,7 +321,7 @@ QString HttpFileTransfer::tipText()
 
 	if(m_lHeaders.count() > 0)
 	{
-		s += "<tr><td bgcolor=\"#404040\"><font color=\"#FFFFFF\">Response Headers</font></td></tr>";
+		s += R"(<tr><td bgcolor="#404040"><font color="#FFFFFF">Response Headers</font></td></tr>)";
 		s += "<tr><td bgcolor=\"#C0C0C0\">";
 		for(QStringList::ConstIterator it = m_lHeaders.begin(); it != m_lHeaders.end(); ++it)
 		{

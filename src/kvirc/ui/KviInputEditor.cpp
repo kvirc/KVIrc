@@ -73,6 +73,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <utility>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <windows.h>
@@ -121,8 +122,8 @@ public:
 	{
 	}
 
-	KviInputEditorTextBlock(const QString & text)
-	    : szText(text)
+	KviInputEditorTextBlock(QString text)
+	    : szText(std::move(text))
 	{
 	}
 };
@@ -986,7 +987,7 @@ QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
 			return QChar('E');
 			break;
 		default:
-			return QChar(uControlCode);
+			return { uControlCode };
 			break;
 	}
 }

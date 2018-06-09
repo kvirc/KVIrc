@@ -241,7 +241,7 @@ bool kvi_binaryIpToStringIp_V6(struct in6_addr in, QString & szBuffer)
 
 #endif
 
-#include <errno.h>
+#include <cerrno>
 
 bool kvi_select(int fd, bool * bCanRead, bool * bCanWrite, int iUSecs)
 {
@@ -610,7 +610,7 @@ kvi_u32_t KviSockaddr::port()
 bool KviSockaddr::getStringAddress(QString & szBuffer)
 {
 	if(!m_pData)
-		return 0;
+		return false;
 #ifdef COMPILE_IPV6_SUPPORT
 	switch(((struct addrinfo *)m_pData)->ai_family)
 	{

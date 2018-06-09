@@ -45,9 +45,9 @@
 #include <QIcon>
 #include <QPointer>
 
-#include <time.h>
+#include <ctime>
 
-	/*
+/*
 		@doc: objects
 		@title:
 			Object scripting
@@ -524,7 +524,7 @@
 			by all the modern kernels and used in inter-process communication).[br]
 	*/
 
-	/*
+/*
 		@doc: object
 		@keyterms:
 			object class, object, class

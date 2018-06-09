@@ -32,7 +32,7 @@
 #include <QLayout>
 #include <QLabel>
 
-#include <string.h>
+#include <cstring>
 
 OptionsWidget_interfaceFeatures::OptionsWidget_interfaceFeatures(QWidget * parent)
     : KviOptionsWidget(parent)

@@ -371,7 +371,7 @@ bool KviIrcMask::matchWildString(const QString & szExp, const QString & szStr) c
 	QChar * pPtr = (QChar *)szExp.constData();
 
 	if(!pPtr)
-		return 0;
+		return false;
 
 	while(pPtr->unicode())
 	{

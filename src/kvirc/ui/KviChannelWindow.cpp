@@ -59,7 +59,7 @@
 #endif //COMPILE_CRYPT_SUPPORT
 
 #include <set>
-#include <time.h>
+#include <ctime>
 
 #include <QDate>
 #include <QByteArray>
@@ -398,7 +398,7 @@ void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
 	KviWindow::loadProperties(pCfg);
 	if(m_pUserListView)
 	{
-		bool bHidden = pCfg->readBoolEntry("UserListHidden", 0);
+		bool bHidden = pCfg->readBoolEntry("UserListHidden", false);
 		m_pUserListView->setHidden(bHidden);
 		m_pListViewButton->setChecked(!bHidden);
 		if(!bHidden)
@@ -1048,12 +1048,12 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	{
 		if((cas.lTalkingUsers.count() < 3) && (cas.lWereTalkingUsers.count() > 0))
 		{
-			szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+			szBuffer += R"(<tr><td bgcolor="#E0E0E0"><font color="#000000">)";
 			getTalkingUsersStats(szBuffer, cas.lWereTalkingUsers, true);
 			szBuffer += "</font>";
 			szBuffer += szRowEnd;
 		}
-		szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+		szBuffer += R"(<tr><td bgcolor="#E0E0E0"><font color="#000000">)";
 		getTalkingUsersStats(szBuffer, cas.lTalkingUsers, false);
 		szBuffer += "</font>";
 		szBuffer += szRowEnd;
@@ -1062,14 +1062,14 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	{
 		if(cas.lWereTalkingUsers.count() > 0)
 		{
-			szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+			szBuffer += R"(<tr><td bgcolor="#E0E0E0"><font color="#000000">)";
 			getTalkingUsersStats(szBuffer, cas.lWereTalkingUsers, true);
 			szBuffer += "</font>";
 			szBuffer += szRowEnd;
 		}
 	}
 
-	szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><b><font color=\"#000000\">";
+	szBuffer += R"(<tr><td bgcolor="#E0E0E0"><b><font color="#000000">)";
 
 	if(cas.dActionsPerMinute < 0.1)
 		szBuffer += __tr2qs("No activity");
@@ -1254,7 +1254,7 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 
 			// first part (optimization): quickly find an high index that is _surely_lesser_
 			// than the correct one
-			while(1)
+			while(true)
 			{
 				iC++;
 				szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
@@ -1270,7 +1270,7 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 
 			// now, do it the simple way: increment our index until we perfectly fit into the
 			// available space
-			while(1)
+			while(true)
 			{
 				iC++;
 
@@ -1438,7 +1438,7 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 
 			// first part (optimization): quickly find an high index that is _surely_lesser_
 			// than the correct one
-			while(1)
+			while(true)
 			{
 				iC++;
 				szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
@@ -1453,7 +1453,7 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 			//printf("Multi message: %d optimization cyles", iC);
 			// now, do it the simple way: increment our index until we perfectly fit into the
 			// available space
-			while(1)
+			while(true)
 			{
 				iC++;
 

@@ -43,7 +43,7 @@ public:
 	QString m_szParams;
 
 public:
-	EventEditorEventTreeWidgetItem(QTreeWidget * par, unsigned int uEvIdx, const QString & name, const QString & params);
+	EventEditorEventTreeWidgetItem(QTreeWidget * par, unsigned int uEvIdx, const QString & name, QString params);
 	~EventEditorEventTreeWidgetItem(){};
 
 public:
@@ -60,7 +60,7 @@ public:
 	int m_cPos;
 
 public:
-	EventEditorHandlerTreeWidgetItem(QTreeWidgetItem * par, const QString & name, const QString & buffer, bool bEnabled);
+	EventEditorHandlerTreeWidgetItem(QTreeWidgetItem * par, const QString & name, QString buffer, bool bEnabled);
 	~EventEditorHandlerTreeWidgetItem(){};
 
 public:
