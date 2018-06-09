@@ -93,8 +93,8 @@ public:
 		QList<uint> positions;
 	};
 
-	HelpIndex(const QString & dp, const QString & hp);
-	HelpIndex(const QStringList & dl, const QString & hp);
+	HelpIndex(QString dp, const QString & hp);
+	HelpIndex(QStringList dl, const QString & hp);
 	void writeDict();
 	void readDict();
 	void makeIndex();

@@ -32,11 +32,11 @@
 #include <io.h> // for _pipe()
 #else
 #include <unistd.h> //for pipe() and other tricks
-#include <signal.h> // on Windows it is useless
+#include <csignal>  // on Windows it is useless
 #include <fcntl.h>
 #endif
 
-#include <errno.h>
+#include <cerrno>
 
 #include "kvi_settings.h"
 #include "KviError.h"

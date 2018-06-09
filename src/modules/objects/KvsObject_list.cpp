@@ -26,7 +26,7 @@
 #include "KviMemory.h"
 #include "KviLocale.h"
 #include "KvsObject_list.h"
-#include <stdlib.h>
+#include <cstdlib>
 
 /*
 	@doc: list

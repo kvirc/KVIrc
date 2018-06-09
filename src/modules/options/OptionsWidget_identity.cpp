@@ -515,7 +515,7 @@ OptionsWidget_identityAvatar::~OptionsWidget_identityAvatar()
 	delete m_pLocalAvatar;
 }
 
-void OptionsWidget_identityAvatar::commit(void)
+void OptionsWidget_identityAvatar::commit()
 {
 	KviOptionsWidget::commit();
 

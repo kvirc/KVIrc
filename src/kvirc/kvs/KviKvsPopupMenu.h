@@ -87,7 +87,7 @@ public:
 
 protected:
 	KviKvsPopupMenuItem(Type t, const QString & szItemName, const QString & szCondition);
-	KviKvsPopupMenuItem(Type t, const QString & szItemName, const KviKvsScript * pCondition);
+	KviKvsPopupMenuItem(Type t, QString szItemName, const KviKvsScript * pCondition);
 
 public:
 	virtual ~KviKvsPopupMenuItem();
@@ -250,8 +250,8 @@ class KVIRC_API KviKvsPopupMenuItemExtMenu : public KviKvsPopupMenuItemWithTextA
 	friend class KviKvsPopupMenu;
 
 protected:
-	KviKvsPopupMenuItemExtMenu(const QString & szItemName, const QString & szMenuName, const QString & szText, const QString & szIcon, const QString & szCondition);
-	KviKvsPopupMenuItemExtMenu(const QString & szItemName, const QString & szMenuName, const KviKvsScript * pText, const KviKvsScript * pIcon, const KviKvsScript * pCondition);
+	KviKvsPopupMenuItemExtMenu(const QString & szItemName, QString szMenuName, const QString & szText, const QString & szIcon, const QString & szCondition);
+	KviKvsPopupMenuItemExtMenu(const QString & szItemName, QString szMenuName, const KviKvsScript * pText, const KviKvsScript * pIcon, const KviKvsScript * pCondition);
 
 public:
 	~KviKvsPopupMenuItemExtMenu();

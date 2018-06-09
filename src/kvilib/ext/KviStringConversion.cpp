@@ -34,7 +34,7 @@
 #include <QRect>
 #include <QString>
 #include <QStringList>
-#include <stdio.h>
+#include <cstdio>
 
 QString g_szGlobalDir;
 QString g_szLocalDir;

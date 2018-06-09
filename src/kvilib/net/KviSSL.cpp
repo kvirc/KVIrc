@@ -36,11 +36,11 @@
 #include <openssl/err.h>
 #include <openssl/dh.h>
 
-#include <stdio.h>
+#include <cstdio>
 
 #if !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
 // linux, mac
-#include <signal.h>
+#include <csignal>
 #endif
 
 static bool g_bSSLInitialized = false;

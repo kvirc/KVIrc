@@ -49,7 +49,7 @@
 
 #include <QFile>
 #include <unistd.h>
-#include <errno.h>
+#include <cerrno>
 
 #ifdef COMPILE_ESD_SUPPORT
 #include <esd.h>

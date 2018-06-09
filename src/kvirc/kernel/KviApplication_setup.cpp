@@ -37,7 +37,7 @@
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <shlwapi.h>
 #else
-#include <stdlib.h> // for getenv()
+#include <cstdlib> // for getenv()
 #include <unistd.h> // for symlink() <-- unused?
 
 #ifdef COMPILE_KDE_SUPPORT

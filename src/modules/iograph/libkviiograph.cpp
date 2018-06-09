@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include <math.h>
+#include <cmath>
 
 #include "libkviiograph.h"
 #include "KviMainWindow.h"

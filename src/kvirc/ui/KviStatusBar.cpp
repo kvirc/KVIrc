@@ -312,7 +312,7 @@ void KviStatusBar::tipRequest(QHelpEvent * e)
 	QString szTip;
 	if(pApplet)
 	{
-		szTip = "<table style=\"white-space: pre\"><tr><td bgcolor=\"#303030\" align=\"center\"><font color=\"#ffffff\"><b>" + pApplet->descriptor()->visibleName() + "</b></font></td></tr>";
+		szTip = R"(<table style="white-space: pre"><tr><td bgcolor="#303030" align="center"><font color="#ffffff"><b>)" + pApplet->descriptor()->visibleName() + "</b></font></td></tr>";
 
 		QString szTipx = pApplet->tipText(pApplet->mapFromGlobal(mapToGlobal(e->pos())));
 		if(!szTipx.isEmpty())
@@ -322,7 +322,7 @@ void KviStatusBar::tipRequest(QHelpEvent * e)
 			szTip += "</td></tr><tr><td align=\"center\"><hr></td></tr>";
 		}
 
-		szTip += "<tr><td><font color=\"#636363\" size=\"-1\">";
+		szTip += R"(<tr><td><font color="#636363" size="-1">)";
 		szTip += __tr2qs("<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around");
 		szTip += "<br>";
 		szTip += __tr2qs("Right-click to see the other options");

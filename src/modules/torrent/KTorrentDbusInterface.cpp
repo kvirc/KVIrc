@@ -50,8 +50,7 @@ KTorrentDbusInterface::KTorrentDbusInterface()
 }
 
 KTorrentDbusInterface::~KTorrentDbusInterface()
-{
-}
+    = default;
 
 bool KTorrentDbusInterface::findRunningApp()
 {

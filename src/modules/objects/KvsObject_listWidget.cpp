@@ -288,7 +288,7 @@ KVSO_CLASS_FUNCTION(listWidget, isChecked)
 	QListWidgetItem * pItem = ((QListWidget *)widget())->item(iIdx);
 	if(!pItem)
 		return true;
-	c->returnValue()->setBoolean(pItem->checkState() == Qt::Checked ? 1 : 0);
+	c->returnValue()->setBoolean(pItem->checkState() == Qt::Checked ? true : false);
 	return true;
 }
 

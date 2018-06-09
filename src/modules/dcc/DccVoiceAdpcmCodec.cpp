@@ -53,7 +53,7 @@
 #define _ADPCMCODEC_CPP_
 #include "DccVoiceAdpcmCodec.h"
 
-#include <stdio.h> /*DBG*/
+#include <cstdio> /*DBG*/
 
 #ifndef __STDC__
 #define signed

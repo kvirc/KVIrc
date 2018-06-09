@@ -27,7 +27,7 @@
 #include "KviKvsHash.h"
 #include "KviKvsArray.h"
 
-#include <math.h>
+#include <cmath>
 #include <cinttypes>
 
 int KviKvsVariantComparison::compareIntString(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
@@ -1671,7 +1671,7 @@ KviKvsVariant * KviKvsVariant::unserializeHash(const QChar ** ppAux)
 	//skip leading '{'
 	(*ppAux)++;
 	int i = 0;
-	while(1)
+	while(true)
 	{
 		//skip leading space
 		while((*ppAux)->isSpace())
@@ -1744,7 +1744,7 @@ KviKvsVariant * KviKvsVariant::unserializeArray(const QChar ** ppAux)
 	KviKvsVariant * pElement = nullptr;
 	(*ppAux)++;
 	int i = 0;
-	while(1)
+	while(true)
 	{
 		pElement = unserialize(ppAux);
 		if(pElement)

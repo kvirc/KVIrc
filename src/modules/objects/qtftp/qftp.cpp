@@ -43,6 +43,8 @@
 //#define QFTPDTP_DEBUG
 
 #include "qftp.h"
+
+#include <utility>
 #include "qabstractsocket.h"
 
 #ifndef QT_NO_FTP
@@ -90,14 +92,18 @@ public:
 QBasicAtomicInt QFtpCommand::idCounter = Q_BASIC_ATOMIC_INITIALIZER(1);
 
 QFtpCommand::QFtpCommand(QFtp::Command cmd, QStringList raw, const QByteArray & ba)
-    : command(cmd), rawCmds(raw), is_ba(true)
+    : command(cmd)
+    , rawCmds(std::move(raw))
+    , is_ba(true)
 {
 	id = idCounter.fetchAndAddRelaxed(1);
 	data.ba = new QByteArray(ba);
 }
 
 QFtpCommand::QFtpCommand(QFtp::Command cmd, QStringList raw, QIODevice * dev)
-    : command(cmd), rawCmds(raw), is_ba(false)
+    : command(cmd)
+    , rawCmds(std::move(raw))
+    , is_ba(false)
 {
 	id = idCounter.fetchAndAddRelaxed(1);
 	data.dev = dev;
@@ -958,7 +964,7 @@ bool QFtpPI::processReply()
 		// both examples where the parenthesis are used, and where
 		// they are missing. We need to scan for the address and host
 		// info.
-		QRegExp addrPortPattern(QLatin1String("(\\d+),(\\d+),(\\d+),(\\d+),(\\d+),(\\d+)"));
+		QRegExp addrPortPattern(QLatin1String(R"((\d+),(\d+),(\d+),(\d+),(\d+),(\d+))"));
 		if(addrPortPattern.indexIn(replyText) == -1)
 		{
 #if defined(QFTPPI_DEBUG)

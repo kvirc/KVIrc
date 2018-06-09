@@ -955,7 +955,7 @@ int kvi_strMatchRevCS(const char * str1, const char * str2, int index)
 	s2--;
 
 	// now start comparing
-	while(1)
+	while(true)
 	{
 		/* in this case, we have str1 = "lo" and str2 = "hello" */
 		if(s1 < str1 && !(s2 < str2))

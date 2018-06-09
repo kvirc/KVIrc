@@ -741,5 +741,5 @@ QSize KviTreeWindowListItemDelegate::sizeHint(const QStyleOptionViewItem &, cons
 	if((KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator) || KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons) || KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)) && iHeight < 20)
 		iHeight = 20;
 
-	return QSize(treeWidget->viewport()->size().width(), iHeight);
+	return { treeWidget->viewport()->size().width(), iHeight };
 }

@@ -81,7 +81,7 @@ bool SlowPasteController::pasteFileInit(QString & fileName)
 	return true;
 }
 
-bool SlowPasteController::pasteClipboardInit(void)
+bool SlowPasteController::pasteClipboardInit()
 {
 	if(m_pFile)
 		return false; // can't paste clipboard while pasting a file
@@ -103,7 +103,7 @@ bool SlowPasteController::pasteClipboardInit(void)
 	return true;
 }
 
-void SlowPasteController::pasteFile(void)
+void SlowPasteController::pasteFile()
 {
 	QString line;
 	char data[1024];
@@ -132,7 +132,7 @@ void SlowPasteController::pasteFile(void)
 	}
 }
 
-void SlowPasteController::pasteClipboard(void)
+void SlowPasteController::pasteClipboard()
 {
 	if(m_pClipBuff->isEmpty() || !g_pApp->windowExists(m_pWindow))
 	{

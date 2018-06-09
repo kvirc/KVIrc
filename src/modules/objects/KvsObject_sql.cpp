@@ -27,7 +27,7 @@
 #include "KviLocale.h"
 #include "KvsObject_sql.h"
 #include "KvsObject_memoryBuffer.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include <QHash>
 #include <QSqlDriver>
 #include <QSqlError>

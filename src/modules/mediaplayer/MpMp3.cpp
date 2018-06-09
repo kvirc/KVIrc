@@ -239,7 +239,7 @@ int get_first_header(mp3info * mp3, long startpos)
 	long valid_start = 0;
 
 	fseek(mp3->file, startpos, SEEK_SET);
-	while(1)
+	while(true)
 	{
 		while((c = fgetc(mp3->file)) != 255 && (c != EOF))
 		{

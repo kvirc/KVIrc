@@ -54,7 +54,7 @@ class KVIRC_API KviKvsScriptEventHandler : public KviKvsEventHandler
 {
 public:
 	// the event handler becomes the owned of pszCode!
-	KviKvsScriptEventHandler(const QString & szHandlerName, const QString & szContextName, const QString & szCode, bool bEnabled = true);
+	KviKvsScriptEventHandler(QString szHandlerName, const QString & szContextName, const QString & szCode, bool bEnabled = true);
 	virtual ~KviKvsScriptEventHandler();
 
 protected:

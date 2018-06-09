@@ -42,6 +42,8 @@
 //#define QHTTP_DEBUG
 
 #include <qplatformdefs.h>
+
+#include <utility>
 #include "qhttp.h"
 
 #ifndef QT_NO_HTTP
@@ -71,7 +73,7 @@ class QHttpNormalRequest;
 class QHttpRequest
 {
 public:
-	QHttpRequest() : finished(false)
+	QHttpRequest()
 	{
 		id = idCounter.fetchAndAddRelaxed(1);
 	}
@@ -86,7 +88,7 @@ public:
 	virtual QIODevice * destinationDevice() = 0;
 
 	int id;
-	bool finished;
+	bool finished{ false };
 
 private:
 	static QBasicAtomicInt idCounter;
@@ -98,11 +100,20 @@ public:
 	Q_DECLARE_PUBLIC(QHttp)
 
 	inline QHttpPrivate(QHttp * parent)
-	    : socket(nullptr), reconnectAttempts(2),
-	      deleteSocket(0), state(QHttp::Unconnected),
-	      error(QHttp::NoError), port(0), mode(QHttp::ConnectionModeHttp),
-	      toDevice(nullptr), postDevice(nullptr), bytesDone(0), chunkedSize(-1),
-	      repost(false), pendingPost(false), q_ptr(parent)
+	    : socket(nullptr)
+	    , reconnectAttempts(2)
+	    , deleteSocket(false)
+	    , state(QHttp::Unconnected)
+	    , error(QHttp::NoError)
+	    , port(0)
+	    , mode(QHttp::ConnectionModeHttp)
+	    , toDevice(nullptr)
+	    , postDevice(nullptr)
+	    , bytesDone(0)
+	    , chunkedSize(-1)
+	    , repost(false)
+	    , pendingPost(false)
+	    , q_ptr(parent)
 	{
 	}
 
@@ -346,8 +357,10 @@ void QHttpPGHRequest::start(QHttp * http)
 class QHttpSetHostRequest : public QHttpRequest
 {
 public:
-	QHttpSetHostRequest(const QString & h, quint16 p, QHttp::ConnectionMode m)
-	    : hostName(h), port(p), mode(m)
+	QHttpSetHostRequest(QString h, quint16 p, QHttp::ConnectionMode m)
+	    : hostName(std::move(h))
+	    , port(p)
+	    , mode(m)
 	{
 	}
 
@@ -396,7 +409,9 @@ void QHttpSetHostRequest::start(QHttp * http)
 class QHttpSetUserRequest : public QHttpRequest
 {
 public:
-	QHttpSetUserRequest(const QString & userName, const QString & password) : user(userName), pass(password)
+	QHttpSetUserRequest(QString userName, QString password)
+	    : user(std::move(userName))
+	    , pass(std::move(password))
 	{
 	}
 
@@ -510,8 +525,7 @@ class QHttpCloseRequest : public QHttpRequest
 {
 public:
 	QHttpCloseRequest()
-	{
-	}
+	    = default;
 	void start(QHttp *) override;
 
 	QIODevice * sourceDevice() override

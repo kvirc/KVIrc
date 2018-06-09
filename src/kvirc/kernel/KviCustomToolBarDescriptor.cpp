@@ -23,6 +23,8 @@
 //=============================================================================
 
 #include "KviCustomToolBarDescriptor.h"
+
+#include <utility>
 #include "KviCustomToolBar.h"
 #include "KviConfigurationFile.h"
 #include "KviAction.h"
@@ -32,8 +34,8 @@
 #include "KviKvsScript.h"
 #include "KviWindow.h"
 
-KviCustomToolBarDescriptor::KviCustomToolBarDescriptor(const QString & szId, const QString & szLabelCode)
-    : m_szId(szId)
+KviCustomToolBarDescriptor::KviCustomToolBarDescriptor(QString szId, const QString & szLabelCode)
+    : m_szId(std::move(szId))
 {
 	m_iInternalId = g_pApp->getGloballyUniqueId();
 	m_pActions = new KviPointerList<QString>;

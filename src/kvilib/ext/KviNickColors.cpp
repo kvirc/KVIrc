@@ -25,7 +25,7 @@
 #include "KviNickColors.h"
 #include "KviMemory.h"
 
-#include <stdio.h>
+#include <cstdio>
 #include <QString>
 
 namespace KviNickColors

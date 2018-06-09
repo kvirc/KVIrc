@@ -31,16 +31,21 @@
 #include "KviApplication.h"
 
 #include <QFileInfo>
+#include <utility>
 
 KviKvsScriptAddonManager * KviKvsScriptAddonManager::m_pInstance = nullptr;
 
 KviKvsScriptAddon::KviKvsScriptAddon(
-    const QString & szName,
-    const QString & szVersion,
+    QString szName,
+    QString szVersion,
     const QString & szVisibleNameCode,
     const QString & szDescriptionCode,
     const QString & szUninstallCallbackCode,
-    const QString & szIconId) : KviHeapObject(), m_szName(szName), m_szVersion(szVersion), m_szIconId(szIconId)
+    QString szIconId)
+    : KviHeapObject()
+    , m_szName(std::move(szName))
+    , m_szVersion(std::move(szVersion))
+    , m_szIconId(std::move(szIconId))
 {
 	allocateScripts(szVisibleNameCode, szDescriptionCode, szUninstallCallbackCode);
 	m_pConfigureCallback = nullptr;

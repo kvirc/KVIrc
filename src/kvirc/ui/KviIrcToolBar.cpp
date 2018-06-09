@@ -309,7 +309,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 				txt += nbspc + __tr2qs("Lag: <b>?.?\?</b>"); //escaped a ? due to compiler trigraphs warning
 		}
 
-		txt += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+		txt += R"(<tr><td bgcolor="#E0E0E0"><font color="#000000">)";
 		txt += szIrcContext;
 		txt += "</font>" + enr;
 	}

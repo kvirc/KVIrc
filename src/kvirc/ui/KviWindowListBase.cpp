@@ -215,7 +215,7 @@ QSize KviWindowListTitleWidget::sizeHint() const
 {
 	// if there is no handle there is nothing to paint.
 	if(!KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHandle))
-		return QSize(0, 0);
+		return { 0, 0 };
 
 	int h, w;
 	if(m_pParent->features() & QDockWidget::DockWidgetVerticalTitleBar)
@@ -840,7 +840,7 @@ KviWindowListItem * KviClassicWindowList::firstItem()
 	return m_pButtonList->first();
 }
 
-KviWindowListItem * KviClassicWindowList::lastItem(void)
+KviWindowListItem * KviClassicWindowList::lastItem()
 {
 	return m_pButtonList->last();
 }
@@ -850,7 +850,7 @@ KviWindowListItem * KviClassicWindowList::nextItem()
 	return m_pButtonList->next();
 }
 
-KviWindowListItem * KviClassicWindowList::prevItem(void)
+KviWindowListItem * KviClassicWindowList::prevItem()
 {
 	return m_pButtonList->prev();
 }

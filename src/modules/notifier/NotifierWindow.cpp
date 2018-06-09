@@ -1083,7 +1083,7 @@ void NotifierWindow::returnPressed()
 
 	addMessage(pTab->wnd(), szTmp.ptr(), szHtml, 0);
 	m_pLineEdit->setText("");
-	KviUserInput::parse(szTxt, pTab->wnd(), QString(), 1);
+	KviUserInput::parse(szTxt, pTab->wnd(), QString(), true);
 }
 
 void NotifierWindow::progressUpdate()

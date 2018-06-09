@@ -501,7 +501,7 @@ KviStatusBarConnectionTimer::KviStatusBarConnectionTimer(KviStatusBar * pParent,
     : KviStatusBarApplet(pParent, pDescriptor)
 {
 	startTimer(1000);
-	m_bTotal = 0;
+	m_bTotal = false;
 
 	QFontMetrics fm(font());
 	setFixedWidth(fm.width("000 d 00 h 00 m 00 s"));

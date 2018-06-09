@@ -61,7 +61,7 @@
 #include <QString>
 #include <QTextCodec>
 
-#include <stdio.h>
+#include <cstdio>
 
 // The magic number of the GNU message catalog format.
 #define KVI_LOCALE_MAGIC 0x950412de

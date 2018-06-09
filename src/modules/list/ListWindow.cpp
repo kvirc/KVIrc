@@ -113,7 +113,7 @@ QSize ChannelTreeWidgetItemDelegate::sizeHint(const QStyleOptionViewItem & sovIt
 	ChannelTreeWidgetItem * item = dynamic_cast<ChannelTreeWidgetItem *>(treeWidget->itemFromIndex(index));
 
 	if(!item)
-		return QSize(100, iHeight);
+		return { 100, iHeight };
 
 	QFontMetrics fm(sovItem.font);
 	switch(index.column())

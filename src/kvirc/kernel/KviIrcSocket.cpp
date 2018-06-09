@@ -45,6 +45,7 @@
 
 #include <QTimer>
 #include <QSocketNotifier>
+#include <memory>
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 #include <unistd.h> //for gettimeofday()
@@ -70,7 +71,7 @@ KviIrcSocket::KviIrcSocket(KviIrcLink * pLink)
 	if(KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout) < 100)
 		KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout) = 100; // this is our minimum, we don't want to lag the app
 
-	m_pFlushTimer.reset(new QTimer()); // queue flush timer
+	m_pFlushTimer = std::make_unique<QTimer>(); // queue flush timer
 	connect(m_pFlushTimer.get(), SIGNAL(timeout()), this, SLOT(flushSendQueue()));
 }
 

@@ -36,6 +36,7 @@
 
 #include <QDebug>
 #include <QByteArray>
+#include <utility>
 
 #include "KviNetworkAccessManager.h"
 
@@ -49,8 +50,11 @@ namespace UPnP
 {
 
 	// The constructor for information services
-	Service::Service(const QString & hostname, int port, const QString & informationUrl)
-	    : m_iPendingRequests(0), m_szBaseXmlPrefix("s"), m_szHostname(hostname), m_iPort(port)
+	Service::Service(QString hostname, int port, const QString & informationUrl)
+	    : m_iPendingRequests(0)
+	    , m_szBaseXmlPrefix("s")
+	    , m_szHostname(std::move(hostname))
+	    , m_iPort(port)
 	{
 		m_szInformationUrl = informationUrl;
 		qDebug() << "UPnP::Service: created information service url='" << m_szInformationUrl << "'." << endl;

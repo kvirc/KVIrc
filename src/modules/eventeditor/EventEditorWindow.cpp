@@ -48,11 +48,14 @@
 #include <QPushButton>
 #include <QMouseEvent>
 #include <QMenu>
+#include <utility>
 
 extern EventEditorWindow * g_pEventEditorWindow;
 
-EventEditorEventTreeWidgetItem::EventEditorEventTreeWidgetItem(QTreeWidget * par, unsigned int uEvIdx, const QString & name, const QString & params)
-    : QTreeWidgetItem(par), m_uEventIdx(uEvIdx), m_szParams(params)
+EventEditorEventTreeWidgetItem::EventEditorEventTreeWidgetItem(QTreeWidget * par, unsigned int uEvIdx, const QString & name, QString params)
+    : QTreeWidgetItem(par)
+    , m_uEventIdx(uEvIdx)
+    , m_szParams(std::move(params))
 {
 	setName(name);
 }
@@ -63,8 +66,9 @@ void EventEditorEventTreeWidgetItem::setName(const QString & szName)
 	setText(0, m_szName);
 }
 
-EventEditorHandlerTreeWidgetItem::EventEditorHandlerTreeWidgetItem(QTreeWidgetItem * par, const QString & name, const QString & buffer, bool bEnabled)
-    : QTreeWidgetItem(par), m_szBuffer(buffer)
+EventEditorHandlerTreeWidgetItem::EventEditorHandlerTreeWidgetItem(QTreeWidgetItem * par, const QString & name, QString buffer, bool bEnabled)
+    : QTreeWidgetItem(par)
+    , m_szBuffer(std::move(buffer))
 {
 	m_cPos = 0;
 	setEnabled(bEnabled); //this updates the icon too

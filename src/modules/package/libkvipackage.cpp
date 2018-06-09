@@ -37,7 +37,7 @@
 #include <QFile>
 #include <QFileInfo>
 
-#include <stdlib.h>
+#include <cstdlib>
 
 static QString createRandomDir()
 {

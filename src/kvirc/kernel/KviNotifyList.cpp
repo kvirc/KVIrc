@@ -47,6 +47,7 @@
 #include <QStringList>
 
 #include <algorithm>
+#include <memory>
 #include <set>
 #include <vector>
 
@@ -815,7 +816,7 @@ bool KviIsOnNotifyListManager::handleUserhost(KviIrcMessage * msg)
 				{
 					if(KviQString::equalCI(s, szNick))
 					{
-						tmplist.emplace(i, std::unique_ptr<KviIrcMask>(new KviIrcMask(szNick, szUser, szHost)));
+						tmplist.emplace(i, std::make_unique<KviIrcMask>(szNick, szUser, szHost));
 						bGotIt = true;
 						break;
 					}

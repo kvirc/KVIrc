@@ -107,7 +107,7 @@
 #include <QMenu>
 #include <QWindow>
 
-#include <time.h>
+#include <ctime>
 
 #ifdef COMPILE_ON_WINDOWS
 #pragma warning(disable : 4102)
@@ -2863,7 +2863,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 								else
 								{
 									uLineWraps++;
-									bHadWordWraps = 1;
+									bHadWordWraps = true;
 								}
 							}
 							if(pRect)
@@ -2884,7 +2884,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 							{
 								QString szLink;
 								int iEndOfLInk = iLastEscapeBlock;
-								while(1)
+								while(true)
 								{
 									if(l->pBlocks[iEndOfLInk].pChunk)
 									{

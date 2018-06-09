@@ -31,8 +31,8 @@
 #include "KviMemory.h"
 #include "KviLocale.h"
 
-#include <ctype.h> // for tolower()
-#include <stdio.h> // for sprintf()
+#include <cctype> // for tolower()
+#include <cstdio> // for sprintf()
 #include <QRegExp>
 
 // kvi_string.cpp
@@ -1080,7 +1080,7 @@ namespace KviQString
 			QChar * pPtr = (QChar *)szExp.constData();
 
 			if(!pPtr)
-				return 0;
+				return false;
 
 			while(pPtr->unicode())
 			{

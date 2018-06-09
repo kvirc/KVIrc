@@ -42,7 +42,7 @@ public:
 	};
 
 public:
-	KviKvsReport(Type t, const QString & szContext, const QString & szMessage, const QString & szLocation, KviWindow * pWindow);
+	KviKvsReport(Type t, QString szContext, QString szMessage, QString szLocation, KviWindow * pWindow);
 	~KviKvsReport();
 
 protected:

@@ -72,7 +72,7 @@ ActionEditorTreeWidgetItem::ActionEditorTreeWidgetItem(QTreeWidget * v, ActionDa
 	m_pTreeWidget = v;
 	//setFlags(Qt::ItemIsUserSelectable);
 	QString t = "<b>" + m_pActionData->m_szName + "</b>";
-	t += "<br><font color=\"#454545\" size=\"-1\">" + m_pActionData->m_szVisibleName + "</font>";
+	t += R"(<br><font color="#454545" size="-1">)" + m_pActionData->m_szVisibleName + "</font>";
 	m_szKey = m_pActionData->m_szName.toUpper();
 	setText(0, t);
 	QPixmap * p = g_pIconManager->getBigIcon(m_pActionData->m_szBigIcon);

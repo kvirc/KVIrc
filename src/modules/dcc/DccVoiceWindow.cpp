@@ -49,7 +49,7 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <errno.h>
+#include <cerrno>
 #include <fcntl.h>
 #include <sys/stat.h>  // for open()
 #include <sys/ioctl.h> // for ioctl()
@@ -1014,7 +1014,7 @@ void DccVoiceWindow::startOrStopTalking(bool bStart)
 		stopTalking();
 }
 
-int DccVoiceWindow::getMixerVolume(void) const
+int DccVoiceWindow::getMixerVolume() const
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
 	int fd;

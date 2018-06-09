@@ -415,7 +415,7 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget * p, KviRegisteredU
 		m_pCustomColorCheck->setChecked(r->getBoolProperty("useCustomColor"));
 	g->addWidget(m_pCustomColorCheck, 5, 0, 1, 2);
 
-	m_pCustomColorSelector = new KviColorSelector(p2, QString(), m_pCustomColor, 1);
+	m_pCustomColorSelector = new KviColorSelector(p2, QString(), m_pCustomColor, true);
 	g->addWidget(m_pCustomColorSelector, 5, 2);
 
 	QPushButton * pb = new QPushButton(__tr2qs_ctx("All Properties...", "register"), p2);

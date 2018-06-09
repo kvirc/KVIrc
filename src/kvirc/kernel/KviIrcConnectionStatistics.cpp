@@ -25,8 +25,7 @@
 #include "KviIrcConnectionStatistics.h"
 
 KviIrcConnectionStatistics::KviIrcConnectionStatistics()
-{
-}
+    = default;
 
 KviIrcConnectionStatistics::~KviIrcConnectionStatistics()
     = default;
