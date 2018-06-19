@@ -353,6 +353,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolMenuBarVisible 261
 #define KviOption_boolWarnAboutHidingMenuBar 262
 #define KviOption_boolWhoRepliesToActiveWindow 263                             /* irc::output */
+#define KviOption_boolLookupLocalHostnameSeenByServer 264
 
 // NOTICE: REUSE EQUIVALENT UNUSED BOOL_OPTION in KviOptions.cpp ENTRIES BEFORE ADDING NEW ENTRIES ABOVE
 

@@ -1070,7 +1070,7 @@ void KviIrcConnection::userInfoReceived(const QString & szUserName, const QStrin
 				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("The local IP address as seen by the IRC server is %Q"), &szUnmaskedHost);
 			m_pUserInfo->setHostIp(szUnmaskedHost);
 		}
-		else
+		else if(KVI_OPTION_BOOL(KviOption_boolLookupLocalHostnameSeenByServer))
 		{
 			// look it up too
 			delete m_pLocalhostDns; // it could be only another local host lookup
