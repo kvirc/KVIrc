@@ -378,7 +378,7 @@ private:
 #endif //COMPILE_PSEUDO_TRANSPARENCY
 public slots:
 	// KviApplication.cpp : Slots
-	void saveConfiguration();
+	void saveConfiguration() override;
 	void updateGui();
 	void updatePseudoTransparency();
 	void restoreDefaultScript();
