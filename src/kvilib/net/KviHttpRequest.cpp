@@ -718,9 +718,8 @@ bool KviHttpRequest::processHeader(KviCString & szHeader)
 					}
 
 					KviCString * headerLocation = hdr.find("Location");
-					QString location(headerLocation->ptr());
 
-					if(location.isEmpty())
+					if(!headerLocation || headerLocation->isEmpty())
 					{
 						resetInternalStatus();
 						m_szLastError = __tr2qs("Bad redirect");
@@ -729,6 +728,7 @@ bool KviHttpRequest::processHeader(KviCString & szHeader)
 					}
 
 					KviUrl url;
+					QString location(headerLocation->ptr());
 
 					if(location.startsWith('/'))
 					{
