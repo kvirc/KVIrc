@@ -66,6 +66,18 @@ void KviUrl::parse()
 	m_uPort = url.port(0);
 }
 
+void KviUrl::build()
+{
+	QUrl url;
+	url.setScheme(m_szProtocol);
+	url.setHost(m_szHost);
+	url.setPath(m_szPath);
+	url.setUserName(m_szUser);
+	url.setPassword(m_szPass);
+	url.setPort(m_uPort);
+	m_szUrl = url.toString();
+}
+
 KviUrl & KviUrl::operator=(const QString & szUrl)
 {
 	m_szUrl = szUrl;
@@ -75,3 +87,47 @@ KviUrl & KviUrl::operator=(const QString & szUrl)
 
 KviUrl & KviUrl::operator=(const KviUrl &)
     = default;
+
+void KviUrl::setUrl(QString & szUrl)
+{
+	m_szUrl = szUrl;
+	parse();
+}
+
+void KviUrl::setProtocol(QString & szProtocol)
+{
+	m_szProtocol = szProtocol;
+	build();
+}
+
+void KviUrl::setHost(QString & szHost)
+{
+	m_szHost = szHost;
+	build();
+}
+
+void KviUrl::setPath(QString & szPath)
+{
+	m_szPath = szPath;
+	if(m_szPath.isEmpty())
+		m_szPath = QString("/");
+	build();
+}
+
+void KviUrl::setUser(QString & szUser)
+{
+	m_szUser = szUser;
+	build();
+}
+
+void KviUrl::setPass(QString & szPass)
+{
+	m_szPass = szPass;
+	build();
+}
+
+void KviUrl::setPort(kvi_u32_t uPort)
+{
+	m_uPort = uPort;
+	build();
+}

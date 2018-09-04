@@ -322,12 +322,18 @@ if(APPLE)
 	get_filename_component(QT_LIBRARY_DIR ${QT_LIBRARY_DIR} PATH)
 	get_filename_component(QT_LIBRARY_DIR "${QT_LIBRARY_DIR}/.." ABSOLUTE)
 
-    # qt4: codecs, iconengines, imageformats, phonon_backend, sqldrivers
     # qt5: audio, iconengines, imageformats, mediaservice, platforms, sqldrivers
-
     install(DIRECTORY "${QT_PLUGINS_DIR}/" DESTINATION ${plugin_dest_dir} COMPONENT Runtime
-        FILES_MATCHING REGEX "(audio|codecs|iconengines|imageformats|mediaservice|phonon_backend|platforms|sqldrivers)/.*\\.dylib"
-        REGEX ".*_debug\\.dylib" EXCLUDE)
+        FILES_MATCHING
+        PATTERN "*.dSYM" EXCLUDE
+        PATTERN "*_debug.dylib" EXCLUDE
+        PATTERN "audio/*.dylib"
+        PATTERN "iconengines/*.dylib"
+        PATTERN "imageformats/*.dylib"
+        PATTERN "mediaservice/*.dylib"
+        PATTERN "platforms/*.dylib"
+        PATTERN "sqldrivers/*.dylib"
+    )
 
 	install(CODE "
 	    file(WRITE \"${qtconf_dest_dir}/qt.conf\" \"[Paths]

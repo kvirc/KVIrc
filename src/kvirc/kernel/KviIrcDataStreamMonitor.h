@@ -33,7 +33,7 @@ class KVIRC_API KviIrcDataStreamMonitor : public KviHeapObject
 {
 public:
 	KviIrcDataStreamMonitor(KviIrcContext * pContext);
-	~KviIrcDataStreamMonitor();
+	virtual ~KviIrcDataStreamMonitor();
 
 protected:
 	KviIrcContext * m_pMyContext;
