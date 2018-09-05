@@ -100,7 +100,7 @@ build_script:
     - vcpkg install zlib:%arch%-windows
     - vcpkg install openssl:%arch%-windows
     - ps: |
-        cmake .. "-GNMake Makefiles" "-DCMAKE_TOOLCHAIN_FILE=C:/Tools/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DCMAKE_BUILD_TYPE=$env:cmake_build_type" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DWANT_OPENSSL=YES" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES" "-DWANT_QTWEBKIT=NO"
+        cmake .. "-GNMake Makefiles" "-DCMAKE_TOOLCHAIN_FILE=C:/Tools/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DCMAKE_BUILD_TYPE=$env:cmake_build_type" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DWANT_OPENSSL=YES" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant-2.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES" "-DWANT_QTWEBKIT=NO"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - nmake install VERBOSE=1
     # - c:\cygwin\bin\ls -l release/
@@ -117,7 +117,7 @@ build_script:
         } else {
             c:\cygwin\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/bin/zlib1.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/libeay32.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/ssleay32.dll" release/
         }
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant.dll release/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant-2.dll release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libpcre-1.dll release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libglib-2.0-0.dll release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libgmodule-2.0-0.dll release/
@@ -127,18 +127,18 @@ build_script:
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/$env:mingw_libgcc release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libstdc++-6.dll release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libhunspell-1.6-0.dll release/
-        c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/myspell/dicts/
+        c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/hunspell/dicts/
         c:\cygwin\bin\touch release/share/locale
         c:\cygwin\bin\cp -pv $env:mingw_root/share/enchant/enchant.ordering release/share/enchant/
-        c:\cygwin\bin\cp -pv $env:mingw_root/lib/enchant/libenchant_myspell.dll release/lib/enchant/
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.aff release/share/myspell/dicts/ru_RU_yo.aff
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.dic release/share/myspell/dicts/ru_RU_yo.dic
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.aff release/share/myspell/dicts/
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.dic release/share/myspell/dicts/
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.dic release/share/myspell/dicts/en_GB_ise.dic
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.aff release/share/myspell/dicts/en_GB_ise.aff
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.dic release/share/myspell/dicts/en_GB_ize.dic
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.aff release/share/myspell/dicts/en_GB_ize.aff
+        c:\cygwin\bin\cp -pv $env:mingw_root/lib/enchant-2/libenchant_hunspell.dll release/lib/enchant/
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.aff release/share/hunspell/dicts/ru_RU_yo.aff
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.dic release/share/hunspell/dicts/ru_RU_yo.dic
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.aff release/share/hunspell/dicts/
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.dic release/share/hunspell/dicts/
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.dic release/share/hunspell/dicts/en_GB_ise.dic
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.aff release/share/hunspell/dicts/en_GB_ise.aff
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.dic release/share/hunspell/dicts/en_GB_ize.dic
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.aff release/share/hunspell/dicts/en_GB_ize.aff
     - '"c:\Program Files (x86)\NSIS\makensis.exe" KVIrc.nsi'
     - ps: |
         $exe = dir -name *.exe
