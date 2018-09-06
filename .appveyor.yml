@@ -66,7 +66,7 @@ install:
     - ps: |
         c:\msys64\usr\bin\pacman -Q
         c:\msys64\usr\bin\pacman -S --noconfirm $env:mingw_fourple-enchant
-        c:\cygwin\bin\sh -lc 'mkdir -p /cygdrive/c/enchant-headers; cp -vp $mingw_root/include/enchant-2/enchant.h /cygdrive/c/enchant-headers/'
+        c:\cygwin\bin\sh -lc 'mkdir -p /cygdrive/c/enchant-headers; cp -vp $mingw_root/lib/glib-2.0/include/glibconfig.h $mingw_root/include/enchant-2/enchant.h /cygdrive/c/enchant-headers/'
         c:\cygwin\bin\sh -lc 'cd /cygdrive/c/enchant-headers; patch -p2 < $APPVEYOR_BUILD_FOLDER/.appveyor.ench'
     - c:\cygwin\bin\sh -lc "mkdir -p /cygdrive/c/spellcheck-dicts; cd /cygdrive/c/spellcheck-dicts; mkdir -p zip unzip ru"
     - ps: |
