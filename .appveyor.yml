@@ -130,7 +130,7 @@ build_script:
         c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/hunspell/dicts/
         c:\cygwin\bin\touch release/share/locale
         c:\cygwin\bin\cp -pv $env:mingw_root/share/enchant/enchant.ordering release/share/enchant/
-        c:\cygwin\bin\cp -pv $env:mingw_root/lib/enchant-2/libenchant_hunspell.dll release/lib/enchant/
+        c:\cygwin\bin\cp -pv $env:mingw_root/lib/enchant-2/enchant_hunspell.dll release/lib/enchant/
         c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.aff release/share/hunspell/dicts/ru_RU_yo.aff
         c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.dic release/share/hunspell/dicts/ru_RU_yo.dic
         c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.aff release/share/hunspell/dicts/
