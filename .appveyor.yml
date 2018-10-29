@@ -54,6 +54,8 @@ environment:
           mingw_libgcc: libgcc_s_dw2-1.dll
 matrix:
     fast_finish: true
+    allow_failures:
+        - arch: x86
 install:
     # - systeminfo
     # - c:\cygwin\bin\uname -a
