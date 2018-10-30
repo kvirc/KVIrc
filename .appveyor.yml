@@ -55,7 +55,7 @@ environment:
 matrix:
     fast_finish: true
     allow_failures:
-        - arch: x86
+        - arch: x86  # https://github.com/Cockatrice/Cockatrice/issues/3378 has details
 install:
     # - systeminfo
     # - c:\cygwin\bin\uname -a
