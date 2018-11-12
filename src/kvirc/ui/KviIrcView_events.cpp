@@ -536,10 +536,9 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent * e)
 					if(m_bShiftPressed)
 					{
 						bool bStarted = false;
-						KviIrcViewLineChunk * pC;
 						for(unsigned int i = 0; i < tempLine->uChunkCount; i++)
 						{
-							pC = &tempLine->pChunks[i];
+							KviIrcViewLineChunk * pC = &tempLine->pChunks[i];
 							if(bStarted)
 							{
 								if(endChar >= (pC->iTextStart + pC->iTextLen))
@@ -562,7 +561,7 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent * e)
 								{
 									//starts in this chunk
 									addControlCharacter(pC, szSelectionText);
-									if((endChar - initChar) > pC->iTextLen)
+									if(endChar >= (pC->iTextLen + pC->iTextLen))
 									{
 										//don't end in this chunk
 										szSelectionText.append(tempLine->szText.mid(initChar, pC->iTextLen - (initChar - pC->iTextStart)));
