@@ -54,8 +54,6 @@ environment:
           mingw_libgcc: libgcc_s_dw2-1.dll
 matrix:
     fast_finish: true
-    allow_failures:
-        - arch: x86  # https://github.com/Cockatrice/Cockatrice/issues/3378 has details
 install:
     # - systeminfo
     # - c:\cygwin\bin\uname -a
