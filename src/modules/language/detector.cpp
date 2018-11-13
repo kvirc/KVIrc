@@ -30,6 +30,7 @@
 
 #include "detector.h"
 
+namespace {
 //
 // CORE DEFS
 //
@@ -18712,6 +18713,7 @@ static int utf8score(const unsigned char * p)
 }
 
 static const char * unknown_string = "?";
+} // namespace
 
 void detect_language_and_encoding(const char * data, LanguageAndEncodingResult * retBuffer, int iFlags = 0)
 {
