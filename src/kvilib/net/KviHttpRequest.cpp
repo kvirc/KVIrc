@@ -717,9 +717,9 @@ bool KviHttpRequest::processHeader(KviCString & szHeader)
 						return false;
 					}
 
-					KviCString * location = hdr.find("Location");
+					KviCString * headerLocation = hdr.find("Location");
 
-					if(!location)
+					if(!headerLocation || headerLocation->isEmpty())
 					{
 						resetInternalStatus();
 						m_szLastError = __tr2qs("Bad redirect");
@@ -727,7 +727,18 @@ bool KviHttpRequest::processHeader(KviCString & szHeader)
 						return false;
 					}
 
-					KviUrl url(location->ptr());
+					KviUrl url;
+					QString location(headerLocation->ptr());
+
+					if(location.startsWith('/'))
+					{
+						// relative redirect, use the old url and only update the path
+						url = m_connectionUrl;
+						url.setPath(location);
+					} else {
+						// absolute redirect
+						url.setUrl(location);
+					}
 
 					if(
 					    (url.url() == m_connectionUrl.url()) || (url.url() == m_url.url()))

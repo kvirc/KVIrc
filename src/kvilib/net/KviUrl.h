@@ -50,6 +50,7 @@ protected:
 
 protected:
 	void parse();
+	void build();
 
 public:
 	const QString & url() const { return m_szUrl; };
@@ -59,6 +60,14 @@ public:
 	const QString & user() const { return m_szUser; };
 	const QString & pass() const { return m_szPass; };
 	kvi_u32_t port() const { return m_uPort; };
+
+	void setUrl(QString & szUrl);
+	void setProtocol(QString & szProtocol);
+	void setHost(QString & szHost);
+	void setPath(QString & szPath);
+	void setUser(QString & szUser);
+	void setPass(QString & szPass);
+	void setPort(kvi_u32_t uPort);
 
 	KviUrl & operator=(const QString & szUrl);
 	KviUrl & operator=(const KviUrl &);
