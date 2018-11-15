@@ -102,6 +102,7 @@ print OUTPUT "#include <ctype.h>\n";
 print OUTPUT "\n";
 print OUTPUT "#include \"detector.h\"\n";
 print OUTPUT "\n";
+print OUTPUT "namespace {\n";
 print OUTPUT "///////////////////////////////////////////////////////////////////////////////\n";
 print OUTPUT "// CORE DEFS\n";
 print OUTPUT "///////////////////////////////////////////////////////////////////////////////\n";
@@ -786,6 +787,7 @@ print OUTPUT "\n";
 
 print OUTPUT "\n";
 print OUTPUT "static const char * unknown_string = \"?\";\n";
+print OUTPUT "} // namespace\n";
 print OUTPUT "\n";
 print OUTPUT "void detect_language_and_encoding(const char * data,LanguageAndEncodingResult * retBuffer,int iFlags = 0)\n";
 print OUTPUT "{\n";
