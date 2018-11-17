@@ -154,6 +154,7 @@ protected:
 	QLineEdit * m_pPortEditor;
 	QStringList m_lstChannels;
 	KviChannelListSelector * m_pChannelListSelector;
+	QComboBox * m_pSaslMethodComboBox;
 
 	QComboBox * m_pProxyEditor;
 protected slots:

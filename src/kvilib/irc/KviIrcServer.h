@@ -111,6 +111,7 @@ private:
 	int m_iProxy;                         /**< proxy server's id */
 	QString m_szSaslNick;                 /**< nickname for sasl auth */
 	QString m_szSaslPass;                 /**< password for sasl auth */
+	QString m_szSaslMethod;               /**< method name for sasl auth */
 
 public:
 	KviIrcServerReconnectInfo * reconnectInfo()
@@ -158,6 +159,12 @@ public:
 	* \return const QString &
 	*/
 	inline const QString & saslPass() const { return m_szSaslPass; };
+
+	/**
+	* \brief Returns the sasl authentication method to be used
+	* \return const QString &
+	*/
+	const QString & saslMethod() const { return m_szSaslMethod; }
 
 	/**
 	* \brief Returns the nickname of the user associated to the server
@@ -389,6 +396,13 @@ public:
 	* \return void
 	*/
 	inline void setSaslNick(const QString & szNick) { m_szSaslNick = szNick; };
+
+	/**
+	* \brief Sets the sasl method to be used for auth
+	* \param szMethod The method name
+	* \return void
+	*/
+	void setSaslMethod(const QString & szMethod) { m_szSaslMethod = szMethod; }
 
 	/**
 	* \brief Sets the realname of the user associated to the server
