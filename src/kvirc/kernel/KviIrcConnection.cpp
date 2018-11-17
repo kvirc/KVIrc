@@ -338,8 +338,7 @@ void KviIrcConnection::linkEstablished()
 	if(!link() || !link()->socket())
 		return;
 
-	if(
-	    (!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS())
+	if((!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS())
 	{
 #ifdef COMPILE_SSL_SUPPORT
 		// STARTTLS without CAP (forced request)
@@ -412,8 +411,7 @@ void KviIrcConnection::handleInitialCapLs()
 // STARTTLS support: this has to be checked first because it could imply
 // a full cap renegotiation
 #ifdef COMPILE_SSL_SUPPORT
-	if(
-	    (!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS() && serverInfo()->supportedCaps().contains("tls", Qt::CaseInsensitive))
+	if((!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS() && serverInfo()->supportedCaps().contains("tls", Qt::CaseInsensitive))
 	{
 		if(trySTARTTLS(false))
 			return; // STARTTLS negotiation in progress
@@ -464,16 +462,30 @@ void KviIrcConnection::handleInitialCapAck()
 	bool bUsed = false;
 
 	//SASL
-	if(
-	    target()->server()->enabledSASL() && m_pStateData->enabledCaps().contains("sasl", Qt::CaseInsensitive))
+	if(target()->server()->enabledSASL() && m_pStateData->enabledCaps().contains("sasl", Qt::CaseInsensitive))
 	{
-		m_pStateData->setInsideAuthenticate(true);
-		bUsed = true;
+		if(target()->server()->saslMethod() == QStringLiteral("EXTERNAL"))
+		{
+			if(KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate) && link()->socket()->usingSSL())
+			{
+				bUsed = true;
+				sendFmtData("AUTHENTICATE EXTERNAL");
+				m_pStateData->setSentSaslMethod(QStringLiteral("EXTERNAL"));
+			}
+		}
 
-		sendFmtData("AUTHENTICATE PLAIN");
+		// Assume PLAIN if all other SASL methods are not chosen or we're attempting a fallback
+		if(!bUsed && !target()->server()->saslNick().isEmpty() && !target()->server()->saslPass().isEmpty())
+		{
+			bUsed = true;
+			sendFmtData("AUTHENTICATE PLAIN");
+			m_pStateData->setSentSaslMethod(QStringLiteral("PLAIN"));
+		}
 	}
 
-	if(!bUsed)
+	if(bUsed)
+		m_pStateData->setInsideAuthenticate(true);
+	else
 		endInitialCapNegotiation();
 }
 
@@ -486,9 +498,14 @@ void KviIrcConnection::handleAuthenticate(KviCString & szAuth)
 	QByteArray szNick = encodeText(target()->server()->saslNick());
 	QByteArray szPass = encodeText(target()->server()->saslPass());
 
-	//PLAIN
 	KviCString szOut;
-	if(KviSASL::plainMethod(szAuth, szOut, szNick, szPass))
+	bool bSendString = false;
+	if(m_pStateData->sentSaslMethod() == QStringLiteral("EXTERNAL"))
+		bSendString = KviSASL::externalMethod(szAuth, szOut);
+	else // Assume PLAIN
+		bSendString = KviSASL::plainMethod(szAuth, szOut, szNick, szPass);
+
+	if(bSendString)
 		sendFmtData("AUTHENTICATE %s", szOut.ptr());
 	else
 		sendFmtData("AUTHENTICATE *");

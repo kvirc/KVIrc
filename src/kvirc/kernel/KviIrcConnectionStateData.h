@@ -98,6 +98,7 @@ protected:
 	kvi_time_t m_tLastReceivedWhoisReply = 0;   // the time that we have received the last whois reply, reset to 0 when we receive an /END OF WHOIS
 	QStringList m_lEnabledCaps;                 // the CAPs currently enabled
 	bool m_bIdentifyMsgCapabilityEnabled = false; // do we have the msg-identity CAP enabled ?
+	QString m_szSentSaslMethod;
 public:
 	///
 	/// Sets the current login nickname state
@@ -122,6 +123,9 @@ public:
 	{
 		return m_bIdentifyMsgCapabilityEnabled;
 	}
+
+	const QString & sentSaslMethod() const { return m_szSentSaslMethod; }
+	void setSentSaslMethod(const QString& szMethod) { m_szSentSaslMethod = szMethod; }
 
 	bool sentStartTls() const { return m_bSentStartTls; }
 	void setSentStartTls() { m_bSentStartTls = true; }

@@ -3039,6 +3039,23 @@ void KviIrcServerParser::parseNumericSaslFail(KviIrcMessage * msg)
 		pOut->output(KVI_OUT_SERVERINFO, __tr2qs("SASL authentication error: %Q"), &szParam);
 	}
 
+	// Handle fallback if possible for SASL auth failure or dump if user mandates SASL
+	// and no fallback is available
+	if(msg->numeric() == 904)
+	{
+		if(msg->connection()->stateData()->sentSaslMethod() == QStringLiteral("EXTERNAL"))
+		{
+			if(!msg->connection()->target()->server()->saslNick().isEmpty() && !msg->connection()->target()->server()->saslPass().isEmpty())
+			{
+				KviWindow * pOut = static_cast<KviWindow *>(msg->console());
+				pOut->output(KVI_OUT_SERVERINFO, __tr2qs("Attempting fallback due to SASL failure."));
+				msg->connection()->sendFmtData("AUTHENTICATE PLAIN");
+				msg->connection()->stateData()->setSentSaslMethod(QStringLiteral("PLAIN"));
+				return;
+			}
+		}
+	}
+
 	if(msg->connection()->stateData()->isInsideAuthenticate())
 		msg->connection()->endInitialCapNegotiation();
 }
