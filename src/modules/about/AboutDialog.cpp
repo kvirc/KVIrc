@@ -163,10 +163,6 @@ AboutDialog::AboutDialog()
 	infoString += ": ";
 	infoString += KviBuildInfo::buildRevision();
 	infoString += "<br>";
-	infoString += __tr2qs_ctx("System name", "about");
-	infoString += ": ";
-	infoString += KviBuildInfo::buildSystem();
-	infoString += "<br>";
 	infoString += __tr2qs_ctx("CPU name", "about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildCPU();
