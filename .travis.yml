@@ -17,7 +17,7 @@ matrix:
               - |
                   if [[ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" && "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then
                     openssl aes-256-cbc -K $encrypted_da8de0aafbfc_key -iv $encrypted_da8de0aafbfc_iv -in .travis-github.ssh.enc -out ~/kvirc-github-key -d
-                    openssl aes-256-cbc -K $encrypted_da8de0aafbfc_key -iv $encrypted_da8de0aafbfc_iv -in .travis-artifacts.ssh.enc -out ~/kvirc-artifacts-key.ssh -d
+                    openssl aes-256-cbc -K $encrypted_da8de0aafbfc_key -iv $encrypted_da8de0aafbfc_iv -in .travis-artifacts.ssh.enc -out ~/kvirc-artifacts-key -d
                   fi
               - export encrypted_da8de0aafbfc_key=no
               - sudo apt-get update
@@ -116,6 +116,10 @@ after_success:
           fi
     - |
           if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+              mkdir -p ~/.ssh
+              chmod 0600 ~/kvirc-github-key
+              cp .travis.ssh ~/.ssh/config
+
               kvi_version="$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')";
               git_desc="$(git describe)";
               dmg_name="KVIrc-${kvi_version}-dev-${git_desc}.dmg"
