@@ -16,9 +16,9 @@ matrix:
           install:
               - |
                   if [[ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" && "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then
-                    openssl aes-256-cbc -K $encrypted_da8de0aafbfc_key -iv $encrypted_da8de0aafbfc_iv -in .travis-github.ssh.enc -out ~/kvirc-github-key -d
+                    openssl aes-256-cbc -k "$KEY_SSH_GITHUB" -in .travis-github.ssh.enc -out ~/kvirc-github-key -d
                   fi
-              - export encrypted_da8de0aafbfc_key=no
+              - export KEY_SSH_GITHUB=no KEY_SSH_ARTIFACTS=no
               - sudo apt-get update
                 # for ./.travis-coverity-scan.py
               - sudo apt-get install -y python3-yaml
@@ -51,9 +51,9 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm get head; fi
     - |
         if [[ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" && "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then
-          openssl aes-256-cbc -K $encrypted_da8de0aafbfc_key -iv $encrypted_da8de0aafbfc_iv -in .travis-artifacts.ssh.enc -out ~/kvirc-artifacts-key -d
+          openssl aes-256-cbc -k "$KEY_SSH_ARTIFACTS" -in .travis-artifacts.ssh.enc -out ~/kvirc-artifacts-key -d
         fi
-    - export encrypted_da8de0aafbfc_key=no
+    - export KEY_SSH_GITHUB=no KEY_SSH_ARTIFACTS=no
     - pwd
 install:
     - CMAKE_ARGS=""
@@ -135,3 +135,7 @@ env:
   # These 2 lines are: $GPGPASS, $AESPASS (used in build_debian.sh)
   - secure: iFr+Hn6PBDqciGSi8BFWzwWPhIhkjdzxmVQohzZEAHoxBkI6rKEvpxXvhw/gkqbRhgi0/C8aoM+Y30We/OhyfUUr58kJTnRpUw7xE4wypo2KbGvPIqmVJRbMcJnVgTROyixlXcricWwx2c3GTSNEfq3C8D68Ge3jPrBPHIZeiE96nqOi/mk9LX89ypHv4Vf4VoteHvz9z9Kk+/30GUUlL84bg4C4mBilSxkaJQd/bu5p6JzgMMgma8dclmN9N/TYrsHIqrZkxpDp/RkXzZaqpl5OmsISyVWgWmzZdgU2OCkSYpfxH1UFpJF6hf+YJyd+zNebN+uNY3R/gD4a7FfSXbQ4uoAcfLfzRlRLF2pbhJzPNv6Fx+ywXJfMxkKurklD8UAsLikX9WIbkEnnyguJotMWakmsRY8A/dQoM3ljCKsWfEh1BCNb3XT5GjBpQtTqKRQ0Oz7nQx1HyAZN3chhQZ+ty+AJS64+kbtUGEqHdJ1cG8LUTpdABNuUI6an/hO2c3nZ9gITpQKvXe19rB6fBEUVVxCeXLQTQIdsxpZNQrE2O7HH4lx2Yc4JmZQjbpHvTo6HVFWTAjQPsJjMG/F9/BYEo9JmR3mN5fjF2eRLlBfpdbfflxp+Y2Tz7/TTtNuMPoMQjC0PlDaT8fHr2VsSMdmpV8TW+VHDf2whC25QiQs=
   - secure: Xo0rxVU2ePrDm1gAYPqvfNXXrdc2tR6PUiL1yVZtWPt/I++vzkhNZ+9WKdPq1BfpLabi8CRiyrbaW8qQuFK1K0jmoKGMX8H19kN/KMFO2zNngFbGjTR3Gx2eHXmDN0esvw8MPWN0srKL97uP+RW21zaO7RB7n5xFKgzebtz+VWpdRQaWRolZpiZv9qv+1tlDHLV3YtLVrNiYfq/LRkdJm6g0bYhlMAt0VkjroR/BDP7wx/4WJs3ZFdsbi7LID2883jUYNybFDArC7991OnN9v45QkJPLKiiDpzS4ztl1ZYVUGIK6hGlqnqqKl3JXdhVaTwu94TVStuaZnlB0cxKXDRX9xeYv4uyX0GU+75CDo7X4kxu+9wKdiGiv2ffGDLxbKvrS7rNGvcwKs+v5yTAvpQypPxmx4LuYVwOfiwAkyU6N6EPMygnJZ6Lnzw1lVMz6qMDKOl5yq8iIKe9nD+kjlFt6TRb0zkpJVwPAl9wBqUSwN3Olnc8uHaiP8oI2CPBobXtDT9Aw/78nylg+tUt2gSlacO8hriPlI2TQz2ltepXxrpE8F+Rz1Vj6R4D5/DaWlqaXMP5PpUnFy/OfQeWbmHjLyFbrGGCAnnW+Z76HpDXJQs1XG6mSVgsHTY9xeGkybPykWemLz0W2TE/uASmoaJk7BXPWU/zbJxCreBChWlM=
+  # KEY_SSH_GITHUB
+  - secure: "HJi1lOnHq04Xu26Y5iuLqYml77qenVMkwynKzC7ukaFI4BynrXz8IqLo0AMvCJhwCyjrNF00zJEQS915lfOrbDfHAXCOBx4HGD4qMEaEZXfi+964KdK2v6O1Q0DmycHFrZScE2x1m8cBGykacJOXkIYQWqtAISlo/Okookrf+VHpHC+qNe5BIzaiPlZsMwFFpBOd/cKr44EvjjcvFGlhykBAC887lEjC4mMwKWFTU8K9FYlpmh617AiVxj0h0A3GO4q8p6uq3kH0mQ5/3S6YWYQ6JJhIm9Jo2iTbHzJ2IW3SQzDixyJi2IajAMArVgQ5wEHRtGaCkjvk0Es+C2l1XlXxByiD0Mzv+Knd3SY7ukTuAKNdyMx2GZ/PjmC1H9uSPVGc+gWcFaf+gAVuR5ctsxtv2YY4hwjKtuNEejrvqakJsJCMnctOxLzuuUlb+SlxD9i/br6Jx2beK8jJbxjo0aBYpFgF2fdX0JaeGJP5PrqZmeIm5FzHZVpXbA3N0ZrzYcJTPnQL3LJEsSsiztjvPEXDlf3F7HuCposF/hjgWQAyaAFNRyKaSXIvJAMNr8ZvYeULKfhq+mALSEGv3qVHQrWkdFfo19GWLtPSM/cLC2gkF7MYuCNnOpa3fJsxbKh9Tr7sszQ1xpZqe//+ujmUGVfW+PAPxv/UdozCV5RN8wU="
+  # KEY_SSH_ARTIFACTS
+  - secure: "iB/kOMZeQYTvkAS/2Blm/Ad/gUGZ8+1kRW5O64W92gvCUq//tzk421+CMEUxt3alvlyFWVqppixkIp6hbv1FKUEmHAbCW4tMRTByWJxiWzTmWY2DkcqFjhLCFyUGDVJz4ckp/Yc144YjcxrNydb0I1Y8HmJCbw8asNl6JVDew9evDgd0gs+fln4MI6gWdvRLZzGYFD39urTzbgLKByYlrgHzAgnFztb3NHmSzdKRem7gMOL54weeO8XBMYdbTfgioZKB6hz1fHnICUelre1OmKshnQdXteKWGvaghxbWp0FZnvjKwcs84B0TJuGhpvnTJEDv7+qiPGXpNOlULpa7hFipsGZl0hek7VAjFfJBoKYcNzzfIbBWv3YZ/xY9zHW6O10twwwBRhPqq4XwRjXMHmrHR9CvQ6DfWVKnIUfKGHOoZfkC7aMXStlHgVWrAfTymWigJq7z5x9oB4R3XrdBzyBPfkqX1Ij7Dbg8tbrBRQstxQqAlPlyufNCovbvBRfvwOLDlyZgtiAPfzKDCcrEit43AXjxuKf4fIX674bFrxsdQNmctQfwaBLzudaIBaAFJpfz+z/BQQdEvGsGUCKKN7gOdtBZE2rfEOHbrhxiqqJMg4bVyrLLZ3LZt/yl6zrZduxkPNNndhwjPkMcHJ/GkHq6/KR9F4Q48sc2yZhvJmA="
