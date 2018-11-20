@@ -117,7 +117,7 @@ after_success:
     - |
           if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
               mkdir -p ~/.ssh
-              chmod 0600 ~/kvirc-github-key
+              chmod 0600 ~/kvirc-artifacts-key
               cp .travis.ssh ~/.ssh/config
 
               kvi_version="$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')";
