@@ -17,7 +17,6 @@ matrix:
               - |
                   if [[ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" && "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then
                     openssl aes-256-cbc -K $encrypted_da8de0aafbfc_key -iv $encrypted_da8de0aafbfc_iv -in .travis-github.ssh.enc -out ~/kvirc-github-key -d
-                    openssl aes-256-cbc -K $encrypted_da8de0aafbfc_key -iv $encrypted_da8de0aafbfc_iv -in .travis-artifacts.ssh.enc -out ~/kvirc-artifacts-key -d
                   fi
               - export encrypted_da8de0aafbfc_key=no
               - sudo apt-get update
@@ -50,6 +49,10 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sysctl -a | grep mem; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then command curl -sSL https://rvm.io/mpapis.asc | gpg --import -; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm get head; fi
+    - |
+        if [[ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" && "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then
+          openssl aes-256-cbc -K $encrypted_da8de0aafbfc_key -iv $encrypted_da8de0aafbfc_iv -in .travis-artifacts.ssh.enc -out ~/kvirc-artifacts-key -d
+        fi
     - export encrypted_da8de0aafbfc_key=no
     - pwd
 install:
@@ -109,13 +112,13 @@ after_success:
           fi
 
     - |
-          if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+          if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
               npm update -g npm
               npm install -g appdmg
               appdmg -v dist/osx/osx_dmg.json KVIrc.dmg
           fi
     - |
-          if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+          if [[ "$TRAVIS_OS_NAME" == "osx" && "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" && "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then
               mkdir -p ~/.ssh
               chmod 0600 ~/kvirc-artifacts-key
               cp .travis.ssh ~/.ssh/config
