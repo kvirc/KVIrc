@@ -140,6 +140,8 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 	mergeTip(u, __tr2qs_ctx("This is the amount of time that KVIrc will wait for a response before assuming that a DCC has failed "
 	                        "because the remote client was unable to connect to our listening socket.", "options"));
 
+	b = addBoolSelector(0, 4, 1, 4, __tr2qs_ctx("Lookup local hostname seen by IRC server", "options"), KviOption_boolLookupLocalHostnameSeenByServer);
+
 	addRowSpacer(0, 4, 1, 4);
 }
 
