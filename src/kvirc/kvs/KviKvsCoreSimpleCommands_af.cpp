@@ -121,8 +121,6 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_PARAMETER("reason", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szReason)
 		KVSCSC_PARAMETERS_END
 
-		KVSCSC_REQUIRE_CONNECTION
-
 		if(szReason.isEmpty())
 		{
 			if(KVI_OPTION_BOOL(KviOption_boolUseAwayMessage) || KVSCSC_pSwitches->find('d', "default-message"))
@@ -173,6 +171,8 @@ namespace KviKvsCoreSimpleCommands
 		}
 		else
 		{
+			KVSCSC_REQUIRE_CONNECTION
+
 			QByteArray szR = KVSCSC_pConnection->encodeText(szReason);
 			if(!(KVSCSC_pConnection->sendFmtData("AWAY :%s", szR.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
