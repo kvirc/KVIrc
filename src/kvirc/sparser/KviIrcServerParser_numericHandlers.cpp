@@ -2404,7 +2404,7 @@ void KviIrcServerParser::parseNumericStats(KviIrcMessage * msg)
 		if(msg->paramCount() > 2)
 		{
 			KviCString szParms;
-			for(std::size_t i = 1; i < msg->paramCount(); ++i)
+			for(int i = 1; i < msg->paramCount(); ++i)
 			{
 				if(szParms.hasData())
 					szParms.append(' ');
@@ -3053,6 +3053,15 @@ void KviIrcServerParser::parseNumericSaslFail(KviIrcMessage * msg)
 				msg->connection()->stateData()->setSentSaslMethod(QStringLiteral("PLAIN"));
 				return;
 			}
+		}
+
+		if(KVI_OPTION_BOOL(KviOption_boolDropConnectionOnSaslFailure))
+		{
+			KviWindow * pOut = static_cast<KviWindow *>(msg->console());
+			pOut->output(KVI_OUT_SERVERINFO, __tr2qs("SASL auth failed. Dropping the connection."));
+			msg->connection()->sendFmtData("QUIT");
+			msg->connection()->abort();
+			return;
 		}
 	}
 

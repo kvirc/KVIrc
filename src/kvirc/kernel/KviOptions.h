@@ -353,10 +353,11 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolMenuBarVisible 261
 #define KviOption_boolWarnAboutHidingMenuBar 262
 #define KviOption_boolWhoRepliesToActiveWindow 263                             /* irc::output */
+#define KviOption_boolDropConnectionOnSaslFailure 264                          /* connection::advanced */
 
 // NOTICE: REUSE EQUIVALENT UNUSED BOOL_OPTION in KviOptions.cpp ENTRIES BEFORE ADDING NEW ENTRIES ABOVE
 
-#define KVI_NUM_BOOL_OPTIONS 264
+#define KVI_NUM_BOOL_OPTIONS 265
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
 #define KVI_STRING_OPTIONS_PREFIX_LEN 6

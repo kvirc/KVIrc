@@ -92,16 +92,16 @@ private:
 	KviIrcConnection * m_pConnection;   // shallow, never null
 	KviIrcConnectionTarget * m_pTarget; // shallow, never null
 	KviConsoleWindow * m_pConsole;      // shallow, never null
-	KviIrcSocket * m_pSocket;           // owned, may be null!
-	KviMexLinkFilter * m_pLinkFilter;   // owned, may be null!
+	KviIrcSocket * m_pSocket = nullptr;         // owned, may be null!
+	KviMexLinkFilter * m_pLinkFilter = nullptr; // owned, may be null!
 
 	State m_eState = Idle;
 
-	char * m_pReadBuffer;
-	unsigned int m_uReadBufferLen;
-	unsigned int m_uReadPackets;
+	char * m_pReadBuffer = nullptr;    // incoming data buffer
+	unsigned int m_uReadBufferLen = 0; // incoming data buffer length
+	unsigned int m_uReadPackets = 0;   // total packets read per session
 
-	KviIrcConnectionTargetResolver * m_pResolver; // owned
+	KviIrcConnectionTargetResolver * m_pResolver = nullptr; // owned
 public:
 	/**
 	* \brief Returns the socket

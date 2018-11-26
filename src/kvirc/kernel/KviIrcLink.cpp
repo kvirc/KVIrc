@@ -54,14 +54,6 @@ KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)
 {
 	m_pTarget = pConnection->target();
 	m_pConsole = m_pConnection->console();
-
-	m_pSocket = nullptr;
-	m_pLinkFilter = nullptr;
-	m_pResolver = nullptr;
-
-	m_pReadBuffer = nullptr; // incoming data buffer
-	m_uReadBufferLen = 0;    // incoming data buffer length
-	m_uReadPackets = 0;      // total packets read per session
 }
 
 KviIrcLink::~KviIrcLink()
@@ -259,7 +251,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			if(*cMessageBuffer != 0)
 				m_pConnection->incomingMessage(cMessageBuffer);
 
-			if(m_pSocket->state() != KviIrcSocket::Connected)
+			if(!m_pSocket || (m_pSocket->state() != KviIrcSocket::Connected))
 			{
 				// Disconnected in KviConsoleWindow::incomingMessage() call.
 				// This may happen for several reasons (local event loop

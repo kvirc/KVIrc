@@ -182,7 +182,10 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 	                        "you want to rely on the DNS server to provide the best choice.",
 	                "options"));
 
-	addRowSpacer(0, 5, 0, 5);
+	b = addBoolSelector(0, 5, 0, 5, __tr2qs_ctx("Drop connection on SASL authentication failure", "options"), KviOption_boolDropConnectionOnSaslFailure);
+	mergeTip(b, __tr2qs_ctx("This option will close the socket if no SASL authentication or any SASL fallback had succeeded.", "options"));
+
+	addRowSpacer(0, 6, 0, 6);
 }
 
 OptionsWidget_connectionSocket::~OptionsWidget_connectionSocket()
