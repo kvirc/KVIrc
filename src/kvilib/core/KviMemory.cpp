@@ -238,7 +238,7 @@ namespace KviMemory
 
 	// WE WANT repnz; movsq\n"!!!
 
-	inline void copy(void * dst_ptr,const void *src_ptr,int len)
+	void copy(void * dst_ptr,const void *src_ptr,int len)
 	{
 		__asm__ __volatile__(
 			"	cld\n"
@@ -256,7 +256,7 @@ namespace KviMemory
 		);
 	}
 
-	inline void copy(void * dst_ptr,const void *src_ptr,int len)
+	void copy(void * dst_ptr,const void *src_ptr,int len)
 	{
 		__asm__ __volatile__(
 			"	cld\n"
@@ -447,7 +447,7 @@ namespace KviMemory
 	//   only by gcc
 	//
 
-	inline bool kvi_strEqualCS(const char * pcStr1, const char * pcStr2)
+	bool kvi_strEqualCS(const char * pcStr1, const char * pcStr2)
 	{
 		// An instruction pattern is really useful in this case.
 		// When inlining, GCC can optimize to load esi and edi
@@ -473,7 +473,7 @@ namespace KviMemory
 		return bEax;
 	}
 
-	inline bool kvi_strEqualCSN(const char * pcStr1, const char * pcStr2, int iLen)
+	bool kvi_strEqualCSN(const char * pcStr1, const char * pcStr2, int iLen)
 	{
 		register bool bEax;
 		__asm__ __volatile__ (
@@ -508,7 +508,7 @@ namespace KviMemory
 	// These will NOT work with localizable characters:
 	// 'a' with umlaut will be not equal to 'A' with umlaut
 
-	inline bool kvi_strEqualNoLocaleCI(const char * pcStr1, const char * pcStr2)
+	bool kvi_strEqualNoLocaleCI(const char * pcStr1, const char * pcStr2)
 	{
 		// Trivial implementation
 		// Ignores completely locales....only A-Z chars are transformed to a-z
@@ -548,7 +548,7 @@ namespace KviMemory
 		return bEax;
 	}
 
-	inline bool kvi_strEqualNoLocaleCIN(const char * pcStr1, const char * pcStr2, int iLen)
+	bool kvi_strEqualNoLocaleCIN(const char * pcStr1, const char * pcStr2, int iLen)
 	{
 
 		register int iReg;
@@ -589,7 +589,7 @@ namespace KviMemory
 		return bEax;
 	}
 
-	inline int kvi_strLen(const char * pcStr)
+	int kvi_strLen(const char * pcStr)
 	{
 		register int iEcx;
 		__asm__ __volatile__(

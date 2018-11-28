@@ -112,13 +112,13 @@ public:
 	void addMessage(KviWindow * pWnd, const QString & szImageId, const QString & szText, unsigned int uMessageTime);
 	void setDisableHideOnMainWindowGotAttention(bool b) { m_bDisableHideOnMainWindowGotAttention = b; };
 	void showLineEdit(bool bShow);
-	inline int countTabs() const
+	int countTabs() const
 	{
 		if(m_pWndTabs)
 			return m_pWndTabs->count();
 		return 0;
-	};
-	inline State state() const { return m_eState; };
+	}
+	State state() const { return m_eState; }
 protected:
 	void showEvent(QShowEvent * e) override;
 	void hideEvent(QHideEvent * e) override;

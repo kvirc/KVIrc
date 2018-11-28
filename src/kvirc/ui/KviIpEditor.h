@@ -47,7 +47,7 @@ public:
 	bool setAddress(const QString & ipAddr);
 	QString address() const;
 	void setAddressType(AddressType addrType);
-	inline AddressType addressType() const { return m_addrType; }
+	AddressType addressType() const { return m_addrType; }
 	bool isValid() const;
 };
 

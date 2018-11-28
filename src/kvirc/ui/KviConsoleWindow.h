@@ -126,23 +126,23 @@ public:
 	KviIrcContext * context() { return m_pContext; };
 
 	// UI
-	inline KviUserListView * notifyListView() { return m_pNotifyListView; };
-	inline int selectedCount();
+	KviUserListView * notifyListView() const { return m_pNotifyListView; }
+	int selectedCount();
 
 	//
 	// State
 	//
-	inline KviIrcContext::State state() { return context()->state(); };
+	KviIrcContext::State state() { return context()->state(); }
 
 	// these should disappear!
-	inline bool isConnected() { return context()->isConnected(); };
-	inline bool isIPv6Connection();
-	inline bool isNotConnected();
+	bool isConnected() { return context()->isConnected(); }
+	bool isIPv6Connection();
+	bool isNotConnected();
 	bool connectionInProgress();
 	//
 	// This connection info
 	//
-	inline QString currentNetworkName();
+	QString currentNetworkName();
 	KviAvatar * currentAvatar();
 	//
 	// IRC Context wide helpers (connection related)
@@ -182,7 +182,7 @@ public:
 	void terminateConnectionRequest(bool bForce = false, const char * quitMsg = 0);
 
 	// Status string (usermode + nick) (connection related too)
-	inline const QString & statusString() { return m_szStatusString; };
+	const QString & statusString() const { return m_szStatusString; }
 
 	KviWindow * activeWindow();
 	// User db, connection related

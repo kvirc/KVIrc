@@ -132,17 +132,17 @@ public:
 	void resetIcons();
 
 	// writing methods...
-	inline int x() const { return m_pnt.x(); }
-	inline int y() const { return m_pnt.y(); }
-	inline int width() const { return m_rct.width(); }
-	inline int height() const { return m_rct.height(); }
-	inline int baseLine() const { return (y() + height()); }
+	int x() const { return m_pnt.x(); }
+	int y() const { return m_pnt.y(); }
+	int width() const { return m_rct.width(); }
+	int height() const { return m_rct.height(); }
+	int baseLine() const { return (y() + height()); }
 
-	inline QRect bodyRect() const { return m_bodyRect; }
-	inline QRect captionRect() const { return m_captionRect; }
-	inline QRect rect() const { return m_rct; }
-	inline QRect closeRect() const { return m_closeIconRect; }
-	inline QRect titleRect() const { return m_titleRect; }
+	QRect bodyRect() const { return m_bodyRect; }
+	QRect captionRect() const { return m_captionRect; }
+	QRect rect() const { return m_rct; }
+	QRect closeRect() const { return m_closeIconRect; }
+	QRect titleRect() const { return m_titleRect; }
 
 	void draw(QPainter *, bool b = false);
 	void setPics(bool b = false);

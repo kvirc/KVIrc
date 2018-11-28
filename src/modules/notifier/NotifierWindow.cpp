@@ -864,7 +864,7 @@ void NotifierWindow::resize(QPoint, bool)
 	setGeometry(m_wndRect);
 }
 
-inline void NotifierWindow::setCursor(int iCur)
+void NotifierWindow::setCursor(int iCur)
 {
 	if(m_cursor.shape() != iCur)
 	{

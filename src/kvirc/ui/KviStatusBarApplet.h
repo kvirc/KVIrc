@@ -100,8 +100,8 @@ public:
 	KviStatusBar * statusBar() { return m_pStatusBar; };
 	KviMainWindow * frame() { return m_pStatusBar->frame(); };
 	KviStatusBarAppletDescriptor * descriptor() { return m_pDescriptor; };
-	inline void setIndex(int i) { mIndex = i; };
-	inline int index() const { return mIndex; };
+	void setIndex(int i) { mIndex = i; }
+	int index() const { return mIndex; }
 protected:
 	virtual void fillContextPopup(QMenu *){};
 	virtual void loadState(const char *, KviConfigurationFile *){};

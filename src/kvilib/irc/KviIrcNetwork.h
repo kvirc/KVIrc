@@ -92,7 +92,7 @@ public:
 	* \brief Returns the name of the network
 	* \return const QString &
 	*/
-	inline const QString & name() const { return m_szName; };
+	const QString & name() const { return m_szName; }
 
 	/**
 	* \brief Returns the encoding of the network
@@ -101,7 +101,7 @@ public:
 	* communicating with the server
 	* \return const QString &
 	*/
-	inline const QString & encoding() const { return m_szEncoding; };
+	const QString & encoding() const { return m_szEncoding; }
 
 	/**
 	* \brief Returns the text encoding of the network
@@ -109,85 +109,85 @@ public:
 	* This is the default encoding when talking on channels or queries
 	* \return const QString &
 	*/
-	inline const QString & textEncoding() const { return m_szTextEncoding; };
+	const QString & textEncoding() const { return m_szTextEncoding; }
 
 	/**
 	* \brief Returns the description of the network
 	* \return const QString &
 	*/
-	inline const QString & description() const { return m_szDescription; };
+	const QString & description() const { return m_szDescription; }
 
 	/**
 	* \brief Returns the nickname of the user associated to the network
 	* \return const QString &
 	*/
-	inline const QString & nickName() const { return m_szNickName; };
+	const QString & nickName() const { return m_szNickName; }
 
 	/**
 	* \brief Returns the alternative nickname of the user associated to the network
 	* \return const QString &
 	*/
-	inline const QString & alternativeNickName() const { return m_szAlternativeNickName; };
+	const QString & alternativeNickName() const { return m_szAlternativeNickName; }
 
 	/**
 	* \brief Returns the realname of the user associated to the network
 	* \return const QString &
 	*/
-	inline const QString & realName() const { return m_szRealName; };
+	const QString & realName() const { return m_szRealName; }
 
 	/**
 	* \brief Returns the username of the user associated to the network
 	* \return const QString &
 	*/
-	inline const QString & userName() const { return m_szUserName; };
+	const QString & userName() const { return m_szUserName; }
 
 	/**
 	* \brief Returns the password of the user associated to the network
 	* \return const QString &
 	*/
-	inline const QString & password() const { return m_szPass; };
+	const QString & password() const { return m_szPass; }
 
 	/**
 	* \brief Returns the commands to run on network login
 	* \return const QString &
 	*/
-	inline const QString & onLoginCommand() const { return m_szOnLoginCommand; };
+	const QString & onLoginCommand() const { return m_szOnLoginCommand; }
 
 	/**
 	* \brief Returns the commands to run on network connect
 	* \return const QString &
 	*/
-	inline const QString & onConnectCommand() const { return m_szOnConnectCommand; };
+	const QString & onConnectCommand() const { return m_szOnConnectCommand; }
 
 	/**
 	* \brief Returns the user identity of the user associated to the network
 	* \return const QString &
 	*/
-	inline const QString & userIdentityId() const { return m_szUserIdentityId; };
+	const QString & userIdentityId() const { return m_szUserIdentityId; }
 
 	/**
 	* \brief Returns true if the network has the autoconnect state on
 	* \return bool
 	*/
-	inline bool autoConnect() const { return m_bAutoConnect; };
+	bool autoConnect() const { return m_bAutoConnect; }
 
 	/**
 	* \brief Returns the list of channels with autojoin flag
 	* \return QStringList *
 	*/
-	inline QStringList * autoJoinChannelList() { return m_pChannelList; };
+	QStringList * autoJoinChannelList() { return m_pChannelList; }
 
 	/**
 	* \brief Returns the list of channels with autojoin flag as a string
 	* \return const QString &
 	*/
-	inline const QString autoJoinChannelListAsString() { return m_pChannelList ? m_pChannelList->join(",") : ""; };
+	const QString autoJoinChannelListAsString() { return m_pChannelList ? m_pChannelList->join(",") : ""; }
 
 	/**
 	* \brief Returns a set of rules for the NickServ
 	* \return KviNickServRuleSet *
 	*/
-	inline KviNickServRuleSet * nickServRuleSet() { return m_pNickServRuleSet; };
+	KviNickServRuleSet * nickServRuleSet() { return m_pNickServRuleSet; }
 
 	/**
 	* \brief Sets the rules for NickServ
@@ -208,7 +208,7 @@ public:
 	* \param szName The name of the network
 	* \return void
 	*/
-	inline void setName(const QString & szName) { m_szName = szName; };
+	void setName(const QString & szName) { m_szName = szName; }
 
 	/**
 	* \brief Sets the encondig of the network
@@ -218,7 +218,7 @@ public:
 	* \param szEncoding The encoding of the network
 	* \return void
 	*/
-	inline void setEncoding(const QString & szEncoding) { m_szEncoding = szEncoding; };
+	void setEncoding(const QString & szEncoding) { m_szEncoding = szEncoding; }
 
 	/**
 	* \brief Sets the text encondig of the network
@@ -227,63 +227,63 @@ public:
 	* \param szEncoding The text encoding of the network
 	* \return void
 	*/
-	inline void setTextEncoding(const QString & szEncoding) { m_szTextEncoding = szEncoding; };
+	void setTextEncoding(const QString & szEncoding) { m_szTextEncoding = szEncoding; }
 
 	/**
 	* \brief Sets the description of the network
 	* \param szDescription The description of the network
 	* \return void
 	*/
-	inline void setDescription(const QString & szDescription) { m_szDescription = szDescription; };
+	void setDescription(const QString & szDescription) { m_szDescription = szDescription; }
 
 	/**
 	* \brief Sets the list of commands to run on network connection
 	* \param szCmd The commands list to run
 	* \return void
 	*/
-	inline void setOnConnectCommand(const QString & szCmd) { m_szOnConnectCommand = szCmd; };
+	void setOnConnectCommand(const QString & szCmd) { m_szOnConnectCommand = szCmd; }
 
 	/**
 	* \brief Sets the list of commands to run on network login
 	* \param szCmd The commands list to run
 	* \return void
 	*/
-	inline void setOnLoginCommand(const QString & szCmd) { m_szOnLoginCommand = szCmd; };
+	void setOnLoginCommand(const QString & szCmd) { m_szOnLoginCommand = szCmd; }
 
 	/**
 	* \brief Sets the nickname of the user associated to the network
 	* \param szNick The nickname
 	* \return void
 	*/
-	inline void setNickName(const QString & szNick) { m_szNickName = szNick; };
+	void setNickName(const QString & szNick) { m_szNickName = szNick; }
 
 	/**
 	* \brief Sets the alternative nickname of the user associated to the network
 	* \param szNick The nickname
 	* \return void
 	*/
-	inline void setAlternativeNickName(const QString & szNick) { m_szAlternativeNickName = szNick; };
+	void setAlternativeNickName(const QString & szNick) { m_szAlternativeNickName = szNick; }
 
 	/**
 	* \brief Sets the realname of the user associated to the network
 	* \param szReal The realname
 	* \return void
 	*/
-	inline void setRealName(const QString & szReal) { m_szRealName = szReal; };
+	void setRealName(const QString & szReal) { m_szRealName = szReal; }
 
 	/**
 	* \brief Sets the username of the user associated to the network
 	* \param szUser The username
 	* \return void
 	*/
-	inline void setUserName(const QString & szUser) { m_szUserName = szUser; };
+	void setUserName(const QString & szUser) { m_szUserName = szUser; }
 
 	/**
 	* \brief Sets the password of the user associated to the network
 	* \param szPass The password
 	* \return void
 	*/
-	inline void setPassword(const QString & szPass) { m_szPass = szPass; };
+	void setPassword(const QString & szPass) { m_szPass = szPass; }
 
 	/**
 	* \brief Sets the list of channels to mark for autojoin
@@ -304,20 +304,20 @@ public:
 	* \param bAutoConnect The state of the autoconnect flag
 	* \return void
 	*/
-	inline void setAutoConnect(bool bAutoConnect) { m_bAutoConnect = bAutoConnect; };
+	void setAutoConnect(bool bAutoConnect) { m_bAutoConnect = bAutoConnect; }
 
 	/**
 	* \brief Sets the user identity id of the user associated to the network
 	* \param szUserIdentityId The user identity
 	* \return void
 	*/
-	inline void setUserIdentityId(const QString & szUserIdentityId) { m_szUserIdentityId = szUserIdentityId; };
+	void setUserIdentityId(const QString & szUserIdentityId) { m_szUserIdentityId = szUserIdentityId; }
 
 	/**
 	* \brief Returns a list of servers associated to the network
 	* \return KviPointerList<KviIrcServer> *
 	*/
-	inline KviPointerList<KviIrcServer> * serverList() { return m_pServerList; };
+	KviPointerList<KviIrcServer> * serverList() const { return m_pServerList; }
 
 	/**
 	* \brief Returns the current server

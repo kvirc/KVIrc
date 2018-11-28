@@ -130,8 +130,8 @@ private:
 	KviMessageTypeSettings * m_pMsgType;
 
 public:
-	inline int optionId() { return m_iOptId; };
-	inline KviMessageTypeSettings * msgType() { return m_pMsgType; };
+	int optionId() const { return m_iOptId; }
+	KviMessageTypeSettings * msgType() const { return m_pMsgType; }
 };
 
 class MessageColorListWidgetItem : public KviTalListWidgetText
@@ -144,7 +144,7 @@ public:
 	int m_iClrIdx;
 
 public:
-	inline int clrIdx() { return m_iClrIdx; };
+	int clrIdx() const { return m_iClrIdx; }
 };
 
 class MessageColorListWidgetItemDelegate : public QItemDelegate

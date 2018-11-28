@@ -122,7 +122,7 @@ public:
 	};
 	void setFindResult(const QString & text);
 	void focusStringToFind();
-	inline bool messageEnabled(int msg_type) { return m_pFilterItems[msg_type]->isOn(); };
+	bool messageEnabled(int msg_type) { return m_pFilterItems[msg_type]->isOn(); }
 	void forceRepaint();
 protected slots:
 	void findPrev();

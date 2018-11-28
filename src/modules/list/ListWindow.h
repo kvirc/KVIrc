@@ -80,7 +80,7 @@ private:
 
 public:
 	bool operator<(const QTreeWidgetItem & other) const;
-	inline ChannelTreeWidgetItemData * itemData() { return m_pData; };
+	ChannelTreeWidgetItemData * itemData() const { return m_pData; }
 };
 
 class ChannelTreeWidget : public KviThemedTreeWidget

@@ -316,7 +316,7 @@ KVSO_CLASS_FUNCTION(list, clear)
 	return true;
 }
 
-inline int kvi_compare(const KviKvsVariant * p1, const KviKvsVariant * p2)
+int kvi_compare(const KviKvsVariant * p1, const KviKvsVariant * p2)
 {
 	return p1->compare(p2);
 }

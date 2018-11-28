@@ -88,13 +88,13 @@ public:
 	* \brief Returns the name of the current window
 	* \return QString
 	*/
-	inline QString label() const { return m_szLabel; }
+	QString label() const { return m_szLabel; }
 
 	/**
 	* \brief Returns the pointer of the current window
 	* \return KviWindow *
 	*/
-	inline KviWindow * wnd() const { return m_pWnd; }
+	KviWindow * wnd() const { return m_pWnd; }
 protected:
 	void mouseDoubleClickEvent(QMouseEvent * e) override;
 	void resizeEvent(QResizeEvent * e) override;

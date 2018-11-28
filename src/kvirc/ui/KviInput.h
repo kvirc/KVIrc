@@ -165,13 +165,13 @@ public:
 	* \brief Return the instance of the input editor
 	* \return KviInputEditor *
 	*/
-	inline KviInputEditor * editor() { return m_pInputEditor; };
+	KviInputEditor * editor() const { return m_pInputEditor; }
 
 	/**
 	* \brief Return the instance of the input history
 	* \return KviInputHistory *
 	*/
-	inline KviInputHistory * history() { return KviInputHistory::instance(); };
+	KviInputHistory * history() { return KviInputHistory::instance(); }
 protected:
 	void installShortcuts();
 	virtual void focusInEvent(QFocusEvent * e);

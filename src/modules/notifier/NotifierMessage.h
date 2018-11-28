@@ -75,12 +75,12 @@ public:
 	* \brief Returns the original irc message
 	* \return const QString &
 	*/
-	inline const QString & text() const { return m_szText; }
+	const QString & text() const { return m_szText; }
 	/**
 	* \brief Returns the message icon
 	* \return QPixmap *
 	*/
-	inline QPixmap * pixmap() const { return m_pPixmap; }
+	QPixmap * pixmap() const { return m_pPixmap; }
 	/**
 	* \brief Updates the aspect of this message
 	* \return void

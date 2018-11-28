@@ -88,7 +88,7 @@ public:
 	* \brief Returns the window popup
 	* \return QMenu *
 	*/
-	inline QMenu * windowPopup() { return m_pWindowPopup; };
+	QMenu * windowPopup() const { return m_pWindowPopup; }
 
 	/**
 	* \brief Remove and delete the subwindow

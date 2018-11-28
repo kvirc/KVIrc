@@ -102,7 +102,7 @@ protected:
 	void stopRecording();
 	void startPlaying();
 	void stopPlaying();
-	inline bool isPlaying() { return m_bPlaying; };
+	bool isPlaying() const { return m_bPlaying; }
 	virtual void run();
 	virtual bool handleIncomingData(KviDccThreadIncomingData * data, bool bCritical);
 };
