@@ -10,7 +10,7 @@ endif()
 add_library(${kvi_module_name} MODULE ${${kvi_module_name}_SRCS} ${${kvi_module_name}_MOC_SRCS})
 
 # Enable C++11
-set_property(TARGET ${kvi_module_name} PROPERTY CXX_STANDARD 14)
+set_property(TARGET ${kvi_module_name} PROPERTY CXX_STANDARD 17)
 set_property(TARGET ${kvi_module_name} PROPERTY CXX_STANDARD_REQUIRED ON)
 
 target_link_libraries(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
