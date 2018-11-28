@@ -223,6 +223,8 @@ void KviWindow::demandAttention()
 	FlashWindowEx(&fwi);
 #elif defined(COMPILE_KDE_SUPPORT)
 	KWindowSystem::demandAttention(windowId, true);
+#else
+	Q_UNUSED(windowId)
 #endif
 }
 

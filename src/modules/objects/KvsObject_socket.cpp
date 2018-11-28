@@ -408,7 +408,7 @@ KVSO_CLASS_FUNCTION(socket, read)
 		// convert NULLS to char 255
 		char * buffer = (char *)KviMemory::allocate(iLen);
 		m_pSocket->read(buffer, iLen);
-		for(size_t i{}; i < iLen; i++)
+		for(int i{}; i < iLen; i++)
 		{
 			if(!buffer[i])
 				buffer[i] = (char)(255);

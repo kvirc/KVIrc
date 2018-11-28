@@ -2085,7 +2085,7 @@ void OptionsWidget_servers::updateFavoritesFilter(bool bSet)
 {
 	m_bShowingFavoritesOnly = bSet;
 	IrcServerOptionsTreeWidgetItem * network;
-	for(unsigned i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
+	for(int i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
 	{
 		network = static_cast<IrcServerOptionsTreeWidgetItem *>(m_pTreeWidget->topLevelItem(i));
 		uint uServers = 0;

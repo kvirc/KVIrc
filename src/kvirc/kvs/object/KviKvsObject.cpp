@@ -634,7 +634,7 @@
 static char * g_hNextObjectHandle = (char *)nullptr;
 
 KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass, KviKvsObject * pParent, const QString & szName)
-    : QObject(pParent), m_pClass{pClass}, m_szName{szName}
+    : QObject(pParent), m_szName{szName}, m_pClass{pClass}
 {
 	setObjectName(szName);
 

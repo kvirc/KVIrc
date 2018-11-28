@@ -277,8 +277,7 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 }
 
 KviBasicIrcServerInfo::KviBasicIrcServerInfo(KviIrcConnectionServerInfo * pParent, QString version)
-    : m_pParent(pParent)
-    , m_szServerVersion(std::move(version))
+    : m_szServerVersion(std::move(version)), m_pParent(pParent)
 {
 }
 

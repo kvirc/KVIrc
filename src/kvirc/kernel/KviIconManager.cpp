@@ -1966,7 +1966,7 @@ QPixmap * KviIconManager::loadSmallIcon(int iIdx)
 }
 
 #ifdef __GNUC__
-#warning IMPLEMENT CLEANUP
+//#warning IMPLEMENT CLEANUP
 #endif
 /*
 void KviIconManager::cacheCleanup()

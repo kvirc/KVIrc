@@ -40,8 +40,6 @@ OptionsWidget_interfaceFeatures::OptionsWidget_interfaceFeatures(QWidget * paren
 	setObjectName("interfacefeatures_options_widget");
 	createLayout();
 
-	KviTalGroupBox * g;
-
 	addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Minimize application on startup", "options"), KviOption_boolStartupMinimized);
 	addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Confirm quit with active connections", "options"), KviOption_boolConfirmCloseWhenThereAreConnections);
 	addBoolSelector(0, 2, 0, 2, __tr2qs_ctx("Remember window properties", "options"), KviOption_boolWindowsRememberProperties);

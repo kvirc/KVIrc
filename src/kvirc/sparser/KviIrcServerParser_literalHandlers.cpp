@@ -2022,7 +2022,6 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 {
 	bool bSet = true;
 
-	bool bIsMultiMode = false;
 	bool bIsMultiSingleMode = false;
 	bool bShowAsCompact = false;
 
@@ -2086,7 +2085,6 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 
 	if(iTotModes > 1)
 	{
-		bIsMultiMode = true;
 		bShowAsCompact = KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges);
 
 		if(iSingleModes == 1)

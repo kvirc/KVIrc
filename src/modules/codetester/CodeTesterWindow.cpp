@@ -89,7 +89,6 @@ void CodeTesterWindow::execute()
 {
 	QString buffer;
 	m_pEditor->getText(buffer);
-	KviConsoleWindow * pConsole = g_pApp->activeConsole();
 	QStringList slParams = m_pParams->text().split(';');
 	KviKvsVariantList params{&slParams};
 	KviKvsScript::run(buffer, this, &params);

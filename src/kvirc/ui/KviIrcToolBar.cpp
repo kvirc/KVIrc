@@ -339,7 +339,6 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 	if(c)
 	{
 		QString serv, nick;
-		QString tmp;
 		if(!c->connection())
 		{
 			serv = __tr2qs("Not connected");
@@ -358,21 +357,12 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 				else if(ic->userInfo()->userMode().isEmpty())
 					nick += ic->currentNickName();
 
-					if(ic->userInfo()->isAway())
-					{
-						nick += space + sprtr + space;
-						nick += __tr2qs("is away");
-					}
-
-				else
+				if(ic->userInfo()->isAway())
 				{
-					if(ic->userInfo()->isAway())
-					{
-						nick += space;
-						nick += __tr2qs("is away");
-						nick += space + sprtr;
-					}
+					nick += space + sprtr + space;
+					nick += __tr2qs("is away");
 				}
+
 				serv =  __tr2qs("Using server");
 				serv += cln + space;
 				serv += ic->currentServerName();

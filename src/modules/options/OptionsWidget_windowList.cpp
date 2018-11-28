@@ -36,7 +36,7 @@ OptionsWidget_windowList::OptionsWidget_windowList(QWidget * parent)
 	createLayout();
 
 	KviTalHBox * hbox = new KviTalHBox(this);
-	QLabel * l = new QLabel(__tr2qs_ctx("Window list type:", "options"), hbox);
+	(void)new QLabel(__tr2qs_ctx("Window list type:", "options"), hbox);
 	m_pWindowListType = new QComboBox(hbox);
 	m_pWindowListType->addItem(__tr2qs_ctx("Tree", "options"));
 	m_pWindowListType->addItem(__tr2qs_ctx("Classic", "options"));
