@@ -637,9 +637,7 @@ void OptionsWidget_messageColors::load()
 	//qDebug("SYMLINKING %s to %s",szGlobal.ptr(),szLocal.ptr());
 	//qDebug("SYMLINK RETURNS %d (%d)",::symlink(szGlobal.ptr(),szLocal.ptr()));
 	//qDebug("ERRNO (%d)",errno);
-	int dummy; // make gcc happy
-	dummy = symlink(szGlobal.toLocal8Bit().data(), szLocal.toLocal8Bit().data());
-	Q_UNUSED(dummy);
+	(void)symlink(szGlobal.toLocal8Bit().data(), szLocal.toLocal8Bit().data());
 // FIXME: Do it also on windows...
 #endif
 

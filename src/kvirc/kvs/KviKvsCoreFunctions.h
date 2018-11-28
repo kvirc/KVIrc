@@ -30,7 +30,7 @@
 #include "KviKvsVariant.h"
 #include "KviKvsParameterProcessor.h"
 
-#define KVSCF(_name) bool _name(KviKvsRunTimeContext * __pContext, KviKvsVariantList * __pParams, KviKvsVariant * __pRetBuffer)
+#define KVSCF(_name) bool _name([[maybe_unused]] KviKvsRunTimeContext * __pContext, [[maybe_unused]] KviKvsVariantList * __pParams, [[maybe_unused]] KviKvsVariant * __pRetBuffer)
 
 #define KVSCF_pContext __pContext
 #define KVSCF_pParams __pParams

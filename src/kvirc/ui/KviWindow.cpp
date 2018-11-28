@@ -211,7 +211,7 @@ bool KviWindow::hasAttention(AttentionLevel eLevel)
 
 void KviWindow::demandAttention()
 {
-	WId windowId = isDocked() ? g_pMainWindow->winId() : winId();
+	[[maybe_unused]] WId windowId = isDocked() ? g_pMainWindow->winId() : winId();
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	FLASHWINFO fwi;
@@ -223,8 +223,6 @@ void KviWindow::demandAttention()
 	FlashWindowEx(&fwi);
 #elif defined(COMPILE_KDE_SUPPORT)
 	KWindowSystem::demandAttention(windowId, true);
-#else
-	Q_UNUSED(windowId)
 #endif
 }
 

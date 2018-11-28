@@ -1035,8 +1035,6 @@ namespace KviKvsCoreCallbackCommands
 
 	KVSCCC(privateimpl)
 	{
-		Q_UNUSED(__pSwitches);
-
 		kvs_hobject_t hObject;
 		QString szFunctionName;
 		KVSCCC_PARAMETERS_BEGIN

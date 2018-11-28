@@ -1271,8 +1271,6 @@ void KvsObject_painter::detachDevice()
 
 KVSO_CLASS_FUNCTION(painter, end)
 {
-	Q_UNUSED(c);
-
 	if(!m_pDeviceObject)
 	{
 		m_pPainter->end();
@@ -1958,7 +1956,6 @@ KVSO_CLASS_FUNCTION(painter, setGradientAsBrush)
 
 KVSO_CLASS_FUNCTION(painter, clearGradient)
 {
-	Q_UNUSED(c);
 	if(!m_pGradient)
 		delete m_pGradient;
 	m_pGradient = nullptr;
@@ -2144,7 +2141,6 @@ KVSO_CLASS_FUNCTION(painter, setCompositionMode)
 }
 KVSO_CLASS_FUNCTION(painter, resetPath)
 {
-	Q_UNUSED(c);
 	if(m_pPainterPath)
 	{
 		delete m_pPainterPath;

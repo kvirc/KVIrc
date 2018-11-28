@@ -72,9 +72,8 @@ bool kvi_dcc_video_is_valid_codec(const char * codecName)
 	return false;
 }
 
-static DccVideoCodec * kvi_dcc_video_get_codec(const char * codecName)
+static DccVideoCodec * kvi_dcc_video_get_codec([[maybe_unused]] const char * codecName)
 {
-	Q_UNUSED(codecName);
 #ifndef COMPILE_DISABLE_OGG_THEORA
 	if(kvi_strEqualCI("theora", codecName))
 		return new DccVideoTheoraCodec();

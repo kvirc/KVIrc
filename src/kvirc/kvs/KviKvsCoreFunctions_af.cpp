@@ -270,8 +270,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(array)
 	{
-		Q_UNUSED(__pContext);
-
 		KviKvsArray * a = new KviKvsArray();
 
 		for(KviKvsVariant * v = KVSCF_pParams->first(); v; v = KVSCF_pParams->next())
@@ -351,9 +349,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(b)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Bold)));
 		return true;
 	}
@@ -793,9 +788,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(countStatusBarItems)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		if(g_pMainWindow->mainStatusBar())
 		{
 			QList<QWidget *> widgets = g_pMainWindow->mainStatusBar()->findChildren<QWidget *>();
@@ -824,9 +816,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(cr)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setString(QString(QChar('\r')));
 		return true;
 	}
@@ -1172,9 +1161,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(falseCKEYWORDWORKAROUND)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setBoolean(false);
 		return true;
 	}
@@ -1263,9 +1249,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(firstConnectedConsole)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KviConsoleWindow * c = g_pApp->topmostConnectedConsole();
 		KVSCF_pRetBuffer->setInteger(c ? c->numericId() : 0);
 		return true;
@@ -1296,8 +1279,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(flatten)
 	{
-		Q_UNUSED(__pContext);
-
 		KviKvsArray * a = new KviKvsArray();
 		KVSCF_pRetBuffer->setArray(a);
 		unsigned int uIdx = 0;

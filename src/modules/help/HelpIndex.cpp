@@ -83,12 +83,10 @@ QDataStream & operator<<(QDataStream & s, const Document & l)
 	return s;
 }
 
-HelpIndex::HelpIndex(QString dp, const QString & hp)
+HelpIndex::HelpIndex(QString dp, const QString & /* hp */)
     : QObject(nullptr)
     , docPath(std::move(dp))
 {
-	Q_UNUSED(hp);
-
 	alreadyHaveDocList = false;
 
 	connect(qApp, SIGNAL(lastWindowClosed()), this, SLOT(setLastWinClosed()));
@@ -99,12 +97,10 @@ HelpIndex::HelpIndex(QString dp, const QString & hp)
 	connect(m_pTimer, SIGNAL(timeout()), this, SLOT(filterNext()));
 }
 
-HelpIndex::HelpIndex(QStringList dl, const QString & hp)
+HelpIndex::HelpIndex(QStringList dl, const QString & /* hp */)
     : QObject(nullptr)
     , docList{ std::move(dl) }
 {
-	Q_UNUSED(hp);
-
 	alreadyHaveDocList = true;
 
 	connect(qApp, SIGNAL(lastWindowClosed()), this, SLOT(setLastWinClosed()));

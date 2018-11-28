@@ -1094,7 +1094,6 @@ KVSO_CLASS_FUNCTION(webView, addToJavaScriptWindowObject)
 }
 KVSO_CLASS_FUNCTION(webView, setEventFilter)
 {
-	Q_UNUSED(c);
 	QWebFrame * pFrame;
 	pFrame = ((QWebView *)widget())->page()->mainFrame();
 	pFrame->addToJavaScriptWindowObject("kvs", this);
@@ -1323,8 +1322,7 @@ void KvsObject_webView::slotDownloadRequest(const QNetworkRequest & r)
 			pReply->deleteLater();
 			return;
 		}
-		KviKvsDownloadHandler * pHandler = new KviKvsDownloadHandler(this, pFile, pReply, g_iDownloadId);
-		Q_UNUSED(pHandler);
+		(void)new KviKvsDownloadHandler(this, pFile, pReply, g_iDownloadId);
 		g_iDownloadId++;
 	}
 }

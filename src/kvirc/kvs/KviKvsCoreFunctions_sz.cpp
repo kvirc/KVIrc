@@ -85,7 +85,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(scriptContextName)
 	{
-		Q_UNUSED(__pParams);
 		KVSCF_pRetBuffer->setString(KVSCF_pContext->script()->name());
 		return true;
 	}
@@ -132,9 +131,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(sentBytes)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setInteger(g_uOutgoingTraffic);
 		return true;
 	}
@@ -480,8 +476,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(thisCKEYWORDWORKAROUND)
 	{
-		Q_UNUSED(__pParams);
-
 		// prologue: parameter handling
 		KviKvsObject * o = KVSCF_pContext->thisObject();
 		KVSCF_pRetBuffer->setHObject(o ? o->handle() : ((kvs_hobject_t) nullptr));
@@ -717,9 +711,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(trueCKEYWORDWORKAROUND)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setBoolean(true);
 		return true;
 	}
@@ -781,9 +772,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(u)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Underline)));
 		return true;
 	}
@@ -904,9 +892,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(unixtime)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setInteger((kvs_int_t)(time(nullptr)));
 		return true;
 	}

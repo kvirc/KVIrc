@@ -325,7 +325,6 @@ KVSO_CLASS_FUNCTION(socket, status)
 
 KVSO_CLASS_FUNCTION(socket, close)
 {
-	Q_UNUSED(c);
 	m_pSocket->disconnectFromHost();
 	return true;
 }

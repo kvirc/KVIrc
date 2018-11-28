@@ -533,7 +533,6 @@ KVSO_CLASS_FUNCTION(pixmap, loadAnimation)
 
 KVSO_CLASS_FUNCTION(pixmap, startAnimation)
 {
-	Q_UNUSED(c);
 	if(m_pAnimatedPixmap)
 		m_pAnimatedPixmap->start();
 	return true;
@@ -541,7 +540,6 @@ KVSO_CLASS_FUNCTION(pixmap, startAnimation)
 
 KVSO_CLASS_FUNCTION(pixmap, stopAnimation)
 {
-	Q_UNUSED(c);
 	if(m_pAnimatedPixmap)
 		m_pAnimatedPixmap->stop();
 	return true;

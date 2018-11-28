@@ -737,28 +737,24 @@ KVSO_CLASS_FUNCTION(tableWidget, setCellWidget)
 
 KVSO_CLASS_FUNCTION(tableWidget, hideHorizontalHeader)
 {
-	Q_UNUSED(c);
 	((QTableWidget *)widget())->horizontalHeader()->hide();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(tableWidget, hideVerticalHeader)
 {
-	Q_UNUSED(c);
 	((QTableWidget *)widget())->verticalHeader()->hide();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(tableWidget, showHorizontalHeader)
 {
-	Q_UNUSED(c);
 	((QTableWidget *)widget())->horizontalHeader()->show();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(tableWidget, showVerticalHeader)
 {
-	Q_UNUSED(c);
 	((QTableWidget *)widget())->verticalHeader()->show();
 	return true;
 }

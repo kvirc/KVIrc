@@ -92,7 +92,7 @@
 	}
 
 #define KVSO_CLASS_FUNCTION(__className, __functionName) \
-	bool KvsObject_##__className::__functionName(KviKvsObjectFunctionCall * c)
+	bool KvsObject_##__className::__functionName([[maybe_unused]] KviKvsObjectFunctionCall * c)
 
 #define CHECK_INTERNAL_POINTER(__pointer)                                                     \
 	if(!__pointer)                                                                            \

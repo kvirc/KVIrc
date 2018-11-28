@@ -66,9 +66,8 @@ extern KviCString g_szLastReturnValue;
 extern QStringList g_lWarningList;
 extern QString g_lError;
 
-static PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs)
+static PyObject * PyKVIrc_echo(PyObject * /* pSelf */, PyObject * pArgs)
 {
-	Q_UNUSED(pSelf);
 	const char *pcText = nullptr, *pcWinId = nullptr;
 	KviWindow * pWnd = nullptr;
 	int iColorSet = 0;
@@ -104,9 +103,8 @@ static PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs)
 	return Py_BuildValue("i", 1);
 }
 
-static PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs)
+static PyObject * PyKVIrc_say(PyObject * /* pSelf */, PyObject * pArgs)
 {
-	Q_UNUSED(pSelf);
 	const char *pcText = nullptr, *pcWinId = nullptr;
 	KviWindow * pWnd = nullptr;
 
@@ -143,9 +141,8 @@ static PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs)
 	return Py_BuildValue("i", 1);
 }
 
-static PyObject * PyKVIrc_warning(PyObject * pSelf, PyObject * pArgs)
+static PyObject * PyKVIrc_warning(PyObject * /* pSelf */, PyObject * pArgs)
 {
-	Q_UNUSED(pSelf);
 	const char * pcText = nullptr;
 
 	if(QThread::currentThread() != g_pApp->thread())
@@ -166,9 +163,8 @@ static PyObject * PyKVIrc_warning(PyObject * pSelf, PyObject * pArgs)
 	return Py_BuildValue("i", 1);
 }
 
-static PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs)
+static PyObject * PyKVIrc_getLocal(PyObject * /* pSelf */, PyObject * pArgs)
 {
-	Q_UNUSED(pSelf);
 	const char * szVarName = nullptr;
 	QString tmp;
 
@@ -197,9 +193,8 @@ static PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs)
 	return nullptr;
 }
 
-static PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs)
+static PyObject * PyKVIrc_setLocal(PyObject * /* pSelf */, PyObject * pArgs)
 {
-	Q_UNUSED(pSelf);
 	const char *szVarName = nullptr, *szVarValue = nullptr;
 	QString tmp;
 
@@ -228,9 +223,8 @@ static PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs)
 	return nullptr;
 }
 
-static PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs)
+static PyObject * PyKVIrc_getGlobal(PyObject * /* pSelf */, PyObject * pArgs)
 {
-	Q_UNUSED(pSelf);
 	const char * szVarName = nullptr;
 	QString tmp;
 
@@ -259,9 +253,8 @@ static PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs)
 	return nullptr;
 }
 
-static PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs)
+static PyObject * PyKVIrc_setGlobal(PyObject * /* pSelf */, PyObject * pArgs)
 {
-	Q_UNUSED(pSelf);
 	const char *szVarName = nullptr, *szVarValue = nullptr;
 	QString tmp;
 
@@ -290,9 +283,8 @@ static PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs)
 	return nullptr;
 }
 
-static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs)
+static PyObject * PyKVIrc_eval(PyObject * /* pSelf */, PyObject * pArgs)
 {
-	Q_UNUSED(pSelf);
 	const char * pcCode = nullptr;
 	KviWindow * pWnd = nullptr;
 	char * pcRetVal = nullptr;
@@ -330,9 +322,8 @@ static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs)
 	return Py_BuildValue("s", pcRetVal);
 }
 
-static PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs)
+static PyObject * PyKVIrc_internalWarning(PyObject * /* pSelf */, PyObject * pArgs)
 {
-	Q_UNUSED(pSelf);
 	const char * pcText = nullptr;
 
 	if(QThread::currentThread() != g_pApp->thread())
@@ -350,9 +341,8 @@ static PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs)
 	return Py_BuildValue("i", 1);
 }
 
-static PyObject * PyKVIrc_error(PyObject * pSelf, PyObject * pArgs)
+static PyObject * PyKVIrc_error(PyObject * /* pSelf */, PyObject * pArgs)
 {
-	Q_UNUSED(pSelf);
 	const char * pcText = nullptr;
 
 	if(QThread::currentThread() != g_pApp->thread())

@@ -147,17 +147,12 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(strayAt)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setString(g_szStaticStrayConstantAt);
 		return true;
 	}
 
 	KVSCF(mightBeStrayAtOrThis)
 	{
-		Q_UNUSED(__pParams);
-
 		KviKvsObject * o = KVSCF_pContext->thisObject();
 		if(o)
 		{
