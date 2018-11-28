@@ -486,19 +486,19 @@ __KVI_EXTERN KVILIB_API int kvi_irc_vsnprintf(char * buffer, const char * fmt, k
 // WILDCARD EXPRESSION MATCHING FUNCTIONS
 
 // Returns true if the two regular expressions with wildcards matches
-__KVI_EXTERN KVILIB_API bool kvi_matchWildExpr(register const char * m1, register const char * m2);
+__KVI_EXTERN KVILIB_API bool kvi_matchWildExpr(const char * m1, const char * m2);
 // Returns true if the two regular expressions with wildcards matches, case sensitive
-//__KVI_EXTERN bool kvi_matchWildExprCS(register const char *m1,register const char *m2); // actually unused
+//__KVI_EXTERN bool kvi_matchWildExprCS(const char *m1, const char *m2); // actually unused
 // Same as kvi_matchWildExpr but with an additional char that acts as string terminator
 // If there is a match this function returns true and puts the pointers where it stopped in r1 and r2
-__KVI_EXTERN KVILIB_API bool kvi_matchWildExprWithTerminator(register const char * m1, register const char * m2, char terminator,
+__KVI_EXTERN KVILIB_API bool kvi_matchWildExprWithTerminator(const char * m1, const char * m2, char terminator,
     const char ** r1, const char ** r2);
 
 // Returns true if the wildcard expression exp matches the string str
-__KVI_EXTERN KVILIB_API bool kvi_matchStringCI(register const char * exp, register const char * str);
+__KVI_EXTERN KVILIB_API bool kvi_matchStringCI(const char * exp, const char * str);
 #define kvi_matchString kvi_matchStringCI
-__KVI_EXTERN KVILIB_API bool kvi_matchStringCS(register const char * exp, register const char * str);
-__KVI_EXTERN KVILIB_API bool kvi_matchStringWithTerminator(register const char * exp, register const char * str, char terminator, const char ** r1, const char ** r2);
+__KVI_EXTERN KVILIB_API bool kvi_matchStringCS(const char * exp, const char * str);
+__KVI_EXTERN KVILIB_API bool kvi_matchStringWithTerminator(const char * exp, const char * str, char terminator, const char ** r1, const char ** r2);
 
 // This function works like a particular case of strncmp.
 // It evaluates if str2 is the terminal part of str1.
