@@ -128,7 +128,7 @@ else
     test -f ~/.dput.cf || dputcf
     dchppa_pkg
     rm -f ../*ppa*
-    DIST_PPA="trusty"
+    DIST_PPA="xenial"
     PPANAME=kvirc-qt5.5
     dchppa_pkg
 fi
