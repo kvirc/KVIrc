@@ -35,7 +35,7 @@ KviTranslator::KviTranslator(QObject * pParent)
 KviTranslator::~KviTranslator()
     = default;
 
-QString KviTranslator::translate(const char *, const char * pcMessage, const char *) const
+QString KviTranslator::translate(const char *, const char * pcMessage, const char *, int n) const
 {
 	// We currently ignore contexts and comments for qt translations
 	// FIXME: Could use the context and lookup in the context catalogue first, then in the main one.
