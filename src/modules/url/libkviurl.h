@@ -48,13 +48,13 @@
 #include <unordered_set>
 #include <vector>
 
-typedef struct _KviUrl
+struct KviUrl
 {
 	QString url;
 	QString window;
 	int count;
 	QString timestamp;
-} KviUrl;
+};
 
 class UrlDialogTreeWidget : public QTreeWidget
 {

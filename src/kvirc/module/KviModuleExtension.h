@@ -38,13 +38,13 @@ class KviModuleExtensionDescriptor;
 class KviWindow;
 class QPixmap;
 
-typedef struct _KviModuleExtensionAllocStructTag
+struct KviModuleExtensionAllocStruct
 {
 	KviModuleExtensionDescriptor * pDescriptor;       // module extension that this alloc routine refers to
 	KviWindow * pWindow;                              // may be 0!
 	KviPointerHashTable<QString, QVariant> * pParams; // parameter dict (may be 0!)
 	void * pSpecial;                                  // special parameter passed to the alloc routine, may be 0
-} KviModuleExtensionAllocStruct;
+};
 
 typedef KviModuleExtension * (*KviModuleExtensionAllocRoutine)(KviModuleExtensionAllocStruct *);
 

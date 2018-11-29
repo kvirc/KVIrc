@@ -27,18 +27,18 @@
 #define DLE_NUM_BEST_MATCHES 4
 #define DLE_STRICT_UTF8_CHECKING 1
 
-typedef struct _LanguageAndEncodingMatch
+struct LanguageAndEncodingMatch
 {
 	const char * szLanguage;
 	const char * szEncoding;
 	double dScore;
-} LanguageAndEncodingMatch;
+};
 
-typedef struct _LanguageAndEncodingResult
+struct LanguageAndEncodingResult
 {
 	LanguageAndEncodingMatch match[DLE_NUM_BEST_MATCHES]; // the first best matches
 	double dAccuracy;                                     // accuracy score: from 0 to 100
-} LanguageAndEncodingResult;
+};
 
 void detect_language_and_encoding(const char * data, LanguageAndEncodingResult * retBuffer, int iFlags);
 

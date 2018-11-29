@@ -66,11 +66,10 @@ class KviWindow;
 #define KVI_USERLISTVIEW_GRIDTYPE_DEFAULT 0
 
 /**
-* \typedef KviUserListViewUserStats
 * \struct _KviUserListViewUserStats
 * \brief A struct to hold user statistics
 */
-typedef struct _KviUserListViewUserStats
+struct KviUserListViewUserStats
 {
 	unsigned int uTotal;     /**< total users on the channel */
 	unsigned int uActive;    /**< active users in the last 10 mins */
@@ -85,7 +84,7 @@ typedef struct _KviUserListViewUserStats
 	unsigned int uVoiced;    /**< total voiced users */
 	unsigned int uUserOp;    /**< total userops (uops) */
 	int iAvgTemperature;     /**< average user temperature */
-} KviUserListViewUserStats;
+};
 
 /**
 * \class KviUserListToolTip

@@ -61,7 +61,7 @@ class QTimer;
 struct KviIrcSocketMsgEntry
 {
 	KviDataBuffer * pData;
-	struct KviIrcSocketMsgEntry * next_ptr;
+	KviIrcSocketMsgEntry * next_ptr;
 };
 
 /**

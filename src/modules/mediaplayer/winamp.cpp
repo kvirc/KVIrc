@@ -31,7 +31,7 @@
 
 // This stuff is compiled only on windows, as a separate dll module
 
-typedef struct
+struct winampGeneralPurposePlugin
 {
 	int version;
 	char * description;
@@ -40,7 +40,7 @@ typedef struct
 	void (*quit)();
 	HWND hwndParent;
 	HINSTANCE hDllInstance;
-} winampGeneralPurposePlugin;
+};
 
 #define GPPHDR_VER 0x10
 

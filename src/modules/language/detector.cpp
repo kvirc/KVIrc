@@ -35,19 +35,19 @@ namespace {
 // CORE DEFS
 //
 
-typedef struct _DetectorNGram
+struct DetectorNGram
 {
 	const unsigned char * szNGram;
 	double dScore;
-} DetectorNGram;
+};
 
-typedef struct _DetectorDescriptor
+struct DetectorDescriptor
 {
 	const char * szLanguage;
 	const char * szEncoding;
 	double single_char_data[256];
 	DetectorNGram * ngram_hash[256];
-} DetectorDescriptor;
+};
 
 static DetectorNGram X[] = { { nullptr, 0 } };
 

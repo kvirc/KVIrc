@@ -43,11 +43,11 @@ class KviIrcMask;
 * \struct _KviAvatarCacheEntry
 * \brief Defines a struct for the avatar entry in the cache
 */
-typedef struct _KviAvatarCacheEntry
+struct KviAvatarCacheEntry
 {
 	QString szIdString;     /**< The id of the avatar */
 	kvi_time_t tLastAccess; /**< The time the avatar was last accessed */
-} KviAvatarCacheEntry;
+};
 
 /**
 * \class KviAvatarCache

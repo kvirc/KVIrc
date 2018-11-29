@@ -64,11 +64,11 @@ extern bool kvi_dcc_video_is_valid_codec(const char * codecName);
 #define KVI_DCC_VIDEO_THREAD_ACTION_STOP_PLAYING 3
 #define KVI_DCC_VIDEO_THREAD_ACTION_GRAB_FRAME 4
 
-typedef struct _KviDccVideoThreadOptions
+struct KviDccVideoThreadOptions
 {
 	QString szVideoDevice;
 	DccVideoCodec * pCodec;
-} KviDccVideoThreadOptions;
+};
 
 class DccVideoThread : public DccThread
 {

@@ -697,12 +697,12 @@ void RegisteredUsersDialog::selectionChanged()
 #define KVI_REGUSER_DB_FILE_MAGIC 0x5334DBDB
 #define KVI_REGUSER_DB_FILE_VERSION 1
 
-typedef struct _KviReguserDbFileHeader
+struct KviReguserDbFileHeader
 {
 	kvi_u32_t magic;
 	kvi_u32_t version;
 	kvi_u32_t nentries;
-} KviReguserDbFileHeader;
+};
 
 void RegisteredUsersDialog::exportClicked()
 {

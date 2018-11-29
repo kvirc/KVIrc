@@ -47,15 +47,15 @@ namespace KviMemory
 	// Used to find memory leaks etc...
 	//
 
-	typedef struct _KviMallocEntry
+	struct KviMallocEntry
 	{
-		struct _KviMallocEntry * prev;
+		KviMallocEntry * prev;
 		void * pointer;
 		int size;
 		void * return_addr1;
 		void * return_addr2;
-		struct _KviMallocEntry * next;
-	} KviMallocEntry;
+		KviMallocEntry * next;
+	};
 
 	int g_iMaxRequestSize = 0;
 	void * g_pMaxRequestReturnAddress1 = 0;

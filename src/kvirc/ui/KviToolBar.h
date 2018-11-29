@@ -40,22 +40,22 @@ public:
 	* \struct _IconSizes
 	* \brief Enumerates the valid icon sizes
 	*/
-	typedef struct _IconSizes
+	struct IconSizes
 	{
 		uint uSize;          /**< icon size */
 		const char * pcName; /**< menu entry label */
-	} IconSizes;
+	};
 
 	/**
 	* \typedef ButtonStyles
 	* \struct _ButtonStyles
 	* \brief Enumerates the valid button styles
 	*/
-	typedef struct _ButtonStyles
+	struct ButtonStyles
 	{
 		uint uStyle;         /**< button style */
 		const char * pcName; /**< menu entry label */
-	} ButtonStyles;
+	};
 
 protected:
 	virtual void mousePressEvent(QMouseEvent * e);

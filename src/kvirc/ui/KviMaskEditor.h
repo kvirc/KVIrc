@@ -40,12 +40,12 @@ class KviMaskEditor;
 class QLineEdit;
 class QPushButton;
 
-typedef struct _KviMaskEntry
+struct KviMaskEntry
 {
 	QString szMask;
 	QString szSetBy;
 	unsigned int uSetAt;
-} KviMaskEntry;
+};
 
 class KviMaskItem : public QTreeWidgetItem
 {

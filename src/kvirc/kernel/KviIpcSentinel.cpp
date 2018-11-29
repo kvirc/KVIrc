@@ -287,16 +287,16 @@ bool KviIpcSentinel::x11Event(XEvent * e)
 
 extern "C" {
 
-typedef struct
+struct fake_xcb_generic_event_t
 {
 	kvi_u8_t response_type;
 	kvi_u8_t pad0;
 	kvi_u16_t sequence;
 	kvi_u32_t pad[7];
 	kvi_u32_t full_sequence;
-} fake_xcb_generic_event_t;
+};
 
-typedef struct
+struct fake_xcb_property_notify_event_t
 {
 	kvi_u8_t response_type;
 	kvi_u8_t pad0;
@@ -304,7 +304,7 @@ typedef struct
 	kvi_u32_t window;
 	kvi_u32_t atom;
 	// .. other stuff follows, but we don't care
-} fake_xcb_property_notify_event_t;
+};
 
 #define FAKE_XCB_PROPERTY_NOTIFY 28
 }

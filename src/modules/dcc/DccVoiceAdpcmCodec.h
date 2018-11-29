@@ -47,11 +47,11 @@
 
 #include "DccVoiceCodec.h"
 
-typedef struct adpcm_state
+struct ADPCM_state
 {
 	short valprev; /* Previous output value */
 	char index;    /* HelpIndex into stepsize table */
-} ADPCM_state;
+};
 
 class DccVoiceAdpcmCodec : public DccVoiceCodec
 {

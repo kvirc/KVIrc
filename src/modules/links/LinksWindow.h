@@ -40,13 +40,13 @@
 
 class KviThemedLabel;
 
-typedef struct _KviLink
+struct KviLink
 {
 	KviCString host;
 	KviCString parent;
 	int hops;
 	KviCString description;
-} KviLink;
+};
 
 class LinksListView : public KviThemedTreeWidget
 {

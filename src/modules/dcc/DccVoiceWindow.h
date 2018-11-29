@@ -51,14 +51,14 @@ extern bool kvi_dcc_voice_is_valid_codec(const char * codecName);
 #define KVI_DCC_VOICE_THREAD_ACTION_START_PLAYING 2
 #define KVI_DCC_VOICE_THREAD_ACTION_STOP_PLAYING 3
 
-typedef struct _KviDccVoiceThreadOptions
+struct KviDccVoiceThreadOptions
 {
 	bool bForceHalfDuplex;
 	int iPreBufferSize;
 	int iSampleRate;
 	KviCString szSoundDevice;
 	DccVoiceCodec * pCodec;
-} KviDccVoiceThreadOptions;
+};
 
 class DccVoiceThread : public DccThread
 {

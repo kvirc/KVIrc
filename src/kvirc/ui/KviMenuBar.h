@@ -34,12 +34,12 @@ class KviMainWindow;
 class QAction;
 class QMenu;
 
-typedef struct _KviScriptMenuBarItem
+struct KviScriptMenuBarItem
 {
 	KviCString szPopupName;
 	KviKvsPopupMenu * pPopup;
 	KviCString szText;
-} KviScriptMenuBarItem;
+};
 
 class KVIRC_API KviMenuBar : public KviTalMenuBar
 {

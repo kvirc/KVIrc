@@ -51,7 +51,7 @@ class DccFileTransfer;
 class DccMarshal;
 class QMenu;
 
-typedef struct _KviDccSendThreadOptions
+struct KviDccSendThreadOptions
 {
 	KviCString szFileName;
 	quint64 uStartPosition;
@@ -61,7 +61,7 @@ typedef struct _KviDccSendThreadOptions
 	bool bNoAcks;
 	bool bIsTdcc;
 	unsigned int uMaxBandwidth;
-} KviDccSendThreadOptions;
+};
 
 class DccSendThread : public DccThread
 {
@@ -99,7 +99,7 @@ protected:
 	virtual void run();
 };
 
-typedef struct _KviDccRecvThreadOptions
+struct KviDccRecvThreadOptions
 {
 	bool bResume;
 	KviCString szFileName;
@@ -110,7 +110,7 @@ typedef struct _KviDccRecvThreadOptions
 	bool bNoAcks;
 	bool bIsTdcc;
 	unsigned int uMaxBandwidth;
-} KviDccRecvThreadOptions;
+};
 
 class DccRecvThread : public DccThread
 {

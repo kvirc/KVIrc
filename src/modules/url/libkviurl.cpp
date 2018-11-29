@@ -54,11 +54,11 @@
 extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-typedef struct _UrlDlgList
+struct UrlDlgList
 {
 	UrlDialog * dlg;
 	int menu_id;
-} UrlDlgList;
+};
 
 const char * g_pUrlListFilename = "/list.kviurl";
 const char * g_pBanListFilename = "/list.kviban";

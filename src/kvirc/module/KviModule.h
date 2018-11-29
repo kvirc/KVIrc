@@ -59,7 +59,7 @@ class QLibrary;
 typedef bool (*KviModuleSystemRoutine)(KviModule *);
 typedef bool (*KviModuleCtrlRoutine)(KviModule *, const char *, void *);
 
-typedef struct _KviModuleInfo
+struct KviModuleInfo
 {
 	const char * szKVIrcVersion;  // must match KVI_VERSION if module version checking is in force
 	const char * szModuleName;    // module name
@@ -99,7 +99,7 @@ typedef struct _KviModuleInfo
 	* so better cleanup everything here :)
 	*/
 	KviModuleSystemRoutine cleanup_routine; // WARNING : g_pApp may be in the destructor and may have no frames open!
-} KviModuleInfo;
+};
 
 // NOTE: The init and cleanup routines should NEVER rely on g_pApp existing!
 //       so only "initialization and cleanup INTERNAL to the module" goes there!

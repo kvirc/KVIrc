@@ -68,32 +68,32 @@ class QTextCodec;
 class QDomElement;
 class QStringList;
 
-typedef struct _KviPendingAvatarChange
+struct KviPendingAvatarChange
 {
 	KviConsoleWindow * pConsole;
 	QString szRemoteUrl;
 	QString szNick;
 	QString szUser;
 	QString szHost;
-} KviPendingAvatarChange;
+};
 
 /**
 * \typedef KviNotifierMessageParam
 * \struct _KviNotifierMessageParam
 * \brief Defines a struct which holds information about the notifier message
 */
-typedef struct _KviNotifierMessageParam
+struct KviNotifierMessageParam
 {
 	KviWindow * pWindow;           /**< The window where the notifier was triggered */
 	QString szIcon;                /**< The id of the icon (channel, query, ...) */
 	QString szMessage;             /**< The message which triggered the notifier */
 	unsigned int uMessageLifetime; /**< The timeout of the notifier; 0 means no hide */
-} KviNotifierMessageParam;
+};
 
-typedef struct _KviDBusNotifierMessageQueue
+struct KviDBusNotifierMessageQueue
 {
 	QStringList lMessages;
-} KviDBusNotifierMessageQueue;
+};
 
 #ifdef Unsorted
 #undef Unsorted

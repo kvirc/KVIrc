@@ -44,28 +44,28 @@ class KviKvsScript;
 class KviKvsHash;
 
 typedef KviKvsTreeNodeCommand * (KviKvsParser::*specialCommandParsingRoutine)();
-typedef struct _KviKvsSpecialCommandParsingRoutine
+struct KviKvsSpecialCommandParsingRoutine
 {
 	specialCommandParsingRoutine proc;
-} KviKvsSpecialCommandParsingRoutine;
+};
 
 typedef bool (*coreSimpleCommandExecRoutine)(KviKvsRunTimeContext * c, KviKvsVariantList * pParams, KviKvsSwitchList * pSwitches);
-typedef struct _KviKvsCoreSimpleCommandExecRoutine
+struct KviKvsCoreSimpleCommandExecRoutine
 {
 	coreSimpleCommandExecRoutine proc;
-} KviKvsCoreSimpleCommandExecRoutine;
+};
 
 typedef bool (*coreFunctionExecRoutine)(KviKvsRunTimeContext * c, KviKvsVariantList * pParams, KviKvsVariant * pRetBuffer);
-typedef struct _KviKvsCoreFunctionExecRoutine
+struct KviKvsCoreFunctionExecRoutine
 {
 	coreFunctionExecRoutine proc;
-} KviKvsCoreFunctionExecRoutine;
+};
 
 typedef bool (*coreCallbackCommandExecRoutine)(KviKvsRunTimeContext * c, KviKvsVariantList * pParams, KviKvsSwitchList * pSwitches, const KviKvsScript * pCallback);
-typedef struct _KviKvsCoreCallbackCommandExecRoutine
+struct KviKvsCoreCallbackCommandExecRoutine
 {
 	coreCallbackCommandExecRoutine proc;
-} KviKvsCoreCallbackCommandExecRoutine;
+};
 
 class KVIRC_API KviKvsKernel
 {

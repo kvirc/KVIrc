@@ -49,10 +49,10 @@ class KviIrcViewToolWidget;
 class KviIrcViewToolTip;
 class KviAnimatedPixmap;
 
-typedef struct _KviIrcViewLineChunk KviIrcViewLineChunk;
-typedef struct _KviIrcViewWrappedBlock KviIrcViewWrappedBlock;
-typedef struct _KviIrcViewLine KviIrcViewLine;
-typedef struct _KviIrcViewWrappedBlockSelectionInfoTag KviIrcViewWrappedBlockSelectionInfo;
+struct KviIrcViewLineChunk;
+struct KviIrcViewWrappedBlock;
+struct KviIrcViewLine;
+struct KviIrcViewWrappedBlockSelectionInfo;
 
 #define KVI_IRCVIEW_INVALID_LINE_MARK_INDEX 0xffffffff
 

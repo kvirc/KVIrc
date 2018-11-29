@@ -60,7 +60,7 @@ class KviTopicWidget;
 // windows compiler wants this instead of the forward decl
 #include "KviMaskEditor.h"
 #else
-typedef struct _KviMaskEntry KviMaskEntry; // KviMaskEditor.h
+struct KviMaskEntry; // KviMaskEditor.h
 #endif
 
 /**
@@ -76,24 +76,22 @@ typedef struct _KviMaskEntry KviMaskEntry; // KviMaskEditor.h
 #endif
 
 /**
-* \typedef KviChannelAction
 * \struct _KviChannelAction
 * \brief A struct which holds the channel actions
 */
-typedef struct _KviChannelAction
+struct KviChannelAction
 {
 	QString szNick;           // action source nick
 	unsigned int uActionType; // type of the action
 	kvi_time_t tTime;         // time of the action
 	int iTemperature;         // temperature of the action
-} KviChannelAction;
+};
 
 /**
-* \typedef KviChannelActivityStats
 * \struct _KviChannelActivityStats
 * \brief A struct which holds the activity stats
 */
-typedef struct _KviChannelActivityStats
+struct KviChannelActivityStats
 {
 	unsigned int uActionCount;            // number of actions in the history
 	bool bStatsInaccurate;                // the stats are inaccurate because we have just joined the chan
@@ -106,7 +104,7 @@ typedef struct _KviChannelActivityStats
 	unsigned int uHotActionPercent;
 	QStringList lTalkingUsers; // users that seem to be talking NOW
 	QStringList lWereTalkingUsers;
-} KviChannelActivityStats;
+};
 
 /**
 * \class KviChannelWindow

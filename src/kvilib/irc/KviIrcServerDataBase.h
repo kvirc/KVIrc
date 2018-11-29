@@ -44,7 +44,7 @@ class KviIrcServer;
 * \struct _KviIrcServerDefinition
 * \brief Server definition
 */
-typedef struct _KviIrcServerDefinition
+struct KviIrcServerDefinition
 {
 	QString szServer;
 	kvi_u32_t uPort;
@@ -57,7 +57,7 @@ typedef struct _KviIrcServerDefinition
 	QString szNick;
 	QString szInitUMode;
 	QString szId;
-} KviIrcServerDefinition;
+};
 
 /**
 * \class KviIrcServerDataBase

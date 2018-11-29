@@ -53,7 +53,7 @@ class KviWindow;
 class KviKvsScript;
 class KviKvsVariant;
 
-typedef struct _KviKvsProcessDescriptorData
+struct KviKvsProcessDescriptorData
 {
 	QString szShell;
 	QString szCommandline;
@@ -63,7 +63,7 @@ typedef struct _KviKvsProcessDescriptorData
 	int iFlags;
 	int iMaxRunTime;  // 0 for no timeout
 	int iPingTimeout; // 0 for no ping timeout
-} KviKvsProcessDescriptorData;
+};
 
 class KviKvsProcessManager;
 

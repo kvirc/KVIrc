@@ -360,11 +360,11 @@ protected:
 // This is private stuff...only KviThread and KviApplication may use it
 // and may call only specific functions...don't touch.
 
-typedef struct _KviThreadPendingEvent
+struct KviThreadPendingEvent
 {
 	QObject * o;
 	QEvent * e;
-} KviThreadPendingEvent;
+};
 
 class KVILIB_API KviThreadManager : public QObject
 {
