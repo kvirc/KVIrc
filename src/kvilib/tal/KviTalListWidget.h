@@ -65,6 +65,7 @@ class KVILIB_API KviTalListWidgetText : public KviTalListWidgetItem
 public:
 	KviTalListWidgetText(KviTalListWidget * listbox, const QString & text = QString());
 	KviTalListWidgetText(const QString & text = QString());
+	KviTalListWidgetText(const KviTalListWidgetText &) = delete;
 	~KviTalListWidgetText();
 
 	int height(const KviTalListWidget *) const;
@@ -78,9 +79,6 @@ public:
 
 protected:
 	virtual void paint(QPainter *);
-
-private:
-	Q_DISABLE_COPY(KviTalListWidgetText)
 };
 
 class KVILIB_API KviTalListWidgetPixmap : public KviTalListWidgetItem
@@ -90,6 +88,7 @@ public:
 	KviTalListWidgetPixmap(const QPixmap &);
 	KviTalListWidgetPixmap(KviTalListWidget * listbox, const QPixmap &, const QString &);
 	KviTalListWidgetPixmap(const QPixmap &, const QString &);
+	KviTalListWidgetPixmap(const KviTalListWidgetPixmap &) = delete;
 	~KviTalListWidgetPixmap();
 
 	const QPixmap * pixmap() const { return &pm; }
@@ -107,7 +106,6 @@ protected:
 	virtual void paint(QPainter *);
 
 private:
-	Q_DISABLE_COPY(KviTalListWidgetPixmap)
 	QPixmap pm;
 };
 
