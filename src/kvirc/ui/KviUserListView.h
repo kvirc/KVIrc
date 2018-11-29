@@ -105,7 +105,7 @@ public:
 	/**
 	* \brief Destroys the userlist tooltip
 	*/
-	virtual ~KviUserListToolTip();
+	~KviUserListToolTip();
 
 private:
 	KviUserListView * m_pListView;
@@ -116,7 +116,7 @@ public:
 	* \param pnt The point where to show to tooltip
 	* \return void
 	*/
-	virtual void maybeTip(const QPoint & pnt);
+	void maybeTip(const QPoint & pnt) override;
 
 	/**
 	* \brief Shows the tooltip
@@ -806,7 +806,7 @@ protected:
 	*/
 	void updateScrollBarRange();
 
-	virtual void resizeEvent(QResizeEvent * e);
+	void resizeEvent(QResizeEvent * e) override;
 
 public slots:
 	/**
@@ -855,14 +855,14 @@ protected:
 	bool m_bIgnoreScrollBar;
 
 protected:
-	virtual void paintEvent(QPaintEvent * e);
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseMoveEvent(QMouseEvent * e);
-	virtual void mouseReleaseEvent(QMouseEvent * e);
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	virtual void wheelEvent(QWheelEvent * e);
-	virtual void keyPressEvent(QKeyEvent * e);
+	void paintEvent(QPaintEvent * e) override;
+	void resizeEvent(QResizeEvent * e) override;
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseMoveEvent(QMouseEvent * e) override;
+	void mouseReleaseEvent(QMouseEvent * e) override;
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
+	void wheelEvent(QWheelEvent * e) override;
+	void keyPressEvent(QKeyEvent * e) override;
 protected slots:
 
 	/**

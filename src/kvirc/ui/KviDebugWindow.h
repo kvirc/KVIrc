@@ -45,13 +45,13 @@ public:
 	static KviDebugWindow * getInstance();
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void loadProperties(KviConfigurationFile * cfg);
-	virtual void saveProperties(KviConfigurationFile * cfg);
-	virtual void getBaseLogFileName(QString & buffer);
-	virtual QSize sizeHint() const;
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void resizeEvent(QResizeEvent * e) override;
+	void loadProperties(KviConfigurationFile * cfg) override;
+	void saveProperties(KviConfigurationFile * cfg) override;
+	void getBaseLogFileName(QString & buffer) override;
+	QSize sizeHint() const override;
 };
 
 #endif //_KVI_DEBUGWINDOW_H_

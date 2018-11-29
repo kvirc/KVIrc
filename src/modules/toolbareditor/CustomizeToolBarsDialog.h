@@ -61,8 +61,8 @@ public:
 	static void cleanup();
 
 protected:
-	virtual void showEvent(QShowEvent * e);
-	virtual void closeEvent(QCloseEvent * e);
+	void showEvent(QShowEvent * e) override;
+	void closeEvent(QCloseEvent * e) override;
 protected slots:
 	void closeClicked();
 	void newToolBar();
@@ -112,7 +112,7 @@ class TrashcanLabel : public QLabel
 	Q_OBJECT
 public:
 	TrashcanLabel(QWidget * p);
-	virtual ~TrashcanLabel();
+	~TrashcanLabel();
 
 protected:
 	unsigned int m_uFlashCount;
@@ -120,8 +120,8 @@ protected:
 	QColor m_clrOriginal;
 
 protected:
-	virtual void dragEnterEvent(QDragEnterEvent * e);
-	virtual void dropEvent(QDropEvent * e);
+	void dragEnterEvent(QDragEnterEvent * e) override;
+	void dropEvent(QDropEvent * e) override;
 public slots:
 	void flash();
 protected slots:

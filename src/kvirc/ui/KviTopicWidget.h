@@ -97,10 +97,10 @@ protected:
 	void updateToolTip();
 	void deactivate();
 	void iconButtonClicked();
-	virtual bool eventFilter(QObject * o, QEvent * e);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void keyPressEvent(QKeyEvent * e);
-	virtual void resizeEvent(QResizeEvent * e);
+	bool eventFilter(QObject * o, QEvent * e) override;
+	void mousePressEvent(QMouseEvent * e) override;
+	void keyPressEvent(QKeyEvent * e) override;
+	void resizeEvent(QResizeEvent * e) override;
 
 public:
 	void insertChar(QChar c);
@@ -115,7 +115,7 @@ public:
 	const QString & topic() { return m_szTopic; };
 	const QString & topicSetBy() { return m_szSetBy; };
 	const QString & topicSetAt() { return m_szSetAt; };
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 	void applyOptions();
 
 	static void paintColoredText(QPainter * p, QString szText, const QPalette & palette, const QRect & rect);

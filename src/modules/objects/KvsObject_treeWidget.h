@@ -42,7 +42,7 @@ public:
 	void fileDropped(QString &, QTreeWidgetItem *);
 
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 
 	bool setBackgroundImage(KviKvsObjectFunctionCall * c);
 	bool addColumn(KviKvsObjectFunctionCall * c);
@@ -90,15 +90,15 @@ class KviKvsTreeWidget : public QTreeWidget
 	Q_OBJECT
 public:
 	KviKvsTreeWidget(QWidget * par, const char * name, KvsObject_treeWidget *);
-	virtual ~KviKvsTreeWidget();
+	~KviKvsTreeWidget();
 
 protected:
 	KvsObject_treeWidget * m_pParentScript;
 
 protected:
-	void dropEvent(QDropEvent * e);
-	void dragEnterEvent(QDragEnterEvent * e);
-	void dragMoveEvent(QDragMoveEvent * e);
+	void dropEvent(QDropEvent * e) override;
+	void dragEnterEvent(QDragEnterEvent * e) override;
+	void dragMoveEvent(QDragMoveEvent * e) override;
 };
 
 #endif // _CLASS_TREEWIDGET_H_

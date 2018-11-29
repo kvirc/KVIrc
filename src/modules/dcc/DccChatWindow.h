@@ -74,7 +74,7 @@ class DccChatWindow : public DccWindow
 public:
 	DccChatWindow(DccDescriptor * dcc, const char * name);
 	~DccChatWindow();
-	QFrame * buttonContainer() { return (QFrame *)m_pButtonContainer; };
+	QFrame * buttonContainer() override { return (QFrame *)m_pButtonContainer; }
 protected:
 	DccChatThread * m_pSlaveThread;
 	QString m_szTarget;
@@ -84,20 +84,20 @@ protected:
 	KviTalHBox * m_pButtonContainer;
 
 protected:
-	virtual const QString & target();
-	virtual void fillCaptionBuffers();
-	virtual void getBaseLogFileName(QString & buffer);
-	virtual QPixmap * myIconPtr();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual QSize sizeHint() const;
-	virtual const QString & localNick();
-	virtual bool event(QEvent * e);
-	virtual void ownMessage(const QString & text, bool bUserFeedback = true);
-	virtual void ownAction(const QString & text);
-	virtual void triggerCreationEvents();
-	virtual void triggerDestructionEvents();
+	const QString & target() override;
+	void fillCaptionBuffers() override;
+	void getBaseLogFileName(QString & buffer) override;
+	QPixmap * myIconPtr() override;
+	void resizeEvent(QResizeEvent * e) override;
+	QSize sizeHint() const override;
+	const QString & localNick() override;
+	bool event(QEvent * e) override;
+	void ownMessage(const QString & text, bool bUserFeedback = true) override;
+	void ownAction(const QString & text) override;
+	void triggerCreationEvents() override;
+	void triggerDestructionEvents() override;
 	void startConnection();
-	virtual DccThread * getSlaveThread() { return m_pSlaveThread; };
+	DccThread * getSlaveThread() override { return m_pSlaveThread; }
 protected slots:
 	void handleMarshalError(KviError::Code eError);
 	void connected();

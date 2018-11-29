@@ -61,7 +61,7 @@ protected:
 
 protected:
 	void fillData();
-	virtual void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent *) override;
 protected slots:
 	void okClicked();
 	void addClicked();
@@ -82,7 +82,7 @@ protected:
 	QLineEdit * m_pUserEdit;
 	QLineEdit * m_pHostEdit;
 
-	virtual void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent *) override;
 protected slots:
 	void okClicked();
 };
@@ -92,7 +92,7 @@ class RegisteredUserEntryDialog : public KviTalTabDialog
 	Q_OBJECT
 public:
 	RegisteredUserEntryDialog(QWidget * p, KviRegisteredUser * r, bool bModal = true);
-	virtual ~RegisteredUserEntryDialog();
+	~RegisteredUserEntryDialog();
 
 protected:
 	KviRegisteredUser * m_pUser;
@@ -129,7 +129,7 @@ protected:
 	QCheckBox * m_pIgnoreDcc;
 	QCheckBox * m_pIgnoreHighlight;
 
-	virtual void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent *) override;
 protected slots:
 	void okClicked();
 	void addMaskClicked();

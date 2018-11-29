@@ -80,9 +80,9 @@ public:
 	KviPixmap * m_pAvatar;
 
 protected:
-	virtual void showEvent(QShowEvent * e);
-	virtual void accept();
-	virtual void reject();
+	void showEvent(QShowEvent * e) override;
+	void accept() override;
+	void reject() override;
 protected slots:
 	void realNameChanged(const QString & str);
 	void maskChanged(const QString & str);

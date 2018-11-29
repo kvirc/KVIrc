@@ -45,7 +45,7 @@ protected:
 	KviIrcConnection * m_pConnection;
 
 protected:
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 	const QString & avatarName() { return m_szAvatarName; };
 protected slots:
 	void okClicked();

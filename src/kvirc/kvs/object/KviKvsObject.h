@@ -54,7 +54,7 @@ class KVIRC_API KviKvsObject : public QObject
 	Q_OBJECT
 public:
 	KviKvsObject(KviKvsObjectClass * pClass, KviKvsObject * pParent, const QString & szName);
-	virtual ~KviKvsObject();
+	~KviKvsObject();
 
 protected:
 	// main data
@@ -160,8 +160,8 @@ protected:
 	void registerChild(KviKvsObject * c);
 	void unregisterChild(KviKvsObject * c);
 
-	virtual bool eventFilter(QObject * o, QEvent * e); //necessary ?
-	virtual void timerEvent(QTimerEvent * e);
+	bool eventFilter(QObject * o, QEvent * e) override; //necessary ?
+	void timerEvent(QTimerEvent * e) override;
 
 protected:
 	bool function_name(KviKvsObjectFunctionCall * c);

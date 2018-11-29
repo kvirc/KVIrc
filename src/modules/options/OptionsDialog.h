@@ -93,9 +93,9 @@ private slots:
 
 protected:
 	void apply(bool bDialogAboutToClose);
-	virtual void closeEvent(QCloseEvent * e);
-	virtual void keyPressEvent(QKeyEvent * e);
-	virtual void showEvent(QShowEvent * e);
+	void closeEvent(QCloseEvent * e) override;
+	void keyPressEvent(QKeyEvent * e) override;
+	void showEvent(QShowEvent * e) override;
 	bool recursiveSearch(OptionsDialogTreeWidgetItem * pItem, const QStringList & lKeywords);
 	void clearSearch();
 	bool searchInSelectors(KviOptionsWidget * pWidget, const QStringList & lKeywords);

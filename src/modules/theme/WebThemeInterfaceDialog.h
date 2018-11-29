@@ -42,8 +42,8 @@ private:
 	QString m_szGlobalThemesPath;
 
 protected:
-	virtual bool packageIsInstalled(const QString & szId, const QString & szVersion);
-	virtual bool installPackage(const QString & szPath, QString & szError);
+	bool packageIsInstalled(const QString & szId, const QString & szVersion) override;
+	bool installPackage(const QString & szPath, QString & szError) override;
 };
 
 #endif //COMPILE_WEBKIT_SUPPORT

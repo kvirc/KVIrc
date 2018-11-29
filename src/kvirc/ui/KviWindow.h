@@ -171,7 +171,7 @@ public:
 	/**
 	* \brief Destroys the window object
 	*/
-	virtual ~KviWindow();
+	~KviWindow();
 
 protected:            // almost private: don't touch :D
 	QString m_szName; // the current window name (usually also the target)
@@ -485,14 +485,14 @@ protected:
 	// Sets the type of this window: be careful with this
 	void setType(Type eType) { m_eType = eType; };
 
-	bool eventFilter(QObject * pObject, QEvent * pEvent);
+	bool eventFilter(QObject * pObject, QEvent * pEvent) override;
 
 	// Virtuals overridden to manage the internal layouts...
-	virtual void moveEvent(QMoveEvent * pEvent);
-	virtual void closeEvent(QCloseEvent * pEvent);
-	virtual void childEvent(QChildEvent * pEvent);
-	virtual void focusInEvent(QFocusEvent *);
-	virtual void inputMethodEvent(QInputMethodEvent * e);
+	void moveEvent(QMoveEvent * pEvent) override;
+	void closeEvent(QCloseEvent * pEvent) override;
+	void childEvent(QChildEvent * pEvent) override;
+	void focusInEvent(QFocusEvent *) override;
+	void inputMethodEvent(QInputMethodEvent * e) override;
 
 	void childInserted(QWidget * pObject);
 	void childRemoved(QWidget * pObject);
@@ -506,7 +506,7 @@ protected:
 	// This is called by KviInput: actually it links the widgetAdded
 	virtual void childrenTreeChanged(QWidget * pAdded);
 
-	virtual bool focusNextPrevChild(bool bNext);
+	bool focusNextPrevChild(bool bNext) override;
 
 	virtual void preprocessMessage(QString & szMessage);
 public slots:

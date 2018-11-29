@@ -72,8 +72,8 @@ protected:
 protected:
 	void soundFillBox();
 	void mediaFillBox();
-	virtual void commit();
-	virtual void showEvent(QShowEvent * e);
+	void commit() override;
+	void showEvent(QShowEvent * e) override;
 protected slots:
 	void soundTest();
 	void soundAutoDetect();

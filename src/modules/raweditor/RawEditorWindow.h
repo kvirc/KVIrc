@@ -123,7 +123,7 @@ protected slots:
 	void exportCurrentHandler();
 
 protected:
-	void showEvent(QShowEvent * e);
+	void showEvent(QShowEvent * e) override;
 
 private:
 	void oneTimeSetup();
@@ -140,11 +140,11 @@ protected:
 	RawEditorWidget * m_pEditor;
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void getConfigGroupName(QString & szName);
-	virtual void saveProperties(KviConfigurationFile *);
-	virtual void loadProperties(KviConfigurationFile *);
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void getConfigGroupName(QString & szName) override;
+	void saveProperties(KviConfigurationFile *) override;
+	void loadProperties(KviConfigurationFile *) override;
 protected slots:
 	void cancelClicked();
 	void okClicked();

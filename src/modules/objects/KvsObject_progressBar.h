@@ -35,7 +35,7 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 
 	bool setProgress(KviKvsObjectFunctionCall * c);
 	bool setTotalSteps(KviKvsObjectFunctionCall * c);

@@ -75,7 +75,7 @@ namespace UPnP
 		// The constructor for action services
 		Service(const ServiceParameters & params);
 		// The destructor
-		virtual ~Service();
+		~Service();
 
 		// Get the number of pending requests
 		int getPendingRequests() const;

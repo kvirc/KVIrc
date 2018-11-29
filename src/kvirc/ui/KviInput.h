@@ -174,9 +174,9 @@ public:
 	KviInputHistory * history() { return KviInputHistory::instance(); }
 protected:
 	void installShortcuts();
-	virtual void focusInEvent(QFocusEvent * e);
-	virtual void setFocusProxy(QWidget * w);
-	virtual void keyPressEvent(QKeyEvent * e);
+	void focusInEvent(QFocusEvent * e) override;
+	void setFocusProxy(QWidget * w);
+	void keyPressEvent(QKeyEvent * e) override;
 public slots:
 	/**
 	* \brief Toggles the multiline editor

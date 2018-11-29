@@ -83,7 +83,7 @@ private:
 	void doHide();
 
 private:
-	virtual bool eventFilter(QObject * o, QEvent * e);
+	bool eventFilter(QObject * o, QEvent * e) override;
 	void autoSelectBestMatchBasedOnOwnerText();
 
 public slots:

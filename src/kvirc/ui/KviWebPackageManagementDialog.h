@@ -58,7 +58,7 @@ public:
 	/// Destroys the instance of KviWebPackageManagementDialog
 	/// and frees all the relevant resources
 	///
-	virtual ~KviWebPackageManagementDialog();
+	~KviWebPackageManagementDialog();
 
 private:
 	QToolBar * m_pToolBar;
@@ -71,7 +71,7 @@ private:
 
 protected:
 	void setPackagePageUrl(const QString & szUrl);
-	virtual void showEvent(QShowEvent * e);
+	void showEvent(QShowEvent * e) override;
 
 	virtual bool packageIsInstalled(const QString & szId, const QString & szVersion) = 0;
 	virtual bool installPackage(const QString & szPath, QString & szError) = 0;

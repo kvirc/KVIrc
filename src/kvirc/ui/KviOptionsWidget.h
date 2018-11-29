@@ -149,10 +149,10 @@ public:
 
 	void removeSelector(KviSelectorInterface * pInterface);
 
-	virtual void commit();
-	virtual void childEvent(QChildEvent * e);
+	void commit() override;
+	void childEvent(QChildEvent * e) override;
 
-	virtual bool eventFilter(QObject * watched, QEvent * e);
+	bool eventFilter(QObject * watched, QEvent * e) override;
 
 protected slots:
 	// this is internal to the options dialog (options module)

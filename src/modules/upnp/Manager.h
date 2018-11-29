@@ -59,7 +59,7 @@ namespace UPnP
 
 	public: // public methods
 		// The destructor
-		virtual ~Manager();
+		~Manager();
 
 		// Return the external IP address
 		QString getExternalIpAddress() const;

@@ -43,8 +43,8 @@ public:
 
 public:
 	int doImport(const QString & filename);
-	virtual void start();
-	virtual void die();
+	void start() override;
+	void die() override;
 };
 
 class KviRemoteMircServersIniImport : public KviMircServersIniImport
@@ -58,8 +58,8 @@ protected:
 	KviRemoteMircServerImportWizard * m_pWizard;
 
 public:
-	virtual void start();
-	virtual void die();
+	void start() override;
+	void die() override;
 };
 
 class KviRemoteMircServerImportWizard : public KviTalWizard
@@ -77,8 +77,8 @@ protected:
 	QString m_szTmpFileName;
 
 protected:
-	virtual void closeEvent(QCloseEvent * e);
-	virtual void done(int r);
+	void closeEvent(QCloseEvent * e) override;
+	void done(int r) override;
 	void start();
 protected slots:
 	void getListMessage(const QString & message);

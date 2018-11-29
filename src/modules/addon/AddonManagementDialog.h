@@ -84,7 +84,7 @@ public:
 
 protected:
 	void fillListView();
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 protected slots:
 	void currentChanged(QListWidgetItem * i, QListWidgetItem *);
 	void closeClicked();

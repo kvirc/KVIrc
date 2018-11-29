@@ -52,7 +52,7 @@ public:
 	const QString & tipText() { return m_szTipText; };
 	virtual int height(const KviTalListWidget *) const;
 	virtual int width(const KviTalListWidget *) const;
-	virtual void paint(QPainter * p);
+	void paint(QPainter * p) override;
 };
 
 #define KID_TYPE_BUILTIN_IMAGES_SMALL 1
@@ -70,7 +70,7 @@ public:
 	    int initialType = 0,
 	    const QString & szInitialDir = QString(),
 	    int maxPreviewFileSize = 256000, bool modal = false);
-	virtual ~KviImageDialog();
+	~KviImageDialog();
 
 protected:
 	QComboBox * m_pTypeComboBox;
@@ -97,7 +97,7 @@ public:
 protected:
 	void startJob(int type, const QString & szInitialPath = QString());
 	void jobTerminated();
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 protected slots:
 	void okClicked();
 	void cancelClicked();

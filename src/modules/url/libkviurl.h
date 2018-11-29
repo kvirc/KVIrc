@@ -64,8 +64,8 @@ public:
 	~UrlDialogTreeWidget(){};
 
 protected:
-	void mousePressEvent(QMouseEvent * e);
-	void paintEvent(QPaintEvent * event);
+	void mousePressEvent(QMouseEvent * e) override;
+	void paintEvent(QPaintEvent * event) override;
 signals:
 	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 	void contextMenuRequested(QPoint);
@@ -83,8 +83,8 @@ private:
 	QMenu * m_pListPopup = nullptr; // dynamic popup menu
 	QString m_szUrl;      // used to pass URLs to sayToWin slot
 protected:
-	QPixmap * myIconPtr();
-	void resizeEvent(QResizeEvent *);
+	QPixmap * myIconPtr() override;
+	void resizeEvent(QResizeEvent *) override;
 
 public:
 	UrlDialogTreeWidget * m_pUrlList;
@@ -136,7 +136,7 @@ public:
 private:
 	QCheckBox * cb[cbnum];
 	BanFrame * m_pBanFrame;
-	void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent *) override;
 protected slots:
 	void acceptbtn();
 	void discardbtn();

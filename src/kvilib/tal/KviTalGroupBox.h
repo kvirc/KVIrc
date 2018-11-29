@@ -161,7 +161,7 @@ public:
 	void setLayout(QLayout * newLayout);
 
 protected:
-	virtual void childEvent(QChildEvent * e);
+	void childEvent(QChildEvent * e) override;
 };
 
 #endif // _KVI_TAL_GROUPBOX_H_

@@ -189,7 +189,7 @@ protected slots:
 	void popupRefresh(const QString & szName);
 
 protected:
-	void showEvent(QShowEvent * e);
+	void showEvent(QShowEvent * e) override;
 	void getExportPopupBuffer(QString & buffer, MenuTreeWidgetItem * it);
 
 private:

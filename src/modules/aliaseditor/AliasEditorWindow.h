@@ -182,10 +182,10 @@ protected:
 	AliasEditorWidget * m_pEditor;
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void getConfigGroupName(QString & szName);
-	virtual void saveProperties(KviConfigurationFile *);
-	virtual void loadProperties(KviConfigurationFile *);
+	QPixmap * myIconPtr() override;
+	void getConfigGroupName(QString & szName) override;
+	void saveProperties(KviConfigurationFile *) override;
+	void loadProperties(KviConfigurationFile *) override;
 protected slots:
 	void cancelClicked();
 	void okClicked();

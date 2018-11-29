@@ -46,12 +46,12 @@ public:
 	QWidget * widget() { return (QWidget *)object(); };
 
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 	QWebView * m_pWebview = nullptr;
 #endif
-	virtual bool eventFilter(QObject * o, QEvent * e);
+	bool eventFilter(QObject * o, QEvent * e) override;
 	KviKvsRunTimeContext * m_pContext = nullptr;
 	QGraphicsDropShadowEffect * pGraphicsEffect = nullptr;
 	// ok, it is clear that we're messing with the naming conventions for the
@@ -144,12 +144,12 @@ class KviKvsWidget : public QWidget
 	Q_PROPERTY(QSize sizeHint READ sizeHint)
 public:
 	KviKvsWidget(KvsObject_widget * ob, QWidget * par);
-	virtual ~KviKvsWidget();
+	~KviKvsWidget();
 
 protected:
 	KvsObject_widget * m_pObject;
 
 public:
-	QSize sizeHint() const;
+	QSize sizeHint() const override;
 };
 #endif //_CLASS_WIDGET_H_

@@ -51,12 +51,12 @@ private slots:
 	void execute();
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void getConfigGroupName(QString & szName);
-	virtual void saveProperties(KviConfigurationFile *){};
-	virtual void loadProperties(KviConfigurationFile *){};
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void resizeEvent(QResizeEvent * e) override;
+	void getConfigGroupName(QString & szName) override;
+	void saveProperties(KviConfigurationFile *) override {}
+	void loadProperties(KviConfigurationFile *) override {}
 };
 
 #endif //_CODETESTER_H_

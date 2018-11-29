@@ -90,7 +90,7 @@ protected:
 	KviChannelWindow * m_pChannel;
 	KviMaskEditor * m_pEditor;
 protected slots:
-	virtual void accept();
+	void accept() override;
 };
 
 class KVIRC_API KviMaskEditor : public KviWindowToolWidget

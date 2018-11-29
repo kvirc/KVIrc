@@ -55,7 +55,7 @@ protected: // protected members
 	bool x11GetRemoteMessage();
 #endif //!COMPILE_X11_SUPPORT
 
-	virtual bool nativeEvent(const QByteArray & id, void * msg, long * res);
+	bool nativeEvent(const QByteArray & id, void * msg, long * res) override;
 };
 #endif //!COMPILE_NO_IPC
 

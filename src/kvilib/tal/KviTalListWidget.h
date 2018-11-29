@@ -38,11 +38,11 @@ public:
 	KviTalListWidget(QWidget * pParent, QString name, Qt::WindowType f = Qt::Widget);
 	KviTalListWidget(QWidget * pParent)
 	    : QListWidget(pParent){};
-	virtual ~KviTalListWidget(){};
+	~KviTalListWidget() = default;
 
 protected:
-	virtual bool event(QEvent * e);
-	virtual bool eventFilter(QObject * o, QEvent * e);
+	bool event(QEvent * e) override;
+	bool eventFilter(QObject * o, QEvent * e) override;
 signals:
 	void tipRequest(QListWidgetItem *, const QPoint &);
 };
@@ -57,7 +57,7 @@ public:
 	KviTalListWidgetItem(KviTalListWidget * pParent, QString & label)
 	    : QListWidgetItem(label, pParent){};
 	KviTalListWidget * listWidget() { return (KviTalListWidget *)QListWidgetItem::listWidget(); };
-	virtual ~KviTalListWidgetItem(){};
+	~KviTalListWidgetItem() = default;
 };
 
 class KVILIB_API KviTalListWidgetText : public KviTalListWidgetItem

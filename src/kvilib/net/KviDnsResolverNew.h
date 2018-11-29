@@ -64,7 +64,7 @@ public:
 	/// Destroys the instance of KviDnsResolver
 	/// and frees all the relevant resources
 	///
-	virtual ~KviDnsResolver();
+	~KviDnsResolver();
 
 public:
 	enum QueryType

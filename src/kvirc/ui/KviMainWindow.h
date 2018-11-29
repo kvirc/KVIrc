@@ -183,13 +183,13 @@ protected:
 	void childConnectionServerInfoChange(KviIrcConnection * c);
 	void childWindowSelectionStateChange(KviWindow * pWnd, bool bGotSelectionNow);
 
-	virtual void closeEvent(QCloseEvent * e);
-	virtual void hideEvent(QHideEvent * e);
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void moveEvent(QMoveEvent * e);
-	virtual bool focusNextPrevChild(bool next);
-	virtual void changeEvent(QEvent * event);
-	virtual void contextMenuEvent(QContextMenuEvent * event);
+	void closeEvent(QCloseEvent * e) override;
+	void hideEvent(QHideEvent * e) override;
+	void resizeEvent(QResizeEvent * e) override;
+	void moveEvent(QMoveEvent * e) override;
+	bool focusNextPrevChild(bool next) override;
+	void changeEvent(QEvent * event) override;
+	void contextMenuEvent(QContextMenuEvent * event) override;
 
 	void updatePseudoTransparency();
 	void installAccelerators();

@@ -41,7 +41,7 @@ protected:
 	bool bIsSetFromExternal = false;
 
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 	const char * getStateString(QAbstractSocket::SocketState);
 
 	void setInternalSocket(QAbstractSocket * pSocket)

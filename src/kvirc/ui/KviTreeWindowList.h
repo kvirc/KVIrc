@@ -45,10 +45,10 @@ public:
 
 public:
 	virtual QString key() const;
-	virtual void captionChanged();
-	virtual void highlight(int iLevel = 1);
-	virtual void unhighlight();
-	virtual void setProgress(int progress);
+	void captionChanged() override;
+	void highlight(int iLevel = 1) override;
+	void unhighlight() override;
+	void setProgress(int progress) override;
 	virtual void applyOptions();
 
 protected:
@@ -69,11 +69,11 @@ public:
 	~KviTreeWindowListTreeWidget();
 	bool isReverseSort() { return bReverseSort; };
 protected:
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseMoveEvent(QMouseEvent * e);
-	virtual void wheelEvent(QWheelEvent * e);
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	virtual void paintEvent(QPaintEvent * event);
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseMoveEvent(QMouseEvent * e) override;
+	void wheelEvent(QWheelEvent * e) override;
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
+	void paintEvent(QPaintEvent * event) override;
 
 private:
 	KviWindowListItem * lastItem();
@@ -97,21 +97,21 @@ private:
 	QStyledItemDelegate * m_pItemDelegate;
 
 public:
-	virtual KviWindowListItem * addItem(KviWindow *);
-	virtual bool removeItem(KviWindowListItem *);
-	virtual void setActiveItem(KviWindowListItem *);
-	virtual KviWindowListItem * firstItem();
-	virtual KviWindowListItem * nextItem(void);
-	virtual KviWindowListItem * lastItem();
-	virtual KviWindowListItem * prevItem(void);
-	virtual bool setIterationPointer(KviWindowListItem * it);
-	virtual void updatePseudoTransparency();
-	virtual void updateActivityMeter();
+	KviWindowListItem * addItem(KviWindow *) override;
+	bool removeItem(KviWindowListItem *) override;
+	void setActiveItem(KviWindowListItem *) override;
+	KviWindowListItem * firstItem() override;
+	KviWindowListItem * nextItem(void) override;
+	KviWindowListItem * lastItem() override;
+	KviWindowListItem * prevItem(void) override;
+	bool setIterationPointer(KviWindowListItem * it) override;
+	void updatePseudoTransparency() override;
+	void updateActivityMeter() override;
 
-	virtual void wheelEvent(QWheelEvent * e);
+	void wheelEvent(QWheelEvent * e) override;
 
 protected:
-	virtual void moveEvent(QMoveEvent *);
+	void moveEvent(QMoveEvent *) override;
 protected slots:
 	void tipRequest(KviDynamicToolTip * tip, const QPoint & pnt);
 };

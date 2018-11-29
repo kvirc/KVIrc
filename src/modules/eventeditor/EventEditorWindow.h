@@ -84,7 +84,7 @@ public:
 	~EventEditorTreeWidget(){};
 
 protected:
-	void mousePressEvent(QMouseEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
 signals:
 	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 };
@@ -121,7 +121,7 @@ protected slots:
 	void eventHandlerDisabled(const QString & szName);
 
 protected:
-	void showEvent(QShowEvent * e);
+	void showEvent(QShowEvent * e) override;
 
 private:
 	void oneTimeSetup();
@@ -138,11 +138,11 @@ protected:
 	EventEditor * m_pEditor;
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void getConfigGroupName(QString & szName);
-	virtual void saveProperties(KviConfigurationFile *);
-	virtual void loadProperties(KviConfigurationFile *);
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void getConfigGroupName(QString & szName) override;
+	void saveProperties(KviConfigurationFile *) override;
+	void loadProperties(KviConfigurationFile *) override;
 protected slots:
 	void cancelClicked();
 	void okClicked();

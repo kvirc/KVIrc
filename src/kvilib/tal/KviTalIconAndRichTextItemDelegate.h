@@ -95,7 +95,7 @@ public:
 	* \param index The model index for the item
 	* \return QSize
 	*/
-	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
+	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const override;
 
 	/**
 	* \brief Paints the view

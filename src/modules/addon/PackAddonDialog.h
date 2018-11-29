@@ -92,7 +92,7 @@ protected:
 	* \brief Runs the packAddon() function and closes the wizard
 	* \return void
 	*/
-	virtual void accept();
+	void accept() override;
 
 	/**
 	* \brief Creates the addon package
@@ -201,7 +201,7 @@ protected:
 	* \brief Perform initial tasks before showing the widget
 	* \return void
 	*/
-	virtual void initializePage();
+	void initializePage() override;
 };
 
 /**
@@ -232,7 +232,7 @@ protected:
 	* \brief Perform initial tasks before showing the widget
 	* \return void
 	*/
-	virtual void initializePage();
+	void initializePage() override;
 };
 
 class PackAddonSummaryFilesWidget : public QDialog
@@ -249,10 +249,10 @@ protected:
 public:
 	void setPath(QString & szPath) { m_szPath = szPath; };
 protected:
-	virtual void showEvent(QShowEvent *);
+	void showEvent(QShowEvent *) override;
 protected slots:
-	virtual void accept();
-	virtual void reject();
+	void accept() override;
+	void reject() override;
 };
 
 #endif //!_PACKADDONDIALOG_H_

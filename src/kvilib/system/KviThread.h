@@ -226,7 +226,7 @@ protected:
 	void exit();
 	// The tricky part: threadsafe event dispatching
 	// Slave thread -> main thread objects
-	void postEvent(QObject * o, QEvent * e);
+	virtual void postEvent(QObject * o, QEvent * e);
 
 private:
 	void setRunning(bool bRunning);
@@ -282,7 +282,7 @@ protected:
 public:
 	KviThreadEvent(int evId, KviThread * sender = 0)
 	    : QEvent((QEvent::Type)KVI_THREAD_EVENT), m_eventId(evId), m_pSender(sender){};
-	virtual ~KviThreadEvent(){};
+	~KviThreadEvent(){};
 
 public:
 	// This is the sender of the event
@@ -300,7 +300,7 @@ protected:
 public:
 	KviThreadDataEvent(int evId, TData * pData = 0, KviThread * sender = 0)
 	    : KviThreadEvent(evId, sender) { m_pData = pData; };
-	virtual ~KviThreadDataEvent()
+	~KviThreadDataEvent()
 	{
 		if(m_pData)
 			delete m_pData;

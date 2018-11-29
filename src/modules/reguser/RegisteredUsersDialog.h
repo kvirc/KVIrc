@@ -46,7 +46,7 @@ public:
 	~KviRegisteredUsersListView(){};
 
 protected:
-	void mousePressEvent(QMouseEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
 signals:
 	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 };
@@ -57,7 +57,7 @@ public:
 	RegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget = 0)
 	    : QStyledItemDelegate(pWidget){};
 	~RegisteredUsersDialogItemDelegate(){};
-	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
+	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const override;
 	void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
 };
 
@@ -141,7 +141,7 @@ protected:
 	void fillList();
 	void editItem(RegisteredUsersDialogItem * i);
 	void editGroup(KviRegisteredUserGroup * group);
-	virtual void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent *) override;
 protected slots:
 	void cancelClicked();
 	void okClicked();

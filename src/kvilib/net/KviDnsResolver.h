@@ -92,7 +92,7 @@ class KVILIB_API KviDnsResolver : public QObject, public KviHeapObject
 	Q_PROPERTY(bool blockingDelete READ isRunning)
 public:
 	KviDnsResolver();
-	virtual ~KviDnsResolver();
+	~KviDnsResolver();
 
 public:
 	enum QueryType
@@ -138,7 +138,7 @@ public:
 	bool isRunning() const;
 
 protected:
-	virtual bool event(QEvent * e);
+	bool event(QEvent * e) override;
 
 private:
 	KviDnsResolverResult * result();
@@ -167,7 +167,7 @@ public:
 		KVI_ASSERT(pResult);
 	}
 
-	virtual ~KviDnsResolverThreadEvent()
+	~KviDnsResolverThreadEvent()
 	{
 		delete m_pResult;
 	}
@@ -187,7 +187,7 @@ class KviDnsResolverThread : public QThread
 
 protected:
 	KviDnsResolverThread(KviDnsResolver * pDns);
-	virtual ~KviDnsResolverThread();
+	~KviDnsResolverThread();
 
 protected:
 	QString m_szQuery;
@@ -202,7 +202,7 @@ public:
 	};
 
 protected:
-	virtual void run();
+	void run() override;
 	KviError::Code translateDnsError(int iErr);
 	void postDnsError(KviDnsResolverResult * pDns, KviError::Code error);
 };

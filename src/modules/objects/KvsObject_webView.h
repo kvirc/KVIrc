@@ -44,15 +44,15 @@ public:
 	KviKvsWebView(QWidget * par, const char * name, KvsObject_webView *);
 	//void accept();
 	//void reject();
-	virtual ~KviKvsWebView();
+	~KviKvsWebView();
 
 protected:
 	KvsObject_webView * m_pParentScript;
 
 protected:
-	virtual void mouseMoveEvent(QMouseEvent * ev);
-	virtual void contextMenuEvent(QContextMenuEvent *);
-	virtual bool event(QEvent * e);
+	void mouseMoveEvent(QMouseEvent * ev) override;
+	void contextMenuEvent(QContextMenuEvent *) override;
+	bool event(QEvent * e) override;
 	/*protected slots:
 	void slotNextClicked();
 	void slotBackClicked();
@@ -83,7 +83,7 @@ public:
 protected:
 	void getFrames(QWebFrame * pCurFrame, QStringList & szFramesNames);
 	QWebFrame * findFrame(QWebFrame * pCurFrame, QString & szFrameName);
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 	bool removeFromDocument(KviKvsObjectFunctionCall * c);
 	bool makePreview(KviKvsObjectFunctionCall * c);
 
@@ -160,7 +160,7 @@ class KviKvsDownloadHandler : public QObject
 public:
 	KviKvsDownloadHandler(KvsObject_webView * pParent, QFile * pFile, QNetworkReply * pNetReply, int iId);
 
-	virtual ~KviKvsDownloadHandler();
+	~KviKvsDownloadHandler();
 
 protected:
 	KvsObject_webView * m_pParentScript;

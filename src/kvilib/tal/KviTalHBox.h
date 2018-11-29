@@ -113,7 +113,7 @@ public:
 	void addSpacing(int iSpace);
 
 protected:
-	virtual void childEvent(QChildEvent * e);
+	void childEvent(QChildEvent * e) override;
 };
 
 #endif // _KVI_TAL_HBOX_H_

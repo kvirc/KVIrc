@@ -205,28 +205,28 @@ public:
 	void prevPage();
 	void scrollTop();
 	void scrollBottom();
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 	const QString & lastLineOfText();
 	const QString & lastMessageText();
-	virtual void setFont(const QFont & f);
+	void setFont(const QFont & f);
 	void scrollToMarker();
 
 protected:
-	virtual void paintEvent(QPaintEvent *);
-	virtual void resizeEvent(QResizeEvent *);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseReleaseEvent(QMouseEvent *);
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	virtual void mouseMoveEvent(QMouseEvent * e);
-	virtual void timerEvent(QTimerEvent * e);
-	virtual void dragEnterEvent(QDragEnterEvent * e);
-	virtual void dropEvent(QDropEvent * e);
-	virtual void showEvent(QShowEvent * e);
-	virtual bool event(QEvent * e);
-	virtual void wheelEvent(QWheelEvent * e);
-	virtual void keyPressEvent(QKeyEvent * e);
+	void paintEvent(QPaintEvent *) override;
+	void resizeEvent(QResizeEvent *) override;
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseReleaseEvent(QMouseEvent *) override;
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
+	void mouseMoveEvent(QMouseEvent * e) override;
+	void timerEvent(QTimerEvent * e) override;
+	void dragEnterEvent(QDragEnterEvent * e) override;
+	void dropEvent(QDropEvent * e) override;
+	void showEvent(QShowEvent * e) override;
+	bool event(QEvent * e) override;
+	void wheelEvent(QWheelEvent * e) override;
+	void keyPressEvent(QKeyEvent * e) override;
 	void maybeTip(const QPoint & pnt);
-	virtual void leaveEvent(QEvent *);
+	void leaveEvent(QEvent *) override;
 
 private:
 	void triggerMouseRelatedKvsEvents(QMouseEvent * e);

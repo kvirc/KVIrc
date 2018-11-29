@@ -55,7 +55,7 @@ public:
 	~LogViewListView(){};
 
 protected:
-	void mousePressEvent(QMouseEvent * pEvent);
+	void mousePressEvent(QMouseEvent * pEvent) override;
 signals:
 	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 };
@@ -119,12 +119,12 @@ protected:
 	void recurseDirectory(const QString & szDir);
 	void setupItemList();
 
-	virtual QPixmap * myIconPtr();
-	virtual void resizeEvent(QResizeEvent * pEvent);
-	virtual void keyPressEvent(QKeyEvent * pEvent);
-	virtual void fillCaptionBuffers();
+	QPixmap * myIconPtr() override;
+	void resizeEvent(QResizeEvent * pEvent) override;
+	void keyPressEvent(QKeyEvent * pEvent) override;
+	void fillCaptionBuffers() override;
 	virtual void die();
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 protected slots:
 	void rightButtonClicked(QTreeWidgetItem *, const QPoint &);
 	void itemSelected(QTreeWidgetItem * pItem, QTreeWidgetItem *);

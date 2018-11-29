@@ -35,7 +35,7 @@ class TorrentInterface : public QObject
 {
 public:
 	TorrentInterface() {}
-	virtual ~TorrentInterface() {}
+	~TorrentInterface() {}
 
 	virtual int detect() = 0;
 
@@ -119,7 +119,7 @@ public:
 	{                                                                     \
 	public:                                                               \
 		_interfaceclass##Descriptor();                                    \
-		virtual ~_interfaceclass##Descriptor();                           \
+		~_interfaceclass##Descriptor();                                   \
                                                                           \
 	protected:                                                            \
 		_interfaceclass * m_pInstance;                                    \
@@ -127,9 +127,9 @@ public:
 		QString m_szDescription;                                          \
                                                                           \
 	public:                                                               \
-		virtual const QString & name();                                   \
-		virtual const QString & description();                            \
-		virtual TorrentInterface * instance();                            \
+		const QString & name() override;                                    \
+		const QString & description() override;                             \
+		TorrentInterface * instance() override;                             \
 	};
 
 #define TORR_IMPLEMENT_DESCRIPTOR(_interfaceclass, _name, _description) \

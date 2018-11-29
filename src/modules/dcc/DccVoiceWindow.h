@@ -125,14 +125,14 @@ protected:
 	DccVoiceThread * m_pSlaveThread;
 
 protected:
-	virtual void focusInEvent(QFocusEvent *);
-	virtual const QString & target();
-	virtual void fillCaptionBuffers();
-	virtual QPixmap * myIconPtr();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual QSize sizeHint() const;
-	virtual bool event(QEvent * e);
-	virtual void getBaseLogFileName(QString & buffer);
+	void focusInEvent(QFocusEvent *) override;
+	const QString & target() override;
+	void fillCaptionBuffers() override;
+	QPixmap * myIconPtr() override;
+	void resizeEvent(QResizeEvent * e) override;
+	QSize sizeHint() const override;
+	bool event(QEvent * e) override;
+	void getBaseLogFileName(QString & buffer) override;
 	void startTalking();
 	void stopTalking();
 	void startConnection();

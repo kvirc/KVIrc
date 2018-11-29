@@ -98,22 +98,22 @@ protected:
 
 protected:
 	// UI
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void closeEvent(QCloseEvent * e);
-	virtual void getBaseLogFileName(QString & buffer);
-	virtual void getWindowListTipText(QString & buffer);
-	virtual QSize sizeHint() const;
-	virtual void applyOptions();
-	virtual void triggerCreationEvents();
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void resizeEvent(QResizeEvent * e) override;
+	void closeEvent(QCloseEvent * e) override;
+	void getBaseLogFileName(QString & buffer) override;
+	void getWindowListTipText(QString & buffer) override;
+	QSize sizeHint() const override;
+	void applyOptions() override;
+	void triggerCreationEvents() override;
 	void fillStatusString();
 	//void socketError(int iError);
 	//void socketStateChange();
 	//void registerLinkMonitor(KviIrcSocketMonitor * m);
 	//void unregisterLinkMonitor(KviIrcSocketMonitor * m);
-	virtual void loadProperties(KviConfigurationFile * cfg);
-	virtual void saveProperties(KviConfigurationFile * cfg);
+	void loadProperties(KviConfigurationFile * cfg) override;
+	void saveProperties(KviConfigurationFile * cfg) override;
 
 	void destroyConnection();
 	// internal helper for applyHighlighting

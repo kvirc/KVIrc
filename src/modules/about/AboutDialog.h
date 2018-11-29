@@ -34,7 +34,7 @@ public:
 	~AboutDialog();
 
 protected:
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 protected slots:
 	void closeButtonPressed();
 };

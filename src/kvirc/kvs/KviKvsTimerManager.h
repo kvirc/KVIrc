@@ -127,7 +127,7 @@ public:
 
 protected:
 	void scheduleKill(KviKvsTimer * t);
-	virtual void timerEvent(QTimerEvent * e);
+	void timerEvent(QTimerEvent * e) override;
 };
 
 #endif //!_KVI_KVS_TIMERMANAGER_H_

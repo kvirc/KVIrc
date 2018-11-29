@@ -67,8 +67,8 @@ protected:
 	* \param e mouse event descriptor
 	* \return void
 	*/
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
 };
 
 /**

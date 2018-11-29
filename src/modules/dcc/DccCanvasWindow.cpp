@@ -162,7 +162,7 @@ void DccCanvasWindow::getBaseLogFileName(KviCString & buffer)
 	buffer.sprintf("%s_%s_%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 }
 
-void DccCanvasWindow::ownMessage(const char * text, bool bUserFeedback)
+void DccCanvasWindow::ownMessage(const QString & text, bool bUserFeedback)
 {
 	KviCString buf(KviCString::Format, "%s\r\n", text);
 	//	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
@@ -173,7 +173,7 @@ void DccCanvasWindow::ownMessage(const char * text, bool bUserFeedback)
 		    m_pDescriptor->szLocalHost.toUtf8().data(), text);
 }
 
-void DccCanvasWindow::ownAction(const char * text)
+void DccCanvasWindow::ownAction(const QString & text)
 {
 	KviCString buf(KviCString::Format, "%cACTION %s%c\r\n", text);
 	//	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());

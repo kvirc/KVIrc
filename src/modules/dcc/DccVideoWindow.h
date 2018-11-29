@@ -103,8 +103,8 @@ protected:
 	void startPlaying();
 	void stopPlaying();
 	bool isPlaying() const { return m_bPlaying; }
-	virtual void run();
-	virtual bool handleIncomingData(KviDccThreadIncomingData * data, bool bCritical);
+	void run() override;
+	bool handleIncomingData(KviDccThreadIncomingData * data, bool bCritical) override;
 };
 
 class DccVideoWindow : public DccWindow
@@ -135,21 +135,21 @@ protected:
 	QString m_szLocalNick;
 
 protected:
-	virtual void triggerCreationEvents();
-	virtual void triggerDestructionEvents();
-	virtual const QString & target();
-	virtual void fillCaptionBuffers();
-	virtual QPixmap * myIconPtr();
-	virtual bool event(QEvent * e);
-	virtual void getBaseLogFileName(QString & buffer);
+	void triggerCreationEvents() override;
+	void triggerDestructionEvents() override;
+	const QString & target() override;
+	void fillCaptionBuffers() override;
+	QPixmap * myIconPtr() override;
+	bool event(QEvent * e) override;
+	void getBaseLogFileName(QString & buffer) override;
 	void startTalking();
 	void stopTalking();
 	void startConnection();
-	virtual const QString & localNick();
-	virtual void ownMessage(const QString & text, bool bUserFeedback = true);
-	virtual void ownAction(const QString & text);
-	virtual void resizeEvent(QResizeEvent *);
-	virtual QSize sizeHint() const;
+	const QString & localNick() override;
+	void ownMessage(const QString & text, bool bUserFeedback = true) override;
+	void ownAction(const QString & text) override;
+	void resizeEvent(QResizeEvent *) override;
+	QSize sizeHint() const override;
 protected slots:
 	void handleMarshalError(KviError::Code eError);
 	void connected();

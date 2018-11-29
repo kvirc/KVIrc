@@ -52,8 +52,8 @@ protected:
 	void center();
 
 protected:
-	virtual void showEvent(QShowEvent * e);
-	virtual void closeEvent(QCloseEvent * e);
+	void showEvent(QShowEvent * e) override;
+	void closeEvent(QCloseEvent * e) override;
 protected slots:
 	void die();
 };

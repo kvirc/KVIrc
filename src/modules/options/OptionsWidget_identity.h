@@ -70,7 +70,7 @@ protected:
 	QString m_szAvatarName;
 
 protected:
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 	const QString & avatarName() { return m_szAvatarName; };
 protected slots:
 	void okClicked();
@@ -94,7 +94,7 @@ protected:
 	QString m_szUrl;
 
 protected:
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 	const QString & localFileName() { return m_szLocalFileName; };
 	const QString & errorMessage() { return m_szErrorMessage; };
 protected slots:
@@ -161,7 +161,7 @@ protected slots:
 	void setNickAlternatives();
 
 protected:
-	virtual void commit();
+	void commit() override;
 };
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAvatar KviIconManager::Avatar
@@ -186,7 +186,7 @@ protected slots:
 	void chooseAvatar();
 
 protected:
-	virtual void commit();
+	void commit() override;
 };
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAdvanced KviIconManager::Gui

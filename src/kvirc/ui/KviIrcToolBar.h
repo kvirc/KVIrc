@@ -55,14 +55,14 @@ private:
 	bool m_bResizeMode;
 
 public:
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 
 protected:
-	virtual void mouseMoveEvent(QMouseEvent * e);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseReleaseEvent(QMouseEvent * e);
+	void mouseMoveEvent(QMouseEvent * e) override;
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseReleaseEvent(QMouseEvent * e) override;
 
-	virtual void paintEvent(QPaintEvent * e);
+	void paintEvent(QPaintEvent * e) override;
 	virtual void drawContents(QPainter * p);
 };
 

@@ -36,7 +36,7 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); }
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 	bool setCurrentColor(KviKvsObjectFunctionCall * c);
 	bool currentColorChangedEvent(KviKvsObjectFunctionCall * c);
 	bool colorSelectedEvent(KviKvsObjectFunctionCall * c);

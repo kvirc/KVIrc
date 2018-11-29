@@ -50,8 +50,8 @@ public:
 	~DccAcceptDialog();
 
 protected:
-	virtual void closeEvent(QCloseEvent * e);
-	virtual void showEvent(QShowEvent * e);
+	void closeEvent(QCloseEvent * e) override;
+	void showEvent(QShowEvent * e) override;
 private slots:
 	void acceptClicked();
 	void rejectClicked();
@@ -68,8 +68,8 @@ public:
 	~DccRenameDialog();
 
 protected:
-	virtual void closeEvent(QCloseEvent * e);
-	virtual void showEvent(QShowEvent * e);
+	void closeEvent(QCloseEvent * e) override;
+	void showEvent(QShowEvent * e) override;
 private slots:
 	void renameClicked();
 	void overwriteClicked();

@@ -115,17 +115,17 @@ protected:
 	KviPointerList<ChannelTreeWidgetItemData> * m_pItemList;
 
 public: // Methods
-	virtual void control(int iMsg);
-	virtual void processData(KviIrcMessage * pMsg);
-	virtual void die();
-	virtual QSize sizeHint() const;
+	void control(int iMsg) override;
+	void processData(KviIrcMessage * pMsg) override;
+	void die() override;
+	QSize sizeHint() const override;
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void applyOptions();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void getBaseLogFileName(QString & szBuffer);
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void applyOptions() override;
+	void resizeEvent(QResizeEvent * e) override;
+	void getBaseLogFileName(QString & szBuffer) override;
 protected slots:
 	void flush();
 	void itemDoubleClicked(QTreeWidgetItem * it, int);

@@ -36,7 +36,7 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 	bool setChecked(KviKvsObjectFunctionCall * c);
 	bool isChecked(KviKvsObjectFunctionCall * c);
 	bool toggleEvent(KviKvsObjectFunctionCall * c);

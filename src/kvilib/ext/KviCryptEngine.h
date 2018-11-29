@@ -80,7 +80,7 @@ public:
 	};
 
 	KviCryptEngine();
-	virtual ~KviCryptEngine();
+	~KviCryptEngine();
 
 #ifdef COMPILE_CRYPT_SUPPORT
 private:

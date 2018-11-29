@@ -170,7 +170,7 @@ protected:
 protected:
 	void registerSoundThread(KviSoundThread * t);
 	void unregisterSoundThread(KviSoundThread * t);
-	virtual bool event(QEvent * e);
+	bool event(QEvent * e) override;
 
 protected:
 	void stopAllSoundThreads();

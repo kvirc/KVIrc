@@ -42,7 +42,7 @@ private:
 	KviWindow * m_pKviWindow;
 
 protected:
-	virtual void paintEvent(QPaintEvent * event);
+	void paintEvent(QPaintEvent * event) override;
 
 public:
 	int dummyRead() const { return 0; };

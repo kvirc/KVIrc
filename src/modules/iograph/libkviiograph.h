@@ -51,8 +51,8 @@ protected:
 	kvi_u64_t m_uLastRecvBytes;
 
 protected:
-	virtual void timerEvent(QTimerEvent * e);
-	virtual void paintEvent(QPaintEvent * e);
+	void timerEvent(QTimerEvent * e) override;
+	void paintEvent(QPaintEvent * e) override;
 };
 
 class KviIOGraphWindow : public KviWindow
@@ -67,12 +67,12 @@ private:
 	virtual void updatePseudoTransparency();
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent * e);
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void resizeEvent(QResizeEvent * e) override;
 	virtual void die();
-	virtual void moveEvent(QMoveEvent *);
-	virtual void paintEvent(QPaintEvent * e);
+	void moveEvent(QMoveEvent *) override;
+	void paintEvent(QPaintEvent * e) override;
 };
 
 #endif
