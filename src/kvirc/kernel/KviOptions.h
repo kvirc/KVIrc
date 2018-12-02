@@ -29,6 +29,7 @@
 #include "KviCString.h"
 #include "KviPixmap.h"
 #include "KviMessageTypeSettings.h"
+#include "KviControlCodes.h"
 
 #include <QRect>
 #include <QPixmap>
@@ -638,7 +639,7 @@ namespace KviIdentdOutputMode
 #define KVI_MIRCCOLOR_OPTIONS_PREFIX "mirccolor"
 #define KVI_MIRCCOLOR_OPTIONS_PREFIX_LEN 9
 
-#define KVI_NUM_MIRCCOLOR_OPTIONS 16
+#define KVI_NUM_MIRCCOLOR_OPTIONS (KVI_MIRCCOLOR_MAX+1)
 
 // external declaration of the tables
 extern KVIRC_API KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS];
