@@ -191,7 +191,7 @@ namespace KviControlCodes
 
 		if((c >= '0') && (c <= '9'))
 		{
-			(*pcByte1) = (((*pcByte1) * 10) + (c - '0')) % 16;
+			(*pcByte1) = (((*pcByte1) * 10) + (c - '0'));
 			iChar++;
 			if(iChar >= (unsigned int)szData.length())
 			{
@@ -235,7 +235,7 @@ namespace KviControlCodes
 
 		if((c >= '0') && (c <= '9'))
 		{
-			(*pcByte2) = (((*pcByte2) * 10) + (c - '0')) % 16;
+			(*pcByte2) = (((*pcByte2) * 10) + (c - '0'));
 			iChar++;
 		}
 
@@ -265,7 +265,7 @@ namespace KviControlCodes
 					pcData++;
 				} else {
 					//A number
-					(*pcByte1)=((((*pcByte1)*10)+((*pcData)-'0'))%16);
+					(*pcByte1)=((((*pcByte1)*10)+((*pcData)-'0')));
 					pcData++;
 					if(*pcData==',')
 					{
@@ -296,7 +296,7 @@ namespace KviControlCodes
 			pcData++;
 			if((*pcData >= '0') && (*pcData <='9'))
 			{
-				(*pcByte2)=((((*pcByte2)*10)+((*pcData)-'0'))%16);
+				(*pcByte2)=((((*pcByte2)*10)+((*pcData)-'0')));
 				pcData++;
 			}
 			return pcData;
