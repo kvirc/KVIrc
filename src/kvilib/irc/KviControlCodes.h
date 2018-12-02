@@ -43,6 +43,7 @@
 #include "KviCString.h"
 
 #define KVI_MIRCCOLOR_MAX 15
+#define KVI_EXTCOLOR_MAX 98
 
 // ASCII Stuff: the following defines are meant to be escape sequences
 //              that can go through an IRC connection
@@ -178,6 +179,8 @@ namespace KviControlCodes
 	inline const QChar * getUnicodeColorBytes(const QChar * pData, unsigned char * pcByte1, unsigned char * pcByte2)
 		{ return (QChar *)getColorBytesW((const kvi_wchar_t *)pData,pcByte1,pcByte2); }
 #endif
+
+	KVILIB_API kvi_u32_t getExtendedColor(int index);
 }
 
 #endif //_KVI_CONTROLCODES_H_
