@@ -668,6 +668,16 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 #define KVI_OPTION_STRINGLIST(_idx) g_stringlistOptionsTable[_idx].option
 #define KVI_OPTION_ICCOLOR(_idx) g_iccolorOptionsTable[_idx].option
 
+inline QColor getMircColor(unsigned int index)
+{
+	// Use inline function (instead of macro) to avoid evaluating index more than once.
+	if (index <= KVI_MIRCCOLOR_MAX)
+		return KVI_OPTION_MIRCCOLOR(index);
+	if (index <= KVI_EXTCOLOR_MAX)
+		return KviControlCodes::getExtendedColor(index);
+	return QColor(); // invalid color (isValid returns false)
+}
+
 // Verbosity constants
 #define KVI_VERBOSITY_LEVEL_MUTE 0
 #define KVI_VERBOSITY_LEVEL_QUIET 1
