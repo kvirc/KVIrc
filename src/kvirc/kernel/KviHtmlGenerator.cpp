@@ -96,9 +96,9 @@ namespace KviHtmlGenerator
 				{
 					szResult.append("<span style=\"color:");
 					if(uCurFore == Background) // this is the result of reverse
-						szResult.append(KVI_OPTION_MIRCCOLOR(KviControlCodes::White).name());
+						szResult.append(getMircColor(KviControlCodes::White).name());
 					else
-						szResult.append(KVI_OPTION_MIRCCOLOR(uCurFore).name());
+						szResult.append(getMircColor(uCurFore).name());
 					bOpened = true;
 				}
 
@@ -114,9 +114,9 @@ namespace KviHtmlGenerator
 						szResult.append(";background-color:");
 					}
 					if(uCurBack == Foreground) // this is the result of reverse
-						szResult.append(KVI_OPTION_MIRCCOLOR(KviControlCodes::Black).name());
+						szResult.append(getMircColor(KviControlCodes::Black).name());
 					else
-						szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
+						szResult.append(getMircColor(uCurBack).name());
 				}
 
 				if(bCurUnderline)
@@ -293,7 +293,7 @@ namespace KviHtmlGenerator
 								if(uCurBack != Background)
 								{
 									szResult.append("\" style=\"background-color:");
-									szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
+									szResult.append(getMircColor(uCurBack).name());
 								}
 								szResult.append("\" />");
 							}
@@ -335,7 +335,7 @@ namespace KviHtmlGenerator
 							if(uCurBack != Background)
 							{
 								szResult.append("\" style=\"background-color:");
-								szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
+								szResult.append(getMircColor(uCurBack).name());
 							}
 							szResult.append("\" />");
 						}

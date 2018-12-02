@@ -1311,9 +1311,9 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 //
 
 #define SET_PEN(_color, _custom)                                                             \
-	if(((unsigned char)_color) < 16)                                                         \
+	if(((unsigned char)_color) <= KVI_EXTCOLOR_MAX)                                          \
 	{                                                                                        \
-		pa.setPen(KVI_OPTION_MIRCCOLOR((unsigned char)_color));                              \
+		pa.setPen(getMircColor((unsigned char)_color));                                      \
 	}                                                                                        \
 	else                                                                                     \
 	{                                                                                        \
@@ -1358,7 +1358,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 		int theWdth = _text_width;                                                                                                                                                     \
 		if(theWdth < 0)                                                                                                                                                                \
 			theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);                                                                                       \
-		pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_SELECT).back())); \
+		pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, getMircColor(KVI_OPTION_MSGTYPE(KVI_OUT_SELECT).back())); \
 	}                                                                                                                                                                                  \
 	pPenFont.setStyle(curItalic ^ (normalFontStyle != QFont::StyleNormal) ? QFont::StyleItalic : QFont::StyleNormal);                                                 \
 	if (m_bUseRealBold)                                                                                                                                             \
@@ -1376,7 +1376,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 		int theWdth = _text_width;                                                                                                                                  \
 		if(theWdth < 0)                                                                                                                                             \
 			theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);                                                                    \
-		pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR((unsigned char)curBack)); \
+		pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, getMircColor((unsigned char)curBack));         \
 	}                                                                                                                                                               \
 	pPenFont.setStyle(curItalic ^ (normalFontStyle != QFont::StyleNormal) ? QFont::StyleItalic : QFont::StyleNormal);                                                 \
 	if (m_bUseRealBold)                                                                                                                                             \
@@ -1447,7 +1447,8 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 							int theWdth = block->block_width;
 							if(theWdth < 0)
 								theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);
-							pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_SELECT).back()));
+							pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing,
+								getMircColor(KVI_OPTION_MSGTYPE(KVI_OUT_SELECT).back()));
 							goto no_selection_paint;
 						}
 						break;
@@ -1484,9 +1485,9 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 						wdth = widgetWidth - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER);
 					int imageYPos = curBottomCoord - m_iRelativePixmapY;
 					// Set the mask if needed
-					if(curBack != KviControlCodes::Transparent && curBack < 16)
+					if(curBack != KviControlCodes::Transparent && curBack <= KVI_EXTCOLOR_MAX)
 					{
-						pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, wdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR((unsigned char)curBack));
+						pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, wdth, m_iFontLineSpacing, getMircColor((unsigned char)curBack));
 					}
 					QString tmpQ;
 					tmpQ.setUtf16(block->pChunk->szSmileId, kvi_wstrlen(block->pChunk->szSmileId));
@@ -1521,9 +1522,9 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 
 					SET_PEN(curFore, block->pChunk ? block->pChunk->customFore : QColor());
 
-					if(curBack != KviControlCodes::Transparent && curBack < 16)
+					if(curBack != KviControlCodes::Transparent && curBack <= KVI_EXTCOLOR_MAX)
 					{
-						pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, wdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR((unsigned char)curBack));
+						pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, wdth, m_iFontLineSpacing, getMircColor((unsigned char)curBack));
 					}
 
 					bool bBold = curBold || curLink;
