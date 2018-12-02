@@ -42,8 +42,7 @@
 #include "kvi_settings.h"
 #include "KviCString.h"
 
-#define KVI_MIRCCOLOR_MAX_FOREGROUND 15
-#define KVI_MIRCCOLOR_MAX_BACKGROUND 15
+#define KVI_MIRCCOLOR_MAX 15
 
 // ASCII Stuff: the following defines are meant to be escape sequences
 //              that can go through an IRC connection
