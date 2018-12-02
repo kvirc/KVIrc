@@ -279,15 +279,15 @@ void MessageListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	p->drawPixmap(pt, *(g_pIconManager->getSmallIcon(it->msgType()->pixId())));
 	pt.setX(pt.x() + 18);
 	// draw the background
-	if(it->msgType()->back() < 16)
+	if(it->msgType()->back() <= KVI_EXTCOLOR_MAX)
 	{
-		QColor bColor = KVI_OPTION_MIRCCOLOR(it->msgType()->back());
+		QColor bColor = getMircColor(it->msgType()->back());
 		p->fillRect(pt.x(), pt.y(), opt.rect.width() - pt.x(), opt.rect.height(), bColor);
 	}
 	unsigned char ucFore = it->msgType()->fore();
-	if(ucFore > 15)
+	if(ucFore > KVI_EXTCOLOR_MAX)
 		ucFore = 0;
-	p->setPen(QPen(KVI_OPTION_MIRCCOLOR(ucFore)));
+	p->setPen(QPen(getMircColor(ucFore)));
 	pt.setX(pt.x() + 2);
 
 	p->drawText(pt.x(), pt.y(), opt.rect.width() - pt.x(), opt.rect.height(), Qt::AlignLeft | Qt::AlignVCenter, szText);
@@ -312,14 +312,14 @@ MessageColorListWidgetItem::MessageColorListWidgetItem(KviTalListWidget * b, int
 {
 
 	m_iClrIdx = idx;
-	if((idx < 0) || (idx > 15))
+	if((idx < 0) || (idx > KVI_EXTCOLOR_MAX))
 	{
 		setText(__tr2qs_ctx("Transparent", "options"));
 		setBackground(listWidget()->isEnabled() ? Qt::transparent : Qt::gray);
 	}
 	else
 	{
-		setBackground(QColor(KVI_OPTION_MIRCCOLOR(m_iClrIdx)));
+		setBackground(QColor(getMircColor(m_iClrIdx)));
 		setText(" ");
 	}
 }
@@ -336,9 +336,9 @@ void MessageColorListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionV
 		const KviTalListWidget * lb = (const KviTalListWidget *)parent();
 		MessageColorListWidgetItem * it = static_cast<MessageColorListWidgetItem *>(index.internalPointer());
 
-		if((it->clrIdx() >= 0) && (it->clrIdx() <= 15))
+		if((it->clrIdx() >= 0) && (it->clrIdx() <= KVI_EXTCOLOR_MAX))
 		{
-			clr = KVI_OPTION_MIRCCOLOR(it->clrIdx());
+			clr = getMircColor(it->clrIdx());
 		}
 		else
 		{

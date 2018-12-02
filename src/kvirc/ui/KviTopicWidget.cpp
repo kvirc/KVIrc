@@ -229,15 +229,15 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 			}
 			else
 			{
-				if(curFore > 16)
+				if(curFore > KVI_EXTCOLOR_MAX)
 					p->setPen(cg.background().color());
 				else
-					p->setPen(KVI_OPTION_MIRCCOLOR(curFore));
+					p->setPen(getMircColor(curFore));
 			}
 
 			if(curBack != KVI_LABEL_DEF_BACK)
 			{
-				if(curBack > 16)
+				if(curBack > KVI_EXTCOLOR_MAX)
 				{
 					p->fillRect(curX, rect.y() + 2, wdth, rect.height() - 4,
 					    cg.text());
@@ -245,7 +245,7 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 				else
 				{
 					p->fillRect(curX, rect.y() + 2, wdth, rect.height() - 4,
-					    KVI_OPTION_MIRCCOLOR(curBack));
+					    getMircColor(curBack));
 				}
 			}
 
