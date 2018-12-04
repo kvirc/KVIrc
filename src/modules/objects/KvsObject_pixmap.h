@@ -58,7 +58,7 @@ public:
 			{
 				*m_pImage = m_pPixmap->toImage();
 				delete m_pPixmap;
-				m_pPixmap = 0;
+				m_pPixmap = nullptr;
 			}
 		}
 		m_currentType = Image;
@@ -75,7 +75,7 @@ public:
 			{
 				*m_pPixmap = m_pPixmap->fromImage(*m_pImage);
 				delete m_pImage;
-				m_pImage = 0;
+				m_pImage = nullptr;
 			}
 		}
 		m_currentType = Pixmap;

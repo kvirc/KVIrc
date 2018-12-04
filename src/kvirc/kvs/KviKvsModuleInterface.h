@@ -103,7 +103,7 @@ public:
 	~KviKvsModuleCallbackCommandCall(){};
 
 public:
-	// Never NULL, but may have empty code
+	// Never nullptr, but may have empty code
 	const KviKvsScript * callback() { return m_pCallback; };
 	virtual bool getParameterCode(unsigned int uParamIdx, QString & szParamBuffer);
 };

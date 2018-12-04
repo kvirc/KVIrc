@@ -40,7 +40,7 @@ class KVIRC_API KviOptionsWidget : public QFrame, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
-	KviOptionsWidget(QWidget * parent, const char * name = 0, bool bSunken = true);
+	KviOptionsWidget(QWidget * parent, const char * name = nullptr, bool bSunken = true);
 	~KviOptionsWidget();
 
 private:

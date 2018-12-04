@@ -55,7 +55,7 @@ KviOggTheoraDecoder::KviOggTheoraDecoder(KviDataBuffer * videoSignal, KviDataBuf
 	m_pTextSignal = textSignal;
 	theora_p = 0;
 	stateflag = 0;
-	ts = NULL;
+	ts = nullptr;
 	thda = false;
 	thtic = false;
 
@@ -249,7 +249,7 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 	{
 		if(ogg_stream_packetout(&zo, &op) > 0)
 		{
-			char * textPkt = 0;
+			char * textPkt = nullptr;
 			int textSize = 0;
 			if(irct_decode_packetin(&textPkt, &textSize, &op) == 0)
 			{

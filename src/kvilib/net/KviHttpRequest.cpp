@@ -1055,7 +1055,7 @@ void KviHttpRequest::dnsLookupDone(KviDnsResolver *d)
 	{
 		m_szIp = d->firstIpAddress();
 		delete m_pDns;
-		m_pDns = 0;
+		m_pDns = nullptr;
 		QString tmp;
 		tmp = QString(__tr2qs("Host %1 resolved to %2")).arg(m_connectionUrl.host(),m_szIp);
 		emit status(tmp);

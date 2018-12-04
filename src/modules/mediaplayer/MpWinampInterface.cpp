@@ -83,13 +83,13 @@
 //	** (requires Winamp 2.04+, only usable from plug-ins (not external apps))
 //	** char *name=SendMessage(hwnd_winamp,WM_WA_IPC,index,IPC_GETPLAYLISTFILE);
 //	** IPC_GETPLAYLISTFILE gets the filename of the playlist entry [index].
-//	** returns a pointer to it. returns NULL on error.
+//	** returns a pointer to it. returns nullptr on error.
 
 #define IPC_GETPLAYLISTTITLE 212
 //	* (requires Winamp 2.04+, only usable from plug-ins (not external apps))
 //	** char *name=SendMessage(hwnd_winamp,WM_WA_IPC,index,IPC_GETPLAYLISTTITLE);
 //	** IPC_GETPLAYLISTTITLE gets the title of the playlist entry [index].
-//	** returns a pointer to it. returns NULL on error.
+//	** returns a pointer to it. returns nullptr on error.
 
 #define IPC_GET_SHUFFLE 250
 //	** val=SendMessage(hwnd_winamp,WM_WA_IPC,0,IPC_GET_SHUFFLE);
@@ -131,7 +131,7 @@
 //	** cds.dwData = IPC_PLAYFILE;
 //	** cds.lpData = (void *) "file.mp3";
 //	** cds.cbData = strlen((char *) cds.lpData)+1; // include space for null char
-//	** SendMessage(hwnd_winamp,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cds);
+//	** SendMessage(hwnd_winamp,WM_COPYDATA,(WPARAM)nullptr,(LPARAM)&cds);
 //	**
 //	** This will play the file "file.mp3".
 
@@ -165,8 +165,7 @@
 
 static QTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * pCodec = 0;
-	pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8());
+	QTextCodec * pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8());
 
 	if(!pCodec)
 		pCodec = QTextCodec::codecForLocale();
@@ -175,7 +174,7 @@ static QTextCodec * mediaplayer_get_codec()
 
 static HWND find_winamp(KviWinampInterface * i)
 {
-	HWND hWnd = FindWindow(TEXT("Winamp v1.x"), NULL);
+	HWND hWnd = FindWindow(TEXT("Winamp v1.x"), nullptr);
 	if(!hWnd)
 	{
 		// try to start the process ?
@@ -385,7 +384,7 @@ bool KviWinampInterface::playMrl(const QString & mrl)
 		cds.dwData = IPC_PLAYFILE;
 		cds.lpData = (void *)szMrl.ptr();
 		cds.cbData = szMrl.len() + 1; // include space for null char
-		SendMessage(hWinamp, WM_COPYDATA, (WPARAM)NULL, (LPARAM)&cds);
+		SendMessage(hWinamp, WM_COPYDATA, (WPARAM)nullptr, (LPARAM)&cds);
 		return true;
 	}
 	return false;
@@ -429,11 +428,11 @@ bool KviWinampInterface::jumpTo(kvs_int_t & iPos)
 bool KviWinampInterface::hide()
 {
 	HWND hWinamp = find_winamp(this);
-	HWND hWinampPE = FindWindow(TEXT("Winamp PE"), NULL);       /*Playlist*/
-	HWND hWinampEQ = FindWindow(TEXT("Winamp EQ"), NULL);       /*Equalizer*/
-	HWND hWinampMB = FindWindow(TEXT("Winamp MB"), NULL);       /*MiniBrowser*/
-	HWND hWinampGen = FindWindow(TEXT("Winamp Gen"), NULL);     /*Library*/
-	HWND hWinampVideo = FindWindow(TEXT("Winamp Video"), NULL); /*Video*/
+	HWND hWinampPE = FindWindow(TEXT("Winamp PE"), nullptr);       /*Playlist*/
+	HWND hWinampEQ = FindWindow(TEXT("Winamp EQ"), nullptr);       /*Equalizer*/
+	HWND hWinampMB = FindWindow(TEXT("Winamp MB"), nullptr);       /*MiniBrowser*/
+	HWND hWinampGen = FindWindow(TEXT("Winamp Gen"), nullptr);     /*Library*/
+	HWND hWinampVideo = FindWindow(TEXT("Winamp Video"), nullptr); /*Video*/
 	if(hWinamp)
 	{
 		ShowWindow(hWinamp, SW_HIDE);

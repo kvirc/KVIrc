@@ -85,7 +85,7 @@ public:
 	void run() override;
 
 protected:
-	void postMessage(const char * message, KviIdentRequest * r, const char * szAux = 0);
+	void postMessage(const char * message, KviIdentRequest * r, const char * szAux = nullptr);
 };
 
 #endif //_LIBKVIIDENT_H_

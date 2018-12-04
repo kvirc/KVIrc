@@ -54,7 +54,7 @@ signals:
 class RegisteredUsersDialogItemDelegate : public QStyledItemDelegate
 {
 public:
-	RegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget = 0)
+	RegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget = nullptr)
 	    : QStyledItemDelegate(pWidget){};
 	~RegisteredUsersDialogItemDelegate(){};
 	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const override;
@@ -123,7 +123,7 @@ class RegisteredUsersDialog : public QWidget
 {
 	Q_OBJECT
 public:
-	RegisteredUsersDialog(QWidget * par = 0);
+	RegisteredUsersDialog(QWidget * par = nullptr);
 	~RegisteredUsersDialog();
 
 public:

@@ -188,7 +188,7 @@ public:
 KviVoiceParty::KviVoiceParty(const QString &szNick,const QString &szIp,unsigned short uPort)
 : m_szIp(szIp), m_uPort(uPort), m_szNick(szNick)
 {
-	m_pChildrenTree = 0;
+	m_pChildrenTree = nullptr;
 }
 
 KviVoiceParty::~KviVoiceParty()
@@ -241,8 +241,8 @@ KviVoiceLink::KviVoiceLink(KviVoiceParty * pRemoteParty)
 {
 	KviQString::sprintf("%Q:%u",&(pRemoteParty->nick()),pRemoteParty->port());
 	m_pRemoteParty = pRemoteParty;
-	m_pAudioEncoder = 0;
-	m_pAudioDecoder = 0;
+	m_pAudioEncoder = nullptr;
+	m_pAudioDecoder = nullptr;
 }
 
 KviVoiceLink::~KviVoiceLink()

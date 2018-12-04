@@ -71,7 +71,7 @@ protected:
 				return m_Mask.uSetAt < ((KviMaskItem *)&other)->mask()->uSetAt;
 				break;
 		}
-		return 0; //make compiler happy
+		return false; //make compiler happy
 	}
 };
 

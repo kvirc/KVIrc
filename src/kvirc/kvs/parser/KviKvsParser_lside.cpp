@@ -899,11 +899,11 @@ KviKvsTreeNodeOperation * KviKvsParser::parseOperation()
 				if(KVSP_curCharIsEndOfCommand)                                                                           \
 				{                                                                                                        \
 					error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '" __opstr "='", "kvs")); \
-					return 0;                                                                                            \
+					return nullptr;                                                                                      \
 				}                                                                                                        \
 				KviKvsTreeNodeData * d = parseOperationRightSide(true);                                                  \
 				if(!d)                                                                                                   \
-					return 0;                                                                                            \
+					return nullptr;                                                                                      \
 				return new __class(pBegin, d);                                                                           \
 				break;                                                                                                   \
 		}                                                                                                                \

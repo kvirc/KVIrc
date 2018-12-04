@@ -178,13 +178,13 @@ public:
 	// A null pixmap passed here unsets the private backgrdound.
 	void setPrivateBackgroundPixmap(const QPixmap & pixmap, bool bRepaint = true);
 	QPixmap * getPrivateBackgroundPixmap() const { return m_pPrivateBackgroundPixmap; };
-	bool hasPrivateBackgroundPixmap() { return (m_pPrivateBackgroundPixmap != 0); };
+	bool hasPrivateBackgroundPixmap() { return (m_pPrivateBackgroundPixmap != nullptr); };
 
 	// Logging
 	// Stops previous logging session too...
 	bool startLogging(const QString & fname = QString(), bool bPrependCurBuffer = false);
 	void stopLogging();
-	bool isLogging() { return (m_pLogFile != 0); };
+	bool isLogging() { return (m_pLogFile != nullptr); };
 	void getLogFileName(QString & buffer);
 	void add2Log(const QString & szBuffer, const QDateTime & date, int iMsgType, bool bPrependDate);
 
@@ -242,7 +242,7 @@ private:
 	void calculateLineWraps(KviIrcViewLine * ptr, int maxWidth);
 	void recalcFontVariables(const QFont & font, const QFontInfo & fi);
 	bool checkSelectionBlock(KviIrcViewLine * line, int bufIndex);
-	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos, int yPos, QRect * pRect = 0, QString * linkCmd = 0, QString * linkText = 0);
+	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos, int yPos, QRect * pRect = nullptr, QString * linkCmd = nullptr, QString * linkText = nullptr);
 	void doLinkToolTip(const QRect & rct, QString & linkCmd, QString & linkText);
 	void doMarkerToolTip();
 	bool checkMarkerArea(const QPoint & mousePos);

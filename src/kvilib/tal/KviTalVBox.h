@@ -50,7 +50,7 @@ public:
 	* \param pcName The name of the box
 	* \return KviTalVBox
 	*/
-	KviTalVBox(QWidget * pParent, char * pcName = 0);
+	KviTalVBox(QWidget * pParent, char * pcName = nullptr);
 
 	/**
 	* \brief Destroys a vertical box object

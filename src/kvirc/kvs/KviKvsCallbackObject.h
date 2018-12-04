@@ -80,7 +80,7 @@ protected:
 
 protected:
 	// the parameter list is always shallow!
-	CallbackStatus execute(KviKvsVariantList * pParams = 0, KviKvsVariant * pRetVal = 0);
+	CallbackStatus execute(KviKvsVariantList * pParams = nullptr, KviKvsVariant * pRetVal = nullptr);
 };
 
 #endif //!_KVI_KVS_CALLBACKOBJECT_H_

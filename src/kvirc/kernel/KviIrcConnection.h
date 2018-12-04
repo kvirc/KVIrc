@@ -106,14 +106,14 @@ protected:
 	*
 	* This is actually used only by KviConsoleWindow.
 	*
-	* pContext must not be NULL and is kept as shallow pointer (that is, it's
+	* pContext must not be nullptr and is kept as shallow pointer (that is, it's
 	* not owned and must persists for the entire life of KviIrcConnection:
 	* caller is responsable for that).
 	*
-	* pTarget must not be NULL and must be allocated with new as this class
+	* pTarget must not be nullptr and must be allocated with new as this class
 	* takes the ownership.
 	*
-	* pIdentity must not be NULL and must be allocated with new as this class
+	* pIdentity must not be nullptr and must be allocated with new as this class
 	* takes the ownership.
 	* \param pContext The KviIrcContext we're attacched to
 	* \param pTarget The server data
@@ -186,7 +186,7 @@ public:
 	/**
 	* \brief Returns a pointer to the owning console
 	*
-	* The pointer is never NULL
+	* The pointer is never nullptr
 	* \return KviConsoleWindow *
 	*/
 	KviConsoleWindow * console() const { return m_pConsole; }
@@ -194,7 +194,7 @@ public:
 	/**
 	* \brief Returns a pointer to the owning KviIrcContext.
 	*
-	* The returned value is never NULL
+	* The returned value is never nullptr
 	* \return KviIrcContext *
 	*/
 	KviIrcContext * context() const { return m_pContext; }
@@ -204,7 +204,7 @@ public:
 	*
 	* Please note that the target doesn't necessairly contain up-to-date data.
 	* You might want to look at serverInfo() instead.
-	* The returned pointer is never NULL.
+	* The returned pointer is never nullptr.
 	* \return KviIrcConnectionTarget *
 	*/
 	KviIrcConnectionTarget * target() const { return m_pTarget; }
@@ -212,7 +212,7 @@ public:
 	/**
 	* \brief Returns the underlying KviIrcLink object
 	*
-	* The returned pointer is never NULL.
+	* The returned pointer is never nullptr.
 	* \return KviIrcLink *
 	*/
 	KviIrcLink * link() const { return m_pLink; }
@@ -227,7 +227,7 @@ public:
 	* \brief Returns a pointer to the big connection user database.
 	*
 	* The database contains ALL the users KVIrc can "see" in this connection.
-	* The returned pointer is never NULL.
+	* The returned pointer is never nullptr.
 	* \return KviIrcUserDataBase *
 	*/
 	KviIrcUserDataBase * userDataBase() const { return m_pUserDataBase; }
@@ -238,7 +238,7 @@ public:
 	* It contains runtime information about the user. This includes the
 	* current nickname, username, flags and other stuff that KviUserIdentity
 	* actually doesn't contain (or has only "default" values for).
-	* The returned pointer is never NULL.
+	* The returned pointer is never nullptr.
 	* Include "KviIrcConnectionUserInfo.h" as the class is only
 	* forwarded here.
 	* \return KviIrcConnectionUserInfo *
@@ -252,7 +252,7 @@ public:
 	* the current servername, the server capabilities and other stuff that
 	* KviConnectionTarget actually doesn't contain (or has only "default"
 	* values for).
-	* The returned pointer is never NULL.
+	* The returned pointer is never nullptr.
 	* Include "KviIrcConnectionServerInfo.h" as the class is only
 	* forwarded here.
 	* \return KviIrcConnectionServerInfo *
@@ -266,7 +266,7 @@ public:
 	* nickname index at login time, flags that signal "micro-states" etc...
 	* This data *could* be part of KviIrcConnection itself but we prefer to
 	* keep it in a separate class in order to cleanup the implementation.
-	* The returned pointer is never NULL.
+	* The returned pointer is never nullptr.
 	* Include "KviIrcConnectionStateData.h" as the class is only
 	* forwarded here.
 	* \return KviIrcConnectionStateData *
@@ -278,7 +278,7 @@ public:
 	*
 	* It contains data private to the Anti CTCP Flood engine. Very similar
 	* to KviIrcConnectionStateData but dedicated to Ctcp flood.
-	* The returned pointer is never NULL.
+	* The returned pointer is never nullptr.
 	* Include "KviIrcConnectionAntiCtcpFloodData.h" as the class is
 	* only forwarded here.
 	* \return KviIrcConnectionAntiCtcpFloodData *
@@ -293,7 +293,7 @@ public:
 	*
 	* It contains data private to the netsplit detector engine. Very similar
 	* to KviIrcConnectionStateData but dedicated to netsplit detection.
-	* The returned pointer is never NULL.
+	* The returned pointer is never nullptr.
 	* Include "KviIrcConnectionNetsplitDetectorData.h" as the class is
 	* only forwarded here.
 	* \return KviIrcConnectionNetsplitDetectorData *
@@ -308,7 +308,7 @@ public:
 	*
 	* It contains data private to the async whois engine. Very similar to
 	* KviIrcConnectionStateData but dedicated to async whois.
-	* The returned pointer is never NULL.
+	* The returned pointer is never nullptr.
 	* Include "KviIrcConnectionAsyncWhoisData.h" as the class is only
 	* forwarded here.
 	* \return KviIrcConnectionAsyncWhoisData *
@@ -323,7 +323,7 @@ public:
 	*
 	* It contains runtime statistics about the connection. Very similar to
 	* KviIrcConnectionStateData but dedicated to statistics.
-	* The returned pointer is never NULL.
+	* The returned pointer is never nullptr.
 	* Include "KviIrcConnectionStatistics.h" as the class is only
 	* forwarded here.
 	* \return KviIrcConnectionStatistics *
@@ -333,7 +333,7 @@ public:
 	/**
 	* \brief Returns a pointer to the current KviNotifyListManager.
 	*
-	* The returned pointer is NULL if notify list management is disabled for
+	* The returned pointer is nullptr if notify list management is disabled for
 	* the current connection.
 	* \return KviNotifyListManager *
 	*/
@@ -345,7 +345,7 @@ public:
 	/**
 	* \brief Returns a pointer to the current KviLagMeter.
 	*
-	* The returned pointer is NULL if lag measurement is disabled for the
+	* The returned pointer is nullptr if lag measurement is disabled for the
 	* current connection.
 	* \return KviLagMeter *
 	*/
@@ -398,7 +398,7 @@ public:
 	/**
 	* \brief Finds the channel with the specified unicode name.
 	*
-	* Returns the pointer to the channel found or NULL if there is no such
+	* Returns the pointer to the channel found or nullptr if there is no such
 	* channel.
 	* \param szName The name of the channel
 	* \return KviChannelWindow *
@@ -428,7 +428,7 @@ public:
 	* This should be called in response to a JOIN message.
 	* This function _assumes_ that such a channel doesn't exist yet (or if it
 	* exists then it's actually in DEAD state). You can assume that channel
-	* creation never fails: if the returned pointer is NULL then we're screwed
+	* creation never fails: if the returned pointer is nullptr then we're screwed
 	* anyway as virtual memory is exausted.
 	* \param szName The name of the channel
 	* \return KviChannelWindow *
@@ -481,7 +481,7 @@ public:
 	/**
 	* \brief Finds the query with the specified nick.
 	*
-	* Returns the pointer to the query found or NULL if there is no such
+	* Returns the pointer to the query found or nullptr if there is no such
 	* query.
 	* \param szNick The nickname of the user
 	* \return KviQueryWindow *
@@ -491,7 +491,7 @@ public:
 	/**
 	* \brief Returns the list of the currently open queries.
 	*
-	* The returned pointer is never NULL (the list may be empty though).
+	* The returned pointer is never nullptr (the list may be empty though).
 	* \return std::vector<KviQueryWindow *> &
 	*/
 	std::vector<KviQueryWindow *> & queryList() { return m_pQueryList; }

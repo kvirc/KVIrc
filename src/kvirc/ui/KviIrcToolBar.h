@@ -48,7 +48,7 @@ class KVIRC_API KviToolBarGraphicalApplet : public QWidget
 {
 	Q_OBJECT
 public:
-	KviToolBarGraphicalApplet(QWidget * par, const char * name = 0);
+	KviToolBarGraphicalApplet(QWidget * par, const char * name = nullptr);
 	~KviToolBarGraphicalApplet();
 
 private:
@@ -72,7 +72,7 @@ class KVIRC_API KviIrcContextDisplay : public KviToolBarGraphicalApplet
 {
 	Q_OBJECT
 public:
-	KviIrcContextDisplay(QWidget * par, const char * name = 0);
+	KviIrcContextDisplay(QWidget * par, const char * name = nullptr);
 	~KviIrcContextDisplay();
 
 protected:

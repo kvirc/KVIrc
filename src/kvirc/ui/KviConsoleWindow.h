@@ -179,7 +179,7 @@ public:
 	// when no longer needed.
 	KviAvatar * defaultAvatarFromOptions();
 
-	void terminateConnectionRequest(bool bForce = false, const char * quitMsg = 0);
+	void terminateConnectionRequest(bool bForce = false, const char * quitMsg = nullptr);
 
 	// Status string (usermode + nick) (connection related too)
 	const QString & statusString() const { return m_szStatusString; }

@@ -180,7 +180,7 @@ void KviDnsResolverThread::run()
 
 	// gethostbyaddr and gethostbyname are thread-safe on Windoze
 	struct in_addr inAddr;
-	struct hostent * pHostEntry = 0;
+	struct hostent * pHostEntry = nullptr;
 
 	// DIE DIE!....I hope that this stuff will disappear sooner or later :)
 

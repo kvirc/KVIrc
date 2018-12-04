@@ -50,7 +50,7 @@ namespace AddonFunctions
 	bool checkDirTree(const QString & szDirPath, QString * pszError);
 	bool pack(AddonInfo & info, QString & szError);
 	bool notAValidAddonPackage(QString & szError);
-	bool installAddonPackage(const QString & szAddonPackageFileName, QString & szError, QWidget * pDialogParent = 0);
+	bool installAddonPackage(const QString & szAddonPackageFileName, QString & szError, QWidget * pDialogParent = nullptr);
 	QString createRandomDir();
 }
 

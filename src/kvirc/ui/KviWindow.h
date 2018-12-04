@@ -276,7 +276,7 @@ public:
 	/**
 	* \brief Returns the KviIrcView of this window
 	*
-	* May be NULL if the window has no KviIrcView (and thus supports no direct output)
+	* May be nullptr if the window has no KviIrcView (and thus supports no direct output)
 	* \return KviIrcView *
 	*/
 	KviIrcView * view() const { return m_pIrcView; }
@@ -356,7 +356,7 @@ public:
 
 	virtual void getWindowListTipText(QString & szBuffer) { szBuffer = m_szPlainTextCaption; }
 
-	// This is meaningful only if view() is non NULL
+	// This is meaningful only if view() is non nullptr
 	const QString & lastLineOfText();
 	const QString & lastMessageText();
 
@@ -531,7 +531,7 @@ signals:
 //   This is almost always non null
 //   The exception is the startup (when there are no windows at all)
 //   and the last phase of the destructor.
-//   You usually shouldn't care of checking this pointer for NULL unless
+//   You usually shouldn't care of checking this pointer for nullptr unless
 //   you're running very early at startup or very late at shutdown
 extern KVIRC_API KviWindow * g_pActiveWindow;
 #endif

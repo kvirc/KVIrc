@@ -215,7 +215,7 @@ void KviSoundPlayer::detectSoundSystem()
 #else
 #ifdef COMPILE_ESD_SUPPORT
 	esd_format_t format = ESD_BITS16 | ESD_STREAM | ESD_PLAY | ESD_MONO;
-	int esd_fd = esd_play_stream(format, 8012, NULL, "kvirc");
+	int esd_fd = esd_play_stream(format, 8012, nullptr, "kvirc");
 	if(esd_fd >= 0)
 	{
 		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "esd";
@@ -645,7 +645,7 @@ KviEsdSoundThread::~KviEsdSoundThread()
 void KviEsdSoundThread::play()
 {
 	// ESD has a really nice API
-	if(!esd_play_file(NULL, m_szFileName.toUtf8().data(), 1)) // this is sync.. FIXME: it can't be stopped!
+	if(!esd_play_file(nullptr, m_szFileName.toUtf8().data(), 1)) // this is sync.. FIXME: it can't be stopped!
 		qDebug("Could not play sound %s! [ESD]", m_szFileName.toUtf8().data());
 }
 

@@ -219,7 +219,7 @@ public:
 	_interfaceclass##Descriptor::_interfaceclass##Descriptor()        \
 	    : MpInterfaceDescriptor()                                     \
 	{                                                                 \
-		m_pInstance = 0;                                              \
+		m_pInstance = nullptr;                                        \
 		m_szName = _name;                                             \
 		m_szDescription = _description;                               \
 	}                                                                 \

@@ -37,7 +37,7 @@ public:
 	};
 
 public:
-	UserWindow(const char * pcName, QString & szIcon, KviConsoleWindow * pConsole = 0, int iCreationFlags = 0);
+	UserWindow(const char * pcName, QString & szIcon, KviConsoleWindow * pConsole = nullptr, int iCreationFlags = 0);
 	~UserWindow();
 
 protected:

@@ -58,7 +58,7 @@ public:
 	* \param pWidget The item which we have to delegate for the paint
 	* \return KviTalIconAndRichTextItemDelegate
 	*/
-	KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget = 0);
+	KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget = nullptr);
 
 	/**
 	* \brief Destroys the icon and rich text item delegate object

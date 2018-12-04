@@ -222,7 +222,7 @@ static QString queryWinInfo(QueryInfo info)
 	pGNSI = (PGNSI)GetProcAddress(
 	    GetModuleHandle(TEXT("kernel32.dll")),
 	    "GetNativeSystemInfo");
-	if(NULL != pGNSI)
+	if(nullptr != pGNSI)
 		pGNSI(&si);
 	else
 		GetSystemInfo(&si);
@@ -299,7 +299,7 @@ static QString queryWinInfo(QueryInfo info)
 			if(bOsVersionInfoEx)
 			{
 				DWORD dwPlatformInfo;
-				if(NULL != pGetProductInfo)
+				if(nullptr != pGetProductInfo)
 					if(pGetProductInfo(osvi.dwMajorVersion, osvi.dwMinorVersion,
 					       osvi.wServicePackMajor, osvi.wServicePackMinor, &dwPlatformInfo))
 					{

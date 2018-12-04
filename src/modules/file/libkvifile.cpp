@@ -1489,7 +1489,7 @@ static bool file_kvs_fnc_diskSpace(KviKvsModuleFunctionCall * c)
 // this for win
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	ULARGE_INTEGER free, total;
-	if (GetDiskFreeSpaceEx(szPath.toStdWString().c_str(), NULL, &total, &free) == 0) {
+	if (GetDiskFreeSpaceEx(szPath.toStdWString().c_str(), nullptr, &total, &free) == 0) {
 		c->warning(__tr2qs("An error occurred retrieving the amount of free space in '%Q'"), &szPath);
 		return true;
 	}

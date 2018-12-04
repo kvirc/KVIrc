@@ -58,14 +58,14 @@ namespace KviMemory
 	};
 
 	int g_iMaxRequestSize = 0;
-	void * g_pMaxRequestReturnAddress1 = 0;
-	void * g_pMaxRequestReturnAddress2 = 0;
+	void * g_pMaxRequestReturnAddress1 = nullptr;
+	void * g_pMaxRequestReturnAddress2 = nullptr;
 	unsigned int g_iMallocCalls = 0;
 	unsigned int g_iReallocCalls = 0;
 	unsigned int g_iFreeCalls = 0;
 	unsigned int g_iTotalMemAllocated = 0;
 	unsigned int g_uAllocationPeak = 0;
-	KviMallocEntry * g_pEntries = 0;
+	KviMallocEntry * g_pEntries = nullptr;
 
 	void * allocate(int size)
 	{
@@ -85,7 +85,7 @@ namespace KviMemory
 		e->return_addr1 = __builtin_return_address(1);
 		e->return_addr2 = __builtin_return_address(2);
 		e->next = g_pEntries;
-		e->prev = 0;
+		e->prev = nullptr;
 		if(g_pEntries)
 			g_pEntries->prev = e;
 		g_pEntries = e;
@@ -151,7 +151,7 @@ namespace KviMemory
 					if(e != g_pEntries)
 						fprintf(stderr, "Mem profiling internal error!\n");
 					if(e->next)
-						e->next->prev = 0;
+						e->next->prev = nullptr;
 					g_pEntries = e->next;
 				}
 				free(e);

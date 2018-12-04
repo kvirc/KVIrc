@@ -3712,7 +3712,7 @@ KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntr
 			QWidget * pOldPar = (QWidget *)pEntry->pWidget->parent();
 			pEntry->pWidget->setParent(pPar);
 			pOldPar->deleteLater();
-			pEntry->pWidget = 0;
+			pEntry->pWidget = nullptr;
 		}
 	}
 #endif

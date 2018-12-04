@@ -51,16 +51,16 @@
 	KVSM_PARAMETERS_BEGIN(c)                                                   \
 	KVSM_PARAMETER("irc_context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, iContextId) \
 	KVSM_PARAMETERS_END(c)                                                     \
-	KviConsoleWindow * pConsole = NULL;                                        \
+	KviConsoleWindow * pConsole = nullptr;                                     \
 	if(c->parameterCount() > 0)                                                \
 		pConsole = g_pApp->findConsole(iContextId);                            \
 	else                                                                       \
 		pConsole = c->window()->console();
 
 #define GET_CONNECTION_FROM_STANDARD_PARAMS \
-	GET_CONSOLE_FROM_STANDARD_PARAMS        \
-	KviIrcConnection * pConnection = NULL;  \
-	if(pConsole)                            \
+	GET_CONSOLE_FROM_STANDARD_PARAMS          \
+	KviIrcConnection * pConnection = nullptr; \
+	if(pConsole)                              \
 		pConnection = pConsole->context()->connection();
 
 #define STANDARD_IRC_CONNECTION_TARGET_PARAMETER(_fncName, _setCall) \

@@ -202,7 +202,7 @@ class ScriptEditorReplaceDialog final : public QDialog
 {
 	Q_OBJECT
 public:
-	ScriptEditorReplaceDialog(QWidget * parent = 0, const QString & szName = QString());
+	ScriptEditorReplaceDialog(QWidget * parent = nullptr, const QString & szName = QString());
 
 public:
 	QLineEdit * m_pFindLineEdit;

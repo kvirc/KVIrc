@@ -123,7 +123,7 @@ class KVIRC_API KviTreeWindowListItemDelegate : public QStyledItemDelegate
 {
 	Q_OBJECT
 public:
-	KviTreeWindowListItemDelegate(QAbstractItemView * pWidget = 0)
+	KviTreeWindowListItemDelegate(QAbstractItemView * pWidget = nullptr)
 	    : QStyledItemDelegate(pWidget){};
 	~KviTreeWindowListItemDelegate(){};
 	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;

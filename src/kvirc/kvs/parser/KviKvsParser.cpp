@@ -3013,7 +3013,7 @@ KviKvsTreeNodeDataList * KviKvsParser::parseCommaSeparatedParameterList()
 		}                                                                                                         \
 		}                                                                                                         \
 		KVSP_ASSERT(false);                                                                                       \
-		return 0;                                                                                                 \
+		return nullptr;                                                                                           \
 		}
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseCommandLiteralParameter)
@@ -3131,13 +3131,13 @@ KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
 				delete l;
 				warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
 				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in array index (missing ']' character?)","kvs"));
-				return 0;
+				return nullptr;
 			break;
 			case '\n':
 				delete l;
 				warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
 				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in array index (missing ']' character or unescaped newline)","kvs"));
-				return 0;
+				return nullptr;
 			break;
 			case ' ':
 			case '\t':
@@ -3158,7 +3158,7 @@ KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
 							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (Unicode %x) in array index: it should be already terminated","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 						break;
 					}
-					return 0;
+					return nullptr;
 				}
 				goto end_of_the_array_index;
 			break;
@@ -3171,7 +3171,7 @@ KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
 				{
 					// this is an error
 					delete l;
-					return 0;
+					return nullptr;
 				}
 				l->append(p);
 			}
@@ -3190,7 +3190,7 @@ KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
 				{
 					// error
 					delete l;
-					return 0;
+					return nullptr;
 				}
 				l->append(p);
 			}

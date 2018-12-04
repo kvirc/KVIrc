@@ -58,7 +58,7 @@
 	g_pKvs##__className##Class->registerStandardFalseReturnFunctionHandler(__szName);
 
 #define KVSO_BEGIN_REGISTERCLASS(__className, __stringName, __baseClass)                                                                 \
-	static KviKvsObjectClass * g_pKvs##__className##Class = 0;                                                                           \
+	static KviKvsObjectClass * g_pKvs##__className##Class = nullptr;                                                                     \
 	static KviKvsObject * kvs_##__className##_createInstance(KviKvsObjectClass * pClass, KviKvsObject * pParent, const QString & szName) \
 	{                                                                                                                                    \
 		return new __className(pClass, pParent, szName);                                                                                 \
@@ -66,7 +66,7 @@
 	void __className::unregisterSelf()                                                                                                   \
 	{                                                                                                                                    \
 		delete g_pKvs##__className##Class;                                                                                               \
-		g_pKvs##__className##Class = 0;                                                                                                  \
+		g_pKvs##__className##Class = nullptr;                                                                                            \
 	}                                                                                                                                    \
 	void __className::registerSelf()                                                                                                     \
 	{                                                                                                                                    \

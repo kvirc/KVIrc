@@ -280,7 +280,7 @@ protected:
 	KviThread * m_pSender;
 
 public:
-	KviThreadEvent(int evId, KviThread * sender = 0)
+	KviThreadEvent(int evId, KviThread * sender = nullptr)
 	    : QEvent((QEvent::Type)KVI_THREAD_EVENT), m_eventId(evId), m_pSender(sender){};
 	~KviThreadEvent(){};
 
@@ -298,7 +298,7 @@ protected:
 	TData * m_pData;
 
 public:
-	KviThreadDataEvent(int evId, TData * pData = 0, KviThread * sender = 0)
+	KviThreadDataEvent(int evId, TData * pData = nullptr, KviThread * sender = nullptr)
 	    : KviThreadEvent(evId, sender) { m_pData = pData; };
 	~KviThreadDataEvent()
 	{
@@ -316,7 +316,7 @@ public:
 	TData * getData()
 	{
 		TData * aux = m_pData;
-		m_pData = 0;
+		m_pData = nullptr;
 		return aux;
 	};
 	TData * data() { return m_pData; };

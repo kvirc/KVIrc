@@ -666,7 +666,7 @@ void FileTransferWindow::openLocalFile()
 	if(tmp.isEmpty())
 		return;
 	tmp.replace("/", "\\");
-	ShellExecute(0, TEXT("open"), tmp.toStdWString().c_str(), NULL, NULL, SW_SHOWNORMAL); //You have to link the shell32.lib
+	ShellExecute(0, TEXT("open"), tmp.toStdWString().c_str(), nullptr, nullptr, SW_SHOWNORMAL); //You have to link the shell32.lib
 #else
 // G&N end
 #ifdef COMPILE_KDE4_SUPPORT

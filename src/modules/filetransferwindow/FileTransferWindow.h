@@ -81,7 +81,7 @@ class FileTransferItemDelegate : public KviTalIconAndRichTextItemDelegate
 {
 	Q_OBJECT
 public:
-	FileTransferItemDelegate(QAbstractItemView * pWidget = 0)
+	FileTransferItemDelegate(QAbstractItemView * pWidget = nullptr)
 	    : KviTalIconAndRichTextItemDelegate(pWidget){};
 	~FileTransferItemDelegate(){};
 	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;

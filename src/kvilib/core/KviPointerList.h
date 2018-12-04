@@ -45,7 +45,6 @@
 * been removed from Qt4 in favor of the value based non-autodeleting
 * lists... anyway: here we go :)
 *
-* \def NULL Define NULL type to 0
 * \def KviPointerListBase Defines KviPointerListBase as KviPointerList
 */
 
@@ -55,10 +54,6 @@ template <typename T>
 class KviPointerList;
 template <typename T>
 class KviPointerListIterator;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 /**
 * \class KviPointerListNode
@@ -213,7 +208,7 @@ public:
 	bool moveFirst()
 	{
 		m_pNode = m_pList->m_pHead;
-		return m_pNode != NULL;
+		return m_pNode != nullptr;
 	}
 
 	/**
@@ -225,7 +220,7 @@ public:
 	bool moveLast()
 	{
 		m_pNode = m_pList->m_pTail;
-		return m_pNode != NULL;
+		return m_pNode != nullptr;
 	}
 
 	/**
@@ -240,7 +235,7 @@ public:
 		if(!m_pNode)
 			return false;
 		m_pNode = m_pNode->m_pNext;
-		return m_pNode != NULL;
+		return m_pNode != nullptr;
 	}
 
 	/**
@@ -256,7 +251,7 @@ public:
 		if(!m_pNode)
 			return false;
 		m_pNode = m_pNode->m_pNext;
-		return m_pNode != NULL;
+		return m_pNode != nullptr;
 	}
 
 	/**
@@ -272,7 +267,7 @@ public:
 		if(!m_pNode)
 			return false;
 		m_pNode = m_pNode->m_pPrev;
-		return m_pNode != NULL;
+		return m_pNode != nullptr;
 	}
 
 	/**
@@ -289,30 +284,30 @@ public:
 		if(!m_pNode)
 			return false;
 		m_pNode = m_pNode->m_pPrev;
-		return m_pNode != NULL;
+		return m_pNode != nullptr;
 	}
 
 	/**
 	* \brief Returns the value pointed by the iterator.
 	*
-	* If the iterator is not valid, returns NULL.
+	* If the iterator is not valid, returns nullptr.
 	* \return T *
 	*/
 	T * current()
 	{
-		return m_pNode ? (T *)(m_pNode->m_pData) : NULL;
+		return m_pNode ? (T *)(m_pNode->m_pData) : nullptr;
 	}
 
 	/**
 	* \brief Returns the value pointed by the iterator.
 	*
-	* If the iterator is not valid, returns NULL.
+	* If the iterator is not valid, returns nullptr.
 	* This is just an alias to current().
 	* \return T *
 	*/
 	T * operator*()
 	{
-		return m_pNode ? (T *)(m_pNode->m_pData) : NULL;
+		return m_pNode ? (T *)(m_pNode->m_pData) : nullptr;
 	}
 
 	/**
@@ -323,7 +318,7 @@ public:
 	*/
 	bool isValid()
 	{
-		return m_pNode != NULL;
+		return m_pNode != nullptr;
 	}
 };
 
@@ -379,7 +374,7 @@ class KviPointerList
 protected:
 	bool m_bAutoDelete; //< do we automatically delete items when they are removed ?
 
-	KviPointerListNode * m_pHead; //< our list head pointer (NULL if there are no items in the list)
+	KviPointerListNode * m_pHead; //< our list head pointer (nullptr if there are no items in the list)
 	KviPointerListNode * m_pTail; //< our list tail
 	KviPointerListNode * m_pAux;  //< our iteration pointer
 
@@ -428,12 +423,12 @@ protected:
 		if(pNewHead->m_pNext)
 		{
 			src->m_pHead = pNewHead->m_pNext;
-			src->m_pHead->m_pPrev = NULL;
+			src->m_pHead->m_pPrev = nullptr;
 		}
 		else
 		{
-			src->m_pHead = NULL;
-			src->m_pTail = NULL;
+			src->m_pHead = nullptr;
+			src->m_pTail = nullptr;
 		}
 
 		if(m_pHead)
@@ -446,7 +441,7 @@ protected:
 		{
 			m_pHead = pNewHead;
 			m_pTail = pNewHead;
-			m_pHead->m_pNext = NULL;
+			m_pHead->m_pNext = nullptr;
 		}
 		m_uCount++;
 		src->m_uCount--;
@@ -468,7 +463,7 @@ protected:
 			m_pTail = m_pAux->m_pPrev;
 		const T * pAuxData = (const T *)(m_pAux->m_pData);
 		delete m_pAux;
-		m_pAux = NULL;
+		m_pAux = nullptr;
 		m_uCount--;
 		if(m_bAutoDelete)
 			delete pAuxData; // this can cause recursion, so do it at the end
@@ -521,13 +516,13 @@ public:
 			{
 				m_pHead = n;
 				m_pTail = n;
-				n->m_pPrev = NULL;
+				n->m_pPrev = nullptr;
 			}
 			m_pTail = src->m_pTail;
 		}
 
-		src->m_pHead = NULL;
-		src->m_pTail = NULL;
+		src->m_pHead = nullptr;
+		src->m_pTail = nullptr;
 		src->m_uCount = 0;
 	}
 
@@ -615,7 +610,7 @@ public:
 	*/
 	bool isEmpty() const
 	{
-		return (m_pHead == NULL);
+		return (m_pHead == nullptr);
 	}
 
 	/**
@@ -638,8 +633,8 @@ public:
 	{
 		if(!m_pHead)
 		{
-			m_pAux = NULL;
-			return NULL;
+			m_pAux = nullptr;
+			return nullptr;
 		}
 		m_pAux = m_pHead;
 		return (T *)(m_pAux->m_pData);
@@ -655,21 +650,21 @@ public:
 	T * takeFirst()
 	{
 		if(!m_pHead)
-			return NULL;
+			return nullptr;
 		T * pData = (T *)m_pHead->m_pData;
 		if(m_pHead->m_pNext)
 		{
 			m_pHead = m_pHead->m_pNext;
 			delete m_pHead->m_pPrev;
-			m_pHead->m_pPrev = NULL;
+			m_pHead->m_pPrev = nullptr;
 		}
 		else
 		{
 			delete m_pHead;
-			m_pHead = NULL;
-			m_pTail = NULL;
+			m_pHead = nullptr;
+			m_pTail = nullptr;
 		}
-		m_pAux = NULL;
+		m_pAux = nullptr;
 		m_uCount--;
 		return pData;
 	}
@@ -681,21 +676,21 @@ public:
 	T * takeLast()
 	{
 		if(!m_pTail)
-			return NULL;
+			return nullptr;
 		T * pData = (T *)m_pTail->m_pData;
 		if(m_pTail->m_pPrev)
 		{
 			m_pTail = m_pTail->m_pPrev;
 			delete m_pTail->m_pNext;
-			m_pTail->m_pNext = NULL;
+			m_pTail->m_pNext = nullptr;
 		}
 		else
 		{
 			delete m_pTail;
-			m_pHead = NULL;
-			m_pTail = NULL;
+			m_pHead = nullptr;
+			m_pTail = nullptr;
 		}
-		m_pAux = NULL;
+		m_pAux = nullptr;
 		m_uCount--;
 		return pData;
 	}
@@ -720,8 +715,8 @@ public:
 	{
 		if(!m_pTail)
 		{
-			m_pAux = NULL;
-			return NULL;
+			m_pAux = nullptr;
+			return nullptr;
 		}
 		m_pAux = m_pTail;
 		return (T *)(m_pAux->m_pData);
@@ -753,13 +748,13 @@ public:
 	*
 	* A call to this function should be preceded by a call to
 	* first(),last(),at() or findRef().
-	* This function will return a NULL pointer if the current item has
+	* This function will return a nullptr if the current item has
 	* been invalidated due to a remove operation.
 	* \return T *
 	*/
 	T * safeCurrent()
 	{
-		return m_pAux ? (T *)(m_pAux->m_pData) : NULL;
+		return m_pAux ? (T *)(m_pAux->m_pData) : nullptr;
 	}
 
 	/**
@@ -778,7 +773,7 @@ public:
 	* \brief Returns the next item in the list
 	*
 	* Sets the iteration pointer to the next item in the list and
-	* returns that item (or 0 if the end of the list has been reached)
+	* returns that item (or nullptr if the end of the list has been reached)
 	* A call to this function MUST be preceded by a _successfull_ call
 	* to first(),last(),at() or findRef().
 	* \return T *
@@ -786,11 +781,11 @@ public:
 	T * next()
 	{
 		if(!m_pAux)
-			return NULL;
+			return nullptr;
 		m_pAux = m_pAux->m_pNext;
 		if(m_pAux)
 			return (T *)(m_pAux->m_pData);
-		return NULL;
+		return nullptr;
 	}
 
 	/**
@@ -806,11 +801,11 @@ public:
 	T * prev()
 	{
 		if(!m_pAux)
-			return NULL;
+			return nullptr;
 		m_pAux = m_pAux->m_pPrev;
 		if(m_pAux)
 			return (T *)(m_pAux->m_pData);
-		return NULL;
+		return nullptr;
 	}
 
 	/**
@@ -832,7 +827,7 @@ public:
 			t = next();
 			cnt++;
 		}
-		return 0;
+		return nullptr;
 	}
 
 	/**
@@ -851,7 +846,7 @@ public:
 			n = n->m_pNext;
 			cnt++;
 		}
-		return KviPointerListIterator<T>(*this, NULL);
+		return KviPointerListIterator<T>(*this, nullptr);
 	}
 
 	/**
@@ -889,7 +884,7 @@ public:
 				return KviPointerListIterator<T>(*this, n);
 			n = n->m_pNext;
 		}
-		return KviPointerListIterator<T>(*this, NULL);
+		return KviPointerListIterator<T>(*this, nullptr);
 	}
 
 	/**
@@ -902,8 +897,8 @@ public:
 		if(!m_pHead)
 		{
 			m_pHead = new KviPointerListNode;
-			m_pHead->m_pPrev = NULL;
-			m_pHead->m_pNext = NULL;
+			m_pHead->m_pPrev = nullptr;
+			m_pHead->m_pNext = nullptr;
 			m_pHead->m_pData = (void *)d;
 			m_pTail = m_pHead;
 		}
@@ -911,7 +906,7 @@ public:
 		{
 			m_pTail->m_pNext = new KviPointerListNode;
 			m_pTail->m_pNext->m_pPrev = m_pTail;
-			m_pTail->m_pNext->m_pNext = NULL;
+			m_pTail->m_pNext->m_pNext = nullptr;
 			m_pTail->m_pNext->m_pData = (void *)d;
 			m_pTail = m_pTail->m_pNext;
 		}
@@ -950,8 +945,8 @@ public:
 		if(!m_pHead)
 		{
 			m_pHead = new KviPointerListNode;
-			m_pHead->m_pPrev = NULL;
-			m_pHead->m_pNext = NULL;
+			m_pHead->m_pPrev = nullptr;
+			m_pHead->m_pNext = nullptr;
 			m_pHead->m_pData = (void *)d;
 			m_pTail = m_pHead;
 		}
@@ -959,7 +954,7 @@ public:
 		{
 			m_pHead->m_pPrev = new KviPointerListNode;
 			m_pHead->m_pPrev->m_pNext = m_pHead;
-			m_pHead->m_pPrev->m_pPrev = NULL;
+			m_pHead->m_pPrev->m_pPrev = nullptr;
 			m_pHead->m_pPrev->m_pData = (void *)d;
 			m_pHead = m_pHead->m_pPrev;
 			m_uCount++;
@@ -1008,16 +1003,16 @@ public:
 			m_pHead = m_pHead->m_pNext;
 			pAuxData = (const T *)(m_pHead->m_pPrev->m_pData);
 			delete m_pHead->m_pPrev;
-			m_pHead->m_pPrev = NULL;
+			m_pHead->m_pPrev = nullptr;
 		}
 		else
 		{
 			pAuxData = (const T *)(m_pHead->m_pData);
 			delete m_pHead;
-			m_pHead = NULL;
-			m_pTail = NULL;
+			m_pHead = nullptr;
+			m_pTail = nullptr;
 		}
-		m_pAux = NULL;
+		m_pAux = nullptr;
 		m_uCount--;
 		if(m_bAutoDelete)
 			delete pAuxData;
@@ -1040,16 +1035,16 @@ public:
 			m_pTail = m_pTail->m_pPrev;
 			pAuxData = (const T *)(m_pTail->m_pNext->m_pData);
 			delete m_pTail->m_pNext;
-			m_pTail->m_pNext = NULL;
+			m_pTail->m_pNext = nullptr;
 		}
 		else
 		{
 			pAuxData = (const T *)(m_pTail->m_pData);
 			delete m_pTail;
-			m_pHead = NULL;
-			m_pTail = NULL;
+			m_pHead = nullptr;
+			m_pTail = nullptr;
 		}
-		m_pAux = NULL;
+		m_pAux = nullptr;
 		m_uCount--;
 		if(m_bAutoDelete)
 			delete pAuxData;
@@ -1258,10 +1253,10 @@ public:
 	KviPointerList<T>(bool bAutoDelete = true)
 	{
 		m_bAutoDelete = bAutoDelete;
-		m_pHead = NULL;
-		m_pTail = NULL;
+		m_pHead = nullptr;
+		m_pTail = nullptr;
 		m_uCount = 0;
-		m_pAux = NULL;
+		m_pAux = nullptr;
 	};
 
 	/**

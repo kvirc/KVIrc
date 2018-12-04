@@ -54,7 +54,7 @@ python.begin <python code> python.end
 		{                                                                                                                 \
 			dl = parseCommaSeparatedParameterList();                                                                      \
 			if(!dl)                                                                                                       \
-				return 0;                                                                                                 \
+				return nullptr;                                                                                           \
 		}                                                                                                                 \
 		else                                                                                                              \
 		{                                                                                                                 \
@@ -67,7 +67,7 @@ python.begin <python code> python.end
 		if(!skipSpacesAndNewlines())                                                                                      \
 		{                                                                                                                 \
 			delete dl;                                                                                                    \
-			return 0;                                                                                                     \
+			return nullptr;                                                                                               \
 		}                                                                                                                 \
                                                                                                                           \
 		/* allow a ';' after [interpreter].begin */                                                                       \
@@ -77,7 +77,7 @@ python.begin <python code> python.end
 			if(!skipSpacesAndNewlines())                                                                                  \
 			{                                                                                                             \
 				delete dl;                                                                                                \
-				return 0;                                                                                                 \
+				return nullptr;                                                                                           \
 			}                                                                                                             \
 		}                                                                                                                 \
                                                                                                                           \
@@ -102,7 +102,7 @@ python.begin <python code> python.end
 				szErr += " statement";                                                                                    \
                                                                                                                           \
 				error(KVSP_curCharPointer, __tr2qs_ctx(szErr.toUtf8().data(), "kvs"));                                    \
-				return 0;                                                                                                 \
+				return nullptr;                                                                                           \
 			}                                                                                                             \
 			pInterpreterEnd = KVSP_curCharPointer;                                                                        \
                                                                                                                           \

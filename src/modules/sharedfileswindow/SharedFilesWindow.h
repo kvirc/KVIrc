@@ -57,7 +57,7 @@ class SharedFileEditDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	SharedFileEditDialog(QWidget * par, KviSharedFile * f = 0);
+	SharedFileEditDialog(QWidget * par, KviSharedFile * f = nullptr);
 	virtual ~SharedFileEditDialog();
 
 	QDateTimeEdit * m_pExpireDateTimeEdit;

@@ -109,7 +109,7 @@ class BanFrame : public QFrame
 {
 	Q_OBJECT
 public:
-	BanFrame(QWidget * parent = 0, const char * name = 0, bool banEnable = false);
+	BanFrame(QWidget * parent = nullptr, const char * name = nullptr, bool banEnable = false);
 	~BanFrame();
 	void saveBans(KviConfigurationFile * cfg);
 

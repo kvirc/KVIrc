@@ -52,7 +52,7 @@ public:
 	///
 	/// Creates an instance of KviWebPackageManagementDialog
 	///
-	KviWebPackageManagementDialog(QWidget * pParent = NULL);
+	KviWebPackageManagementDialog(QWidget * pParent = nullptr);
 
 	///
 	/// Destroys the instance of KviWebPackageManagementDialog

@@ -40,7 +40,7 @@ private:
 public:
 	static QNetworkAccessManager * getInstance()
 	{
-		static QNetworkAccessManager * pInstance = NULL;
+		static QNetworkAccessManager * pInstance = nullptr;
 		if(!pInstance)
 			pInstance = new QNetworkAccessManager();
 		return pInstance;

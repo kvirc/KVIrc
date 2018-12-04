@@ -113,7 +113,7 @@ class MessageListWidgetItemDelegate : public QItemDelegate
 {
 	Q_OBJECT
 public:
-	MessageListWidgetItemDelegate(QAbstractItemView * pWidget = 0)
+	MessageListWidgetItemDelegate(QAbstractItemView * pWidget = nullptr)
 	    : QItemDelegate(pWidget){};
 	~MessageListWidgetItemDelegate(){};
 	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;
@@ -151,7 +151,7 @@ class MessageColorListWidgetItemDelegate : public QItemDelegate
 {
 	Q_OBJECT
 public:
-	MessageColorListWidgetItemDelegate(QAbstractItemView * pWidget = 0)
+	MessageColorListWidgetItemDelegate(QAbstractItemView * pWidget = nullptr)
 	    : QItemDelegate(pWidget){};
 	~MessageColorListWidgetItemDelegate(){};
 	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;

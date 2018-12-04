@@ -137,7 +137,7 @@ inline void kvi_hash_key_destroy(const char *& szKey, bool bDeepCopy)
 */
 inline const char *& kvi_hash_key_default(const char **)
 {
-	static const char * static_null = NULL;
+	static const char * static_null = nullptr;
 	return static_null;
 }
 
@@ -322,7 +322,7 @@ inline void kvi_hash_key_destroy(void *, bool)
 */
 inline void *& kvi_hash_key_default(void *)
 {
-	static void * static_default = NULL;
+	static void * static_default = nullptr;
 	return static_default;
 }
 
@@ -463,7 +463,7 @@ public:
 	/**
 	* \brief Returns the item associated to the key
 	*
-	* Returns NULL if no such item exists in the hash table.
+	* Returns nullptr if no such item exists in the hash table.
 	* Places the hash table iterator at the position of the item found.
 	* \param hKey The key to find
 	* \return T *
@@ -472,19 +472,19 @@ public:
 	{
 		m_uIteratorIdx = kvi_hash_hash(hKey, m_bCaseSensitive) % m_uSize;
 		if(!m_pDataArray[m_uIteratorIdx])
-			return 0;
+			return nullptr;
 		for(KviPointerHashTableEntry<Key, T> * e = m_pDataArray[m_uIteratorIdx]->first(); e; e = m_pDataArray[m_uIteratorIdx]->next())
 		{
 			if(kvi_hash_key_equal(e->hKey, hKey, m_bCaseSensitive))
 				return (T *)e->pData;
 		}
-		return 0;
+		return nullptr;
 	}
 
 	/**
 	* \brief Returns the item associated to the key hKey
 	*
-	* Returns NULL if no such item exists in the hash table.
+	* Returns nullptr if no such item exists in the hash table.
 	* Places the hash table iterator at the position of the item found.
 	* This is an alias to find().
 	* \param hKey The key to find
@@ -594,7 +594,7 @@ public:
 				if(m_pDataArray[uEntry]->isEmpty())
 				{
 					delete m_pDataArray[uEntry];
-					m_pDataArray[uEntry] = 0;
+					m_pDataArray[uEntry] = nullptr;
 				}
 				m_uCount--;
 				return true;
@@ -629,7 +629,7 @@ public:
 						if(m_pDataArray[i]->isEmpty())
 						{
 							delete m_pDataArray[i];
-							m_pDataArray[i] = 0;
+							m_pDataArray[i] = nullptr;
 						}
 						m_uCount--;
 						return true;
@@ -670,7 +670,7 @@ public:
 			if(m_pDataArray[i])
 			{
 				delete m_pDataArray[i];
-				m_pDataArray[i] = 0;
+				m_pDataArray[i] = nullptr;
 			}
 		}
 		m_uCount = 0;
@@ -679,7 +679,7 @@ public:
 	/**
 	* \brief Searches for the item pointer pRef
 	*
-	* Returns its hash table entry, if found, and NULL otherwise.
+	* Returns its hash table entry, if found, and nullptr otherwise.
 	* The hash table iterator is placed at the item found.
 	* \param pRef The pointer to search
 	* \return KviPointerHashTableEntry<Key,T> *
@@ -697,7 +697,7 @@ public:
 				}
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 
 	/**
@@ -710,10 +710,10 @@ public:
 	KviPointerHashTableEntry<Key, T> * currentEntry()
 	{
 		if(m_uIteratorIdx >= m_uSize)
-			return 0;
+			return nullptr;
 		if(m_pDataArray[m_uIteratorIdx])
 			return m_pDataArray[m_uIteratorIdx]->current();
-		return 0;
+		return nullptr;
 	}
 
 	/**
@@ -728,7 +728,7 @@ public:
 			m_uIteratorIdx++;
 		}
 		if(m_uIteratorIdx == m_uSize)
-			return 0;
+			return nullptr;
 		return m_pDataArray[m_uIteratorIdx]->first();
 	}
 
@@ -742,7 +742,7 @@ public:
 	KviPointerHashTableEntry<Key, T> * nextEntry()
 	{
 		if(m_uIteratorIdx >= m_uSize)
-			return 0;
+			return nullptr;
 
 		if(m_uIteratorIdx < m_uSize)
 		{
@@ -759,7 +759,7 @@ public:
 		}
 
 		if(m_uIteratorIdx == m_uSize)
-			return 0;
+			return nullptr;
 
 		return m_pDataArray[m_uIteratorIdx]->first();
 	}
@@ -774,15 +774,15 @@ public:
 	T * current()
 	{
 		if(m_uIteratorIdx >= m_uSize)
-			return 0;
+			return nullptr;
 		if(m_pDataArray[m_uIteratorIdx])
 		{
 			KviPointerHashTableEntry<Key, T> * e = m_pDataArray[m_uIteratorIdx]->current();
 			if(!e)
-				return 0;
+				return nullptr;
 			return e->data();
 		}
-		return 0;
+		return nullptr;
 	}
 
 	/**
@@ -795,15 +795,15 @@ public:
 	const Key & currentKey()
 	{
 		if(m_uIteratorIdx >= m_uSize)
-			return kvi_hash_key_default(((Key *)NULL));
+			return kvi_hash_key_default(((Key *)nullptr));
 		if(m_pDataArray[m_uIteratorIdx])
 		{
 			KviPointerHashTableEntry<Key, T> * e = m_pDataArray[m_uIteratorIdx]->current();
 			if(!e)
-				return kvi_hash_key_default(((Key *)NULL));
+				return kvi_hash_key_default(((Key *)nullptr));
 			return e->key();
 		}
-		return kvi_hash_key_default(((Key *)NULL));
+		return kvi_hash_key_default(((Key *)nullptr));
 	}
 
 	/** \brief Places the hash table iterator at the first entry
@@ -819,10 +819,10 @@ public:
 			m_uIteratorIdx++;
 		}
 		if(m_uIteratorIdx == m_uSize)
-			return 0;
+			return nullptr;
 		KviPointerHashTableEntry<Key, T> * e = m_pDataArray[m_uIteratorIdx]->first();
 		if(!e)
-			return 0;
+			return nullptr;
 		return e->data();
 	}
 
@@ -836,7 +836,7 @@ public:
 	T * next()
 	{
 		if(m_uIteratorIdx >= m_uSize)
-			return 0;
+			return nullptr;
 
 		if(m_uIteratorIdx < m_uSize)
 		{
@@ -855,11 +855,11 @@ public:
 		}
 
 		if(m_uIteratorIdx == m_uSize)
-			return 0;
+			return nullptr;
 
 		KviPointerHashTableEntry<Key, T> * e = m_pDataArray[m_uIteratorIdx]->first();
 		if(!e)
-			return 0;
+			return nullptr;
 		return e->data();
 	}
 
@@ -923,7 +923,7 @@ public:
 		m_uSize = uSize > 0 ? uSize : 32;
 		m_pDataArray = new KviPointerList<KviPointerHashTableEntry<Key, T>> *[m_uSize];
 		for(unsigned int i = 0; i < m_uSize; i++)
-			m_pDataArray[i] = NULL;
+			m_pDataArray[i] = nullptr;
 	}
 
 	/**
@@ -942,7 +942,7 @@ public:
 		m_uSize = t.m_uSize;
 		m_pDataArray = new KviPointerList<KviPointerHashTableEntry<Key, T>> *[m_uSize];
 		for(unsigned int i = 0; i < m_uSize; i++)
-			m_pDataArray[i] = NULL;
+			m_pDataArray[i] = nullptr;
 		copyFrom(t);
 	}
 
@@ -985,7 +985,7 @@ public:
 		if(src.m_pIterator)
 			m_pIterator = new KviPointerListIterator<KviPointerHashTableEntry<Key, T>>(*(src.m_pIterator));
 		else
-			m_pIterator = NULL;
+			m_pIterator = nullptr;
 	}
 
 	/**
@@ -999,7 +999,7 @@ public:
 		if(m_pIterator)
 		{
 			delete m_pIterator;
-			m_pIterator = NULL;
+			m_pIterator = nullptr;
 		}
 
 		m_uEntryIndex = 0;
@@ -1016,7 +1016,7 @@ public:
 		if(!bRet)
 		{
 			delete m_pIterator;
-			m_pIterator = NULL;
+			m_pIterator = nullptr;
 		}
 		return bRet;
 	}
@@ -1032,7 +1032,7 @@ public:
 		if(m_pIterator)
 		{
 			delete m_pIterator;
-			m_pIterator = NULL;
+			m_pIterator = nullptr;
 		}
 
 		m_uEntryIndex = m_pHashTable->m_uSize;
@@ -1046,7 +1046,7 @@ public:
 				if(!bRet)
 				{
 					delete m_pIterator;
-					m_pIterator = NULL;
+					m_pIterator = nullptr;
 				}
 				return bRet;
 			}
@@ -1070,7 +1070,7 @@ public:
 		if(m_pIterator)
 		{
 			delete m_pIterator;
-			m_pIterator = NULL;
+			m_pIterator = nullptr;
 		}
 		m_uEntryIndex++;
 		while((m_uEntryIndex < m_pHashTable->m_uSize) && (!(m_pHashTable->m_pDataArray[m_uEntryIndex])))
@@ -1084,7 +1084,7 @@ public:
 		if(!bRet)
 		{
 			delete m_pIterator;
-			m_pIterator = NULL;
+			m_pIterator = nullptr;
 		}
 		return bRet;
 	}
@@ -1119,7 +1119,7 @@ public:
 		if(m_pIterator)
 		{
 			delete m_pIterator;
-			m_pIterator = NULL;
+			m_pIterator = nullptr;
 		}
 		if(m_uEntryIndex >= m_pHashTable->m_uSize)
 			return false;
@@ -1133,7 +1133,7 @@ public:
 				if(!bRet)
 				{
 					delete m_pIterator;
-					m_pIterator = NULL;
+					m_pIterator = nullptr;
 				}
 				return bRet;
 			}
@@ -1164,7 +1164,7 @@ public:
 	*/
 	T * current() const
 	{
-		return m_pIterator ? m_pIterator->current()->data() : NULL;
+		return m_pIterator ? m_pIterator->current()->data() : nullptr;
 	}
 
 	/**
@@ -1176,7 +1176,7 @@ public:
 	*/
 	T * operator*() const
 	{
-		return m_pIterator ? m_pIterator->current()->data() : NULL;
+		return m_pIterator ? m_pIterator->current()->data() : nullptr;
 	}
 
 	/**
@@ -1189,19 +1189,19 @@ public:
 	{
 		if(m_pIterator)
 			return m_pIterator->current()->key();
-		return kvi_hash_key_default(((Key *)NULL));
+		return kvi_hash_key_default(((Key *)nullptr));
 	}
 
 	/**
 	* \brief Moves the iterator to the first element of the hash table.
 	*
-	* Returns the first item found or NULL if the hash table is empty.
+	* Returns the first item found or nullptr if the hash table is empty.
 	* \return T *
 	*/
 	T * toFirst()
 	{
 		if(!moveFirst())
-			return NULL;
+			return nullptr;
 		return current();
 	}
 
@@ -1215,7 +1215,7 @@ public:
 	{
 		m_pHashTable = &hTable;
 		m_uEntryIndex = 0;
-		m_pIterator = NULL;
+		m_pIterator = nullptr;
 		moveFirst();
 	}
 

@@ -39,7 +39,7 @@ class KviSignalHandler : public QObject
 	Q_OBJECT
 
 public:
-	KviSignalHandler(QObject *parent = 0);
+	KviSignalHandler(QObject *parent = nullptr);
 
 	static void unixSignalHandler(int unused);
 

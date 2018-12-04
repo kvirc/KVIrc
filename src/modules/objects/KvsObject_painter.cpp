@@ -2110,7 +2110,7 @@ KVSO_CLASS_FUNCTION(painter, drawPath)
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	m_pPainter->drawPath(*m_pPainterPath);
 	//delete m_pPainterPath;
-	//m_pPainterPath=0;
+	//m_pPainterPath=nullptr;
 	return true;
 }
 

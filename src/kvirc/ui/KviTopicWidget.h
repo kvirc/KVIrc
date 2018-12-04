@@ -44,7 +44,7 @@ class KVIRC_API KviTopicListBoxItemDelegate : public KviTalIconAndRichTextItemDe
 {
 	Q_OBJECT
 public:
-	KviTopicListBoxItemDelegate(QAbstractItemView * pWidget = 0);
+	KviTopicListBoxItemDelegate(QAbstractItemView * pWidget = nullptr);
 	~KviTopicListBoxItemDelegate();
 
 public:
@@ -55,7 +55,7 @@ public:
 class KVIRC_API KviTopicListBoxItem : public KviTalListWidgetText
 {
 public:
-	KviTopicListBoxItem(KviTalListWidget * pListBox = 0, const QString & text = QString());
+	KviTopicListBoxItem(KviTalListWidget * pListBox = nullptr, const QString & text = QString());
 	~KviTopicListBoxItem();
 
 public:

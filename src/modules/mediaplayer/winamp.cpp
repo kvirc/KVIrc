@@ -72,7 +72,7 @@ winampGeneralPurposePlugin plugin = {
 #define KVIRC_WM_USER_CHECK 13123
 #define KVIRC_WM_USER_CHECK_REPLY 13124
 
-void * lpWndProcOld = 0;
+void * lpWndProcOld = nullptr;
 
 char szBuffer[4096];
 

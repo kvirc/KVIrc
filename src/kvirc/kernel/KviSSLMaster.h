@@ -41,7 +41,7 @@ namespace KviSSLMaster
 
 	extern KVIRC_API void printSSLConnectionInfo(KviWindow * wnd, KviSSL * s);
 
-	extern KVIRC_API KviSSL * allocSSL(KviWindow * wnd, kvi_socket_t sock, KviSSL::Method m, const char * contextString = 0);
+	extern KVIRC_API KviSSL * allocSSL(KviWindow * wnd, kvi_socket_t sock, KviSSL::Method m, const char * contextString = nullptr);
 	extern KVIRC_API void freeSSL(KviSSL * s);
 
 	extern KVIRC_API bool getSSLCertInfo(KviSSLCertificate * pCert, QString szQuery, QString szOptionalParam, KviKvsVariant * pRetBuffer);

@@ -320,7 +320,7 @@ public:
 	* \param pRect The rectangle where to search
 	* \return KviUserListEntry *
 	*/
-	KviUserListEntry * itemAt(const QPoint & pnt, QRect * pRect = 0);
+	KviUserListEntry * itemAt(const QPoint & pnt, QRect * pRect = nullptr);
 
 	/**
 	* \brief Returns true if the item in the entry is visible

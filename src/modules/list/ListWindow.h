@@ -44,7 +44,7 @@ class KviThemedLineEdit;
 class ChannelTreeWidgetItemDelegate : public QItemDelegate
 {
 public:
-	ChannelTreeWidgetItemDelegate(QTreeWidget * pWidget = 0);
+	ChannelTreeWidgetItemDelegate(QTreeWidget * pWidget = nullptr);
 	~ChannelTreeWidgetItemDelegate();
 	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
 	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;

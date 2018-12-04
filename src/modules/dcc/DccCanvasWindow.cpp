@@ -114,7 +114,7 @@ DccCanvasWindow::DccCanvasWindow(DccDescriptor * dcc, const char * name)
 			output(KVI_OUT_DCCMSG, __tr2qs_ctx("Contacting host %Q on port %Q", "dcc"), &(dcc->szIp), &(dcc->szPort));
 	}
 
-	//	m_pSlaveThread = 0;
+	//	m_pSlaveThread = nullptr;
 }
 
 DccCanvasWindow::~DccCanvasWindow()
@@ -124,7 +124,7 @@ DccCanvasWindow::~DccCanvasWindow()
 	//	{
 	//		m_pSlaveThread->terminate();
 	//		delete m_pSlaveThread;
-	//		m_pSlaveThread = 0;
+	//		m_pSlaveThread = nullptr;
 	//	}
 	KviThreadManager::killPendingEvents(this);
 	//	delete m_pDescriptor;

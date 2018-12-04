@@ -96,7 +96,7 @@ public:
 	// well.. the menu bar :D
 	KviMenuBar * mainMenuBar() { return m_pMenuBar; };
 	KviStatusBar * mainStatusBar() { return m_pStatusBar; };
-	// this function may return 0 if the active window has no irc context
+	// this function may return nullptr if the active window has no irc context
 	KviIrcContext * activeContext() { return m_pActiveContext; };
 	// shortcut to a = activeContext(); return a ? a->connection() : 0
 	KviIrcConnection * activeConnection();
@@ -127,7 +127,7 @@ public:
 	// Exceptions are the startup and the shutdown (see activeWindow())
 	KviConsoleWindow * firstConsole();
 	// Returns the first console that has no connection in progress
-	// This function CAN return 0 if all the consoles are connected
+	// This function CAN return nullptr if all the consoles are connected
 	KviConsoleWindow * firstNotConnectedConsole();
 	// this is explicitly dedicated to the TrayIcon module
 	void setTrayIcon(KviTrayIcon * e) { m_pTrayIcon = e; };

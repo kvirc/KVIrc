@@ -103,31 +103,31 @@ protected:
 	static void init();
 
 private:
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts on the first char of a buffer
 	// stops at the first null char encountered
 	KviKvsTreeNodeInstruction * parseInstructionList();
-	// may return 0 (empty instruction), check error() for error conditions
+	// may return nullptr (empty instruction), check error() for error conditions
 	// starts on the first character of an instruction
-	// if the first char is ';' '\n' or null it just returns 0 without error
+	// if the first char is ';' '\n' or null it just returns nullptr without error
 	// stops after the ending char of the instruction
 	KviKvsTreeNodeInstruction * parseInstruction();
-	// may return 0 (empty block), check error() for error conditions
+	// may return nullptr (empty block), check error() for error conditions
 	// starts at the leading '{' of the block
 	// stops after the trailing '}' of the block
 	KviKvsTreeNodeInstruction * parseInstructionBlock();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts on the first character of the parameters
 	// ends after the end of the command
 	KviKvsTreeNodeDataList * parseCommandParameterList();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts on the leading '(' or a ',' in the middle of the list
 	// ends after the trailing ')'
 	// if started in the middle of the list returns only the remaining
 	// parameters.
 	KviKvsTreeNodeDataList * parseCommaSeparatedParameterList();
 	KviPointerList<QString> * parseCommaSeparatedParameterListNoTree();
-	// returns 0 in case of error or if it starts on a terminating character (null parameter)
+	// returns nullptr in case of error or if it starts on a terminating character (null parameter)
 	// check error() to see if there was an error condition (unless you already know that
 	// there was a valid first character)
 	// start on the first character of the parameter
@@ -136,105 +136,105 @@ private:
 	// is extracted an attempt to convert it to a numeric format is made.
 	// This optimizes assignments, self-sums etc...
 	KviKvsTreeNodeData * parseCommandParameter(bool bPreferNumeric = false);
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// start on the first character of the parameter
 	// ends after the first character not included in the param (')','\n','\0',',')
 	KviKvsTreeNodeData * parseCommaSeparatedParameter();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// start on the first character of the parameter
 	// ends after the first character not included in the param (')','\n','\0')
 	KviKvsTreeNodeData * parseSingleParameterInParenthesis();
-	// never returns 0
+	// never returns nullptr
 	KviKvsTreeNodeConstantData * parseCommandLiteralParameter();
-	// never returns 0
+	// never returns nullptr
 	KviKvsTreeNodeConstantData * parseCommaSeparatedLiteralParameter();
-	// never returns 0
+	// never returns nullptr
 	KviKvsTreeNodeConstantData * parseSingleLiteralParameterInParenthesis();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts at the leading '"'
 	// ends after the trailing '"'
 	KviKvsTreeNodeData * parseStringParameter();
-	// never returns 0
+	// never returns nullptr
 	KviKvsTreeNodeConstantData * parseStringLiteralParameter();
-	// returns 0 in case of error or of an empty switch list (check the error code!)
+	// returns nullptr in case of error or of an empty switch list (check the error code!)
 	// starts at the leading '-' of the first switch
 	// ends after the last switch
 	KviKvsTreeNodeSwitchList * parseCommandSwitchList();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts at '%' or '$'
 	// and ends after the end of the data reference
 	// or just after the '%' or '$' if this was only a ConstandData (not a var or func)
 	KviKvsTreeNodeData * parseParameterPercentOrDollar();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts at '%' or '$'
 	// ends after the end of the complete data reference (including scope operators!)
 	KviKvsTreeNodeData * parsePercentOrDollar(bool bInObjScope = false);
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts at '%'
 	// ends after the end of the structured data
 	KviKvsTreeNodeVariable * parsePercent(bool bInObjectScope = false);
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	KviKvsTreeNodeData * parseHashKey();
-	// never returns 0
+	// never returns nullptr
 	KviKvsTreeNodeConstantData * parseHashKeyLiteralParameter();
 
 	//
 	// KviKvsParser_specialCommands.cpp
 	//
 
-	// return 0 only in case of error
+	// return nullptr only in case of error
 	// starts at the leading '(' of the if command (after the switches)
 	// and stops after the end of the else block
 	// if the first character is not '(' then this function fails with an error
 	KviKvsTreeNodeCommand * parseSpecialCommandIf();
-	// always returns 0
+	// always returns nullptr
 	// check error() for error conditions
 	// starts after the switches of the "global" keyword
 	// and stops at the end of the command
 	// if the first character is not '%' of a variable then this function fails with an error
 	KviKvsTreeNodeCommand * parseSpecialCommandGlobal();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts at the leading '(' of the while command (after the switches)
 	// and stops after the end of the command block
 	// if the first character is not '(' then this function fails with an error
 	KviKvsTreeNodeCommand * parseSpecialCommandWhile();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts at the leading '(' of the while command (after the switches)
 	// and stops after the end of the command block
 	// if the first character is not '(' then this function fails with an error
 	KviKvsTreeNodeCommand * parseSpecialCommandDo();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// and stops after the end of the break command
 	KviKvsTreeNodeCommand * parseSpecialCommandBreak();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// and jumps to the next iteration after the end of the continue command
 	KviKvsTreeNodeCommand * parseSpecialCommandContinue();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// and stops after the end of the for command block
 	KviKvsTreeNodeCommand * parseSpecialCommandFor();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// and stops after the end of the foreach command block
 	KviKvsTreeNodeCommand * parseSpecialCommandForeach();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// and stops after the end of the switch command block
 	KviKvsTreeNodeCommand * parseSpecialCommandSwitch();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// and stops after the end of the defpopup command block
 	KviKvsTreeNodeCommand * parseSpecialCommandUnset();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// and stops after the end of the defpopup command block
 	KviKvsTreeNodeCommand * parseSpecialCommandDefpopup();
 	KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * parseSpecialCommandDefpopupLabelPopup();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// stops after the class command block
 	KviKvsTreeNodeCommand * parseSpecialCommandClass();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// stops after the perl.end statement
 	KviKvsTreeNodeCommand * parseSpecialCommandPerlBegin();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// stops after the perl.end statement
 	KviKvsTreeNodeCommand * parseSpecialCommandPythonBegin();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// and stops after the end of the help command
 	KviKvsTreeNodeCommand * parseSpecialCommandHelp();
 
@@ -242,7 +242,7 @@ private:
 	// KviKvsParser_command.cpp
 	//
 
-	// may return 0 (empty command), check error() for error conditions
+	// may return nullptr (empty command), check error() for error conditions
 	// starts at the beginning of a command (can be non valid)
 	// ends after the ending char of the command
 	KviKvsTreeNodeCommand * parseCommand();
@@ -251,7 +251,7 @@ private:
 	// KviKvsParser_comment.cpp
 	//
 
-	// always returns 0, and it CAN be an error!
+	// always returns nullptr, and it CAN be an error!
 	// starts at the beginning of a comment (must be '#' or '/')
 	// ends after the ending char of the comment
 	KviKvsTreeNode * parseComment();
@@ -260,12 +260,12 @@ private:
 	// KviKvsParser_dollar.cpp
 	//
 
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts at '$'
 	// ends after the end of the function call
 	KviKvsTreeNodeData * parseDollar(bool bInObjScope = false);
 
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts at '@'
 	// ends after the end of the function call
 	KviKvsTreeNodeData * parseAt(bool bInObjScope = false);
@@ -274,17 +274,17 @@ private:
 	// KviKvsParser_lside.cpp
 	//
 
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// returns after the command terminator
 	KviKvsTreeNodeInstruction * parseVoidFunctionCallOrOperation();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// returns after the command terminator
 	KviKvsTreeNodeOperation * parseOperation();
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// returns after the command terminator
 	// If bPreferNumeric is propagated to parseCommandParameter() function
 	KviKvsTreeNodeData * parseOperationRightSide(bool bPreferNumeric = false);
-	// return 0 only in case of error
+	// return nullptr only in case of error
 	// returns after the command terminator
 	KviKvsTreeNodeOperation * parseBindingOperation();
 	KviKvsTreeNodeConstantData * parseBindingOperationLiteralParameter();
@@ -294,7 +294,7 @@ private:
 	// KviKvsParser_expression.cpp
 	//
 
-	// returns 0 only in case of error
+	// returns nullptr only in case of error
 	// starts AFTER the leading char of the expression
 	// ends after the first terminator found
 	KviKvsTreeNodeExpression * parseExpression(char terminator);

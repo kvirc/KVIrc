@@ -88,13 +88,13 @@ protected:
 	Qt::DockWidgetArea currentArea;
 
 public:
-	virtual KviWindowListItem * addItem(KviWindow *) { return 0; };
+	virtual KviWindowListItem * addItem(KviWindow *) { return nullptr; }
 	virtual bool removeItem(KviWindowListItem *) { return false; };
 	virtual void setActiveItem(KviWindowListItem *){};
-	virtual KviWindowListItem * firstItem() { return 0; };
-	virtual KviWindowListItem * lastItem(void) { return 0; }
-	virtual KviWindowListItem * nextItem() { return 0; };
-	virtual KviWindowListItem * prevItem(void) { return 0; }
+	virtual KviWindowListItem * firstItem() { return nullptr; }
+	virtual KviWindowListItem * lastItem(void) { return nullptr; }
+	virtual KviWindowListItem * nextItem() { return nullptr; }
+	virtual KviWindowListItem * prevItem(void) { return nullptr; }
 	virtual KviWindowListItem * item(int number);
 	virtual bool setIterationPointer(KviWindowListItem *) { return false; };
 	virtual void switchWindow(bool bNext, bool bInContextOnly, bool bHighlightedOnly = false);

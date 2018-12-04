@@ -61,7 +61,7 @@ public:
 	* \param pView The userlist
 	* \return KviInput
 	*/
-	KviInput(KviWindow * pPar, KviUserListView * pView = 0);
+	KviInput(KviWindow * pPar, KviUserListView * pView = nullptr);
 
 	/**
 	* \brief Destroys the input object

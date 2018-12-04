@@ -806,7 +806,7 @@ void SetupWizard::makeLink()
 	       0, KEY_QUERY_VALUE, &hCU)
 	    == ERROR_SUCCESS)
 	{
-		RegQueryValueEx(hCU, TEXT("Desktop"), NULL, &lpType,
+		RegQueryValueEx(hCU, TEXT("Desktop"), nullptr, &lpType,
 		    (unsigned char *)&szLink, &ulSize);
 		RegCloseKey(hCU);
 	}
@@ -819,13 +819,13 @@ void SetupWizard::makeLink()
 	szKvircExec.append("\\kvirc.exe");
 
 	// Trigger a horrible machinery
-	CoInitialize(NULL); // we need COM+OLE
+	CoInitialize(nullptr); // we need COM+OLE
 
 	// Fiddle with an obscure shell interface
 	IShellLink * psl;
 
 	// Get a pointer to the IShellLink interface: this is kinda ugly :)
-	if(CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER,
+	if(CoCreateInstance(CLSID_ShellLink, nullptr, CLSCTX_INPROC_SERVER,
 	       IID_IShellLink, (void **)&psl)
 	    == S_OK)
 	{

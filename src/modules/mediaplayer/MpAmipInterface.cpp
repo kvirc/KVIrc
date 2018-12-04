@@ -51,7 +51,7 @@ enum ac_ErrorCode
 
 #define AC_BUFFER_SIZE 2048
 
-static HINSTANCE amip_dll = NULL;
+static HINSTANCE amip_dll = nullptr;
 
 #define MP_AC_DYNPTR(__rettype, __func, __args)        \
 	typedef __rettype(CALLBACK * lp_##__func)(__args); \
@@ -94,7 +94,7 @@ static bool loadAmipDll()
 
 static QTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * pCodec = 0;
+	QTextCodec * pCodec = nullptr;
 	pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8());
 
 	if(!pCodec)
@@ -120,7 +120,7 @@ MpAmipInterface::MpAmipInterface()
 		bool res = loadAmipDll();
 		if(!res)
 		{
-			amip_dll = NULL;
+			amip_dll = nullptr;
 			return;
 		}
 		ac_init(AC_START_CLIENT);
@@ -133,7 +133,7 @@ MpAmipInterface::~MpAmipInterface()
 		return;
 	ac_uninit();
 	FreeLibrary(amip_dll);
-	amip_dll = NULL;
+	amip_dll = nullptr;
 }
 
 int MpAmipInterface::detect(bool bStart)

@@ -39,7 +39,7 @@ class KvsObject_tableWidget;
 class KviCellItemDelegate : public QItemDelegate
 {
 public:
-	KviCellItemDelegate(QAbstractItemView * pWidget = 0, KvsObject_tableWidget * pParent = 0);
+	KviCellItemDelegate(QAbstractItemView * pWidget = nullptr, KvsObject_tableWidget * pParent = nullptr);
 	~KviCellItemDelegate();
 
 protected:

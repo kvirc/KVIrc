@@ -88,7 +88,7 @@ KviOggTheoraEncoder::KviOggTheoraEncoder(KviDataBuffer * stream, int iWidth, int
 	y4m_dst_buf_sz = geometry.pic_w * geometry.pic_h * 3;
 
 	// Set up Ogg output stream
-	srand(time(NULL));
+	srand(time(nullptr));
 	ogg_stream_init(&to, rand());
 
 	ogg_stream_init(&zo, rand());

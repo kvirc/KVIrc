@@ -177,7 +177,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 								// might be an error, but might be not...
 								// it is an error only if error() returns true
 								// but since the caller will take care of it
-								// we just return 0
+								// we just return nullptr
 								if(sw)
 									delete sw;
 								if(pRebindData)
@@ -218,7 +218,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 					// might be an error, but might be not...
 					// it is an error only if error() returns true
 					// but since the caller will take care of it
-					// we just return 0
+					// we just return nullptr
 					if(sw)
 						delete sw;
 					if(pRebindData)

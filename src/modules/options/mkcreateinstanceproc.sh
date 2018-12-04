@@ -229,7 +229,7 @@ printclass()
 	echo "$3	e$1 = new OptionsWidgetInstanceEntry;"  >> $TARGET
 	echo -n "$3	e$1->createProc = &class$2"  >> $TARGET
 		echo "_createInstanceProc;"  >> $TARGET
-	echo "$3	e$1->pWidget = 0;" >> $TARGET
+	echo "$3	e$1->pWidget = nullptr;" >> $TARGET
 	echo "$3	e$1->szClassName = g_szClassName_$2;" >> $TARGET
 	echo "$3	e$1->eIcon = KVI_OPTIONS_WIDGET_ICON_$2;" >> $TARGET
 
@@ -288,7 +288,7 @@ addchildren()
 				NEXTLEVEL=`expr $1 + 1`
 				addchildren $NEXTLEVEL $achild "$3	"
 			else
-				echo "$3	e$1->pChildList = 0;" >> $TARGET
+				echo "$3	e$1->pChildList = nullptr;" >> $TARGET
 			fi
 		done
 	fi
@@ -316,7 +316,7 @@ void OptionsInstanceManager::deleteInstanceTree(KviPointerList<OptionsWidgetInst
 				{
 					disconnect(pEntry->pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
 					delete pEntry->pWidget->parent();
-					pEntry->pWidget =  0;
+					pEntry->pWidget = nullptr;
 				} else {
 					qDebug("Ops...i have deleted the options dialog ?");
 				}
@@ -337,14 +337,14 @@ OptionsInstanceManager::~OptionsInstanceManager()
 void OptionsInstanceManager::cleanup(KviModule *)
 {
 	deleteInstanceTree(m_pInstanceTree);
-	m_pInstanceTree = 0;
+	m_pInstanceTree = nullptr;
 }
 
 void OptionsInstanceManager::widgetDestroyed()
 {
 	OptionsWidgetInstanceEntry * pEntry = findInstanceEntry(sender(),m_pInstanceTree);
 	if(pEntry)
-		pEntry->pWidget = 0;
+		pEntry->pWidget = nullptr;
 	if(g_iOptionWidgetInstances > 0)
 		g_iOptionWidgetInstances--;
 
@@ -353,7 +353,7 @@ void OptionsInstanceManager::widgetDestroyed()
 KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntry * pEntry, QWidget * pPar)
 {
 	if(!pEntry)
-		return NULL;
+		return nullptr;
 
 #if 0
 	if(pEntry->pWidget)
@@ -363,7 +363,7 @@ KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntr
 			QWidget * pOldPar = (QWidget *)pEntry->pWidget->parent();
 			pEntry->pWidget->setParent(pPar);
 			pOldPar->deleteLater();
-			pEntry->pWidget = 0;
+			pEntry->pWidget = nullptr;
 		}
 	}
 #endif

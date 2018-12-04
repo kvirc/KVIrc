@@ -243,7 +243,7 @@ public:
 
 	// Assignment
 	KviCString & operator=(const KviCString & str); // deep copy
-	KviCString & operator=(const char * str);       // str can be NULL here
+	KviCString & operator=(const char * str);       // str can be nullptr here
 	KviCString & operator=(char c);                 // 2 bytes allocated,m_len = 1
 	KviCString & operator=(const QString & str);
 	KviCString & operator=(const QByteArray & str);
@@ -366,7 +366,7 @@ public:
 	// if sep is not 0, it is inserted between the strings
 	// if bLastSep is true and sep is non 0, then sep is also appended at the end
 	// of the buffer (after the last string)
-	void joinFromArray(KviCString ** strings, const char * sep = 0, bool bLastSep = false);
+	void joinFromArray(KviCString ** strings, const char * sep = nullptr, bool bLastSep = false);
 
 	// Utils
 	// encodes chars that have nonzero in the jumptable
@@ -410,16 +410,16 @@ public:
 
 	// Numbers
 	// everything in base 10.... no overflow checks here
-	long toLong(bool * bOk = 0) const;
-	unsigned long toULong(bool * bOk = 0) const;
-	long long toLongLong(bool * bOk = 0) const;
-	unsigned long long toULongLong(bool * bOk = 0) const;
-	char toChar(bool * bOk = 0) const { return (char)toLong(bOk); };
-	unsigned char toUChar(bool * bOk = 0) const { return (unsigned char)toULong(bOk); };
-	int toInt(bool * bOk = 0) const { return (int)toLong(bOk); };
-	unsigned int toUInt(bool * bOk = 0) const { return (unsigned int)toULong(bOk); };
-	short toShort(bool * bOk = 0) const { return (short)toLong(bOk); };
-	unsigned short toUShort(bool * bOk = 0) const { return (unsigned short)toLong(bOk); };
+	long toLong(bool * bOk = nullptr) const;
+	unsigned long toULong(bool * bOk = nullptr) const;
+	long long toLongLong(bool * bOk = nullptr) const;
+	unsigned long long toULongLong(bool * bOk = nullptr) const;
+	char toChar(bool * bOk = nullptr) const { return (char)toLong(bOk); };
+	unsigned char toUChar(bool * bOk = nullptr) const { return (unsigned char)toULong(bOk); };
+	int toInt(bool * bOk = nullptr) const { return (int)toLong(bOk); };
+	unsigned int toUInt(bool * bOk = nullptr) const { return (unsigned int)toULong(bOk); };
+	short toShort(bool * bOk = nullptr) const { return (short)toLong(bOk); };
+	unsigned short toUShort(bool * bOk = nullptr) const { return (unsigned short)toLong(bOk); };
 
 	KviCString & setNum(long num);
 	KviCString & setNum(unsigned long num);
@@ -439,8 +439,8 @@ public:
 	bool isUnsignedNum() const;
 
 	// special functions for multiple bases
-	long toLongExt(bool * bOk = 0, int base = 0);
-	// unsigned long toULongExt(bool *bOk = 0,int base = 0); //never used
+	long toLongExt(bool * bOk = nullptr, int base = 0);
+	// unsigned long toULongExt(bool *bOk = nullptr,int base = 0); //never used
 
 	// returns an empty string...
 	// this if often useful!
@@ -450,7 +450,7 @@ public:
 
 	// Transform a pointer to a string with all 0 and 1
 	// void pointerToBitString(const void * ptr);
-	// Get a pointer from a string all of 0 and 1 : return 0 if invalid
+	// Get a pointer from a string all of 0 and 1 : return nullptr if invalid
 	// void * bitStringToPointer();
 
 	// "External string" helper functions

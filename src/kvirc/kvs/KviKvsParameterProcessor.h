@@ -211,11 +211,11 @@ namespace KviKvsParameterProcessor
 
 		// KVS_PT_IGNORE
 		ParameterFormat(const char * name)
-		    : szName(name), uType(KVS_PT_IGNORE), uFlags(0), pContainer(NULL) {}
+		    : szName(name), uType(KVS_PT_IGNORE), uFlags(0), pContainer(nullptr) {}
 
 		// terminator
 		ParameterFormat()
-		    : szName(NULL), uType(KVS_PT_IGNORE), uFlags(0), pContainer(NULL){};
+		    : szName(nullptr), uType(KVS_PT_IGNORE), uFlags(0), pContainer(nullptr){};
 
 		//ParameterFormat(const char * n,unsigned char t,unsigned char f,void * p)
 		//: szName(n), uType(t), uFlags(f), pContainer(p) {};
@@ -227,9 +227,9 @@ namespace KviKvsParameterProcessor
 #define KVS_PARAMETERS_BEGIN(__name) \
 	KviKvsParameterProcessor::ParameterFormat __name[] = {
 
-#define KVS_PARAMETERS_END                       \
-	KviKvsParameterProcessor::ParameterFormat(0) \
-	}                                            \
+#define KVS_PARAMETERS_END                             \
+	KviKvsParameterProcessor::ParameterFormat(nullptr) \
+	}                                                  \
 	;
 
 //#define KVS_PARAMETER(__name,__type,__flags,__void)
