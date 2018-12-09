@@ -197,7 +197,7 @@ if(WANT_ENV_FLAGS)
 	set(CMAKE_STATUS_DEBUG_SUPPORT "Environment-driven")
 else()
 	if(MSVC)
-		# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t
+		# Qt5 has /Zc:wchar_t
 		set(CMAKE_CXX_FLAGS "/MP /Zc:wchar_t /EHsc /source-charset:utf-8")
 		set(CMAKE_C_FLAGS "/MP /Zc:wchar_t /EHsc /source-charset:utf-8")
 	endif()
@@ -230,7 +230,6 @@ else()
 		else()
 			if(MSVC)
 				# this is the equivalent of -O0 -g according to MSDN
-				# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t
 				set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Od /Zi /W3")
 				set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /Od /Zi /W3")
 			else()
