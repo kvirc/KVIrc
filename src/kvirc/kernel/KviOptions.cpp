@@ -965,7 +965,7 @@ void KviApplication::saveOptions()
 	WRITE_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable)
 
-	if(!cfg.save())
+	if(!cfg.saveIfDirty())
 	{
 		QMessageBox::warning(nullptr, __tr2qs("Warning While Writing Configuration - KVIrc"),
 		    __tr2qs("I can't write to the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continuing, "

@@ -73,6 +73,7 @@ private:
 
 private:
 	bool load();
+	bool save();
 	KviConfigurationFileGroup * getCurrentGroup();
 
 public:
@@ -92,7 +93,7 @@ public:
 	bool readOnly() { return m_bReadOnly; };
 	void setReadOnly(bool bReadOnly) { m_bReadOnly = bReadOnly; };
 	bool dirty() { return m_bDirty; };
-	bool save();
+	bool saveIfDirty();
 
 	//
 	// This sets the save path for the config file

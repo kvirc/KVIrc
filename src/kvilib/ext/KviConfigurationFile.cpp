@@ -336,6 +336,13 @@ bool KviConfigurationFile::load()
 	return true;
 }
 
+bool KviConfigurationFile::saveIfDirty()
+{
+	if(!m_bDirty)
+		return true;
+	return save();
+}
+
 bool KviConfigurationFile::save()
 {
 	static unsigned char encode_table[256] = {
