@@ -915,15 +915,9 @@ void KviApplication::saveOptions()
 	saveRecentChannels();
 
 	getLocalKvircDirectory(buffer, Config, KVI_CONFIGFILE_MAIN);
+
 	KviConfigurationFile cfg(buffer, KviConfigurationFile::Write);
 
-	if(!cfg.ensureWritable())
-	{
-		QMessageBox::warning(nullptr, __tr2qs("Warning While Writing Configuration - KVIrc"),
-		    __tr2qs("I can't write to the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continuing, "
-		            "or else any custom configuration will be lost.")
-		        .arg(buffer));
-	}
 	int i;
 
 #define WRITE_OPTIONS(_num, _table)                       \
@@ -970,6 +964,14 @@ void KviApplication::saveOptions()
 	}
 	WRITE_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable)
+
+	if(!cfg.save())
+	{
+		QMessageBox::warning(nullptr, __tr2qs("Warning While Writing Configuration - KVIrc"),
+		    __tr2qs("I can't write to the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continuing, "
+		            "or else any custom configuration will be lost.")
+		        .arg(buffer));
+	}
 
 #undef WRITE_OPTIONS
 }
