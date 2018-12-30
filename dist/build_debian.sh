@@ -116,7 +116,7 @@ if [ -z "$PPA" ]
 then
     if [ ! -z "${TRAVIS_BRANCH}" ]
     then
-        sed -i '/^ cmake \(>= 3.1\),/d' debian/control
+        sed -i '/^ cmake (>= 3.1),/d' debian/control
     fi
     debuild --no-lintian -us -uc
 else
