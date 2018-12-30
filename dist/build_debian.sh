@@ -32,7 +32,7 @@ VERSION='4:5.0.0'
 VERSION1='5.0.0'
 TMPFILE=$(mktemp)
 TMPGPG=$(mktemp)
-DIST_PPA="trusty xenial artful bionic"
+DIST_PPA="xenial bionic cosmic"
 PPANAME=kvirc
 
 dchppa_pkg(){
@@ -63,13 +63,6 @@ cat > ~/.dput.cf << EOF
 fqdn = ppa.launchpad.net
 method = ftp
 incoming = ~kvirc/kvirc/ubuntu/
-login = anonymous
-allow_unsigned_uploads = 0
-
-[kvirc-qt5.5]
-fqdn = ppa.launchpad.net
-method = ftp
-incoming = ~kvirc/kvirc-qt5.5/ubuntu/
 login = anonymous
 allow_unsigned_uploads = 0
 
@@ -121,15 +114,15 @@ dch -a "Date: $datct"
 
 if [ -z "$PPA" ]
 then
+    if [ ! -z "${TRAVIS_BRANCH}" ]
+    then
+        sed -i '/^ cmake \(>= 3.1\),/d' debian/control
+    fi
     debuild --no-lintian -us -uc
 else
     gpgkey
     tmpgpg
     test -f ~/.dput.cf || dputcf
-    dchppa_pkg
-    rm -f ../*ppa*
-    DIST_PPA="xenial"
-    PPANAME=kvirc-qt5.5
     dchppa_pkg
 fi
 
