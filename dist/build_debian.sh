@@ -117,7 +117,8 @@ then
     if [ ! -z "${TRAVIS_BRANCH}" ]
     then
         sed -i '/^ cmake (>= 3.1),/d' debian/control
-        debuild --no-lintian --preserve-env --prepend-path="${PATH}" -us -uc 
+        debuild --no-lintian --preserve-env --prepend-path="${PATH}" -us -uc > /dev/null 2>&1
+        tail -50 ../kvirc_*.build
     else
         debuild --no-lintian -us -uc 
     fi
