@@ -1,5 +1,5 @@
 #! /usr/bin/make -f
-DH_VERBOSE = 1
+#DH_VERBOSE = 1
 
 include /usr/share/dpkg/pkg-info.mk
 export VERSION=$(DEB_VERSION_UPSTREAM_REVISION)
