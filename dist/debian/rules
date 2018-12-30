@@ -37,7 +37,7 @@ override_dh_auto_configure:
 			-DWANT_ESD=OFF -DWANT_OSS=OFF \
 			-DWANT_STRIP=OFF \
 			-DMANUAL_REVISION="$(REV)" -DMANUAL_SOURCES_DATE=$(DATE)\
-			-DLIB_SUFFIX="/$(DEB_HOST_MULTIARCH)"
+			-DLIB_SUFFIX="/$(DEB_HOST_MULTIARCH)"-DCMAKE_VERBOSE_MAKEFILE=False
 
 override_dh_install:
 	set -e; for file in $(NOT_INSTALLED); do rm debian/tmp/$$file; done
