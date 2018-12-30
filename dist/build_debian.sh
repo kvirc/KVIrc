@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/bash
 
 test -z "$DEBFULLNAME" && export DEBFULLNAME="Alexander Pozdnyakov"
 test -z "$DEBEMAIL" && export DEBEMAIL="kvircbot@gmail.com"
@@ -37,24 +37,24 @@ PPANAME=kvirc
 
 dchppa_pkg(){
 NEW_VER=$(dpkg-parsechangelog | awk '/^Version: / {print $2}')
-cd $BUILDDIR/${PKG_NAME}-${VERSION1}${SVNGITBZR}${dat}/
-cp -f debian/changelog ${TMPFILE}
+cd "$BUILDDIR/${PKG_NAME}-${VERSION1}${SVNGITBZR}${dat}/" || exit 1
+cp -f debian/changelog "${TMPFILE}"
 for i in ${DIST_PPA}
 do
-cp -f ${TMPFILE} debian/changelog
+cp -f "${TMPFILE}" debian/changelog
 dch -b --force-distribution --distribution "$i" -v "${NEW_VER}ppa1~${i}1" \
   "Automated backport upload; no source changes."
-[ -z $(echo $SOURCEUP | grep YES) ] && debuild --no-lintian -p"gpg --passphrase-file $TMPGPG --batch --no-use-agent" -S -sa
-[ -z $(echo $SOURCEUP | grep YES) ] || debuild --no-lintian -p"gpg --passphrase-file $TMPGPG --batch --no-use-agent" -S -sd
+echo "$SOURCEUP" | grep -q YES && debuild --no-lintian -p"gpg --passphrase-file $TMPGPG --batch --no-use-agent" -S -sa
+echo "$SOURCEUP" | grep -q YES || debuild --no-lintian -p"gpg --passphrase-file $TMPGPG --batch --no-use-agent" -S -sd
 SOURCEUP=YES
 done
 unset SOURCEUP
 for i in ${DIST_PPA}
 do
-dput ${PPANAME} ../${PKG_NAME}_*${i}1_source.changes
+dput "${PPANAME}" "../${PKG_NAME}_*${i}1_source.changes"
 sleep 10
 done
-cp -f ${TMPFILE} debian/changelog
+cp -f "${TMPFILE}" debian/changelog
 }
 
 dputcf(){
@@ -70,21 +70,21 @@ EOF
 }
 
 tmpgpg(){
-cat > $TMPGPG << EOF
+cat > "$TMPGPG" << EOF
 $GPGPASS
 EOF
 }
 gpgkey(){
-openssl enc -d -aes-256-cbc -in ${DIR}/secret.enc -out ${DIR}/secret.gpg -k ${AESPASS}
-gpg --import ${DIR}/public.gpg
-gpg --allow-secret-key-import --import ${DIR}/secret.gpg
+openssl enc -d -aes-256-cbc -in "${DIR}/secret.enc" -out "${DIR}/secret.gpg" -k "${AESPASS}"
+gpg --import "${DIR}/public.gpg"
+gpg --allow-secret-key-import --import "${DIR}/secret.gpg"
 }
 
-test -d $BUILDDIR && rm -rf ${BUILDDIR}
-mkdir -p $BUILDDIR
-cd $GITDIR
+test -d "$BUILDDIR" && rm -rf "${BUILDDIR}"
+mkdir -p "$BUILDDIR"
+cd "$GITDIR" || exit 1
 abbrevcommit=$(git log -1 --abbrev-commit | grep -i "^commit" | awk '{print $2}')
-numcommit=$(git log | grep "^Date:" | wc -l)
+numcommit=$(git log | grep -c "^Date:")
 dat="${numcommit}-${abbrevcommit}"
 #dat=$(git describe --dirty)
 branch=$(git branch | grep "\*" | sed 's/\* //g')
@@ -100,13 +100,13 @@ then
 fi
 
 tar -cpf  "${BUILDDIR}/${PKG_NAME}_${VERSION1}${SVNGITBZR}${dat}.orig.tar" --exclude ".git" --exclude "dist" .
-cd ${BUILDDIR}
+cd "${BUILDDIR}" || exit 1
 xz -9 "${PKG_NAME}_${VERSION1}${SVNGITBZR}${dat}.orig.tar"
 mkdir "${PKG_NAME}-${VERSION1}${SVNGITBZR}${dat}"
 tar -xpJf "${PKG_NAME}_${VERSION1}${SVNGITBZR}${dat}.orig.tar.xz" -C "${PKG_NAME}-${VERSION1}${SVNGITBZR}${dat}"
-cd $DIR
-cp -r debian $BUILDDIR/${PKG_NAME}-${VERSION1}${SVNGITBZR}${dat}/debian
-cd $BUILDDIR/${PKG_NAME}-${VERSION1}${SVNGITBZR}${dat}/
+cd "$DIR" || exit 1
+cp -r debian "$BUILDDIR/${PKG_NAME}-${VERSION1}${SVNGITBZR}${dat}/debian"
+cd "$BUILDDIR/${PKG_NAME}-${VERSION1}${SVNGITBZR}${dat}/" || exit 1
 dch -v "${VERSION}${SVNGITBZR}${dat}-1" -D "unstable" --force-distribution "Compile"
 dch -a "Branch: $branch"
 dch -a "Commit: $commit"
