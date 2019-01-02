@@ -32,6 +32,7 @@
 
 #include <QColor>
 #include <QRect>
+#include <QSaveFile>
 
 KviConfigurationFile::KviConfigurationFile(const QString & filename, FileMode f, bool bLocal8Bit)
 {
@@ -335,20 +336,11 @@ bool KviConfigurationFile::load()
 	return true;
 }
 
-bool KviConfigurationFile::ensureWritable()
+bool KviConfigurationFile::saveIfDirty()
 {
-	if(m_bReadOnly)
-		return false;
-
-	KviFile f(m_szFileName);
-	if(!f.open(QFile::WriteOnly | QFile::Truncate))
-		return false;
-	if(f.write("# KVIrc configuration file\n", 27) != 27)
-		return false;
-	if(!f.flush())
-		return false;
-	f.close();
-	return true;
+	if(!m_bDirty)
+		return true;
+	return save();
 }
 
 bool KviConfigurationFile::save()
@@ -409,9 +401,11 @@ bool KviConfigurationFile::save()
 	if(m_bReadOnly)
 		return false;
 
-	KviFile f(m_szFileName);
+	QSaveFile f(m_szFileName);
+
 	if(!f.open(QFile::WriteOnly | QFile::Truncate))
 		return false;
+
 	if(f.write("# KVIrc configuration file\n", 27) != 27)
 		return false;
 
@@ -454,7 +448,10 @@ bool KviConfigurationFile::save()
 		}
 		++it;
 	}
-	f.close();
+
+	if(!f.commit())
+		return false;
+
 	m_bDirty = false;
 	return true;
 }
@@ -907,25 +904,3 @@ unsigned char KviConfigurationFile::readUCharEntry(const QString & szKey, unsign
 	unsigned char iVal = (unsigned char)p_str->toUInt(&bOk);
 	return bOk ? iVal : iDefault;
 }
-
-#ifdef COMPILE_ON_WINDOWS
-
-//
-// On windows we need to override new and delete operators
-// to ensure that always the right new/delete pair is called for an object instance
-// This bug is present in all the classes exported by a module that
-// can be instantiated/destroyed from external modules.
-// (this is a well known bug described in Q122675 of MSDN)
-//
-
-void * KviConfigurationFile::operator new(size_t tSize)
-{
-	return KviMemory::allocate(tSize);
-}
-
-void KviConfigurationFile::operator delete(void * p)
-{
-	KviMemory::free(p);
-}
-
-#endif

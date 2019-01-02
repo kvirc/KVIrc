@@ -47,7 +47,7 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sw_vers; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sysctl -a | grep cpu; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sysctl -a | grep mem; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then gpg --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm get head; fi
     - |
         if [[ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" && "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then
