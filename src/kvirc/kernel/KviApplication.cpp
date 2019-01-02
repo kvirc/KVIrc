@@ -90,6 +90,7 @@
 #include "KviRuntimeInfo.h"
 
 #include <QMenu>
+#include <QPainter>
 #include <algorithm>
 
 #ifndef COMPILE_NO_IPC
