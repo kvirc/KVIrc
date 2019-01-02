@@ -40,7 +40,7 @@ public:
 	* \struct _IconSizes
 	* \brief Enumerates the valid icon sizes
 	*/
-	struct IconSizes
+	struct IconSize
 	{
 		uint uSize;          /**< icon size */
 		const char * pcName; /**< menu entry label */
@@ -51,14 +51,14 @@ public:
 	* \struct _ButtonStyles
 	* \brief Enumerates the valid button styles
 	*/
-	struct ButtonStyles
+	struct ButtonStyle
 	{
 		uint uStyle;         /**< button style */
 		const char * pcName; /**< menu entry label */
 	};
 
 protected:
-	virtual void mousePressEvent(QMouseEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
 };
 
 #endif //_KVI_TOOLBAR_H_
