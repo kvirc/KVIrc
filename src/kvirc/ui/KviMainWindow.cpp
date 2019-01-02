@@ -59,24 +59,24 @@
 #define _WANT_OPTION_FLAGS_
 #include "KviOptions.h"
 
-#include <QSplitter>
-#include <QVariant>
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QTimer>
-#include <QLayout>
+#include <QCheckBox>
+#include <QCloseEvent>
 #include <QDesktopWidget>
 #include <QEvent>
-#include <QCloseEvent>
-#include <QShortcut>
 #include <QFile>
+#include <QLayout>
+#include <QLineEdit>
 #include <QMenu>
-#include <QWindowStateChangeEvent>
-#include <QCheckBox>
+#include <QMessageBox>
+#include <QShortcut>
+#include <QSplitter>
 #include <QString>
+#include <QTimer>
+#include <QVariant>
+#include <QWindowStateChangeEvent>
 
-#include <ctime>
 #include <algorithm>
+#include <ctime>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 #include <QPixmap>
@@ -108,10 +108,6 @@ KviMainWindow::KviMainWindow(QWidget * pParent)
 
 	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 
-	m_pActiveContext = nullptr;
-
-	m_pTrayIcon = nullptr;
-
 	m_pSplitter = new QSplitter(Qt::Horizontal, this);
 	m_pSplitter->setObjectName("main_frame_splitter");
 	m_pSplitter->setChildrenCollapsible(false);
@@ -141,12 +137,6 @@ KviMainWindow::KviMainWindow(QWidget * pParent)
 		// the init function)
 		m_pStatusBar->load();
 	}
-	else
-	{
-		m_pStatusBar = nullptr;
-	}
-
-	m_pWindowList = nullptr;
 
 	createWindowList();
 
@@ -213,26 +203,13 @@ KviMainWindow::~KviMainWindow()
 	delete m_pStatusBar;
 	m_pStatusBar = nullptr;
 
-	std::vector<KviWindow *> l_winListCopy(m_WinList.begin(), m_WinList.end());
-	std::vector<KviWindow *>::size_type iCount = 0;
+	std::vector<KviWindow *> lWinListCopy(m_WinList.begin(), m_WinList.end());
+	// Sort the console windows to the end so they are closed last
+	std::sort(begin(lWinListCopy), end(lWinListCopy), [](KviWindow * a, KviWindow * b){
+		return !a->isConsole() && b->isConsole();
+	});
 
-	// close all not console windows
-	while(iCount < l_winListCopy.size())
-	{
-		KviWindow * lkWindow = l_winListCopy[iCount];
-		if(lkWindow->type() != KviWindow::Console)
-		{
-			closeWindow(lkWindow);
-			l_winListCopy.erase(l_winListCopy.begin() + iCount);
-		}
-		else
-		{
-			++iCount;
-		}
-	}
-
-	// close all the remaining windows (consoles)
-	for(auto & i : l_winListCopy)
+	for(auto & i : lWinListCopy)
 		closeWindow(i);
 
 	g_pMainWindow = nullptr;
@@ -269,10 +246,8 @@ void KviMainWindow::saveModuleExtensionToolBars()
 	for(auto & t : m_pModuleExtensionToolBarList)
 	{
 		QString s = t->descriptor()->module()->name();
-		s += ":";
+		s += ':';
 		s += t->descriptor()->name().ptr();
-
-		//qDebug("FOUND TOOLBAR %s",t.descriptor()->name().ptr());
 
 		KVI_OPTION_STRINGLIST(KviOption_stringlistModuleExtensionToolbars).append(s);
 	}
@@ -281,10 +256,9 @@ void KviMainWindow::saveModuleExtensionToolBars()
 KviMexToolBar * KviMainWindow::moduleExtensionToolBar(int extensionId)
 {
 	for(auto & t : m_pModuleExtensionToolBarList)
-	{
 		if(extensionId == t->descriptor()->id())
 			return t;
-	}
+
 	return nullptr;
 }
 
@@ -340,7 +314,7 @@ void KviMainWindow::installAccelerators()
 		m_pAccellerators.push_back(KviShortcut::create(key, this, SLOT(accelActivated()), SLOT(accelActivated()), Qt::ApplicationShortcut));
 }
 
-void KviMainWindow::freeAccelleratorKeySequence(QString & key)
+void KviMainWindow::freeAccelleratorKeySequence(const QString & key)
 {
 	QKeySequence kS(key);
 	for(auto & pS : m_pAccellerators)
@@ -358,7 +332,7 @@ void KviMainWindow::freeAccelleratorKeySequence(QString & key)
 
 void KviMainWindow::accelActivated()
 {
-	KVS_TRIGGER_EVENT_1(KviEvent_OnAccelKeyPressed, g_pActiveWindow, (((QShortcut *)sender())->key()).toString());
+	KVS_TRIGGER_EVENT_1(KviEvent_OnAccelKeyPressed, g_pActiveWindow, ((qobject_cast<QShortcut *>(sender()))->key()).toString());
 }
 
 void KviMainWindow::executeInternalCommand(int index)
@@ -437,19 +411,16 @@ void KviMainWindow::closeActiveWindow()
 
 void KviMainWindow::closeWindow(KviWindow * wnd)
 {
-	if(wnd->inherits("KviConsoleWindow"))
+	if(wnd->isConsole() && consoleCount() <= 1)
 	{
-		if(consoleCount() <= 1)
-		{
-			KVS_TRIGGER_EVENT_0(KviEvent_OnFrameWindowDestroyed, wnd);
-			KVS_TRIGGER_EVENT_0(KviEvent_OnKVIrcShutdown, wnd);
-		}
+		KVS_TRIGGER_EVENT_0(KviEvent_OnFrameWindowDestroyed, wnd);
+		KVS_TRIGGER_EVENT_0(KviEvent_OnKVIrcShutdown, wnd);
 	}
 	// notify the destruction
 	wnd->triggerDestructionEvents();
 
 	// save it's properties
-	if(KVI_OPTION_BOOL(KviOption_boolWindowsRememberProperties)) // && (wnd->type() == KviWindow::Channel))
+	if(KVI_OPTION_BOOL(KviOption_boolWindowsRememberProperties))
 	{
 		QString group;
 		wnd->getConfigGroupName(group);
@@ -462,14 +433,6 @@ void KviMainWindow::closeWindow(KviWindow * wnd)
 	const auto iter = std::find(m_WinList.begin(), m_WinList.end(), wnd);
 	if (iter != m_WinList.end())
 		m_WinList.erase(iter);
-
-#if 0
-	// hide it
-	if(wnd->parentWidget())
-		wnd->mdiParent()->hide();
-	else
-		wnd->hide();
-#endif
 
 	if(wnd == g_pActiveWindow)
 	{
@@ -492,7 +455,6 @@ void KviMainWindow::closeWindow(KviWindow * wnd)
 
 			if(!bGotIt)
 			{
-				// :/
 				g_pActiveWindow = nullptr;
 				m_pActiveContext = nullptr;
 			}
@@ -531,7 +493,7 @@ void KviMainWindow::addWindow(KviWindow * wnd, bool bShow)
 	{
 		g_pWinPropertiesConfig->setGroup(group);
 	}
-	else if(wnd->type() == KviWindow::Channel && g_pWinPropertiesConfig->hasGroup(group = wnd->windowName()))
+	else if(wnd->isChannel() && g_pWinPropertiesConfig->hasGroup(group = wnd->windowName()))
 	{
 		// try to load pre-4.2 channel settings
 		g_pWinPropertiesConfig->setGroup(group);
@@ -659,25 +621,16 @@ KviConsoleWindow * KviMainWindow::createNewConsole(bool bFirstInFrame, bool bSho
 	return c;
 }
 
-unsigned int KviMainWindow::consoleCount()
+int KviMainWindow::consoleCount()
 {
-	unsigned int count = 0;
-	for(auto & wnd : m_WinList)
-	{
-		if(wnd)
-			if(wnd->type() == KviWindow::Console)
-				count++;
-	}
-	return count;
+	return std::count_if(begin(m_WinList), end(m_WinList), [](KviWindow * w){ return w->isConsole(); });
 }
 
 KviConsoleWindow * KviMainWindow::firstConsole()
 {
 	for(auto & wnd : m_WinList)
-	{
-		if(wnd->type() == KviWindow::Console)
-			return (KviConsoleWindow *)wnd;
-	}
+		if(wnd->isConsole())
+			return qobject_cast<KviConsoleWindow *>(wnd);
 
 	// We end up here when we have not console windows.
 	// This may happen at early startup or late before shutdown.
@@ -690,8 +643,8 @@ KviConsoleWindow * KviMainWindow::firstNotConnectedConsole()
 	{
 		if(wnd->type() == KviWindow::Console)
 		{
-			if(!((KviConsoleWindow *)wnd)->connectionInProgress())
-				return (KviConsoleWindow *)wnd;
+			if(!qobject_cast<KviConsoleWindow *>(wnd)->connectionInProgress())
+				return qobject_cast<KviConsoleWindow *>(wnd);
 		}
 	}
 	return nullptr;
@@ -704,7 +657,6 @@ void KviMainWindow::childWindowCloseRequest(KviWindow * wnd)
 
 void KviMainWindow::setActiveWindow(KviWindow * wnd)
 {
-	// ASSERT(m_WinList.findRef(wnd))
 	m_pWindowStack->showAndActivate(wnd);
 }
 
@@ -772,7 +724,6 @@ void KviMainWindow::windowActivated(KviWindow * wnd, bool bForce)
 	if(!wnd)
 		return; // this can happen?
 
-	// ASSERT(m_WinList.findRef(wnd))
 	// unless we want to bForce the active window to be re-activated
 	if(g_pActiveWindow == wnd && !bForce)
 		return;
@@ -805,8 +756,7 @@ void KviMainWindow::changeEvent(QEvent * e)
 {
 #ifndef COMPILE_ON_MAC
 	// For Qt5 this should be used to minimize to tray
-	if(
-	    (e->type() == QEvent::WindowStateChange) && (windowState() & Qt::WindowMinimized) && KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
+	if((e->type() == QEvent::WindowStateChange) && (windowState() & Qt::WindowMinimized) && KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
 	{
 
 		if(!trayIcon())
@@ -815,9 +765,9 @@ void KviMainWindow::changeEvent(QEvent * e)
 		}
 		if(trayIcon())
 		{
-			QWindowStateChangeEvent * ev = (QWindowStateChangeEvent *)e;
+			QWindowStateChangeEvent * ev = static_cast<QWindowStateChangeEvent *>(e);
 			KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = ev->oldState() & Qt::WindowMaximized;
-			QTimer::singleShot(0, this, SLOT(hide()));
+			QTimer::singleShot(0, this, &KviMainWindow::hide);
 		}
 		return;
 	}
@@ -831,14 +781,11 @@ void KviMainWindow::changeEvent(QEvent * e)
 		// and hopefully make the dock widget work correctly
 		// in this case.
 		// This will also trigger the OnWindowActivated event :)
-		if(isActiveWindow())
+		if(g_pActiveWindow)
 		{
-			if(g_pActiveWindow)
+			if(isActiveWindow())
 				windowActivated(g_pActiveWindow, true);
-		}
-		else
-		{
-			if(g_pActiveWindow)
+			else
 				g_pActiveWindow->lostUserFocus();
 		}
 	}
@@ -859,7 +806,7 @@ void KviMainWindow::closeEvent(QCloseEvent * e)
 		{
 			e->ignore();
 			KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = isMaximized();
-			QTimer::singleShot(0, this, SLOT(hide()));
+			QTimer::singleShot(0, this, &KviMainWindow::hide);
 		}
 		return;
 	}
@@ -870,20 +817,16 @@ void KviMainWindow::closeEvent(QCloseEvent * e)
 		bool bGotRunningConnection = false;
 		for(auto & w : m_WinList)
 		{
-			if(w->type() == KviWindow::Console)
+			if(w->isConsole() && qobject_cast<KviConsoleWindow *>(w)->connectionInProgress())
 			{
-				if(((KviConsoleWindow *)w)->connectionInProgress())
-				{
-					bGotRunningConnection = true;
-					break;
-				}
+				bGotRunningConnection = true;
+				break;
 			}
 		}
 
 		if(bGotRunningConnection)
 		{
-			QString txt;
-			txt += __tr2qs("There are active connections, are you sure you wish to quit KVIrc?");
+			QString txt =  __tr2qs("There are active connections, are you sure you wish to quit KVIrc?");
 
 			switch(QMessageBox::warning(this, __tr2qs("Confirm Close - KVIrc"), txt, __tr2qs("&Yes"), __tr2qs("&Always"), __tr2qs("&No"), 2, 2))
 			{
@@ -924,7 +867,7 @@ void KviMainWindow::hideEvent(QHideEvent * e)
 		if(trayIcon())
 		{
 			KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = isMaximized();
-			QTimer::singleShot(0, this, SLOT(hide()));
+			QTimer::singleShot(0, this, &KviMainWindow::hide);
 		}
 		return;
 	}
@@ -947,7 +890,7 @@ void KviMainWindow::updatePseudoTransparency()
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	uint uOpacity = KVI_OPTION_UINT(KviOption_uintGlobalWindowOpacityPercent) < 50 ? 50 : KVI_OPTION_UINT(KviOption_uintGlobalWindowOpacityPercent);
-	setWindowOpacity((float)uOpacity / 100);
+	setWindowOpacity(uOpacity / 100.f);
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #ifndef Q_WS_EX_LAYERED
 #define Q_WS_EX_LAYERED WS_EX_LAYERED
@@ -1066,10 +1009,9 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
 {
 	p->clear();
 
-	disconnect(p, SIGNAL(triggered(QAction *)), this, SLOT(toolbarsPopupSelected(QAction *))); // just to be sure
-	connect(p, SIGNAL(triggered(QAction *)), this, SLOT(toolbarsPopupSelected(QAction *)));
+	disconnect(p, &QMenu::triggered, this, &KviMainWindow::toolbarsPopupSelected); // just to be sure
+	connect(p, &QMenu::triggered, this, &KviMainWindow::toolbarsPopupSelected);
 
-	QAction * pAction = nullptr;
 	int cnt = 0;
 
 	KviModuleExtensionDescriptorList * l = g_pModuleExtensionManager->getExtensionList("toolbar");
@@ -1078,6 +1020,7 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
 		for(KviModuleExtensionDescriptor * d = l->first(); d; d = l->next())
 		{
 			QString label = __tr2qs("Show %1").arg(d->visibleName());
+			QAction * pAction;
 			if(d->icon())
 				pAction = p->addAction(*(d->icon()), label);
 			else
@@ -1100,17 +1043,14 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
 		{
 			QString label = __tr2qs("Show %1").arg(d->label());
 			QString ico = d->iconId();
+			QAction * pAction;
 			if(!ico.isEmpty())
 			{
 				QPixmap * pix = g_pIconManager->getImage(d->iconId());
 				if(pix)
-				{
 					pAction = p->addAction(*pix, label);
-				}
 				else
-				{
 					pAction = p->addAction(label);
-				}
 			}
 			else
 			{
@@ -1141,7 +1081,7 @@ void KviMainWindow::customizeToolBars()
 
 void KviMainWindow::toolbarsPopupSelected(QAction * pAction)
 {
-	bool bOk = false;
+	bool bOk;
 	int idext = pAction->data().toInt(&bOk);
 	if(!bOk)
 		return;
@@ -1156,13 +1096,9 @@ void KviMainWindow::toolbarsPopupSelected(QAction * pAction)
 	}
 
 	if(KviMexToolBar * t = moduleExtensionToolBar(idext))
-	{
 		t->die();
-	}
 	else
-	{
 		g_pModuleExtensionManager->allocateExtension("toolbar", idext, firstConsole());
-	}
 }
 
 void KviMainWindow::iconSizePopupSelected(QAction * pAction)
@@ -1170,7 +1106,7 @@ void KviMainWindow::iconSizePopupSelected(QAction * pAction)
 	if(!pAction)
 		return;
 
-	bool bOk = false;
+	bool bOk;
 	uint uSize = pAction->data().toUInt(&bOk);
 	if(!bOk)
 		return;
@@ -1184,7 +1120,7 @@ void KviMainWindow::buttonStylePopupSelected(QAction * pAction)
 	if(!pAction)
 		return;
 
-	bool bOk = false;
+	bool bOk;
 	uint uStyle = pAction->data().toUInt(&bOk);
 	if(!bOk)
 		return;
@@ -1194,8 +1130,7 @@ void KviMainWindow::buttonStylePopupSelected(QAction * pAction)
 
 bool KviMainWindow::focusNextPrevChild(bool next)
 {
-	QWidget * w = focusWidget();
-	if(w)
+	if(QWidget * w = focusWidget(); w)
 	{
 		if(w->focusPolicy() == Qt::StrongFocus)
 			return false;
@@ -1229,9 +1164,7 @@ void KviMainWindow::saveToolBarPositions()
 
 	QFile f(szTemp);
 	if(f.open(QIODevice::WriteOnly | QIODevice::Truncate))
-	{
 		f.write(saveState(1));
-	}
 }
 
 void KviMainWindow::restoreToolBarPositions()
