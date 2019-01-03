@@ -50,9 +50,10 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export GPG_KEYS="409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB"; fi
     - |
         if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
-            ( gpg --keyserver pool.sks-keyservers.net --recv-keys "$GPG_KEYS" \
-            || gpg --keyserver pgp.mit.edu --recv-keys "$GPG_KEYS" \
-            || gpg --keyserver keyserver.pgp.com --recv-keys "$GPG_KEYS" ); 
+            ( gpg --keyserver pool.sks-keyservers.net --recv-keys $GPG_KEYS \
+            || gpg --keyserver pgp.mit.edu --recv-keys $GPG_KEYS \
+            || gpg --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys $GPG_KEYS \
+            || gpg --keyserver keyserver.pgp.com --recv-keys $GPG_KEYS ); 
         fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm get head; fi
     - |
