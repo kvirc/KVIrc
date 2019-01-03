@@ -104,7 +104,7 @@ public:
 	* \param index The model index for the item
 	* \return void
 	*/
-	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
+	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const override;
 
 	/**
 	* \brief Sets the default icon
