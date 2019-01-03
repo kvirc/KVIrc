@@ -81,6 +81,7 @@ install:
           brew install qt5 enchant
           # want cmake newer than by default in travis osx
           brew upgrade cmake
+          brew upgrade llvm --with-clang --with-clang-extra-tools
           export CMAKE_FRAMEWORK_PATH="$CMAKE_FRAMEWORK_PATH:$(brew --prefix qt5)"
         fi
 script:
