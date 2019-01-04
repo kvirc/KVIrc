@@ -76,18 +76,18 @@ KviToolBar::~KviToolBar()
 	}
 }
 
-static const auto valid_iconsizes = std::array{
-	KviToolBar::IconSize{ 16, "Small (16x16)" },
-	KviToolBar::IconSize{ 32, "Large (32x32)" },
-};
+static const std::array<KviToolBar::IconSize, 2> valid_iconsizes = {{
+	{ 16, "Small (16x16)" },
+	{ 32, "Large (32x32)" },
+}};
 
-static const auto valid_buttonstyles = std::array{
-	KviToolBar::ButtonStyle{ Qt::ToolButtonIconOnly, "Icon Only" },
-	KviToolBar::ButtonStyle{ Qt::ToolButtonTextOnly, "Text Only" },
-	KviToolBar::ButtonStyle{ Qt::ToolButtonTextBesideIcon, "Text Beside Icon" },
-	KviToolBar::ButtonStyle{ Qt::ToolButtonTextUnderIcon, "Text Under Icon" },
-	KviToolBar::ButtonStyle{ Qt::ToolButtonFollowStyle, "Use System Style" },
-};
+static const std::array<KviToolBar::ButtonStyle, 5> valid_buttonstyles = {{
+	{ Qt::ToolButtonIconOnly, "Icon Only" },
+	{ Qt::ToolButtonTextOnly, "Text Only" },
+	{ Qt::ToolButtonTextBesideIcon, "Text Beside Icon" },
+	{ Qt::ToolButtonTextUnderIcon, "Text Under Icon" },
+	{ Qt::ToolButtonFollowStyle, "Use System Style" },
+}};
 
 void KviToolBar::mousePressEvent(QMouseEvent * e)
 {
