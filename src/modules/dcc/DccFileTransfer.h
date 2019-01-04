@@ -223,16 +223,16 @@ public:
 
 	bool event(QEvent * e) override;
 
-	virtual KviWindow * dccMarshalOutputWindow();
-	virtual const char * dccMarshalOutputContextString();
+	KviWindow * dccMarshalOutputWindow() override;
+	const char * dccMarshalOutputContextString() override;
 
-	virtual void displayPaint(QPainter * p, int column, QRect rect);
-	virtual int displayHeight(int iLineSpacing);
-	virtual void fillContextPopup(QMenu * m);
+	void displayPaint(QPainter * p, int column, QRect rect) override;
+	int displayHeight(int iLineSpacing) override;
+	void fillContextPopup(QMenu * m) override;
 	virtual void fillStatusString(QString & szBuffer);
-	virtual bool active();
-	virtual QString tipText();
-	virtual QString localFileName();
+	bool active() override;
+	QString tipText() override;
+	QString localFileName() override;
 
 	bool isFileUpload() { return m_pDescriptor->isFileUpload(); };
 
