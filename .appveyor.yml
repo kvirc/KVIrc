@@ -82,9 +82,9 @@ install:
             c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/unzip; 7z x -y ../zip/en_US.zip; 7z x -y ../zip/en_GB-ize.zip; 7z x -y ../zip/en_GB-ise.zip"
         }
     - ps: |
-        (New-Object Net.WebClient).DownloadFile('https://github.com/lordmulder/stdutils/releases/download/1.13/StdUtils.2018-03-29.zip', 'c:\StdUtils.2018-03-29.zip')
-        7z e -o"C:\Program Files (x86)\NSIS\Plugins\x86-unicode" c:\StdUtils.2018-03-29.zip Plugins\Unicode\*.dll
-        7z e -o"C:\Program Files (x86)\NSIS\Include" c:\StdUtils.2018-03-29.zip Include\*.nsh
+        (New-Object Net.WebClient).DownloadFile('https://github.com/lordmulder/stdutils/releases/download/1.14/StdUtils.2018-10-27.zip', 'c:\StdUtils.2018-10-27.zip')
+        7z e -o"C:\Program Files (x86)\NSIS\Plugins\x86-unicode" c:\StdUtils.2018-10-27.zip Plugins\Unicode\*.dll
+        7z e -o"C:\Program Files (x86)\NSIS\Include" c:\StdUtils.2018-10-27.zip Include\*.nsh
     # - c:\cygwin\bin\find "/cygdrive/c/Program Files (x86)/NSIS" "-type" f
 build_script:
     - mkdir build
