@@ -345,8 +345,8 @@ void KviUserListView::applyOptions()
 	m_iFontHeight = fm.lineSpacing();
 	m_pViewArea->m_pScrollBar->setSingleStep(m_iFontHeight);
 
-	if(KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth) < 100)
-		KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth) = 100;
+	if(KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth) < 50)
+		KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth) = 50;
 
 	setMinimumWidth(KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth));
 
