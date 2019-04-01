@@ -246,7 +246,6 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 			 * MAXLIST -> Maximum number entries in the list per mode (e.g. MAXLIST=beI:30)
 			 * WALLCHOPS -> The server supports messaging channel operators (deprecated by STATUSMSG, e.g. usage: NOTICE @#channel)
 			 * WALLVOICES -> The server supports messaging channel voiced users (deprecated by STATUSMSG, e.g. usage: NOTICE +#channel)
-			 * STATUSMSG -> The server supports messaging a particular class of channel users (e.g. STATUSMSG=+@)
 			 * CASEMAPPING -> Case mapping used for nick- and channel name comparing (e.g. CASEMAPPING=rfc1459)
 			 * ELIST -> search extensions to list modes, like mask search, topic search, creation time search (e.g. ELIST=MNUCT)
 			 * KICKLEN -> Maximum kick comment length (e.g. KICKLEN=80)
@@ -283,6 +282,13 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 				KviCString szModePrefixes = p;
 				if(szModePrefixes.hasData() && (szModePrefixes.len() == szModeFlags.len()))
 					msg->connection()->serverInfo()->setSupportedModePrefixes(szModePrefixes.ptr(), szModeFlags.ptr());
+			}
+			else if(kvi_strEqualCIN("STATUSMSG=", p, 10))
+			{
+				p += 10;
+				KviCString tmp = p;
+				if(tmp.hasData())
+					msg->connection()->serverInfo()->setSupportedStatusMsgPrefixes(tmp.ptr());
 			}
 			else if(kvi_strEqualCIN("CHANTYPES=", p, 10))
 			{
@@ -529,7 +535,6 @@ void KviIrcServerParser::parseNumericNames(KviIrcMessage * msg)
 				    mask.hasUser() ? mask.user() : QString(),
 				    mask.hasHost() ? mask.host() : QString(),
 				    iFlags);
-			*aux = ' ';
 			*aux = save;
 			// run to the next nick (or the end)
 			while((*aux) && (*aux == ' '))
@@ -607,14 +612,14 @@ void KviIrcServerParser::parseNumericTopic(KviIrcMessage * msg)
 		const char * txtptr;
 		int msgtype;
 
-		DECRYPT_IF_NEEDED(chan, msg->safeTrailing(), KVI_OUT_QUERYPRIVMSG, KVI_OUT_QUERYPRIVMSGCRYPTED, szBuffer, txtptr, msgtype)
+		DECRYPT_IF_NEEDED(chan, msg->safeTrailing(), KVI_OUT_TOPIC, KVI_OUT_TOPICCRYPTED, szBuffer, txtptr, msgtype)
 
 		QString szTopic = chan->decodeText(txtptr);
 
 		chan->topicWidget()->setTopic(szTopic);
 		chan->topicWidget()->setTopicSetBy(__tr2qs("(unknown)"));
 		if(KVI_OPTION_BOOL(KviOption_boolEchoNumericTopic) && !msg->haltOutput())
-			chan->output(KVI_OUT_TOPIC, __tr2qs("Channel topic is: %Q"), &szTopic);
+			chan->output(msgtype, __tr2qs("Channel topic is: %Q"), &szTopic);
 	}
 	else
 	{
@@ -2289,7 +2294,7 @@ void KviIrcServerParser::parseNumericBackFromAway(KviIrcMessage * msg)
 
 		if(bWasAway)
 		{
-			int uTimeDiff = bWasAway ? (kvi_unixTime() - msg->connection()->userInfo()->awayTime()) : 0;
+			int uTimeDiff = kvi_unixTime() - msg->connection()->userInfo()->awayTime();
 			pOut->output(KVI_OUT_AWAY, __tr2qs("[Leaving away status after %ud %uh %um %us]: %Q"),
 			    uTimeDiff / 86400, (uTimeDiff % 86400) / 3600, (uTimeDiff % 3600) / 60, uTimeDiff % 60,
 			    &szWText);
@@ -2399,7 +2404,7 @@ void KviIrcServerParser::parseNumericStats(KviIrcMessage * msg)
 		if(msg->paramCount() > 2)
 		{
 			KviCString szParms;
-			for(std::size_t i = 1; i < msg->paramCount(); ++i)
+			for(int i = 1; i < msg->paramCount(); ++i)
 			{
 				if(szParms.hasData())
 					szParms.append(' ');
@@ -3032,6 +3037,32 @@ void KviIrcServerParser::parseNumericSaslFail(KviIrcMessage * msg)
 		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szParam = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_SERVERINFO, __tr2qs("SASL authentication error: %Q"), &szParam);
+	}
+
+	// Handle fallback if possible for SASL auth failure or dump if user mandates SASL
+	// and no fallback is available
+	if(msg->numeric() == 904)
+	{
+		if(msg->connection()->stateData()->sentSaslMethod() == QStringLiteral("EXTERNAL"))
+		{
+			if(!msg->connection()->target()->server()->saslNick().isEmpty() && !msg->connection()->target()->server()->saslPass().isEmpty())
+			{
+				KviWindow * pOut = static_cast<KviWindow *>(msg->console());
+				pOut->output(KVI_OUT_SERVERINFO, __tr2qs("Attempting fallback due to SASL failure."));
+				msg->connection()->sendFmtData("AUTHENTICATE PLAIN");
+				msg->connection()->stateData()->setSentSaslMethod(QStringLiteral("PLAIN"));
+				return;
+			}
+		}
+
+		if(KVI_OPTION_BOOL(KviOption_boolDropConnectionOnSaslFailure))
+		{
+			KviWindow * pOut = static_cast<KviWindow *>(msg->console());
+			pOut->output(KVI_OUT_SERVERINFO, __tr2qs("SASL auth failed. Dropping the connection."));
+			msg->connection()->sendFmtData("QUIT");
+			msg->connection()->abort();
+			return;
+		}
 	}
 
 	if(msg->connection()->stateData()->isInsideAuthenticate())

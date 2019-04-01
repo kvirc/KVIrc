@@ -47,9 +47,6 @@ class KVIRC_API KviScriptEditor : public QWidget
 protected:
 	KviScriptEditor(QWidget * par) : QWidget(par){};
 
-protected:
-	QLineEdit * m_pFindLineedit;
-
 public:
 	virtual void setText(const char * txt) { setText(QByteArray(txt)); };
 	virtual void setText(const QByteArray & txt){};

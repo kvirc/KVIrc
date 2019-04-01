@@ -461,7 +461,7 @@ void ClassEditorWidget::createFullClass(KviKvsObjectClass * pClass, ClassEditorT
 
 bool ClassEditorWidget::hasSelectedItems()
 {
-	return m_pTreeWidget->selectedItems().count() ? 1 : 0;
+	return m_pTreeWidget->selectedItems().count() ? true : false;
 }
 
 bool ClassEditorWidget::classExists(QString & szFullItemName)
@@ -808,7 +808,7 @@ void ClassEditorWidget::currentItemChanged(QTreeWidgetItem * pTree, QTreeWidgetI
 		{
 			QString szReminderText = __tr2qs_ctx("Reminder text.", "editor");
 			szReminderText += ": <b>";
-			szReminderText += m_pLastEditedItem->reminder().toHtmlEscaped();
+			szReminderText += m_pLastEditedItem->reminder();
 			szReminderText += "</b>";
 			m_pReminderLabel->setText(szReminderText);
 			m_pReminderLabel->show();
@@ -1054,15 +1054,12 @@ void ClassEditorWidget::exportClassBuffer(QString & szBuffer, ClassEditorTreeWid
 		ClassEditorTreeWidgetItem * pFunction = (ClassEditorTreeWidgetItem *)pItem->child(i);
 		if(pFunction->isMethod())
 		{
-			QString reminder = pFunction->reminder();
-			KviQString::escapeKvs(&reminder);
-
 			szBuffer += "\t";
 			if(pFunction->isInternalFunction())
 				szBuffer += "internal ";
 			szBuffer += "function ";
 			szBuffer += pFunction->name();
-			szBuffer += "(\"" + reminder + "\")\n";
+			szBuffer += "(" + pFunction->reminder() + ")\n";
 			QString szCode = pFunction->buffer();
 			KviCommandFormatter::blockFromBuffer(szCode);
 			KviCommandFormatter::indent(szCode);
@@ -2074,7 +2071,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 
 	pLabel = new QLabel(pHBox);
 	pLabel->setObjectName("reminderlabel");
-	pLabel->setWordWrap(1);
+	pLabel->setWordWrap(true);
 	pLabel->setText(__tr2qs_ctx("Please enter the optional reminder string for the member function:", "editor"));
 
 	m_pReminderLineEdit = new QLineEdit(pHBox);

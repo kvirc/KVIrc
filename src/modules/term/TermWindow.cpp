@@ -42,7 +42,7 @@ TermWindow::TermWindow(const char * name)
     : KviWindow(KviWindow::Terminal, name)
 {
 	g_pTermWindowList.insert(this);
-	m_pTermWidget = 0;
+	m_pTermWidget = nullptr;
 	m_pTermWidget = new TermWidget(this);
 }
 

@@ -48,13 +48,13 @@
 #include <unordered_set>
 #include <vector>
 
-typedef struct _KviUrl
+struct KviUrl
 {
 	QString url;
 	QString window;
 	int count;
 	QString timestamp;
-} KviUrl;
+};
 
 class UrlDialogTreeWidget : public QTreeWidget
 {
@@ -64,8 +64,8 @@ public:
 	~UrlDialogTreeWidget(){};
 
 protected:
-	void mousePressEvent(QMouseEvent * e);
-	void paintEvent(QPaintEvent * event);
+	void mousePressEvent(QMouseEvent * e) override;
+	void paintEvent(QPaintEvent * event) override;
 signals:
 	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 	void contextMenuRequested(QPoint);
@@ -80,11 +80,11 @@ public:
 
 private:
 	KviTalMenuBar * m_pMenuBar;
-	QMenu * m_pListPopup; // dynamic popup menu
+	QMenu * m_pListPopup = nullptr; // dynamic popup menu
 	QString m_szUrl;      // used to pass URLs to sayToWin slot
 protected:
-	QPixmap * myIconPtr();
-	void resizeEvent(QResizeEvent *);
+	QPixmap * myIconPtr() override;
+	void resizeEvent(QResizeEvent *) override;
 
 public:
 	UrlDialogTreeWidget * m_pUrlList;
@@ -109,7 +109,7 @@ class BanFrame : public QFrame
 {
 	Q_OBJECT
 public:
-	BanFrame(QWidget * parent = 0, const char * name = 0, bool banEnable = false);
+	BanFrame(QWidget * parent = nullptr, const char * name = nullptr, bool banEnable = false);
 	~BanFrame();
 	void saveBans(KviConfigurationFile * cfg);
 
@@ -136,7 +136,7 @@ public:
 private:
 	QCheckBox * cb[cbnum];
 	BanFrame * m_pBanFrame;
-	void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent *) override;
 protected slots:
 	void acceptbtn();
 	void discardbtn();

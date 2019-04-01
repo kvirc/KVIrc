@@ -29,6 +29,8 @@
 // KviIrcConnectionAsyncWhowasData for creating an awhowas command
 // It is now also used by KviIrcConnectionAsyncWhoisData
 
+#include "KviQString.h"
+
 #include <unordered_set>
 
 #ifndef __GNUC__
@@ -45,14 +47,9 @@ public:
 
 	T * lookup(const QString & nick)
 	{
-		if(m_pInfoList.empty())
-			return nullptr;
-
 		for(auto & i : m_pInfoList)
-		{
 			if(KviQString::equalCI(nick, i->szNick))
 				return i;
-		}
 
 		return nullptr;
 	}

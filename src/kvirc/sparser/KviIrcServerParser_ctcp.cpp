@@ -62,7 +62,7 @@
 #include "KviCryptController.h"
 #endif //COMPILE_CRYPT_SUPPORT
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #include <QDateTime>
 #include <QLocale>
@@ -363,14 +363,14 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		The DCC tag is used to initiate a Direct Client Connection.
 		The known DCC types are:[br]
 		[pre]
-			CHAT[br]
-			SEND[br]
-			SSEND[br]
-			TSEND[br]
-			GET[br]
-			TGET[br]
-			ACCEPT[br]
-			RESUME[br]
+			CHAT
+			SEND
+			SSEND
+			TSEND
+			GET
+			TGET
+			ACCEPT
+			RESUME
 		[/pre]
 */
 
@@ -1112,7 +1112,7 @@ void KviIrcServerParser::parseCtcpReplyPing(KviCtcpMessage * msg)
 		KviCString szTime;
 
 		struct timeval tv;
-		kvi_gettimeofday(&tv, nullptr);
+		kvi_gettimeofday(&tv);
 
 		msg->pData = extractCtcpParameter(msg->pData, szTime, true);
 
@@ -1872,7 +1872,7 @@ void KviIrcServerParser::parseCtcpReplyAvatar(KviCtcpMessage * msg)
 	    msg->msg->haltOutput() ? QString() : textLine);
 }
 
-typedef void (*dccModuleCtcpDccParseRoutine)(KviDccRequest * par);
+using dccModuleCtcpDccParseRoutine = void (*)(KviDccRequest *);
 
 void KviIrcServerParser::parseCtcpRequestDcc(KviCtcpMessage * msg)
 {

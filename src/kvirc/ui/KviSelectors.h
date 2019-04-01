@@ -52,7 +52,7 @@ public:
 public:
 	virtual void commit(){};
 	virtual QString textForSearch() { return QString(); };
-	virtual QWidget * widgetToHighlight() { return 0; };
+	virtual QWidget * widgetToHighlight() { return nullptr; };
 };
 
 class KVIRC_API KviBoolSelector : public QCheckBox, public KviSelectorInterface

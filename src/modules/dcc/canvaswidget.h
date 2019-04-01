@@ -263,9 +263,9 @@ protected:
 	void setItemSelected(QCanvasItem * it);
 	void clearSelection();
 	void insertObjectAt(const QPoint & pnt, ObjectType o);
-	virtual void contentsMousePressEvent(QMouseEvent * e);
-	virtual void contentsMouseMoveEvent(QMouseEvent * e);
-	virtual void contentsMouseReleaseEvent(QMouseEvent * e);
+	void contentsMousePressEvent(QMouseEvent * e) override;
+	void contentsMouseMoveEvent(QMouseEvent * e) override;
+	void contentsMouseReleaseEvent(QMouseEvent * e) override;
 public slots:
 	void insertRectangle();
 	void insertRichText();
@@ -328,7 +328,7 @@ protected:
 	KviCanvasItemPropertiesWidget * m_pPropertiesWidget;
 
 protected:
-	virtual void resizeEvent(QResizeEvent *);
+	void resizeEvent(QResizeEvent *) override;
 };
 #endif
 

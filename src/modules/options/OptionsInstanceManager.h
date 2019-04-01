@@ -39,9 +39,7 @@
 #include "KviQString.h"
 #include "KviIconManager.h"
 
-typedef struct _OptionsWidgetInstanceEntry OptionsWidgetInstanceEntry;
-
-typedef struct _OptionsWidgetInstanceEntry
+struct OptionsWidgetInstanceEntry
 {
 	KviOptionsWidget * (*createProc)(QWidget *);
 	KviOptionsWidget * pWidget; // singleton
@@ -57,7 +55,7 @@ typedef struct _OptionsWidgetInstanceEntry
 	bool bIsNotContained;
 	KviPointerList<OptionsWidgetInstanceEntry> * pChildList;
 	bool bDoInsert; // a helper for OptionsDialog::fillListView()
-} OptionsWidgetInstanceEntry;
+};
 
 class OptionsInstanceManager : public QObject
 {

@@ -50,7 +50,7 @@ public:
 	* \param pcName The name of the box
 	* \return KviTalHBox
 	*/
-	KviTalHBox(QWidget * pParent, char * pcName = 0);
+	KviTalHBox(QWidget * pParent, char * pcName = nullptr);
 
 	/**
 	* \brief Destroys an horizontal box object
@@ -113,7 +113,7 @@ public:
 	void addSpacing(int iSpace);
 
 protected:
-	virtual void childEvent(QChildEvent * e);
+	void childEvent(QChildEvent * e) override;
 };
 
 #endif // _KVI_TAL_HBOX_H_

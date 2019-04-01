@@ -1,0 +1,26 @@
+kvirc for Debian
+================
+
+    Embedded Perl
+    *************
+    The embedded Perl interpreter works again and uses PERL_SYS_INIT3(). It was
+    briefly tested with the following example, you can test it in the Script
+    Tester:
+        perl.begin
+            KVIrc::echo("Hello world\n");
+        perl.end
+ -- Kai Wasserbäch <curan@debian.org>  Tue, 02 Jun 2009 18:35:25 +0200
+
+
+    Default Script Issues
+    *********************
+    In case you've upgraded KVIrc and something doesn't seem to work after
+    that, that is handled by a default script, then try to update the default
+    script first (force it, if necessary).
+    An example of this, would be a not working URL handler (clicking on an URL
+    doesn't open the browser).
+
+    Please note, that there is nothing about this, that can be done by a
+    maintainer script which is run by dpkg on any upgrade, because a copy of the
+    default script is stored in your $HOME, so you can customize it.
+ -- Kai Wasserbäch <curan@debian.org>  Mon, 14 Feb 2011 11:41:37 +0100

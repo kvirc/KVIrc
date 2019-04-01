@@ -186,7 +186,7 @@ void HelpWindow::startSearch()
 	str = str.replace("`", "\"");
 	QString buf = str;
 	str = str.replace("-", " ");
-	str = str.replace(QRegExp("\\s[\\S]?\\s"), " ");
+	str = str.replace(QRegExp(R"(\s[\S]?\s)"), " ");
 	m_terms = str.split(" ", QString::SkipEmptyParts);
 	QStringList termSeq;
 	QStringList seqWords;

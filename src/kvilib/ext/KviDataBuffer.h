@@ -33,7 +33,7 @@ public:
 	// uSize MUST be greater than 0
 	// if data is non-zero, it MUST point to a buffer at least uSize bytes long
 	// and the data is COPIED from that buffer!
-	KviDataBuffer(int uSize, const unsigned char * data = 0);
+	KviDataBuffer(int uSize, const unsigned char * data = nullptr);
 	KviDataBuffer();
 	~KviDataBuffer();
 

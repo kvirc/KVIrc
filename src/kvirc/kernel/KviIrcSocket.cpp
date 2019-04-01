@@ -33,7 +33,6 @@
 #include "kvi_debug.h"
 #include "KviCString.h"
 #include "KviOptions.h"
-#include "kvi_socket.h"
 #include "KviConsoleWindow.h"
 #include "kvi_out.h"
 #include "KviIrcLink.h"
@@ -46,6 +45,7 @@
 
 #include <QTimer>
 #include <QSocketNotifier>
+#include <memory>
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 #include <unistd.h> //for gettimeofday()
@@ -58,37 +58,12 @@
 unsigned int g_uNextIrcLinkId = 1;
 
 KviIrcSocket::KviIrcSocket(KviIrcLink * pLink)
-    : QObject()
+    : QObject(), m_pLink(pLink)
 {
 	m_uId = g_uNextIrcLinkId;
 	g_uNextIrcLinkId++;
 
-	m_pLink = pLink;
 	m_pConsole = m_pLink->console();
-
-	m_state = Idle; // current socket state
-
-	m_pRsn = nullptr;            // read socket notifier
-	m_pWsn = nullptr;            // write socket notifier
-	m_sock = KVI_INVALID_SOCKET; // socket
-
-	m_pIrcServer = nullptr; // current server data
-	m_pProxy = nullptr;     // current proxy data
-
-	m_pTimeoutTimer = nullptr; // timeout for connect()
-
-	m_uReadBytes = 0;   // total read bytes per session
-	m_uSentBytes = 0;   // total sent bytes per session
-	m_uSentPackets = 0; // total packets sent per session
-
-	m_pSendQueueHead = nullptr; // data queue
-	m_pSendQueueTail = nullptr; //
-
-	m_eLastError = KviError::Success;
-
-#ifdef COMPILE_SSL_SUPPORT
-	m_pSSL = nullptr;
-#endif
 
 	m_tAntiFloodLastMessageTime.tv_sec = 0;
 	m_tAntiFloodLastMessageTime.tv_usec = 0;
@@ -96,9 +71,7 @@ KviIrcSocket::KviIrcSocket(KviIrcLink * pLink)
 	if(KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout) < 100)
 		KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout) = 100; // this is our minimum, we don't want to lag the app
 
-	m_bInProcessData = false;
-
-	m_pFlushTimer.reset(new QTimer()); // queue flush timer
+	m_pFlushTimer = std::make_unique<QTimer>(); // queue flush timer
 	connect(m_pFlushTimer.get(), SIGNAL(timeout()), this, SLOT(flushSendQueue()));
 }
 
@@ -208,9 +181,7 @@ void KviIrcSocket::outputSSLError(const QString & szMsg)
 
 void KviIrcSocket::outputProxyMessage(const QString & szMsg)
 {
-	QStringList list = szMsg.isEmpty() ? QStringList() : szMsg.split("\n", QString::SkipEmptyParts);
-
-	for(const auto & it : list)
+	for(const auto & it : szMsg.split('\n', QString::SkipEmptyParts))
 	{
 		QString szTemporary = it.trimmed();
 		m_pConsole->output(KVI_OUT_SOCKETMESSAGE, __tr2qs("[PROXY]: %Q"), &szTemporary);
@@ -219,9 +190,7 @@ void KviIrcSocket::outputProxyMessage(const QString & szMsg)
 
 void KviIrcSocket::outputProxyError(const QString & szMsg)
 {
-	QStringList list = szMsg.isEmpty() ? QStringList() : szMsg.split("\n", QString::SkipEmptyParts);
-
-	for(const auto & it : list)
+	for(const auto & it : szMsg.split('\n', QString::SkipEmptyParts))
 	{
 		QString szTemporary = it.trimmed();
 		m_pConsole->output(KVI_OUT_SOCKETERROR, __tr2qs("[PROXY ERROR]: %Q"), &szTemporary);
@@ -273,12 +242,12 @@ KviError::Code KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * 
 	// Coherent state, thnx.
 	reset();
 
+#ifndef COMPILE_SSL_SUPPORT
 	if(pServer->useSSL())
 	{
-#ifndef COMPILE_SSL_SUPPORT
 		return KviError::NoSSLSupport;
-#endif //COMPILE_SSL_SUPPORT
 	}
+#endif //COMPILE_SSL_SUPPORT
 
 	// Copy the server
 	m_pIrcServer = new KviIrcServer(*pServer);
@@ -777,7 +746,7 @@ void KviIrcSocket::proxyLoginV4()
 	KviMemory::move((void *)(pcBufToSend + 4), (void *)&host, 4);
 	KviMemory::move((void *)(pcBufToSend + 8), (void *)(szUserAndPass.ptr()), szUserAndPass.len());
 
-	pcBufToSend[iLen - 1] = 0; //NULL
+	pcBufToSend[iLen - 1] = '\0';
 
 	// send it into hyperspace...
 	setState(ProxyFinalV4);
@@ -1714,7 +1683,7 @@ void KviIrcSocket::flushSendQueue()
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic))
 		{
-			kvi_gettimeofday(&curTime, nullptr);
+			kvi_gettimeofday(&curTime);
 
 			int iTimeDiff = curTime.tv_usec - m_tAntiFloodLastMessageTime.tv_usec;
 			iTimeDiff += (curTime.tv_sec - m_tAntiFloodLastMessageTime.tv_sec) * 1000000;

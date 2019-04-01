@@ -1,0 +1,20 @@
+Description: Remove -O0 from CFLAGS/CXXFLAGS
+Author: Andrey Rakhmatullin <wrar@debian.org>
+Forwarded: not-needed
+Last-Update: 2017-10-13
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 96659b5..0b0c2b8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -220,8 +220,8 @@ else()
+ 			# CMAKE_CXX_FLAGS_DEBUG before finalizing. This results in the
+ 			# default DEBUG flag of '-g' being appended, and therefore
+ 			# overriding what you specify here
+-			set(CMAKE_CXX_FLAGS_DEBUG "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+-			set(CMAKE_C_FLAGS_DEBUG "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
++			set(CMAKE_CXX_FLAGS_DEBUG "-ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
++			set(CMAKE_C_FLAGS_DEBUG "-ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+ 			include(CheckCXXCompilerFlag)
+ 			CHECK_CXX_COMPILER_FLAG("-fvisibility=hidden" CXX_HAS_VH_FLAG)
+ 			CHECK_CXX_COMPILER_FLAG("-fvisibility-inlines-hidden" CXX_HAS_VIH_FLAG)

@@ -71,8 +71,9 @@ bool kvi_mayBeSpam(KviCString msg, KviCString & spamWord)
 	for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistSpamWords))
 	{
 		// FIXME : This is SLOOOOOOOOW (QString -> ascii translation!!)
-		const char * aux = it.toLatin1();
-		if(aux)
+		QByteArray szLatin1 = it.toLatin1();
+		const char * aux = szLatin1.data();
+		if(*aux)
 		{
 			if(msg.findFirstIdx(aux, false) != -1)
 			{

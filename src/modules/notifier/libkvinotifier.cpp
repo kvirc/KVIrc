@@ -36,8 +36,6 @@
 #include "KviTimeUtils.h"
 #include "KviOptions.h"
 
-#include <QSplitter>
-
 NotifierWindow * g_pNotifierWindow = nullptr;
 kvi_time_t g_tNotifierDisabledUntil = 0;
 
@@ -255,10 +253,8 @@ static bool notifier_kvs_cmd_show(KviKvsModuleCommandCall * c)
 
 static bool notifier_kvs_fnc_isEnabled(KviKvsModuleFunctionCall * c)
 {
-	bool bCheck;
-	if(!KVI_OPTION_BOOL(KviOption_boolEnableNotifier))
-		bCheck = false;
-	else
+	bool bCheck = false;
+	if(KVI_OPTION_BOOL(KviOption_boolEnableNotifier))
 		bCheck = g_tNotifierDisabledUntil < kvi_unixTime();
 	c->returnValue()->setBoolean(bCheck);
 	return true;

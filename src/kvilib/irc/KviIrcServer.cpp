@@ -32,7 +32,7 @@
 
 #include <memory>
 #include <vector>
-#include <stdlib.h>
+#include <cstdlib>
 
 // This is not allowed on windows unless we force the symbol to be undefined
 // It works on linux since gcc allows undefined symbols by default
@@ -94,6 +94,7 @@ KviIrcServer::KviIrcServer(const KviIrcServer & serv)
 	m_bAutoConnect = serv.m_bAutoConnect;
 	m_szSaslNick = serv.m_szSaslNick;
 	m_szSaslPass = serv.m_szSaslPass;
+	m_szSaslMethod = serv.m_szSaslMethod;
 
 	if(serv.m_pAutoJoinChannelList)
 		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
@@ -178,7 +179,7 @@ void KviIrcServer::clearReconnectInfo()
 void KviIrcServer::generateUniqueId()
 {
 	struct timeval tv;
-	kvi_gettimeofday(&tv, nullptr);
+	kvi_gettimeofday(&tv);
 	m_szId = QString("myserver%1%2%3").arg(tv.tv_usec).arg(rand() % 1000).arg(rand() % 1000);
 }
 
@@ -244,6 +245,8 @@ bool KviIrcServer::load(KviConfigurationFile * pCfg, const QString & szPrefix)
 	m_szSaslPass = pCfg->readEntry(szTmp);
 	szTmp = QString("%1SaslNick").arg(szPrefix);
 	m_szSaslNick = pCfg->readEntry(szTmp);
+	szTmp = QString("%1SaslMethod").arg(szPrefix);
+	m_szSaslMethod = pCfg->readEntry(szTmp, QStringLiteral("PLAIN"));
 	szTmp = QString("%1RealName").arg(szPrefix);
 	m_szRealName = pCfg->readEntry(szTmp);
 	szTmp = QString("%1InitUmode").arg(szPrefix);
@@ -339,6 +342,11 @@ void KviIrcServer::save(KviConfigurationFile * pCfg, const QString & szPrefix)
 	{
 		szTmp = QString("%1SaslNick").arg(szPrefix);
 		pCfg->writeEntry(szTmp, m_szSaslNick);
+	}
+	if(!m_szSaslMethod.isEmpty() && enabledSASL())
+	{
+		szTmp = QString("%1SaslMethod").arg(szPrefix);
+		pCfg->writeEntry(szTmp, m_szSaslMethod);
 	}
 	if(!m_szRealName.isEmpty())
 	{

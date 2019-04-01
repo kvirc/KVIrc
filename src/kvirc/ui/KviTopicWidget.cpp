@@ -229,15 +229,15 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 			}
 			else
 			{
-				if(curFore > 16)
+				if(curFore > KVI_EXTCOLOR_MAX)
 					p->setPen(cg.background().color());
 				else
-					p->setPen(KVI_OPTION_MIRCCOLOR(curFore));
+					p->setPen(getMircColor(curFore));
 			}
 
 			if(curBack != KVI_LABEL_DEF_BACK)
 			{
-				if(curBack > 16)
+				if(curBack > KVI_EXTCOLOR_MAX)
 				{
 					p->fillRect(curX, rect.y() + 2, wdth, rect.height() - 4,
 					    cg.text());
@@ -245,7 +245,7 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 				else
 				{
 					p->fillRect(curX, rect.y() + 2, wdth, rect.height() - 4,
-					    KVI_OPTION_MIRCCOLOR(curBack));
+					    getMircColor(curBack));
 				}
 			}
 
@@ -405,13 +405,13 @@ void KviTopicWidget::updateToolTip()
 
 		if(!m_szSetBy.isEmpty())
 		{
-			txt += "<tr><td style=\"white-space: pre\"; bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+			txt += R"(<tr><td style="white-space: pre"; bgcolor="#E0E0E0"><font color="#000000">)";
 			txt += __tr2qs("Set by") + cln + space + bb + m_szSetBy + be;
 			txt += "</font>" + enr;
 
 			if(!m_szSetAt.isEmpty())
 			{
-				txt += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+				txt += R"(<tr><td bgcolor="#E0E0E0"><font color="#000000">)";
 				txt += __tr2qs("Set on") + cln + space + bb + m_szSetAt + be;
 				txt += "</font>" + enr;
 			}
@@ -743,7 +743,7 @@ QChar KviTopicWidget::getSubstituteChar(unsigned short control_code)
 			return QChar('E');
 			break;
 		default:
-			return QChar(control_code);
+			return { control_code };
 			break;
 	}
 }

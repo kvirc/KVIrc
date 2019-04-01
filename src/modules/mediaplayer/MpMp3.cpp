@@ -239,7 +239,7 @@ int get_first_header(mp3info * mp3, long startpos)
 	long valid_start = 0;
 
 	fseek(mp3->file, startpos, SEEK_SET);
-	while(1)
+	while(true)
 	{
 		while((c = fgetc(mp3->file)) != 255 && (c != EOF))
 		{
@@ -384,9 +384,8 @@ int get_id3(mp3info * mp3)
 		}
 		else
 		{
-			size_t dummy = fread(fbuf, 1, 3, mp3->file);
+			(void)fread(fbuf, 1, 3, mp3->file);
 			fbuf[3] = '\0';
-			Q_UNUSED(dummy);
 			mp3->id3.genre[0] = 255;
 
 			if(!strcmp((const char *)"TAG", (const char *)fbuf))
@@ -394,21 +393,21 @@ int get_id3(mp3info * mp3)
 				mp3->id3_isvalid = 1;
 				mp3->datasize -= 128;
 				fseek(mp3->file, -125, SEEK_END);
-				dummy = fread(mp3->id3.title, 1, 30, mp3->file);
+				(void)fread(mp3->id3.title, 1, 30, mp3->file);
 				mp3->id3.title[30] = '\0';
-				dummy = fread(mp3->id3.artist, 1, 30, mp3->file);
+				(void)fread(mp3->id3.artist, 1, 30, mp3->file);
 				mp3->id3.artist[30] = '\0';
-				dummy = fread(mp3->id3.album, 1, 30, mp3->file);
+				(void)fread(mp3->id3.album, 1, 30, mp3->file);
 				mp3->id3.album[30] = '\0';
-				dummy = fread(mp3->id3.year, 1, 4, mp3->file);
+				(void)fread(mp3->id3.year, 1, 4, mp3->file);
 				mp3->id3.year[4] = '\0';
-				dummy = fread(mp3->id3.comment, 1, 30, mp3->file);
+				(void)fread(mp3->id3.comment, 1, 30, mp3->file);
 				mp3->id3.comment[30] = '\0';
 				if(mp3->id3.comment[28] == '\0')
 				{
 					mp3->id3.track[0] = mp3->id3.comment[29];
 				}
-				dummy = fread(mp3->id3.genre, 1, 1, mp3->file);
+				(void)fread(mp3->id3.genre, 1, 1, mp3->file);
 				unpad(mp3->id3.title);
 				unpad(mp3->id3.artist);
 				unpad(mp3->id3.album);

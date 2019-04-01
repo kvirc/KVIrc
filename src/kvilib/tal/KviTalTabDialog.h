@@ -36,7 +36,7 @@ class KVILIB_API KviTalTabDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	KviTalTabDialog(QWidget * pParent = 0, const char * name = 0, bool bModal = false);
+	KviTalTabDialog(QWidget * pParent = nullptr, const char * name = nullptr, bool bModal = false);
 	~KviTalTabDialog();
 
 protected:

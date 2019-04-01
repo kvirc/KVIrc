@@ -33,7 +33,7 @@
 
 #include <QLibrary>
 
-#include <time.h>
+#include <ctime>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"

@@ -60,7 +60,7 @@ protected:
 	KviConfigurationFile * m_pConfig;
 	QString m_szConfigFileName; // no path!
 protected:
-	virtual void showEvent(QShowEvent * e);
+	void showEvent(QShowEvent * e) override;
 
 public:
 	bool openConfig(QString filename, bool bEnsureExists = true);

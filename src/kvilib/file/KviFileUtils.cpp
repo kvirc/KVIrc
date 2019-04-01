@@ -200,7 +200,7 @@ namespace KviFileUtils
 
 		QFileInfoList lFileInfo = d.entryInfoList(QDir::Files | QDir::Dirs | QDir::Hidden | QDir::System | QDir::NoDotAndDotDot);
 
-		foreach(QFileInfo inf, lFileInfo)
+		for(const auto & inf : lFileInfo)
 		{
 			// just to be sure check that we're not deleting ..
 			if(KviQString::equalCS(inf.fileName(), "..") || KviQString::equalCS(inf.fileName(), "."))
@@ -247,8 +247,6 @@ namespace KviFileUtils
 		if(!f.open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 			return false;
 		QByteArray szTmp = szData.toUtf8();
-		if(!szTmp.data())
-			return true;
 		if(f.write(szTmp.data(), szTmp.length()) != ((unsigned int)(szTmp.length())))
 			return false;
 		return true;
@@ -266,8 +264,6 @@ namespace KviFileUtils
 		if(!f.open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 			return false;
 		QByteArray szTmp = QTextCodec::codecForLocale()->fromUnicode(szData);
-		if(!szTmp.data())
-			return true;
 		if(f.write(szTmp.data(), szTmp.length()) != ((unsigned int)(szTmp.length())))
 			return false;
 		return true;
@@ -452,7 +448,7 @@ namespace KviFileUtils
 
 		QFileInfoList fl = d.entryInfoList(QStringList(), QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot, QDir::Name);
 
-		Q_FOREACH(QFileInfo inf, fl)
+		for(const auto & inf : fl)
 		{
 			QString szName = szPrefix.isEmpty() ? inf.fileName() : QString("%1" KVI_PATH_SEPARATOR "%2").arg(szPrefix).arg(inf.fileName());
 			if(inf.isDir())

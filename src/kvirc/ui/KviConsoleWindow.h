@@ -98,22 +98,22 @@ protected:
 
 protected:
 	// UI
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void closeEvent(QCloseEvent * e);
-	virtual void getBaseLogFileName(QString & buffer);
-	virtual void getWindowListTipText(QString & buffer);
-	virtual QSize sizeHint() const;
-	virtual void applyOptions();
-	virtual void triggerCreationEvents();
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void resizeEvent(QResizeEvent * e) override;
+	void closeEvent(QCloseEvent * e) override;
+	void getBaseLogFileName(QString & buffer) override;
+	void getWindowListTipText(QString & buffer) override;
+	QSize sizeHint() const override;
+	void applyOptions() override;
+	void triggerCreationEvents() override;
 	void fillStatusString();
 	//void socketError(int iError);
 	//void socketStateChange();
 	//void registerLinkMonitor(KviIrcSocketMonitor * m);
 	//void unregisterLinkMonitor(KviIrcSocketMonitor * m);
-	virtual void loadProperties(KviConfigurationFile * cfg);
-	virtual void saveProperties(KviConfigurationFile * cfg);
+	void loadProperties(KviConfigurationFile * cfg) override;
+	void saveProperties(KviConfigurationFile * cfg) override;
 
 	void destroyConnection();
 	// internal helper for applyHighlighting
@@ -126,23 +126,23 @@ public:
 	KviIrcContext * context() { return m_pContext; };
 
 	// UI
-	inline KviUserListView * notifyListView() { return m_pNotifyListView; };
-	inline int selectedCount();
+	KviUserListView * notifyListView() const { return m_pNotifyListView; }
+	int selectedCount();
 
 	//
 	// State
 	//
-	inline KviIrcContext::State state() { return context()->state(); };
+	KviIrcContext::State state() { return context()->state(); }
 
 	// these should disappear!
-	inline bool isConnected() { return context()->isConnected(); };
-	inline bool isIPv6Connection();
-	inline bool isNotConnected();
+	bool isConnected() { return context()->isConnected(); }
+	bool isIPv6Connection();
+	bool isNotConnected();
 	bool connectionInProgress();
 	//
 	// This connection info
 	//
-	inline QString currentNetworkName();
+	QString currentNetworkName();
 	KviAvatar * currentAvatar();
 	//
 	// IRC Context wide helpers (connection related)
@@ -179,10 +179,10 @@ public:
 	// when no longer needed.
 	KviAvatar * defaultAvatarFromOptions();
 
-	void terminateConnectionRequest(bool bForce = false, const char * quitMsg = 0);
+	void terminateConnectionRequest(bool bForce = false, const char * quitMsg = nullptr);
 
 	// Status string (usermode + nick) (connection related too)
-	inline const QString & statusString() { return m_szStatusString; };
+	const QString & statusString() const { return m_szStatusString; }
 
 	KviWindow * activeWindow();
 	// User db, connection related

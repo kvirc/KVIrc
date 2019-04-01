@@ -25,7 +25,7 @@
 #include "KviKvsArray.h"
 #include "KviMemory.h"
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #define KVI_KVS_ARRAY_ALLOC_CHUNK 8
 

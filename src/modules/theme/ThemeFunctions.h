@@ -35,7 +35,7 @@
 
 namespace ThemeFunctions
 {
-	bool installThemePackage(const QString & szThemePackageFileName, QString & szError, QWidget * pDialogParent = 0);
+	bool installThemePackage(const QString & szThemePackageFileName, QString & szError, QWidget * pDialogParent = nullptr);
 
 	void getThemeHtmlDescription(
 	    QString & szBuffer,
@@ -49,7 +49,7 @@ namespace ThemeFunctions
 	    const QString & szThemeThemeEngineVersion,
 	    const QPixmap & pixScreenshot,
 	    int iUniqueIndexInDocument = 0,
-	    KviHtmlDialogData * hd = 0);
+	    KviHtmlDialogData * hd = nullptr);
 
 	bool makeKVIrcScreenshot(const QString & szSavePngFilePath, bool bMaximizeFrame = false);
 

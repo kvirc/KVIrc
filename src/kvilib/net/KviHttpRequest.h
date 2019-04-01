@@ -78,7 +78,7 @@ public:
 public:
 	KviHttpRequest();
 
-	virtual ~KviHttpRequest();
+	~KviHttpRequest();
 
 protected:
 	// data

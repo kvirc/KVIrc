@@ -79,9 +79,6 @@ public:
 
 protected:
 	ActionData * m_pActionData;
-	//QSimpleRichText * m_pText;
-	QTextDocument * m_pText;
-	QPixmap * m_pIcon;
 	QTreeWidget * m_pTreeWidget;
 	QString m_szKey;
 
@@ -102,7 +99,7 @@ public:
 	~ActionEditorTreeView();
 
 protected:
-	virtual void resizeEvent(QResizeEvent * e);
+	void resizeEvent(QResizeEvent * e) override;
 };
 
 class SingleActionEditor : public QWidget
@@ -195,10 +192,10 @@ protected:
 	ActionEditor * m_pEditor;
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void getConfigGroupName(QString & szName);
-	virtual void saveProperties(KviConfigurationFile *);
-	virtual void loadProperties(KviConfigurationFile *);
+	QPixmap * myIconPtr() override;
+	void getConfigGroupName(QString & szName) override;
+	void saveProperties(KviConfigurationFile *) override;
+	void loadProperties(KviConfigurationFile *) override;
 protected slots:
 	void cancelClicked();
 	void okClicked();

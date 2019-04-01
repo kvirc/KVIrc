@@ -45,20 +45,26 @@
 #include <QTextStream>
 #include <QUrl>
 #include <QTextCodec>
-#include <ctype.h>
+#include <cctype>
 #include <QTextDocument>
 #include <QTimer>
 
 #include <algorithm>
+#include <utility>
 
 QT_BEGIN_NAMESPACE
 
 struct Term
 {
-	Term() : frequency(-1) {}
-	Term(const QString & t, int f, QVector<Document> l) : term(t), frequency(f), documents(l) {}
+	Term() = default;
+	Term(QString t, int f, QVector<Document> l)
+	    : term(std::move(t))
+	    , frequency(f)
+	    , documents(std::move(l))
+	{
+	}
 	QString term;
-	int frequency;
+	int frequency = -1;
 	QVector<Document> documents;
 	bool operator<(const Term & i2) const { return frequency < i2.frequency; }
 };
@@ -77,15 +83,13 @@ QDataStream & operator<<(QDataStream & s, const Document & l)
 	return s;
 }
 
-HelpIndex::HelpIndex(const QString & dp, const QString & hp)
-    : QObject(nullptr), docPath(dp)
+HelpIndex::HelpIndex(QString dp, const QString & /* hp */)
+    : QObject(nullptr)
+    , docPath(std::move(dp))
 {
-	Q_UNUSED(hp);
-
 	alreadyHaveDocList = false;
-	lastWindowClosed = false;
-	connect(qApp, SIGNAL(lastWindowClosed()),
-	    this, SLOT(setLastWinClosed()));
+
+	connect(qApp, SIGNAL(lastWindowClosed()), this, SLOT(setLastWinClosed()));
 
 	m_pTimer = new QTimer(this);
 	m_pTimer->setSingleShot(true);
@@ -93,13 +97,12 @@ HelpIndex::HelpIndex(const QString & dp, const QString & hp)
 	connect(m_pTimer, SIGNAL(timeout()), this, SLOT(filterNext()));
 }
 
-HelpIndex::HelpIndex(const QStringList & dl, const QString & hp)
+HelpIndex::HelpIndex(QStringList dl, const QString & /* hp */)
     : QObject(nullptr)
+    , docList{ std::move(dl) }
 {
-	Q_UNUSED(hp);
-	docList = dl;
 	alreadyHaveDocList = true;
-	lastWindowClosed = false;
+
 	connect(qApp, SIGNAL(lastWindowClosed()), this, SLOT(setLastWinClosed()));
 }
 

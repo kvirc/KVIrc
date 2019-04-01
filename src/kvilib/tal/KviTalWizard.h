@@ -149,12 +149,12 @@ protected:
 	///
 	/// Displays the first page if no other page is shown yet.
 	///
-	virtual void showEvent(QShowEvent * e);
+	void showEvent(QShowEvent * e) override;
 
 	///
 	/// Handles redirects the close button to the "cancel" operation.
 	///
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 
 protected:
 	void setCurrentPage(KviTalWizardPageData * pData);

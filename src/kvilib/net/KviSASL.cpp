@@ -28,11 +28,19 @@
 #include "KviMemory.h"
 
 #include <QByteArray>
+#include <QStringList>
 
 namespace KviSASL
 {
+	QStringList supportedMethods()
+	{
+		return {
+			QStringLiteral("PLAIN"),
+			QStringLiteral("EXTERNAL")
+		};
+	}
 
-	bool plainMethod(KviCString & szIn, KviCString & szOut, QByteArray & baNick, QByteArray & baPass)
+	bool plainMethod(const KviCString & szIn, KviCString & szOut, const QByteArray & baNick, const QByteArray & baPass)
 	{
 		if(szIn == "+")
 		{
@@ -54,6 +62,17 @@ namespace KviSASL
 
 			szOut.bufferToBase64(answer2, answerLen);
 			KviMemory::free(answer2);
+
+			return true;
+		}
+		return false;
+	}
+
+	bool externalMethod(const KviCString & szIn, KviCString & szOut)
+	{
+		if(szIn == "+")
+		{
+			szOut = szIn;
 
 			return true;
 		}

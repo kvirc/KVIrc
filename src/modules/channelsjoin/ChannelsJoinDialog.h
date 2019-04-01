@@ -37,8 +37,8 @@
 #include <QTreeWidget>
 
 class KviConsoleWindow;
-class QGroupBox;
 class QCheckBox;
+class QGroupBox;
 class QLineEdit;
 class QPushButton;
 class QString;
@@ -52,7 +52,7 @@ class ChannelsJoinDialogTreeWidget : public QTreeWidget
 	Q_OBJECT
 public:
 	ChannelsJoinDialogTreeWidget(QWidget * par)
-	    : QTreeWidget(par), m_pJoinPopup(nullptr){};
+	    : QTreeWidget(par){};
 
 	~ChannelsJoinDialogTreeWidget()
 	{
@@ -61,14 +61,14 @@ public:
 	};
 
 protected:
-	QMenu * m_pJoinPopup;
+	QMenu * m_pJoinPopup = nullptr;
 	/**
 	* \brief Called when the user clicks on the list
 	* \param e mouse event descriptor
 	* \return void
 	*/
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
 };
 
 /**
@@ -100,19 +100,19 @@ protected:
 		RecentChannelItem,
 		RegisteredChannelItem
 	};
-	QLineEdit * m_pChannelEdit;
-	ChannelsJoinDialogTreeWidget * m_pTreeWidget;
-	QGroupBox * m_pGroupBox;
-	QLineEdit * m_pPass;
-	QCheckBox * m_pShowAtStartupCheck;
-	QCheckBox * m_pCloseAfterJoinCheck;
-	QPushButton * m_pJoinButton;
-	QPushButton * m_pRegButton;
-	QPushButton * m_pClearButton;
-	KviConsoleWindow * m_pConsole;
+	QLineEdit * m_pChannelEdit = nullptr;
+	ChannelsJoinDialogTreeWidget * m_pTreeWidget = nullptr;
+	QGroupBox * m_pGroupBox = nullptr;
+	QLineEdit * m_pPass = nullptr;
+	QCheckBox * m_pShowAtStartupCheck = nullptr;
+	QCheckBox * m_pCloseAfterJoinCheck = nullptr;
+	QPushButton * m_pJoinButton = nullptr;
+	QPushButton * m_pRegButton = nullptr;
+	QPushButton * m_pClearButton = nullptr;
+	KviConsoleWindow * m_pConsole = nullptr;
 
 public:
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 
 	/**
 	* \brief Fills in the servers' list

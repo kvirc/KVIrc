@@ -32,7 +32,7 @@
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 #include <sys/utsname.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <unistd.h>
 #endif
 
@@ -50,7 +50,7 @@ typedef BOOL(WINAPI * PGETPRODUCTINFO)(DWORD, DWORD, DWORD, DWORD, PDWORD);
 
 #define BUFSIZE 1024
 
-// stolen from WinNT.h (last updated from 10.0.10240.0 SDK)
+// stolen from WinNT.h (last updated from 10.0.17763.0 SDK)
 //
 // Product types
 // This list grows with each OS release.
@@ -63,10 +63,7 @@ typedef BOOL(WINAPI * PGETPRODUCTINFO)(DWORD, DWORD, DWORD, DWORD, PDWORD);
 //       When a product-type 'X' gets dropped from a
 //       OS release onwards, the value of 'X' continues
 //       to be used in the mapping table of GetProductInfo.
-// MSDN: If the product has not been activated and is no longer in
-//       the grace period, this parameter is set to
-//       PRODUCT_UNLICENSED (0xABCDABCD).
-
+//
 // clang-format off
 #define PRODUCT_UNDEFINED                           0x00000000
 
@@ -163,7 +160,6 @@ typedef BOOL(WINAPI * PGETPRODUCTINFO)(DWORD, DWORD, DWORD, DWORD, PDWORD);
 #define PRODUCT_CORE_SINGLELANGUAGE                 0x00000064
 #define PRODUCT_CORE                                0x00000065
 #define PRODUCT_PROFESSIONAL_WMC                    0x00000067
-#define PRODUCT_MOBILE_CORE                         0x00000068
 #define PRODUCT_EMBEDDED_INDUSTRY_EVAL              0x00000069
 #define PRODUCT_EMBEDDED_INDUSTRY_E_EVAL            0x0000006A
 #define PRODUCT_EMBEDDED_EVAL                       0x0000006B
@@ -190,6 +186,37 @@ typedef BOOL(WINAPI * PGETPRODUCTINFO)(DWORD, DWORD, DWORD, DWORD, PDWORD);
 #define PRODUCT_PROFESSIONAL_S_N                    0x00000080
 #define PRODUCT_ENTERPRISE_S_EVALUATION             0x00000081
 #define PRODUCT_ENTERPRISE_S_N_EVALUATION           0x00000082
+#define PRODUCT_HOLOGRAPHIC                         0x00000087
+#define PRODUCT_PRO_SINGLE_LANGUAGE                 0x0000008A
+#define PRODUCT_PRO_CHINA                           0x0000008B
+#define PRODUCT_ENTERPRISE_SUBSCRIPTION             0x0000008C
+#define PRODUCT_ENTERPRISE_SUBSCRIPTION_N           0x0000008D
+#define PRODUCT_DATACENTER_NANO_SERVER              0x0000008F
+#define PRODUCT_STANDARD_NANO_SERVER                0x00000090
+#define PRODUCT_DATACENTER_A_SERVER_CORE            0x00000091
+#define PRODUCT_STANDARD_A_SERVER_CORE              0x00000092
+#define PRODUCT_DATACENTER_WS_SERVER_CORE           0x00000093
+#define PRODUCT_STANDARD_WS_SERVER_CORE             0x00000094
+#define PRODUCT_UTILITY_VM                          0x00000095
+#define PRODUCT_DATACENTER_EVALUATION_SERVER_CORE   0x0000009F
+#define PRODUCT_STANDARD_EVALUATION_SERVER_CORE     0x000000A0
+#define PRODUCT_PRO_WORKSTATION                     0x000000A1
+#define PRODUCT_PRO_WORKSTATION_N                   0x000000A2
+#define PRODUCT_PRO_FOR_EDUCATION                   0x000000A4
+#define PRODUCT_PRO_FOR_EDUCATION_N                 0x000000A5
+#define PRODUCT_AZURE_SERVER_CORE                   0x000000A8
+#define PRODUCT_AZURE_NANO_SERVER                   0x000000A9
+#define PRODUCT_ENTERPRISEG                         0x000000AB
+#define PRODUCT_ENTERPRISEGN                        0x000000AC
+#define PRODUCT_SERVERRDSH                          0x000000AF
+#define PRODUCT_CLOUD                               0x000000B2
+#define PRODUCT_CLOUDN                              0x000000B3
+#define PRODUCT_HUBOS                               0x000000B4
+#define PRODUCT_ONECOREUPDATEOS                     0x000000B6
+#define PRODUCT_CLOUDE                              0x000000B7
+#define PRODUCT_ANDROMEDA                           0x000000B8
+#define PRODUCT_IOTOS                               0x000000B9
+#define PRODUCT_CLOUDEN                             0x000000BA
 
 #define PRODUCT_UNLICENSED                          0xABCDABCD
 // clang-format on
@@ -222,7 +249,7 @@ static QString queryWinInfo(QueryInfo info)
 	pGNSI = (PGNSI)GetProcAddress(
 	    GetModuleHandle(TEXT("kernel32.dll")),
 	    "GetNativeSystemInfo");
-	if(NULL != pGNSI)
+	if(nullptr != pGNSI)
 		pGNSI(&si);
 	else
 		GetSystemInfo(&si);
@@ -238,8 +265,14 @@ static QString queryWinInfo(QueryInfo info)
 			{
 				if(osvi.wProductType == VER_NT_WORKSTATION)
 					szVersion += "Windows 10 ";
-				else
-					szVersion += "Windows Server 2016";
+				else if(osvi.wProductType == VER_NT_SERVER || osvi.wProductType == VER_NT_DOMAIN_CONTROLLER )
+					szVersion += "Windows Server ";
+						if(osvi.dwBuildNumber <= 14393)
+							szVersion += "2016 ";
+						else if(osvi.dwBuildNumber <= 17763)
+							szVersion += "2019 ";
+						else
+							szVersion += "vNext ";
 			}
 
 			if(osvi.dwMajorVersion == 6 && osvi.dwMinorVersion == 3)
@@ -247,7 +280,7 @@ static QString queryWinInfo(QueryInfo info)
 				if(osvi.wProductType == VER_NT_WORKSTATION)
 					szVersion += "Windows 8.1 ";
 				else
-					szVersion += "Windows Server 2012 R2";
+					szVersion += "Windows Server 2012 R2 ";
 			}
 
 			if(osvi.dwMajorVersion == 6 && osvi.dwMinorVersion == 2)
@@ -266,40 +299,17 @@ static QString queryWinInfo(QueryInfo info)
 					szVersion += "Windows Server 2008 R2 ";
 			}
 
-			if(osvi.dwMajorVersion == 6 && osvi.dwMinorVersion == 0)
-			{
-				if(osvi.wProductType == VER_NT_WORKSTATION)
-					szVersion += "Windows Vista ";
-				else
-					szVersion += "Windows Server 2008 ";
-			}
-
-			if(osvi.dwMajorVersion == 5 && osvi.dwMinorVersion == 2)
-			{
-				if(GetSystemMetrics(SM_SERVERR2))
-					szVersion += "Windows Server 2003 \"R2\" ";
-				else if(osvi.wProductType == VER_NT_WORKSTATION && si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64)
-				{
-					szVersion += "Windows XP Professional x64 ";
-				}
-				else
-					szVersion += "Windows Server 2003, ";
-			}
-
-			if(osvi.dwMajorVersion == 5 && osvi.dwMinorVersion == 1)
-				szVersion += "Windows XP ";
-
 			PGETPRODUCTINFO pGetProductInfo;
 			pGetProductInfo = (PGETPRODUCTINFO)GetProcAddress(
 			    GetModuleHandle(TEXT("kernel32.dll")), "GetProductInfo");
-			// from MSDN, Document Date 9/7/2012
-			// http://msdn.microsoft.com/en-us/library/windows/desktop/ms724358
+			// from MSDN, Document Date 12/05/2018
+			// https://docs.microsoft.com/en-us/windows/desktop/api/sysinfoapi/nf-sysinfoapi-getproductinfo
 			// the entire PRODUCT_CORE group has the base Windows version in the
 			// returned value. rip out "Windows" of all PRODUCT values as well
 			if(bOsVersionInfoEx)
 			{
 				DWORD dwPlatformInfo;
-				if(NULL != pGetProductInfo)
+				if(nullptr != pGetProductInfo)
 					if(pGetProductInfo(osvi.dwMajorVersion, osvi.dwMinorVersion,
 					       osvi.wServicePackMajor, osvi.wServicePackMinor, &dwPlatformInfo))
 					{
@@ -318,19 +328,25 @@ static QString queryWinInfo(QueryInfo info)
 								szVersion += "Server Hyper Core V";
 								break;
 							case PRODUCT_CORE:
-								//szVersion+="Windows 8";
-								break;
-							case PRODUCT_CORE_N:
-								szVersion += "N";
+								//szVersion+="10 Home";
 								break;
 							case PRODUCT_CORE_COUNTRYSPECIFIC:
 								szVersion += "China";
+								break;
+							case PRODUCT_CORE_N:
+								szVersion += "N";
 								break;
 							case PRODUCT_CORE_SINGLELANGUAGE:
 								szVersion += "Single Language";
 								break;
 							case PRODUCT_DATACENTER_EVALUATION_SERVER:
 								szVersion += "Server Datacenter (evaluation installation)";
+								break;
+							case PRODUCT_DATACENTER_A_SERVER_CORE:
+								szVersion += "Server Datacenter, Semi-Annual Channel (core installation)";
+								break;
+							case PRODUCT_STANDARD_A_SERVER_CORE:
+								szVersion += "Server Standard, Semi-Annual Channel (core installation)";
 								break;
 							case PRODUCT_DATACENTER_SERVER:
 								szVersion += "Server Datacenter (full installation)";
@@ -344,20 +360,38 @@ static QString queryWinInfo(QueryInfo info)
 							case PRODUCT_DATACENTER_SERVER_V:
 								szVersion += "Server Datacenter without Hyper-V (full installation)";
 								break;
+							case PRODUCT_EDUCATION:
+								szVersion += "Education";
+								break;
+							case PRODUCT_EDUCATION_N:
+								szVersion += "Education N";
+								break;
 							case PRODUCT_ENTERPRISE:
 								szVersion += "Enterprise";
 								break;
 							case PRODUCT_ENTERPRISE_E:
-								//szVersion+="Not supported";
+								szVersion+= "Enterprise E";
 								break;
-							case PRODUCT_ENTERPRISE_N_EVALUATION:
-								szVersion += "Enterprise N (evaluation installation)";
+							case PRODUCT_ENTERPRISE_EVALUATION:
+								szVersion += "Enterprise Evaluation";
 								break;
 							case PRODUCT_ENTERPRISE_N:
 								szVersion += "Enterprise N";
 								break;
-							case PRODUCT_ENTERPRISE_EVALUATION:
-								szVersion += "Server Enterprise (evaluation installation)";
+							case PRODUCT_ENTERPRISE_N_EVALUATION:
+								szVersion += "Enterprise N (evaluation installation)";
+								break;
+							case PRODUCT_ENTERPRISE_S:
+								szVersion+= "Enterprise 2015 LTSB";
+								break;
+							case PRODUCT_ENTERPRISE_S_EVALUATION:
+								szVersion += "Enterprise 2015 LTSB Evaluation";
+								break;
+							case PRODUCT_ENTERPRISE_S_N:
+								szVersion += "Windows 10 Enterprise 2015 LTSB N";
+								break;
+							case PRODUCT_ENTERPRISE_S_N_EVALUATION:
+								szVersion += "Windows 10 Enterprise 2015 LTSB N Evaluation";
 								break;
 							case PRODUCT_ENTERPRISE_SERVER:
 								szVersion += "Server Enterprise (full installation)";
@@ -374,17 +408,17 @@ static QString queryWinInfo(QueryInfo info)
 							case PRODUCT_ENTERPRISE_SERVER_V:
 								szVersion += "Server Enterprise without Hyper-V (full installation)";
 								break;
-							case PRODUCT_ESSENTIALBUSINESS_SERVER_MGMT:
-								szVersion += "Essential Server Solution Management";
-								break;
 							case PRODUCT_ESSENTIALBUSINESS_SERVER_ADDL:
 								szVersion += "Essential Server Solution Additional";
 								break;
-							case PRODUCT_ESSENTIALBUSINESS_SERVER_MGMTSVC:
-								szVersion += "Essential Server Solution Management SVC";
-								break;
 							case PRODUCT_ESSENTIALBUSINESS_SERVER_ADDLSVC:
 								szVersion += "Essential Server Solution Additional SVC";
+								break;
+							case PRODUCT_ESSENTIALBUSINESS_SERVER_MGMT:
+								szVersion += "Essential Server Solution Management";
+								break;
+							case PRODUCT_ESSENTIALBUSINESS_SERVER_MGMTSVC:
+								szVersion += "Essential Server Solution Management SVC";
 								break;
 							case PRODUCT_HOME_BASIC:
 								szVersion += "Home Basic";
@@ -413,6 +447,12 @@ static QString queryWinInfo(QueryInfo info)
 							case PRODUCT_HYPERV:
 								szVersion += "Hyper-V Server";
 								break;
+							case PRODUCT_IOTUAP:
+								szVersion += "IoT Core";
+								break;
+							//case PRODUCT_IOTUAPCOMMERCIAL:
+								//szVersion += "IoT Core Commercial";
+								//break;
 							case PRODUCT_MEDIUMBUSINESS_SERVER_MANAGEMENT:
 								szVersion += "Essential Business Server Management Server";
 								break;
@@ -422,23 +462,38 @@ static QString queryWinInfo(QueryInfo info)
 							case PRODUCT_MEDIUMBUSINESS_SERVER_SECURITY:
 								szVersion += "Essential Business Server Security Server";
 								break;
-							case PRODUCT_MULTIPOINT_STANDARD_SERVER:
-								szVersion += "MultiPoint Server Standard (full installation)";
-								break;
+							//case PRODUCT_MOBILE_CORE:
+								//szVersion += "Mobile";
+								//break;
+							//case PRODUCT_MOBILE_ENTERPRISE:
+								//szVersion += "Mobile Enterprise";
+								//break;
 							case PRODUCT_MULTIPOINT_PREMIUM_SERVER:
 								szVersion += "MultiPoint Server Premium (full installation)";
 								break;
+							case PRODUCT_MULTIPOINT_STANDARD_SERVER:
+								szVersion += "MultiPoint Server Standard (full installation)";
+								break;
+							case PRODUCT_PRO_WORKSTATION:
+								szVersion += "Pro for Workstations";
+								break;
+							case PRODUCT_PRO_WORKSTATION_N:
+								szVersion += "Pro for Workstations N";
+								break;
 							case PRODUCT_PROFESSIONAL:
-								szVersion += "Professional";
+								szVersion += "Pro";
 								break;
 							case PRODUCT_PROFESSIONAL_E:
 								//szVersion+="Not supported";
 								break;
 							case PRODUCT_PROFESSIONAL_N:
-								szVersion += "Professional N";
+								szVersion += "Pro N";
 								break;
 							case PRODUCT_PROFESSIONAL_WMC:
 								szVersion += "Professional with Media Center";
+								break;
+							case PRODUCT_SB_SOLUTION_SERVER:
+								szVersion += "Small Business Server 2011 Essentials";
 								break;
 							case PRODUCT_SB_SOLUTION_SERVER_EM:
 								szVersion += "Server For SB Solutions EM";
@@ -457,9 +512,6 @@ static QString queryWinInfo(QueryInfo info)
 								break;
 							case PRODUCT_SERVER_FOUNDATION:
 								szVersion += "Server Foundation";
-								break;
-							case PRODUCT_SB_SOLUTION_SERVER:
-								szVersion += "Small Business Server 2011 Essentials";
 								break;
 							case PRODUCT_SMALLBUSINESS_SERVER:
 								szVersion += "Small Business Server";
@@ -533,13 +585,6 @@ static QString queryWinInfo(QueryInfo info)
 							case PRODUCT_STORAGE_WORKGROUP_SERVER_CORE:
 								szVersion += "Storage Server Workgroup (core installation)";
 								break;
-							case PRODUCT_UNDEFINED:
-								szVersion += "An unknown product";
-								break;
-							// just use unknown here since we do not care.
-							case PRODUCT_UNLICENSED:
-								szVersion += "An unknown product";
-								break;
 							case PRODUCT_ULTIMATE:
 								szVersion += "Ultimate";
 								break;
@@ -548,6 +593,13 @@ static QString queryWinInfo(QueryInfo info)
 								break;
 							case PRODUCT_ULTIMATE_N:
 								szVersion += "Ultimate N";
+								break;
+							case PRODUCT_UNDEFINED:
+								szVersion += "An unknown product";
+								break;
+							// just use unknown here since we do not care.
+							case PRODUCT_UNLICENSED:
+								szVersion += "An unknown product";
 								break;
 							case PRODUCT_WEB_SERVER:
 								szVersion += "Web Server (full installation)";
@@ -560,55 +612,6 @@ static QString queryWinInfo(QueryInfo info)
 						if(si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64)
 						{
 							szVersion += "(x64) ";
-						}
-					}
-					else
-					{
-						// Test for the workstation type, for XP 32 bit
-						if(osvi.dwMajorVersion == 5 && osvi.dwMinorVersion == 1)
-						{
-							if(osvi.wProductType == VER_NT_WORKSTATION)
-							{
-								if(osvi.wSuiteMask & VER_SUITE_PERSONAL)
-									szVersion += "Home Edition ";
-								else
-									szVersion += "Professional ";
-							}
-						}
-						// Test for the server type.
-						else if(osvi.wProductType == VER_NT_SERVER || osvi.wProductType == VER_NT_DOMAIN_CONTROLLER)
-						{
-							if(osvi.dwMajorVersion == 5 && osvi.dwMinorVersion == 2)
-							{
-								if(si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA64)
-								{
-									if(osvi.wSuiteMask & VER_SUITE_DATACENTER)
-										szVersion += "Datacenter Edition for Itanium-based Systems";
-									else if(osvi.wSuiteMask & VER_SUITE_ENTERPRISE)
-										szVersion += "Enterprise Edition for Itanium-based Systems";
-								}
-
-								else if(si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64)
-								{
-									if(osvi.wSuiteMask & VER_SUITE_DATACENTER)
-										szVersion += "Datacenter x64 Edition ";
-									else if(osvi.wSuiteMask & VER_SUITE_ENTERPRISE)
-										szVersion += "Enterprise x64 Edition ";
-									else
-										szVersion += "Standard x64 Edition ";
-								}
-								else
-								{
-									if(osvi.wSuiteMask & VER_SUITE_DATACENTER)
-										szVersion += "Datacenter Edition ";
-									else if(osvi.wSuiteMask & VER_SUITE_ENTERPRISE)
-										szVersion += "Enterprise Edition ";
-									else if(osvi.wSuiteMask == VER_SUITE_BLADE)
-										szVersion += "Web Edition ";
-									else
-										szVersion += "Standard Edition ";
-								}
-							}
 						}
 					}
 			}
@@ -732,6 +735,9 @@ namespace KviRuntimeInfo
 
 	QString qtTheme()
 	{
-		return QString(qApp->style()->objectName());
+		static QString theme{qApp->style()->objectName().isEmpty() ?
+		                         __tr2qs("Overridden with a stylesheet") :
+		                         qApp->style()->objectName()};
+		return theme;
 	}
 }

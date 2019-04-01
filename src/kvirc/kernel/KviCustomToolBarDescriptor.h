@@ -25,11 +25,11 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviQString.h"
 #include "KviPointerList.h"
+#include "KviQString.h"
 
-class KviCustomToolBar;
 class KviConfigurationFile;
+class KviCustomToolBar;
 class KviKvsScript;
 
 class KVIRC_API KviCustomToolBarDescriptor
@@ -38,7 +38,7 @@ class KVIRC_API KviCustomToolBarDescriptor
 	friend class KviCustomToolBarManager;
 
 protected:
-	KviCustomToolBarDescriptor(const QString & szId, const QString & szLabelCode);
+	KviCustomToolBarDescriptor(QString szId, const QString & szLabelCode);
 
 public:
 	~KviCustomToolBarDescriptor();
@@ -48,26 +48,26 @@ protected:
 	QString m_szIconId;
 	QString m_szParsedLabel;
 	KviPointerList<QString> * m_pActions;
-	KviCustomToolBar * m_pToolBar;
+	KviCustomToolBar * m_pToolBar = nullptr;
 	int m_iInternalId;
-	bool m_bVisibleAtStartup;
-	KviKvsScript * m_pLabelScript;
+	bool m_bVisibleAtStartup = false;
+	KviKvsScript * m_pLabelScript = nullptr;
 
 public:
-	const QString & iconId() { return m_szIconId; };
+	const QString & iconId() const { return m_szIconId; }
 	const QString & label();
-	const QString & labelCode();
-	const QString & id() { return m_szId; };
-	int internalId() { return m_iInternalId; }; // useful only for KviMainWindow
-	KviCustomToolBar * toolBar() { return m_pToolBar; };
+	const QString & labelCode() const;
+	const QString & id() const { return m_szId; }
+	int internalId() const { return m_iInternalId; } // useful only for KviMainWindow
+	KviCustomToolBar * toolBar() const { return m_pToolBar; }
 	KviCustomToolBar * createToolBar();
-	void setIconId(const QString & szIconId) { m_szIconId = szIconId; };
+	void setIconId(const QString & szIconId) { m_szIconId = szIconId; }
 	bool addAction(const QString & szAction);
 	bool removeAction(const QString & szAction);
 	bool removeAction(unsigned int iAction);
 	void clear();
 	void rename(const QString & szNewName);
-	KviPointerList<QString> * actions() { return m_pActions; };
+	KviPointerList<QString> * actions() const { return m_pActions; }
 	void updateToolBar();
 
 protected:

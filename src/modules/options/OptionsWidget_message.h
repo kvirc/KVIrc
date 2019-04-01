@@ -66,6 +66,7 @@ public:
 public:
 	KviBoolSelector * m_pUseSmartColorSelector;
 	KviBoolSelector * m_pSpecialSmartColorSelector;
+	KviBoolSelector * m_pUseSmartColorWithBackgroundSelector;
 	KviMircTextColorSelector * m_pSmartColorSelector;
 protected slots:
 	void enableDisableSmartColorSelector(bool);
@@ -112,7 +113,7 @@ class MessageListWidgetItemDelegate : public QItemDelegate
 {
 	Q_OBJECT
 public:
-	MessageListWidgetItemDelegate(QAbstractItemView * pWidget = 0)
+	MessageListWidgetItemDelegate(QAbstractItemView * pWidget = nullptr)
 	    : QItemDelegate(pWidget){};
 	~MessageListWidgetItemDelegate(){};
 	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;
@@ -129,8 +130,8 @@ private:
 	KviMessageTypeSettings * m_pMsgType;
 
 public:
-	inline int optionId() { return m_iOptId; };
-	inline KviMessageTypeSettings * msgType() { return m_pMsgType; };
+	int optionId() const { return m_iOptId; }
+	KviMessageTypeSettings * msgType() const { return m_pMsgType; }
 };
 
 class MessageColorListWidgetItem : public KviTalListWidgetText
@@ -143,14 +144,14 @@ public:
 	int m_iClrIdx;
 
 public:
-	inline int clrIdx() { return m_iClrIdx; };
+	int clrIdx() const { return m_iClrIdx; }
 };
 
 class MessageColorListWidgetItemDelegate : public QItemDelegate
 {
 	Q_OBJECT
 public:
-	MessageColorListWidgetItemDelegate(QAbstractItemView * pWidget = 0)
+	MessageColorListWidgetItemDelegate(QAbstractItemView * pWidget = nullptr)
 	    : QItemDelegate(pWidget){};
 	~MessageColorListWidgetItemDelegate(){};
 	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;

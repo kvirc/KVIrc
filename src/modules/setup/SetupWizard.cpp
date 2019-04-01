@@ -192,7 +192,7 @@ SetupWizard::SetupWizard()
 	ed->setWordWrapMode(QTextOption::NoWrap);
 	QString szLicense;
 	QString szLicensePath;
-	g_pApp->getGlobalKvircDirectory(szLicensePath, KviApplication::License, "COPYING");
+	g_pApp->getGlobalKvircDirectory(szLicensePath, KviApplication::License, "ABOUT-LICENSE");
 	if(!KviFileUtils::loadFile(szLicensePath, szLicense))
 	{
 		szLicense = __tr("Oops! Can't find the license file.\n"
@@ -806,7 +806,7 @@ void SetupWizard::makeLink()
 	       0, KEY_QUERY_VALUE, &hCU)
 	    == ERROR_SUCCESS)
 	{
-		RegQueryValueEx(hCU, TEXT("Desktop"), NULL, &lpType,
+		RegQueryValueEx(hCU, TEXT("Desktop"), nullptr, &lpType,
 		    (unsigned char *)&szLink, &ulSize);
 		RegCloseKey(hCU);
 	}
@@ -819,13 +819,13 @@ void SetupWizard::makeLink()
 	szKvircExec.append("\\kvirc.exe");
 
 	// Trigger a horrible machinery
-	CoInitialize(NULL); // we need COM+OLE
+	CoInitialize(nullptr); // we need COM+OLE
 
 	// Fiddle with an obscure shell interface
 	IShellLink * psl;
 
 	// Get a pointer to the IShellLink interface: this is kinda ugly :)
-	if(CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER,
+	if(CoCreateInstance(CLSID_ShellLink, nullptr, CLSCTX_INPROC_SERVER,
 	       IID_IShellLink, (void **)&psl)
 	    == S_OK)
 	{
@@ -1019,9 +1019,7 @@ void SetupWizard::accept()
 		// Make local->global link
 		QString localPath = QString("%1/global").arg(g_pApp->m_szLocalKvircDir);
 		unlink(QTextCodec::codecForLocale()->fromUnicode(localPath).data());
-		int dummy; // make gcc happy
-		dummy = symlink(QTextCodec::codecForLocale()->fromUnicode(g_pApp->m_szGlobalKvircDir).data(), QTextCodec::codecForLocale()->fromUnicode(localPath).data());
-		Q_UNUSED(dummy);
+		(void)symlink(QTextCodec::codecForLocale()->fromUnicode(g_pApp->m_szGlobalKvircDir).data(), QTextCodec::codecForLocale()->fromUnicode(localPath).data());
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT

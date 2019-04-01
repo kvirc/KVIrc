@@ -34,7 +34,7 @@
 ###############################################################################
 
 # Minimum CMake version
-cmake_minimum_required(VERSION 3.1.0)
+cmake_minimum_required(VERSION 3.8)
 
 # Name of the project
 project(kvirc)
@@ -45,9 +45,9 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 # Some vars
 set(PACKAGE "kvirc")
 set(NICENAME "KVIrc")
-set(VERSION_MAJOR "4")
-set(VERSION_BRANCH "4.9")
-set(VERSION_RELEASE "4.9.2")
+set(VERSION_MAJOR "5")
+set(VERSION_BRANCH "5.0")
+set(VERSION_RELEASE "5.0.0")
 set(VERSION_CODENAME "Aria")
 # REMINDER: "Quasar" is a new candidate name.
 
@@ -62,15 +62,10 @@ set(CMAKE_KVIRC_VERSION_RELEASE ${VERSION_RELEASE})
 set(CMAKE_KVIRC_VERSION_CODENAME ${VERSION_CODENAME})
 set(CMAKE_KVIRC_BUILD_COMMAND ${CMAKE_COMMAND})
 set(CMAKE_KVIRC_BUILD_FLAGS)
-set(CMAKE_KVIRC_BUILD_SYSTEM ${CMAKE_SYSTEM})
 set(CMAKE_KVIRC_BUILD_SYSTEM_NAME ${CMAKE_SYSTEM_NAME})
-set(CMAKE_KVIRC_BUILD_SYSTEM_VERSION ${CMAKE_SYSTEM_VERSION})
 set(CMAKE_KVIRC_BUILD_CPU ${CMAKE_SYSTEM_PROCESSOR})
 set(CMAKE_KVIRC_BUILD_COMPILER ${CMAKE_CXX_COMPILER})
 set(CMAKE_KVIRC_BUILD_COMPILER_FLAGS ${CMAKE_CXX_FLAGS})
-
-# Allow the use of the LOCATION property
-cmake_policy(SET CMP0026 OLD)
 
 # Suffix for GNU/Linux
 set(LIB_SUFFIX
@@ -151,16 +146,7 @@ endif()
 list(APPEND CMAKE_KVIRC_BUILD_FLAGS MANDIR=${MANDIR_PREFIX})
 
 # Get the build date
-try_run(TEST_DID_RUN TEST_DID_COMPILE "${CMAKE_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/datetime.cpp" OUTPUT_VARIABLE TEST_BUILD_DATE)
-if(TEST_DID_COMPILE)
-	string(REGEX MATCH "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] [A-Z][A-Z][A-Z]" CMAKE_KVIRC_BUILD_DATE "${TEST_BUILD_DATE}")
-else()
-	message(STATUS " Test datetime program failed to compile:")
-	message(STATUS " ----------------------------------------")
-	message(STATUS "${TEST_BUILD_DATE}")
-	message(STATUS " ----------------------------------------")
-	set(CMAKE_KVIRC_BUILD_DATE "ERROR ")
-endif()
+string(TIMESTAMP CMAKE_KVIRC_BUILD_DATE "%Y-%m-%d %H:%M:%S UTC" UTC)
 
 # Set var to link with, for later use
 set(LIBS)
@@ -207,6 +193,11 @@ if(WANT_ENV_FLAGS)
 	set(CMAKE_BUILD_TYPE Undefined)
 	set(CMAKE_STATUS_DEBUG_SUPPORT "Environment-driven")
 else()
+	if(MSVC)
+		# Qt5 has /Zc:wchar_t
+		set(CMAKE_CXX_FLAGS "/MP /Zc:wchar_t /EHsc /source-charset:utf-8")
+		set(CMAKE_C_FLAGS "/MP /Zc:wchar_t /EHsc /source-charset:utf-8")
+	endif()
 	if(WANT_DEBUG)
 		set(WANT_STRIP OFF CACHE BOOL "Strip binaries (discard symbols from object files)" FORCE)
 		set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
@@ -236,9 +227,8 @@ else()
 		else()
 			if(MSVC)
 				# this is the equivalent of -O0 -g according to MSDN
-				# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t
-				set(CMAKE_CXX_FLAGS "/Od /Zi /Zc:wchar_t /EHsc /W3")
-				set(CMAKE_C_FLAGS "/Od /Zi /Zc:wchar_t /EHsc /W3")
+				set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Od /Zi /W3")
+				set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /Od /Zi /W3")
 			else()
 				set(CMAKE_CXX_FLAGS "-O0 -g")
 				set(CMAKE_C_FLAGS "-O0 -g")
@@ -270,10 +260,9 @@ else()
 			endif()
 		else()
 			if(MSVC)
-				# /Ox is -O3
-				# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t
-				set(CMAKE_CXX_FLAGS "/Ox /Zc:wchar_t /EHsc")
-				set(CMAKE_C_FLAGS "/Ox /Zc:wchar_t /EHsc")
+				#/GL causes compilation error (mix static and dynamic link lib)
+				set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /O2 /Gw")
+				set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /O2 /Gw")
 			else()
 				set(CMAKE_CXX_FLAGS "-O3")
 				set(CMAKE_C_FLAGS "-O3")
@@ -426,48 +415,48 @@ option(WANT_QTSVG "Whether to compile Qt SVG support" ON)
 set(CMAKE_STATUS_QX11INFO_SUPPORT "Not available")
 
 include_directories(${Qt5Widgets_INCLUDE_DIRS})
-list(APPEND qt5_kvirc_modules Widgets)
+list(APPEND qt5_kvirc_modules Qt5::Widgets)
 
 # Qt SQL
 find_package(Qt5Sql)
 if(Qt5Sql_FOUND)
 	include_directories(${Qt5Sql_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules Sql)
+	list(APPEND qt5_kvirc_modules Qt5::Sql)
 endif()
 
 # Qt XML
 find_package(Qt5Xml)
 if(Qt5Xml_FOUND)
 	include_directories(${Qt5Xml_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules Xml)
+	list(APPEND qt5_kvirc_modules Qt5::Xml)
 endif()
 
 # Qt Network
 find_package(Qt5Network)
 if(Qt5Network_FOUND)
 	include_directories(${Qt5Network_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules Network)
+	list(APPEND qt5_kvirc_modules Qt5::Network)
 endif()
 
 # Qt PrintSupport
 find_package(Qt5PrintSupport)
 if(Qt5PrintSupport_FOUND)
 	include_directories(${Qt5PrintSupport_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules PrintSupport)
+	list(APPEND qt5_kvirc_modules Qt5::PrintSupport)
 endif()
 
 # Qt Multimedia
 find_package(Qt5Multimedia)
 if(Qt5Multimedia_FOUND)
 	include_directories(${Qt5Multimedia_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules Multimedia)
+	list(APPEND qt5_kvirc_modules Qt5::Multimedia)
 endif()
 
 # Qt D-Bus support
 if(WANT_QTDBUS)
 	find_package(Qt5DBus)
 	if(Qt5DBus_FOUND)
-		list(APPEND qt5_kvirc_modules DBus)
+		list(APPEND qt5_kvirc_modules Qt5::DBus)
 		include_directories(${Qt5DBus_INCLUDE_DIRS})
 		set(COMPILE_DBUS_SUPPORT 1)
 	endif()
@@ -477,7 +466,7 @@ endif()
 if(WANT_QTWEBKIT)
 	find_package(Qt5WebKitWidgets)
 	if(Qt5WebKitWidgets_FOUND)
-		list(APPEND qt5_kvirc_modules WebKitWidgets)
+		list(APPEND qt5_kvirc_modules Qt5::WebKitWidgets)
 		include_directories(${Qt5WebKitWidgets_INCLUDE_DIRS})
 		set(COMPILE_WEBKIT_SUPPORT 1)
 	endif()
@@ -487,7 +476,7 @@ endif()
 if(WANT_QTSVG)
 	find_package(Qt5Svg)
 	if(Qt5Svg_FOUND)
-		list(APPEND qt5_kvirc_modules Svg)
+		list(APPEND qt5_kvirc_modules Qt5::Svg)
 		include_directories(${Qt5Svg_INCLUDE_DIRS})
 		set(COMPILE_SVG_SUPPORT 1)
 	endif()
@@ -496,7 +485,7 @@ endif()
 if(WIN32)
 	find_package(Qt5WinExtras)
 	if(Qt5WinExtras_FOUND)
-		list(APPEND qt5_kvirc_modules WinExtras)
+		list(APPEND qt5_kvirc_modules Qt5::WinExtras)
 		include_directories(${Qt5WinExtras_INCLUDE_DIRS})
 	endif()
 endif()
@@ -507,15 +496,10 @@ if(UNIX AND NOT APPLE)
 	if(Qt5X11Extras_FOUND)
 		set(COMPILE_QX11INFO_SUPPORT 1)
 		set(CMAKE_STATUS_QX11INFO_SUPPORT "Yes")
-		list(APPEND qt5_kvirc_modules X11Extras)
+		list(APPEND qt5_kvirc_modules Qt5::X11Extras)
 		include_directories(${Qt5X11Extras_INCLUDE_DIRS})
 	endif()
 endif()
-
-get_target_property(QT_LIBRARY_DIR Qt5::Core LOCATION)
-get_filename_component(QT_LIBRARY_DIR ${QT_LIBRARY_DIR} PATH)
-get_filename_component(QT_LIBRARY_DIR "${QT_LIBRARY_DIR}/.." ABSOLUTE)
-
 
 ############################################################################
 # Check for KDE
@@ -658,25 +642,6 @@ if(WIN32)
 endif()
 
 ############################################################################
-# Check for macOS universal binary
-############################################################################
-
-if(APPLE)
-	option(WANT_UNIVERSAL_BINARY "Whether to compile a universal binary on macOS" ON)
-	if(WANT_UNIVERSAL_BINARY)
-		set(CMAKE_OSX_ARCHITECTURES x86_64)
-		set(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "User enabled")
-		#FIXME: This should be handled with CMAKE_OSX_SYSROOT (TOM)
-		set(CMAKE_SHARED_LINKER_FLAGS "-stdlib=libc++ -mmacosx-version-min=10.7")
-		set(CMAKE_EXE_LINKER_FLAGS "-stdlib=libc++ -mmacosx-version-min=10.7")
-	else()
-		set(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "No")
-	endif()
-else()
-	set(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "Not available")
-endif()
-
-############################################################################
 # OpenSSL support (Secure Sockets, Certificates, Digests etc.)
 ############################################################################
 
@@ -803,7 +768,7 @@ endif()
 option(WANT_SPELLCHECKER "Compile spell-checker support" ON)
 if(WANT_SPELLCHECKER)
 	find_package(PkgConfig)
-	pkg_check_modules(Enchant enchant)
+	pkg_search_module(Enchant enchant-2 enchant)
 	if(Enchant_FOUND)
 		set(CMAKE_STATUS_SPELLCHECKER_SUPPORT "Yes")
 		include_directories(${Enchant_INCLUDE_DIRS})
@@ -933,7 +898,7 @@ if(WANT_DCC_VIDEO)
 	find_package(Qt5MultimediaWidgets)
 	if(Qt5MultimediaWidgets_FOUND)
 	    include_directories(${Qt5MultimediaWidgets_INCLUDE_DIRS})
-	    list(APPEND qt5_kvirc_modules MultimediaWidgets)
+	    list(APPEND qt5_kvirc_modules Qt5::MultimediaWidgets)
 	    set(COMPILE_DISABLE_DCC_VIDEO 0)
 	    set(CMAKE_STATUS_DCC_VIDEO_SUPPORT "Yes")
 	else()
@@ -1348,7 +1313,6 @@ message(STATUS "   Debug                       : ${CMAKE_STATUS_DEBUG_SUPPORT}")
 message(STATUS "   Verbose output              : ${CMAKE_STATUS_VERBOSE_SUPPORT}")
 message(STATUS "   Coexistence support         : ${CMAKE_STATUS_COEXISTENCE_VER}")
 message(STATUS "   Threading support           : ${CMAKE_STATUS_THREADS_SUPPORT}")
-message(STATUS "   Apple universal binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_BINARY}")
 message(STATUS "   Memory profile support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
 message(STATUS "   Memory checks support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
 message(STATUS "Features:")

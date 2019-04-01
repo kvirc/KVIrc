@@ -134,9 +134,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(globals)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setHash(new KviKvsHash(*(KviKvsKernel::instance()->globalVariables())));
 		return true;
 	}
@@ -174,8 +171,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(hash)
 	{
-		Q_UNUSED(__pContext);
-
 		KviKvsHash * a = new KviKvsHash();
 
 		for(KviKvsVariant * key = KVSCF_pParams->first(); key; key = KVSCF_pParams->next())
@@ -299,8 +294,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(lag)
 	{
-		Q_UNUSED(__pParams);
-
 		if(!KVSCF_pContext->window()->console())
 			return KVSCF_pContext->errorNoIrcContext();
 		if(!KVSCF_pContext->window()->console()->connection())
@@ -344,11 +337,8 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(hptimestamp)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		struct timeval tv;
-		kvi_gettimeofday(&tv, nullptr);
+		kvi_gettimeofday(&tv);
 		kvs_real_t dTimestamp = (kvs_real_t)(tv.tv_sec);
 		dTimestamp += (((kvs_real_t)(tv.tv_usec)) / 1000000.0);
 		KVSCF_pRetBuffer->setReal(dTimestamp);
@@ -373,9 +363,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(i)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Italic)));
 		return true;
 	}
@@ -443,7 +430,7 @@ namespace KviKvsCoreFunctions
 				[cmd]echo[/cmd] $iconname([fnc]$icon[/fnc](linux))
 			[/example]
 		@seealso:
-			[fnc]$iconName[/fnc]
+			[fnc]$icon[/fnc]
 	*/
 
 	KVSCF(iconName)
@@ -482,8 +469,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(insideAlias)
 	{
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setBoolean(KVSCF_pContext->aliasSwitchList());
 		return true;
 	}
@@ -621,9 +606,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(isMainWindowActive)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setBoolean(g_pMainWindow->isActiveWindow());
 		return true;
 	}
@@ -644,9 +626,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(isMainWindowMinimized)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setBoolean(g_pMainWindow->isMinimized());
 		return true;
 	}
@@ -1044,9 +1023,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(lf)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setString(QString(QChar('\n')));
 		return true;
 	}

@@ -29,12 +29,11 @@
 
 #include <QRegExp>
 
-#include <math.h>
+#include <cmath>
 
 KviKvsTreeNodeOperation::KviKvsTreeNodeOperation(const QChar * pLocation)
     : KviKvsTreeNodeInstruction(pLocation)
 {
-	//m_pTargetData = 0; no need to set it
 }
 
 KviKvsTreeNodeOperation::~KviKvsTreeNodeOperation()

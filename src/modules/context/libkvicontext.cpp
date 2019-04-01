@@ -51,16 +51,16 @@
 	KVSM_PARAMETERS_BEGIN(c)                                                   \
 	KVSM_PARAMETER("irc_context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, iContextId) \
 	KVSM_PARAMETERS_END(c)                                                     \
-	KviConsoleWindow * pConsole = NULL;                                        \
+	KviConsoleWindow * pConsole = nullptr;                                     \
 	if(c->parameterCount() > 0)                                                \
 		pConsole = g_pApp->findConsole(iContextId);                            \
 	else                                                                       \
 		pConsole = c->window()->console();
 
 #define GET_CONNECTION_FROM_STANDARD_PARAMS \
-	GET_CONSOLE_FROM_STANDARD_PARAMS        \
-	KviIrcConnection * pConnection = NULL;  \
-	if(pConsole)                            \
+	GET_CONSOLE_FROM_STANDARD_PARAMS          \
+	KviIrcConnection * pConnection = nullptr; \
+	if(pConsole)                              \
 		pConnection = pConsole->context()->connection();
 
 #define STANDARD_IRC_CONNECTION_TARGET_PARAMETER(_fncName, _setCall) \
@@ -655,7 +655,7 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 	QString szQuery;
 	QString szType;
 	QString szParam1;
-	bool bRemote = true;
+	bool bRemote;
 
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETER("query", KVS_PT_STRING, 0, szQuery)
@@ -689,16 +689,17 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 	{
 		bRemote = false;
 	}
+	else if(szType.compare("remote") == 0 || szType.isEmpty())
+	{
+		bRemote = true;
+	}
 	else
 	{
-		// already defaults to true, we only catch the error condition
-		if(szType.compare("remote") != 0)
-		{
-			c->warning(__tr2qs("You specified a bad string for the parameter \"type\""));
-			c->returnValue()->setString("");
-			return true;
-		}
+		c->warning(__tr2qs("You specified a bad string for the parameter \"type\""));
+		c->returnValue()->setString("");
+		return true;
 	}
+
 	//context is never null, connection can be null
 	if(!pConsole->context()->connection())
 	{

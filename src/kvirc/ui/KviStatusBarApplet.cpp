@@ -286,13 +286,10 @@ QString KviStatusBarLagIndicator::tipText(const QPoint &)
 		goto not_connected;
 	if(c->lagMeter())
 	{
-		int lll;
-		if((lll = c->lagMeter()->lag()) > 0)
+		int lll = c->lagMeter()->lag();
+		if(lll > 0)
 		{
-			int llls = lll / 1000;
-			int llld = (lll % 1000) / 100;
-			int lllc = (lll % 100) / 10;
-			KviQString::appendFormatted(szRet, __tr2qs("Lag: <b>%d.%d%d secs"), llls, llld, lllc);
+			KviQString::appendFormatted(szRet, __tr2qs("Lag: <b>%d ms"), lll);
 			szRet += "</b><br>";
 			int vss = c->lagMeter()->secondsSinceLastCompleted();
 			int vmm = vss / 60;
@@ -331,13 +328,10 @@ void KviStatusBarLagIndicator::updateDisplay()
 		KviIrcConnection * ic = c->connection();
 		if(ic->lagMeter())
 		{
-			int lll;
-			if((lll = ic->lagMeter()->lag()) > 0)
+			int lll = ic->lagMeter()->lag();
+			if(lll > 0)
 			{
-				int llls = lll / 1000;
-				int llld = (lll % 1000) / 100;
-				int lllc = (lll % 100) / 10;
-				QString szTmp = QString(__tr2qs("Lag: %1.%2%3 secs")).arg(llls).arg(llld).arg(lllc);
+				QString szTmp = QString(__tr2qs("Lag: %1 ms")).arg(lll);
 				if(lll > 60000)
 				{
 					// one minute lag!
@@ -351,7 +345,7 @@ void KviStatusBarLagIndicator::updateDisplay()
 		}
 	}
 	// no lag available
-	setText(__tr2qs("Lag: ?.??"));
+	setText(__tr2qs("Lag: ???"));
 }
 
 KviStatusBarApplet * CreateStatusBarLagIndicator(KviStatusBar * pBar, KviStatusBarAppletDescriptor * pDescriptor)
@@ -507,7 +501,7 @@ KviStatusBarConnectionTimer::KviStatusBarConnectionTimer(KviStatusBar * pParent,
     : KviStatusBarApplet(pParent, pDescriptor)
 {
 	startTimer(1000);
-	m_bTotal = 0;
+	m_bTotal = false;
 
 	QFontMetrics fm(font());
 	setFixedWidth(fm.width("000 d 00 h 00 m 00 s"));

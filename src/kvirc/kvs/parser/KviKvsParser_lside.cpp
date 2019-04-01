@@ -627,6 +627,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 	{
 		error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of command in binding operation, at least one slash is missing", "kvs"));
 		delete pFirst;
+		delete pSecond;
 		return nullptr;
 	}
 
@@ -634,6 +635,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 	{
 		error(KVSP_curCharPointer, __tr2qs_ctx("Found character '%q' (Unicode %x) where a slash '/' was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 		delete pFirst;
+		delete pSecond;
 		return nullptr;
 	}
 
@@ -897,11 +899,11 @@ KviKvsTreeNodeOperation * KviKvsParser::parseOperation()
 				if(KVSP_curCharIsEndOfCommand)                                                                           \
 				{                                                                                                        \
 					error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '" __opstr "='", "kvs")); \
-					return 0;                                                                                            \
+					return nullptr;                                                                                      \
 				}                                                                                                        \
 				KviKvsTreeNodeData * d = parseOperationRightSide(true);                                                  \
 				if(!d)                                                                                                   \
-					return 0;                                                                                            \
+					return nullptr;                                                                                      \
 				return new __class(pBegin, d);                                                                           \
 				break;                                                                                                   \
 		}                                                                                                                \

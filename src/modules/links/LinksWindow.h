@@ -40,13 +40,13 @@
 
 class KviThemedLabel;
 
-typedef struct _KviLink
+struct KviLink
 {
 	KviCString host;
 	KviCString parent;
 	int hops;
 	KviCString description;
-} KviLink;
+};
 
 class LinksListView : public KviThemedTreeWidget
 {
@@ -56,7 +56,7 @@ public:
 	~LinksListView(){};
 
 protected:
-	void mousePressEvent(QMouseEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
 signals:
 	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 };
@@ -79,16 +79,16 @@ protected:
 	KviThemedLabel * m_pInfoLabel;
 
 public: // Methods
-	virtual void control(int msg);
-	virtual void processData(KviIrcMessage * msg);
-	virtual void die();
+	void control(int msg) override;
+	void processData(KviIrcMessage * msg) override;
+	void die() override;
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void applyOptions();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void getBaseLogFileName(QString & buffer);
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void applyOptions() override;
+	void resizeEvent(QResizeEvent * e) override;
+	void getBaseLogFileName(QString & buffer) override;
 protected slots:
 	void showHostPopup(QTreeWidgetItem * i, const QPoint & p);
 	void hostPopupClicked(QAction * pAction);
@@ -96,7 +96,7 @@ protected slots:
 	void connectionStateChange();
 
 public:
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 
 private:
 	void reset();

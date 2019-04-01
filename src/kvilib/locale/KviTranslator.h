@@ -68,7 +68,7 @@ public:
 	* \param pcComment Comment of Qt translation. Unused by us
 	* \return QString
 	*/
-	virtual QString translate(const char * pcContext, const char * pcMessage, const char * pcComment) const;
+	QString translate(const char * pcContext, const char * pcMessage, const char * pcComment, int n = -1) const override;
 };
 
 #endif //_KVITRANSLATOR_H_

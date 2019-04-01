@@ -31,6 +31,7 @@
 #include <QLineEdit>
 #include <QTreeWidget>
 #include <QMenu>
+#include <QCheckBox>
 
 class KviScriptEditor;
 
@@ -42,7 +43,7 @@ public:
 	QString m_szParams;
 
 public:
-	EventEditorEventTreeWidgetItem(QTreeWidget * par, unsigned int uEvIdx, const QString & name, const QString & params);
+	EventEditorEventTreeWidgetItem(QTreeWidget * par, unsigned int uEvIdx, const QString & name, QString params);
 	~EventEditorEventTreeWidgetItem(){};
 
 public:
@@ -59,20 +60,20 @@ public:
 	int m_cPos;
 
 public:
-	EventEditorHandlerTreeWidgetItem(QTreeWidgetItem * par, const QString & name, const QString & buffer, bool bEnabled);
+	EventEditorHandlerTreeWidgetItem(QTreeWidgetItem * par, const QString & name, QString buffer, bool bEnabled);
 	~EventEditorHandlerTreeWidgetItem(){};
 
 public:
 	const int & cursorPosition() { return m_cPos; };
 	void setCursorPosition(const int & cPos)
 	{
-		qDebug("set cursor to %d", cPos);
 		m_cPos = cPos;
 	};
 
 	void setName(const QString & szName);
 	QString name() const { return m_szName; };
 	void setEnabled(const bool bEnabled);
+	bool isEnabled() { return m_bEnabled; };
 };
 
 class EventEditorTreeWidget : public QTreeWidget
@@ -83,7 +84,7 @@ public:
 	~EventEditorTreeWidget(){};
 
 protected:
-	void mousePressEvent(QMouseEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
 signals:
 	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 };
@@ -99,7 +100,8 @@ public:
 	KviScriptEditor * m_pEditor;
 	EventEditorTreeWidget * m_pTreeWidget;
 	QLineEdit * m_pNameEditor;
-	QMenu * m_pContextPopup;
+	QCheckBox * m_pIsEnabled;
+	QMenu * m_pContextPopup = nullptr;
 	EventEditorHandlerTreeWidgetItem * m_pLastEditedItem;
 	bool m_bOneTimeSetupDone;
 
@@ -119,7 +121,7 @@ protected slots:
 	void eventHandlerDisabled(const QString & szName);
 
 protected:
-	void showEvent(QShowEvent * e);
+	void showEvent(QShowEvent * e) override;
 
 private:
 	void oneTimeSetup();
@@ -136,11 +138,11 @@ protected:
 	EventEditor * m_pEditor;
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void getConfigGroupName(QString & szName);
-	virtual void saveProperties(KviConfigurationFile *);
-	virtual void loadProperties(KviConfigurationFile *);
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void getConfigGroupName(QString & szName) override;
+	void saveProperties(KviConfigurationFile *) override;
+	void loadProperties(KviConfigurationFile *) override;
 protected slots:
 	void cancelClicked();
 	void okClicked();

@@ -33,7 +33,7 @@
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup::contextDescription(QString & szBuffer)
 {
-	szBuffer = "Label \"extpopup\" for Special Command \"defpopup\"";
+	szBuffer = R"(Label "extpopup" for Special Command "defpopup")";
 }
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup::dump(const char * prefix)
@@ -67,7 +67,7 @@ bool KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup::execute(KviKvsRunTimeCon
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelItem::contextDescription(QString & szBuffer)
 {
-	szBuffer = "Label \"item\" for Special Command \"defpopup\"";
+	szBuffer = R"(Label "item" for Special Command "defpopup")";
 }
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelItem::dump(const char * prefix)
@@ -101,7 +101,7 @@ bool KviKvsTreeNodeSpecialCommandDefpopupLabelItem::execute(KviKvsRunTimeContext
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelLabel::contextDescription(QString & szBuffer)
 {
-	szBuffer = "Label \"label\" for Special Command \"defpopup\"";
+	szBuffer = R"(Label "label" for Special Command "defpopup")";
 }
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelLabel::dump(const char * prefix)
@@ -131,7 +131,7 @@ bool KviKvsTreeNodeSpecialCommandDefpopupLabelLabel::execute(KviKvsRunTimeContex
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator::contextDescription(QString & szBuffer)
 {
-	szBuffer = "Label \"separator\" for Special Command \"defpopup\"";
+	szBuffer = R"(Label "separator" for Special Command "defpopup")";
 }
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator::dump(const char * prefix)
@@ -151,7 +151,7 @@ bool KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator::execute(KviKvsRunTimeCo
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue::contextDescription(QString & szBuffer)
 {
-	szBuffer = "Label \"epilogue\" for Special Command \"defpopup\"";
+	szBuffer = R"(Label "epilogue" for Special Command "defpopup")";
 }
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue::dump(const char * prefix)
@@ -171,7 +171,7 @@ bool KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue::execute(KviKvsRunTimeCon
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue::contextDescription(QString & szBuffer)
 {
-	szBuffer = "Label \"prologue\" for Special Command \"defpopup\"";
+	szBuffer = R"(Label "prologue" for Special Command "defpopup")";
 }
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue::dump(const char * prefix)
@@ -203,7 +203,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::~KviKvsTreeNodeSpecialCommandDef
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::contextDescription(QString & szBuffer)
 {
-	szBuffer = "Label \"popup\" for Special Command \"defpopup\"";
+	szBuffer = R"(Label "popup" for Special Command "defpopup")";
 }
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::dump(const char * prefix)

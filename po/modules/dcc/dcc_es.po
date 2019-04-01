@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
+# David Martí <neikokz+transifex@gmail.com>, 2018
 # egns <grannost@gmail.com>, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2016-11-28 12:22+0000\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2018-04-09 20:33+0000\n"
 "Last-Translator: Robert Förster <Dessa@gmake.de>\n"
 "Language-Team: Spanish (http://www.transifex.com/kvirc/KVIrc/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -118,7 +119,7 @@ msgstr "Escoge los archivos a guardar - KVIrc"
 
 #: src/modules/dcc/DccBroker.cpp:758
 msgid "Auto-saving DCC %Q file %Q as %Q"
-msgstr ""
+msgstr "Guardando automáticamente el archivo DCC %Q %Q como %Q"
 
 #: src/modules/dcc/DccBroker.cpp:793
 msgid ""
@@ -172,7 +173,7 @@ msgstr "Contactando con la máquina %Q en el puerto %Q"
 #: src/modules/dcc/DccCanvasWindow.cpp:285
 #: src/modules/dcc/DccVoiceWindow.cpp:952
 msgid "DCC failed: %Q"
-msgstr ""
+msgstr "Error de DCC: %Q"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:290
 #: src/modules/dcc/DccChatWindow.cpp:584
@@ -243,7 +244,7 @@ msgstr "[ERROR SSL]: %s"
 #: src/modules/dcc/DccVideoWindow.cpp:688
 #: src/modules/dcc/DccVideoWindow.cpp:799
 msgid "Can't send data: no active connection"
-msgstr ""
+msgstr "No puedo enviar datos: No hay una conexión activa"
 
 #: src/modules/dcc/DccChatWindow.cpp:350
 #: src/modules/dcc/DccVideoWindow.cpp:735
@@ -281,31 +282,31 @@ msgstr "DCC %Q falló: %Q"
 msgid "unknown"
 msgstr "desconocido"
 
-#: src/modules/dcc/DccDialog.cpp:76
+#: src/modules/dcc/DccDialog.cpp:77
 msgid "&Accept"
 msgstr "&Aceptar"
 
-#: src/modules/dcc/DccDialog.cpp:81
+#: src/modules/dcc/DccDialog.cpp:82
 msgid "&Reject"
 msgstr "&Rechazar"
 
-#: src/modules/dcc/DccDialog.cpp:144
+#: src/modules/dcc/DccDialog.cpp:148
 msgid "&Rename"
 msgstr "&Renombrar"
 
-#: src/modules/dcc/DccDialog.cpp:148
+#: src/modules/dcc/DccDialog.cpp:152
 msgid "Over&write"
 msgstr "Sobree&scribir"
 
-#: src/modules/dcc/DccDialog.cpp:152
+#: src/modules/dcc/DccDialog.cpp:156
 msgid "Re&sume"
 msgstr "Continuar"
 
-#: src/modules/dcc/DccDialog.cpp:158 src/modules/dcc/DccFileTransfer.cpp:2493
+#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2493
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/modules/dcc/DccDialog.cpp:165
+#: src/modules/dcc/DccDialog.cpp:169
 msgid "File Already Exists - KVIrc"
 msgstr "El archivo ya existe - KVIrc"
 
@@ -403,11 +404,11 @@ msgstr "%1"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1813
 msgid "Speed:"
-msgstr ""
+msgstr "Velocidad:"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1826
 msgid "Average:"
-msgstr ""
+msgstr "Media:"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1895
 msgid "Transfer Log"
@@ -728,7 +729,7 @@ msgstr "Frecuencia de muestreo no es válida, usaré 8000 por defecto"
 
 #: src/modules/dcc/libkvidcc.cpp:1135
 msgid "Invalid codec specified, defaulting to 'ADPCM'"
-msgstr ""
+msgstr "Codec especificado no válido, usando por defecto 'ADPCM'"
 
 #: src/modules/dcc/libkvidcc.cpp:1180
 msgid "DCC VIDEO support not enabled at compilation time"
@@ -738,52 +739,52 @@ msgstr "El soporte de DCC VIDEO no fue activado al compilar"
 msgid "Invalid codec specified"
 msgstr "Códec especificado no válido"
 
-#: src/modules/dcc/libkvidcc.cpp:1630 src/modules/dcc/libkvidcc.cpp:2656
-#: src/modules/dcc/libkvidcc.cpp:2678
+#: src/modules/dcc/libkvidcc.cpp:1620 src/modules/dcc/libkvidcc.cpp:2646
+#: src/modules/dcc/libkvidcc.cpp:2668
 msgid "The current window has no associated DCC session"
 msgstr "La ventana actual no tiene una sesión DCC asociada"
 
-#: src/modules/dcc/libkvidcc.cpp:1635
+#: src/modules/dcc/libkvidcc.cpp:1625
 msgid "The specified parameter is not a valid DCC identifier"
 msgstr "El parámetro especificado no es un identificador DCC válido"
 
-#: src/modules/dcc/libkvidcc.cpp:1718
+#: src/modules/dcc/libkvidcc.cpp:1708
 msgid "This DCC session is not a DCC transfer session"
 msgstr "Esta sesión DCC no es una sesión DCC de transferencia"
 
-#: src/modules/dcc/libkvidcc.cpp:2433
-msgid "The IRC context that originated the DCC doesn't exists anymore."
+#: src/modules/dcc/libkvidcc.cpp:2423
+msgid "The IRC context that originated the DCC doesn't exist anymore."
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2669
+#: src/modules/dcc/libkvidcc.cpp:2659
 msgid "The specified window identifier is not valid"
 msgstr "El identificador de ventana especificado no es válido"
 
-#: src/modules/dcc/libkvidcc.cpp:2827
+#: src/modules/dcc/libkvidcc.cpp:2817
 msgid "This executable was built without SSL support"
 msgstr "Este ejecutable se compiló sin soporte SSL, el modificador -s será ignorado"
 
-#: src/modules/dcc/libkvidcc.cpp:2840
+#: src/modules/dcc/libkvidcc.cpp:2830
 msgid "You specified a bad string for the parameter \"type\""
 msgstr "Has especificado una cadena no válida para el parámetro \"tipo\""
 
-#: src/modules/dcc/libkvidcc.cpp:2851
+#: src/modules/dcc/libkvidcc.cpp:2841
 msgid "Unable to get SSL information: DCC session is not using SSL"
 msgstr "No se pudo obtener la información SSL: la sesión DCC no usa SSL"
 
-#: src/modules/dcc/libkvidcc.cpp:2864
+#: src/modules/dcc/libkvidcc.cpp:2854
 msgid "Unable to get SSL information: DCC session not initialized yet"
 msgstr "No se pudo obtener la información SSL: la sesión DCC no ha sido inicializada aún"
 
-#: src/modules/dcc/libkvidcc.cpp:2872
+#: src/modules/dcc/libkvidcc.cpp:2862
 msgid "Unable to get SSL information: SSL non initialized yet in DCC session"
 msgstr "No se pudo obtener la información SSL: SSL no inicializado aún en la sesión DCC"
 
-#: src/modules/dcc/libkvidcc.cpp:2881
+#: src/modules/dcc/libkvidcc.cpp:2871
 msgid "Unable to get SSL information: no peer certificate available"
-msgstr ""
+msgstr "No se pudo obtener la información SSL: no hay certificado disponible del compañero"
 
-#: src/modules/dcc/libkvidcc.cpp:2889
+#: src/modules/dcc/libkvidcc.cpp:2879
 msgid "Unable to get SSL information: query not recognized"
 msgstr "No se pudo obtener la información SSL: petición no reconocida"
 
@@ -844,20 +845,20 @@ msgstr "La petición anterior es incorrecta: parece un tag de agradecimiento de 
 
 #: src/modules/dcc/requests.cpp:337
 msgid "It seems that I haven't requested this DCC chat"
-msgstr ""
+msgstr "Me parece que yo no he pedido este chat DCC"
 
 #: src/modules/dcc/requests.cpp:465 src/modules/dcc/requests.cpp:767
 msgid ""
 "The above request is broken: the fourth parameter should be the file size "
 "but doesn't appear to be an unsigned number; trying to continue"
-msgstr ""
+msgstr "La petición anterior es erronea: el cuarto parámetro debería ser el tamaño del archivo pero no parece ser un entero sin signo; intentando continuar"
 
 #: src/modules/dcc/requests.cpp:475 src/modules/dcc/requests.cpp:485
 #: src/modules/dcc/requests.cpp:637 src/modules/dcc/requests.cpp:777
 msgid ""
 "The above request is broken: the filename contains path components, "
 "stripping the leading path and trying to continue"
-msgstr ""
+msgstr "La petición anterior no es correcta: el nombre del archivo contiene una ruta, quitando la ruta e intentando continuar"
 
 #: src/modules/dcc/requests.cpp:499
 msgid ""
@@ -894,7 +895,7 @@ msgstr "Este ejecutable ha sido compilado sin soporte SSL, no está disponible l
 
 #: src/modules/dcc/requests.cpp:665
 msgid "Invalid RECV request: position %1 is larger than file size"
-msgstr ""
+msgstr "Petición RECV no válida: la posición %1 es mayor que el tamaño del archivo"
 
 #: src/modules/dcc/requests.cpp:718
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
@@ -957,7 +958,7 @@ msgstr "Aceptando una petición de archivo desde %Q [%Q@%Q] para '%s' (archivo r
 msgid ""
 "The above request can't be accepted: DCC VOICE support not enabled at "
 "compilation time "
-msgstr ""
+msgstr "La petición anterior no puede ser aceptada: el ejecutable no fue compilado con soporte DCC VOICE"
 
 #: src/modules/dcc/requests.cpp:1033 src/modules/dcc/requests.cpp:1106
 #, c-format

@@ -73,7 +73,7 @@ public:
 	~ClassEditorTreeWidget();
 
 protected:
-	virtual void mousePressEvent(QMouseEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
 signals:
 	/**
 	* \brief Emitted when we press the mouse right button
@@ -305,14 +305,14 @@ public:
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void saveProperties(KviConfigurationFile * pCfg);
+	void saveProperties(KviConfigurationFile * pCfg);
 
 	/**
 	* \brief Called to load the window properties
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void loadProperties(KviConfigurationFile * pCfg);
+	void loadProperties(KviConfigurationFile * pCfg);
 
 	/**
 	* \brief Builds the class!
@@ -497,7 +497,7 @@ protected:
 	* \brief Returns the class editor small icon
 	* \return QPixmap *
 	*/
-	virtual QPixmap * myIconPtr();
+	QPixmap * myIconPtr() override;
 
 	/**
 	* \brief Sets the configuration group name as classeditor
@@ -511,14 +511,14 @@ protected:
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void saveProperties(KviConfigurationFile * pCfg);
+	void saveProperties(KviConfigurationFile * pCfg) override;
 
 	/**
 	* \brief Called to load the window properties
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void loadProperties(KviConfigurationFile * pCfg);
+	void loadProperties(KviConfigurationFile * pCfg) override;
 protected slots:
 	/**
 	* \brief Called when we click the cancel button

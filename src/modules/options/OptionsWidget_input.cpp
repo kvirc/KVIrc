@@ -148,21 +148,24 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 	u->setSuffix(__tr2qs_ctx(" spaces", "options"));
 
 	KviTalGroupBox * g = addGroupBox(0, 6, 0, 6, Qt::Horizontal, __tr2qs_ctx("Nick Completion", "options"));
-	KviBoolSelector *b, *c;
+	KviBoolSelector *b, *c, *d;
 	b = addBoolSelector(g, __tr2qs_ctx("Use bash-like nick completion", "options"), KviOption_boolBashLikeNickCompletion, !KVI_OPTION_BOOL(KviOption_boolZshLikeNickCompletion));
 	c = addBoolSelector(g, __tr2qs_ctx("Use zsh-like nick completion", "options"), KviOption_boolZshLikeNickCompletion, !KVI_OPTION_BOOL(KviOption_boolBashLikeNickCompletion));
+	d = addBoolSelector(g, __tr2qs_ctx("Prioritize nick completion by last action time", "options"), KviOption_boolPrioritizeLastActionTime);
 	connect(b, SIGNAL(toggled(bool)), c, SLOT(setDisabled(bool)));
+	connect(b, SIGNAL(toggled(bool)), d, SLOT(setDisabled(bool)));
 	connect(c, SIGNAL(toggled(bool)), b, SLOT(setDisabled(bool)));
+	connect(c, SIGNAL(toggled(bool)), d, SLOT(setDisabled(bool)));
 
 	addStringSelector(g, __tr2qs_ctx("Nick completion postfix string:", "options"), KviOption_stringNickCompletionPostfix);
 	addBoolSelector(g, __tr2qs_ctx("Use the completion postfix string for the first word only", "options"), KviOption_boolUseNickCompletionPostfixForFirstWordOnly);
 
 	addBoolSelector(g, __tr2qs_ctx("Ignore special characters in nick completion", "options"), KviOption_boolIgnoreSpecialCharactersInNickCompletion);
 
-	KviBoolSelector * d = addBoolSelector(0, 7, 0, 7, __tr2qs_ctx("Use a custom cursor width", "options"), KviOption_boolEnableCustomCursorWidth);
+	KviBoolSelector * e = addBoolSelector(0, 7, 0, 7, __tr2qs_ctx("Use a custom cursor width", "options"), KviOption_boolEnableCustomCursorWidth);
 	KviUIntSelector * f = addUIntSelector(0, 8, 0, 8, __tr2qs_ctx("Custom cursor width:", "options"), KviOption_uintCustomCursorWidth, 1, 24, 8, KVI_OPTION_BOOL(KviOption_boolEnableCustomCursorWidth));
 	f->setSuffix(__tr2qs_ctx(" pixels", "options"));
-	connect(d, SIGNAL(toggled(bool)), f, SLOT(setEnabled(bool)));
+	connect(e, SIGNAL(toggled(bool)), f, SLOT(setEnabled(bool)));
 	addRowSpacer(0, 9, 0, 9);
 }
 

@@ -43,7 +43,7 @@ class RegistrationWizard : public KviTalWizard
 {
 	Q_OBJECT
 public:
-	RegistrationWizard(const QString & startMask, KviRegisteredUserDataBase * db = 0, QWidget * par = 0, bool bModal = false);
+	RegistrationWizard(const QString & startMask, KviRegisteredUserDataBase * db = nullptr, QWidget * par = nullptr, bool bModal = false);
 	~RegistrationWizard();
 
 	KviRegisteredUserDataBase * m_pDb;
@@ -80,9 +80,9 @@ public:
 	KviPixmap * m_pAvatar;
 
 protected:
-	virtual void showEvent(QShowEvent * e);
-	virtual void accept();
-	virtual void reject();
+	void showEvent(QShowEvent * e) override;
+	void accept() override;
+	void reject() override;
 protected slots:
 	void realNameChanged(const QString & str);
 	void maskChanged(const QString & str);

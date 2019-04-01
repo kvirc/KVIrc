@@ -171,7 +171,7 @@ public:
 	/**
 	* \brief Destroys the window object
 	*/
-	virtual ~KviWindow();
+	~KviWindow();
 
 protected:            // almost private: don't touch :D
 	QString m_szName; // the current window name (usually also the target)
@@ -203,7 +203,7 @@ protected:            // almost private: don't touch :D
 	bool m_bProcessingInputEvent;
 
 public:
-	inline bool isDocked() { return m_bIsDocked; }
+	bool isDocked() const { return m_bIsDocked; }
 
 	/**
 	* \brief Returns the global ID of this window
@@ -211,7 +211,7 @@ public:
 	* This is unique in the application
 	* \return QString
 	*/
-	inline QString id() { return QString("%1").arg(m_uId); };
+	QString id() const { return QString("%1").arg(m_uId); }
 
 	/**
 	* \brief Returns the global ID of this window
@@ -219,13 +219,13 @@ public:
 	* This is unique in the application
 	* \return QString
 	*/
-	inline unsigned long int numericId() { return m_uId; };
+	unsigned long int numericId() const { return m_uId; }
 
 	/**
 	* \brief Returns the name of this window
 	* \return const QString &
 	*/
-	inline const QString & windowName() { return m_szName; };
+	const QString & windowName() const { return m_szName; }
 
 	/**
 	* \brief Sets the name of the window
@@ -247,22 +247,22 @@ public:
 	* \brief Returns the type of the window
 	* \return Type
 	*/
-	inline Type type() const { return m_eType; };
+	Type type() const { return m_eType; }
 
 	/**
 	* Returns true if the window is a channel
 	*/
-	inline bool isChannel() const { return m_eType == Channel; };
+	bool isChannel() const { return m_eType == Channel; }
 
 	/**
 	* Returns true if the window is a query
 	*/
-	inline bool isQuery() const { return m_eType == Query; };
+	bool isQuery() const { return m_eType == Query; }
 
 	/**
 	* Returns true if the window is a console
 	*/
-	inline bool isConsole() const { return m_eType == Console; };
+	bool isConsole() const { return m_eType == Console; }
 
 	/**
 	* \brief Returns a descriptive name of the window type
@@ -270,16 +270,16 @@ public:
 	*/
 	virtual const char * typeString();
 
-	inline QTextCodec * textCodec() { return m_pTextCodec ? m_pTextCodec : defaultTextCodec(); };
+	QTextCodec * textCodec() { return m_pTextCodec ? m_pTextCodec : defaultTextCodec(); }
 	void forceTextCodec(QTextCodec * pCodec);
 
 	/**
 	* \brief Returns the KviIrcView of this window
 	*
-	* May be NULL if the window has no KviIrcView (and thus supports no direct output)
+	* May be nullptr if the window has no KviIrcView (and thus supports no direct output)
 	* \return KviIrcView *
 	*/
-	inline KviIrcView * view() const { return m_pIrcView; };
+	KviIrcView * view() const { return m_pIrcView; }
 
 	/**
 	* \brief Returns the KviIrcView that was last clicked in this window
@@ -296,7 +296,7 @@ public:
 	* May be null for windows that aren't bound to irc contexts
 	* \return KviConsoleWindow *
 	*/
-	inline KviConsoleWindow * console() { return m_pConsole; };
+	KviConsoleWindow * console() const { return m_pConsole; }
 
 	KviIrcContext * context();
 
@@ -312,7 +312,7 @@ public:
 	* It *shouldn't* be null... but... well... who knows ? :D ...better check it
 	* \return KviTalSplitter *
 	*/
-	inline KviTalSplitter * splitter() { return m_pSplitter; };
+	KviTalSplitter * splitter() const { return m_pSplitter; }
 
 	/**
 	* \brief Returns the windowList item
@@ -320,7 +320,7 @@ public:
 	* The window has ALWAYS a WindowList item
 	* \return KviWindowListItem *
 	*/
-	inline KviWindowListItem * windowListItem() { return m_pWindowListItem; };
+	KviWindowListItem * windowListItem() const { return m_pWindowListItem; }
 
 	// The window *might* have a button container
 	virtual QFrame * buttonContainer() { return (QFrame *)m_pButtonBox; };
@@ -330,7 +330,7 @@ public:
 	virtual KviWindow * outputProxy();
 
 	// The window input widget
-	inline KviInput * input() { return m_pInput; };
+	KviInput * input() const { return m_pInput; }
 
 	// The target of this window: empty when it makes no sense :D
 	virtual const QString & target() { return KviQString::Empty; };
@@ -354,20 +354,20 @@ public:
 
 	void unhighlight();
 
-	virtual inline void getWindowListTipText(QString & szBuffer) { szBuffer = m_szPlainTextCaption; };
+	virtual void getWindowListTipText(QString & szBuffer) { szBuffer = m_szPlainTextCaption; }
 
-	// This is meaningful only if view() is non NULL
+	// This is meaningful only if view() is non nullptr
 	const QString & lastLineOfText();
 	const QString & lastMessageText();
 
-	inline const QString & textEncoding() { return m_szTextEncoding; };
+	const QString & textEncoding() const { return m_szTextEncoding; }
 	// returns true if the encoding could be successfully set
 	bool setTextEncoding(const QString & szTextEncoding);
 	// this must return a default text codec suitable for this window
 	virtual QTextCodec * defaultTextCodec();
 	// encode the text from szSource by using m_uTextEncoding
-	inline QByteArray encodeText(const QString & szText);
-	inline QString decodeText(const char * pcText);
+	QByteArray encodeText(const QString & szText);
+	QString decodeText(const char * pcText);
 	//return a text encoder
 	QTextEncoder * makeEncoder();
 
@@ -434,7 +434,7 @@ public:
 	// call this in the constructor if your caption is fixed:
 	// it will set m_szPlainTextCaption to szCaption and it will
 	// automatically use it without the need of overriding fillCaptionBuffers
-	inline void setFixedCaption(const QString & szCaption) { m_szPlainTextCaption = szCaption; };
+	void setFixedCaption(const QString & szCaption) { m_szPlainTextCaption = szCaption; }
 
 	void setWindowTitle(QString & szTitle);
 
@@ -476,7 +476,7 @@ protected:
 	// this by default calls fillSingleColorCaptionBuffer(plainTextCaption());
 	virtual void fillCaptionBuffers();
 	// protected helper
-	inline void fillSingleColorCaptionBuffers(const QString & szName) { m_szPlainTextCaption = szName; };
+	void fillSingleColorCaptionBuffers(const QString & szName) { m_szPlainTextCaption = szName; }
 	// Virtual events that signal dock state change
 	virtual void youAreDocked();
 	virtual void youAreUndocked();
@@ -485,14 +485,14 @@ protected:
 	// Sets the type of this window: be careful with this
 	void setType(Type eType) { m_eType = eType; };
 
-	bool eventFilter(QObject * pObject, QEvent * pEvent);
+	bool eventFilter(QObject * pObject, QEvent * pEvent) override;
 
 	// Virtuals overridden to manage the internal layouts...
-	virtual void moveEvent(QMoveEvent * pEvent);
-	virtual void closeEvent(QCloseEvent * pEvent);
-	virtual void childEvent(QChildEvent * pEvent);
-	virtual void focusInEvent(QFocusEvent *);
-	virtual void inputMethodEvent(QInputMethodEvent * e);
+	void moveEvent(QMoveEvent * pEvent) override;
+	void closeEvent(QCloseEvent * pEvent) override;
+	void childEvent(QChildEvent * pEvent) override;
+	void focusInEvent(QFocusEvent *) override;
+	void inputMethodEvent(QInputMethodEvent * e) override;
 
 	void childInserted(QWidget * pObject);
 	void childRemoved(QWidget * pObject);
@@ -506,7 +506,7 @@ protected:
 	// This is called by KviInput: actually it links the widgetAdded
 	virtual void childrenTreeChanged(QWidget * pAdded);
 
-	virtual bool focusNextPrevChild(bool bNext);
+	bool focusNextPrevChild(bool bNext) override;
 
 	virtual void preprocessMessage(QString & szMessage);
 public slots:
@@ -531,7 +531,7 @@ signals:
 //   This is almost always non null
 //   The exception is the startup (when there are no windows at all)
 //   and the last phase of the destructor.
-//   You usually shouldn't care of checking this pointer for NULL unless
+//   You usually shouldn't care of checking this pointer for nullptr unless
 //   you're running very early at startup or very late at shutdown
 extern KVIRC_API KviWindow * g_pActiveWindow;
 #endif

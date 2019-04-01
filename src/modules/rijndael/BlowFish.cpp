@@ -436,7 +436,7 @@ void BlowFish::Decrypt(SBlock & block)
 }
 
 //Semi-Portable Byte Shuffling
-inline void BytesToBlock(unsigned char const * p, SBlock & b)
+void BytesToBlock(unsigned char const * p, SBlock & b)
 {
 	unsigned int y;
 	//Left
@@ -467,7 +467,7 @@ inline void BytesToBlock(unsigned char const * p, SBlock & b)
 	b.m_uir |= y;
 }
 
-inline void BlockToBytes(SBlock const & b, unsigned char * p)
+void BlockToBytes(SBlock const & b, unsigned char * p)
 {
 	unsigned int y;
 	//Right

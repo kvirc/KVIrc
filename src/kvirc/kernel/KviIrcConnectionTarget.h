@@ -42,49 +42,27 @@ public:
 	KviIrcConnectionTarget(
 	    const KviIrcNetwork * pNetwork,
 	    const KviIrcServer * pServer,
-	    const KviProxy * pProxy = 0,
-	    const QString & szBindAddress = QString());
+	    const KviProxy * pProxy = nullptr,
+	    const QString & szBindAddress = {});
 	~KviIrcConnectionTarget();
 
 private:
-	KviIrcNetwork * m_pNetwork; // owned, never null, it's a COPY of the entry in the db
-	KviIrcServer * m_pServer;   // owned, never null, it's a COPY of the entry in the db
-	KviProxy * m_pProxy;        // owned, may be null, it's a COPY of the entry in the db
-	QString m_szBindAddress;    // forced bind address
+	KviIrcNetwork * m_pNetwork;    // owned, never null, it's a COPY of the entry in the db
+	KviIrcServer * m_pServer;      // owned, never null, it's a COPY of the entry in the db
+	KviProxy * m_pProxy = nullptr; // owned, may be null, it's a COPY of the entry in the db
+	QString m_szBindAddress;       // forced bind address
 
 public:
-	KviIrcServer * server()
-	{
-		return m_pServer;
-	}
-
-	KviIrcNetwork * network()
-	{
-		return m_pNetwork;
-	}
-
-	KviProxy * proxy()
-	{
-		return m_pProxy;
-	}
-
-	const QString & bindAddress()
-	{
-		return m_szBindAddress;
-	}
-
-	bool hasBindAddress()
-	{
-		return (!m_szBindAddress.isEmpty());
-	}
+	KviIrcServer * server() const { return m_pServer; }
+	KviIrcNetwork * network() const { return m_pNetwork; }
+	KviProxy * proxy() const { return m_pProxy; }
+	const QString & bindAddress() const { return m_szBindAddress; }
+	bool hasBindAddress() const { return !m_szBindAddress.isEmpty(); }
 
 protected:
 	// this is for KviIrcConnectionTargetResolver only
 	void clearProxy();
-	void setBindAddress(const QString & szBindAddress)
-	{
-		m_szBindAddress = szBindAddress;
-	}
+	void setBindAddress(const QString & szBindAddress) { m_szBindAddress = szBindAddress; }
 };
 
 #endif //!_KVI_IRCCONNECTIONTARGET_H_

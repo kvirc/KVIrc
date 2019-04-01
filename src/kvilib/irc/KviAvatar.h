@@ -82,13 +82,13 @@ public:
 	* \brief Returns true, if avatar is remote.
 	* \return bool
 	*/
-	inline bool isRemote() { return m_bRemote; }
+	bool isRemote() const { return m_bRemote; }
 
 	/**
 	* \brief Returns filepath
 	* \return const QString &
 	*/
-	inline const QString & localPath() { return m_szLocalPath; }
+	const QString & localPath() const { return m_szLocalPath; }
 
 	/**
 	* \brief Returns fiename.
@@ -96,25 +96,25 @@ public:
 	* For remote avatars, remote address will be returned.
 	* \return const QString &
 	*/
-	inline const QString & name() { return m_szName; }
+	const QString & name() const { return m_szName; }
 
 	/**
 	* \brief Returns true, if underlying pixmap contains more then one frame.
 	* \return bool
 	*/
-	inline bool isAnimated() { return (m_pPixmap->framesCount() > 1); }
+	bool isAnimated() const { return (m_pPixmap->framesCount() > 1); }
 
 	/**
 	* \brief Returns original pixmap's size
 	* \return const QSize &
 	*/
-	inline const QSize & size() { return m_pPixmap->size(); }
+	const QSize & size() const { return m_pPixmap->size(); }
 
 	/**
 	* \brief Returns unscaled original frame.
 	* \return QPixmap *
 	*/
-	inline QPixmap * pixmap() { return m_pPixmap->pixmap(); }
+	QPixmap * pixmap() const { return m_pPixmap->pixmap(); }
 
 	/**
 	* \brief Returns true if pixmap has at least one loaded frame.
@@ -122,13 +122,13 @@ public:
 	* Returns false otherwise.
 	* \return bool
 	*/
-	inline bool isValid() { return m_pPixmap->isValid(); }
+	bool isValid() const { return m_pPixmap->isValid(); }
 
 	/**
 	* \brief Returns original animated pixmap.
 	* \return KviAnimatedPixmap *
 	*/
-	inline KviAnimatedPixmap * animatedPixmap() { return m_pPixmap; }
+	KviAnimatedPixmap * animatedPixmap() const { return m_pPixmap; }
 
 	/**
 	* \brief Returns animated pixmap, scaled to the requisted size.
@@ -161,7 +161,7 @@ public:
 	* \param uHeight The height of the avatar
 	* \return KviAnimatedPixmap *
 	*/
-	inline KviAnimatedPixmap * forSize(unsigned int uWidth, unsigned int uHeight) { return forSize(QSize(uWidth, uHeight)); }
+	KviAnimatedPixmap * forSize(unsigned int uWidth, unsigned int uHeight) { return forSize(QSize(uWidth, uHeight)); }
 
 	/**
 	* \brief Returns the string that uniquely identifies this avatar.

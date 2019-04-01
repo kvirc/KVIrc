@@ -41,7 +41,7 @@ public:
 	void backClicked();
 
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 
 	bool addPage(KviKvsObjectFunctionCall * c);
 	bool insertPage(KviKvsObjectFunctionCall * c);
@@ -68,7 +68,7 @@ public:
 	KviKvsMdmWizard(QWidget * par, const char * name, KvsObject_wizard *);
 	void accept();
 	void reject();
-	virtual ~KviKvsMdmWizard();
+	~KviKvsMdmWizard();
 
 protected:
 	KvsObject_wizard * m_pParentScript;

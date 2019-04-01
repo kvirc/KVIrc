@@ -219,7 +219,7 @@ QSize RegisteredUsersDialogItemDelegate::sizeHint(const QStyleOptionViewItem & o
 		//users
 		// 		RegisteredUsersDialogItem *it=(RegisteredUsersDialogItem*)item;
 
-		return QSize(300, LVI_ICON_SIZE + 2 * LVI_BORDER);
+		return { 300, LVI_ICON_SIZE + 2 * LVI_BORDER };
 	}
 }
 
@@ -445,9 +445,9 @@ void RegisteredUsersDialog::editGroup(KviRegisteredUserGroup * group)
 	if(ok && !text.isEmpty())
 	{
 		QString szOldGroup = group->name();
-		g_pLocalRegisteredUserDataBase->groupDict()->setAutoDelete(0);
+		g_pLocalRegisteredUserDataBase->groupDict()->setAutoDelete(false);
 		g_pLocalRegisteredUserDataBase->groupDict()->remove(szOldGroup);
-		g_pLocalRegisteredUserDataBase->groupDict()->setAutoDelete(1);
+		g_pLocalRegisteredUserDataBase->groupDict()->setAutoDelete(true);
 		group->setName(text);
 		g_pLocalRegisteredUserDataBase->groupDict()->insert(text, group);
 
@@ -697,12 +697,12 @@ void RegisteredUsersDialog::selectionChanged()
 #define KVI_REGUSER_DB_FILE_MAGIC 0x5334DBDB
 #define KVI_REGUSER_DB_FILE_VERSION 1
 
-typedef struct _KviReguserDbFileHeader
+struct KviReguserDbFileHeader
 {
 	kvi_u32_t magic;
 	kvi_u32_t version;
 	kvi_u32_t nentries;
-} KviReguserDbFileHeader;
+};
 
 void RegisteredUsersDialog::exportClicked()
 {

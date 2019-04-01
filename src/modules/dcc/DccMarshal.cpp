@@ -32,7 +32,7 @@
 #include "kvi_socket.h"
 #include "KviFileUtils.h"
 
-#include <stdlib.h> //for exit()
+#include <cstdlib> //for exit()
 
 #include <QTimer>
 

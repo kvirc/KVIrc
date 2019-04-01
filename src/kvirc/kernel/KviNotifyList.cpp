@@ -43,10 +43,11 @@
 #include "KviKvsEventTriggers.h"
 #include "KviIrcMessage.h"
 
-#include <QStringList>
 #include <QByteArray>
+#include <QStringList>
 
 #include <algorithm>
+#include <memory>
 #include <set>
 #include <vector>
 
@@ -118,7 +119,7 @@
 // Basic NotifyListManager: this does completely nothing
 
 KviNotifyListManager::KviNotifyListManager(KviIrcConnection * pConnection)
-    : QObject(nullptr)
+    : QObject()
 {
 	setObjectName("notify_list_manager");
 	m_pConnection = pConnection;
@@ -174,17 +175,14 @@ void KviNotifyListManager::notifyOnLine(const QString & szNick, const QString & 
 	while(KviRegisteredUser * pUser = it.current())
 	{
 		QString szProp = pUser->getProperty("notify");
-		if(!szProp.isEmpty())
+		if(!szProp.isEmpty() && szProp.split(',', QString::SkipEmptyParts).contains(szNick))
 		{
-			if(szProp.split(",", QString::SkipEmptyParts).indexOf(szNick) != -1)
-			{
-				QString szComment = pUser->getProperty("comment");
-				if(!szComment.isEmpty())
-					szMsg = QString("%1 (%2), Group \"%3\" is on IRC as (%4)").arg(pUser->name(), szComment, pUser->group(), szWho);
-				else
-					szMsg = QString("%1, Group \"%2\" is on IRC as (%3)").arg(pUser->name(), pUser->group(), szWho);
-				break;
-			}
+			QString szComment = pUser->getProperty("comment");
+			if(!szComment.isEmpty())
+				szMsg = QString("%1 (%2), Group \"%3\" is on IRC as (%4)").arg(pUser->name(), szComment, pUser->group(), szWho);
+			else
+				szMsg = QString("%1, Group \"%2\" is on IRC as (%3)").arg(pUser->name(), pUser->group(), szWho);
+			break;
 		}
 		++it;
 	}
@@ -196,9 +194,9 @@ void KviNotifyListManager::notifyOnLine(const QString & szNick, const QString & 
 
 	if((!szReason.isEmpty()) && (_OUTPUT_VERBOSE))
 	{
-		szMsg += "(";
+		szMsg += '(';
 		szMsg += szReason;
-		szMsg += ")";
+		szMsg += ')';
 	}
 
 	pOut->outputNoFmt(KVI_OUT_NOTIFYONLINE, szMsg);
@@ -238,17 +236,14 @@ void KviNotifyListManager::notifyOffLine(const QString & szNick, const QString &
 		while(KviRegisteredUser * pUser = it.current())
 		{
 			QString szProp = pUser->getProperty("notify");
-			if(!szProp.isEmpty())
+			if(!szProp.isEmpty() && szProp.split(',', QString::SkipEmptyParts).contains(szNick))
 			{
-				if(szProp.split(",", QString::SkipEmptyParts).indexOf(szNick) != -1)
-				{
-					QString szComment = pUser->getProperty("comment");
-					if(!szComment.isEmpty())
-						szMsg = QString("%1 (%2), Group \"%3\" has left IRC as (%4)").arg(pUser->name(), szComment, pUser->group(), szWho);
-					else
-						szMsg = QString("%1, Group \"%2\" has left IRC as (%3)").arg(pUser->name(), pUser->group(), szWho);
-					break;
-				}
+				QString szComment = pUser->getProperty("comment");
+				if(!szComment.isEmpty())
+					szMsg = QString("%1 (%2), Group \"%3\" has left IRC as (%4)").arg(pUser->name(), szComment, pUser->group(), szWho);
+				else
+					szMsg = QString("%1, Group \"%2\" has left IRC as (%3)").arg(pUser->name(), pUser->group(), szWho);
+				break;
 			}
 			++it;
 		}
@@ -258,9 +253,9 @@ void KviNotifyListManager::notifyOffLine(const QString & szNick, const QString &
 
 		if((!szReason.isEmpty()) && (_OUTPUT_VERBOSE))
 		{
-			szMsg += "(";
+			szMsg += '(';
 			szMsg += szReason;
-			szMsg += ")";
+			szMsg += ')';
 		}
 
 		pOut->outputNoFmt(KVI_OUT_NOTIFYOFFLINE, szMsg);
@@ -328,8 +323,6 @@ KviIsOnNotifyListManager::KviIsOnNotifyListManager(KviIrcConnection * pConnectio
 	connect(&m_pDelayedNotifyTimer, SIGNAL(timeout()), this, SLOT(newNotifySession()));
 	connect(&m_pDelayedIsOnTimer, SIGNAL(timeout()), this, SLOT(newIsOnSession()));
 	connect(&m_pDelayedUserhostTimer, SIGNAL(timeout()), this, SLOT(newUserhostSession()));
-
-	m_bRunning = false;
 }
 
 KviIsOnNotifyListManager::~KviIsOnNotifyListManager()
@@ -370,22 +363,8 @@ void KviIsOnNotifyListManager::buildRegUserDict()
 		QString notify;
 		if(u->getProperty("notify", notify))
 		{
-			notify = notify.trimmed();
-			while(!notify.isEmpty())
-			{
-				int idx = notify.indexOf(' ');
-				if(idx > 0)
-				{
-					QString single = notify.left(idx);
-					m_pRegUserDict.emplace(single, u->name());
-					notify.remove(0, idx + 1);
-				}
-				else
-				{
-					m_pRegUserDict.emplace(notify, u->name());
-					notify = "";
-				}
-			}
+			for(const auto & single : notify.trimmed().split(' ', QString::SkipEmptyParts))
+				m_pRegUserDict.emplace(single, u->name());
 		}
 		++it;
 	}
@@ -837,7 +816,7 @@ bool KviIsOnNotifyListManager::handleUserhost(KviIrcMessage * msg)
 				{
 					if(KviQString::equalCI(s, szNick))
 					{
-						tmplist.emplace(i, std::unique_ptr<KviIrcMask>(new KviIrcMask(szNick, szUser, szHost)));
+						tmplist.emplace(i, std::make_unique<KviIrcMask>(szNick, szUser, szHost));
 						bGotIt = true;
 						break;
 					}
@@ -1128,7 +1107,7 @@ void KviWatchNotifyListManager::start()
 	for(auto & it : m_pRegUserDict)
 	{
 		const QString & nk = it.first;
-		if(nk.indexOf('*') == -1)
+		if(!nk.contains('*'))
 		{
 			if((watchStr.length() + nk.length() + 2) > 501)
 			{
@@ -1239,11 +1218,11 @@ bool KviWatchNotifyListManager::handleWatchReply(KviIrcMessage * msg)
 {
 	// 600: RPL_LOGON
 	// :prefix 600 <target> <nick> <user> <host> <logintime> :logged online
-	// 601: RPL_LOGON
+	// 601: RPL_LOGOFF
 	// :prefix 601 <target> <nick> <user> <host> <logintime> :logged offline
-	// 604: PRL_NOWON
+	// 604: RPL_NOWON
 	// :prefix 604 <target> <nick> <user> <host> <logintime> :is online
-	// 605: PRL_NOWOFF
+	// 605: RPL_NOWOFF
 	// :prefix 605 <target> <nick> <user> <host> 0 :is offline
 
 	// FIXME: #warning "Use the logintime in some way ?"

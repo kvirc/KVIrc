@@ -1175,12 +1175,12 @@ static void dccModuleParseDccList(KviDccRequest *)
 	// FIXME!
 }
 
-typedef void (*dccParseProc)(KviDccRequest *);
-typedef struct _dccParseProcEntry
+using dccParseProc = void (*)(KviDccRequest *);
+struct dccParseProcEntry
 {
 	const char * type;
 	dccParseProc proc;
-} dccParseProcEntry;
+};
 
 #define KVI_NUM_KNOWN_DCC_TYPES 28
 

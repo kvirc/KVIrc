@@ -193,15 +193,12 @@ bool KviKvsObjectClass::save(const QString & szFileName)
 	{
 		if(h->isScriptHandler() && !h->isClone())
 		{
-			QString reminder = h->reminder();
-			KviQString::escapeKvs(&reminder);
-
 			szBuffer += "	";
 			if(h->flags() & KviKvsObjectFunctionHandler::Internal)
 				szBuffer += "internal ";
 			szBuffer += "function ";
 			szBuffer += it.currentKey();
-			szBuffer += "(\"" + reminder + "\")\n";
+			szBuffer += "(" + h->reminder() + ")\n";
 			QString szCode = h->scriptHandlerCode();
 			KviCommandFormatter::blockFromBuffer(szCode);
 			KviCommandFormatter::indent(szCode);

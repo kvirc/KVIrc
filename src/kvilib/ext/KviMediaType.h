@@ -37,14 +37,14 @@
 //          to KviMediaManager::lock() and KviMediaManager::unlock()
 //
 
-typedef struct _KviDefaultMediaType
+struct KviDefaultMediaType
 {
 	const char * filemask;
 	const char * magicbytes;
 	const char * ianatype;
 	const char * description;
 	const char * commandline;
-} KviDefaultMediaType;
+};
 
 class KVILIB_API KviMediaType : public KviHeapObject
 {

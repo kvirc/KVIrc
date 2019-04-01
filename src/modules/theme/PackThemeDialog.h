@@ -66,7 +66,7 @@ protected:
 
 	//QWidget                      * m_pImageSelectionPage;
 protected:
-	virtual void accept();
+	void accept() override;
 	bool packTheme();
 };
 
@@ -95,7 +95,7 @@ public:
 	QLineEdit * m_pPackageAuthorEdit;
 
 protected:
-	virtual void initializePage();
+	void initializePage() override;
 };
 
 class PackThemeImageWidget : public QWizardPage
@@ -125,7 +125,7 @@ protected:
 	QString m_szPackagePath;
 
 protected:
-	virtual void initializePage();
+	void initializePage() override;
 };
 
 #endif //!_PACKTHEMEDIALOG_H_

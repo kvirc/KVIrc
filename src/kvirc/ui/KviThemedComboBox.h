@@ -42,8 +42,8 @@ private:
 	KviWindow * m_pKviWindow;
 
 protected:
-	virtual void paintEvent(QPaintEvent * event);
-	virtual void keyPressEvent(QKeyEvent * e);
+	void paintEvent(QPaintEvent * event) override;
+	void keyPressEvent(QKeyEvent * e) override;
 
 public:
 	int dummyRead() const { return 0; };

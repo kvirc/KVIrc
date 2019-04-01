@@ -50,7 +50,7 @@ public:
 	* \param pcName The name of the box
 	* \return KviTalVBox
 	*/
-	KviTalVBox(QWidget * pParent, char * pcName = 0);
+	KviTalVBox(QWidget * pParent, char * pcName = nullptr);
 
 	/**
 	* \brief Destroys a vertical box object
@@ -106,7 +106,7 @@ public:
 	void addStretch(int iStretch);
 
 protected:
-	virtual void childEvent(QChildEvent * e);
+	void childEvent(QChildEvent * e) override;
 };
 
 #endif // _KVI_TAL_VBOX_H_

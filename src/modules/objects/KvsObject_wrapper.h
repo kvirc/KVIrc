@@ -37,7 +37,7 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 	QWidget * findTopLevelWidgetToWrap(const QString & szClass, const QString & szName, bool bRecursive);
 	QWidget * findWidgetToWrap(const QString & szClass, const QString & szName, QWidget * pParent, bool bRecursive);
 };

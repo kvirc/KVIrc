@@ -45,9 +45,9 @@
 #include <QIcon>
 #include <QPointer>
 
-#include <time.h>
+#include <ctime>
 
-	/*
+/*
 		@doc: objects
 		@title:
 			Object scripting
@@ -524,7 +524,7 @@
 			by all the modern kernels and used in inter-process communication).[br]
 	*/
 
-	/*
+/*
 		@doc: object
 		@keyterms:
 			object class, object, class
@@ -634,7 +634,7 @@
 static char * g_hNextObjectHandle = (char *)nullptr;
 
 KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass, KviKvsObject * pParent, const QString & szName)
-    : QObject(pParent)
+    : QObject(pParent), m_szName{szName}, m_pClass{pClass}
 {
 	setObjectName(szName);
 
@@ -643,26 +643,10 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass, KviKvsObject * pParent, c
 	m_hObject = (kvs_hobject_t)g_hNextObjectHandle;
 	g_hNextObjectHandle++;
 
-	m_pObject = nullptr;
-	m_bObjectOwner = true; // true by default
-
-	m_szName = szName;
-
-	m_pClass = pClass;
-
 	m_pChildList = new KviPointerList<KviKvsObject>;
 	m_pChildList->setAutoDelete(false);
 
 	m_pDataContainer = new KviKvsHash();
-
-	m_pFunctionHandlers = nullptr; // no local function handlers yet!
-
-	m_bInDelayedDeath = false;
-	m_bDestructorCalled = false;
-	m_bAboutToDie = false;
-
-	m_pSignalDict = nullptr;     // no signals connected to remote slots
-	m_pConnectionList = nullptr; // no local slots connected to remote signals
 
 	if(pParent)
 		pParent->registerChild(this);
@@ -1200,7 +1184,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
-	if(!p)
+	if(!p->isValid())
 	{
 		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist", "kvs"), &szName, &m_szName, &(m_pClass->name()));
 		return true;
@@ -1460,7 +1444,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	}
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
-	if(!p)
+	if(!p->isValid())
 	{
 		c->returnValue()->setNothing();
 		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist", "kvs"), &szName, &m_szName, &(m_pClass->name()));

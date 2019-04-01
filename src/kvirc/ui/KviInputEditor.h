@@ -503,13 +503,13 @@ private:
 	* \brief Returns true is there are some action in the undo stack
 	* \return bool
 	*/
-	inline bool isUndoAvailable() const { return !m_bReadOnly && !m_UndoStack.empty(); }
+	bool isUndoAvailable() const { return !m_bReadOnly && !m_UndoStack.empty(); }
 
 	/**
 	* \brief Returns true is there are some action in the redo stack
 	* \return bool
 	*/
-	inline bool isRedoAvailable() const { return !m_bReadOnly && !m_RedoStack.empty(); }
+	bool isRedoAvailable() const { return !m_bReadOnly && !m_RedoStack.empty(); }
 
 	/**
 	* \brief Inserts one action in the undo stack

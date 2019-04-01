@@ -58,9 +58,10 @@
 #include <QHBoxLayout>
 #include <QMenu>
 #include <QPushButton>
+#include <QFontMetrics>
 
-#include <ctype.h>
-#include <stdlib.h>
+#include <cctype>
+#include <cstdlib>
 
 //This comes from KviApplication.cpp
 extern KviColorWindow * g_pColorWindow;
@@ -381,7 +382,7 @@ void KviInput::focusInEvent(QFocusEvent *)
 
 int KviInput::heightHint() const
 {
-	return m_pMultiLineEditor ? 120 : m_pInputEditor->heightHint();
+	return m_pMultiLineEditor ? (m_pInputEditor->heightHint() * 6) : m_pInputEditor->heightHint();
 }
 
 void KviInput::setText(const QString & szText)

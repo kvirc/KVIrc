@@ -318,7 +318,6 @@ KVSO_CLASS_FUNCTION(treeWidget, setAcceptDrops)
 
 KVSO_CLASS_FUNCTION(treeWidget, clear)
 {
-	Q_UNUSED(c);
 	if(widget())
 		((QTreeWidget *)object())->clear();
 	return true;
@@ -443,14 +442,12 @@ KVSO_CLASS_FUNCTION(treeWidget, setAllColumnsShowFocus)
 
 KVSO_CLASS_FUNCTION(treeWidget, hideListViewHeader)
 {
-	Q_UNUSED(c);
 	((QTreeWidget *)widget())->header()->hide();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(treeWidget, showListViewHeader)
 {
-	Q_UNUSED(c);
 	((QTreeWidget *)widget())->header()->show();
 	return true;
 }

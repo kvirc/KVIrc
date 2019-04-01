@@ -29,7 +29,7 @@
 
 #include <QApplication>
 
-#include <errno.h>
+#include <cerrno>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <winsock2.h>
@@ -180,7 +180,7 @@ void KviDnsResolverThread::run()
 
 	// gethostbyaddr and gethostbyname are thread-safe on Windoze
 	struct in_addr inAddr;
-	struct hostent * pHostEntry = 0;
+	struct hostent * pHostEntry = nullptr;
 
 	// DIE DIE!....I hope that this stuff will disappear sooner or later :)
 

@@ -31,7 +31,7 @@
 #include "KviKvsScript.h"
 #include "KviKvsParameterProcessor.h"
 
-#define KVSCCC(_name) bool _name(KviKvsRunTimeContext * __pContext, KviKvsVariantList * __pParams, KviKvsSwitchList * __pSwitches, const KviKvsScript * __pCallback)
+#define KVSCCC(_name) bool _name([[maybe_unused]] KviKvsRunTimeContext * __pContext, [[maybe_unused]] KviKvsVariantList * __pParams, [[maybe_unused]] KviKvsSwitchList * __pSwitches, const KviKvsScript * __pCallback)
 
 #define KVSCCC_pContext __pContext
 #define KVSCCC_pParams __pParams

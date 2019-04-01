@@ -43,7 +43,7 @@
 
 // buah buah buahhhh lol ghgh :DDDDDDDDD
 
-void kvi_gettimeofday(struct timeval * tmv, struct timezone *)
+void kvi_gettimeofday(struct timeval * tmv)
 {
 	SYSTEMTIME st;
 	GetSystemTime(&st);
@@ -67,7 +67,7 @@ KviMSecTimeInterval::KviMSecTimeInterval()
 unsigned long KviMSecTimeInterval::mark()
 {
 	struct timeval tmv;
-	kvi_gettimeofday(&tmv, nullptr);
+	kvi_gettimeofday(&tmv);
 	unsigned long uDiff = ((((unsigned long)(tmv.tv_sec)) - m_uReferenceSecs) * 1000);
 	if(((unsigned long)(tmv.tv_usec)) > m_uReferenceUSecs)
 		uDiff += (((unsigned long)(tmv.tv_usec) - m_uReferenceUSecs) / 1000);
@@ -83,7 +83,7 @@ namespace KviTimeUtils
 	long long getCurrentTimeMills()
 	{
 		struct timeval tmv;
-		kvi_gettimeofday(&tmv, nullptr);
+		kvi_gettimeofday(&tmv);
 		long long result = tmv.tv_sec * 1000 + tmv.tv_usec / 1000;
 		return result;
 	}

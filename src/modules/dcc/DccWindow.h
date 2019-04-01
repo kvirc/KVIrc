@@ -45,7 +45,7 @@ protected:
 public:
 	DccDescriptor * descriptor() { return m_pDescriptor; };
 	const DccMarshal * marshal() { return m_pMarshal; };
-	virtual DccThread * getSlaveThread() { return 0; };
+	virtual DccThread * getSlaveThread() { return nullptr; }
 	virtual KviWindow * dccMarshalOutputWindow();
 	virtual const char * dccMarshalOutputContextString();
 };

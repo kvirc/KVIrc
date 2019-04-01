@@ -42,8 +42,8 @@ public:
 	    KviWindow * pWnd,
 	    const QString & szQuery,
 	    bool bRebindOnWindowClose = true,
-	    KviKvsScript * pCallback = 0,
-	    KviKvsVariantList * pParameterList = 0);
+	    KviKvsScript * pCallback = nullptr,
+	    KviKvsVariantList * pParameterList = nullptr);
 	~KviKvsDnsObject();
 
 protected:

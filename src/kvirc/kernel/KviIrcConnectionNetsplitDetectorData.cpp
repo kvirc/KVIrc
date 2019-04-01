@@ -25,9 +25,7 @@
 #include "KviIrcConnectionNetsplitDetectorData.h"
 
 KviIrcConnectionNetsplitDetectorData::KviIrcConnectionNetsplitDetectorData()
-{
-	m_tLastNetsplitOnQuit = 0;
-}
+    = default;
 
 KviIrcConnectionNetsplitDetectorData::~KviIrcConnectionNetsplitDetectorData()
     = default;

@@ -24,7 +24,7 @@
 
 #include "InitVectorEngine.h"
 
-#include <stdlib.h>
+#include <cstdlib>
 #include "KviTimeUtils.h"
 
 namespace InitVectorEngine

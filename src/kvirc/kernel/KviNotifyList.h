@@ -35,9 +35,9 @@
 #include <vector>
 
 class KviConsoleWindow;
-class KviIrcMessage;
-class KviIrcMask;
 class KviIrcConnection;
+class KviIrcMask;
+class KviIrcMessage;
 
 class KVIRC_API KviNotifyListManager : public QObject
 {
@@ -64,7 +64,7 @@ protected:
 	void notifyOffLine(const QString & nick, const QString & user = QString(), const QString & host = QString(), const QString & szReason = QString());
 
 public:
-	KviConsoleWindow * console() { return m_pConsole; };
+	KviConsoleWindow * console() const { return m_pConsole; }
 };
 
 class KVIRC_API KviIsOnNotifyListManager : public KviNotifyListManager
@@ -79,24 +79,24 @@ protected:
 
 private:
 	std::map<QString, QString> m_pRegUserDict; // dict notifystring->reguser name
-	std::vector<QString> m_NotifyList;     // list of notifystring (total)
-	std::vector<QString> m_IsOnList;       // list of notifystring (one session)
-	QString m_szIsOnString;                                 // m_pIsOnList in form of a string
+	std::vector<QString> m_NotifyList;         // list of notifystring (total)
+	std::vector<QString> m_IsOnList;           // list of notifystring (one session)
+	QString m_szIsOnString;                    // m_pIsOnList in form of a string
 	std::vector<QString> m_OnlineList;
 	std::vector<QString> m_UserhostList;
 	QString m_szUserhostString;
-	bool m_bExpectingIsOn;
-	bool m_bExpectingUserhost;
 	QTimer m_pDelayedIsOnTimer;
 	QTimer m_pDelayedNotifyTimer;
 	QTimer m_pDelayedUserhostTimer;
-	bool m_bRunning;
+	bool m_bExpectingIsOn;
+	bool m_bExpectingUserhost;
+	bool m_bRunning = false;
 
 protected:
-	virtual void start();
-	virtual void stop();
-	virtual bool handleUserhost(KviIrcMessage * msg);
-	virtual bool handleIsOn(KviIrcMessage * msg);
+	void start() override;
+	void stop() override;
+	bool handleUserhost(KviIrcMessage * msg) override;
+	bool handleIsOn(KviIrcMessage * msg) override;
 
 private:
 	void delayedNotifySession();
@@ -133,12 +133,12 @@ protected:
 	int m_iRestartTimer;
 
 protected:
-	virtual void start();
-	virtual void stop();
-	virtual bool handleIsOn(KviIrcMessage * msg);
+	void start() override;
+	void stop() override;
+	bool handleIsOn(KviIrcMessage * msg) override;
 
 protected:
-	virtual void timerEvent(QTimerEvent * e);
+	void timerEvent(QTimerEvent * e) override;
 
 private:
 	void buildNickList();
@@ -158,9 +158,9 @@ protected:
 	std::map<QString, QString> m_pRegUserDict; // dict notifystring->reguser name
 protected:
 	void buildRegUserDict();
-	virtual void start();
-	virtual void stop();
-	virtual bool handleWatchReply(KviIrcMessage * msg);
+	void start() override;
+	void stop() override;
+	bool handleWatchReply(KviIrcMessage * msg) override;
 	bool doMatchUser(KviIrcMessage * msg, const QString & notifyString, const KviIrcMask & mask);
 };
 

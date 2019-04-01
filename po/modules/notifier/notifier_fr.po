@@ -1,76 +1,77 @@
-# translation of notifier_fr.po to Français
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
 #
-# Ahinu <ahinu@wanadoo.fr>, 2005.
-# _Otaku, 2010.
+# Translators:
+# Ahinu <ahinu@wanadoo.fr>, 2005
+# Ludovic Bellière <xrogaan@gmail.com>, 2015
+# _Otaku, 2010
 msgid ""
 msgstr ""
-"Project-Id-Version: notifier_fr\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2010-10-31 14:50+0100\n"
-"Last-Translator: ealexp <ealexp@ealexp.eu>\n"
-"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-23 21:28+0000\n"
+"Last-Translator: Ludovic Bellière <xrogaan@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/kvirc/KVIrc/language/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/modules/notifier/NotifierWindow.cpp:995
+#: src/modules/notifier/NotifierWindow.cpp:937
 msgid "1 Hour"
 msgstr "1 heure"
 
-#: src/modules/notifier/NotifierWindow.cpp:991
+#: src/modules/notifier/NotifierWindow.cpp:933
 msgid "1 Minute"
 msgstr "1 minute"
 
-#: src/modules/notifier/NotifierWindow.cpp:993
+#: src/modules/notifier/NotifierWindow.cpp:935
 msgid "15 Minutes"
-msgstr "15 minutes"
+msgstr "15 Minutes"
 
-#: src/modules/notifier/NotifierWindow.cpp:994
+#: src/modules/notifier/NotifierWindow.cpp:936
 msgid "30 Minutes"
 msgstr "30 minutes"
 
-#: src/modules/notifier/NotifierWindow.cpp:992
+#: src/modules/notifier/NotifierWindow.cpp:934
 msgid "5 Minutes"
-msgstr "5 minutes"
+msgstr "5 Minutes"
 
-#: src/modules/notifier/NotifierWindow.cpp:1000
+#: src/modules/notifier/NotifierWindow.cpp:942
 msgid "Disable"
 msgstr "Désactiver"
 
-#: src/modules/notifier/NotifierWindow.cpp:988
+#: src/modules/notifier/NotifierWindow.cpp:930
 msgid "Hide"
 msgstr "Cacher"
 
-#: src/modules/notifier/NotifierWindow.cpp:998
+#: src/modules/notifier/NotifierWindow.cpp:940
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "En permanence (jusqu'à réactivation explicite)"
 
-#: src/modules/notifier/NotifierWindow.cpp:987
+#: src/modules/notifier/NotifierWindow.cpp:929
 msgid "Show/Hide input line"
 msgstr "Montrer/Cacher la ligne de saisie"
 
-#: src/modules/notifier/libkvinotifier.cpp:156
+#: src/modules/notifier/libkvinotifier.cpp:154
 msgid "The -t switch expects a timeout in seconds"
 msgstr "L'option -t nécessite un temps d'expiration en secondes"
 
-#: src/modules/notifier/libkvinotifier.cpp:151
+#: src/modules/notifier/libkvinotifier.cpp:149
 msgid "The specified timeout is not valid, assuming 0"
 msgstr "Le temps d'expiration spécifié est invalide, on suppose que c'est 0"
 
-#: src/modules/notifier/libkvinotifier.cpp:137
+#: src/modules/notifier/libkvinotifier.cpp:135
 msgid "The specified window does not exist"
 msgstr "La fenêtre spécifiée n'existe pas"
 
-#: src/modules/notifier/NotifierWindow.cpp:997
+#: src/modules/notifier/NotifierWindow.cpp:939
 msgid "Until KVIrc is Restarted"
 msgstr "Jusqu'à ce que KVIrc soit redémarré"
 
-#: src/modules/notifier/NotifierWindow.cpp:1074
+#: src/modules/notifier/NotifierWindow.cpp:1016
 msgid "Write text or commands to window"
 msgstr "Écrivez du texte ou des commandes dans la fenêtre"

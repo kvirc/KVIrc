@@ -54,7 +54,7 @@ python.begin <python code> python.end
 		{                                                                                                                 \
 			dl = parseCommaSeparatedParameterList();                                                                      \
 			if(!dl)                                                                                                       \
-				return 0;                                                                                                 \
+				return nullptr;                                                                                           \
 		}                                                                                                                 \
 		else                                                                                                              \
 		{                                                                                                                 \
@@ -67,7 +67,7 @@ python.begin <python code> python.end
 		if(!skipSpacesAndNewlines())                                                                                      \
 		{                                                                                                                 \
 			delete dl;                                                                                                    \
-			return 0;                                                                                                     \
+			return nullptr;                                                                                               \
 		}                                                                                                                 \
                                                                                                                           \
 		/* allow a ';' after [interpreter].begin */                                                                       \
@@ -77,7 +77,7 @@ python.begin <python code> python.end
 			if(!skipSpacesAndNewlines())                                                                                  \
 			{                                                                                                             \
 				delete dl;                                                                                                \
-				return 0;                                                                                                 \
+				return nullptr;                                                                                           \
 			}                                                                                                             \
 		}                                                                                                                 \
                                                                                                                           \
@@ -102,7 +102,7 @@ python.begin <python code> python.end
 				szErr += " statement";                                                                                    \
                                                                                                                           \
 				error(KVSP_curCharPointer, __tr2qs_ctx(szErr.toUtf8().data(), "kvs"));                                    \
-				return 0;                                                                                                 \
+				return nullptr;                                                                                           \
 			}                                                                                                             \
 			pInterpreterEnd = KVSP_curCharPointer;                                                                        \
                                                                                                                           \
@@ -1812,7 +1812,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			EXTRACT_POPUP_LABEL_CONDITION
 			if(KVSP_curCharUnicode == ';')
 				KVSP_skipChar;
-			QString * pItemName = pParameters ? pParameters->first() : nullptr;
+			QString * pItemName = pParameters->first();
 			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(pLabelBegin, szCondition, pItemName ? *pItemName : QString()));
 			delete pParameters;
 		}

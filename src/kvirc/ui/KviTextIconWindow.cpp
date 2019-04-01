@@ -23,29 +23,28 @@
 //=============================================================================
 
 #include "KviTextIconWindow.h"
-#include "KviTextIconManager.h"
 #include "KviApplication.h"
-#include "KviOptions.h"
-#include "KviInput.h"
-#include "KviTopicWidget.h"
+#include "KviCaster.h"
 #include "KviControlCodes.h"
 #include "KviIconManager.h"
-#include "KviCaster.h"
+#include "KviInput.h"
+#include "KviInputEditor.h"
+#include "KviOptions.h"
+#include "KviTextIconManager.h"
+#include "KviTopicWidget.h"
 
-#include <QPainter>
-#include <QLineEdit>
 #include <QEvent>
-#include <QKeyEvent>
 #include <QHeaderView>
-#include <QPalette>
+#include <QKeyEvent>
+#include <QLineEdit>
+#include <QPainter>
 #include <QScrollBar>
+#include <QTableWidget>
+#include <limits>
 
 KviTextIconWindow::KviTextIconWindow()
     : QWidget(nullptr, Qt::Popup)
 {
-	m_pOwner = nullptr;
-	m_bAltMode = false;
-
 	setFixedSize(KVI_TEXTICON_WIN_WIDTH, KVI_TEXTICON_WIN_HEIGHT);
 
 	m_pTable = new QTableWidget(this);
@@ -61,8 +60,8 @@ KviTextIconWindow::KviTextIconWindow()
 
 	m_pTable->installEventFilter(this);
 
-	connect(g_pTextIconManager, SIGNAL(changed()), this, SLOT(fill()));
-	connect(m_pTable, SIGNAL(cellClicked(int, int)), this, SLOT(cellSelected(int, int)));
+	connect(g_pTextIconManager, &KviTextIconManager::changed, this, &KviTextIconWindow::fill);
+	connect(m_pTable, &QTableWidget::cellClicked, this, &KviTextIconWindow::cellSelected);
 }
 
 KviTextIconWindow::~KviTextIconWindow()
@@ -85,13 +84,12 @@ void KviTextIconWindow::fill()
 	KviPointerHashTableIterator<QString, KviTextIcon> it(*pDict);
 
 	int iCol = KVI_TEXTICON_COLUMNS;
-	QLabel * newItem;
 	while(KviTextIcon * pIcon = it.current())
 	{
 		QPixmap * pPix = pIcon->pixmap();
 		if(pPix)
 		{
-			newItem = new QLabel();
+			QLabel * newItem = new QLabel;
 			newItem->setToolTip(it.currentKey());
 			newItem->setPixmap(*pPix);
 			newItem->setAlignment(Qt::AlignCenter);
@@ -115,10 +113,10 @@ void KviTextIconWindow::popup(QWidget * pOwner, bool bAltMode)
 	m_bAltMode = bAltMode;
 
 	if(m_pOwner)
-		disconnect(m_pOwner, SIGNAL(destroyed()), this, SLOT(ownerDead()));
+		disconnect(m_pOwner, &QWidget::destroyed, this, &KviTextIconWindow::ownerDead);
 
 	m_pOwner = pOwner;
-	connect(m_pOwner, SIGNAL(destroyed()), this, SLOT(ownerDead()));
+	connect(m_pOwner, &QWidget::destroyed, this, &KviTextIconWindow::ownerDead);
 
 	show();
 
@@ -161,12 +159,12 @@ bool KviTextIconWindow::eventFilter(QObject * o, QEvent * e)
 				break;
 			default:
 				// redirect to owner
-				if(m_pOwner->inherits("KviInputEditor"))
+				if(KviInputEditor * pOwner = qobject_cast<KviInputEditor *>(m_pOwner); pOwner)
 				{
 					if(e->type() == QEvent::KeyPress)
-						((KviInputEditor *)m_pOwner)->keyPressEvent(ev);
+						pOwner->keyPressEvent(ev);
 					else
-						((KviInputEditor *)m_pOwner)->keyReleaseEvent(ev);
+						pOwner->keyReleaseEvent(ev);
 					autoSelectBestMatchBasedOnOwnerText();
 					return true;
 				}
@@ -179,10 +177,11 @@ bool KviTextIconWindow::eventFilter(QObject * o, QEvent * e)
 
 void KviTextIconWindow::autoSelectBestMatchBasedOnOwnerText()
 {
-	if(!m_pOwner->inherits("KviInputEditor"))
+	KviInputEditor * pOwner = qobject_cast<KviInputEditor *>(m_pOwner);
+	if(!pOwner)
 		return;
 
-	QString szText = ((KviInputEditor *)m_pOwner)->textBeforeCursor();
+	QString szText = pOwner->textBeforeCursor();
 	int idx = szText.lastIndexOf(QChar(KviControlCodes::Icon));
 	if(idx < 0)
 		return;
@@ -197,7 +196,7 @@ void KviTextIconWindow::autoSelectBestMatchBasedOnOwnerText()
 
 	int iBestR = -1;
 	int iBestC = -1;
-	int iBestLen = 999999;
+	int iBestLen = std::numeric_limits<int>::max();
 
 	for(int r = 0; r < iRows; r++)
 	{
@@ -211,7 +210,7 @@ void KviTextIconWindow::autoSelectBestMatchBasedOnOwnerText()
 				continue;
 
 			// good.
-			if((iBestR == -1) || (txt.length() < iBestLen))
+			if(txt.length() < iBestLen)
 			{
 				iBestR = r;
 				iBestC = c;
@@ -243,22 +242,22 @@ void KviTextIconWindow::cellSelected(int row, int column)
 	if(!m_pTable->cellWidget(row, column))
 		return;
 
-	QString szItem(m_pTable->cellWidget(row, column)->toolTip());
+	QString szItem = m_pTable->cellWidget(row, column)->toolTip();
 
 	if(m_bAltMode)
 		szItem.prepend(KviControlCodes::Icon);
 
-	if(m_pOwner->inherits("KviInputEditor"))
-		((KviInputEditor *)m_pOwner)->insertIconCode(szItem);
-	else if(m_pOwner->inherits("KviInput"))
-		((KviInput *)m_pOwner)->insertText(QString("%1 ").arg(szItem));
-	else if(m_pOwner->inherits("QLineEdit"))
+	if(KviInputEditor * pOwner = qobject_cast<KviInputEditor *>(m_pOwner); pOwner)
+		pOwner->insertIconCode(szItem);
+	else if(KviInput * pOwner = qobject_cast<KviInput *>(m_pOwner); pOwner)
+		pOwner->insertText(QString("%1 ").arg(szItem));
+	else if(QLineEdit * pOwner = qobject_cast<QLineEdit *>(m_pOwner); pOwner)
 	{
 		szItem.append(' ');
-		QString szTmp = ((QLineEdit *)m_pOwner)->text();
-		szTmp.insert(((QLineEdit *)m_pOwner)->cursorPosition(), szItem);
-		((QLineEdit *)m_pOwner)->setText(szTmp);
-		((QLineEdit *)m_pOwner)->setCursorPosition(((QLineEdit *)m_pOwner)->cursorPosition() + szItem.length());
+		QString szTmp = pOwner->text();
+		szTmp.insert(pOwner->cursorPosition(), szItem);
+		pOwner->setText(szTmp);
+		pOwner->setCursorPosition(pOwner->cursorPosition() + szItem.length());
 	}
 	doHide();
 }

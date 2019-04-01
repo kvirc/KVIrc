@@ -58,7 +58,7 @@ public:
 	* \param pWidget The item which we have to delegate for the paint
 	* \return KviTalIconAndRichTextItemDelegate
 	*/
-	KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget = 0);
+	KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget = nullptr);
 
 	/**
 	* \brief Destroys the icon and rich text item delegate object
@@ -95,7 +95,7 @@ public:
 	* \param index The model index for the item
 	* \return QSize
 	*/
-	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
+	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const override;
 
 	/**
 	* \brief Paints the view
@@ -104,7 +104,7 @@ public:
 	* \param index The model index for the item
 	* \return void
 	*/
-	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
+	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const override;
 
 	/**
 	* \brief Sets the default icon

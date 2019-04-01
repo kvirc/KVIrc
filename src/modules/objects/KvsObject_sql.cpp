@@ -27,7 +27,7 @@
 #include "KviLocale.h"
 #include "KvsObject_sql.h"
 #include "KvsObject_memoryBuffer.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include <QHash>
 #include <QSqlDriver>
 #include <QSqlError>
@@ -482,8 +482,7 @@ KVSO_CLASS_FUNCTION(sql, queryRecord)
 		else
 			pValue = new KviKvsVariant(QString());
 		pHash->set(record.fieldName(i), pValue);
-		KviKvsVariant * value2 = pHash->get(record.fieldName(i));
-		value2->type();
+		(void)pHash->get(record.fieldName(i));
 	}
 	c->returnValue()->setHash(pHash);
 	return true;

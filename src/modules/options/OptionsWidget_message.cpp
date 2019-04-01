@@ -73,14 +73,21 @@ OptionsWidget_privmsg::OptionsWidget_privmsg(QWidget * parent)
 
 	m_pUseSmartColorSelector = addBoolSelector(g, __tr2qs_ctx("Smart nickname colors", "options"), KviOption_boolColorNicks);
 
+	connect(m_pUseSmartColorSelector, SIGNAL(toggled(bool)), this, SLOT(enableDisableSmartColorSelector(bool)));
+
+	m_pUseSmartColorWithBackgroundSelector = addBoolSelector(g, __tr2qs_ctx("Use a background color for smart nickname colors", "options"), KviOption_boolColorNicksWithBackground, KVI_OPTION_BOOL(KviOption_boolColorNicks));
+
 	KviTalHBox * hb = new KviTalHBox(g);
 	hb->setSpacing(4);
-	m_pSpecialSmartColorSelector = addBoolSelector(hb, __tr2qs_ctx("Use specified colors for own nick:", "options"), KviOption_boolUseSpecifiedSmartColorForOwnNick, KVI_OPTION_BOOL(KviOption_boolColorNicks));
+	m_pSpecialSmartColorSelector = addBoolSelector(hb, __tr2qs_ctx("Use specified smart colors for own nick:", "options"), KviOption_boolUseSpecifiedSmartColorForOwnNick, KVI_OPTION_BOOL(KviOption_boolColorNicks));
 
 	m_pSmartColorSelector = addMircTextColorSelector(hb, "", KviOption_uintUserIrcViewOwnForeground, KviOption_uintUserIrcViewOwnBackground, KVI_OPTION_BOOL(KviOption_boolColorNicks) && KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick));
 
 	connect(m_pSpecialSmartColorSelector, SIGNAL(toggled(bool)), this, SLOT(enableDisableSmartColorSelector(bool)));
 	connect(m_pUseSmartColorSelector, SIGNAL(toggled(bool)), m_pSpecialSmartColorSelector, SLOT(setEnabled(bool)));
+	connect(m_pUseSmartColorSelector, SIGNAL(toggled(bool)), m_pUseSmartColorWithBackgroundSelector, SLOT(setEnabled(bool)));
+
+	enableDisableSmartColorSelector(true);
 
 	KviBoolSelector * b2 = addBoolSelector(g, __tr2qs_ctx("Use same colors as in the userlist", "options"), KviOption_boolUseUserListColorsAsNickColors, !KVI_OPTION_BOOL(KviOption_boolColorNicks));
 	connect(m_pUseSmartColorSelector, SIGNAL(toggled(bool)), b2, SLOT(setNotEnabled(bool)));
@@ -116,7 +123,7 @@ OptionsWidget_privmsg::OptionsWidget_privmsg(QWidget * parent)
 
 void OptionsWidget_privmsg::enableDisableSmartColorSelector(bool)
 {
-	m_pSmartColorSelector->setEnabled(m_pUseSmartColorSelector->isChecked() && m_pUseSmartColorSelector->isChecked());
+	m_pSmartColorSelector->setEnabled(m_pSpecialSmartColorSelector->isChecked() && m_pUseSmartColorSelector->isChecked());
 }
 
 OptionsWidget_privmsg::~OptionsWidget_privmsg()
@@ -272,15 +279,15 @@ void MessageListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	p->drawPixmap(pt, *(g_pIconManager->getSmallIcon(it->msgType()->pixId())));
 	pt.setX(pt.x() + 18);
 	// draw the background
-	if(it->msgType()->back() < 16)
+	if(it->msgType()->back() <= KVI_EXTCOLOR_MAX)
 	{
-		QColor bColor = KVI_OPTION_MIRCCOLOR(it->msgType()->back());
+		QColor bColor = getMircColor(it->msgType()->back());
 		p->fillRect(pt.x(), pt.y(), opt.rect.width() - pt.x(), opt.rect.height(), bColor);
 	}
 	unsigned char ucFore = it->msgType()->fore();
-	if(ucFore > 15)
+	if(ucFore > KVI_EXTCOLOR_MAX)
 		ucFore = 0;
-	p->setPen(QPen(KVI_OPTION_MIRCCOLOR(ucFore)));
+	p->setPen(QPen(getMircColor(ucFore)));
 	pt.setX(pt.x() + 2);
 
 	p->drawText(pt.x(), pt.y(), opt.rect.width() - pt.x(), opt.rect.height(), Qt::AlignLeft | Qt::AlignVCenter, szText);
@@ -305,14 +312,14 @@ MessageColorListWidgetItem::MessageColorListWidgetItem(KviTalListWidget * b, int
 {
 
 	m_iClrIdx = idx;
-	if((idx < 0) || (idx > 15))
+	if((idx < 0) || (idx > KVI_EXTCOLOR_MAX))
 	{
 		setText(__tr2qs_ctx("Transparent", "options"));
 		setBackground(listWidget()->isEnabled() ? Qt::transparent : Qt::gray);
 	}
 	else
 	{
-		setBackground(QColor(KVI_OPTION_MIRCCOLOR(m_iClrIdx)));
+		setBackground(QColor(getMircColor(m_iClrIdx)));
 		setText(" ");
 	}
 }
@@ -329,9 +336,9 @@ void MessageColorListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionV
 		const KviTalListWidget * lb = (const KviTalListWidget *)parent();
 		MessageColorListWidgetItem * it = static_cast<MessageColorListWidgetItem *>(index.internalPointer());
 
-		if((it->clrIdx() >= 0) && (it->clrIdx() <= 15))
+		if((it->clrIdx() >= 0) && (it->clrIdx() <= KVI_EXTCOLOR_MAX))
 		{
-			clr = KVI_OPTION_MIRCCOLOR(it->clrIdx());
+			clr = getMircColor(it->clrIdx());
 		}
 		else
 		{
@@ -630,9 +637,7 @@ void OptionsWidget_messageColors::load()
 	//qDebug("SYMLINKING %s to %s",szGlobal.ptr(),szLocal.ptr());
 	//qDebug("SYMLINK RETURNS %d (%d)",::symlink(szGlobal.ptr(),szLocal.ptr()));
 	//qDebug("ERRNO (%d)",errno);
-	int dummy; // make gcc happy
-	dummy = symlink(szGlobal.toLocal8Bit().data(), szLocal.toLocal8Bit().data());
-	Q_UNUSED(dummy);
+	(void)symlink(szGlobal.toLocal8Bit().data(), szLocal.toLocal8Bit().data());
 // FIXME: Do it also on windows...
 #endif
 

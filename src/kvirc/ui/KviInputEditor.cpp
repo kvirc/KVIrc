@@ -73,6 +73,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <utility>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <windows.h>
@@ -121,8 +122,8 @@ public:
 	{
 	}
 
-	KviInputEditorTextBlock(const QString & text)
-	    : szText(text)
+	KviInputEditorTextBlock(QString text)
+	    : szText(std::move(text))
 	{
 	}
 };
@@ -896,17 +897,17 @@ void KviInputEditor::drawContents(QPainter * p)
 			{
 				if(pBlock->uForeground == KVI_INPUT_DEF_FORE)
 					p->setPen(bIsSelected ? KVI_OPTION_COLOR(KviOption_colorInputSelectionForeground) : KVI_OPTION_COLOR(KviOption_colorInputForeground));
-				else if(pBlock->uForeground >= 16)
+				else if(pBlock->uForeground > KVI_EXTCOLOR_MAX)
 					p->setPen(KVI_OPTION_COLOR(KviOption_colorInputBackground));
 				else
-					p->setPen(KVI_OPTION_MIRCCOLOR(pBlock->uForeground));
+					p->setPen(getMircColor(pBlock->uForeground));
 
 				if(pBlock->uBackground != KVI_INPUT_DEF_BACK)
 				{
-					if(pBlock->uBackground >= 16)
+					if(pBlock->uBackground > KVI_EXTCOLOR_MAX)
 						p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop), KVI_OPTION_COLOR(KviOption_colorInputForeground));
 					else
-						p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop), KVI_OPTION_MIRCCOLOR(pBlock->uBackground));
+						p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop), getMircColor(pBlock->uBackground));
 				}
 
 
@@ -986,7 +987,7 @@ QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
 			return QChar('E');
 			break;
 		default:
-			return QChar(uControlCode);
+			return { uControlCode };
 			break;
 	}
 }
@@ -1672,7 +1673,7 @@ void KviInputEditor::handleDragSelection()
 
 	QPoint pnt = mapFromGlobal(QCursor::pos());
 
-	m_iCursorPosition = charIndexFromXPosition(pnt.x());
+	m_iCursorPosition = std::min(charIndexFromXPosition(pnt.x()), m_szTextBuffer.length());
 
 	if(m_iCursorPosition == m_iSelectionAnchorChar)
 		clearSelection();
@@ -2001,7 +2002,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			return;
 		}
 
-		m_bLastCompletionFinished = 1;
+		m_bLastCompletionFinished = true;
 	}
 
 	switch(e->key())
@@ -2373,7 +2374,7 @@ void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, boo
 			m_iLastCompletionCursorPosition = m_iCursorPosition;
 			m_szLastCompletedNick = szBuffer;
 			standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
-			m_bLastCompletionFinished = 0;
+			m_bLastCompletionFinished = false;
 			// REPAINT CALLED FROM OUTSIDE!
 		} // else no match at all
 
@@ -2399,12 +2400,12 @@ void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, boo
 			// completed
 			m_szLastCompletedNick = szBuffer;
 			standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
-			m_bLastCompletionFinished = 0;
+			m_bLastCompletionFinished = false;
 			// REPAINT CALLED FROM OUTSIDE!
 		}
 		else
 		{
-			m_bLastCompletionFinished = 1;
+			m_bLastCompletionFinished = true;
 			m_szLastCompletedNick = "";
 		}
 
@@ -2424,12 +2425,12 @@ void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, boo
 		m_iLastCompletionCursorPosition = m_iCursorPosition;
 		m_szLastCompletedNick = szBuffer;
 		standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
-		m_bLastCompletionFinished = 0;
+		m_bLastCompletionFinished = false;
 		// REPAINT CALLED FROM OUTSIDE!
 	}
 	else
 	{
-		m_bLastCompletionFinished = 1;
+		m_bLastCompletionFinished = true;
 		m_szLastCompletedNick = "";
 	}
 }
@@ -3186,10 +3187,10 @@ void KviInputEditor::clearSelection()
 
 void KviInputEditor::homeInternal()
 {
+	clearSelection();
+
 	if(m_iCursorPosition <= 0)
 		return;
-
-	clearSelection();
 
 	home();
 }

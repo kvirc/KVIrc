@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2016-12-07 16:02+0000\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2018-04-09 20:33+0000\n"
 "Last-Translator: Robert Förster <Dessa@gmake.de>\n"
 "Language-Team: German (http://www.transifex.com/kvirc/KVIrc/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -283,31 +283,31 @@ msgstr "DCC %Q fehlgeschlagen: %Q"
 msgid "unknown"
 msgstr "unbekannt"
 
-#: src/modules/dcc/DccDialog.cpp:76
+#: src/modules/dcc/DccDialog.cpp:77
 msgid "&Accept"
 msgstr "&Akzeptieren"
 
-#: src/modules/dcc/DccDialog.cpp:81
+#: src/modules/dcc/DccDialog.cpp:82
 msgid "&Reject"
 msgstr "Ab&lehnen"
 
-#: src/modules/dcc/DccDialog.cpp:144
+#: src/modules/dcc/DccDialog.cpp:148
 msgid "&Rename"
 msgstr "&Umbenennen"
 
-#: src/modules/dcc/DccDialog.cpp:148
+#: src/modules/dcc/DccDialog.cpp:152
 msgid "Over&write"
 msgstr "Über&schreiben"
 
-#: src/modules/dcc/DccDialog.cpp:152
+#: src/modules/dcc/DccDialog.cpp:156
 msgid "Re&sume"
 msgstr "&Wiederaufnehmen"
 
-#: src/modules/dcc/DccDialog.cpp:158 src/modules/dcc/DccFileTransfer.cpp:2493
+#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2493
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/modules/dcc/DccDialog.cpp:165
+#: src/modules/dcc/DccDialog.cpp:169
 msgid "File Already Exists - KVIrc"
 msgstr "Datei existiert bereits - KVIrc"
 
@@ -740,52 +740,52 @@ msgstr "DCC-VIDEO-Unterstützung wurde beim Kompilieren nicht aktiviert"
 msgid "Invalid codec specified"
 msgstr "Ungültiger Codec angegeben"
 
-#: src/modules/dcc/libkvidcc.cpp:1630 src/modules/dcc/libkvidcc.cpp:2656
-#: src/modules/dcc/libkvidcc.cpp:2678
+#: src/modules/dcc/libkvidcc.cpp:1620 src/modules/dcc/libkvidcc.cpp:2646
+#: src/modules/dcc/libkvidcc.cpp:2668
 msgid "The current window has no associated DCC session"
 msgstr "Für das aktuelle Fenster existiert keine zugeordnete DCC-Sitzung"
 
-#: src/modules/dcc/libkvidcc.cpp:1635
+#: src/modules/dcc/libkvidcc.cpp:1625
 msgid "The specified parameter is not a valid DCC identifier"
 msgstr "Der angegebene Parameter ist kein gültiger DCC-Bezeichner"
 
-#: src/modules/dcc/libkvidcc.cpp:1718
+#: src/modules/dcc/libkvidcc.cpp:1708
 msgid "This DCC session is not a DCC transfer session"
 msgstr "Diese DCC-Sitzung ist keine DCC-Übertragungs- (transfer)-Sitzung"
 
-#: src/modules/dcc/libkvidcc.cpp:2433
-msgid "The IRC context that originated the DCC doesn't exists anymore."
-msgstr "Der IRC-Kontext, aus dem dieser DCC hervorging, existiert nicht mehr."
+#: src/modules/dcc/libkvidcc.cpp:2423
+msgid "The IRC context that originated the DCC doesn't exist anymore."
+msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2669
+#: src/modules/dcc/libkvidcc.cpp:2659
 msgid "The specified window identifier is not valid"
 msgstr "Der angegebene Fensterbezeichner ist ungültig"
 
-#: src/modules/dcc/libkvidcc.cpp:2827
+#: src/modules/dcc/libkvidcc.cpp:2817
 msgid "This executable was built without SSL support"
 msgstr "Diese Version von KVirc wurde ohne SSL-Unterstützung erstellt"
 
-#: src/modules/dcc/libkvidcc.cpp:2840
+#: src/modules/dcc/libkvidcc.cpp:2830
 msgid "You specified a bad string for the parameter \"type\""
 msgstr "Schlechte Zeichenkette angegeben für den Parameter »Typ«"
 
-#: src/modules/dcc/libkvidcc.cpp:2851
+#: src/modules/dcc/libkvidcc.cpp:2841
 msgid "Unable to get SSL information: DCC session is not using SSL"
 msgstr "Beziehen der SSL-Informationen nicht möglich: Diese DCC-Sitzung nutzt kein SSL"
 
-#: src/modules/dcc/libkvidcc.cpp:2864
+#: src/modules/dcc/libkvidcc.cpp:2854
 msgid "Unable to get SSL information: DCC session not initialized yet"
 msgstr "Beziehen der SSL-Informationen nicht möglich: DCC-Sitzung noch nicht initialisiert"
 
-#: src/modules/dcc/libkvidcc.cpp:2872
+#: src/modules/dcc/libkvidcc.cpp:2862
 msgid "Unable to get SSL information: SSL non initialized yet in DCC session"
 msgstr "Beziehen der SSL-Informationen nicht möglich: SSL noch nicht initialisiert in dieser DCC-Sitzung"
 
-#: src/modules/dcc/libkvidcc.cpp:2881
+#: src/modules/dcc/libkvidcc.cpp:2871
 msgid "Unable to get SSL information: no peer certificate available"
 msgstr "Beziehen der SSL-Informationen nicht möglich: Kein Zertifikat der Gegenstelle verfügbar"
 
-#: src/modules/dcc/libkvidcc.cpp:2889
+#: src/modules/dcc/libkvidcc.cpp:2879
 msgid "Unable to get SSL information: query not recognized"
 msgstr "Beziehen der SSL-Informationen nicht möglich: Anfrage nicht erkannt"
 

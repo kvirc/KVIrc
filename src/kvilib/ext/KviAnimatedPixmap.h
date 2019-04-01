@@ -93,7 +93,7 @@ public:
 	 * Returns true if animation is started.
 	 * Returns false otherways.
 	 */
-	inline bool isStarted()
+	bool isStarted() const
 	{
 		return m_iStarted > 0;
 	}
@@ -112,7 +112,7 @@ public:
 	 * Returns true if animation has at least one loaded frame.
 	 * Returns false otherways.
 	 */
-	inline bool isValid()
+	bool isValid() const
 	{
 		return (m_pFrameData->count() > 0);
 	}
@@ -122,7 +122,7 @@ public:
 	 * Never fails.
 	 */
 
-	inline QPixmap * pixmap()
+	QPixmap * pixmap()
 	{
 		if(m_pFrameData->count() > 0)
 			return m_pFrameData->at(m_uCurrentFrameNumber).pixmap;
@@ -133,7 +133,7 @@ public:
 	/*
 	 * Returns active frame number
 	 */
-	inline uint activeFrameNumber()
+	uint activeFrameNumber() const
 	{
 		return m_uCurrentFrameNumber;
 	}
@@ -141,7 +141,7 @@ public:
 	/*
 	 * Returns animation frame count
 	 */
-	inline uint framesCount()
+	uint framesCount() const
 	{
 		return m_pFrameData->count();
 	}
@@ -149,7 +149,7 @@ public:
 	/*
 	 * Returns current image size
 	 */
-	inline const QSize & size()
+	const QSize & size() const
 	{
 		return m_pFrameData->size;
 	}

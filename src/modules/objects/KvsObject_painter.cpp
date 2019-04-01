@@ -235,10 +235,10 @@ const char * const brushstyles_tbl[] = {
 		All parameters are in integer form.
 		The HSV system, like RGB, has three components:[br]
 		[pre]
-			* H, for hue, is either 0-359 if the color is chromatic (not gray), or meaningless if it is gray.[br]
-			It represents degrees on the color wheel familiar to most people. Red is 0 (degrees), green is 120 and blue is 240.[br]
-			* S, for saturation, is 0-255, and the bigger it is, the stronger the color is. Grayish colors have saturation near 0; very strong colors have saturation near 255.[br]
-			* V, for value, is 0-255 and represents lightness or brightness of the color. 0 is black; 255 is as far from black as possible.[br]
+			* H, for hue, is either 0-359 if the color is chromatic (not gray), or meaningless if it is gray.
+			It represents degrees on the color wheel familiar to most people. Red is 0 (degrees), green is 120 and blue is 240.
+			* S, for saturation, is 0-255, and the bigger it is, the stronger the color is. Grayish colors have saturation near 0; very strong colors have saturation near 255.
+			* V, for value, is 0-255 and represents lightness or brightness of the color. 0 is black; 255 is as far from black as possible.
 		[/pre]
 		Examples: [b]Red[/b] is H=0, S=255, V=255.[br]
 		Light red could have H about 0, S about 50-100, and S=255.
@@ -284,17 +284,17 @@ const char * const brushstyles_tbl[] = {
 		Draws the given <text> within the rectangle specified by <x>,<y> <width> and <height>.[br]
 		The <flag> parameters may be:[br]
 		[pre]
-			Left[br]
-			Top[br]
-			Right[br]
-			Bottom[br]
-			HCenter[br]
-			VCenter[br]
-			Center[br]
-			TextSingleLine[br]
-			TextExpandTabs[br]
-			TextShowMnemonic[br]
-			TextWordWrap[br]
+			Left
+			Top
+			Right
+			Bottom
+			HCenter
+			VCenter
+			Center
+			TextSingleLine
+			TextExpandTabs
+			TextShowMnemonic
+			TextWordWrap
 			TextIncludeTrailingSpaces
 		[/pre]
 		!fn: $drawPixmap(<x:integer>,<y:integer>,<pixmap:hobject>,<sx:integer>,<sy:integer>,<ex:integer>,<ey:integer>)
@@ -302,12 +302,12 @@ const char * const brushstyles_tbl[] = {
 		!fn: $setFont(<family:string>,<size:integer>[,<style:enum>,<style:enum>,..])[br]
 		Set the font's family, size and style, valid flag for style are:[br]
 		[pre]
-			italic[br]
-			bold [br]
-			underline [br]
-			overline [br]
-			strikeout [br]
-			fixedpitch [br]
+			italic
+			bold
+			underline
+			overline
+			strikeout
+			fixedpitch
 		[/pre]
 		!fn: $setFontSize(<size:unsigned integer>)[br]
 		Set the current painter font's size.[br]
@@ -333,7 +333,7 @@ const char * const brushstyles_tbl[] = {
 		Sets the background mode of the painter to <bgMode>:
 		Valid values are:[br]
 		[pre]
-			- Transparent (that is the default value);[br]
+			- Transparent (that is the default value);
 			- Opaque.
 		[/pre]
 		!fn: $setOpacity(<opacity_factor:real>)
@@ -418,7 +418,7 @@ const char * const brushstyles_tbl[] = {
 				if ($$->%scrollright >= 550) return
 				%P->$scale(0.$$->%Zoomindex,0.$$->%Zoomindex)
 				%P->$translate(400,350)
-				%P->$drawText($$->%scrollright,10,"Another cool class brought to you by...",-1,Auto)	
+				%P->$drawText($$->%scrollright,10,"Another cool class brought to you by...",-1,Auto)
 				$$->%scrollright += 3;
 				%P->$reset()
 			}
@@ -1271,8 +1271,6 @@ void KvsObject_painter::detachDevice()
 
 KVSO_CLASS_FUNCTION(painter, end)
 {
-	Q_UNUSED(c);
-
 	if(!m_pDeviceObject)
 	{
 		m_pPainter->end();
@@ -1958,7 +1956,6 @@ KVSO_CLASS_FUNCTION(painter, setGradientAsBrush)
 
 KVSO_CLASS_FUNCTION(painter, clearGradient)
 {
-	Q_UNUSED(c);
 	if(!m_pGradient)
 		delete m_pGradient;
 	m_pGradient = nullptr;
@@ -2113,7 +2110,7 @@ KVSO_CLASS_FUNCTION(painter, drawPath)
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	m_pPainter->drawPath(*m_pPainterPath);
 	//delete m_pPainterPath;
-	//m_pPainterPath=0;
+	//m_pPainterPath=nullptr;
 	return true;
 }
 
@@ -2144,7 +2141,6 @@ KVSO_CLASS_FUNCTION(painter, setCompositionMode)
 }
 KVSO_CLASS_FUNCTION(painter, resetPath)
 {
-	Q_UNUSED(c);
 	if(m_pPainterPath)
 	{
 		delete m_pPainterPath;

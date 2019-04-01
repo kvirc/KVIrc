@@ -55,8 +55,8 @@ TermWidget::TermWidget(QWidget * par, bool bIsStandalone)
 		g_pTermWidgetList.insert(this);
 	m_bIsStandalone = bIsStandalone;
 
-	m_pKonsolePart = 0;
-	m_pKonsoleWidget = 0;
+	m_pKonsolePart = nullptr;
+	m_pKonsoleWidget = nullptr;
 
 	if(bIsStandalone)
 	{
@@ -71,9 +71,9 @@ TermWidget::TermWidget(QWidget * par, bool bIsStandalone)
 	}
 	else
 	{
-		m_pHBox = 0;
-		m_pTitleLabel = 0;
-		m_pCloseButton = 0;
+		m_pHBox = nullptr;
+		m_pTitleLabel = nullptr;
+		m_pCloseButton = nullptr;
 	}
 
 	setFrameStyle(QFrame::Sunken | QFrame::Panel);
@@ -138,8 +138,8 @@ void TermWidget::closeClicked()
 
 void TermWidget::konsoleDestroyed()
 {
-	m_pKonsoleWidget = 0;
-	m_pKonsolePart = 0;
+	m_pKonsoleWidget = nullptr;
+	m_pKonsolePart = nullptr;
 	hide();
 	QTimer::singleShot(0, this, SLOT(autoClose()));
 }

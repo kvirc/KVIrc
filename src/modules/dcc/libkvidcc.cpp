@@ -2420,7 +2420,7 @@ static bool dcc_kvs_fnc_ircContext(KviKvsModuleFunctionCall * c)
 		}
 		else
 		{
-			c->error(__tr2qs_ctx("The IRC context that originated the DCC doesn't exists anymore.", "dcc"));
+			c->error(__tr2qs_ctx("The IRC context that originated the DCC doesn't exist anymore.", "dcc"));
 			return false;
 		}
 	}

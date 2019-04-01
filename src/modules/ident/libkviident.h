@@ -47,13 +47,13 @@ public:
 	time_t m_tStart;
 };
 
-typedef struct _KviIdentMessageData
+struct KviIdentMessageData
 {
 	KviCString szMessage;
 	KviCString szHost;
 	KviCString szAux;
 	unsigned int uPort;
-} KviIdentMessageData;
+};
 
 class KviIdentSentinel : public QObject
 {
@@ -63,7 +63,7 @@ public:
 	~KviIdentSentinel();
 
 protected:
-	virtual bool event(QEvent * e);
+	bool event(QEvent * e) override;
 };
 
 class KviIdentDaemon : public KviSensitiveThread
@@ -79,13 +79,13 @@ private:
 	bool m_bIPv6ContainsIPv4;
 	kvi_socket_t m_sock;
 	kvi_socket_t m_sock6;
-	KviPointerList<KviIdentRequest> * m_pRequestList;
+	KviPointerList<KviIdentRequest> * m_pRequestList = nullptr;
 
 public:
-	virtual void run();
+	void run() override;
 
 protected:
-	void postMessage(const char * message, KviIdentRequest * r, const char * szAux = 0);
+	void postMessage(const char * message, KviIdentRequest * r, const char * szAux = nullptr);
 };
 
 #endif //_LIBKVIIDENT_H_

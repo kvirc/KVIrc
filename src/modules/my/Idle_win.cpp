@@ -24,11 +24,12 @@
 
 #include <QLibrary>
 
-typedef struct tagLASTINPUTINFO
+struct LASTINPUTINFO
 {
 	UINT cbSize;
 	DWORD dwTime;
-} LASTINPUTINFO, *PLASTINPUTINFO;
+};
+using PLASTINPUTINFO = LASTINPUTINFO *;
 
 class IdlePlatform::Private
 {

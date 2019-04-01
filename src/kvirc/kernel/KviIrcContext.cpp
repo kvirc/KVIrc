@@ -69,26 +69,10 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 KviIrcContext::KviIrcContext(KviConsoleWindow * pConsole)
-    : QObject(nullptr)
+    : QObject(), m_pConsole(pConsole)
 {
 	m_uId = g_uNextIrcContextId;
 	g_uNextIrcContextId++;
-
-	m_pConsole = pConsole;
-
-	m_pConnection = nullptr;
-
-	m_pLinksWindow = nullptr;
-	m_pListWindow = nullptr;
-
-	m_eState = Idle;
-
-	m_pAsynchronousConnectionData = nullptr;
-	m_pSavedAsynchronousConnectionData = nullptr;
-	m_uConnectAttemptCount = 0;
-	m_pReconnectTimer = nullptr;
-
-	m_uConnectAttemptCount = 1;
 
 	m_iHeartbeatTimerId = startTimer(5000);
 }
@@ -179,6 +163,7 @@ KviQueryWindow * KviIrcContext::findDeadQuery(const QString & name)
 		if(KviQString::equalCI(name, q->windowName()))
 			return q;
 	}
+
 	return nullptr;
 }
 
@@ -219,11 +204,11 @@ bool KviIrcContext::unregisterDeadChannel(KviChannelWindow * c)
 	if(m_DeadChannels.empty())
 		return false;
 
-	int pos = std::find(m_DeadChannels.begin(), m_DeadChannels.end(), c) - m_DeadChannels.begin();
+	auto result = std::find(m_DeadChannels.begin(), m_DeadChannels.end(), c);
 
-	if(pos < m_DeadChannels.size())
+	if(result != m_DeadChannels.end())
 	{
-		m_DeadChannels.erase(m_DeadChannels.begin() + pos);
+		m_DeadChannels.erase(result);
 		return true;
 	}
 
@@ -235,11 +220,11 @@ bool KviIrcContext::unregisterContextWindow(KviWindow * pWnd)
 	if(m_ContextWindows.empty())
 		return false;
 
-	int pos = std::find(m_ContextWindows.begin(), m_ContextWindows.end(), pWnd) - m_ContextWindows.begin();
+	auto result = std::find(m_ContextWindows.begin(), m_ContextWindows.end(), pWnd);
 
-	if(pos < m_ContextWindows.size())
+	if(result != m_ContextWindows.end())
 	{
-		m_ContextWindows.erase(m_ContextWindows.begin() + pos);
+		m_ContextWindows.erase(result);
 		return true;
 	}
 
@@ -251,11 +236,11 @@ bool KviIrcContext::unregisterDeadQuery(KviQueryWindow * q)
 	if(m_DeadQueries.empty())
 		return false;
 
-	int pos = std::find(m_DeadQueries.begin(), m_DeadQueries.end(), q) - m_DeadQueries.begin();
+	auto result = std::find(m_DeadQueries.begin(), m_DeadQueries.end(), q);
 
-	if(pos < m_DeadQueries.size())
+	if(result != m_DeadQueries.end())
 	{
-		m_DeadQueries.erase(m_DeadQueries.begin() + pos);
+		m_DeadQueries.erase(result);
 		return true;
 	}
 
@@ -290,7 +275,7 @@ void KviIrcContext::destroyConnection()
 
 	m_pConsole->connectionDetached();
 
-	// make sure that m_pConnection is already 0 in any
+	// make sure that m_pConnection is already nullptr in any
 	// event triggered by KviIrcConnection destructor
 	KviIrcConnection * pTmp = m_pConnection;
 	m_pConnection = nullptr;
@@ -388,8 +373,7 @@ void KviIrcContext::connectToCurrentServer()
 		if(m_pAsynchronousConnectionData->szServer.isEmpty())
 		{
 			// an empty server might mean "reuse the last server in context"
-			if(
-			    m_pAsynchronousConnectionData->bUseLastServerInContext && m_pSavedAsynchronousConnectionData)
+			if(m_pAsynchronousConnectionData->bUseLastServerInContext && m_pSavedAsynchronousConnectionData)
 			{
 				// reuse the saved connection data
 				// the server for sure
@@ -456,27 +440,17 @@ void KviIrcContext::connectToCurrentServer()
 	KviIrcNetwork * net = g_pServerDataBase->currentNetwork();
 	KviIrcServer * srv = net ? net->currentServer() : nullptr;
 
-	KviProxy * prx = nullptr;
-
 	if(!srv)
 	{
 		if(g_pServerDataBase->networkCount())
-			KviKvsScript::run("options.edit OptionsWidget_servers", m_pConsole);
+			KviKvsScript::run("options.edit -n OptionsWidget_servers", m_pConsole);
 		else
 			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR, __tr2qs("No servers available. Check the options dialog or use the /SERVER command"));
 		destroyAsynchronousConnectionData();
 		return;
 	}
 
-	if(!net)
-	{
-		// BUG
-		m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR, __tr2qs("Oops! You've hit a bug in the servers database... I have found a server but not a network..."));
-		destroyAsynchronousConnectionData();
-		return;
-	}
-
-	prx = srv->proxyServer(g_pProxyDataBase);
+	KviProxy * prx = srv->proxyServer(g_pProxyDataBase);
 
 	if(!prx && (srv->proxy() != -1) && KVI_OPTION_BOOL(KviOption_boolUseProxyHost))
 	{
@@ -652,11 +626,9 @@ void KviIrcContext::connectionEstablished()
 	//
 	m_uConnectAttemptCount = 1;
 
-	bool bStopOutput = false;
-
 	setState(LoggingIn); // this must be set in order for $server and other functions to return the correct values
 
-	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRCConnectionEstablished, m_pConsole);
+	bool bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRCConnectionEstablished, m_pConsole);
 
 	if(!bStopOutput)
 	{

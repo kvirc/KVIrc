@@ -28,8 +28,8 @@
 # GLOBAL CONFIGS
 #################################################################################################
 
-$g_currenttime=gmtime;
-$g_currentuser = getlogin || getpwuid($<) || "Unknown";
+$g_currenttime = gmtime($ENV{SOURCE_DATE_EPOCH} || time);
+$g_currentuser = $ENV{USER} || getlogin || getpwuid($<) || "Unknown";
 $g_syntaxcolor="#802000";
 
 $g_kvssyntaxcolor="#802000";
@@ -321,6 +321,7 @@ sub make_syntax
 			}
 		}
 	}
+	$_[0] =~ s/\n+/<br>\n/gs;
 }
 
 sub extract_keyterms
@@ -626,6 +627,7 @@ sub process_body_line
 			#$_[0] =~ s/(\&gt\;)/\<span class=\"example-oper\">\1\<\/span\>/g;
 			#$_[0] =~ s/(\&lt\;)/\<span class=\"example-oper\">\1\<\/span\>/g;
 		}
+		$_[0] =~ s/\n+/<br>\n/gs;
 	}
 
 	$_[0] =~ s/^				/\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;/g;
@@ -788,7 +790,7 @@ sub process_file
 							# Process example code blocks
 							if($iExampleState eq 0)
 							{
-								if(($_ =~ /\[example\]*/) && (!($_ =~ /\[\/example\]*/)))
+								if(($_ =~ /\[(example|pre)\]*/) && (!($_ =~ /\[\/(example|pre)\]*/)))
 								{
 									$iExampleState = 1;
 									$szExampleTabBlock = "";
@@ -800,7 +802,7 @@ sub process_file
 									$_ =~ s/^$szExampleTabBlock//g;
 								}
 
-								if(($_ =~ /\[\/example\]*/))
+								if(($_ =~ /\[\/(example|pre)\]*/))
 								{
 									$iExampleState = 0;
 								} else {

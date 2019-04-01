@@ -72,18 +72,15 @@
 #include <QtGlobal>
 
 #include <algorithm>
+#include <memory>
 
 extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 KviIrcConnection::KviIrcConnection(KviIrcContext * pContext, KviIrcConnectionTarget * pTarget, KviUserIdentity * pIdentity)
-    : QObject()
+    : QObject(), m_pContext(pContext), m_pTarget(pTarget), m_pUserIdentity(pIdentity)
 {
-	m_bIdentdAttached = false;
-	m_pContext = pContext;
 	m_pConsole = pContext->console();
-	m_pTarget = pTarget;
-	m_pUserIdentity = pIdentity;
 	m_pLink = new KviIrcLink(this);
 	m_pUserDataBase = new KviIrcUserDataBase();
 	m_pUserInfo = new KviIrcConnectionUserInfo();
@@ -92,12 +89,7 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext, KviIrcConnectionTar
 	m_pAntiCtcpFloodData = new KviIrcConnectionAntiCtcpFloodData();
 	m_pNetsplitDetectorData = new KviIrcConnectionNetsplitDetectorData();
 	m_pAsyncWhoisData = new KviIrcConnectionAsyncWhoisData();
-	m_pStatistics = new KviIrcConnectionStatistics();
-	m_pNotifyListTimer = nullptr;
-	m_pNotifyListManager = nullptr;
-	m_pLocalhostDns = nullptr;
-	m_pLagMeter = nullptr;
-	m_eState = Idle;
+	m_pStatistics = std::make_unique<KviIrcConnectionStatistics>();
 	m_pRequestQueue = new KviIrcConnectionRequestQueue();
 	setupSrvCodec();
 	setupTextCodec();
@@ -136,7 +128,6 @@ KviIrcConnection::~KviIrcConnection()
 	delete m_pAntiCtcpFloodData;
 	delete m_pNetsplitDetectorData;
 	delete m_pAsyncWhoisData;
-	delete m_pStatistics;
 	delete m_pUserIdentity;
 	m_pRequestQueue->deleteLater();
 }
@@ -269,7 +260,7 @@ void KviIrcConnection::serverInfoReceived(const QString & szServerName, const QS
 	g_pMainWindow->childConnectionServerInfoChange(this);
 }
 
-const QString & KviIrcConnection::currentNetworkName()
+const QString & KviIrcConnection::currentNetworkName() const
 {
 	return m_pServerInfo->networkName();
 }
@@ -347,8 +338,7 @@ void KviIrcConnection::linkEstablished()
 	if(!link() || !link()->socket())
 		return;
 
-	if(
-	    (!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS())
+	if((!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS())
 	{
 #ifdef COMPILE_SSL_SUPPORT
 		// STARTTLS without CAP (forced request)
@@ -421,8 +411,7 @@ void KviIrcConnection::handleInitialCapLs()
 // STARTTLS support: this has to be checked first because it could imply
 // a full cap renegotiation
 #ifdef COMPILE_SSL_SUPPORT
-	if(
-	    (!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS() && serverInfo()->supportedCaps().contains("tls", Qt::CaseInsensitive))
+	if((!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS() && serverInfo()->supportedCaps().contains("tls", Qt::CaseInsensitive))
 	{
 		if(trySTARTTLS(false))
 			return; // STARTTLS negotiation in progress
@@ -473,16 +462,30 @@ void KviIrcConnection::handleInitialCapAck()
 	bool bUsed = false;
 
 	//SASL
-	if(
-	    target()->server()->enabledSASL() && m_pStateData->enabledCaps().contains("sasl", Qt::CaseInsensitive))
+	if(target()->server()->enabledSASL() && m_pStateData->enabledCaps().contains("sasl", Qt::CaseInsensitive))
 	{
-		m_pStateData->setInsideAuthenticate(true);
-		bUsed = true;
+		if(target()->server()->saslMethod() == QStringLiteral("EXTERNAL"))
+		{
+			if(KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate) && link()->socket()->usingSSL())
+			{
+				bUsed = true;
+				sendFmtData("AUTHENTICATE EXTERNAL");
+				m_pStateData->setSentSaslMethod(QStringLiteral("EXTERNAL"));
+			}
+		}
 
-		sendFmtData("AUTHENTICATE PLAIN");
+		// Assume PLAIN if all other SASL methods are not chosen or we're attempting a fallback
+		if(!bUsed && !target()->server()->saslNick().isEmpty() && !target()->server()->saslPass().isEmpty())
+		{
+			bUsed = true;
+			sendFmtData("AUTHENTICATE PLAIN");
+			m_pStateData->setSentSaslMethod(QStringLiteral("PLAIN"));
+		}
 	}
 
-	if(!bUsed)
+	if(bUsed)
+		m_pStateData->setInsideAuthenticate(true);
+	else
 		endInitialCapNegotiation();
 }
 
@@ -495,9 +498,14 @@ void KviIrcConnection::handleAuthenticate(KviCString & szAuth)
 	QByteArray szNick = encodeText(target()->server()->saslNick());
 	QByteArray szPass = encodeText(target()->server()->saslPass());
 
-	//PLAIN
 	KviCString szOut;
-	if(KviSASL::plainMethod(szAuth, szOut, szNick, szPass))
+	bool bSendString = false;
+	if(m_pStateData->sentSaslMethod() == QStringLiteral("EXTERNAL"))
+		bSendString = KviSASL::externalMethod(szAuth, szOut);
+	else // Assume PLAIN
+		bSendString = KviSASL::plainMethod(szAuth, szOut, szNick, szPass);
+
+	if(bSendString)
 		sendFmtData("AUTHENTICATE %s", szOut.ptr());
 	else
 		sendFmtData("AUTHENTICATE *");
@@ -1519,11 +1527,6 @@ void KviIrcConnection::loginToIrcServer()
 	QByteArray szReal = encodeText(m_pUserInfo->realName()); // may be empty
 	QByteArray szPass = encodeText(m_pUserInfo->password()); // may be empty
 
-	if(!szReal.data())
-		szReal = "";
-	if(!szPass.data())
-		szPass = "";
-
 	if(!_OUTPUT_MUTE)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Logging in as %Q!%Q :%Q"),
 		    &(m_pUserInfo->nickName()), &(m_pUserInfo->userName()), &(m_pUserInfo->realName()));
@@ -1673,7 +1676,7 @@ bool KviIrcConnection::changeUserMode(char cMode, bool bSet)
 
 void KviIrcConnection::gatherChannelAndPasswordPairs(std::vector<std::pair<QString, QString>> & lChannelsAndPasses)
 {
-	for(auto & c : m_pChannelList)
+	for(const auto & c : m_pChannelList)
 		lChannelsAndPasses.emplace_back(
 		    c->windowName(),
 		    c->hasChannelMode('k') ? c->channelModeParam('k') : QString());
@@ -1681,7 +1684,7 @@ void KviIrcConnection::gatherChannelAndPasswordPairs(std::vector<std::pair<QStri
 
 void KviIrcConnection::gatherQueryNames(QStringList & lQueryNames)
 {
-	for(auto & q : m_pQueryList)
+	for(const auto & q : m_pQueryList)
 		lQueryNames.append(q->target());
 }
 
@@ -1702,7 +1705,6 @@ void KviIrcConnection::joinChannels(const std::vector<std::pair<QString, QString
 
 	// We send the channel list in chunks to avoid overflowing the 510 character limit on the message.
 	QString szChans, szPasses;
-	QString szCommand;
 
 	for(auto & oChanAndPass : lSorted)
 	{
@@ -1721,22 +1723,22 @@ void KviIrcConnection::joinChannels(const std::vector<std::pair<QString, QString
 		// empirical limit
 		if((szChans.length() + szPasses.length()) > 450)
 		{
-			szCommand = szChans;
+			QString szCommand = szChans;
 			if(!szPasses.isEmpty())
 			{
-				szCommand.append(" ");
+				szCommand.append(' ');
 				szCommand.append(szPasses);
 			}
 			sendFmtData("JOIN %s", encodeText(szCommand).data());
-			szChans = QString();
-			szPasses = QString();
+			szChans.clear();
+			szPasses.clear();
 		}
 	}
 
-	szCommand = szChans;
+	QString szCommand = szChans;
 	if(!szPasses.isEmpty())
 	{
-		szCommand.append(" ");
+		szCommand.append(' ');
 		szCommand.append(szPasses);
 	}
 	sendFmtData("JOIN %s", encodeText(szCommand).data());
@@ -1771,10 +1773,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 	g_pApp->addRecentNickname(szNickName);
 
-	bool bHaltOutput = false;
-	bHaltOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRC, m_pConsole);
-
-	if(!bHaltOutput)
+	if(!KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRC, m_pConsole))
 		m_pConsole->outputNoFmt(KVI_OUT_IRC, __tr2qs("Login operations complete, happy ircing!"));
 
 	resurrectDeadQueries();
@@ -2012,17 +2011,17 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 	}
 }
 
-const QString & KviIrcConnection::currentServerName()
+const QString & KviIrcConnection::currentServerName() const
 {
 	return serverInfo()->name();
 }
 
-const QString & KviIrcConnection::currentNickName()
+const QString & KviIrcConnection::currentNickName() const
 {
 	return userInfo()->nickName();
 }
 
-const QString & KviIrcConnection::currentUserName()
+const QString & KviIrcConnection::currentUserName() const
 {
 	return userInfo()->userName();
 }

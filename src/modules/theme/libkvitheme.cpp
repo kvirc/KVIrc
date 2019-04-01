@@ -322,7 +322,7 @@ static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 	KviPointerList<KviThemeInfo> lThemeInfoList;
 	lThemeInfoList.setAutoDelete(true);
 
-	Q_FOREACH(QString szTheme, lThemeList)
+	for(const auto & szTheme : lThemeList)
 	{
 		KviThemeInfo * pInfo = new KviThemeInfo();
 		if(!pInfo->load(szTheme, KviThemeInfo::External))

@@ -66,11 +66,10 @@ class KviWindow;
 #define KVI_USERLISTVIEW_GRIDTYPE_DEFAULT 0
 
 /**
-* \typedef KviUserListViewUserStats
 * \struct _KviUserListViewUserStats
 * \brief A struct to hold user statistics
 */
-typedef struct _KviUserListViewUserStats
+struct KviUserListViewUserStats
 {
 	unsigned int uTotal;     /**< total users on the channel */
 	unsigned int uActive;    /**< active users in the last 10 mins */
@@ -85,7 +84,7 @@ typedef struct _KviUserListViewUserStats
 	unsigned int uVoiced;    /**< total voiced users */
 	unsigned int uUserOp;    /**< total userops (uops) */
 	int iAvgTemperature;     /**< average user temperature */
-} KviUserListViewUserStats;
+};
 
 /**
 * \class KviUserListToolTip
@@ -105,7 +104,7 @@ public:
 	/**
 	* \brief Destroys the userlist tooltip
 	*/
-	virtual ~KviUserListToolTip();
+	~KviUserListToolTip();
 
 private:
 	KviUserListView * m_pListView;
@@ -116,7 +115,7 @@ public:
 	* \param pnt The point where to show to tooltip
 	* \return void
 	*/
-	virtual void maybeTip(const QPoint & pnt);
+	void maybeTip(const QPoint & pnt) override;
 
 	/**
 	* \brief Shows the tooltip
@@ -321,7 +320,7 @@ public:
 	* \param pRect The rectangle where to search
 	* \return KviUserListEntry *
 	*/
-	KviUserListEntry * itemAt(const QPoint & pnt, QRect * pRect = 0);
+	KviUserListEntry * itemAt(const QPoint & pnt, QRect * pRect = nullptr);
 
 	/**
 	* \brief Returns true if the item in the entry is visible
@@ -715,6 +714,11 @@ public:
 	void emitDoubleClick();
 
 	/**
+	* \brief Completes the nick prioritizing last active first
+	*/
+	bool completeNickLastAction(const QString & szBegin, const QString & szSkipAfter, QString & szBuffer, bool bAppendMask);
+
+	/**
 	* \brief Completes the nick in normal behaviour
 	*
 	* It looks for the letters typed, if it found at least a result, it
@@ -801,7 +805,7 @@ protected:
 	*/
 	void updateScrollBarRange();
 
-	virtual void resizeEvent(QResizeEvent * e);
+	void resizeEvent(QResizeEvent * e) override;
 
 public slots:
 	/**
@@ -850,14 +854,14 @@ protected:
 	bool m_bIgnoreScrollBar;
 
 protected:
-	virtual void paintEvent(QPaintEvent * e);
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseMoveEvent(QMouseEvent * e);
-	virtual void mouseReleaseEvent(QMouseEvent * e);
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	virtual void wheelEvent(QWheelEvent * e);
-	virtual void keyPressEvent(QKeyEvent * e);
+	void paintEvent(QPaintEvent * e) override;
+	void resizeEvent(QResizeEvent * e) override;
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseMoveEvent(QMouseEvent * e) override;
+	void mouseReleaseEvent(QMouseEvent * e) override;
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
+	void wheelEvent(QWheelEvent * e) override;
+	void keyPressEvent(QKeyEvent * e) override;
 protected slots:
 
 	/**

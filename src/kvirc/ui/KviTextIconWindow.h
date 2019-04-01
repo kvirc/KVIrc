@@ -24,25 +24,15 @@
 //
 //=============================================================================
 
-/**
-* \file KviTextIconWindow.h
-* \author Szymon Stefanek
-* \brief Text icon window
-*
-* \def KVI_TEXTICON_WIN_WIDTH The width of the window
-* \def KVI_TEXTICON_WIN_HEIGHT The height of the window
-*/
-
 #include "kvi_settings.h"
-#include "KviCString.h"
 #include "KviIconManager.h"
 
-#include <QPainter>
-#include <QTableWidget>
+class QTableWidget;
 
-#define KVI_TEXTICON_WIN_WIDTH 230
-#define KVI_TEXTICON_WIN_HEIGHT 200
-#define KVI_TEXTICON_COLUMNS 6
+constexpr int KVI_TEXTICON_WIN_WIDTH = 230;
+constexpr int KVI_TEXTICON_WIN_HEIGHT = 200;
+constexpr int KVI_TEXTICON_COLUMNS = 6;
+
 /**
 * \class KviTextIconWindow
 * \brief Text icon window class
@@ -51,21 +41,13 @@ class KVIRC_API KviTextIconWindow : public QWidget
 {
 	Q_OBJECT
 public:
-	/**
-	* \brief Constructs the text icon window objet
-	* \return KviTextIconWindow
-	*/
 	KviTextIconWindow();
-
-	/**
-	* \brief Destroys the text icon window objet
-	*/
 	~KviTextIconWindow();
 
 private:
-	QWidget * m_pOwner;
+	QWidget * m_pOwner = nullptr;
 	QTableWidget * m_pTable;
-	bool m_bAltMode; // in alt mode the inserted string will contains also the Alt+E escape code
+	bool m_bAltMode = false; // in alt mode the inserted string will contains also the Alt+E escape code
 public:
 	/**
 	* \brief Shows the popup
@@ -83,7 +65,7 @@ private:
 	void doHide();
 
 private:
-	virtual bool eventFilter(QObject * o, QEvent * e);
+	bool eventFilter(QObject * o, QEvent * e) override;
 	void autoSelectBestMatchBasedOnOwnerText();
 
 public slots:

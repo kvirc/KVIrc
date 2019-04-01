@@ -130,20 +130,31 @@ endif()
 add_library(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
 target_link_libraries(${KVILIB_BINARYNAME} ${LIBS})
 
-# Enable C++11
-set_property(TARGET ${KVILIB_BINARYNAME} PROPERTY CXX_STANDARD 11)
+# Enable C++17
+set_property(TARGET ${KVILIB_BINARYNAME} PROPERTY CXX_STANDARD 17)
 set_property(TARGET ${KVILIB_BINARYNAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 
 
 if(Qt5Widgets_FOUND)
-	qt5_use_modules(${KVILIB_BINARYNAME} ${qt5_kvirc_modules})
+	target_link_libraries(${KVILIB_BINARYNAME} ${qt5_kvirc_modules})
 endif()
 
 set_target_properties(${KVILIB_BINARYNAME} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 
 if(WANT_STRIP)
-	get_target_property(KVILIB_LOCATION ${KVILIB_BINARYNAME} LOCATION)
-	install(CODE "exec_program(${STRIP_EXECUTABLE} ARGS -s \"${KVILIB_LOCATION}\")")
+	IF(APPLE)
+		add_custom_command(
+			TARGET ${KVILIB_BINARYNAME}
+			POST_BUILD
+			COMMAND ${STRIP_EXECUTABLE} -x $<TARGET_FILE:${KVILIB_BINARYNAME}>
+		)
+	ELSE()
+		add_custom_command(
+			TARGET ${KVILIB_BINARYNAME}
+			POST_BUILD
+			COMMAND ${STRIP_EXECUTABLE} -s $<TARGET_FILE:${KVILIB_BINARYNAME}>
+		)
+	ENDIF()
 endif()
 
 # Installation directives

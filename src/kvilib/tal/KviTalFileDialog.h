@@ -66,7 +66,7 @@ public:
 	* \param bModal Whether the dialog is modal
 	* \return KviTalFileDialog
 	*/
-	KviTalFileDialog(const QString & szDirName, const QString & szFilter = QString(), QWidget * pParent = 0, const char * pcName = 0, bool bModal = false);
+	KviTalFileDialog(const QString & szDirName, const QString & szFilter = QString(), QWidget * pParent = nullptr, const char * pcName = nullptr, bool bModal = false);
 
 	/**
 	* \brief Destroys the filedialog object

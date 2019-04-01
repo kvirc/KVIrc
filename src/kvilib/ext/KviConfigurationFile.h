@@ -93,7 +93,8 @@ public:
 	bool readOnly() { return m_bReadOnly; };
 	void setReadOnly(bool bReadOnly) { m_bReadOnly = bReadOnly; };
 	bool dirty() { return m_bDirty; };
-	bool ensureWritable();
+	bool saveIfDirty();
+
 	//
 	// This sets the save path for the config file
 	// In this way you can load a system-wide read-only config file
@@ -160,15 +161,6 @@ public:
 	static void getFontProperties(KviCString & buffer, QFont * fnt);
 	static void setFontProperties(KviCString & str, QFont * fnt);
 
-#ifdef COMPILE_ON_WINDOWS
-	// On windows we need to override new and delete operators
-	// to ensure that always the right new/delete pair is called for an object instance
-	// This bug is present in all the classes exported by a module that
-	// can be instantiated/destroyed from external modules.
-	// (this is a well known bug described in Q122675 of MSDN)
-	void * operator new(size_t tSize);
-	void operator delete(void * p);
-#endif
 };
 
 #endif //!_KVI_CONFIG_H_INCLUDED_

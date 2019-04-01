@@ -67,7 +67,7 @@ public:
 protected:
 	QTableWidget * m_pTable;
 	int m_iLastEditedRow;
-	TextIconTableItem * m_pCurrentItem;
+	TextIconTableItem * m_pCurrentItem = nullptr;
 	QPushButton * m_pAdd;
 	QPushButton * m_pDel;
 	QPushButton * m_pRestore;

@@ -109,13 +109,13 @@ public:
 	* \brief Returns the size of the query object
 	* \return QSize
 	*/
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 
 	/**
 	* \brief Returns the name of the query target
 	* \return const QString &
 	*/
-	virtual const QString & target() { return windowName(); };
+	const QString & target() override { return windowName(); }
 
 	/**
 	* \brief Sets the target of the query
@@ -130,13 +130,13 @@ public:
 	* \brief Returns the button container
 	* \return QFrame *
 	*/
-	QFrame * buttonContainer() { return (QFrame *)m_pButtonGrid; };
+	QFrame * buttonContainer() override { return (QFrame *)m_pButtonGrid; }
 
 	/**
 	* \brief Applies the options
 	* \return void
 	*/
-	virtual void applyOptions();
+	void applyOptions() override;
 
 	/**
 	* \brief Called when a user performs an action
@@ -178,14 +178,14 @@ public:
 	* \param bUserFeedback Whether to display the echo feedback to the user
 	* \return void
 	*/
-	void ownMessage(const QString & szBuffer, bool bUserFeedback = true);
+	void ownMessage(const QString & szBuffer, bool bUserFeedback = true) override;
 
 	/**
 	* \brief Called when we perform an action
 	* \param szBuffer The buffer :)
 	* \return void
 	*/
-	void ownAction(const QString & szBuffer);
+	void ownAction(const QString & szBuffer) override;
 
 	/**
 	* \brief Returns the number of selected users in the userlist
@@ -255,48 +255,48 @@ protected:
 	* \brief Gets the window list and info label tooltip text
 	* \return QString
 	*/
-	virtual void getWindowListTipText(QString & szBuffer);
+	void getWindowListTipText(QString & szBuffer) override;
 
 	/**
 	* \brief Returns the icon associated to the query
 	* \return QPixmap *
 	*/
-	virtual QPixmap * myIconPtr();
+	QPixmap * myIconPtr() override;
 
 	/**
 	* \brief Fills in the caption buffers
 	* \return void
 	*/
-	virtual void fillCaptionBuffers();
+	void fillCaptionBuffers() override;
 
 	/**
 	* \brief Loads the properties from file
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void loadProperties(KviConfigurationFile * pCfg);
+	void loadProperties(KviConfigurationFile * pCfg) override;
 
 	/**
 	* \brief Saves the properties to file
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void saveProperties(KviConfigurationFile * pCfg);
+	void saveProperties(KviConfigurationFile * pCfg) override;
 
 	/**
 	* \brief Gets the base of the log file name
 	* \param szBuffer The buffer where to save the info
 	* \return void
 	*/
-	virtual void getBaseLogFileName(QString & szBuffer);
+	void getBaseLogFileName(QString & szBuffer) override;
 
 	/**
 	* \brief Trigger the OnQueryWindowCreated event
 	* \return void
 	*/
-	virtual void triggerCreationEvents();
+	void triggerCreationEvents() override;
 
-	virtual void resizeEvent(QResizeEvent *);
+	void resizeEvent(QResizeEvent *) override;
 protected slots:
 	/**
 	* \brief Triggers the OnQueryPopupRequest event

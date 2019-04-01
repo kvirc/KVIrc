@@ -68,7 +68,7 @@ private:
 	KviPointerHashTable<QString, QString> * m_pStringInfoFields;
 	KviPointerHashTable<QString, QByteArray> * m_pBinaryInfoFields;
 	QProgressDialog * m_pProgressDialog;
-	QLabel * m_pProgressDialogLabel;
+	QLabel * m_pProgressDialogLabel = nullptr;
 
 public:
 	/**

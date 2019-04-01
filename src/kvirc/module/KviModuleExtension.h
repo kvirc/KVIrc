@@ -38,13 +38,13 @@ class KviModuleExtensionDescriptor;
 class KviWindow;
 class QPixmap;
 
-typedef struct _KviModuleExtensionAllocStructTag
+struct KviModuleExtensionAllocStruct
 {
 	KviModuleExtensionDescriptor * pDescriptor;       // module extension that this alloc routine refers to
 	KviWindow * pWindow;                              // may be 0!
 	KviPointerHashTable<QString, QVariant> * pParams; // parameter dict (may be 0!)
 	void * pSpecial;                                  // special parameter passed to the alloc routine, may be 0
-} KviModuleExtensionAllocStruct;
+};
 
 typedef KviModuleExtension * (*KviModuleExtensionAllocRoutine)(KviModuleExtensionAllocStruct *);
 
@@ -73,7 +73,7 @@ private:
 	KviModule * m_pModule; // module pointer
 public:
 	// pParams ownership is NOT taken
-	KviModuleExtension * allocate(KviWindow * pWnd = 0, KviPointerHashTable<QString, QVariant> * pParams = 0, void * pSpecial = 0);
+	KviModuleExtension * allocate(KviWindow * pWnd = nullptr, KviPointerHashTable<QString, QVariant> * pParams = nullptr, void * pSpecial = nullptr);
 
 	int id() { return m_iId; };
 	KviModule * module() { return m_pModule; };
@@ -122,8 +122,8 @@ public:
 	KviModuleExtensionDescriptor * findExtensionDescriptor(const KviCString & szType, const KviCString & szName);
 	static KviModuleExtensionManager * instance() { return g_pModuleExtensionManager; };
 	KviModuleExtensionDescriptorList * getExtensionList(const KviCString & szType);
-	KviModuleExtension * allocateExtension(const KviCString & szType, const KviCString & szName, KviWindow * pWnd = 0, KviPointerHashTable<QString, QVariant> * pParams = 0, void * pSpecial = 0, const QString & preloadModule = QString());
-	KviModuleExtension * allocateExtension(const KviCString & szType, int id, KviWindow * pWnd = 0, KviPointerHashTable<QString, QVariant> * pParams = 0, void * pSpecial = 0, const QString & preloadModule = QString());
+	KviModuleExtension * allocateExtension(const KviCString & szType, const KviCString & szName, KviWindow * pWnd = nullptr, KviPointerHashTable<QString, QVariant> * pParams = nullptr, void * pSpecial = nullptr, const QString & preloadModule = QString());
+	KviModuleExtension * allocateExtension(const KviCString & szType, int id, KviWindow * pWnd = nullptr, KviPointerHashTable<QString, QVariant> * pParams = nullptr, void * pSpecial = nullptr, const QString & preloadModule = QString());
 
 private:
 	KviModuleExtensionDescriptorList * allocateExtensionGetDescriptorList(const KviCString & szType, const QString & preloadModule);

@@ -72,9 +72,9 @@ static const int mode_cod[] = {
 		!fn: $setEchoMode(<echo_mode:string>)
 		Sets the line edit's echo mode. Possible value are:[br]
 		[pre]
-			-Normal: display chars as they entered[br]
-			-Noecho: do not display anything[br]
-			-Password: display asterisks instead of the characters actually entered[br]
+			-Normal: display chars as they entered
+			-Noecho: do not display anything
+			-Password: display asterisks instead of the characters actually entered
 		[/pre]
 		See also [classfnc]$echoMode[/classfnc]().
 		!fn: <string> $echoMode()

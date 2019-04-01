@@ -137,14 +137,14 @@ public:
 protected:
 	void makeLink();
 	void setUrlHandlers();
-	virtual void showEvent(QShowEvent * e);
+	void showEvent(QShowEvent * e) override;
 	void enableOrDisableIdentityPageNextButton();
 public slots:
 	void chooseOldDataPath();
 	void chooseDataPath();
 	void chooseIncomingPath();
-	virtual void accept();
-	virtual void reject();
+	void accept() override;
+	void reject() override;
 
 	void oldDirClicked();
 	void newDirClicked();

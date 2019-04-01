@@ -53,7 +53,7 @@ private:
 	QWidget * m_pKonsoleWidget;
 
 protected:
-	virtual void resizeEvent(QResizeEvent * e);
+	void resizeEvent(QResizeEvent * e) override;
 protected slots:
 	void closeClicked();
 	void changeTitle(int i, const QString & str);
@@ -62,7 +62,7 @@ protected slots:
 
 public:
 	QWidget * konsoleWidget() { return m_pKonsoleWidget ? m_pKonsoleWidget : this; };
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 	int dummy() const { return 0; };
 protected slots:
 	void konsoleDestroyed();

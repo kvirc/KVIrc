@@ -26,24 +26,24 @@
 #define _KVI_OPTIONS_CPP_
 
 #include "KviOptions.h"
-#include "kvi_defaults.h"
-#include "KviConfigurationFile.h"
-#include "KviApplication.h"
-#include "KviIconManager.h"
-#include "KviControlCodes.h"
-#include "KviLocale.h"
 #include "kvi_confignames.h"
-#include "KviWindow.h"
+#include "kvi_defaults.h"
 #include "kvi_out.h"
-#include "KviStringConversion.h"
 #include "kvi_settings.h"
-#include "KviMainWindow.h"
-#include "KviInternalCommand.h"
-#include "KviTheme.h"
+#include "KviApplication.h"
+#include "KviConfigurationFile.h"
+#include "KviControlCodes.h"
 #include "KviFileUtils.h"
+#include "KviIconManager.h"
+#include "KviInternalCommand.h"
+#include "KviLocale.h"
+#include "KviMainWindow.h"
+#include "KviStringConversion.h"
+#include "KviTheme.h"
+#include "KviWindow.h"
 
-#include <QMessageBox>
 #include <QDir>
+#include <QMessageBox>
 #include <QStringList>
 
 // KviApplication.cpp
@@ -90,7 +90,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("IgnoreCtcpFinger", true, KviOption_sectFlagCtcp),
 	BOOL_OPTION("IgnoreCtcpSource", false, KviOption_sectFlagCtcp),
 	BOOL_OPTION("IgnoreCtcpTime", false, KviOption_sectFlagCtcp),
-	BOOL_OPTION("RequestMissingAvatars", true, KviOption_sectFlagAvatar),
+	BOOL_OPTION("RequestMissingAvatars", false, KviOption_sectFlagAvatar),
 	BOOL_OPTION("ShowCompactModeChanges", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("IgnoreCtcpDcc", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("AutoAcceptDccChat", false, KviOption_sectFlagDcc),
@@ -120,13 +120,13 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("NotifyDccSendSuccessInConsole", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccSend", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccChat", false, KviOption_sectFlagDcc),
-	BOOL_OPTION("AutoAcceptIncomingAvatars", true, KviOption_sectFlagDcc),
+	BOOL_OPTION("AutoAcceptIncomingAvatars", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("UseNickCompletionPostfixForFirstWordOnly", true, KviOption_sectFlagInput),
 	BOOL_OPTION("UseWindowListIcons", true, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("CreateMinimizedDccSendWhenAutoAccepted", true, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccChatWhenAutoAccepted", true, KviOption_sectFlagDcc),
 	BOOL_OPTION("DccGuessIpFromServerWhenLocalIsUnroutable", true, KviOption_sectFlagDcc),
-	BOOL_OPTION("ShowRegisteredUsersDialogAsToplevel", true, KviOption_sectFlagFrame),  //UNUSED
+	BOOL_OPTION("ColorNicksWithBackground", false, KviOption_sectFlagIrcView | KviOption_groupTheme),
 	BOOL_OPTION("AutoLogQueries", true, KviOption_sectFlagLogging), /* this options enabled by default in mIRC,XChat and irssi. People are confused while they want to see logs, but see empty dir*/
 	BOOL_OPTION("AutoLogChannels", true, KviOption_sectFlagLogging),
 	BOOL_OPTION("AutoLogDccChat", false, KviOption_sectFlagLogging),
@@ -188,7 +188,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("DccSendFakeAddressByDefault", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("UseWindowListActivityMeter", false, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("CloseServerWidgetAfterConnect", false, KviOption_sectFlagFrame),
-	BOOL_OPTION("ShowIdentityDialogAsToplevel", true, KviOption_sectFlagFrame), //UNUSED
+	BOOL_OPTION("PrioritizeLastActionTime", false, KviOption_sectFlagInput),
 	BOOL_OPTION("ShowUserChannelIcons", true, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ShowUserChannelState", false, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("EnableIgnoreOnPrivMsg", true, KviOption_sectFlagConnection),
@@ -332,7 +332,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("ShowTreeWindowListHandle", true, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("MenuBarVisible", true, KviOption_sectFlagFrame | KviOption_resetUpdateGui),
 	BOOL_OPTION("WarnAboutHidingMenuBar", true, KviOption_sectFlagFrame),
-	BOOL_OPTION("WhoRepliesToActiveWindow", false, KviOption_sectFlagConnection)
+	BOOL_OPTION("WhoRepliesToActiveWindow", false, KviOption_sectFlagConnection),
+	BOOL_OPTION("DropConnectionOnSaslFailure", false, KviOption_sectFlagConnection)
 };
 
 // NOTICE: REUSE EQUIVALENT UNUSED KviOption_bool in KviOptions.h ENTRIES BEFORE ADDING NEW ENTRIES ABOVE
@@ -604,7 +605,7 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS] = {
 	UINT_OPTION("TimeStampBackground", KviControlCodes::Transparent, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	UINT_OPTION("UserExperienceLevel", 1, KviOption_sectFlagUser),
 	UINT_OPTION("ClassicWindowListMaximumButtonWidth", 100, KviOption_sectFlagGeometry | KviOption_resetUpdateGui | KviOption_groupTheme),
-	UINT_OPTION("DefaultBanType", 7, KviOption_sectFlagIrcSocket),
+	UINT_OPTION("DefaultBanType", 9, KviOption_sectFlagIrcSocket),
 	UINT_OPTION("IrcViewPixmapAlign", 0, KviOption_sectFlagIrcView | KviOption_groupTheme),
 	UINT_OPTION("UserListPixmapAlign", 0, KviOption_sectFlagFrame | KviOption_groupTheme),
 	UINT_OPTION("ToolBarAppletPixmapAlign", 0, KviOption_sectFlagFrame | KviOption_groupTheme),
@@ -838,7 +839,10 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS] = {
 	MSGTYPE_OPTION("ChanURL", __tr_no_lookup("Channel URL"), KviIconManager::Url, KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION("MemoServ", __tr_no_lookup("MemoServ message"), KviIconManager::MemoServ, KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("Log", __tr_no_lookup("Log message"), KviIconManager::Log, KVI_MSGTYPE_LEVEL_1),
-	MSGTYPE_OPTION("ActionCrypted", __tr_no_lookup("Encrypted user action"), KviIconManager::ActionCrypted, KVI_MSGTYPE_LEVEL_3)
+	MSGTYPE_OPTION("ActionCrypted", __tr_no_lookup("Encrypted user action"), KviIconManager::ActionCrypted, KVI_MSGTYPE_LEVEL_3),
+	MSGTYPE_OPTION("OwnAction", __tr_no_lookup("Own action"), KviIconManager::OwnAction, KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION("OwnActionCrypted", __tr_no_lookup("Own encrypted action"), KviIconManager::OwnActionCrypted, KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION("TopicCrypted", __tr_no_lookup("Encrypted topic message"), KviIconManager::TopicCrypted, KVI_MSGTYPE_LEVEL_3),
 };
 
 static const char * options_section_table[KVI_NUM_OPTION_SECT_FLAGS] = {
@@ -855,9 +859,7 @@ static void config_set_section(int flag, KviConfigurationFile * cfg)
 {
 	int index = flag & KviOption_sectMask;
 	if((index < KVI_NUM_OPTION_SECT_FLAGS) && (index >= 0))
-	{
 		cfg->setGroup(options_section_table[index]);
-	}
 	else
 		cfg->setGroup(""); // Default group
 }
@@ -913,15 +915,9 @@ void KviApplication::saveOptions()
 	saveRecentChannels();
 
 	getLocalKvircDirectory(buffer, Config, KVI_CONFIGFILE_MAIN);
+
 	KviConfigurationFile cfg(buffer, KviConfigurationFile::Write);
 
-	if(!cfg.ensureWritable())
-	{
-		QMessageBox::warning(nullptr, __tr2qs("Warning While Writing Configuration - KVIrc"),
-		    __tr2qs("I can't write to the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continuing, "
-		            "or else any custom configuration will be lost.")
-		        .arg(buffer));
-	}
 	int i;
 
 #define WRITE_OPTIONS(_num, _table)                       \
@@ -969,6 +965,14 @@ void KviApplication::saveOptions()
 	WRITE_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable)
 
+	if(!cfg.saveIfDirty())
+	{
+		QMessageBox::warning(nullptr, __tr2qs("Warning While Writing Configuration - KVIrc"),
+		    __tr2qs("I can't write to the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continuing, "
+		            "or else any custom configuration will be lost.")
+		        .arg(buffer));
+	}
+
 #undef WRITE_OPTIONS
 }
 
@@ -1005,9 +1009,7 @@ namespace KviTheme
 		}
 
 		if(!options.save(szThemeDirPath + KVI_THEMEINFO_FILE_NAME))
-		{
 			return false;
-		}
 
 		KviConfigurationFile cfg(szThemeDirPath + KVI_THEMEDATA_FILE_NAME, KviConfigurationFile::Write);
 
@@ -1206,13 +1208,9 @@ namespace KviTheme
 					QString szVal = cfg.readEntry(g_pixmapOptionsTable[i].name, "").trimmed();
 					QString szBuffer;
 					if(!szVal.isEmpty())
-					{
 						g_pApp->findImage(szBuffer, szVal);
-					}
 					else
-					{
 						szBuffer = szVal;
-					}
 
 					KviStringConversion::fromString(szBuffer, g_pixmapOptionsTable[i].option);
 
@@ -1295,15 +1293,11 @@ void KviApplication::optionResetUpdate(int flags)
 	}
 
 	if(flags & KviOption_resetUpdateAppFont)
-	{
 		updateApplicationFont();
-	}
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(flags & KviOption_resetUpdatePseudoTransparency)
-	{
 		triggerUpdatePseudoTransparency();
-	}
 #endif
 
 	if(flags & KviOption_resetRestartIdentd)
@@ -1316,34 +1310,22 @@ void KviApplication::optionResetUpdate(int flags)
 	}
 
 	if(flags & KviOption_resetUpdateGui)
-	{
 		triggerUpdateGui();
-	}
 
 	if(flags & KviOption_resetUpdateWindowList)
-	{
 		g_pMainWindow->recreateWindowList();
-	}
 
 	if(flags & KviOption_resetRestartNotifyList)
-	{
 		g_pApp->restartNotifyLists();
-	}
 
 	if(flags & KviOption_resetRestartLagMeter)
-	{
 		g_pApp->restartLagMeters();
-	}
 
 	if(flags & KviOption_resetRecentChannels)
-	{
 		g_pApp->buildRecentChannels();
-	}
 
 	if(flags & KviOption_resetUpdateNotifier)
-	{
 		emit updateNotifier();
-	}
 }
 
 bool KviApplication::setOptionValue(const QString & optName, const QString & value)
@@ -1364,13 +1346,9 @@ bool KviApplication::setOptionValue(const QString & optName, const QString & val
 		QString szVal = value.trimmed();
 		QString szBuffer;
 		if(!szVal.isEmpty())
-		{
 			findImage(szBuffer, szVal);
-		}
 		else
-		{
 			szBuffer = szVal;
-		}
 
 		for(auto & i : g_pixmapOptionsTable)
 		{

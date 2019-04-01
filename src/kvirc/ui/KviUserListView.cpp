@@ -345,8 +345,8 @@ void KviUserListView::applyOptions()
 	m_iFontHeight = fm.lineSpacing();
 	m_pViewArea->m_pScrollBar->setSingleStep(m_iFontHeight);
 
-	if(KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth) < 100)
-		KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth) = 100;
+	if(KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth) < 50)
+		KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth) = 50;
 
 	setMinimumWidth(KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth));
 
@@ -485,8 +485,81 @@ void KviUserListView::completeNickBashLike(const QString & szBegin, std::vector<
 	}
 }
 
+bool KviUserListView::completeNickLastAction(const QString & szBegin, const QString & szSkipAfter, QString & szBuffer, bool bAppendMask)
+{
+	KviUserListEntry * pLastMatch = findEntry(szSkipAfter);
+	KviUserListEntry * pBestMatch = nullptr;
+
+	bool bUseNextEqual = false;
+	KviUserListEntry * pEntry = m_pHeadItem;
+	while(pEntry)
+	{
+		if(pLastMatch && pEntry == pLastMatch)
+			bUseNextEqual = true;
+		else if(pEntry->m_szNick.length() >= szBegin.length())
+		{
+			bool bEqual = KviQString::equalCIN(szBegin, pEntry->m_szNick, szBegin.length());
+			if(!bEqual && KVI_OPTION_BOOL(KviOption_boolIgnoreSpecialCharactersInNickCompletion))
+			{
+				QString szTmp = pEntry->m_szNick;
+				szTmp.remove(QRegExp("[^a-zA-Z0-9]"));
+				bEqual = KviQString::equalCIN(szBegin, szTmp, szBegin.length());
+			}
+
+			if(bEqual)
+			{
+				if(!pLastMatch && !pBestMatch)
+					pBestMatch = pEntry;
+				else if(!pLastMatch && pBestMatch)
+				{
+					if(pEntry->m_lastActionTime > pBestMatch->m_lastActionTime)
+						pBestMatch = pEntry;
+				}
+				else if(!pBestMatch)
+				{
+					if(pLastMatch->m_lastActionTime > pEntry->m_lastActionTime)
+						pBestMatch = pEntry;
+					else if(bUseNextEqual && pLastMatch->m_lastActionTime == pEntry->m_lastActionTime)
+					{
+						pBestMatch = pEntry;
+						bUseNextEqual = false;
+					}
+				}
+				else
+				{
+					if((pLastMatch->m_lastActionTime > pEntry->m_lastActionTime) && (pEntry->m_lastActionTime > pBestMatch->m_lastActionTime))
+						pBestMatch = pEntry;
+					else if(bUseNextEqual && pLastMatch->m_lastActionTime == pEntry->m_lastActionTime)
+					{
+						pBestMatch = pEntry;
+						bUseNextEqual = false;
+					}
+				}
+			}
+		}
+		pEntry = pEntry->m_pNext;
+	}
+
+	if(pBestMatch)
+	{
+		szBuffer = pBestMatch->m_szNick;
+		if(bAppendMask)
+		{
+			szBuffer += "!";
+			szBuffer += pBestMatch->m_pGlobalData->user();
+			szBuffer += "@";
+			szBuffer += pBestMatch->m_pGlobalData->host();
+		}
+		return true;
+	}
+	return false;
+}
+
 bool KviUserListView::completeNickStandard(const QString & szBegin, const QString & szSkipAfter, QString & szBuffer, bool bAppendMask)
 {
+	if(KVI_OPTION_BOOL(KviOption_boolPrioritizeLastActionTime))
+		return completeNickLastAction(szBegin, szSkipAfter, szBuffer, bAppendMask);
+
 	KviUserListEntry * pEntry = m_pHeadItem;
 
 	if(!szSkipAfter.isEmpty())
@@ -1624,7 +1697,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 						break;
 				}
 
-				szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+				szBuffer += R"(<tr><td bgcolor="#E0E0E0"><font color="#000000">)";
 				szBuffer += __tr2qs("Joined on: <b>%1</b>").arg(szTmp);
 				szBuffer += "</font></td></tr>";
 			}
@@ -1636,19 +1709,19 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				iSecs = iSecs % 60;
 				int iHours = iMins / 60;
 				iMins = iMins % 60;
-				szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+				szBuffer += R"(<tr><td bgcolor="#E0E0E0"><font color="#000000">)";
 				szBuffer += __tr2qs("Quiet for: <b>%1h %2m %3s</b>").arg(iHours).arg(iMins).arg(iSecs);
 				szBuffer += "</font></td></tr>";
 			}
 
 			if(pEntry->m_pGlobalData->isIrcOp())
 			{
-				szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+				szBuffer += R"(<tr><td bgcolor="#E0E0E0"><font color="#000000">)";
 				szBuffer += __tr2qs("%1 is an <b>IrcOp</b>").arg(pEntry->m_szNick);
 				szBuffer += "</font></td></tr>";
 			}
 
-			pTip->doTip(itRect, szBuffer);
+			pTip->doTip(QRect(pnt, pnt), szBuffer);
 		}
 	}
 }

@@ -62,17 +62,17 @@ protected:
 	int m_cPos;
 
 public:
-	inline const QString & name() { return m_szName; };
+	const QString & name() const { return m_szName; }
 	void setName(const QString & szName);
-	inline Type type() { return m_eType; };
+	Type type() const { return m_eType; }
 	void setType(Type t);
-	inline bool isAlias() { return m_eType == Alias; };
-	inline bool isNamespace() { return m_eType == Namespace; };
+	bool isAlias() const { return m_eType == Alias; }
+	bool isNamespace() const { return m_eType == Namespace; }
 	void setParentItem(AliasEditorTreeWidgetItem * it) { m_pParentItem = it; };
 	AliasEditorTreeWidgetItem * parentItem() { return m_pParentItem; };
-	inline void setBuffer(const QString & szBuffer) { m_szBuffer = szBuffer; };
-	inline const QString & buffer() { return m_szBuffer; };
-	inline const int & cursorPosition() { return m_cPos; };
+	void setBuffer(const QString & szBuffer) { m_szBuffer = szBuffer; }
+	const QString & buffer() const { return m_szBuffer; }
+	const int & cursorPosition() const { return m_cPos; }
 
 	void setCursorPosition(const int & cPos) { m_cPos = cPos; };
 };
@@ -182,10 +182,10 @@ protected:
 	AliasEditorWidget * m_pEditor;
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void getConfigGroupName(QString & szName);
-	virtual void saveProperties(KviConfigurationFile *);
-	virtual void loadProperties(KviConfigurationFile *);
+	QPixmap * myIconPtr() override;
+	void getConfigGroupName(QString & szName) override;
+	void saveProperties(KviConfigurationFile *) override;
+	void loadProperties(KviConfigurationFile *) override;
 protected slots:
 	void cancelClicked();
 	void okClicked();

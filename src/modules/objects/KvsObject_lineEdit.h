@@ -42,7 +42,7 @@ protected:
 	QCompleter * m_pCompleter;
 
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 
 	bool setCompleter(KviKvsObjectFunctionCall * c);
 	bool enableCompleter(KviKvsObjectFunctionCall * c);

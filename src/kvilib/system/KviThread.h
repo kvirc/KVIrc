@@ -226,7 +226,7 @@ protected:
 	void exit();
 	// The tricky part: threadsafe event dispatching
 	// Slave thread -> main thread objects
-	void postEvent(QObject * o, QEvent * e);
+	virtual void postEvent(QObject * o, QEvent * e);
 
 private:
 	void setRunning(bool bRunning);
@@ -280,9 +280,9 @@ protected:
 	KviThread * m_pSender;
 
 public:
-	KviThreadEvent(int evId, KviThread * sender = 0)
+	KviThreadEvent(int evId, KviThread * sender = nullptr)
 	    : QEvent((QEvent::Type)KVI_THREAD_EVENT), m_eventId(evId), m_pSender(sender){};
-	virtual ~KviThreadEvent(){};
+	~KviThreadEvent(){};
 
 public:
 	// This is the sender of the event
@@ -298,9 +298,9 @@ protected:
 	TData * m_pData;
 
 public:
-	KviThreadDataEvent(int evId, TData * pData = 0, KviThread * sender = 0)
+	KviThreadDataEvent(int evId, TData * pData = nullptr, KviThread * sender = nullptr)
 	    : KviThreadEvent(evId, sender) { m_pData = pData; };
-	virtual ~KviThreadDataEvent()
+	~KviThreadDataEvent()
 	{
 		if(m_pData)
 			delete m_pData;
@@ -316,7 +316,7 @@ public:
 	TData * getData()
 	{
 		TData * aux = m_pData;
-		m_pData = 0;
+		m_pData = nullptr;
 		return aux;
 	};
 	TData * data() { return m_pData; };
@@ -360,11 +360,11 @@ protected:
 // This is private stuff...only KviThread and KviApplication may use it
 // and may call only specific functions...don't touch.
 
-typedef struct _KviThreadPendingEvent
+struct KviThreadPendingEvent
 {
 	QObject * o;
 	QEvent * e;
-} KviThreadPendingEvent;
+};
 
 class KVILIB_API KviThreadManager : public QObject
 {

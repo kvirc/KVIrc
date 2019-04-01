@@ -1,0 +1,63 @@
+Description: Switch RFC2812 links from internal to external.
+  As we don't ship the RFC in the format of a help page.
+Author: Andrey Rakhmatullin <wrar@debian.org>
+Forwarded: not-needed
+Last-Update: 2017-10-14
+
+diff --git a/src/kvirc/kvs/KviKvsCoreSimpleCommands.cpp b/src/kvirc/kvs/KviKvsCoreSimpleCommands.cpp
+index f250701..8fc77ef 100644
+--- a/src/kvirc/kvs/KviKvsCoreSimpleCommands.cpp
++++ b/src/kvirc/kvs/KviKvsCoreSimpleCommands.cpp
+@@ -246,7 +246,7 @@ namespace KviKvsCoreSimpleCommands
+ 			Wrappers for RFC2812 commands
+ 		@body:
+ 			Some less used KVIrc commands are implemented as simple wrappers
+-			around the standard [doc]rfc2812[/doc] commands.[br]
++			around the standard [anchorlink:https://tools.ietf.org/html/rfc2812]rfc2812[/anchorlink] commands.[br]
+ 			For example, the /[cmd:oper]OPER[/cmd] command will be used only by server operators
+ 			and probably only once per connection.[br]
+ 			These commands should only be needed by experienced IRC users.
+@@ -258,7 +258,7 @@ namespace KviKvsCoreSimpleCommands
+ 			The exact parameter syntax/semantic checking is left to you.[br]
+ 			This also means that if some of these commands accept parameters with spaces,
+ 			it is left to you to add the leading ':' before the last parameter.[br]
+-			You should refer to [doc]rfc2812[/doc] if any of these commands do not work properly for you.[br]
++			You should refer to [anchorlink:https://tools.ietf.org/html/rfc2812]rfc2812[/anchorlink] if any of these commands do not work properly for you.[br]
+ 	*/
+ 
+ 	KVSCSC(rfc2812wrapper)
+diff --git a/src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp b/src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp
+index d624f3e..f6e5b77 100644
+--- a/src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp
++++ b/src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp
+@@ -603,7 +603,7 @@ namespace KviKvsCoreSimpleCommands
+ 		@description:
+ 			Requests the stats information from the specified server or the current server if no [target server] is specified.[br]
+ 			The query parameter is usually a letter indicating the type of the query requested: some query letters
+-			are defined by [doc]RFC2812[/doc] and some others are server implementation dependent.[br]
++			are defined by [anchorlink:https://tools.ietf.org/html/rfc2812]RFC2812[/anchorlink] and some others are server implementation dependent.[br]
+ 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
+ 	*/
+ 	// RFC2812 wrapper
+@@ -1112,7 +1112,7 @@ namespace KviKvsCoreSimpleCommands
+ 			Requests user information
+ 		@description:
+ 			Requests information about an IRC user specified by <nickname>.[br]
+-			WHOWAS requests [i]history[/i] records. See [doc:rfc2812]RFC2812[/doc] for more info.[br]
++			WHOWAS requests [i]history[/i] records. See [anchorlink:https://tools.ietf.org/html/rfc2812]RFC2812[/anchorlink] for more info.[br]
+ 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
+ 		@examples:
+ 			[example]
+diff --git a/src/modules/objects/libkviobjects.cpp b/src/modules/objects/libkviobjects.cpp
+index 12d9e6c..e319705 100644
+--- a/src/modules/objects/libkviobjects.cpp
++++ b/src/modules/objects/libkviobjects.cpp
+@@ -247,7 +247,7 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
+ 			<target_object>'s slot <slot_name>.
+ 			When one of the two objects is destroyed, the signal/slot
+ 			connection is automatically removed.[br]
+-			WARNING: this command name collides with the [doc:RFC2812]RFC2812[/doc]
++			WARNING: this command name collides with the [anchorlink:https://tools.ietf.org/html/rfc2812]RFC2812[/anchorlink]
+ 			CONNECT IRC Op command: this IRC command is available to operators only
+ 			and is rather rarely used: you can use it by the means of [doc:raw]raw[/doc].
+ 		@seealso:

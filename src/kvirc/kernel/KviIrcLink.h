@@ -92,16 +92,16 @@ private:
 	KviIrcConnection * m_pConnection;   // shallow, never null
 	KviIrcConnectionTarget * m_pTarget; // shallow, never null
 	KviConsoleWindow * m_pConsole;      // shallow, never null
-	KviIrcSocket * m_pSocket;           // owned, may be null!
-	KviMexLinkFilter * m_pLinkFilter;   // owned, may be null!
+	KviIrcSocket * m_pSocket = nullptr;         // owned, may be null!
+	KviMexLinkFilter * m_pLinkFilter = nullptr; // owned, may be null!
 
-	State m_eState;
+	State m_eState = Idle;
 
-	char * m_pReadBuffer;
-	unsigned int m_uReadBufferLen;
-	unsigned int m_uReadPackets;
+	char * m_pReadBuffer = nullptr;    // incoming data buffer
+	unsigned int m_uReadBufferLen = 0; // incoming data buffer length
+	unsigned int m_uReadPackets = 0;   // total packets read per session
 
-	KviIrcConnectionTargetResolver * m_pResolver; // owned
+	KviIrcConnectionTargetResolver * m_pResolver = nullptr; // owned
 public:
 	/**
 	* \brief Returns the socket
@@ -109,7 +109,7 @@ public:
 	* May be null!
 	* \return KviIrcSocket *
 	*/
-	KviIrcSocket * socket() { return m_pSocket; };
+	KviIrcSocket * socket() const { return m_pSocket; }
 
 	/**
 	* \brief Returns the connection object
@@ -117,7 +117,7 @@ public:
 	* Never null
 	* \return KviIrcConnection *
 	*/
-	KviIrcConnection * connection() { return m_pConnection; };
+	KviIrcConnection * connection() const { return m_pConnection; }
 
 	/**
 	* \brief Returns the console
@@ -125,13 +125,13 @@ public:
 	* Never null
 	* \return KviConsoleWindow *
 	*/
-	KviConsoleWindow * console() { return m_pConsole; };
+	KviConsoleWindow * console() const { return m_pConsole; }
 
 	/**
 	* \brief Returns the state of the socket
 	* \return State
 	*/
-	State state() { return m_eState; };
+	State state() const { return m_eState; }
 protected:
 	/**
 	* \brief Sends a data packet

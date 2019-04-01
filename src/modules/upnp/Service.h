@@ -71,11 +71,11 @@ namespace UPnP
 
 	public: // public methods
 		// The constructor for the root service
-		Service(const QString & hostname, int port, const QString & informationUrl);
+		Service(QString hostname, int port, const QString & informationUrl);
 		// The constructor for action services
 		Service(const ServiceParameters & params);
 		// The destructor
-		virtual ~Service();
+		~Service();
 
 		// Get the number of pending requests
 		int getPendingRequests() const;

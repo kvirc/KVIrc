@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.9.2\n"
+"Project-Id-Version: KVIrc 4.9.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-24 17:33+0200\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,16 +18,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/defscript/actions.kvs:5
-msgid "Option Controllers"
+msgid "Global Option Controllers"
 msgstr ""
 
 #: data/defscript/actions.kvs:5
 msgid ""
-"Opens a control dialog for easy CTCP ignore and joins/parts/quits management."
+"Opens a global control dialog for easy CTCP ignore and joins/parts/quits "
+"management."
 msgstr ""
 
 #: data/defscript/actions.kvs:41
-msgid "Option Controllers - KVIrc"
+msgid "Global Option Controllers - KVIrc"
 msgstr ""
 
 #: data/defscript/actions.kvs:53
@@ -413,7 +414,7 @@ msgstr ""
 
 #: data/defscript/events.kvs:92
 #: data/defscript/events.kvs:105
-msgid "Option controllers"
+msgid "Global option controllers"
 msgstr ""
 
 #: data/defscript/popups.kvs:22
@@ -454,7 +455,7 @@ msgstr ""
 #: data/defscript/popups.kvs:110
 #: data/defscript/popups.kvs:209
 #: data/defscript/popups.kvs:1267
-#: data/defscript/popups.kvs:1833
+#: data/defscript/popups.kvs:1834
 msgid "Notify Avatar"
 msgstr ""
 
@@ -487,7 +488,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:152
 #: data/defscript/popups.kvs:793
-#: data/defscript/popups.kvs:1771
+#: data/defscript/popups.kvs:1772
 msgid "/WHOIS ?s (idle time)"
 msgstr ""
 
@@ -495,37 +496,37 @@ msgstr ""
 #: data/defscript/popups.kvs:342
 #: data/defscript/popups.kvs:441
 #: data/defscript/popups.kvs:800
-#: data/defscript/popups.kvs:1779
+#: data/defscript/popups.kvs:1780
 msgid "&Information"
 msgstr ""
 
 #: data/defscript/popups.kvs:168
 #: data/defscript/popups.kvs:802
-#: data/defscript/popups.kvs:1781
+#: data/defscript/popups.kvs:1782
 msgid "/WHOIS ?s"
 msgstr ""
 
 #: data/defscript/popups.kvs:173
 #: data/defscript/popups.kvs:807
-#: data/defscript/popups.kvs:1786
+#: data/defscript/popups.kvs:1787
 msgid "/WHOWAS ?s"
 msgstr ""
 
 #: data/defscript/popups.kvs:178
 #: data/defscript/popups.kvs:812
-#: data/defscript/popups.kvs:1791
+#: data/defscript/popups.kvs:1792
 msgid "/WHO ?s"
 msgstr ""
 
 #: data/defscript/popups.kvs:185
 #: data/defscript/popups.kvs:819
-#: data/defscript/popups.kvs:1798
+#: data/defscript/popups.kvs:1799
 msgid "DNS for"
 msgstr ""
 
 #: data/defscript/popups.kvs:191
 #: data/defscript/popups.kvs:825
-#: data/defscript/popups.kvs:1804
+#: data/defscript/popups.kvs:1805
 msgid "Mask for"
 msgstr ""
 
@@ -535,7 +536,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:207
 #: data/defscript/popups.kvs:846
-#: data/defscript/popups.kvs:1827
+#: data/defscript/popups.kvs:1828
 msgid "&Registration"
 msgstr ""
 
@@ -688,7 +689,7 @@ msgid "Close All Dead Queries"
 msgstr ""
 
 #: data/defscript/popups.kvs:745
-msgid "&Option Controllers"
+msgid "Global &Option Controllers"
 msgstr ""
 
 #: data/defscript/popups.kvs:752
@@ -704,19 +705,19 @@ msgid "Unhighlight All Queries"
 msgstr ""
 
 #: data/defscript/popups.kvs:833
-#: data/defscript/popups.kvs:1814
+#: data/defscript/popups.kvs:1815
 msgid "&Query"
 msgstr ""
 
 #: data/defscript/popups.kvs:848
-#: data/defscript/popups.kvs:1274
-#: data/defscript/popups.kvs:1829
-msgid "&Highlight"
+#: data/defscript/popups.kvs:1830
+msgid "Ig&nore"
 msgstr ""
 
 #: data/defscript/popups.kvs:850
-#: data/defscript/popups.kvs:1831
-msgid "Ig&nore"
+#: data/defscript/popups.kvs:1274
+#: data/defscript/popups.kvs:1832
+msgid "&Highlight"
 msgstr ""
 
 #: data/defscript/popups.kvs:852
@@ -933,45 +934,45 @@ msgid "is not being ignored"
 msgstr ""
 
 #: data/defscript/popups.kvs:1421
-msgid "Enable Ignore"
-msgstr ""
-
-#: data/defscript/popups.kvs:1426
 msgid "Ignore As..."
 msgstr ""
 
-#: data/defscript/popups.kvs:1428
-#: data/defscript/popups.kvs:1436
-#: data/defscript/popups.kvs:1444
-#: data/defscript/popups.kvs:1452
-#: data/defscript/popups.kvs:1460
-#: data/defscript/popups.kvs:1468
-#: data/defscript/popups.kvs:1476
-#: data/defscript/popups.kvs:1484
-#: data/defscript/popups.kvs:1492
-#: data/defscript/popups.kvs:1500
-#: data/defscript/popups.kvs:1508
-#: data/defscript/popups.kvs:1516
-#: data/defscript/popups.kvs:1524
-#: data/defscript/popups.kvs:1532
-#: data/defscript/popups.kvs:1540
-#: data/defscript/popups.kvs:1548
-#: data/defscript/popups.kvs:1556
-#: data/defscript/popups.kvs:1564
-#: data/defscript/popups.kvs:1572
-#: data/defscript/popups.kvs:1580
-#: data/defscript/popups.kvs:1588
-#: data/defscript/popups.kvs:1596
-#: data/defscript/popups.kvs:1604
-#: data/defscript/popups.kvs:1612
-#: data/defscript/popups.kvs:1620
-#: data/defscript/popups.kvs:1628
-#: data/defscript/popups.kvs:1636
+#: data/defscript/popups.kvs:1423
+#: data/defscript/popups.kvs:1431
+#: data/defscript/popups.kvs:1439
+#: data/defscript/popups.kvs:1447
+#: data/defscript/popups.kvs:1455
+#: data/defscript/popups.kvs:1463
+#: data/defscript/popups.kvs:1471
+#: data/defscript/popups.kvs:1479
+#: data/defscript/popups.kvs:1487
+#: data/defscript/popups.kvs:1495
+#: data/defscript/popups.kvs:1503
+#: data/defscript/popups.kvs:1511
+#: data/defscript/popups.kvs:1519
+#: data/defscript/popups.kvs:1527
+#: data/defscript/popups.kvs:1535
+#: data/defscript/popups.kvs:1543
+#: data/defscript/popups.kvs:1551
+#: data/defscript/popups.kvs:1559
+#: data/defscript/popups.kvs:1567
+#: data/defscript/popups.kvs:1575
+#: data/defscript/popups.kvs:1583
+#: data/defscript/popups.kvs:1591
+#: data/defscript/popups.kvs:1599
+#: data/defscript/popups.kvs:1607
+#: data/defscript/popups.kvs:1615
+#: data/defscript/popups.kvs:1623
+#: data/defscript/popups.kvs:1631
 msgid "Ignore As"
 msgstr ""
 
+#: data/defscript/popups.kvs:1640
+msgid "Enable Ignore"
+msgstr ""
+
 #: data/defscript/popups.kvs:1645
-msgid "Unignore"
+msgid "Disable Ignore"
 msgstr ""
 
 #: data/defscript/popups.kvs:1662
@@ -1011,39 +1012,39 @@ msgstr ""
 msgid "Edit Registration..."
 msgstr ""
 
-#: data/defscript/popups.kvs:1724
+#: data/defscript/popups.kvs:1725
 msgid "Unregister"
 msgstr ""
 
-#: data/defscript/popups.kvs:1731
+#: data/defscript/popups.kvs:1732
 msgid "Add to Notify"
 msgstr ""
 
-#: data/defscript/popups.kvs:1736
+#: data/defscript/popups.kvs:1737
 msgid "Remove from Notify"
 msgstr ""
 
-#: data/defscript/popups.kvs:1741
+#: data/defscript/popups.kvs:1742
 msgid "Avatar"
 msgstr ""
 
-#: data/defscript/popups.kvs:1743
+#: data/defscript/popups.kvs:1744
 msgid "Choose..."
 msgstr ""
 
-#: data/defscript/popups.kvs:1745
+#: data/defscript/popups.kvs:1746
 msgid "Choose Avatar Image File"
 msgstr ""
 
-#: data/defscript/popups.kvs:1754
+#: data/defscript/popups.kvs:1755
 msgid "Set As Default"
 msgstr ""
 
-#: data/defscript/popups.kvs:1759
+#: data/defscript/popups.kvs:1760
 msgid "Clear Default"
 msgstr ""
 
-#: data/defscript/popups.kvs:1810
+#: data/defscript/popups.kvs:1811
 msgid "&User Control"
 msgstr ""
 

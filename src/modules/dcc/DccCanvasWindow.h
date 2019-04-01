@@ -53,15 +53,15 @@ protected:
 	QString m_szTarget;
 
 protected:
-	virtual const QString & target();
-	virtual void fillCaptionBuffers();
-	virtual void getBaseLogFileName(KviCString & buffer);
-	virtual QPixmap * myIconPtr();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual QSize sizeHint() const;
-	virtual bool event(QEvent * e);
-	virtual void ownMessage(const char * text, bool bUserFeedback = true);
-	virtual void ownAction(const char * text);
+	const QString & target() override;
+	void fillCaptionBuffers() override;
+	void getBaseLogFileName(KviCString & buffer) override;
+	QPixmap * myIconPtr() override;
+	void resizeEvent(QResizeEvent * e) override;
+	QSize sizeHint() const override;
+	bool event(QEvent * e) override;
+	void ownMessage(const QString & text, bool bUserFeedback = true) override;
+	void ownAction(const QString & text) override;
 protected slots:
 	void handleMarshalError(int err);
 	void connected();

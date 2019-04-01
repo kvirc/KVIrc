@@ -38,7 +38,7 @@ public:
 	~KviKvsTreeNodeOperation();
 
 protected:
-	KviKvsTreeNodeData * m_pTargetData; // can't be null
+	KviKvsTreeNodeData * m_pTargetData = nullptr; // can't be null
 public:
 	void setTargetVariableReference(KviKvsTreeNodeData * r);
 	virtual void contextDescription(QString & szBuffer);

@@ -44,7 +44,7 @@ class KviIrcServer;
 * \struct _KviIrcServerDefinition
 * \brief Server definition
 */
-typedef struct _KviIrcServerDefinition
+struct KviIrcServerDefinition
 {
 	QString szServer;
 	kvi_u32_t uPort;
@@ -57,7 +57,7 @@ typedef struct _KviIrcServerDefinition
 	QString szNick;
 	QString szInitUMode;
 	QString szId;
-} KviIrcServerDefinition;
+};
 
 /**
 * \class KviIrcServerDataBase
@@ -94,7 +94,7 @@ public:
 	* \brief Returns the record dictionary of the database
 	* \return KviPointerHashTable<QString,KviIrcNetwork> *
 	*/
-	inline KviPointerHashTable<QString, KviIrcNetwork> * recordDict() { return m_pRecords; };
+	KviPointerHashTable<QString, KviIrcNetwork> * recordDict() const { return m_pRecords; }
 
 	/**
 	* \brief Returns a list of servers to connect on startup
@@ -106,7 +106,7 @@ public:
 	* later.
 	* \return KviPointerList<KviIrcServer> *
 	*/
-	inline KviPointerList<KviIrcServer> * autoConnectOnStartupServers() { return m_pAutoConnectOnStartupServers; };
+	KviPointerList<KviIrcServer> * autoConnectOnStartupServers() const { return m_pAutoConnectOnStartupServers; }
 
 	/**
 	* \brief Returns a list of networks to connect on startup
@@ -118,7 +118,7 @@ public:
 	* updated later.
 	* \return KviPointerList<KviIrcNetwork> *
 	*/
-	inline KviPointerList<KviIrcNetwork> * autoConnectOnStartupNetworks() { return m_pAutoConnectOnStartupNetworks; };
+	KviPointerList<KviIrcNetwork> * autoConnectOnStartupNetworks() const { return m_pAutoConnectOnStartupNetworks; }
 
 	/**
 	* \brief Deletes the list of autoconnect servers
@@ -137,13 +137,13 @@ public:
 	* \param szNetName The name of the network
 	* \return void
 	*/
-	inline void setCurrentNetwork(const QString & szNetName) { m_szCurrentNetwork = szNetName; };
+	void setCurrentNetwork(const QString & szNetName) { m_szCurrentNetwork = szNetName; }
 
 	/**
 	* \brief Returns the current network name
 	* \return const QString &
 	*/
-	inline const QString & currentNetworkName() { return m_szCurrentNetwork; };
+	const QString & currentNetworkName() const { return m_szCurrentNetwork; }
 
 	/**
 	* \brief Returns the current network

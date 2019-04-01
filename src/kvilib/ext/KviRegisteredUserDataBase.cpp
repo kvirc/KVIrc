@@ -349,13 +349,13 @@ bool KviRegisteredUserDataBase::removeMask(const KviIrcMask & mask)
 			return true;
 		}
 	}
-	return 0;
+	return false;
 }
 
 bool KviRegisteredUserDataBase::removeMaskByPointer(KviIrcMask * mask)
 {
 	if(!mask)
-		return 0;
+		return false;
 	if(mask->hasWildNick())
 	{
 		// remove from the wild list

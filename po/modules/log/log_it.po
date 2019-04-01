@@ -1,25 +1,22 @@
-# translation of logview_it.po to
-# translation of logview_it.po
-# KVIrc LogView module Italian translation file
-# Italian translation file for KVIrc 4.0
-# Copyright (C) Szymon Stefanek
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
 #
-# Elvio Basello <hellvis69 at netsons dot org>, 2009.
-# Elvio Basello <hell at hellvis69 dot netsons dot org>, 2010, 2011, 2014.
+# Translators:
+# Elvio Basello <hell at hellvis69 dot netsons dot org>, 2010-2011,2014
+# Elvio Basello <hellvis69 at netsons dot org>, 2009
 msgid ""
 msgstr ""
-"Project-Id-Version: logview_it\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2014-12-30 03:21+0100\n"
-"Last-Translator: Elvio Basello <hellvis69 at gmail dot com>\n"
-"Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-22 12:41+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/kvirc/KVIrc/language/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/logview/LogViewWindow.cpp:366
@@ -27,9 +24,8 @@ msgid "%1 on %2"
 msgstr "%1 su %2"
 
 #: src/modules/logview/LogViewWindow.cpp:173
-#, fuzzy
 msgid "Apply Filter"
-msgstr "Applica filtro"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:120
 msgid "Can't log to file '%1'"
@@ -43,58 +39,53 @@ msgstr "Annulla"
 msgid "Channel"
 msgstr "Canale"
 
-#: src/modules/logview/LogViewWindow.cpp:686
+#: src/modules/logview/LogViewWindow.cpp:689
 msgid "Channel %1 on %2"
 msgstr "Canale %1 su %2"
 
-#: src/modules/logview/LogViewWindow.cpp:475
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:478
 msgid "Confirm Current User Log Deletion"
-msgstr "Conferma cancellazione del log"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:493
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:496
 msgid "Confirm Current User Logs Deletion"
-msgstr "Conferma cancellazione dei log"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:81
 msgid "Console"
 msgstr "Console"
 
-#: src/modules/logview/LogViewWindow.cpp:689
+#: src/modules/logview/LogViewWindow.cpp:692
 msgid "Console on %1"
 msgstr "Console su %1"
 
 #: src/modules/logview/LogViewWindow.cpp:142
-#, fuzzy
 msgid "Contents Filter"
-msgstr "Contenuti filtro"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:77
 msgid "DCC Chat"
 msgstr "DCC Chat"
 
-#: src/modules/logview/LogViewWindow.cpp:695
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:698
 msgid "DCC Chat with: %1"
-msgstr "DCC Chat con %1"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:494
+#: src/modules/logview/LogViewWindow.cpp:497
 msgid "Do you really wish to delete all these logs?"
 msgstr "Vuoi davvero eliminare tutti questi file di log?"
 
-#: src/modules/logview/LogViewWindow.cpp:476
+#: src/modules/logview/LogViewWindow.cpp:479
 msgid "Do you really wish to delete this log?"
 msgstr "Vuoi davvero eliminare questo file di log?"
 
-#: src/modules/logview/LogViewWindow.cpp:606
+#: src/modules/logview/LogViewWindow.cpp:609
 msgid "Export Log - KVIrc"
 msgstr "Esporta Log - KVIrc"
 
-#: src/modules/logview/LogViewWindow.cpp:456
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:459
 msgid "Export Log File to"
-msgstr "Esporta log su"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:331
 msgid "Failed to export the log '%1'"
@@ -109,9 +100,8 @@ msgid "Filter"
 msgstr "Filtro"
 
 #: src/modules/logview/LogViewWindow.cpp:194
-#, fuzzy
 msgid "HTML Archive"
-msgstr "archivio HTML"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:109
 msgid "Index"
@@ -135,47 +125,40 @@ msgstr "Maschera nome log:"
 
 #: src/modules/log/libkvilog.cpp:109 src/modules/log/libkvilog.cpp:167
 #: src/modules/log/libkvilog.cpp:219
-#, fuzzy
 msgid "Missing window ID after the 'w' switch"
-msgstr "Manca l'id della finestra dopo lo switch 'w'"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:165
-#, fuzzy
 msgid "Only newer than:"
-msgstr "Solo più nuovi di"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:157
-#, fuzzy
 msgid "Only older than:"
-msgstr "Solo più vecchi di"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "Altro"
 
 #: src/modules/logview/LogViewWindow.cpp:192
-#, fuzzy
 msgid "Plain Text File"
-msgstr "File di testo"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:73
 msgid "Query"
 msgstr "Query"
 
-#: src/modules/logview/LogViewWindow.cpp:692
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:695
 msgid "Query with: %1 on %2"
-msgstr "Query con %1 su %2"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:452
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:455
 msgid "Remove All Log Files Within This Folder"
-msgstr "Elimina tutti i file di log contenuti in questa cartella"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:457
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:460
 msgid "Remove Log File"
-msgstr "Elimina file di log"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:133
 msgid "Show DCC chat logs"
@@ -197,10 +180,9 @@ msgstr "Mostra altri log"
 msgid "Show query logs"
 msgstr "Mostra i log delle query"
 
-#: src/modules/logview/LogViewWindow.cpp:698
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:701
 msgid "Something on: %1"
-msgstr "Qualcosa su %1"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:124
 msgid "This window has no logging capabilities"
@@ -212,24 +194,5 @@ msgid "Window '%1' not found"
 msgstr "Finestra '%1' non trovata"
 
 #: src/modules/log/libkvilog.cpp:273
-#, fuzzy
 msgid "Window with ID '%1' not found, returning empty string"
-msgstr "Finestra con id '%1' non trovata, ritorno una stringa vuota"
-
-#~ msgid "Abort filtering"
-#~ msgstr "Annulla filtraggio"
-
-#~ msgid "Browse Log Files"
-#~ msgstr "Naviga i File di Log"
-
-#~ msgid "File '%1' already exists. Do you want to overwrite it?"
-#~ msgstr "Il file '%1' esiste già. Vuoi sovrascriverlo?"
-
-#~ msgid "Filtering files..."
-#~ msgstr "Filtro i file..."
-
-#~ msgid "Ops.. internal error"
-#~ msgstr "Ops.. errore interno"
-
-#~ msgid "Remove all these channel/query log files"
-#~ msgstr "Rimuovi tutti questi file di log di canali/query"
+msgstr ""

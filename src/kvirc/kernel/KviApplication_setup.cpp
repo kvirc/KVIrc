@@ -37,7 +37,7 @@
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <shlwapi.h>
 #else
-#include <stdlib.h> // for getenv()
+#include <cstdlib> // for getenv()
 #include <unistd.h> // for symlink() <-- unused?
 
 #ifdef COMPILE_KDE_SUPPORT
@@ -115,22 +115,22 @@ void KviApplication::setupUriAssociations(const QString & szProto)
 
 	tmp = QString("Software\\Classes\\" + szProto).toStdWString();
 	SHDeleteKey(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str());
-	RegCreateKeyEx(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str(), 0, NULL, 0, KEY_WRITE, NULL, &hKey, NULL);
+	RegCreateKeyEx(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str(), 0, nullptr, 0, KEY_WRITE, nullptr, &hKey, nullptr);
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)TEXT("URL:IRC Protocol"), 16 * 2 + 1);
 	RegSetValueEx(hKey, TEXT("URL Protocol"), 0, REG_SZ, (LPBYTE)"", 0);
 
 	tmp = QString("Software\\Classes\\" + szProto + "\\DefaultIcon").toStdWString();
-	RegCreateKeyEx(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str(), 0, NULL, 0, KEY_WRITE, NULL, &hKey, NULL);
+	RegCreateKeyEx(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str(), 0, nullptr, 0, KEY_WRITE, nullptr, &hKey, nullptr);
 	tmp = QString(szAppPath + ",0").toStdWString();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.c_str(), tmp.length() * 2 + 1);
 
 	tmp = QString("Software\\Classes\\" + szProto + "\\Shell\\open").toStdWString();
-	RegCreateKeyEx(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str(), 0, NULL, 0, KEY_WRITE, NULL, &hKey, NULL);
+	RegCreateKeyEx(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str(), 0, nullptr, 0, KEY_WRITE, nullptr, &hKey, nullptr);
 	tmp = __tr2qs("Open with KVIrc").toStdWString();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.c_str(), tmp.length() * 2 + 1);
 
 	tmp = QString("Software\\Classes\\" + szProto + "\\Shell\\open\\command").toStdWString();
-	RegCreateKeyEx(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str(), 0, NULL, 0, KEY_WRITE, NULL, &hKey, NULL);
+	RegCreateKeyEx(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str(), 0, nullptr, 0, KEY_WRITE, nullptr, &hKey, nullptr);
 	tmp = QString(szAppPath + " --external \"%1\"").toStdWString();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.c_str(), tmp.length() * 2 + 1);
 
@@ -150,7 +150,7 @@ void KviApplication::setFileAssociation(const QString & szExtension, const QStri
 
 	tmp = QString("Software\\Classes\\." + szExtension).toStdWString();
 	SHDeleteKey(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str());
-	RegCreateKeyEx(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str(), 0, NULL, 0, KEY_WRITE, NULL, &hKey, NULL);
+	RegCreateKeyEx(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str(), 0, nullptr, 0, KEY_WRITE, nullptr, &hKey, nullptr);
 	tmp = szClassName.toStdWString();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.c_str(), tmp.length() * 2 + 1);
 

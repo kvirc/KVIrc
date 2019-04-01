@@ -218,25 +218,18 @@ void OptionsWidget_soundGeneral::mediaAutoDetect()
 void OptionsWidget_soundGeneral::soundFillBox()
 {
 	QStringList l;
-	QStringList::Iterator it;
-	int cnt;
-	int i;
+	unsigned int cnt, i;
 	KviModule * m = g_pModuleManager->getModule("snd");
 
-	if(!m)
-		goto disable;
-
-	if(!m->ctrl("getAvailableSoundSystems", &l))
+	if(!m || !m->ctrl("getAvailableSoundSystems", &l))
 		goto disable;
 
 	m_pSoundSystemBox->clear();
-	for(it = l.begin(); it != l.end(); ++it)
-	{
-		m_pSoundSystemBox->addItem(*it);
-	}
+
+	for(const auto& it : l)
+		m_pSoundSystemBox->addItem(it);
 
 	cnt = m_pSoundSystemBox->count();
-
 	for(i = 0; i < cnt; i++)
 	{
 		QString t = m_pSoundSystemBox->itemText(i);
@@ -258,22 +251,18 @@ disable:
 void OptionsWidget_soundGeneral::mediaFillBox()
 {
 	QStringList l;
-	QStringList::Iterator it;
-	int cnt;
-	int i;
+	unsigned int cnt, i;
 	KviModule * m = g_pModuleManager->getModule("mediaplayer");
 
-	if(!m)
+	if(!m || !m->ctrl("getAvailableMediaPlayers", &l))
 		goto disable;
-	if(!m->ctrl("getAvailableMediaPlayers", &l))
-		goto disable;
-	m_pMediaPlayerBox->clear();
-	for(it = l.begin(); it != l.end(); ++it)
-	{
-		m_pMediaPlayerBox->addItem(*it);
-	}
-	cnt = m_pMediaPlayerBox->count();
 
+	m_pMediaPlayerBox->clear();
+
+	for(const auto& it : l)
+		m_pMediaPlayerBox->addItem(it);
+
+	cnt = m_pMediaPlayerBox->count();
 	for(i = 0; i < cnt; i++)
 	{
 		QString t = m_pMediaPlayerBox->itemText(i);

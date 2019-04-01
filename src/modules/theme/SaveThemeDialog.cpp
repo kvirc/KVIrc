@@ -113,7 +113,7 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 
 	m_pThemeVersionEdit = new QLineEdit(pPage);
 	m_pThemeVersionEdit->setText(info.version());
-	QRegExp rx("\\d{1,2}\\.\\d{1,2}(\\.\\d{1,2})?");
+	QRegExp rx(R"(\d{1,2}\.\d{1,2}(\.\d{1,2})?)");
 	QValidator * validator = new QRegExpValidator(rx, this);
 	m_pThemeVersionEdit->setValidator(validator);
 

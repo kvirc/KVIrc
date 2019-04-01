@@ -51,11 +51,11 @@ class FileTransferWidget : public KviTalTableWidget
 public:
 	FileTransferWidget(QWidget * pParent);
 	~FileTransferWidget(){};
-	void paintEvent(QPaintEvent * event);
+	void paintEvent(QPaintEvent * event) override;
 	int dummyRead() const { return 0; };
 protected:
-	void mousePressEvent(QMouseEvent * e);
-	void mouseDoubleClickEvent(QMouseEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
 signals:
 	void rightButtonPressed(FileTransferItem *, QPoint pnt);
 	void doubleClicked(FileTransferItem *, QPoint pnt);
@@ -81,7 +81,7 @@ class FileTransferItemDelegate : public KviTalIconAndRichTextItemDelegate
 {
 	Q_OBJECT
 public:
-	FileTransferItemDelegate(QAbstractItemView * pWidget = 0)
+	FileTransferItemDelegate(QAbstractItemView * pWidget = nullptr)
 	    : KviTalIconAndRichTextItemDelegate(pWidget){};
 	~FileTransferItemDelegate(){};
 	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
@@ -117,18 +117,18 @@ public:                 // Methods
 	virtual void die();
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void applyOptions();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void getBaseLogFileName(QString & buffer);
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void applyOptions() override;
+	void resizeEvent(QResizeEvent * e) override;
+	void getBaseLogFileName(QString & buffer) override;
 	FileTransferItem * findItem(KviFileTransfer * t);
 	void fillTransferView();
 	KviFileTransfer * selectedTransfer();
-	bool eventFilter(QObject * obj, QEvent * ev);
+	bool eventFilter(QObject * obj, QEvent * ev) override;
 
 public:
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 	int lineSpacing() { return m_iLineSpacing; };
 protected slots:
 	void transferRegistered(KviFileTransfer * t);

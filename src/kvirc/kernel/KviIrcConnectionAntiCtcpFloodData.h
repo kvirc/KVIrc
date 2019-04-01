@@ -35,14 +35,14 @@ public:
 
 protected:
 	// ctcp antiflood mechanism
-	kvi_time_t m_tLastCtcp;    // the time we have received the last "may flood" ctcp request
-	unsigned int m_uCtcpCount; // the ctcp counter for the antiflooder
+	kvi_time_t m_tLastCtcp = 0;    // the time we have received the last "may flood" ctcp request
+	unsigned int m_uCtcpCount = 0; // the ctcp counter for the antiflooder
 public:
-	kvi_time_t lastCtcpTime() { return m_tLastCtcp; };
-	unsigned int ctcpCount() { return m_uCtcpCount; };
-	void setLastCtcpTime(kvi_time_t tLastCtcp) { m_tLastCtcp = tLastCtcp; };
-	void increaseCtcpCount() { m_uCtcpCount++; };
-	void setCtcpCount(unsigned int uCtcpCount) { m_uCtcpCount = uCtcpCount; };
+	kvi_time_t lastCtcpTime() const { return m_tLastCtcp; }
+	unsigned int ctcpCount() const { return m_uCtcpCount; }
+	void setLastCtcpTime(kvi_time_t tLastCtcp) { m_tLastCtcp = tLastCtcp; }
+	void increaseCtcpCount() { m_uCtcpCount++; }
+	void setCtcpCount(unsigned int uCtcpCount) { m_uCtcpCount = uCtcpCount; }
 };
 
 #endif //!_KVI_IRCCONNECTIONANTICTCPFLOODDATA_H_

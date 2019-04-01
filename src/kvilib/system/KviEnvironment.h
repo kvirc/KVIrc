@@ -63,7 +63,7 @@ namespace KviEnvironment
 
 	inline void unsetVariable(const QString & szName)
 	{
-		SetEnvironmentVariable(szName.toStdWString().c_str(), NULL);
+		SetEnvironmentVariable(szName.toStdWString().c_str(), nullptr);
 	}
 #else
 	/**

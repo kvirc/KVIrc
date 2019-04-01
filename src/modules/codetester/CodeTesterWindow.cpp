@@ -34,6 +34,7 @@
 #include "KviConsoleWindow.h"
 #include "KviKvsScript.h"
 #include "KviKvsVariantList.h"
+#include "KviIrcView.h"
 
 #include <QPushButton>
 #include <QLayout>
@@ -44,11 +45,19 @@
 
 extern std::unordered_set<CodeTesterWindow *> g_pCodeTesterWindowList;
 
-CodeTesterWidget::CodeTesterWidget(QWidget * par)
-    : QWidget(par)
+CodeTesterWindow::CodeTesterWindow()
+    : KviWindow(KviWindow::ScriptEditor, "codetester", nullptr)
 {
+	g_pCodeTesterWindowList.insert(this);
 	setObjectName("code_tester");
-	QGridLayout * g = new QGridLayout(this);
+
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
+	m_pSplitter->setObjectName("main_splitter");
+	m_pSplitter->setChildrenCollapsible(false);
+
+	// layouts can't be added to splitters directly, so we embed the layout in a widget.
+	QWidget * l = new QWidget(this);
+	QGridLayout * g = new QGridLayout(l);
 	m_pEditor = KviScriptEditor::createInstance(this);
 	g->addWidget(m_pEditor, 0, 0, 1, 4);
 
@@ -61,36 +70,28 @@ CodeTesterWidget::CodeTesterWidget(QWidget * par)
 	m_pParams = new QLineEdit(this);
 	m_pParams->setToolTip(__tr2qs_ctx("Here you can specify a semicolon-separated list of parameters that will be available in the code as $0, $1, $2, ..", "editor"));
 	g->addWidget(m_pParams, 1, 2);
-}
 
-CodeTesterWidget::~CodeTesterWidget()
-{
-	KviScriptEditor::destroyInstance(m_pEditor);
-}
+	m_pSplitter->addWidget(l);
 
-//#warning "Allow to bind the command to a specified window"
+	m_pIrcView = new KviIrcView(m_pSplitter, this);
 
-void CodeTesterWidget::execute()
-{
-	QString buffer;
-	m_pEditor->getText(buffer);
-	KviConsoleWindow * pConsole = g_pApp->activeConsole();
-	QStringList slParams = m_pParams->text().split(';');
-	KviKvsVariantList params{&slParams};
-	KviKvsScript::run(buffer, pConsole, &params);
-}
-
-CodeTesterWindow::CodeTesterWindow()
-    : KviWindow(KviWindow::ScriptEditor, "codetester", nullptr)
-{
-	g_pCodeTesterWindowList.insert(this);
-
-	m_pTester = new CodeTesterWidget(this);
+	QList<int> li { width() / 2, width() / 2 };
+	m_pSplitter->setSizes(li);
 }
 
 CodeTesterWindow::~CodeTesterWindow()
 {
+	KviScriptEditor::destroyInstance(m_pEditor);
 	g_pCodeTesterWindowList.erase(this);
+}
+
+void CodeTesterWindow::execute()
+{
+	QString buffer;
+	m_pEditor->getText(buffer);
+	QStringList slParams = m_pParams->text().split(';');
+	KviKvsVariantList params{&slParams};
+	KviKvsScript::run(buffer, this, &params);
 }
 
 QPixmap * CodeTesterWindow::myIconPtr()
@@ -100,7 +101,7 @@ QPixmap * CodeTesterWindow::myIconPtr()
 
 void CodeTesterWindow::resizeEvent(QResizeEvent *)
 {
-	m_pTester->setGeometry(0, 0, width(), height());
+	m_pSplitter->setGeometry(0, 0, width(), height());
 }
 
 void CodeTesterWindow::fillCaptionBuffers()

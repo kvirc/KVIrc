@@ -159,11 +159,12 @@ static inline bool url_compare_helper(const kvi_wchar_t * pData1, const kvi_wcha
 }
 
 const kvi_wchar_t * KviIrcView::getTextLine(
-    int iMsgType,
-    const kvi_wchar_t * data_ptr,
-    KviIrcViewLine * line_ptr,
-    bool bEnableTimeStamp,
-    const QDateTime & datetime_param)
+		int iMsgType,
+		const kvi_wchar_t * data_ptr,
+		KviIrcViewLine * line_ptr,
+		bool bEnableTimeStamp,
+		const QDateTime & datetime_param
+	)
 {
 	const kvi_wchar_t * pUnEscapeAt = nullptr;
 
@@ -186,7 +187,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 	line_ptr->pChunks[0].iTextStart = 0;
 	line_ptr->pChunks[0].colors.back = KVI_OPTION_MSGTYPE(iMsgType).back();
 	line_ptr->pChunks[0].colors.fore = KVI_OPTION_MSGTYPE(iMsgType).fore();
-	line_ptr->pChunks[0].customFore = QColor();
+	//line_ptr->pChunks[0].customFore = QColor();
 
 	// print a nice timestamp at the begin of the first line
 	if(bEnableTimeStamp && KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp))
@@ -221,7 +222,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 			line_ptr->pChunks[2].iTextLen = 1;
 			line_ptr->pChunks[2].colors.back = KVI_OPTION_MSGTYPE(iMsgType).back();
 			line_ptr->pChunks[2].colors.fore = KVI_OPTION_MSGTYPE(iMsgType).fore();
-			line_ptr->pChunks[2].customFore = QColor();
+			//line_ptr->pChunks[2].customFore = QColor();
 			iCurChunk += 2;
 		}
 		else
@@ -251,67 +252,68 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		line_ptr->pChunks[0].iTextLen = 0;
 	}
 
-//
-// Ok... a couple of macros that occur really frequently
-// in the following code...
-// these could work well as functions too...but the macros are a lot faster :)
-//
+	//
+	// Ok... a couple of macros that occur really frequently
+	// in the following code...
+	// these could work well as functions too...but the macros are a lot faster :)
+	//
+	
+	/*
+	 * Profane description: this adds a block of text of known length to a already created chunk inside this line.
+	 */
+	#define APPEND_LAST_TEXT_BLOCK(__data_ptr, __data_len)                               \
+		blockLen = (__data_len);                                                         \
+		line_ptr->pChunks[iCurChunk].iTextLen += blockLen;                               \
+		kvi_appendWCharToQStringWithLength(&(line_ptr->szText), __data_ptr, __data_len); \
+		iTextIdx += blockLen;
+	
+	/*
+	 * Profane description: this adds a block of text of known length to a already created chunk inside this line.
+	 * text is hidden (e.g. we want to display an emoticon instead of the ":)" text, so we insert it hidden)
+	 */
+	
+	#define APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(__data_ptr, __data_len)               \
+		blockLen = (__data_len);                                                         \
+		kvi_appendWCharToQStringWithLength(&(line_ptr->szText), __data_ptr, __data_len); \
+		iTextIdx += blockLen;
+	
+	/*
+	 * Profane description: this is dummy
+	 */
+	
+	#define APPEND_ZERO_LENGTH_BLOCK(__data_ptr) /* does nothing */
+	
+	/*
+	 * Profane description: this adds a new chunk to the current line of the specified type. A chunk is a block of text
+	 * with similar style properties (mainly with the same color)
+	 */
+	
+	#define NEW_LINE_CHUNK(_chunk_type)                                                             \
+		line_ptr->uChunkCount++;                                                                    \
+		line_ptr->pChunks = (KviIrcViewLineChunk *)KviMemory::reallocate((void *)line_ptr->pChunks, \
+		    line_ptr->uChunkCount * sizeof(KviIrcViewLineChunk));                                   \
+		iCurChunk++;                                                                                \
+		line_ptr->pChunks[iCurChunk].type = _chunk_type;                                            \
+		line_ptr->pChunks[iCurChunk].iTextStart = iTextIdx;                                         \
+		line_ptr->pChunks[iCurChunk].iTextLen = 0;                                                  \
+		if(iCurChunk > 0)                                                                           \
+			line_ptr->pChunks[iCurChunk].customFore = line_ptr->pChunks[iCurChunk - 1].customFore;
 
-/*
- * Profane description: this adds a block of text of known length to a already created chunk inside this line.
- */
-#define APPEND_LAST_TEXT_BLOCK(__data_ptr, __data_len)                               \
-	blockLen = (__data_len);                                                         \
-	line_ptr->pChunks[iCurChunk].iTextLen += blockLen;                               \
-	kvi_appendWCharToQStringWithLength(&(line_ptr->szText), __data_ptr, __data_len); \
-	iTextIdx += blockLen;
-
-/*
- * Profane description: this adds a block of text of known length to a already created chunk inside this line.
- * text is hidden (e.g. we want to display an emoticon instead of the ":)" text, so we insert it hidden)
- */
-
-#define APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(__data_ptr, __data_len)               \
-	blockLen = (__data_len);                                                         \
-	kvi_appendWCharToQStringWithLength(&(line_ptr->szText), __data_ptr, __data_len); \
-	iTextIdx += blockLen;
-
-/*
- * Profane description: this is dummy
- */
-
-#define APPEND_ZERO_LENGTH_BLOCK(__data_ptr) /* does nothing */
-
-/*
- * Profane description: this adds a new chunk to the current line of the specified type. A chunk is a block of text
- * with similar style properties (mainly with the same color)
- */
-
-#define NEW_LINE_CHUNK(_chunk_type)                                                             \
-	line_ptr->uChunkCount++;                                                                    \
-	line_ptr->pChunks = (KviIrcViewLineChunk *)KviMemory::reallocate((void *)line_ptr->pChunks, \
-	    line_ptr->uChunkCount * sizeof(KviIrcViewLineChunk));                                   \
-	iCurChunk++;                                                                                \
-	line_ptr->pChunks[iCurChunk].type = _chunk_type;                                            \
-	line_ptr->pChunks[iCurChunk].iTextStart = iTextIdx;                                         \
-	line_ptr->pChunks[iCurChunk].iTextLen = 0;                                                  \
-	line_ptr->pChunks[iCurChunk].customFore = iCurChunk ? line_ptr->pChunks[iCurChunk - 1].customFore : QColor();
-
-	// EOF Macros
-
+		// EOF Macros
+	
 	int partLen;
-
-/*
- * Some additional description for the profanes: we want a fast way to check the presence of "active objects we have to process" in lines of text;
- * such objects can be: EOF, URLs, mIRC control characters, emoticons, and so on. We implemented a jump table to accomplish this task very fast.
- * This jump table is an array[256] containing label addresses (imagine them as functions). So something like "goto array[4];" is valid construct
- * in C, that is equivalent to a function call to a function that starts on that label's line of code.
- * Imagine to parse the input line one character at once and match it (as a switch can do) against this big array. Every 1-byte character corresponds
- * to an ASCII integer between 0 and 255. If the array value for that integer key is defined and !=0, we jump to the corresponding label address.
- * Example, if we find a "H" (72) we'll "goto char_to_check_jump_table[72]", aka "goto check_http_url".
- * There exists two different versions of this tricky code, we switch them depending on the compiler abilities to accept our bad code :)
- */
-
+	
+	/*
+	 * Some additional description for the profanes: we want a fast way to check the presence of "active objects we have to process" in lines of text;
+	 * such objects can be: EOF, URLs, mIRC control characters, emoticons, and so on. We implemented a jump table to accomplish this task very fast.
+	 * This jump table is an array[256] containing label addresses (imagine them as functions). So something like "goto array[4];" is valid construct
+	 * in C, that is equivalent to a function call to a function that starts on that label's line of code.
+	 * Imagine to parse the input line one character at once and match it (as a switch can do) against this big array. Every 1-byte character corresponds
+	 * to an ASCII integer between 0 and 255. If the array value for that integer key is defined and !=0, we jump to the corresponding label address.
+	 * Example, if we find a "H" (72) we'll "goto char_to_check_jump_table[72]", aka "goto check_http_url".
+	 * There exists two different versions of this tricky code, we switch them depending on the compiler abilities to accept our bad code :)
+	 */
+	
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 
 	// Heresy :)
@@ -359,7 +361,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		// clang-format off
 		&&found_end_of_buffer        ,nullptr                      ,&&found_mirc_escape          ,&&found_color_escape         ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
-		nullptr                      ,nullptr                      ,&&found_end_of_line          ,nullptr                      ,
+		nullptr                      ,&&found_tab                  ,&&found_end_of_line          ,nullptr                      ,
 		nullptr                      ,&&found_command_escape       ,nullptr                      ,&&found_mirc_escape          ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,&&found_mirc_escape          ,nullptr                      ,
@@ -377,7 +379,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		nullptr                      ,&&check_e2k_url              ,&&check_file_or_ftp_url      ,nullptr                      ,
 		&&check_http_url             ,&&check_irc_url              ,nullptr                      ,nullptr                      ,
 		nullptr                      ,&&check_mailto_or_magnet_url ,nullptr                      ,nullptr                      , // 064-079  // 070==F 072==H 073==I  077==M
-		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_url          ,
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_or_sftp_url  ,
 		nullptr                      ,nullptr                      ,nullptr                      ,&&check_www_url              ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 080-095  // 083==S 087==W
@@ -385,7 +387,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		nullptr                      ,&&check_e2k_url              ,&&check_file_or_ftp_url      ,nullptr                      ,
 		&&check_http_url             ,&&check_irc_url              ,nullptr                      ,nullptr                      ,
 		nullptr                      ,&&check_mailto_or_magnet_url ,nullptr                      ,nullptr                      , // 096-111  // 101=e 102=f 104=h 105=i 109==m
-		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_url          ,
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_or_sftp_url  ,
 		nullptr                      ,nullptr                      ,nullptr                      ,&&check_www_url              ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 112-127  // 115==s 119==w
@@ -512,7 +514,7 @@ check_char_loop:
 							goto check_e2k_url;
 							break;
 						case 9:
-							goto check_spotify_url;
+							goto check_spotify_or_sftp_url;
 							break;
 					}
 				}
@@ -540,7 +542,7 @@ check_escape_switch:
 	{
 		case '\0':
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-		found_end_of_buffer:
+found_end_of_buffer:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr)
 			if(pUnEscapeAt)
@@ -553,7 +555,7 @@ check_escape_switch:
 			break;
 		case '\n':
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-		found_end_of_line:
+found_end_of_line:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			// Found the end of a line
 			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr);
@@ -569,9 +571,24 @@ check_escape_switch:
 			p++;
 			return p;
 			break;
+		case '\t':
+#ifdef COMPILE_USE_DYNAMIC_LABELS
+found_tab:
+#endif //COMPILE_USE_DYNAMIC_LABELS
+			// Found tab. Artificial end of block.
+			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr);
+			// Artificial block with a single tab
+			NEW_LINE_CHUNK(KviControlCodes::ArbitraryBreak);
+			data_ptr = p;
+			p++;
+			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr);
+			NEW_LINE_CHUNK(KviControlCodes::ArbitraryBreak);
+			data_ptr = p;
+			p++;
+		break;
 		case '\r':
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-		found_command_escape:
+found_command_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 
 			if(p == pUnEscapeAt)
@@ -672,7 +689,7 @@ check_escape_switch:
 			break;
 		case KviControlCodes::Color:
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-		found_color_escape:
+found_color_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			//Color control code...need a new attribute struct
 			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr)
@@ -683,7 +700,7 @@ check_escape_switch:
 			break;
 		case KviControlCodes::Icon:
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-		found_icon_escape:
+found_icon_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			p++;
 			if(KVI_OPTION_BOOL(KviOption_boolDrawEmoticons))
@@ -736,7 +753,7 @@ check_escape_switch:
 		case KviControlCodes::Reverse:
 		case KviControlCodes::Reset:
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-		found_mirc_escape:
+found_mirc_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr)
 			NEW_LINE_CHUNK(*p)
@@ -834,6 +851,22 @@ check_file_or_ftp_url:
 			if(url_compare_helper(p, aFtp1Url, 6))
 			{
 				partLen = 6;
+				goto got_url;
+			}
+
+			static kvi_wchar_t aFtpsUrl[] = { 'f', 't', 'p', 's', ':', '/', '/' };
+
+			if(url_compare_helper(p, aFtpsUrl, 7))
+			{
+				partLen = 7;
+				goto got_url;
+			}
+
+			static kvi_wchar_t aFtpesUrl[] = { 'f', 't', 'p', 'e', 's', ':', '/', '/' };
+
+			if(url_compare_helper(p, aFtpesUrl, 8))
+			{
+				partLen = 8;
 				goto got_url;
 			}
 
@@ -981,11 +1014,24 @@ check_mailto_or_magnet_url:
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
-check_spotify_url:
+check_spotify_or_sftp_url:
 	p++;
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 	{
-		if((*p == 'p') || (*p == 'P'))
+		if((*p == 'f') || (*p == 'F'))
+		{
+			p--;
+
+			static kvi_wchar_t aSftpUrl[] = { 's', 'f', 't', 'p', ':', '/', '/' };
+
+			if(url_compare_helper(p, aSftpUrl, 7))
+			{
+				partLen = 7;
+				goto got_url;
+			}
+			p++;
+		}
+		else if((*p == 'p') || (*p == 'P'))
 		{
 			p--;
 
@@ -1076,6 +1122,8 @@ check_emoticon_char:
 			case KVI_OUT_CHANPRIVMSG:
 			case KVI_OUT_ACTION:
 			case KVI_OUT_ACTIONCRYPTED:
+			case KVI_OUT_OWNACTION:
+			case KVI_OUT_OWNACTIONCRYPTED:
 			case KVI_OUT_OWNPRIVMSG:
 			case KVI_OUT_QUERYPRIVMSG:
 			case KVI_OUT_QUERYPRIVMSGCRYPTED:

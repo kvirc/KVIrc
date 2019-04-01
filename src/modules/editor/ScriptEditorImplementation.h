@@ -155,6 +155,7 @@ protected:
 	ScriptEditorWidgetColorOptions * m_pOptionsDialog;
 	ScriptEditorWidget * m_pEditor;
 	QLabel * m_pRowColLabel;
+	QPushButton * m_pFindButton;
 	int m_lastCursorPos;
 
 public:
@@ -201,7 +202,7 @@ class ScriptEditorReplaceDialog final : public QDialog
 {
 	Q_OBJECT
 public:
-	ScriptEditorReplaceDialog(QWidget * parent = 0, const QString & szName = QString());
+	ScriptEditorReplaceDialog(QWidget * parent = nullptr, const QString & szName = QString());
 
 public:
 	QLineEdit * m_pFindLineEdit;

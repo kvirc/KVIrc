@@ -66,7 +66,7 @@ enum VBR_REPORT
 	VBR_MEDIAN
 };
 
-typedef struct
+struct mp3header
 {
 	unsigned int sync;
 	unsigned int version;
@@ -81,9 +81,9 @@ typedef struct
 	unsigned int copyright;
 	unsigned int original;
 	unsigned int emphasis;
-} mp3header;
+};
 
-typedef struct
+struct id3tag
 {
 	char title[31];
 	char artist[31];
@@ -92,9 +92,9 @@ typedef struct
 	char comment[31];
 	unsigned char track[1];
 	unsigned char genre[1];
-} id3tag;
+};
 
-typedef struct
+struct mp3info
 {
 	QString filename;
 	FILE * file;
@@ -108,7 +108,7 @@ typedef struct
 	int seconds;
 	int frames;
 	int badframes;
-} mp3info;
+};
 
 // mode field:
 // 00 - Stereo

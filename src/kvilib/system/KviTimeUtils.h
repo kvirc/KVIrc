@@ -51,7 +51,7 @@ class QString;
 	* \param tmz The timezone
 	* \return void
 	*/
-extern KVILIB_API void kvi_gettimeofday(struct timeval * tmv, struct timezone * tmz);
+extern KVILIB_API void kvi_gettimeofday(struct timeval * tmv);
 #else
 #include <sys/time.h> // gettimeofday(), struct timeval
 
@@ -61,9 +61,9 @@ extern KVILIB_API void kvi_gettimeofday(struct timeval * tmv, struct timezone * 
 	* \param tmz The timezone
 	* \return void
 	*/
-inline void kvi_gettimeofday(struct timeval * tmv, struct timezone * tmz)
+inline void kvi_gettimeofday(struct timeval * tmv)
 {
-	gettimeofday(tmv, tmz);
+	gettimeofday(tmv, nullptr);
 }
 #endif
 

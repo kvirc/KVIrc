@@ -86,9 +86,6 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(halt)
 	{
-		Q_UNUSED(__pSwitches);
-		Q_UNUSED(__pParams);
-
 		KVSCSC_pContext->setHaltCalled();
 		return false;
 	}
@@ -277,8 +274,6 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(inject)
 	{
-		Q_UNUSED(__pSwitches);
-
 		QString szText;
 		KVSCSC_PARAMETERS_BEGIN
 		KVSCSC_PARAMETER("text", KVS_PT_NONEMPTYSTRING, KVS_PF_APPENDREMAINING, szText)
@@ -377,8 +372,6 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(join)
 	{
-		Q_UNUSED(__pSwitches);
-
 		QString szChans, szKeys;
 		KVSCSC_PARAMETERS_BEGIN
 		KVSCSC_PARAMETER("chans", KVS_PT_NONEMPTYSTRING, 0, szChans)
@@ -448,8 +441,6 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(kick)
 	{
-		Q_UNUSED(__pSwitches);
-
 		QString szUser;
 		QString szReason;
 		KVSCSC_PARAMETERS_BEGIN
@@ -611,9 +602,6 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(listtimers)
 	{
-		Q_UNUSED(__pSwitches);
-		Q_UNUSED(__pParams);
-
 		KviPointerHashTable<QString, KviKvsTimer> * pTimerDict = KviKvsTimerManager::instance()->timerDict();
 
 		if(!pTimerDict)

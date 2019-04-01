@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# Daniel Neves, 2015-2017
+# Daniel Neves, 2015-2018
 # Zé <mmodem00@gmail.com>, 2006-2008,2010
 # Ze <mmodem00@netvisao.pt>, 2003-2006
 # Zé <mmodem@netcabo.pt>, 2005
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2017-01-30 23:12+0000\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2018-04-23 10:25+0000\n"
 "Last-Translator: Daniel Neves\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/kvirc/KVIrc/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -65,14 +65,14 @@ msgid ""
 msgstr "<p>Esta é a ferramenta de busca para este diálogo de opções.</p><p>Você pode digitar um termo de busca, quer no seu idioma nativo ou em Inglês e pressione o botão à direita. As páginas que contêm algumas opções relacionadas com o termo de pesquisa serão destacadas e você será capaz de encontrá-los rapidamente.</p><p>Tente \"apelido\", por exemplo.</p>"
 
 #: src/modules/options/OptionsDialog.cpp:233
-#: src/modules/options/OptionsWidgetContainer.cpp:107
+#: src/modules/options/OptionsWidgetContainer.cpp:105
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_servers.cpp:368
 msgid "&OK"
 msgstr "&OK"
 
 #: src/modules/options/OptionsDialog.cpp:235
-#: src/modules/options/OptionsWidgetContainer.cpp:108
+#: src/modules/options/OptionsWidgetContainer.cpp:106
 msgid "Close this dialog, accepting all changes."
 msgstr "Fecha esta caixa de diálogo, aceitando todas as alterações."
 
@@ -85,18 +85,18 @@ msgid "Commit all changes immediately."
 msgstr "Aplicar as alterações imediatamente."
 
 #: src/modules/options/OptionsDialog.cpp:248
-#: src/modules/options/OptionsWidgetContainer.cpp:115
+#: src/modules/options/OptionsWidgetContainer.cpp:113
 #: src/modules/options/OptionsWidget_identity.cpp:97
 #: src/modules/options/OptionsWidget_identity.cpp:245
 #: src/modules/options/OptionsWidget_identity.cpp:968
 #: src/modules/options/OptionsWidget_nickserv.cpp:123
 #: src/modules/options/OptionsWidget_servers.cpp:374
-#: src/modules/options/OptionsWidget_servers.cpp:998
+#: src/modules/options/OptionsWidget_servers.cpp:996
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/modules/options/OptionsDialog.cpp:250
-#: src/modules/options/OptionsWidgetContainer.cpp:116
+#: src/modules/options/OptionsWidgetContainer.cpp:114
 msgid "Close this dialog, discarding all changes."
 msgstr "Fecha esta caixa de diálogo, rejeitando todas as alterações."
 
@@ -286,12 +286,12 @@ msgstr "Comprimento da imagem:"
 #: src/modules/options/OptionsWidget_avatar.cpp:55
 #: src/modules/options/OptionsWidget_avatar.cpp:62
 #: src/modules/options/OptionsWidget_avatar.cpp:65
-#: src/modules/options/OptionsWidget_input.cpp:164
+#: src/modules/options/OptionsWidget_input.cpp:167
 #: src/modules/options/OptionsWidget_ircView.cpp:179
 #: src/modules/options/OptionsWidget_userList.cpp:227
-#: src/modules/options/OptionsWidget_windowList.cpp:204
-#: src/modules/options/OptionsWidget_windowList.cpp:233
-#: src/modules/options/OptionsWidget_windowList.cpp:236
+#: src/modules/options/OptionsWidget_windowList.cpp:221
+#: src/modules/options/OptionsWidget_windowList.cpp:250
+#: src/modules/options/OptionsWidget_windowList.cpp:253
 msgid " pixels"
 msgstr " pontos"
 
@@ -1445,7 +1445,7 @@ msgstr "Apelido Alternativo 3:"
 #: src/modules/options/OptionsWidget_identity.cpp:972
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
 #: src/modules/options/OptionsWidget_nickserv.cpp:148
-#: src/modules/options/OptionsWidget_servers.cpp:992
+#: src/modules/options/OptionsWidget_servers.cpp:990
 #: src/modules/options/OptionsWidget_textEncoding.cpp:225
 msgid "OK"
 msgstr "OK"
@@ -1490,7 +1490,7 @@ msgid "&Browse..."
 msgstr "&Procurar..."
 
 #: src/modules/options/OptionsWidget_identity.cpp:268
-#: src/modules/options/OptionsWidget_message.cpp:639
+#: src/modules/options/OptionsWidget_message.cpp:646
 #: src/modules/options/OptionsWidget_textIcons.cpp:190
 msgid "Select a File - KVIrc"
 msgstr "Selecionar um arquivo - KVIrc"
@@ -1853,8 +1853,8 @@ msgstr "Usar ignore detalhado (mostrar mensagens no console)"
 #: src/modules/options/OptionsWidget_notifier.cpp:39
 #: src/modules/options/OptionsWidget_topicLabel.cpp:35
 #: src/modules/options/OptionsWidget_userList.cpp:47
-#: src/modules/options/OptionsWidget_windowList.cpp:76
-#: src/modules/options/OptionsWidget_windowList.cpp:221
+#: src/modules/options/OptionsWidget_windowList.cpp:93
+#: src/modules/options/OptionsWidget_windowList.cpp:238
 msgid "Font:"
 msgstr "Tipo de Letra:"
 
@@ -1894,21 +1894,21 @@ msgstr "Cor do cursor:"
 #: src/modules/options/OptionsWidget_theme.cpp:168
 #: src/modules/options/OptionsWidget_topicLabel.cpp:38
 #: src/modules/options/OptionsWidget_userList.cpp:131
-#: src/modules/options/OptionsWidget_windowList.cpp:106
+#: src/modules/options/OptionsWidget_windowList.cpp:123
 msgid "Background image:"
 msgstr "Imagem de fundo:"
 
 #: src/modules/options/OptionsWidget_input.cpp:48
 #: src/modules/options/OptionsWidget_ircView.cpp:52
 #: src/modules/options/OptionsWidget_notifier.cpp:47
-#: src/modules/options/OptionsWidget_windowList.cpp:108
+#: src/modules/options/OptionsWidget_windowList.cpp:125
 msgid "Horizontal align:"
 msgstr "Alinhamento horizontal:"
 
 #: src/modules/options/OptionsWidget_input.cpp:52
 #: src/modules/options/OptionsWidget_ircView.cpp:56
 #: src/modules/options/OptionsWidget_notifier.cpp:51
-#: src/modules/options/OptionsWidget_windowList.cpp:112
+#: src/modules/options/OptionsWidget_windowList.cpp:129
 msgid "Vertical align:"
 msgstr "Alinhar vertical:"
 
@@ -1920,8 +1920,8 @@ msgstr "Alinhar vertical:"
 #: src/modules/options/OptionsWidget_notifier.cpp:60
 #: src/modules/options/OptionsWidget_userList.cpp:141
 #: src/modules/options/OptionsWidget_userList.cpp:146
-#: src/modules/options/OptionsWidget_windowList.cpp:116
-#: src/modules/options/OptionsWidget_windowList.cpp:121
+#: src/modules/options/OptionsWidget_windowList.cpp:133
+#: src/modules/options/OptionsWidget_windowList.cpp:138
 msgid "Tile"
 msgstr "Lado a lado"
 
@@ -1929,7 +1929,7 @@ msgstr "Lado a lado"
 #: src/modules/options/OptionsWidget_ircView.cpp:61
 #: src/modules/options/OptionsWidget_notifier.cpp:56
 #: src/modules/options/OptionsWidget_userList.cpp:142
-#: src/modules/options/OptionsWidget_windowList.cpp:117
+#: src/modules/options/OptionsWidget_windowList.cpp:134
 msgid "Left"
 msgstr "Esquerda"
 
@@ -1937,7 +1937,7 @@ msgstr "Esquerda"
 #: src/modules/options/OptionsWidget_ircView.cpp:62
 #: src/modules/options/OptionsWidget_notifier.cpp:57
 #: src/modules/options/OptionsWidget_userList.cpp:143
-#: src/modules/options/OptionsWidget_windowList.cpp:118
+#: src/modules/options/OptionsWidget_windowList.cpp:135
 msgid "Right"
 msgstr "Direita"
 
@@ -1949,8 +1949,8 @@ msgstr "Direita"
 #: src/modules/options/OptionsWidget_notifier.cpp:63
 #: src/modules/options/OptionsWidget_userList.cpp:144
 #: src/modules/options/OptionsWidget_userList.cpp:149
-#: src/modules/options/OptionsWidget_windowList.cpp:119
-#: src/modules/options/OptionsWidget_windowList.cpp:124
+#: src/modules/options/OptionsWidget_windowList.cpp:136
+#: src/modules/options/OptionsWidget_windowList.cpp:141
 msgid "Center"
 msgstr "Centro"
 
@@ -1958,7 +1958,7 @@ msgstr "Centro"
 #: src/modules/options/OptionsWidget_ircView.cpp:66
 #: src/modules/options/OptionsWidget_notifier.cpp:61
 #: src/modules/options/OptionsWidget_userList.cpp:147
-#: src/modules/options/OptionsWidget_windowList.cpp:122
+#: src/modules/options/OptionsWidget_windowList.cpp:139
 msgid "Top"
 msgstr "Topo"
 
@@ -1966,7 +1966,7 @@ msgstr "Topo"
 #: src/modules/options/OptionsWidget_ircView.cpp:67
 #: src/modules/options/OptionsWidget_notifier.cpp:62
 #: src/modules/options/OptionsWidget_userList.cpp:148
-#: src/modules/options/OptionsWidget_windowList.cpp:123
+#: src/modules/options/OptionsWidget_windowList.cpp:140
 msgid "Bottom"
 msgstr "Fundo"
 
@@ -2010,23 +2010,27 @@ msgstr "Usar completação tipo bash do Nick"
 msgid "Use zsh-like nick completion"
 msgstr "Usar completação de Nick tipo zsh"
 
-#: src/modules/options/OptionsWidget_input.cpp:157
+#: src/modules/options/OptionsWidget_input.cpp:154
+msgid "Prioritize nick completion by last action time"
+msgstr "Priorizar o preenchimento de apelido pelo último tempo de ação"
+
+#: src/modules/options/OptionsWidget_input.cpp:160
 msgid "Nick completion postfix string:"
 msgstr "Sufixo para completar o apelido:"
 
-#: src/modules/options/OptionsWidget_input.cpp:158
+#: src/modules/options/OptionsWidget_input.cpp:161
 msgid "Use the completion postfix string for the first word only"
 msgstr "Usar texto de sufixo para completar apenas para a primeira palavra"
 
-#: src/modules/options/OptionsWidget_input.cpp:160
+#: src/modules/options/OptionsWidget_input.cpp:163
 msgid "Ignore special characters in nick completion"
 msgstr "Ignorar caracteres especiais na conclusão do apelido"
 
-#: src/modules/options/OptionsWidget_input.cpp:162
+#: src/modules/options/OptionsWidget_input.cpp:165
 msgid "Use a custom cursor width"
 msgstr "Usar cursor com largura personalizada"
 
-#: src/modules/options/OptionsWidget_input.cpp:163
+#: src/modules/options/OptionsWidget_input.cpp:166
 msgid "Custom cursor width:"
 msgstr "Cursor com largura personalizada:"
 
@@ -2418,7 +2422,7 @@ msgid "MIME Type"
 msgstr "Tipo MIME"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:78
-#: src/modules/options/OptionsWidget_servers.cpp:1313
+#: src/modules/options/OptionsWidget_servers.cpp:1311
 msgid "Description"
 msgstr "Descrição"
 
@@ -2516,58 +2520,62 @@ msgid "Smart nickname colors"
 msgstr "Cores inteligentes para apelidos"
 
 #: src/modules/options/OptionsWidget_message.cpp:78
-msgid "Use specified colors for own nick:"
-msgstr "Usar cores indicadas para a próprio Nick:"
+msgid "Use a background color for smart nickname colors"
+msgstr "Use uma cor de plano de fundo para cores de apelidos inteligentes"
 
-#: src/modules/options/OptionsWidget_message.cpp:85
+#: src/modules/options/OptionsWidget_message.cpp:82
+msgid "Use specified smart colors for own nick:"
+msgstr "Use cores inteligentes especificadas para o próprio apelido:"
+
+#: src/modules/options/OptionsWidget_message.cpp:92
 msgid "Use same colors as in the userlist"
 msgstr "Usar as mesmas cores como na lista de Usuários"
 
-#: src/modules/options/OptionsWidget_message.cpp:88
+#: src/modules/options/OptionsWidget_message.cpp:95
 msgid "Show nicknames in bold"
 msgstr "Mostrar Nicks em negrito"
 
-#: src/modules/options/OptionsWidget_message.cpp:89
+#: src/modules/options/OptionsWidget_message.cpp:96
 msgid "Show user and host"
 msgstr "Mostrar Usuário e endereço"
 
-#: src/modules/options/OptionsWidget_message.cpp:90
+#: src/modules/options/OptionsWidget_message.cpp:97
 msgid "Show channel mode prefix"
 msgstr "Mostrar prefixo do modo do canal"
 
-#: src/modules/options/OptionsWidget_message.cpp:91
+#: src/modules/options/OptionsWidget_message.cpp:98
 msgid "User-defined prefix and postfix"
 msgstr "Prefixo e sufixo definidos pelo Usuário"
 
-#: src/modules/options/OptionsWidget_message.cpp:93
+#: src/modules/options/OptionsWidget_message.cpp:100
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
 msgstr "[PREFIXO]Nick[!Usuário@endereço][SUFIXO] mensagem"
 
-#: src/modules/options/OptionsWidget_message.cpp:107
+#: src/modules/options/OptionsWidget_message.cpp:114
 msgid "Prefix:"
 msgstr "Prefixo:"
 
-#: src/modules/options/OptionsWidget_message.cpp:112
+#: src/modules/options/OptionsWidget_message.cpp:119
 msgid "Postfix:"
 msgstr "Sufixo:"
 
-#: src/modules/options/OptionsWidget_message.cpp:129
+#: src/modules/options/OptionsWidget_message.cpp:136
 msgid "Show timestamp"
 msgstr "Mostrar marcação horária"
 
-#: src/modules/options/OptionsWidget_message.cpp:132
+#: src/modules/options/OptionsWidget_message.cpp:139
 msgid "Use UTC time for timestamp"
 msgstr "Usar hora UTC nas horas das mensagens"
 
-#: src/modules/options/OptionsWidget_message.cpp:139
+#: src/modules/options/OptionsWidget_message.cpp:146
 msgid "Use special color for timestamps:"
 msgstr "Usar cores especiais para o horário:"
 
-#: src/modules/options/OptionsWidget_message.cpp:145
+#: src/modules/options/OptionsWidget_message.cpp:152
 msgid "Timestamp format:"
 msgstr "Formato horário:"
 
-#: src/modules/options/OptionsWidget_message.cpp:170
+#: src/modules/options/OptionsWidget_message.cpp:177
 msgid ""
 "Please note that this is a set of standard IRC colors. You can adjust them a"
 " bit, make them darker or lighter but you shouldn't change their fundamental"
@@ -2575,39 +2583,39 @@ msgid ""
 "darker than the light one."
 msgstr "Por favor, observe que este é uma definição padrão das cores do IRC. Você pode ajustar eles um pouco, fazer eles mais escuro ou claros, mas você não deve mudar seu tom fundamental. Preto deve ficar preto, verde escuro deve ainda ficar um verde escuro do que um mais claro."
 
-#: src/modules/options/OptionsWidget_message.cpp:181
+#: src/modules/options/OptionsWidget_message.cpp:188
 msgid "Reset to Default"
 msgstr "Restaurar Padrão"
 
-#: src/modules/options/OptionsWidget_message.cpp:310
+#: src/modules/options/OptionsWidget_message.cpp:317
 msgid "Transparent"
 msgstr "Transparente"
 
-#: src/modules/options/OptionsWidget_message.cpp:380
+#: src/modules/options/OptionsWidget_message.cpp:387
 msgid "Background:"
 msgstr "Fundo:"
 
-#: src/modules/options/OptionsWidget_message.cpp:393
+#: src/modules/options/OptionsWidget_message.cpp:400
 msgid "Foreground:"
 msgstr "Primeiro plano:"
 
-#: src/modules/options/OptionsWidget_message.cpp:405
+#: src/modules/options/OptionsWidget_message.cpp:412
 msgid "Alert level:"
 msgstr "Nível de alerta:"
 
-#: src/modules/options/OptionsWidget_message.cpp:428
+#: src/modules/options/OptionsWidget_message.cpp:435
 msgid "Log this"
 msgstr "Registar isto"
 
-#: src/modules/options/OptionsWidget_message.cpp:432
+#: src/modules/options/OptionsWidget_message.cpp:439
 msgid "Load from..."
 msgstr "Carregar de..."
 
-#: src/modules/options/OptionsWidget_message.cpp:434
+#: src/modules/options/OptionsWidget_message.cpp:441
 msgid "Save As..."
 msgstr "Gravar Como..."
 
-#: src/modules/options/OptionsWidget_message.cpp:585
+#: src/modules/options/OptionsWidget_message.cpp:592
 msgid "Enter a Filename - KVIrc"
 msgstr "Digite um nome de arquivo - KVIrc"
 
@@ -2942,16 +2950,16 @@ msgstr "Senha:"
 msgid "Protocol:"
 msgstr "Protocolo:"
 
-#: src/modules/options/OptionsWidget_proxy.cpp:134
+#: src/modules/options/OptionsWidget_proxy.cpp:133
 #: src/modules/options/OptionsWidget_servers.cpp:716
 msgid "Use IPv6 protocol"
 msgstr "Usar protocolo IPV6"
 
-#: src/modules/options/OptionsWidget_proxy.cpp:334
+#: src/modules/options/OptionsWidget_proxy.cpp:332
 msgid "&New Proxy"
 msgstr "&Novo 'Proxy'"
 
-#: src/modules/options/OptionsWidget_proxy.cpp:335
+#: src/modules/options/OptionsWidget_proxy.cpp:333
 msgid "Re&move Proxy"
 msgstr "Re&mover 'Proxy'"
 
@@ -3131,7 +3139,7 @@ msgid ""
 msgstr "Esta opção faz com que o KVIrc conecte automaticamente a esta rede ao iniciar"
 
 #: src/modules/options/OptionsWidget_servers.cpp:259
-#: src/modules/options/OptionsWidget_servers.cpp:825
+#: src/modules/options/OptionsWidget_servers.cpp:823
 msgid "Channels to Join Automatically upon Connect"
 msgstr "Canais para Entrar Automaticamente após Conectar"
 
@@ -3143,7 +3151,7 @@ msgid ""
 msgstr "Aqui você pode definir uma lista de canais que deseja entrar automaticamente depois de conexão com um servidor desta rede for estabelecida. Para adicionar uma canal, digite seu nome na caixa abaixo e clique em \"<b>Adicionar</b>\"."
 
 #: src/modules/options/OptionsWidget_servers.cpp:267
-#: src/modules/options/OptionsWidget_servers.cpp:832
+#: src/modules/options/OptionsWidget_servers.cpp:830
 msgid "Join Channels"
 msgstr "Entrar em Canais"
 
@@ -3157,7 +3165,7 @@ msgid ""
 msgstr "Os seguintes comandos irão ser executados depois  que a conexão com o servidor desta rede for estabelecida.<br><b>Importante:</b> Digite os comandos <b>sem</b> uma barra precedente (e.g. <tt>quote pass secret</tt> ao invés de <tt>/quote pass secret</tt>).<br>KVIrc irá enviar o comando do USER, então eventualmente PASS e NICK e então executa este comando na sequência."
 
 #: src/modules/options/OptionsWidget_servers.cpp:282
-#: src/modules/options/OptionsWidget_servers.cpp:846
+#: src/modules/options/OptionsWidget_servers.cpp:844
 msgid "On Connect"
 msgstr "Ao Conectar"
 
@@ -3171,7 +3179,7 @@ msgid ""
 msgstr "Os seguintes comandos irão ser executados depois de entrar com sucesso no servidor desta rede.<br><b>Importante:</b> Digite os comandos <b>sem</b> uma barra precedente (e.g. <tt>quote privatelog</tt> ao invés de <tt>/quote privatelog</tt>).<br>Isto é útil para abertura automática de conversas, variáveis de configurações, etc."
 
 #: src/modules/options/OptionsWidget_servers.cpp:297
-#: src/modules/options/OptionsWidget_servers.cpp:861
+#: src/modules/options/OptionsWidget_servers.cpp:859
 msgid "On Login"
 msgstr "Ao Autenticar"
 
@@ -3187,7 +3195,7 @@ msgid ""
 msgstr "Estas são uma lista de regras de identificação do NickServ. O KVIrc irá usá-las como modelo de interação automática com o NickServ desta rede.<br>Por favor, fique atento que este recurso pode causar o roubo das suas senhas NickServ se usadas de forma imprópria. Esteja certo que você compreende totalmente o protocolo de autenticação do NickServ.<br>Em outras palavras, esteja certo de saber o que você está fazendo.<br>Também observe que a senha que você prove é salva em <b>TEXTO PLANO</b>."
 
 #: src/modules/options/OptionsWidget_servers.cpp:366
-#: src/modules/options/OptionsWidget_servers.cpp:990
+#: src/modules/options/OptionsWidget_servers.cpp:988
 #: src/modules/options/OptionsWidget_nickserv.h:39
 msgid "NickServ"
 msgstr "NickServ"
@@ -3248,7 +3256,7 @@ msgid ""
 "If this is enabled, the global initial <b>user mode</b> (configured from the"
 " identity dialog) will be used. If disabled, you can configure an initial "
 "user mode for this server"
-msgstr ""
+msgstr "Se isto estiver habilitado, o início global <b>modo usuário</b> (configurado do diálogo identidade) irá ser usado. Se desabilitado, você pode configurar um inicial modo usuário para este servidor"
 
 #: src/modules/options/OptionsWidget_servers.cpp:647
 #: src/modules/options/OptionsWidget_identity.h:131
@@ -3359,19 +3367,19 @@ msgstr "Predefinido"
 msgid "Direct Connection"
 msgstr "Conexão Direta"
 
-#: src/modules/options/OptionsWidget_servers.cpp:817
+#: src/modules/options/OptionsWidget_servers.cpp:815
 #: src/modules/options/OptionsWidget_connection.h:33
 msgid "Connection"
 msgstr "Conexão"
 
-#: src/modules/options/OptionsWidget_servers.cpp:826
+#: src/modules/options/OptionsWidget_servers.cpp:824
 msgid ""
 "Here you can set a list of channels to be joined automatically after a "
 "connection to this server has been established. To add a channel, type its "
 "name in the text input below and click \"<b>Add</b>\"."
 msgstr "Aqui você pode definir uma lista de canais para entrarem automaticamente depois que foi estabelecida uma conexão com este servidor. Para adicionar um canal, digite seu nome de entrada de texto abaixo e clique em \"<b>Adicionar</b>\"."
 
-#: src/modules/options/OptionsWidget_servers.cpp:841
+#: src/modules/options/OptionsWidget_servers.cpp:839
 msgid ""
 "The following commands will be executed after a connection has been "
 "established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -3381,7 +3389,7 @@ msgid ""
 "particularly useful for IRC bouncers that require login commands."
 msgstr "Os comandos a seguir serão executados depois que uma conexão for estabelecida.<br><b>Importante:</b> Digite os comandos <b>sem</b> uma barra antes (e.g. <tt>quote pass secret</tt> em vez de <tt>/quote pass secret</tt>).<br>KVIrc será primeiro enviar o comando do USER, então eventualmente o PASS e NICK e execute esta seqüência de comando.<br>Isto é particularmente útil para seguranças de IRC que requerem comandos de login."
 
-#: src/modules/options/OptionsWidget_servers.cpp:857
+#: src/modules/options/OptionsWidget_servers.cpp:855
 msgid ""
 "The following commands will be executed after a successful login to this "
 "server.<br><b>Important:</b> Enter commands <b>without</b> a preceding slash"
@@ -3390,11 +3398,11 @@ msgid ""
 "setting variables, etc."
 msgstr "Os seguintes comandos serão executados após entrr com sucesso neste servidor.<br><b>Importante:</b> Digite os comandos <b>sem</b> uma barra antes (e.g. <tt>quote privatelog</tt> invés de <tt>/quote privatelog</tt>).<br>Isso é útil para abrir automaticamente conversas, opções de variáveis, etc."
 
-#: src/modules/options/OptionsWidget_servers.cpp:868
+#: src/modules/options/OptionsWidget_servers.cpp:866
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
 msgstr "Mudar para SSL/TLS usando a entensão STARTTLS"
 
-#: src/modules/options/OptionsWidget_servers.cpp:870
+#: src/modules/options/OptionsWidget_servers.cpp:868
 msgid ""
 "This check enables the use of the <b>Transport Layer Security</b> protocol. "
 "If you enable the Extended Capabilities below then the TLS protocol support "
@@ -3403,29 +3411,29 @@ msgid ""
 "of the connection."
 msgstr "Esta opção habilita o uso do protocolo <b>Transport Layer Security</b>. Se você habilitar as Capacidades Estendidas abaixo, então o suporte ao protocolo TLS irá ser detectado pelo uso do comando CAP LS. Sem \"Capacidades Estendidas\" o comando STARTTLS irá ser forçadamente enviado no começo da conexão."
 
-#: src/modules/options/OptionsWidget_servers.cpp:881
+#: src/modules/options/OptionsWidget_servers.cpp:879
 msgid "Extended Capabilities"
 msgstr "Capacidades Extendidas"
 
-#: src/modules/options/OptionsWidget_servers.cpp:887
+#: src/modules/options/OptionsWidget_servers.cpp:885
 msgid "Query extended capabilities on connect"
 msgstr "Pesquisar capacidades extendida ao conectar"
 
-#: src/modules/options/OptionsWidget_servers.cpp:890
+#: src/modules/options/OptionsWidget_servers.cpp:888
 msgid ""
 "This check will cause the connection to use the <b>Extended Capability</b> "
 "support."
 msgstr "Esta checagem irá causar que a conexão faça uso do suporte <b>Capacidade Estendida</b>."
 
-#: src/modules/options/OptionsWidget_servers.cpp:893
+#: src/modules/options/OptionsWidget_servers.cpp:891
 msgid "SASL Authentication"
 msgstr "Autenticação SASL"
 
-#: src/modules/options/OptionsWidget_servers.cpp:898
+#: src/modules/options/OptionsWidget_servers.cpp:896
 msgid "Authenticate via SASL extension"
 msgstr "Autenticar através de extensão SASL"
 
-#: src/modules/options/OptionsWidget_servers.cpp:900
+#: src/modules/options/OptionsWidget_servers.cpp:898
 msgid ""
 "This check enables the use of the <b>SASL</b> authentication protocol If you"
 " enable the proper global option in the Connection/SSL tab and fill the SASL"
@@ -3433,38 +3441,38 @@ msgid ""
 "used for this server if available."
 msgstr "Esta opção permite o uso do protocolo de autenticação <b>SASL</b> se você habilitar essa opção como global na aba Conexão/SSL e preencher os campos de apelido e senha SASL nesta página, o protocolo SASL irá ser usado para este servidor se disponível."
 
-#: src/modules/options/OptionsWidget_servers.cpp:906
+#: src/modules/options/OptionsWidget_servers.cpp:904
 msgid "SASL nickname:"
 msgstr "Apelido SASL:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:910
+#: src/modules/options/OptionsWidget_servers.cpp:908
 msgid "If you want to enable SASL authentication, insert your nickname here."
 msgstr "Se você quer habilitar autenticação SASL, insira seu apelido aqui. "
 
-#: src/modules/options/OptionsWidget_servers.cpp:913
+#: src/modules/options/OptionsWidget_servers.cpp:911
 msgid "SASL password:"
 msgstr "Senha SASL:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:917
+#: src/modules/options/OptionsWidget_servers.cpp:915
 msgid "If you want to enable SASL authentication, insert your password here."
 msgstr "Se você quer habilitar autenticação SASL, insira sua senha aqui."
 
-#: src/modules/options/OptionsWidget_servers.cpp:925
+#: src/modules/options/OptionsWidget_servers.cpp:923
 msgid "Link filter:"
 msgstr "Filtro de Link:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:959
+#: src/modules/options/OptionsWidget_servers.cpp:957
 msgid ""
 "This field specifies the name of a module that exports a link filter for "
 "this type of server.<br>For plain IRC connections, you don't need any link "
 "filters; this is used for incompatible protocols."
 msgstr "Este campo especifica o nome de um módulo que exporta um filtro de links para este tipo de servidor.<br>Para conexões simples de IRC, você não precisa de quaisquer filtros de links; isto é usado para protocolos incompatíveis."
 
-#: src/modules/options/OptionsWidget_servers.cpp:964
+#: src/modules/options/OptionsWidget_servers.cpp:962
 msgid "ID:"
 msgstr "ID:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:972
+#: src/modules/options/OptionsWidget_servers.cpp:970
 msgid ""
 "This field allows you to specify a really unique ID for this server. You "
 "will then be able to use /server -x &lt;this_id&gt; to make the connection. "
@@ -3472,7 +3480,7 @@ msgid ""
 "same hostname and port in different networks (bouncers?)"
 msgstr "Este campo permite que você especifique um ID realmente única para esse servidor. Você então será capaz de usar /server -x &lt;this_id&gt; para fazer a conexão. Isto é especialmente útil quando você tem várias entradas do servidor com o mesmo nome de host e porta em redes diferentes (bouncers?)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:977
+#: src/modules/options/OptionsWidget_servers.cpp:975
 #: src/modules/options/OptionsWidget_channel.h:63
 #: src/modules/options/OptionsWidget_connection.h:45
 #: src/modules/options/OptionsWidget_dcc.h:57
@@ -3482,191 +3490,191 @@ msgstr "Este campo permite que você especifique um ID realmente única para ess
 msgid "Advanced"
 msgstr "Avançado"
 
-#: src/modules/options/OptionsWidget_servers.cpp:984
+#: src/modules/options/OptionsWidget_servers.cpp:982
 msgid ""
 "NickServ settings are available only for the whole IRC network, not for specific servers.\n"
 "To open network settings choose a network (with a globe) in list of networks and servers and click Advanced."
 msgstr "Configurações de NickServ estão disponíveis somente para toda uma rede IRC, não só para servidores específicos.\nPara abrir as opções da rede, escolha a rede (com um globo) na lista de redes e servidores e clique em Avançado."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1292
+#: src/modules/options/OptionsWidget_servers.cpp:1290
 msgid "Filter:"
 msgstr "Filtro:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1297
+#: src/modules/options/OptionsWidget_servers.cpp:1295
 msgid ""
 "If you are searching for a specific server or network, you can insert its "
 "name to filter the servers in the list"
 msgstr "Se você está buscando por um servidor ou rede específica, você pode inserir o nome no filtro da lista de servidores"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1304
+#: src/modules/options/OptionsWidget_servers.cpp:1302
 msgid ""
 "If this option is enabled, only servers you have favorited will be displayed"
 msgstr "Se esta opção estive habilitada, somente servidores que você favoritou irão ser exibidos."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1312
+#: src/modules/options/OptionsWidget_servers.cpp:1310
 msgid "Server"
 msgstr "Servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1328
+#: src/modules/options/OptionsWidget_servers.cpp:1326
 msgid ""
 "This is the list of available IRC servers.<br>Right-click on the list to add"
 " or remove servers and perform other actions.<br>Double-click on a item for "
 "advanced options."
 msgstr "Esta é a lista de servidores IRC disponíveis.<br>Clique direito na lista para adicionar ou remover servidores e fazer outras ações.<br>Clique duplo no item para opções avançadas."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1343
+#: src/modules/options/OptionsWidget_servers.cpp:1341
 msgid "New network"
 msgstr "Nova rede"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1352
+#: src/modules/options/OptionsWidget_servers.cpp:1350
 msgid "New server"
 msgstr "Novo servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1358
+#: src/modules/options/OptionsWidget_servers.cpp:1356
 msgid "Favorite / Unfavorite server"
 msgstr "Servidor Favorito / Não-Favorito"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1365
+#: src/modules/options/OptionsWidget_servers.cpp:1363
 msgid "Remove network / server"
 msgstr "Remover rede / servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1372
+#: src/modules/options/OptionsWidget_servers.cpp:1370
 msgid "Copy server"
 msgstr "Copiar servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1379
+#: src/modules/options/OptionsWidget_servers.cpp:1377
 msgid "Paste server"
 msgstr "Colar servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1390
+#: src/modules/options/OptionsWidget_servers.cpp:1388
 msgid "Import server list"
 msgstr "Importar lista de servidores"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1395
+#: src/modules/options/OptionsWidget_servers.cpp:1393
 msgid "Active Configuration"
 msgstr "Configuração Ativa"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1396
-#: src/modules/options/OptionsWidget_servers.cpp:1699
+#: src/modules/options/OptionsWidget_servers.cpp:1394
+#: src/modules/options/OptionsWidget_servers.cpp:1697
 msgid "Server:"
 msgstr "Servidor:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1400
+#: src/modules/options/OptionsWidget_servers.cpp:1398
 msgid "This is the name of the currently selected server or network"
 msgstr "Este é o nome do atual servidor ou rede selecionado"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1402
+#: src/modules/options/OptionsWidget_servers.cpp:1400
 msgid "Advanced..."
 msgstr "Avançado..."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1404
+#: src/modules/options/OptionsWidget_servers.cpp:1402
 msgid "Click here to edit advanced options for this entry"
 msgstr "Clique aqui para editar as opções avançadas para esta entrada"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1416
+#: src/modules/options/OptionsWidget_servers.cpp:1414
 msgid ""
 "This button shows a list of recently used servers.<br>It allows you to "
 "quickly find them in the list."
 msgstr "Este botão mostra uma lista de servidores usados ​​recentemente.<br>Ele permite que você encontrá-los rapidamente na lista."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1423
+#: src/modules/options/OptionsWidget_servers.cpp:1421
 msgid "Connect &Now"
 msgstr "Conectar &Agora"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1465
+#: src/modules/options/OptionsWidget_servers.cpp:1463
 msgid "Hit this button to connect to the currently selected server."
 msgstr "Aperte este botão para se conectar ao servidor selecionado."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1471
+#: src/modules/options/OptionsWidget_servers.cpp:1469
 msgid "Show this dialog at startup"
 msgstr "Mostrar esta janela ao iniciar"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1476
+#: src/modules/options/OptionsWidget_servers.cpp:1474
 msgid ""
 "If this option is enabled, the servers dialog will appear every time you "
 "start KVIrc"
 msgstr "Se esta opção estiver habilitada, a caixa de diálogo servidores irá aparecer toda vez que você iniciar o KVIrc"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1704
+#: src/modules/options/OptionsWidget_servers.cpp:1702
 msgid "Network:"
 msgstr "Rede:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1719
+#: src/modules/options/OptionsWidget_servers.cpp:1717
 msgid "No selection"
 msgstr "Sem Seleção"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1798
+#: src/modules/options/OptionsWidget_servers.cpp:1796
 msgid "UnknownNet"
 msgstr "RedeDesconhecida"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1877
-#: src/modules/options/OptionsWidget_servers.cpp:2015
+#: src/modules/options/OptionsWidget_servers.cpp:1875
+#: src/modules/options/OptionsWidget_servers.cpp:2013
 msgid "New Network"
 msgstr "Nova Rede"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1878
+#: src/modules/options/OptionsWidget_servers.cpp:1876
 msgid "Remove Network"
 msgstr "Remover Rede"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1883
+#: src/modules/options/OptionsWidget_servers.cpp:1881
 msgid "&New Server"
 msgstr "&Novo Servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1885
+#: src/modules/options/OptionsWidget_servers.cpp:1883
 msgid "Unfavorite Server"
 msgstr "Desfavoritar Servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1887
+#: src/modules/options/OptionsWidget_servers.cpp:1885
 msgid "Re&move Server"
 msgstr "Re&mover Servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1889
+#: src/modules/options/OptionsWidget_servers.cpp:1887
 msgid "&Copy Server"
 msgstr "&Copiar Servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1891
+#: src/modules/options/OptionsWidget_servers.cpp:1889
 msgid "&Paste Server"
 msgstr "&Colar Servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1896
+#: src/modules/options/OptionsWidget_servers.cpp:1894
 msgid "Import Server List"
 msgstr "Importar Lista de Servidores"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1897
+#: src/modules/options/OptionsWidget_servers.cpp:1895
 msgid "Clear Server List"
 msgstr "Limpar Lista de Servidores"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1935
+#: src/modules/options/OptionsWidget_servers.cpp:1933
 msgid ""
 "Oops! Something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr "Oops! Algo estranho aconteceu:<br>Não pôde encontrar qualquer módulo capaz de importar os servidores."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1955
+#: src/modules/options/OptionsWidget_servers.cpp:1953
 msgid ""
 "Oops! Something weird happened:<br>Can't find the module that was capable of"
 " this import action. :("
 msgstr "Oops! Algo estranho aconteceu:<br>Não pôde encontrar o módulo que era capaz de realizar a ação de importação. :("
 
-#: src/modules/options/OptionsWidget_servers.cpp:2039
+#: src/modules/options/OptionsWidget_servers.cpp:2037
 msgid "irc.unknown.net"
 msgstr "irc.desconhecido.net"
 
-#: src/modules/options/OptionsWidget_servers.cpp:2188
+#: src/modules/options/OptionsWidget_servers.cpp:2186
 msgid ""
 "If you click <b>Yes</b>, all of your saved networks, servers, settings, and "
 "passwords will be lost.<br>Would you like to continue?"
 msgstr "Se você clicar em <b>Sim</b>, todas as suas redes, servidores e senhas salvas irão ser perdidas.<br>Gostaria de continuar assim mesmo?"
 
-#: src/modules/options/OptionsWidget_servers.cpp:2191
+#: src/modules/options/OptionsWidget_servers.cpp:2189
 msgid "Confirm Clearing Server List - KVIrc"
 msgstr "Confirmar a Limpeza da Lista de Servidores - KVIrc"
 
-#: src/modules/options/OptionsWidget_servers.cpp:2192
+#: src/modules/options/OptionsWidget_servers.cpp:2190
 msgid "Yes"
 msgstr "Sim"
 
-#: src/modules/options/OptionsWidget_servers.cpp:2192
+#: src/modules/options/OptionsWidget_servers.cpp:2190
 msgid "No"
 msgstr "Não"
 
@@ -3722,19 +3730,19 @@ msgstr "Codificação das mensagens do Winamp"
 msgid "This allows you to select encoding of winamp messages."
 msgstr "Isto permite-lhe seleccionar a codificação das mensagens winamp."
 
-#: src/modules/options/OptionsWidget_sound.cpp:335
+#: src/modules/options/OptionsWidget_sound.cpp:324
 msgid "New query opened:"
 msgstr "Nova conversa aberta:"
 
-#: src/modules/options/OptionsWidget_sound.cpp:338
+#: src/modules/options/OptionsWidget_sound.cpp:327
 msgid "New message in inactive query:"
 msgstr "Nova mensagem em uma conversa inativa:"
 
-#: src/modules/options/OptionsWidget_sound.cpp:341
+#: src/modules/options/OptionsWidget_sound.cpp:330
 msgid "Highlighted message in inactive window:"
 msgstr "Mensagem destacada em janela inativa:"
 
-#: src/modules/options/OptionsWidget_sound.cpp:344
+#: src/modules/options/OptionsWidget_sound.cpp:333
 msgid "When I am kicked:"
 msgstr "Quando Eu fui chutado:"
 
@@ -4034,16 +4042,16 @@ msgstr "Cores do Nick"
 
 #: src/modules/options/OptionsWidget_userList.cpp:50
 #: src/modules/options/OptionsWidget_userList.cpp:128
-#: src/modules/options/OptionsWidget_windowList.cpp:80
-#: src/modules/options/OptionsWidget_windowList.cpp:103
-#: src/modules/options/OptionsWidget_windowList.cpp:223
+#: src/modules/options/OptionsWidget_windowList.cpp:97
+#: src/modules/options/OptionsWidget_windowList.cpp:120
+#: src/modules/options/OptionsWidget_windowList.cpp:240
 msgid "Normal:"
 msgstr "Normal:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:51
 #: src/modules/options/OptionsWidget_userList.cpp:129
-#: src/modules/options/OptionsWidget_windowList.cpp:81
-#: src/modules/options/OptionsWidget_windowList.cpp:104
+#: src/modules/options/OptionsWidget_windowList.cpp:98
+#: src/modules/options/OptionsWidget_windowList.cpp:121
 msgid "Selected:"
 msgstr "Seleccionado:"
 
@@ -4112,7 +4120,7 @@ msgid "Dotted Grid"
 msgstr "Grelha Pontilhada"
 
 #: src/modules/options/OptionsWidget_userList.cpp:127
-#: src/modules/options/OptionsWidget_windowList.cpp:102
+#: src/modules/options/OptionsWidget_windowList.cpp:119
 msgid "Background Colors"
 msgstr "Cores de Fundo"
 
@@ -4125,7 +4133,7 @@ msgid "Vertical alignment:"
 msgstr "Alinhamento vertical:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:226
-#: src/modules/options/OptionsWidget_windowList.cpp:203
+#: src/modules/options/OptionsWidget_windowList.cpp:220
 msgid "Minimum width:"
 msgstr "Largura mínima:"
 
@@ -4181,23 +4189,31 @@ msgid ""
 "userlist.<br><br><b>Note:</b> Changes to this option requires KVIrc restart."
 msgstr "Todos os apelidos que incluem caracteres, tais como [ ] ^ _ &lt; &gt; | etc. serão ordenados por último na lista de usuários após todos os apelidos regulares.<br>Selecione esta opção se você preferir ver apelidos regulares ordenados no topo na lista de usuários.<br><br><b>Observação:</b> Alterações nesta opção requer reinicialização do KVIrc."
 
-#: src/modules/options/OptionsWidget_windowList.cpp:37
-msgid "Show tree window list"
-msgstr "Mostrar lista de janelas em árvore"
+#: src/modules/options/OptionsWidget_windowList.cpp:39
+msgid "Window list type:"
+msgstr "Tipo de lista de janelas:"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:38
+#: src/modules/options/OptionsWidget_windowList.cpp:41
+msgid "Tree"
+msgstr "Árvore"
+
+#: src/modules/options/OptionsWidget_windowList.cpp:42
+msgid "Classic"
+msgstr "Clássico"
+
+#: src/modules/options/OptionsWidget_windowList.cpp:46
 msgid "Sort windows by name"
 msgstr "Ordenar janelas por nome"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:39
+#: src/modules/options/OptionsWidget_windowList.cpp:47
 msgid "Show window icons in window list"
 msgstr "Mostrar ícones da janela na lista da janela"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:40
+#: src/modules/options/OptionsWidget_windowList.cpp:48
 msgid "Show activity meter in window list"
 msgstr "Mostrar medidor de atividade na lista da janela"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:41
+#: src/modules/options/OptionsWidget_windowList.cpp:49
 msgid ""
 "This option enables the usage of the window list activity meter. Each window"
 " entry will have a small indicator of the activity that is going on in that "
@@ -4209,85 +4225,85 @@ msgid ""
 "activity causes the indicator to be shaded blue."
 msgstr "Esta opção permite o uso do medidor de atividade de lista de janela. Cada entrada de janela terá um pequeno indicador da atividade que está acontecendo naquela janela. O indicador é um pequeno quadrado que muda as cores, as cores escuras significam baixa atividade, enquanto as cores brilhantes do sinal alta atividade. KVIrc também usa uma heurística para determinar se a atividade é um pouco \"humana\" ou que é gerado por entidades automatizadas (tais como servidores IRC ou bots). Atividade \"Humana\" faz com que o indicador a ser sombreado vermelho enquanto atividade automatizada faz com que o indicador a ser sombreado azul."
 
-#: src/modules/options/OptionsWidget_windowList.cpp:49
+#: src/modules/options/OptionsWidget_windowList.cpp:57
 msgid "Show IRC context indicator in window list"
 msgstr "Mostrar indicador do contexto IRC na lista da janela"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:50
-msgid "Show close button on window list items"
-msgstr "Exibir o botão de fechar na janela de lista de itens"
-
-#: src/modules/options/OptionsWidget_windowList.cpp:51
+#: src/modules/options/OptionsWidget_windowList.cpp:58
 msgid "Enable window tooltips"
 msgstr "Ativar Dicas das Janelas"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:52
+#: src/modules/options/OptionsWidget_windowList.cpp:59
 msgid "Allow the window list to be moved"
 msgstr "Permitir que a lista de janelas seja movida"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:53
+#: src/modules/options/OptionsWidget_windowList.cpp:60
 msgid "Show user flag for channels"
 msgstr "Exibir bandeira do usuário para canais"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:78
-#: src/modules/options/OptionsWidget_windowList.cpp:222
+#: src/modules/options/OptionsWidget_windowList.cpp:95
+#: src/modules/options/OptionsWidget_windowList.cpp:239
 msgid "Text/Alert Colors"
 msgstr "Cores de Texto/Alerta"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:82
-#: src/modules/options/OptionsWidget_windowList.cpp:225
+#: src/modules/options/OptionsWidget_windowList.cpp:99
+#: src/modules/options/OptionsWidget_windowList.cpp:242
 msgid "Alert level 1:"
 msgstr "Alerta nível 1:"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:83
-#: src/modules/options/OptionsWidget_windowList.cpp:226
+#: src/modules/options/OptionsWidget_windowList.cpp:100
+#: src/modules/options/OptionsWidget_windowList.cpp:243
 msgid "Alert level 2:"
 msgstr "Alerta nível 2:"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:84
-#: src/modules/options/OptionsWidget_windowList.cpp:227
+#: src/modules/options/OptionsWidget_windowList.cpp:101
+#: src/modules/options/OptionsWidget_windowList.cpp:244
 msgid "Alert level 3:"
 msgstr "Alerta nível 3:"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:85
-#: src/modules/options/OptionsWidget_windowList.cpp:228
+#: src/modules/options/OptionsWidget_windowList.cpp:102
+#: src/modules/options/OptionsWidget_windowList.cpp:245
 msgid "Alert level 4:"
 msgstr "Alerta nível 4:"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:86
-#: src/modules/options/OptionsWidget_windowList.cpp:229
+#: src/modules/options/OptionsWidget_windowList.cpp:103
+#: src/modules/options/OptionsWidget_windowList.cpp:246
 msgid "Alert level 5:"
 msgstr "Alerta nível 5:"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:88
-#: src/modules/options/OptionsWidget_windowList.cpp:231
+#: src/modules/options/OptionsWidget_windowList.cpp:105
+#: src/modules/options/OptionsWidget_windowList.cpp:248
 msgid "Progress bar color:"
 msgstr "Cor da barra de progresso:"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:205
+#: src/modules/options/OptionsWidget_windowList.cpp:222
 msgid ""
 "Mouse wheel changes the active window instead of scrolling the scrollbar"
 msgstr "A roda do rato muda a janela Ativa em vez de rolar a barra de rolagem"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:224
+#: src/modules/options/OptionsWidget_windowList.cpp:241
 msgid "Minimized:"
 msgstr "Minimizado:"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:232
+#: src/modules/options/OptionsWidget_windowList.cpp:249
 msgid "Minimum width of buttons:"
 msgstr "Largura mínima dos botões:"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:234
+#: src/modules/options/OptionsWidget_windowList.cpp:251
 msgid "Set maximum button width"
 msgstr "Definir largura máxima do botão"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:235
+#: src/modules/options/OptionsWidget_windowList.cpp:252
 msgid "Maximum width of buttons:"
 msgstr "Largura máxima dos botões:"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:237
+#: src/modules/options/OptionsWidget_windowList.cpp:254
 msgid "Use flat buttons"
 msgstr "Usar botões planos"
+
+#: src/modules/options/OptionsWidget_windowList.cpp:255
+msgid "Show close button on window list items"
+msgstr "Exibir o botão de fechar na janela de lista de itens"
 
 #: src/modules/options/libkvioptions.cpp:104
 msgid "No such options_group %Q"
@@ -4423,7 +4439,7 @@ msgstr "Aparência"
 
 #: src/modules/options/OptionsWidget_ircView.h:69
 #: src/modules/options/OptionsWidget_userList.h:104
-#: src/modules/options/OptionsWidget_windowList.h:95
+#: src/modules/options/OptionsWidget_windowList.h:101
 msgid "Features"
 msgstr "Opções"
 
@@ -4467,27 +4483,27 @@ msgstr "Estilo de Mensagem"
 msgid "theme,privmsg,output,format"
 msgstr "tema,mensagem privada,saída,formato"
 
-#: src/modules/options/OptionsWidget_message.h:75
+#: src/modules/options/OptionsWidget_message.h:76
 msgid "Timestamp"
 msgstr "Marcação horária"
 
-#: src/modules/options/OptionsWidget_message.h:79
+#: src/modules/options/OptionsWidget_message.h:80
 msgid "time,timestamp"
 msgstr "hora,marcação horária"
 
-#: src/modules/options/OptionsWidget_message.h:97
+#: src/modules/options/OptionsWidget_message.h:98
 msgid "Message Decorations"
 msgstr "Decorações da Mensagem"
 
-#: src/modules/options/OptionsWidget_message.h:98
+#: src/modules/options/OptionsWidget_message.h:99
 msgid "theme,icons,colors,messages,output"
 msgstr "tema,ícones,cores,mensagens,saída"
 
-#: src/modules/options/OptionsWidget_message.h:196
+#: src/modules/options/OptionsWidget_message.h:197
 msgid "Color Set"
 msgstr "Conjunto de Cores"
 
-#: src/modules/options/OptionsWidget_message.h:197
+#: src/modules/options/OptionsWidget_message.h:198
 msgid "theme,colors,messages,output"
 msgstr "tema,cores,mensagens,sída"
 
@@ -4574,11 +4590,11 @@ msgstr "sorrisos,emoções"
 
 #: src/modules/options/OptionsWidget_theme.h:33
 #: src/modules/options/OptionsWidget_windowList.h:34
-#: src/modules/options/OptionsWidget_windowList.h:48
-#: src/modules/options/OptionsWidget_windowList.h:63
-#: src/modules/options/OptionsWidget_windowList.h:77
-#: src/modules/options/OptionsWidget_windowList.h:97
-#: src/modules/options/OptionsWidget_windowList.h:112
+#: src/modules/options/OptionsWidget_windowList.h:54
+#: src/modules/options/OptionsWidget_windowList.h:69
+#: src/modules/options/OptionsWidget_windowList.h:83
+#: src/modules/options/OptionsWidget_windowList.h:103
+#: src/modules/options/OptionsWidget_windowList.h:118
 msgid "theme"
 msgstr "tema"
 
@@ -4643,7 +4659,7 @@ msgid "theme,userlist,channel"
 msgstr "tema,lista de Usuários,canal"
 
 #: src/modules/options/OptionsWidget_userList.h:46
-#: src/modules/options/OptionsWidget_windowList.h:75
+#: src/modules/options/OptionsWidget_windowList.h:81
 msgid "Background"
 msgstr "Plano de Fundo"
 
@@ -4652,7 +4668,7 @@ msgid "theme,userlist,channel,background"
 msgstr "tema,lista de Usuários,canal,fundo"
 
 #: src/modules/options/OptionsWidget_userList.h:68
-#: src/modules/options/OptionsWidget_windowList.h:61
+#: src/modules/options/OptionsWidget_windowList.h:67
 msgid "Foreground"
 msgstr "Primeiro plano"
 
@@ -4676,10 +4692,10 @@ msgstr "lista de usuários,canal,largura"
 msgid "Window List"
 msgstr "Lista de Janelas"
 
-#: src/modules/options/OptionsWidget_windowList.h:46
+#: src/modules/options/OptionsWidget_windowList.h:52
 msgid "Tree Window List"
 msgstr "Lista de Janelas em Árvore"
 
-#: src/modules/options/OptionsWidget_windowList.h:109
+#: src/modules/options/OptionsWidget_windowList.h:115
 msgid "Classic Window List"
 msgstr "Lista de Janelas Clássica"

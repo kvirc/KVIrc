@@ -466,7 +466,7 @@ KviCanvasView::KviCanvasView(QCanvas * c, DccCanvasWidget * cw, QWidget * par)
 	m_pCanvasWidget = cw;
 	m_state = Idle;
 	m_dragMode = None;
-	m_pSelectedItem = 0;
+	m_pSelectedItem = nullptr;
 	viewport()->setMouseTracking(true);
 }
 
@@ -562,7 +562,7 @@ static void calcPolygonPoints(QPointArray & pnts, unsigned int nVertices)
 
 void KviCanvasView::insertObjectAt(const QPoint & pnt, ObjectType o)
 {
-	QCanvasItem * r = 0;
+	QCanvasItem * r = nullptr;
 
 	switch(o)
 	{
@@ -655,7 +655,7 @@ void KviCanvasView::clearSelection()
 	if(!m_pSelectedItem)
 		return;
 	m_pSelectedItem->setSelected(false);
-	m_pSelectedItem = 0;
+	m_pSelectedItem = nullptr;
 	m_pCanvasWidget->m_pPropertiesWidget->editItem(0);
 }
 
@@ -1297,7 +1297,7 @@ QWidget * KviVariantTableItem::createEditor() const
 		default:
 			break;
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviVariantTableItem::setContentFromEditor(QWidget * w)
@@ -1429,7 +1429,7 @@ void KviCanvasItemPropertiesWidget::editItem(QCanvasItem * it)
 		return;
 	}
 
-	QMap<QString, QVariant> * m = 0;
+	QMap<QString, QVariant> * m = nullptr;
 
 	switch(KVI_CANVAS_RTTI_CONTROL_TYPE(it))
 	{

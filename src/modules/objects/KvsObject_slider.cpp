@@ -67,11 +67,11 @@
 		Sets the tickmark settings for this slider.[br]
 		Values are:[br]
 		[pre]
-			NoMarks - do not draw any tickmarks.[br]
-			Both - draw tickmarks on both sides of the groove.[br]
-			Above - draw tickmarks above the (horizontal) slider[br]
-			Below - draw tickmarks below the (horizontal) slider[br]
-			Left - draw tickmarks to the left of the (vertical) slider[br]
+			NoMarks - do not draw any tickmarks.
+			Both - draw tickmarks on both sides of the groove.
+			Above - draw tickmarks above the (horizontal) slider
+			Below - draw tickmarks below the (horizontal) slider
+			Left - draw tickmarks to the left of the (vertical) slider
 			Right - draw tickmarks to the right of the (vertical) slider
 		[/pre]
 		!fn: $setTickInterval(<value>)

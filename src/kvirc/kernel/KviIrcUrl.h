@@ -40,7 +40,7 @@ class KviConsoleWindow;
 // Create /server <server> commands (this irc context)
 #define KVI_IRCURL_CONTEXT_THIS 2
 
-typedef struct _KviIrcUrlParts
+struct KviIrcUrlParts
 {
 	QString szHost;
 	kvi_u32_t iPort;
@@ -48,7 +48,7 @@ typedef struct _KviIrcUrlParts
 	bool bSsl;
 	QStringList chanList;
 	int iError;
-} KviIrcUrlParts;
+};
 
 namespace KviIrcUrl
 {
@@ -74,9 +74,9 @@ namespace KviIrcUrl
 
 	extern KVIRC_API bool parse(const char * url, KviCString & cmdBuffer, int contextSpec = KVI_IRCURL_CONTEXT_FIRSTFREE);
 
-	extern KVIRC_API int run(const QString & url, int contextSpec = FirstFreeContext, KviConsoleWindow * pConsole = 0);
+	extern KVIRC_API int run(const QString & url, int contextSpec = FirstFreeContext, KviConsoleWindow * pConsole = nullptr);
 
-	extern KVIRC_API void split(QString url, KviIrcUrlParts & parts);
+	extern KVIRC_API void split(const QString & url, KviIrcUrlParts & parts);
 	extern KVIRC_API void join(QString & url, KviIrcServer * server);
 	extern KVIRC_API void makeJoinCmd(const QStringList & chans, QString & szJoinCommand);
 }

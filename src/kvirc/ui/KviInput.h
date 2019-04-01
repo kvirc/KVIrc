@@ -61,7 +61,7 @@ public:
 	* \param pView The userlist
 	* \return KviInput
 	*/
-	KviInput(KviWindow * pPar, KviUserListView * pView = 0);
+	KviInput(KviWindow * pPar, KviUserListView * pView = nullptr);
 
 	/**
 	* \brief Destroys the input object
@@ -165,18 +165,18 @@ public:
 	* \brief Return the instance of the input editor
 	* \return KviInputEditor *
 	*/
-	inline KviInputEditor * editor() { return m_pInputEditor; };
+	KviInputEditor * editor() const { return m_pInputEditor; }
 
 	/**
 	* \brief Return the instance of the input history
 	* \return KviInputHistory *
 	*/
-	inline KviInputHistory * history() { return KviInputHistory::instance(); };
+	KviInputHistory * history() { return KviInputHistory::instance(); }
 protected:
 	void installShortcuts();
-	virtual void focusInEvent(QFocusEvent * e);
-	virtual void setFocusProxy(QWidget * w);
-	virtual void keyPressEvent(QKeyEvent * e);
+	void focusInEvent(QFocusEvent * e) override;
+	void setFocusProxy(QWidget * w);
+	void keyPressEvent(QKeyEvent * e) override;
 public slots:
 	/**
 	* \brief Toggles the multiline editor

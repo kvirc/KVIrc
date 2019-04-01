@@ -27,6 +27,7 @@
 #include "KviLocale.h"
 #include "KviIconManager.h"
 #include "KviApplication.h"
+#include "KviMainWindow.h"
 
 #include <QLayout>
 #include <QPushButton>
@@ -119,8 +120,11 @@ void DccAcceptDialog::closeEvent(QCloseEvent * e)
 
 void DccAcceptDialog::showEvent(QShowEvent * e)
 {
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-	move((rect.width() - width()) / 2, (rect.height() - height()) / 2);
+	int iScreen = g_pApp->desktop()->screenNumber(g_pMainWindow);
+	if(iScreen < 0)
+		iScreen = g_pApp->desktop()->primaryScreen();
+	QRect rect = g_pApp->desktop()->screenGeometry(iScreen);
+	move(rect.x() + ((rect.width() - width()) / 2),rect.y() + ((rect.height() - height()) / 2));
 	QWidget::showEvent(e);
 }
 
@@ -182,8 +186,11 @@ void DccRenameDialog::closeEvent(QCloseEvent * e)
 
 void DccRenameDialog::showEvent(QShowEvent * e)
 {
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-	move((rect.width() - width()) / 2, (rect.height() - height()) / 2);
+	int iScreen = g_pApp->desktop()->screenNumber(g_pMainWindow);
+	if(iScreen < 0)
+		iScreen = g_pApp->desktop()->primaryScreen();
+	QRect rect = g_pApp->desktop()->screenGeometry(iScreen);
+	move(rect.x() + ((rect.width() - width()) / 2),rect.y() + ((rect.height() - height()) / 2));
 	QWidget::showEvent(e);
 }
 

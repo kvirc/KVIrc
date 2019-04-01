@@ -317,10 +317,6 @@ void ScriptEditorWidget::updateOptions()
 	disableSyntaxHighlighter();
 	enableSyntaxHighlighter();
 
-	p = ((ScriptEditorImplementation *)m_pParent)->findLineEdit()->palette();
-	p.setColor(foregroundRole(), g_clrFind);
-	((ScriptEditorImplementation *)m_pParent)->findLineEdit()->setPalette(p);
-
 	//set cursor custom width
 	if(KVI_OPTION_BOOL(KviOption_boolEnableCustomCursorWidth))
 	{
@@ -715,16 +711,16 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	m_lastCursorPos = 0;
 	QGridLayout * g = new QGridLayout(this);
 
+	m_pEditor = new ScriptEditorWidget(this);
+
 	m_pFindLineEdit = new QLineEdit(" ", this);
 	m_pFindLineEdit->setText("");
 
 	QPalette p = m_pFindLineEdit->palette();
-	p.setColor(foregroundRole(), g_clrFind);
+	p.setColor(QPalette::Text, g_clrFind);
 	m_pFindLineEdit->setPalette(p);
 
-	m_pEditor = new ScriptEditorWidget(this);
-
-	g->addWidget(m_pEditor, 0, 0, 1, 4);
+	g->addWidget(m_pEditor, 0, 0, 1, 5);
 	g->setRowStretch(0, 1);
 
 	QToolButton * b = new QToolButton(this);
@@ -753,13 +749,18 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	pLab->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 	g->addWidget(pLab, 1, 1);
 
+	m_pFindButton = new QPushButton(QString(__tr2qs_ctx("&Find", "editor")), this);
+	g->addWidget(m_pFindButton, 1, 3);
+
 	m_pRowColLabel = new QLabel(QString(__tr2qs_ctx("Line: %1 Col: %2", "editor")).arg(1).arg(1), this);
 	m_pRowColLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
 	m_pRowColLabel->setMinimumWidth(80);
-	g->addWidget(m_pRowColLabel, 1, 3);
+	g->addWidget(m_pRowColLabel, 1, 4);
 
 	connect(m_pFindLineEdit, SIGNAL(returnPressed()), m_pEditor, SLOT(slotFind()));
 	connect(m_pFindLineEdit, SIGNAL(returnPressed()), this, SLOT(slotFind()));
+	connect(m_pFindButton, SIGNAL(clicked()), m_pEditor, SLOT(slotFind()));
+	connect(m_pFindButton, SIGNAL(clicked()), this, SLOT(slotFind()));
 	connect(m_pEditor, SIGNAL(cursorPositionChanged()), this, SLOT(updateRowColLabel()));
 	connect(m_pEditor, SIGNAL(selectionChanged()), this, SLOT(updateRowColLabel()));
 	m_lastCursorPos = 0;

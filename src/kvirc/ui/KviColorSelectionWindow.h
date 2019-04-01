@@ -67,10 +67,10 @@ public:
 
 private:
 	virtual void show();
-	virtual void paintEvent(QPaintEvent * e);
-	virtual void keyPressEvent(QKeyEvent * e);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void timerEvent(QTimerEvent * e);
+	void paintEvent(QPaintEvent * e) override;
+	void keyPressEvent(QKeyEvent * e) override;
+	void mousePressEvent(QMouseEvent * e) override;
+	void timerEvent(QTimerEvent * e) override;
 };
 
 #endif //_KVI_COLORWIN_H_

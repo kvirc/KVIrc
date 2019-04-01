@@ -57,7 +57,7 @@ public:
 	/**
 	* \brief Destroys the request queue objects
 	*/
-	virtual ~KviIrcConnectionRequestQueue();
+	~KviIrcConnectionRequestQueue();
 
 protected:
 	/**
@@ -78,7 +78,7 @@ protected:
 
 	QQueue<KviChannelWindow *> m_channels;
 	QTimer m_timer;
-	RequestTypes m_curType;
+	RequestTypes m_curType = Mode;
 
 public:
 	/**
@@ -100,7 +100,7 @@ public:
 	* \param pChan The channel to check
 	* \return bool
 	*/
-	bool isQueued(KviChannelWindow * pChan) { return m_channels.contains(pChan); };
+	bool isQueued(KviChannelWindow * pChan) const { return m_channels.contains(pChan); }
 
 	/**
 	* \brief Clears the queue stack

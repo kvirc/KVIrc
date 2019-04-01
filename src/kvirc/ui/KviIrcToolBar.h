@@ -48,21 +48,21 @@ class KVIRC_API KviToolBarGraphicalApplet : public QWidget
 {
 	Q_OBJECT
 public:
-	KviToolBarGraphicalApplet(QWidget * par, const char * name = 0);
+	KviToolBarGraphicalApplet(QWidget * par, const char * name = nullptr);
 	~KviToolBarGraphicalApplet();
 
 private:
 	bool m_bResizeMode;
 
 public:
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 
 protected:
-	virtual void mouseMoveEvent(QMouseEvent * e);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseReleaseEvent(QMouseEvent * e);
+	void mouseMoveEvent(QMouseEvent * e) override;
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseReleaseEvent(QMouseEvent * e) override;
 
-	virtual void paintEvent(QPaintEvent * e);
+	void paintEvent(QPaintEvent * e) override;
 	virtual void drawContents(QPainter * p);
 };
 
@@ -72,7 +72,7 @@ class KVIRC_API KviIrcContextDisplay : public KviToolBarGraphicalApplet
 {
 	Q_OBJECT
 public:
-	KviIrcContextDisplay(QWidget * par, const char * name = 0);
+	KviIrcContextDisplay(QWidget * par, const char * name = nullptr);
 	~KviIrcContextDisplay();
 
 protected:

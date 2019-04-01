@@ -37,7 +37,7 @@
 #include "KviApplication.h"
 #include "KviQueryWindow.h"
 
-#include <stdlib.h> // rand & srand
+#include <cstdlib> // rand & srand
 
 namespace KviKvsCoreFunctions
 {
@@ -331,9 +331,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(nothing)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setNothing();
 		return true;
 	}
@@ -359,9 +356,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(nullCKEYWORDWORKAROUND)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setHObject(nullptr);
 		return true;
 	}
@@ -384,9 +378,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(o)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Reset)));
 		return true;
 	}
@@ -513,9 +504,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(r)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Reverse)));
 		return true;
 	}
@@ -678,9 +666,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(receivedBytes)
 	{
-		Q_UNUSED(__pContext);
-		Q_UNUSED(__pParams);
-
 		KVSCF_pRetBuffer->setInteger(g_uIncomingTraffic);
 		return true;
 	}

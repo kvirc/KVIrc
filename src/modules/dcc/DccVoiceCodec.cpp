@@ -29,8 +29,7 @@
 #include <QBuffer>
 
 DccVoiceCodec::DccVoiceCodec()
-{
-}
+    = default;
 
 DccVoiceCodec::~DccVoiceCodec()
     = default;
@@ -95,8 +94,7 @@ int DccVoiceNullCodec::decodedFrameSize()
 }
 
 DccVideoCodec::DccVideoCodec()
-{
-}
+    = default;
 
 DccVideoCodec::~DccVideoCodec()
     = default;
@@ -265,19 +263,19 @@ DccVideoTheoraCodec::DccVideoTheoraCodec()
     : DccVideoCodec()
 {
 	m_szName = "theora";
-	m_pEncoder = 0;
-	m_pDecoder = 0;
+	m_pEncoder = nullptr;
+	m_pDecoder = nullptr;
 }
 
 DccVideoTheoraCodec::~DccVideoTheoraCodec()
 {
 	if(m_pEncoder)
 		delete m_pEncoder;
-	m_pEncoder = 0;
+	m_pEncoder = nullptr;
 
 	if(m_pDecoder)
 		delete m_pDecoder;
-	m_pDecoder = 0;
+	m_pDecoder = nullptr;
 }
 
 void DccVideoTheoraCodec::encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream)

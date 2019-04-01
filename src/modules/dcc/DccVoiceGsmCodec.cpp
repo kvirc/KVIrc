@@ -33,12 +33,12 @@
 #define GSM_UNPACKED_FRAME_SIZE_IN_BYTES 320
 #define GSM_UNPACKED_FRAME_SIZE_IN_SHORTS 160
 
-void * (*gsm_session_create)() = 0;
-void (*gsm_session_destroy)(void *) = 0;
-void (*gsm_session_encode)(void *, short *, unsigned char *) = 0;
-int (*gsm_session_decode)(void *, unsigned char *, short *) = 0;
+void * (*gsm_session_create)() = nullptr;
+void (*gsm_session_destroy)(void *) = nullptr;
+void (*gsm_session_encode)(void *, short *, unsigned char *) = nullptr;
+int (*gsm_session_decode)(void *, unsigned char *, short *) = nullptr;
 
-void * g_pGSMCodecLibraryHandle = 0;
+void * g_pGSMCodecLibraryHandle = nullptr;
 
 bool kvi_gsm_codec_init()
 {
@@ -57,7 +57,7 @@ bool kvi_gsm_codec_init()
 	if(!(gsm_session_create && gsm_session_destroy && gsm_session_encode && gsm_session_decode))
 	{
 		dlclose(g_pGSMCodecLibraryHandle);
-		g_pGSMCodecLibraryHandle = 0;
+		g_pGSMCodecLibraryHandle = nullptr;
 		return false;
 	}
 	return true;
@@ -68,7 +68,7 @@ void kvi_gsm_codec_done()
 	if(g_pGSMCodecLibraryHandle)
 	{
 		dlclose(g_pGSMCodecLibraryHandle);
-		g_pGSMCodecLibraryHandle = 0;
+		g_pGSMCodecLibraryHandle = nullptr;
 	}
 }
 

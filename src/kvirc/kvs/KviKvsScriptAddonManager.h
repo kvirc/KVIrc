@@ -43,12 +43,12 @@ class KVIRC_API KviKvsScriptAddon : public KviHeapObject
 protected:
 	KviKvsScriptAddon();
 	KviKvsScriptAddon(
-	    const QString & szName,
-	    const QString & szVersion,
+	    QString szName,
+	    QString szVersion,
 	    const QString & szVisibleNameCode,
 	    const QString & szDescriptionCode,
 	    const QString & szUninstallCallbackCode,
-	    const QString & szIconId);
+	    QString szIconId);
 
 public:
 	KviKvsScriptAddon(const KviKvsScriptAddon & a);

@@ -28,8 +28,8 @@
 
 #include <QDialog>
 
-class QPushButton;
 class QGridLayout;
+class QPushButton;
 
 class OptionsWidgetContainer : public QDialog
 {
@@ -39,9 +39,9 @@ public:
 	~OptionsWidgetContainer();
 
 protected:
-	KviOptionsWidget * m_pOptionsWidget;
-	QPushButton * m_pCancel;
-	QGridLayout * m_pLayout;
+	KviOptionsWidget * m_pOptionsWidget = nullptr;
+	QPushButton * m_pCancel = nullptr;
+	QGridLayout * m_pLayout = nullptr;
 
 public:
 	void setup(KviOptionsWidget * w);
@@ -49,10 +49,10 @@ public:
 	void setNextToLeft(QWidget * pWidget);
 
 protected:
-	virtual void closeEvent(QCloseEvent * e);
-	virtual void showEvent(QShowEvent * e);
-	virtual void childEvent(QChildEvent * e);
-	virtual void reject();
+	void closeEvent(QCloseEvent * e) override;
+	void showEvent(QShowEvent * e) override;
+	void childEvent(QChildEvent * e) override;
+	void reject() override;
 protected slots:
 	void okClicked();
 	void cancelClicked();

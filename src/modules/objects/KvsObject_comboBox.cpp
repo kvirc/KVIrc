@@ -306,8 +306,6 @@ KVSO_CLASS_FUNCTION(comboBox, setCurrentItem)
 }
 KVSO_CLASS_FUNCTION(comboBox, popup)
 {
-	Q_UNUSED(c);
-
 	if(widget())
 		((QComboBox *)widget())->showPopup();
 	return true;

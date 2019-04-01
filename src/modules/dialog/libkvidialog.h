@@ -49,7 +49,7 @@ public:
 	    KviWindow * pWindow, bool modal = false);
 	~KviKvsCallbackMessageBox();
 protected slots:
-	virtual void done(int code);
+	void done(int code) override;
 };
 
 class KviKvsCallbackTextInput : public QDialog, public KviKvsCallbackObject
@@ -79,13 +79,13 @@ protected:
 	int m_iDefaultButton;
 
 protected:
-	virtual void closeEvent(QCloseEvent * e);
-	virtual void showEvent(QShowEvent * e);
+	void closeEvent(QCloseEvent * e) override;
+	void showEvent(QShowEvent * e) override;
 protected slots:
 	void b0Clicked();
 	void b1Clicked();
 	void b2Clicked();
-	virtual void done(int code);
+	void done(int code) override;
 };
 
 class KviKvsCallbackFileDialog : public KviFileDialog, public KviKvsCallbackObject
@@ -102,7 +102,7 @@ public:
 	~KviKvsCallbackFileDialog();
 
 protected:
-	virtual void done(int code);
+	void done(int code) override;
 };
 
 class KviKvsCallbackImageDialog : public KviImageDialog, public KviKvsCallbackObject
@@ -120,7 +120,7 @@ public:
 	~KviKvsCallbackImageDialog();
 
 protected:
-	virtual void done(int code);
+	void done(int code) override;
 };
 
 #endif //_KVI_DIALOG_H_

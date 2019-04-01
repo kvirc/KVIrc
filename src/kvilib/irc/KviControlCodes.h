@@ -42,8 +42,8 @@
 #include "kvi_settings.h"
 #include "KviCString.h"
 
-#define KVI_MIRCCOLOR_MAX_FOREGROUND 15
-#define KVI_MIRCCOLOR_MAX_BACKGROUND 15
+#define KVI_MIRCCOLOR_MAX 15
+#define KVI_EXTCOLOR_MAX 98
 
 // ASCII Stuff: the following defines are meant to be escape sequences
 //              that can go through an IRC connection
@@ -155,6 +155,7 @@ namespace KviControlCodes
 		Escape = 0x04,      /**< Escape, totally artificial and internal to KviIrcView */
 		UnEscape = 0x05,    /**< Unescape, totally artificial and internal to KviIrcView */
 		UnIcon = 0x06,      /**< Unicon, totally artificial and internal to KviIrcView */
+		ArbitraryBreak = UnIcon, /**< Arbitrary block break, totally artificial and internal to KviIrcView */
 		Reset = 0x0f,       /**< Reset */
 		Reverse = 0x16,     /**< Reverse */
 		Icon = 0x1c,        /**< Icon, KVIrc control code */
@@ -178,6 +179,8 @@ namespace KviControlCodes
 	inline const QChar * getUnicodeColorBytes(const QChar * pData, unsigned char * pcByte1, unsigned char * pcByte2)
 		{ return (QChar *)getColorBytesW((const kvi_wchar_t *)pData,pcByte1,pcByte2); }
 #endif
+
+	KVILIB_API kvi_u32_t getExtendedColor(int index);
 }
 
 #endif //_KVI_CONTROLCODES_H_

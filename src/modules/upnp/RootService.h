@@ -55,7 +55,7 @@ namespace UPnP
 		// The constructor
 		RootService(const QString & hostname, int port, const QString & rootUrl);
 		// The destructor
-		virtual ~RootService();
+		~RootService();
 
 		// Return the device type
 		QString getDeviceType() const;
@@ -74,7 +74,7 @@ namespace UPnP
 
 	protected: // Protected methods
 		// The control point received a response to callInformationUrl()
-		virtual void gotInformationResponse(const QDomNode & response);
+		void gotInformationResponse(const QDomNode & response) override;
 
 	private: // Private methods
 		// Recursively add all devices and embedded devices to the deviceServices_ map

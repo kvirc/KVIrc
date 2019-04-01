@@ -38,35 +38,35 @@ class KTorrentDbusInterface : public TorrentInterface
 
 public:
 	KTorrentDbusInterface();
-	virtual ~KTorrentDbusInterface();
+	~KTorrentDbusInterface();
 
-	virtual int detect();
+	int detect() override;
 
-	virtual bool startAll();
-	virtual bool stopAll();
+	bool startAll() override;
+	bool stopAll() override;
 
-	virtual int count();
-	virtual bool start(int i);
-	virtual bool stop(int i);
-	virtual bool announce(int i);
-	virtual QString state(int i);
-	virtual QString name(int i);
-	virtual int fileCount(int i);
-	virtual QString fileName(int i, int file);
-	virtual QString filePriority(int i, int file);
-	virtual bool setFilePriority(int i, int file, const QString & prio);
+	int count() override;
+	bool start(int i) override;
+	bool stop(int i) override;
+	bool announce(int i) override;
+	QString state(int i) override;
+	QString name(int i) override;
+	int fileCount(int i) override;
+	QString fileName(int i, int file) override;
+	QString filePriority(int i, int file) override;
+	bool setFilePriority(int i, int file, const QString & prio) override;
 
-	virtual int maxUploadSpeed();
-	virtual int maxDownloadSpeed();
+	int maxUploadSpeed() override;
+	int maxDownloadSpeed() override;
 
-	virtual bool setMaxUploadSpeed(int kbytes_per_sec);
-	virtual bool setMaxDownloadSpeed(int kbytes_per_sec);
+	bool setMaxUploadSpeed(int kbytes_per_sec) override;
+	bool setMaxDownloadSpeed(int kbytes_per_sec) override;
 
-	virtual float speedUp();
-	virtual float speedDown();
+	float speedUp() override;
+	float speedDown() override;
 
-	virtual float trafficUp();
-	virtual float trafficDown();
+	float trafficUp() override;
+	float trafficDown() override;
 	/*
 	private slots:
 		// polls client and extracts information.

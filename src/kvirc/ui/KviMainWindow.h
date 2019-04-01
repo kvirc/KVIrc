@@ -38,35 +38,36 @@
 #include <unordered_set>
 #include <vector>
 
-class KviMenuBar;
-class KviWindowStack;
-class KviWindow;
-class KviConsoleWindow;
-class KviWindowListBase;
-class QSplitter;
 class KviConfigurationFile;
-class KviMexToolBar;
-class KviIrcContext;
+class KviConsoleWindow;
 class KviIrcConnection;
+class KviIrcContext;
+class KviMenuBar;
+class KviMexToolBar;
 class KviStatusBar;
-class QMenu;
 class KviTrayIcon;
+class KviWindow;
+class KviWindowListBase;
+class KviWindowStack;
+class QMenu;
+class QSplitter;
 class QShortcut;
 class QString;
 
-class KVIRC_API KviMainWindow : public KviTalMainWindow //, public KviIrcContextManager
+class KVIRC_API KviMainWindow : public KviTalMainWindow
 {
-	friend class KviWindow;
-	friend class KviConsoleWindow;
 	friend class KviApplication;
-	friend class KviIrcServerParser;
-	friend class KviMexToolBar;
-	friend class KviWindowStack;
-	friend class KviIrcContext;
+	friend class KviConsoleWindow;
 	friend class KviIrcConnection;
+	friend class KviIrcContext;
+	friend class KviIrcServerParser;
 	friend class KviLagMeter;
+	friend class KviMexToolBar;
+	friend class KviToolBar;
 	friend class KviUserListView;
 	friend class KviUserListViewArea;
+	friend class KviWindow;
+	friend class KviWindowStack;
 	Q_OBJECT
 public:
 	KviMainWindow(QWidget * pParent);
@@ -78,31 +79,31 @@ protected:
 	KviMenuBar * m_pMenuBar;                                       // the main menu bar
 	KviWindowStack * m_pWindowStack;                               // the mdi manager widget (child of the splitter)
 	std::unordered_set<KviMexToolBar *> m_pModuleExtensionToolBarList; // the module extension toolbars
-	KviWindowListBase * m_pWindowList;                             // the WindowList
-	KviStatusBar * m_pStatusBar;
+	KviWindowListBase * m_pWindowList = nullptr;                   // the WindowList
+	KviStatusBar * m_pStatusBar = nullptr;
 	// the mdi workspace child windows
 	std::list<KviWindow *> m_WinList;             // the main list of windows
-	KviIrcContext * m_pActiveContext;             // the context of the m_pActiveWindow
+	KviIrcContext * m_pActiveContext = nullptr;   // the context of the m_pActiveWindow
 	// other
-	KviTrayIcon * m_pTrayIcon;                    // the frame's dock extension: this should be prolly moved ?
+	KviTrayIcon * m_pTrayIcon = nullptr;          // the frame's dock extension: this should be prolly moved ?
 	std::vector<QShortcut *> m_pAccellerators;    // global application accellerators
 public:
 	// the mdi manager: handles mdi children
-	KviWindowStack * windowStack() { return m_pWindowStack; };
+	KviWindowStack * windowStack() const { return m_pWindowStack; }
 	// the splitter is the central widget for this frame
-	QSplitter * splitter() { return m_pSplitter; };
+	QSplitter * splitter() const { return m_pSplitter; }
 	// KviWindowListBase is the base class for KviTreeWindowList and the KviClassicWindowList
-	KviWindowListBase * windowListWidget() { return m_pWindowList; };
+	KviWindowListBase * windowListWidget() const { return m_pWindowList; }
 	// well.. the menu bar :D
-	KviMenuBar * mainMenuBar() { return m_pMenuBar; };
-	KviStatusBar * mainStatusBar() { return m_pStatusBar; };
-	// this function may return 0 if the active window has no irc context
-	KviIrcContext * activeContext() { return m_pActiveContext; };
+	KviMenuBar * mainMenuBar() const { return m_pMenuBar; }
+	KviStatusBar * mainStatusBar() const { return m_pStatusBar; }
+	// this function may return nullptr if the active window has no irc context
+	KviIrcContext * activeContext() const { return m_pActiveContext; }
 	// shortcut to a = activeContext(); return a ? a->connection() : 0
 	KviIrcConnection * activeConnection();
 	// The list of the windows belonging to this frame
 	// Note that the windows may be also undocked, but they are still owned by the frame
-	std::list<KviWindow *> & windowList() { return m_WinList; };
+	std::list<KviWindow *> & windowList() { return m_WinList; }
 	// Sets the specified window to be the active one
 	// Raises it and focuses it
 	void setActiveWindow(KviWindow * wnd);
@@ -116,9 +117,9 @@ public:
 	// window list. This is useful for asynchronous functions
 	// that keep a window pointer and need to ensure that it is still
 	// valid after an uncontrolled delay. (Think of a /timer implementation)
-	bool windowExists(KviWindow * wnd) { return (std::find(m_WinList.begin(), m_WinList.end(), wnd) != m_WinList.end()); };
+	bool windowExists(KviWindow * wnd) const { return (std::find(m_WinList.begin(), m_WinList.end(), wnd) != m_WinList.end()); }
 	// The number of consoles in this frame
-	unsigned int consoleCount();
+	int consoleCount();
 	// Creates a new console window. DON'T use the KviConsoleWindow constructor directly.
 	// (The script creation events are triggered from here)
 	KviConsoleWindow * createNewConsole(bool bFirstInFrame = false, bool bShowIt = true);
@@ -127,13 +128,13 @@ public:
 	// Exceptions are the startup and the shutdown (see activeWindow())
 	KviConsoleWindow * firstConsole();
 	// Returns the first console that has no connection in progress
-	// This function CAN return 0 if all the consoles are connected
+	// This function CAN return nullptr if all the consoles are connected
 	KviConsoleWindow * firstNotConnectedConsole();
 	// this is explicitly dedicated to the TrayIcon module
-	void setTrayIcon(KviTrayIcon * e) { m_pTrayIcon = e; };
+	void setTrayIcon(KviTrayIcon * e) { m_pTrayIcon = e; }
 	// returns the dockExtension applet. Useful for calling refresh() when
 	// some particular event happens
-	KviTrayIcon * trayIcon() { return m_pTrayIcon; };
+	KviTrayIcon * trayIcon() const { return m_pTrayIcon; }
 	// helper for saving the window properties
 	void saveWindowProperties(KviWindow * wnd, const QString & szSection);
 	// finds the module extension toolbar with the specified identifier
@@ -148,7 +149,7 @@ public:
 	void setIconSize(unsigned int uSize);
 	void setButtonStyle(unsigned int uStyle);
 	// allows scripts and actions to override builtin accellerators, avoiding ambiguous events
-	void freeAccelleratorKeySequence(QString & key);
+	void freeAccelleratorKeySequence(const QString & key);
 	// called by children windows when they have updated their titles.
 	void updateWindowTitle(KviWindow * wnd);
 public slots:
@@ -183,13 +184,13 @@ protected:
 	void childConnectionServerInfoChange(KviIrcConnection * c);
 	void childWindowSelectionStateChange(KviWindow * pWnd, bool bGotSelectionNow);
 
-	virtual void closeEvent(QCloseEvent * e);
-	virtual void hideEvent(QHideEvent * e);
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void moveEvent(QMoveEvent * e);
-	virtual bool focusNextPrevChild(bool next);
-	virtual void changeEvent(QEvent * event);
-	virtual void contextMenuEvent(QContextMenuEvent * event);
+	void closeEvent(QCloseEvent * e) override;
+	void hideEvent(QHideEvent * e) override;
+	void resizeEvent(QResizeEvent * e) override;
+	void moveEvent(QMoveEvent * e) override;
+	bool focusNextPrevChild(bool next) override;
+	void changeEvent(QEvent * event) override;
+	void contextMenuEvent(QContextMenuEvent * event) override;
 
 	void updatePseudoTransparency();
 	void installAccelerators();

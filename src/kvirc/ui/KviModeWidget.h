@@ -1,5 +1,5 @@
-#ifndef _KVI_MODEW_H_
-#define _KVI_MODEW_H_
+#ifndef _KVI_MODEWIDGET_H_
+#define _KVI_MODEWIDGET_H_
 //============================================================================
 //
 //   File : KviModeWidget.h
@@ -26,30 +26,38 @@
 
 #include "KviThemedLineEdit.h"
 
+#include <map>
+
 class KviChannelWindow;
 class KviIrcConnectionServerInfo;
 
 class KVIRC_API KviModeWidget : public KviThemedLineEdit
 {
 	Q_OBJECT
-
 public:
-	KviModeWidget(QWidget * par, KviChannelWindow * chan, const char * name = 0);
+	KviModeWidget(QWidget * par, KviChannelWindow & chan, const char * name = nullptr);
 	~KviModeWidget();
+
 	void reset();
 	void refreshModes();
 
 private:
-	KviChannelWindow * m_pChannel;
+	KviChannelWindow & m_Channel;
+
+	std::map<QChar, QString> parseChannelModeString(const QString& szModes);
+	void sendModeChanges(const QString szModeString, const QStringList params);
 
 protected:
-	void mouseDoubleClickEvent(QMouseEvent * e);
-	void keyReleaseEvent(QKeyEvent * e);
-	bool modeNeedsParameterOnlyWhenSet(char cMode);
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
+	void keyReleaseEvent(QKeyEvent * e) override;
+
+	bool isParameterOnlyNeededWhenModeIsSet(const QChar & cMode);
+
 public slots:
-	void editorReturnPressed();
+	void processModeChanges();
+
 signals:
-	void setMode(QString & szMode);
+	void setMode(const QString & szMode);
 };
 
-#endif //_KVI_MODEW_H_
+#endif //_KVI_MODEWIDGET_H_

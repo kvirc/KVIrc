@@ -31,7 +31,7 @@
 #define _KVI_MALLOC_CPP_
 #include "KviMemory.h"
 
-#include <stdio.h>
+#include <cstdio>
 
 #ifdef COMPILE_MEMORY_PROFILE
 #include "KviPointerList.h"
@@ -47,25 +47,25 @@ namespace KviMemory
 	// Used to find memory leaks etc...
 	//
 
-	typedef struct _KviMallocEntry
+	struct KviMallocEntry
 	{
-		struct _KviMallocEntry * prev;
+		KviMallocEntry * prev;
 		void * pointer;
 		int size;
 		void * return_addr1;
 		void * return_addr2;
-		struct _KviMallocEntry * next;
-	} KviMallocEntry;
+		KviMallocEntry * next;
+	};
 
 	int g_iMaxRequestSize = 0;
-	void * g_pMaxRequestReturnAddress1 = 0;
-	void * g_pMaxRequestReturnAddress2 = 0;
+	void * g_pMaxRequestReturnAddress1 = nullptr;
+	void * g_pMaxRequestReturnAddress2 = nullptr;
 	unsigned int g_iMallocCalls = 0;
 	unsigned int g_iReallocCalls = 0;
 	unsigned int g_iFreeCalls = 0;
 	unsigned int g_iTotalMemAllocated = 0;
 	unsigned int g_uAllocationPeak = 0;
-	KviMallocEntry * g_pEntries = 0;
+	KviMallocEntry * g_pEntries = nullptr;
 
 	void * allocate(int size)
 	{
@@ -85,7 +85,7 @@ namespace KviMemory
 		e->return_addr1 = __builtin_return_address(1);
 		e->return_addr2 = __builtin_return_address(2);
 		e->next = g_pEntries;
-		e->prev = 0;
+		e->prev = nullptr;
 		if(g_pEntries)
 			g_pEntries->prev = e;
 		g_pEntries = e;
@@ -151,7 +151,7 @@ namespace KviMemory
 					if(e != g_pEntries)
 						fprintf(stderr, "Mem profiling internal error!\n");
 					if(e->next)
-						e->next->prev = 0;
+						e->next->prev = nullptr;
 					g_pEntries = e->next;
 				}
 				free(e);
@@ -238,7 +238,7 @@ namespace KviMemory
 
 	// WE WANT repnz; movsq\n"!!!
 
-	inline void copy(void * dst_ptr,const void *src_ptr,int len)
+	void copy(void * dst_ptr,const void *src_ptr,int len)
 	{
 		__asm__ __volatile__(
 			"	cld\n"
@@ -256,7 +256,7 @@ namespace KviMemory
 		);
 	}
 
-	inline void copy(void * dst_ptr,const void *src_ptr,int len)
+	void copy(void * dst_ptr,const void *src_ptr,int len)
 	{
 		__asm__ __volatile__(
 			"	cld\n"
@@ -447,7 +447,7 @@ namespace KviMemory
 	//   only by gcc
 	//
 
-	inline bool kvi_strEqualCS(const char * pcStr1, const char * pcStr2)
+	bool kvi_strEqualCS(const char * pcStr1, const char * pcStr2)
 	{
 		// An instruction pattern is really useful in this case.
 		// When inlining, GCC can optimize to load esi and edi
@@ -473,7 +473,7 @@ namespace KviMemory
 		return bEax;
 	}
 
-	inline bool kvi_strEqualCSN(const char * pcStr1, const char * pcStr2, int iLen)
+	bool kvi_strEqualCSN(const char * pcStr1, const char * pcStr2, int iLen)
 	{
 		register bool bEax;
 		__asm__ __volatile__ (
@@ -508,7 +508,7 @@ namespace KviMemory
 	// These will NOT work with localizable characters:
 	// 'a' with umlaut will be not equal to 'A' with umlaut
 
-	inline bool kvi_strEqualNoLocaleCI(const char * pcStr1, const char * pcStr2)
+	bool kvi_strEqualNoLocaleCI(const char * pcStr1, const char * pcStr2)
 	{
 		// Trivial implementation
 		// Ignores completely locales....only A-Z chars are transformed to a-z
@@ -548,7 +548,7 @@ namespace KviMemory
 		return bEax;
 	}
 
-	inline bool kvi_strEqualNoLocaleCIN(const char * pcStr1, const char * pcStr2, int iLen)
+	bool kvi_strEqualNoLocaleCIN(const char * pcStr1, const char * pcStr2, int iLen)
 	{
 
 		register int iReg;
@@ -589,7 +589,7 @@ namespace KviMemory
 		return bEax;
 	}
 
-	inline int kvi_strLen(const char * pcStr)
+	int kvi_strLen(const char * pcStr)
 	{
 		register int iEcx;
 		__asm__ __volatile__(

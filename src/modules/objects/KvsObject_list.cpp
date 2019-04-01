@@ -26,7 +26,7 @@
 #include "KviMemory.h"
 #include "KviLocale.h"
 #include "KvsObject_list.h"
-#include <stdlib.h>
+#include <cstdlib>
 
 /*
 	@doc: list
@@ -48,6 +48,23 @@
 		[classfnc:list]$moveNext[/classfnc](),[classfnc:list]$movePrev[/classfnc](),
 		[classfnc:list]$current[/classfnc]() and [classfnc:list]$eof[/classfnc]() functions.
 	@functions:
+		!fn: $sort(<bReverse:bool>)
+		Sorts items in the list alphabetically ($true) or in reverse order ($false); Default to $false.
+		[example]
+			%list=$new(list);[br]
+			%list->$append('Foo');[br]
+			%list->$append('Bar');[br]
+			%list->$append('Dummy');[br]
+			%list->$append('Aria');[br]
+			[br]
+			%list->$sort(true);[br]
+			%list->$moveFirst();[br]
+			while(%list->$eof())[br]
+			{[br]
+			  echo %list->$current();[br]
+			  %list->$moveNext();[br]
+			}[br]
+		[/example]
 		!fn: <integer> $count()
 		Returns the number of items in the list
 		!fn: <boolean> $isEmpty()
@@ -168,7 +185,7 @@ KVSO_CLASS_FUNCTION(list, current)
 KVSO_CLASS_FUNCTION(list, eof)
 {
 	CHECK_INTERNAL_POINTER(m_pDataList)
-	c->returnValue()->setBoolean(m_pDataList->current() != nullptr);
+	c->returnValue()->setBoolean(m_pDataList->safeCurrent() != nullptr);
 	return true;
 }
 
@@ -299,7 +316,7 @@ KVSO_CLASS_FUNCTION(list, clear)
 	return true;
 }
 
-inline int kvi_compare(const KviKvsVariant * p1, const KviKvsVariant * p2)
+int kvi_compare(const KviKvsVariant * p1, const KviKvsVariant * p2)
 {
 	return p1->compare(p2);
 }
@@ -307,7 +324,13 @@ inline int kvi_compare(const KviKvsVariant * p1, const KviKvsVariant * p2)
 KVSO_CLASS_FUNCTION(list, sort)
 {
 	CHECK_INTERNAL_POINTER(m_pDataList)
+	bool bReverse;
+	KVSO_PARAMETERS_BEGIN(c)
+	KVSO_PARAMETER("bReverse", KVS_PT_BOOL, KVS_PF_OPTIONAL, bReverse)
+	KVSO_PARAMETERS_END(c)
 	m_pDataList->sort();
+	if(bReverse)
+		m_pDataList->invert();
 	return true;
 }
 

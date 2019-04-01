@@ -26,10 +26,7 @@
 #include "KviKvsScript.h"
 
 KviAsyncWhoisInfo::KviAsyncWhoisInfo()
-{
-	pCallback = nullptr;
-	pMagic = nullptr;
-}
+    = default;
 
 KviAsyncWhoisInfo::~KviAsyncWhoisInfo()
 {

@@ -54,16 +54,14 @@ protected:
 	QLineEdit * m_pThemeVersionEdit;
 	QLineEdit * m_pAuthorNameEdit;
 	QWidget * m_pImageSelectionPage;
-	QPushButton * m_pOkButton;
 	QCheckBox * m_pSaveIconsCheckBox;
 
 protected:
-	virtual void accept();
+	void accept() override;
 	bool saveTheme();
 protected slots:
 	void makeScreenshot();
 	void imageSelectionChanged(const QString & szImagePath);
-	//void themeNameChanged(const QString &txt);
 };
 
 #endif //!_SAVETHEMEDIALOG_H_

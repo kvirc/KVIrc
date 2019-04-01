@@ -72,9 +72,8 @@ bool kvi_dcc_video_is_valid_codec(const char * codecName)
 	return false;
 }
 
-static DccVideoCodec * kvi_dcc_video_get_codec(const char * codecName)
+static DccVideoCodec * kvi_dcc_video_get_codec([[maybe_unused]] const char * codecName)
 {
-	Q_UNUSED(codecName);
 #ifndef COMPILE_DISABLE_OGG_THEORA
 	if(kvi_strEqualCI("theora", codecName))
 		return new DccVideoTheoraCodec();
@@ -259,7 +258,7 @@ bool DccVideoThread::handleIncomingData(KviDccThreadIncomingData * data, bool bC
 				// no more data in the buffer
 				KVI_ASSERT(data->iLen == 0);
 				KviMemory::free(data->buffer);
-				data->buffer = end = aux = 0;
+				data->buffer = end = aux = nullptr;
 			}
 			postEvent(parent(), e);
 		}
@@ -281,7 +280,7 @@ bool DccVideoThread::handleIncomingData(KviDccThreadIncomingData * data, bool bC
 			e->setData(s);
 			data->iLen = 0;
 			KviMemory::free(data->buffer);
-			data->buffer = 0;
+			data->buffer = nullptr;
 			postEvent(parent(), e);
 		}
 	}
@@ -396,8 +395,8 @@ DccVideoWindow::DccVideoWindow(DccDescriptor * dcc, const char * name)
     : DccWindow(KviWindow::DccVideo, name, dcc)
 {
 	m_pDescriptor = dcc;
-	m_pSlaveThread = 0;
-	m_pszTarget = 0;
+	m_pSlaveThread = nullptr;
+	m_pszTarget = nullptr;
 
 	m_pButtonBox = new KviTalHBox(this);
 
@@ -501,51 +500,51 @@ DccVideoWindow::~DccVideoWindow()
 	if(m_pInVideoLabel)
 	{
 		delete m_pInVideoLabel;
-		m_pInVideoLabel = 0;
+		m_pInVideoLabel = nullptr;
 	}
 	if(m_pCameraView)
 	{
 		delete m_pCameraView;
-		m_pCameraView = 0;
+		m_pCameraView = nullptr;
 	}
 	if(m_pCameraImage)
 	{
 		delete m_pCameraImage;
-		m_pCameraImage = 0;
+		m_pCameraImage = nullptr;
 	}
 	if(m_pCamera)
 	{
 		delete m_pCamera;
-		m_pCamera = 0;
+		m_pCamera = nullptr;
 	}
 	if(m_pCDevices)
 	{
 		delete m_pCDevices;
-		m_pCDevices = 0;
+		m_pCDevices = nullptr;
 	}
 	if(m_pCInputs)
 	{
 		delete m_pCInputs;
-		m_pCInputs = 0;
+		m_pCInputs = nullptr;
 	}
 	if(m_pCStandards)
 	{
 		delete m_pCStandards;
-		m_pCStandards = 0;
+		m_pCStandards = nullptr;
 	}
 	if(m_pVideoLabel[0])
 	{
 		delete m_pVideoLabel[2];
 		delete m_pVideoLabel[1];
 		delete m_pVideoLabel[0];
-		m_pVideoLabel[2] = 0;
-		m_pVideoLabel[1] = 0;
-		m_pVideoLabel[0] = 0;
+		m_pVideoLabel[2] = nullptr;
+		m_pVideoLabel[1] = nullptr;
+		m_pVideoLabel[0] = nullptr;
 	}
 	if(m_pLayout)
 	{
 		delete m_pLayout;
-		m_pLayout = 0;
+		m_pLayout = nullptr;
 	}
 
 	g_pDccBroker->unregisterDccWindow(this);
@@ -554,7 +553,7 @@ DccVideoWindow::~DccVideoWindow()
 	{
 		m_pSlaveThread->terminate();
 		delete m_pSlaveThread;
-		m_pSlaveThread = 0;
+		m_pSlaveThread = nullptr;
 	}
 
 	KviThreadManager::killPendingEvents(this);
@@ -562,7 +561,7 @@ DccVideoWindow::~DccVideoWindow()
 	if(m_pszTarget)
 	{
 		delete m_pszTarget;
-		m_pszTarget = 0;
+		m_pszTarget = nullptr;
 	}
 }
 
@@ -792,7 +791,7 @@ void DccVideoWindow::ownAction(const QString & text)
 			return;
 		KviCString buf(KviCString::Format, "%cACTION %s%c\r\n", 0x01, d, 0x01);
 		m_tmpTextDataOut.append(buf.ptr(), buf.len());
-		output(KVI_OUT_ACTION, "%Q %Q", &(m_pDescriptor->szLocalNick), &szTmpBuffer);
+		output(KVI_OUT_OWNACTION, "%Q %Q", &(m_pDescriptor->szLocalNick), &szTmpBuffer);
 	}
 	else
 	{

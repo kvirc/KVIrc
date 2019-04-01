@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2016-12-07 16:01+0000\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2018-04-09 20:32+0000\n"
 "Last-Translator: Robert Förster <Dessa@gmake.de>\n"
 "Language-Team: German (http://www.transifex.com/kvirc/KVIrc/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -20,232 +20,232 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/defscript/actions.kvs:5
-msgid "Option Controllers"
+msgid "Global Option Controllers"
 msgstr ""
 
 #: data/defscript/actions.kvs:5
 msgid ""
-"Opens a control dialog for easy CTCP ignore and joins/parts/quits "
+"Opens a global control dialog for easy CTCP ignore and joins/parts/quits "
 "management."
 msgstr ""
 
 #: data/defscript/actions.kvs:41
-msgid "Option Controllers - KVIrc"
+msgid "Global Option Controllers - KVIrc"
 msgstr ""
 
-#: data/defscript/actions.kvs:58
+#: data/defscript/actions.kvs:53
 msgid "CTCP Ignore Controllers"
 msgstr ""
 
-#: data/defscript/actions.kvs:68
+#: data/defscript/actions.kvs:63
 msgid "Enable ignore for CTCP PING"
 msgstr ""
 
-#: data/defscript/actions.kvs:69
+#: data/defscript/actions.kvs:64
 msgid "When checked, all CTCP PING requests are ignored."
 msgstr ""
 
-#: data/defscript/actions.kvs:78
+#: data/defscript/actions.kvs:73
 msgid "Disabled ignore for CTCP PING"
 msgstr ""
 
-#: data/defscript/actions.kvs:83
+#: data/defscript/actions.kvs:78
 msgid "Enabled ignore for CTCP PING"
 msgstr ""
 
-#: data/defscript/actions.kvs:90
+#: data/defscript/actions.kvs:85
 msgid "Enable ignore for CTCP FINGER"
 msgstr ""
 
-#: data/defscript/actions.kvs:91
+#: data/defscript/actions.kvs:86
 msgid "When checked, all CTCP FINGER requests are ignored."
 msgstr ""
 
-#: data/defscript/actions.kvs:100
+#: data/defscript/actions.kvs:95
 msgid "Disabled ignore for CTCP FINGER"
 msgstr ""
 
-#: data/defscript/actions.kvs:105
+#: data/defscript/actions.kvs:100
 msgid "Enabled ignore for CTCP FINGER"
 msgstr ""
 
-#: data/defscript/actions.kvs:112
+#: data/defscript/actions.kvs:107
 msgid "Enable ignore for CTCP VERSION"
 msgstr ""
 
-#: data/defscript/actions.kvs:113
+#: data/defscript/actions.kvs:108
 msgid "When checked, all CTCP VERSION requests are ignored."
 msgstr ""
 
-#: data/defscript/actions.kvs:122
+#: data/defscript/actions.kvs:117
 msgid "Disabled ignore for CTCP VERSION"
 msgstr ""
 
-#: data/defscript/actions.kvs:127
+#: data/defscript/actions.kvs:122
 msgid "Enabled ignore for CTCP VERSION"
 msgstr ""
 
-#: data/defscript/actions.kvs:134
+#: data/defscript/actions.kvs:129
 msgid "Enable ignore for CTCP USERINFO"
 msgstr ""
 
-#: data/defscript/actions.kvs:135
+#: data/defscript/actions.kvs:130
 msgid "When checked, all CTCP USERINFO requests are ignored."
 msgstr ""
 
-#: data/defscript/actions.kvs:144
+#: data/defscript/actions.kvs:139
 msgid "Disabled ignore for CTCP USERINFO"
 msgstr ""
 
-#: data/defscript/actions.kvs:149
+#: data/defscript/actions.kvs:144
 msgid "Enabled ignore for CTCP USERINFO"
 msgstr ""
 
-#: data/defscript/actions.kvs:156
+#: data/defscript/actions.kvs:151
 msgid "Enable ignore for CTCP CLIENTINFO"
 msgstr ""
 
-#: data/defscript/actions.kvs:157
+#: data/defscript/actions.kvs:152
 msgid "When checked, all CTCP CLIENTINFO requests are ignored."
 msgstr ""
 
-#: data/defscript/actions.kvs:166
+#: data/defscript/actions.kvs:161
 msgid "Disabled ignore for CTCP CLIENTINFO"
 msgstr ""
 
-#: data/defscript/actions.kvs:171
+#: data/defscript/actions.kvs:166
 msgid "Enabled ignore for CTCP CLIENTINFO"
 msgstr ""
 
-#: data/defscript/actions.kvs:178
+#: data/defscript/actions.kvs:173
 msgid "Enable ignore for CTCP SOURCE"
 msgstr ""
 
-#: data/defscript/actions.kvs:179
+#: data/defscript/actions.kvs:174
 msgid "When checked, all CTCP SOURCE requests are ignored."
 msgstr ""
 
-#: data/defscript/actions.kvs:188
+#: data/defscript/actions.kvs:183
 msgid "Disabled ignore for CTCP SOURCE"
 msgstr ""
 
-#: data/defscript/actions.kvs:193
+#: data/defscript/actions.kvs:188
 msgid "Enabled ignore for CTCP SOURCE"
 msgstr ""
 
-#: data/defscript/actions.kvs:200
+#: data/defscript/actions.kvs:195
 msgid "Enable ignore for CTCP TIME"
 msgstr ""
 
-#: data/defscript/actions.kvs:201
+#: data/defscript/actions.kvs:196
 msgid "When checked, all CTCP TIME requests are ignored."
 msgstr ""
 
-#: data/defscript/actions.kvs:210
+#: data/defscript/actions.kvs:205
 msgid "Disabled ignore for CTCP TIME"
 msgstr ""
 
-#: data/defscript/actions.kvs:215
+#: data/defscript/actions.kvs:210
 msgid "Enabled ignore for CTCP TIME"
 msgstr ""
 
-#: data/defscript/actions.kvs:222
+#: data/defscript/actions.kvs:217
 msgid "Enable ignore for CTCP PAGE"
 msgstr ""
 
-#: data/defscript/actions.kvs:223
+#: data/defscript/actions.kvs:218
 msgid "When checked, all CTCP PAGE requests are ignored."
 msgstr ""
 
-#: data/defscript/actions.kvs:232
+#: data/defscript/actions.kvs:227
 msgid "Disabled ignore for CTCP PAGE"
 msgstr ""
 
-#: data/defscript/actions.kvs:237
+#: data/defscript/actions.kvs:232
 msgid "Enabled ignore for CTCP PAGE"
 msgstr ""
 
-#: data/defscript/actions.kvs:244
+#: data/defscript/actions.kvs:239
 msgid "Enable ignore for CTCP AVATAR"
 msgstr ""
 
-#: data/defscript/actions.kvs:245
+#: data/defscript/actions.kvs:240
 msgid "When checked, all CTCP AVATAR requests are ignored."
 msgstr ""
 
-#: data/defscript/actions.kvs:254
+#: data/defscript/actions.kvs:249
 msgid "Disabled ignore for CTCP AVATAR"
 msgstr ""
 
-#: data/defscript/actions.kvs:259
+#: data/defscript/actions.kvs:254
 msgid "Enabled ignore for CTCP AVATAR"
 msgstr ""
 
-#: data/defscript/actions.kvs:266
+#: data/defscript/actions.kvs:261
 msgid "Enable ignore for CTCP DCC"
 msgstr ""
 
-#: data/defscript/actions.kvs:267
+#: data/defscript/actions.kvs:262
 msgid "When checked, all CTCP DCC requests are ignored."
 msgstr ""
 
-#: data/defscript/actions.kvs:276
+#: data/defscript/actions.kvs:271
 msgid "Disabled ignore for CTCP DCC"
 msgstr ""
 
-#: data/defscript/actions.kvs:281
+#: data/defscript/actions.kvs:276
 msgid "Enabled ignore for CTCP DCC"
 msgstr ""
 
-#: data/defscript/actions.kvs:289
+#: data/defscript/actions.kvs:284
 msgid "Message Suppression Controllers"
 msgstr ""
 
-#: data/defscript/actions.kvs:299
+#: data/defscript/actions.kvs:294
 msgid "Enable join message suppression"
 msgstr ""
 
-#: data/defscript/actions.kvs:300
+#: data/defscript/actions.kvs:295
 msgid "When checked, all join messages are hidden."
 msgstr ""
 
-#: data/defscript/actions.kvs:309
+#: data/defscript/actions.kvs:304
 msgid "Disabled join message suppression"
 msgstr ""
 
-#: data/defscript/actions.kvs:314
+#: data/defscript/actions.kvs:309
 msgid "Enabled join message suppression"
 msgstr ""
 
-#: data/defscript/actions.kvs:322
+#: data/defscript/actions.kvs:317
 msgid "Enable part message suppression"
 msgstr ""
 
-#: data/defscript/actions.kvs:323 data/defscript/actions.kvs:344
+#: data/defscript/actions.kvs:318 data/defscript/actions.kvs:339
 msgid "When checked, all part messages are hidden."
 msgstr ""
 
-#: data/defscript/actions.kvs:331
+#: data/defscript/actions.kvs:326
 msgid "Disabled part message suppression"
 msgstr ""
 
-#: data/defscript/actions.kvs:336
+#: data/defscript/actions.kvs:331
 msgid "Enabled part message suppression"
 msgstr ""
 
-#: data/defscript/actions.kvs:343
+#: data/defscript/actions.kvs:338
 msgid "Enable quit message suppression"
 msgstr ""
 
-#: data/defscript/actions.kvs:353
+#: data/defscript/actions.kvs:348
 msgid "Disabled quit message suppression"
 msgstr ""
 
-#: data/defscript/actions.kvs:358
+#: data/defscript/actions.kvs:353
 msgid "Enabled quit message suppression"
 msgstr ""
 
-#: data/defscript/actions.kvs:370 data/defscript/popups.kvs:159
+#: data/defscript/actions.kvs:365 data/defscript/popups.kvs:159
 #: data/defscript/popups.kvs:330 data/defscript/popups.kvs:631
 #: data/defscript/popups.kvs:1228
 msgid "Close"
@@ -311,7 +311,7 @@ msgstr "Sende Wallop an"
 #: data/defscript/aliases.kvs:245 data/defscript/aliases.kvs:262
 #: data/defscript/aliases.kvs:280 data/defscript/aliases.kvs:382
 #: data/defscript/aliases.kvs:425 data/defscript/aliases.kvs:506
-#: data/defscript/aliases.kvs:574
+#: data/defscript/aliases.kvs:574 data/defscript/aliases.kvs:643
 msgid "Usage:"
 msgstr "Benutzung:"
 
@@ -403,7 +403,7 @@ msgid "Logging"
 msgstr "Loggen"
 
 #: data/defscript/events.kvs:92 data/defscript/events.kvs:105
-msgid "Option controllers"
+msgid "Global option controllers"
 msgstr ""
 
 #: data/defscript/popups.kvs:22 data/defscript/popups.kvs:1385
@@ -434,7 +434,7 @@ msgid "Multiple Users"
 msgstr "Mehrere Benutzer"
 
 #: data/defscript/popups.kvs:110 data/defscript/popups.kvs:209
-#: data/defscript/popups.kvs:1267 data/defscript/popups.kvs:1833
+#: data/defscript/popups.kvs:1267 data/defscript/popups.kvs:1834
 msgid "Notify Avatar"
 msgstr "Benutzerbild bekanntgeben"
 
@@ -458,38 +458,38 @@ msgid "Dock"
 msgstr "Andocken"
 
 #: data/defscript/popups.kvs:152 data/defscript/popups.kvs:793
-#: data/defscript/popups.kvs:1771
+#: data/defscript/popups.kvs:1772
 msgid "/WHOIS ?s (idle time)"
 msgstr "/WHOIS ?s (Leerlaufzeit)"
 
 #: data/defscript/popups.kvs:166 data/defscript/popups.kvs:342
 #: data/defscript/popups.kvs:441 data/defscript/popups.kvs:800
-#: data/defscript/popups.kvs:1779
+#: data/defscript/popups.kvs:1780
 msgid "&Information"
 msgstr "&Information"
 
 #: data/defscript/popups.kvs:168 data/defscript/popups.kvs:802
-#: data/defscript/popups.kvs:1781
+#: data/defscript/popups.kvs:1782
 msgid "/WHOIS ?s"
 msgstr "/WHOIS ?s"
 
 #: data/defscript/popups.kvs:173 data/defscript/popups.kvs:807
-#: data/defscript/popups.kvs:1786
+#: data/defscript/popups.kvs:1787
 msgid "/WHOWAS ?s"
 msgstr "/WHOWAS ?s"
 
 #: data/defscript/popups.kvs:178 data/defscript/popups.kvs:812
-#: data/defscript/popups.kvs:1791
+#: data/defscript/popups.kvs:1792
 msgid "/WHO ?s"
 msgstr "/WHO ?s"
 
 #: data/defscript/popups.kvs:185 data/defscript/popups.kvs:819
-#: data/defscript/popups.kvs:1798
+#: data/defscript/popups.kvs:1799
 msgid "DNS for"
 msgstr "DNS für"
 
 #: data/defscript/popups.kvs:191 data/defscript/popups.kvs:825
-#: data/defscript/popups.kvs:1804
+#: data/defscript/popups.kvs:1805
 msgid "Mask for"
 msgstr "Maske für"
 
@@ -498,7 +498,7 @@ msgid "&Ignore"
 msgstr "&Ignorieren"
 
 #: data/defscript/popups.kvs:207 data/defscript/popups.kvs:846
-#: data/defscript/popups.kvs:1827
+#: data/defscript/popups.kvs:1828
 msgid "&Registration"
 msgstr "&Registrieren"
 
@@ -635,7 +635,7 @@ msgid "Close All Dead Queries"
 msgstr "alle toten Queries schließen"
 
 #: data/defscript/popups.kvs:745
-msgid "&Option Controllers"
+msgid "Global &Option Controllers"
 msgstr ""
 
 #: data/defscript/popups.kvs:752
@@ -650,18 +650,18 @@ msgstr "Hervorhebungen in allen Channels aufheben"
 msgid "Unhighlight All Queries"
 msgstr "Hervorhebungen in allen Queries aufheben"
 
-#: data/defscript/popups.kvs:833 data/defscript/popups.kvs:1814
+#: data/defscript/popups.kvs:833 data/defscript/popups.kvs:1815
 msgid "&Query"
 msgstr "&Query"
 
-#: data/defscript/popups.kvs:848 data/defscript/popups.kvs:1274
-#: data/defscript/popups.kvs:1829
-msgid "&Highlight"
-msgstr "&Hervorheben"
-
-#: data/defscript/popups.kvs:850 data/defscript/popups.kvs:1831
+#: data/defscript/popups.kvs:848 data/defscript/popups.kvs:1830
 msgid "Ig&nore"
 msgstr "Ig&norieren"
+
+#: data/defscript/popups.kvs:850 data/defscript/popups.kvs:1274
+#: data/defscript/popups.kvs:1832
+msgid "&Highlight"
+msgstr "&Hervorheben"
 
 #: data/defscript/popups.kvs:852
 msgid "Notify avatar"
@@ -866,33 +866,33 @@ msgid "is not being ignored"
 msgstr "wird nicht ignoriert"
 
 #: data/defscript/popups.kvs:1421
-msgid "Enable Ignore"
-msgstr "Ignorieren aktivieren"
-
-#: data/defscript/popups.kvs:1426
 msgid "Ignore As..."
 msgstr "Ignoriere als..."
 
-#: data/defscript/popups.kvs:1428 data/defscript/popups.kvs:1436
-#: data/defscript/popups.kvs:1444 data/defscript/popups.kvs:1452
-#: data/defscript/popups.kvs:1460 data/defscript/popups.kvs:1468
-#: data/defscript/popups.kvs:1476 data/defscript/popups.kvs:1484
-#: data/defscript/popups.kvs:1492 data/defscript/popups.kvs:1500
-#: data/defscript/popups.kvs:1508 data/defscript/popups.kvs:1516
-#: data/defscript/popups.kvs:1524 data/defscript/popups.kvs:1532
-#: data/defscript/popups.kvs:1540 data/defscript/popups.kvs:1548
-#: data/defscript/popups.kvs:1556 data/defscript/popups.kvs:1564
-#: data/defscript/popups.kvs:1572 data/defscript/popups.kvs:1580
-#: data/defscript/popups.kvs:1588 data/defscript/popups.kvs:1596
-#: data/defscript/popups.kvs:1604 data/defscript/popups.kvs:1612
-#: data/defscript/popups.kvs:1620 data/defscript/popups.kvs:1628
-#: data/defscript/popups.kvs:1636
+#: data/defscript/popups.kvs:1423 data/defscript/popups.kvs:1431
+#: data/defscript/popups.kvs:1439 data/defscript/popups.kvs:1447
+#: data/defscript/popups.kvs:1455 data/defscript/popups.kvs:1463
+#: data/defscript/popups.kvs:1471 data/defscript/popups.kvs:1479
+#: data/defscript/popups.kvs:1487 data/defscript/popups.kvs:1495
+#: data/defscript/popups.kvs:1503 data/defscript/popups.kvs:1511
+#: data/defscript/popups.kvs:1519 data/defscript/popups.kvs:1527
+#: data/defscript/popups.kvs:1535 data/defscript/popups.kvs:1543
+#: data/defscript/popups.kvs:1551 data/defscript/popups.kvs:1559
+#: data/defscript/popups.kvs:1567 data/defscript/popups.kvs:1575
+#: data/defscript/popups.kvs:1583 data/defscript/popups.kvs:1591
+#: data/defscript/popups.kvs:1599 data/defscript/popups.kvs:1607
+#: data/defscript/popups.kvs:1615 data/defscript/popups.kvs:1623
+#: data/defscript/popups.kvs:1631
 msgid "Ignore As"
 msgstr "Ignoriere als"
 
+#: data/defscript/popups.kvs:1640
+msgid "Enable Ignore"
+msgstr "Ignorieren aktivieren"
+
 #: data/defscript/popups.kvs:1645
-msgid "Unignore"
-msgstr "Nicht mehr ignorieren"
+msgid "Disable Ignore"
+msgstr ""
 
 #: data/defscript/popups.kvs:1662
 msgid "is registered as"
@@ -928,39 +928,39 @@ msgstr "Registriere als"
 msgid "Edit Registration..."
 msgstr "Registrierung bearbeiten"
 
-#: data/defscript/popups.kvs:1724
+#: data/defscript/popups.kvs:1725
 msgid "Unregister"
 msgstr "Deregistrieren"
 
-#: data/defscript/popups.kvs:1731
+#: data/defscript/popups.kvs:1732
 msgid "Add to Notify"
 msgstr "Zur Benachrichtigungsliste hinzufügen"
 
-#: data/defscript/popups.kvs:1736
+#: data/defscript/popups.kvs:1737
 msgid "Remove from Notify"
 msgstr "Von der Benachrichtigungsliste entfernen"
 
-#: data/defscript/popups.kvs:1741
+#: data/defscript/popups.kvs:1742
 msgid "Avatar"
 msgstr "Benutzerbild"
 
-#: data/defscript/popups.kvs:1743
+#: data/defscript/popups.kvs:1744
 msgid "Choose..."
 msgstr "Auswählen …"
 
-#: data/defscript/popups.kvs:1745
+#: data/defscript/popups.kvs:1746
 msgid "Choose Avatar Image File"
 msgstr "Ein Benutzerbild auswählen"
 
-#: data/defscript/popups.kvs:1754
+#: data/defscript/popups.kvs:1755
 msgid "Set As Default"
 msgstr "Setze als Standard"
 
-#: data/defscript/popups.kvs:1759
+#: data/defscript/popups.kvs:1760
 msgid "Clear Default"
 msgstr "Standard löschen"
 
-#: data/defscript/popups.kvs:1810
+#: data/defscript/popups.kvs:1811
 msgid "&User Control"
 msgstr ""
 

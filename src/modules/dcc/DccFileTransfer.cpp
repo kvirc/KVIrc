@@ -1035,13 +1035,6 @@ void DccSendThread::run()
 												goto handle_system_error;
 												break;
 											case KviSSL::SyscallError:
-												if(written == 0)
-												{
-													raiseSSLError();
-													postErrorEvent(KviError::RemoteEndClosedConnection);
-													goto exit_dcc;
-												}
-												else
 												{
 													int iSSLErr = m_pSSL->getLastError(true);
 													if(iSSLErr != 0)
@@ -1889,9 +1882,9 @@ QString DccFileTransfer::tipText()
 {
 	QString s;
 
-	s = QString("<table><tr><td bgcolor=\"#000000\"><font color=\"#FFFFFF\"><b>DCC %1 (ID %2)</b></font></td></tr>").arg(m_szDccType.ptr()).arg(id());
+	s = QString(R"(<table><tr><td bgcolor="#000000"><font color="#FFFFFF"><b>DCC %1 (ID %2)</b></font></td></tr>)").arg(m_szDccType.ptr()).arg(id());
 
-	s += "<tr><td bgcolor=\"#404040\"><font color=\"#FFFFFF\">";
+	s += R"(<tr><td bgcolor="#404040"><font color="#FFFFFF">)";
 	s += __tr2qs_ctx("Transfer Log", "dcc");
 	s += "</font></td></tr>";
 	s += "<tr><td bgcolor=\"#C0C0C0\">";
@@ -2386,12 +2379,6 @@ bool DccFileTransfer::doResume(const char * filename, const char * port, quint64
 
 	if(!bFileNameMatches)
 	{
-		// bad file name
-		if(!bPortMatches)
-			return false; // neither filename nor port match
-
-		// port matches (this is very likely to be the right transfer)
-
 		if(!KVI_OPTION_BOOL(KviOption_boolAcceptBrokenFileNameDccResumeRequests))
 		{
 			if(_OUTPUT_VERBOSE)

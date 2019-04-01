@@ -68,7 +68,7 @@ namespace UPnP
 		// The constructor
 		WanConnectionService(const ServiceParameters & params);
 		// The destructor
-		virtual ~WanConnectionService();
+		~WanConnectionService();
 
 		// Add a port mapping
 		void addPortMapping(const QString & protocol, const QString & remoteHost, int externalPort,
@@ -93,7 +93,7 @@ namespace UPnP
 
 	protected: // protected methods
 		// The control point received a response to callAction()
-		virtual void gotActionResponse(const QString & responseType, const QMap<QString, QString> & resultValues);
+		void gotActionResponse(const QString & responseType, const QMap<QString, QString> & resultValues) override;
 
 	private: // private attributes
 		// The external IP address

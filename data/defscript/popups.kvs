@@ -845,9 +845,9 @@ defpopup(defaulttextview)
 
 	extpopup($tr("&Registration","defscript"),registration,$icon("regusers")) (!%:multiple && $server)
 
-	extpopup($tr("&Highlight","defscript"),highlight,$icon("highlighttext")) (!%:multiple && $server)
-
 	extpopup($tr("Ig&nore","defscript"),ignore,$icon("ignore")) (!%:multiple && $server)
+
+	extpopup($tr("&Highlight","defscript"),highlight,$icon("highlighttext")) (!%:multiple && $server)
 
 	item($tr("Notify avatar","defscript"),$icon("avatar")) ($server)
 	{
@@ -1418,11 +1418,6 @@ defpopup(ignore)
 
 	label(%:ignLabelText)
 
-	item($tr("Enable Ignore","defscript"),$icon("ignore")) (!%:inIgnoreList && %:regName)
-	{
-		reguser.setIgnoreEnabled %:regName 1;
-	}
-
 	popup($tr("Ignore As...","defscript"),$icon("ignore")) (!%:inIgnoreList)
 	{
 		item($tr("Ignore As","defscript") $0 "("$mask($0,0)")") ("$reguser.exactMatch($mask($0,0))" == "")
@@ -1642,7 +1637,12 @@ defpopup(ignore)
 		}
 	}
 
-	item($tr("Unignore","defscript"),$icon("discard")) (%:inIgnoreList)
+	item($tr("Enable Ignore","defscript"),$icon("ignore")) (!%:inIgnoreList && %:regName)
+	{
+		reguser.setIgnoreEnabled %:regName 1;
+	}
+
+	item($tr("Disable Ignore","defscript"),$icon("discard")) (%:inIgnoreList && %:regName)
 	{
 		reguser.setIgnoreEnabled %:regName 0;
 	}
@@ -1718,7 +1718,8 @@ defpopup(registration)
 
 	item($tr("Edit Registration...","defscript")) (%:regName)
 	{
-		reguser.edit -t "%:regName"
+		# According to documentation this opens the registration menu only
+		reguser.edit -t
 	}
 
 	item($tr("Unregister","defscript") %:regName) (%:regName)
@@ -1811,7 +1812,7 @@ defpopup(channel)
 
 	separator
 
-	item($tr("&Query","defscript") %:visible,$icon("query")) ($server)
+	item($tr("&Query","defscript") $0 %:visible,$icon("query")) ($server)
 	{
 		query $0
 	}
@@ -1826,9 +1827,9 @@ defpopup(channel)
 
 	extpopup($tr("&Registration","defscript"),registration,$icon("regusers")) (!%:multiple && $server)
 
-	extpopup($tr("&Highlight","defscript"),highlight,$icon("highlighttext")) (!%:multiple && $server)
-
 	extpopup($tr("Ig&nore","defscript"),ignore,$icon("ignore")) (!%:multiple && $server)
+
+	extpopup($tr("&Highlight","defscript"),highlight,$icon("highlighttext")) (!%:multiple && $server)
 
 	item($tr("Notify Avatar","defscript"),$icon("avatar")) ($server)
 	{

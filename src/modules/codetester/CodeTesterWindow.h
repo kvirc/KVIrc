@@ -33,22 +33,6 @@ class QPushButton;
 class QLabel;
 class KviScriptEditor;
 
-class CodeTesterWidget : public QWidget
-{
-	Q_OBJECT
-public:
-	CodeTesterWidget(QWidget * par);
-	~CodeTesterWidget();
-
-private:
-	KviScriptEditor * m_pEditor;
-	QLineEdit * m_pParams;
-	QPushButton * m_pExecuteButton;
-	QLabel * m_pModeLabel;
-private slots:
-	void execute();
-};
-
 class CodeTesterWindow : public KviWindow
 {
 	Q_OBJECT
@@ -56,16 +40,23 @@ public:
 	CodeTesterWindow();
 	~CodeTesterWindow();
 
-protected:
-	CodeTesterWidget * m_pTester;
+private:
+	KviTalSplitter * m_pSplitter;
+	KviScriptEditor * m_pEditor;
+	QPushButton * m_pExecuteButton;
+	QLabel * m_pModeLabel;
+	QLineEdit * m_pParams;
+
+private slots:
+	void execute();
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void getConfigGroupName(QString & szName);
-	virtual void saveProperties(KviConfigurationFile *){};
-	virtual void loadProperties(KviConfigurationFile *){};
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void resizeEvent(QResizeEvent * e) override;
+	void getConfigGroupName(QString & szName) override;
+	void saveProperties(KviConfigurationFile *) override {}
+	void loadProperties(KviConfigurationFile *) override {}
 };
 
 #endif //_CODETESTER_H_

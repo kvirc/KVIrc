@@ -61,7 +61,7 @@ namespace UPnP
 		// The constructor
 		IgdControlPoint(const QString & hostname, int port, const QString & rootUrl);
 		// The destructor
-		virtual ~IgdControlPoint();
+		~IgdControlPoint();
 
 		// Return the external IP address
 		QString getExternalIpAddress() const;

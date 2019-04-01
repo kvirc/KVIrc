@@ -64,7 +64,7 @@ public:
 	* \brief Filters out some events: (de)activation events, window switching
 	* \return bool
 	*/
-	//bool eventFilter(QObject *obj, QEvent *event);
+	//bool eventFilter(QObject *obj, QEvent *event) override;
 protected:
 	/// Holds the specialized window popup
 	QMenu * m_pWindowPopup;
@@ -88,7 +88,7 @@ public:
 	* \brief Returns the window popup
 	* \return QMenu *
 	*/
-	inline QMenu * windowPopup() { return m_pWindowPopup; };
+	QMenu * windowPopup() const { return m_pWindowPopup; }
 
 	/**
 	* \brief Remove and delete the subwindow

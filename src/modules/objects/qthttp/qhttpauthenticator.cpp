@@ -860,10 +860,10 @@ const quint8 hirespversion = 1;
 class QNtlmBuffer
 {
 public:
-	QNtlmBuffer() : len(0), maxLen(0), offset(0) {}
-	quint16 len;
-	quint16 maxLen;
-	quint32 offset;
+	QNtlmBuffer() {}
+	quint16 len{ 0 };
+	quint16 maxLen{ 0 };
+	quint32 offset{ 0 };
 	enum
 	{
 		Size = 8

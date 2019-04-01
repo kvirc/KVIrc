@@ -51,7 +51,7 @@ class KVIRC_API KviDynamicToolTip : public QObject
 	friend class KviDynamicToolTipHelper;
 	Q_OBJECT
 public:
-	KviDynamicToolTip(QWidget * parent, const char * name = 0);
+	KviDynamicToolTip(QWidget * parent, const char * name = nullptr);
 	virtual ~KviDynamicToolTip();
 
 protected:

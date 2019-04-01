@@ -104,7 +104,7 @@ public:
 
 protected:
 	// theItem is the item above the first item that has to be inserted
-	void populateMenu(KviKvsPopupMenu * pop, PopupTreeWidgetItem * par, PopupTreeWidgetItem * theItem = 0);
+	void populateMenu(KviKvsPopupMenu * pop, PopupTreeWidgetItem * par, PopupTreeWidgetItem * theItem = nullptr);
 	void saveLastSelectedItem();
 	void addItemToMenu(KviKvsPopupMenu * pop, PopupTreeWidgetItem * par);
 	PopupTreeWidgetItem * newItem(PopupTreeWidgetItem * par, PopupTreeWidgetItem * after, PopupTreeWidgetItem::Type t);
@@ -189,7 +189,7 @@ protected slots:
 	void popupRefresh(const QString & szName);
 
 protected:
-	void showEvent(QShowEvent * e);
+	void showEvent(QShowEvent * e) override;
 	void getExportPopupBuffer(QString & buffer, MenuTreeWidgetItem * it);
 
 private:

@@ -44,7 +44,7 @@
 #include <QFile>
 #include <QDateTime>
 
-#include <stdlib.h>
+#include <cstdlib>
 
 namespace AddonFunctions
 {

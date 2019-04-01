@@ -46,11 +46,11 @@
 // KviThreadDataEvent<int>
 #define KVI_DCC_THREAD_EVENT_ACTION (KVI_THREAD_USER_EVENT_BASE + 5)
 
-typedef struct _KviDccThreadIncomingData
+struct KviDccThreadIncomingData
 {
 	int iLen;
 	char * buffer;
-} KviDccThreadIncomingData;
+};
 
 class DccThread : public KviSensitiveThread
 {

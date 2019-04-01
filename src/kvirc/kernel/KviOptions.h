@@ -29,6 +29,7 @@
 #include "KviCString.h"
 #include "KviPixmap.h"
 #include "KviMessageTypeSettings.h"
+#include "KviControlCodes.h"
 
 #include <QRect>
 #include <QPixmap>
@@ -47,8 +48,8 @@
                                                   \
 	public:                                       \
 		_cname(const QString & n, _type o, int f) \
-		    : name(n), option(o), flags(f){};     \
-		~_cname(){};                              \
+		    : name(n), option(o), flags(f){}      \
+		~_cname() = default;                      \
 	};
 
 DECLARE_OPTION_STRUCT(KviBoolOption, bool)
@@ -62,13 +63,13 @@ DECLARE_OPTION_STRUCT(KviUIntOption, unsigned int)
 DECLARE_OPTION_STRUCT(KviMessageTypeSettingsOption, KviMessageTypeSettings)
 DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 
-#define KVI_COLOR_EXT_USER_OP 50
-#define KVI_COLOR_EXT_USER_HALFOP 51
-#define KVI_COLOR_EXT_USER_ADMIN 52
-#define KVI_COLOR_EXT_USER_OWNER 53
-#define KVI_COLOR_EXT_USER_VOICE 54
-#define KVI_COLOR_EXT_USER_USEROP 55
-#define KVI_COLOR_EXT_USER_NORMAL 56
+#define KVI_COLOR_EXT_USER_OP 150
+#define KVI_COLOR_EXT_USER_HALFOP 151
+#define KVI_COLOR_EXT_USER_ADMIN 152
+#define KVI_COLOR_EXT_USER_OWNER 153
+#define KVI_COLOR_EXT_USER_VOICE 154
+#define KVI_COLOR_EXT_USER_USEROP 155
+#define KVI_COLOR_EXT_USER_NORMAL 156
 #define KVI_COLOR_CUSTOM 255
 #define KVI_COLOR_OWN 254
 
@@ -154,7 +155,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolCreateMinimizedDccSendWhenAutoAccepted 62                /* dcc::send */
 #define KviOption_boolCreateMinimizedDccChatWhenAutoAccepted 63                /* dcc::chat */
 #define KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable 64             /* dcc */
-//#define KviOption_boolShowRegisteredUsersDialogAsToplevel 65                   /* interface::features::global */ //UNUSED
+#define KviOption_boolColorNicksWithBackground 65                              /* interface::features::components::ircview */
 #define KviOption_boolAutoLogQueries 66                                        /* ircengine::logging */
 #define KviOption_boolAutoLogChannels 67                                       /* ircendine::logging */
 #define KviOption_boolAutoLogDccChat 68                                        /* ircengine::logging */
@@ -212,7 +213,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolDccSendFakeAddressByDefault 120                          /* dcc::general */
 #define KviOption_boolUseWindowListActivityMeter 121                           /* irc::output */
 #define KviOption_boolCloseServerWidgetAfterConnect 122                        /* IMPLEMENTATION NEEDED !!! */
-//#define KviOption_boolShowIdentityDialogAsToplevel 123                         /* ??? */  //UNUSED
+#define KviOption_boolPrioritizeLastActionTime 123
 #define KviOption_boolShowUserChannelIcons 124                                 /* look & feel::interface features::userlist */
 #define KviOption_boolShowUserChannelState 125                                 /* look & feel::interface features::userlist */
 #define KviOption_boolEnableIgnoreOnPrivMsg 126                                /* irc::ignore */
@@ -353,10 +354,11 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolMenuBarVisible 261
 #define KviOption_boolWarnAboutHidingMenuBar 262
 #define KviOption_boolWhoRepliesToActiveWindow 263                             /* irc::output */
+#define KviOption_boolDropConnectionOnSaslFailure 264                          /* connection::advanced */
 
 // NOTICE: REUSE EQUIVALENT UNUSED BOOL_OPTION in KviOptions.cpp ENTRIES BEFORE ADDING NEW ENTRIES ABOVE
 
-#define KVI_NUM_BOOL_OPTIONS 264
+#define KVI_NUM_BOOL_OPTIONS 265
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
 #define KVI_STRING_OPTIONS_PREFIX_LEN 6
@@ -632,12 +634,12 @@ namespace KviIdentdOutputMode
 #define KVI_MSGTYPE_OPTIONS_PREFIX "msgtype"
 #define KVI_MSGTYPE_OPTIONS_PREFIX_LEN 7
 
-#define KVI_NUM_MSGTYPE_OPTIONS 146
+#define KVI_NUM_MSGTYPE_OPTIONS 149
 
 #define KVI_MIRCCOLOR_OPTIONS_PREFIX "mirccolor"
 #define KVI_MIRCCOLOR_OPTIONS_PREFIX_LEN 9
 
-#define KVI_NUM_MIRCCOLOR_OPTIONS 16
+#define KVI_NUM_MIRCCOLOR_OPTIONS (KVI_MIRCCOLOR_MAX+1)
 
 // external declaration of the tables
 extern KVIRC_API KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS];
@@ -665,6 +667,16 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 #define KVI_OPTION_MIRCCOLOR(_idx) g_mirccolorOptionsTable[_idx].option
 #define KVI_OPTION_STRINGLIST(_idx) g_stringlistOptionsTable[_idx].option
 #define KVI_OPTION_ICCOLOR(_idx) g_iccolorOptionsTable[_idx].option
+
+inline QColor getMircColor(unsigned int index)
+{
+	// Use inline function (instead of macro) to avoid evaluating index more than once.
+	if (index <= KVI_MIRCCOLOR_MAX)
+		return KVI_OPTION_MIRCCOLOR(index);
+	if (index <= KVI_EXTCOLOR_MAX)
+		return KviControlCodes::getExtendedColor(index);
+	return QColor(); // invalid color (isValid returns false)
+}
 
 // Verbosity constants
 #define KVI_VERBOSITY_LEVEL_MUTE 0

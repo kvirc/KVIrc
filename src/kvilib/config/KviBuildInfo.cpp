@@ -118,26 +118,12 @@ namespace KviBuildInfo
 		return QString(KVIRC_BUILD_FLAGS);
 	}
 
-	QString buildSystem()
-	{
-		return QString(KVIRC_BUILD_SYSTEM);
-	}
-
 	QString buildSystemName()
 	{
 #ifdef COMPILE_ON_WINDOWS
 		return QString();
 #else
 		return QString(KVIRC_BUILD_SYSTEM_NAME);
-#endif
-	}
-
-	QString buildSystemVersion()
-	{
-#ifdef COMPILE_ON_WINDOWS
-		return QString();
-#else
-		return QString(KVIRC_BUILD_SYSTEM_VERSION);
 #endif
 	}
 

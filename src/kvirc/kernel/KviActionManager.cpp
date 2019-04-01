@@ -68,8 +68,6 @@ KviActionManager::KviActionManager()
 	CATEGORY(m_pCategoryTools, "tools", __tr2qs("Tools"), __tr2qs("Actions that will appear in the \"Tools\" menu"));
 
 	m_bCustomizingToolBars = false;
-	m_pCurrentToolBar = nullptr;
-	m_bCoreActionsRegistered = false;
 }
 
 KviActionManager::~KviActionManager()

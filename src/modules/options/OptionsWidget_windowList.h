@@ -40,6 +40,12 @@ class OptionsWidget_windowList : public KviOptionsWidget
 public:
 	OptionsWidget_windowList(QWidget * parent);
 	~OptionsWidget_windowList();
+
+protected:
+	void commit() override;
+
+private:
+	QComboBox * m_pWindowListType;
 };
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTree KviIconManager::TreeWindowList

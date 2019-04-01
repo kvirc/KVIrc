@@ -101,10 +101,10 @@ const char * const sockerrors_tbl[] = {
 		[pre]
 			0 = Unconnected
 			1 = HostLookUp
-			2 = Connecting[br]
-			3 = Connected[br]
-			4 = Bound[br]
-			5 = Closing[br]
+			2 = Connecting
+			3 = Connected
+			4 = Bound
+			5 = Closing
 			6 = Listening
 		[/pre]
 		!fn: $connect(<host>,<port>)
@@ -325,7 +325,6 @@ KVSO_CLASS_FUNCTION(socket, status)
 
 KVSO_CLASS_FUNCTION(socket, close)
 {
-	Q_UNUSED(c);
 	m_pSocket->disconnectFromHost();
 	return true;
 }
@@ -408,7 +407,7 @@ KVSO_CLASS_FUNCTION(socket, read)
 		// convert NULLS to char 255
 		char * buffer = (char *)KviMemory::allocate(iLen);
 		m_pSocket->read(buffer, iLen);
-		for(size_t i{}; i < iLen; i++)
+		for(int i{}; i < iLen; i++)
 		{
 			if(!buffer[i])
 				buffer[i] = (char)(255);

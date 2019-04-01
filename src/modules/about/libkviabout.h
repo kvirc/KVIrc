@@ -44,8 +44,8 @@ public:
 	KviDlgAbout * m_pAboutDialog;
 	QPixmap     * m_pMemPixmap;
 public:
-	virtual void drawContents(QPainter *p);
-	virtual void resizeEvent(QResizeEvent *e);
+	void drawContents(QPainter *p) override;
+	void resizeEvent(QResizeEvent *e) override;
 };
 
 
@@ -60,8 +60,8 @@ public:
 //	void closed();
 private slots:
 	void close();
-	virtual void closeEvent(QCloseEvent *);
-//	virtual void paintEvent(QPaintEvent *);
+	void closeEvent(QCloseEvent *) override;
+//	void paintEvent(QPaintEvent *) override;
 	void scrollText();
 public:
 	int              m_posy;
@@ -80,7 +80,7 @@ public:
 private slots:
 	void close();
 private:
-	virtual void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent *) override;
 
 	QLabel		* m_pPicLabel;
 	QLabel		* m_pTextLabel;

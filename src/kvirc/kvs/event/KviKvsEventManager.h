@@ -36,6 +36,9 @@ class KviKvsVariantList;
 
 #define KVI_KVS_NUM_RAW_EVENTS 1000
 
+#define KVI_KVS_EVENT_HANDLER_NAME_REG_EXP "^[A-Za-z0-9_]*$"
+#define KVI_KVS_EVENT_HANDLER_NAME_INVALID_CHARS_REG_EXP "[^A-Za-z0-9_]"
+
 class KVIRC_API KviKvsEventManager : public QObject
 {
 	Q_OBJECT
@@ -127,6 +130,8 @@ public:
 	void saveAppEvents(const QString & szFileName);
 	void loadRawEvents(const QString & szFileName);
 	void saveRawEvents(const QString & szFileName);
+
+	void cleanHandlerName(QString & szHandlerName);
 signals:
 	void eventHandlerDisabled(const QString &);
 };

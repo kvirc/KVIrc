@@ -58,7 +58,7 @@ namespace UPnP
 
 	public:
 		SsdpConnection();
-		virtual ~SsdpConnection();
+		~SsdpConnection();
 
 		void queryDevices(int bindPort = 1500);
 

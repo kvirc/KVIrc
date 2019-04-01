@@ -30,12 +30,11 @@
 class KVIRC_API KviKvsArrayCast
 {
 protected:
-	KviKvsArray * m_pArray;
-	bool m_bOwned;
+	KviKvsArray * m_pArray = nullptr;
+	bool m_bOwned = false;
 
 public:
-	KviKvsArrayCast()
-	    : m_pArray(0){};
+	KviKvsArrayCast() = default;
 	~KviKvsArrayCast();
 
 public:

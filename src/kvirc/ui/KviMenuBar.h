@@ -34,12 +34,12 @@ class KviMainWindow;
 class QAction;
 class QMenu;
 
-typedef struct _KviScriptMenuBarItem
+struct KviScriptMenuBarItem
 {
 	KviCString szPopupName;
 	KviKvsPopupMenu * pPopup;
 	KviCString szText;
-} KviScriptMenuBarItem;
+};
 
 class KVIRC_API KviMenuBar : public KviTalMenuBar
 {
@@ -49,14 +49,16 @@ public:
 	~KviMenuBar();
 
 protected:
-	QMenu * m_pToolbarsPopup;
-	QMenu * m_pRecentServersPopup;
 	KviMainWindow * m_pFrm;
+	QMenu * m_pRecentServersPopup;
 	QMenu * m_pModulesToolsPopup;
 	QMenu * m_pActionsToolsPopup;
-	KviPointerList<KviScriptMenuBarItem> * m_pScriptItemList;
+	QMenu * m_pToolbarsPopup;
+	KviPointerList<KviScriptMenuBarItem> * m_pScriptItemList = nullptr;
 	// Dynamic actions
+#ifndef COMPILE_ON_MAC
 	QAction * m_pMenuBarAction;
+#endif
 	QAction * m_pStatusBarAction;
 	QAction * m_pWindowListAction;
 	QAction * m_pDisconnectAction;
@@ -92,7 +94,7 @@ protected slots:
 	void newConnectionToServer(QAction * pAction);
 	void modulesToolsTriggered(QAction * pAction);
 	void actionTriggered(QAction * pAction);
-	void actionTriggered(bool);
+	void actionTriggeredBool(bool);
 };
 
 #endif //_KVI_MENUBAR_H_

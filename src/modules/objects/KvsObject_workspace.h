@@ -36,7 +36,7 @@ public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
 	QHash<kvs_hobject_t, QMdiSubWindow *> * pWidgetDict;
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 
 	bool addSubWindow(KviKvsObjectFunctionCall * c);
 	bool removeSubWindow(KviKvsObjectFunctionCall * c);

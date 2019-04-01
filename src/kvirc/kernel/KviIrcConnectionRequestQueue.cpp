@@ -34,7 +34,6 @@
 
 KviIrcConnectionRequestQueue::KviIrcConnectionRequestQueue()
 {
-	m_curType = Mode;
 	connect(&m_timer, SIGNAL(timeout()), this, SLOT(timerSlot()));
 }
 
@@ -49,9 +48,7 @@ void KviIrcConnectionRequestQueue::enqueueChannel(KviChannelWindow * pChan)
 	{
 		m_channels.enqueue(pChan);
 		if(!m_timer.isActive())
-		{
 			m_timer.start(KVI_OPTION_UINT(KviOption_uintOnJoinRequestsDelay) * 1000);
-		}
 	}
 }
 

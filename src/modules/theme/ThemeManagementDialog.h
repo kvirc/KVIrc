@@ -52,7 +52,7 @@ class ThemeListWidgetItem : public KviTalListWidgetItem
 {
 public:
 	ThemeListWidgetItem(KviTalListWidget * pBox, KviThemeInfo * pInfo);
-	virtual ~ThemeListWidgetItem();
+	~ThemeListWidgetItem();
 
 public:
 	KviThemeInfo * m_pThemeInfo;
@@ -66,7 +66,7 @@ class ThemeManagementDialog : public QWidget
 	Q_OBJECT
 public:
 	ThemeManagementDialog(QWidget * parent);
-	virtual ~ThemeManagementDialog();
+	~ThemeManagementDialog();
 
 protected:
 	static ThemeManagementDialog * m_pInstance;
@@ -86,7 +86,7 @@ public:
 
 protected:
 	void fillThemeBox(bool bBuiltin);
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 protected slots:
 	void saveCurrentTheme();
 	void getMoreThemes();

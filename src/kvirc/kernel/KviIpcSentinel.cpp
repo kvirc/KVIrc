@@ -41,8 +41,8 @@
 
 #include <unistd.h>    // for getuid, getpid
 #include <sys/types.h> // for getuid, getpid
-#include <string.h>    // for memcpy
-#include <stdlib.h>    // for malloc
+#include <cstring>     // for memcpy
+#include <cstdlib>     // for malloc
 
 #include <QX11Info>
 
@@ -123,7 +123,7 @@ static Window kvi_x11_findIpcSentinel(Window win)
 
 	Window found = 0;
 
-	for(int i = nChildren - 1; (!found) && (i >= 0); i--)
+	for(size_t i = 0; !found && i < nChildren; ++i)
 		found = kvi_x11_findIpcSentinel(children[i]);
 
 	if(children)
@@ -287,16 +287,16 @@ bool KviIpcSentinel::x11Event(XEvent * e)
 
 extern "C" {
 
-typedef struct
+struct fake_xcb_generic_event_t
 {
 	kvi_u8_t response_type;
 	kvi_u8_t pad0;
 	kvi_u16_t sequence;
 	kvi_u32_t pad[7];
 	kvi_u32_t full_sequence;
-} fake_xcb_generic_event_t;
+};
 
-typedef struct xcb_property_notify_event_t
+struct fake_xcb_property_notify_event_t
 {
 	kvi_u8_t response_type;
 	kvi_u8_t pad0;
@@ -304,7 +304,7 @@ typedef struct xcb_property_notify_event_t
 	kvi_u32_t window;
 	kvi_u32_t atom;
 	// .. other stuff follows, but we don't care
-} fake_xcb_property_notify_event_t;
+};
 
 #define FAKE_XCB_PROPERTY_NOTIFY 28
 }

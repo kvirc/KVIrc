@@ -200,7 +200,7 @@ QString KviQueryWindow::getInfoLabelText()
 
 				szTmp += "\n";
 
-				if(connection()->getCommonChannels(m_szName, szChans, 0))
+				if(connection()->getCommonChannels(m_szName, szChans, false))
 					szTmp += __tr2qs("Common channels: %2").arg(szChans);
 				else
 					szTmp += __tr2qs("No common channels");
@@ -629,7 +629,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 
 			// first part (optimization): quickly find an high index that is _surely_lesser_
 			// than the correct one
-			while(1)
+			while(true)
 			{
 				iC++;
 				szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
@@ -647,7 +647,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 
 			// now, do it the simple way: increment our index until we perfectly fit into the
 			// available space
-			while(1)
+			while(true)
 			{
 				iC++;
 
@@ -752,7 +752,7 @@ void KviQueryWindow::ownAction(const QString & szBuffer)
 					if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
 						return;
 
-					output(KVI_OUT_ACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
+					output(KVI_OUT_OWNACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
 				}
 				break;
 				case KviCryptEngine::Encoded:
@@ -763,7 +763,7 @@ void KviQueryWindow::ownAction(const QString & szBuffer)
 					// ugly, but we must redecode here
 					QString szRedecoded = decodeText(szEncrypted.ptr());
 
-					output(KVI_OUT_ACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szRedecoded);
+					output(KVI_OUT_OWNACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szRedecoded);
 				}
 				break;
 				default: // also case KviCryptEngine::EncryptError
@@ -789,6 +789,6 @@ void KviQueryWindow::ownAction(const QString & szBuffer)
 	if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, data.data(), 0x01))
 		return;
 
-	output(KVI_OUT_ACTION, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
+	output(KVI_OUT_OWNACTION, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
 	m_pUserListView->userAction(szMyName, KVI_USERACTION_ACTION);
 }

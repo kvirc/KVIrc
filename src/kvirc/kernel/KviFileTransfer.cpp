@@ -38,7 +38,6 @@ static KviFileTransferManager * g_pFileTransferManager = nullptr;
 KviFileTransferManager::KviFileTransferManager()
     : QObject()
 {
-	m_pTransferWindow = nullptr;
 }
 
 KviFileTransferManager::~KviFileTransferManager()
@@ -49,9 +48,7 @@ KviFileTransferManager::~KviFileTransferManager()
 KviFileTransferManager * KviFileTransferManager::instance()
 {
 	if(!g_pFileTransferManager)
-	{
 		g_pFileTransferManager = new KviFileTransferManager();
-	}
 	return g_pFileTransferManager;
 }
 
@@ -123,7 +120,6 @@ void KviFileTransferManager::unregisterTransfer(KviFileTransfer * t)
 KviFileTransfer::KviFileTransfer()
     : QObject()
 {
-	m_pDisplayItem = nullptr;
 	m_iId = g_pApp->getGloballyUniqueId();
 	manager()->registerTransfer(this);
 }
@@ -148,12 +144,12 @@ void KviFileTransfer::invokeTransferWindow(bool bCreateMinimized, bool bNoRaise)
 
 QString KviFileTransfer::localFileName()
 {
-	return QString();
+	return {};
 }
 
 QString KviFileTransfer::retryCommand()
 {
-	return QString();
+	return {};
 }
 
 bool KviFileTransfer::terminated()
@@ -163,7 +159,7 @@ bool KviFileTransfer::terminated()
 
 QString KviFileTransfer::tipText()
 {
-	return QString();
+	return {};
 }
 
 int KviFileTransfer::displayHeight(int iLineSpacing)

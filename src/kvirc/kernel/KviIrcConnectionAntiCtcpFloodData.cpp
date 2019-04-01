@@ -25,10 +25,7 @@
 #include "KviIrcConnectionAntiCtcpFloodData.h"
 
 KviIrcConnectionAntiCtcpFloodData::KviIrcConnectionAntiCtcpFloodData()
-{
-	m_tLastCtcp = 0;
-	m_uCtcpCount = 0;
-}
+    = default;
 
 KviIrcConnectionAntiCtcpFloodData::~KviIrcConnectionAntiCtcpFloodData()
     = default;

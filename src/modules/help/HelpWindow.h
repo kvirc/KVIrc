@@ -72,11 +72,11 @@ protected:
 public:
 	HelpWidget * helpWidget() { return m_pHelpWidget; };
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void saveProperties(KviConfigurationFile * cfg);
-	virtual void loadProperties(KviConfigurationFile * cfg);
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void resizeEvent(QResizeEvent * e) override;
+	void saveProperties(KviConfigurationFile * cfg) override;
+	void loadProperties(KviConfigurationFile * cfg) override;
 
 public:
 #ifdef COMPILE_WEBKIT_SUPPORT

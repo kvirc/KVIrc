@@ -55,6 +55,7 @@
 #include "KviPointerHashTable.h"
 #include "KviTalToolTip.h"
 #include "KviIrcNetwork.h"
+#include "KviSASL.h"
 
 #include <QLineEdit>
 #include <QCursor>
@@ -901,19 +902,33 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par, KviIrcServer * s)
 
 	m_pEnableSASLCheck->setChecked(s->enabledSASL());
 
-	l = new QLabel(__tr2qs_ctx("SASL nickname:", "options"), pSASLGroup);
+	l = new QLabel(__tr2qs_ctx("SASL method:", "options"), pSASLGroup);
 	pSASLLayout->addWidget(l, 1, 0);
+	m_pSaslMethodComboBox = new QComboBox(pSASLGroup);
+	m_pSaslMethodComboBox->setDuplicatesEnabled(false);
+	for(auto&& method : KviSASL::supportedMethods())
+		m_pSaslMethodComboBox->addItem(method);
+	KviTalToolTip::add(m_pSaslMethodComboBox, __tr2qs_ctx("Select which SASL method you want to use to authenticate with.<br><br>"
+	                                                      "EXTERNAL will fallback to PLAIN if a non-SSL connection is used or no .pem file is loaded.", "options"));
+	pSASLLayout->addWidget(m_pSaslMethodComboBox, 1, 1);
+
+	int index = m_pSaslMethodComboBox->findText(s->saslMethod());
+	if(index != -1)
+		m_pSaslMethodComboBox->setCurrentIndex(index);
+
+	l = new QLabel(__tr2qs_ctx("SASL nickname:", "options"), pSASLGroup);
+	pSASLLayout->addWidget(l, 2, 0);
 	m_pSaslNickEditor = new QLineEdit(pSASLGroup);
 	m_pSaslNickEditor->setText(s->saslNick());
-	KviTalToolTip::add(m_pSaslNickEditor, __tr2qs_ctx("If you want to enable SASL authentication, insert your nickname here.", "options"));
-	pSASLLayout->addWidget(m_pSaslNickEditor, 1, 1);
+	KviTalToolTip::add(m_pSaslNickEditor, __tr2qs_ctx("If you want to enable SASL authentication, insert your nickname here. (Not required for EXTERNAL)", "options"));
+	pSASLLayout->addWidget(m_pSaslNickEditor, 2, 1);
 
 	l = new QLabel(__tr2qs_ctx("SASL password:", "options"), pSASLGroup);
-	pSASLLayout->addWidget(l, 2, 0);
-	m_pSaslPassEditor = new KviPasswordLineEdit(pSASLGroup); // <---- ?????
+	pSASLLayout->addWidget(l, 3, 0);
+	m_pSaslPassEditor = new KviPasswordLineEdit(pSASLGroup);
 	m_pSaslPassEditor->setText(s->saslPass());
-	KviTalToolTip::add(m_pSaslPassEditor, __tr2qs_ctx("If you want to enable SASL authentication, insert your password here.", "options"));
-	pSASLLayout->addWidget(m_pSaslPassEditor, 2, 1);
+	KviTalToolTip::add(m_pSaslPassEditor, __tr2qs_ctx("If you want to enable SASL authentication, insert your password here. (Not required for EXTERNAL)", "options"));
+	pSASLLayout->addWidget(m_pSaslPassEditor, 3, 1);
 
 	pSASLGroup->setEnabled(s->enabledCAP());
 	connect(m_pEnableCAPCheck, SIGNAL(toggled(bool)), pSASLGroup, SLOT(setEnabled(bool)));
@@ -1115,10 +1130,11 @@ void IrcServerDetailsWidget::fillData(KviIrcServer * s)
 	if(m_pEnableSTARTTLSCheck)
 		s->setEnabledSTARTTLS(m_pEnableSTARTTLSCheck->isChecked());
 
+	s->setSaslMethod(m_pSaslMethodComboBox->currentText());
 	s->setSaslNick(m_pSaslNickEditor->text());
 	s->setSaslPass(m_pSaslPassEditor->text());
 	if(m_pEnableSASLCheck)
-		s->setEnabledSASL(m_pEnableSASLCheck->isChecked() && !m_pSaslNickEditor->text().isEmpty() && !m_pSaslPassEditor->text().isEmpty());
+		s->setEnabledSASL(m_pEnableSASLCheck->isChecked() && ((!m_pSaslNickEditor->text().isEmpty() && !m_pSaslPassEditor->text().isEmpty()) || (m_pSaslMethodComboBox->currentText() == QStringLiteral("EXTERNAL"))));
 	if(m_pIdEditor)
 		s->setId(m_pIdEditor->text());
 	if(s->id().isEmpty())
@@ -2069,7 +2085,7 @@ void OptionsWidget_servers::updateFavoritesFilter(bool bSet)
 {
 	m_bShowingFavoritesOnly = bSet;
 	IrcServerOptionsTreeWidgetItem * network;
-	for(unsigned i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
+	for(int i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
 	{
 		network = static_cast<IrcServerOptionsTreeWidgetItem *>(m_pTreeWidget->topLevelItem(i));
 		uint uServers = 0;

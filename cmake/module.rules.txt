@@ -10,21 +10,32 @@ endif()
 add_library(${kvi_module_name} MODULE ${${kvi_module_name}_SRCS} ${${kvi_module_name}_MOC_SRCS})
 
 # Enable C++11
-set_property(TARGET ${kvi_module_name} PROPERTY CXX_STANDARD 11)
+set_property(TARGET ${kvi_module_name} PROPERTY CXX_STANDARD 17)
 set_property(TARGET ${kvi_module_name} PROPERTY CXX_STANDARD_REQUIRED ON)
 
 target_link_libraries(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
 
 if(Qt5Widgets_FOUND)
-	qt5_use_modules(${kvi_module_name} ${qt5_kvirc_modules})
+	target_link_libraries(${kvi_module_name} ${qt5_kvirc_modules})
 endif()
 
 set_target_properties(${kvi_module_name} PROPERTIES LINK_FLAGS "${MODULE_ADDITIONAL_LINK_FLAGS}")
 set_target_properties(${kvi_module_name} PROPERTIES COMPILE_FLAGS "${ADDITIONAL_COMPILE_FLAGS}")
 
 if(WANT_STRIP)
-	get_target_property(kvi_module_location ${kvi_module_name} LOCATION)
-	install(CODE "EXEC_PROGRAM(${STRIP_EXECUTABLE} ARGS -s \"${kvi_module_location}\")")
+	IF(APPLE)
+		add_custom_command(
+			TARGET ${kvi_module_name}
+			POST_BUILD
+			COMMAND ${STRIP_EXECUTABLE} -x $<TARGET_FILE:${kvi_module_name}>
+		)
+	ELSE()
+		add_custom_command(
+			TARGET ${kvi_module_name}
+			POST_BUILD
+			COMMAND ${STRIP_EXECUTABLE} -s $<TARGET_FILE:${kvi_module_name}>
+		)
+	ENDIF()
 endif()
 
 install(TARGETS ${kvi_module_name} LIBRARY DESTINATION "${KVIRC_MOD_PATH}")

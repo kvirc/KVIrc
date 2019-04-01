@@ -36,7 +36,7 @@
 * \typedef KviOggTheoraGeometry
 * \brief Contains all the needed geometry information of a theora video stream
 */
-typedef struct _KviOggTheoraGeometry
+struct KviOggTheoraGeometry
 {
 	int pic_w; /**< width of original picture geometry, chosen by the user */
 	int pic_h; /**< height of original picture geometry, chosen by the user */
@@ -46,7 +46,7 @@ typedef struct _KviOggTheoraGeometry
 
 	int pic_x; /**< x offset of the picture inside the frame (calculated geometry) */
 	int pic_y; /**< y offset of the picture inside the frame (calculated geometry) */
-} KviOggTheoraGeometry;
+};
 
 #endif // COMPILE_DISABLE_OGG_THEORA
 #endif // _KVIOGGTHEORAGEOMETRY_H_

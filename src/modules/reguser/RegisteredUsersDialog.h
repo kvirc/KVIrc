@@ -46,7 +46,7 @@ public:
 	~KviRegisteredUsersListView(){};
 
 protected:
-	void mousePressEvent(QMouseEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
 signals:
 	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 };
@@ -54,11 +54,11 @@ signals:
 class RegisteredUsersDialogItemDelegate : public QStyledItemDelegate
 {
 public:
-	RegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget = 0)
+	RegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget = nullptr)
 	    : QStyledItemDelegate(pWidget){};
 	~RegisteredUsersDialogItemDelegate(){};
-	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
-	void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
+	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const override;
+	void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const override;
 };
 
 class RegisteredUsersDialogItemBase : public QTreeWidgetItem
@@ -123,7 +123,7 @@ class RegisteredUsersDialog : public QWidget
 {
 	Q_OBJECT
 public:
-	RegisteredUsersDialog(QWidget * par = 0);
+	RegisteredUsersDialog(QWidget * par = nullptr);
 	~RegisteredUsersDialog();
 
 public:
@@ -141,7 +141,7 @@ protected:
 	void fillList();
 	void editItem(RegisteredUsersDialogItem * i);
 	void editGroup(KviRegisteredUserGroup * group);
-	virtual void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent *) override;
 protected slots:
 	void cancelClicked();
 	void okClicked();

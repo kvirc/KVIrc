@@ -51,7 +51,7 @@ class DccFileTransfer;
 class DccMarshal;
 class QMenu;
 
-typedef struct _KviDccSendThreadOptions
+struct KviDccSendThreadOptions
 {
 	KviCString szFileName;
 	quint64 uStartPosition;
@@ -61,7 +61,7 @@ typedef struct _KviDccSendThreadOptions
 	bool bNoAcks;
 	bool bIsTdcc;
 	unsigned int uMaxBandwidth;
-} KviDccSendThreadOptions;
+};
 
 class DccSendThread : public DccThread
 {
@@ -74,8 +74,8 @@ private:
 	uint m_uAverageSpeed;
 	uint m_uInstantSpeed;
 	quint64 m_uFilePosition;
-	quint64 m_uAckedBytes;
-	quint64 m_uTotalSentBytes;
+	quint64 m_uAckedBytes = 0;
+	quint64 m_uTotalSentBytes = 0;
 	// internal
 	unsigned long m_uStartTime;
 	unsigned long m_uInstantSpeedInterval;
@@ -99,7 +99,7 @@ protected:
 	virtual void run();
 };
 
-typedef struct _KviDccRecvThreadOptions
+struct KviDccRecvThreadOptions
 {
 	bool bResume;
 	KviCString szFileName;
@@ -110,7 +110,7 @@ typedef struct _KviDccRecvThreadOptions
 	bool bNoAcks;
 	bool bIsTdcc;
 	unsigned int uMaxBandwidth;
-} KviDccRecvThreadOptions;
+};
 
 class DccRecvThread : public DccThread
 {
@@ -165,7 +165,7 @@ protected:
 	QSpinBox * m_pLimitBox;
 
 protected:
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 protected slots:
 	void okClicked();
 	void cancelClicked();
@@ -221,18 +221,18 @@ public:
 	static bool handleResumeAccepted(const char * filename, const char * port, const char * szZeroPortTag);
 	static bool handleResumeRequest(const char * filename, const char * port, quint64 filePos);
 
-	virtual bool event(QEvent * e);
+	bool event(QEvent * e) override;
 
-	virtual KviWindow * dccMarshalOutputWindow();
-	virtual const char * dccMarshalOutputContextString();
+	KviWindow * dccMarshalOutputWindow() override;
+	const char * dccMarshalOutputContextString() override;
 
-	virtual void displayPaint(QPainter * p, int column, QRect rect);
-	virtual int displayHeight(int iLineSpacing);
-	virtual void fillContextPopup(QMenu * m);
+	void displayPaint(QPainter * p, int column, QRect rect) override;
+	int displayHeight(int iLineSpacing) override;
+	void fillContextPopup(QMenu * m) override;
 	virtual void fillStatusString(QString & szBuffer);
-	virtual bool active();
-	virtual QString tipText();
-	virtual QString localFileName();
+	bool active() override;
+	QString tipText() override;
+	QString localFileName() override;
 
 	bool isFileUpload() { return m_pDescriptor->isFileUpload(); };
 

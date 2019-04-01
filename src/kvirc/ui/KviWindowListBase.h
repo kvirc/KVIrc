@@ -79,7 +79,7 @@ class KVIRC_API KviWindowListBase : public QDockWidget
 	Q_OBJECT
 public:
 	KviWindowListBase();
-	virtual ~KviWindowListBase();
+	~KviWindowListBase();
 
 protected:
 	KviMainWindow * m_pFrm;
@@ -88,19 +88,19 @@ protected:
 	Qt::DockWidgetArea currentArea;
 
 public:
-	virtual KviWindowListItem * addItem(KviWindow *) { return 0; };
+	virtual KviWindowListItem * addItem(KviWindow *) { return nullptr; }
 	virtual bool removeItem(KviWindowListItem *) { return false; };
 	virtual void setActiveItem(KviWindowListItem *){};
-	virtual KviWindowListItem * firstItem() { return 0; };
-	virtual KviWindowListItem * lastItem(void) { return 0; }
-	virtual KviWindowListItem * nextItem() { return 0; };
-	virtual KviWindowListItem * prevItem(void) { return 0; }
+	virtual KviWindowListItem * firstItem() { return nullptr; }
+	virtual KviWindowListItem * lastItem(void) { return nullptr; }
+	virtual KviWindowListItem * nextItem() { return nullptr; }
+	virtual KviWindowListItem * prevItem(void) { return nullptr; }
 	virtual KviWindowListItem * item(int number);
 	virtual bool setIterationPointer(KviWindowListItem *) { return false; };
 	virtual void switchWindow(bool bNext, bool bInContextOnly, bool bHighlightedOnly = false);
 	virtual void updatePseudoTransparency(){};
 	virtual void applyOptions();
-	virtual void wheelEvent(QWheelEvent * e);
+	void wheelEvent(QWheelEvent * e) override;
 	static void getTextForConsole(QString & szText, KviConsoleWindow * pConsole);
 	Qt::DockWidgetArea currentDockArea() { return currentArea; };
 protected slots:
@@ -137,17 +137,17 @@ protected:
 	KviDynamicToolTip * m_pTip;
 
 protected:
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void contextMenuEvent(QContextMenuEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
+	void contextMenuEvent(QContextMenuEvent * e) override;
 	virtual void drawButtonLabel(QPainter * p);
-	virtual void paintEvent(QPaintEvent * e);
+	void paintEvent(QPaintEvent * e) override;
 
 public:
-	virtual bool active() { return m_bActive; };
-	virtual void highlight(int iLevel = 1);
-	virtual void unhighlight();
-	virtual void setProgress(int progress);
-	virtual void captionChanged();
+	bool active() override { return m_bActive; }
+	void highlight(int iLevel = 1) override;
+	void unhighlight() override;
+	void setProgress(int progress) override;
+	void captionChanged() override;
 
 protected:
 	void setActive(bool bActive);
@@ -171,10 +171,10 @@ public:
 	~KviClassicWindowListToolButton() {};
 
 protected:
-	virtual void mousePressEvent(QMouseEvent *e);
+	void mousePressEvent(QMouseEvent *e) override;
 
 public:
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 };
 
 class KVIRC_API KviClassicWindowList : public KviWindowListBase
@@ -194,19 +194,19 @@ protected:
 	void insertButton(KviWindowListButton * b);
 
 public:
-	virtual void resizeEvent(QResizeEvent * e);
+	void resizeEvent(QResizeEvent * e) override;
 
 public:
-	virtual KviWindowListItem * addItem(KviWindow *);
-	virtual bool removeItem(KviWindowListItem *);
-	virtual void setActiveItem(KviWindowListItem *);
-	virtual KviWindowListItem * firstItem();
-	virtual KviWindowListItem * lastItem(void);
-	virtual KviWindowListItem * nextItem();
-	virtual KviWindowListItem * prevItem(void);
-	virtual bool setIterationPointer(KviWindowListItem * it);
-	virtual void updateActivityMeter();
-	virtual void applyOptions();
+	KviWindowListItem * addItem(KviWindow *) override;
+	bool removeItem(KviWindowListItem *) override;
+	void setActiveItem(KviWindowListItem *) override;
+	KviWindowListItem * firstItem() override;
+	KviWindowListItem * lastItem(void) override;
+	KviWindowListItem * nextItem() override;
+	KviWindowListItem * prevItem(void) override;
+	bool setIterationPointer(KviWindowListItem * it) override;
+	void updateActivityMeter() override;
+	void applyOptions() override;
 protected slots:
 	void orientationChangedSlot(Qt::Orientation o);
 	void doLayout();
@@ -223,8 +223,8 @@ private:
 	KviWindowListBase * m_pParent;
 
 public:
-	QSize sizeHint() const;
-	void paintEvent(QPaintEvent *);
+	QSize sizeHint() const override;
+	void paintEvent(QPaintEvent *) override;
 };
 
 #endif //_KVI_WINDOWLIST_H_

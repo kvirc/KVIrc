@@ -40,7 +40,7 @@ class KVIRC_API KviOptionsWidget : public QFrame, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
-	KviOptionsWidget(QWidget * parent, const char * name = 0, bool bSunken = true);
+	KviOptionsWidget(QWidget * parent, const char * name = nullptr, bool bSunken = true);
 	~KviOptionsWidget();
 
 private:
@@ -149,10 +149,10 @@ public:
 
 	void removeSelector(KviSelectorInterface * pInterface);
 
-	virtual void commit();
-	virtual void childEvent(QChildEvent * e);
+	void commit() override;
+	void childEvent(QChildEvent * e) override;
 
-	virtual bool eventFilter(QObject * watched, QEvent * e);
+	bool eventFilter(QObject * watched, QEvent * e) override;
 
 protected slots:
 	// this is internal to the options dialog (options module)

@@ -51,7 +51,7 @@ public:
 		return *this;
 	}
 
-	inline bool operator!=(const KviPtrListIterator & other) const
+	bool operator!=(const KviPtrListIterator & other) const
 	{
 		return this->c != other.c;
 	}

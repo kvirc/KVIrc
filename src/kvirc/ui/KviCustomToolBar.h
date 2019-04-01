@@ -51,17 +51,17 @@ protected:
 public:
 	KviCustomToolBarDescriptor * descriptor() { return m_pDescriptor; };
 protected:
-	virtual void dragEnterEvent(QDragEnterEvent * e);
-	virtual void dragMoveEvent(QDragMoveEvent * e);
-	virtual void dragLeaveEvent(QDragLeaveEvent * e);
-	virtual void dropEvent(QDropEvent * e);
-	virtual void childEvent(QChildEvent * e);
-	virtual bool eventFilter(QObject * o, QEvent * e);
+	void dragEnterEvent(QDragEnterEvent * e) override;
+	void dragMoveEvent(QDragMoveEvent * e) override;
+	void dragLeaveEvent(QDragLeaveEvent * e) override;
+	void dropEvent(QDropEvent * e) override;
+	void childEvent(QChildEvent * e) override;
+	bool eventFilter(QObject * o, QEvent * e) override;
 	QAction * actionForWidget(QWidget * pWidget);
 	void drag(QWidget * pChild, const QPoint & pnt);
 	void filterChild(QObject * o);
 	void unfilterChild(QObject * o);
-	virtual void paintEvent(QPaintEvent * e);
+	void paintEvent(QPaintEvent * e) override;
 	void syncDescriptor();
 protected slots:
 	void beginCustomize();
@@ -79,10 +79,10 @@ protected:
 	KviCustomToolBar * m_pToolBar;
 
 public:
-	QSize sizeHint() const;
+	QSize sizeHint() const override;
 
 protected:
-	void paintEvent(QPaintEvent * e);
+	void paintEvent(QPaintEvent * e) override;
 };
 
 #endif //_KVI_CUSTOMTOOLBAR_H_

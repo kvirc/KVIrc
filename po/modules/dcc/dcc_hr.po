@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2016-11-28 12:22+0000\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2018-04-09 20:33+0000\n"
 "Last-Translator: Robert Förster <Dessa@gmake.de>\n"
 "Language-Team: Croatian (http://www.transifex.com/kvirc/KVIrc/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -280,31 +280,31 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: src/modules/dcc/DccDialog.cpp:76
+#: src/modules/dcc/DccDialog.cpp:77
 msgid "&Accept"
 msgstr ""
 
-#: src/modules/dcc/DccDialog.cpp:81
+#: src/modules/dcc/DccDialog.cpp:82
 msgid "&Reject"
 msgstr ""
 
-#: src/modules/dcc/DccDialog.cpp:144
+#: src/modules/dcc/DccDialog.cpp:148
 msgid "&Rename"
 msgstr ""
 
-#: src/modules/dcc/DccDialog.cpp:148
+#: src/modules/dcc/DccDialog.cpp:152
 msgid "Over&write"
 msgstr ""
 
-#: src/modules/dcc/DccDialog.cpp:152
+#: src/modules/dcc/DccDialog.cpp:156
 msgid "Re&sume"
 msgstr ""
 
-#: src/modules/dcc/DccDialog.cpp:158 src/modules/dcc/DccFileTransfer.cpp:2493
+#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2493
 msgid "Cancel"
 msgstr ""
 
-#: src/modules/dcc/DccDialog.cpp:165
+#: src/modules/dcc/DccDialog.cpp:169
 msgid "File Already Exists - KVIrc"
 msgstr ""
 
@@ -737,52 +737,52 @@ msgstr ""
 msgid "Invalid codec specified"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:1630 src/modules/dcc/libkvidcc.cpp:2656
-#: src/modules/dcc/libkvidcc.cpp:2678
+#: src/modules/dcc/libkvidcc.cpp:1620 src/modules/dcc/libkvidcc.cpp:2646
+#: src/modules/dcc/libkvidcc.cpp:2668
 msgid "The current window has no associated DCC session"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:1635
+#: src/modules/dcc/libkvidcc.cpp:1625
 msgid "The specified parameter is not a valid DCC identifier"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:1718
+#: src/modules/dcc/libkvidcc.cpp:1708
 msgid "This DCC session is not a DCC transfer session"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2433
-msgid "The IRC context that originated the DCC doesn't exists anymore."
+#: src/modules/dcc/libkvidcc.cpp:2423
+msgid "The IRC context that originated the DCC doesn't exist anymore."
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2669
+#: src/modules/dcc/libkvidcc.cpp:2659
 msgid "The specified window identifier is not valid"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2827
+#: src/modules/dcc/libkvidcc.cpp:2817
 msgid "This executable was built without SSL support"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2840
+#: src/modules/dcc/libkvidcc.cpp:2830
 msgid "You specified a bad string for the parameter \"type\""
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2851
+#: src/modules/dcc/libkvidcc.cpp:2841
 msgid "Unable to get SSL information: DCC session is not using SSL"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2864
+#: src/modules/dcc/libkvidcc.cpp:2854
 msgid "Unable to get SSL information: DCC session not initialized yet"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2872
+#: src/modules/dcc/libkvidcc.cpp:2862
 msgid "Unable to get SSL information: SSL non initialized yet in DCC session"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2881
+#: src/modules/dcc/libkvidcc.cpp:2871
 msgid "Unable to get SSL information: no peer certificate available"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2889
+#: src/modules/dcc/libkvidcc.cpp:2879
 msgid "Unable to get SSL information: query not recognized"
 msgstr ""
 

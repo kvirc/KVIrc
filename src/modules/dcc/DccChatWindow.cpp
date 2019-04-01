@@ -407,7 +407,7 @@ void DccChatWindow::ownAction(const QString & text)
 			return;
 		KviCString buf(KviCString::Format, "%cACTION %s%c\r\n", 0x01, d, 0x01);
 		m_pSlaveThread->sendRawData(buf.ptr(), buf.len());
-		output(KVI_OUT_ACTION, "%Q %Q", &(m_pDescriptor->szLocalNick), &szTmpBuffer);
+		output(KVI_OUT_OWNACTION, "%Q %Q", &(m_pDescriptor->szLocalNick), &szTmpBuffer);
 	}
 	else
 	{
@@ -904,9 +904,9 @@ bool DccChatThread::tryFlushOutBuffers()
 			{
 				int err = kvi_socket_error();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-				if((err != EAGAIN) || (err != EINTR) || (err != WSAEWOULDBLOCK))
+				if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
 #else
-				if((err != EAGAIN) || (err != EINTR))
+				if((err != EAGAIN) && (err != EINTR))
 #endif
 				{
 					postErrorEvent(KviError::translateSystemError(err));

@@ -28,16 +28,23 @@
 
 class KviCString;
 class QByteArray;
+class QStringList;
 
 /**
 * \namespace KviSASL
 * \brief This namespace implement some SASL authentication methods.
 *
-* Currently implementhed methods are PLAIN and DH-BLOWFISH
+* Currently implementhed methods are PLAIN and EXTERNAL
 */
 
 namespace KviSASL
 {
+	/**
+	* \brief Returns a list of the supported SASL methods
+	* \return QStringList
+	*/
+	extern KVILIB_API QStringList supportedMethods();
+
 	/**
 	* \brief Create the auth message for PLAIN authentication
 	* \param szIn The server-provided token
@@ -46,7 +53,15 @@ namespace KviSASL
 	* \param baPass	The password
 	* \return bool
 	*/
-	extern KVILIB_API bool plainMethod(KviCString & szIn, KviCString & szOut, QByteArray & baNick, QByteArray & baPass);
+	extern KVILIB_API bool plainMethod(const KviCString & szIn, KviCString & szOut, const QByteArray & baNick, const QByteArray & baPass);
+
+	/**
+	* \brief Create the auth message for EXTERNAL authentication
+	* \param szIn The server-provided token
+	* \param szOut A KviCString that will be filled with the authentication message
+	* \return bool
+	*/
+	extern KVILIB_API bool externalMethod(const KviCString & szIn, KviCString & szOut);
 };
 
 #endif //_KVI_SASL_H_

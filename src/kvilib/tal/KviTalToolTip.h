@@ -45,7 +45,7 @@ protected:
 	KviTalToolTip * m_pToolTip;
 
 protected:
-	virtual bool eventFilter(QObject * pObject, QEvent * pEvent);
+	bool eventFilter(QObject * pObject, QEvent * pEvent) override;
 	void toolTipDying();
 };
 

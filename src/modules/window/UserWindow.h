@@ -37,16 +37,16 @@ public:
 	};
 
 public:
-	UserWindow(const char * pcName, QString & szIcon, KviConsoleWindow * pConsole = 0, int iCreationFlags = 0);
+	UserWindow(const char * pcName, QString & szIcon, KviConsoleWindow * pConsole = nullptr, int iCreationFlags = 0);
 	~UserWindow();
 
 protected:
 	QString m_szIcon;
 
 protected:
-	virtual void resizeEvent(QResizeEvent *);
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
+	void resizeEvent(QResizeEvent *) override;
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
 
 public:
 	void setWindowTitleStrings(const QString & szPlainText);

@@ -32,7 +32,7 @@
 
 #define KVI_PERLCORECTRLCOMMAND_EXECUTE "execute"
 
-typedef struct _KviPerlCoreCtrlCommand_execute
+struct KviPerlCoreCtrlCommand_execute
 {
 	unsigned int uSize;
 	KviKvsRunTimeContext * pKvsContext;
@@ -44,14 +44,14 @@ typedef struct _KviPerlCoreCtrlCommand_execute
 	QStringList lWarnings;
 	QStringList lArgs;
 	bool bQuiet;
-} KviPerlCoreCtrlCommand_execute;
+};
 
 #define KVI_PERLCORECTRLCOMMAND_DESTROY "destroy"
 
-typedef struct _KviPerlCoreCtrlCommand_destroy
+struct KviPerlCoreCtrlCommand_destroy
 {
 	unsigned int uSize;
 	QString szContext;
-} KviPerlCoreCtrlCommand_destroy;
+};
 
 #endif // !_PERLCOREINTERFACE_H_

@@ -34,7 +34,7 @@
 #include <QListWidget>
 #include <QMouseEvent>
 
-#include <ctype.h>
+#include <cctype>
 
 KviHistoryWindow::KviHistoryWindow(QWidget * pParent)
     : QListWidget(pParent)

@@ -437,7 +437,7 @@ void KviModeEditor::commit()
 	emit done();
 }
 
-inline const QString * KviModeEditor::getModeDescription(char cMode)
+const QString * KviModeEditor::getModeDescription(char cMode)
 {
 	if(!m_pChannel)
 		return nullptr;
@@ -447,10 +447,10 @@ inline const QString * KviModeEditor::getModeDescription(char cMode)
 	return nullptr;
 }
 
-inline bool KviModeEditor::modeNeedsParameterOnlyWhenSet(char cMode)
+bool KviModeEditor::modeNeedsParameterOnlyWhenSet(char cMode)
 {
 	if(!m_pChannel)
-		return 0;
+		return false;
 	KviIrcConnectionServerInfo * pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
 		return pServerInfo->supportedParameterWhenSetModes().contains(cMode);

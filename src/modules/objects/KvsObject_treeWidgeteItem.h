@@ -40,7 +40,7 @@ protected:
 	QTreeWidgetItem * m_pTreeWidgetItem;
 
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 
 protected:
 	bool setText(KviKvsObjectFunctionCall * c);
@@ -68,7 +68,7 @@ class KviKvsStandardTreeWidgetItem : public QTreeWidgetItem
 public:
 	KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob, QTreeWidget * par);
 	KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob, QTreeWidgetItem * par);
-	virtual ~KviKvsStandardTreeWidgetItem();
+	~KviKvsStandardTreeWidgetItem();
 
 protected:
 	KvsObject_treeWidgetItem * m_pMasterObject;

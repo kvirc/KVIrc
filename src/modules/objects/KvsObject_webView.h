@@ -44,15 +44,15 @@ public:
 	KviKvsWebView(QWidget * par, const char * name, KvsObject_webView *);
 	//void accept();
 	//void reject();
-	virtual ~KviKvsWebView();
+	~KviKvsWebView();
 
 protected:
 	KvsObject_webView * m_pParentScript;
 
 protected:
-	virtual void mouseMoveEvent(QMouseEvent * ev);
-	virtual void contextMenuEvent(QContextMenuEvent *);
-	virtual bool event(QEvent * e);
+	void mouseMoveEvent(QMouseEvent * ev) override;
+	void contextMenuEvent(QContextMenuEvent *) override;
+	bool event(QEvent * e) override;
 	/*protected slots:
 	void slotNextClicked();
 	void slotBackClicked();
@@ -65,16 +65,16 @@ class KvsObject_webView : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_webView)
 protected:
-	KviKvsRunTimeContext * m_pContext;
-	int elementMapId;
+	KviKvsRunTimeContext * m_pContext = nullptr;
+	int elementMapId = 1;
 	int insertElement(const QWebElement & ele);
 	QWebElement getElement(int iIdx);
 	int getElementId(const QWebElement &);
 	QHash<int, QWebElement> m_elementMapper;
-	KviPointerList<KviKvsObject> * lWebelement;
+	KviPointerList<KviKvsObject> * lWebelement = nullptr;
 	QHash<QString, QWebElement *> m_dictCache;
-	KviPointerList<QNetworkReply> * m_pReplyList;
-	QNetworkAccessManager * m_pNetworkManager;
+	KviPointerList<QNetworkReply> * m_pReplyList = nullptr;
+	QNetworkAccessManager * m_pNetworkManager = nullptr;
 	QWebElementCollection m_webElementCollection;
 	QWebElement m_currentElement;
 
@@ -83,7 +83,7 @@ public:
 protected:
 	void getFrames(QWebFrame * pCurFrame, QStringList & szFramesNames);
 	QWebFrame * findFrame(QWebFrame * pCurFrame, QString & szFrameName);
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 	bool removeFromDocument(KviKvsObjectFunctionCall * c);
 	bool makePreview(KviKvsObjectFunctionCall * c);
 
@@ -160,7 +160,7 @@ class KviKvsDownloadHandler : public QObject
 public:
 	KviKvsDownloadHandler(KvsObject_webView * pParent, QFile * pFile, QNetworkReply * pNetReply, int iId);
 
-	virtual ~KviKvsDownloadHandler();
+	~KviKvsDownloadHandler();
 
 protected:
 	KvsObject_webView * m_pParentScript;

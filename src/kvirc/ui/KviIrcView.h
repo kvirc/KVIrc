@@ -40,6 +40,7 @@ class QLineEdit;
 class QFile;
 class QFontMetrics;
 class QMenu;
+class QScreen;
 
 class KviWindow;
 class KviMainWindow;
@@ -48,10 +49,10 @@ class KviIrcViewToolWidget;
 class KviIrcViewToolTip;
 class KviAnimatedPixmap;
 
-typedef struct _KviIrcViewLineChunk KviIrcViewLineChunk;
-typedef struct _KviIrcViewWrappedBlock KviIrcViewWrappedBlock;
-typedef struct _KviIrcViewLine KviIrcViewLine;
-typedef struct _KviIrcViewWrappedBlockSelectionInfoTag KviIrcViewWrappedBlockSelectionInfo;
+struct KviIrcViewLineChunk;
+struct KviIrcViewWrappedBlock;
+struct KviIrcViewLine;
+struct KviIrcViewWrappedBlockSelectionInfo;
 
 #define KVI_IRCVIEW_INVALID_LINE_MARK_INDEX 0xffffffff
 
@@ -177,13 +178,13 @@ public:
 	// A null pixmap passed here unsets the private backgrdound.
 	void setPrivateBackgroundPixmap(const QPixmap & pixmap, bool bRepaint = true);
 	QPixmap * getPrivateBackgroundPixmap() const { return m_pPrivateBackgroundPixmap; };
-	bool hasPrivateBackgroundPixmap() { return (m_pPrivateBackgroundPixmap != 0); };
+	bool hasPrivateBackgroundPixmap() { return (m_pPrivateBackgroundPixmap != nullptr); };
 
 	// Logging
 	// Stops previous logging session too...
 	bool startLogging(const QString & fname = QString(), bool bPrependCurBuffer = false);
 	void stopLogging();
-	bool isLogging() { return (m_pLogFile != 0); };
+	bool isLogging() { return (m_pLogFile != nullptr); };
 	void getLogFileName(QString & buffer);
 	void add2Log(const QString & szBuffer, const QDateTime & date, int iMsgType, bool bPrependDate);
 
@@ -204,27 +205,28 @@ public:
 	void prevPage();
 	void scrollTop();
 	void scrollBottom();
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 	const QString & lastLineOfText();
 	const QString & lastMessageText();
-	virtual void setFont(const QFont & f);
+	void setFont(const QFont & f);
 	void scrollToMarker();
 
 protected:
-	virtual void paintEvent(QPaintEvent *);
-	virtual void resizeEvent(QResizeEvent *);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseReleaseEvent(QMouseEvent *);
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	virtual void mouseMoveEvent(QMouseEvent * e);
-	virtual void timerEvent(QTimerEvent * e);
-	virtual void dragEnterEvent(QDragEnterEvent * e);
-	virtual void dropEvent(QDropEvent * e);
-	virtual bool event(QEvent * e);
-	virtual void wheelEvent(QWheelEvent * e);
-	virtual void keyPressEvent(QKeyEvent * e);
+	void paintEvent(QPaintEvent *) override;
+	void resizeEvent(QResizeEvent *) override;
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseReleaseEvent(QMouseEvent *) override;
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
+	void mouseMoveEvent(QMouseEvent * e) override;
+	void timerEvent(QTimerEvent * e) override;
+	void dragEnterEvent(QDragEnterEvent * e) override;
+	void dropEvent(QDropEvent * e) override;
+	void showEvent(QShowEvent * e) override;
+	bool event(QEvent * e) override;
+	void wheelEvent(QWheelEvent * e) override;
+	void keyPressEvent(QKeyEvent * e) override;
 	void maybeTip(const QPoint & pnt);
-	virtual void leaveEvent(QEvent *);
+	void leaveEvent(QEvent *) override;
 
 private:
 	void triggerMouseRelatedKvsEvents(QMouseEvent * e);
@@ -240,7 +242,7 @@ private:
 	void calculateLineWraps(KviIrcViewLine * ptr, int maxWidth);
 	void recalcFontVariables(const QFont & font, const QFontInfo & fi);
 	bool checkSelectionBlock(KviIrcViewLine * line, int bufIndex);
-	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos, int yPos, QRect * pRect = 0, QString * linkCmd = 0, QString * linkText = 0);
+	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos, int yPos, QRect * pRect = nullptr, QString * linkCmd = nullptr, QString * linkText = nullptr);
 	void doLinkToolTip(const QRect & rct, QString & linkCmd, QString & linkText);
 	void doMarkerToolTip();
 	bool checkMarkerArea(const QPoint & mousePos);
@@ -259,6 +261,7 @@ public slots:
 	void resetBackground();
 protected slots:
 	virtual void scrollBarPositionChanged(int newValue);
+	void screenChanged(QScreen *);
 	void masterDead();
 	void animatedIconChange();
 signals:

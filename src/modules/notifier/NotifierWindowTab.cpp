@@ -36,9 +36,9 @@
 #include "KviPixmapUtils.h"
 #include "KviWindow.h"
 
-#include <QScrollBar>
-#include <QResizeEvent>
 #include <QPainter>
+#include <QResizeEvent>
+#include <QScrollBar>
 #include <QTabWidget>
 #include <QVBoxLayout>
 #include <QWidget>
@@ -51,9 +51,8 @@ extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 extern NotifierWindow * g_pNotifierWindow;
 
 NotifierWindowTab::NotifierWindowTab(KviWindow * pWnd, QTabWidget * pParent)
-    : QScrollArea(pParent)
+    : QScrollArea(pParent), m_pWnd{pWnd}, m_pParent{pParent}
 {
-	m_pWnd = pWnd;
 	if(m_pWnd)
 	{
 		m_szLabel = m_pWnd->windowName();
@@ -65,11 +64,8 @@ NotifierWindowTab::NotifierWindowTab(KviWindow * pWnd, QTabWidget * pParent)
 		m_szLabel = "----";
 	}
 
-	if(pParent)
-	{
-		m_pParent = pParent;
+	if(m_pParent)
 		m_pParent->addTab(this, m_szLabel);
-	}
 
 	setFocusPolicy(Qt::NoFocus);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -170,24 +166,18 @@ void NotifierWindowTab::closeMe()
 	{
 		int iIdx = m_pParent->indexOf(this);
 		if(iIdx != -1)
-		{
 			g_pNotifierWindow->slotTabCloseRequested(iIdx);
-		}
 	}
 }
 
 void NotifierWindowTab::resizeEvent(QResizeEvent *)
 {
-	if(m_pVBox)
+	int iWidth = viewport()->width();
+	for(int i = 0; i < m_pVBox->count(); i++)
 	{
-		int iWidth = viewport()->width();
-		NotifierMessage * pMessage;
-		for(int i = 0; i < m_pVBox->count(); i++)
-		{
-			pMessage = (NotifierMessage *)m_pVBox->itemAt(i)->widget();
-			if(pMessage)
-				pMessage->setFixedWidth(iWidth);
-		}
+		NotifierMessage * pMessage = (NotifierMessage *)m_pVBox->itemAt(i)->widget();
+		if(pMessage)
+			pMessage->setFixedWidth(iWidth);
 	}
 }
 

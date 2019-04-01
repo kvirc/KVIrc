@@ -51,14 +51,14 @@ extern bool kvi_dcc_voice_is_valid_codec(const char * codecName);
 #define KVI_DCC_VOICE_THREAD_ACTION_START_PLAYING 2
 #define KVI_DCC_VOICE_THREAD_ACTION_STOP_PLAYING 3
 
-typedef struct _KviDccVoiceThreadOptions
+struct KviDccVoiceThreadOptions
 {
 	bool bForceHalfDuplex;
 	int iPreBufferSize;
 	int iSampleRate;
 	KviCString szSoundDevice;
 	DccVoiceCodec * pCodec;
-} KviDccVoiceThreadOptions;
+};
 
 class DccVoiceThread : public DccThread
 {
@@ -125,14 +125,14 @@ protected:
 	DccVoiceThread * m_pSlaveThread;
 
 protected:
-	virtual void focusInEvent(QFocusEvent *);
-	virtual const QString & target();
-	virtual void fillCaptionBuffers();
-	virtual QPixmap * myIconPtr();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual QSize sizeHint() const;
-	virtual bool event(QEvent * e);
-	virtual void getBaseLogFileName(QString & buffer);
+	void focusInEvent(QFocusEvent *) override;
+	const QString & target() override;
+	void fillCaptionBuffers() override;
+	QPixmap * myIconPtr() override;
+	void resizeEvent(QResizeEvent * e) override;
+	QSize sizeHint() const override;
+	bool event(QEvent * e) override;
+	void getBaseLogFileName(QString & buffer) override;
 	void startTalking();
 	void stopTalking();
 	void startConnection();
@@ -188,7 +188,7 @@ public:
 KviVoiceParty::KviVoiceParty(const QString &szNick,const QString &szIp,unsigned short uPort)
 : m_szIp(szIp), m_uPort(uPort), m_szNick(szNick)
 {
-	m_pChildrenTree = 0;
+	m_pChildrenTree = nullptr;
 }
 
 KviVoiceParty::~KviVoiceParty()
@@ -241,8 +241,8 @@ KviVoiceLink::KviVoiceLink(KviVoiceParty * pRemoteParty)
 {
 	KviQString::sprintf("%Q:%u",&(pRemoteParty->nick()),pRemoteParty->port());
 	m_pRemoteParty = pRemoteParty;
-	m_pAudioEncoder = 0;
-	m_pAudioDecoder = 0;
+	m_pAudioEncoder = nullptr;
+	m_pAudioDecoder = nullptr;
 }
 
 KviVoiceLink::~KviVoiceLink()

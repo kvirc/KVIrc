@@ -27,10 +27,10 @@
 
 #include "KviWindow.h"
 
-typedef struct _SPasteThreadData
+struct SPasteThreadData
 {
 	QString * strData;
 	KviWindow * win;
-} SPasteThreadData;
+};
 
 #endif

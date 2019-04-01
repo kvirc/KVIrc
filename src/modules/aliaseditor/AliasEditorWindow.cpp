@@ -137,6 +137,9 @@ AliasEditorWidget::AliasEditorWidget(QWidget * par)
 
 	m_pTreeWidget = new AliasEditorTreeWidget(box);
 
+	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Export All to...", "editor"), box);
+	connect(btn, SIGNAL(clicked()), this, SLOT(exportAll()));
+
 	box = new KviTalVBox(m_pSplitter);
 	KviTalHBox * hbox = new KviTalHBox(box);
 	hbox->setSpacing(0);
@@ -361,7 +364,7 @@ void AliasEditorWidget::itemRenamed(QTreeWidgetItem * it, int col)
 
 bool AliasEditorWidget::hasSelectedItems()
 {
-	return m_pTreeWidget->selectedItems().count() ? 1 : 0;
+	return m_pTreeWidget->selectedItems().count() ? true : false;
 }
 
 bool AliasEditorWidget::itemExists(QTreeWidgetItem * pSearchFor)

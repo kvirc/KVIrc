@@ -64,14 +64,14 @@ public:
 	* \struct _EncodingDescription
 	* \brief Holds the encoding data
 	*/
-	typedef struct _EncodingDescription
+	struct EncodingDescription
 	{
 		const char * pcName;        /**< name of the encoding */
 		char bSmart;                /**< is it a smart codec? */
 		char bSendUtf8;             /**< does it send utf8 or the local charset? */
 		uint uGroup;                /**< group */
 		const char * pcDescription; /**< description of the encoding */
-	} EncodingDescription;
+	};
 
 protected:
 	/**

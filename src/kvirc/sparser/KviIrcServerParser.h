@@ -48,15 +48,15 @@ class QByteArray;
 
 typedef void (KviIrcServerParser::*messageParseProc)(KviIrcMessage *);
 
-typedef struct _KviLiteralMessageParseStruct
+struct KviLiteralMessageParseStruct
 {
 	const char * msgName;
 	messageParseProc proc;
-} KviLiteralMessageParseStruct;
+};
 
 class KviIrcMask;
 
-typedef struct _KviCtcpMessage
+struct KviCtcpMessage
 {
 	KviIrcMessage * msg;
 	const char * pData;
@@ -67,9 +67,9 @@ typedef struct _KviCtcpMessage
 	bool bUnknown;
 
 	QString szTag;
-} KviCtcpMessage;
+};
 
-typedef struct _KviDccRequest
+struct KviDccRequest
 {
 	KviCString szType;
 	KviCString szParam1;
@@ -80,19 +80,19 @@ typedef struct _KviDccRequest
 	bool bIPv6;
 	KviCtcpMessage * ctcpMsg;
 	KviConsoleWindow * pConsole;
-} KviDccRequest;
+};
 
 typedef void (KviIrcServerParser::*ctcpParseProc)(KviCtcpMessage *);
 
 #define KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT 1
 
-typedef struct _KviCtcpMessageParseStruct
+struct KviCtcpMessageParseStruct
 {
 	const char * msgName;
 	ctcpParseProc req;
 	ctcpParseProc rpl;
 	int iFlags;
-} KviCtcpMessageParseStruct;
+};
 
 #define EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET 0
 #define EXTERNAL_SERVER_DATA_PARSER_CONTROL_STARTOFDATA 1

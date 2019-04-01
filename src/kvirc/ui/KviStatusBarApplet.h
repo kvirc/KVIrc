@@ -94,14 +94,14 @@ protected:
 
 public:
 	KviStatusBarApplet(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
-	virtual ~KviStatusBarApplet();
+	~KviStatusBarApplet();
 
 public:
 	KviStatusBar * statusBar() { return m_pStatusBar; };
 	KviMainWindow * frame() { return m_pStatusBar->frame(); };
 	KviStatusBarAppletDescriptor * descriptor() { return m_pDescriptor; };
-	inline void setIndex(int i) { mIndex = i; };
-	inline int index() const { return mIndex; };
+	void setIndex(int i) { mIndex = i; }
+	int index() const { return mIndex; }
 protected:
 	virtual void fillContextPopup(QMenu *){};
 	virtual void loadState(const char *, KviConfigurationFile *){};
@@ -120,7 +120,7 @@ class KviStatusBarClock : public KviStatusBarApplet
 	Q_OBJECT
 public:
 	KviStatusBarClock(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
-	virtual ~KviStatusBarClock();
+	~KviStatusBarClock();
 	enum Format
 	{
 		HMS,
@@ -136,11 +136,11 @@ public:
 	static void selfRegister(KviStatusBar * pBar);
 
 protected:
-	virtual void fillContextPopup(QMenu * p);
-	virtual void timerEvent(QTimerEvent * e);
+	void fillContextPopup(QMenu * p) override;
+	void timerEvent(QTimerEvent * e) override;
 
-	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
-	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
+	void loadState(const char * pcPrefix, KviConfigurationFile * pCfg) override;
+	void saveState(const char * pcPrefix, KviConfigurationFile * pCfg) override;
 	void adjustMinWidth();
 protected slots:
 	void toggleUtc();
@@ -153,16 +153,16 @@ class KviStatusBarConnectionTimer : public KviStatusBarApplet
 	Q_OBJECT
 public:
 	KviStatusBarConnectionTimer(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
-	virtual ~KviStatusBarConnectionTimer();
+	~KviStatusBarConnectionTimer();
 
 protected:
 	bool m_bTotal;
 
 protected:
-	virtual void timerEvent(QTimerEvent * e);
-	virtual void fillContextPopup(QMenu * p);
-	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
-	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
+	void timerEvent(QTimerEvent * e) override;
+	void fillContextPopup(QMenu * p) override;
+	void loadState(const char * pcPrefix, KviConfigurationFile * pCfg) override;
+	void saveState(const char * pcPrefix, KviConfigurationFile * pCfg) override;
 
 public:
 	static void selfRegister(KviStatusBar * pBar);
@@ -175,7 +175,7 @@ class KviStatusBarSeparator : public KviStatusBarApplet
 	Q_OBJECT
 public:
 	KviStatusBarSeparator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
-	virtual ~KviStatusBarSeparator();
+	~KviStatusBarSeparator();
 
 public:
 	static void selfRegister(KviStatusBar * pBar);
@@ -186,7 +186,7 @@ class KviStatusBarAwayIndicator : public KviStatusBarApplet
 	Q_OBJECT
 public:
 	KviStatusBarAwayIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
-	virtual ~KviStatusBarAwayIndicator();
+	~KviStatusBarAwayIndicator();
 
 public:
 	static void selfRegister(KviStatusBar * pBar);
@@ -195,11 +195,11 @@ protected:
 	bool m_bAwayOnAllContexts;
 
 protected:
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	virtual QString tipText(const QPoint &);
-	virtual void fillContextPopup(QMenu * p);
-	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
-	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
+	QString tipText(const QPoint &) override;
+	void fillContextPopup(QMenu * p) override;
+	void loadState(const char * pcPrefix, KviConfigurationFile * pCfg) override;
+	void saveState(const char * pcPrefix, KviConfigurationFile * pCfg) override;
 protected slots:
 	void updateDisplay();
 	void toggleContext();
@@ -210,14 +210,14 @@ class KviStatusBarLagIndicator : public KviStatusBarApplet
 	Q_OBJECT
 public:
 	KviStatusBarLagIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
-	virtual ~KviStatusBarLagIndicator(){};
+	~KviStatusBarLagIndicator() = default;
 
 public:
 	static void selfRegister(KviStatusBar * pBar);
 
 protected:
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	virtual QString tipText(const QPoint &);
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
+	QString tipText(const QPoint &) override;
 protected slots:
 	void updateDisplay();
 };
@@ -227,15 +227,15 @@ class KviStatusBarUpdateIndicator : public KviStatusBarApplet
 	Q_OBJECT
 public:
 	KviStatusBarUpdateIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
-	virtual ~KviStatusBarUpdateIndicator();
+	~KviStatusBarUpdateIndicator();
 	static void selfRegister(KviStatusBar * pBar);
 
 protected:
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	virtual QString tipText(const QPoint &);
-	virtual void fillContextPopup(QMenu * p);
-	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
-	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
+	QString tipText(const QPoint &) override;
+	void fillContextPopup(QMenu * p) override;
+	void loadState(const char * pcPrefix, KviConfigurationFile * pCfg) override;
+	void saveState(const char * pcPrefix, KviConfigurationFile * pCfg) override;
 	void checkVersion();
 	void getNewVersion();
 protected slots:

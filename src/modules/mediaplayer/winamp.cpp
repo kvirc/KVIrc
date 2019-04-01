@@ -31,7 +31,7 @@
 
 // This stuff is compiled only on windows, as a separate dll module
 
-typedef struct
+struct winampGeneralPurposePlugin
 {
 	int version;
 	char * description;
@@ -40,7 +40,7 @@ typedef struct
 	void (*quit)();
 	HWND hwndParent;
 	HINSTANCE hDllInstance;
-} winampGeneralPurposePlugin;
+};
 
 #define GPPHDR_VER 0x10
 
@@ -72,7 +72,7 @@ winampGeneralPurposePlugin plugin = {
 #define KVIRC_WM_USER_CHECK 13123
 #define KVIRC_WM_USER_CHECK_REPLY 13124
 
-void * lpWndProcOld = 0;
+void * lpWndProcOld = nullptr;
 
 char szBuffer[4096];
 

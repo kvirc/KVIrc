@@ -95,10 +95,10 @@ private:
 	void fill();
 
 	//bool findTypedSeq(); // returns true if it is a complete word
-	virtual void keyPressEvent(QKeyEvent * e);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void timerEvent(QTimerEvent * e);
-	virtual void hideEvent(QHideEvent * e);
+	void keyPressEvent(QKeyEvent * e) override;
+	void mousePressEvent(QMouseEvent * e) override;
+	void timerEvent(QTimerEvent * e) override;
+	void hideEvent(QHideEvent * e) override;
 public slots:
 	/**
 	* \brief Called when the owner is dead

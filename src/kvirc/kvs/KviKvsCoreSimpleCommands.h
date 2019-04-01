@@ -32,7 +32,7 @@
 #include "KviKvsSwitchList.h"
 #include "KviKvsParameterProcessor.h"
 
-#define KVSCSC(_name) bool _name(KviKvsRunTimeContext * __pContext, KviKvsVariantList * __pParams, KviKvsSwitchList * __pSwitches)
+#define KVSCSC(_name) bool _name([[maybe_unused]] KviKvsRunTimeContext * __pContext, [[maybe_unused]] KviKvsVariantList * __pParams, [[maybe_unused]] KviKvsSwitchList * __pSwitches)
 
 #define KVSCSC_pContext __pContext
 #define KVSCSC_pParams __pParams

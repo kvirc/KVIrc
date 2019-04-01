@@ -113,7 +113,7 @@ protected:
 	    KviWindow * pWnd,
 	    KviKvsVariantList * pParams,
 	    KviKvsVariant * pRetVal,
-	    KviKvsExtendedRunTimeData * pExtData = 0);
+	    KviKvsExtendedRunTimeData * pExtData = nullptr);
 
 public:
 	~KviKvsRunTimeContext();

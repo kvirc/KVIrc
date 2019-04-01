@@ -191,7 +191,7 @@ OptionsDialog::OptionsDialog(QWidget * par, const QString & szGroup, bool bModal
 	hbox->setMargin(3);
 
 	m_pSearchLineEdit = new QLineEdit(hbox);
-	connect(m_pSearchLineEdit, SIGNAL(returnPressed()), this, SLOT(searchClicked()));
+	connect(m_pSearchLineEdit, SIGNAL(textEdited(const QString &)), this, SLOT(searchClicked()));
 	m_pSearchButton = new QToolButton(hbox);
 	m_pSearchButton->setIconSize(QSize(16, 16));
 	m_pSearchButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Search)));
@@ -322,6 +322,7 @@ void OptionsDialog::searchLineEditTextChanged(const QString &)
 bool OptionsDialog::searchInSelectors(KviOptionsWidget * pOptionsWidget, const QStringList & lKeywords)
 {
 	KviPointerList<KviSelectorInterface> * selectors = pOptionsWidget->selectors();
+	bool bCleaningUp = lKeywords.isEmpty();
 	bool bFoundSomethingHere = false;
 	if(selectors->count() > 0)
 	{
@@ -331,28 +332,38 @@ bool OptionsDialog::searchInSelectors(KviOptionsWidget * pOptionsWidget, const Q
 			QWidget * pWidget = selectors->at(i)->widgetToHighlight();
 			if(!pWidget)
 				continue;
-			QString szTmp = pWidget->toolTip();
-			szTmp = szTmp.replace(QRegExp("<[^<>]+>"), "");
-			szText.append(szTmp);
-			if(!szText.isEmpty())
+			if(bCleaningUp)
 			{
-				bool bOk = true;
-				for(int j = 0; j < lKeywords.count(); j++)
-				{
-					if(szText.indexOf(lKeywords.at(j), 0, Qt::CaseInsensitive) == -1)
-					{
-						bOk = false;
-						break;
-					}
-				}
-				if(bOk)
-				{
-					bFoundSomethingHere = true;
-				}
 				QFont font = pWidget->font();
-				font.setBold(bOk);
-				font.setUnderline(bOk);
+				font.setBold(false);
+				font.setUnderline(false);
 				pWidget->setFont(font);
+			}
+			else
+			{
+				QString szTmp = pWidget->toolTip();
+				szTmp = szTmp.replace(QRegExp("<[^<>]+>"), "");
+				szText.append(szTmp);
+				if(!szText.isEmpty())
+				{
+					bool bOk = true;
+					for(int j = 0; j < lKeywords.count(); j++)
+					{
+						if(szText.indexOf(lKeywords.at(j), 0, Qt::CaseInsensitive) == -1)
+						{
+							bOk = false;
+							break;
+						}
+					}
+					if(bOk)
+					{
+						bFoundSomethingHere = true;
+					}
+					QFont font = pWidget->font();
+					font.setBold(bOk);
+					font.setUnderline(bOk);
+					pWidget->setFont(font);
+				}
 			}
 		}
 	}
@@ -369,6 +380,7 @@ bool OptionsDialog::recursiveSearch(OptionsDialogTreeWidgetItem * pItem, const Q
 		m_pWidgetStack->addWidget(pItem->m_pOptionsWidget);
 	}
 
+	bool bCleaningUp = lKeywords.isEmpty();
 	bool bFoundSomethingHere = false;
 	KviOptionsWidget * pOptionsWidget = pItem->m_pOptionsWidget;
 	QTabWidget * pTab = pOptionsWidget->tabWidget();
@@ -377,12 +389,12 @@ bool OptionsDialog::recursiveSearch(OptionsDialogTreeWidgetItem * pItem, const Q
 		for(int i = 0; i < pTab->count(); i++)
 		{
 			QString szTxt = pTab->tabText(i);
-			if(KviQString::equalCIN(szTxt, ">>> ", 4))
+			if(bCleaningUp || KviQString::equalCIN(szTxt, ">>> ", 4))
 			{
 				szTxt.replace(">>> ", "");
 				szTxt.replace(" <<<", "");
 			}
-			if(searchInSelectors((KviOptionsWidget *)pTab->widget(i), lKeywords))
+			if(searchInSelectors((KviOptionsWidget *)pTab->widget(i), lKeywords) && !bCleaningUp)
 			{
 				bFoundSomethingHere = true;
 				szTxt.insert(0, ">>> ");
@@ -393,18 +405,21 @@ bool OptionsDialog::recursiveSearch(OptionsDialogTreeWidgetItem * pItem, const Q
 	}
 	else
 	{
-		if(searchInSelectors(pOptionsWidget, lKeywords))
+		if(searchInSelectors(pOptionsWidget, lKeywords) && !bCleaningUp)
 			bFoundSomethingHere = true;
 	}
 
-	QStringList szInstanceKeywords = pItem->m_pInstanceEntry->szKeywords.split(QChar(','));
-	// debug all the "search keywords" for each entry in the options tree
-	// qDebug("OPT %s",pItem->m_pInstanceEntry->szKeywords.toUtf8().data());
+	if (!bCleaningUp)
+	{
+		QStringList szInstanceKeywords = pItem->m_pInstanceEntry->szKeywords.split(QChar(','));
+		// debug all the "search keywords" for each entry in the options tree
+		// qDebug("OPT %s",pItem->m_pInstanceEntry->szKeywords.toUtf8().data());
 
-	for(int i = 0; i < szInstanceKeywords.count() && !bFoundSomethingHere; i++)
-		for(int j = 0; j < lKeywords.count() && !bFoundSomethingHere; j++)
-			if(szInstanceKeywords.at(i).contains(lKeywords.at(j), Qt::CaseInsensitive))
-				bFoundSomethingHere = true;
+		for(int i = 0; i < szInstanceKeywords.count() && !bFoundSomethingHere; i++)
+			for(int j = 0; j < lKeywords.count() && !bFoundSomethingHere; j++)
+				if(szInstanceKeywords.at(i).contains(lKeywords.at(j), Qt::CaseInsensitive))
+					bFoundSomethingHere = true;
+	}
 
 	if(bFoundSomethingHere)
 	{
@@ -424,7 +439,7 @@ bool OptionsDialog::recursiveSearch(OptionsDialogTreeWidgetItem * pItem, const Q
 		for(int j = 0; j < ccount; j++)
 		{
 			OptionsDialogTreeWidgetItem * pChild = (OptionsDialogTreeWidgetItem *)pItem->child(j);
-			bool bRet = recursiveSearch(pChild, lKeywords);
+			bool bRet = recursiveSearch(pChild, lKeywords) && !bCleaningUp;
 			if(bRet)
 				bFoundSomethingInside = true;
 		}
@@ -455,11 +470,27 @@ void OptionsDialog::search(const QString & szKeywords)
 	search(lKeywords);
 }
 
+void OptionsDialog::clearSearch()
+{
+	m_pTreeWidget->setUpdatesEnabled(false);
+
+	QTreeWidgetItemIterator it(m_pTreeWidget);
+	while (*it) {
+		recursiveSearch(((OptionsDialogTreeWidgetItem *)* it), QStringList());
+		++it;
+	}
+
+	m_pTreeWidget->setUpdatesEnabled(true);
+	m_pTreeWidget->update();
+}
+
 void OptionsDialog::searchClicked()
 {
 	QString szTxt = m_pSearchLineEdit->text().trimmed();
-	if(!szTxt.isEmpty())
+	if(szTxt.length() > 1)
 		search(szTxt);
+	else
+		clearSearch();
 }
 
 void OptionsDialog::fillTreeWidget(QTreeWidgetItem * p, KviPointerList<OptionsWidgetInstanceEntry> * l, const QString & szGroup, bool bNotContainedOnly)

@@ -62,28 +62,28 @@ public:
 	~NotifierWindow();
 
 protected:
-	QTimer * m_pShowHideTimer;
-	QTimer * m_pBlinkTimer;
-	QTimer * m_pAutoHideTimer;
-	State m_eState;
-	bool m_bBlinkOn;
-	double m_dOpacity;
+	QTimer * m_pShowHideTimer = nullptr;
+	QTimer * m_pBlinkTimer = nullptr;
+	QTimer * m_pAutoHideTimer = nullptr;
+	State m_eState = Hidden;
+	bool m_bBlinkOn = false;
+	double m_dOpacity = 0.0;
 
-	bool m_bCloseDown;
-	bool m_bPrevDown;
-	bool m_bNextDown;
-	bool m_bWriteDown;
+	bool m_bCloseDown = false;
+	bool m_bPrevDown = false;
+	bool m_bNextDown = false;
+	bool m_bWriteDown = false;
 	bool m_bCrashShowWorkAround;
 
 	QRect m_wndRect;
 
-	NotifierMessage * m_pCurrentMessage;
-	KviThemedLineEdit * m_pLineEdit;
+	NotifierMessage * m_pCurrentMessage = nullptr;
+	KviThemedLineEdit * m_pLineEdit = nullptr;
 
-	bool m_bDragging;
-	bool m_bLeftButtonIsPressed;
-	bool m_bDiagonalResizing;
-	bool m_bResizing;
+	bool m_bDragging = false;
+	bool m_bLeftButtonIsPressed = false;
+	bool m_bDiagonalResizing = false;
+	bool m_bResizing = false;
 
 	int m_whereResizing;
 
@@ -91,19 +91,19 @@ protected:
 	QPoint m_pntPos;
 	QPoint m_pntClick;
 	int m_iBlinkCount;
-	QMenu * m_pContextPopup;
-	QMenu * m_pDisablePopup;
-	KviWindow * m_pWindowToRaise;
-	kvi_time_t m_tAutoHideAt;
-	kvi_time_t m_tStartedAt;
+	QMenu * m_pContextPopup = nullptr;
+	QMenu * m_pDisablePopup = nullptr;
+	KviWindow * m_pWindowToRaise = nullptr;
+	kvi_time_t m_tAutoHideAt = 0;
+	kvi_time_t m_tStartedAt = 0;
 	QTime m_qtStartedAt;
-	bool m_bDisableHideOnMainWindowGotAttention;
+	bool m_bDisableHideOnMainWindowGotAttention = false;
 
 	QCursor m_cursor;
 
-	QTabWidget * m_pWndTabs;
-	QProgressBar * m_pProgressBar;
-	NotifierWindowBorder * m_pWndBorder;
+	QTabWidget * m_pWndTabs = nullptr;
+	QProgressBar * m_pProgressBar = nullptr;
+	NotifierWindowBorder * m_pWndBorder = nullptr;
 
 public:
 	void doShow(bool bDoAnimate);
@@ -112,24 +112,24 @@ public:
 	void addMessage(KviWindow * pWnd, const QString & szImageId, const QString & szText, unsigned int uMessageTime);
 	void setDisableHideOnMainWindowGotAttention(bool b) { m_bDisableHideOnMainWindowGotAttention = b; };
 	void showLineEdit(bool bShow);
-	inline int countTabs() const
+	int countTabs() const
 	{
 		if(m_pWndTabs)
 			return m_pWndTabs->count();
 		return 0;
-	};
-	inline State state() const { return m_eState; };
+	}
+	State state() const { return m_eState; }
 protected:
-	virtual void showEvent(QShowEvent * e);
-	virtual void hideEvent(QHideEvent * e);
-	virtual void paintEvent(QPaintEvent * e);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseReleaseEvent(QMouseEvent * e);
-	virtual void mouseMoveEvent(QMouseEvent * e);
-	virtual void leaveEvent(QEvent * e);
-	virtual void enterEvent(QEvent * e);
-	virtual bool eventFilter(QObject * pEdit, QEvent * e);
-	virtual void keyPressEvent(QKeyEvent * e);
+	void showEvent(QShowEvent * e) override;
+	void hideEvent(QHideEvent * e) override;
+	void paintEvent(QPaintEvent * e) override;
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseReleaseEvent(QMouseEvent * e) override;
+	void mouseMoveEvent(QMouseEvent * e) override;
+	void leaveEvent(QEvent * e) override;
+	void enterEvent(QEvent * e) override;
+	bool eventFilter(QObject * pEdit, QEvent * e) override;
+	void keyPressEvent(QKeyEvent * e) override;
 public slots:
 	void hideNow();
 	void toggleLineEdit();

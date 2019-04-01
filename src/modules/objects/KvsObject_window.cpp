@@ -34,8 +34,6 @@
 KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(const QString & szName)
     : KviWindow(KviWindow::ScriptObject, szName)
 {
-	m_pCentralWidget = nullptr;
-	m_pIcon = nullptr;
 }
 
 KviKvsScriptWindowWindow::~KviKvsScriptWindowWindow()

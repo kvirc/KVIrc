@@ -82,15 +82,15 @@ const int align_cod[] = {
 		Adds a stretchable space with zero minimum size and stretch factor stretch to the end of this box layout.
 		!fn: $setAlignment(<flag1:string>, <flag2:string>, ...)
 		Sets the alignment for widget w to  flags, given as parameters.[br]
-		Valid flags are:[br]
+		Valid flags are:
 		[pre]
-			Right[br]
-			Left[br]
-			Top[br]
-			Bottom[br]
-			HCenter[br]
-			VCenter[br]
-			Center[br]
+			Right
+			Left
+			Top
+			Bottom
+			HCenter
+			VCenter
+			Center
 			Justify
 		[/pre]
 */
@@ -111,11 +111,8 @@ KVSO_BEGIN_DESTRUCTOR(KvsObject_vBox)
 
 KVSO_END_CONSTRUCTOR(KvsObject_vBox)
 
-bool KvsObject_vBox::init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams)
+bool KvsObject_vBox::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
-	Q_UNUSED(pContext);
-	Q_UNUSED(pParams);
-
 	SET_OBJECT(KviTalVBox);
 	return true;
 }

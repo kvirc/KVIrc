@@ -38,11 +38,11 @@ public:
 	KviTalListWidget(QWidget * pParent, QString name, Qt::WindowType f = Qt::Widget);
 	KviTalListWidget(QWidget * pParent)
 	    : QListWidget(pParent){};
-	virtual ~KviTalListWidget(){};
+	~KviTalListWidget() = default;
 
 protected:
-	virtual bool event(QEvent * e);
-	virtual bool eventFilter(QObject * o, QEvent * e);
+	bool event(QEvent * e) override;
+	bool eventFilter(QObject * o, QEvent * e) override;
 signals:
 	void tipRequest(QListWidgetItem *, const QPoint &);
 };
@@ -57,7 +57,7 @@ public:
 	KviTalListWidgetItem(KviTalListWidget * pParent, QString & label)
 	    : QListWidgetItem(label, pParent){};
 	KviTalListWidget * listWidget() { return (KviTalListWidget *)QListWidgetItem::listWidget(); };
-	virtual ~KviTalListWidgetItem(){};
+	~KviTalListWidgetItem() = default;
 };
 
 class KVILIB_API KviTalListWidgetText : public KviTalListWidgetItem
@@ -65,6 +65,7 @@ class KVILIB_API KviTalListWidgetText : public KviTalListWidgetItem
 public:
 	KviTalListWidgetText(KviTalListWidget * listbox, const QString & text = QString());
 	KviTalListWidgetText(const QString & text = QString());
+	KviTalListWidgetText(const KviTalListWidgetText &) = delete;
 	~KviTalListWidgetText();
 
 	int height(const KviTalListWidget *) const;
@@ -78,9 +79,6 @@ public:
 
 protected:
 	virtual void paint(QPainter *);
-
-private:
-	Q_DISABLE_COPY(KviTalListWidgetText)
 };
 
 class KVILIB_API KviTalListWidgetPixmap : public KviTalListWidgetItem
@@ -90,6 +88,7 @@ public:
 	KviTalListWidgetPixmap(const QPixmap &);
 	KviTalListWidgetPixmap(KviTalListWidget * listbox, const QPixmap &, const QString &);
 	KviTalListWidgetPixmap(const QPixmap &, const QString &);
+	KviTalListWidgetPixmap(const KviTalListWidgetPixmap &) = delete;
 	~KviTalListWidgetPixmap();
 
 	const QPixmap * pixmap() const { return &pm; }
@@ -107,7 +106,6 @@ protected:
 	virtual void paint(QPainter *);
 
 private:
-	Q_DISABLE_COPY(KviTalListWidgetPixmap)
 	QPixmap pm;
 };
 

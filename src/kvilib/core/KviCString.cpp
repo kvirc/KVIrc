@@ -360,7 +360,7 @@ bool kvi_matchWildExpr(const char * m1, const char * m2)
 bool kvi_matchWildExprCS(const char *m1,const char *m2)
 {
 	if(!(m1 && m2 && (*m1)))return false;
-	const char * savePos1 = 0;
+	const char * savePos1 = nullptr;
 	const char * savePos2 = m2;
 	while(*m1){ //loop managed by m1 (initially first mask)
 		if(*m1=='*'){
@@ -955,7 +955,7 @@ int kvi_strMatchRevCS(const char * str1, const char * str2, int index)
 	s2--;
 
 	// now start comparing
-	while(1)
+	while(true)
 	{
 		/* in this case, we have str1 = "lo" and str2 = "hello" */
 		if(s1 < str1 && !(s2 < str2))

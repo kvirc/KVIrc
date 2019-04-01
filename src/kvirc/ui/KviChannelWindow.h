@@ -60,7 +60,7 @@ class KviTopicWidget;
 // windows compiler wants this instead of the forward decl
 #include "KviMaskEditor.h"
 #else
-typedef struct _KviMaskEntry KviMaskEntry; // KviMaskEditor.h
+struct KviMaskEntry; // KviMaskEditor.h
 #endif
 
 /**
@@ -76,24 +76,22 @@ typedef struct _KviMaskEntry KviMaskEntry; // KviMaskEditor.h
 #endif
 
 /**
-* \typedef KviChannelAction
 * \struct _KviChannelAction
 * \brief A struct which holds the channel actions
 */
-typedef struct _KviChannelAction
+struct KviChannelAction
 {
 	QString szNick;           // action source nick
 	unsigned int uActionType; // type of the action
 	kvi_time_t tTime;         // time of the action
 	int iTemperature;         // temperature of the action
-} KviChannelAction;
+};
 
 /**
-* \typedef KviChannelActivityStats
 * \struct _KviChannelActivityStats
 * \brief A struct which holds the activity stats
 */
-typedef struct _KviChannelActivityStats
+struct KviChannelActivityStats
 {
 	unsigned int uActionCount;            // number of actions in the history
 	bool bStatsInaccurate;                // the stats are inaccurate because we have just joined the chan
@@ -106,7 +104,7 @@ typedef struct _KviChannelActivityStats
 	unsigned int uHotActionPercent;
 	QStringList lTalkingUsers; // users that seem to be talking NOW
 	QStringList lWereTalkingUsers;
-} KviChannelActivityStats;
+};
 
 /**
 * \class KviChannelWindow
@@ -182,7 +180,7 @@ protected:
 	QString m_szNameWithUserFlag;
 	QStringList * m_pTmpHighLighted;
 	unsigned int m_uActionHistoryHotActionCount;
-	std::vector<KviChannelAction *> m_ActionHistory;
+	QList<KviChannelAction *> m_lActionHistory;
 	kvi_time_t m_tLastReceivedWhoReply;
 	QList<int> m_VertSplitterSizesList;
 	QList<int> m_SplitterSizesList;
@@ -211,7 +209,7 @@ public:
 	* \brief Returns the button container object
 	* \return QFrame *
 	*/
-	QFrame * buttonContainer() { return (QFrame *)m_pButtonContainer; };
+	QFrame * buttonContainer() override { return (QFrame *)m_pButtonContainer; }
 
 	/**
 	* \brief Returns a list of masks for a specific mode
@@ -242,7 +240,7 @@ public:
 	* \brief Returns the name of the channel
 	* \return const QString &
 	*/
-	virtual const QString & target() { return windowName(); };
+	const QString & target() override { return windowName(); }
 
 	/**
 	* \brief Returns the name of the channel with user flags
@@ -307,9 +305,9 @@ public:
 
 	/**
 	* \brief Returns the number of masks is a channel mode list
-	* \return unsigned int
+	* \return size_t
 	*/
-	unsigned int maskCount(char cMode) const { return this->modeMasks(cMode).size(); };
+	size_t maskCount(char cMode) const { return this->modeMasks(cMode).size(); };
 
 	/**
 	* \brief Called when someone sets a channel mode that is stored in a list; these modes require a parameter that is tipically a mask
@@ -471,7 +469,7 @@ public:
 	* \param puActivityTemperature The temperature of the activity
 	* \return bool
 	*/
-	virtual bool activityMeter(unsigned int * puActivityValue, unsigned int * puActivityTemperature);
+	bool activityMeter(unsigned int * puActivityValue, unsigned int * puActivityTemperature) override;
 
 	/**
 	* \brief Sets the channel as dead
@@ -510,7 +508,7 @@ public:
 	* \brief Returns the size of the channel
 	* \return QSize
 	*/
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 
 	/**
 	* \brief Enables or disable the userlist updates
@@ -772,14 +770,14 @@ public:
 	* \param bUserFeedback Whether to display the echo feedback to the user
 	* \return void
 	*/
-	void ownMessage(const QString & szBuffer, bool bUserFeedback = true);
+	void ownMessage(const QString & szBuffer, bool bUserFeedback = true) override;
 
 	/**
 	* \brief Called when we perform an action
 	* \param szBuffer The buffer :)
 	* \return void
 	*/
-	void ownAction(const QString & szBuffer);
+	void ownAction(const QString & szBuffer) override;
 
 	/**
 	* \brief Sets a plain (parameter-less) channel mode, (eg: +m)
@@ -807,7 +805,7 @@ public:
 	* \param szBuffer The buffer :)
 	* \return void
 	*/
-	void getChannelModeStringWithEmbeddedParams(QString & szBuffer);
+	QString getChannelModeStringWithEmbeddedParams();
 
 	/**
 	* \brief Sets a channel mode with a parameter; an empty parameter unsets the mode (eg: +k password)
@@ -862,14 +860,14 @@ public:
 	* \brief Called when the channel losts the focus by the user
 	* \return void
 	*/
-	virtual void lostUserFocus();
+	void lostUserFocus() override;
 
 	/**
 	* \brief Creates the tooltip over the channel treeview
 	* \param szBuffer The buffer where to store the data
 	* \return void
 	*/
-	virtual void getWindowListTipText(QString & szBuffer);
+	void getWindowListTipText(QString & szBuffer) override;
 
 	/**
 	* \brief Unhighlights the windowlist item
@@ -896,7 +894,7 @@ public:
 	* See also: view()
 	* \return KviIrcView *
 	*/
-	virtual KviIrcView * lastClickedView() const;
+	KviIrcView * lastClickedView() const override;
 
 protected:
 	/**
@@ -905,59 +903,59 @@ protected:
 	* \param pEvent The event
 	* \return bool
 	*/
-	bool eventFilter(QObject * pObject, QEvent * pEvent);
+	bool eventFilter(QObject * pObject, QEvent * pEvent) override;
 
 	/**
 	* \brief Returns the correct icon for the channel
 	* \return QPixmap *
 	*/
-	virtual QPixmap * myIconPtr();
+	QPixmap * myIconPtr() override;
 
 	/**
 	* \brief Fills in the caption buffers
 	* \return void
 	*/
-	virtual void fillCaptionBuffers();
+	void fillCaptionBuffers() override;
 
 	/**
 	* \brief Gets the group name
 	* \param szBuffer The buffer where to save the data
 	* \return void
 	*/
-	virtual void getConfigGroupName(QString & szBuffer);
+	void getConfigGroupName(QString & szBuffer) override;
 
 	/**
 	* \brief Saves the properties to file
 	* \param pCfg The config file
 	* \return void
 	*/
-	virtual void saveProperties(KviConfigurationFile * pCfg);
+	void saveProperties(KviConfigurationFile * pCfg) override;
 
 	/**
 	* \brief Loads the properties from file
 	* \param pCfg The config file
 	* \return void
 	*/
-	virtual void loadProperties(KviConfigurationFile * pCfg);
+	void loadProperties(KviConfigurationFile * pCfg) override;
 
 	/**
 	* \brief Applies the options
 	* \return void
 	*/
-	virtual void applyOptions();
+	void applyOptions() override;
 
 	/**
 	* \brief Gets the base name for log file
 	* \param szBuffer The buffer where to save data
 	* \return void
 	*/
-	virtual void getBaseLogFileName(QString & szBuffer);
+	void getBaseLogFileName(QString & szBuffer) override;
 
 	/**
 	* \brief Trigger the OnChannelWindowCreated event
 	* \return void
 	*/
-	virtual void triggerCreationEvents();
+	void triggerCreationEvents() override;
 
 	/**
 	* \brief Called when someone sets a mask in the channel's lists
@@ -1003,10 +1001,10 @@ protected:
 	* \param szMessage The message :)
 	* \return void
 	*/
-	virtual void preprocessMessage(QString & szMessage);
+	void preprocessMessage(QString & szMessage) override;
 
-	virtual void resizeEvent(QResizeEvent *);
-	virtual void closeEvent(QCloseEvent * pEvent);
+	void resizeEvent(QResizeEvent *) override;
+	void closeEvent(QCloseEvent * pEvent) override;
 public slots:
 	/**
 	* \brief Toggles the double view mode
@@ -1050,7 +1048,7 @@ private slots:
 	* \param szMode The modes selected, including any plus/minus sign and parameters
 	* \return void
 	*/
-	void setMode(QString & szMode);
+	void setMode(const QString & szMode);
 
 	/**
 	* \brief Called when we right-click the irc view.

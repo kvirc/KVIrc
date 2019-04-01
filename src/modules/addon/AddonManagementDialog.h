@@ -47,8 +47,6 @@ public:
 
 protected:
 	KviKvsScriptAddon * m_pAddon;
-	QTextDocument * m_pText;
-	QPixmap * m_pIcon;
 	QListWidget * m_pListWidget;
 	QString m_szKey;
 
@@ -86,7 +84,7 @@ public:
 
 protected:
 	void fillListView();
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 protected slots:
 	void currentChanged(QListWidgetItem * i, QListWidgetItem *);
 	void closeClicked();

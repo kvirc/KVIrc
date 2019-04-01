@@ -571,17 +571,21 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	if(treeWidget->currentItem() == item)
 	{
 		//selection colored background
-		if(treeWidget->style()->inherits("QWindowsXPStyle") || treeWidget->style()->inherits("QWindowsVistaStyle"))
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		if(treeWidget->style()->inherits("QStyleSheetStyle") || treeWidget->style()->inherits("QWindowsVistaStyle"))
 		{
-			// The QWindowsXP style does not honor our colors. It uses the system ones instead.
+			// The Windows style does not honor our colors. It uses the system ones instead.
 			// We can't accept it.
 			p->fillRect(opt.rect, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 		}
 		else
 		{
+#endif
 			opt.palette.setColor(QPalette::Highlight, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 			treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt, p, treeWidget);
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		}
+#endif
 #ifndef COMPILE_ON_MAC
 	}
 	else
@@ -592,17 +596,21 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			QColor col(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 			col.setAlpha(127);
 
-			if(treeWidget->style()->inherits("QWindowsXPStyle") || treeWidget->style()->inherits("QWindowsVistaStyle"))
+	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+			if(treeWidget->style()->inherits("QStyleSheetStyle") || treeWidget->style()->inherits("QWindowsVistaStyle"))
 			{
-				// The QWindowsXP style does not honor our colors. It uses the system ones instead.
+				// The Windows style does not honor our colors. It uses the system ones instead.
 				// We can't accept it.
 				p->fillRect(opt.rect, col);
 			}
 			else
 			{
+	#endif
 				opt.palette.setColor(QPalette::Highlight, col);
 				treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt, p, treeWidget);
+	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			}
+	#endif
 		}
 #endif
 	}
@@ -733,5 +741,5 @@ QSize KviTreeWindowListItemDelegate::sizeHint(const QStyleOptionViewItem &, cons
 	if((KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator) || KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons) || KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)) && iHeight < 20)
 		iHeight = 20;
 
-	return QSize(treeWidget->viewport()->size().width(), iHeight);
+	return { treeWidget->viewport()->size().width(), iHeight };
 }

@@ -223,7 +223,7 @@ OptionsWidget_userListFeatures::OptionsWidget_userListFeatures(QWidget * parent)
 
 	KviUIntSelector * u;
 
-	u = addUIntSelector(0, 0, 0, 0, __tr2qs_ctx("Minimum width:", "options"), KviOption_uintUserListMinimumWidth, 100, 1024, 150);
+	u = addUIntSelector(0, 0, 0, 0, __tr2qs_ctx("Minimum width:", "options"), KviOption_uintUserListMinimumWidth, 50, 1024, 150);
 	u->setSuffix(__tr2qs_ctx(" pixels", "options"));
 	mergeTip(u, __tr2qs_ctx("Here you can select a desired minimum width for the userlist when visible. "
 	                        "Suggested values range between 120 and 170 pixels. "

@@ -39,15 +39,15 @@ class KvsObject_tableWidget;
 class KviCellItemDelegate : public QItemDelegate
 {
 public:
-	KviCellItemDelegate(QAbstractItemView * pWidget = 0, KvsObject_tableWidget * pParent = 0);
+	KviCellItemDelegate(QAbstractItemView * pWidget = nullptr, KvsObject_tableWidget * pParent = nullptr);
 	~KviCellItemDelegate();
 
 protected:
 	KvsObject_tableWidget * m_pParentScript;
 
 public:
-	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
-	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
+	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const override;
+	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const override;
 };
 
 class KvsObject_tableWidget : public KvsObject_widget
@@ -60,11 +60,11 @@ public:
 	bool paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index);
 
 protected:
-	KviKvsRunTimeContext * m_pContext;
-	KviCellItemDelegate * m_pCellItemDelegate;
+	KviKvsRunTimeContext * m_pContext = nullptr;
+	KviCellItemDelegate * m_pCellItemDelegate = nullptr;
 
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 
 	bool setText(KviKvsObjectFunctionCall * c);
 	bool setForeground(KviKvsObjectFunctionCall * c);

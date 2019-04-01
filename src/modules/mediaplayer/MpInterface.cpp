@@ -104,8 +104,7 @@ QString MpInterface::amipEval(const QString &)
 	mp3info mp3;                \
 	if(!scan_mp3_file(f, &mp3)) \
 		return QString();       \
-	QTextCodec * pCodec;        \
-	pCodec = mediaplayer_get_codec();
+	[[maybe_unused]] QTextCodec * pCodec = mediaplayer_get_codec();
 
 #define SCAN_MP3_FILE_RET_INT   \
 	QString f = getLocalFile(); \
@@ -142,7 +141,6 @@ QString MpInterface::comment()
 QString MpInterface::year()
 {
 	SCAN_MP3_FILE
-	Q_UNUSED(pCodec);
 	return QString(mp3.id3.year);
 }
 

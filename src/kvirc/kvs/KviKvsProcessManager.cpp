@@ -385,7 +385,7 @@ void KviKvsProcessManager::done()
 {
 	if(!m_pInstance)return;
 	delete m_pInstance;
-	m_pInstance = 0;
+	m_pInstance = nullptr;
 }
 
 bool KviKvsProcessManager::execute(KviKvsProcessAsyncOperationData * d)

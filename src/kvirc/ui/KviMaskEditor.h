@@ -40,12 +40,12 @@ class KviMaskEditor;
 class QLineEdit;
 class QPushButton;
 
-typedef struct _KviMaskEntry
+struct KviMaskEntry
 {
 	QString szMask;
 	QString szSetBy;
 	unsigned int uSetAt;
-} KviMaskEntry;
+};
 
 class KviMaskItem : public QTreeWidgetItem
 {
@@ -71,7 +71,7 @@ protected:
 				return m_Mask.uSetAt < ((KviMaskItem *)&other)->mask()->uSetAt;
 				break;
 		}
-		return 0; //make compiler happy
+		return false; //make compiler happy
 	}
 };
 
@@ -90,7 +90,7 @@ protected:
 	KviChannelWindow * m_pChannel;
 	KviMaskEditor * m_pEditor;
 protected slots:
-	virtual void accept();
+	void accept() override;
 };
 
 class KVIRC_API KviMaskEditor : public KviWindowToolWidget

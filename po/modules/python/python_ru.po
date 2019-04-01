@@ -1,47 +1,46 @@
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the KVIrc package.
 #
-# Alexander Antsev <kagami@crossplatform.ru>, 2010.
+# Translators:
+# Alexander Antsev <kagami@crossplatform.ru>, 2010
+# Alexey Sokolov <alexey+transifex@asokolov.org>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2010-01-30 19:45+0300\n"
-"Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
-"Language-Team: Russian <>\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-22 12:41+0000\n"
+"Last-Translator: Alexey Sokolov <alexey+transifex@asokolov.org>\n"
+"Language-Team: Russian (http://www.transifex.com/kvirc/KVIrc/language/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: src/modules/pythoncore/libkvipythoncore.cpp:113
-#, fuzzy
 msgid "Internal error: Python interpreter not initialized"
 msgstr "Внутренняя ошибка: интерпретатор python не инициализирован"
 
-#: src/modules/python/libkvipython.cpp:429
+#: src/modules/python/libkvipython.cpp:419
 msgid "Python execution error:"
 msgstr "Ошибка выполнения python:"
 
 #: src/modules/python/libkvipython.cpp:42
-#, fuzzy
 msgid "The pythoncore module can't be loaded: Python support not available"
 msgstr "Не возможно загрузить модуль pythoncore: поддержка python не доступна"
 
-#: src/modules/python/libkvipython.cpp:417
-#: src/modules/python/libkvipython.cpp:483
-#, fuzzy
+#: src/modules/python/libkvipython.cpp:407
+#: src/modules/python/libkvipython.cpp:473
 msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
 "the Python support"
 msgstr "Модуль pythoncore не может выполнить код: проблема с поддержкой python"
 
 #: src/modules/python/libkvipython.cpp:56
-#, fuzzy
 msgid ""
 "This KVIrc executable has been compiled without Python scripting support"
 msgstr "Эта сборка KVIrc не имеет поддержки python"

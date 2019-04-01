@@ -35,13 +35,13 @@ class KvsObject_socket : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_socket)
 protected:
-	QAbstractSocket * m_pSocket;
-	QTcpServer * m_pServer;
-	KviKvsRunTimeContext * m_pContext;
-	bool bIsSetFromExternal;
+	QAbstractSocket * m_pSocket = nullptr;
+	QTcpServer * m_pServer = nullptr;
+	KviKvsRunTimeContext * m_pContext = nullptr;
+	bool bIsSetFromExternal = false;
 
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 	const char * getStateString(QAbstractSocket::SocketState);
 
 	void setInternalSocket(QAbstractSocket * pSocket)
