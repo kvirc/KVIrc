@@ -502,31 +502,6 @@ static bool python_kvs_fnc_isAvailable(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-/*
-	@doc: python.version
-	@type:
-		function
-	@title:
-		$python.version
-	@short:
-		Check which version of Python is supported in this build of KVIrc
-	@syntax:
-		$python.version
-	@description:
-		Returns which major version of Python is KVIrc linked to ([b]2[/b] or [b]3[/b])
-		or [b]0[/b] if Python is not supported at all.
-*/
-
-static bool python_kvs_fnc_version(KviKvsModuleFunctionCall * c)
-{
-#ifdef COMPILE_PYTHON_SUPPORT
-	c->returnValue()->setInteger(PY_MAJOR_VERSION);
-#else
-	c->returnValue()->setBoolean(false);
-#endif
-	return true;
-}
-
 static bool python_module_init(KviModule * m)
 {
 	// register the command anyway
@@ -534,7 +509,6 @@ static bool python_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "destroy", python_kvs_cmd_destroy);
 
 	KVSM_REGISTER_FUNCTION(m, "isAvailable", python_kvs_fnc_isAvailable);
-	KVSM_REGISTER_FUNCTION(m, "version", python_kvs_fnc_version);
 #ifdef COMPILE_PYTHON_SUPPORT
 	g_pPythonCoreModule = g_pModuleManager->getModule("pythoncore");
 #endif
