@@ -184,6 +184,11 @@ void UrlDialog::close_slot()
 	close();
 }
 
+void UrlDialog::open()
+{
+	open_url(m_szUrl);
+}
+
 void UrlDialog::remove()
 {
 	if(!m_pUrlList->currentItem())
@@ -207,13 +212,17 @@ void UrlDialog::findtext()
 {
 }
 
-void UrlDialog::dblclk_url(QTreeWidgetItem * item, int)
+void UrlDialog::open_url(QString szUrl)
 {
 	QString cmd = "openurl ";
-	QString szUrl = item->text(0);
 	KviQString::escapeKvs(&szUrl);
 	cmd.append(szUrl);
 	KviKvsScript::run(cmd, this);
+}
+
+void UrlDialog::dblclk_url(QTreeWidgetItem * item, int)
+{
+	open_url(item->text(0));
 }
 
 void UrlDialog::contextMenu(const QPoint & point)
@@ -224,6 +233,7 @@ void UrlDialog::contextMenu(const QPoint & point)
 	if (item)
 	{
 		m_szUrl = item->text(0);
+		p.setDefaultAction(p.addAction(__tr2qs("&Open"), this, SLOT(open())));
 		p.addAction(__tr2qs("&Remove"), this, SLOT(remove()));
 
 		p.addSeparator();
