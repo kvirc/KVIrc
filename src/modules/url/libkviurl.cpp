@@ -84,19 +84,6 @@ UrlDialogTreeWidget::UrlDialogTreeWidget(QWidget * par)
 {
 }
 
-void UrlDialogTreeWidget::mousePressEvent(QMouseEvent * e)
-{
-	if(e->button() == Qt::RightButton)
-	{
-		QTreeWidgetItem * i = itemAt(e->pos());
-		if(i)
-			emit rightButtonPressed(i, QCursor::pos());
-		else
-			emit contextMenuRequested(QCursor::pos());
-	}
-	QTreeWidget::mousePressEvent(e);
-}
-
 void UrlDialogTreeWidget::paintEvent(QPaintEvent * event)
 {
 	QPainter * p = new QPainter(viewport());
@@ -154,8 +141,8 @@ UrlDialog::UrlDialog(std::unordered_set<KviUrl *>)
 	m_pUrlList->setHeaderLabels(labels);
 
 	connect(m_pUrlList, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), SLOT(dblclk_url(QTreeWidgetItem *, int)));
-	connect(m_pUrlList, SIGNAL(rightButtonPressed(QTreeWidgetItem *, const QPoint &)), SLOT(popup(QTreeWidgetItem *, const QPoint &)));
-	connect(m_pUrlList, SIGNAL(contextMenuRequested(const QPoint &)), SLOT(contextMenu(const QPoint &)));
+	connect(m_pUrlList, SIGNAL(customContextMenuRequested(const QPoint &)), SLOT(contextMenu(const QPoint &)));
+	m_pUrlList->setContextMenuPolicy(Qt::CustomContextMenu);
 	m_pUrlList->setFocusPolicy(Qt::StrongFocus);
 	m_pUrlList->setFocus();
 }
@@ -229,32 +216,34 @@ void UrlDialog::dblclk_url(QTreeWidgetItem * item, int)
 	KviKvsScript::run(cmd, this);
 }
 
-void UrlDialog::popup(QTreeWidgetItem * item, const QPoint & point)
-{
-	m_szUrl = item->text(0);
-	QMenu p("menu", nullptr);
-	p.addAction(__tr2qs("&Remove"), this, SLOT(remove()));
-
-	p.addSeparator();
-	m_pListPopup = new QMenu("list", nullptr);
-
-	for(auto & w : g_pMainWindow->windowList())
-	{
-		if((w->type() == KviWindow::Channel) || (w->type() == KviWindow::Query) || (w->type() == KviWindow::DccChat))
-		{
-			m_pListPopup->addAction(w->plainTextCaption());
-		}
-	}
-	p.addAction(__tr2qs("&Say to Window"))->setMenu(m_pListPopup);
-	connect(m_pListPopup, SIGNAL(triggered(QAction *)), this, SLOT(sayToWin(QAction *)));
-	p.exec(point);
-}
-
 void UrlDialog::contextMenu(const QPoint & point)
 {
+	QTreeWidgetItem * item = m_pUrlList->itemAt(point);
+
 	QMenu p("contextmenu", nullptr);
+	if (item)
+	{
+		m_szUrl = item->text(0);
+		p.addAction(__tr2qs("&Remove"), this, SLOT(remove()));
+
+		p.addSeparator();
+		m_pListPopup = new QMenu("list", nullptr);
+
+		for(auto & w : g_pMainWindow->windowList())
+		{
+			if((w->type() == KviWindow::Channel) || (w->type() == KviWindow::Query) || (w->type() == KviWindow::DccChat))
+			{
+				m_pListPopup->addAction(w->plainTextCaption());
+			}
+		}
+		p.addAction(__tr2qs("&Say to Window"))->setMenu(m_pListPopup);
+		connect(m_pListPopup, SIGNAL(triggered(QAction *)), this, SLOT(sayToWin(QAction *)));
+
+		p.addSeparator();
+	}
+
 	p.addAction(__tr2qs("Configure"), this, SLOT(config()));
-	p.exec(point);
+	p.exec(m_pUrlList->viewport()->mapToGlobal(point));
 }
 
 void UrlDialog::sayToWin(QAction * act)
