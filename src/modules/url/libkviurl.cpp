@@ -140,7 +140,7 @@ UrlDialog::UrlDialog(std::unordered_set<KviUrl *>)
 	labels << __tr2qs("URL") << __tr2qs("Window") << __tr2qs("Count") << __tr2qs("Timestamp");
 	m_pUrlList->setHeaderLabels(labels);
 
-	connect(m_pUrlList, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), SLOT(dblclk_url(QTreeWidgetItem *, int)));
+	connect(m_pUrlList, SIGNAL(itemActivated(QTreeWidgetItem *, int)), SLOT(activate(QTreeWidgetItem *, int)));
 	connect(m_pUrlList, SIGNAL(customContextMenuRequested(const QPoint &)), SLOT(contextMenu(const QPoint &)));
 	m_pUrlList->setContextMenuPolicy(Qt::CustomContextMenu);
 	m_pUrlList->setFocusPolicy(Qt::StrongFocus);
@@ -220,7 +220,7 @@ void UrlDialog::open_url(QString szUrl)
 	KviKvsScript::run(cmd, this);
 }
 
-void UrlDialog::dblclk_url(QTreeWidgetItem * item, int)
+void UrlDialog::activate(QTreeWidgetItem * item, int)
 {
 	open_url(item->text(0));
 }

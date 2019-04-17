@@ -97,7 +97,7 @@ protected slots:
 	void remove();
 	void findtext();
 	void open_url(QString szUrl);
-	void dblclk_url(QTreeWidgetItem * item, int);
+	void activate(QTreeWidgetItem * item, int);
 	void contextMenu(const QPoint & p);
 	void sayToWin(QAction * act);
 };
