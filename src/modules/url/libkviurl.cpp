@@ -164,6 +164,8 @@ void UrlDialog::config()
 {
 	if(!g_pConfigDialog)
 		g_pConfigDialog = new ConfigDialog();
+	else
+		g_pConfigDialog->show();
 }
 
 void UrlDialog::help()
