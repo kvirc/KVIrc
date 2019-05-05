@@ -88,8 +88,11 @@ void KviThemedLineEdit::paintEvent(QPaintEvent * event)
 	QPainter * p = new QPainter(this);
 	QPalette pal = palette();
 
-	// In Qt5 QStyle::drawPrimitive seems to always overwrite the background, no matter what.
-	qDrawShadePanel(p, 0, 0, width(), height(), palette(), true, 1, nullptr);
+	if(KVI_OPTION_BOOL(KviOption_boolDrawShadePanel))
+	{
+		// In Qt5 QStyle::drawPrimitive seems to always overwrite the background, no matter what.
+		qDrawShadePanel(p, 0, 0, width(), height(), palette(), true, 1, nullptr);
+	}
 
 	QRect r(1, 1, width() - 2, height() - 2);
 
