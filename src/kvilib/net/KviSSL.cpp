@@ -329,12 +329,14 @@ void KviSSL::shutdown()
 		// ignore SIGPIPE
 		signal(SIGPIPE, SIG_IGN);
 		// At least attempt to shutdown the connection gracefully
-		SSL_shutdown(m_pSSL);
+		if(!SSL_in_init(m_pSSL))
+			SSL_shutdown(m_pSSL);
 		//restore normal SIGPIPE behaviour.
 		signal(SIGPIPE, SIG_DFL);
 #else
 		// At least attempt to shutdown the connection gracefully
-		SSL_shutdown(m_pSSL);
+		if(!SSL_in_init(m_pSSL))
+			SSL_shutdown(m_pSSL);
 #endif
 		SSL_free(m_pSSL);
 		m_pSSL = nullptr;
