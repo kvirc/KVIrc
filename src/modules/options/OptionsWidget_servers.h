@@ -225,7 +225,7 @@ protected slots:
 	void newNetwork();
 	void removeCurrent();
 	void newServer();
-	void updateFavoritesFilter(bool bSet);
+	void updateFilter();
 	void favoriteServer();
 	void copyServer();
 	void pasteServer();
@@ -237,7 +237,6 @@ protected slots:
 	void recentServersPopupClicked(QAction * pAction);
 	void importPopupActivated(QAction * pAction);
 	void serverNetworkEditTextEdited(const QString & szNewText);
-	void filterTextEdited(const QString & szNewText);
 
 public:
 	virtual void commit();
