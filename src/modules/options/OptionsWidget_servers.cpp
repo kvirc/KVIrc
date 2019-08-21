@@ -1307,7 +1307,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	addWidgetToLayout(m_pFilterLabel, 0, 0, 0, 0);
 
 	m_pFilterEdit = new QLineEdit(this);
-	connect(m_pFilterEdit, SIGNAL(textEdited(const QString &)), this, SLOT(filterTextEdited(const QString &)));
+	connect(m_pFilterEdit, SIGNAL(textEdited(const QString &)), this, SLOT(updateFilter()));
 	KviTalToolTip::add(m_pFilterEdit, __tr2qs_ctx("If you are searching for a specific server or network, you can insert its name to filter the servers in the list", "options"));
 	addWidgetToLayout(m_pFilterEdit, 1, 0, 1, 0);
 
@@ -1317,7 +1317,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pShowFavoritesOnlyButton->setChecked(KVI_OPTION_BOOL(KviOption_boolShowFavoriteServersOnly));
 	KviTalToolTip::add(m_pShowFavoritesOnlyButton, __tr2qs_ctx("If this option is enabled, only servers you have favorited will be displayed", "options"));
 	addWidgetToLayout(m_pShowFavoritesOnlyButton, 3, 0, 3, 0);
-	connect(m_pShowFavoritesOnlyButton, SIGNAL(toggled(bool)), this, SLOT(updateFavoritesFilter(bool))); // Sets the server to a favorite
+	connect(m_pShowFavoritesOnlyButton, SIGNAL(toggled(bool)), this, SLOT(updateFilter())); // Sets the server to a favorite
 
 	m_pTreeWidget = new QTreeWidget(this);
 	addWidgetToLayout(m_pTreeWidget, 0, 1, 1, 1);
@@ -1501,10 +1501,8 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	m_pClipboard = nullptr;
 
-	m_bShowingFavoritesOnly = KVI_OPTION_BOOL(KviOption_boolShowFavoriteServersOnly);
-
 	fillServerList();
-	updateFavoritesFilter(KVI_OPTION_BOOL(KviOption_boolShowFavoriteServersOnly));
+	updateFilter();
 
 	layout()->setRowStretch(1, 1);
 	layout()->setColumnStretch(1, 1);
@@ -1745,50 +1743,6 @@ void OptionsWidget_servers::serverNetworkEditTextEdited(const QString &)
 	// make sure the current item is currently visible (if it still exists)
 	if(m_pLastEditedItem)
 		m_pTreeWidget->scrollToItem(m_pLastEditedItem, QTreeWidget::EnsureVisible);
-}
-
-void OptionsWidget_servers::filterTextEdited(const QString &)
-{
-	QString szFilter = m_pFilterEdit->text().trimmed();
-
-	IrcServerOptionsTreeWidgetItem * network;
-	for(int i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
-	{
-		network = (IrcServerOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
-		if(network->m_pNetworkData->name().contains(szFilter, Qt::CaseInsensitive) || network->m_pNetworkData->description().contains(szFilter, Qt::CaseInsensitive))
-		{
-			network->setHidden(false);
-			// if the net matches, we always show all its servers
-			IrcServerOptionsTreeWidgetItem * ch;
-			for(int j = 0; j < network->childCount(); j++)
-			{
-				ch = (IrcServerOptionsTreeWidgetItem *)network->child(j);
-				ch->setHidden(false);
-			}
-		}
-		else
-		{
-			uint uServers = 0;
-
-			IrcServerOptionsTreeWidgetItem * ch;
-			for(int j = 0; j < network->childCount(); j++)
-			{
-				bool bHidden = true;
-				ch = (IrcServerOptionsTreeWidgetItem *)network->child(j);
-				if(ch->m_pServerData)
-				{
-					if(ch->m_pServerData->hostName().contains(szFilter, Qt::CaseInsensitive) || ch->m_pServerData->description().contains(szFilter, Qt::CaseInsensitive))
-						bHidden = false;
-				}
-
-				if(!bHidden)
-					uServers++;
-				ch->setHidden(bHidden);
-			}
-			// if at list one server matches, we show its network
-			network->setHidden(!uServers);
-		}
-	}
 }
 
 void OptionsWidget_servers::saveLastItem()
@@ -2078,36 +2032,40 @@ void OptionsWidget_servers::favoriteServer()
 	m_pLastEditedItem->setIcon(0, *(g_pIconManager->getSmallIcon(icon)));
 
 	if(m_bShowingFavoritesOnly)
-		updateFavoritesFilter(true);
+		updateFilter();
 }
 
-void OptionsWidget_servers::updateFavoritesFilter(bool bSet)
+void OptionsWidget_servers::updateFilter()
 {
-	m_bShowingFavoritesOnly = bSet;
+	QString szFilter = m_pFilterEdit->text().trimmed();
+
+	m_bShowingFavoritesOnly = m_pShowFavoritesOnlyButton->isChecked();
 	IrcServerOptionsTreeWidgetItem * network;
 	for(int i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
 	{
 		network = static_cast<IrcServerOptionsTreeWidgetItem *>(m_pTreeWidget->topLevelItem(i));
+		bool bNetworkMatchesFilter = network->m_pNetworkData->name().contains(szFilter, Qt::CaseInsensitive) || network->m_pNetworkData->description().contains(szFilter, Qt::CaseInsensitive);
 		uint uServers = 0;
 
 		IrcServerOptionsTreeWidgetItem * ch;
 		for(int j = 0; j < network->childCount(); j++)
 		{
-			bool bHidden = bSet ? true : false;
+			bool bHidden = true;
 			ch = static_cast<IrcServerOptionsTreeWidgetItem *>(network->child(j));
-			if(ch->m_pServerData && bSet)
+			if(!m_bShowingFavoritesOnly || (ch->m_pServerData && ch->m_pServerData->favorite()))
 			{
-				if(ch->m_pServerData->favorite())
+				// if the net matches, we always show all its servers
+				if(bNetworkMatchesFilter || ch->m_pServerData->hostName().contains(szFilter, Qt::CaseInsensitive) || ch->m_pServerData->description().contains(szFilter, Qt::CaseInsensitive))
 					bHidden = false;
 			}
 			if(!bHidden)
 				uServers++;
 			ch->setHidden(bHidden);
 		}
-		network->setHidden(!uServers);
+		network->setHidden(network->childCount() > 0 ? !uServers : (m_bShowingFavoritesOnly || !bNetworkMatchesFilter));
 	}
 
-	m_pShowFavoritesOnlyButton->setIcon(*(g_pIconManager->getSmallIcon(bSet ? KviIconManager::Favorite : KviIconManager::FavoriteOff)));
+	m_pShowFavoritesOnlyButton->setIcon(*(g_pIconManager->getSmallIcon(m_bShowingFavoritesOnly ? KviIconManager::Favorite : KviIconManager::FavoriteOff)));
 }
 
 void OptionsWidget_servers::copyServer()
