@@ -49,11 +49,11 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sysctl -a | grep mem; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export GPG_KEYS="409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB"; fi
     - |
-        if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
+        if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
             ( gpg --keyserver pool.sks-keyservers.net --recv-keys $GPG_KEYS \
             || gpg --keyserver pgp.mit.edu --recv-keys $GPG_KEYS \
             || gpg --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys $GPG_KEYS \
-            || gpg --keyserver keyserver.pgp.com --recv-keys $GPG_KEYS ); 
+            || gpg --keyserver keyserver.pgp.com --recv-keys $GPG_KEYS );
         fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm get head; fi
     - |
@@ -85,9 +85,10 @@ install:
     - |
         if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
           brew update
-          brew install qt5 enchant
+          brew install qt5 enchant openssl
           # want cmake newer than by default in travis osx
           brew upgrade cmake
+          CMAKE_ARGS="$CMAKE_ARGS -DOPENSSL_ROOT_DIR=$(brew --prefix qt5)"
           export CMAKE_FRAMEWORK_PATH="$CMAKE_FRAMEWORK_PATH:$(brew --prefix qt5)"
         fi
 script:
