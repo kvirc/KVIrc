@@ -28,8 +28,8 @@ BUILDDIR="${DIR}/build"
 cd .. && GITDIR=$(pwd)
 PKG_NAME=kvirc
 SVNGITBZR="~git-"
-VERSION='4:5.0.0'
-VERSION1='5.0.0'
+VERSION='4:5.0.1'
+VERSION1='5.0.1'
 TMPFILE=$(mktemp)
 TMPGPG=$(mktemp)
 DIST_PPA="xenial bionic cosmic"
@@ -117,9 +117,9 @@ then
     if [ ! -z "${TRAVIS_BRANCH}" ]
     then
         sed -i '/^ cmake (>= 3.1),/d' debian/control
-        debuild --no-lintian --preserve-env --prepend-path="${PATH}" -us -uc 
+        debuild --no-lintian --preserve-env --prepend-path="${PATH}" -us -uc
     else
-        debuild --no-lintian -us -uc 
+        debuild --no-lintian -us -uc
     fi
 else
     gpgkey
