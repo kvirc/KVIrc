@@ -104,7 +104,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	    this, SLOT(topicSelected(const QString &)));
 	// mode label follows the topic widget
 	m_pModeWidget = new KviModeWidget(m_pTopSplitter, *this, "mode_");
-	KviTalToolTip::add(m_pModeWidget, __tr2qs("Channel modes"));
+	KviTalToolTip::add(m_pModeWidget, __tr2qs("Channel settings button."));
 	connect(m_pModeWidget, SIGNAL(setMode(const QString &)), this, SLOT(setMode(const QString &)));
 
 	createTextEncodingButton(m_pButtonContainer);
