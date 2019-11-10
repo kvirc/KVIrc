@@ -285,7 +285,7 @@ KviIrcView::KviIrcView(QWidget * parent, KviWindow * pWnd)
 	m_pToolsButton->setAutoRaise(true);
 	m_pToolsButton->setIcon(is1);
 
-	KviTalToolTip::add(m_pToolsButton, __tr2qs("Output view tools"));
+	KviTalToolTip::add(m_pToolsButton, __tr2qs("Output View Settings"));
 	m_pToolsButton->setFocusProxy(this);
 
 	connect(m_pToolsButton, SIGNAL(clicked()), this, SLOT(showToolsPopup()));
