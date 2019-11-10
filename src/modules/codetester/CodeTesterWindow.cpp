@@ -62,6 +62,7 @@ CodeTesterWindow::CodeTesterWindow()
 	g->addWidget(m_pEditor, 0, 0, 1, 4);
 
 	m_pExecuteButton = new QPushButton(__tr2qs_ctx("&Execute", "editor"), this);
+	m_pExecuteButton->setToolTip("Execute the above script and see output on the right");
 	g->addWidget(m_pExecuteButton, 1, 3);
 	connect(m_pExecuteButton, SIGNAL(clicked()), this, SLOT(execute()));
 
