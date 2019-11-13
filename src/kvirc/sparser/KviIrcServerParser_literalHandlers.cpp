@@ -873,8 +873,8 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 
 	PrivmsgIdentifyMsgCapState eCapState = IdentifyMsgCapNotUsed;
 
-	KviCString pTrailing = msg->trailingString();
-	if(pTrailing)
+	KviCString pTrailing = msg->safeTrailingString();
+	if(!strcmp(pTrailing,""))
 	{
 		if(msg->connection()->stateData()->identifyMsgCapabilityEnabled())
 		{
@@ -1254,8 +1254,8 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 
 	// FIXME: "DEDICATED CTCP WINDOW ?"
 
-	KviCString pTrailing = msg->trailingString();
-	if(pTrailing)
+	KviCString pTrailing = msg->safeTrailingString();
+	if(!strcmp(pTrailing,""))
 	{
 		if(*(pTrailing.ptr()) == 0x01)
 		{
