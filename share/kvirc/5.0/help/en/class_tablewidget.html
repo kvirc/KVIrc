@@ -1,0 +1,130 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>tablewidget class</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>tablewidget class</div>      <div class='title-secondary-text'>Tablewidget widget.</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This widget provides a table.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setText">$setText(&lt;row:uint&gt;,&lt;col:uint&gt;,[&lt;text:string&gt;])</a></font></b></code></td></tr>
+<tr><td>Sets the contents of the cell pointeid by row and col to text.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setTooltip">$setTooltip(&lt;row:uint&gt;,&lt;col:uint&gt;,[&lt;text:string&gt;])</a></font></b></code></td></tr>
+<tr><td>Sets the tooltip of the cell pointeid by row and col to text.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setNumber.">$setNumber(&lt;row:uint&gt;,&lt;col:uint&gt;,[&lt;number:integer&gt;]).</a></font></b></code></td></tr>
+<tr><td>Sets the contents of the cell pointeid by row and col to number.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; text">&lt;string&gt; $text(&lt;row:integer&gt;,&lt;col:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns  the text of the cell pointed by row and col.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setHorizontalHeaderLabels">$setHorizontalHeaderLabels(&lt;string array&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the horizontal header labels using labels.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="showHorizontalHeader">$showHorizontalHeader()</a></font></b></code></td></tr>
+<tr><td>Shows the horizontal header.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="hideHorizontalHeader">$hideHorizontalHeader()</a></font></b></code></td></tr>
+<tr><td>Hides the horizontal header.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setVerticalHeaderLabels">$setVerticalHeaderLabels(&lt;string array&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the vertical header labels using labels.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="showVerticalHeader">$showVerticalHeader()</a></font></b></code></td></tr>
+<tr><td>Shows the vertical header.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="hideVerticalHeader">$hideVerticalHeader()</a></font></b></code></td></tr>
+<tr><td>Hides the vertical header.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setRowCount">$setRowCount(&lt;integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the number of rows in the table.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; rowCount">&lt;integer&gt; $rowCount()</a></font></b></code></td></tr>
+<tr><td>Returns the number of rows in the table.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; currentRow">&lt;integer&gt; $currentRow()</a></font></b></code></td></tr>
+<tr><td>Returns the current row. Useful in the [classfnc]customContextMenuRequestedEvent[/classfnc].</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="insertRow">$insertRow(&lt;row:uinteger&gt;)</a></font></b></code></td></tr>
+<tr><td>Insert an empty row at &lt;row&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removeRow">$removeRow(&lt;row:uinteger&gt;)</a></font></b></code></td></tr>
+<tr><td>Remove the row at &lt;row&gt; and all its items from the table.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="insertColumn">$insertColumn(&lt;column:uinteger&gt;)</a></font></b></code></td></tr>
+<tr><td>Insert an empty column at &lt;column&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removeColumn">$removeColumn(&lt;column:uinteger&gt;)</a></font></b></code></td></tr>
+<tr><td>Remove the column at &lt;column&gt; and all its items from the table.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setColumnCount">$setColumnCount(&lt;uinteger&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the number of columns in the table.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; columnCount">&lt;integer&gt; $columnCount()</a></font></b></code></td></tr>
+<tr><td>Returns the number of columns in the table.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; currentRow">&lt;integer&gt; $currentRow()</a></font></b></code></td></tr>
+<tr><td>Returns the current column. Useful in the [classfnc]customContextMenuRequestedEvent[/classfnc] See also <a href="#foreground">$foreground</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setForegroundColor">$setForegroundColor(&lt;row:uinteger&gt;,&lt;col:uinteger&gt;,&lt;rgb(hex string)_array(red:integer,green:integer,blue_integer)_or_red_or_colorname&gt;,[geen:integer],[blue:integer])</a></font></b></code></td></tr>
+<tr><td>Sets the foreground of the cell at &lt;row,&lt;col&gt; according to &lt;colorname&gt; &lt;rgb_value&gt;:valid values are: - hex string: must be a string with 6 hexadecimal digits (like the ones used to specify colors in HTML pages). The first two digits specify the RED component, the third and fourth digit specify the GREEN component and the last two specify the BLUE component. For example "FFFF00" means full red, full green and no blue that gives</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setItemFlags">$setItemFlags(&lt;row:uint&gt;,&lt;col:uint&gt;,&lt;flag1:string&gt;, &lt;flag2:string&gt;, ...)</a></font></b></code></td></tr>
+<tr><td>Sets the flags for the cell pointed by row and col to the given flags. These determine whether the cell can be selected or modified. Supported flags are: </td></tr><tr><td class="example-box"><br> - noitemflag : no flag sets;<br><br> - selectable : cell is selectable;<br><br> - editable : cell is editable;<br><br> - dragEnabled : cell can dragged;<br><br> - dropEnabled : cell can used as drop target;<br><br> - userCheckable : cell is checkable;<br><br> - enabled :cell is enabled;<br><br> - tristate : cell is checkable with three separate states.<br> </td></tr><tr><td bgcolor="#EAEAEA"></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setCellWidget">$setCellWidget(&lt;row:uint&gt;,&lt;column:uint&gt;,&lt;widget:hobject&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the given widget to be displayed in the cell in the given row and column, passing the ownership of the widget to the table.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setIcon">$setIcon(&lt;row:uint&gt;,&lt;column:uint&gt;,&lt;icon:imageid or hobject&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the cell icon pointed by &lt;row&gt;,&lt;column&gt;. Icon parameter can be a standard KVIrc  <a href="doc_image_id.html">image identifier</a> icon or a KVS pixmap's object.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="hideRow">$hideRow(&lt;row:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Hides the row &lt;row&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="showRow">$showRow(&lt;row:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Shows the row &lt;row&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="hideColumn">$hideColumn(&lt;col:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Hides the column &lt;col&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="showColumn">$showColumn(&lt;col:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Shows the column &lt;col&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="clear">$clear()</a></font></b></code></td></tr>
+<tr><td>Clears the table.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;row,col&gt; itemEnteredEvent">&lt;row,col&gt; $itemEnteredEvent()</a></font></b></code></td></tr>
+<tr><td>This event is triggered when the mouse cursor enters an cell.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;row,col&gt; cellActivatedEvent">&lt;row,col&gt; $cellActivatedEvent()</a></font></b></code></td></tr>
+<tr><td>This event is triggered when the cell specified by row and column has been activated</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;row,col&gt;  cellDoubleClickedEvent">&lt;row,col&gt;  $cellDoubleClickedEvent()</a></font></b></code></td></tr>
+<tr><td>This event is triggered whenever a cell in the table is double clicked.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="paintCellEvent">$paintCellEvent(&lt;painter:hobject&gt;,&lt;row,uint&gt;,&lt;col:uint&gt;,&lt;cell_width:uint&gt;,&lt;cell_height:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>This event handler can be reimplemented to repaint cells. The framework will pass the row/col coordinates, cell's width and height as parameter, a <a href="class_painter.html">painter</a>object. You don't need to begin/end/delete the painter.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="sizeHintCellRequestEvent">$sizeHintCellRequestEvent()</a></font></b></code></td></tr>
+<tr><td>This event handler can be reimplemented to pass a custom size hint for this cell to the table layout !fn; $resizeRowsToContents() This function will try to redistribute the available space according to the space requirement of each row !fn; $resizeColumnsToContents() This function will try to redistribute the available space according to the space requirement of each column</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="clicked">$clicked()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#clickEvent">$clickEvent</a>().</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>$date</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>$date</div>      <div class='title-secondary-text'>Returns a date/time string using a specified format</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><font color="#8080a0">&lt;</font><font color="#808080">string</font><font color="#8080a0">&gt;</font> <b>$date</b><b>(</b><font color="#8080a0">&lt;</font>format<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>unixtime<font color="#808080">:integer</font><font color="#8080a0">&gt;</font><font color="#8080a0">]</font><b>)</b></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Returns the string representation of &lt;unixtime&gt; or
+of the current time if &lt;unixtime&gt; is not given, based on &lt;format&gt;.<br>
+The &lt;format string&gt; should contain a set of characters
+that will be transformed according to the following rules:
+<table bgcolor="#D5D5D5" width="100%">
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>a</b></td><td>The abbreviated weekday name according to the current locale.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>A</b></td><td>The full weekday name according to the current locale.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>b</b></td><td>The abbreviated month name according to the current locale.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>B</b></td><td>The full month name according to the current locale.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>c</b></td><td>The preferred date and time representation for the current locale.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>C</b></td><td>The century number (year/100) as a 2-digit integer. (SU)</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>d</b></td><td>The day of the month as a decimal number (range 01 to 31).</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>D</b></td><td>Equivalent to m/d/y.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>e</b></td><td>Like d, the day of the month as a decimal number, but a leading zero is replaced by a space. (SU)</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>F</b></td><td>Equivalent to Y-m-d (the ISO 8601 date format). (C99)</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>h</b></td><td>Equivalent to b.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>H</b></td><td>The hour as a decimal number using a 24-hour clock (range 00 to 23).</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>I</b></td><td>The hour as a decimal number using a 12-hour clock (range 01 to 12).</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>j</b></td><td>The day of the year as a decimal number (range 001 to 366).</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>k</b></td><td>The hour (24-hour clock) as a decimal number (range 0 to 23); single digits are preceded by a blank. See also <b>H</b>.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>l</b></td><td>The hour (12-hour clock) as a decimal number (range 1 to 12); single digits are preceded by a blank. See also <b>I</b>.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>m</b></td><td>The month as a decimal number (range 01 to 12).</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>M</b></td><td>The minute as a decimal number (range 00 to 59).</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>n</b></td><td>A newline character. (SU)</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>p</b></td><td>Either <b>AM</b> or <b>PM</b> according to the given time value, or the corresponding strings for the current locale. Noon is treated as <b>pm</b> and midnight as <b>am</b>.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>r</b></td><td>The time in a.m. or p.m. notation. In the POSIX locale this is	equivalent to <b>I:M:S p</b>.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>s</b></td><td>The number of seconds since the Epoch, i.e., since 1970-01-01 00:00:00 UTC.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>S</b></td><td>The second as a decimal number (range 00 to 60). (The range is up to 60 to allow for occasional leap seconds.)</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>t</b></td><td>A tab character.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>T</b></td><td>The time in 24-hour notation (H:M:S). (SU)</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>u</b></td><td>The day of the week as a decimal, range 1 to 7, Monday being 1. See also <b>w</b>.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>V</b></td><td>The ISO 8601:1988 week number of the current year as a decimal number, range 01 to 53,	where week 1 is the first week that has at least 4 days in the current year, and with Monday as the first day of the week. See also <b>U</b> and </b>W.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>w</b></td><td>The day of the week as a decimal, range 0 to 6, Sunday being 0.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>W</b></td><td>The week number of the current year as a decimal number, range 00 to 53, starting with the first Monday as the first day of week 01.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>y</b></td><td>The year as a decimal number without a century (range 00 to 99).</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>Y</b></td><td>The year as a decimal number including the century.</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>z</b></td><td>The time-zone as hour offset from GMT. Required to emit RFC822-compliant dates (using <i>a, d b Y H:M:S z</i>).</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>Z</b></td><td>The time zone or name or abbreviation (not implemented yet).</td></tr>
+</table>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+<a href="cmd_echo.html">echo</a> $date<span class="example-paren">(</span>"d/m/Y H:M:S"<span class="example-paren">)</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>See also</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="fnc_unixtime.html">$unixtime</a>, <a href="fnc_hptimestamp.html">$hptimestamp</a>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_function_alphabetic_a.html">Functions</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>combobox class</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>combobox class</div>      <div class='title-secondary-text'>Combined button and popup list</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="insertItem">$insertItem(&lt;text:string&gt;, &lt;index:int&gt;)</a></font></b></code></td></tr>
+<tr><td>Inserts a text item at position &lt;index&gt;. If index is negative or not specified the item is appended.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="changeItem">$changeItem(&lt;text:string&gt;, &lt;index:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Changes text of item at &lt;index&gt; to &lt;text&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removeItem">$removeItem(&lt;index:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Removes item at given index.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setMaxCount">$setMaxCount(&lt;num:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the maximum number of items the combo box can hold to &lt;num&gt;. If &lt;num&gt; is smaller than the current number of items, the list is truncated at the end. There is no limit by default.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; maxCount">&lt;integer&gt; $maxCount()</a></font></b></code></td></tr>
+<tr><td>Returns the current maximum number of items in the combo box.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; count">&lt;integer&gt; $count()</a></font></b></code></td></tr>
+<tr><td>Returns number of items in the widget.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; current">&lt;string&gt; $current()</a></font></b></code></td></tr>
+<tr><td>Returns currently selected item.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; currentItem">&lt;integer&gt; $currentItem()</a></font></b></code></td></tr>
+<tr><td>Returns index of currently selected item.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setEditable">$setEditable(&lt;bflag:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Make the input field editable, if &lt;bflag&gt;. Otherwise the user may only choose one of the items in the combo box.<br> If the parameter is omitted, it is assumed to be false.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; editable">&lt;boolean&gt; $editable()</a></font></b></code></td></tr>
+<tr><td>Returns whether the combobox is editable or not.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setEditText">$setEditText(&lt;text:string&gt;,[&lt;quiet:bool&gt;])</a></font></b></code></td></tr>
+<tr><td>Sets the text in the embedded line edit to newText without changing the combo's contents. Does nothing if the combo isn't editable. If the optional quiet parameter is true no warning will be print if text will be empty.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="clear">$clear()</a></font></b></code></td></tr>
+<tr><td>Removes all the items from the combo box</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="textAt">$textAt(&lt;index:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns item at given index.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setCurrentItem">$setCurrentItem(&lt;index:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the current combobox item. This is the item to be displayed on the combobox button.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="activatedEvent">$activatedEvent(&lt;index:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This function is called by the framework when a new item  has activated. The index value is the position of the new item.<br> The default implementation emits the <a href="#activated">$activated</a>() signal,</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="textChangedEvent">$textChangedEvent(&lt;text:string&gt;)</a></font></b></code></td></tr>
+<tr><td>This function is called when the text in an editable combobox has changed.<br> The function return the new text in its argument.<br> The default implementation emits the <a href="#textChanged">$textChanged</a>() signal.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="textChanged">$textChanged()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#textChangedEvent">$textChangedEvent</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="activated">$activated()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#activatedEvent">$activatedEvent</a>().</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

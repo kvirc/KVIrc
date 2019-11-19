@@ -1,0 +1,2611 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>RFC2812</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>RFC2812</div>      <div class='title-secondary-text'>The IRC protocol specification (revised)</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><table bgcolor="#D5D5D5" width="100%">
+<tr><td><pre><br>
+Network Working Group, C.Kalt, April 2000<br>
+Request for Comments: 2812<br>
+Updates: 1459<br>
+Category: Informational<br>
+</pre></td></tr>
+<tr><td>
+<center></td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Internet Relay Chat: Client Protocol</div></td></tr><tr><td bgcolor="#EAEAEA"></center>
+</td></tr>
+<tr><td>
+<b>Status of this Memo</b>
+</td></tr>
+<tr><td>
+This memo provides information for the Internet community.  It does
+not specify an Internet standard of any kind.  Distribution of this
+memo is unlimited.
+</td></tr>
+<tr><td>
+<b>Copyright Notice</b>
+</td></tr>
+<tr><td>
+Copyright (C) The Internet Society (2000).  All Rights Reserved.
+</td></tr>
+<tr><td>
+<b>IESG NOTE:</b>
+</td></tr>
+<tr><td>
+The IRC protocol itself enables several possibilities of transferring
+data between clients, and just like with other transfer mechanisms
+like email, the receiver of the data has to be careful about how the
+data is handled. For more information on security issues with the IRC
+protocol, see for example http://www.irchelp.org/irchelp/security/.
+</td></tr>
+<tr><td>
+<b>Abstract</b>
+</td></tr>
+<tr><td>
+The IRC (Internet Relay Chat) protocol is for use with text based
+conferencing; the simplest client being any socket program capable of
+connecting to the server.
+<p>
+This document defines the Client Protocol, and assumes that the
+reader is familiar with the IRC Architecture [IRC-ARCH].
+</td></tr>
+<tr><td>
+<b>Table of Contents</b>
+</td></tr>
+<tr><td>
+<ul>
+<li>1. Labels</li>
+<ul>
+<li>1.1 Servers</li>
+<li>1.2 Clients</li>
+<ul>
+<li>1.2.1 Users</li>
+<ul>
+<li>1.2.1.1 Operators</li>
+</ul>
+<li>1.2.2 Services</li>
+</ul>
+<li>1.3 Channels</li>
+</ul>
+<li>2. The IRC Client Specification</li>
+<ul>
+<li>2.1 Overview</li>
+<li>2.2 Character codes</li>
+<li>2.3 Messages</li>
+<ul>
+<li>2.3.1 Message format in Augmented BNF</li>
+</ul>
+<li>2.4 Numeric replies</li>
+<li>2.5 Wildcard expressions</li>
+</ul>
+<li>3. Message Details</li>
+<ul>
+<li>3.1 Connection Registration</li>
+<ul>
+<li>3.1.1 Password message</li>
+<li>3.1.2 Nick message</li>
+<li>3.1.3 User message</li>
+<li>3.1.4 Oper message</li>
+<li>3.1.5 User mode message</li>
+<li>3.1.6 Service message</li>
+<li>3.1.7 Quit</li>
+<li>3.1.8 Squit</li>
+</ul>
+<li>3.2 Channel operations</li>
+<ul>
+<li>3.2.1 Join message</li>
+<li>3.2.2 Part message</li>
+<li>3.2.3 Channel mode message</li>
+<li>3.2.4 Topic message</li>
+<li>3.2.5 Names message</li>
+<li>3.2.6 List message</li>
+<li>3.2.7 Invite message</li>
+<li>3.2.8 Kick command</li>
+</ul>
+<li>3.3 Sending messages</li>
+<ul>
+<li>3.3.1 Private messages</li>
+<li>3.3.2 Notice</li>
+</ul>
+<li>3.4 Server queries and commands</li>
+<ul>
+<li>3.4.1 Motd message</li>
+<li>3.4.2 Lusers message</li>
+<li>3.4.3 Version message</li>
+<li>3.4.4 Stats message</li>
+<li>3.4.5 Links message</li>
+<li>3.4.6 Time message</li>
+<li>3.4.7 Connect message</li>
+<li>3.4.8 Trace message</li>
+<li>3.4.9 Admin command</li>
+<li>3.4.10 Info command</li>
+</ul>
+<li>3.5 Service Query and Commands</li>
+<ul>
+<li>3.5.1 Servlist message</li>
+<li>3.5.2 Squery</li>
+</ul>
+<li>3.6 User based queries</li>
+<ul>
+<li>3.6.1 Who query</li>
+<li>3.6.2 Whois query</li>
+<li>3.6.3 Whowas</li>
+</ul>
+<li>3.7 Miscellaneous messages</li>
+<ul>
+<li>3.7.1 Kill message</li>
+<li>3.7.2 Ping message</li>
+<li>3.7.3 Pong message</li>
+<li>3.7.4 Error</li>
+</ul>
+</ul>
+<li>4. Optional features</li>
+<ul>
+<li>4.1 Away</li>
+<li>4.2 Rehash message</li>
+<li>4.3 Die message</li>
+<li>4.4 Restart message</li>
+<li>4.5 Summon message</li>
+<li>4.6 Users</li>
+<li>4.7 Operwall message</li>
+<li>4.8 Userhost message</li>
+<li>4.9 Ison message</li>
+</ul>
+<li>5. Replies</li>
+<ul>
+<li>5.1 Command responses</li>
+<li>5.2 Error Replies</li>
+<li>5.3 Reserved numerics</li>
+</ul>
+<li>6. Current implementations</li>
+<li>7. Current problems</li>
+<ul>
+<li>7.1 Nicknames</li>
+<li>7.2 Limitation of wildcards</li>
+<li>7.3 Security considerations</li>
+</ul>
+<li>8. Current support and availability</li>
+<li>9. Acknowledgements</li>
+<li>10. References</li>
+<li>11. Author's Address</li>
+<li>12. Full Copyright Statement</li>
+</ul>
+</td></tr>
+<tr><td>
+<b>1. Labels</b>
+</td></tr>
+<tr><td>
+This section defines the identifiers used for the various components
+of the IRC protocol.
+</td></tr>
+<tr><td>
+<b>1.1 Servers</b>
+</td></tr>
+<tr><td>
+Servers are uniquely identified by their name, which has a maximum
+length of sixty three (63) characters. See the protocol grammar
+rules (section 2.3.1) for what may and may not be used in a server
+name.
+</td></tr>
+<tr><td>
+<b>1.2 Clients</b>
+</td></tr>
+<tr><td>
+For each client all servers MUST have the following information: a
+netwide unique identifier (whose format depends on the type of
+client) and the server which introduced the client.
+</td></tr>
+<tr><td>
+<b>1.2.1 Users</b>
+</td></tr>
+<tr><td>
+Each user is distinguished from other users by a unique nickname
+having a maximum length of nine (9) characters.  See the protocol
+grammar rules (section 2.3.1) for what may and may not be used in a
+nickname.
+<p>
+While the maximum length is limited to nine characters, clients
+SHOULD accept longer strings as they may become used in future
+evolutions of the protocol.
+</td></tr>
+<tr><td>
+<b>1.2.1.1 Operators</b>
+</td></tr>
+<tr><td>
+To allow a reasonable amount of order to be kept within the IRC
+network, a special class of users (operators) is allowed to perform
+general maintenance functions on the network.  Although the powers
+granted to an operator can be considered as 'dangerous', they are
+nonetheless often necessary.  Operators SHOULD be able to perform
+basic network tasks such as disconnecting and reconnecting servers as
+needed.  In recognition of this need, the protocol discussed herein
+provides for operators only to be able to perform such functions.
+See sections 3.1.8 (SQUIT) and 3.4.7 (CONNECT).<br>
+<p>
+A more controversial power of operators is the ability to remove a
+user from the connected network by 'force', i.e., operators are able
+to close the connection between any client and server.  The
+justification for this is very delicate since its abuse is both
+destructive and annoying, and its benefits close to inexistent.  For
+further details on this type of action, see section 3.7.1 (KILL).
+</td></tr>
+<tr><td>
+<b>1.2.2 Services</b>
+</td></tr>
+<tr><td>
+Each service is distinguished from other services by a service name
+composed of a nickname and a server name.  As for users, the nickname
+has a maximum length of nine (9) characters.  See the protocol
+grammar rules (section 2.3.1) for what may and may not be used in a
+nickname.
+</td></tr>
+<tr><td>
+<b>1.3 Channels</b>
+</td></tr>
+<tr><td>
+Channels names are strings (beginning with a '&', '#', '+' or '!'
+character) of length up to fifty (50) characters.  Apart from the
+requirement that the first character is either '&', '#', '+' or '!',
+the only restriction on a channel name is that it SHALL NOT contain
+any spaces (' '), a control G (^G or ASCII 7), a comma (',').  Space
+is used as parameter separator and command is used as a list item
+separator by the protocol).  A colon (':') can also be used as a
+delimiter for the channel mask.  Channel names are case insensitive.
+See the protocol grammar rules (section 2.3.1) for the exact syntax
+of a channel name.<br>
+<p>
+Each prefix characterizes a different channel type.  The definition
+of the channel types is not relevant to the client-server protocol
+and thus it is beyond the scope of this document.  More details can
+be found in "Internet Relay Chat: Channel Management" [IRC-CHAN].
+</td></tr>
+<tr><td>
+<b>2. The IRC Client Specification</b>
+</td></tr>
+<tr><td>
+<b>2.1 Overview</b>
+</td></tr>
+<tr><td>
+The protocol as described herein is for use only with client to
+server connections when the client registers as a user.
+</td></tr>
+<tr><td>
+<b>2.2 Character codes</b>
+</td></tr>
+<tr><td>
+No specific character set is specified. The protocol is based on a
+set of codes which are composed of eight (8) bits, making up an
+octet.  Each message may be composed of any number of these octets;
+however, some octet values are used for control codes, which act as
+message delimiters.<br>
+<p>
+Regardless of being an 8-bit protocol, the delimiters and keywords
+are such that protocol is mostly usable from US-ASCII terminal and a
+telnet connection.
+<p>
+Because of IRC's Scandinavian origin, the characters {}|^ are
+considered to be the lower case equivalents of the characters []\~,
+respectively. This is a critical issue when determining the
+equivalence of two nicknames or channel names.
+</td></tr>
+<tr><td>
+<b>2.3 Messages</b>
+</td></tr>
+<tr><td>
+Servers and clients send each other messages, which may or may not
+generate a reply.  If the message contains a valid command, as
+described in later sections, the client should expect a reply as
+specified but it is not advised to wait forever for the reply; client
+to server and server to server communication is essentially
+asynchronous by nature.
+<p>
+Each IRC message may consist of up to three main parts: the prefix
+(OPTIONAL), the command, and the command parameters (maximum of
+fifteen (15)).  The prefix, command, and all parameters are separated
+by one ASCII space character (0x20) each.
+<p>
+The presence of a prefix is indicated with a single leading ASCII
+colon character (':', 0x3b), which MUST be the first character of the
+message itself.  There MUST be NO gap (whitespace) between the colon
+and the prefix.  The prefix is used by servers to indicate the true
+origin of the message.  If the prefix is missing from the message, it
+is assumed to have originated from the connection from which it was
+received from.  Clients SHOULD NOT use a prefix when sending a
+message; if they use one, the only valid prefix is the registered
+nickname associated with the client.
+<p>
+The command MUST either be a valid IRC command or a three (3) digit
+number represented in ASCII text.
+<p>
+IRC messages are always lines of characters terminated with a CR-LF
+(Carriage Return - Line Feed) pair, and these messages SHALL NOT
+exceed 512 characters in length, counting all characters including
+the trailing CR-LF. Thus, there are 510 characters maximum allowed
+for the command and its parameters.  There is no provision for
+continuation of message lines.  See section 6 for more details about
+current implementations.
+</td></tr>
+<tr><td>
+<b>2.3.1 Message format in Augmented BNF</b>
+</td></tr>
+<tr><td>
+The protocol messages must be extracted from the contiguous stream of
+octets.  The current solution is to designate two characters, CR and
+LF, as message separators.  Empty messages are silently ignored,
+which permits use of the sequence CR-LF between messages without
+extra problems.
+<p>
+The extracted message is parsed into the components &lt;prefix&gt;,
+&lt;command&gt; and list of parameters (&lt;params&gt;).
+<p>
+<pre><br>
+    The Augmented BNF representation for this is:<br>
+    message    =  [ ":" prefix SPACE ] command [ params ] crlf<br>
+    prefix     =  servername / <span class="example-paren">(</span> nickname [ [ "!" user ] "@" host ] <span class="example-paren">)</span><br>
+    command    =  1*letter / 3digit<br>
+    params     =  *14<span class="example-paren">(</span> SPACE middle <span class="example-paren">)</span> [ SPACE ":" trailing ]<br>
+               =/ 14<span class="example-paren">(</span> SPACE middle <span class="example-paren">)</span> [ SPACE [ ":" ] trailing ]<br>
+    nospcrlfcl =  <span class="example-variable">%x01</span>-09 / <span class="example-variable">%x0B</span>-0C / <span class="example-variable">%x0E</span>-1F / <span class="example-variable">%x21</span>-39 / <span class="example-variable">%x3B</span>-FF<br>
+                    ; any octet except NUL, CR, LF, " " and ":"<br>
+    middle     =  nospcrlfcl *<span class="example-paren">(</span> ":" / nospcrlfcl <span class="example-paren">)</span><br>
+    trailing   =  *<span class="example-paren">(</span> ":" / " " / nospcrlfcl <span class="example-paren">)</span><br>
+    SPACE      =  <span class="example-variable">%x20</span>        ; space character<br>
+    crlf       =  <span class="example-variable">%x0D</span> <span class="example-variable">%x0A</span>   ; "carriage return" "linefeed"<br>
+   NOTES:<br>
+      1<span class="example-paren">)</span> After extracting the parameter list, all parameters are equal<br>
+         whether matched by &lt;middle&gt; or &lt;trailing&gt;. &lt;trailing&gt; is just a<br>
+         syntactic trick to allow SPACE within the parameter.<br>
+      2<span class="example-paren">)</span> The NUL <span class="example-paren">(</span><span class="example-variable">%x00</span><span class="example-paren">)</span> character is not special in message framing, and<br>
+         basically could end up inside a parameter, but it would cause<br>
+         extra complexities in normal C string handling. Therefore, NUL<br>
+         is not allowed within messages.<br>
+   Most protocol messages specify additional semantics and syntax for<br>
+   the extracted parameter strings dictated by their position in the<br>
+   list.  For example, many server commands will assume that the first<br>
+   parameter after the command is the list of targets, which can be<br>
+   described with:<br>
+  target     =  nickname / server<br>
+  msgtarget  =  msgto *<span class="example-paren">(</span> "," msgto <span class="example-paren">)</span><br>
+  msgto      =  channel / <span class="example-paren">(</span> user [ "%" host ] "@" servername <span class="example-paren">)</span><br>
+  msgto      =/ <span class="example-paren">(</span> user "%" host <span class="example-paren">)</span> / targetmask<br>
+  msgto      =/ nickname / <span class="example-paren">(</span> nickname "!" user "@" host <span class="example-paren">)</span><br>
+  channel    =  <span class="example-paren">(</span> "#" / "+" / <span class="example-paren">(</span> "!" channelid <span class="example-paren">)</span> / "&" <span class="example-paren">)</span> chanstring<br>
+                [ ":" chanstring ]<br>
+  servername =  hostname<br>
+  host       =  hostname / hostaddr<br>
+  hostname   =  shortname *<span class="example-paren">(</span> "." shortname <span class="example-paren">)</span><br>
+  shortname  =  <span class="example-paren">(</span> letter / digit <span class="example-paren">)</span> *<span class="example-paren">(</span> letter / digit / "-" <span class="example-paren">)</span><br>
+                *<span class="example-paren">(</span> letter / digit <span class="example-paren">)</span><br>
+                  ; as specified in RFC 1123 [HNAME]<br>
+  hostaddr   =  ip4addr / ip6addr<br>
+  ip4addr    =  1*3digit "." 1*3digit "." 1*3digit "." 1*3digit<br>
+  ip6addr    =  1*hexdigit 7<span class="example-paren">(</span> ":" 1*hexdigit <span class="example-paren">)</span><br>
+  ip6addr    =/ "0:0:0:0:0:" <span class="example-paren">(</span> "0" / "FFFF" <span class="example-paren">)</span> ":" ip4addr<br>
+  nickname   =  <span class="example-paren">(</span> letter / special <span class="example-paren">)</span> *8<span class="example-paren">(</span> letter / digit / special / "-" <span class="example-paren">)</span><br>
+  targetmask =  <span class="example-paren">(</span> "$" / "#" <span class="example-paren">)</span> mask<br>
+                  ; see details on allowed masks in section 3.3.1<br>
+  chanstring =  <span class="example-variable">%x01</span>-07 / <span class="example-variable">%x08</span>-09 / <span class="example-variable">%x0B</span>-0C / <span class="example-variable">%x0E</span>-1F / <span class="example-variable">%x21</span>-2B<br>
+  chanstring =/ <span class="example-variable">%x2D</span>-39 / <span class="example-variable">%x3B</span>-FF<br>
+                  ; any octet except NUL, BELL, CR, LF, " ", "," and ":"<br>
+  channelid  = 5<span class="example-paren">(</span> <span class="example-variable">%x41</span>-5A / digit <span class="example-paren">)</span>   ; 5<span class="example-paren">(</span> A-Z / 0-9 <span class="example-paren">)</span><br>
+  Other parameter syntaxes are:<br>
+  user       =  1*<span class="example-paren">(</span> <span class="example-variable">%x01</span>-09 / <span class="example-variable">%x0B</span>-0C / <span class="example-variable">%x0E</span>-1F / <span class="example-variable">%x21</span>-3F / <span class="example-variable">%x41</span>-FF <span class="example-paren">)</span><br>
+                  ; any octet except NUL, CR, LF, " " and "@"<br>
+  key        =  1*23<span class="example-paren">(</span> <span class="example-variable">%x01</span>-05 / <span class="example-variable">%x07</span>-08 / <span class="example-variable">%x0C</span> / <span class="example-variable">%x0E</span>-1F / <span class="example-variable">%x21</span>-7F <span class="example-paren">)</span><br>
+                  ; any 7-bit US_ASCII character,<br>
+                  ; except NUL, CR, LF, FF, h/v TABs, and " "<br>
+  letter     =  <span class="example-variable">%x41</span>-5A / <span class="example-variable">%x61</span>-7A       ; A-Z / a-z<br>
+  digit      =  <span class="example-variable">%x30</span>-39                 ; 0-9<br>
+  hexdigit   =  digit / "A" / "B" / "C" / "D" / "E" / "F"<br>
+  special    =  <span class="example-variable">%x5B</span>-60 / <span class="example-variable">%x7B</span>-7D<br>
+                   ; "[", "]", "\", "`", "_", "^", "<span class="example-bracket">{</span>", "|", "<span class="example-bracket">}</span>"<br>
+  NOTES:<br>
+      1<span class="example-paren">)</span> The &lt;hostaddr&gt; syntax is given here for the sole purpose of<br>
+         indicating the format to follow for IP addresses.  This<br>
+         reflects the fact that the only available implementations of<br>
+         this protocol uses TCP/IP as underlying network protocol but is<br>
+         not meant to prevent other protocols to be used.<br>
+      2<span class="example-paren">)</span> &lt;hostname&gt; has a maximum length of 63 characters.  This is a<br>
+         limitation of the protocol as internet hostnames <span class="example-paren">(</span>in<br>
+         particular<span class="example-paren">)</span> can be longer.  Such restriction is necessary<br>
+         because IRC messages are limited to 512 characters in length.<br>
+         Clients connecting from a host which name is longer than 63<br>
+         characters are registered using the host <span class="example-paren">(</span>numeric<span class="example-paren">)</span> address<br>
+         instead of the host name.<br>
+      3<span class="example-paren">)</span> Some parameters used in the following sections of this<br>
+         documents are not defined here as there is nothing specific<br>
+         about them besides the name that is used for convenience.<br>
+         These parameters follow the general syntax defined for<br>
+         &lt;params&gt;.<br>
+</pre>
+</td></tr>
+<tr><td>
+<b>2.4 Numeric replies</b>
+</td></tr>
+<tr><td>
+Most of the messages sent to the server generate a reply of some
+sort.  The most common reply is the numeric reply, used for both
+errors and normal replies.  The numeric reply MUST be sent as one
+message consisting of the sender prefix, the three-digit numeric, and
+the target of the reply.  A numeric reply is not allowed to originate
+from a client. In all other respects, a numeric reply is just like a
+normal message, except that the keyword is made up of 3 numeric
+digits rather than a string of letters.  A list of different replies
+is supplied in section 5 (Replies).
+</td></tr>
+<tr><td>
+<b>2.5 Wildcard expressions</b>
+</td></tr>
+<tr><td>
+When wildcards are allowed in a string, it is referred as a "mask".
+<p>
+For string matching purposes, the protocol allows the use of two
+special characters: '?' (%x3F) to match one and only one character,
+and '*' (%x2A) to match any number of any characters.  These two
+characters can be escaped using the character '\' (%x5C).
+<p>
+<pre><br>
+   The Augmented BNF syntax for this is:<br>
+    mask       =  *<span class="example-paren">(</span> nowild / noesc wildone / noesc wildmany <span class="example-paren">)</span><br>
+    wildone    =  <span class="example-variable">%x3F</span><br>
+    wildmany   =  <span class="example-variable">%x2A</span><br>
+    nowild     =  <span class="example-variable">%x01</span>-29 / <span class="example-variable">%x2B</span>-3E / <span class="example-variable">%x40</span>-FF<br>
+                    ; any octet except NUL, "*", "?"<br>
+    noesc      =  <span class="example-variable">%x01</span>-5B / <span class="example-variable">%x5D</span>-FF<br>
+                    ; any octet except NUL and "\"<br>
+    matchone   =  <span class="example-variable">%x01</span>-FF<br>
+                    ; matches wildone<br>
+    matchmany  =  *matchone<br>
+                    ; matches wildmany<br>
+   Examples:<br>
+   a?c         ; Matches any string of 3 characters in length starting<br>
+               with "a" and ending with "c"<br>
+   a*c         ; Matches any string of at least 2 characters in length<br>
+               starting with "a" and ending with "c"<br>
+</pre>
+</td></tr>
+<tr><td>
+<b>3. Message Details</b>
+</td></tr>
+<tr><td>
+On the following pages there are descriptions of each message
+recognized by the IRC server and client.  All commands described in
+this section MUST be implemented by any server for this protocol.
+<p>
+Where the reply ERR_NOSUCHSERVER is returned, it means that the
+target of the message could not be found.  The server MUST NOT send
+any other replies after this error for that command.
+<p>
+The server to which a client is connected is required to parse the
+complete message, and return any appropriate errors.
+<p>
+If multiple parameters is presented, then each MUST be checked for
+validity and appropriate responses MUST be sent back to the client.
+In the case of incorrect messages which use parameter lists with
+comma as an item separator, a reply MUST be sent for each item.
+</td></tr>
+<tr><td>
+<b>3.1 Connection Registration</b>
+</td></tr>
+<tr><td>
+The commands described here are used to register a connection with an
+IRC server as a user as well as to correctly disconnect.
+<p>
+A "PASS" command is not required for a client connection to be
+registered, but it MUST precede the latter of the NICK/USER
+combination (for a user connection) or the SERVICE command (for a
+service connection). The RECOMMENDED order for a client to register
+is as follows:
+<p>
+<pre><br>
+                           1. Pass message<br>
+           2. Nick message                 2. Service message<br>
+           3. User message<br>
+</pre>
+<p>
+Upon success, the client will receive an RPL_WELCOME (for users) or
+RPL_YOURESERVICE (for services) message indicating that the
+connection is now registered and known the to the entire IRC network.
+The reply message MUST contain the full client identifier upon which
+it was registered.
+</td></tr>
+<tr><td>
+<b>3.1.1 Password message</b>
+</td></tr>
+<tr><td><pre><br>
+Command: PASS<br>
+Parameters: &lt;password&gt;<br>
+The PASS command is used to set a 'connection password'.  The<br>
+optional password can and MUST be set before any attempt to register<br>
+the connection is made.  Currently this requires that user send a<br>
+PASS command before sending the NICK/USER combination.<br>
+   Numeric Replies:<br>
+           ERR_NEEDMOREPARAMS              ERR_ALREADYREGISTRED<br>
+   Example:<br>
+           PASS secretpasswordhere<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.1.2 Nick message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: NICK<br>
+Parameters: &lt;nickname&gt;<br>
+NICK command is used to give user a nickname or change the existing<br>
+one.<br>
+   Numeric Replies:<br>
+           ERR_NONICKNAMEGIVEN             ERR_ERRONEUSNICKNAME<br>
+           ERR_NICKNAMEINUSE               ERR_NICKCOLLISION<br>
+           ERR_UNAVAILRESOURCE             ERR_RESTRICTED<br>
+   Examples:<br>
+   NICK Wiz                ; Introducing new nick "Wiz" if session is<br>
+                           still unregistered, or user changing his<br>
+                           nickname to "Wiz"<br>
+   :WiZ!jto@tolsun.oulu.fi NICK Kilroy<br>
+                           ; Server telling that WiZ changed his<br>
+                           nickname to Kilroy.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.1.3 User message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: USER<br>
+Parameters: &lt;user&gt; &lt;mode&gt; &lt;unused&gt; &lt;realname&gt;<br>
+The USER command is used at the beginning of connection to specify<br>
+the username, hostname and realname of a new user.<br>
+The &lt;mode&gt; parameter should be a numeric, and can be used to<br>
+automatically set user modes when registering with the server.  This<br>
+parameter is a bitmask, with only 2 bits having any signification: if<br>
+the bit 2 is set, the user mode 'w' will be set and if the bit 3 is<br>
+set, the user mode 'i' will be set.  <span class="example-paren">(</span>See Section 3.1.5 "User<br>
+Modes"<span class="example-paren">)</span>.<br>
+The &lt;realname&gt; may contain space characters.<br>
+   Numeric Replies:<br>
+           ERR_NEEDMOREPARAMS              ERR_ALREADYREGISTRED<br>
+   Example:<br>
+   USER guest 0 * :Ronnie Reagan   ; User registering themselves with a<br>
+                                   username of "guest" and real name<br>
+                                   "Ronnie Reagan".<br>
+   USER guest 8 * :Ronnie Reagan   ; User registering themselves with a<br>
+                                   username of "guest" and real name<br>
+                                   "Ronnie Reagan", and asking to be set<br>
+                                   invisible.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.1.4 Oper message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: OPER<br>
+Parameters: &lt;name&gt; &lt;password&gt;<br>
+A normal user uses the OPER command to obtain operator privileges.<br>
+The combination of &lt;name&gt; and &lt;password&gt; are REQUIRED to gain<br>
+Operator privileges.  Upon success, the user will receive a MODE<br>
+message <span class="example-paren">(</span>see section 3.1.5<span class="example-paren">)</span> indicating the new user modes.<br>
+   Numeric Replies:<br>
+           ERR_NEEDMOREPARAMS              RPL_YOUREOPER<br>
+           ERR_NOOPERHOST                  ERR_PASSWDMISMATCH<br>
+   Example:<br>
+   OPER foo bar                    ; Attempt to register as an operator<br>
+                                   using a username of "foo" and "bar"<br>
+                                   as the password.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.1.5 User mode message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: MODE<br>
+Parameters: &lt;nickname&gt;<br>
+*<span class="example-paren">(</span> <span class="example-paren">(</span> "+" / "-" <span class="example-paren">)</span> *<span class="example-paren">(</span> "i" / "w" / "o" / "O" / "r" <span class="example-paren">)</span> <span class="example-paren">)</span><br>
+The user MODE's are typically changes which affect either how the<br>
+client is seen by others or what 'extra' messages the client is sent.<br>
+A user MODE command MUST only be accepted if both the sender of the<br>
+message and the nickname given as a parameter are both the same.  If<br>
+no other parameter is given, then the server will return the current<br>
+settings for the nick.<br>
+      The available modes are as follows:<br>
+           a - user is flagged as away;<br>
+           i - marks a users as invisible;<br>
+           w - user receives wallops;<br>
+           r - restricted user connection;<br>
+           o - operator flag;<br>
+           O - local operator flag;<br>
+           s - marks a user for receipt of server notices.<br>
+Additional modes may be available later on.<br>
+The flag 'a' SHALL NOT be toggled by the user using the MODE command,<br>
+instead use of the AWAY command is REQUIRED.<br>
+If a user attempts to make themselves an operator using the "+o" or<br>
+"+O" flag, the attempt SHOULD be ignored as users could bypass the<br>
+authentication mechanisms of the OPER command.  There is no<br>
+restriction, however, on anyone `deopping' themselves <span class="example-paren">(</span>using "-o" or<br>
+"-O"<span class="example-paren">)</span>.<br>
+On the other hand, if a user attempts to make themselves unrestricted<br>
+using the "-r" flag, the attempt SHOULD be ignored.  There is no<br>
+restriction, however, on anyone `deopping' themselves <span class="example-paren">(</span>using "+r"<span class="example-paren">)</span>.<br>
+This flag is typically set by the server upon connection for<br>
+administrative reasons.  While the restrictions imposed are left up<br>
+to the implementation, it is typical that a restricted user not be<br>
+allowed to change nicknames, nor make use of the channel operator<br>
+status on channels.<br>
+The flag 's' is obsolete but MAY still be used.<br>
+   Numeric Replies:<br>
+           ERR_NEEDMOREPARAMS              ERR_USERSDONTMATCH<br>
+           ERR_UMODEUNKNOWNFLAG            RPL_UMODEIS<br>
+   Examples:<br>
+   MODE WiZ -w                     ; Command by WiZ to turn off<br>
+                                   reception of WALLOPS messages.<br>
+   MODE Angel +i                   ; Command from Angel to make herself<br>
+                                   invisible.<br>
+   MODE WiZ -o                     ; WiZ 'deopping' <span class="example-paren">(</span>removing operator<br>
+                                   status<span class="example-paren">)</span>.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.1.6 Service message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: SERVICE<br>
+Parameters: &lt;nickname&gt; &lt;reserved&gt; &lt;distribution&gt; &lt;type&gt;<br>
+&lt;reserved&gt; &lt;info&gt;<br>
+The SERVICE command to register a new service.  Command parameters<br>
+specify the service nickname, distribution, type and info of a new<br>
+service.<br>
+The &lt;distribution&gt; parameter is used to specify the visibility of a<br>
+service.  The service may only be known to servers which have a name<br>
+matching the distribution.  For a matching server to have knowledge<br>
+of the service, the network path between that server and the server<br>
+on which the service is connected MUST be composed of servers which<br>
+names all match the mask.<br>
+The &lt;type&gt; parameter is currently reserved for future usage.<br>
+   Numeric Replies:<br>
+           ERR_ALREADYREGISTRED            ERR_NEEDMOREPARAMS<br>
+           ERR_ERRONEUSNICKNAME<br>
+           RPL_YOURESERVICE                RPL_YOURHOST<br>
+           RPL_MYINFO<br>
+   Example:<br>
+   SERVICE dict * *.fr 0 0 :French Dictionary ; Service registering<br>
+                                   itself with a name of "dict".  This<br>
+                                   service will only be available on<br>
+                                   servers which name matches "*.fr".<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.1.7 Quit</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: QUIT<br>
+Parameters: [ &lt;Quit Message&gt; ]<br>
+A client session is terminated with a quit message.  The server<br>
+acknowledges this by sending an ERROR message to the client.<br>
+   Numeric Replies:<br>
+           None.<br>
+   Example:<br>
+   QUIT :Gone to have lunch        ; Preferred message format.<br>
+   :syrk!kalt@millennium.stealth.net QUIT :Gone to have lunch ; User<br>
+                                   syrk has quit IRC to have lunch.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.1.8 Squit</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: SQUIT<br>
+Parameters: &lt;server&gt; &lt;comment&gt;<br>
+The SQUIT command is available only to operators.  It is used to<br>
+disconnect server links.  Also servers can generate SQUIT messages on<br>
+error conditions.  A SQUIT message may also target a remote server<br>
+connection.  In this case, the SQUIT message will simply be sent to<br>
+the remote server without affecting the servers in between the<br>
+operator and the remote server.<br>
+The &lt;comment&gt; SHOULD be supplied by all operators who execute a SQUIT<br>
+for a remote server.  The server ordered to disconnect its peer<br>
+generates a WALLOPS message with &lt;comment&gt; included, so that other<br>
+users may be aware of the reason of this action.<br>
+   Numeric replies:<br>
+           ERR_NOPRIVILEGES                ERR_NOSUCHSERVER<br>
+           ERR_NEEDMOREPARAMS<br>
+   Examples:<br>
+   SQUIT tolsun.oulu.fi :Bad Link ?  ; Command to uplink of the server<br>
+                                   tolson.oulu.fi to terminate its<br>
+                                   connection with comment "Bad Link".<br>
+   :Trillian SQUIT cm22.eng.umd.edu :Server out of control ; Command<br>
+                                   from Trillian from to disconnect<br>
+                                   "cm22.eng.umd.edu" from the net with<br>
+                                   comment "Server out of control".<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.2 Channel operations</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+This group of messages is concerned with manipulating channels, their<br>
+properties <span class="example-paren">(</span>channel modes<span class="example-paren">)</span>, and their contents <span class="example-paren">(</span>typically users<span class="example-paren">)</span>.<br>
+For this reason, these messages SHALL NOT be made available to<br>
+services.<br>
+All of these messages are requests which will or will not be granted<br>
+by the server.  The server MUST send a reply informing the user<br>
+whether the request was granted, denied or generated an error.  When<br>
+the server grants the request, the message is typically sent back<br>
+<span class="example-paren">(</span>eventually reformatted<span class="example-paren">)</span> to the user with the prefix set to the user<br>
+itself.<br>
+The rules governing how channels are managed are enforced by the<br>
+servers.  These rules are beyond the scope of this document.  More<br>
+details are found in "Internet Relay Chat: Channel Management" [IRC-<br>
+CHAN].<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.2.1 Join message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: JOIN<br>
+Parameters: <span class="example-paren">(</span> &lt;channel&gt; *<span class="example-paren">(</span> "," &lt;channel&gt; <span class="example-paren">)</span> [ &lt;key&gt; *<span class="example-paren">(</span> "," &lt;key&gt; <span class="example-paren">)</span> ] <span class="example-paren">)</span><br>
+/ "0"<br>
+The JOIN command is used by a user to request to start listening to<br>
+the specific channel.  Servers MUST be able to parse arguments in the<br>
+form of a list of target, but SHOULD NOT use lists when sending JOIN<br>
+messages to clients.<br>
+Once a user has joined a channel, he receives information about<br>
+all commands his server receives affecting the channel.  This<br>
+includes JOIN, MODE, KICK, PART, QUIT and of course PRIVMSG/NOTICE.<br>
+This allows channel members to keep track of the other channel<br>
+members, as well as channel modes.<br>
+If a JOIN is successful, the user receives a JOIN message as<br>
+confirmation and is then sent the channel's topic <span class="example-paren">(</span>using RPL_TOPIC<span class="example-paren">)</span> and<br>
+the list of users who are on the channel <span class="example-paren">(</span>using RPL_NAMREPLY<span class="example-paren">)</span>, which<br>
+MUST include the user joining.<br>
+Note that this message accepts a special argument <span class="example-paren">(</span>"0"<span class="example-paren">)</span>, which is<br>
+a special request to leave all channels the user is currently a member<br>
+of.  The server will process this message as if the user had sent<br>
+a PART command <span class="example-paren">(</span>See Section 3.2.2<span class="example-paren">)</span> for each channel he is a member<br>
+of.<br>
+   Numeric Replies:<br>
+           ERR_NEEDMOREPARAMS              ERR_BANNEDFROMCHAN<br>
+           ERR_INVITEONLYCHAN              ERR_BADCHANNELKEY<br>
+           ERR_CHANNELISFULL               ERR_BADCHANMASK<br>
+           ERR_NOSUCHCHANNEL               ERR_TOOMANYCHANNELS<br>
+           ERR_TOOMANYTARGETS              ERR_UNAVAILRESOURCE<br>
+           RPL_TOPIC<br>
+   Examples:<br>
+   JOIN #foobar                    ; Command to join channel #foobar.<br>
+   JOIN &foo fubar                 ; Command to join channel &foo using<br>
+                                   key "fubar".<br>
+   JOIN #foo,&bar fubar            ; Command to join channel #foo using<br>
+                                   key "fubar" and &bar using no key.<br>
+   JOIN #foo,#bar fubar,foobar     ; Command to join channel #foo using<br>
+                                   key "fubar", and channel #bar using<br>
+                                   key "foobar".<br>
+   JOIN #foo,#bar                  ; Command to join channels #foo and<br>
+                                   <span class="comment-text">#bar.<br>
+</span>   JOIN 0                          ; Leave all currently joined<br>
+                                   channels.<br>
+   :WiZ!jto@tolsun.oulu.fi JOIN #Twilight_zone ; JOIN message from WiZ<br>
+                                   on channel #Twilight_zone<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.2.2 Part message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: PART<br>
+Parameters: &lt;channel&gt; *<span class="example-paren">(</span> "," &lt;channel&gt; <span class="example-paren">)</span> [ &lt;Part Message&gt; ]<br>
+The PART command causes the user sending the message to be removed<br>
+from the list of active members for all given channels listed in the<br>
+parameter string.  If a "Part Message" is given, this will be sent<br>
+instead of the default message, the nickname.  This request is always<br>
+granted by the server.<br>
+Servers MUST be able to parse arguments in the form of a list of<br>
+target, but SHOULD NOT use lists when sending PART messages to<br>
+clients.<br>
+   Numeric Replies:<br>
+           ERR_NEEDMOREPARAMS              ERR_NOSUCHCHANNEL<br>
+           ERR_NOTONCHANNEL<br>
+   Examples:<br>
+   PART #twilight_zone             ; Command to leave channel<br>
+                                   "#twilight_zone"<br>
+   PART #oz-ops,&group5            ; Command to leave both channels<br>
+                                   "&group5" and "#oz-ops".<br>
+   :WiZ!jto@tolsun.oulu.fi PART #playzone :I lost<br>
+                                   ; User WiZ leaving channel<br>
+                                   "#playzone" with the message "I<br>
+                                   lost".<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.2.3 Channel mode message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: MODE<br>
+Parameters: &lt;channel&gt; *<span class="example-paren">(</span> <span class="example-paren">(</span> "-" / "+" <span class="example-paren">)</span> *&lt;modes&gt; *&lt;modeparams&gt; <span class="example-paren">)</span><br>
+The MODE command is provided so that users may query and change the<br>
+characteristics of a channel.  For more details on available modes<br>
+and their uses, see "Internet Relay Chat: Channel Management" [IRC-<br>
+CHAN].  Note that there is a maximum limit of three <span class="example-paren">(</span>3<span class="example-paren">)</span> changes per<br>
+command for modes that take a parameter.<br>
+   Numeric Replies:<br>
+           ERR_NEEDMOREPARAMS              ERR_KEYSET<br>
+           ERR_NOCHANMODES                 ERR_CHANOPRIVSNEEDED<br>
+           ERR_USERNOTINCHANNEL            ERR_UNKNOWNMODE<br>
+           RPL_CHANNELMODEIS<br>
+           RPL_BANLIST                     RPL_ENDOFBANLIST<br>
+           RPL_EXCEPTLIST                  RPL_ENDOFEXCEPTLIST<br>
+           RPL_INVITELIST                  RPL_ENDOFINVITELIST<br>
+           RPL_UNIQOPIS<br>
+   The following examples are given to help understanding the syntax of<br>
+   the MODE command, but refer to modes defined in "Internet Relay Chat:<br>
+   Channel Management" [IRC-CHAN].<br>
+   Examples:<br>
+   MODE #Finnish +imI *!*@*.fi     ; Command to make #Finnish channel<br>
+                                   moderated and 'invite-only' with user<br>
+                                   with a hostname matching *.fi<br>
+                                   automatically invited.<br>
+   MODE #Finnish +o Kilroy         ; Command to give 'chanop' privileges<br>
+                                   to Kilroy on channel #Finnish.<br>
+   MODE #Finnish +v Wiz            ; Command to allow WiZ to speak on<br>
+                                   <span class="comment-text">#Finnish.<br>
+</span>   MODE #Fins -s                   ; Command to remove 'secret' flag<br>
+                                   from channel #Fins.<br>
+   MODE #42 +k oulu                ; Command to set the channel key to<br>
+                                   "oulu".<br>
+   MODE #42 -k oulu                ; Command to remove the "oulu"<br>
+                                   channel key on channel "#42".<br>
+   MODE #eu-opers +l 10            ; Command to set the limit for the<br>
+                                   number of users on channel<br>
+                                   "#eu-opers" to 10.<br>
+   :WiZ!jto@tolsun.oulu.fi MODE #eu-opers -l<br>
+                                   ; User "WiZ" removing the limit for<br>
+                                   the number of users on channel "#eu-<br>
+                                   opers".<br>
+   MODE &oulu +b                   ; Command to list ban masks set for<br>
+                                   the channel "&oulu".<br>
+   MODE &oulu +b *!*@*             ; Command to prevent all users from<br>
+                                   joining.<br>
+   MODE &oulu +b *!*@*.edu +e *!*@*.bu.edu<br>
+                                   ; Command to prevent any user from a<br>
+                                   hostname matching *.edu from joining,<br>
+                                   except if matching *.bu.edu<br>
+   MODE #bu +be *!*@*.edu *!*@*.bu.edu<br>
+                                   ; Comment to prevent any user from a<br>
+                                   hostname matching *.edu from joining,<br>
+                                   except if matching *.bu.edu<br>
+   MODE #meditation e              ; Command to list exception masks set<br>
+                                   for the channel "#meditation".<br>
+   MODE #meditation I              ; Command to list invitations masks<br>
+                                   set for the channel "#meditation".<br>
+   MODE !12345ircd O               ; Command to ask who the channel<br>
+                                   creator for "!12345ircd" is<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.2.4 Topic message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: TOPIC<br>
+Parameters: &lt;channel&gt; [ &lt;topic&gt; ]<br>
+The TOPIC command is used to change or view the topic of a channel.<br>
+The topic for channel &lt;channel&gt; is returned if there is no &lt;topic&gt;<br>
+given.  If the &lt;topic&gt; parameter is present, the topic for that<br>
+channel will be changed, if this action is allowed for the user<br>
+requesting it.  If the &lt;topic&gt; parameter is an empty string, the<br>
+topic for that channel will be removed.<br>
+   Numeric Replies:<br>
+           ERR_NEEDMOREPARAMS              ERR_NOTONCHANNEL<br>
+           RPL_NOTOPIC                     RPL_TOPIC<br>
+           ERR_CHANOPRIVSNEEDED            ERR_NOCHANMODES<br>
+   Examples:<br>
+   :WiZ!jto@tolsun.oulu.fi TOPIC #test :New topic ; User Wiz setting the<br>
+                                   topic.<br>
+   TOPIC #test :another topic      ; Command to set the topic on #test<br>
+                                   to "another topic".<br>
+   TOPIC #test :                   ; Command to clear the topic on<br>
+                                   <span class="comment-text">#test.<br>
+</span>   TOPIC #test                     ; Command to check the topic for<br>
+                                   <span class="comment-text">#test.<br>
+</span></pre></td></tr>
+<tr><td><pre><br>
+<b>3.2.5 Names message</b><br>
+Command: NAMES<br>
+Parameters: [ &lt;channel&gt; *<span class="example-paren">(</span> "," &lt;channel&gt; <span class="example-paren">)</span> [ &lt;target&gt; ] ]<br>
+By using the NAMES command, a user can list all nicknames that are<br>
+visible to him. For more details on what is visible and what is not,<br>
+see "Internet Relay Chat: Channel Management" [IRC-CHAN].  The<br>
+&lt;channel&gt; parameter specifies which channel<span class="example-paren">(</span>s<span class="example-paren">)</span> to return information<br>
+about.  There is no error reply for bad channel names.<br>
+If no &lt;channel&gt; parameter is given, a list of all channels and their<br>
+occupants is returned.  At the end of this list, a list of users who<br>
+are visible but either not on any channel or not on a visible channel<br>
+are listed as being on `channel' "*".<br>
+If the &lt;target&gt; parameter is specified, the request is forwarded to<br>
+that server which will generate the reply.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+   Numerics:<br>
+           ERR_TOOMANYMATCHES              ERR_NOSUCHSERVER<br>
+           RPL_NAMREPLY                    RPL_ENDOFNAMES<br>
+   Examples:<br>
+   NAMES #twilight_zone,#42        ; Command to list visible users on<br>
+                                   #twilight_zone and <span class="comment-text">#42<br>
+</span>   NAMES                           ; Command to list all visible<br>
+                                   channels and users<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.2.6 List message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: LIST<br>
+Parameters: [ &lt;channel&gt; *<span class="example-paren">(</span> "," &lt;channel&gt; <span class="example-paren">)</span> [ &lt;target&gt; ] ]<br>
+The list command is used to list channels and their topics.  If the<br>
+&lt;channel&gt; parameter is used, only the status of that channel is<br>
+displayed.<br>
+If the &lt;target&gt; parameter is specified, the request is forwarded to<br>
+that server which will generate the reply.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+   Numeric Replies:<br>
+           ERR_TOOMANYMATCHES              ERR_NOSUCHSERVER<br>
+           RPL_LIST                        RPL_LISTEND<br>
+   Examples:<br>
+   LIST                            ; Command to list all channels.<br>
+   LIST #twilight_zone,#42         ; Command to list channels<br>
+                                   #twilight_zone and <span class="comment-text">#42<br>
+</span></pre></td></tr>
+<tr><td><pre><br>
+<b>3.2.7 Invite message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: INVITE<br>
+Parameters: &lt;nickname&gt; &lt;channel&gt;<br>
+The INVITE command is used to invite a user to a channel.  The<br>
+parameter &lt;nickname&gt; is the nickname of the person to be invited to<br>
+the target channel &lt;channel&gt;.  There is no requirement that the<br>
+channel the target user is being invited to must exist or be a valid<br>
+channel.  However, if the channel exists, only members of the channel<br>
+are allowed to invite other users.  When the channel has invite-only<br>
+flag set, only channel operators may issue INVITE command.<br>
+Only the user inviting and the user being invited will receive<br>
+notification of the invitation.  Other channel members are not<br>
+notified.  <span class="example-paren">(</span>This is unlike the MODE changes, and is occasionally the<br>
+source of trouble for users.<span class="example-paren">)</span><br>
+   Numeric Replies:<br>
+           ERR_NEEDMOREPARAMS              ERR_NOSUCHNICK<br>
+           ERR_NOTONCHANNEL                ERR_USERONCHANNEL<br>
+           ERR_CHANOPRIVSNEEDED<br>
+           RPL_INVITING                    RPL_AWAY<br>
+   Examples:<br>
+   :Angel!wings@irc.org INVITE Wiz #Dust<br>
+                                   ; Message to WiZ when he has been<br>
+                                   invited by user Angel to channel<br>
+                                   <span class="comment-text">#Dust<br>
+</span>   INVITE Wiz #Twilight_Zone       ; Command to invite WiZ to<br>
+                                   <span class="comment-text">#Twilight_zone<br>
+</span></pre></td></tr>
+<tr><td><pre><br>
+<b>3.2.8 Kick command</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: KICK<br>
+Parameters: &lt;channel&gt; *<span class="example-paren">(</span> "," &lt;channel&gt; <span class="example-paren">)</span> &lt;user&gt; *<span class="example-paren">(</span> "," &lt;user&gt; <span class="example-paren">)</span><br>
+[&lt;comment&gt;]<br>
+The KICK command can be used to request the forced removal of a user<br>
+from a channel.  It causes the &lt;user&gt; to PART from the &lt;channel&gt; by<br>
+force.  For the message to be syntactically correct, there MUST be<br>
+either one channel parameter and multiple user parameter, or as many<br>
+channel parameters as there are user parameters.  If a "comment" is<br>
+given, this will be sent instead of the default message, the nickname<br>
+of the user issuing the KICK.<br>
+The server MUST NOT send KICK messages with multiple channels or<br>
+users to clients.  This is necessarily to maintain backward<br>
+compatibility with old client software.<br>
+   Numeric Replies:<br>
+           ERR_NEEDMOREPARAMS              ERR_NOSUCHCHANNEL<br>
+           ERR_BADCHANMASK                 ERR_CHANOPRIVSNEEDED<br>
+           ERR_USERNOTINCHANNEL            ERR_NOTONCHANNEL<br>
+   Examples:<br>
+   KICK &Melbourne Matthew         ; Command to kick Matthew from<br>
+                                   &Melbourne<br>
+   KICK #Finnish John :Speaking English<br>
+                                   ; Command to kick John from #Finnish<br>
+                                   using "Speaking English" as the<br>
+                                   reason <span class="example-paren">(</span>comment<span class="example-paren">)</span>.<br>
+   :WiZ!jto@tolsun.oulu.fi KICK #Finnish John<br>
+                                   ; KICK message on channel #Finnish<br>
+                                   from WiZ to remove John from channel<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.3 Sending messages</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+The main purpose of the IRC protocol is to provide a base for clients<br>
+to communicate with each other.  PRIVMSG, NOTICE and SQUERY<br>
+<span class="example-paren">(</span>described in Section 3.5 on Service Query and Commands<span class="example-paren">)</span> are the only<br>
+messages available which actually perform delivery of a text message<br>
+from one client to another - the rest just make it possible and try<br>
+to ensure it happens in a reliable and structured manner.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.3.1 Private messages</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: PRIVMSG<br>
+Parameters: &lt;msgtarget&gt; &lt;text to be sent&gt;<br>
+PRIVMSG is used to send private messages between users, as well as to<br>
+send messages to channels.  &lt;msgtarget&gt; is usually the nickname of<br>
+the recipient of the message, or a channel name.<br>
+The &lt;msgtarget&gt; parameter may also be a host mask <span class="example-paren">(</span>#&lt;mask&gt;<span class="example-paren">)</span> or server<br>
+mask <span class="example-paren">(</span>$&lt;mask&gt;<span class="example-paren">)</span>.  In both cases the server will only send the PRIVMSG<br>
+to those who have a server or host matching the mask.  The mask MUST<br>
+have at least 1 <span class="example-paren">(</span>one<span class="example-paren">)</span> "." in it and no wildcards following the last<br>
+".".  This requirement exists to prevent people sending messages to<br>
+"#*" or "$*", which would broadcast to all users.  Wildcards are the<br>
+'*' and '?'  characters.  This extension to the PRIVMSG command is<br>
+only available to operators.<br>
+   Numeric Replies:<br>
+           ERR_NORECIPIENT                 ERR_NOTEXTTOSEND<br>
+           ERR_CANNOTSENDTOCHAN            ERR_NOTOPLEVEL<br>
+           ERR_WILDTOPLEVEL                ERR_TOOMANYTARGETS<br>
+           ERR_NOSUCHNICK<br>
+           RPL_AWAY<br>
+   Examples:<br>
+   :Angel!wings@irc.org PRIVMSG Wiz :Are you receiving this message ?<br>
+                                   ; Message from Angel to Wiz.<br>
+   PRIVMSG Angel :yes I'm receiving it !<br>
+                                   ; Command to send a message to Angel.<br>
+   PRIVMSG jto@tolsun.oulu.fi :Hello !<br>
+                                   ; Command to send a message to a user<br>
+                                   on server tolsun.oulu.fi with<br>
+                                   username of "jto".<br>
+   PRIVMSG kalt<span class="example-variable">%millennium.stealth.net</span>@irc.stealth.net :Are you a frog?<br>
+                                   ; Message to a user on server<br>
+                                   irc.stealth.net with username of<br>
+                                   "kalt", and connected from the host<br>
+                                   millennium.stealth.net.<br>
+   PRIVMSG kalt<span class="example-variable">%millennium.stealth.net</span> :Do you like cheese?<br>
+                                   ; Message to a user on the local<br>
+                                   server with username of "kalt", and<br>
+                                   connected from the host<br>
+                                   millennium.stealth.net.<br>
+   PRIVMSG Wiz!jto@tolsun.oulu.fi :Hello !<br>
+                                   ; Message to the user with nickname<br>
+                                   Wiz who is connected from the host<br>
+                                   tolsun.oulu.fi and has the username<br>
+                                   "jto".<br>
+   PRIVMSG $*.fi :Server tolsun.oulu.fi rebooting.<br>
+                                   ; Message to everyone on a server<br>
+                                   which has a name matching *.fi.<br>
+   PRIVMSG #*.edu :NSFNet is undergoing work, expect interruptions<br>
+                                   ; Message to all users who come from<br>
+                                   a host which has a name matching<br>
+                                   *.edu.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.3.2 Notice</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: NOTICE<br>
+Parameters: &lt;msgtarget&gt; &lt;text&gt;<br>
+The NOTICE command is used similarly to PRIVMSG.  The difference<br>
+between NOTICE and PRIVMSG is that automatic replies MUST NEVER be<br>
+sent in response to a NOTICE message.  This rule applies to servers<br>
+too - they MUST NOT send any error reply back to the client on<br>
+receipt of a notice.  The object of this rule is to avoid loops<br>
+between clients automatically sending something in response to<br>
+something it received.<br>
+This command is available to services as well as users.<br>
+This is typically used by services, and automatons <span class="example-paren">(</span>clients with<br>
+either an AI or other interactive program controlling their actions<span class="example-paren">)</span>.<br>
+See PRIVMSG for more details on replies and examples.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.4 Server queries and commands</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+The server query group of commands has been designed to return<br>
+information about any server which is connected to the network.<br>
+In these queries, where a parameter appears as &lt;target&gt;, wildcard<br>
+masks are usually valid.  For each parameter, however, only one query<br>
+and set of replies is to be generated.  In most cases, if a nickname<br>
+is given, it will mean the server to which the user is connected.<br>
+These messages typically have little value for services, it is<br>
+therefore RECOMMENDED to forbid services from using them.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.4.1 Motd message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: MOTD<br>
+Parameters: [ &lt;target&gt; ]<br>
+The MOTD command is used to get the "Message Of The Day" of the given<br>
+server, or current server if &lt;target&gt; is omitted.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+   Numeric Replies:<br>
+           RPL_MOTDSTART                   RPL_MOTD<br>
+           RPL_ENDOFMOTD                   ERR_NOMOTD<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.4.2 Lusers message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: LUSERS<br>
+Parameters: [ &lt;mask&gt; [ &lt;target&gt; ] ]<br>
+The LUSERS command is used to get statistics about the size of the<br>
+IRC network.  If no parameter is given, the reply will be about the<br>
+whole net.  If a &lt;mask&gt; is specified, then the reply will only<br>
+concern the part of the network formed by the servers matching the<br>
+mask.  Finally, if the &lt;target&gt; parameter is specified, the request<br>
+is forwarded to that server which will generate the reply.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+   Numeric Replies:<br>
+           RPL_LUSERCLIENT                 RPL_LUSEROP<br>
+           RPL_LUSERUNKOWN                 RPL_LUSERCHANNELS<br>
+           RPL_LUSERME                     ERR_NOSUCHSERVER<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.4.3 Version message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: VERSION<br>
+Parameters: [ &lt;target&gt; ]<br>
+The VERSION command is used to query the version of the server<br>
+program.  An optional parameter &lt;target&gt; is used to query the version<br>
+of the server program which a client is not directly connected to.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+   Numeric Replies:<br>
+           ERR_NOSUCHSERVER                RPL_VERSION<br>
+   Examples:<br>
+   VERSION tolsun.oulu.fi          ; Command to check the version of<br>
+                                   server "tolsun.oulu.fi".<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.4.4 Stats message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: STATS<br>
+Parameters: [ &lt;query&gt; [ &lt;target&gt; ] ]<br>
+The stats command is used to query statistics of certain server.  If<br>
+&lt;query&gt; parameter is omitted, only the end of stats reply is sent<br>
+back.<br>
+A query may be given for any single letter which is only checked by<br>
+the destination server and is otherwise passed on by intermediate<br>
+servers, ignored and unaltered.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+Except for the ones below, the list of valid queries is<br>
+implementation dependent.  The standard queries below SHOULD be<br>
+supported by the server:<br>
+            l - returns a list of the server's connections, showing how<br>
+                long each connection has been established and the<br>
+                traffic over that connection in Kbytes and messages for<br>
+                each direction;<br>
+            m - returns the usage count for each of commands supported<br>
+                by the server; commands for which the usage count is<br>
+                zero MAY be omitted;<br>
+            o - returns a list of configured privileged users,<br>
+                operators;<br>
+            u - returns a string showing how long the server has been<br>
+                up.<br>
+It is also RECOMMENDED that client and server access configuration be<br>
+published this way.<br>
+   Numeric Replies:<br>
+           ERR_NOSUCHSERVER<br>
+           RPL_STATSLINKINFO                RPL_STATSUPTIME<br>
+           RPL_STATSCOMMANDS                RPL_STATSOLINE<br>
+           RPL_ENDOFSTATS<br>
+   Examples:<br>
+   STATS m                         ; Command to check the command usage<br>
+                                   for the server you are connected to<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.4.5 Links message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: LINKS<br>
+Parameters: [ [ &lt;remote server&gt; ] &lt;server mask&gt; ]<br>
+With LINKS, a user can list all servernames, which are known by the<br>
+server answering the query.  The returned list of servers MUST match<br>
+the mask, or if no mask is given, the full list is returned.<br>
+If &lt;remote server&gt; is given in addition to &lt;server mask&gt;, the LINKS<br>
+command is forwarded to the first server found that matches that name<br>
+<span class="example-paren">(</span>if any<span class="example-paren">)</span>, and that server is then required to answer the query.<br>
+Numeric Replies:<br>
+  ERR_NOSUCHSERVER<br>
+  RPL_LINKSRPL_ENDOFLINKS<br>
+Examples:<br>
+LINKS *.au ; Command to list all servers which<br>
+  have a name that matches *.au;<br>
+LINKS *.edu *.bu.edu; Command to list servers matching<br>
+  *.bu.edu as seen by the first server<br>
+  matching *.edu.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.4.6 Time message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: TIME<br>
+Parameters: [ &lt;target&gt; ]<br>
+The time command is used to query local time from the specified<br>
+server. If the &lt;target&gt; parameter is not given, the server receiving<br>
+the command must reply to the query.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+   Numeric Replies:<br>
+           ERR_NOSUCHSERVER              RPL_TIME<br>
+   Examples:<br>
+   TIME tolsun.oulu.fi             ; check the time on the server<br>
+                                   "tolson.oulu.fi"<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.4.7 Connect message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: CONNECT<br>
+Parameters: &lt;target server&gt; &lt;port&gt; [ &lt;remote server&gt; ]<br>
+The CONNECT command can be used to request a server to try to<br>
+establish a new connection to another server immediately.  CONNECT is<br>
+a privileged command and SHOULD be available only to IRC Operators.<br>
+If a &lt;remote server&gt; is given and its mask doesn't match name of the<br>
+parsing server, the CONNECT attempt is sent to the first match of<br>
+remote server. Otherwise the CONNECT attempt is made by the server<br>
+processing the request.<br>
+The server receiving a remote CONNECT command SHOULD generate a<br>
+WALLOPS message describing the source and target of the request.<br>
+   Numeric Replies:<br>
+           ERR_NOSUCHSERVER              ERR_NOPRIVILEGES<br>
+           ERR_NEEDMOREPARAMS<br>
+   Examples:<br>
+   CONNECT tolsun.oulu.fi 6667     ; Command to attempt to connect local<br>
+                                   server to tolsun.oulu.fi on port 6667<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.4.8 Trace message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: TRACE<br>
+Parameters: [ &lt;target&gt; ]<br>
+TRACE command is used to find the route to specific server and<br>
+information about its peers.  Each server that processes this command<br>
+MUST report to the sender about it.  The replies from pass-through<br>
+links form a chain, which shows route to destination.  After sending<br>
+this reply back, the query MUST be sent to the next server until<br>
+given &lt;target&gt; server is reached.<br>
+TRACE command is used to find the route to specific server.  Each<br>
+server that processes this message MUST tell the sender about it by<br>
+sending a reply indicating it is a pass-through link, forming a chain<br>
+of replies.  After sending this reply back, it MUST then send the<br>
+TRACE message to the next server until given server is reached.  If<br>
+the &lt;target&gt; parameter is omitted, it is RECOMMENDED that TRACE<br>
+command sends a message to the sender telling which servers the local<br>
+server has direct connection to.<br>
+If the destination given by &lt;target&gt; is an actual server, the<br>
+destination server is REQUIRED to report all servers, services and<br>
+operators which are connected to it; if the command was issued by an<br>
+operator, the server MAY also report all users which are connected to<br>
+it.  If the destination given by &lt;target&gt; is a nickname, then only a<br>
+reply for that nickname is given.  If the &lt;target&gt; parameter is<br>
+omitted, it is RECOMMENDED that the TRACE command is parsed as<br>
+targeted to the processing server.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+   Numeric Replies:<br>
+           ERR_NOSUCHSERVER<br>
+      If the TRACE message is destined for another server, all<br>
+      intermediate servers must return a RPL_TRACELINK reply to indicate<br>
+      that the TRACE passed through it and where it is going next.<br>
+           RPL_TRACELINK<br>
+      A TRACE reply may be composed of any number of the following<br>
+      numeric replies.<br>
+           RPL_TRACECONNECTING           RPL_TRACEHANDSHAKE<br>
+           RPL_TRACEUNKNOWN              RPL_TRACEOPERATOR<br>
+           RPL_TRACEUSER                 RPL_TRACESERVER<br>
+           RPL_TRACESERVICE              RPL_TRACENEWTYPE<br>
+           RPL_TRACECLASS                RPL_TRACELOG<br>
+           RPL_TRACEEND<br>
+   Examples:<br>
+   TRACE *.oulu.fi                 ; TRACE to a server matching<br>
+                                   *.oulu.fi<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.4.9 Admin command</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: ADMIN<br>
+Parameters: [ &lt;target&gt; ]<br>
+The admin command is used to find information about the administrator<br>
+of the given server, or current server if &lt;target&gt; parameter is<br>
+omitted.  Each server MUST have the ability to forward ADMIN messages<br>
+to other servers.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+   Numeric Replies:<br>
+           ERR_NOSUCHSERVER<br>
+           RPL_ADMINME                   RPL_ADMINLOC1<br>
+           RPL_ADMINLOC2                 RPL_ADMINEMAIL<br>
+   Examples:<br>
+   ADMIN tolsun.oulu.fi            ; request an ADMIN reply from<br>
+                                   tolsun.oulu.fi<br>
+   ADMIN syrk                      ; ADMIN request for the server to<br>
+                                   which the user syrk is connected<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.4.10 Info command</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: INFO<br>
+Parameters: [ &lt;target&gt; ]<br>
+The INFO command is REQUIRED to return information describing the<br>
+server: its version, when it was compiled, the patchlevel, when it<br>
+was started, and any other miscellaneous information which may be<br>
+considered to be relevant.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+   Numeric Replies:<br>
+           ERR_NOSUCHSERVER<br>
+           RPL_INFO                      RPL_ENDOFINFO<br>
+   Examples:<br>
+   INFO csd.bu.edu                 ; request an INFO reply from<br>
+                                   csd.bu.edu<br>
+   INFO Angel                      ; request info from the server that<br>
+                                   Angel is connected to.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.5 Service Query and Commands</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+The service query group of commands has been designed to return<br>
+information about any service which is connected to the network.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.5.1 Servlist message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: SERVLIST<br>
+Parameters: [ &lt;mask&gt; [ &lt;type&gt; ] ]<br>
+The SERVLIST command is used to list services currently connected to<br>
+the network and visible to the user issuing the command.  The<br>
+optional parameters may be used to restrict the result of the query<br>
+<span class="example-paren">(</span>to matching services names, and services type<span class="example-paren">)</span>.<br>
+   Numeric Replies:<br>
+           RPL_SERVLIST                  RPL_SERVLISTEND<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.5.2 Squery</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: SQUERY<br>
+Parameters: &lt;servicename&gt; &lt;text&gt;<br>
+The SQUERY command is used similarly to PRIVMSG.  The only difference<br>
+is that the recipient MUST be a service.  This is the only way for a<br>
+text message to be delivered to a service.<br>
+See PRIVMSG for more details on replies and example.<br>
+   Examples:<br>
+   SQUERY irchelp :HELP privmsg<br>
+                                   ; Message to the service with<br>
+                                   nickname irchelp.<br>
+   SQUERY dict@irc.fr :fr2en blaireau<br>
+                                   ; Message to the service with name<br>
+                                   dict@irc.fr.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.6 User based queries</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+User queries are a group of commands which are primarily concerned<br>
+with finding details on a particular user or group users.  When using<br>
+wildcards with any of these commands, if they match, they will only<br>
+return information on users who are 'visible' to you.  The visibility<br>
+of a user is determined as a combination of the user's mode and the<br>
+common set of channels you are both on.<br>
+Although services SHOULD NOT be using this class of message, they are<br>
+allowed to.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.6.1 Who query</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: WHO<br>
+Parameters: [ &lt;mask&gt; [ "o" ] ]<br>
+The WHO command is used by a client to generate a query which returns<br>
+a list of information which 'matches' the &lt;mask&gt; parameter given by<br>
+the client.  In the absence of the &lt;mask&gt; parameter, all visible<br>
+<span class="example-paren">(</span>users who aren't invisible <span class="example-paren">(</span>user mode +i<span class="example-paren">)</span> and who don't have a<br>
+common channel with the requesting client<span class="example-paren">)</span> are listed.  The same<br>
+result can be achieved by using a &lt;mask&gt; of "0" or any wildcard which<br>
+will end up matching every visible user.<br>
+The &lt;mask&gt; passed to WHO is matched against users' host, server, real<br>
+name and nickname if the channel &lt;mask&gt; cannot be found.<br>
+If the "o" parameter is passed only operators are returned according<br>
+to the &lt;mask&gt; supplied.<br>
+   Numeric Replies:<br>
+           ERR_NOSUCHSERVER<br>
+           RPL_WHOREPLY                  RPL_ENDOFWHO<br>
+   Examples:<br>
+   WHO *.fi                        ; Command to list all users who match<br>
+                                   against "*.fi".<br>
+   WHO jto* o                      ; Command to list all users with a<br>
+                                   match against "jto*" if they are an<br>
+                                   operator.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.6.2 Whois query</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: WHOIS<br>
+Parameters: [ &lt;target&gt; ] &lt;mask&gt; *<span class="example-paren">(</span> "," &lt;mask&gt; <span class="example-paren">)</span><br>
+This command is used to query information about particular user.<br>
+The server will answer this command with several numeric messages<br>
+indicating different statuses of each user which matches the mask <span class="example-paren">(</span>if<br>
+you are entitled to see them<span class="example-paren">)</span>.  If no wildcard is present in the<br>
+&lt;mask&gt;, any information about that nick which you are allowed to see<br>
+is presented.<br>
+If the &lt;target&gt; parameter is specified, it sends the query to a<br>
+specific server.  It is useful if you want to know how long the user<br>
+in question has been idle as only local server <span class="example-paren">(</span>i.e., the server the<br>
+user is directly connected to<span class="example-paren">)</span> knows that information, while<br>
+everything else is globally known.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+   Numeric Replies:<br>
+           ERR_NOSUCHSERVER              ERR_NONICKNAMEGIVEN<br>
+           RPL_WHOISUSER                 RPL_WHOISCHANNELS<br>
+           RPL_WHOISCHANNELS             RPL_WHOISSERVER<br>
+           RPL_AWAY                      RPL_WHOISOPERATOR<br>
+           RPL_WHOISIDLE                 ERR_NOSUCHNICK<br>
+           RPL_ENDOFWHOIS<br>
+   Examples:<br>
+   WHOIS wiz                       ; return available user information<br>
+                                   about nick WiZ<br>
+   WHOIS eff.org trillian          ; ask server eff.org for user<br>
+                                   information  about trillian<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.6.3 Whowas</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: WHOWAS<br>
+Parameters: &lt;nickname&gt; *<span class="example-paren">(</span> "," &lt;nickname&gt; <span class="example-paren">)</span> [ &lt;count&gt; [ &lt;target&gt; ] ]<br>
+Whowas asks for information about a nickname which no longer exists.<br>
+This may either be due to a nickname change or the user leaving IRC.<br>
+In response to this query, the server searches through its nickname<br>
+history, looking for any nicks which are lexically the same <span class="example-paren">(</span>no wild<br>
+card matching here<span class="example-paren">)</span>.  The history is searched backward, returning the<br>
+most recent entry first.  If there are multiple entries, up to<br>
+&lt;count&gt; replies will be returned <span class="example-paren">(</span>or all of them if no &lt;count&gt;<br>
+parameter is given<span class="example-paren">)</span>.  If a non-positive number is passed as being<br>
+&lt;count&gt;, then a full search is done.<br>
+Wildcards are allowed in the &lt;target&gt; parameter.<br>
+   Numeric Replies:<br>
+           ERR_NONICKNAMEGIVEN           ERR_WASNOSUCHNICK<br>
+           RPL_WHOWASUSER                RPL_WHOISSERVER<br>
+           RPL_ENDOFWHOWAS<br>
+   Examples:<br>
+   WHOWAS Wiz                      ; return all information in the nick<br>
+                                   history about nick "WiZ";<br>
+   WHOWAS Mermaid 9                ; return at most, the 9 most recent<br>
+                                   entries in the nick history for<br>
+                                   "Mermaid";<br>
+   WHOWAS Trillian 1 *.edu         ; return the most recent history for<br>
+                                   "Trillian" from the first server<br>
+                                   found to match "*.edu".<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.7 Miscellaneous messages</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Messages in this category do not fit into any of the above categories<br>
+but are nonetheless still a part of and REQUIRED by the protocol.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.7.1 Kill message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: KILL<br>
+Parameters: &lt;nickname&gt; &lt;comment&gt;<br>
+The KILL command is used to cause a client-server connection to be<br>
+closed by the server which has the actual connection.  Servers<br>
+generate KILL messages on nickname collisions.  It MAY also be<br>
+available available to users who have the operator status.<br>
+Clients which have automatic reconnect algorithms effectively make<br>
+this command useless since the disconnection is only brief.  It does<br>
+however break the flow of data and can be used to stop large amounts<br>
+of 'flooding' from abusive users or accidents.  Abusive users usually<br>
+don't care as they will reconnect promptly and resume their abusive<br>
+behaviour.  To prevent this command from being abused, any user may<br>
+elect to receive KILL messages generated for others to keep an 'eye'<br>
+on would be trouble spots.<br>
+In an arena where nicknames are REQUIRED to be globally unique at all<br>
+times, KILL messages are sent whenever 'duplicates' are detected<br>
+<span class="example-paren">(</span>that is an attempt to register two users with the same nickname<span class="example-paren">)</span> in<br>
+the hope that both of them will disappear and only 1 reappear.<br>
+When a client is removed as the result of a KILL message, the server<br>
+SHOULD add the nickname to the list of unavailable nicknames in an<br>
+attempt to avoid clients to reuse this name immediately which is<br>
+usually the pattern of abusive behaviour often leading to useless<br>
+"KILL loops".  See the "IRC Server Protocol" document [IRC-SERVER]<br>
+for more information on this procedure.<br>
+The comment given MUST reflect the actual reason for the KILL.  For<br>
+server-generated KILLs it usually is made up of details concerning<br>
+the origins of the two conflicting nicknames.  For users it is left<br>
+up to them to provide an adequate reason to satisfy others who see<br>
+it.  To prevent/discourage fake KILLs from being generated to hide<br>
+the identify of the KILLer, the comment also shows a 'kill-path'<br>
+which is updated by each server it passes through, each prepending<br>
+its name to the path.<br>
+   Numeric Replies:<br>
+           ERR_NOPRIVILEGES              ERR_NEEDMOREPARAMS<br>
+           ERR_NOSUCHNICK                ERR_CANTKILLSERVER<br>
+NOTE:<br>
+It is RECOMMENDED that only Operators be allowed to kill other users<br>
+with KILL command.  This command has been the subject of many<br>
+controversies over the years, and along with the above<br>
+recommendation, it is also widely recognized that not even operators<br>
+should be allowed to kill users on remote servers.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.7.2 Ping message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: PING<br>
+Parameters: &lt;server1&gt; [ &lt;server2&gt; ]<br>
+The PING command is used to test the presence of an active client or<br>
+server at the other end of the connection.  Servers send a PING<br>
+message at regular intervals if no other activity detected coming<br>
+from a connection.  If a connection fails to respond to a PING<br>
+message within a set amount of time, that connection is closed.  A<br>
+PING message MAY be sent even if the connection is active.<br>
+When a PING message is received, the appropriate PONG message MUST be<br>
+sent as reply to &lt;server1&gt; <span class="example-paren">(</span>server which sent the PING message out<span class="example-paren">)</span><br>
+as soon as possible.  If the &lt;server2&gt; parameter is specified, it<br>
+represents the target of the ping, and the message gets forwarded<br>
+there.<br>
+   Numeric Replies:<br>
+           ERR_NOORIGIN                  ERR_NOSUCHSERVER<br>
+   Examples:<br>
+   PING tolsun.oulu.fi             ; Command to send a PING message to<br>
+                                   server<br>
+   PING WiZ tolsun.oulu.fi         ; Command from WiZ to send a PING<br>
+                                   message to server "tolsun.oulu.fi"<br>
+   PING :irc.funet.fi              ; Ping message sent by server<br>
+                                   "irc.funet.fi"<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.7.3 Pong message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: PONG<br>
+Parameters: &lt;server&gt; [ &lt;server2&gt; ]<br>
+PONG message is a reply to ping message.  If parameter &lt;server2&gt; is<br>
+given, this message MUST be forwarded to given target.  The &lt;server&gt;<br>
+parameter is the name of the entity who has responded to PING message<br>
+and generated this message.<br>
+   Numeric Replies:<br>
+           ERR_NOORIGIN                  ERR_NOSUCHSERVER<br>
+   Example:<br>
+   PONG csd.bu.edu tolsun.oulu.fi  ; PONG message from csd.bu.edu to<br>
+                                   tolsun.oulu.fi<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>3.7.4 Error</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: ERROR<br>
+Parameters: &lt;error message&gt;<br>
+The ERROR command is for use by servers when reporting a serious or<br>
+fatal error to its peers.  It may also be sent from one server to<br>
+another but MUST NOT be accepted from any normal unknown clients.<br>
+Only an ERROR message SHOULD be used for reporting errors which occur<br>
+with a server-to-server link.  An ERROR message is sent to the server<br>
+at the other end <span class="example-paren">(</span>which reports it to appropriate local users and<br>
+logs<span class="example-paren">)</span> and to appropriate local users and logs.  It is not to be<br>
+passed onto any other servers by a server if it is received from a<br>
+server.<br>
+The ERROR message is also used before terminating a client<br>
+connection.<br>
+When a server sends a received ERROR message to its operators, the<br>
+message SHOULD be encapsulated inside a NOTICE message, indicating<br>
+that the client was not responsible for the error.<br>
+   Numerics:<br>
+           None.<br>
+   Examples:<br>
+   ERROR :Server *.fi already exists ; ERROR message to the other server<br>
+                                   which caused this error.<br>
+   NOTICE WiZ :ERROR from csd.bu.edu -- Server *.fi already exists<br>
+                                   ; Same ERROR message as above but<br>
+                                   sent to user WiZ on the other server.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>4. Optional features</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+This section describes OPTIONAL messages.  They are not required in a<br>
+working server implementation of the protocol described herein.  In<br>
+the absence of the feature, an error reply message MUST be generated<br>
+or an unknown command error.  If the message is destined for another<br>
+server to answer then it MUST be passed on <span class="example-paren">(</span>elementary parsing<br>
+REQUIRED<span class="example-paren">)</span> The allocated numerics for this are listed with the<br>
+messages below.<br>
+From this section, only the USERHOST and ISON messages are available<br>
+to services.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>4.1 Away</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: AWAY<br>
+Parameters: [ &lt;text&gt; ]<br>
+With the AWAY command, clients can set an automatic reply string for<br>
+any PRIVMSG commands directed at them <span class="example-paren">(</span>not to a channel they are on<span class="example-paren">)</span>.<br>
+The server sends an automatic reply to the client sending the PRIVMSG<br>
+command.  The only replying server is the one to which the sending<br>
+client is connected to.<br>
+The AWAY command is used either with one parameter, to set an AWAY<br>
+message, or with no parameters, to remove the AWAY message.<br>
+Because of its high cost <span class="example-paren">(</span>memory and bandwidth wise<span class="example-paren">)</span>, the AWAY<br>
+message SHOULD only be used for client-server communication.  A<br>
+server MAY choose to silently ignore AWAY messages received from<br>
+other servers.  To update the away status of a client across servers,<br>
+the user mode 'a' SHOULD be used instead.  <span class="example-paren">(</span>See Section 3.1.5<span class="example-paren">)</span><br>
+   Numeric Replies:<br>
+           RPL_UNAWAY                    RPL_NOWAWAY<br>
+   Example:<br>
+   AWAY :Gone to lunch.  Back in 5 ; Command to set away message to<br>
+                                   "Gone to lunch.  Back in 5".<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>4.2 Rehash message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: REHASH<br>
+Parameters: None<br>
+The rehash command is an administrative command which can be used by<br>
+an operator to force the server to re-read and process its<br>
+configuration file.<br>
+   Numeric Replies:<br>
+           RPL_REHASHING                 ERR_NOPRIVILEGES<br>
+   Example:<br>
+   REHASH                          ; message from user with operator<br>
+                                   status to server asking it to reread<br>
+                                   its configuration file.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>4.3 Die message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: DIE<br>
+Parameters: None<br>
+An operator can use the DIE command to shutdown the server.  This<br>
+message is optional since it may be viewed as a risk to allow<br>
+arbitrary people to connect to a server as an operator and execute<br>
+this command.<br>
+The DIE command MUST always be fully processed by the server to which<br>
+the sending client is connected and MUST NOT be passed onto other<br>
+connected servers.<br>
+   Numeric Replies:<br>
+           ERR_NOPRIVILEGES<br>
+   Example:<br>
+   DIE                             ; no parameters required.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>4.4 Restart message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: RESTART<br>
+Parameters: None<br>
+An operator can use the restart command to force the server to<br>
+restart itself.  This message is optional since it may be viewed as a<br>
+risk to allow arbitrary people to connect to a server as an operator<br>
+and execute this command, causing <span class="example-paren">(</span>at least<span class="example-paren">)</span> a disruption to service.<br>
+The RESTART command MUST always be fully processed by the server to<br>
+which the sending client is connected and MUST NOT be passed onto<br>
+other connected servers.<br>
+   Numeric Replies:<br>
+           ERR_NOPRIVILEGES<br>
+   Example:<br>
+   RESTART                         ; no parameters required.<br>
+</pre></td></tr>
+<tr><td><pre><br>
+<b>4.5 Summon message</b><br>
+</pre></td></tr>
+<tr><td><pre><br>
+Command: SUMMON<br>
+Parameters: &lt;user&gt; [ &lt;target&gt; [ &lt;channel&gt; ] ]<br>
+The SUMMON command can be used to give users who are on a host<br>
+running an IRC server a message asking them to please join IRC.  This<br>
+message is only sent if the target server <span class="example-paren">(</span>a<span class="example-paren">)</span> has SUMMON enabled, <span class="example-paren">(</span>b<span class="example-paren">)</span><br>
+the user is logged in and <span class="example-paren">(</span>c<span class="example-paren">)</span> the server process can write to the<br>
+user's tty <span class="example-paren">(</span>or similar<span class="example-paren">)</span>.<br>
+If no &lt;server&gt; parameter is given it tries to summon &lt;user&gt; from the<br>
+server the client is connected to is assumed as the target.<br>
+If summon is not enabled in a server, it MUST return the<br>
+ERR_SUMMONDISABLED numeric.<br>
+   Numeric Replies:<br>
+           ERR_NORECIPIENT               ERR_FILEERROR<br>
+           ERR_NOLOGIN                   ERR_NOSUCHSERVER<br>
+           ERR_SUMMONDISABLED            RPL_SUMMONING<br>
+   Examples:<br>
+   SUMMON jto                      ; summon user jto on the server's<br>
+                                   host<br>
+   SUMMON jto tolsun.oulu.fi       ; summon user jto on the host which a<br>
+                                   server named "tolsun.oulu.fi" is<br>
+                                   running.<br>
+</pre></td></tr>
+<tr><td>
+<b>4.6 Users</b>
+</td></tr>
+<tr><td><pre><br>
+Command: USERS<br>
+Parameters: [ &lt;target&gt; ]<br>
+The USERS command returns a list of users logged into the server in a<br>
+format similar to the UNIX commands who<span class="example-paren">(</span>1<span class="example-paren">)</span>, rusers<span class="example-paren">(</span>1<span class="example-paren">)</span> and finger<span class="example-paren">(</span>1<span class="example-paren">)</span>.<br>
+If disabled, the correct numeric MUST be returned to indicate this.<br>
+Because of the security implications of such a command, it SHOULD be<br>
+disabled by default in server implementations.  Enabling it SHOULD<br>
+require recompiling the server or some equivalent change rather than<br>
+simply toggling an option and restarting the server.  The procedure<br>
+to enable this command SHOULD also include suitable large comments.<br>
+   Numeric Replies:<br>
+           ERR_NOSUCHSERVER              ERR_FILEERROR<br>
+           RPL_USERSSTART                RPL_USERS<br>
+           RPL_NOUSERS                   RPL_ENDOFUSERS<br>
+           ERR_USERSDISABLED<br>
+   Disabled Reply:<br>
+           ERR_USERSDISABLED<br>
+   Example:<br>
+   USERS eff.org                   ; request a list of users logged in<br>
+                                   on server eff.org<br>
+</pre></td></tr>
+<tr><td>
+<b>4.7 Operwall message</b>
+</td></tr>
+<tr><td><pre><br>
+Command: WALLOPS<br>
+Parameters: &lt;Text to be sent&gt;<br>
+The WALLOPS command is used to send a message to all currently<br>
+connected users who have set the 'w' user mode for themselves.  <span class="example-paren">(</span>See<br>
+Section 3.1.5 "User modes"<span class="example-paren">)</span>.<br>
+After implementing WALLOPS as a user command it was found that it was<br>
+often and commonly abused as a means of sending a message to a lot of<br>
+people.  Due to this, it is RECOMMENDED that the implementation of<br>
+WALLOPS allows and recognizes only servers as the originators of<br>
+WALLOPS.<br>
+   Numeric Replies:<br>
+           ERR_NEEDMOREPARAMS<br>
+   Example:<br>
+   :csd.bu.edu WALLOPS :Connect '*.uiuc.edu 6667' from Joshua ; WALLOPS<br>
+                                   message from csd.bu.edu announcing a<br>
+                                   CONNECT message it received from<br>
+                                   Joshua and acted upon.<br>
+</pre></td></tr>
+<tr><td>
+<b>4.8 Userhost message</b>
+</td></tr>
+<tr><td><pre><br>
+Command: USERHOST<br>
+Parameters: &lt;nickname&gt; *<span class="example-paren">(</span> SPACE &lt;nickname&gt; <span class="example-paren">)</span><br>
+The USERHOST command takes a list of up to 5 nicknames, each<br>
+separated by a space character and returns a list of information<br>
+about each nickname that it found.  The returned list has each reply<br>
+separated by a space.<br>
+   Numeric Replies:<br>
+           RPL_USERHOST                  ERR_NEEDMOREPARAMS<br>
+   Example:<br>
+   USERHOST Wiz Michael syrk       ; USERHOST request for information on<br>
+                                   nicks "Wiz", "Michael", and "syrk"<br>
+   :ircd.stealth.net 302 yournick :syrk=+syrk@millennium.stealth.net<br>
+                                   ; Reply for user syrk<br>
+</pre></td></tr>
+<tr><td>
+<b>4.9 Ison message</b>
+</td></tr>
+<tr><td><pre><br>
+Command: ISON<br>
+Parameters: &lt;nickname&gt; *<span class="example-paren">(</span> SPACE &lt;nickname&gt; <span class="example-paren">)</span><br>
+The ISON command was implemented to provide a quick and efficient<br>
+means to get a response about whether a given nickname was currently<br>
+on IRC. ISON only takes one <span class="example-paren">(</span>1<span class="example-paren">)</span> type of parameter: a space-separated<br>
+list of nicks.  For each nickname in the list that is present, the<br>
+server adds that to its reply string.  Thus the reply string may<br>
+return empty <span class="example-paren">(</span>none of the given nicks are present<span class="example-paren">)</span>, an exact copy of<br>
+the parameter string <span class="example-paren">(</span>all of them present<span class="example-paren">)</span> or any other subset of the<br>
+set of nicks given in the parameter.  The only limit on the number of<br>
+nicks that may be checked is that the combined length MUST NOT be too<br>
+large as to cause the server to chop it off so it fits in 512<br>
+characters.<br>
+ISON is only processed by the server local to the client sending the<br>
+command and thus not passed onto other servers for further<br>
+processing.<br>
+   Numeric Replies:<br>
+           RPL_ISON                      ERR_NEEDMOREPARAMS<br>
+   Example:<br>
+   ISON phone trillian WiZ jarlek Avalon Angel Monstah syrk<br>
+                                   ; Sample ISON request for 7 nicks.<br>
+</pre></td></tr>
+<tr><td>
+<b>5. Replies</b>
+</td></tr>
+<tr><td>
+The following is a list of numeric replies which are generated in
+response to the commands given above.  Each numeric is given with its
+number, name and reply string.
+</td></tr>
+<tr><td>
+<b>5.1 Command responses</b>
+</td></tr>
+<tr><td>
+Numerics in the range from 001 to 099 are used for client-server
+connections only and should never travel between servers.  Replies
+generated in the response to commands are found in the range from 200
+to 399.
+<p>
+<pre><br>
+       001    RPL_WELCOME<br>
+              "Welcome to the Internet Relay Network<br>
+               &lt;nick&gt;!&lt;user&gt;@&lt;host&gt;"<br>
+       002    RPL_YOURHOST<br>
+              "Your host is &lt;servername&gt;, running version &lt;ver&gt;"<br>
+       003    RPL_CREATED<br>
+              "This server was created &lt;date&gt;"<br>
+       004    RPL_MYINFO<br>
+              "&lt;servername&gt; &lt;version&gt; &lt;available user modes&gt;<br>
+               &lt;available channel modes&gt;"<br>
+         - The server sends Replies 001 to 004 to a user upon<br>
+           successful registration.<br>
+       005    RPL_BOUNCE<br>
+              "Try server &lt;server name&gt;, port &lt;port number&gt;"<br>
+         - Sent by the server to a user to suggest an alternative<br>
+           server.  This is often used when the connection is<br>
+           refused because the server is already full.<br>
+       302    RPL_USERHOST<br>
+              ":*1&lt;reply&gt; *<span class="example-paren">(</span> " " &lt;reply&gt; <span class="example-paren">)</span>"<br>
+         - Reply format used by USERHOST to list replies to<br>
+           the query list.  The reply string is composed as<br>
+           follows:<br>
+           reply = nickname [ "*" ] "=" <span class="example-paren">(</span> "+" / "-" <span class="example-paren">)</span> hostname<br>
+           The '*' indicates whether the client has registered<br>
+           as an Operator.  The '-' or '+' characters represent<br>
+           whether the client has set an AWAY message or not<br>
+           respectively.<br>
+       303    RPL_ISON<br>
+              ":*1&lt;nick&gt; *<span class="example-paren">(</span> " " &lt;nick&gt; <span class="example-paren">)</span>"<br>
+         - Reply format used by ISON to list replies to the<br>
+           query list.<br>
+       301    RPL_AWAY<br>
+              "&lt;nick&gt; :&lt;away message&gt;"<br>
+       305    RPL_UNAWAY<br>
+              ":You are no longer marked as being away"<br>
+       306    RPL_NOWAWAY<br>
+              ":You have been marked as being away"<br>
+         - These replies are used with the AWAY command <span class="example-paren">(</span>if<br>
+           allowed<span class="example-paren">)</span>.  RPL_AWAY is sent to any client sending a<br>
+           PRIVMSG to a client which is away.  RPL_AWAY is only<br>
+           sent by the server to which the client is connected.<br>
+           Replies RPL_UNAWAY and RPL_NOWAWAY are sent when the<br>
+           client removes and sets an AWAY message.<br>
+       311    RPL_WHOISUSER<br>
+              "&lt;nick&gt; &lt;user&gt; &lt;host&gt; * :&lt;real name&gt;"<br>
+       312    RPL_WHOISSERVER<br>
+              "&lt;nick&gt; &lt;server&gt; :&lt;server info&gt;"<br>
+       313    RPL_WHOISOPERATOR<br>
+              "&lt;nick&gt; :is an IRC operator<br>
+       317    RPL_WHOISIDLE<br>
+              "&lt;nick&gt; &lt;integer&gt; :seconds idle"<br>
+       318    RPL_ENDOFWHOIS<br>
+              "&lt;nick&gt; :End of WHOIS list"<br>
+       319    RPL_WHOISCHANNELS<br>
+              "&lt;nick&gt; :*<span class="example-paren">(</span> <span class="example-paren">(</span> "@" / "+" <span class="example-paren">)</span> &lt;channel&gt; " " <span class="example-paren">)</span>"<br>
+         - Replies 311 - 313, 317 - 319 are all replies<br>
+           generated in response to a WHOIS message.  Given that<br>
+           there are enough parameters present, the answering<br>
+           server MUST either formulate a reply out of the above<br>
+           numerics <span class="example-paren">(</span>if the query nick is found<span class="example-paren">)</span> or return an<br>
+           error reply.  The '*' in RPL_WHOISUSER is there as<br>
+           the literal character and not as a wild card.  For<br>
+           each reply set, only RPL_WHOISCHANNELS may appear<br>
+           more than once <span class="example-paren">(</span>for long lists of channel names<span class="example-paren">)</span>.<br>
+           The '@' and '+' characters next to the channel name<br>
+           indicate whether a client is a channel operator or<br>
+           has been granted permission to speak on a moderated<br>
+           channel.  The RPL_ENDOFWHOIS reply is used to mark<br>
+           the end of processing a WHOIS message.<br>
+       314    RPL_WHOWASUSER<br>
+              "&lt;nick&gt; &lt;user&gt; &lt;host&gt; * :&lt;real name&gt;"<br>
+       369    RPL_ENDOFWHOWAS<br>
+              "&lt;nick&gt; :End of WHOWAS"<br>
+         - When replying to a WHOWAS message, a server MUST use<br>
+           the replies RPL_WHOWASUSER, RPL_WHOISSERVER or<br>
+           ERR_WASNOSUCHNICK for each nickname in the presented<br>
+           list.  At the end of all reply batches, there MUST<br>
+           be RPL_ENDOFWHOWAS <span class="example-paren">(</span>even if there was only one reply<br>
+           and it was an error<span class="example-paren">)</span>.<br>
+       321    RPL_LISTSTART<br>
+              Obsolete. Not used.<br>
+       322    RPL_LIST<br>
+              "&lt;channel&gt; &lt;# visible&gt; :&lt;topic&gt;"<br>
+       323    RPL_LISTEND<br>
+              ":End of LIST"<br>
+         - Replies RPL_LIST, RPL_LISTEND mark the actual replies<br>
+           with data and end of the server's response to a LIST<br>
+           command.  If there are no channels available to return,<br>
+           only the end reply MUST be sent.<br>
+       325    RPL_UNIQOPIS<br>
+              "&lt;channel&gt; &lt;nickname&gt;"<br>
+       324    RPL_CHANNELMODEIS<br>
+              "&lt;channel&gt; &lt;mode&gt; &lt;mode params&gt;"<br>
+       331    RPL_NOTOPIC<br>
+              "&lt;channel&gt; :No topic is set"<br>
+       332    RPL_TOPIC<br>
+              "&lt;channel&gt; :&lt;topic&gt;"<br>
+         - When sending a TOPIC message to determine the<br>
+           channel topic, one of two replies is sent.  If<br>
+           the topic is set, RPL_TOPIC is sent back else<br>
+           RPL_NOTOPIC.<br>
+       341    RPL_INVITING<br>
+              "&lt;channel&gt; &lt;nick&gt;"<br>
+         - Returned by the server to indicate that the<br>
+           attempted INVITE message was successful and is<br>
+           being passed onto the end client.<br>
+       342    RPL_SUMMONING<br>
+              "&lt;user&gt; :Summoning user to IRC"<br>
+         - Returned by a server answering a SUMMON message to<br>
+           indicate that it is summoning that user.<br>
+       346    RPL_INVITELIST<br>
+              "&lt;channel&gt; &lt;invitemask&gt;"<br>
+       347    RPL_ENDOFINVITELIST<br>
+              "&lt;channel&gt; :End of channel invite list"<br>
+         - When listing the 'invitations masks' for a given channel,<br>
+           a server is required to send the list back using the<br>
+           RPL_INVITELIST and RPL_ENDOFINVITELIST messages.  A<br>
+           separate RPL_INVITELIST is sent for each active mask.<br>
+           After the masks have been listed <span class="example-paren">(</span>or if none present<span class="example-paren">)</span> a<br>
+           RPL_ENDOFINVITELIST MUST be sent.<br>
+       348    RPL_EXCEPTLIST<br>
+              "&lt;channel&gt; &lt;exceptionmask&gt;"<br>
+       349    RPL_ENDOFEXCEPTLIST<br>
+              "&lt;channel&gt; :End of channel exception list"<br>
+         - When listing the 'exception masks' for a given channel,<br>
+           a server is required to send the list back using the<br>
+           RPL_EXCEPTLIST and RPL_ENDOFEXCEPTLIST messages.  A<br>
+           separate RPL_EXCEPTLIST is sent for each active mask.<br>
+           After the masks have been listed <span class="example-paren">(</span>or if none present<span class="example-paren">)</span><br>
+           a RPL_ENDOFEXCEPTLIST MUST be sent.<br>
+       351    RPL_VERSION<br>
+              "&lt;version&gt;.&lt;debuglevel&gt; &lt;server&gt; :&lt;comments&gt;"<br>
+         - Reply by the server showing its version details.<br>
+           The &lt;version&gt; is the version of the software being<br>
+           used <span class="example-paren">(</span>including any patchlevel revisions<span class="example-paren">)</span> and the<br>
+           &lt;debuglevel&gt; is used to indicate if the server is<br>
+           running in "debug mode".<br>
+           The "comments" field may contain any comments about<br>
+           the version or further version details.<br>
+       352    RPL_WHOREPLY<br>
+              "&lt;channel&gt; &lt;user&gt; &lt;host&gt; &lt;server&gt; &lt;nick&gt;<br>
+              <span class="example-paren">(</span> "H" / "G" &gt; ["*"] [ <span class="example-paren">(</span> "@" / "+" <span class="example-paren">)</span> ]<br>
+              :&lt;hopcount&gt; &lt;real name&gt;"<br>
+       315    RPL_ENDOFWHO<br>
+              "&lt;name&gt; :End of WHO list"<br>
+         - The RPL_WHOREPLY and RPL_ENDOFWHO pair are used<br>
+           to answer a WHO message.  The RPL_WHOREPLY is only<br>
+           sent if there is an appropriate match to the WHO<br>
+           query.  If there is a list of parameters supplied<br>
+           with a WHO message, a RPL_ENDOFWHO MUST be sent<br>
+           after processing each list item with &lt;name&gt; being<br>
+           the item.<br>
+       353    RPL_NAMREPLY<br>
+              "<span class="example-paren">(</span> "=" / "*" / "@" <span class="example-paren">)</span> &lt;channel&gt;<br>
+               :[ "@" / "+" ] &lt;nick&gt; *<span class="example-paren">(</span> " " [ "@" / "+" ] &lt;nick&gt; <span class="example-paren">)</span><br>
+         - "@" is used for secret channels, "*" for private<br>
+           channels, and "=" for others <span class="example-paren">(</span>public channels<span class="example-paren">)</span>.<br>
+       366    RPL_ENDOFNAMES<br>
+              "&lt;channel&gt; :End of NAMES list"<br>
+         - To reply to a NAMES message, a reply pair consisting<br>
+           of RPL_NAMREPLY and RPL_ENDOFNAMES is sent by the<br>
+           server back to the client.  If there is no channel<br>
+           found as in the query, then only RPL_ENDOFNAMES is<br>
+           returned.  The exception to this is when a NAMES<br>
+           message is sent with no parameters and all visible<br>
+           channels and contents are sent back in a series of<br>
+           RPL_NAMEREPLY messages with a RPL_ENDOFNAMES to mark<br>
+           the end.<br>
+       364    RPL_LINKS<br>
+              "&lt;mask&gt; &lt;server&gt; :&lt;hopcount&gt; &lt;server info&gt;"<br>
+       365    RPL_ENDOFLINKS<br>
+              "&lt;mask&gt; :End of LINKS list"<br>
+         - In replying to the LINKS message, a server MUST send<br>
+           replies back using the RPL_LINKS numeric and mark the<br>
+           end of the list using an RPL_ENDOFLINKS reply.<br>
+       367    RPL_BANLIST<br>
+              "&lt;channel&gt; &lt;banmask&gt;"<br>
+       368    RPL_ENDOFBANLIST<br>
+              "&lt;channel&gt; :End of channel ban list"<br>
+         - When listing the active 'bans' for a given channel,<br>
+           a server is required to send the list back using the<br>
+           RPL_BANLIST and RPL_ENDOFBANLIST messages.  A separate<br>
+           RPL_BANLIST is sent for each active banmask.  After the<br>
+           banmasks have been listed <span class="example-paren">(</span>or if none present<span class="example-paren">)</span> a<br>
+           RPL_ENDOFBANLIST MUST be sent.<br>
+       371    RPL_INFO<br>
+              ":&lt;string&gt;"<br>
+       374    RPL_ENDOFINFO<br>
+              ":End of INFO list"<br>
+         - A server responding to an INFO message is required to<br>
+           send all its 'info' in a series of RPL_INFO messages<br>
+           with a RPL_ENDOFINFO reply to indicate the end of the<br>
+           replies.<br>
+       375    RPL_MOTDSTART<br>
+              ":- &lt;server&gt; Message of the day - "<br>
+       372    RPL_MOTD<br>
+              ":- &lt;text&gt;"<br>
+       376    RPL_ENDOFMOTD<br>
+              ":End of MOTD command"<br>
+         - When responding to the MOTD message and the MOTD file<br>
+           is found, the file is displayed line by line, with<br>
+           each line no longer than 80 characters, using<br>
+           RPL_MOTD format replies.  These MUST be surrounded<br>
+           by a RPL_MOTDSTART <span class="example-paren">(</span>before the RPL_MOTDs<span class="example-paren">)</span> and an<br>
+           RPL_ENDOFMOTD <span class="example-paren">(</span>after<span class="example-paren">)</span>.<br>
+       381    RPL_YOUREOPER<br>
+              ":You are now an IRC operator"<br>
+         - RPL_YOUREOPER is sent back to a client which has<br>
+           just successfully issued an OPER message and gained<br>
+           operator status.<br>
+       382    RPL_REHASHING<br>
+              "&lt;config file&gt; :Rehashing"<br>
+         - If the REHASH option is used and an operator sends<br>
+           a REHASH message, an RPL_REHASHING is sent back to<br>
+           the operator.<br>
+       383    RPL_YOURESERVICE<br>
+              "You are service &lt;servicename&gt;"<br>
+         - Sent by the server to a service upon successful<br>
+           registration.<br>
+       391    RPL_TIME<br>
+              "&lt;server&gt; :&lt;string showing server's local time&gt;"<br>
+         - When replying to the TIME message, a server MUST send<br>
+           the reply using the RPL_TIME format above.  The string<br>
+           showing the time need only contain the correct day and<br>
+           time there.  There is no further requirement for the<br>
+           time string.<br>
+       392    RPL_USERSSTART<br>
+              ":UserID   Terminal  Host"<br>
+       393    RPL_USERS<br>
+              ":&lt;username&gt; &lt;ttyline&gt; &lt;hostname&gt;"<br>
+       394    RPL_ENDOFUSERS<br>
+              ":End of users"<br>
+       395    RPL_NOUSERS<br>
+              ":Nobody logged in"<br>
+         - If the USERS message is handled by a server, the<br>
+           replies RPL_USERSTART, RPL_USERS, RPL_ENDOFUSERS and<br>
+           RPL_NOUSERS are used.  RPL_USERSSTART MUST be sent<br>
+           first, following by either a sequence of RPL_USERS<br>
+           or a single RPL_NOUSER.  Following this is<br>
+           RPL_ENDOFUSERS.<br>
+       200    RPL_TRACELINK<br>
+              "Link &lt;version & debug level&gt; &lt;destination&gt;<br>
+               &lt;next server&gt; V&lt;protocol version&gt;<br>
+               &lt;link uptime in seconds&gt; &lt;backstream sendq&gt;<br>
+               &lt;upstream sendq&gt;"<br>
+       201    RPL_TRACECONNECTING<br>
+              "Try. &lt;class&gt; &lt;server&gt;"<br>
+       202    RPL_TRACEHANDSHAKE<br>
+              "H.S. &lt;class&gt; &lt;server&gt;"<br>
+       203    RPL_TRACEUNKNOWN<br>
+              "???? &lt;class&gt; [&lt;client IP address in dot form&gt;]"<br>
+       204    RPL_TRACEOPERATOR<br>
+              "Oper &lt;class&gt; &lt;nick&gt;"<br>
+       205    RPL_TRACEUSER<br>
+              "User &lt;class&gt; &lt;nick&gt;"<br>
+       206    RPL_TRACESERVER<br>
+              "Serv &lt;class&gt; &lt;int&gt;S &lt;int&gt;C &lt;server&gt;<br>
+               &lt;nick!user|*!*&gt;@&lt;host|server&gt; V&lt;protocol version&gt;"<br>
+       207    RPL_TRACESERVICE<br>
+              "Service &lt;class&gt; &lt;name&gt; &lt;type&gt; &lt;active type&gt;"<br>
+       208    RPL_TRACENEWTYPE<br>
+              "&lt;newtype&gt; 0 &lt;client name&gt;"<br>
+       209    RPL_TRACECLASS<br>
+              "Class &lt;class&gt; &lt;count&gt;"<br>
+       210    RPL_TRACERECONNECT<br>
+              Unused.<br>
+       261    RPL_TRACELOG<br>
+              "File &lt;logfile&gt; &lt;debug level&gt;"<br>
+       262    RPL_TRACEEND<br>
+              "&lt;server name&gt; &lt;version & debug level&gt; :End of TRACE"<br>
+         - The RPL_TRACE* are all returned by the server in<br>
+           response to the TRACE message.  How many are<br>
+           returned is dependent on the TRACE message and<br>
+           whether it was sent by an operator or not.  There<br>
+           is no predefined order for which occurs first.<br>
+           Replies RPL_TRACEUNKNOWN, RPL_TRACECONNECTING and<br>
+           RPL_TRACEHANDSHAKE are all used for connections<br>
+           which have not been fully established and are either<br>
+           unknown, still attempting to connect or in the<br>
+           process of completing the 'server handshake'.<br>
+           RPL_TRACELINK is sent by any server which handles<br>
+           a TRACE message and has to pass it on to another<br>
+           server.  The list of RPL_TRACELINKs sent in<br>
+           response to a TRACE command traversing the IRC<br>
+           network should reflect the actual connectivity of<br>
+           the servers themselves along that path.<br>
+           RPL_TRACENEWTYPE is to be used for any connection<br>
+           which does not fit in the other categories but is<br>
+           being displayed anyway.<br>
+           RPL_TRACEEND is sent to indicate the end of the list.<br>
+       211    RPL_STATSLINKINFO<br>
+              "&lt;linkname&gt; &lt;sendq&gt; &lt;sent messages&gt;<br>
+               &lt;sent Kbytes&gt; &lt;received messages&gt;<br>
+               &lt;received Kbytes&gt; &lt;time open&gt;"<br>
+         - reports statistics on a connection.  &lt;linkname&gt;<br>
+           identifies the particular connection, &lt;sendq&gt; is<br>
+           the amount of data that is queued and waiting to be<br>
+           sent &lt;sent messages&gt; the number of messages sent,<br>
+           and &lt;sent Kbytes&gt; the amount of data sent, in<br>
+           Kbytes. &lt;received messages&gt; and &lt;received Kbytes&gt;<br>
+           are the equivalent of &lt;sent messages&gt; and &lt;sent<br>
+           Kbytes&gt; for received data, respectively.  &lt;time<br>
+           open&gt; indicates how long ago the connection was<br>
+           opened, in seconds.<br>
+       212    RPL_STATSCOMMANDS<br>
+              "&lt;command&gt; &lt;count&gt; &lt;byte count&gt; &lt;remote count&gt;"<br>
+         - reports statistics on commands usage.<br>
+       219    RPL_ENDOFSTATS<br>
+              "&lt;stats letter&gt; :End of STATS report"<br>
+       242    RPL_STATSUPTIME<br>
+              ":Server Up <span class="example-variable">%d</span> days <span class="example-variable">%d</span>:<span class="example-variable">%02d</span>:<span class="example-variable">%02d</span>"<br>
+         - reports the server uptime.<br>
+       243    RPL_STATSOLINE<br>
+              "O &lt;hostmask&gt; * &lt;name&gt;"<br>
+         - reports the allowed hosts from where user may become IRC<br>
+           operators.<br>
+       221    RPL_UMODEIS<br>
+              "&lt;user mode string&gt;"<br>
+         - To answer a query about a client's own mode,<br>
+           RPL_UMODEIS is sent back.<br>
+       234    RPL_SERVLIST<br>
+              "&lt;name&gt; &lt;server&gt; &lt;mask&gt; &lt;type&gt; &lt;hopcount&gt; &lt;info&gt;"<br>
+       235    RPL_SERVLISTEND<br>
+              "&lt;mask&gt; &lt;type&gt; :End of service listing"<br>
+         - When listing services in reply to a SERVLIST message,<br>
+           a server is required to send the list back using the<br>
+           RPL_SERVLIST and RPL_SERVLISTEND messages.  A separate<br>
+           RPL_SERVLIST is sent for each service.  After the<br>
+           services have been listed <span class="example-paren">(</span>or if none present<span class="example-paren">)</span> a<br>
+           RPL_SERVLISTEND MUST be sent.<br>
+       251    RPL_LUSERCLIENT<br>
+              ":There are &lt;integer&gt; users and &lt;integer&gt;<br>
+               services on &lt;integer&gt; servers"<br>
+       252    RPL_LUSEROP<br>
+              "&lt;integer&gt; :operator<span class="example-paren">(</span>s<span class="example-paren">)</span> online"<br>
+       253    RPL_LUSERUNKNOWN<br>
+              "&lt;integer&gt; :unknown connection<span class="example-paren">(</span>s<span class="example-paren">)</span>"<br>
+       254    RPL_LUSERCHANNELS<br>
+              "&lt;integer&gt; :channels formed"<br>
+       255    RPL_LUSERME<br>
+              ":I have &lt;integer&gt; clients and &lt;integer&gt;<br>
+                servers"<br>
+         - In processing an LUSERS message, the server<br>
+           sends a set of replies from RPL_LUSERCLIENT,<br>
+           RPL_LUSEROP, RPL_USERUNKNOWN,<br>
+           RPL_LUSERCHANNELS and RPL_LUSERME.  When<br>
+           replying, a server MUST send back<br>
+           RPL_LUSERCLIENT and RPL_LUSERME.  The other<br>
+           replies are only sent back if a non-zero count<br>
+           is found for them.<br>
+       256    RPL_ADMINME<br>
+              "&lt;server&gt; :Administrative info"<br>
+       257    RPL_ADMINLOC1<br>
+              ":&lt;admin info&gt;"<br>
+       258    RPL_ADMINLOC2<br>
+              ":&lt;admin info&gt;"<br>
+       259    RPL_ADMINEMAIL<br>
+              ":&lt;admin info&gt;"<br>
+         - When replying to an ADMIN message, a server<br>
+           is expected to use replies RPL_ADMINME<br>
+           through to RPL_ADMINEMAIL and provide a text<br>
+           message with each.  For RPL_ADMINLOC1 a<br>
+           description of what city, state and country<br>
+           the server is in is expected, followed by<br>
+           details of the institution <span class="example-paren">(</span>RPL_ADMINLOC2<span class="example-paren">)</span><br>
+           and finally the administrative contact for the<br>
+           server <span class="example-paren">(</span>an email address here is REQUIRED<span class="example-paren">)</span><br>
+           in RPL_ADMINEMAIL.<br>
+       263    RPL_TRYAGAIN<br>
+              "&lt;command&gt; :Please wait a while and try again."<br>
+         - When a server drops a command without processing it,<br>
+           it MUST use the reply RPL_TRYAGAIN to inform the<br>
+           originating client.<br>
+</pre></td></tr>
+<tr><td>
+<b>5.2 Error Replies</b>
+</td></tr>
+<tr><td><pre><br>
+       Error replies are found in the range from 400 to 599.<br>
+       401    ERR_NOSUCHNICK<br>
+              "&lt;nickname&gt; :No such nick/channel"<br>
+          - Used to indicate the nickname parameter supplied to a<br>
+            command is currently unused.<br>
+       402    ERR_NOSUCHSERVER<br>
+              "&lt;server name&gt; :No such server"<br>
+         - Used to indicate the server name given currently<br>
+           does not exist.<br>
+       403    ERR_NOSUCHCHANNEL<br>
+              "&lt;channel name&gt; :No such channel"<br>
+         - Used to indicate the given channel name is invalid.<br>
+       404    ERR_CANNOTSENDTOCHAN<br>
+              "&lt;channel name&gt; :Cannot send to channel"<br>
+         - Sent to a user who is either <span class="example-paren">(</span>a<span class="example-paren">)</span> not on a channel<br>
+           which is mode +n or <span class="example-paren">(</span>b<span class="example-paren">)</span> not a chanop <span class="example-paren">(</span>or mode +v<span class="example-paren">)</span> on<br>
+           a channel which has mode +m set or where the user is<br>
+           banned and is trying to send a PRIVMSG message to<br>
+           that channel.<br>
+       405    ERR_TOOMANYCHANNELS<br>
+              "&lt;channel name&gt; :You have joined too many channels"<br>
+         - Sent to a user when they have joined the maximum<br>
+           number of allowed channels and they try to join<br>
+           another channel.<br>
+       406    ERR_WASNOSUCHNICK<br>
+              "&lt;nickname&gt; :There was no such nickname"<br>
+         - Returned by WHOWAS to indicate there is no history<br>
+           information for that nickname.<br>
+       407    ERR_TOOMANYTARGETS<br>
+              "&lt;target&gt; :&lt;error code&gt; recipients. &lt;abort message&gt;"<br>
+         - Returned to a client which is attempting to send a<br>
+           PRIVMSG/NOTICE using the user@host destination format<br>
+           and for a user@host which has several occurrences.<br>
+         - Returned to a client which trying to send a<br>
+           PRIVMSG/NOTICE to too many recipients.<br>
+         - Returned to a client which is attempting to JOIN a safe<br>
+           channel using the shortname when there are more than one<br>
+           such channel.<br>
+       408    ERR_NOSUCHSERVICE<br>
+              "&lt;service name&gt; :No such service"<br>
+         - Returned to a client which is attempting to send a SQUERY<br>
+           to a service which does not exist.<br>
+       409    ERR_NOORIGIN<br>
+              ":No origin specified"<br>
+         - PING or PONG message missing the originator parameter.<br>
+       411    ERR_NORECIPIENT<br>
+              ":No recipient given <span class="example-paren">(</span>&lt;command&gt;<span class="example-paren">)</span>"<br>
+       412    ERR_NOTEXTTOSEND<br>
+              ":No text to send"<br>
+       413    ERR_NOTOPLEVEL<br>
+              "&lt;mask&gt; :No toplevel domain specified"<br>
+       414    ERR_WILDTOPLEVEL<br>
+              "&lt;mask&gt; :Wildcard in toplevel domain"<br>
+       415    ERR_BADMASK<br>
+              "&lt;mask&gt; :Bad Server/host mask"<br>
+         - 412 - 415 are returned by PRIVMSG to indicate that<br>
+           the message wasn't delivered for some reason.<br>
+           ERR_NOTOPLEVEL and ERR_WILDTOPLEVEL are errors that<br>
+           are returned when an invalid use of<br>
+           "PRIVMSG $&lt;server&gt;" or "PRIVMSG #&lt;host&gt;" is attempted.<br>
+       421    ERR_UNKNOWNCOMMAND<br>
+              "&lt;command&gt; :Unknown command"<br>
+         - Returned to a registered client to indicate that the<br>
+           command sent is unknown by the server.<br>
+       422    ERR_NOMOTD<br>
+              ":MOTD File is missing"<br>
+         - Server's MOTD file could not be opened by the server.<br>
+       423    ERR_NOADMININFO<br>
+              "&lt;server&gt; :No administrative info available"<br>
+         - Returned by a server in response to an ADMIN message<br>
+           when there is an error in finding the appropriate<br>
+           information.<br>
+       424    ERR_FILEERROR<br>
+              ":File error doing &lt;file op&gt; on &lt;file&gt;"<br>
+         - Generic error message used to report a failed file<br>
+           operation during the processing of a message.<br>
+       431    ERR_NONICKNAMEGIVEN<br>
+              ":No nickname given"<br>
+         - Returned when a nickname parameter expected for a<br>
+           command and isn't found.<br>
+       432    ERR_ERRONEUSNICKNAME<br>
+              "&lt;nick&gt; :Erroneous nickname"<br>
+         - Returned after receiving a NICK message which contains<br>
+           characters which do not fall in the defined set.  See<br>
+           section 2.3.1 for details on valid nicknames.<br>
+       433    ERR_NICKNAMEINUSE<br>
+              "&lt;nick&gt; :Nickname is already in use"<br>
+         - Returned when a NICK message is processed that results<br>
+           in an attempt to change to a currently existing<br>
+           nickname.<br>
+       436    ERR_NICKCOLLISION<br>
+              "&lt;nick&gt; :Nickname collision KILL from &lt;user&gt;@&lt;host&gt;"<br>
+         - Returned by a server to a client when it detects a<br>
+           nickname collision <span class="example-paren">(</span>registered of a NICK that<br>
+           already exists by another server<span class="example-paren">)</span>.<br>
+       437    ERR_UNAVAILRESOURCE<br>
+              "&lt;nick/channel&gt; :Nick/channel is temporarily unavailable"<br>
+         - Returned by a server to a user trying to join a channel<br>
+           currently blocked by the channel delay mechanism.<br>
+         - Returned by a server to a user trying to change nickname<br>
+           when the desired nickname is blocked by the nick delay<br>
+           mechanism.<br>
+       441    ERR_USERNOTINCHANNEL<br>
+              "&lt;nick&gt; &lt;channel&gt; :They aren't on that channel"<br>
+         - Returned by the server to indicate that the target<br>
+           user of the command is not on the given channel.<br>
+       442    ERR_NOTONCHANNEL<br>
+              "&lt;channel&gt; :You're not on that channel"<br>
+         - Returned by the server whenever a client tries to<br>
+           perform a channel affecting command for which the<br>
+           client isn't a member.<br>
+       443    ERR_USERONCHANNEL<br>
+              "&lt;user&gt; &lt;channel&gt; :is already on channel"<br>
+         - Returned when a client tries to invite a user to a<br>
+           channel they are already on.<br>
+       444    ERR_NOLOGIN<br>
+              "&lt;user&gt; :User not logged in"<br>
+         - Returned by the summon after a SUMMON command for a<br>
+           user was unable to be performed since they were not<br>
+           logged in.<br>
+       445    ERR_SUMMONDISABLED<br>
+              ":SUMMON has been disabled"<br>
+         - Returned as a response to the SUMMON command.  MUST be<br>
+           returned by any server which doesn't implement it.<br>
+       446    ERR_USERSDISABLED<br>
+              ":USERS has been disabled"<br>
+         - Returned as a response to the USERS command.  MUST be<br>
+           returned by any server which does not implement it.<br>
+       451    ERR_NOTREGISTERED<br>
+              ":You have not registered"<br>
+         - Returned by the server to indicate that the client<br>
+           MUST be registered before the server will allow it<br>
+           to be parsed in detail.<br>
+       461    ERR_NEEDMOREPARAMS<br>
+              "&lt;command&gt; :Not enough parameters"<br>
+         - Returned by the server by numerous commands to<br>
+           indicate to the client that it didn't supply enough<br>
+           parameters.<br>
+       462    ERR_ALREADYREGISTRED<br>
+              ":Unauthorized command <span class="example-paren">(</span>already registered<span class="example-paren">)</span>"<br>
+         - Returned by the server to any link which tries to<br>
+           change part of the registered details <span class="example-paren">(</span>such as<br>
+           password or user details from second USER message<span class="example-paren">)</span>.<br>
+       463    ERR_NOPERMFORHOST<br>
+              ":Your host isn't among the privileged"<br>
+         - Returned to a client which attempts to register with<br>
+           a server which does not been setup to allow<br>
+           connections from the host the attempted connection<br>
+           is tried.<br>
+       464    ERR_PASSWDMISMATCH<br>
+              ":Password incorrect"<br>
+         - Returned to indicate a failed attempt at registering<br>
+           a connection for which a password was required and<br>
+           was either not given or incorrect.<br>
+       465    ERR_YOUREBANNEDCREEP<br>
+              ":You are banned from this server"<br>
+         - Returned after an attempt to connect and register<br>
+           yourself with a server which has been setup to<br>
+           explicitly deny connections to you.<br>
+       466    ERR_YOUWILLBEBANNED<br>
+         - Sent by a server to a user to inform that access to the<br>
+           server will soon be denied.<br>
+       467    ERR_KEYSET<br>
+              "&lt;channel&gt; :Channel key already set"<br>
+       471    ERR_CHANNELISFULL<br>
+              "&lt;channel&gt; :Cannot join channel <span class="example-paren">(</span>+l<span class="example-paren">)</span>"<br>
+       472    ERR_UNKNOWNMODE<br>
+              "&lt;char&gt; :is unknown mode char to me for &lt;channel&gt;"<br>
+       473    ERR_INVITEONLYCHAN<br>
+              "&lt;channel&gt; :Cannot join channel <span class="example-paren">(</span>+i<span class="example-paren">)</span>"<br>
+       474    ERR_BANNEDFROMCHAN<br>
+              "&lt;channel&gt; :Cannot join channel <span class="example-paren">(</span>+b<span class="example-paren">)</span>"<br>
+       475    ERR_BADCHANNELKEY<br>
+              "&lt;channel&gt; :Cannot join channel <span class="example-paren">(</span>+k<span class="example-paren">)</span>"<br>
+       476    ERR_BADCHANMASK<br>
+              "&lt;channel&gt; :Bad Channel Mask"<br>
+       477    ERR_NOCHANMODES<br>
+              "&lt;channel&gt; :Channel doesn't support modes"<br>
+       478    ERR_BANLISTFULL<br>
+              "&lt;channel&gt; &lt;char&gt; :Channel list is full"<br>
+       481    ERR_NOPRIVILEGES<br>
+              ":Permission Denied- You're not an IRC operator"<br>
+         - Any command requiring operator privileges to operate<br>
+           MUST return this error to indicate the attempt was<br>
+           unsuccessful.<br>
+       482    ERR_CHANOPRIVSNEEDED<br>
+              "&lt;channel&gt; :You're not channel operator"<br>
+         - Any command requiring 'chanop' privileges <span class="example-paren">(</span>such as<br>
+           MODE messages<span class="example-paren">)</span> MUST return this error if the client<br>
+           making the attempt is not a chanop on the specified<br>
+           channel.<br>
+       483    ERR_CANTKILLSERVER<br>
+              ":You can't kill a server!"<br>
+         - Any attempts to use the KILL command on a server<br>
+           are to be refused and this error returned directly<br>
+           to the client.<br>
+       484    ERR_RESTRICTED<br>
+              ":Your connection is restricted!"<br>
+         - Sent by the server to a user upon connection to indicate<br>
+           the restricted nature of the connection <span class="example-paren">(</span>user mode "+r"<span class="example-paren">)</span>.<br>
+       485    ERR_UNIQOPPRIVSNEEDED<br>
+              ":You're not the original channel operator"<br>
+         - Any MODE requiring "channel creator" privileges MUST<br>
+           return this error if the client making the attempt is not<br>
+           a chanop on the specified channel.<br>
+       491    ERR_NOOPERHOST<br>
+              ":No O-lines for your host"<br>
+         - If a client sends an OPER message and the server has<br>
+           not been configured to allow connections from the<br>
+           client's host as an operator, this error MUST be<br>
+           returned.<br>
+       501    ERR_UMODEUNKNOWNFLAG<br>
+              ":Unknown MODE flag"<br>
+         - Returned by the server to indicate that a MODE<br>
+           message was sent with a nickname parameter and that<br>
+           the a mode flag sent was not recognized.<br>
+       502    ERR_USERSDONTMATCH<br>
+              ":Cannot change mode for other users"<br>
+         - Error sent to any user trying to view or change the<br>
+           user mode for a user other than themselves.<br>
+</pre></td></tr>
+<tr><td>
+<b>5.3 Reserved numerics</b>
+</td></tr>
+<tr><td><pre><br>
+   These numerics are not described above since they fall into one of<br>
+   the following categories:<br>
+   1. no longer in use;<br>
+   2. reserved for future planned use;<br>
+   3. in current use but are part of a non-generic 'feature' of<br>
+      the current IRC server.<br>
+            231    RPL_SERVICEINFO     232  RPL_ENDOFSERVICES<br>
+            233    RPL_SERVICE<br>
+            300    RPL_NONE            316  RPL_WHOISCHANOP<br>
+            361    RPL_KILLDONE        362  RPL_CLOSING<br>
+            363    RPL_CLOSEEND        373  RPL_INFOSTART<br>
+            384    RPL_MYPORTIS<br>
+            213    RPL_STATSCLINE      214  RPL_STATSNLINE<br>
+            215    RPL_STATSILINE      216  RPL_STATSKLINE<br>
+            217    RPL_STATSQLINE      218  RPL_STATSYLINE<br>
+            240    RPL_STATSVLINE      241  RPL_STATSLLINE<br>
+            244    RPL_STATSHLINE      244  RPL_STATSSLINE<br>
+            246    RPL_STATSPING       247  RPL_STATSBLINE<br>
+            250    RPL_STATSDLINE<br>
+            492    ERR_NOSERVICEHOST<br>
+</pre></td></tr>
+<tr><td>
+<b>6. Current implementations</b>
+</td></tr>
+<tr><td>
+The IRC software, version 2.10 is the only complete implementation of
+the IRC protocol (client and server).  Because of the small amount of
+changes in the client protocol since the publication of RFC 1459
+[IRC], implementations that follow it are likely to be compliant with
+this protocol or to require a small amount of changes to reach
+compliance.
+</td></tr>
+<tr><td>
+<b>7. Current problems</b>
+</td></tr>
+<tr><td>
+There are a number of recognized problems with the IRC Client
+Protocol, and more generally with the IRC Server Protocol.  In order
+to preserve backward compatibility with old clients, this protocol
+has almost not evolved since the publication of RFC 1459 [IRC].
+</td></tr>
+<tr><td>
+<b>7.1 Nicknames</b>
+</td></tr>
+<tr><td>
+The idea of the nickname on IRC is very convenient for users to use
+when talking to each other outside of a channel, but there is only a
+finite nickname space and being what they are, it's not uncommon for
+several people to want to use the same nick.  If a nickname is chosen
+by two people using this protocol, either one will not succeed or
+both will removed by use of a server KILL (See Section 3.7.1).
+</td></tr>
+<tr><td>
+<b>7.2 Limitation of wildcards</b>
+</td></tr>
+<tr><td>
+There is no way to escape the escape character "\" (%x5C).  While
+this isn't usually a problem, it makes it impossible to form a mask
+with a backslash character ("\") preceding a wildcard.
+</td></tr>
+<tr><td>
+<b>7.3 Security considerations</b>
+</td></tr>
+<tr><td>
+Security issues related to this protocol are discussed in the "IRC
+Server Protocol" [IRC-SERVER] as they are mostly an issue for the
+server side of the connection.
+</td></tr>
+<tr><td>
+<b>8. Current support and availability</b>
+</td></tr>
+<tr><td>
+Mailing lists for IRC related discussion:<br>
+General discussion: ircd-users@irc.org<br>
+Protocol development: ircd-dev@irc.org<br>
+<p>
+Software implementations:<br>
+ftp://ftp.irc.org/irc/server<br>
+ftp://ftp.funet.fi/pub/unix/irc<br>
+ftp://ftp.irc.org/irc/clients<br>
+<p>
+Newsgroup: alt.irc
+</td></tr>
+<tr><td>
+<b>9. Acknowledgements</b>
+</td></tr>
+<tr><td>
+Parts of this document were copied from the RFC 1459 [IRC] which
+first formally documented the IRC Protocol.  It has also benefited
+from many rounds of review and comments.  In particular, the
+following people have made significant contributions to this
+document:
+<p>
+Matthew Green, Michael Neumayer, Volker Paulsen, Kurt Roeckx, Vesa
+Ruokonen, Magnus Tjernstrom, Stefan Zehl.
+</td></tr>
+<tr><td>
+<b>10. References</b>
+</td></tr>
+<tr><td><pre><br>
+   [KEYWORDS]   Bradner, S., "Key words for use in RFCs to Indicate<br>
+                Requirement Levels", BCP 14, RFC 2119, March 1997.<br>
+   [ABNF]       Crocker, D. and P. Overell, "Augmented BNF for Syntax<br>
+                Specifications: ABNF", RFC 2234, November 1997.<br>
+   [HNAME]      Braden, R., "Requirements for Internet Hosts --<br>
+                Application and Support", STD 3, RFC 1123, October 1989.<br>
+   [IRC]        Oikarinen, J. & D. Reed, "Internet Relay Chat Protocol",<br>
+                RFC 1459, May 1993.<br>
+   [IRC-ARCH]   Kalt, C., "Internet Relay Chat: Architecture", RFC 2810,<br>
+                April 2000.<br>
+   [IRC-CHAN]   Kalt, C., "Internet Relay Chat: Channel Management", RFC<br>
+                2811, April 2000.<br>
+   [IRC-SERVER] Kalt, C., "Internet Relay Chat: Server Protocol", RFC<br>
+                2813, April 2000.<br>
+</pre></td></tr>
+<tr><td>
+<b>11. Author's Address</b>
+</td></tr>
+<tr><td><pre><br>
+Christophe Kalt<br>
+99 Teaneck Rd, Apt #117<br>
+Ridgefield Park, NJ 07660<br>
+USA<br>
+EMail: kalt@stealth.net<br>
+</pre></td></tr>
+<tr><td>
+<b>12.  Full Copyright Statement</b>
+</td></tr>
+<tr><td>
+Copyright (C) The Internet Society (2000).  All Rights Reserved.
+<p>
+This document and translations of it may be copied and furnished to
+others, and derivative works that comment on or otherwise explain it
+or assist in its implementation may be prepared, copied, published
+and distributed, in whole or in part, without restriction of any
+kind, provided that the above copyright notice and this paragraph are
+included on all such copies and derivative works.  However, this
+document itself may not be modified in any way, such as by removing
+the copyright notice or references to the Internet Society or other
+Internet organizations, except as needed for the purpose of
+developing Internet standards in which case the procedures for
+copyrights defined in the Internet Standards process must be
+followed, or as required to translate it into languages other than
+English.
+<p>
+The limited permissions granted above are perpetual and will not be
+revoked by the Internet Society or its successors or assigns.
+<p>
+This document and the information contained herein is provided on an
+"AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING
+TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
+BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION
+HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
+MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+</td></tr>
+<tr><td>
+<b>Acknowledgement</b>
+</td></tr>
+<tr><td>
+Funding for the RFC Editor function is currently provided by the
+Internet Society.
+</td></tr>
+</table>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_generic_index_all.html">Miscellaneous</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

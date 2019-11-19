@@ -91,6 +91,9 @@ static QFont g_fntNormal(KVI_SCRIPTEDITOR_DEFAULT_FONT, KVI_SCRIPTEDITOR_DEFAULT
 static bool bSemaphore = false;
 static bool bCompleterReady = false;
 
+QString szFileName;
+
+
 ScriptEditorWidget::ScriptEditorWidget(QWidget * pParent)
     : QTextEdit(pParent)
 {
@@ -108,7 +111,8 @@ ScriptEditorWidget::ScriptEditorWidget(QWidget * pParent)
 	iModulesCount = 0;
 	iIndex = 0;
 	QString szPath;
-	g_pApp->getLocalKvircDirectory(szPath, KviApplication::ConfigPlugins, tmp);
+
+    g_pApp->getLocalKvircDirectory(szPath, KviApplication::ConfigPlugins, tmp);
 
 	if(!KviFileUtils::fileExists(szPath))
 	{
@@ -733,8 +737,10 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	g->addWidget(b, 1, 0);
 
 	QMenu * pop = new QMenu(b);
+	pop->addAction(__tr2qs_ctx("&New...", "editor"), this, SLOT(newFile()));
 	pop->addAction(__tr2qs_ctx("&Open...", "editor"), this, SLOT(loadFromFile()));
-	pop->addAction(__tr2qs_ctx("&Save As...", "editor"), this, SLOT(saveToFile()));
+    pop->addAction(__tr2qs_ctx("&Save...", "editor"), this, SLOT(saveFile()));
+	pop->addAction(__tr2qs_ctx("Save &As...", "editor"), this, SLOT(saveFileAs()));
 	pop->addSeparator();
 	pop->addAction(__tr2qs_ctx("&Configure Editor...", "editor"), this, SLOT(configureColors()));
 	b->setMenu(pop);
@@ -859,26 +865,6 @@ void ScriptEditorImplementation::setEnabled(bool bEnabled)
 	m_pRowColLabel->setEnabled(bEnabled);
 }
 
-void ScriptEditorImplementation::saveToFile()
-{
-	QString szFileName;
-	if(KviFileDialog::askForSaveFileName(szFileName,
-	       __tr2qs_ctx("Choose a Filename - KVIrc", "editor"),
-	       QString::null,
-	       QString::null, false, true, true, this))
-	{
-		QString szBuffer = m_pEditor->toPlainText();
-
-		if(!KviFileUtils::writeFile(szFileName, szBuffer))
-		{
-			QString szTmp;
-			QMessageBox::warning(this,
-			    __tr2qs_ctx("Writing to File Failed - KVIrc", "editor"),
-			    szTmp = QString(__tr2qs_ctx("Can't open file %1 for writing.", "editor")).arg(szFileName));
-		}
-	}
-}
-
 void ScriptEditorImplementation::setText(const char * txt)
 {
 	setText(QByteArray(txt));
@@ -944,9 +930,18 @@ void ScriptEditorImplementation::setCursorPosition(int iPos)
 	updateRowColLabel();
 }
 
+void ScriptEditorImplementation::newFile()
+{
+    m_pEditor->clear();
+    setCursorPosition(0);
+
+    szFileName=nullptr;
+
+}
+
 void ScriptEditorImplementation::loadFromFile()
 {
-	QString szFileName;
+
 	if(KviFileDialog::askForOpenFileName(szFileName,
 	       __tr2qs_ctx("Select a File - KVIrc", "editor"),
 	       QString::null, KVI_FILTER_SCRIPT, false, true, this))
@@ -966,6 +961,49 @@ void ScriptEditorImplementation::loadFromFile()
 		}
 	}
 }
+
+void ScriptEditorImplementation::saveFile() {
+
+    if (!(szFileName == nullptr)) {
+
+        QString szBuffer = m_pEditor->toPlainText();
+
+        if (!KviFileUtils::writeFile(szFileName, szBuffer)) {
+            QString szTmp;
+            QMessageBox::warning(this,
+                                 __tr2qs_ctx("Writing to File Failed - KVIrc", "editor"),
+                                 szTmp = QString(__tr2qs_ctx("Can't open file %1 for writing.", "editor")).arg(
+                                         szFileName));
+        }
+
+
+    }
+
+}
+
+void ScriptEditorImplementation::saveFileAs()
+{
+    if (!(szFileName==nullptr)) {
+
+        if (KviFileDialog::askForSaveFileName(szFileName,
+                                              __tr2qs_ctx("Choose a Filename - KVIrc", "editor"),
+                                              QString::null,
+                                              QString::null, false, true, true, this)) {
+
+            QString szBuffer = m_pEditor->toPlainText();
+
+            if (!KviFileUtils::writeFile(szFileName, szBuffer)) {
+                QString szTmp;
+                QMessageBox::warning(this,
+                                     __tr2qs_ctx("Writing to File Failed - KVIrc", "editor"),
+                                     szTmp = QString(__tr2qs_ctx("Can't open file %1 for writing.", "editor")).arg(
+                                             szFileName));
+            }
+        }
+    }
+}
+
+
 
 void ScriptEditorImplementation::configureColors()
 {

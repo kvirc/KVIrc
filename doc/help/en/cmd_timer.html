@@ -1,0 +1,146 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>timer</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>timer</div>      <div class='title-secondary-text'>Starts a timer</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>timer</b> <font color="#8080a0">[</font>-s<font color="#8080a0">]</font> <font color="#8080a0">[</font>-p<font color="#8080a0">]</font> <b>(</b><font color="#8080a0">&lt;</font>name<font color="#8080a0">&gt;</font>,<font color="#8080a0">&lt;</font>delay_in_msecs<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>callback_param1<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>callback_param2<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,...<font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font><b>)</b><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">&lt;</font>callback_command<font color="#8080a0">&gt;</font><br>
+}</div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Starts a new timer named &lt;name&gt; with the specified delay (in milliseconds).<br>
+The timer periodically calls the specified &lt;callback_command&gt; code passing the
+eventual &lt;callback_param&gt; strings as positional parameters.<br>
+If a timer with the same name already exists, it is replaced by this one.<br>
+<b>The &lt;callback_command&gt; is evaluated at timer <i>shot</i> time and <b>not</b> while
+this command is being parsed. This means that the identifiers that you put
+inside &lt;callback_command&gt; will <b>not</b> have the current values.</b>
+The values will be assigned at timer <i>shot</i> time.<br>
+This is a common scripters error and problem: if it is not clear, look at the examples below.<br>
+The timer is bound to the window in that this command is executed in.<br>
+If the window gets destroyed, the timer is stopped; unless the -p switch is used.<br>
+The -p switch causes the timer to be persistent across the application and exists until
+the last window has been closed: it is basically rebound to another (random) window when the
+original window is destroyed.<br>
+The -s switch causes this timer to trigger only once: it will be automatically destroyed after that.<br>
+The time has an associated set of <a href="doc_data_structures.html">extended scope variables</a>:
+the variables that begin with <i>%:</i> have their life extended to the whole <i>life</i> of the timer.<br>
+Using a very low delay is a common method to perform some background processing: you
+basically split a huge job in small slices and execute them when the timer is triggered
+until you run out of slices. A delay of 0 will cause the timer to be called whenever
+KVIrc has some <i>idle time</i> to spend.
+On the other hand, remember that timers are precious resources: many timers running
+with a very low delay will cause KVIrc to slow down.<br>
+Since all the KVIrc timers share the same namespace it is a good idea to use
+descriptive timer names: a timer named <i>a</i> is likely to be used by two or more scripts
+at once causing one (or both) of them to fail.<br>
+A timer can be stopped at any time by using the <a href="cmd_killtimer.html">killtimer</a> command.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-s | --single-shot</td></tr>
+<tr><td class="switch-body-table-cell">Causes the timer to trigger only once (single shot timer)</td></tr>
+<tr><td class="switch-title-table-cell">-p | --persistent</td></tr>
+<tr><td>Creates a persistent timer bound to any existing window</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+<span class="comment-text"># Just a plain timer</span><br>
+timer<span class="example-paren">(</span>test,1000<span class="example-paren">)</span><span class="example-bracket">{</span> echo "Hello!"; <span class="example-bracket">}</span><br>
+<span class="comment-text"># Now watch the timer running</span><br>
+killtimer test<br>
+<span class="comment-text"># Single shot timer</span><br>
+timer -s <span class="example-paren">(</span>test,1000<span class="example-paren">)</span><span class="example-bracket">{</span> echo "This will fire only once!"; <span class="example-bracket">}</span><br>
+<span class="comment-text"># The call above is equivalent to</span><br>
+timer<span class="example-paren">(</span>test,1000<span class="example-paren">)</span><span class="example-bracket">{</span> echo "This will file only once!"; killtimer test; <span class="example-bracket">}</span><br>
+<span class="comment-text"># Callback parameters: consider the following code</span><br>
+<span class="example-variable">%parameter</span> = "some string value"<br>
+echo "Before calling /timer \<span class="example-variable">%parameter</span> is \"<span class="example-variable">%parameter</span>\""<br>
+timer -s <span class="example-paren">(</span>test,1000,<span class="example-variable">%parameter</span><span class="example-paren">)</span><span class="example-bracket">{</span> echo "inside the callback \<span class="example-variable">%parameter</span> is \"<span class="example-variable">%parameter</span>\" but \$0 is \"$0\""; <span class="example-bracket">}</span><br>
+<span class="comment-text"># watch the timer running, and note the behaviour of the <span class="example-variable">%parameter</span> variable</span><br>
+killtimer test<br>
+<span class="comment-text"># Use the extended scope timer variables</span><br>
+timer<span class="example-paren">(</span>test,1000<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Use the extended scope %:count variable to keep track</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># of the times that this timer has been called</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_if.html">if</a><span class="example-paren">(</span>"%:count" == ""<span class="example-paren">)</span>%:count = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else %:count++<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "This timer has fired %:count times"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>%:count == 10<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># This will kill the current timer, we don't need to specify the name<br>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_killtimer.html">killtimer</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+<span class="comment-text"># Use isTimer to check if the timer exists</span><br>
+<a href="cmd_echo.html">echo</a> <a href="fnc_istimer.html">$istimer</a><span class="example-paren">(</span>test<span class="example-paren">)</span><br>
+<span class="comment-text"># Repeat the command above after the 10th timeout...</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="example-box"><br>
+<span class="comment-text"># Execute a command at a precise time</span><br>
+<span class="example-variable">%secsfrom</span>= $<span class="example-paren">(</span>$date<span class="example-paren">(</span>"H"<span class="example-paren">)</span>*3600+$date<span class="example-paren">(</span>"M"<span class="example-paren">)</span>*60+$date<span class="example-paren">(</span>"S"<span class="example-paren">))</span>; #now<br>
+<span class="example-variable">%secsto</span>= $<span class="example-paren">(</span>7*3600+10*60+0<span class="example-paren">)</span>; #end time: 07:10:00<br>
+<span class="example-variable">%secsdiff</span>=$<span class="example-paren">(</span><span class="example-variable">%secsto</span>-<span class="example-variable">%secsfrom</span><span class="example-paren">)</span>; #difference<br>
+if<span class="example-paren">(</span><span class="example-variable">%secsdiff</span> &lt;= 0<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text">#we're past that time for today<br>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%secsdiff</span>+=86400; #60 secs * 60 mins * 24 hours<br>
+<span class="example-bracket">}</span><br>
+<span class="comment-text"># timer wants msecs<br>
+</span><span class="example-variable">%msecs</span> = $<span class="example-paren">(</span><span class="example-variable">%secsdiff</span>*1000<span class="example-paren">)</span>;<br>
+timer -s -p <span class="example-paren">(</span>reminder, <span class="example-variable">%msecs</span><span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo "Hey man it's ten past seven am, time to wake up!"<br>
+<span class="example-bracket">}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>See also</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="cmd_killtimer.html">killtimer</a>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

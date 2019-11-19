@@ -1,0 +1,94 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>option</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>option</div>      <div class='title-secondary-text'>Sets an internal option</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>option</b> <font color="#8080a0">[</font><font color="#8080a0">&lt;</font>optName<font color="#808080">:string</font><font color="#8080a0">&gt;</font> <font color="#8080a0">&lt;</font>optValue<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">]</font></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Sets an internal option named &lt;optName&gt; to the value &lt;optValue&gt;. The value
+must be appropriate for the type of option that you're going to set.<br>
+With no parameters this command lists all the available option names
+sorted by option type.<br> The possible option types are:<br>
+<b>Boolean</b>: &lt;optValue&gt; must be <b>1</b> or <b>0</b><br>
+<b>String</b>: &lt;optValue&gt; can be any string<br>
+<b>StringList</b>: &lt;optValue&gt; must be a comma separated list of strings (eventually empty)<br>
+<b>Color</b>: &lt;optValue&gt; must have the format #RRGGBB where R G and B are hex digits<br>
+<b>Font</b>: &lt;optValue&gt; is a comma separated list of font properties:
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;family&gt;,&lt;pointsize&gt;,&lt;style&gt;,&lt;charset&gt;,&lt;weight&gt;,&lt;flags&gt;. &lt;family&gt; is the font face name
+&nbsp;&nbsp;&nbsp;&nbsp;(<i>arial</i>, <i>helvetica</i> etc.), &lt;pointsize&gt; is more or less the indicator of the size of the font
+&nbsp;&nbsp;&nbsp;&nbsp;(try sth like 12,14), &lt;style&gt; is an integer that indicates the font style (fixed for example),
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;charset&gt; is an integer that indicates the charset of the font (maybe one day I'll document it better),
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;weight&gt; indicates the (em) weight of the font (50,100,150...matches Bold,DemiBold etc..),
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;flags&gt; is a combination of 'b','i','u','s,' and 'f' that match respectively bold,italic
+&nbsp;&nbsp;&nbsp;&nbsp;underline,strikeout and fixed.<br>
+<b>MessageType</b>: &lt;optValue&gt; is a comma separated list of message type properties:
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;icon&gt;,&lt;foreground&gt;,&lt;background&gt;,&lt;logBoolean&gt;,&lt;level&gt;: &lt;icon&gt; is the index of the internal
+&nbsp;&nbsp;&nbsp;&nbsp;small icon that has to be shown with the message type, &lt;foreground&gt; is an integer
+&nbsp;&nbsp;&nbsp;&nbsp;indicating the mIRC color to be used for the message type text (0-15),
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;background&gt; is similar to foreground and accepts also the value of 100 that means transparent.
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;logBoolean&gt; is a boolean value (0/1) that indicates whether this message type has to be logged or not.
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;level&gt; is the message level (actually from 0 to 5).<br>
+<b>Rectangle</b>: &lt;optValue&gt; is a comma separated list of integer values that indicate &lt;x&gt;,&lt;y&gt;,&lt;width&gt; and &lt;height&gt;.<br>
+<b>Pixmap</b>: &lt;optValue&gt; must be an ABSOLUTE path of the image that you want to load.<br>
+<b>Int</b>: &lt;optValue&gt; must be an integer.<br>
+<b>Uint</b>: &lt;optValue&gt; must be an UNSIGNED positive integer.<br>
+Almost all the options available in the option dialog can be set by this command.<br>
+Some GUI options might require a KVIrc restart to work properly (although I've tried to avoid that when possible).
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+<span class="comment-text"># List available options</span><br>
+option<br>
+<span class="comment-text"># Set the mdi manager background image</span><br>
+option pixmapMdiBackground /home/pragma/myback1.png<br>
+<span class="comment-text"># Set the frame caption text</span><br>
+option stringFrameCaption KVIrc rulez!<br>
+<span class="comment-text"># Enable verbose mode</span><br>
+option boolBeVerbose 1<br>
+<span class="comment-text"># Set the IRC view font</span><br>
+option fontIrcView helvetica,24,5,1,50<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>See also</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="fnc_option.html">$option</a>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

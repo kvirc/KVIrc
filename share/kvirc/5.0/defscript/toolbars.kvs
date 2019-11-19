@@ -1,0 +1,44 @@
+# Default toolbars file
+
+toolbar.create irccontext $tr("IRC Context","defscript") $icon("newitem")
+toolbar.additem irccontext kvirc.connect
+toolbar.additem irccontext kvirc.newirccontext
+toolbar.additem irccontext kvirc.servermenu
+toolbar.additem irccontext kvirc.separator
+toolbar.additem irccontext kvirc.channelmenu
+toolbar.additem irccontext kvirc.nicknamemenu
+toolbar.additem irccontext kvirc.usermodemenu
+toolbar.additem irccontext kvirc.irctools
+toolbar.additem irccontext kvirc.separator
+toolbar.additem irccontext kvirc.awayback
+toolbar.additem irccontext kvirc.filetransfer
+toolbar.additem irccontext kvirc.separator
+toolbar.show irccontext
+
+toolbar.create options $tr("Options","defscript") $icon("options")
+toolbar.additem options kvirc.identityoptions
+toolbar.additem options kvirc.generaloptions
+toolbar.additem options kvirc.themeoptions
+toolbar.additem options kvirc.separator
+#toolbar.additem options kvirc.serveroptions
+toolbar.show options
+
+toolbar.create help $tr("Help","defscript") $icon("help")
+toolbar.additem help kvirc.helpindex
+if($lang(short)==en)
+	toolbar.additem help kvirc.kvirchomepage
+else
+	toolbar.additem help kvirc.kvircruhomepage
+	toolbar.additem help kvirc.separator
+toolbar.show help
+
+toolbar.create scripting $tr("Scripting","defscript") $icon("scriptcenter")
+toolbar.additem scripting kvirc.actioneditor
+toolbar.additem scripting kvirc.aliaseditor
+toolbar.additem scripting kvirc.eventeditor
+toolbar.additem scripting kvirc.popupeditor
+toolbar.additem scripting kvirc.raweditor
+toolbar.additem scripting kvirc.codetester
+toolbar.additem scripting kvirc.separator
+toolbar.additem scripting kvirc.executekvs
+

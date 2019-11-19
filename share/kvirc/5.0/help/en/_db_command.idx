@@ -1,0 +1,357 @@
+ahost<!>DNS lookup<!>cmd_ahost.html
+alias<!>Adds a new alias or modifies an existing one<!>cmd_alias.html
+function<!>A synonym for alias<!>cmd_function.html
+awhois<!>Asynchronous WHOIS<!>cmd_awhois.html
+button<!>Adds/removes/changes user definable buttons<!>cmd_button.html
+event<!>Adds a new event handler<!>cmd_event.html
+exec<!>Asynchronous execution of external programs<!>cmd_exec.html
+privateimpl<!>Adds a private implementation of a function<!>cmd_privateimpl.html
+timer<!>Starts a timer<!>cmd_timer.html
+admin<!>Requests the admin info from a server<!>cmd_admin.html
+away<!>Puts you into 'away' state<!>cmd_away.html
+back<!>Allows you to return from being away<!>cmd_back.html
+ban<!>Sets ban masks for the channel<!>cmd_ban.html
+beep<!>Beep beep!<!>cmd_beep.html
+buttonctl<!>changes user definable buttons<!>cmd_buttonctl.html
+cap<!>Sends a CAP command<!>cmd_cap.html
+chanadmin<!>Sets chan admin status from the specified users<!>cmd_chanadmin.html
+chanowner<!>Sets chan owner status from the specified users<!>cmd_chanowner.html
+codepage<!>Tries to set the codepage on server<!>cmd_codepage.html
+CTCP<!>Sends a CTCP message<!>cmd_ctcp.html
+debug<!>Outputs text to the debug window<!>cmd_debug.html
+dechanadmin<!>Removes chan admin status from the specified users<!>cmd_dechanadmin.html
+dechanowner<!>Removes chan owner status from the specified users<!>cmd_dechanowner.html
+dehalfop<!>Removes half op status from the specified users<!>cmd_dehalfop.html
+delete<!>Destroys an object<!>cmd_delete.html
+destroy<!>Destroys an object<!>cmd_destroy.html
+delpopupitem<!>Deletes an item from a popup<!>cmd_delpopupitem.html
+deop<!>Removes chanop status from the specified users<!>cmd_deop.html
+deuserop<!>Removes user op status from the specified users<!>cmd_deuserop.html
+devoice<!>Removes voice flag for the specified users<!>cmd_devoice.html
+die<!>Prints an error message and stops the script<!>cmd_die.html
+echo<!>Outputs text to a KVIrc window<!>cmd_echo.html
+echoprivmsg<!>Outputs text to a KVIrc window<!>cmd_echoprivmsg.html
+error<!>Prints an error message and stops the script<!>cmd_error.html
+eval<!>Change the behaviour of a set of commands<!>cmd_eval.html
+eventctl<!>Controls the execution of event handlers<!>cmd_eventctl.html
+exit<!>Closes KVIrc<!>cmd_exit.html
+halfop<!>Sets halfop status to the specified users<!>cmd_halfop.html
+halt<!>Stops the execution of the current script<!>cmd_halt.html
+help<!>Shows a help document<!>cmd_help.html
+host<!>DNS lookup<!>cmd_host.html
+include<!>A builtin alias for parse<!>cmd_include.html
+info<!>Requests the server daemon info from a server<!>cmd_info.html
+inject<!>Injects &lt;text&gt; to the socket<!>cmd_inject.html
+invite<!>Invites a user to a channel<!>cmd_invite.html
+ison<!>Checks if a user is online<!>cmd_ison.html
+join<!>Joins the specified channels<!>cmd_join.html
+kick<!>Kicks a user from a channel<!>cmd_kick.html
+killtimer<!>Stops a timer<!>cmd_killtimer.html
+leave<!>Alias for part<!>cmd_leave.html
+links<!>Lists server links<!>cmd_links.html
+list<!>Lists channels<!>cmd_list.html
+listtimers<!>Lists the active timers<!>cmd_listtimers.html
+lusers<!>Requests statistics about users on IRC<!>cmd_lusers.html
+map<!>Displays a map of connected servers<!>cmd_map.html
+me<!>Sends a CTCP ACTION<!>cmd_me.html
+mode<!>Sends a MODE IRC message<!>cmd_mode.html
+motd<!>Requests the Message of the day<!>cmd_motd.html
+msg<!>Alias for privmsg<!>cmd_msg.html
+nick<!>Changes your nickname<!>cmd_nick.html
+notice<!>Sends a private notice<!>cmd_notice.html
+op<!>Sets op status to the specified users<!>cmd_op.html
+openurl<!>Opens an URL<!>cmd_openurl.html
+oper<!>Requests IRC operator status<!>cmd_oper.html
+operwall<!>Broadcasts an OPERWALL message<!>cmd_operwall.html
+option<!>Sets an internal option<!>cmd_option.html
+parse<!>Executes commands from a file<!>cmd_parse.html
+part<!>Leaves the specified channels<!>cmd_part.html
+pass<!>Sends a password to the server<!>cmd_pass.html
+play<!>DEPRECATED: Use $snd.play instead!<!>cmd_play.html
+popup<!>Shows a popup menu<!>cmd_popup.html
+privmsg<!>Sends a private message<!>cmd_privmsg.html
+query<!>Opens one or more query windows<!>cmd_query.html
+quit<!>Terminates the current IRC connection or the entire application<!>cmd_quit.html
+quote<!>Builtin alias for RAW<!>cmd_quote.html
+raise<!>Raises the KVIrc frame window<!>cmd_raise.html
+raw<!>Sends RAW data to the server<!>cmd_raw.html
+rebind<!>Rebinds a command sequence to a specified window<!>cmd_rebind.html
+return<!>Returns from the current command sequence and sets it return value<!>cmd_return.html
+run<!>Runs an external process<!>cmd_run.html
+say<!>Type text in a window<!>cmd_say.html
+server<!>Connects to the specified server<!>cmd_server.html
+service<!>Registers a new service<!>cmd_service.html
+setmenu<!>Adds a popup menu to the menu bar<!>cmd_setmenu.html
+setreturn<!>Sets the return value of the current command sequence<!>cmd_setreturn.html
+sockets<!>Requests the sockets info from a server<!>cmd_sockets.html
+squery<!>Sends a message to a service<!>cmd_squery.html
+squit<!>Disconnects a server socket (ircops only)<!>cmd_squit.html
+srand<!>Initializes the random number generator<!>cmd_srand.html
+stats<!>Requests the stats info from  a server<!>cmd_stats.html
+time<!>Requests the current local time info from a server<!>cmd_time.html
+topic<!>Changes topic for the specified channel<!>cmd_topic.html
+trace<!>Requests trace information about a specified machine in the network<!>cmd_trace.html
+trload<!>Loads a translation catalogue<!>cmd_trload.html
+trunload<!>Unloads a translation catalogue<!>cmd_trunload.html
+unban<!>Unsets ban masks for the channel<!>cmd_unban.html
+userop<!>Sets userop flag for the specified users<!>cmd_userop.html
+version<!>Requests the version of a server<!>cmd_version.html
+voice<!>Sets voice flag for the specified users<!>cmd_voice.html
+warning<!>Prints a warning message<!>cmd_warning.html
+wallops<!>Broadcasts a WALLOPS message<!>cmd_wallops.html
+who<!>Requests WHO information<!>cmd_who.html
+whois<!>Requests user information<!>cmd_whois.html
+whowas<!>Requests user information<!>cmd_whowas.html
+break<!>Interrupts an iteration loop<!>cmd_break.html
+continue<!>Continues an iteration loop<!>cmd_continue.html
+unset<!>Unsets a set of variables<!>cmd_unset.html
+global<!>Explicitly declares global variables<!>cmd_global.html
+class<!>Defines a new object class<!>cmd_class.html
+while<!>Iteration command<!>cmd_while.html
+do<!>Iteration command<!>cmd_do.html
+if<!>Flow control command<!>cmd_if.html
+for<!>Iteration control command<!>cmd_for.html
+foreach<!>Iteration command<!>cmd_foreach.html
+switch<!>Another flow control command<!>cmd_switch.html
+defpopup<!>Defines a popup menu<!>cmd_defpopup.html
+about.kvirc<!>Shows the About KVIrc dialog<!>cmd_about.kvirc.html
+action.list<!>Lists the available actions<!>cmd_action.list.html
+action.trigger<!>Triggers an action<!>cmd_action.trigger.html
+action.enable<!>Enables an action<!>cmd_action.enable.html
+action.disable<!>Disables an action<!>cmd_action.disable.html
+action.destroy<!>Destroy an action<!>cmd_action.destroy.html
+action.create<!>Defines a new action<!>cmd_action.create.html
+actioneditor.open<!>Shows the action editor<!>cmd_actioneditor.open.html
+addon.list<!>Lists the installed addons<!>cmd_addon.list.html
+addon.uninstall<!>Uninstalls an addon<!>cmd_addon.uninstall.html
+addon.configure<!>Executes an addon's configuration callback<!>cmd_addon.configure.html
+addon.help<!>Executes an addon's help callback<!>cmd_addon.help.html
+addon.setconfigurecallback<!>Sets an addon's configuration callback<!>cmd_addon.setconfigurecallback.html
+addon.sethelpcallback<!>Sets an addon's help callback<!>cmd_addon.sethelpcallback.html
+addon.register<!>Registers a script-based addon<!>cmd_addon.register.html
+addon.installfiles<!>Installs a set of files for an addon<!>cmd_addon.installfiles.html
+addon.dialog<!>Shows the addon management editor<!>cmd_addon.dialog.html
+addon.install<!>Installs the addon<!>cmd_addon.install.html
+addon.pack<!>Creates a kva package containing an addon<!>cmd_addon.pack.html
+aliaseditor.open<!>Shows the alias editor<!>cmd_aliaseditor.open.html
+avatar.set<!>Sets the local user's avatar<!>cmd_avatar.set.html
+avatar.unset<!>Unsets the local user's avatar<!>cmd_avatar.unset.html
+avatar.notify<!>Notifies the current avatar to a remote target<!>cmd_avatar.notify.html
+avatar.query<!>Queries the avatar of a remote target<!>cmd_avatar.query.html
+channelsjoin.open<!>Opens a window to join channels<!>cmd_channelsjoin.open.html
+classeditor.open<!>Shows the class editor<!>cmd_classeditor.open.html
+codetester.open<!>Shows the code tester window<!>cmd_codetester.open.html
+config.close<!>Closes a config file<!>cmd_config.close.html
+config.flush<!>Flushes a config file<!>cmd_config.flush.html
+config.clear<!>Clears a config file<!>cmd_config.clear.html
+config.clearsection<!>Clears a section in a config file<!>cmd_config.clearsection.html
+config.write<!>Writes a data field to a config file<!>cmd_config.write.html
+config.setsection<!>Changes the current section of a config file<!>cmd_config.setsection.html
+context.clearqueue<!>Removes messages from the socked output queue.<!>cmd_context.clearqueue.html
+dcc.chat<!>Starts a DCC chat connection<!>cmd_dcc.chat.html
+dcc.send<!>Sends a file<!>cmd_dcc.send.html
+dcc.recv<!>Sets up a file receiving connection<!>cmd_dcc.recv.html
+dcc.rsend<!>Sends a file by using the Reverse DCC SEND protocol<!>cmd_dcc.rsend.html
+dcc.get<!>Requests a file<!>cmd_dcc.get.html
+dcc.voice<!>Starts a DCC Voice connection<!>cmd_dcc.voice.html
+dcc.abort<!>Aborts a DCC session<!>cmd_dcc.abort.html
+dcc.setBandwidthLimit<!>Set the bandwidthlimit of a dcc.send session.<!>cmd_dcc.setbandwidthlimit.html
+dialog.message<!>Shows a message box<!>cmd_dialog.message.html
+dialog.textinput<!>Shows a dialog that accepts user input as text<!>cmd_dialog.textinput.html
+dialog.file<!>Shows a file dialog<!>cmd_dialog.file.html
+dialog.image<!>Shows a image dialog<!>cmd_dialog.image.html
+eventeditor.open<!>Shows the event editor<!>cmd_eventeditor.open.html
+file.copy<!>Makes a copy of a file<!>cmd_file.copy.html
+file.addimagepath<!>Adds a path to the image search path list<!>cmd_file.addimagepath.html
+file.delimagepath<!>Removes a path from the image search path list<!>cmd_file.delimagepath.html
+file.write<!>Writes a character data string to a file<!>cmd_file.write.html
+file.writeBytes<!>Writes binary data to a file<!>cmd_file.writebytes.html
+file.rename<!>Renames a file<!>cmd_file.rename.html
+file.mkdir<!>Creates a directory<!>cmd_file.mkdir.html
+file.remove<!>Removes a file<!>cmd_file.remove.html
+file.rmdir<!>Removes a directory<!>cmd_file.rmdir.html
+file.writeLines<!>Writes an array of lines to a file<!>cmd_file.writelines.html
+filetransferwindow.open<!>Opens the file transfer window<!>cmd_filetransferwindow.open.html
+filetransferwindow.clear<!>Clears the list of transfers<!>cmd_filetransferwindow.clear.html
+help.open<!>Shows a help document<!>cmd_help.open.html
+http.get<!>Retrieves a file via HTTP GET<!>cmd_http.get.html
+http.asyncGet<!>Retrieves a file via HTTP GET and triggers a callback<!>cmd_http.asyncget.html
+ident.start<!>Starts the builtin Ident service<!>cmd_ident.start.html
+ident.stop<!>Stops the Ident service<!>cmd_ident.stop.html
+iograph.open<!>Opens the I/O Traffic Graph chart<!>cmd_iograph.open.html
+links.open<!>Opens a links window<!>cmd_links.open.html
+list.open<!>Opens a list window<!>cmd_list.open.html
+log.start<!>Starts logging in a specified window<!>cmd_log.start.html
+log.stop<!>Stops logging in a specified window<!>cmd_log.stop.html
+log.flush<!>Flushes the log file for a specified window<!>cmd_log.flush.html
+logview.open<!>Opens the log viewer window<!>cmd_logview.open.html
+mediaplayer.play<!>Starts media playback in the selected media player<!>cmd_mediaplayer.play.html
+mediaplayer.hide<!>Hide the mediaplayer [-q]<!>cmd_mediaplayer.hide.html
+mediaplayer.show<!>Show the mediaplayer.<!>cmd_mediaplayer.show.html
+mediaplayer.minimize<!>Minimize the mediaplayer.<!>cmd_mediaplayer.minimize.html
+mediaplayer.stop<!>Stops media playback in the selected media player<!>cmd_mediaplayer.stop.html
+mediaplayer.next<!>Starts playback of the next song (mediaplayer interface module)<!>cmd_mediaplayer.next.html
+mediaplayer.prev<!>Starts playback of the previous song (mediaplayer interface module)<!>cmd_mediaplayer.prev.html
+mediaplayer.quit<!>Quits the remote media player (mediaplayer interface module)<!>cmd_mediaplayer.quit.html
+mediaplayer.pause<!>Pauses playback (mediaplayer interface module)<!>cmd_mediaplayer.pause.html
+mediaplayer.detect<!>Detects the media player interface to use<!>cmd_mediaplayer.detect.html
+mediaplayer.setPlayer<!>Sets the media player interface<!>cmd_mediaplayer.setplayer.html
+mediaplayer.playMrl<!>Plays the specified media on the selected media player<!>cmd_mediaplayer.playmrl.html
+mediaplayer.jumpTo<!>Sets the position in seconds of the current song.<!>cmd_mediaplayer.jumpto.html
+mediaplayer.setVol<!>Set the media player volume to &lt;vol&gt; (from 0-255)<!>cmd_mediaplayer.setvol.html
+mediaplayer.mute<!>Mute the volume selected media player<!>cmd_mediaplayer.mute.html
+mediaplayer.setPlayListPos<!>Set the position for the current song.<!>cmd_mediaplayer.setplaylistpos.html
+mediaplayer.setEqData<!>Return the equalizer value.<!>cmd_mediaplayer.seteqdata.html
+mediaplayer.setRepeat<!>Set the repeat flag.<!>cmd_mediaplayer.setrepeat.html
+mediaplayer.setShuffle<!>Set the repeat flag.<!>cmd_mediaplayer.setshuffle.html
+my.startIdleTimer<!>Starts a global idle hook<!>cmd_my.startidletimer.html
+my.stopIdleTimer<!>Stops a global idle hook<!>cmd_my.stopidletimer.html
+notifier.message<!>Adds a message to the notifier window<!>cmd_notifier.message.html
+notifier.hide<!>Hides the notifier window<!>cmd_notifier.hide.html
+notifier.show<!>Shows the notifier window<!>cmd_notifier.show.html
+objects.killclass<!>Removes a class definition<!>cmd_objects.killclass.html
+objects.clearObjects<!>Removes all the user class definitions<!>cmd_objects.clearobjects.html
+objects.connect<!>Connects a signal to a slot<!>cmd_objects.connect.html
+objects.disconnect<!>Disconnects a signal from a slot<!>cmd_objects.disconnect.html
+options.save<!>Saves the configuration to disk<!>cmd_options.save.html
+options.dialog<!>Shows the preferences dialog<!>cmd_options.dialog.html
+options.pages<!>Lists the option pages<!>cmd_options.pages.html
+options.edit [-n]<!>Shows a single options page<!>cmd_options.edit.html
+options.close<!>Close an options dialog<!>cmd_options.close.html
+package.extractfield<!>Extract a package binary field and save it to a file.<!>cmd_package.extractfield.html
+perl.begin<!>Starts a Perl code snippet<!>cmd_perl.begin.html
+perl.end<!>Ends a Perl code snippet<!>cmd_perl.end.html
+perl.destroy<!>Destroys a Perl execution context<!>cmd_perl.destroy.html
+popup.addItem<!>Adds an item to a popup<!>cmd_popup.additem.html
+popup.addPrologue<!>Adds a prologue to a popup<!>cmd_popup.addprologue.html
+popup.addEpilogue<!>Adds an epilogue to a popup<!>cmd_popup.addepilogue.html
+popup.addExtPopup<!>Adds an external popup to a popup<!>cmd_popup.addextpopup.html
+popup.addLabel<!>Adds a label to a popup<!>cmd_popup.addlabel.html
+popup.addSubPopup<!>Adds a nested popup to a popup<!>cmd_popup.addsubpopup.html
+popup.addSeparator<!>Adds a separator to a popup<!>cmd_popup.addseparator.html
+popup.clear<!>Clears all the items of a popup<!>cmd_popup.clear.html
+popup.create<!>Creates a popup<!>cmd_popup.create.html
+popup.destroy<!>Destroies a popup<!>cmd_popup.destroy.html
+popup.delitem<!>Deletes an item from a popup<!>cmd_popup.delitem.html
+popup.show<!>Shows a popup menu<!>cmd_popup.show.html
+popupeditor.open<!>Shows the popup editor<!>cmd_popupeditor.open.html
+proxydb.addProxy<!>Adds a server<!>cmd_proxydb.addproxy.html
+proxydb.setPort<!>Sets the port for a proxy<!>cmd_proxydb.setport.html
+proxydb.setIp<!>Sets the IP for a proxy<!>cmd_proxydb.setip.html
+proxydb.setIPv6<!>Sets the port for a proxy<!>cmd_proxydb.setipv6.html
+proxydb.setProtocol<!>Sets the protocol for a proxy<!>cmd_proxydb.setprotocol.html
+proxydb.setHostname<!>Sets the hostname for a proxy<!>cmd_proxydb.sethostname.html
+proxydb.setPass<!>Sets the password for a proxy<!>cmd_proxydb.setpass.html
+proxydb.setUser<!>Sets the username for a proxy<!>cmd_proxydb.setuser.html
+python.begin<!>Starts a Python code snippet<!>cmd_python.begin.html
+python.end<!>Ends a Python code snippet<!>cmd_python.end.html
+python.destroy<!>Destroys a Python execution context<!>cmd_python.destroy.html
+raweditor.open<!>Shows the RAW events editor<!>cmd_raweditor.open.html
+regchan.add<!>Registers a channel<!>cmd_regchan.add.html
+regchan.remove<!>Unregisters a channel<!>cmd_regchan.remove.html
+regchan.setproperty<!>Sets a property for a registered channel<!>cmd_regchan.setproperty.html
+regchan.showlist<!>Lists the registered channels<!>cmd_regchan.showlist.html
+reguser.edit<!>Opens the registeredusers dialog<!>cmd_reguser.edit.html
+reguser.add<!>Registers a user<!>cmd_reguser.add.html
+reguser.remove<!>Removes an entry from the regusers database<!>cmd_reguser.remove.html
+reguser.addmask<!>Adds a mask to a registered user<!>cmd_reguser.addmask.html
+reguser.delmask<!>Removes a mask from the regusers database<!>cmd_reguser.delmask.html
+reguser.setIgnoreEnabled<!>Enable/disable ignoring of this user<!>cmd_reguser.setignoreenabled.html
+reguser.setIgnoreFlags<!>Sets ignore flags for registered user<!>cmd_reguser.setignoreflags.html
+reguser.setproperty<!>Sets a property of a registered user<!>cmd_reguser.setproperty.html
+reguser.showlist<!>Lists the registered users<!>cmd_reguser.showlist.html
+reguser.wizard<!>Shows a registration wizard dialog<!>cmd_reguser.wizard.html
+serverdb.addNetwork<!>Adds a network<!>cmd_serverdb.addnetwork.html
+serverdb.addServer<!>Adds a server<!>cmd_serverdb.addserver.html
+serverdb.setNetworkNickName<!>Sets the nickname<!>cmd_serverdb.setnetworknickname.html
+serverdb.setNetworkUserName<!>Sets the username<!>cmd_serverdb.setnetworkusername.html
+serverdb.setNetworkRealName<!>Sets the realn ame<!>cmd_serverdb.setnetworkrealname.html
+serverdb.setNetworkEncoding<!>Sets the encoding<!>cmd_serverdb.setnetworkencoding.html
+serverdb.setNetworkTextEncoding<!>Sets the encoding<!>cmd_serverdb.setnetworktextencoding.html
+serverdb.setNetworkDescription<!>Sets the description<!>cmd_serverdb.setnetworkdescription.html
+serverdb.setNetworkConnectCommand<!>Sets the connect command<!>cmd_serverdb.setnetworkconnectcommand.html
+serverdb.setNetworkLoginCommand<!>Sets the login command<!>cmd_serverdb.setnetworklogincommand.html
+serverdb.setNetworkJoinChannels<!>Sets the autojoin channels list<!>cmd_serverdb.setnetworkjoinchannels.html
+serverdb.setServerNickName<!>Sets the nickname<!>cmd_serverdb.setservernickname.html
+serverdb.setServerUserName<!>Sets the username<!>cmd_serverdb.setserverusername.html
+serverdb.setServerRealName<!>Sets the real name<!>cmd_serverdb.setserverrealname.html
+serverdb.setServerEncoding<!>Sets the encoding<!>cmd_serverdb.setserverencoding.html
+serverdb.setServerTextEncoding<!>Sets the text encoding<!>cmd_serverdb.setservertextencoding.html
+serverdb.setServerDescription<!>Sets the description<!>cmd_serverdb.setserverdescription.html
+serverdb.setServerConnectCommand<!>Sets the connect command<!>cmd_serverdb.setserverconnectcommand.html
+serverdb.setServerLoginCommand<!>Sets the login command<!>cmd_serverdb.setserverlogincommand.html
+serverdb.setServerJoinChannels<!>Sets the autojoin channels list<!>cmd_serverdb.setserverjoinchannels.html
+sharedfile.add<!>Adds a file sharedfile<!>cmd_sharedfile.add.html
+sharedfile.remove<!>Removes a shared file<!>cmd_sharedfile.remove.html
+sharedfile.clear<!>Clears the shared files list<!>cmd_sharedfile.clear.html
+sharedfile.list<!>Lists the active file sharedfile<!>cmd_sharedfile.list.html
+sharedfileswindow.open<!>Opens the shared files window<!>cmd_sharedfileswindow.open.html
+snd.play<!>Play a sound file from the disk<!>cmd_snd.play.html
+snd.mute<!>Mute all sounds<!>cmd_snd.mute.html
+snd.unmute<!>UnMute all sounds<!>cmd_snd.unmute.html
+socketspy.open<!>Opens a Socket Spy window<!>cmd_socketspy.open.html
+spaste.file<!>Sends the contents of a file to a window, with a delay between each line<!>cmd_spaste.file.html
+spaste.clipboard<!>Sends the contents of the clipboard to a window, pausing between each line<!>cmd_spaste.clipboard.html
+spaste.stop<!>Stops one or more slow-paste process.<!>cmd_spaste.stop.html
+spaste.list<!>Lists all the running spaste processes.<!>cmd_spaste.list.html
+spaste.setdelay<!>Sets the delay time in milliseconds for the spaste module command delay<!>cmd_spaste.setdelay.html
+spellchecker.reloadDictionaries<!>Reload spell checker dictionaries<!>cmd_spellchecker.reloaddictionaries.html
+str.toClipboard<!>Sets the OS clipboard contents<!>cmd_str.toclipboard.html
+system.setClipboard<!>Sets the current system clipboard contents<!>cmd_system.setclipboard.html
+system.setSelection<!>Sets the current system selection contents<!>cmd_system.setselection.html
+system.setenv<!>Sets an environment variable<!>cmd_system.setenv.html
+system.runcmd<!>Runs the specified command in a terminal<!>cmd_system.runcmd.html
+term.open<!>Shows a terminal emulator<!>cmd_term.open.html
+texticons.set<!>Sets texticon data<!>cmd_texticons.set.html
+theme.install<!>Shows the theme management editor<!>cmd_theme.install.html
+theme.apply<!>Apply a theme.<!>cmd_theme.apply.html
+theme.screenshot<!>Makes a screenshot of the KVIrc window<!>cmd_theme.screenshot.html
+theme.dialog<!>Shows the theme theme management editor<!>cmd_theme.dialog.html
+theme.pack<!>Creates a kvt package containing a set of themes<!>cmd_theme.pack.html
+tip.open<!>Opens the "Did You Know..." tip window<!>cmd_tip.open.html
+tmphighlight.addNick<!>Adds a user to the channel temporary highlight list<!>cmd_tmphighlight.addnick.html
+tmphighlight.removeNick<!>Remove a user from the channel temporary highlight list<!>cmd_tmphighlight.removenick.html
+tmphighlight.addChannel<!>Adds a channel to the IRC context temporary highlight list<!>cmd_tmphighlight.addchannel.html
+tmphighlight.removeChannel<!>Remove a channel from the IRC context temporary highlight list<!>cmd_tmphighlight.removechannel.html
+toolbar.create<!>Creates a toolbar<!>cmd_toolbar.create.html
+toolbar.clear<!>Clears a toolbar<!>cmd_toolbar.clear.html
+toolbar.destroy<!>Destroys a toolbar<!>cmd_toolbar.destroy.html
+toolbar.show<!>Shows a toolbar<!>cmd_toolbar.show.html
+toolbar.hide<!>Hides a toolbar<!>cmd_toolbar.hide.html
+toolbar.remove<!>Removes a toolbar item<!>cmd_toolbar.remove.html
+toolbar.additem<!>Adds a new item to a toolbar<!>cmd_toolbar.additem.html
+toolbareditor.open<!>Shows the script toolbar editor<!>cmd_toolbareditor.open.html
+torrent.detect<!>Detects the torrent client interface to use<!>cmd_torrent.detect.html
+torrent.setMaxUploadSpeed<!>Sets maximum upload speed<!>cmd_torrent.setmaxuploadspeed.html
+torrent.setMaxDownloadSpeed<!>Sets maximum download speed<!>cmd_torrent.setmaxdownloadspeed.html
+torrent.start<!>Starts downloading of torrent &lt;torrent_number&gt;<!>cmd_torrent.start.html
+torrent.stop<!>Stops downloading of torrent &lt;torrent_number&gt;<!>cmd_torrent.stop.html
+torrent.announce<!>Manually announces torrent to tracker<!>cmd_torrent.announce.html
+torrent.setFilePriority<!>Sets the priority of a file in a torrent.<!>cmd_torrent.setfilepriority.html
+torrent.startAll<!>Starts downloading of all torrents<!>cmd_torrent.startall.html
+torrent.stopAll<!>Stops downloading of all torrents<!>cmd_torrent.stopall.html
+torrent.setClient<!>Sets the torrent client interface<!>cmd_torrent.setclient.html
+trayicon.show<!>Shows the tray icon (dock widget)<!>cmd_trayicon.show.html
+trayicon.hide<!>Hides the tray icon for the current frame window<!>cmd_trayicon.hide.html
+trayicon.hidewindow<!>Hides the window, associated with trayicon<!>cmd_trayicon.hidewindow.html
+upnp.addPortMapping<!>Add a port mapping to gateway using UPnP<!>cmd_upnp.addportmapping.html
+upnp.delPortMapping<!>Delete a port mapping on the gateway using UPnP<!>cmd_upnp.delportmapping.html
+upnp.refresh<!>Rescan the local network for a gateway using UPnP<!>cmd_upnp.refresh.html
+url.list<!>Opens URL list<!>cmd_url.list.html
+url.config<!>Loads URL list module<!>cmd_url.config.html
+window.clearOutput<!>Clears the output a window<!>cmd_window.clearoutput.html
+window.close<!>Closes a window<!>cmd_window.close.html
+window.dock<!>Docks a window<!>cmd_window.dock.html
+window.undock<!>Undocks a window<!>cmd_window.undock.html
+window.splitView<!>Splits the view of a channel window<!>cmd_window.splitview.html
+window.unsplitView<!>Unsplits the view of a channel window<!>cmd_window.unsplitview.html
+window.activate<!>Activates a window<!>cmd_window.activate.html
+window.demandAttention<!>Flashes a window's system taskbar entry<!>cmd_window.demandattention.html
+window.highlight<!>Sets the highlight (alert) level of a window<!>cmd_window.highlight.html
+window.listtypes<!>Lists available types of windows<!>cmd_window.listtypes.html
+window.setWindowTitle<!>Sets the caption of a user window<!>cmd_window.setwindowtitle.html
+window.setInputText<!>Sets the window input text to &lt;text&gt;<!>cmd_window.setinputtext.html
+window.insertInInputText<!>Sets the window input text to &lt;text&gt;<!>cmd_window.insertininputtext.html
+window.setBackground<!>Sets the background image of a window<!>cmd_window.setbackground.html
+window.savePropertiesAsDefault<!>Saves the window properties as default<!>cmd_window.savepropertiesasdefault.html
+window.setCryptEngine<!>Sets the crypt engine for a window that supports it<!>cmd_window.setcryptengine.html

@@ -87,7 +87,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pHideToolsButton->setIconSize(QSize(22, 22));
 	m_pHideToolsButton->setFixedWidth(16);
 
-	m_pHideToolsButton->setToolTip(__tr2qs("Click here to show/hide various input settings"));
+	m_pHideToolsButton->setToolTip(__tr2qs("Show/Hide input box settings"));
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
 		m_pHideToolsButton->setIcon(QIcon(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))));

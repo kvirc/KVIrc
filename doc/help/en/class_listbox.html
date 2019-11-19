@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>listbox class</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>listbox class</div>      <div class='title-secondary-text'>A widget displaying a list of items.</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The listbox class is a widget displaying a list of string items.<br>
+The listbox can operate in four selection modes: single, multi, extended
+and none. In the <i>single</i> mode only one item can be selected at a time
+and that item is also the current one. In the <i>multi</i> mode multiple
+items can be selected and unselected and the current item may or may not
+be one of the selected items. In the <i>extended</i> mode multiple items
+can be selected but they must be selected in a single mouse action
+or by keeping the shift button pressed while clicking on the item.
+In this mode the current item is always one of the selected items.<br>
+In the <i>none</i> mode no items can be selected and the current item
+may be any item in the list.<br>
+In most situations you will operate the listwidget in <i>single</i> mode
+(and this is the default mode set at widget creation).
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setSelectionMode">$setSelectionMode(&lt;selection_mode:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the current selection mode specified by the parameter &lt;mode&gt; that can be one of the following string:<br> <b>single</b>: only one item can be selected at a time<br> <b>multi</b>: multiple items can be selected at a time<br> <b>extended</b>: multiple items can be selected but only in a single mouse interaction<br> <b>none</b>: no items can be selected<br> The default mode is <i>"single"</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setFlag">$setFlag(&lt;idx:integer&gt;,&lt;flag1:string&gt;, &lt;flag2:string&gt;, ...)</a></font></b></code></td></tr>
+<tr><td>Sets the flags for the item at index idx to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.<br> Supported flags are: </td></tr><tr><td class="example-box"><br> - noitemflag : no flag sets;<br><br> - selectable : item is selectable;<br><br> - editable : item is editable;<br><br> - dragEnabled : item can dragged;<br><br> - dropEnabled : item can used as drop target;<br><br> - userCheckable : item is checkable;<br><br> - enabled : item is enabled;<br><br> - tristate : item is checkable with three separate states.<br> </td></tr><tr><td bgcolor="#EAEAEA"></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setChecked">$setChecked(&lt;checkstate:bool&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the eventual item check box 'checked state' to &lt;bool&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;bool&gt; isChecked">&lt;bool&gt; $isChecked()</a></font></b></code></td></tr>
+<tr><td>Returns '1' if the eventual item check box is checked, '0' otherwise.<br></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; selectionMode">&lt;string&gt; $selectionMode()</a></font></b></code></td></tr>
+<tr><td>Returns the current selection mode</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="insertItem">$insertItem(&lt;text:string&gt;, &lt;index:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Inserts a text item at position &lt;index&gt;. If index is negative or not specified the item is appended.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="changeItem">$changeItem(&lt;text:string&gt;, &lt;index:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Changes text of item at &lt;index&gt; to &lt;text&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removeItem">$removeItem(&lt;index:iIndex&gt;)</a></font></b></code></td></tr>
+<tr><td>Removes item at given index.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="count">$count()</a></font></b></code></td></tr>
+<tr><td>Returns number of items in the widget.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; currentText">&lt;string&gt; $currentText()</a></font></b></code></td></tr>
+<tr><td>Returns the text of the currently selected item.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; currentItem">&lt;integer&gt; $currentItem()</a></font></b></code></td></tr>
+<tr><td>Returns index of current item or -1 if no item is current.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="textAt">$textAt(&lt;index:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns item at given index.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setCurrentItem">$setCurrentItem(&lt;index:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the current listbox item.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="clear">$clear()</a></font></b></code></td></tr>
+<tr><td>Removes all the items</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setFont">$setFont(&lt;idx:integer&gt;,&lt;family:string&gt;,&lt;size:integer&gt;[,&lt;style1:string&gt;, &lt;style2:string&gt;, ...])</a></font></b></code></td></tr>
+<tr><td>Set the font's family, size and style, at index &lt;idx&gt;; valid flag for style are:<br> italic, bold, underline, overline, strikeout, fixedpitch  <br> If you just want to set a style without altering the preset font size and family, you can use $setFont() like this:<br> %widget-&gt;$setFont(0,0,"bold")</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;index:integer&gt; onItemEvent">&lt;index:integer&gt; $onItemEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called by KVIrc when the current item pointed by the mouse changes and gives in $0 the item index.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;array:x,y,width,height&gt; itemRect">&lt;array:x,y,width,height&gt; $itemRect(&lt;item:index&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the rectangle on the screen that item occupies, or an invalid rectangle if item is 0 or is not currently visible.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="itemEnteredEvent">$itemEnteredEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called by KVIrc when the mouse cursor enters an item.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="selectionChangedEvent">$selectionChangedEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called by KVIrc when the selection in the listbox changes.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="currentItemChangedEvent">$currentItemChangedEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called by KVIrc when the current item changes.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="itemChangedEvent">$itemChangedEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called by KVIrc when the current data item changes (i.e. the user check a checkable item) .</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; currentItemChanged">&lt;string&gt; $currentItemChanged()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#currentItemChangedEvent">$currentItemChangedEvent</a>().<br></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; itemChanged">&lt;string&gt; $itemChanged()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#itemChangedEvent">$itemChangedEvent</a>().<br></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; itemEntered">&lt;string&gt; $itemEntered()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#itemEnteredEvent">$itemEnteredEvent</a>().<br></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; selectionChanged">&lt;string&gt; $selectionChanged()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#selectionChangedEvent">$selectionChangedEvent</a>().<br></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

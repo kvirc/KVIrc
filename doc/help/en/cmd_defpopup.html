@@ -1,0 +1,120 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>defpopup</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>defpopup</div>      <div class='title-secondary-text'>Defines a popup menu</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>defpopup</b> <font color="#8080a0">[</font>-m<font color="#8080a0">]</font> <b>(</b><font color="#8080a0">&lt;</font>popup_name<font color="#8080a0">&gt;</font><b>)</b><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;prologue<font color="#8080a0">[</font><b>(</b><font color="#8080a0">&lt;</font>id<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">]</font> <font color="#8080a0">&lt;</font>prologue_command<font color="#8080a0">&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;epilogue<font color="#8080a0">[</font><b>(</b><font color="#8080a0">&lt;</font>id<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">]</font> <font color="#8080a0">&lt;</font>epilogue_command<font color="#8080a0">&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;label<b>(</b><font color="#8080a0">&lt;</font>text<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>id<font color="#8080a0">&gt;</font><font color="#8080a0">]</font><b>)</b><font color="#8080a0">[</font><b>(</b><font color="#8080a0">&lt;</font>expression<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">]</font><font color="#8080a0">[</font>;<font color="#8080a0">]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;item<b>(</b><font color="#8080a0">&lt;</font>text<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>icon<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>id<font color="#8080a0">&gt;</font><font color="#8080a0">]</font><font color="#8080a0">]</font><b>)</b><font color="#8080a0">[</font><b>(</b><font color="#8080a0">&lt;</font>expression<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">]</font><font color="#8080a0">&lt;</font>command<font color="#8080a0">&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;popup<b>(</b><font color="#8080a0">&lt;</font>text<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>icon<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>id<font color="#8080a0">&gt;</font><font color="#8080a0">]</font><font color="#8080a0">]</font><b>)</b><font color="#8080a0">[</font><b>(</b><font color="#8080a0">&lt;</font>expression<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">&lt;</font>popup body<font color="#8080a0">&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;extpopup<b>(</b><font color="#8080a0">&lt;</font>text<font color="#8080a0">&gt;</font>,<font color="#8080a0">&lt;</font>name<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>icon<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>id<font color="#8080a0">&gt;</font><font color="#8080a0">]</font><font color="#8080a0">]</font><b>)</b><font color="#8080a0">[</font><b>(</b><font color="#8080a0">&lt;</font>expression<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">]</font><font color="#8080a0">[</font>;<font color="#8080a0">]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;separator<font color="#8080a0">[</font><b>(</b><font color="#8080a0">&lt;</font>expression<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">]</font><font color="#8080a0">[</font>;<font color="#8080a0">]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;separatorid<font color="#8080a0">[</font><b>(</b><font color="#8080a0">&lt;</font>id<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">]</font><font color="#8080a0">[</font><b>(</b><font color="#8080a0">&lt;</font>expression<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">]</font><font color="#8080a0">[</font>;<font color="#8080a0">]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+}</div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Defines the popup menu &lt;popup_name&gt;. If the -m switch is <b>not</b> used
+the previous contents of the popups are cleared before updating.<br>
+The popup is generated 'on the fly' when the <a href="cmd_popup.html">popup</a> command
+is called.<br>
+The <i>item</i> keyword adds a menu item with visible &lt;text&gt;,
+the optional &lt;icon&gt; and &lt;command&gt; as code to be executed when the item
+is clicked. &lt;text&gt; is a string that is evaluated at <a href="cmd_popup.html">popup</a>
+call time and may contain identifiers and variables. If &lt;expression&gt;
+is given, it is evaluated at <a href="cmd_popup.html">popup</a> call time and if the result
+is 0, the item is not shown in the physical popup.<br>
+The <i>popup</i> keyword adds a submenu with visible &lt;text&gt;, the optional
+&lt;icon&gt; and a popup body that has identical syntax to the defpopup body.
+The &lt;expression&gt; has the same meaning as with the <i>item</i> keyword.<br>
+The 'extpopup' keyword adds a submenu with visible &lt;text&gt;, the optional
+icon and a popup body that is defined by the popup menu &lt;name&gt;. This
+basically allows to nest popup menus and define their parts separately.
+&lt;icon&gt; and &lt;expression&gt; have the same meaning as with the <i>item</i> keyword.<br>
+The <i>separator</i> keyword adds a straight line between items (separator).<br>
+The 'separatorid' keyword adds a straight line between items, but permits to
+specify a separator id.<br>
+The <i>label</i> keyword adds a descriptive label that acts like a separator.<br>
+The <i>prologue</i> keyword adds a &lt;prologue_command&gt; to be executed
+just before the popup is filled at <a href="cmd_popup.html">popup</a> command call.<br>
+The <i>epilogue</i> keyword adds an &lt;epilogue_command&gt; to be executed
+just after the popup has been filled at <a href="cmd_popup.html">popup</a> command call.<br>
+There can be multiple prologue and epilogue commands: their execution order
+is undefined.<br>
+&lt;icon&gt; is always an <a href="doc_image_id.html">image identifier</a>.<br>
+&lt;id&gt; is an unique identifier that can be used to remove single items
+by the means of <a href="cmd_delpopupitem.html">delpopupitem</a>. If &lt;id&gt; is omitted
+then it is automatically generated.
+Please note that using this command inside the prologue, epilogue
+or item code of the modified popup menu is forbidden.
+In other words: self modification of popup menus is <b>not</b> allowed.<br>
+To remove a popup menu use this command with an empty body:
+</td></tr><tr><td class="example-box"><br>
+defpopup<span class="example-paren">(</span>test<span class="example-paren">)</span><span class="example-bracket">{}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+This will remove the popup <i>test</i> and free its memory.
+Popups have a special kind of local variables that have an extended lifetime,
+called <i>extended scope</i> - this is described in the <a href="doc_data_structures.html">Data structures documentation</a>.<br>
+The syntax for an "extended scope" variable is:<br>
+<b>%:&lt;variable name&gt;</b><br>
+This type of variable is maintained during the entire <i>visible lifetime</i> of the popup -
+from the <a href="cmd_popup.html">popup</a> command call to the moment in that the user selects an item and the
+corresponding code is executed (essentially from a <a href="cmd_popup.html">popup</a> call to the next one).<br>
+This allows you to pre-calculate data and conditions in the prologue of the popup
+and then use it in the item handlers or item conditions.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-m | --merge</td></tr>
+<tr><td>Merges the new popup contents with the current named popup. If the named popup does not exist, the popup is created.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>See also</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="cmd_popup.html">popup</a>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

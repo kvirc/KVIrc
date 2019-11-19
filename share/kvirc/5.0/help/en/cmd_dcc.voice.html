@@ -1,0 +1,109 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>dcc.voice</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>dcc.voice</div>      <div class='title-secondary-text'>Starts a DCC Voice connection</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>dcc.voice</b> <font color="#8080a0">[</font>-g=<font color="#8080a0">&lt;</font>codec<font color="#8080a0">&gt;</font><font color="#8080a0">]</font> <font color="#8080a0">[</font>-n<font color="#8080a0">]</font> <font color="#8080a0">[</font>-c<font color="#8080a0">]</font> <font color="#8080a0">[</font>-u<font color="#8080a0">]</font> <font color="#8080a0">[</font>-h=<font color="#8080a0">&lt;</font>sample_rate_in_hz<font color="#8080a0">&gt;</font><font color="#8080a0">]</font> <font color="#8080a0">[</font>-m<font color="#8080a0">[</font>=<font color="#8080a0">&lt;</font>boolean<font color="#8080a0">&gt;</font><font color="#8080a0">]</font><font color="#8080a0">]</font> <font color="#8080a0">[</font>-i=<font color="#8080a0">&lt;</font>interface<font color="#8080a0">&gt;</font><font color="#8080a0">]</font> <font color="#8080a0">[</font>-p=<font color="#8080a0">&lt;</font>port<font color="#8080a0">&gt;</font><font color="#8080a0">]</font> <font color="#8080a0">[</font>-a=<font color="#8080a0">&lt;</font>fake address<font color="#8080a0">&gt;</font><font color="#8080a0">]</font> <font color="#8080a0">[</font>-f=<font color="#8080a0">&lt;</font>fake port<font color="#8080a0">&gt;</font><font color="#8080a0">]</font> <font color="#8080a0">&lt;</font>nickname<font color="#8080a0">&gt;</font></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Attempts a DCC Voice connection to &lt;nickname&gt;.<br>
+The -g option is used to select the GSM codec, available codecs are <i>gsm</i>, <i>adpcm</i> and <i>null</i>.<br>
+The ADPCM codec is the one that was used in previous KVIrc versions, it provides a 1:4 compression rate
+and is designed for 8 KHz audio sampling rate (but will work also with other sampling rates).<br>
+The GSM codec offers 1:10 compression at the cost of some quality and CPU time. If you have a good
+CPU and plan to transmit voice only, use this codec.&lt;br&gt; The null codec
+offers no compression and may be used to transfer plain audio data over a fast connection (usually loopback
+connection or local networks). The null codec with 44100 sampling rate would provide CD quality audio
+streaming, but it is practically not usable (at the time I'm writing) since requires a
+monster bandwidth. If the -g switch is not present, the ADPCM codec is used by default (for compatibility reasons).<br>
+ 		The -h switch is used to select the sampling rate, if not given the sampling rate defaults to 8000 Hz.
+This switch accepts any value, but in fact the soundcards have limits on the values. Typically
+the lowest limit is 5 KHz and the upper limit is 44.1 KHz (but some soundcards support 96 KHz).
+It is also possible that the soundcard can't support a continuous range of frequencies and
+will select a discrete closest match instead.<br>
+The <i>commonly used</i> sample rates are 8000, 11025, 22050 and 44100 Hz.<br>
+The remaining parameters are equivalent to the ones used in <a href="cmd_dcc.send.html">dcc.send</a>, so please refer to that
+help page for the full discussion. This help page contains only a brief resume of these parameters.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-g=&lt;codec&gt; | --codec=&lt;codec&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Use the codec specified as parameter. Actually the supported codecs are <i>null</i>, <i>adpcm</i> and <i>gsm</i>.</td></tr>
+<tr><td class="switch-title-table-cell">-h=&lt;rate&gt; | --sample-rate=&lt;rate&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Use the sample rate specified by &lt;rage&gt;. Valid sample rates are 8000, 11025, 22050 and 44100 Hz.</td></tr>
+<tr><td class="switch-title-table-cell">-m[=&lt;boolean&gt;] | --minimize[=&lt;boolean&gt;]</td></tr>
+<tr><td class="switch-body-table-cell">If the -m switch is passed, the default boolCreateMinimizedDccSend option is overridden with the &lt;boolean&gt; parameter passed. So actually by passing -m=1 will create a minimized DCC SEND even if the <a href="fnc_option.html">$option</a>(boolCreateMinimizedDccSend) returns false.<br> In the same way, by passing -m=0 you will create a non minimized DCC SEND. If no &lt;boolean&gt; value is specified, it defaults to 1.<br></td></tr>
+<tr><td class="switch-title-table-cell">-n | --no-ctcp</td></tr>
+<tr><td class="switch-body-table-cell">Do <b>not</b> send the CTCP request to the target user, you will have to do it manually, or the remote user will have to connect manually (for example by using dcc.recv -c).<br></td></tr>
+<tr><td class="switch-title-table-cell">-c | --connect</td></tr>
+<tr><td class="switch-body-table-cell">Attempt to CONNECT to the remote host specified as &lt;interface&gt; and &lt;port&gt;, instead of listening (active connection instead of a passive one). In this case the -i and -p switches are mandatory.<br> The <b>c</b> switch takes precedence over <b>n</b> (In fact both should be mutually exclusive).<br> If the <b>c</b> and <b>n</b> switches are missing, this commands needs to be executed in a window that is bound to a connected IRC context (you need a third entity to accomplish the negotiation).<br></td></tr>
+<tr><td class="switch-title-table-cell">-i=&lt;interface&gt; | --ip=&lt;interface&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Bind the local listening socket to the specified &lt;interface&gt; (which is an IP address, IPv4 or IPv6). If this switch is <b>not</b> specified, the socket is bound to the interface of the current IRC connection (if any) or to <i>127.0.0.1</i>.<br> You can also specify a local interface name to get the address from (this works only for IPv4 interfaces since IPv6 ones seems to be unsupported by the system ioctl() calls at the moment (for Linux at least)).<br> Here go some examples:<br> -i=215.243.12.12: this will bind to the IPv4 interface with the specified address.<br> -i=3ffe:1001::1: this will bind to the IPv6 interface with the specified address.<br> -i=ppp0: this will bind to the IPv4 address of the interface ppp0 (if supported by the underlying system).<br> The -i switch parameter may serve also as a target address when the -c switch is used.<br></td></tr>
+<tr><td class="switch-title-table-cell">-p=&lt;port&gt; | --port=&lt;port&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Bind the local listening socket to the specified &lt;port&gt;. If this switch is <b>not</b> specified, the port will be a <i>random</i> one chosen by the kernel.<br></td></tr>
+<tr><td class="switch-title-table-cell">-a=&lt;fake address&gt; | --fake-address=&lt;fake address&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Send the &lt;fake address&gt; as target for the remote client in the requesting CTCP message. If this switch is not given, the CTCP will contain the real IP address of the listening interface.<br></td></tr>
+<tr><td class="switch-title-table-cell">-f=&lt;fake port&gt; | --fake-port=&lt;fake port&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Send the &lt;fake port&gt; as target port for the remote client in the requesting CTCP message. If this switch is not given, the CTCP will contain the real port of the listening socket. <br><br> All these switches are meant to allow maximum flexibility of the DCC negotiation, earlier KVIrc releases had serious problems with firewalled and/or masqueraded machines. With the -a and -f switches you can work around it.<br> <br></td></tr>
+<tr><td class="switch-title-table-cell">-u | --unlimited</td></tr>
+<tr><td>If the 'u' switch is given, the connection attempt will never time out; this might be useful if you want to leave a listening socket for a friend of yours while you are sleeping and have the CTCP processing disabled. The 'u' switch works either in active and passive mode.<br></td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+<span class="comment-text"># Setup a DCC VOICE connection with Pragma <span class="example-paren">(</span>IRC user<span class="example-paren">)</span></span><br>
+dcc.voice Pragma<br>
+<span class="comment-text"># Setup a DCC VOICE connection with Pragma and use the GSM codec</span><br>
+dcc.voice -g=gsm Pragma<br>
+<span class="comment-text"># Setup a DCC VOICE connection with Pragma, use the GSM codec and 22050 Hz sampling rate</span><br>
+dcc.voice -g=gsm -h=22050 Pragma<br>
+<span class="comment-text"># Setup a listening socket for a DCC VOICE connection on interface 127.0.0.1 and port 8088</span><br>
+dcc.voice -n -i=127.0.0.1 -p=8088 Pippo<br>
+<span class="comment-text"># Connect to the socket above</span><br>
+dcc.voice -c -i=127.0.0.1 -p=8088 Pluto<br>
+<span class="comment-text"># Same as above but use the NULL codec with 11025 Hz sampling rate</span><br>
+dcc.voice -g=null -h=11025 -n -i=127.0.0.1 -p=8088 Pippo<br>
+<span class="comment-text"># Connect to the socket above</span><br>
+dcc.voice -g=null -h=11025 -c -i=127.0.0.1 -p=8088 Pluto<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

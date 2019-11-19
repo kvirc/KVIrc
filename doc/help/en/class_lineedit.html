@@ -1,0 +1,121 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>lineedit class</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>lineedit class</div>      <div class='title-secondary-text'>Simple line editor for inputting short text</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This is a simple, one-line editor usually used for inputting
+short text like names, phone numbers etc. It can display text
+in three echo modes (see <a href="#setEchoMode">$setEchoMode</a>()
+for details).
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; text">&lt;string&gt; $text()</a></font></b></code></td></tr>
+<tr><td>Returns text contained by the widget.<br> See also <a href="#setText">$setText</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setText">$setText(&lt;text:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets editor text to &lt;text&gt;.<br> See also <a href="#text">$text</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setEchoMode">$setEchoMode(&lt;echo_mode:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the line edit's echo mode. Possible value are:<br> <pre><br> -Normal: display chars as they entered<br> -Noecho: do not display anything<br> -Password: display asterisks instead of the characters actually entered<br> </pre> See also <a href="#echoMode">$echoMode</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; echoMode">&lt;string&gt; $echoMode()</a></font></b></code></td></tr>
+<tr><td>Return the line edit's echo mode. See also <a href="#setEchoMode">$setEchoMode</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; maxLength">&lt;integer&gt; $maxLength()</a></font></b></code></td></tr>
+<tr><td>Returns the current maximum length of the text that can be typed  in the editor.<br> See also <a href="#setMaxLength">$setMaxLength</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setMaxLength">$setMaxLength(&lt;max_lenght:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets maximum length of the text that can be typed in the editor.<br> See also <a href="#maxLength">$maxLength</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; frame">&lt;boolean&gt; $frame()</a></font></b></code></td></tr>
+<tr><td>Returns '1' if the editor is drawn inside a frame, which is 2 pixels wide, '0' otherwise.<br> See also <a href="#setFrame">$setFrame</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setFrame">$setFrame(&lt;bframe:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets editor frame drawing to &lt;bool&gt;.<br> See also <a href="#frame">$frame</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; cursorPosition">&lt;integer&gt; $cursorPosition()</a></font></b></code></td></tr>
+<tr><td>Returns current cursor position in the editor.<br> See also <a href="#setCursorPosition">$setCursorPosition</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setCursorPosition">$setCursorPosition(&lt;index:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Moves the cursor to place pointed by &lt;index&gt;.<br> See also <a href="#cursorPosition">$cursorPosition</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="selectAll">$selectAll()</a></font></b></code></td></tr>
+<tr><td>Selects whole text inside the editor.<br> See also <a href="#setSelection">$setSelection</a>(), <a href="#cut">$cut</a>(), <a href="#copy">$copy</a>(), <a href="#paste">$paste</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setSelection">$setSelection(&lt;start:integer&gt;, &lt;length:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Selects &lt;length&gt; characters in the editor starting at position &lt;start&gt;.<br> See also <a href="#selectAll">$selectAll</a>(), <a href="#cut">$cut</a>(), <a href="#copy">$copy</a>(), <a href="#paste">$paste</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="copy">$copy()</a></font></b></code></td></tr>
+<tr><td>Copies selected text in the editor to the clipboard.<br> See also <a href="#setSelection">$setSelection</a>(), <a href="#cut">$cut</a>(), <a href="#paste">$paste</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="cut">$cut()</a></font></b></code></td></tr>
+<tr><td>Cuts selected text from the editor to the clipboard.<br> See also <a href="#setSelection">$setSelection</a>(), <a href="#copy">$copy</a>(), <a href="#paste">$paste</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="paste">$paste()</a></font></b></code></td></tr>
+<tr><td>Pastes text from the clipboard into the editor. The pasted text will start at cursor position.<br> See also <a href="#setSelection">$setSelection</a>(), <a href="#copy">$copy</a>(), <a href="#cut">$cut</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="clear">$clear()</a></font></b></code></td></tr>
+<tr><td>Deletes all text from the editor. Equal to calling <a href="#setText">$setText</a>("").</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setDragEnabled">$setDragEnabled(&lt;bEnabled:bool&gt;)</a></font></b></code></td></tr>
+<tr><td>With this property user can drag text in the lineedit.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setReadOnly">$setReadOnly(&lt;bReadonly:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the lineedit to read-only mode.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setInputMask">$setInputMask(&lt;mask:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the validation input mask to inputMask.<br> <b>Example:</b> </td></tr><tr><td class="example-box"><br> <span class="example-variable">%ledit_example</span>-&gt;$setInputMask<span class="example-paren">(</span> "+99 99 99 99 99;_" <span class="example-paren">)</span>;<br><br> <span class="example-variable">%ledit_example</span>-&gt;$setInputMask<span class="example-paren">(</span> "000.000.000.000;_" <span class="example-paren">)</span>;<br><br> <span class="example-variable">%ledit_example</span>-&gt;IP Number Mask.<br><br> <span class="example-variable">%ledit_example</span>-&gt;setInputMask<span class="example-paren">(</span> "&gt;AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#" <span class="example-paren">)</span>;<br> </td></tr><tr><td bgcolor="#EAEAEA"> The mask format understands these mask characters: </td></tr><tr><td class="example-box"><br> <b><span class="comment-text">Character	Meaning</span></b><br><br> A	-	ASCII alphabetic character required. A-Z, a-z.<br><br> a	-	ASCII alphabetic character permitted but not required.<br><br> N	-	ASCII alphanumeric character required. A-Z, a-z, 0-9.<br><br> n	-	ASCII alphanumeric character permitted but not required.<br><br> X	-	Any character required.<br><br> x	-	Any character permitted but not required.<br><br> 9	-	ASCII digit required. 0-9.<br><br> 0	-	ASCII digit permitted but not required.<br><br> D	-	ASCII digit required. 1-9.<br><br> d	-	ASCII digit permitted but not required.<br><br> <span class="comment-text">#	-	ASCII digit or plus/minus sign permitted but not required.<br><br> </span>&gt;	-	All following alphabetic characters are uppercased.<br><br> &lt;	-	All following alphabetic characters are lowercased.<br><br> !	-	Switch off case conversion.<br><br> \	-	Use \ to escape the special characters listed above to use them as separators.<br> </td></tr><tr><td bgcolor="#EAEAEA"> The mask consists of a string of mask characters and separators, optionally<br> followed by a semi-colon and the character used for blanks: the blank characters<br> are always removed from the text after editing. The default blank character is space.<br></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="returnPressedEvent">$returnPressedEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called by the framework when the enter key is pressed.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="lostFocusEvent">$lostFocusEvent()</a></font></b></code></td></tr>
+<tr><td>Called when the lineedit lost focus.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="textChangedEvent">$textChangedEvent(&lt;new text:string&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is called when the text changed, In $0 there is the new text.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setCompleter">$setCompleter(&lt;completion_mode:string&gt;,&lt;completion_list:array&gt;)</a></font></b></code></td></tr>
+<tr><td>Provides completions based on an array. Valid completion_mode are: PopupCompletion: Current completions are displayed in a popup below the lineedit. UnfilteredPopupCompletion: All possible completions are displayed in a popup window with the most likely suggestion selected. InlineCompletion: Completions appear as selected text.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="disableCompleter">$disableCompleter()</a></font></b></code></td></tr>
+<tr><td>Disable temporally the completer.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="enableCompleter">$enableCompleter()</a></font></b></code></td></tr>
+<tr><td>Enable the completer.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removeCompleter">$removeCompleter()</a></font></b></code></td></tr>
+<tr><td>Remove the completer.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="returnPressed">$returnPressed()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#returnPressedEvent">$returnPressedEvent</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="lostFocus">$lostFocus()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#lostFocusEvent">$lostFocusEvent</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="textChanged">$textChanged()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#textChangedEvent">$textChangedEvent</a>().</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>The torrent module</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>The torrent module</div>      <div class='title-secondary-text'>Interface to the torrent clients</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The torrent module is an interface to torrent clients. It currently supports KTorrent using D-Bus.<br>
+It provides the following set of commands:<br>
+<a href="cmd_torrent.detect.html">torrent.detect</a>: Performs an auto-detection of installed torrent clients<br>
+<a href="cmd_torrent.setclient.html">torrent.setclient</a>: Sets the torrent client interface<br>
+<a href="cmd_torrent.start.html">torrent.start</a>: Starts downloading of a torrent<br>
+<a href="cmd_torrent.stop.html">torrent.stop</a>: Stops downloading of a torrent<br>
+<a href="cmd_torrent.announce.html">torrent.announce</a>: Manually announces torrent to tracker<br>
+<a href="cmd_torrent.startall.html">torrent.startall</a>: Starts downloading of all torrents<br>
+<a href="cmd_torrent.stopall.html">torrent.stopall</a>: Stops downloading of all torrents<br>
+<a href="cmd_torrent.setmaxuploadspeed.html">torrent.setmaxuploadspeed</a>: Sets maximum upload speed<br>
+<a href="cmd_torrent.setmaxdownloadspeed.html">torrent.setmaxdownloadspeed</a>: Sets maximum download speed<br>
+<a href="cmd_torrent.setfilepriority.html">torrent.setfilepriority</a>: Sets the priority of a file in a torrent<br>
+<br>
+It provides the following set of functions:<br>
+<a href="fnc_torrent.client.html">$torrent.client</a>: Returns the currently set torrent client interface<br>
+<a href="fnc_torrent.clientlist.html">$torrent.clientlist</a>: Returns a list of all supported clients<br>
+<a href="fnc_torrent.maxuploadspeed.html">$torrent.maxuploadspeed</a>: Returns maximum upload speed set in client<br>
+<a href="fnc_torrent.maxdownloadspeed.html">$torrent.maxdownloadspeed</a>: Returns maximum download speed set in client<br>
+<a href="fnc_torrent.speedup.html">$torrent.speedup</a>: Returns current total upload speed<br>
+<a href="fnc_torrent.speeddown.html">$torrent.speeddown</a>: Returns current total download speed<br>
+<a href="fnc_torrent.trafficup.html">$torrent.trafficup</a>: Returns the total number of bytes uploaded<br>
+<a href="fnc_torrent.trafficdown.html">$torrent.trafficdown</a>: Returns the total number of bytes downloaded<br>
+<a href="fnc_torrent.count.html">$torrent.count</a>: Returns number of torrents in client<br>
+<a href="fnc_torrent.name.html">$torrent.name</a>: Returns torrent name as displayed in client<br>
+<a href="fnc_torrent.state.html">$torrent.state</a>: Returns state of torrent<br>
+<a href="fnc_torrent.filecount.html">$torrent.filecount</a>: Returns the number of files in a torrent<br>
+<a href="fnc_torrent.filename.html">$torrent.filename</a>: Returns the name of a file in a torrent<br>
+<a href="fnc_torrent.filepriority.html">$torrent.filepriority</a>: Returns the priority of a file in a torrent<br>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_module_index_all.html">Modules</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

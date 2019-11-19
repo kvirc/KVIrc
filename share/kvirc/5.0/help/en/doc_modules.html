@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Loadable modules</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Loadable modules</div>      <div class='title-secondary-text'>KVIrc modules model</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Starting from version 2.0.0, KVIrc includes support for external plugins:
+parts of code that can be loaded at runtime. This support was optional
+and the main KVIrc functionality was independent of that support.
+In version 3.0.0 the <i>modularity</i> became one of the primary KVIrc features.
+These pieces of external code are now named <i>modules</i>. The module
+support has been rewritten completely to extend the available features
+and remove some <i>basic</i> problems that were present in 2.0.0.
+This caused the old <i>plugins</i> to be binary incompatible with the new KVIrc
+executable; anyway, most old <i>plugins</i> have been rewritten as <i>modules</i>
+and included in the 3.0.0 distribution. Some of the basic KVIrc features
+are based on modules now; for example, the help browser is now in an
+external library called <i>libkvihelp.so</i>. This allows to keep the basic
+KVIrc executable smaller and faster (in some phases).
+Module loading is now <i>transparent</i> to the user. There are no
+<i>load</i> and <i>unload</i> commands: the modules are automatically
+loaded when the <i>core</i> requests them and unloaded after some (configurable) time
+of inactivity.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Module naming convention</div></td></tr><tr><td bgcolor="#EAEAEA">
+Every KVIrc module must have an <i>unique</i> name: the name is a single token,
+made only of <b>lowercase</b> letters, digits and underscores.
+The real object file (library) is named <i>libkvi&lt;name&gt;.so</i>.
+This convention allows KVIrc to load modules when they are referenced
+by name in the scripting code (the reference in the code is case insensitive
+and remapped always to the lowercase version).
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">What a module can do</div></td></tr><tr><td bgcolor="#EAEAEA">
+Basically, a module exports parts of the scripting language features.
+For example, the module <i>about</i> exports the <i>about.kvirc</i> command, that
+shows the dialog that lists the KVIrc staff people. The dialog
+will be effectively activated only few times (maybe only once) by a single
+user: including it in a separate module allows keeping rarely used code out
+of the KVIrc executable and saving some memory.
+To activate the dialog you only need to execute the command:
+</td></tr><tr><td class="example-box"><br>
+about.kvirc<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+That's all. KVIrc will load the necessary module, run the <i>/about.kvirc</i> command,
+wait until the module is not used anymore and then unload it.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Transparent loading and unloading</div></td></tr><tr><td bgcolor="#EAEAEA">
+Any command that has the form &lt;name&gt;.&lt;command&gt; is assumed to be
+a module reference. KVIrc tries to locate the module named &lt;name&gt;, load it (if
+not already in memory) and execute the &lt;command&gt;.
+After the command execution KVIrc waits some user defined interval of time
+(typically 2-3 minutes) and then check the module state: if the module
+has not been referenced again, it is unloaded, otherwise it is kept in memory
+for another period of time. To prevent accidentally unloading a module
+that has some windows or dialogs open, a module can lock itself in memory.
+For example, the 'help' module lock itself when a help browser window is open
+and unlocks itself when the last help browser window is closed.<br>
+A module can export functions as well: the function names follow
+exactly the same rule as the commands: $&lt;name&gt;.&lt;function&gt; is assumed
+to be a reference to the &lt;function&gt; exported by module named &lt;name&gt;.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Forced loading and unloading</div></td></tr><tr><td bgcolor="#EAEAEA">
+All the modules export a <i>load</i> and a <i>unload</i> command.
+</td></tr><tr><td class="example-box"><br>
+about.load<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The example above will do nothing more than loading the <i>about</i>
+module into the core memory.
+</td></tr><tr><td class="example-box"><br>
+about.unload<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The example above will forcibly unload the module from the core memory;
+even if it is still locked.<br>
+Please note that this can be dangerous in some situations... so
+better check the KVIrc behaviour twice before making public any script
+that uses this command.
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_generic_index_all.html">Miscellaneous</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

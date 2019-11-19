@@ -1,0 +1,27 @@
+[KVIrc]
+uNextTip=0
+uNumTips=23
+TranslatorHint=This-file-MUST-be-encoded-in-UTF8
+0=You can open connections to multiple servers in a single KVIrc window, just select "New IRC Context" from the KVIrc menu.
+1=IPv6 is now fully supported, even for DCC transfers.<br><b>/server -i &lt;servername&gt;</b> is the command. :)
+2=KVIrc supports SSL encryption.<br>SSL encrypted IRC connections can be established by using <b>/server -s</b>, and DCC connections by using <b>/dcc.chat -s</b><br>It also works over IPv6.
+3=An <b>IRC context</b> is a set of resources dealing with a single server connection. It has an associated <b>Console</b> window that displays system and server messages.
+4=KVIrc is a highly modular application. Modules are loaded and unloaded transparently to the user (and even to the scripter!). You can also write your own modules that extend the scripting language, or add other features.
+5=KVIrc supports multiple handler scripts for a single event. This allows multiple scripts to be installed at the same time, avoids handler collisions and helps in adding/removing and activating/deactivating script sections.
+6=KVIrc supports the <b>irc://</b> Uniform Resource Locator (URL). Run the command: <br><b>kvirc irc://irc.yourserver.org:6667/channel</b><br> to connect to that server.<br>The general syntax is:<br><b>irc[6]://&lt;server-name&gt;[:&lt;port&gt;][/[&lt;channel&gt;[?&lt;pass&gt;]]]</b>
+7=The KVIrc executable acts like the "netscape -remote" command, if an instance of KVIrc is already running, the command line parameters are passed to that instance via IPC. You can override this behaviour with the <b>-f</b> switch.
+8=KVIrc can be your browser's handler for <b>irc://</b> URLs. If KVIrc has KDE support, you should be able to run it by simply typing an <b>irc://</b> URL into Konqueror's Location bar.<br>Try <b>irc://irc.freenode.net/kvirc</b> :)
+9=URLs can also be made for IPv6 IRC servers, the following syntax applies in this case:<br><b>irc6://&lt;ipv6-server-name&gt;[:&lt;port&gt;][/[&lt;channel&gt;[?&lt;pass&gt;]]]</b>
+10=You can switch between windows pressing <b>Alt+Up/Down</b>. <b>Shift+Alt+Up/Down</b> cycles only between windows in the current context.
+11=A quick method for connecting to a server in a new IRC context is <b>/server -n &lt;servername&gt;</b>
+12=KVIrc is portable between Windows, Mac OSX, Linux and other various flavours of Unix machines. If you're a good scripter, your scripts will be portable too!
+13=Want to automatically join a channel on connect?<br>Easy!<br>Just click "Advanced" in the server settings and add the channel in the "Join Channels" tab. For something that works for all servers, try <b>/event(OnIrc,autojoin){ join #yourchannel; }</b>
+14=Do you know what an avatar is? Check out <b>/help The AVATAR idea</b>
+15=The DCC settings page has a lot of options that can help you solve many common DCC connection problems. People behind firewalls might be able to send data, too. It's just a matter of setting things up. :)
+16=KVIrc supports many 8-bit character encodings. You can "speak" KOI8-R based Russian on one channel and Japanese on another over the same connection (with appropriate fonts). We strongly encourage you to use <b>Unicode</b> (UTF-8), which supports almost every language in the world.
+17=To avoid excessive DCC transfers, it is recommended that you make your avatars available on the Web. You can also use any existing image on the Web as an avatar.<br><b>/avatar #yourchan http://funnyhost.com/funny/funny.png</b> will work!
+18=KVIrc has a built-in HTTP client, and you can download files from the Web by using the <b>/http.get</b> command.
+19=Don't like the window tree taskbar mode? You can opt for a traditional taskbar (similar to mIRC) in the taskbar settings page under the preferences.
+20=You can copy text from the text window to the clipboard by simply selecting it with the mouse. If you also keep Shift pressed then the color codes will be copied as well.
+21=You can change KVIrc themes by simply selecting Settings -> Manage Themes (Ctrl+Shift+M).
+22=This is the last tip. You can add your own tips - Check out <b>/help tip.open</b>. Feel free to submit more tips (in any language) to <b>trisk-kvirc(at)quasarnet.org</b>.

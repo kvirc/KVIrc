@@ -1,0 +1,161 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>socket class</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>socket class</div>      <div class='title-secondary-text'>A IPv4/IPv6 TCP socket</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This class provides a standard TCP/IP socket functionality.<br>
+It can be used either for connecting to a remote host or to listening for incoming connections.<br>
+If the KVIrc executable has been compiled with the IPv6 protocol support, this socket also supports it.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer or string&gt; status">&lt;integer or string&gt; $status(&lt;asString:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the status of the socket :<br> <pre><br> 0 = Unconnected<br> 1 = HostLookUp<br> 2 = Connecting<br> 3 = Connected<br> 4 = Bound<br> 5 = Closing<br> 6 = Listening<br> </pre></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="connect">$connect(&lt;host&gt;,&lt;port&gt;)</a></font></b></code></td></tr>
+<tr><td>Attempts a connection to &lt;host&gt; on port &lt;port&gt;.<br> &lt;host&gt; can be a numeric internet address (either IPv4 or IPv6 (if supported)) or a hostname.<br> If a hostname is used, a DNS lookup is performed (the socket enters the <i>DNS call[i/] state).<br> This function returns <b>1</b> if the connect attempt can be successfully initiated, and <b>0</b> otherwise.<br> In fact, this function returns <b>0</b> only if the supplied &lt;port&gt; parameter is invalid or the socket is in an incoherent state (already connected or listening): for a newly created socket and with a valid &lt;port&gt; number you can safely ignore the return value.<br> Please note that the connection is asynchronous: when this function returns the socket is <b>not</b> connected: it has just initiated the connect attempt and you will be notified of the attempt result by an asynchronous event call: in case of failure, $connectFailedEvent() will be called, in case of success, $connectEvent() will be called.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="listen">$listen([&lt;port&gt;[,&lt;interface&gt;[,&lt;force_ipv6&gt;]]])</a></font></b></code></td></tr>
+<tr><td>Attempts to listen on the specified &lt;port&gt; and &lt;interface&gt;.<br> If &lt;port&gt; is not passed it is assumed to be <b>0</b>, if &lt;interface&gt; is not passed, it is assumed to be <i>any interface</i> (INADDR_ANY).<br> Port 0 means that the kernel should choose a <i>random</i> port to listen on.<br> If the &lt;interface&gt; is recognized as IPv6 address, and IPv6 is supported, the socket listens in IPv6 mode. If &lt;interface&gt; is an empty string and &lt;force_ipv6&gt; is 1 the socket listens on <i>any IPv6 interface</i>.<br> This function returns <b>1</b> in case of success and <b>0</b> in case of failure.<br> On some systems listening in the IPv6 namespace allows to accept also IPv4 connections (this includes Linux but not windows afaik).<br> When an incoming connection will arrive, $incomingConnectionEvent() will be called.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="connectedEvent">$connectedEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when a connection attempt has been successfully completed. The socket is currently connected to <a href="class_socket.html#remoteip">$remoteip</a>() on <a href="class_socket.html#remoteport">$remoteport</a>(). You can start writing data and you may expect <a href="class_socket.html#dataavailableevent">$dataavailableevent</a>() to be triggered.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="incomingConnectionEvent">$incomingConnectionEvent(&lt;socket:h_object&gt;)</a></font></b></code></td></tr>
+<tr><td>This function is called when an incoming connection arrives over a socket in listening state.<br> You must return <b>1</b> if you to terminated this incoming connection call <a href="class_socket.html#accept">$accept</a>() passing a newly created socket object to accept and handle the connection.<br> If you don't call <a href="class_socket.html#accept">$accept</a>() the incoming connection will be automatically terminated.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="connectFailedEvent">$connectFailedEvent(&lt;reason&gt;)</a></font></b></code></td></tr>
+<tr><td>This function is called when a connection attempt fails for some reason. &lt;reason&gt; contains the error string.<br> This function may be called only between a call to <a href="class_socket.html#connect">$connect</a>() and the <a href="class_socket.html#connectevent">$connectevent</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="disconnectEvent">$disconnectEvent([error])</a></font></b></code></td></tr>
+<tr><td>This function is called when a connection is terminated either cleanly or because of an error.<br> [error] is an empty string in case of a <i>clean</i> termination (connection closed by the remote host) or is a message describing the socket error that caused the connection to be interrupted.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="dataAvailableEvent">$dataAvailableEvent(&lt;data_length&gt;)</a></font></b></code></td></tr>
+<tr><td>This function is called when some data is available to be read: the &lt;data_length&gt; parameter specifies the length of the available data in bytes.<br> You can use one of the $read* functions to obtain the data</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="read">$read(&lt;length&gt;[,&lt;hobject&gt;])</a></font></b></code></td></tr>
+<tr><td>Reads at most &lt;length&gt; bytes of data from the socket. If &lt;length&gt; is anything <i>outside</i> the available data range (&lt;length&gt; &lt; 0 or &lt;length&gt; &gt; available_data_length), this function returns all the available data.<br> By default this function can deal ASCII data only: NULL characters are transformed to ASCII characters 255. You can pass a <a href="class_memorybuffer.html">memorybuffer</a> object to read binary data.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="write">$write(&lt;data, array,files or hobject&gt;[,length])</a></font></b></code></td></tr>
+<tr><td>Writes &lt;data&gt; to the socket.<br> This function can deal with binary data passing  a <a href="class_memorybuffer.html">memorybuffer</a> object<br> Please note that when this function finishes it does not mean that the data has reached the remote end.<br> Basically it does not even mean that the data has been sent to the remote host.<br> The data is enqueued for sending and will be sent as soon as possible.<br> Using an array you can pass bytes or data string like this: @$write($array($(0xff),$(0xff),$(0xff),$(0xff),"This is an example")); If you're going to <a href="cmd_delete.html">delete</a> this object just after the $write call, you should call <a href="class_socket.html#close">$close</a>() just before <a href="cmd_delete.html">delete</a> to ensure the data delivery.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="close">$close()</a></font></b></code></td></tr>
+<tr><td>Resets this socket state: kills any pending or active connection. After a close() call the socket may be used for a new connection.<br> If there is an active connection, there is a last attempt to flush the pending outgoing data.<br> You don't need to call $close() if you <a href="cmd_delete.html">delete</a> the socket: KVIrc will reset the socket state automatically and free the memory. But if you want to ensure data delivery after a $write call sequence and just before a <a href="cmd_delete.html">delete</a>, $close() is the only chance to do it.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="remoteIp">$remoteIp()</a></font></b></code></td></tr>
+<tr><td>Returns the IP address of the remote end of this socket.<br> The return value is meaningful only if the socket is in connected or connecting state.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setProtocol">$setProtocol(&lt;protocol&gt;)</a></font></b></code></td></tr>
+<tr><td>Let KVIrc use TCP or UDP protocol</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="remotePort">$remotePort()</a></font></b></code></td></tr>
+<tr><td>Returns the port of the remote end of this socket.<br> The return value is meaningful only if the socket is in connected or connecting state.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="localIp">$localIp()</a></font></b></code></td></tr>
+<tr><td>Returns the IP address of the local end of this socket.<br> The return value is meaningful only if the socket is in connected, listening or connecting state.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="localPort">$localPort()</a></font></b></code></td></tr>
+<tr><td>Returns the port of the local end of this socket.<br> The return value is meaningful only if the socket is in connected, listening or connecting state.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+<span class="comment-text"># Server socket: listen 8080 port and answer to requests <span class="example-paren">(</span>multi-threaded<span class="example-paren">)</span></span><br>
+class<span class="example-paren">(</span>"webserver","socket"<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;function incomingConnectionEvent<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># incoming connection socket passed by the framework</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%socket</span> = $0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;debug "Webserver incoming Connection from: <span class="example-variable">%socket</span>-&gt;$remoteIp : <span class="example-variable">%socket</span>-&gt;$remotePort"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%socket</span>-&gt;$write<span class="example-paren">(</span>"HTTP/1.0 200 OK\n\n&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;KVIrc Webserver&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;\n"<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># tells KVIrc no need this socket anymore</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;return $true<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;function constructor<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;debug listen @$listen<span class="example-paren">(</span>8080, "127.0.0.1"<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+<span class="comment-text"># finally start webserver</span><br>
+<span class="example-variable">%WebS</span> = $new<span class="example-paren">(</span>webserver<span class="example-paren">)</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="example-box"><br>
+<span class="comment-text"># Client socket - go to google and grab request header</span><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;class<span class="example-paren">(</span>"httprequest","socket"<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function errorEvent<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># the connection to the server failed</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug  "Connection failed: "$0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete $$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function disconnectedEvent<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># connection has been closed</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug  "Connection is closed"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete $$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function destructor<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># if the socket is still open close it</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>@$status<span class="example-paren">()</span> == "Connected"<span class="example-paren">)</span> @$close<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function stateChangedEvent<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug socket state $0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function dataAvailableEvent<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># reading the received data</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug reading $0 bytes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%newdata</span>  = @$read<span class="example-paren">(</span>$0<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug data:  <span class="example-variable">%newdata</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># close and delete the socket</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@$close<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete $$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function constructor<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># connect to the server</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@$connect<span class="example-paren">(</span>"www.google.com",80<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function connectedEvent<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># connection is complete</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># send a request to receive the headers only from http://www.google.com/</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug connected<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug written bytes @$write<span class="example-paren">(</span>"HEAD / HTTP/1.1\r\nHost: www.google.de\r\nConnection: Close\r\nUser-Agent: KVIrc socket\r\n\r\n"<span class="example-paren">)</span> on socket;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%Temp</span> = $new<span class="example-paren">(</span>httprequest<span class="example-paren">)</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

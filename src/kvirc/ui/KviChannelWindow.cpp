@@ -221,6 +221,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	m_pHideToolsButton->setAutoRaise(true);
 	m_pHideToolsButton->setIconSize(QSize(22, 22));
 	m_pHideToolsButton->setFixedWidth(16);
+    m_pHideToolsButton->setToolTip(__tr2qs("Show/Hide channel settings"));
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
 		m_pHideToolsButton->setIcon(QIcon(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))));

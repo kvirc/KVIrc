@@ -1,0 +1,105 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>$window.list</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>$window.list</div>      <div class='title-secondary-text'>Generates lists of windows</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>$window.list</b><b>(</b><font color="#8080a0">&lt;</font>type<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>irc_context_id<font color="#8080a0">&gt;</font><font color="#8080a0">]</font><b>)</b></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Returns an array of window identifiers with a specified type and eventually belonging to a specified
+irc context.<br>
+&lt;type&gt; is a window type such as 'query' or 'channel'.<br>
+See <a href="cmd_window.listtypes.html">window.listtypes</a> for a list of available window types in this KVIrc release.<br>
+If &lt;type&gt; is the special word 'all', all the window types are listed.<br>
+&lt;irc_context_id&gt; specifies the IRC context in which the windows are searched.<br>
+If no &lt;irc_context_id&gt; is specified, the current one is used.<br>
+If &lt;irc_context_id&gt; is the special word 'all', all the IRC context are searched.<br>
+If &lt;irc_context_id&gt; is the special word 'none' then only windows not belonging to any
+irc context are listed.<br>
+The special word 'any' used as &lt;irc_context_id&gt; merges the effects of 'all' and 'none'
+by searching all the IRC contexts AND the windows not belonging to any IRC context.<br>
+The windows that do not belong to any IRC context (such as DCC windows), must be searched
+by using 'none' or 'any' as &lt;irc_context_id&gt;.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+<span class="comment-text"># List all the queries of the current IRC context</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>query<span class="example-paren">)</span><br>
+<span class="comment-text"># Equivalent to the above</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>query,<a href="fnc_ic.html">$ic</a><span class="example-paren">)</span><br>
+<span class="comment-text"># List all the channels in all the IRC contexts</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>channel,all<span class="example-paren">)</span><br>
+<span class="comment-text"># List all the windows in the current IRC context</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>all<span class="example-paren">)</span><br>
+<span class="comment-text"># List all the windows in all IRC contexts</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>all,all<span class="example-paren">)</span><br>
+<span class="comment-text"># List all the DCC Send windows: They don't belong to any IRC context</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>dcctransfer,none<span class="example-paren">)</span><br>
+<span class="comment-text"># List all the user windows created with $window.open</span><br>
+<span class="comment-text"># They may either belong to an IRC context or not</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>userwnd,any<span class="example-paren">)</span><br>
+<span class="comment-text"># Ok, let's use it</span><br>
+<span class="comment-text"># A nice alias that allows iterating commands through all the consoles</span><br>
+<span class="comment-text"># Note the array returned by $window.list</span><br>
+<span class="comment-text"># This is by LatinSuD :<span class="example-paren">)</span></span><br>
+<a href="cmd_alias.html">alias</a><span class="example-paren">(</span>iterate<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%ctxt</span>[]=<a href="fnc_window.list.html">$window.list</a><span class="example-paren">(</span>console,all<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_for.html">for</a><span class="example-paren">(</span><span class="example-variable">%i</span>=0;<span class="example-variable">%i</span>&lt;<span class="example-variable">%ctxt</span>[]#;<span class="example-variable">%i</span>++<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_eval.html">eval</a> -r=<span class="example-variable">%ctxt</span>[<span class="example-variable">%i</span>] $0-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+iterate <a href="cmd_echo.html">echo</a> Hi ppl! :<span class="example-paren">)</span><br>
+<span class="comment-text"># The returned array works nicely also in <a href="cmd_foreach.html">foreach</a></span><br>
+<span class="comment-text"># Say hi to all the channels :<span class="example-paren">)</span></span><br>
+<a href="cmd_alias.html">alias</a><span class="example-paren">(</span>sayallchans<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_foreach.html">foreach</a><span class="example-paren">(</span><span class="example-variable">%x</span>,<a href="fnc_window.list.html">$window.list</a><span class="example-paren">(</span>channel,all<span class="example-paren">))</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_say.html">say</a> -r=<span class="example-variable">%x</span> $0-;<br>
+<span class="example-bracket">}</span><br>
+sayallchans Hi ppl :<span class="example-paren">)</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>See also</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="cmd_window.listtypes.html">window.listtypes</a>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_function_alphabetic_a.html">Functions</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

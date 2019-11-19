@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>while</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>while</div>      <div class='title-secondary-text'>Iteration command</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>while</b> <b>(</b><font color="#8080a0">&lt;</font>condition<font color="#8080a0">&gt;</font><b>)</b> <font color="#8080a0">&lt;</font>command<font color="#8080a0">&gt;</font></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Executes &lt;command&gt; while the &lt;condition&gt; evaluates
+to true (non zero result).<br>
+&lt;command&gt; may be either a single command or a block of commands.<br>
+It can contain the <a href="cmd_break.html">break</a> command: in that case the
+execution of the &lt;command&gt; will be immediately interrupted and the control
+transferred to the command following this while block.<br>
+It is valid for &lt;command&gt; to be an empty command terminated with a <b>;</b>.
+&lt;condition&gt; is an expression as the ones evaluated by <a href="doc_expressioneval.html">$(*)</a>
+with the following extensions:<br>
+If &lt;condition&gt; is a string, its length is evaluated: in this way a non-empty string
+causes the &lt;condition&gt; to be true, an empty string causes it to be false.<br>
+If &lt;condition&gt; is an array, its size is evaluated: in this way a non-empty array
+causes the &lt;condition&gt; to be true, an empty array causes it to be false.<br>
+If &lt;condition&gt; is a hash, the number of its entries is evaluated: in this way a non-empty hash
+causes the &lt;condition&gt; to be true, an empty hash causes it to be false.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%i</span> = 0;<br>
+while<span class="example-paren">(</span><span class="example-variable">%i</span> &lt; 100<span class="example-paren">)</span><span class="example-variable">%i</span>++<br>
+while<span class="example-paren">(</span><span class="example-variable">%i</span> &gt; 0<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%i</span> -= 10<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span><span class="example-variable">%i</span> &lt; 20<span class="example-paren">)</span>break;<br>
+<span class="example-bracket">}</span><br>
+echo <span class="example-variable">%i</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>exec</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>exec</div>      <div class='title-secondary-text'>Asynchronous execution of external programs</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>exec</b> <font color="#8080a0">[</font>switches<font color="#8080a0">]</font> <b>(</b><font color="#8080a0">&lt;</font>commandline<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>magic data:variant<font color="#8080a0">&gt;</font><font color="#8080a0">]</font><b>)</b><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">&lt;</font>callback command<font color="#8080a0">&gt;</font><br>
+}</div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><b>Overview</b><br>
+Executes the &lt;commandline&gt; by passing it to a command interpreter.
+The &lt;commandline&gt; is executed asynchronously: this means that
+when exec returns the control to the next command, &lt;commandline&gt;
+may be still running.<br>
+<br>
+<b>The callback</b><br>
+The &lt;callback command&gt; is triggered on several events related to the
+child process and it gets passed the following parameters:<br>
+$0 = &lt;event cause&gt;<br>
+$1 = &lt;event parameter&gt;<br>
+$2 = &lt;magic data&gt;<br>
+The first parameter specifies the event cause and contains one of the
+following strings: <i>stdout</i>, <i>stderr</i>, <i>terminated</i>, <i>started</i> and <i>ping</i>.
+<b>By default (if no switches are used) only <i>stdout</i> type events are triggered</b>.
+The second parameter depends on the event cause and contains data sensible
+to each event type. The third parameter is the eventual &lt;magic data&gt;
+passed to the exec command call.<br>
+<br>
+<b>Interacting with the process</b><br>
+If you use <a href="cmd_halt.html">halt</a> to terminate
+the callback then the slave process is killed immediately and
+no other callback events are triggered.<br> If you return some non empty string
+then this string will be written to the process stdin stream. This trick
+can be used to control interactive processes. Please note that you must
+include all the relevant carriage returns and newlines in the return value
+(see <a href="fnc_cr.html">$cr</a> and <a href="fnc_lf.html">$lf</a>).<br>
+<br>
+<b>Startup event</b><br>
+If the -x switch is used then the startup event is triggered
+just after the process has been successfully launched.
+The $0 parameter passed to the callback contains the string <i>started</i>.
+Parameter $1 contains the pid of the slave process.<br>
+<br>
+<b>Stdout data event</b><br>
+The stdout data event is triggered when the process prints some output
+on its stdout stream. This event is triggered by default and to disable
+it you must use the -n switch. $0 contains the string <i>stdout</i>.
+If the -b switch is not used then $1 contains a single line of process
+output with the trailing carriage return and/or line feed stripped.
+If -b is used then $1 contains the whole process output
+block (eventually empty) with all the cr/lf pairs.<br>
+<br>
+<b>Stderr data event</b><br>
+The stderr data event is similar to the stdout one but there are three differences.
+The first one is that the stderr event is <b>not</b> triggered by default: you must
+use the -e switch to enable it. The second difference is that $0
+contains <i>stderr</i> instead of <i>stdout</i>. The last difference is that $1 contains data
+coming from the slave process stderr stream.<br>
+<br>
+<b>Termination event</b><br>
+The termination event is triggered after the slave process has terminated its
+execution. You must use the -t switch to enable it since it is
+disabled by default. $0 contains the string <i>terminated</i>. $1 contains the process exit
+status value. (Note that if the process has crashed or has been terminated
+by an external signal then this value will be 0).<br>
+<br>
+<b>Ping event</b><br>
+The ping event is triggered only if the -p=&lt;timeout&gt; switch is passed.<br>
+This event may be useful to monitor the process status while it is not
+emitting any output, to write data to its stdin stream (by the means of <a href="cmd_return.html">return</a>)
+or simply to give some feedback to the user while the slave process is
+doing a long computation.<br>
+<br>
+<b>The extended scope variables</b><br>
+The &lt;callback command&gt; has a set of <a href="doc_data_types.html">extended scope variables</a>
+that conserve their value during the whole life time of the slave process.<br>
+These variables can be accessed through the %:&lt;varname&gt; syntax and are
+useful to store process private data between multiple &lt;callback command&gt; calls.<br>
+<b>Some words about the switches</b><br>
+If the -b switch is used then the &lt;callback command&gt; is called only once
+for the events stdout and stderr (if enabled) with the complete output block from the process.
+With the -b switch the events stdout and stderr are triggered once even if the process
+emits no output.
+The -s=&lt;interpreter&gt; switch may be used to specify the path of the command interpreter
+that is <i>sh -c</i> by default on UNIX machines and <i>cmd.exe /c</i> on Windows.
+The interpreter executable is searched on the system PATH.
+If the process can't be started then a warning message is printed in the current window
+unless the -q (quiet) flag is used.<br>
+<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-q | --quiet</td></tr>
+<tr><td class="switch-body-table-cell">&nbsp;&nbsp;&nbsp;&nbsp;Quiet: do not print any warnings</td></tr>
+<tr><td class="switch-title-table-cell">-t | --trigger-termination</td></tr>
+<tr><td class="switch-body-table-cell">&nbsp;&nbsp;&nbsp;&nbsp;Trigger the termination event</td></tr>
+<tr><td class="switch-title-table-cell">-x | --trigger-startup</td></tr>
+<tr><td class="switch-body-table-cell">&nbsp;&nbsp;&nbsp;&nbsp;Trigger the startup event</td></tr>
+<tr><td class="switch-title-table-cell">-n | --no-stdout</td></tr>
+<tr><td class="switch-body-table-cell">&nbsp;&nbsp;&nbsp;&nbsp;Do <b>not</b> trigger any stdout events</td></tr>
+<tr><td class="switch-title-table-cell">-e | --trigger-stderr</td></tr>
+<tr><td class="switch-body-table-cell">&nbsp;&nbsp;&nbsp;&nbsp;Trigger stderr events</td></tr>
+<tr><td class="switch-title-table-cell">-b | --output-block</td></tr>
+<tr><td class="switch-body-table-cell">&nbsp;&nbsp;&nbsp;&nbsp;Trigger the &lt;callback command&gt; with the stdout and stderr events exactly once, &nbsp;&nbsp;&nbsp;&nbsp;passing the complete block of process output. The events are triggered even &nbsp;&nbsp;&nbsp;&nbsp;if the process output is empty.</td></tr>
+<tr><td class="switch-title-table-cell">-k=&lt;maximum run time&gt; | --kill-after=&lt;maximum run time&gt;</td></tr>
+<tr><td class="switch-body-table-cell">&nbsp;&nbsp;&nbsp;&nbsp;Kill the process unconditionally after &lt;maximum run time&gt; milliseconds. &nbsp;&nbsp;&nbsp;&nbsp;If the -t switch is used then the termination event will be &nbsp;&nbsp;&nbsp;&nbsp;triggered just after the process has been killed.</td></tr>
+<tr><td class="switch-title-table-cell">-p=&lt;timeout&gt; | --trigger-ping=&lt;timeout&gt;</td></tr>
+<tr><td class="switch-body-table-cell">&nbsp;&nbsp;&nbsp;&nbsp;Trigger &lt;callback command&gt; with <i>ping</i> events every &lt;timeout&gt; milliseconds.</td></tr>
+<tr><td class="switch-title-table-cell">-w | --bind-to-window</td></tr>
+<tr><td class="switch-body-table-cell">&nbsp;&nbsp;&nbsp;&nbsp;Kill the process if the current window is closed. In this case the &nbsp;&nbsp;&nbsp;&nbsp;termination event is <b>not</b> triggered (since the parent window has been lost). &nbsp;&nbsp;&nbsp;&nbsp;If this switch is not used then the process is rebound to &nbsp;&nbsp;&nbsp;&nbsp;the active console window and continues running.</td></tr>
+<tr><td class="switch-title-table-cell">-s=&lt;interpreter command&gt; | --shell=&lt;interpreter command&gt;</td></tr>
+<tr><td class="switch-body-table-cell">&nbsp;&nbsp;&nbsp;&nbsp;Use &lt;interpreter command&gt; instead of the default interpreter <i>sh -c</i>. &nbsp;&nbsp;&nbsp;&nbsp;The &lt;interpreter command&gt; should be able to launch the interpreter &nbsp;&nbsp;&nbsp;&nbsp;and should contain the necessary arguments in order to allow &nbsp;&nbsp;&nbsp;&nbsp;KVIrc to pass the <i>commandline</i> by appending it as the last parameter.</td></tr>
+<tr><td class="switch-title-table-cell">-d | --direct</td></tr>
+<tr><td class="switch-body-table-cell">&nbsp;&nbsp;&nbsp;&nbsp;Use no command interpreter at all: run the command directly. &nbsp;&nbsp;&nbsp;&nbsp;Takes precedence over -s.</td></tr>
+<tr><td class="switch-title-table-cell">-q | --quiet</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;Run quietly</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+<span class="comment-text"># Really simple example: print only the stdout of a slave process</span><br>
+exec<span class="example-paren">(</span>"cat /proc/cpuinfo"<span class="example-paren">)</span><span class="example-bracket">{</span> echo $1; <span class="example-bracket">}</span>;<br>
+<span class="comment-text"># Now print only stderr: enable stderr and disable stdout</span><br>
+exec -e -n <span class="example-paren">(</span>"sed -senseless"<span class="example-paren">)</span><span class="example-bracket">{</span> echo $1; <span class="example-bracket">}</span>;<br>
+<span class="comment-text"># Do it another way: enable stderr and filter out stdout</span><br>
+exec -e <span class="example-paren">(</span>"sed -senseless"<span class="example-paren">)</span><span class="example-bracket">{</span> if<span class="example-paren">(</span>$0 == "stderr"<span class="example-paren">)</span>echo $1; <span class="example-bracket">}</span><br>
+<span class="comment-text"># Now enable all <span class="example-paren">(</span>almost<span class="example-paren">)</span> events and print them</span><br>
+exec -e -t -x <span class="example-paren">(</span>"cat /proc/cpuinfo && sed -senseless"<span class="example-paren">)</span><span class="example-bracket">{</span> echo [event:$0] $1; <span class="example-bracket">}</span><br>
+<span class="comment-text"># Now see what happens if -b is used</span><br>
+exec -b -e -t -x <span class="example-paren">(</span>"cat /proc/cpuinfo && sed -senseless"<span class="example-paren">)</span><span class="example-bracket">{</span> echo [event:$0] $1; <span class="example-bracket">}</span><br>
+<span class="comment-text"># Run an iterative script and kill it after 20 seconds</span><br>
+exec -k=20000 <span class="example-paren">(</span>"while true; do sleep 1; echo \"Tic\"; done"<span class="example-paren">)</span><span class="example-bracket">{</span> echo [event:$0] $1; <span class="example-bracket">}</span><br>
+<span class="comment-text"># Run a blocking process, kill it after 20 seconds</span><br>
+<span class="comment-text"># and give feedback to the user by the means of ping</span><br>
+exec -k=20000 -p=1000 -t <span class="example-paren">(</span>"cat"<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$0 == "ping"<span class="example-paren">)</span>echo "[event:$0] Please wait while doing a huge computation ..."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else if<span class="example-paren">(</span>$0 == "terminated"<span class="example-paren">)</span>echo "[event:$0] OK, done :<span class="example-paren">)</span>"<br>
+<span class="example-bracket">}</span><br>
+<span class="comment-text"># Do the same but this time use the extended scope vars</span><br>
+<span class="comment-text"># Use also a nicer syntax</span><br>
+exec -k=20000 -p=1000 -t <span class="example-paren">(</span>"cat"<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;switch<span class="example-paren">(</span>$0<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>"ping"<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>%:x == 1<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:x = 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Tic!"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span> else <span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:x = 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Tac!"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>"terminated"<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "OK, done :<span class="example-paren">)</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+<span class="comment-text"># Again do the same but kill the process explicitly</span><br>
+exec -x -p=1000 -t <span class="example-paren">(</span>"cat"<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;switch<span class="example-paren">(</span>$0<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>"started"<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Initialize the counter</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:x = 10;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>"ping"<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo %:x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:x--<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># When the counter reaches zero, kill the process with halt</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>%:x == 0<span class="example-paren">)</span>halt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>"terminated"<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Boom!"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+<span class="comment-text"># Now play with an interactive process</span><br>
+<span class="comment-text"># WARNING: Please note that spam is illegal and generates bad karma</span><br>
+<span class="comment-text"># Try it only with your own e-mail address as recipient</span><br>
+exec -s -k=60000 -t <span class="example-paren">(</span>"telnet my.mail.server.com 25"<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$0 == "started"<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:state = 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Returning an empty string does not write to stdin</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$1 == "stderr"<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "[stderr] $1"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$1 == "terminated"<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "[process terminated]"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo "[stdout] $1"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;switch<span class="example-paren">(</span>%:state<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>0<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Waiting for 220 <span class="example-paren">(</span>ready<span class="example-paren">)</span></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$str.match<span class="example-paren">(</span>"220*",$1<span class="example-paren">))</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:state++<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Sending HELO..."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "HELO myhostname$cr$lf";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>1<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Waiting for 250 <span class="example-paren">(</span>after the HELO<span class="example-paren">)</span></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$str.match<span class="example-paren">(</span>"250*",$1<span class="example-paren">))</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:state++<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Sending MAIL..."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "MAIL From: &lt;myname@mydomain.com&gt;$cr$lf"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span> else <span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "HELO command not accepted: $1"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>2<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Waiting for another 250 <span class="example-paren">(</span>MAIL accepted<span class="example-paren">)</span></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$str.match<span class="example-paren">(</span>"250*",$1<span class="example-paren">))</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:state++<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Sending RCPT..."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "RCPT To: &lt;me@myself.org&gt;$cr$lf"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span> else <span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "MAIL command not accepted: $1"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>3<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Waiting for another 250 <span class="example-paren">(</span>RCPT accepted<span class="example-paren">)</span></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$str.match<span class="example-paren">(</span>"250*",$1<span class="example-paren">))</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:state++<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Sending DATA..."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "DATA$cr$lf"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span> else <span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "RCPT not accepted: $1"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>4<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Waiting for 354 <span class="example-paren">(</span>OK, go on<span class="example-paren">)</span></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$str.match<span class="example-paren">(</span>"354*",$1<span class="example-paren">))</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:state++<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Sending body..."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "This is a test message :<span class="example-paren">)</span>$cr$lf$cr$lf.$cr$lf"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span> else <span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Mail body not accepted: $1"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>5<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># We don't wait anymore :<span class="example-paren">)</span></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:state++<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Sending QUIT..."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "QUIT$cr$lf"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Usually the mail server closes the connection</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%:state++<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>%:state &gt; 10<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># But if it does not in few messages</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Then force the process to die</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

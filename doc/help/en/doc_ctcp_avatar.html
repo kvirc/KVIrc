@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>The AVATAR idea</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>The AVATAR idea</div>      <div class='title-secondary-text'>Extending IRC fun: the AVATAR idea</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Introduction</div></td></tr><tr><td bgcolor="#EAEAEA">
+Starting from version 3.0.0 KVIrc supports the AVATAR protocol.
+The AVATAR term dictionary definitions include:<br>
+- Hindu mythology incarnation of a God<br>
+- Embodiment of a concept or philosophy<br>
+- In <b>cyberspace communities</b>, the representation of an
+user in a shared virtual reality.<br>
+The AVATAR protocol attempts to improve the IRC communication
+by adding a method for associating a graphical representation
+to an IRC user.<br>
+Since this may involve binary data transfers between users,
+the protocol is intended to be client based.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">The terms</div></td></tr><tr><td bgcolor="#EAEAEA">
+The user that wants to offer a digital representation of himself
+will be called <i>source user</i>. The ones that will receive the notification
+will be called <i>target users</i>.
+Every IRC user can be either a source user or target user.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">The idea</div></td></tr><tr><td bgcolor="#EAEAEA">
+Every IRC user has a client-side property called AVATAR. Let's say that there
+are two users: A and B.<br>
+When user A wants to see the B's avatar he simply sends a CTCP AVATAR request
+to B (the request is sent through a PRIVMSG IRC command).<br>
+User B replies with a CTCP AVATAR notification (sent through a NOTICE IRC command)
+with the name or URL of his avatar.<br>
+The actual syntax for the notification is:<br>
+<b>AVATAR &lt;avatar_file&gt; [&lt;filesize&gt;]</b>
+The &lt;avatar_file&gt; may be either the name of a B's local image file or a URL
+pointing to an image on some web server.<br>
+The optional &lt;filesize&gt; parameter is sent only if &lt;avatar_file&gt; is
+stored on the B's machine and there will be more info on that later.<br>
+Anyway, after A has received the notification he tries to locate the avatar
+file in its local cache (yes, &lt;filesize&gt; may help here and more on this later).
+If the file can be found
+and loaded then it is simply displayed in some way near the B's nickname
+otherwise A must download the avatar from some place.
+If the &lt;avatar_file&gt; contains a leading URL prefix (http://) then
+A fetches the image from the specified URL and after that displays
+it near the B's nickname. If the &lt;avatar_file&gt; does not contain the
+leading URL prefix then it is assumed that B offers this file for
+downloading via DCC from his machine. In this case A may also avoid
+requesting the file if the &lt;filesize&gt; is too large and the transfer
+would occupy too much bandwidth (for example).
+The DCC download is initiated by issuing a DCC GET &lt;avatar_file&gt; request to B.
+B may then reply with a standard DCC SEND or a DCC RSEND (KVIrc's extension).<br>
+The implementation of the DCC GET protocol is defined by other documents here around :).<br>
+<br>
+The CTCP AVATAR messages can be sent to a single user, a set of users or a channel:
+this depends only on the source user and how many clients he wants to reach.
+<br>
+There should be a convention on the image sizes: not a protocol limit.
+For example, the convention could be that all the images should be smaller than
+129x129 pixels. The preferred image format is <i>png</i> (Portable Network Graphics)
+since it allows good compression rates without compromising the image quality.
+Other formats may be accepted as well (Theoretically this protocol could be
+extended to allow movies or 3D images).
+The preferred image size may grow with time, as the network transmission speed grows.
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_generic_index_all.html">Miscellaneous</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

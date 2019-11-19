@@ -1,0 +1,176 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Syntactic rules</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Syntactic rules</div>      <div class='title-secondary-text'>Syntactic rules of the KVIrc scripting language</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>In the following table you can find a good part of the
+KVIrc scripting language syntactic rules.<br>
+<br>
+&lt;entity&gt; indicates an <b>entity that can appear exactly one time</b>.<br>
+[&lt;entity&gt;] indicates an <b>optional entity</b>.<br>
+{&lt;entity&gt;} indicates an <b>entity that can appear one or more times</b>.<br>
+'entity' indicates a <b>literal entity</b>: written exactly as it is.<br>
+&lt;entity1&gt;|&lt;entity2&gt; indicates mutually exclusive choices.<br>
+The mutually exclusive choices are often separated in two or more
+rules (productions), to improve readability.
+<table bgcolor="#D5D5D5" width="100%">
+<tr>
+<td>&lt;command buffer&gt;</td>
+<td>[&lt;whitespace&gt;][&lt;command block&gt;]{&lt;command buffer&gt;}</td>
+</tr>
+<tr>
+<td>&lt;command buffer&gt;</td>
+<td>[&lt;whitespace&gt;][&lt;single command&gt;]{&lt;command buffer&gt;}</td>
+</tr>
+<tr>
+<td>&lt;whitespace&gt;</td>
+<td>{&lt;space&gt;|&lt;tab&gt;|&lt;newline&gt;}['\'&lt;newline&gt;][&lt;whitespace&gt;]</td>
+</tr>
+<tr>
+<td>&lt;space&gt;</td>
+<td>' '['\'&lt;newline&gt;][&lt;space&gt;] (ASCII space character)</td>
+</tr>
+<tr>
+<td>&lt;tab&gt;</td>
+<td>'\t' (ASCII horizontal tabulation character)</td>
+</tr>
+<tr>
+<td>&lt;newline&gt;</td>
+<td>'\n' (ASCII line feed (LF) character)</td>
+</tr>
+<tr>
+<td>&lt;command block&gt;</td>
+<td>'{' &lt;command buffer&gt;[&lt;whitespace&gt;] '}'</td>
+</tr>
+<tr>
+<td>&lt;single command&gt;</td>
+<td>&lt;comment&gt;</td>
+</tr>
+<tr>
+<td>&lt;single command&gt;</td>
+<td>&lt;lvalue command&gt; &lt;command terminator&gt;</td>
+</tr>
+<tr>
+<td>&lt;single command&gt;</td>
+<td>&lt;rvalue command&gt; &lt;command terminator&gt;</td>
+</tr>
+<tr>
+<td>&lt;comment&gt;</td>
+<td>'#' {&lt;non comment terminator&gt;} &lt;comment terminator&gt;</td>
+</tr>
+<tr>
+<td>&lt;comment terminator&gt;</td>
+<td>&lt;newline&gt; | &lt;end of string&gt;</td>
+</tr>
+<tr>
+<td>&lt;end of string&gt;</td>
+<td>No character (internally ASCII character 0)</td>
+</tr>
+<tr>
+<td>&lt;command terminator&gt;</td>
+<td>&lt;newline&gt; | &lt;end of string&gt; | ';'</td>
+</tr>
+<tr>
+<td>&lt;non comment-terminator&gt;</td>
+<td>Any ASCII character except &lt;newline&gt; and &lt;end of string&gt;</td>
+</tr>
+<tr>
+<td>&lt;simple command&gt;</td>
+<td>[&lt;module name&gt;'.']&lt;command name&gt;[&lt;switch list&gt;]{&lt;space&gt;}&lt;command dependent part&gt;</td>
+</tr>
+<tr>
+<td>&lt;lvalue command&gt;</td>
+<td>&lt;variable&gt;[&lt;space&gt;]&lt;operation&gt;</td>
+</tr>
+<tr>
+<td>&lt;lvalue command&gt;</td>
+<td>&lt;variable&gt;'-&gt;'&lt;object command&gt;</td>
+</tr>
+<tr>
+<td>&lt;lvalue command&gt;</td>
+<td>&lt;identifier&gt;'-&gt;'&lt;object command&gt;</td>
+</tr>
+<tr>
+<td>&lt;operation&gt;</td>
+<td>&lt;one op operator&gt;</td>
+</tr>
+<tr>
+<td>&lt;operation&gt;</td>
+<td>&lt;two op operator&gt;[&lt;space&gt;]&lt;param string&gt;</td>
+</tr>
+<tr>
+<td>&lt;switch list&gt;</td>
+<td>{&lt;space&gt;}'-'&lt;alpha char&gt;[{&lt;space&gt;}'='&lt;single parameter&gt;][&lt;switch list&gt;]</td>
+</tr>
+<tr>
+<td>&lt;command name&gt;</td>
+<td>&lt;alphanumeric char&gt;{&lt;alphanumeric char&gt;}</td>
+</tr>
+<tr>
+<td>&lt;module name&gt;</td>
+<td>&lt;alphanumeric char&gt;{&lt;alphanumeric char&gt;}</td>
+</tr>
+<tr>
+<td>&lt;alphanumeric char&gt;</td>
+<td>Ascii characters 'A' to 'Z', 'a' to 'z', '0' to '9' and '_'</td>
+</tr>
+<tr>
+<td>&lt;variable&gt;</td>
+<td>&lt;global variable&gt; | &lt;local variable&gt;</td>
+</tr>
+<tr>
+<td>&lt;global variable&gt;</td>
+<td>'%' &lt;uppercase letter&gt; [&lt;alphanumeric char&gt;]['['&lt;param string&gt;']']</td>
+</tr>
+<tr>
+<td>&lt;local variable&gt;</td>
+<td>'%' &lt;lowercase letter&gt; [&lt;alphanumeric char&gt;]['['&lt;param string&gt;']']</td>
+</tr>
+<tr>
+<td>&lt;param string&gt;</td>
+<td>[&lt;single parameter&gt;][&lt;space&gt;[&lt;param string&gt;]]</td>
+</tr>
+<tr>
+<td>&lt;single parameter&gt;</td>
+<td>&lt;variable&gt; | &lt;identifier&gt; | &lt;nonterminator token&gt; | &lt;string&gt;</td>
+</tr>
+<tr>
+<td>&lt;nonterminator token&gt;</td>
+<td>&lt;nonterminator char&gt;['\'&lt;newline&gt;&lt;nonterminator char&gt;]</td>
+</tr>
+<tr>
+<td>&lt;nonterminator char&gt;</td>
+<td>Any ascii character except &lt;space&gt; and &lt;command terminator&gt;</td>
+</tr>
+<tr>
+<td>&lt;command dependent part&gt;</td>
+<td>Production in each command help page</td>
+</tr>
+</table>
+To be continued...
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_language_index_all.html">Language Overview</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

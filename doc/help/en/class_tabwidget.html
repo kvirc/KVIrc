@@ -1,0 +1,156 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>tabWidget class</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>tabWidget class</div>      <div class='title-secondary-text'>Provides a Tab Widget.</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The tabWidget class provides a stack of tabbed widgets.<br>
+Each tab is associated with a different widget (called a `page').<br>
+Only the current tab's page is shown in the page area; all the others tabs pages are hidden.<br>
+The user can show a different page by clicking on its tab.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="addTab">$addTab(&lt;widget:object&gt;,&lt;text_label:string&gt;,[&lt;icon_id&gt;])</a></font></b></code></td></tr>
+<tr><td>Adds another page to the tab view with the text label and optional icon.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="insertTab">$insertTab(&lt;widget:object&gt;,&lt;tex_label:string&gt;,&lt;index:uinteger&gt;)</a></font></b></code></td></tr>
+<tr><td>Inserts another tab and page to the tab view with name and label-text specified.<br> If index is not specified, the tab is simply appended.<br> Otherwise the new tab is inserted at the specified position.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setTabToolTip">$setTabToolTip(&lt;tab_widget:object&gt;,&lt;tooltip:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the tab tool tip for the tabWidget to &lt;tooltip&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removeTabToolTip">$removeTabToolTip(&lt;tab_widget:object&gt;)</a></font></b></code></td></tr>
+<tr><td>Removes the tab tool tip for the tab. If the page does not have a tip, nothing happens.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setTabLabel">$setTabLabel(&lt;tab_widget&gt;, &lt;label:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the tab label for &lt;tab_widget&gt;  to label.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="changeTab">$changeTab(&lt;tab_widget:object&gt;,&lt;label:text&gt;,[&lt;icon_id&gt;])</a></font></b></code></td></tr>
+<tr><td>Defines a new label, and optional icon, for the tab .</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setCurrentPage">$setCurrentPage(&lt;index:uinteger&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the index position of the current tab page to &lt;index&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; currentPageIndex">&lt;integer&gt; $currentPageIndex()</a></font></b></code></td></tr>
+<tr><td>Returns the current page index.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; tabLabel">&lt;string&gt; $tabLabel(&lt;index:uinteger&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the tab label of the &lt;index&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;hobject&gt; widgetAt">&lt;hobject&gt; $widgetAt(&lt;index:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the tab widget of the &lt;index&gt; or 0 if index is out of the tabs count.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;index:integer&gt; indexOf">&lt;index:integer&gt; $indexOf(&lt;widget:hobject&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the &lt;index&gt; of the &lt;widget&gt; in the tabs.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; currentTabLabel">&lt;string&gt; $currentTabLabel()</a></font></b></code></td></tr>
+<tr><td>Returns the label of the current tab.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removePage">$removePage(&lt;tab_widget:object&gt;)</a></font></b></code></td></tr>
+<tr><td>Remove the page &lt;tab_widget&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setTabPosition">$setTabPosition(&lt;tab_position:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets TabPosition. Valid parameters are : Top, Bottom.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; count">&lt;integer&gt; $count()</a></font></b></code></td></tr>
+<tr><td>Returns the number of tabs in the tab bar.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setTabsClosable">$setTabsClosable(&lt;enable:bool&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets whether close buttons are automatically added to each tab</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="currentChangedEvent">$currentChangedEvent()</a></font></b></code></td></tr>
+<tr><td>This function is invoked when the current tab was changed.<br> The default implementation emits the <a href="#currentChange">$currentChange</a>() signal.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="tabCloseRequestEvent">$tabCloseRequestEvent()</a></font></b></code></td></tr>
+<tr><td>This function is invoked when when the close button on a tab is clicked. The index is the index of the tab that should be removed.<br> The default implementation emits the <a href="#tabCloseRequest">$tabCloseRequest</a>() signal. See also <a href="#setTabsClosable">$setTabsClosable</a>().</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="currentChange">$currentChange(&lt;index:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#currentChangedEvent">$currentChangedEvent</a>().<br> If you reimplement that function you will have to emit the signal manually (if you still need it).<br></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="tabCloseRequest">$tabCloseRequest(&lt;index:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of [classfnc]tabCloseRequestEvent[/classfnc]().<br></td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+<span class="comment-text"># First we'll create the main tabWidget.</span><br>
+<span class="example-variable">%Tabwidget</span>=$new<span class="example-paren">(</span>tabWidget<span class="example-paren">)</span><br>
+<span class="example-variable">%Tabwidget</span>-&gt;$setToolTip<span class="example-paren">(</span>"Example of TabWidget class"<span class="example-paren">)</span><br>
+<span class="example-variable">%Tabwidget</span>-&gt;$setTabPosition<span class="example-paren">(</span>Top<span class="example-paren">)</span><br>
+<span class="example-variable">%Tabwidget</span>-&gt;$resize<span class="example-paren">(</span>300,200<span class="example-paren">)</span><br>
+<span class="comment-text"># Now we'll create the new widgets and put they in to the main tabWidget.</span><br>
+<span class="example-variable">%firsttab</span>=$new<span class="example-paren">(</span>vbox<span class="example-paren">)</span><br>
+<span class="example-variable">%secondtab</span>=$new<span class="example-paren">(</span>vbox<span class="example-paren">)</span><br>
+<span class="comment-text"># Now we'll create the item to put in to tab's pages.</span><br>
+<span class="comment-text"># First tab</span><br>
+<span class="example-variable">%hbox</span>=$new<span class="example-paren">(</span>hbox,<span class="example-variable">%firsttab</span><span class="example-paren">)</span><br>
+<span class="example-variable">%labelbt</span>=$new<span class="example-paren">(</span>label,<span class="example-variable">%hbox</span><span class="example-paren">)</span><br>
+<span class="example-variable">%labelbt</span>-&gt;$settext<span class="example-paren">(</span>Botton Tab<span class="example-paren">)</span><br>
+<span class="example-variable">%labeltt</span>=$new<span class="example-paren">(</span>label,<span class="example-variable">%hbox</span><span class="example-paren">)</span><br>
+<span class="example-variable">%labeltt</span>-&gt;$settext<span class="example-paren">(</span>Top Tab<span class="example-paren">)</span><br>
+<span class="example-variable">%hbox</span>=$new<span class="example-paren">(</span>hbox,<span class="example-variable">%firsttab</span><span class="example-paren">)</span><br>
+<span class="example-variable">%buttontb</span>=$new<span class="example-paren">(</span>button,<span class="example-variable">%hbox</span><span class="example-paren">)</span><br>
+<span class="example-variable">%buttontb</span>-&gt;$settext<span class="example-paren">(</span>"To &Botton"<span class="example-paren">)</span><br>
+<span class="example-variable">%buttontt</span>=$new<span class="example-paren">(</span>button,<span class="example-variable">%hbox</span><span class="example-paren">)</span><br>
+<span class="example-variable">%buttontt</span>-&gt;$settext<span class="example-paren">(</span>"To &Top"<span class="example-paren">)</span><br>
+<span class="comment-text"><br>
+<span class="comment-text"># Now we'll give a layout to all items.<br>
+</span><span class="comment-text"># This also allows to use privateimpl without making buttons global variables<br>
+</span><span class="comment-text"># Add the page to the main tab.<br>
+</span></span><br>
+<span class="example-variable">%Tabwidget</span>-&gt;$addTab<span class="example-paren">(</span><span class="example-variable">%firsttab</span>,Top&Button,33<span class="example-paren">)</span><br>
+<span class="comment-text"># Implementing the action to do when the user click the buttons.</span><br>
+privateimpl<span class="example-paren">(</span><span class="example-variable">%buttontb</span>,mousepressevent<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%Tabwidget</span>-&gt;$setTabPosition<span class="example-paren">(</span>Bottom<span class="example-paren">)</span><br>
+<span class="example-bracket">}</span><br>
+privateimpl<span class="example-paren">(</span><span class="example-variable">%buttontt</span>,mousepressevent<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%Tabwidget</span>-&gt;$setTabPosition<span class="example-paren">(</span>Top<span class="example-paren">)</span><br>
+<span class="example-bracket">}</span><br>
+<span class="comment-text"># We do the same work  with the second tab's page.</span><br>
+<span class="example-variable">%labelwp</span>=$new<span class="example-paren">(</span>label,<span class="example-variable">%secondtab</span><span class="example-paren">)</span><br>
+<span class="example-variable">%labelwp</span>-&gt;$settext<span class="example-paren">(</span>"Enjoy the new Class provided by"<span class="example-paren">)</span><br>
+<span class="example-variable">%labelwp</span>-&gt;$setalignment<span class="example-paren">(</span>"Center"<span class="example-paren">)</span><br>
+<span class="example-variable">%labelgen</span>=$new<span class="example-paren">(</span>label,<span class="example-variable">%secondtab</span><span class="example-paren">)</span><br>
+<span class="example-variable">%labelgen</span>-&gt;$settext<span class="example-paren">(</span>Grifisx \& Noldor<span class="example-paren">)</span><br>
+<span class="example-variable">%labelgen</span>-&gt;$setalignment<span class="example-paren">(</span>"Center"<span class="example-paren">)</span><br>
+<span class="example-variable">%Tabwidget</span>-&gt;$addTab<span class="example-paren">(</span><span class="example-variable">%secondtab</span>,&About,50<span class="example-paren">)</span><br>
+<span class="comment-text"># Let's show our example.</span><br>
+<span class="example-variable">%Tabwidget</span>-&gt;$show<span class="example-paren">()</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>awhois</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>awhois</div>      <div class='title-secondary-text'>Asynchronous WHOIS</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>awhois</b> <font color="#8080a0">[</font>-i<font color="#8080a0">]</font> <b>(</b><font color="#8080a0">&lt;</font>nickname<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>magic<font color="#808080">:variant</font><font color="#8080a0">&gt;</font><font color="#8080a0">]</font><b>)</b><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">&lt;</font>callback command<font color="#8080a0">&gt;</font><br>
+}</div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>AWHOIS stands for Asynchronous WHOIS. It is used to obtain data for a specified
+irc user (designated by &lt;nickname&gt;). This command sends a WHOIS query to the
+server and silently awaits the sequence of replies. When the <i>End of WHOIS</i> message
+is received from server the &lt;callback command&gt; is executed passing the WHOIS
+information as positional parameters.<br>
+The &lt;magic&gt; string is an optional string to be evaluated at AWHOIS execution time.
+It is passed as the last positional parameter.<br>
+Callback command parameters:<br>
+$0 = nickname<br>
+$1 = username<br>
+$2 = hostname<br>
+$3 = realname (may be empty)<br>
+$4 = server<br>
+$5 = idle time (may be empty)<br>
+$6 = signon time (may be empty)<br>
+$7 = channels (may be empty)<br>
+$8 = server that provided the information<br>
+$9 = away message (empty if user hasn't set an away message)<br>
+$10 = magic string evaluated at AWHOIS call (may be empty)<br>
+$11 = account the user is logged into (may be empty)<br>
+$12 = additional, server-specific info (may be empty)<br>
+If the -i switch is specified, the WHOIS message is sent to the server
+that the &lt;nickname&gt; user is connected to; in this way you will probably
+get the idle time of the user too.<br>
+If the server replies with a <i>No such nick/channel error message</i> the
+&lt;callback command&gt; will be still triggered, but will have all the parameters
+empty with the exception of $0.<br>
+If the connection gets interrupted before all the information have been received,
+the &lt;callback command&gt; will never be triggered.<br>
+This command is <a href="doc_connection_dependent_commands.html">connection dependent</a>.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-i | --idle-time</td></tr>
+<tr><td>Ask the WHOIS information to the server that &lt;nickname&gt; is connected to, effectively returning the user's idle time.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+awhois<span class="example-paren">(</span>pragma<span class="example-paren">)</span><span class="example-bracket">{</span> echo $0-; <span class="example-bracket">}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

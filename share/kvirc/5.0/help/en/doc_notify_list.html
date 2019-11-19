@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Notify lists</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Notify lists</div>      <div class='title-secondary-text'>Tracking users on IRC</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The notify list is a means of keeping track of users on IRC.<br>
+Once connected to an IRC server, you can tell KVIrc to check
+periodically if your friends are online.<br>
+This is basically achieved by setting a property in the <a href="doc_registered_users.html">registered users database</a>
+entry.<br>
+The property is called <i>notify</i>, and you have to set it to the nickname
+that you want to look for.<br>
+So for example, assume to register a friend of yours like Szymon:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_reguser.add.html">reguser.add</a> Szymon<br>
+<a href="cmd_reguser.addmask.html">reguser.addmask</a> Szymon Pragma!*@*.it<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+And then want it in the notify list; nothing easier, just set
+hist <i>notify</i> property to the nickname that you want him to be <i>looked for</i>:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_reguser.setproperty.html">reguser.setproperty</a> Szymon notify Pragma<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+In this way, once in a while, KVIrc will send to the server an ISON message
+with the nickname Pragma. If Szymon is online, you will be notified with a message:<br>
+<i>Pragma [someuser@somehost.it] is on IRC</i>.<br>
+If Szymon uses often <i>[Pragma]</i> as his secondary nickname, you can do the following:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_reguser.addmask.html">reguser.addmask</a> Szymon [Pragma]*@*.it<br>
+<a href="cmd_reguser.setproperty.html">reguser.setproperty</a> Szymon notify <i>Pragma [Pragma]</i><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+KVIrc will then look for both nicknames getting online.<br>
+KVIrc supports three notify lists management methods:<br>
+The <i>stupid ISON method</i>, the <i>intelligent ISON method</i> and the <i>WATCH method</i>.<br>
+The <i>stupid ISON method</i> will assume that Szymon is online if any user with nickname
+Pragma (or [Pragma] in the second example) gets online; this means that also Pragma!someuser@somehost.com will be
+assumed to be <i>Szymon</i> and will be shown in the notify list.<br>
+This might be a false assumption (since somehost.com does not even match *.it),
+but it is the best result that the <i>stupid ISON method</i> can achieve.<br>
+The <i>intelligent ISON method</i> will also check the Pragma's username and hostname
+and match it in the registered masks; so in the example above, you will be notified if
+any user that matches Pragma!*@*.it gets online; (but you will <b>not</b> be notified if
+(for example) Pragma!someuser@somehost.com gets online).<br>
+So what's the point in including a stupid method? :) Well... the intelligent
+method <i>eats</i> some of your IRC bandwidth; it has to send USERHOST messages
+for every group of 5 users in the notify list. If you have a lot of users
+in the notify list, it might become slow and eventually cause a
+client to server flood.<br>
+So finally, the intelligent method is the default. If you have <i>flood</i> problems,
+or if you think that the notify list is quite slow, try the <i>stupid</i> method:
+it is not that bad after all.<br>
+The third notify list management method is the <i>WATCH method</i>.<br>
+It uses a totally different (and better) approach to the notify lists management,
+and can be used only on the networks that support the WATCH notify method (DALnet, WebNet, etc.).<br>
+KVIrc will attempt to guess if the server you're currently using supports the WATCH command
+and eventually use this last method.<br>
+The WATCH method uses the <i>notify</i> property to get the nicknames that have to be
+sent to the server in the /WATCH commands.
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_generic_index_all.html">Miscellaneous</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>server</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>server</div>      <div class='title-secondary-text'>Connects to the specified server</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>server</b> <font color="#8080a0">[</font>switches<font color="#8080a0">]</font> <font color="#8080a0">[</font><font color="#8080a0">&lt;</font>server<font color="#808080">:string</font><font color="#8080a0">&gt;</font> <font color="#8080a0">[</font><font color="#8080a0">&lt;</font>port<font color="#808080">:uint</font><font color="#8080a0">&gt;</font><font color="#8080a0">]</font><font color="#8080a0">]</font></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Attempts a connection to the specified &lt;server&gt;
+on the specified &lt;port&gt;. If no &lt;port&gt; is specified
+the default 6667 is used. If no &lt;server&gt; is specified,
+the currently selected server from the server list is used
+unless the -l switch is passed: in this case the last server
+that was used in the IRC context is re-used.
+If the &lt;server&gt; is a valid IPv6 address, the -i switch is implied.<br>
+The &lt;server&gt; is added to the server list (if not already
+there) and set as current.<br>
+<br>
+If &lt;server&gt; is in the form <i>id:&lt;some_string&gt;</i> then &lt;some_string&gt;
+is interpreted as the server's internal ID (specified in the options dialog).
+This is useful when you need to force KVIrc to choose between multiple
+server entries with the same hostname and port stored in the database.<br>
+Please note that this form causes most of the switches to have no effect
+since the entry in the database will override them. If no server
+entry with the specified identifier is found then an error will be generated
+and the connection attempt will stop.
+<br>
+If &lt;server&gt; doesn't seem to be a valid IP address or hostname (i.e. it contains no dots)
+and it doesn't look to be in the form <i>id:&lt;some_string&gt;</i> then
+it is assumed to be a network name and if such a network is found
+in the server list then the best server for that network is contacted.
+(KVIrc tries to guess the round-robin (random) servers first).<br>
+This behaviour can be forced by adding the <i>net:</i> prefix to the &lt;server&gt;
+(so it will work even if the network name contains a dot).<br>
+<br>
+The connection is attempted in the current IRC context. If there is already
+a connection in progress then it is <i>brutally</i> terminated.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-b=&lt;local address:string&gt; | --bind-address=&lt;local address:string&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Bind the outgoing connection to &lt;local address&gt;. The &lt;local address&gt; must be either the IP address of a local interface or a local interface name itself (e.g. eth0 under Linux, en0 under macOS etc.) suitable for contacting the remote &lt;server&gt;: this means that if you're going to use the -i switch, the &lt;local address&gt; <b>must</b> be an IPv6 address. If using a local interface name as &lt;local address&gt; (working on most, but not all systems), the KVIrc network engine will automatically detect the interface address (i.e. the default address of that interface).</td></tr>
+<tr><td class="switch-title-table-cell">-c=&lt;command sequence:string&gt; | --command=&lt;command sequence:string&gt;</td></tr>
+<tr><td class="switch-body-table-cell">The &lt;command sequence&gt; will be executed just after the login operations have been completed.</td></tr>
+<tr><td class="switch-title-table-cell">-f=&lt;socket filter:string&gt; | --filter=&lt;socket filter:string&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Activates &lt;socket filter&gt; on the connection. A socket filter is a plugin that can adapt the IRC protocol to other existing protocols such as OpenNap. For plain IRC it is not needed.</td></tr>
+<tr><td class="switch-title-table-cell">-i | --ipv6</td></tr>
+<tr><td class="switch-body-table-cell">Connects to the &lt;server&gt; via the IPv6 protocol (if IPv6 support has been compiled in).</td></tr>
+<tr><td class="switch-title-table-cell">-n | --new-context</td></tr>
+<tr><td class="switch-body-table-cell">Forces the connection to be attempted in a new IRC context (server window) instead of the current one.</td></tr>
+<tr><td class="switch-title-table-cell">-m | --minimized</td></tr>
+<tr><td class="switch-body-table-cell">If a new console window is created (due to -n or -u) then create it as minimized.</td></tr>
+<tr><td class="switch-title-table-cell">-p=&lt;password:string&gt; | --password=&lt;password:string&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Uses &lt;password&gt; to login to the server (the password will be stored in the server entry too).</td></tr>
+<tr><td class="switch-title-table-cell">-q=&lt;nick:string&gt; | --nickname=&lt;nick:string&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Uses &lt;nick&gt; to login to the server (the nickname will be stored in the server entry too).</td></tr>
+<tr><td class="switch-title-table-cell">-s | --ssl</td></tr>
+<tr><td class="switch-body-table-cell">Activates the SSL support for this connection (if OpenSSL support has been compiled in). If SSL is enabled and no port is specified, the connection will be made to port 6697.</td></tr>
+<tr><td class="switch-title-table-cell">-u | --unused-context</td></tr>
+<tr><td class="switch-body-table-cell">Forces the connection to be attempted in the first IRC context that has no connection in progress. If all the IRC contexts have connections in progress then a new one is created.</td></tr>
+<tr><td class="switch-title-table-cell">-l | --last</td></tr>
+<tr><td>When &lt;server&gt; and &lt;port&gt; are empty use the last ones used in the IRC context.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+server irc.tin.it<br>
+server -i irc6.ircd.it<br>
+server -i ircd.stealth.net 6667<br>
+server irc.undernet.org 6665<br>
+server -n irc.openprojects.net<br>
+server -c="join #kvirc" irc.stealth.net 6665<br>
+server -b=ppp0 irc.tin.it<br>
+server undernet<br>
+server id:mybouncerwithusername1<br>
+server id:mybouncerwithusername2<br>
+server net:under.net<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

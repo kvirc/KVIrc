@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Introduction to KVIrc</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Introduction to KVIrc</div>      <div class='title-secondary-text'>Introduction to KVIrc</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Introduction</div></td></tr><tr><td bgcolor="#EAEAEA">
+In really simple words KVIrc is a Chat client: you use it to talk to other
+people over the internet. More specifically KVIrc is an IRC client
+and if you haven't read it yet please take a look at the <a href="doc_ircintro.html">IRC introduction</a>
+then come back here. Now that you know what IRC is then you already know
+that an IRC client acts as a relay for the information that you
+exchange with your IRC server. KVIrc also acts as a filter and provides
+an user-friendly interface for the communication protocol that is a bit complex
+and rude when seen in its original form (by using telnet for example).
+KVIrc also contains a sophisticated scripting language that allows you to
+implement automated reactions to the network events. This is something similar
+to creating a robot that acts spontaneously after you have told him what to do.
+The scripting language allows you to enhance the KVIrc's interface and
+to handle special IRC network features that KVIrc itself isn't aware of.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">History</div></td></tr><tr><td bgcolor="#EAEAEA">
+The original meaning of the name KVIrc was, more or less, <i>K Visual IRC Client</i>.
+The initial K is a common prefix for the applications written for the KDE
+desktop environment: this was the case of the initial versions of KVIrc.
+Starting from version 2.0.0 the absolute KDE dependency has been dropped (for several
+valid reasons) and the support became optional.<br>
+<i>Visual</i> was (and is) one of the client goals: having an user-friendly interface to the IRC world.
+Many extreme UNIX users have misinterpreted the <i>user-friendly</i> interface and have tagged
+KVIrc as a client for newbies. Well... that is partially true: KVIrc is ALSO a client for newbies:
+A total IRC novice should be able to chat in few minutes after installing the program,
+preferably without bothering to read any manual. Yes, I know that it is not in <i>UNIX</i> style.
+On the other side, KVIrc contains a whole bunch of complex features that can be discovered
+only by reading the documentation and experimenting. I bet that you can also
+find a lot of undocumented tricks :)
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">A bit of <i>philosophy</i></div></td></tr><tr><td bgcolor="#EAEAEA">
+At the time of writing (Feb 2005) KVIrc approaches release 3.2.6. The small
+<b>one-man-project</b> has grown to the level of a small <b>community</b>.
+People from around the world have joined our development efforts and are
+constantly donating their time, eyes and bandwidth in order to make KVIrc
+a really good IRC client. Besides of simply giving you a free (as in freedom!) and nice
+program for chatting, they are giving you the great opportunity to see what's behind
+the scenes: you have the source code for the whole application.
+In practical terms this means more or less 300.000 lines of tested, debugged and
+commented C++ code, several PERL scripts, dozens of makefiles and all the means
+that you need to produce a working KVIrc executable on all the supported platforms.
+There is a lot of knowledge (some people call it <i>technology</i> because it sells better)
+inside, ready to be acquired by an attentive reader. Don't forget that the freedom of
+building your own executable from the sources gives you the opportunity
+of verifying the source itself: for example you might be interested in verifying
+that KVIrc will not run any malware code on your machine nor will collect
+your private data and sell it to someone while you're happily chatting with a friend.
+<b>We call it freedom, please respect it.</b>
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Well...</div></td></tr><tr><td bgcolor="#EAEAEA">
+Have fun :)<br>
+<br>
+Szymon Stefanek and The KVIrc Development Team
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_generic_index_all.html">Miscellaneous</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

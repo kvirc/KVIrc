@@ -1,0 +1,139 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>webview</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>webview</div>      <div class='title-secondary-text'>Provides web support in a widget using webkit.</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Provides an embedded web browser using webkit. Page structure can be managed by web element's unique identifiers.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="load">$load(&lt;url:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the current URL for the webView and starts loading it</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setHtml">$setHtml(&lt;html_code:string&gt;,[&lt;baseurl:string&gt;])</a></font></b></code></td></tr>
+<tr><td>Sets the content of the web view to the specified &lt;html_code&gt;. External objects such as stylesheets or images referenced in the HTML document are located relative to &lt;baseurl&gt;. The html is loaded immediately; external objects are loaded asynchronously.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="findText">$findText(&lt;txt:string&gt;,[flag 1,flag 2,..;string])</a></font></b></code></td></tr>
+<tr><td>Finds the specified string, in the page, using the given options. Valid flags are: <pre><br> FindBackward		- Searches backwards instead of forwards;<br> FindCaseSensitively	- Changes the behaviour to a case sensitive find operation.<br> FindWrapsAroundDocument	- Restart from the beginning of the document if the end was reached and the text was not found.<br> HighlightAllOccurrences	- Highlights all existing occurrences.<br> </pre></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;array&gt; frames">&lt;array&gt; $frames()</a></font></b></code></td></tr>
+<tr><td>Returns an array containing the names of the document frames.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="appendWebViewActionToMenu">appendWebViewActionToMenu(&lt;menu:h_object&gt;,&lt;webview_action:string&gt;,[&lt;icon_identifier&gt;])</a></font></b></code></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; firstChild">&lt;id:integer&gt; $firstChild(&lt;element_id:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Return the identifier of element's first child.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;array&gt; findAll">&lt;array&gt; $findAll(&lt;element_id:integer&gt;,&lt;query:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Searches for all the elements named &lt;query&gt; and stores them in an array of element's identifiers.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; findFirst">&lt;id:integer&gt; $findFirst(&lt;element_id:integer&gt;,&lt;query:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Searches for the first element named &lt;query&gt;; returns the identifier.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; parentElement">&lt;id:integer&gt; $parentElement(&lt;element_id:integer&gt;,)</a></font></b></code></td></tr>
+<tr><td>Returns the parent of &lt;element_id&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; nextSibling">&lt;id:integer&gt; $nextSibling(&lt;element_id&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the element just after &lt;element_id&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="appendInside">$appendInside(&lt;element_id&gt;,&lt;html_code&gt;)</a></font></b></code></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="appendOutside">$appendOutside(&lt;element_id&gt;,&lt;html_code&gt;)</a></font></b></code></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; elementTagName">&lt;string&gt; $elementTagName(&lt;element_id&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the tag name of the &lt;element_id&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; getDocumentElement">&lt;id:integer&gt; $getDocumentElement([frame_name:string])</a></font></b></code></td></tr>
+<tr><td>Return as unique identifier the document element of the frame [frame_name]. If no value has been specified for [frame_name], the main frame of the page will be used.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="string attributeNames">string $attributeNames(&lt;element_id&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns a comma-separated list of the attribute names set on element &lt;element_id&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="string attribute">string $attribute(&lt;element_id&gt;,&lt;name:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the value of the attribute &lt;name&gt; for element &lt;element_id&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setStyleProperty">setStyleProperty(&lt;element_id&gt;,&lt;name:string&gt;,&lt;value:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the value of the inline style on element &lt;element_id&gt; with the given name to &lt;value&gt; . In order to ensure that the value will be applied, you may have to append "!important" to the value.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;value:string&gt; styleProperty">&lt;value:string&gt; styleProperty(&lt;element_id&gt;,&lt;name:string&gt;,&lt;style_resolve_strategy:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the value of the style with the given name using the specified strategy. If a style with name does not exist, an empty string is returned. Possible value for &lt;style_resolve_strategy&gt; are: <pre><br> CascadedStyle  - the property's value is determined using the rules defined in the document's stylesheet. <b>This is the default strategy</b>.<br> InlineStyle    - the property's value is determined by element definition, without respecting CSS rules.<br> ComputedStyle  - the property's value is determined by the style property resolved from the environment.<br> </pre></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="pixmap makePreview">pixmap $makePreview()</a></font></b></code></td></tr>
+<tr><td>Returns a 212x142 thumbnail of the current webView constants. The returned object is an instance of the pixmap class.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="string toPlainText">string $toPlainText(&lt;element_id&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the string representation of element &lt;element_id&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="string setPlainText">string $setPlainText(&lt;element_id&gt;)</a></font></b></code></td></tr>
+<tr><td>Set the string representation of the  element &lt;element_id&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setElementAttribute">$setElementAttribute(&lt;element_id&gt;,&lt;name:string&gt;,&lt;value:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the attribute &lt;name&gt; with value &lt;value&gt; to the element &lt;element_id&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setWebSetting">$setWebSetting(&lt;name:string&gt;,&lt;value:bool&gt;)</a></font></b></code></td></tr>
+<tr><td>Enables or disables the &lt;name&gt; setting depending on &lt;value&gt;. Valid settings name: JavascriptEnabled, PluginsEnabled, JavascriptCanOpenWindows, JavascriptCanAccessClipboard, ZoomTextOnly, LocalContentCanAccessFileUrls.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removeFromDocument">$removeFromDocument(&lt;element_id&gt;)</a></font></b></code></td></tr>
+<tr><td>Removes the element &lt;element_id&gt; from the document.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removeClass">$removeClass(&lt;element_id&gt;,&lt;class_name:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Removes a class from the element &lt;element_id&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="string classes">string $classes(&lt;element_id&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns a comma-separated list of classes set on the element &lt;element_id&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setLinkDelegationPolicy">$setLinkDelegationPolicy(&lt;policy:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the link delegation policy: what happens when the users click on a link. Valid values: <br> DontDelegateLinks: No links are delegated. Instead, webView tries to handle them all. <br> DelegateExternalLinks: When activating links that point to documents not stored on the local filesystem or an equivalent then $linkClickedEvent() is executed. <br> DelegateAllLinks: Whenever a link is activated the $linkClickedEvent() is executed.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="linkClickedEvent">$linkClickedEvent()</a></font></b></code></td></tr>
+<tr><td>This function can be called when the user clicks on a link, depending no the current link delegation policy. The argument of the function is the URL that has been clicked.<br> The default implementation emits the <a href="class_webview.html#linkclicked">$linkclicked</a>() signal.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="loadStartedEvent">$loadStartedEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when the load of the page has started. The default implementation emits the <a href="class_webview.html#loadstarted">$loadstarted</a>() signal.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="loadProgressEvent">$loadProgressEvent()</a></font></b></code></td></tr>
+<tr><td>This function can be called during the page load progress. The argument of the function is an int value that represent the loading progress status, ranging from 0 to 100.<br> The default implementation emits the <a href="class_webview.html#loadprogress">$loadprogress</a>() signal.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="loadFinishedEvent">$loadFinishedEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when the load of the page has finished. The argument of the function is a bool value that is true if the page has been loaded successfully, false otherwise.<br> The default implementation emits the <a href="class_webview.html#loadfinished">$loadfinished</a>() signal.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="downloadRequestEvent">$downloadRequestEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when the user tries to download a file. The argument of the function is the URL of the file.<br> You should return a valid path in the filesystem where to save the file.<br> The default implementation emits the <a href="class_webview.html#downloadrequest">$downloadrequest</a>() signal.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="downloadProgressEvent">$downloadProgressEvent()</a></font></b></code></td></tr>
+<tr><td>This function can be called during the download of a file. Three integer arguments are passed to this function: the number of downloaded bytes, the download ID, the size of the remove file (if known). The default implementation emits the <a href="class_webview.html#downloadprogress">$downloadprogress</a>() signal.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="downloadCompletedEvent">$downloadCompletedEvent()</a></font></b></code></td></tr>
+<tr><td>This function can be called when a file download finishes. The argument of the function is the an integer value containing the download ID. The default implementation emits the <a href="class_webview.html#downloadcompleted">$downloadcompleted</a>() signal.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="linkClicked">linkClicked()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of [classfnc:webview]linkClickedEvent[/classfnc]().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="loadStarted">loadStarted()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of [classfnc:webview]loadStartedEvent[/classfnc]().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="loadProgress">loadProgress()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of [classfnc:webview]loadProgressEvent[/classfnc]().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="loadFinished">loadFinished()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of [classfnc:webview]loadFinishedEvent[/classfnc]().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="downloadRequest">downloadRequest()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of [classfnc:webview]downloadRequestEvent[/classfnc]().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="downloadProgress">downloadProgress()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of [classfnc:webview]downloadProgressEvent[/classfnc]().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="downloadCompleted">downloadCompleted()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of [classfnc:webview]downloadCompletedEvent[/classfnc]().</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

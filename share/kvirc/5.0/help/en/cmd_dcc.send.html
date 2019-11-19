@@ -1,0 +1,90 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>dcc.send</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>dcc.send</div>      <div class='title-secondary-text'>Sends a file</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>dcc.send</b> <font color="#8080a0">[</font>-s<font color="#8080a0">]</font> <font color="#8080a0">[</font>-n<font color="#8080a0">]</font> <font color="#8080a0">[</font>-c<font color="#8080a0">]</font> <font color="#8080a0">[</font>-u<font color="#8080a0">]</font> <font color="#8080a0">[</font>-b<font color="#8080a0">]</font> <font color="#8080a0">[</font>-g<font color="#8080a0">[</font>=<font color="#8080a0">&lt;</font>file size<font color="#8080a0">&gt;</font><font color="#8080a0">]</font><font color="#8080a0">]</font> <font color="#8080a0">[</font>-t<font color="#8080a0">]</font> <font color="#8080a0">[</font>-m<font color="#8080a0">[</font>=<font color="#8080a0">&lt;</font>boolean<font color="#8080a0">&gt;</font><font color="#8080a0">]</font><font color="#8080a0">]</font> <font color="#8080a0">[</font>-i=<font color="#8080a0">&lt;</font>interface<font color="#8080a0">&gt;</font><font color="#8080a0">]</font> <font color="#8080a0">[</font>-p=<font color="#8080a0">&lt;</font>port<font color="#8080a0">&gt;</font><font color="#8080a0">]</font> <font color="#8080a0">[</font>-a=<font color="#8080a0">&lt;</font>fake address<font color="#8080a0">&gt;</font><font color="#8080a0">]</font> <font color="#8080a0">[</font>-f=<font color="#8080a0">&lt;</font>fake port<font color="#8080a0">&gt;</font><font color="#8080a0">]</font> <font color="#8080a0">&lt;</font>nickname<font color="#8080a0">&gt;</font> <font color="#8080a0">[</font>filename<font color="#8080a0">]</font></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Attempts to send the file &lt;filename&gt; to &lt;nickname&gt;.<br>
+If [filename] is specified it must be an absolute file path,
+otherwise a file selection dialog is opened.<br>
+The simplest case <i>dcc.send &lt;nickname&gt; &lt;filename&gt;</i> will work just as in all
+the other IRC clients, but this command is really more powerful...<br>
+Before attempting to understand the possibilities of this command,
+be sure to know how a <a href="doc_dcc_connection.html">DCC negotiation and connection</a> works.<br>
+The file will be sent as a sequence of packets which must
+be acknowledged one by one by the active client.<br>
+There is a special option (see $option()) called <i>fast send</i> (also known
+as <i>send ahead</i>) that makes KVIrc avoid to wait for the acknowledge
+of the last packet before sending the next one.<br>
+Anyway, the connection is declared as successful only
+when the whole file (all the packets) has been acknowledged.<br>
+If you need to send a file but you're firewalled, you might take
+a look at the <a href="cmd_dcc.rsend.html">dcc.rsend</a> command. It also handles
+the mIRC zero port protocol extension.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-g[=&lt;file size&gt;] | --get[=&lt;file size&gt;]</td></tr>
+<tr><td class="switch-body-table-cell">This switch is a dirty trick, you can use it to receive files from people behind a firewall with masquerading enabled.<br> It causes the transfer direction to be inverted; your client will receive the file from the remote host instead of sending it.<br> &lt;file size&gt; is the expected file size in bytes. This parameter can be omitted, and in this case the DCC will <i>blindly</i> trust the remote end and assume that the file has been transferred correctly when the remote end closes the connection.<br> If you don't pass the -n option, the remote end will receive an informational DCC RECV request, specifying the IP address and the port to connect to.<br> -t can be used to prevent sending acknowledges to the remote end, and -u can be used to avoid the listening socket to timeout.<br> -a and -f can be used as well, but I see no real reason for that...<br> Here is an example of usage of this option:<br> spion can't accept connections (is behind a firewall with masquerading or some other reason...), to his machine.<br> spion wants to send the file important.jpg to Pragma.<br> spion tells to Pragma that he wants to send him the file and Pragma sets up a connection in the following way:<br> <b>dcc.send -g spion important.png</b><br> spion will see the informational DCC RECV request with the IP address and port that Pragma is listening on. Assume that the address was 212.212.231.220 and the port 32344.<br> spion will then use the following command:<br> <b>dcc.send -c -i=212.212.231.220 -p=32344 Pragma /home/spion/important.jpg</b><br> Hey presto! The file is transferring.<br> Pragma will see no file progress indication, since the file size is unknown on Pragma's side.<br> If spion had specified the file size, Pragma could use -g=&lt;file size&gt; while setting up the connection, to be able to see the progress indications.<br> If Pragma used the the -n option, the DCC RECV indication wouldn't have been sent, in this case Pragma would need to communicate the IP address and the port <i>manually</i> to spion.<br></td></tr>
+<tr><td class="switch-title-table-cell">-b | --blind</td></tr>
+<tr><td class="switch-body-table-cell">Assume that no acknowledges are sent. Assume that the transfer was successful when the whole file has been sent, then close the socket.<br> This is called a <i>blind</i> DCC SEND.<br></td></tr>
+<tr><td class="switch-title-table-cell">-t | -tdcc</td></tr>
+<tr><td class="switch-body-table-cell">Emulate the TDCC protocol: Use the TDCC CTCP message (DCC TSEND) for requesting the connection and assume that no acknowledges are sent. Wait for the remote end to close the connection.<br></td></tr>
+<tr><td class="switch-title-table-cell">-m[=&lt;boolean&gt;] | --minimize[=&lt;boolean&gt;]</td></tr>
+<tr><td class="switch-body-table-cell">If the -m switch is passed, the default boolCreateMinimizedDccSend option is overridden with the &lt;boolean&gt; parameter passed. So actually by passing -m=1 will create a minimized DCC SEND even if the <a href="fnc_option.html">$option</a>(boolCreateMinimizedDccSend) returns false.<br> In the same way, by passing -m=0 you will create a non minimized DCC SEND. If no &lt;boolean&gt; value is specified, it defaults to 1.<br></td></tr>
+<tr><td class="switch-title-table-cell">-n | --no-ctcp</td></tr>
+<tr><td class="switch-body-table-cell">Do <b>not</b> send the CTCP request to the target user, you will have to do it manually, or the remote user will have to connect manually (for example by using dcc.recv -c).<br></td></tr>
+<tr><td class="switch-title-table-cell">-c | --connect</td></tr>
+<tr><td class="switch-body-table-cell">Attempt to CONNECT to the remote host specified as &lt;interface&gt; and &lt;port&gt;, instead of listening (active connection instead of a passive one). In this case the -i and -p switches are mandatory.<br> The 'c' switch takes precedence over 'n' (In fact both should be mutually exclusive).<br> If the 'c' and 'n' switches are missing, this commands needs to be executed in a window that is bound to a connected IRC context (you need a third entity to accomplish the negotiation).<br></td></tr>
+<tr><td class="switch-title-table-cell">-i=&lt;interface&gt; | --ip=&lt;interface&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Bind the local listening socket to the specified &lt;interface&gt; (which is an IP address, IPv4 or IPv6). If this switch is <b>not</b> specified, the socket is bound to the interface of the current IRC connection (if any) or to <i>127.0.0.1</i>.<br> You can also specify a local interface name to get the address from (this works only for IPv4 interfaces since IPv6 ones seems to be unsupported by the system ioctl() calls at the moment (for Linux at least)).<br> Here go some examples:<br> -i=215.243.12.12: this will bind to the IPv4 interface with the specified address.<br> -i=3ffe:1001::1: this will bind to the IPv6 interface with the specified address.<br> -i=ppp0: this will bind to the IPv4 address of the interface ppp0 (if supported by the underlying system).<br> The -i switch parameter may serve also as a target address when the -c switch is used.<br></td></tr>
+<tr><td class="switch-title-table-cell">-p=&lt;port&gt; | --port=&lt;port&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Bind the local listening socket to the specified &lt;port&gt;. If this switch is <b>not</b> specified, the port will be a <i>random</i> one chosen by the kernel.<br></td></tr>
+<tr><td class="switch-title-table-cell">-a=&lt;fake address&gt; | --fake-address=&lt;fake address&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Send the &lt;fake address&gt; as target for the remote client in the requesting CTCP message. If this switch is not given, the CTCP will contain the real IP address of the listening interface.<br></td></tr>
+<tr><td class="switch-title-table-cell">-f=&lt;fake port&gt; | --fake-port=&lt;fake port&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Send the &lt;fake port&gt; as target port for the remote client in the requesting CTCP message. If this switch is not given, the CTCP will contain the real port of the listening socket. <br><br> All these switches are meant to allow maximum flexibility of the DCC negotiation, earlier KVIrc releases had serious problems with firewalled and/or masqueraded machines. With the -a and -f switches you can work around it.<br>[/br]</td></tr>
+<tr><td class="switch-title-table-cell">-u | --unlimited</td></tr>
+<tr><td class="switch-body-table-cell">If the 'u' switch is given, the connection attempt will never time out; this might be useful if you want to leave a listening socket for a friend of yours while you are sleeping and have the CTCP processing disabled. The 'u' switch works either in active and passive mode.<br></td></tr>
+<tr><td class="switch-title-table-cell">-s | --ssl</td></tr>
+<tr><td>Use a Secure Socket Layer for the transfer; the whole communication will be encrypted with a private key algorithm after a public key handshake.<br> This option will work only if the KVIrc executable has been compiled with SSL support and the remote end supports the SSL protocol too.<br> Please note that this will may down the transfer somewhat.<br> -s can be combined with -t.<br> The CTCP negotiation will use SSEND as parameter (or eventually TSSEND).<br> When requesting a SSL based DCC SEND to someone you probably will need a certificate. If you don't have one, create it (for example with CA.pl -newcert) and set it in the options dialog.</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

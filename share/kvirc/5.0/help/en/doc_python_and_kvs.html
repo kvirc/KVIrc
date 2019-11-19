@@ -1,0 +1,253 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Using Python from KVS and vice-versa.</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Using Python from KVS and vice-versa.</div>      <div class='title-secondary-text'>How to use Python from KVS and KVS from Python.</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Introduction</div></td></tr><tr><td bgcolor="#EAEAEA">
+Starting from version 4.0.0 you can include Python code snippets
+in KVS code and you can use KVS commands from within Python.
+This feature is present only if a working Python installation
+has been found at build time.<br>
+The Python support is very similar to the Perl support present
+since 3.x, so if you have used Perl from KVIrc before you'll
+find the API is almost the same.. otherwise read on :)
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Using Python from KVS</div></td></tr><tr><td bgcolor="#EAEAEA">
+Using Python from KVIrc is really easy - just enclose
+your Python code snippet inside <a href="cmd_python.begin.html">python.begin</a> and <a href="cmd_python.end.html">python.end</a>.
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_python.begin.html">python.begin</a><br>
+&lt;python code goes here&gt;<br>
+<a href="cmd_python.end.html">python.end</a><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+For example:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_python.begin.html">python.begin</a><br>
+f = open<span class="example-paren">(</span>'myfile.txt', 'w'<span class="example-paren">)</span><br>
+f.write<span class="example-paren">(</span>'This is a test\n'<span class="example-paren">)</span><br>
+f.close<span class="example-paren">()</span><br>
+<a href="cmd_python.end.html">python.end</a><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+A Python code snippet can appear anywhere a KVS code snippet can
+with the only restriction that it must be enclosed in <a href="cmd_python.begin.html">python.begin</a>
+and <a href="cmd_python.end.html">python.end</a>. This means that you can write Python code
+in the commandline, in the aliases, the event handlers, popups... anywhere.<br>
+If you have already encountered KVIrc's <a href="cmd_eval.html">eval</a> command
+then you probably also know how to execute a Python code snippet from a file :)
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Using KVS from python</div></td></tr><tr><td bgcolor="#EAEAEA">
+KVIrc exports several commands to the Python namespace
+that allow you to invoke KVIrc's functions from inside the Python code snippet.<br>
+The nicest example is kvirc.echo():
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_python.begin.html">python.begin</a><br>
+kvirc.echo<span class="example-paren">(</span>"Hello KVIrc world from python!"<span class="example-paren">)</span><br>
+<a href="cmd_python.end.html">python.end</a><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+kvirc.echo() is the counterpart of the <a href="cmd_echo.html">echo</a>.
+The exact syntax is:<br>
+&nbsp; &nbsp; <b>kvirc.echo(&lt;text&gt;[,&lt;colorset&gt;[,&lt;windowid&gt;]])</b><br>
+&lt;text&gt; is obviously the text to be printed. &lt;colorset&gt; is
+the equivalent of the <a href="cmd_echo.html">echo</a> -i option and &lt;windowid&gt;
+is the equivalent of the -w option. Both &lt;colorset&gt; and &lt;windowid&gt;
+can be omitted (in this case KVIrc will use a default colorset and the current window).
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Python execution contexts</div></td></tr><tr><td bgcolor="#EAEAEA">
+The Python code snippets are executed by a Python interpreter - each
+interpreter has its own context and thus its own variables,
+own function namespace etc.<br>
+<br>
+In the example above, KVIrc creates an interpreter when <a href="cmd_python.begin.html">python.begin</a>
+is invoked and destroys it at <a href="cmd_python.end.html">python.end</a> parsing time.
+In fact, KVIrc can maintain multiple persistent interpreters that will
+allow you to preserve your context across <a href="cmd_python.begin.html">python.begin</a> invocations.<br>
+<br>
+You can invoke a specific Python context by passing it as parameter to the <a href="cmd_python.begin.html">python.begin</a>
+command:
+</td></tr><tr><td class="example-box"><br>
+[cmd]python.begin<span class="example-paren">(</span>"mycontext"<span class="example-paren">)</span>[/cmd]<br>
+myvariable = "mycontext"<br>
+kvirc.echo<span class="example-paren">(</span>"This Python code is executed from " + myvariable<span class="example-paren">)</span><br>
+<a href="cmd_python.end.html">python.end</a><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The nice thing is that at a later time you can invoke this context again
+and discover that mycontext has preserved its value:
+</td></tr><tr><td class="example-box"><br>
+[cmd]python.begin<span class="example-paren">(</span>"mycontext"<span class="example-paren">)</span>[/cmd]<br>
+kvirc.echo<span class="example-paren">(</span>"myvariable is still equal to " + myvariable<span class="example-paren">)</span><br>
+<a href="cmd_python.end.html">python.end</a><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The first time you invoke a named Python context it is automatically created and
+persists until KVIrc terminates or the Python context is explicitly destroyed
+by <a href="cmd_python.destroy.html">python.destroy</a>.<br>
+<br>
+There is a third possibility to destroy a context - when the
+pythoncore module is forcibly unloaded (by /pythoncore.unload). This
+is however a rare case and should be treated just like a KVIrc restart (the
+user probably WANTS the contexts to be reinitialized).<br>
+<br>
+The nice thing is that not only will your variables be preserved, any python
+function or class you declare in a context will persist.
+It's just like executing a long Python script file with pauses inside.<br>
+<br>
+If you omit the Python context name in the <a href="cmd_python.begin.html">python.begin</a> command
+(or if you use an empty string in its place)
+then KVIrc will create a temporary context for the snippet execution
+and will destroy it immediately after <a href="cmd_python.end.html">python.end</a> has been called.<br>
+<br>
+The major side effect of keeping persistent Python contexts is that
+python's symbol table will grow, and if not used carefully, the interpreter
+may become a memory hog. So if you're going to use persistent contexts,
+either try to keep the symbol table clean or explicitly call <a href="cmd_python.destroy.html">python.destroy</a>
+once in a while to recreate the interpreter.<br>
+If you just execute occasional Python code snippets and don't need to keep
+persistent variables, then just use the nameless temporary context provided
+by <a href="cmd_python.begin.html">python.begin</a>("").
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Passing parameters to the Python script</div></td></tr><tr><td bgcolor="#EAEAEA">
+The easiest way to pass parameters to the Python code snippet
+is to put them as <a href="cmd_python.begin.html">python.begin</a> arguments.
+In fact the complete syntax of <a href="cmd_python.begin.html">python.begin</a> is:<br>
+<b>python.begin(&lt;python context&gt;,&lt;arg0&gt;,&lt;arg1&gt;,...)</b><br>
+Where the &lt;arg0&gt;,&lt;arg1&gt;...&lt;argN&gt; parameters
+are passed to the Python context as elements of the aArgs array.
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_python.begin.html">python.begin</a><span class="example-paren">(</span>"","Hello world!","Now I CAN",1,2,3<span class="example-paren">)</span><br>
+for l in range<span class="example-paren">(</span>0,5<span class="example-paren">)</span>:<br>
+    kvirc.echo<span class="example-paren">(</span>aArgs[l]<span class="example-paren">)</span><br>
+<a href="cmd_python.end.html">python.end</a><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Accessing the KVIrc scripting context from python</div></td></tr><tr><td bgcolor="#EAEAEA">
+KVIrc exposes the following functions that manipulate
+variables of KVIrc's current KVS execution context:<br>
+&nbsp; &nbsp; <b>kvirc.getLocal(&lt;x&gt;)</b><br>
+Returns the value of KVIrc's local variable %x.<br>
+&nbsp; &nbsp; <b>kvirc.getGlobal(&lt;Y&gt;)</b><br>
+Returns the value of KVIrc's global variable %Y.<br>
+&nbsp; &nbsp; <b>kvirc.setLocal(&lt;x&gt;,&lt;value&gt;)</b><br>
+Sets KVIrc's local variable %x to &lt;value&gt;<br>
+&nbsp; &nbsp; <b>kvirc.setGlobal(&lt;Y&gt;,&lt;value&gt;)</b><br>
+Sets KVIrc's global variable %Y to &lt;value&gt;<br>
+The local variables referenced belong to the current KVS execution context
+while the global variables are visible everywhere.
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%pippo</span> = test<br>
+<span class="example-variable">%Pluto</span> = 12345<br>
+<a href="cmd_python.begin.html">python.begin</a><br>
+mypippo = kvirc.getLocal<span class="example-paren">(</span>"pippo"<span class="example-paren">)</span><br>
+mypippo += " rox"<br>
+mypluto = kvirc.getGlobal<span class="example-paren">(</span>"Pluto"<span class="example-paren">)</span><br>
+mypluto += " rox"<br>
+kvirc.setLocal<span class="example-paren">(</span>"pippo",mypippo<span class="example-paren">)</span><br>
+kvirc.setGlobal<span class="example-paren">(</span>"Pluto",mypluto<span class="example-paren">)</span><br>
+<a href="cmd_python.end.html">python.end</a><br>
+<a href="cmd_echo.html">echo</a> "\<span class="example-variable">%pippo</span> is" <span class="example-variable">%pippo</span><br>
+<a href="cmd_echo.html">echo</a> "\<span class="example-variable">%Pluto</span> is" <span class="example-variable">%Pluto</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Executing arbitrary KVIrc commands from python</div></td></tr><tr><td bgcolor="#EAEAEA">
+You can execute arbitrary KVS commands from Python by means of:<br>
+&nbsp; &nbsp; <b>kvirc.eval(&lt;code&gt;)</b><br>
+This function behaves exactly like the ${ &lt;code&gt; } KVS construct -
+it executes &lt;code&gt; in a child context and returns its evaluation result.<br>
+The following two code snippets have equivalent visible effects:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_echo.html">echo</a> $<span class="example-bracket">{</span> return "Yeah!"; <span class="example-bracket">}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_python.begin.html">python.begin</a><br>
+kvirc.echo<span class="example-paren">(</span>kvirc.eval<span class="example-paren">(</span>"return \"Yeah!\""<span class="example-paren">))</span>;<br>
+<a href="cmd_python.end.html">python.end</a><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+You can "eval" compound command sequences and variable ones.<br>
+Remember that the Python code snippet is evaluated in a child KVS context
+and thus the local variables are NOT visible!
+The following code snippets may easily fool you:
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%x</span> = 10<br>
+<a href="cmd_python.begin.html">python.begin</a><br>
+kvirc.eval<span class="example-paren">(</span>"echo \"The value is <span class="example-variable">%x</span>\""<span class="example-paren">)</span><br>
+<a href="cmd_python.end.html">python.end</a><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+This will print "The value is " since %x is not accessible from the eval's context.
+If you have tried to write something like this then you probably need to rewrite it as:
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%x</span> = 10<br>
+<a href="cmd_python.begin.html">python.begin</a><br>
+x = kvirc.getLocal<span class="example-paren">(</span>"x"<span class="example-paren">)</span><br>
+kvirc.eval<span class="example-paren">(</span>"echo \"The value is ".$x."\""<span class="example-paren">)</span><br>
+<a href="cmd_python.end.html">python.end</a><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+&nbsp;&nbsp;&nbsp;&nbsp;</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">A shortcut for kvirc.eval("/say...")</div></td></tr><tr><td bgcolor="#EAEAEA">
+&nbsp;&nbsp;&nbsp;&nbsp;Since kvirc.eval("/say...") is a common calling pattern, say has been added
+&nbsp;&nbsp;&nbsp;&nbsp;to the KVIrc Python namespace. You can now call
+&nbsp;&nbsp;&nbsp;&nbsp;</td></tr><tr><td class="example-box"><br>
+kvirc.say<span class="example-paren">(</span>"Hi all!"<span class="example-paren">)</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+and that will mimic the behaviour of
+</td></tr><tr><td class="example-box"><br>
+/<a href="cmd_say.html">say</a> Hi all!<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The complete syntax for kvirc.say() is:<br>
+&nbsp; &nbsp; <b>kvirc.say(&lt;text&gt;[,&lt;windowid&gt;])</b><br>
+and the semantics are obvious (see also /<a href="cmd_say.html">say</a>).
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Python script return values</div></td></tr><tr><td bgcolor="#EAEAEA">
+The <a href="cmd_python.begin.html">python.begin</a> command propagates the Python code return
+value to the KVIrc context (just like a <a href="cmd_setreturn.html">setreturn</a>() would do)
+- this makes it easier to create an alias that executes a Python script and
+returns its result.<br>
+<br>
+Without this automatic propagation, you would be forced to play with variables:
+<ul>
+<li>First use <b>kvirc.setLocal('var', '123')</b> from inside the
+python script;</li>
+<li>Then, from the KVIrc script after <a href="cmd_python.end.html">python.end</a>, retrieve the
+%var variable, check its value and call <a href="cmd_setreturn.html">setreturn</a>() on it.</li>
+</ul>
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Executing Python scripts from files</div></td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_alias.html">alias</a><span class="example-paren">(</span>pythonexec<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%tmp</span> = "python.begin<span class="example-paren">(</span>\"\",$1,$2,$3,$4,$5<span class="example-paren">)</span>";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%tmp</span> .= $file.read<span class="example-paren">(</span>$0<span class="example-paren">)</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%tmp</span> .= "python.end";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eval <span class="example-variable">%tmp</span>;<br>
+<span class="example-bracket">}</span><br>
+pythonexec "/home/pragma/mypythonscript.pl" "param1" "param2" "param3"<br>
+<span class="comment-text"># or even</span><br>
+<a href="cmd_echo.html">echo</a> $pythonexec<span class="example-paren">(</span>"/home/pragma/computeprimelargerthan.pl","10000"<span class="example-paren">)</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Curiosity</div></td></tr><tr><td bgcolor="#EAEAEA">
+The Python support in KVIrc is implemented as a master-slave module pair.
+The python.* module is the master while pythoncore is the slave.
+When Python support isn't compiled in, the python.* commands
+print some warnings and exit gracefully while the pythoncore module
+refuses to be loaded. When Python support is compiled in but
+for some reason the libpython.so can't be found or loaded, pythoncore fails
+the dynamic loading stage, however python.* only fails gracefully with warning
+messages. This trick allows scripters to check for python
+support with <a href="fnc_python.isavailable.html">$python.isavailable</a> and to embed Python code snippets
+in KVS even if the support is missing - the snippets will be just skipped.<br>
+<br>
+Happy Python hacking :)<br>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_language_index_all.html">Language Overview</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

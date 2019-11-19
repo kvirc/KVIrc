@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>$system.dbus</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>$system.dbus</div>      <div class='title-secondary-text'>Performs a D-Bus call</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><font color="#8080a0">&lt;</font><font color="#808080">variant</font><font color="#8080a0">&gt;</font> <b>$system.dbus</b><b>(</b><font color="#8080a0">&lt;</font>service<font color="#808080">:string</font><font color="#8080a0">&gt;</font>,<font color="#8080a0">&lt;</font>path<font color="#808080">:string</font><font color="#8080a0">&gt;</font>,<font color="#8080a0">&lt;</font>interface<font color="#808080">:string</font><font color="#8080a0">&gt;</font>,<font color="#8080a0">&lt;</font>method<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>bus_type<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>parameter1<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>parameter2<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,...<font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font><b>)</b></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This function allows performing simple D-Bus calls without executing
+an external process. This feature is available ONLY under unix:
+this means that this function is absolutely
+non portable (don't use it in scripts that you're going to distribute).
+&lt;application&gt; is the name of the application being called, &lt;objectid&gt; is the
+identifier of the object called, &lt;function&gt; is the function to be executed
+on the remote object and &lt;parameter1&gt;,&lt;parameter2&gt;,... is the list of
+parameters to be passed. The &lt;function&gt; name must contain the
+trailing parenthesis and parameter specification (see examples).
+The &lt;bus_type&gt; specifies the bus to connect, use "system" for systemBus or
+"session" for sessionBus. If it's leaved blank, it will use sessionBus.
+The parameters MUST be in the form "type=value"
+where "type" is the C++ type of the parameter and value
+is the string representation of the parameter data. Currently
+KVIrc supports only QString,QByteArray,bool,int and uint data types.<br>
+The returned value is the string representation of the returned
+data if the return type is known, otherwise it is the name of the data type returned.
+<br>
+If the service name is prefixed with "?" then the call is performed in "remote test"
+mode: no "remote" errors are printed and the function returns 1 if the call executed
+successfully and 0 if the call failed. This can be used with the very first
+call to programmaticaly test if the remote application is running.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+<span class="comment-text">#get a string list of torrents currently in queue in ktorrent<br>
+</span>echo $system.dbus<span class="example-paren">(</span>"org.ktorrent.ktorrent","/KTorrent", "org.ktorrent.KTorrent","torrents"<span class="example-paren">)</span><br>
+<span class="comment-text">#stop a torrent in ktorrent by its name<br>
+</span>echo $system.dbus<span class="example-paren">(</span>"org.ktorrent.ktorrent","/KTorrent", "org.ktorrent.KTorrent","stop","QString=Torrent Name"<span class="example-paren">)</span><br>
+<span class="comment-text">#start the kde task manager<br>
+</span>echo $system.dbus<span class="example-paren">(</span>"org.freedesktop.ScreenSaver","/App", "org.kde.krunner.App","showTaskManager"<span class="example-paren">)</span><br>
+<span class="comment-text">#get the clipboard contents using dbus<br>
+</span>echo $system.dbus<span class="example-paren">(</span>"org.kde.klipper","/klipper", "org.kde.klipper.klipper","getClipboardContents"<span class="example-paren">)</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_function_alphabetic_a.html">Functions</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

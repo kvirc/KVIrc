@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>The DCC module</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>The DCC module</div>      <div class='title-secondary-text'>Direct Client Connection</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Overview</div></td></tr><tr><td bgcolor="#EAEAEA">
+The DCC module handles the Direct Client Connection
+protocol layer and all it's sub-protocols.<br>
+The sub-protocols include the standard CHAT
+the standard SEND and its variants plus several
+KVIrc extensions like RECV, RSEND, GET and VOICE.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Initiating a DCC negotiation</div></td></tr><tr><td bgcolor="#EAEAEA">
+The following commands initiate a specific DCC session
+with a remote client:<br>
+<a href="cmd_dcc.chat.html">dcc.chat</a><br>
+<a href="cmd_dcc.send.html">dcc.send</a><br>
+<a href="cmd_dcc.rsend.html">dcc.rsend</a><br>
+<a href="cmd_dcc.recv.html">dcc.recv</a><br>
+<a href="cmd_dcc.get.html">dcc.get</a><br>
+<a href="cmd_dcc.voice.html">dcc.voice</a>
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Handling the DCC events</div></td></tr><tr><td bgcolor="#EAEAEA">
+Each DCC session has an associated unique identifier (&lt;dcc_id&gt;).<br>
+You can interact with the session by using several commands
+and functions exported by this module and by passing the above session
+id as parameter.<br>
+The session related commands and functions are the following:<br>
+<a href="fnc_dcc.sessionlist.html">$dcc.sessionlist</a><br>
+<a href="fnc_dcc.protocol.html">$dcc.protocol</a><br>
+<a href="fnc_dcc.connectiontype.html">$dcc.connectiontype</a><br>
+<a href="fnc_dcc.transferstatus.html">$dcc.transferstatus</a><br>
+<a href="fnc_dcc.isfiletransfer.html">$dcc.isfiletransfer</a><br>
+<a href="fnc_dcc.isfileupload.html">$dcc.isfileupload</a><br>
+<a href="fnc_dcc.isfiledownload.html">$dcc.isfiledownload</a><br>
+<a href="fnc_dcc.localnick.html">$dcc.localnick</a><br>
+<a href="fnc_dcc.localuser.html">$dcc.localuser</a><br>
+<a href="fnc_dcc.localhost.html">$dcc.localhost</a><br>
+<a href="fnc_dcc.localip.html">$dcc.localip</a><br>
+<a href="fnc_dcc.localport.html">$dcc.localport</a><br>
+<a href="fnc_dcc.localfilename.html">$dcc.localfilename</a><br>
+<a href="fnc_dcc.localfilesize.html">$dcc.localfilesize</a><br>
+<a href="fnc_dcc.remotenick.html">$dcc.remotenick</a><br>
+<a href="fnc_dcc.remoteuser.html">$dcc.remoteuser</a><br>
+<a href="fnc_dcc.remotehost.html">$dcc.remotehost</a><br>
+<a href="fnc_dcc.remoteip.html">$dcc.remoteip</a><br>
+<a href="fnc_dcc.remoteport.html">$dcc.remoteport</a><br>
+<a href="fnc_dcc.remotefilename.html">$dcc.remotefilename</a><br>
+<a href="fnc_dcc.remotefilesize.html">$dcc.remotefilesize</a><br>
+<a href="fnc_dcc.irccontext.html">$dcc.irccontext</a><br>
+<a href="fnc_dcc.session.html">$dcc.session</a><br>
+<a href="fnc_dcc.getsslcertinfo.html">$dcc.getsslcertinfo</a><br>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_module_index_all.html">Modules</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>parse</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>parse</div>      <div class='title-secondary-text'>Executes commands from a file</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>parse</b> <font color="#8080a0">[</font>-q<font color="#8080a0">]</font> <font color="#8080a0">[</font>-e<font color="#8080a0">]</font> <font color="#8080a0">[</font>-f<font color="#8080a0">]</font> <font color="#8080a0">[</font>-r<font color="#8080a0">]</font> <font color="#8080a0">&lt;</font>filename<font color="#808080">:string</font><font color="#8080a0">&gt;</font> <font color="#8080a0">[</font><font color="#8080a0">&lt;</font>parameter1<font color="#808080">:variant</font><font color="#8080a0">&gt;</font> <font color="#8080a0">[</font><font color="#8080a0">&lt;</font>parameter2<font color="#808080">:variant</font><font color="#8080a0">&gt;</font> <font color="#8080a0">[</font>...<font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Executes commands from the external file &lt;filename&gt;.<br>
+&lt;filename&gt; can be an absolute or relative path.<br>
+If it is a relative path then KVIrc will try to look it up
+in the path of the calling script (if any) and in the current
+KVIrc working directory.
+The file must be UTF-8-encoded (see below).
+[parameters] is a space separated string of parameters to be
+passed to the script. The parameter $0 will contain the
+path of the file being parsed, the other parameters will
+be available starting from $1.<br>
+If &lt;filename&gt; is an existing directory name a file dialog
+will pop up, allowing you to choose a file to parse.
+The file dialog will start in the directory specified by &lt;filename&gt;.
+If you don't know the name of an existing directory, just pass '.'
+or '/'. The command just prints a warning if the file cannot be loaded for
+some reason. If you want the command to stop with an error in
+this case then use the -e switch.<br>
+This command has a builtin alias called <a href="cmd_include.html">include</a>.
+<br><br>
+Note that script files, especially the ones that you distribute,
+MUST be encoded in UTF-8. Any other encoding (especially the exotic
+ones like KOI8R or Shift-JIS) may screw things up.
+The reason for such a constraint is simple: KVIrc has no means
+of knowing the encoding that one or other scripter uses to
+edit his files. Unlike other languages (like HTML, for example)
+there is no <i>external</i> metadata that will allow for
+encoding detection before the data is actually decoded.
+UTF-8 is the right way (tm). Use it.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-e | --fail-on-load</td></tr>
+<tr><td class="switch-body-table-cell">Causes the command to terminate with an error when the file can't be loaded: the error termination stops the parsing of the current script too. If the -e switch is not used then file load failures are eventually reported only as a warning or not reported at all (if -q is used).</td></tr>
+<tr><td class="switch-title-table-cell">-f | --fail-on-error</td></tr>
+<tr><td class="switch-body-table-cell">Causes the command to terminate with an error when the execution of the script loaded from disk generates an error. This error termination stops the parsing of the current script too. If the -f switch is not used then the loaded script errors do not stop the current script.</td></tr>
+<tr><td class="switch-title-table-cell">-q | --quiet</td></tr>
+<tr><td class="switch-body-table-cell">Causes the command to run quietly without printing warnings about empty &lt;filename&gt; and file loading errors.</td></tr>
+<tr><td class="switch-title-table-cell">-r | --propagate-return</td></tr>
+<tr><td>Causes the return value of the script to be propagated to the calling context. This allows the usage of ${ } trick to extract this return value. See the examples section for a sample usage.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><br>
+parse /home/pragma/myscript.kvs<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="example-box"><br>
+<span class="comment-text"># Here we are assuming that fetchdata.kvs returns a string</span><br>
+<span class="comment-text"># We evaluate the return value through $<span class="example-bracket">{}</span> and echo it</span><br>
+echo $<span class="example-bracket">{</span> parse -r /home/pragma/fetchdata.kvs; <span class="example-bracket">}</span>;<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

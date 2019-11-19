@@ -1,0 +1,159 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Aliases</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Aliases</div>      <div class='title-secondary-text'>Aliases : user definable command sequences</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>An alias is a user defined command.  It can be used to rename the builtin KVIrc commands or functions,
+to automate complex tasks or as structured programming mean.
+Aliases can be created or destroyed by using the scriptcenter (graphic interface)
+or from the commandline (or script) by using the <a href="cmd_alias.html">alias</a> command.
+Once created, an alias remains stored permanently in the KVIrc configuration files
+until it is explicitly deleted.
+A couple of examples will make the things clear.
+join is a really commonly used command. It might be a good idea to rename it to
+simply <b>j</b> .. just to type it faster.
+Nothing easier in KVIrc: just try this commandline:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_alias.html">alias</a><span class="example-paren">(</span>j<span class="example-paren">)</span><span class="example-bracket">{</span> <a href="cmd_join.html">join</a> $0-; <span class="example-bracket">}</span>;<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+<br>
+This will create the alias <b>j</b>. From this moment you can use /j as it was a normal command.
+</td></tr><tr><td class="example-box"><br>
+j #kvirc<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+You may have notices the strange $0- function in the alias body: it stands for
+<i>all parameters passed to the alias</i>. This means that when you call
+</td></tr><tr><td class="example-box"><br>
+j #kvirc testpassword<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+then both the parameters (#kvirc and testpassword) are passed to the join command.
+The $N functions are special functions that return the positional parameters passed
+to the current script context. In an alias the script context is the script body and
+it is the alias caller that generates the parameters.
+$N (where N is a digit) returns the (N-1)-th positional parameter passed by the caller.
+It returns the parameter numbered N-1 and not N since the parameters are indexed starting
+from zero ($0 is the first parameter!).
+$N-M returns the parameters from (N-1)-th to the (M-1)-th (a parameter range) and $N- returns
+all the parameters from (N-1)-th to the last one. In the example above $0- stands for
+all the parameters starting from the first one.
+<br>
+To remove an alias use again the alias command with an empty body:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_alias.html">alias</a><span class="example-paren">(</span>j<span class="example-paren">)</span><span class="example-bracket">{}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+This will remove the alias <b>j</b> defined above.
+<br>
+A common task in channel management is the kick & ban action.
+You first ban a user from the channel and then eventually kick him
+(obviously assuming that he is actually on the channel).
+This involves using two commands: ban and then kick.
+It could be a nice idea to have a single <b>kb</b> command to perform this action.
+Well...easy:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_alias.html">alias</a><span class="example-paren">(</span>kb<span class="example-paren">)</span><span class="example-bracket">{</span> <a href="cmd_ban.html">ban</a> $0; <a href="cmd_kick.html">kick</a> $0-; <span class="example-bracket">}</span>;<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+This adds the <b>kb</b> alias: it can be called as a normal command:
+</td></tr><tr><td class="example-box"><br>
+kb spammer You're not welcome here!<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+This will first execute <i>ban spammer</i> and then <i>kick spammer with; You're not welcome here</i>.
+Our kb is a really simple example... it doesn't check for the validity of the parameters:
+the server will warn us if the parameters passed to kb were empty.
+<br>
+The alias can be modified at any time by re-using the alias command.
+Let's make our <b>kb</b> a bit more intelligent and add a check for the parameters.
+TIP: It is a good idea to write the following examples in a text file and then use /parse &lt;filename&gt; to execute it.
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_alias.html">alias</a><span class="example-paren">(</span>kb<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_if.html">if</a><span class="example-paren">(</span>"$0" == ""<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Usage: /kb &lt;nickname&gt; &lt;kick reason&gt;"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_return.html">return</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_ban.html">ban</a> $0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%reason</span> = $1-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_if.html">if</a><span class="example-paren">(</span>"<span class="example-variable">%reason</span>" == ""<span class="example-paren">)</span><span class="example-variable">%reason</span> = "You're not welcome here!"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_kick.html">kick</a> $0 <span class="example-variable">%reason</span><br>
+<span class="example-bracket">}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The example above will first check the validity of the &lt;nickname&gt; passed to kb:
+if no nickname was passed, it will warn the user and stop.
+The next step will be the <i>ban &lt;nickname&gt;</i> call. Another enhancement is the <i>default reason</i>:
+we first assign the remaining parameters ($1- means <i>from $1 to the end</i>) to a temporary variable,
+if the variable is empty, a default kick reason is assigned.
+Finally the <i>kick &lt;nickname&gt; &lt;reason&gt;</i> will be executed.
+Get used to looking at the single command documentation pages, they will give
+you the hints necessary to fully understand the above piece of code.
+<br>
+Aliases can be used as a mean for structured programming.
+In large scripts you will <b>surely</b> have <i>common tasks</i> to perform (like having specially
+colored output or calculating a value from a set of other values)...
+Aliases are the way of writing the common tasks: they are equivalent to the <i>procedures</i>
+or <i>functions</i> in many high-level programming languages.
+The alias as a procedure (subroutine or sub-task) has been shown in the <b>kb</b> example above:
+it might be commonly called from more complex scripts or other aliases in case that a
+kick & ban action is needed.
+<br>
+The aliases can be used also as functions.
+Assume that you need really often to calculate the sum of three numbers: a function-alias is the way.
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_alias.html">alias</a><span class="example-paren">(</span>sum3<span class="example-paren">)</span><span class="example-bracket">{</span> <a href="cmd_return.html">return</a> $<span class="example-paren">(</span>$0 + $1 + $2<span class="example-paren">)</span>; <span class="example-bracket">}</span>;<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+This will add the alias <i>sum3</i> and make it available both as a command and a function.
+The <i>return</i> command sets the return value of a sequence of commands
+(an alias is a sequence of commands...remember?) and terminates the execution (by returning
+the control to the caller).
+So return $($0 + $1 + $2); will set the return value of the alias to the value
+computed by $($0 + $1 + $2) that actually is the sum of the first three parameters passed.
+You will then use it in the following way:
+</td></tr><tr><td class="example-box"><br>
+...<br>
+<span class="example-variable">%myfirstsum</span> = $sum3<span class="example-paren">(</span><span class="example-variable">%somevalue</span>,<span class="example-variable">%someothervalue</span>,4<span class="example-paren">)</span><br>
+<span class="example-variable">%anothersum</span> = $sum3<span class="example-paren">(</span>12,<span class="example-variable">%somevalue</span>,<span class="example-variable">%anothervalue</span><span class="example-paren">)</span><br>
+...<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+Oops! I've used some variables without actually explaining them, hehe... please forgive me and read on.
+This example is again really simple, but you might have more complex function-aliases.
+The function-aliases are also normal aliases... you can use it as a command:
+</td></tr><tr><td class="example-box"><br>
+/sum3 1 2 3<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+Is a perfectly valid call... it's just that it will have no visible results
+(just because a command call implies ignoring the return value.
+In fact there is no difference al all between function-aliases and normal-aliases:
+the caller makes the difference: by calling an alias as a command the return value
+just disappears in hyperspace, by calling an alias as a function, the return value
+is propagated (and in fact <i>used</i>).
+(There are some <i>nice</i> exceptions to this rule... but you don't need to care about it, for now).
+If return is not called inside an alias body, the return value will be just a null value.
+<br>
+Aliases can accept switches just like any other command. The <a href="fnc_sw.html">$sw</a> is there
+exactly for that purpose. Check it out.
+<br>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_language_index_all.html">Language Overview</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

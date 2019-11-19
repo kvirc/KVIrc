@@ -1,0 +1,492 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Object scripting</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Object scripting</div>      <div class='title-secondary-text'>Object scripting overview</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Introduction</div></td></tr><tr><td bgcolor="#EAEAEA">
+The KVIrc scripting language is not object oriented in nature.
+Anyway, objects are a highlevel abstraction that allow
+to write complex code in a <i>clean</i> way.
+So I've added at least some pseudo-object support.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Basic concepts</div></td></tr><tr><td bgcolor="#EAEAEA">
+Objects are arranged in tree structures.
+Each object that you create is either toplevel object or a child
+of another object. A toplevel object is a parentless one.
+Obviously all objects can have child objects.
+<br><br>
+When an object is destroyed, all its child objects are also destroyed.
+The toplevel objects are automatically destroyed when KVIrc quits.
+The objects are global to the entire application (this is different
+from previous KVIrc releases where the objects were local
+to the current frame window and arranged in a single tree
+with a builtin root object).
+<br><br>
+Each object is an instance of a class that defines its features.
+Each object has also a name, that is not necessary unique and is assigned to
+by the programmer; the name is just a mnemonic expedient, and
+you may also not need it.
+<br><br>
+Each object is identified by an <b>OPAQUE UNIQUE ID</b>.
+The ID is assigned by KVIrc and can be held in any variable.
+You can think the object ID as a <i>handle for the object</i> or the object's pointer.
+Any action performed on the object will require its ID.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Creation and destruction</div></td></tr><tr><td bgcolor="#EAEAEA">
+To create an object you must use the <a href="fnc_new.html">$new</a>()
+function. <a href="fnc_new.html">$new</a>() requires three parameters:<br>
+- The object class (more about object classes later in this document)<br>
+- The ID of the parent object (this can be 0 for toplevel objects).<br>
+- The object name (eventually empty)
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%myobject</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span><a href="class_object.html">object</a>,0,theName<span class="example-paren">)</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+<a href="fnc_new.html">$new</a>() returns the ID of the newly created object, or
+the STRING <b>0</b> if the object creation fails
+(it is a string because the object ID's are generally strings, and 0 is an "invalid object ID").
+In well written scripts it is not common that the object creation fails, anyway
+you can check if the creation has failed in the following way:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_if.html">if</a><span class="example-paren">(</span><span class="example-variable">%myobject</span><span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Object created!"<br>
+else <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Object creation failed!"<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+You can also test the object ID's for equality:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_if.html">if</a><span class="example-paren">(</span><span class="example-variable">%myobject</span> == <span class="example-variable">%anotherobject</span><span class="example-paren">)</span>[cmd]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo[/cmd] "This is the same object!";<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The parent object ID is optional, if not specified it is assumed to be 0.
+The object name is optional, but it may help you later in finding the object.
+<br><br>
+To destroy an object use the <a href="cmd_delete.html">delete</a> command. (In previous versions
+this command was named <i>destroy</i> and delete is currently aliased to that name too).
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_delete.html">delete</a> <span class="example-variable">%myobject</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+If the destroyed object has child objects, these are destroyed too.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Fields: objects as pseudo-structures</div></td></tr><tr><td bgcolor="#EAEAEA">
+All the objects can contain variable fields.
+You can set an object's field by using the object scope operator "-&gt;":
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%myobject</span>-&gt;<span class="example-variable">%fieldVariable</span> = dataString<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+To unset a field set it with empty data string (just like with a normal variable).
+To retrieve the field data use the object scope operator in the same way:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%myobject</span>-&gt;<span class="example-variable">%fieldVariable</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The '-&gt;' operator has been stolen from the C language.
+In the KVIrc scripting language it switches from the global namespace
+to the object's one.<br>
+So in the above example %fieldVariable is owned by the object.<br>
+The first character of the variable name has no special meaning in the
+object namespace (in the global namespace the variables starting
+with an uppercase letter are global to the application, the other ones are local
+to the command sequence). The variable names are completely case insensitive.
+<br><br>
+Any <a href="doc_operators.html">operator</a> can be used with the object field variables:
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%myobject</span>-&gt;<span class="example-variable">%fieldVariable</span> = 0<br>
+<span class="example-variable">%myobject</span>-&gt;<span class="example-variable">%fieldVarialbe</span> ++<br>
+<a href="cmd_if.html">if</a>0<span class="example-paren">(</span><span class="example-variable">%myobject</span>-&gt;<span class="example-variable">%fieldVariable</span> != 1<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> KVIrc is drunk, maybe a reboot will help?<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+You can simulate C structures <i>on the fly</i> by using objects and fields:
+</td></tr><tr><td class="example-box"><br>
+<span class="comment-text"># Create a user description on the fly<br>
+</span><span class="example-variable">%myobj</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span><a href="class_object.html">object</a>,0,userDescription<span class="example-paren">)</span><br>
+<span class="comment-text"># Set the fields<br>
+</span><span class="example-variable">%myobj</span>-&gt;<span class="example-variable">%nickname</span> = Pragma<br>
+<span class="example-variable">%myobj</span>-&gt;<span class="example-variable">%username</span> = daemon<br>
+<span class="example-variable">%myobj</span>-&gt;<span class="example-variable">%hostname</span> = pippo.pragma.org<br>
+<span class="example-variable">%myobj</span>-&gt;<span class="example-variable">%info</span> = Pragma goes always sleep too late<br>
+<span class="example-variable">%myobj</span>-&gt;<span class="example-variable">%info</span> <a href="doc_operators.html">&lt;&lt;</a> and wakes up too late too!<br>
+<span class="comment-text"># Call an (user defined) alias that stores the data to a file<br>
+</span>storetofile <span class="example-variable">%myobj</span><br>
+<span class="comment-text"># Destroy the object<br>
+</span><a href="cmd_delete.html">delete</a> <span class="example-variable">%myobj</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The field variables can be also dictionaries:
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%theobj</span>-&gt;<span class="example-variable">%field</span>[key] = something<br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+Unlike in C, there is no need to declare object fields.<br>
+If you have ever used other high level object-oriented languages, you may be used to declaring different types of
+variables: instance variables, which per definition define an object's state (at least partly) and local variables,
+which can be used in any function and will be only valid in the very current scope. This does and does not apply
+to KVI++.<br>
+Local variables can be used as normal and the scope of those variables will (naturally) be limited to the scope of
+the function they are defined in.
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_class.html">class</a><span class="example-paren">(</span>test,<a href="class_object.html">object</a><span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;test<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%test</span> = "will this persist?"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;anotherfunc<span class="example-paren">()</span> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "var: <span class="example-variable">%test</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+<span class="example-variable">%myObject</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span>test,0<span class="example-paren">)</span><br>
+<span class="example-variable">%myObject</span>-&gt;$test<span class="example-paren">()</span><br>
+<span class="comment-text"># Behold! This will only print "var: "!</span><br>
+<span class="example-variable">%myObject</span>-&gt;$anotherfunc<span class="example-paren">()</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+Instance variables, however, which are managed in the object's <i>field</i> can be accessed at any time by anyone.
+<b>Warning:</b> every script or object is potentially able to change the values of your field variables!
+They may also add or unset (empty) previously not used or used fields.<br>
+As earlier said, there is no need to declare object fields, as KVIrc will keep track of them. Even more precisely
+said, you <b>can not</b> declare them in the class file itself (some later example will tell you otherwise,
+just keep in mind to ignore the pseudo code, as it does not reflect how KVI++ is really working in respect of
+fields.)<br>
+However, there is one way to declare and define object fields: using the constructor (please see below, if you
+are interesting in learning about this function), it is possible to <i>declare</i> (really only for the human being
+reading the code) and more important initialize object fields. For more information, see the Constructor section
+below.<br>
+Any object can have any field variable; an <i>unset</i> field is equivalent to an <i>empty</i> field.<br>
+Note:<br>
+The KVIrc scripting language is not typed.
+Any object class (be patient... I'll explain classes in a while) identifier can be stored in any KVIrc variable:
+it is not possible to find out the object features by <i>examining</i> its identifier.
+This may make the usage of objects a bit <i>unclear</i>;
+However, with some experience you will be able to use the objects in a very powerful way.
+The type-safety can be also simulated by a careful usage of object names;
+in the above example, the %myobj object was created with the <i>userDescription</i> name.
+The storetofile alias could check the passed object's name and refuse to work
+if that does not match "userDescription".
+<br><br>
+A more complex use of fields will be described later in this document.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Member functions</div></td></tr><tr><td bgcolor="#EAEAEA">
+Just like in C++, the objects have member functions.
+For example, the <i>object</i> class (again... read on) objects export the <a href="class_object.html#name">$name</a>()
+and <a href="class_object.html#classname">$classname</a>() functions.
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%tmp</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span><a href="class_object.html">object</a>,0,myobject<span class="example-paren">)</span><br>
+<a href="cmd_echo.html">echo</a> The object's name is <span class="example-variable">%tmp</span>-&gt;<a href="class_object.html#name">$name</a><span class="example-paren">()</span>, the class name is <span class="example-variable">%tmp</span>-&gt;<a href="class_object.html#classname">$classname</a><span class="example-paren">()</span><br>
+<span class="comment-text"># Destroy the object<br>
+</span><a href="cmd_delete.html">delete</a> <span class="example-variable">%tmp</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+Another cool function exported by the <a href="class_object.html">object</a> class is the
+<a href="class_object.html#children">$children</a>() function.
+It returns a comma separated list of child identifiers.
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%tmp</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span><a href="class_object.html">object</a>,0,myobject<span class="example-paren">)</span><br>
+<span class="example-variable">%tmpchild</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span><a href="class_object.html">object</a>,<span class="example-variable">%tmp</span>,child1<span class="example-paren">)</span><br>
+<span class="example-variable">%tmpchild</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span><a href="class_object.html">object</a>,<span class="example-variable">%tmp</span>,child2<span class="example-paren">)</span><br>
+<span class="example-variable">%tmpchild</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span><a href="class_object.html">object</a>,<span class="example-variable">%tmp</span>,child3<span class="example-paren">)</span><br>
+<a href="cmd_echo.html">echo</a> The object's child list is: <span class="example-variable">%tmp</span>-&gt;<a href="class_object.html#children">$children</a><span class="example-paren">()</span><br>
+<span class="comment-text"># Destroy the object and the child<br>
+</span><a href="cmd_delete.html">delete</a> <span class="example-variable">%tmp</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+There are two special functions for each objects: the <i>constructor</i> and the <i>destructor</i>.
+You will find more information on constructors and destructors later in this document,
+for now it's enough that you know that these functions are called automatically by KVIrc:
+the constructor is called when the object is created and the destructor is called when the
+object is being destroyed with <a href="cmd_delete.html">delete</a>.<br><br>
+<br>
+The object functions can be reimplemented on-the-fly
+by using the <a href="cmd_privateimpl.html">privateimpl</a> command: you can simply modify the behaviour of the function
+by writing your own function body.
+(This is an uncommon feature: unlike many other languages, you can reimplement object
+functions at run-time, when the object has been already created.)
+<br><br>
+A more complex example
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%tmp</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span><a href="class_object.html">object</a>,0,myobject<span class="example-paren">)</span><br>
+<a href="cmd_foreach.html">foreach</a><span class="example-paren">(</span><span class="example-variable">%i</span>,1,2,3<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%tmpchild</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span><a href="class_object.html">object</a>,<span class="example-variable">%tmp</span>,child<span class="example-variable">%i</span><span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_privateimpl.html">privateimpl</a><span class="example-paren">(</span><span class="example-variable">%tmpchild</span>,destructor<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> Object <a href="fnc_this.html">$this</a> <span class="example-paren">(</span><a href="fnc_this.html">$this</a>-&gt;<a href="class_object.html#name">$name</a><span class="example-paren">())</span> destroyed;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+<a href="cmd_privateimpl.html">privateimpl</a><span class="example-paren">(</span><span class="example-variable">%tmp</span>,destructor<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%count</span> = 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_foreach.html">foreach</a><span class="example-paren">(</span><span class="example-variable">%t</span>,<a href="fnc_this.html">$this</a>-&gt;<a href="class_object.html#children">$children</a><span class="example-paren">())</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> Children : <span class="example-variable">%t</span>-&gt;<a href="class_object.html#name">$name</a><span class="example-paren">()</span> with class <span class="example-variable">%t</span>-&gt;<a href="class_object.html#class">$class</a><span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%count</span>++<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> Just before destroying my <span class="example-variable">%count</span> child items.<br>
+<span class="example-bracket">}</span><br>
+<span class="comment-text"># Destroy the object and it's child items</span><br>
+<a href="cmd_delete.html">delete</a> <span class="example-variable">%tmp</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+In the example above four objects have been created.
+A <i>parent</i> object named <i>myobject</i>, and three child objects.
+The destructor has been reimplemented for each child object,
+to make it <i>say</i> its name (Please note the usage of <a href="fnc_this.html">$this</a>).
+In the parent destructor the child objects have been counted and listed.<br>
+Then the parent object is destroyed causing to:<br>
+- trigger the parent destructor.<br>
+- destroy all the child items (and consequently trigger all the <i>individual</i> destructors).<br><br>
+<br>
+Not all the object functions must return a value:
+If a function does not return a meaningful value, or you just want to ignore it, you can call it in the following way:
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%anyobject</span>-&gt;$functionname<span class="example-paren">()</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Classes</div></td></tr><tr><td bgcolor="#EAEAEA">
+As said before, all objects are instances of a specific class.
+This concept is common to almost all object oriented languages.
+A class is a collection of methods that define an object's behaviour.
+It's not easy to explain it, so I'll try with an example:<br>
+<b>Please note, that this is pseudo code. KVI++ does by no mean employs
+a <i>field</i> directive as shown below!</b>
+</td></tr><tr><td class="example-box"><br>
+class HostAddress<br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;field hostname<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function ipnumber<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;function isLocalhost<span class="example-paren">()</span><br>
+<span class="example-bracket">}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The above class is a representation of a host address.
+You create an <b>instance of this class</b> and set the hostname field, for example,
+to www.kernel.org.
+The object is now able to give you information about the hostname in a transparent way:
+You can call the ipnumber() function, and the object will return you the
+digits and dots representation of www.kernel.org.
+The isLocalhost() function will return true if the hostname refers to the local machine
+The object internal job is hidden from the user, but probably it will be a huge job.
+To obtain the IP number from the hostname, the object will probably have to perform a DNS call (usually a complex task).
+To check if the hostname references the local machine, the object will have to obtain the local hostname
+from the system (in some <i>unspecified</i> way) and then compare it with the given <i>hostname</i> field.
+<br><br>
+The internal job of the object is defined by the "implementation of the class".
+Obviously, the programmer that creates the class has to write that implementation.
+</td></tr><tr><td class="example-box"><br>
+class HostAddress<br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;field hostname<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function ipnumber<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;find the nearest DNS server<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make the DNS call<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wait for the response<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decode the response<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;function isLocalhost<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;query the kernel for the local hostname<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compare the obtained hostname with the hostname field<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+In the above example I have <i>implemented</i> the two functions in pseudo code.
+<br><br>
+Let's go back to the real world.
+<br><br>
+KVirc contains a <a href="doc_classes.html">set of built-in ready-to-use classes</a>.
+The basic class is <a href="class_object.html">object</a>: all the other classes are derived from this (more about
+object inheritance later in this doc).
+<br><br>
+Another available class is <a href="class_socket.html">socket</a> that is an interface to the real system sockets.
+An instance of the <a href="class_socket.html">socket</a> class can connect and communicate with other hosts on the net.
+<br><br>
+The <b>class definitions are GLOBAL to the entire application</b>: all server windows share them.
+<br><br>
+So now we can say that in KVIrc <b>a CLASS is a collection of features that define the behaviour of an object.
+The user interface to the class are the member functions and the events.</b>
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Inheritance</div></td></tr><tr><td bgcolor="#EAEAEA">
+Someone asked for derived classes?<br>
+Here we go:<br>
+The <a href="cmd_class.html">class</a> command allows you to define new object classes.
+In KVI++, A new class must be always derived from some other class: the lowest possible
+level of inheritance is 1: deriving from class <a href="class_object.html">object</a>.
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_class.html">class</a><span class="example-paren">(</span>helloworld,<a href="class_object.html">object</a><span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sayhello<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> Hello world!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The above class is named <i>helloworld</i>. It inherits the <a href="class_object.html">object</a> class.
+This means that it acquires all the <a href="class_object.html">object</a> functions: <a href="class_object.html#name">$name</a>(),
+<a href="class_object.html#class">$class</a>(), <a href="class_object.html#children">$children</a>()...
+Additionally, it has the $sayhello() function, that <i>echoes Hello world</i> to the console.
+Now you can create an instance of this class:
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%instance</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span>helloworld<span class="example-paren">)</span><br>
+<span class="example-variable">%instance</span>-&gt;$sayhello<span class="example-paren">()</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+You should see <i>Hello world</i> printed in the console.
+Easy job... let's make the things a bit more complex now:
+derive another class from helloworld and make it say <i>hello</i> in two different languages:
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_class.html">class</a><span class="example-paren">(</span>localizedhelloworld,helloworld<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># define the setlanguage function</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># note that &lt;$0 = language&gt; is just a programmer reminder</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;setlanguage<span class="example-paren">(</span>&lt;$0 = language&gt;<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_if.html">if</a><span class="example-paren">((</span>$0 == english<span class="example-paren">)</span> || <span class="example-paren">(</span>$0 == italian<span class="example-paren">))</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="fnc_this.html">$$</a>-&gt;<span class="example-variable">%lang</span> = $0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_return.html">return</a> 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> I don't know that language <span class="example-paren">(</span>$0<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> defaulting to English<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="fnc_this.html">$$</a>-&gt;<span class="example-variable">%lang</span> = english<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_return.html">return</a> 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sayhello<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_if.html">if</a><span class="example-paren">(</span><a href="fnc_this.html">$$</a>-&gt;<span class="example-variable">%lang</span> == italian<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> Ciao mondo!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="fnc_this.html">$$</a>-&gt;$helloworld:sayhello<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+Now you can call:
+</td></tr><tr><td class="example-box"><br>
+<span class="example-variable">%m</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span>localizedhelloworld<span class="example-paren">)</span><br>
+<span class="example-variable">%m</span>-&gt;$setLanguage<span class="example-paren">(</span>italian<span class="example-paren">)</span><br>
+<span class="example-variable">%m</span>-&gt;$sayhello<span class="example-paren">()</span><br>
+<span class="example-variable">%m</span>-&gt;$setLanguage<span class="example-paren">(</span>english<span class="example-paren">)</span><br>
+<span class="example-variable">%m</span>-&gt;$sayhello<span class="example-paren">()</span><br>
+<span class="example-variable">%m</span>-&gt;$setLanguage<span class="example-paren">(</span>turkish<span class="example-paren">)</span><br>
+<span class="example-variable">%m</span>-&gt;$sayhello<span class="example-paren">()</span><br>
+<a href="cmd_delete.html">delete</a> <span class="example-variable">%myobj</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+The class defined above is inherited from the previously defined helloworld class:
+so it inherits the <i>object</i> class functions and events and the sayhello function from <i>helloworld</i>.
+In addition a setlanguage function is defined that stores in a variable the language name passed
+as a parameter (after checking its validity). ($0 evaluates to the first parameter passed)
+If the language is unknown the setlanguage function will return 0 (false).
+Now we want to be able to say <i>hello world</i> in Italian and English.
+So we <b>override</b> the inherited sayhello function.
+<i>To override</i> means <i>to reimplement</i>: if you call %object-&gt;$sayhello() and %object
+contains the ID of an instance of class <i>localizedhelloworld</i>, the new implementation of that function will be called (executed).
+The inherited sayhello was able to say <i>hello world</i> only in English, so we can still use it in the new implementation
+without rewriting its contents. So if the language set is not Italian we assume that it is English and
+call the <b>base class implementation</b>.
+</td></tr><tr><td class="example-box"><br>
+<a href="fnc_this.html">$this</a>-&gt;$helloworld:sayhello<span class="example-paren">()</span><br>
+<span class="comment-text"># equivalent to $$-&gt;$helloworld:sayhello<span class="example-paren">()</span>,</span><br>
+<span class="comment-text"># to $this-&gt;$helloworld::sayhello<span class="example-paren">()</span>,</span><br>
+<span class="comment-text"># and to $$-&gt;$helloworld::sayhello<span class="example-paren">()</span></span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+otherwise the language is Italian and we say <i>hello</i> in Italian :).
+So, to call a base class implementation of a function we prepend the base class name before the function name in the call.
+The base class name could be also <a href="class_object.html">object</a> in this case, but the <a href="class_object.html">object</a> class has no <i>sayhello</i> function defined
+so it would result in an error.<br><br>
+In the above example, all the values of <a href="fnc_this.html">$this</a>-&gt;%language
+that are not equal to Italian are assumed to be English.
+This is not always true, for example, just after the object creation the %language variable field
+is effectively empty. The above class works correctly in this case, but we might want to have always
+a coherent state of the field variables, so we need another concept: the class <b>constructor</b>
+that will be discussed in the next paragraph.<br><br>
+Note: multiple inheritance (inheritance from more than one base class) is not implemented, KVIrc is not a compiler. :)<br><br>
+Objects are much more powerful...<br><br>
+Do a <a href="cmd_clearobjects.html">clearobjects</a> to cleanup the old class definitions and read on.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Constructors and destructors</div></td></tr><tr><td bgcolor="#EAEAEA">
+The class constructor is a <b>function</b> that is called automatically just after the object
+has been created internally by KVIrc and just before the <a href="fnc_new.html">$new</a>
+function returns. It should be used to setup the internal object state.<br>
+The constructor can and should list and initialize all the necessary object fields.
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_class.html">class</a><span class="example-paren">(</span>myObject,<a href="class_object.html">object</a><span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;constructor<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="fnc_this.html">$this</a>-&gt;<span class="example-variable">%test</span> = "This is a sample object field."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+<span class="example-variable">%myObject</span> = <a href="fnc_new.html">$new</a><span class="example-paren">(</span>myObject,<a href="class_object.html">object</a><span class="example-paren">)</span><br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%myObject</span>-&gt;<span class="example-variable">%test</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+Will thus print "This is a sample object field."<br>
+Unlike in C++, in KVIrc, the constructor CAN return a value:<br>
+If it returns 0 it signals the object creation failure: the object
+is immediately destroyed and <a href="fnc_new.html">$new</a>() returns 0 to the caller.
+Any other return value is treated as success, so the object is effectively
+created and <a href="fnc_new.html">$new</a>() returns its ID to the caller.<br>
+This said, KVI++ will automatically return a value of 1 and you should <b>never</b>
+return a value other than 0 if something bad happened (like a mandatory parameter was not given in the $new()
+call or the like.) KVIrc will also issue a warning message and remind you of this when a non-zero value is
+returned.<br>
+All the builtin classes have a constructor defined that will almost never fail (only if we run out of memory),
+so you can avoid to check the <a href="fnc_new.html">$new</a>() return value
+when creating the instances of the built-in classes.<br><br>
+In derived classes you can override the constructor to setup your object's state.<br>
+You should <b>always call the base class constructor</b> in your overridden one, to setup
+the base class state, and propagate its return value (eventually modified if the base class
+constructor is successful but your derived class initialization fails).<br>
+This very basic example will illustrate how to do this (please read the paragraph about inheriting classes
+above first):
+</td></tr><tr><td class="example-box"><br>
+<a href="cmd_class.html">class</a><span class="example-paren">(</span>baseObject,<a href="class_object.html">object</a><span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;constructor<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "baseObject or derived object created."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+<a href="cmd_class.html">class</a><span class="example-paren">(</span>derivedObject,baseObject<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;constructor<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "derivedObject object created."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="fnc_this.html">$this</a>-&gt;$baseObject::constructor<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+</td></tr><tr><td bgcolor="#EAEAEA">
+In practice, the builtin class constructors do nothing other than setting the return
+value to 1 so you can even avoid to call them, but in any other case you must do it.<br><br>
+This is different from C (for example), where the constructors are called (more or less)
+automatically.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Signals and slots</div></td></tr><tr><td bgcolor="#EAEAEA">
+The signals and slots are a powerful mean of inter-object communication.
+A signal is emitted by an object to notify a change in its state.
+For example, the <a href="class_button.html">button class</a> emits the
+<a href="class_button.html#clicked">clicked</a> signal when the user clicks the button.<br><br>
+A signal is emitted by an object and can be received and handled by any other existing object
+(including the object that emits the signal).<br>
+The handler function for a signal is called "slot".<br>
+It is just a convention: in fact, a slot is a normal object function (and any object function can be a slot).
+More than one slot can be connected to a single signal, and more signals can be connected to a single slot.<br>
+In this way, many objects can be notified of a change in a single object, as well as a single object
+can easily handle state-changes for many objects.<br>
+The signal/slot behaviour could be easily implemented by a careful usage of object functions.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">So why signals and slots?</div></td></tr><tr><td bgcolor="#EAEAEA">
+Because signals are much more powerful in many situations.
+The signals have no equivalent in C/C++... but they have been implemented in many high-level
+C/C++ libraries and development kits (including the system-wide signal/handler mechanism implemented
+by all the modern kernels and used in inter-process communication).<br>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_generic_index_all.html">Miscellaneous</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>

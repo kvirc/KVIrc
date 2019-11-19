@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>The mediaplayer interface module</title>
+<style type="text/css">
+body { 	font-size: 10pt; 	margin-left: 8px; 	margin-right: 8px; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 24px; 	font-family: sans-serif; } table, td, tr { 	color: #3c3c3c; 	font-size: 10pt; } td { 	padding: 6px; } a:link { 	text-decoration: none; 	color: #2883e2; } a:visited { 	text-decoration: none; 	color: #6856cc; } a:hover { 	text-decoration: underline; 	color: #186CC4; } pre { 	white-space: normal; } a:active { 	text-decoration: underline; 	color: #186CC4; } .title-table-cell { 	border-top-left-radius: 3px; 	border-top-right-radius: 3px; 	background-color: #F2DFB1; } .title-text { 	font-size: 18pt; 	font-weight: bold; 	padding-bottom: 3px; 	color: #404040; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .title-secondary-text { 	font-size: 11pt; 	padding-top: 3px; 	color: #474747; 	text-shadow: 0px 2px 0px rgba(247,247,247,1); } .subtitle-table-cell { 	background-color: #D6D6D6; } .subtitle-text { 	font-size: 11pt; 	color: #000000; 	text-shadow: 0px 1px 0px rgba(247,247,247,1); } .subsubtitle-table-cell { 	background-color: #E3E3E3; } .subsubtitle-text { 	font-size: 10pt; 	color: #474747; } .syntax-text { 	font-family: monospace; 	font-size: 10pt; 	font-weight: bold; 	color: #800000; } .note-box { 	background-color: #F2F2F2; 	color: #636363; 	font-size: 9pt; } .example-box { 	font-family: monospace; 	font-size: 10pt; 	background-color: #f5f5f5; 	border: 1px solid #d5d5d5; 	color: #800000; 	margin-top: 6px; 	margin-bottom: 6px; 	line-height: 16px; 	padding: 10px; } .example-box a:link { 	color: #600030; } .example-box a:visited { 	color: #600030; } .example-box a:hover { 	color: #FF2B46; } .example-box a:active { 	color: #FF2B46; } .comment-text { 	color: #578A57; } .comment-text a:link { 	color: #578A57; } .comment-text a:visited { 	color: #578A57; } .comment-text a:hover { 	color: #35BD58; } .comment-text a:active { 	color: #35BD58; } .example-paren { 	color: #8A7000; } .example-bracket { 	color: #9C7914; } .example-oper { 	color: #9C7914; } .example-variable { 	color: #AB6332; } .comment-text .example-variable { 	color: #578A57; } .comment-text .example-oper { 	color: #578A57; } .comment-text .example-paren { 	color: #578A57; } .comment-text .example-bracket { 	color: #578A57; } .switch-table { 	width: 100%; 	border-collapse: collapse; } .switch-title-table-cell { 	font-family:"Lucida Console", Monaco, "Courier New", monospace; 	font-size: 10pt; 	color: #670000; 	background-color: #EDEDED; } /* .switch-body-table-cell { } */ .footer { 	border-top: 1px solid #a2a2a2; 	color: #a2a2a2; 	margin-top: 8px; 	padding-top: 4px; 	font-style: italic; 	font-size: 8pt; } </style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>The mediaplayer interface module</div>      <div class='title-secondary-text'>Interface to various media players</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The mediaplayer module is an interface to various popular media players.
+It allows controlling them remotely to a certain degree and retrieving
+the information about the currently played media (in order to implement the nice /playing
+scripts). The module has replaced the old mediaplayer module which after
+years of development had developed some design flaws and needed a complete rewrite.
+At the moment of writing the supported players are: XMMS (UNIX), Audacious (UNIX), Winamp (Windows),
+every player supported by the AMIP project (Windows), every player using the MPRIS D-Bus interface
+(Amarok2, JuK under KDE). You choose the player interface by either setting
+the option in the settings dialog, by manually setting <a href="cmd_option.html">option</a> stringPreferredMediaPlayer
+or by running <a href="cmd_mediaplayer.detect.html">mediaplayer.detect</a> that will guess the media player interface for you.<br>
+If you're going to use the Winamp media player then you must install the <i>gen_kvirc.dll</i> plugin
+(included in the KVIrc distribution) as a <i>general</i> Winamp plugin.
+This is achieved by simply copying the file gen_kvirc.dll
+to the Winamp plugins directory and restarting Winamp.
+<br><br>
+The commands and functions exported by this module serve mainly for two
+purposes: control the playback and get information about the currently played media.
+Playback control is achieved by the means of <a href="cmd_mediaplayer.play.html">mediaplayer.play</a>,
+<a href="cmd_mediaplayer.stop.html">mediaplayer.stop</a>, <a href="cmd_mediaplayer.pause.html">mediaplayer.pause</a>, <a href="cmd_mediaplayer.next.html">mediaplayer.next</a>,
+<a href="cmd_mediaplayer.prev.html">mediaplayer.prev</a> and <a href="fnc_mediaplayer.status.html">$mediaplayer.status()</a>. The
+information about the currently played media can be retrieved with
+<a href="fnc_mediaplayer.nowplaying.html">$mediaplayer.nowplaying()</a> and <a href="fnc_mediaplayer.mrl.html">$mediaplayer.mrl()</a>.<br><br>
+Several other informative function are available as well but they are not
+granted to work with all the supported media players or media types (e.g.
+with Winamp you can play video files that probably have no album, genre
+or sampleRate information).<br><br>
+If you intend to write portable code, you should check the return value
+of the functions like <a href="fnc_mediaplayer.artist.html">$mediaplayer.artist()</a>, <a href="fnc_mediaplayer.title.html">$mediaplayer.title()</a>
+or <a href="fnc_mediaplayer.channels.html">$mediaplayer.channels()</a> and be ready to discard it when it
+does not appear to be meaningful. The functions that are granted
+to work are <a href="fnc_mediaplayer.nowplaying.html">$mediaplayer.nowplaying()</a>, <a href="fnc_mediaplayer.mrl.html">$mediaplayer.mrl()</a>
+and <a href="fnc_mediaplayer.localfile.html">$mediaplayer.localfile()</a>.
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_module_index_all.html">Modules</a>
+<div class='footer'>KVIrc 5.0.1.5.0.0-67-gfabbd7885-dirty Documentation - generated by gmagoon on Tue Nov 19 15:58:04 2019</div>
+</body>
+</html>
