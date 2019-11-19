@@ -874,7 +874,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 	PrivmsgIdentifyMsgCapState eCapState = IdentifyMsgCapNotUsed;
 
 	KviCString pTrailing = msg->safeTrailingString();
-	if(!strcmp(pTrailing,""))
+	if(!pTrailing.isEmpty())
 	{
 		if(msg->connection()->stateData()->identifyMsgCapabilityEnabled())
 		{
@@ -1003,8 +1003,8 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 			// spam message...
 			if(KVI_OPTION_BOOL(KviOption_boolUseAntiSpamOnPrivmsg))
 			{
-				KviCString theMsg = msg->trailingString();
-				if(theMsg)
+				KviCString theMsg = msg->safeTrailingString();
+				if(!theMsg.isEmpty())
 				{
 					KviCString spamWord;
 					if(kvi_mayBeSpam(theMsg, spamWord))
@@ -1255,7 +1255,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 	// FIXME: "DEDICATED CTCP WINDOW ?"
 
 	KviCString pTrailing = msg->safeTrailingString();
-	if(!strcmp(pTrailing,""))
+	if(!pTrailing.isEmpty())
 	{
 		if(*(pTrailing.ptr()) == 0x01)
 		{
@@ -1446,8 +1446,8 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 			// spam message...
 			if(KVI_OPTION_BOOL(KviOption_boolUseAntiSpamOnNotice))
 			{
-				KviCString theMsg = msg->trailingString(); // FIXME
-				if(theMsg)
+				KviCString theMsg = msg->safeTrailingString();
+				if(!theMsg.isEmpty())
 				{
 					KviCString spamWord;
 					if(kvi_mayBeSpam(theMsg, spamWord))
