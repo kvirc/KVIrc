@@ -935,8 +935,6 @@ void ScriptEditorImplementation::newFile()
     m_pEditor->clear();
     setCursorPosition(0);
 
-    szFileName=nullptr;
-
 }
 
 void ScriptEditorImplementation::loadFromFile()
@@ -964,8 +962,7 @@ void ScriptEditorImplementation::loadFromFile()
 
 void ScriptEditorImplementation::saveFile() {
 
-    if (!(szFileName == nullptr)) {
-
+    if(szFileName!= nullptr) {
         QString szBuffer = m_pEditor->toPlainText();
 
         if (!KviFileUtils::writeFile(szFileName, szBuffer)) {
@@ -983,9 +980,9 @@ void ScriptEditorImplementation::saveFile() {
 
 void ScriptEditorImplementation::saveFileAs()
 {
-    if (!(szFileName==nullptr)) {
 
-        if (KviFileDialog::askForSaveFileName(szFileName,
+
+    if (KviFileDialog::askForSaveFileName(szFileName,
                                               __tr2qs_ctx("Choose a Filename - KVIrc", "editor"),
                                               QString::null,
                                               QString::null, false, true, true, this)) {
@@ -1000,7 +997,7 @@ void ScriptEditorImplementation::saveFileAs()
                                              szFileName));
             }
         }
-    }
+
 }
 
 

@@ -62,16 +62,16 @@ while test $# -gt 0; do
 		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO 5.0.1"
 		;;
 		--prefix)
-		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO /home/gmagoon/Downloads/KVIrc"
+		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO /mnt/W10_Downloads/roboirc/KVIrc"
 		;;
 		--lib-suffix)
 		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO ./"
 		;;
 		--revision)
-		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO 5.0.0-67-gfabbd7885-dirty"
+		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO 5.0.0-68-g837bc1f7a-dirty"
 		;;
 		--date)
-		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO 2019-11-19 16:42:33 UTC"
+		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO 2019-11-19 18:33:08 UTC"
 		;;
 		--type)
 		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO Release"
