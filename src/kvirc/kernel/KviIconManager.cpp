@@ -24,6 +24,8 @@
 
 #define _KVI_ICONMANAGER_CPP_
 
+#include <QString>
+#include "kvi_debug.h"
 #include "KviIconManager.h"
 #include "KviApplication.h"
 #include "kvi_settings.h"
@@ -41,6 +43,9 @@
 #include <QLabel>
 #include <QLayout>
 #include <QMimeData>
+#include <QString>
+#include <QDesktopWidget>
+
 
 /*
 	@doc: image_id
@@ -437,33 +442,55 @@ void KviIconWidget::init()
 	setWindowTitle(__tr2qs("Icon Table - KVIrc"));
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager))));
 
+
 	int iRows = KviIconManager::IconCount / 20;
 	if((iRows * 20) < KviIconManager::IconCount)
 		iRows++;
 
 	QGridLayout * pLayout = new QGridLayout(this);
+
+	// roboirc
+	// column labels
+	/*
 	for(int i = 0; i < 20; i++)
 	{
 		KviCString szTmp(KviCString::Format, "%d", i);
 		QLabel * pLabel = new QLabel(szTmp.ptr(), this);
 		pLayout->addWidget(pLabel, 0, i + 1);
 	}
+
+
+    // row labels
 	for(int i = 0; i < iRows; i++)
 	{
 		KviCString szTmp(KviCString::Format, "%d", i * 20);
 		QLabel * pLabel = new QLabel(szTmp.ptr(), this);
 		pLayout->addWidget(pLabel, i + 1, 0);
 	}
+	*/
+
 	for(int i = 0; i < KviIconManager::IconCount; i++)
 	{
 		KviCString szTmp(KviCString::Format, "%d", i);
 		QLabel * pLabel = new QLabel(this);
 		pLabel->setObjectName(szTmp.ptr());
 		pLabel->setPixmap(*(g_pIconManager->getSmallIcon(i)));
+
+        // roboirc
+        pLabel->setToolTip(__tr2qs(g_pIconManager->getSmallIconName(i)));
+
 		pLabel->installEventFilter(this);
 		pLabel->setAcceptDrops(true);
-		pLayout->addWidget(pLabel, (i / 20) + 1, (i % 20) + 1);
+
+        pLayout->addWidget(pLabel, (i / 20) + 1, (i % 20) + 1 );
+
 	}
+
+	//roboirc
+    int width = this->width();
+	int height = this->height();
+    this->setGeometry(0,0,width*1.5, height*1.5);
+
 }
 
 KviIconWidget::~KviIconWidget()

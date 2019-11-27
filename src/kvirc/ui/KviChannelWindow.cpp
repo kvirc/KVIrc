@@ -865,6 +865,7 @@ void KviChannelWindow::getTalkingUsersStats(QString & szBuffer, QStringList & li
 		szBuffer += " ";
 		szBuffer += bPast ? __tr2qs("were talking recently") : __tr2qs("are talking");
 	}
+
 }
 
 void KviChannelWindow::getWindowListTipText(QString & szBuffer)
