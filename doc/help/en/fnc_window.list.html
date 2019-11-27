@@ -51,22 +51,22 @@ by using 'none' or 'any' as &lt;irc_context_id&gt;.
     <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
   </tr>
   <tr bgcolor="#EAEAEA">
-    <td></td></tr><tr><td class="example-box"><br>
+    <td></td></tr><tr><td class="example-box">
 <span class="comment-text"># List all the queries of the current IRC context</span><br>
-<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>query<span class="example-paren">)</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>query<span class="example-paren">)</span><br><br>
 <span class="comment-text"># Equivalent to the above</span><br>
-<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>query,<a href="fnc_ic.html">$ic</a><span class="example-paren">)</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>query,<a href="fnc_ic.html">$ic</a><span class="example-paren">)</span><br><br>
 <span class="comment-text"># List all the channels in all the IRC contexts</span><br>
-<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>channel,all<span class="example-paren">)</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>channel,all<span class="example-paren">)</span><br><br>
 <span class="comment-text"># List all the windows in the current IRC context</span><br>
-<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>all<span class="example-paren">)</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>all<span class="example-paren">)</span><br><br>
 <span class="comment-text"># List all the windows in all IRC contexts</span><br>
-<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>all,all<span class="example-paren">)</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>all,all<span class="example-paren">)</span><br><br>
 <span class="comment-text"># List all the DCC Send windows: They don't belong to any IRC context</span><br>
-<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>dcctransfer,none<span class="example-paren">)</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>dcctransfer,none<span class="example-paren">)</span><br><br>
 <span class="comment-text"># List all the user windows created with $window.open</span><br>
 <span class="comment-text"># They may either belong to an IRC context or not</span><br>
-<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>userwnd,any<span class="example-paren">)</span><br>
+<a href="cmd_echo.html">echo</a> $window.list<span class="example-paren">(</span>userwnd,any<span class="example-paren">)</span><br><br>
 <span class="comment-text"># Ok, let's use it</span><br>
 <span class="comment-text"># A nice alias that allows iterating commands through all the consoles</span><br>
 <span class="comment-text"># Note the array returned by $window.list</span><br>
@@ -78,15 +78,15 @@ by using 'none' or 'any' as &lt;irc_context_id&gt;.
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_eval.html">eval</a> -r=<span class="example-variable">%ctxt</span>[<span class="example-variable">%i</span>] $0-<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
-<span class="example-bracket">}</span><br>
-iterate <a href="cmd_echo.html">echo</a> Hi ppl! :<span class="example-paren">)</span><br>
+<span class="example-bracket">}</span><br><br>
+iterate <a href="cmd_echo.html">echo</a> Hi ppl! :<span class="example-paren">)</span><br><br>
 <span class="comment-text"># The returned array works nicely also in <a href="cmd_foreach.html">foreach</a></span><br>
 <span class="comment-text"># Say hi to all the channels :<span class="example-paren">)</span></span><br>
 <a href="cmd_alias.html">alias</a><span class="example-paren">(</span>sayallchans<span class="example-paren">)</span><br>
 <span class="example-bracket">{</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_foreach.html">foreach</a><span class="example-paren">(</span><span class="example-variable">%x</span>,<a href="fnc_window.list.html">$window.list</a><span class="example-paren">(</span>channel,all<span class="example-paren">))</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_say.html">say</a> -r=<span class="example-variable">%x</span> $0-;<br>
-<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br><br>
 sayallchans Hi ppl :<span class="example-paren">)</span><br>
 </td></tr><tr><td bgcolor="#EAEAEA">
 </td>
@@ -100,6 +100,6 @@ sayallchans Hi ppl :<span class="example-paren">)</span><br>
   </tr>
 </table>
 <hr><a href="index.html">Index</a>, <a href="doc_function_alphabetic_a.html">Functions</a>
-<div class='footer'>KVIrc 5.0.1.5.0.0-69-ga50ea5d34-dirty Documentation - generated by gmagoon on Tue Nov 26 13:41:56 2019</div>
+<div class='footer'>KVIrc 5.0.0.5.0.0-58-gf23d33aed Documentation - generated by  on Thu Oct 17 18:22:07 2019</div>
 </body>
 </html>

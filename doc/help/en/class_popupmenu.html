@@ -42,7 +42,7 @@ You add items with insertItem(). An item can be a string. In addition, items can
   <tr bgcolor="#EAEAEA">
     <td>
       <table bgcolor="#EDEDED">
-<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="insertItem">$insertItem(&lt;text:string&gt;,[icon_id:string])</a></font></b></code></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="insertItem">(uid:integer) $insertItem(&lt;text:string&gt;,[icon_id:string])</a></font></b></code></td></tr>
 <tr><td>Inserts menu items into a popup menu with optional icon and return the popup identifier.</td></tr>
 <tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="addMenu">$addMenu(&lt;popupmenu:hobject,[idx:uinteger])</a></font></b></code></td></tr>
 <tr><td>Add a popupmenu. With the optional parameter idx the popup will be inserted.</td></tr>
@@ -80,89 +80,64 @@ You add items with insertItem(). An item can be a string. In addition, items can
     <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
   </tr>
   <tr bgcolor="#EAEAEA">
-    <td></td></tr><tr><td class="example-box"><br>
-<span class="comment-text"># First we define a class inherited from popupmenu</span><br>
-class<span class="example-paren">(</span>menu,popupmenu<span class="example-paren">)</span><br>
-<span class="example-bracket">{</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;constructor<span class="example-paren">()</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># We store the item's ID for checking in activatedEvent</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@<span class="example-variable">%tile_id</span>=@$insertItem<span class="example-paren">(</span>"Tile",118<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@<span class="example-variable">%cascade_id</span>=@$insertItem<span class="example-paren">(</span>"Cascade",115<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@$insertSeparator<span class="example-paren">(</span>3<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@<span class="example-variable">%closeactw_id</span>=@$insertItem<span class="example-paren">(</span>"Close Active Window",08<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@<span class="example-variable">%closeallw_id</span>=@$insertItem<span class="example-paren">(</span>"Close All Window",58<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;activatedEvent<span class="example-paren">()</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Now we emit a signals to the relative to the user choice</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%id</span>=$0<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if <span class="example-paren">(</span><span class="example-variable">%id</span>==@<span class="example-variable">%tile_id</span><span class="example-paren">)</span> @$emit<span class="example-paren">(</span>"tile"<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if<span class="example-paren">(</span><span class="example-variable">%id</span>==@<span class="example-variable">%cascade_id</span><span class="example-paren">)</span> @$emit<span class="example-paren">(</span>"cascade"<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if <span class="example-paren">(</span><span class="example-variable">%id</span>==@<span class="example-variable">%closeactw_id</span><span class="example-paren">)</span> @$emit<span class="example-paren">(</span>"closeactive"<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else @$emit<span class="example-paren">(</span>"closeallwindows"<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Deleting the popup</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete $$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
-<span class="example-bracket">}</span><br>
-class <span class="example-paren">(</span>ws,widget<span class="example-paren">)</span><br><br>
-<span class="example-bracket">{</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text">In the constructor we create everything that belong to the single widget.</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;constructor<span class="example-paren">()</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Here we generate a loop to create our labels inside the widget.</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%lay</span>=$new<span class="example-paren">(</span>layout,$$<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text">we use a vbox to managing labels in vertical orientation</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%vb</span>=$new<span class="example-paren">(</span>vbox,$$<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Then add the vbox to the main layout</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%lay</span>-&gt;$addWidget<span class="example-paren">(</span><span class="example-variable">%vb</span>,0,0<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Let's create our colorful labels</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for<span class="example-paren">(</span><span class="example-variable">%i</span>=0;<span class="example-variable">%i</span>&lt;15;<span class="example-variable">%i</span>++<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@<span class="example-variable">%label</span>=$new<span class="example-paren">(</span>label,<span class="example-variable">%vb</span><span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@<span class="example-variable">%label</span>-&gt;$settext<span class="example-paren">(</span>"Another class by N\&G"<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># We set our foreground's colors using the hex array in a random way.</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@<span class="example-variable">%label</span>-&gt;$setforegroundcolor<span class="example-paren">(</span>$array<span class="example-paren">(</span>$rand<span class="example-paren">(</span>255<span class="example-paren">)</span>,$rand<span class="example-paren">(</span>255<span class="example-paren">)</span>,$rand<span class="example-paren">(</span>255<span class="example-paren">)))</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;customContextMenuRequestedEvent<span class="example-paren">()</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># We create the popupmenu relative to this widget at runtime.</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%p</span>=$new<span class="example-paren">(</span>menu,$$<span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objects.connect <span class="example-variable">%p</span> tile @$parent tile<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objects.connect <span class="example-variable">%p</span> cascade @$parent cascade<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objects.connect <span class="example-variable">%p</span> closeactive @$parent closeactivewindow<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objects.connect <span class="example-variable">%p</span> closeallwindows @$parent closeallwindows<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%p</span>-&gt;$exec<span class="example-paren">(</span>$$,$<span class="example-paren">(</span>$0+10<span class="example-paren">)</span>,$<span class="example-paren">(</span>$1+10<span class="example-paren">))</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
-<span class="example-bracket">}</span><br>
-<span class="comment-text"># We create the workspace widget</span><br>
-<span class="example-variable">%Workspace</span>=$new<span class="example-paren">(</span>workspace<span class="example-paren">)</span><br>
-<span class="comment-text"># We use as space as we have</span><br>
-<span class="example-variable">%size</span>[]=<span class="example-variable">%Workspace</span>-&gt;$screenResolution<span class="example-paren">()</span><br>
-<span class="comment-text"># Resize it</span><br>
-<span class="example-variable">%Workspace</span>-&gt;$resize<span class="example-paren">(</span><span class="example-variable">%size</span>[0],<span class="example-variable">%size</span>[1]<span class="example-paren">)</span><br>
-<span class="comment-text"># Then create 20 subwidget</span><br>
-for<span class="example-paren">(</span><span class="example-variable">%i</span>=0;<span class="example-variable">%i</span>&lt;20;<span class="example-variable">%i</span>++<span class="example-paren">)</span><br>
-<span class="example-bracket">{</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%w</span>=$new<span class="example-paren">(</span>ws,<span class="example-variable">%Workspace</span><span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Let's add every widget to the workspace</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%Workspace</span>-&gt;$addSubWindow<span class="example-paren">(</span><span class="example-variable">%w</span><span class="example-paren">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># Then "shake it" a little bit around :-<span class="example-paren">)</span></span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%w</span>-&gt;$move<span class="example-paren">(</span>$rand<span class="example-paren">(</span>$<span class="example-paren">(</span><span class="example-variable">%size</span>[0]-50<span class="example-paren">))</span>,$rand<span class="example-paren">(</span>$<span class="example-paren">(</span><span class="example-variable">%size</span>[1]-50<span class="example-paren">)))</span><br>
-<span class="example-bracket">}</span><br>
-<span class="comment-text"># Reimplement closeEvent to delete all this :-<span class="example-paren">)</span></span><br>
-privateimpl<span class="example-paren">(</span><span class="example-variable">%Workspace</span>,closeEvent<span class="example-paren">)</span><br>
-<span class="example-bracket">{</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;delete $$<br>
-<span class="example-bracket">}</span><br>
-<span class="comment-text"># Let's show!</span><br>
-<span class="example-variable">%Workspace</span>-&gt;$show<span class="example-paren">()</span><br>
+    <td></td></tr><tr><td class="example-box">
+<pre>
+	
+// note: this code is designed for executing in Script Tester<br>
+// you would design this differently if you are using classes<br>
+<br>
+// create a base widget<br>
+%Kapp = $new(widget)<br>
+<br>
+
+// create a submenu for the popup menu<br>
+%subMenu = $new(popupmenu)<br>
+%submenu->$setTitle("Sub Menu")<br>
+<br>
+
+// assign the returned uid to a hash key, and give it a string name we can use in the slot (handler)<br>
+%PumIds{"%subMenu->$insertItem("Extra stuff 1", 302)"} = "Extra stuff 1"<br>
+%PumIds{"%subMenu->$insertItem("Extra stuff 2", 303)"} = "Extra stuff 2"<br>
+%PumIds{"%subMenu->$insertItem("Extra stuff 3", 304)"} = "Extra stuff 3"<br>
+%subMenu->$insertSeparator(0)<br>
+%PumIds{"%subMenu->$insertItem("Extra stuff 4", 305)"} = "Extra stuff 4"<br>
+%PumIds{"%subMenu->$insertItem("Extra stuff 5", 306)"} = "Extra stuff 5"<br>
+<br>
+// create the primary popup menu<br>
+%Kapp->%pumOppClick = $new(popupmenu, %Kapp)<br>
+%Kapp->%pumOppClick->$setTitle("Popup Menu")<br>
+%PumIds{"%Kapp->%pumOppClick->$insertItem("File", $icon("file"))"} = "File"<br>
+%PumIds{"%Kapp->%pumOppClick->$insertItem("Edit", $icon("editor"))"} = "Edit"<br>
+%PumIds{"%Kapp->%pumOppClick->$insertItem("Help", $icon("help"))"} = "Help"<br>
+<br>
+// add the submenu to the primary menu<br>
+%Kapp->%pumOppClick->$addMenu(%submenu, 0)<br>
+<br>
+// when we click the mouse, the popup menu will appear<br>
+privateimpl (%Kapp, mousePressEvent)<br>
+{<br>
+	@%pumOppClick->$exec()<br>
+}<br>
+<br>
+// when we click something in the popup menu, this handler will execute<br>
+privateimpl (%Kapp, handlePopupEvent)<br>
+{<br>
+	// $0 will contain the uid of the popup menu item that was clicked<br>
+	debug -c "Popup Menu Item: %PumIds{$0}";<br>
+}<br>
+<br>
+// connect the primary popupmenu's "activated" signal to the %Kapp's "handlePopupEvent" slot<br>
+objects.connect %Kapp->%pumOppClick activated %Kapp handlePopupEvent<br>
+<br>
+// display the base widget on screen<br>
+%Kapp->$show()<br>
+
+</pre>
 </td></tr><tr><td bgcolor="#EAEAEA">
 </td>
   </tr>
 </table>
 <hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
-<div class='footer'>KVIrc 5.0.1.5.0.0-69-ga50ea5d34-dirty Documentation - generated by gmagoon on Tue Nov 26 13:41:56 2019</div>
+<div class='footer'>KVIrc 5.0.0.5.0.0-58-gf23d33aed Documentation - generated by  on Thu Oct 17 18:22:07 2019</div>
 </body>
 </html>
