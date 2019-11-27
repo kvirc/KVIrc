@@ -50,6 +50,7 @@
 #include <QPainter>
 #include <QPushButton>
 #include <QRegExp>
+#include <QString>
 
 extern KviColorWindow * g_pColorWindow;
 
@@ -101,7 +102,10 @@ KviTopicWidget::KviTopicWidget(QWidget * par, KviChannelWindow * pChannel, const
 {
 	setObjectName(name);
 	m_pKviChannelWindow = pChannel;
-	m_pHistory = nullptr;
+
+	// roboirc
+	// m_pHistory = nullptr;
+
 	m_pAccept = nullptr;
 	m_pDiscard = nullptr;
 	m_pContextPopup = nullptr;
@@ -403,6 +407,12 @@ void KviTopicWidget::updateToolTip()
 		txt += KviHtmlGenerator::convertToHtml(KviControlCodes::stripControlBytes(m_szTopic), true);
 		txt += enr;
 
+		//roboirc
+        txt += R"(<tr><td style="white-space: pre"; bgcolor="#E0E0E0"><font color="#000000">)";
+        txt += __tr2qs("# of Chars: ") + QString::number(m_szTopic.length());
+        txt += "</font>" + enr;
+
+
 		if(!m_szSetBy.isEmpty())
 		{
 			txt += R"(<tr><td style="white-space: pre"; bgcolor="#E0E0E0"><font color="#000000">)";
@@ -482,12 +492,17 @@ void KviTopicWidget::switchMode()
 		m_pInput->setReadOnly(!bCanEdit);
 		if(iMaxLen > 0)
 			m_pInput->setMaxBufferSize(iMaxLen);
-		m_pInput->setGeometry(0, 0, width() - (height() << 2) + height(), height());
+
+		// roboirc
+		m_pInput->setGeometry(0, 0, width() - (height() << 1) + height(), height());
+
 		m_pInput->setText(m_szTopic);
 		connect(m_pInput, SIGNAL(enterPressed()), this, SLOT(acceptClicked()));
 		connect(m_pInput, SIGNAL(escapePressed()), this, SLOT(discardClicked()));
 		m_pInput->installEventFilter(this);
 
+
+		/* roboirc
 		m_pHistory = new QPushButton(this);
 		m_pHistory->setObjectName("topicw_historybutton");
 		m_pHistory->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::History))));
@@ -495,6 +510,7 @@ void KviTopicWidget::switchMode()
 		KviTalToolTip::add(m_pHistory, __tr2qs("History"));
 		m_pHistory->show();
 		connect(m_pHistory, SIGNAL(clicked()), this, SLOT(historyClicked()));
+        */
 
 		m_pAccept = new QPushButton(this);
 		m_pAccept->setObjectName("topicw_acceptbutton");
@@ -626,7 +642,10 @@ void KviTopicWidget::resizeEvent(QResizeEvent *)
 	if(m_pInput)
 	{
 		m_pInput->setGeometry(0, 0, width() - (height() << 2) + height(), height());
-		m_pHistory->setGeometry(width() - (height() << 2) + height(), 0, height(), height());
+
+		// roboirc
+		//m_pHistory->setGeometry(width() - (height() << 2) + height(), 0, height(), height());
+
 		m_pAccept->setGeometry(width() - (height() << 1), 0, height(), height());
 		m_pDiscard->setGeometry(width() - height(), 0, height(), height());
 	}
@@ -643,8 +662,12 @@ void KviTopicWidget::deactivate()
 	{
 		m_pInput->deleteLater();
 		m_pInput = nullptr;
+
+        /* roboirc
 		m_pHistory->deleteLater();
 		m_pHistory = nullptr;
+        */
+
 		m_pAccept->deleteLater();
 		m_pAccept = nullptr;
 		m_pDiscard->deleteLater();
