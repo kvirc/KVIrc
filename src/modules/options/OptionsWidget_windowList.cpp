@@ -29,6 +29,9 @@
 #define _WANT_OPTION_FLAGS_
 #include "KviOptions.h"
 
+#include <string>
+#include <vector>
+
 OptionsWidget_windowList::OptionsWidget_windowList(QWidget * parent)
     : KviOptionsWidget(parent)
 {
@@ -84,6 +87,51 @@ OptionsWidget_windowListTree::OptionsWidget_windowListTree(QWidget * parent)
 OptionsWidget_windowListTree::~OptionsWidget_windowListTree()
     = default;
 
+void addAlertLevels(KviOptionsWidget * widget, KviTalGroupBox * g)
+{
+	const QString available_options_text = __tr2qs_ctx("The following events trigger this alert level:", "options");
+	const int alert_levels[5] = {
+		KviOption_colorTreeWindowListHighlight1Foreground,
+		KviOption_colorTreeWindowListHighlight2Foreground,
+		KviOption_colorTreeWindowListHighlight3Foreground,
+		KviOption_colorTreeWindowListHighlight4Foreground,
+		KviOption_colorTreeWindowListHighlight5Foreground
+	};
+
+	// Add alert levels 1 through 5
+	for (int alert_level = KVI_MSGTYPE_MINLEVEL + 1; alert_level < KVI_MSGTYPE_MAXLEVEL + 1; alert_level++)
+	{
+		// Add the color selector
+		QString alert_level_qstr = "Alert level " + QString::number(alert_level) + ":";
+		QByteArray alert_level_ba = alert_level_qstr.toUtf8();
+		const int highlight_enum = alert_levels[alert_level - 1];
+		KviColorSelector * sel = widget->addColorSelector(g, __tr2qs_ctx(alert_level_ba.constData(), "options"), highlight_enum);
+
+		// Accumulate all message types for this alert level
+		std::vector<QString> alert_list;
+		for (int i = 0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)
+		{
+			KviMessageTypeSettingsOption setting = g_msgtypeOptionsTable[i];
+			if (setting.option.level() == alert_level) {
+				// Trim the prefix off the setting name and store
+				alert_list.push_back(setting.name.mid(KVI_MSGTYPE_OPTIONS_PREFIX_LEN));
+			}
+		}
+		std::sort(alert_list.begin(), alert_list.end());
+
+		// Create the help text
+		QString help_text = available_options_text + "<br>";
+		for (const auto& alert_type : alert_list)
+		{
+			if (alert_type != &alert_list.back())
+				help_text += alert_type + ", ";
+			else
+				help_text += alert_type;
+		}
+		widget->mergeTip(sel, help_text);
+	}
+}
+
 OptionsWidget_windowListTreeForeground::OptionsWidget_windowListTreeForeground(QWidget * parent)
     : KviOptionsWidget(parent)
 {
@@ -96,11 +144,7 @@ OptionsWidget_windowListTreeForeground::OptionsWidget_windowListTreeForeground(Q
 
 	addColorSelector(g, __tr2qs_ctx("Normal:", "options"), KviOption_colorTreeWindowListForeground);
 	addColorSelector(g, __tr2qs_ctx("Selected:", "options"), KviOption_colorTreeWindowListActiveForeground);
-	addColorSelector(g, __tr2qs_ctx("Alert level 1:", "options"), KviOption_colorTreeWindowListHighlight1Foreground);
-	addColorSelector(g, __tr2qs_ctx("Alert level 2:", "options"), KviOption_colorTreeWindowListHighlight2Foreground);
-	addColorSelector(g, __tr2qs_ctx("Alert level 3:", "options"), KviOption_colorTreeWindowListHighlight3Foreground);
-	addColorSelector(g, __tr2qs_ctx("Alert level 4:", "options"), KviOption_colorTreeWindowListHighlight4Foreground);
-	addColorSelector(g, __tr2qs_ctx("Alert level 5:", "options"), KviOption_colorTreeWindowListHighlight5Foreground);
+	addAlertLevels(this, g);
 
 	addColorSelector(0, 2, 0, 2, __tr2qs_ctx("Progress bar color:", "options"), KviOption_colorTreeWindowListProgress);
 
@@ -239,11 +283,7 @@ OptionsWidget_windowListClassic::OptionsWidget_windowListClassic(QWidget * paren
 	KviTalGroupBox * g = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("Text/Alert Colors", "options"));
 	addColorSelector(g, __tr2qs_ctx("Normal:", "options"), KviOption_colorWindowListNormalText);
 	addColorSelector(g, __tr2qs_ctx("Minimized:", "options"), KviOption_colorWindowListMinimizedText);
-	addColorSelector(g, __tr2qs_ctx("Alert level 1:", "options"), KviOption_colorWindowListHighlight1Text);
-	addColorSelector(g, __tr2qs_ctx("Alert level 2:", "options"), KviOption_colorWindowListHighlight2Text);
-	addColorSelector(g, __tr2qs_ctx("Alert level 3:", "options"), KviOption_colorWindowListHighlight3Text);
-	addColorSelector(g, __tr2qs_ctx("Alert level 4:", "options"), KviOption_colorWindowListHighlight4Text);
-	addColorSelector(g, __tr2qs_ctx("Alert level 5:", "options"), KviOption_colorWindowListHighlight5Text);
+	addAlertLevels(this, g);
 
 	addColorSelector(0, 2, 0, 2, __tr2qs_ctx("Progress bar color:", "options"), KviOption_colorWindowListProgressBar);
 	u = addUIntSelector(0, 3, 0, 3, __tr2qs_ctx("Minimum width of buttons:", "options"), KviOption_uintWindowListButtonMinWidth, 24, 9999, 100);
