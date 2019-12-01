@@ -95,6 +95,7 @@ class FileTransferWindow : public KviWindow
 {
 	friend class FileTransferItem;
 	friend class FileTransferItemDelegate;
+
 	Q_OBJECT
 public:
 	FileTransferWindow(
@@ -130,6 +131,7 @@ protected:
 public:
 	QSize sizeHint() const override;
 	int lineSpacing() { return m_iLineSpacing; };
+
 protected slots:
 	void transferRegistered(KviFileTransfer * t);
 	void transferUnregistering(KviFileTransfer * t);
@@ -141,11 +143,12 @@ protected slots:
 	void tipRequest(KviDynamicToolTip * tip, const QPoint & pnt);
 	void openLocalFile();
 	void openLocalFileWith();
-	void copyLocalFileToClipboard();
 	void openLocalFileFolder();
 	void openFilePopupActivated(QAction * pAction);
 	void openLocalFileTerminal();
+    void copyLocalFileToClipboard();
 	void deleteLocalFile();
+	void openFileinLinux();
 };
 
 #endif //_FILETRANSFERWINDOW_H_

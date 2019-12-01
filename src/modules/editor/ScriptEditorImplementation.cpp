@@ -57,6 +57,8 @@
 #include <QMenu>
 #include <QListWidget>
 #include <QPainter>
+#include <QDebug>
+
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <windows.h>
@@ -712,18 +714,23 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	if(g_pScriptEditorWindowList.empty())
 		loadOptions();
 	g_pScriptEditorWindowList.insert(this);
-	m_lastCursorPos = 0;
-	QGridLayout * g = new QGridLayout(this);
 
-	m_pEditor = new ScriptEditorWidget(this);
+	m_lastCursorPos = 0;
+
+	QGridLayout * g = new QGridLayout(this);
 
 	m_pFindLineEdit = new QLineEdit(" ", this);
 	m_pFindLineEdit->setText("");
-
 	QPalette p = m_pFindLineEdit->palette();
 	p.setColor(QPalette::Text, g_clrFind);
 	m_pFindLineEdit->setPalette(p);
 
+	//roboirc
+    //QLabel * Title = new QLabel(this);
+    //Title->setText(__tr2qs_ctx("KVirc Script Editor:", "editor"));
+    //g->addWidget(Title, 0, 2.5, 1, 1);
+
+    m_pEditor = new ScriptEditorWidget(this);
 	g->addWidget(m_pEditor, 0, 0, 1, 5);
 	g->setRowStretch(0, 1);
 
@@ -770,6 +777,11 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	connect(m_pEditor, SIGNAL(cursorPositionChanged()), this, SLOT(updateRowColLabel()));
 	connect(m_pEditor, SIGNAL(selectionChanged()), this, SLOT(updateRowColLabel()));
 	m_lastCursorPos = 0;
+
+	//roboirc
+	//QString columns = QString::number(g->columnCount());
+    //QString rows = QString::number(g->rowCount());
+    //qDebug() << columns;
 }
 
 ScriptEditorImplementation::~ScriptEditorImplementation()

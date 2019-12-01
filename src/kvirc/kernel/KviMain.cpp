@@ -22,6 +22,8 @@
 //
 //=============================================================================
 
+#include "qdebug.h"
+#include <stdlib.h>
 #include "KviApplication.h"
 #include "KviCString.h"
 #include "kvi_settings.h"
@@ -484,9 +486,15 @@ int main(int argc, char ** argv)
 	pTheApp->m_szExecAfterStartup = a.szExecCommand;
 	pTheApp->setup();
 
-	// YEAH!
-	int iRetVal = pTheApp->exec();
-	// :)
+	/*
+	QMessageBox qMessageBox;
+	qMessageBox.setText("KviMain.cpp!");
+	qMessageBox.setWindowTitle("Title!");
+	qMessageBox.exec();
+	*/
+
+    int iRetVal = pTheApp->exec();
+
 
 	delete pTheApp;
 

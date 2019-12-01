@@ -45,6 +45,8 @@
 #include <QMimeData>
 #include <QString>
 #include <QDesktopWidget>
+#include <QWidget>
+
 
 
 /*
@@ -451,7 +453,6 @@ void KviIconWidget::init()
 
 	// roboirc
 	// column labels
-	/*
 	for(int i = 0; i < 20; i++)
 	{
 		KviCString szTmp(KviCString::Format, "%d", i);
@@ -467,17 +468,18 @@ void KviIconWidget::init()
 		QLabel * pLabel = new QLabel(szTmp.ptr(), this);
 		pLayout->addWidget(pLabel, i + 1, 0);
 	}
-	*/
 
 	for(int i = 0; i < KviIconManager::IconCount; i++)
 	{
 		KviCString szTmp(KviCString::Format, "%d", i);
 		QLabel * pLabel = new QLabel(this);
 		pLabel->setObjectName(szTmp.ptr());
-		pLabel->setPixmap(*(g_pIconManager->getSmallIcon(i)));
 
         // roboirc
+        QPixmap pixmap(*(g_pIconManager->getSmallIcon(i)));
+        pLabel->setPixmap(pixmap.scaled(40, 40, Qt::KeepAspectRatio, Qt::SmoothTransformation));
         pLabel->setToolTip(__tr2qs(g_pIconManager->getSmallIconName(i)));
+
 
 		pLabel->installEventFilter(this);
 		pLabel->setAcceptDrops(true);
@@ -487,9 +489,20 @@ void KviIconWidget::init()
 	}
 
 	//roboirc
+    this->setGeometry(0,0,(this->width())*1.5, (this->height())*1.5);
+    QDesktopWidget *desktop = QApplication::desktop();
+
     int width = this->width();
-	int height = this->height();
-    this->setGeometry(0,0,width*1.5, height*1.5);
+    int height = this->height();
+
+    int screenWidth = desktop->width();
+    int screenHeight = desktop->height();
+
+    // padding
+    this->move((screenWidth-width)/2, (screenHeight-height)/2);
+
+
+
 
 }
 

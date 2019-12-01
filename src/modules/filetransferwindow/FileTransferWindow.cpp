@@ -50,6 +50,10 @@
 #include <QWidgetAction>
 #include <QHeaderView>
 #include <vector>
+#include "qdebug.h"
+#include <stdlib.h>
+
+
 
 #ifdef COMPILE_KDE4_SUPPORT
 #include <kurl.h>
@@ -70,6 +74,8 @@ extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 #define FILETRANSFERW_CELLSIZE 70
+
+QString szFile;
 
 extern FileTransferWindow * g_pFileTransferWindow;
 
@@ -180,9 +186,12 @@ void FileTransferWidget::mouseDoubleClickEvent(QMouseEvent * e)
 	QTableWidgetItem * clicked = itemAt(e->pos());
 	if(clicked)
 	{
+
 		FileTransferItem * i = (FileTransferItem *)item(clicked->row(), 0);
 		if(i)
-			emit doubleClicked(i, QCursor::pos());
+		    emit doubleClicked(i, QCursor::pos());
+
+
 	}
 	QTableWidget::mouseDoubleClickEvent(e);
 }
@@ -298,8 +307,7 @@ FileTransferWindow::FileTransferWindow(
 
 	m_pTableWidget->installEventFilter(this);
 
-	connect(m_pTableWidget, SIGNAL(rightButtonPressed(FileTransferItem *, QPoint)),
-	    this, SLOT(rightButtonPressed(FileTransferItem *, QPoint)));
+	connect(m_pTableWidget, SIGNAL(rightButtonPressed(FileTransferItem *, QPoint)), this, SLOT(rightButtonPressed(FileTransferItem *, QPoint)));
 	connect(m_pTableWidget, SIGNAL(doubleClicked(FileTransferItem *, const QPoint &)), this, SLOT(doubleClicked(FileTransferItem *, const QPoint &)));
 	fillTransferView();
 
@@ -404,7 +412,9 @@ void FileTransferWindow::doubleClicked(FileTransferItem * it, const QPoint &)
 
 void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint & pnt)
 {
-	if(!m_pContextPopup)
+
+
+    if(!m_pContextPopup)
 		m_pContextPopup = new QMenu(this);
 	if(!m_pLocalFilePopup)
 		m_pLocalFilePopup = new QMenu(this);
@@ -418,17 +428,20 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 
 	QAction * pAction;
 
+
+
 	if(it)
 	{
 		FileTransferItem * i = (FileTransferItem *)it;
 		if(i->transfer())
 		{
 
-			QString szFile = i->transfer()->localFileName();
+			szFile = i->transfer()->localFileName();
 			if(!szFile.isEmpty())
 			{
 				m_pLocalFilePopup->clear();
 
+                // roboirc szFile
 				QString tmp = "File: ";
 				tmp += "<b>";
 				tmp += szFile;
@@ -453,7 +466,10 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 				QWidgetAction * pWaction = new QWidgetAction(m_pLocalFilePopup);
 				QLabel * l = new QLabel(tmp, m_pLocalFilePopup);
 				QPalette p;
-				l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
+
+				//roboirc
+				//l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
+
 				l->setContentsMargins(5, 5, 5, 5);
 				pWaction->setDefaultWidget(l);
 				m_pLocalFilePopup->addAction(pWaction);
@@ -503,12 +519,14 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 				m_pLocalFilePopup->addSeparator();
 #endif // G&N end
 
-				m_pLocalFilePopup->addAction(__tr2qs_ctx("&Copy Path to Clipboard", "filetransferwindow"), this, SLOT(copyLocalFileToClipboard()));
+				//roboirc
+                m_pLocalFilePopup->addAction(__tr2qs_ctx("&Open file location", "filetransferwindow"), this, SLOT(openFileinLinux()));
+                m_pLocalFilePopup->addAction(__tr2qs_ctx("&Copy Path to Clipboard", "filetransferwindow"), this, SLOT(copyLocalFileToClipboard()));
+                m_pLocalFilePopup->addAction(__tr2qs_ctx("&Delete File", "filetransferwindow"), this, SLOT(deleteLocalFile()));
 
-				pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Delete File", "filetransferwindow"), this, SLOT(deleteLocalFile()));
-				pAction->setEnabled(i->transfer()->terminated());
 				pAction = m_pContextPopup->addAction(__tr2qs_ctx("Local &File", "filetransferwindow"));
 				pAction->setMenu(m_pLocalFilePopup);
+
 			}
 
 			i->transfer()->fillContextPopup(m_pContextPopup);
@@ -545,6 +563,49 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 	pAction->setEnabled(bAreTransfersActive);
 
 	m_pContextPopup->popup(pnt);
+}
+
+void FileTransferWindow::deleteLocalFile()
+{
+    KviFileTransfer * pTransfer = selectedTransfer();
+    if(!pTransfer)
+        return;
+
+    QString szName = pTransfer->localFileName();
+    QString szTmp = QString(__tr2qs_ctx("Do you really want to delete the file %1?", "filetransferwindow")).arg(szName);
+
+    if(QMessageBox::warning(this, __tr2qs_ctx("Confirm File Delete - KVIrc", "filetransferwindow"), szTmp, __tr2qs_ctx("Yes", "filetransferwindow"), __tr2qs_ctx("No", "filetransferwindow")) != 0) {
+        return;
+    }
+
+
+    if(!QFile::remove(szName)) {
+        QMessageBox::warning(this, __tr2qs_ctx("Deleting File Failed - KVIrc", "filetransferwindow"),
+                             __tr2qs_ctx("Failed to remove the file", "filetransferwindow"),
+                             __tr2qs_ctx("OK", "filetransferwindow"));
+    }
+
+
+}
+
+void FileTransferWindow::copyLocalFileToClipboard()
+{
+    KviFileTransfer * t = selectedTransfer();
+    if(!t)
+        return;
+    QString tmp = t->localFileName();
+    if(tmp.isEmpty())
+        return;
+    QApplication::clipboard()->setText(tmp);
+}
+
+//roboirc
+void FileTransferWindow::openFileinLinux(){
+
+    std::string string = "xdg-open \"" + szFile.toStdString() + "\"";
+    system((char *)string.c_str());
+    //qDebug() << string.c_str();
+
 }
 
 KviFileTransfer * FileTransferWindow::selectedTransfer()
@@ -634,25 +695,6 @@ void FileTransferWindow::openLocalFileTerminal()
 #endif
 }
 
-void FileTransferWindow::deleteLocalFile()
-{
-	KviFileTransfer * pTransfer = selectedTransfer();
-	if(!pTransfer)
-		return;
-
-	QString szName = pTransfer->localFileName();
-	QString szTmp = QString(__tr2qs_ctx("Do you really want to delete the file %1?", "filetransferwindow")).arg(szName);
-
-	if(QMessageBox::warning(this, __tr2qs_ctx("Confirm File Delete - KVIrc", "filetransferwindow"),
-	       szTmp, __tr2qs_ctx("Yes", "filetransferwindow"), __tr2qs_ctx("No", "filetransferwindow"))
-	    != 0)
-		return;
-
-	if(!QFile::remove(szName))
-		QMessageBox::warning(this, __tr2qs_ctx("Deleting File Failed - KVIrc", "filetransferwindow"),
-		    __tr2qs_ctx("Failed to remove the file", "filetransferwindow"),
-		    __tr2qs_ctx("OK", "filetransferwindow"));
-}
 
 void FileTransferWindow::openLocalFile()
 {
@@ -725,17 +767,6 @@ void FileTransferWindow::openLocalFileWith()
 	KRun::displayOpenWithDialog(lst, g_pMainWindow);
 #endif //COMPILE_KDE4_SUPPORT
 #endif
-}
-
-void FileTransferWindow::copyLocalFileToClipboard()
-{
-	KviFileTransfer * t = selectedTransfer();
-	if(!t)
-		return;
-	QString tmp = t->localFileName();
-	if(tmp.isEmpty())
-		return;
-	QApplication::clipboard()->setText(tmp);
 }
 
 void FileTransferWindow::openLocalFileFolder()

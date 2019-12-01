@@ -142,8 +142,9 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pCommandlineModeButton->setIcon(is0);
 	KviTalToolTip::add(m_pCommandlineModeButton, __tr2qs("User friendly command-line mode Ctrl+Y<br>See also /help commandline"));
 
-	if(KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault))
-		m_pCommandlineModeButton->setChecked(true);
+	//roboirc set the option as setCheckable
+    m_pCommandlineModeButton->setChecked(false);
+    m_pCommandlineModeButton->setCheckable(true);
 
 	m_pMultiEditorButton = new QToolButton(m_pButtonContainer);
 	m_pMultiEditorButton->setObjectName("multieditorbutton");

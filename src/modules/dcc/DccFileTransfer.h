@@ -265,6 +265,8 @@ public slots:
 	void retryDCC();
 	void retryTDCC();
 	void retryRevDCC();
+
+
 };
 
 #endif //_SEND_H_

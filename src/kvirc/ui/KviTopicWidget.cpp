@@ -493,7 +493,7 @@ void KviTopicWidget::switchMode()
 		if(iMaxLen > 0)
 			m_pInput->setMaxBufferSize(iMaxLen);
 
-		// roboirc
+		// roboirc (height()<< 2 height to height()<<1)
 		m_pInput->setGeometry(0, 0, width() - (height() << 1) + height(), height());
 
 		m_pInput->setText(m_szTopic);
