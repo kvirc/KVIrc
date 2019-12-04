@@ -1,0 +1,90 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>ftp class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>ftp class</div>      <div class='title-secondary-text'>An implementation of the client side of FTP protocol.</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This class provides a standard FTP functionality.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="dataAvailableEvent">$dataAvailableEvent(&lt;data_length&gt;)</a></font></b></code></td></tr>
+<tr><td>This function is called when some data is available to be read.<br> The &lt;data_length&gt; parameter specifies the length of the available data in bytes.<br> You can use one of the $read* functions to obtain the data.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; connect">&lt;id:integer&gt; $connect(&lt;host:string&gt;,&lt;remote_port:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Connects to the FTP server host using port port.<br> The command is scheduled, and its execution is performed asynchronously.<br> The function returns a unique identifier which is passed by <b>commandStarted()</b> and <b>commandFinished()</b>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="abort">$abort()</a></font></b></code></td></tr>
+<tr><td>Aborts the current command and deletes all scheduled commands.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; login">&lt;id:integer&gt; $login(&lt;user:string&gt;,&lt;pass:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Logs in to the FTP server with the username user and the password &lt;pass&gt;.<br> The function returns a unique identifier which is passed by <b>commandStarted()</b> and <b>commandFinished()</b>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; get">&lt;id:integer&gt; $get(&lt;remotefile:string&gt;,&lt;localfile:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Downloads the &lt;remotefile&gt; file from the server.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; put">&lt;id:integer&gt; $put(&lt;localfile:string&gt;,&lt;remotefile:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Uploads the &lt;localfile&gt; to the server.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; cd">&lt;id:integer&gt; $cd(&lt;remotedir:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Changes the working directory of the server to &lt;remotedir&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; list">&lt;id:integer&gt; $list()</a></font></b></code></td></tr>
+<tr><td>Lists the contents of the directory on the FTP server.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="commandFinishedEvent">$commandFinishedEvent(&lt;id:integer&gt;,&lt;error:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Called by KVIrc when the FTP command identified by ID has finished.<br> Error is true if an error occurred during the processing; otherwise error is false.<br> The default implementation emits the <a href="#commandFinished">$commandFinished</a>() signal.<br></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="listInfoEvent">$listInfoEvent(&lt;dir_entry_name:string&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is triggered for each directory entry found by <a href="#list">$list</a>() command.<br> The default implementation emits the <a href="#listInfo">$listInfo</a>() signal.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="dataTransferProgressEvent">$dataTransferProgressEvent(&lt;done:integer&gt;,&lt;total:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is triggered in response to a <b>get()</b> or <b>put()</b> request to indicate the current progress of the download or upload.<br> The default implementation emits the <a href="#dataTransferProgress">$dataTransferProgress</a>() signal.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="commandFinished">$commandFinished(&lt;id:integer&gt;,&lt;szCommand:string&gt;,&lt;error:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#commandFinishedEvent">$commandFinishedEvent</a>()</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="listInfo">$listInfo(&lt;dir_entry_name:string&gt;)</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#listInfoEvent">$listInfoEvent</a>()</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="dataTransferProgress">$dataTransferProgress(&lt;done:integer&gt;,&lt;total:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#dataTransferProgressEvent">$dataTransferProgressEvent</a>()</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

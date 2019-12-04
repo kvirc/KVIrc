@@ -1,0 +1,158 @@
+OnKVIrcStartup<!>Triggered on KVIrc startup<!>event_onkvircstartup.html
+OnKVIrcShutdown<!>Triggered on KVIrc shutdown<!>event_onkvircshutdown.html
+OnIRCContextCreated<!>Triggered when a new IRC context is created<!>event_onirccontextcreated.html
+OnIRCContextDestroyed<!>Triggered when an IRC context is destroyed<!>event_onirccontextdestroyed.html
+OnFrameWindowCreated<!>Triggered when a new frame window is opened<!>event_onframewindowcreated.html
+OnFrameWindowDestroyed<!>Triggered when a frame window is being destroyed<!>event_onframewindowdestroyed.html
+OnURL<!>Triggered when an URL appears in one of the output windows<!>event_onurl.html
+OnError<!>Triggered when an ERROR message is received from the server<!>event_onerror.html
+OnAccelKeyPressed<!>Triggered when an accelerator key was pressed<!>event_onaccelkeypressed.html
+OnHighlight<!>Triggered when a channel or query message is going to be highlighted<!>event_onhighlight.html
+OnWindowActivated<!>Triggered when a window has just been activated<!>event_onwindowactivated.html
+OnNotifyOnline<!>A user in the notify list is on-line<!>event_onnotifyonline.html
+OnNotifyOffline<!>A user in the notify list went off-line<!>event_onnotifyoffline.html
+OnPing<!>Server ping handler<!>event_onping.html
+OnPong<!>Server pong handler<!>event_onpong.html
+OnLagAlarmTimeUp<!>High-Lag Alarm Started<!>event_onlagalarmtimeup.html
+OnLagAlarmTimeDown<!>High-Lag Alarm Stopped<!>event_onlagalarmtimedown.html
+OnLagCheck<!>The lag metering engine has checked the lag<!>event_onlagcheck.html
+OnTextInput<!>The user has just entered some text in the text input<!>event_ontextinput.html
+OnNotifyListDefaultActionRequest<!>Notify list double click customization<!>event_onnotifylistdefaultactionrequest.html
+OnWallops<!>Triggered when a WALLOPS message is received from the server<!>event_onwallops.html
+OnIgnoredMessage<!>Triggered when a message is ignored.<!>event_onignoredmessage.html
+OnServerNotice<!>A server NOTICE have been issued.<!>event_onservernotice.html
+OnIRCConnectionEstablished<!>Triggered when a new IRC connection has been established<!>event_onircconnectionestablished.html
+OnIRCConnectionTerminated<!>Triggered when an IRC connection has been terminated<!>event_onircconnectionterminated.html
+OnIRC<!>Triggered when the login operations are terminated<!>event_onirc.html
+OnNetsplit<!>A netsplit has been detected<!>event_onnetsplit.html
+OnDisconnectRequest<!>Triggered when the user requests a disconnection<!>event_ondisconnectrequest.html
+OnHTTPGetTerminated<!>A http.get command has terminated execution<!>event_onhttpgetterminated.html
+OnUnhandledLiteral<!>An unhandled literal server message has been received<!>event_onunhandledliteral.html
+OnOutboundTraffic<!>Triggered on outbound traffic.<br>USE THIS EVENT WITH REAL CAUTION: an improper use can lead to many problems to KVIrc; especially avoid the use of the 'halt' command.<!>event_onoutboundtraffic.html
+OnChannelPopupRequest<!>Triggered when the channel text view is right-clicked<!>event_onchannelpopuprequest.html
+OnConsolePopupRequest<!>Triggered when the console text view is right-clicked<!>event_onconsolepopuprequest.html
+OnQueryPopupRequest<!>Triggered when the query text view is right-clicked<!>event_onquerypopuprequest.html
+OnWindowPopupRequest<!>Triggered when the user middle-clicks in a text view (or right-clicks with the Ctrl key pressed).<!>event_onwindowpopuprequest.html
+OnHostLinkPopupRequest<!>Triggered when a user right clicks on a hostname link in the text view.<!>event_onhostlinkpopuprequest.html
+OnURLLinkPopupRequest<!>URL link popup customization<!>event_onurllinkpopuprequest.html
+OnServerLinkPopupRequest<!>Server link popup customization<!>event_onserverlinkpopuprequest.html
+OnChannelLinkPopupRequest<!>Channel link popup customization<!>event_onchannellinkpopuprequest.html
+OnNickLinkPopupRequest<!>Nick link popup customization<!>event_onnicklinkpopuprequest.html
+OnQueryNickPopupRequest<!>Query nicklist popup customization<!>event_onquerynickpopuprequest.html
+OnChannelNickPopupRequest<!>Allows customization of the nick-on-channel context popup<!>event_onchannelnickpopuprequest.html
+OnNotifyListPopupRequest<!>Notify list context popup customization<!>event_onnotifylistpopuprequest.html
+OnDCCChatPopupRequest<!>Triggered when the DCC chat text view is right-clicked<!>event_ondccchatpopuprequest.html
+OnChannelWindowCreated<!>A channel window has just been opened<!>event_onchannelwindowcreated.html
+OnChannelSync<!>Triggered when all channel information have been received<!>event_onchannelsync.html
+OnChannelMessage<!>A message has been received from the channel<!>event_onchannelmessage.html
+OnChannelNotice<!>A NOTICE have been issued to a channel<!>event_onchannelnotice.html
+OnQueryMessage<!>A message has been received from a query<!>event_onquerymessage.html
+OnQueryNotice<!>A private notice has been received<!>event_onquerynotice.html
+OnQueryWindowRequest<!>A new query window is going to be opened because a remote message has been received<!>event_onquerywindowrequest.html
+OnQueryWindowCreated<!>A query window has just been opened<!>event_onquerywindowcreated.html
+OnQueryTargetAdded<!>A new query target has been added<!>event_onquerytargetadded.html
+OnQueryFileDropped<!>A file is dropped in a query<!>event_onqueryfiledropped.html
+OnMeAway<!>Local user sets the AWAY status<!>event_onmeaway.html
+OnMeBack<!>Local user cancels the AWAY status<!>event_onmeback.html
+OnJoin<!>Non-local user joining a channel<!>event_onjoin.html
+OnMeJoin<!>Local user joining a channel<!>event_onmejoin.html
+OnPart<!>Non-local user is leaving a channel<!>event_onpart.html
+OnMePart<!>Local user is leaving a channel<!>event_onmepart.html
+OnKick<!>Non-local user is being kicked from a channel<!>event_onkick.html
+OnMeKick<!>Local user is being kicked from a channel<!>event_onmekick.html
+OnTopic<!>Topic change on a channel<!>event_ontopic.html
+OnQuit<!>An user is leaving IRC<!>event_onquit.html
+OnChannelModeChange<!>The channel mode has been changed<!>event_onchannelmodechange.html
+OnUserModeChange<!>The local user has changed mode<!>event_onusermodechange.html
+OnBan<!>Someone has set a +b flag on the channel<!>event_onban.html
+OnUnban<!>Someone has set a -b flag on the channel<!>event_onunban.html
+OnMeBan<!>Local user is being banned in a channel<!>event_onmeban.html
+OnMeUnban<!>Local user is being de-banned in a channel<!>event_onmeunban.html
+OnBanException<!>Someone has set a +e flag on the channel<!>event_onbanexception.html
+OnBanExceptionRemove<!>Someone has set a -e flag on the channel<!>event_onbanexceptionremove.html
+OnMeBanException<!>Someone has set a +e flag on the local user<!>event_onmebanexception.html
+OnMeBanExceptionRemove<!>Someone has set a -e flag on the local user<!>event_onmebanexceptionremove.html
+OnInvite<!>The local user has received an invitation<!>event_oninvite.html
+OnInviteException<!>A +I mode has been set<!>event_oninviteexception.html
+OnInviteExceptionRemove<!>Mode -I has been set<!>event_oninviteexceptionremove.html
+OnMeInviteException<!>A +I mode has been set on the local user<!>event_onmeinviteexception.html
+OnMeInviteExceptionRemove<!>Move -I has been set<!>event_onmeinviteexceptionremove.html
+OnLimitSet<!>The channel users limit has been set<!>event_onlimitset.html
+OnLimitUnSet<!>The channel users limit has been unset<!>event_onlimitunset.html
+OnKeySet<!>The channel users key has been set<!>event_onkeyset.html
+OnKeyUnset<!>The channel users key has been unset<!>event_onkeyunset.html
+OnNickChange<!>Someone has changed his nickname<!>event_onnickchange.html
+OnMeNickChange<!>The local user has changed his nickname<!>event_onmenickchange.html
+OnChanOwner<!>Someone has given a user the +q flag<!>event_onchanowner.html
+OnDeChanOwner<!>Someone has given a user the -q flag<!>event_ondechanowner.html
+OnMeChanOwner<!>Someone has given the +q flag to the local user<!>event_onmechanowner.html
+OnMeDeChanOwner<!>Someone has given the -q flag to the local user<!>event_onmedechanowner.html
+OnChanAdmin<!>Someone has given a user the +a flag<!>event_onchanadmin.html
+OnDeChanAdmin<!>Someone has given a user the -a flag<!>event_ondechanadmin.html
+OnMeChanAdmin<!>Someone has given the +a flag to the local user<!>event_onmechanadmin.html
+OnMeDeChanAdmin<!>Someone has given the -a flag to the local user<!>event_onmedechanadmin.html
+OnOp<!>Someone has given a user the +o flag<!>event_onop.html
+OnDeOp<!>Someone has given a user the -o flag<!>event_ondeop.html
+OnMeOp<!>Someone has given the +o flag to the local user<!>event_onmeop.html
+OnMeDeOp<!>Someone has given the -o flag to the local user<!>event_onmedeop.html
+OnHalfOp<!>Someone has given a user the +h flag<!>event_onhalfop.html
+OnDeHalfOp<!>Someone has given a user the -h flag<!>event_ondehalfop.html
+OnMeHalfOp<!>Someone has given the local user the +h flag<!>event_onmehalfop.html
+OnMeDeHalfOp<!>Someone has given the local user the -h flag<!>event_onmedehalfop.html
+OnVoice<!>Someone has given a user the +v flag<!>event_onvoice.html
+OnDeVoice<!>Someone has given a user the -v flag<!>event_ondevoice.html
+OnMeVoice<!>Someone has give the local user a +v flag<!>event_onmevoice.html
+OnMeDeVoice<!>Someone has give the local user a -v flag<!>event_onmedevoice.html
+OnUserOp<!>Someone has given a user the +u flag<!>event_onuserop.html
+OnDeUserOp<!>Someone has given a user a -u flag<!>event_ondeuserop.html
+OnMeUserOp<!>Someone has given the local user the +u flag<!>event_onmeuserop.html
+OnMeDeUserOp<!>Someone has given the local user the -u flag<!>event_onmedeuserop.html
+OnIrcOp<!>Someone has given a user the +O flag<!>event_onircop.html
+OnDeIrcOp<!>Someone has given a user the -O flag<!>event_ondeircop.html
+OnMeIrcOp<!>Someone has given the +O flag to the local user<!>event_onmeircop.html
+OnMeDeIrcOp<!>Someone has given the -O flag to the local user<!>event_onmedeircop.html
+OnChanServNotice<!>A notice from ChanServ has been received<!>event_onchanservnotice.html
+OnNickServNotice<!>A notice from NickServ has been received<!>event_onnickservnotice.html
+OnNickServAuth<!>IRCd set a registered user mode<!>event_onnickservauth.html
+OnAction<!>Someone issued a CTCP ACTION<!>event_onaction.html
+OnMeAction<!>User issued a CTCP ACTION<!>event_onmeaction.html
+OnCTCPRequest<!>A CTCP request has been received<!>event_onctcprequest.html
+OnCTCPReply<!>A CTCP reply has been received<!>event_onctcpreply.html
+OnCTCPFlood<!>Someone tried to flood you with CTCP requests<!>event_onctcpflood.html
+OnDCCSessionCreated<!>A new DCC session has just been created<!>event_ondccsessioncreated.html
+OnDCCSessionDestroyed<!>A new DCC session has just been destroyed<!>event_ondccsessiondestroyed.html
+OnDCCChatWindowCreated<!>A DCC Chat window has been just created<!>event_ondccchatwindowcreated.html
+OnDCCChatConnectionInProgress<!>A DCC Chat connection has just been started<!>event_ondccchatconnectioninprogress.html
+OnDCCChatConnected<!>A DCC Chat connection has been established<!>event_ondccchatconnected.html
+OnDCCChatMessage<!>A DCC Chat message has just been received<!>event_ondccchatmessage.html
+OnDCCChatError<!>A DCC Chat error has just been triggered<!>event_ondccchaterror.html
+OnDCCChatDisconnected<!>A DCC Chat has been just disconnected<!>event_ondccchatdisconnected.html
+OnDCCChatWindowClosing<!>A DCC Chat is going to be closed<!>event_ondccchatwindowclosing.html
+OnDCCFileTransferConnectionInProgress<!>Triggered when a DCC File transfer is waiting for a connection<!>event_ondccfiletransferconnectioninprogress.html
+OnDCCFileTransferBegin<!>Triggered when a DCC File transfer begins<!>event_ondccfiletransferbegin.html
+OnDCCFileTransferSuccess<!>Triggered when a DCC File transfer succeeds<!>event_ondccfiletransfersuccess.html
+OnDCCFileTransferFailed<!>Triggered when a DCC File transfer fails<!>event_ondccfiletransferfailed.html
+OnChannelNickLinkClick<!>Clicked on nickname in channel<!>event_onchannelnicklinkclick.html
+OnQueryNickLinkClick<!>Triggered when user clicks on nickname in query window<!>event_onquerynicklinkclick.html
+OnConsoleNickLinkClick<!>Triggered when user clicks on nickname in console window<!>event_onconsolenicklinkclick.html
+OnHostLinkClick<!>Triggered when user clicks on any hostname in any window<!>event_onhostlinkclick.html
+OnURLLinkClick<!>Triggered when user clicks on any URL link in any window<!>event_onurllinkclick.html
+OnChannelLinkClick<!>Triggered when user clicks on any channel name in any window<!>event_onchannellinkclick.html
+OnServerLinkClick<!>Triggered when user clicks on server name in any window<!>event_onserverlinkclick.html
+OnTextViewDoubleClicked<!>Text view link double click customization<!>event_ontextviewdoublecliked.html
+OnNickLinkDefaultActionRequest<!>Nick link double click customization<!>event_onnicklinkdefaultactionrequest.html
+OnChannelNickDefaultActionRequest<!>Allows customization of the double click on nicknames<!>event_onchannelnickdefaultactionrequest.html
+OnQueryNickDefaultActionRequest<!>Query double click customization<!>event_onquerynickdefaultactionrequest.html
+OnWindowTitleRequest<!>Triggered when a window title needs to be set<!>event_onwindowtitlerequest.html
+OnInputBarPaste<!>Triggered when the user paste some text on the inputbar<!>event_oninputbarpaste.html
+OnMemoServNotice<!>A notice from MemoServ has been received<!>event_onmemoservnotice.html
+OnBroadcastNotice<!>A broadcast NOTICE has been received.<!>event_onbroadcastnotice.html
+OnQuietBan<!>Someone has set a +q flag on the channel<!>event_onquietban.html
+OnQuietUnban<!>Someone has set a -q flag on the channel<!>event_onquietunban.html
+OnMeQuietBan<!>Local user is being quiet-banned (+q) in a channel<!>event_onmequietban.html
+OnMeQuietUnban<!>Local user is being quiet-debanned (-q) in a channel<!>event_onmequietunban.html
+OnMeHostChange<!>Local user's visible hostname is changed<!>event_onmehostchange.html
+OnHostChange<!>Someone's visible hostname has changed<!>event_onhostchange.html
+OnAccount<!>Someone's account name has changed<!>event_onaccount.html
+OnAway<!>Someone's away status has changed<!>event_onaway.html
+OnCap<!>Received a capability update from the IRCd<!>event_oncap.html

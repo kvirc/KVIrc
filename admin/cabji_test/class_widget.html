@@ -1,0 +1,236 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>widget class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>widget class</div>      <div class='title-secondary-text'>Base class for all widgets</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This object class is the representation of a widget.
+All the other widget-type classes inherit from this one.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="show">$show()</a></font></b></code></td></tr>
+<tr><td>Shows this widget and the child items. See also <a href="#hide">$hide</a>() and <a href="#isVisible">$isVisible</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="hide">$hide()</a></font></b></code></td></tr>
+<tr><td>Hides this widget (and conseguently all the child items). See also <a href="#show">$show</a>() and <a href="#isVisible">$isVisible</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="repaint">$repaint()</a></font></b></code></td></tr>
+<tr><td>Repaints the widget directly by calling <a href="#paintEvent">$paintEvent</a>() immediately.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="update">$update([&lt;x:ingeter&gt;,&lt;y:integer&gt;,&lt;width:integer&gt;,&lt;height:integer&gt;])</a></font></b></code></td></tr>
+<tr><td>Updates entirely the widget or a rectangle. This function does not cause an immediate <a href="#paintEvent">$paintEvent</a>(); instead it schedules a paint event for processing when KVIrc returns to the main event loop.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="x">$x()</a></font></b></code></td></tr>
+<tr><td>Returns the x coordinate of the upper-left corner of this widget relative to the parent widget, or to the desktop if this widget is a toplevel one.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="y">$y()</a></font></b></code></td></tr>
+<tr><td>Returns the y coordinate of the upper-left corner of this widget relative to the parent widget, or to the desktop if this widget is a toplevel one.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="width">$width()</a></font></b></code></td></tr>
+<tr><td>Returns the width of this widget in pixels.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="height">$height()</a></font></b></code></td></tr>
+<tr><td>Returns the height of this widget in pixels.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="geometry">$geometry()</a></font></b></code></td></tr>
+<tr><td>Returns the widget geometry in this form:<br> x, y, width, height.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setGeometry">$setGeometry(&lt;x_or_array&gt;,[&lt;y&gt;,&lt;width&gt;,&lt;height&gt;])</a></font></b></code></td></tr>
+<tr><td>Sets the geometry of this widget. &lt;x&gt; and &lt;y&gt; are relative to the parent widget or to the desktop (if this widget is a toplevel one). All the parameters are in pixels.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setMinimumWidth">$setMinimumWidth(&lt;value&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the minimum width of this widget to &lt;value&gt;. The user will not be able to resize the widget to a smaller value. This value is also used by the <a href="class_layout.html">layout class</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setMinimumHeight">$setMinimumHeight(&lt;value&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the minimum height of this widget to &lt;value&gt;. The user will not be able to resize the widget to a smaller value. This value is also used by the <a href="class_layout.html">layout class</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setMaximumWidth">$setMaximumWidth(&lt;value&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the maximum width of this widget to &lt;value&gt;. The user will not be able to resize the widget to a bigger value. This value is also used by the <a href="class_layout.html">layout class</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setMaximumHeight">$setMaximumHeight(&lt;value&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the maximum height of this widget to &lt;value&gt;. The user will not be able to resize the widget to a bigger value. This value is also used by the <a href="class_layout.html">layout class</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setFixedWidth">$setFixedWidth(&lt;value&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the fixed width of this widget to &lt;value&gt;. The user will not be able to resize the widget to a smaller or a bigger value.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setFixedHeight">$setFixedHeight(&lt;value&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the fixed height of this widget to &lt;value&gt;. The user will not be able to resize the widget to a smaller or a bigger value.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setFixedSize">$setFixedSize(&lt;width&gt;,&lt;height&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the fixed width and height of this widget to &lt;width&gt; and &lt;height&gt;. The user will not be able to resize the widget to a smaller or a bigger value.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setSizePolicy">$setSizePolicy(&lt;width_policy&gt;,&lt;height_policy&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the size policy of this widget.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="move">$move(&lt;x_or_array&gt;[,&lt;y&gt;])</a></font></b></code></td></tr>
+<tr><td>Moves this widget to the coordinate &lt;x&gt; and &lt;y&gt; relative to its parent widget (or the desktop if this widget is a toplevel one). This is equivalent to <a href="#setGeometry">$setGeometry</a>(&lt;x&gt;,&lt;y&gt;, <a href="#width">$width</a>(),<a href="#height">$height</a>()).</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="resize">$resize(&lt;w_or_array&gt;,[height])</a></font></b></code></td></tr>
+<tr><td>Changes the widget's width to &lt;width&gt; and height to &lt;height&gt;. See also <a href="#setGeometry">$setGeometry</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="isEnabled">$isEnabled()</a></font></b></code></td></tr>
+<tr><td>Returns <b>1</b> if the widget is enabled, and <b>0</b> otherwise. See also <a href="class_widget.html#setenabled">$setenabled</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setEnabled">$setEnabled(&lt;bool&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the widget state to enabled or disabled if &lt;bool&gt; is 1 or 0 respectively. A disabled widget does not receive keyboard nor mouse input.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setWindowTitle">$setWindowTitle(&lt;text&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the title of this widget to &lt;text&gt;. This is meaningful for toplevel widgets only.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setToolTip">$setToolTip(&lt;tooltip_text&gt;)</a></font></b></code></td></tr>
+<tr><td>Set the tooltip of this widget; the text can contain HTML formatting.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="windowTitle">$windowTitle()</a></font></b></code></td></tr>
+<tr><td>Returns the title text of this widget.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="isTopLevel">$isTopLevel()</a></font></b></code></td></tr>
+<tr><td>Returns <b>1</b> if this widget is a toplevel (parentless) one, and <b>0</b> otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="isVisible">$isVisible()</a></font></b></code></td></tr>
+<tr><td>Returns <b>1</b> if this widget is currently visible (read: is managed by the window manager and displayed by the X server; the widget may be hidden behind other widgets). If the widget is not visible this function returns <b>0</b>. See also <a href="#show">$show</a>() and <a href="#hide">$hide</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="raise">$raise()</a></font></b></code></td></tr>
+<tr><td>Moves this widget to the top of the stack of the widgets relative to its parent. See also <a href="#lower">$lower</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="lower">$lower()</a></font></b></code></td></tr>
+<tr><td>Moves this widget to the bottom of the stack of the widgets relative to its parent. See also <a href="#raise">$raise</a></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="hasFocus">$hasFocus()</a></font></b></code></td></tr>
+<tr><td>Returns <b>1</b> if this widget has the keyboard focus. See also <a href="#setFocus">$setFocus</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setFocus">$setFocus()</a></font></b></code></td></tr>
+<tr><td>Sets this widget to be the one that receives keyboard events. See also <a href="#hasFocus">$hasFocus</a></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="parentWidget">$parentWidget()</a></font></b></code></td></tr>
+<tr><td>Returns the object ID of the parent widget, or <b>0</b> if this widget is a toplevel one.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="backgroundColor">$backgroundColor()</a></font></b></code></td></tr>
+<tr><td>Returns the background color of this widget in hexadecimal HTML-like format. For example, for a black background you will get the string "000000", for a red one, "FF0000", for a white one "FFFFFF". See also <a href="#setBackgroundColor">$setBackgroundColor</a>()</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setBackgroundColor">$setBackgroundColor(&lt;rgb(hex string)_array(red:integer,green:integer,blue_integer)_or_red&gt;,[green:integer],[blue:integer])</a></font></b></code></td></tr>
+<tr><td>Sets the background color of this widget to &lt;rgb_value&gt;:valid values are: - hex string: must be a string with 6 hexadecimal digits (like the ones used to specify colors in HTML pages). The first two digits specify the RED component, the third and fourth digit specify the GREEN component and the last two specify the BLUE component. For example "FFFF00" means full red, full green and no blue that gives a yellow color, "808000" designates a brown color (dark yellow), "A000A0" is a kind of violet. - array(red:integer,green:integer,blue:integer) - red:integer,green:integer,blue:integer. See also <a href="#foregroundColor">$foregroundColor</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setForegroundColor">$setForegroundColor(&lt;rgb(hex string)_array(red:integer,green:integer,blue_integer)_or_red&gt;,[green:integer],[blue:integer])</a></font></b></code></td></tr>
+<tr><td>Sets the foreground color of this widget to &lt;rgb_value&gt;:valid values are: - hex string: must be a string with 6 hexadecimal digits (like the ones used to specify colors in HTML pages). The first two digits specify the RED component, the third and fourth digit specify the GREEN component and the last two specify the BLUE component. For example "FFFF00" means full red, full green and no blue that gives a yellow color, "808000" designates a brown color (dark yellow), "A000A0" is a kind of violet. - array(red:integer,green:integer,blue:integer) - red:integer,green:integer,blue:integer. See also <a href="#foregroundColor">$foregroundColor</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="foregroundColor">$foregroundColor()</a></font></b></code></td></tr>
+<tr><td>Returns the foreground color of this widget in hexadecimal HTML-like format. See also <a href="#setForegroundColor">$setForegroundColor</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setMouseTracking">$setMouseTracking(&lt;bool&gt;)</a></font></b></code></td></tr>
+<tr><td>Enables or disables the mouse tracking if &lt;bool&gt; is <b>1</b> or <b>0</b> respectively. When mouse tracking is enabled you will receive mouse move events even if no button is pressed, otherwise you will receive it only when a mouse button is being pressed (so after a mousePressEvent).</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="mousePressEvent">$mousePressEvent(&lt;button&gt;,&lt;x&gt;,&lt;y&gt;)</a></font></b></code></td></tr>
+<tr><td>This function is called when a mouse button is pressed while the cursor is in this widget. &lt;button&gt; is <b>0</b> if the pressed button is the left one, <b>1</b> if the button is the right one and <b>2</b> if it is the middle one. The &lt;x&gt; and &lt;y&gt; coordinates are relative to this widget upper-left corner and are expressed in pixels. If you call i]<a href="cmd_setreturn.html">setreturn</a> <b>1</b></i> you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="mouseReleaseEvent">$mouseReleaseEvent(&lt;button&gt;,&lt;x&gt;,&lt;y&gt;)</a></font></b></code></td></tr>
+<tr><td>This function is called when a mouse button is released while the cursor is in this widget. &lt;button&gt; is <b>0</b>if the released button is the left one, <b>1</b> if the button is the right one and <b>2</b> if it is the middle one. The &lt;x&gt; and &lt;y&gt; coordinates are relative to this widget upper-left corner and are expressed in pixels. If you call <i><a href="cmd_setreturn.html">setreturn</a> <b>1</b></i> you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="mouseDoubleClickEvent">$mouseDoubleClickEvent(&lt;button&gt;,&lt;x&gt;,&lt;y&gt;)</a></font></b></code></td></tr>
+<tr><td>This function is called when a mouse button is double clicked while the cursor is in this widget. &lt;button&gt; is <b>0</b>if the double clicked button is the left one, <b>1</b> if the button is the right one and <b>2</b> if it is the middle one. The &lt;x&gt; and &lt;y&gt; coordinates are relative to this widget upper-left corner and are expressed in pixels. If you call <i><a href="cmd_setreturn.html">setreturn</a> <b>1</b></i> you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="mouseMoveEvent">$mouseMoveEvent(&lt;x&gt;,&lt;y&gt;)</a></font></b></code></td></tr>
+<tr><td>This function is called when the mouse cursor moves inside this widget. The &lt;x&gt; and &lt;y&gt; coordinates are relative to this widget upper-left corner and are expressed in pixels. If you call "<a href="cmd_return.html">return</a>$true" you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="focusInEvent">$focusInEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when this widget gains keyboard focus. If you call "<a href="cmd_return.html">return</a> $true" you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="focusOutEvent">$focusOutEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when this widget looses keyboard focus. If you call "<a href="cmd_return.html">return</a> $true" you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="mouseLeaveEvent">$mouseLeaveEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when the mouse leaves this widget. If you call "<a href="cmd_return.html">return</a> $true" you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="mouseEnterEvent">$mouseEnterEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when the mouse enters this widget. If you call "<a href="cmd_return.html">return</a> $true" you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="showEvent">$showEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when this widget is being shown. If you call "<a href="cmd_return.html">return</a> $true" you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="hideEvent">$hideEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when this widget is being hidden. If you call "<a href="cmd_return.html">return</a> $true" you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="closeEvent">$closeEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when this widget is going to be closed. If you call "<a href="cmd_return.html">return</a> $true" you will ignore the close event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="resizeEvent">$resizeEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called immediately after this widget has been resized. If you call "<a href="cmd_return.html">return</a> $true" you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="moveEvent">$moveEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called immediately after this widget has been moved. If you call "<a href="cmd_return.html">return</a> $true" you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="paintEvent">$paintEvent(&lt;painter:h_object&gt;,&lt;rect_x:integer&gt;,&lt;rect_y:integer&gt;,&lt;width:integer&gt;,&lt;height:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This event handler can be reimplemented to repaint all or part of the widget. It's needed by the Painter class. It's very useful for drawing flicker free animations or low level special graphic effects. The framework will pass as parameter a <a href="class_painter.html">painter</a>object. You don't need to begin/end/delete the painter. If you call "<a href="cmd_return.html">return</a> $true" you will stop the internal processing of this event. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setParent">$setParent(&lt;widget_object:parent&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the parent of the widget to parent</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setWindowIcon">$setWindowIcon(&lt;image_id&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the icon for this widget. This is meaningful only for toplevel widgets. See the <a href="doc_image_id.html">image identifier</a> documentation for the explanation of the &lt;image_id&gt; parameter.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setBackgroundImage">$setBackgroundImage(&lt;image_id&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the background image for this widget. See the <a href="doc_image_id.html">image identifier</a> documentation for the explanation of the &lt;image_id&gt; parameter. For some kind of widgets, setting a background pixmap may have no effect or have strange results. Experiment with it. To unset the background image call <a href="#setBackgroundColor">$setBackgroundColor</a></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setFont">$setFont(&lt;family:string&gt;,&lt;size:integer&gt;[,&lt;style1:string&gt;, &lt;style2:string&gt;, ...])</a></font></b></code></td></tr>
+<tr><td>Set the font's family,size and style, valid flag for style are:<br> - italic, bold, underline, overline, strikeout, fixedpitch  <br></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setWFlags">$setWFlags(&lt;flag1&gt;, &lt;flag2&gt;, ...)</a></font></b></code></td></tr>
+<tr><td>This function sets widget flags, given as parameters. Valid flags are: <pre><br> TopLevel        - indicates that this widget is a top-level widget<br> Dialog          - indicates that this widget is a top-level window that should be decorated as a dialog<br> Desktop         - indicates that this widget is the desktop<br> Popup           - indicates that this widget is a popup top-level window<br> Title           - gives the window a title bar<br> StaysOnTop      - window stays on top<br> SysMenu         - add a windows system menu<br> Minimize        - add a minimize button for the sysmenu style<br> Maximize        - add a maximize button for the sysmenu style<br> </pre></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="centerToScreen">$centerToScreen()</a></font></b></code></td></tr>
+<tr><td>Centers the window on the screen (useful only for toplevel widgets).<br> The best place to call this function is in $showEvent()</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setFocusPolicy">$setFocusPolicy(&lt;key focus&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the way the widget accepts keyboard focus.<br> Valid parameters are: <pre><br> - TabFocus;	<span class="example-paren">(</span>widget accepts keyboard focus by tabbing<span class="example-paren">)</span><br> - ClickFocus; <span class="example-paren">(</span>widget accepts keyboard focus by clicking<span class="example-paren">)</span><br> - StrongFocus; <span class="example-paren">(</span>widget accepts both tabbing/clicking<span class="example-paren">)</span><br> - NoFocus;  <span class="example-paren">(</span>widget does not accept focus at all; this is the default value<span class="example-paren">)</span><br> </pre></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="keyPressEvent">$keyPressEvent(&lt;key&gt;)</a></font></b></code></td></tr>
+<tr><td>If widget accepts keyboard focus (see <a href="#setFocusPolicy">$setFocusPolicy</a> ) this function handles for keys; In its argument the key pressed.<br> Special keys are: <pre><br> - Return<br> - Enter<br> - Down <span class="example-paren">(</span>cursor arrow down<span class="example-paren">)</span><br> - Up   <span class="example-paren">(</span>cursor arrow up<span class="example-paren">)</span><br> - Left <span class="example-paren">(</span>cursor arrow left<span class="example-paren">)</span><br> - Right <span class="example-paren">(</span>cursor arrow right<span class="example-paren">)</span><br> - Shift<br> - Ctrl<br> - Alt<br> - CapsLock<br> - Backspace<br> - Del<br> - Esc<br> - 0<br> - 1<br> - 2<br> - 3<br> - 4<br> - 5<br> - 6<br> - 7<br> - 8<br> - 9<br> - +<br> - -<br> - *<br> - /<br> - <span class="example-paren">(</span><br> - <span class="example-paren">)</span><br> - =<br> - .<br> - ^<br> </pre></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="mapFromGlobal">$mapFromGlobal(&lt;x&gt;,&lt;y&gt;)</a></font></b></code></td></tr>
+<tr><td>Translates the global screen coordinate pos to widget coordinates.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="mapToGlobal">$mapToGlobal(&lt;x&gt;,&lt;y&gt;)</a></font></b></code></td></tr>
+<tr><td>Translates widget coordinates into the global screen coordinate pos.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="integer globalCursorX">integer $globalCursorX()</a></font></b></code></td></tr>
+<tr><td>Return the x coordinate of mouse pointer global position.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="integer globalCursorY">integer $globalCursorY()</a></font></b></code></td></tr>
+<tr><td>Return the y coordinate of the mo&gt;use pointer global position.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;tip:string&gt; maybeTipEvent">&lt;tip:string&gt; $maybeTipEvent(&lt;x_tip_pos:integer&gt;,&lt;y_tip_pos:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This event handler is called when an eventual tip is going to be show. You can be reimplement this event and set a dynamic tool tip by using <i><a href="cmd_return.html">return</a> &lt;tooltip_string&gt;</i>. If a tooltip was set with <a href="#setTooltip">$setTooltip</a> the dynamic tooltip will be ignored. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="integer setAttribute">integer $setAttribute(&lt;string&gt;,&lt;bool_flag&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the attribute attribute on this widget if on is true; otherwise clears the attribute.<br> Valid attributes are:<br> <pre><br> OpaquePaintEvent - Indicates that the widget paints all its pixels when it receives a paint event.<br> NoSystemBackground - Indicates that the widget has no background, i.e. when the widget receives paint events, the background is not automatically repainted.<br> PaintOnScreen - Indicates that the widget wants to draw directly onto the screen.<br> NoMousePropagation - Prohibits mouse events from being propagated to the widget's parent.<br> </pre></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setStyleSheet">$setStyleSheet(&lt;string&gt;)</a></font></b></code></td></tr>
+<tr><td>Set a style sheet for this widget.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="customContextMenuRequestedEvent">$customContextMenuRequestedEvent(&lt;x_mouse_pos:integer&gt;,&lt;y_mouse_pos:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is triggered when the user has requested a context menu on the widget (i.e. right clicking on the widget). The x,y coordinates are widget relative.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="array">$array(&lt;red:integer,green:integer,blue:integer) $colorPalette(&lt;color_role:string&gt;&lt;color_group:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the color in color_group(disabled, active or inactive), used for color_role.<br> Valid color role are: <pre><br> Window - A general background color.<br> WindowText - A general foreground color.<br> Base - Used as the background color for text.<br> Text - Used as foreground color for the text.<br> Button - The general button background color.<br> ButtonText - A foreground color used with the Button color.<br> Highlight - A color to indicate a selected item or the current item.<br> HighlightedText - A text color that contrasts with Highlight.<br> </pre></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;short_cut_id:integer&gt; setKeyShortCut">&lt;short_cut_id:integer&gt; $setKeyShortCut(&lt;key:char&gt;)</a></font></b></code></td></tr>
+<tr><td>Adds a shortcut with key. A <a href="#shortCutEvent">$shortCutEvent</a> will be triggered when the user will press alt+key.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="shortCutEvent">$shortCutEvent(&lt;shortcut_id:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This function will be called when a shortcut key has been triggered. You must reimplement this event to manage a shortcut system in a custom widget. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="insertIntoStatusBar">$insertIntoStatusBar(&lt;index:unsigned integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Insert the widget into the statusbar at the given index. If index is out of range, the widget is appended. See also <a href="#removeFromStatusBar">$removeFromStatusBar</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removeFromStatusBar">$removeFromStatusBar()</a></font></b></code></td></tr>
+<tr><td>Remove the widget from statusbar.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%widget</span> = $new<span class="example-paren">(</span>widget<span class="example-paren">)</span><br>
+<span class="comment-text"># This is the main container for other elements.</span><br>
+<span class="example-variable">%widget</span>-&gt;$setWindowTitle<span class="example-paren">(</span>"This is the widget title"<span class="example-paren">)</span><br>
+<span class="example-variable">%box</span>=$new<span class="example-paren">(</span>vbox,<span class="example-variable">%widget</span><span class="example-paren">)</span><br>
+<span class="example-variable">%layout</span>=$new<span class="example-paren">(</span>layout,<span class="example-variable">%widget</span><span class="example-paren">)</span><br>
+<span class="example-variable">%layout</span>-&gt;$addWidget<span class="example-paren">(</span><span class="example-variable">%box</span>,0,0<span class="example-paren">)</span><br>
+<span class="example-variable">%label</span> = $new<span class="example-paren">(</span>label,<span class="example-variable">%box</span><span class="example-paren">)</span><br>
+<span class="example-variable">%label</span>-&gt;$setText<span class="example-paren">(</span>"This is a text label"<span class="example-paren">)</span><br>
+<span class="example-variable">%lineedit</span> = $new<span class="example-paren">(</span>lineedit,<span class="example-variable">%box</span><span class="example-paren">)</span><br>
+<span class="example-variable">%lineedit</span>-&gt;$setText<span class="example-paren">(</span>"This is a lineedit"<span class="example-paren">)</span><br>
+<span class="example-variable">%multilineedit</span> = $new<span class="example-paren">(</span>multilineedit,<span class="example-variable">%box</span><span class="example-paren">)</span><br>
+<span class="example-variable">%multilineedit</span>-&gt;$setText<span class="example-paren">(</span>"This is a multilineedit"<span class="example-paren">)</span><br>
+<span class="example-variable">%checkbox</span> = $new<span class="example-paren">(</span>checkbox,<span class="example-variable">%box</span><span class="example-paren">)</span><br>
+<span class="example-variable">%checkbox</span>-&gt;$setText<span class="example-paren">(</span>"This is a checkbox"<span class="example-paren">)</span><br>
+<span class="example-variable">%combobox</span> = $new<span class="example-paren">(</span>combobox,<span class="example-variable">%box</span><span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%combobox</span>-&gt;$insertItem<span class="example-paren">(</span>"This is a combobox"<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%combobox</span>-&gt;$insertItem<span class="example-paren">(</span>"This is a combobox's item"<span class="example-paren">)</span><br>
+<span class="example-variable">%listbox</span> = $new<span class="example-paren">(</span>listbox,<span class="example-variable">%box</span><span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%listbox</span>-&gt;$insertItem<span class="example-paren">(</span>"This is a listbox item"<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%listbox</span>-&gt;$insertItem<span class="example-paren">(</span>"This is another item"<span class="example-paren">)</span><br>
+<span class="example-variable">%radiobutton</span> = $new<span class="example-paren">(</span>radiobutton,<span class="example-variable">%box</span><span class="example-paren">)</span><br>
+<span class="example-variable">%radiobutton</span>-&gt;$setText<span class="example-paren">(</span>"This is a radiobutton"<span class="example-paren">)</span><br>
+<span class="example-variable">%button</span> = $new<span class="example-paren">(</span>button, <span class="example-variable">%box</span><span class="example-paren">)</span><br>
+<span class="example-variable">%button</span>-&gt;$setText<span class="example-paren">(</span>"Close me"<span class="example-paren">)</span><br>
+privateimpl<span class="example-paren">(</span><span class="example-variable">%widget</span>,closeMe<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;delete $$<br>
+<span class="example-bracket">}</span><br>
+objects.connect  <span class="example-variable">%button</span> clicked <span class="example-variable">%widget</span> closeMe<br>
+<span class="example-variable">%widget</span>-&gt;$show<span class="example-paren">()</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

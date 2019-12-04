@@ -409,7 +409,7 @@ void KviTopicWidget::updateToolTip()
 
 		//roboirc
         txt += R"(<tr><td style="white-space: pre"; bgcolor="#E0E0E0"><font color="#000000">)";
-        txt += __tr2qs("# of Chars: ") + QString::number(m_szTopic.length());
+        txt += __tr2qs("# of Chars: ") + QString::number(m_szTopic.length()) + " / 390";
         txt += "</font>" + enr;
 
 

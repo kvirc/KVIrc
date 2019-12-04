@@ -1,0 +1,117 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>http class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>http class</div>      <div class='title-secondary-text'>An implementation of the client side of HTTP protocol.</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This class provides a standard HTTP functionality.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt;get">&lt;id:integer&gt;$get(&lt;remote_path:string&gt;,[&lt;local_file: string&gt;])</a></font></b></code></td></tr>
+<tr><td>Sends a get request for path to the server set by <a href="#setHost">$setHost</a>. If local_file is not specified <b>readyRead()</b> signal is emitted every time new content data is available to read.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt;post(&lt;remote_path:string&gt;,&lt;post_data:string&gt;,&lt;local_file: string&gt;">&lt;id:integer&gt;$post(&lt;remote_path:string&gt;,&lt;post_data:string&gt;,&lt;local_file: string&gt;</a></font></b></code></td></tr>
+<tr><td>Sends a post request for path to the server set by <a href="#setHost">$setHost</a>. If local_file is not specified <b>readyRead()</b> signal is emitted every time new content data is available to read.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="abort">$abort()</a></font></b></code></td></tr>
+<tr><td>Aborts the current request and deletes all scheduled requests.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt;setHost">&lt;id:integer&gt;$setHost(&lt;host:string&gt;,&lt;remote_port:unsigned_integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the HTTP server that is used for requests to hostName on port port. The function does not block: the request is scheduled, and its execution is performed asynchronously. The function returns a unique identifier which is passed by <b>requestStartedEvent()</b> and <b>requestFinishedEvent()</b>. When the request is started the requestStarted() signal is emitted. When it is finished the requestFinished() signal is emitted.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt;currentId">&lt;id:integer&gt;$currentId()</a></font></b></code></td></tr>
+<tr><td>Returns the identifier of the HTTP request being executed or <b>0</b> if there is no request being executed.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; setProxy">&lt;id:integer&gt; $setProxy(&lt;host:string&gt;,&lt;port:integer&gt;,[&lt;user:string&gt;,&lt;password:string&gt;])</a></font></b></code></td></tr>
+<tr><td>Enables HTTP proxy support, using the proxy server host on port port. Optionals parameters user and password can be provided if the proxy server requires authentication.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;id:integer&gt; setUser">&lt;id:integer&gt; $setUser(&lt;user:string&gt;,&lt;password:string&gt;)</a></font></b></code></td></tr>
+<tr><td>This function sets the user name userName and password password for web pages that require authentication.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; readAll">&lt;string&gt; $readAll()</a></font></b></code></td></tr>
+<tr><td>Reads all the bytes from the response content and returns them as string.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;error:string&gt; errorString">&lt;error:string&gt; $errorString()</a></font></b></code></td></tr>
+<tr><td>Returns a human-readable description of the last error that occurred.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="ignoreSslErrors">$ignoreSslErrors()</a></font></b></code></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="requestFinishedEvent">$requestFinishedEvent(&lt;id:integer&gt;,&lt;error:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is triggered by KVIrc when the request identified by &lt;id&gt; has finished.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="requestStartedEvent">$requestStartedEvent(&lt;id:integer&gt;,&lt;error:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is triggered by KVIrc when the request identified by &lt;id&gt; has started.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="responseHeaderReceivedEvent">$responseHeaderReceivedEvent(&lt;response:string&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is triggered by KVIrc when he HTTP header of a server response is available. The response is passed ad string.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="doneEvent">$doneEvent(&lt;error:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is triggered when the last pending request has finished; (it is emitted after the last requests requestFinished() signal).</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="dataReadProgressEvent">$dataReadProgressEvent(&lt;done:integer&gt;,&lt;total:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is triggered when reads data from a HTTP server. &lt;done&gt; is the amount of data has already arrived and &lt;total&gt; is the total amount of data.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="dataSendProgressEvent">$dataSendProgressEvent(&lt;done:integer&gt;,&lt;total:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is triggered when sends data to a HTTP server. &lt;done&gt; is the amount of data has already arrived and &lt;total&gt; is the total amount of data.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="stateChangedEvent">$stateChangedEvent(&lt;connection_state:string&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is triggered by the framework when the state of the connection changes.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="readyReadEvent">$readyReadEvent(&lt;response:string&gt;)</a></font></b></code></td></tr>
+<tr><td>This event is triggered by the framework when there is new data read and there is not file specified in <b>get</b> or <b>post</b>. You can call <b>readAll</b> to reads all the bytes from the response data.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="sslErrorsEvent">$sslErrorsEvent(&lt;sslerrors:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the list of errors that occurred during the SSL handshake. Unless you call ignoreSslErrors() from within a slot connected to the signal emitted by this event, the framework will tear down the connection immediately after emitting the signal.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="requestStarted">$requestStarted()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#requestStartedEvent">$requestStartedEvent</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="requestFinished">$requestFinished()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#requestFinishedEvent">$requestFinishedEvent</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="dataSendProgress">$dataSendProgress()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#dataSendProgressEvent">$dataSendProgressEvent</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="dataReadProgress">$dataReadProgress()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#dataReadProgressEvent">$dataReadProgressEvent</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="done">$done()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#doneEvent">$doneEvent</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="readyRead">$readyRead()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#readyReadEvent">$readyReadEvent</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="sslErrors">$sslErrors()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#sslErrorsEvent">$sslErrorsEvent</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="stateChanged">$stateChanged()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#stateChangedEvent">$stateChangedEvent</a>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="responseHeaderReceived">$responseHeaderReceived()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#responseHeaderReceivedEvent">$responseHeaderReceivedEvent</a>.</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

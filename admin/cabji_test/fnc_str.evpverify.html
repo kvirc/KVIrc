@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>$str.evpVerify</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>$str.evpVerify</div>      <div class='title-secondary-text'>Verifies the signature for a message against a public key</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><font color="#8080a0">&lt;</font><font color="#808080">bool</font><font color="#8080a0">&gt;</font> <b>$str.evpVerify</b><b>(</b><font color="#8080a0">&lt;</font>message<font color="#808080">:string</font><font color="#8080a0">&gt;</font>,<font color="#8080a0">&lt;</font>signature<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>certificate<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>password<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">]</font><font color="#8080a0">]</font><b>)</b></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This function verifies the signature for a message against a public key contained in a certificate.<br>
+The signature has to be base64-encoded, as the one returned by <a href="fnc_str.evpsign.html">$str.evpsign</a>.<br>
+If the &lt;certificate&gt; parameter is omitted, the public key certificate specified in the
+kvirc options will be used.<br>
+If any error occurs, this function will return false.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="comment-text"># Emulate a call with no certificate parameters<br>
+</span><span class="example-variable">%message</span>="test message";<br>
+<span class="example-variable">%signature</span>=$str.evpSign<span class="example-paren">(</span><span class="example-variable">%message</span><span class="example-paren">)</span>;<br>
+<span class="example-variable">%cert</span>=$file.read<span class="example-paren">(</span>$option<span class="example-paren">(</span>stringSSLCertificatePath<span class="example-paren">))</span>;<br>
+$str.evpVerify<span class="example-paren">(</span><span class="example-variable">%message</span>,<span class="example-variable">%signature</span>,<span class="example-variable">%cert</span>,$option<span class="example-paren">(</span>stringSSLCertificatePass<span class="example-paren">))</span>;<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="comment-text"># Sign and verify the signature using the certificates from options<br>
+</span><span class="example-variable">%message</span>="test message";<br>
+<span class="example-variable">%sign</span>=$str.evpSign<span class="example-paren">(</span><span class="example-variable">%message</span><span class="example-paren">)</span>;<br>
+if<span class="example-paren">(</span>$str.evpVerify<span class="example-paren">(</span><span class="example-variable">%message</span>, <span class="example-variable">%sign</span><span class="example-paren">))</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo "signature is valid";<br>
+<span class="example-bracket">}</span> else <span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo "signature is not valid";<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>See also</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="fnc_str.evpsign.html">$str.evpsign</a>
+<a href="fnc_certificate.html">$certificate</a>
+<a href="fnc_dcc.getsslcertinfo.html">$dcc.getsslcertinfo</a>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_function_alphabetic_a.html">Functions</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

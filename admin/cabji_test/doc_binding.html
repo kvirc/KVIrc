@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Binding operator</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Binding operator</div>      <div class='title-secondary-text'>Binding operator</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This operator is a really ugly, poor and clueless attempt to reach at least 1% of the
+power of the Perl <b>=~</b> operator :D<br>
+It allows some complex string operations to be performed efficiently by operating directly
+on the left operand (in fact this is a lot faster in KVIrc since at least one step of parsing is skipped).<br>
+Its basic syntax is:<br>
+<br><b>&lt;left_operand&gt; =~ &lt;operation&gt;[parameters]</b><br><br>
+Where &lt;operation&gt; may be one of <b>t</b>, <b>s</b> and parameters depend on it.<br>
+&lt;left_operand&gt; is the target of the &lt;operation&gt;.<br>
+If &lt;left_operand&gt; is an array or dictionary, the &lt;operation&gt; is executed on each item they contain.<br>
+Operation <b>t</b> is the transliteration.<br>
+The complete syntax with parameters is:<br>
+<br><b>&lt;left_operand&gt; <b>=~</b> t/&lt;search characters&gt;/&lt;replacement characters&gt;/</b><br><br>
+where &lt;search characters&gt; is a string of characters that are replaced with the corresponding
+characters in &lt;replacement characters&gt;.<br>
+This operation can be also named <b>y</b> or <b>tr</b> (to preserve some compatibility with other languages).
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%A</span>=This is a test string<br>
+echo <span class="example-variable">%A</span><br>
+<span class="example-variable">%A</span>=~ tr/abcdefghi/ABCDEFGHI/<br>
+echo <span class="example-variable">%A</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+Operation <b>s</b> is the substitution.<br>
+The complete syntax with parameters is:<br>
+<br><b>&lt;left_operand&gt; <b>=~</b> s/&lt;search pattern&gt;/&lt;replacement pattern&gt;/[flags]</b><br><br>
+where &lt;search pattern&gt; is an extended regular expression to be matched in the &lt;left_operand&gt;
+and &lt;replacement string&gt; is a special pattern that will replace any occurrence found.<br>
+&lt;search pattern&gt; may contain parentheses to capture parts of the matched text.
+&lt;replacement string&gt; can contain the escape sequences \\N where N is a number between 1 and 9
+to be replaced by the captured text.<br>
+Please note that you need to double the backslashes in the search pattern
+since the KVS parser will first unquote the string and then pass it to the regexp engine.
+That's also why we use \\N and not \N.<br>
+\\0 is a special escape that will be replaced by the entire match (is always valid!).<br>
+[flags] may be a combination of the letters <b>g</b>, <b>i</b> and <b>w</b>.<br>
+<b>g</b> causes the search to be global and not stop after the first occurrence of &lt;search pattern&gt;.<br>
+<b>i</b> causes the search to be case insensitive.<br>
+<b>m</b> causes the search to be case minimal (non-greedy).<br>
+<b>w</b> causes the search pattern to be interpreted as a simple wildcard regular expression.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%A</span>=This is a test string<br>
+echo <span class="example-variable">%A</span><br>
+<span class="example-variable">%A</span>=~ s/<span class="example-paren">(</span>[a-z]<span class="example-paren">)</span>i<span class="example-paren">(</span>[a-z]<span class="example-paren">)</span>/\\1I\\2/<br>
+echo <span class="example-variable">%A</span><br>
+<span class="example-variable">%A</span>=~ s/<span class="example-paren">(</span>[a-z]<span class="example-paren">)</span>i<span class="example-paren">(</span>[a-z]<span class="example-paren">)</span>/\\1@\\2/gi<br>
+echo <span class="example-variable">%A</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%a</span> = ""<br>
+<span class="example-variable">%a</span> &lt;&lt; free<br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%a</span><br>
+<span class="example-variable">%a</span> .= bsd<br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%a</span><br>
+<span class="example-variable">%a</span> &lt;&lt; rox<br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%a</span><br>
+<span class="example-variable">%a</span> &lt;, but Linux is better!<br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%a</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>See also</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="doc_operators.html">Operators</a>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_language_index_all.html">Language Overview</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

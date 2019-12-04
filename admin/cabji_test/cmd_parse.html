@@ -1,0 +1,102 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>parse</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>parse</div>      <div class='title-secondary-text'>Executes commands from a file</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>parse</b> <font color="#8080a0">[</font>-q<font color="#8080a0">]</font> <font color="#8080a0">[</font>-e<font color="#8080a0">]</font> <font color="#8080a0">[</font>-f<font color="#8080a0">]</font> <font color="#8080a0">[</font>-r<font color="#8080a0">]</font> <font color="#8080a0">&lt;</font>filename<font color="#808080">:string</font><font color="#8080a0">&gt;</font> <font color="#8080a0">[</font><font color="#8080a0">&lt;</font>parameter1<font color="#808080">:variant</font><font color="#8080a0">&gt;</font> <font color="#8080a0">[</font><font color="#8080a0">&lt;</font>parameter2<font color="#808080">:variant</font><font color="#8080a0">&gt;</font> <font color="#8080a0">[</font>...<font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Executes commands from the external file &lt;filename&gt;.<br>
+&lt;filename&gt; can be an absolute or relative path.<br>
+If it is a relative path then KVIrc will try to look it up
+in the path of the calling script (if any) and in the current
+KVIrc working directory.
+The file must be UTF-8-encoded (see below).
+[parameters] is a space separated string of parameters to be
+passed to the script. The parameter $0 will contain the
+path of the file being parsed, the other parameters will
+be available starting from $1.<br>
+If &lt;filename&gt; is an existing directory name a file dialog
+will pop up, allowing you to choose a file to parse.
+The file dialog will start in the directory specified by &lt;filename&gt;.
+If you don't know the name of an existing directory, just pass '.'
+or '/'. The command just prints a warning if the file cannot be loaded for
+some reason. If you want the command to stop with an error in
+this case then use the -e switch.<br>
+This command has a builtin alias called <a href="cmd_include.html">include</a>.
+<br><br>
+Note that script files, especially the ones that you distribute,
+MUST be encoded in UTF-8. Any other encoding (especially the exotic
+ones like KOI8R or Shift-JIS) may screw things up.
+The reason for such a constraint is simple: KVIrc has no means
+of knowing the encoding that one or other scripter uses to
+edit his files. Unlike other languages (like HTML, for example)
+there is no <i>external</i> metadata that will allow for
+encoding detection before the data is actually decoded.
+UTF-8 is the right way (tm). Use it.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-e | --fail-on-load</td></tr>
+<tr><td class="switch-body-table-cell">Causes the command to terminate with an error when the file can't be loaded: the error termination stops the parsing of the current script too. If the -e switch is not used then file load failures are eventually reported only as a warning or not reported at all (if -q is used).</td></tr>
+<tr><td class="switch-title-table-cell">-f | --fail-on-error</td></tr>
+<tr><td class="switch-body-table-cell">Causes the command to terminate with an error when the execution of the script loaded from disk generates an error. This error termination stops the parsing of the current script too. If the -f switch is not used then the loaded script errors do not stop the current script.</td></tr>
+<tr><td class="switch-title-table-cell">-q | --quiet</td></tr>
+<tr><td class="switch-body-table-cell">Causes the command to run quietly without printing warnings about empty &lt;filename&gt; and file loading errors.</td></tr>
+<tr><td class="switch-title-table-cell">-r | --propagate-return</td></tr>
+<tr><td>Causes the return value of the script to be propagated to the calling context. This allows the usage of ${ } trick to extract this return value. See the examples section for a sample usage.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+parse /home/pragma/myscript.kvs<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="comment-text"># Here we are assuming that fetchdata.kvs returns a string</span><br>
+<span class="comment-text"># We evaluate the return value through $<span class="example-bracket">{}</span> and echo it</span><br>
+echo $<span class="example-bracket">{</span> parse -r /home/pragma/fetchdata.kvs; <span class="example-bracket">}</span>;<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

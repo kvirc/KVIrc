@@ -1,0 +1,100 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Expression evaluation identifier</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Expression evaluation identifier</div>      <div class='title-secondary-text'>Expression evaluation identifier</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>$</b><b>(</b><font color="#8080a0">&lt;</font>expression<font color="#8080a0">&gt;</font><b>)</b></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Evaluates &lt;expression&gt; and returns its result.<br>
+If &lt;expression&gt; is a single string, array or hash, it is returned unmodified.<br>
+In any other case the expression evaluation returns a numeric value, either real or integer.<br>
+The expressions are really close to the C ones and have some minor extensions.<br>
+The supported operators are <b>+</b>, <b>-</b>, <b>*</b>, <b>/</b>, <b>|</b>, <b>&</b>, <b>^</b>, <b>||</b>, <b>&&</b>, <b>^^</b>, <b>&gt;&gt;</b>, <b>&lt;&lt;</b>, <b>&lt;</b>, <b>&gt;,</b> <b>&lt;=,</b> <b>&gt;=,</b> <b>==,</b> <b>!=</b> and <b>&lt;&gt;</b> (synonym for !=).<br>
+The following table describes their meaning.
+<table bgcolor="#D5D5D5" width="100%">
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><b>Operator</b></td><td><b>Description</b></td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a + b</td><td>Arithmetic sum: valid only for numeric operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a - b</td><td>Arithmetic subtraction: valid only for numeric operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a / b</td><td>Arithmetic division: valid only for numeric operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a * b</td><td>Arithmetic multiplication: valid only for numeric operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a % b</td><td>Arithmetic modulus: valid only for numeric operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a || b</td><td>Logical or: valid only for boolean operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a && b</td><td>Logical and: valid only for boolean operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a ^^ b</td><td>Logical xor: valid only for boolean operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a &gt;&gt; b</td><td>Bitwise shift right: valid only for integer operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a &lt;&lt; b</td><td>Bitwise shift left: valid only for integer operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a | b</td><td>Bitwise or: valid only for integer operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a & b</td><td>Bitwise and: valid only for integer operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a ^ b</td><td>Bitwise xor: valid only for integer operands</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a &gt; b</td><td>Greater than: valid for numeric or string operands. Case sensitive</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a &lt; b</td><td>Lower than: valid for numeric or string operands. Case sensitive</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a &gt;= b</td><td>Greater or equal to: valid for numeric or string operands. Case sensitive</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a &lt;= b</td><td>Lower or equal to: valid for numeric or string operands. Case sensitive</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a != b</td><td>Not equal to: valid for numeric or string operands. Case sensitive</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;<tr><td>a == b</td><td>Equal to: valid for numeric or string operands. Case sensitive</td></tr>
+</table>
+The expressions can contain integer, real or string constants and variable operands.<br>
+The integer constants can be also specified as hexadecimal numbers by prefixing them by '0x'.<br>
+The string constants should be enclosed in quotes.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+echo $<span class="example-paren">(</span>10 + 5 * 100<span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span>10 / 3<span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span>10 / 3.0<span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span>10.0 + 5 * 100<span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span>145 & 2<span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span>"hello" &gt; "ciao"<span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span>10 == "10"<span class="example-paren">)</span><br>
+<span class="example-variable">%a</span> = 100<br>
+<span class="example-variable">%b</span> = 50.3<br>
+<span class="example-variable">%c</span> = "test"<br>
+echo $<span class="example-paren">(</span><span class="example-variable">%a</span> + <span class="example-variable">%b</span><span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span>"<span class="example-variable">%a</span><span class="example-variable">%b</span>" + 1<span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span><span class="example-variable">%a</span> + <span class="example-variable">%b</span> &gt; <span class="example-variable">%c</span><span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span>-<span class="example-paren">(</span>10 + 20<span class="example-paren">)</span> * 3<span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span>1 ^ 2<span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span>1 ^ 1<span class="example-paren">)</span><br>
+echo $<span class="example-paren">(</span>0xffff == 65535<span class="example-paren">)</span><br>
+...<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_language_index_all.html">Language Overview</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

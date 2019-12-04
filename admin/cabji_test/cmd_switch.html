@@ -1,0 +1,175 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>switch</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>switch</div>      <div class='title-secondary-text'>Another flow control command</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>switch</b> <font color="#8080a0">[</font>-p<font color="#8080a0">]</font> <b>(</b><font color="#8080a0">&lt;</font>expression<font color="#8080a0">&gt;</font><b>)</b><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case<b>(</b><font color="#8080a0">&lt;</font>value<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">[</font>:<font color="#8080a0">]</font><font color="#8080a0">&lt;</font>command<font color="#8080a0">&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">[</font>break<font color="#8080a0">]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;case<b>(</b><font color="#8080a0">&lt;</font>value<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">[</font>:<font color="#8080a0">]</font><font color="#8080a0">&lt;</font>command<font color="#8080a0">&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">[</font>break<font color="#8080a0">]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;....<br>
+&nbsp;&nbsp;&nbsp;&nbsp;match<b>(</b><font color="#8080a0">&lt;</font>wildcard_expression<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">[</font>:<font color="#8080a0">]</font><font color="#8080a0">&lt;</font>command<font color="#8080a0">&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">[</font>break<font color="#8080a0">]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;....<br>
+&nbsp;&nbsp;&nbsp;&nbsp;regexp<b>(</b><font color="#8080a0">&lt;</font>regular_expression<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">[</font>:<font color="#8080a0">]</font><font color="#8080a0">&lt;</font>command<font color="#8080a0">&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">[</font>break<font color="#8080a0">]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;....<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case<b>(</b><font color="#8080a0">&lt;</font>value<font color="#8080a0">&gt;</font><b>)</b><font color="#8080a0">[</font>:<font color="#8080a0">]</font><font color="#8080a0">&lt;</font>command<font color="#8080a0">&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">[</font>break<font color="#8080a0">]</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;....<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default<font color="#8080a0">[</font>:<font color="#8080a0">]</font><font color="#8080a0">&lt;</font>command<font color="#8080a0">&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">[</font>break<font color="#8080a0">]</font><br>
+}</div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The switch command is based on the standard C 'switch' keyword.
+It conditionally executes groups of commands chosen from a larger set of command groups.<br>
+First &lt;expression&gt; is evaluated (&lt;expression&gt; is any arithmetic or string expression).<br>
+Then the <b>match</b>, <b>regexp</b>, <b>case</b> and <b>default</b> labels are evaluated sequentially
+in the order of appearance.<br>
+<b>case(&lt;value&gt;)[:]&lt;command&gt;</b><br>
+The &lt;value&gt; is evaluated and is compared against the result of &lt;expression&gt;.
+String comparison is case insensitive.<br>
+If &lt;value&gt; is equal to &lt;expression&gt; then &lt;command&gt; is executed.
+Please note that &lt;command&gt; must be either a single instruction or an instruction block <b>enclosed in braces</b>.
+During or after &lt;command&gt; execution, if a <a href="cmd_break.html">break</a> statement is encountered the execution of the switch
+is terminated, otherwise the next label is evaluated.<br>
+If the -p (--passthrough) option is enabled, than the switch command will execute all the instructions blocks
+until a <a href="cmd_break.html">break</a> statement is found.<br>
+<b>match(&lt;value&gt;)[:]&lt;command&gt;</b><br>
+The &lt;value&gt; is expected to be a wildcard expression (wildcard characters being <b>*</b> and <b>?</b>)
+that is matched in a case insensitive fashion against &lt;expression&gt;.<br>
+If a match occurs, the related &lt;command&gt; is executed.
+The <a href="cmd_break.html">break</a> statement is treated as in the case label.<br>
+<b>regexp(&lt;value&gt;)[:]&lt;command&gt;</b><br>
+The &lt;value&gt; is expected to be a complete standard regular expression
+that is matched in a case insensitive fashion against &lt;expression&gt;.<br>
+If a match occurs, the related &lt;command&gt; is executed.
+The <a href="cmd_break.html">break</a> statement is treated as in the case label.<br>
+<b>default[:]&lt;command&gt;</b><br>
+The default label is executed unconditionally if no previous label terminated execution with the <a href="cmd_break.html">break</a> statement.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-p | --passthrough</td></tr>
+<tr><td>Use c-style 'break' flow control</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><span class="comment-text"># Try to change the 1 below to 2 or 3 to see the results</span>
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%tmp</span> = 1<br>
+switch<span class="example-paren">(</span><span class="example-variable">%tmp</span><span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>1<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \<span class="example-variable">%tmp</span> was 1!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>2<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \<span class="example-variable">%tmp</span> was 2!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \<span class="example-variable">%tmp</span> was not 1 nor 2: it was <span class="example-variable">%tmp</span>!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="comment-text"># A more complex example: change the 1 in 2 or 3</span><br>
+<span class="example-variable">%tmp</span> = 1<br>
+switch<span class="example-paren">(</span><span class="example-variable">%tmp</span><span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>1<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \<span class="example-variable">%tmp</span> was 1!<br>
+case<span class="example-paren">(</span>2<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \<span class="example-variable">%tmp</span> was 2!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \<span class="example-variable">%tmp</span> was either 1 or something different from 2 <span class="example-paren">(</span><span class="example-variable">%tmp</span><span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="comment-text"># An example of the -p switch</span><br>
+<span class="example-variable">%tmp</span> = 1<br>
+switch -p <span class="example-paren">(</span><span class="example-variable">%tmp</span><span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>1<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \<span class="example-variable">%tmp</span> was 1!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span>2<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \<span class="example-variable">%tmp</span> was 1 or 2!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \<span class="example-variable">%tmp</span> was not 1 or 2 <span class="example-paren">(</span><span class="example-variable">%tmp</span><span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="comment-text"># An example with strings</span><br>
+<span class="example-variable">%tmp</span> = "This is a test"<br>
+<span class="example-variable">%tmp2</span> = "This is not a test"<br>
+switch<span class="example-paren">(</span><span class="example-variable">%tmp</span><span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span><span class="example-variable">%tmp2</span><span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \<span class="example-variable">%tmp</span> == \<span class="example-variable">%tmp2</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case<span class="example-paren">(</span><span class="example-variable">%tmp</span><span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text"># do not break here</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Yeah... It's stupid... \<span class="example-variable">%tmp</span> == \<span class="example-variable">%tmp</span> :D"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;match<span class="example-paren">(</span>"*TEST"<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Matched *TEST"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;regexp<span class="example-paren">(</span>"[a-zA-Z ]*test"<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Matched [a-zA-Z ]*text"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;regexp<span class="example-paren">(</span>"[a-zA-Z ]*not[a-zA-Z ]*"<span class="example-paren">)</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Matched [a-zA-Z ]*not[a-zA-Z ]*"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo This is executed anyway <span class="example-paren">(</span>unless some break was called<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

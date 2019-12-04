@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>ahost</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>ahost</div>      <div class='title-secondary-text'>DNS lookup</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>ahost</b> <font color="#8080a0">[</font>-i<font color="#8080a0">]</font> <font color="#8080a0">[</font>-a<font color="#8080a0">]</font> <b>(</b><font color="#8080a0">&lt;</font>dnsquery<font color="#808080">:string</font><font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>magicdata<font color="#808080">:variant</font><font color="#8080a0">&gt;</font><font color="#8080a0">]</font><b>)</b>{ <font color="#8080a0">&lt;</font>callback command<font color="#8080a0">&gt;</font> }</div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Starts a DNS lookup for the &lt;dnsquery&gt; and reports the
+results by calling the callback routine.
+The -i switch causes the command to execute
+in IPv6 mode (and lookup ONLY IPv6 hosts!).<br>
+The -a switch causes the command to run in <i>unspecified</i> mode
+and return any available address: IPv4 or Ipv6.<br>
+This command also performs reverse lookups (if you pass an IP address as &lt;hostname&gt;).<br>
+The callback command gets passed five parameters:<br>
+$0 contains the query string (&lt;dnsquery&gt; in fact)<br>
+$1 contains the value 1 if the query was successful.<br>
+In that case the remaining parameters are set as follows:<br>
+$2 contains the first IP address associated to the &lt;dnsquery&gt;<br>
+$3 contains the hostname associated to the &lt;dnsquery&gt;<br>
+$4 contains the eventual &lt;magicdata&gt; passed.<br>
+If $1 contains the value 0 then the query has failed and<br>
+$2 contains an error message explaining the failure.<br>
+$3 is empty<br>
+$4 contains the eventual &lt;magicdata&gt; passed.<br>
+Please note that if the DNS query fails to even start for some
+reason then your callback MAY be called even before ahost() returns.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-i</td></tr>
+<tr><td class="switch-body-table-cell">Causes the command to execute in IPv6 mode (and lookup ONLY IPv6 hosts!).</td></tr>
+<tr><td class="switch-title-table-cell">-a</td></tr>
+<tr><td>The -a switch causes the command to run in <i>unspecified</i> mode and return any available address: IPv4 or IPv6.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+ahost<span class="example-paren">(</span>"localhost"<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Lookup: "$0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$1<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "IP address: "$2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Hostname: "$3;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span> else <span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Error: $2";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+ahost -i <span class="example-paren">(</span>"irc.flashnet.it","Hello :<span class="example-paren">)</span>"<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Lookup: "$0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Magic: $3";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$1<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "IP address: "$2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Hostname: "$3;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span> else <span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Error: $2";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+ahost -a <span class="example-paren">(</span>"cafe:babe::dead:beef"<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Lookup: "$0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Magic: $3";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$1<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "IP address: "$2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Hostname: "$3;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span> else <span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_echo.html">echo</a> "Error: $2";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>See also</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="cmd_host.html">host</a>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

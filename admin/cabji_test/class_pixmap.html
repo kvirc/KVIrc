@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>pixmap class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>pixmap class</div>      <div class='title-secondary-text'>This class provide a pixmap.</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The pixmap class is an off-screen, pixel-based paint device.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="fill">$fill(&lt;colorname, RGB or HSV array value or [&lt;red&gt;, &lt;green&gt;, &lt;blue&gt;][&lt;hue&gt;, &lt;saturation&gt;, &lt;value&gt;], [opacity], [system color:RGB or HSV])</a></font></b></code></td></tr>
+<tr><td>Fills the pixmap with color and opacity.<br></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="resize">$resize(&lt;width:integer&gt;,&lt;height:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Resizes the pixmap to w width and h height. Set <b>wh</b> or <b>hg to <b>0</b>, to have a null pixmap.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="scale">$scale(&lt;width:integer&gt;,&lt;height:integer&gt;,[&lt;aspect_ratio:string&gt;])</a></font></b></code></td></tr>
+<tr><td>Scales the pixmap or the animation by <b>sx</b> horizontally and <b>sy</b> vertically.<br> Aspect_ratio values: <pre><br> - IgnoreAspectRatio:the pixmap is scaled ignoring his aspect ratio.<br> - KeepAspectRatio: pixmap is scaled to a rectangle as large as possible inside size, preserving the aspect ratio.<br> - KeepAspectRatioByExpanding, the pixmap is scaled to a rectangle as small as possible outside size, preserving the aspect ratio.<br> </pre> <b>Default value is KeepAspectRatio.</b><br><br></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="load">$load(&lt;file_name:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Load a pixmap from the file &lt;file_name&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="save">$save(&lt;file_name:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Save the pixmap or the current animation frame to the file &lt;file_name&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="loadAnimation">$loadAnimation(&lt;file_name:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Load an animation from the file &lt;file_name&gt; and start it.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="startAnimation">$startAnimation()</a></font></b></code></td></tr>
+<tr><td>Start the animation.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="stopAnimation">$stopAnimation()</a></font></b></code></td></tr>
+<tr><td>Stop the animation.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; height">&lt;integer&gt; $height()</a></font></b></code></td></tr>
+<tr><td>Return the height of the pixmap or of the animation.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; width">&lt;integer&gt; $width()</a></font></b></code></td></tr>
+<tr><td>Return the width of the pixmap or of the animation.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="frameChangedEvent">$frameChangedEvent()</a></font></b></code></td></tr>
+<tr><td>This event is triggered by KVIrc when the current animation frame changes.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="frameChanged">$frameChanged()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#frameChangedEvent">$frameChangedEvent</a>().<br></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

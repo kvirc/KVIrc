@@ -1,0 +1,90 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Assignment operation</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Assignment operation</div>      <div class='title-secondary-text'>Assignment operation</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The assignment is the <i>plainest</i> of the operators: it works just like in any other programming language.<br>
+The syntax is:<br>
+<br>
+<b>&lt;target&gt; = &lt;source&gt;</b>
+<br><br>
+&lt;target&gt; must be a variable, &lt;source&gt; can be any parameter.<br>
+If the &lt;target&gt; variable doesn't exist, it is created.
+If it already exists, it is eventually converted to the type of &lt;source&gt; (scalar, hash or array).<br>
+If &lt;source&gt; evaluates to an empty value then the &lt;target&gt; variable is unset.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="comment-text"># Assigning a constant to the variable <span class="example-variable">%Tmp</span></span><br>
+<span class="example-variable">%Tmp</span> = 1<br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%Tmp</span><br>
+<span class="comment-text"># Assigning a string constant to the variable <span class="example-variable">%Tmp</span></span><br>
+<span class="example-variable">%Tmp</span> = some string<br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%Tmp</span><br>
+<span class="comment-text"># Assigning a string constant to the variable <span class="example-variable">%Tmp</span></span><br>
+<span class="example-variable">%Tmp</span> = "some string with whitespace &nbsp; &nbsp; &nbsp; &nbsp; preserved"<br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%Tmp</span><br>
+<span class="comment-text"># Assigning a variable to another variable copies its contents</span><br>
+<span class="example-variable">%Someothervariable</span> = "Contents"<br>
+<span class="example-variable">%Tmp</span> = <span class="example-variable">%Someothervariable</span><br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%Tmp</span><br>
+<span class="comment-text"># Assigning a variable string to the variable <span class="example-variable">%z</span></span><br>
+<span class="example-variable">%color</span> = blue<br>
+<span class="example-variable">%z</span> = my eyes are <span class="example-variable">%color</span><br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%z</span><br>
+<span class="comment-text"># Assigning a variable string <span class="example-paren">(</span>with a function call inside<span class="example-paren">)</span> to the variable <span class="example-variable">%x</span></span><br>
+<span class="example-variable">%x</span> = the system os is <a href="fnc_system.osname.html">$system.osname</a><br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%x</span><br>
+<span class="comment-text"># Assigning an empty string to the local variable <span class="example-variable">%y</span> unsets <span class="example-variable">%y</span></span><br>
+<span class="example-variable">%x</span> =<br>
+<a href="cmd_echo.html">echo</a> <span class="example-variable">%y</span><br>
+<span class="comment-text"># This is equivalent to the above</span><br>
+<span class="example-variable">%y</span> = ""<br>
+<span class="comment-text"># This is equivalent too, if $function evaluates to an empty string</span><br>
+<span class="example-variable">%y</span> = $function<span class="example-paren">()</span><br>
+<span class="comment-text"># Assigning a variable string to a hash entry</span><br>
+<span class="example-variable">%Dict</span><span class="example-bracket">{</span>key<span class="example-bracket">}</span> = <a href="fnc_system.osname.html">$system.osname</a>\ian<br>
+<span class="comment-text"># Unsetting an array entry</span><br>
+<span class="example-variable">%mydict</span>[23] = ""<br>
+<span class="comment-text"># Assigning a hash to another: <span class="example-variable">%mydict</span>[] becomes a copy of <span class="example-variable">%anotherdict</span>[]</span><br>
+<span class="example-variable">%anotherdict</span><span class="example-bracket">{</span>"The key"<span class="example-bracket">}</span> = "Some dummy value"<br>
+<span class="example-variable">%mydict</span> = <span class="example-variable">%anotherdict</span><br>
+<a href="cmd_echo.html">echo</a><span class="example-variable">%mydict</span><span class="example-bracket">{</span>"The key"<span class="example-bracket">}</span><br>
+<span class="comment-text"># This will convert <span class="example-variable">%mydict</span> to be a scalar variable <span class="example-paren">(</span>deleting all the <span class="example-variable">%mydict</span> contents!<span class="example-paren">)</span></span><br>
+<span class="example-variable">%mydict</span> = "some default value"<br>
+<span class="comment-text"># Unsetting a whole hash</span><br>
+<span class="example-variable">%anotherdict</span> =<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_language_index_all.html">Language Overview</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

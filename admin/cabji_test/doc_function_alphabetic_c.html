@@ -1,0 +1,430 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Functions: c</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Functions: c</div>    </td>
+  </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr bgcolor="#EAEAEA">
+    <td><table width="100%" cellpadding="0" cellspacing="0"><tr> <td><a href="doc_function_alphabetic_$.html">$</a></td>
+ <td><a href="doc_function_alphabetic_a.html">a</a></td>
+ <td><a href="doc_function_alphabetic_b.html">b</a></td>
+ <td><a href="doc_function_alphabetic_c.html">c</a></td>
+ <td><a href="doc_function_alphabetic_d.html">d</a></td>
+ <td><a href="doc_function_alphabetic_e.html">e</a></td>
+ <td><a href="doc_function_alphabetic_f.html">f</a></td>
+ <td><a href="doc_function_alphabetic_g.html">g</a></td>
+ <td><a href="doc_function_alphabetic_h.html">h</a></td>
+ <td><a href="doc_function_alphabetic_i.html">i</a></td>
+ <td><a href="doc_function_alphabetic_j.html">j</a></td>
+ <td><a href="doc_function_alphabetic_k.html">k</a></td>
+ <td><a href="doc_function_alphabetic_l.html">l</a></td>
+ <td><a href="doc_function_alphabetic_m.html">m</a></td>
+</tr><tr>
+ <td><a href="doc_function_alphabetic_n.html">n</a></td>
+ <td><a href="doc_function_alphabetic_o.html">o</a></td>
+ <td><a href="doc_function_alphabetic_p.html">p</a></td>
+ <td><a href="doc_function_alphabetic_q.html">q</a></td>
+ <td><a href="doc_function_alphabetic_r.html">r</a></td>
+ <td><a href="doc_function_alphabetic_s.html">s</a></td>
+ <td><a href="doc_function_alphabetic_t.html">t</a></td>
+ <td><a href="doc_function_alphabetic_u.html">u</a></td>
+ <td><a href="doc_function_alphabetic_v.html">v</a></td>
+ <td><a href="doc_function_alphabetic_w.html">w</a></td>
+ <td><a href="doc_function_alphabetic_x.html">x</a></td>
+ <td><a href="doc_function_alphabetic_y.html">y</a></td>
+ <td><a href="doc_function_alphabetic_z.html">z</a></td>
+ <td><a href="doc_function_index_all.html">All</a></td></tr></table></td>
+  </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_certificate.html">$certificate</a></td>
+  <td>Returns information about the local certificate</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.admincount.html">$chan.admincount</a></td>
+  <td>Returns the number of channel admin users on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.bancount.html">$chan.bancount</a></td>
+  <td>Returns the number of entries in the channel ban list</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.banexceptioncount.html">$chan.banexceptioncount</a></td>
+  <td>Returns the number of entries in the channel ban exception list</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.banexceptionlist.html">$chan.banexceptionlist</a></td>
+  <td>Returns an array of channel ban exception masks</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.banlist.html">$chan.banlist</a></td>
+  <td>Returns an array of channel ban masks</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.common.html">$chan.common</a></td>
+  <td>Returns the common channel with a user</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.geturl.html">$chan.getUrl</a></td>
+  <td>Returns the URL of a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.getflag.html">$chan.getflag</a></td>
+  <td>Returns the channel-user mode flag of a user</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.halfopcount.html">$chan.halfopcount</a></td>
+  <td>Returns the number of halfop users on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.invitecount.html">$chan.invitecount</a></td>
+  <td>Returns the number of entries in the channel invite list</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.invitelist.html">$chan.invitelist</a></td>
+  <td>Returns an array of channel invite masks</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.isdead.html">$chan.isDead</a></td>
+  <td>Checks if a channel is dead</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.ismeadmin.html">$chan.isMeAdmin</a></td>
+  <td>Checks if the current user is at least an administrator on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.ismehalfop.html">$chan.isMeHalfOp</a></td>
+  <td>Checks if the current user is at least an half operator on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.ismeop.html">$chan.isMeOp</a></td>
+  <td>Checks if the current user is at least op on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.ismeowner.html">$chan.isMeOwner</a></td>
+  <td>Checks if the current user is at least an owner on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.ismeuserop.html">$chan.isMeUserOp</a></td>
+  <td>Checks if the current user is at least a user operator on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.ismevoice.html">$chan.isMeVoice</a></td>
+  <td>Checks if the current user is at least voice on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.isadmin.html">$chan.isadmin</a></td>
+  <td>Checks if a user is at least channel administrator</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.ishalfop.html">$chan.ishalfop</a></td>
+  <td>Checks if a user is at least halfop on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.ison.html">$chan.ison</a></td>
+  <td>Checks if a user is on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.isop.html">$chan.isop</a></td>
+  <td>Checks if a user is at least an op on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.isowner.html">$chan.isowner</a></td>
+  <td>Checks if a user is at least a channel owner</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.isuserop.html">$chan.isuserop</a></td>
+  <td>Checks if a user is at least a userop on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.isvoice.html">$chan.isvoice</a></td>
+  <td>Checks if a user is at least voiced on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.key.html">$chan.key</a></td>
+  <td>Returns the key of a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.limit.html">$chan.limit</a></td>
+  <td>Returns the limit of a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.maskcount.html">$chan.maskcount</a></td>
+  <td>Returns the number of entries in the mask list for a channel mode</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.masklist.html">$chan.masklist</a></td>
+  <td>Returns an array of masks for a channel mode</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.matchban.html">$chan.matchban</a></td>
+  <td>Matches a mask against the channel ban list</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.matchbanexception.html">$chan.matchbanexception</a></td>
+  <td>Matches a mask against the channel ban exception list</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.matchinvite.html">$chan.matchinvite</a></td>
+  <td>Matches a mask against the channel invite list</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.matchmask.html">$chan.matchmask</a></td>
+  <td>Matches a mask against the channel list for a specific mode</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.matchqban.html">$chan.matchqban</a></td>
+  <td>Matches a mask against the channel ban list searching for +q bans (aka mute bans)</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.mode.html">$chan.mode</a></td>
+  <td>Returns the mode string of a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.modeparam.html">$chan.modeParam</a></td>
+  <td>Returns the parameter for a set mode of a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.name.html">$chan.name</a></td>
+  <td>Returns the name of a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.opcount.html">$chan.opcount</a></td>
+  <td>Returns the number of op users on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.ownercount.html">$chan.ownercount</a></td>
+  <td>Returns the number of channel owner users on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.topic.html">$chan.topic</a></td>
+  <td>Returns the topic of a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.topicsetat.html">$chan.topicsetat</a></td>
+  <td>Returns the set time of the topic of a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.topicsetby.html">$chan.topicsetby</a></td>
+  <td>Returns the author of the topic of a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.userjointime.html">$chan.userJoinTime</a></td>
+  <td>Returns the time that a user has joined the channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.userlastactiontime.html">$chan.userLastActionTime</a></td>
+  <td>Returns the time that a user has last performed some kind of action on the channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.usercount.html">$chan.usercount</a></td>
+  <td>Returns the number of users on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.usermodelevel.html">$chan.usermodelevel</a></td>
+  <td>Returns the channel user-mode level</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.useropcount.html">$chan.useropcount</a></td>
+  <td>Returns the number of userop users on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.users.html">$chan.users</a></td>
+  <td>Returns an array of channel user nicknames</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_chan.voicecount.html">$chan.voicecount</a></td>
+  <td>Returns the number of voiced users on a channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_channel.html">$channel</a></td>
+  <td>Retrieves the window ID of a specified channel</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_char.html">$char</a></td>
+  <td>Returns a character specified by Unicode</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_classdefined.html">$classdefined</a></td>
+  <td>Checks if a class is defined</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_config.filelist.html">$config.filelist</a></td>
+  <td>Returns a list of open config files</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_config.filename.html">$config.filename</a></td>
+  <td>Returns the filename of an open config file</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_config.hassection.html">$config.hassection</a></td>
+  <td>Checks whether a section is present in a config file</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_config.id.html">$config.id</a></td>
+  <td>Returns the ID of an open config file</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_config.keylist.html">$config.keylist</a></td>
+  <td>Returns a list of keys in a config file</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_config.open.html">$config.open</a></td>
+  <td>Opens a config file</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_config.read.html">$config.read</a></td>
+  <td>Reads an entry from a config file</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_config.readonly.html">$config.readonly</a></td>
+  <td>Checks whether a config file is opened in read-only mode</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_config.section.html">$config.section</a></td>
+  <td>Returns the name of the current section of a config file</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_config.sectionlist.html">$config.sectionlist</a></td>
+  <td>Returns a list of the sections in a config file</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_console.html">$console</a></td>
+  <td>Retrieves the window ID of a specified console</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.connectionstarttime.html">$context.connectionStartTime</a></td>
+  <td>Returns the connection start time of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.getsslcertinfo.html">$context.getSSLCertInfo</a></td>
+  <td>Returns the requested information about certificates used in an SSL enabled IRC session</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.lastmessagetime.html">$context.lastMessageTime</a></td>
+  <td>Returns the last message time of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.list.html">$context.list</a></td>
+  <td>Returns a list of existing IRC contexts</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.networkname.html">$context.networkName</a></td>
+  <td>Returns the IRC network name of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.queuesize.html">$context.queueSize</a></td>
+  <td>Returns the size of the current server message queue</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.serverhostname.html">$context.serverHostName</a></td>
+  <td>Returns the IRC server name of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.serveripaddress.html">$context.serverIpAddress</a></td>
+  <td>Returns the IRC server IP address of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.serverisipv6.html">$context.serverIsIPV6</a></td>
+  <td>Returns the IPv6 state of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.serverisssl.html">$context.serverIsSSL</a></td>
+  <td>Returns the SSL state of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.serverpassword.html">$context.serverPassword</a></td>
+  <td>Returns the password used to login to the server of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.serverport.html">$context.serverPort</a></td>
+  <td>Returns the port of the IRC server of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.serversoftware.html">$context.serverSoftware</a></td>
+  <td>Returns the software running on the IRC server, if recognized</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.serverdbnetworkname.html">$context.serverdbNetworkName</a></td>
+  <td>Returns the original IRC network name of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.serverdbserverhostname.html">$context.serverdbServerHostName</a></td>
+  <td>Returns the original IRC server name of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.state.html">$context.state</a></td>
+  <td>Returns the state of an IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_context.html">$context</a></td>
+  <td>Retrieves the ID of the specified IRC context</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_countstatusbaritems.html">$countStatusBarItems</a></td>
+  <td>Returns the number of items in the statusbar</td>
+</tr>
+<tr bgcolor="#EAEAEA">
+  <td><a href="fnc_cr.html">$cr</a></td>
+  <td>Returns a carriage return character</td>
+</tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr bgcolor="#EAEAEA">
+    <td><table width="100%" cellpadding="0" cellspacing="0"><tr> <td><a href="doc_function_alphabetic_$.html">$</a></td>
+ <td><a href="doc_function_alphabetic_a.html">a</a></td>
+ <td><a href="doc_function_alphabetic_b.html">b</a></td>
+ <td><a href="doc_function_alphabetic_c.html">c</a></td>
+ <td><a href="doc_function_alphabetic_d.html">d</a></td>
+ <td><a href="doc_function_alphabetic_e.html">e</a></td>
+ <td><a href="doc_function_alphabetic_f.html">f</a></td>
+ <td><a href="doc_function_alphabetic_g.html">g</a></td>
+ <td><a href="doc_function_alphabetic_h.html">h</a></td>
+ <td><a href="doc_function_alphabetic_i.html">i</a></td>
+ <td><a href="doc_function_alphabetic_j.html">j</a></td>
+ <td><a href="doc_function_alphabetic_k.html">k</a></td>
+ <td><a href="doc_function_alphabetic_l.html">l</a></td>
+ <td><a href="doc_function_alphabetic_m.html">m</a></td>
+</tr><tr>
+ <td><a href="doc_function_alphabetic_n.html">n</a></td>
+ <td><a href="doc_function_alphabetic_o.html">o</a></td>
+ <td><a href="doc_function_alphabetic_p.html">p</a></td>
+ <td><a href="doc_function_alphabetic_q.html">q</a></td>
+ <td><a href="doc_function_alphabetic_r.html">r</a></td>
+ <td><a href="doc_function_alphabetic_s.html">s</a></td>
+ <td><a href="doc_function_alphabetic_t.html">t</a></td>
+ <td><a href="doc_function_alphabetic_u.html">u</a></td>
+ <td><a href="doc_function_alphabetic_v.html">v</a></td>
+ <td><a href="doc_function_alphabetic_w.html">w</a></td>
+ <td><a href="doc_function_alphabetic_x.html">x</a></td>
+ <td><a href="doc_function_alphabetic_y.html">y</a></td>
+ <td><a href="doc_function_alphabetic_z.html">z</a></td>
+ <td><a href="doc_function_index_all.html">All</a></td></tr></table></td>
+  </tr>
+</table>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

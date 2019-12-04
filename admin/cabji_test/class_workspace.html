@@ -1,0 +1,174 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>workspace class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>workspace class</div>      <div class='title-secondary-text'>Provides a MDI workspace object</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This widget provides a workspace window that can contain decorated window.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="addSubWindow">$addSubWindow(&lt;widget&gt;)</a></font></b></code></td></tr>
+<tr><td>Adds a widget as a subwindow of this workspace.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removeSubWindow">$removeSubWindow(&lt;widget&gt;)</a></font></b></code></td></tr>
+<tr><td>Removes a subwindow from this this workspace.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;object&gt; activeWindow">&lt;object&gt; $activeWindow()</a></font></b></code></td></tr>
+<tr><td>Returns the active window, or 0 if no window is active.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; scrollBarsEnabled">&lt;boolean&gt; $scrollBarsEnabled()</a></font></b></code></td></tr>
+<tr><td>Returns true if the workspace provides scrollbars; otherwise returns false.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setscrollBarsEnabled">$setscrollBarsEnabled(&lt;bEnabled:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets whether the workspace provides scrollbars to enable. (bEnabled 1 or 0)</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="cascade">$cascade()</a></font></b></code></td></tr>
+<tr><td>Arranges all the child windows in a cascade pattern.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="tile">$tile()</a></font></b></code></td></tr>
+<tr><td>Arranges all child windows in a tile pattern.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="closeActiveWindow">$closeActiveWindow()</a></font></b></code></td></tr>
+<tr><td>Closes the child window that is currently active.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="closeAllWindows">$closeAllWindows()</a></font></b></code></td></tr>
+<tr><td>Closes all child windows.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="activateNextWindow">$activateNextWindow()</a></font></b></code></td></tr>
+<tr><td>Activates the next window in the child window chain.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="activatePrevWindow">$activatePrevWindow()</a></font></b></code></td></tr>
+<tr><td>Activates the previous window in the child window chain.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="comment-text"># Let's start.<br>
+<span class="comment-text"># We start the main class creation, in the constructor we do the<br>
+</span><span class="comment-text"># widget's showing, to give a particular popup<br>
+</span><span class="comment-text"># creation appearance.<br>
+</span></span><br>
+class <span class="example-paren">(</span>ws,widget<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;constructor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;$setGeometry<span class="example-paren">(</span><span class="example-variable">%X</span>,<span class="example-variable">%Y</span>,100,100<span class="example-paren">)</span><br><span class="example-paren">(</span>KviKvsObjectFunctionCall *c<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;<span class="example-variable">%label</span>=$new<span class="example-paren">(</span>label,$$<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;<span class="example-variable">%label</span>-&gt;$settext<span class="example-paren">(</span>"Another class by N\&G"<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;<span class="example-variable">%label</span>-&gt;$setautoresize<span class="example-paren">(</span>1<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;$show<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+<span class="comment-text"># We create the new workspace, and we set a 640x480 size with widget $resize command</span><br>
+<span class="example-variable">%Workspace</span>=$new<span class="example-paren">(</span>workspace<span class="example-paren">)</span><br>
+<span class="example-variable">%Workspace</span>-&gt;$resize<span class="example-paren">(</span>640,480<span class="example-paren">)</span><br>
+<span class="comment-text"># Now we make a cycling construction of the widgets <span class="example-paren">(</span>look at the class<span class="example-paren">)</span>,<br>
+<span class="comment-text"># and give to the widgets a random X and Y coordinates.<br>
+</span><span class="comment-text"># It takes few seconds to show the effects, be patient.<br>
+</span></span><br>
+<span class="example-variable">%I</span>=0<br>
+while <span class="example-paren">(</span><span class="example-variable">%I</span>&lt;100<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%X</span>=$rand<span class="example-paren">(</span>500<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%Y</span>=$rand<span class="example-paren">(</span>480<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%Widget</span>=$new<span class="example-paren">(</span>ws,<span class="example-variable">%Workspace</span><span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%I</span>++<br>
+<span class="example-bracket">}</span><br>
+<span class="comment-text"># Let's show the fireworks! EnJoY!</span><br>
+<span class="example-variable">%Workspace</span>-&gt;$show<span class="example-paren">()</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+&nbsp;&nbsp;&nbsp;&nbsp;<b>Example 2:</b>
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="comment-text"># This is like the first example but it has a particular animation effect.</span><br>
+<span class="example-variable">%Hex</span>[]=$array<span class="example-paren">(</span>0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F<span class="example-paren">)</span><br>
+class <span class="example-paren">(</span>ws,widget<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;constructor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;$setGeometry<span class="example-paren">(</span><span class="example-variable">%X</span>,<span class="example-variable">%Y</span>,100,100<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;<span class="example-variable">%lay</span>=$new<span class="example-paren">(</span>layout,$$<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%i</span>=0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;while <span class="example-paren">(</span><span class="example-variable">%i</span>&lt;10<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;<span class="example-variable">%label</span>=$new<span class="example-paren">(</span>label,$$<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;<span class="example-variable">%label</span>-&gt;$settext<span class="example-paren">(</span>"Another class by N\&G"<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%color</span>=<span class="example-variable">%Hex</span>[$rand<span class="example-paren">(</span>15<span class="example-paren">)</span>]<span class="example-variable">%Hex</span>[$rand<span class="example-paren">(</span>15<span class="example-paren">)</span>]<span class="example-variable">%Hex</span>[$rand<span class="example-paren">(</span>15<span class="example-paren">)</span>]<span class="example-variable">%Hex</span>[$rand<span class="example-paren">(</span>15<span class="example-paren">)</span>]<span class="example-variable">%Hex</span>[$rand<span class="example-paren">(</span>15<span class="example-paren">)</span>]<span class="example-variable">%Hex</span>[$rand<span class="example-paren">(</span>15<span class="example-paren">)</span>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;<span class="example-variable">%label</span>-&gt;$setforegroundcolor<span class="example-paren">(</span><span class="example-variable">%color</span><span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;<span class="example-variable">%label</span>-&gt;$setautoresize<span class="example-paren">(</span>1<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;<span class="example-variable">%lay</span>-&gt;$addwidget<span class="example-paren">(</span>$$-&gt;<span class="example-variable">%label</span>,<span class="example-variable">%i</span>,0<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%i</span>++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$-&gt;$show<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;mousepressevent<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if <span class="example-paren">(</span>$istimer<span class="example-paren">(</span>cycle<span class="example-paren">)</span> == 1<span class="example-paren">)</span> killtimer cycle<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+<span class="example-variable">%Workspace</span>=$new<span class="example-paren">(</span>workspace<span class="example-paren">)</span><br>
+<span class="example-variable">%Workspace</span>-&gt;$resize<span class="example-paren">(</span>640,480<span class="example-paren">)</span><br>
+<span class="example-variable">%Workspace</span>-&gt;$setWindowTitle<span class="example-paren">(</span>"Hit the mouse to stop cycling windows..."<span class="example-paren">)</span><br>
+<span class="example-variable">%I</span>=0<br>
+<span class="example-variable">%Cycle</span>=1<br>
+while <span class="example-paren">(</span><span class="example-variable">%I</span>&lt;20<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%X</span>=$rand<span class="example-paren">(</span>500<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%Y</span>=$rand<span class="example-paren">(</span>480<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%Widget</span>=$new<span class="example-paren">(</span>ws,<span class="example-variable">%Workspace</span><span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%I</span>++<br>
+<span class="example-bracket">}</span><br>
+<span class="example-variable">%Workspace</span>-&gt;$show<br>
+timer <span class="example-paren">(</span>cycle,3000<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if <span class="example-paren">(</span><span class="example-variable">%Cycle</span>==1<span class="example-paren">)</span> <span class="example-variable">%Workspace</span>-&gt;$tile<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if <span class="example-paren">(</span><span class="example-variable">%Cycle</span>==2<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%Workspace</span>-&gt;$cascade<span class="example-paren">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%Cycle</span>=1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%Cycle</span>++<br>
+<span class="example-bracket">}</span><br>
+privateimpl<span class="example-paren">(</span><span class="example-variable">%Workspace</span>,mousepressevent<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if <span class="example-paren">(</span>$istimer<span class="example-paren">(</span>cycle<span class="example-paren">)</span> == 1<span class="example-paren">)</span> killtimer cycle<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

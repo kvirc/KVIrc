@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>slider class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>slider class</div>      <div class='title-secondary-text'>The slider widget provides a vertical or horizontal slider.</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The slider is the classic widget for controlling a bounded value.<br>
+It lets the user move a slider along a horizontal or vertical groove<br>
+and translates the slider's position into an integer value within the legal range.[/classfnc]()
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setOrientation">$setOrientation(&lt;orientation:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the slider's orientation.<br> Orientation value can be "Horizontal" or "Vertical".</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setTracking">$setTracking(&lt;bTracking:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets whether slider tracking is enabled to enable.<br> Value can be 1 or 0.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setMaxValue">$setMaxValue(&lt;value:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets maximum value for slider's range.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setMinValue">$setMinValue(&lt;minv_value:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets minimum value for slider's range.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setLineStep">$setLineStep(&lt;line_step:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the  line step to &lt;line_step&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setPageStep">$setPageStep(&lt;page_step:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the  page step to &lt;page_step&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setTickmarks">$setTickmarks(&lt;tick_marks:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the tickmark settings for this slider.<br> Values are:<br> <pre><br> NoMarks - do not draw any tickmarks.<br> Both - draw tickmarks on both sides of the groove.<br> Above - draw tickmarks above the <span class="example-paren">(</span>horizontal<span class="example-paren">)</span> slider<br> Below - draw tickmarks below the <span class="example-paren">(</span>horizontal<span class="example-paren">)</span> slider<br> Left - draw tickmarks to the left of the <span class="example-paren">(</span>vertical<span class="example-paren">)</span> slider<br> Right - draw tickmarks to the right of the <span class="example-paren">(</span>vertical<span class="example-paren">)</span> slider<br> </pre></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setTickInterval">$setTickInterval(&lt;value&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the interval between tickmarks.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; value">&lt;integer&gt; $value()</a></font></b></code></td></tr>
+<tr><td>Returns slider value.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; minValue">&lt;integer&gt; $minValue()</a></font></b></code></td></tr>
+<tr><td>Returns slider minValue.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; maxValue">&lt;integer&gt; $maxValue()</a></font></b></code></td></tr>
+<tr><td>Returns slider maxValue.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; lineStep">&lt;integer&gt; $lineStep()</a></font></b></code></td></tr>
+<tr><td>Returns slider lineStep value.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt;pageStep">&lt;integer&gt;$pageStep()</a></font></b></code></td></tr>
+<tr><td>Returns slider pageStep value.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="valueChangedEvent">$valueChangedEvent(&lt;new slider value:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>This function is called by the framework when the slider value is changed and return the new slider value as its argument.<br> The default implementation emits the <a href="#valueChanged">$valueChanged</a>() signal, so it is easy to handle the values from many sliders without reimplementing the <a href="#valueChangedEvent">$valueChangedEvent</a>() for every one.<br> Note: If you reimplement this function to catch the slider value, you will have to emit the signal by yourself (if you still need it, obviously).</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="valueChanged">$valueChanged()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of [classfnc]valueChangedEvent[/classfnc]().<br> If you reimplement that function you will have to emit the signal manually (if you still need it).</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>
