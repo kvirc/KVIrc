@@ -34,7 +34,7 @@
 ###############################################################################
 
 # Minimum CMake version
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.12)
 
 # Name of the project
 project(kvirc)
@@ -748,12 +748,12 @@ endif()
 # Check for Python support
 option(WANT_PYTHON "Compile Python support" ON)
 if(WANT_PYTHON)
-	find_package(PythonLibs)
-	if(PYTHONLIBS_FOUND)
+	find_package(Python3 COMPONENTS Development)
+	if(Python3_FOUND)
 		set(COMPILE_PYTHON_SUPPORT 1)
-		set(CMAKE_STATUS_PYTHON_SUPPORT "Yes, Python ${PYTHONLIBS_VERSION_STRING}")
-		list(APPEND LIBS ${PYTHON_LIBRARIES})
-		include_directories(${PYTHON_INCLUDE_DIRS})
+		set(CMAKE_STATUS_PYTHON_SUPPORT "Yes, Python ${Python3_VERSION}")
+		list(APPEND LIBS ${Python3_LIBRARIES})
+		include_directories(${Python3_INCLUDE_DIRS})
 	else()
 		set(CMAKE_STATUS_PYTHON_SUPPORT "No, not found.")
 	endif()
