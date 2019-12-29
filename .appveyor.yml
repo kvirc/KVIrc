@@ -55,6 +55,8 @@ install:
     # - c:\cygwin\bin\uname -a
     # - c:\cygwin\bin\cat /proc/cpuinfo
     # - c:\cygwin\bin\cat /proc/meminfo
+    - ps: Invoke-WebRequest https://cygwin.com/setup-x86.exe -OutFile c:\cygwin-setup.exe
+    - c:\cygwin-setup.exe --quiet-mode --no-shortcuts --no-startmenu --no-desktop --upgrade-also --only-site --site http://cygwin.mirror.constant.com/ --root c:\cygwin --packages bash
     - ps: |
         choco install strawberryperl -y --version 5.28.2.1 $env:choco_arch
         # Strawberry perl doesn't support MSVC, but we force the support.
