@@ -62,10 +62,10 @@ protected:
 	// since the thread is going to die
 	// It should return true if the handing was successful
 	// or false if the thread should be stopped
-	virtual bool handleIncomingData(KviDccThreadIncomingData * data, bool bCritical);
+	bool handleIncomingData(KviDccThreadIncomingData * data, bool bCritical);
 
 public:
-	virtual void sendRawData(const void * buffer, int len); // mutex (m_pOutBuffers usage)
+	void sendRawData(const void * buffer, int len); // mutex (m_pOutBuffers usage)
 };
 
 class DccChatWindow : public DccWindow

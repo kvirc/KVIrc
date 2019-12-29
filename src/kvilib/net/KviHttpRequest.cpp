@@ -71,7 +71,7 @@ KviHttpRequest::KviHttpRequest()
 	m_uConnectionTimeout = 60;
 	m_bFollowRedirects = true;
 	m_uRedirectCount = 0;
-	m_uMaximumRedirectCount = 2;
+	m_uMaximumRedirectCount = 20;
 
 	resetStatus();
 	resetData();

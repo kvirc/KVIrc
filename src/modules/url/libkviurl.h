@@ -64,11 +64,7 @@ public:
 	~UrlDialogTreeWidget(){};
 
 protected:
-	void mousePressEvent(QMouseEvent * e) override;
 	void paintEvent(QPaintEvent * event) override;
-signals:
-	void rightButtonPressed(QTreeWidgetItem *, QPoint);
-	void contextMenuRequested(QPoint);
 };
 
 class UrlDialog : public KviWindow
@@ -97,10 +93,11 @@ protected slots:
 	void loadList();
 	void clear();
 	void close_slot();
+	void open();
 	void remove();
 	void findtext();
-	void dblclk_url(QTreeWidgetItem * item, int);
-	void popup(QTreeWidgetItem * item, const QPoint & p);
+	void open_url(QString szUrl);
+	void activate(QTreeWidgetItem * item, int);
 	void contextMenu(const QPoint & p);
 	void sayToWin(QAction * act);
 };

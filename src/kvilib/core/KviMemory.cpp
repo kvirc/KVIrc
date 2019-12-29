@@ -174,7 +174,7 @@ namespace KviMemory
 		}
 		fprintf(stderr, "|====|====|====|====|====|====|====|====\n");
 		fprintf(stderr, "| Memory profile for KVIrc\n");
-		fprintf(stderr, "| Unfreed chunks : %d\n", countUnfreed);
+		fprintf(stderr, "| Unfreed chunks : %u\n", countUnfreed);
 		fprintf(stderr, "| Total unfreed memory : %u bytes\n", g_iTotalMemAllocated);
 		fprintf(stderr, "|====|====|====|====|====|====|====|====\n");
 		fprintf(stderr, "| Possible unfreed chunks dump:\n");

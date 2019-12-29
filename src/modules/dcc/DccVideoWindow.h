@@ -104,7 +104,7 @@ protected:
 	void stopPlaying();
 	bool isPlaying() const { return m_bPlaying; }
 	void run() override;
-	bool handleIncomingData(KviDccThreadIncomingData * data, bool bCritical) override;
+	bool handleIncomingData(KviDccThreadIncomingData * data, bool bCritical);
 };
 
 class DccVideoWindow : public DccWindow

@@ -56,7 +56,7 @@ install:
     # - c:\cygwin\bin\cat /proc/cpuinfo
     # - c:\cygwin\bin\cat /proc/meminfo
     - ps: |
-        choco install strawberryperl -y $env:choco_arch
+        choco install strawberryperl -y --version 5.28.2.1 $env:choco_arch
         # Strawberry perl doesn't support MSVC, but we force the support.
         c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
     - ps: |
