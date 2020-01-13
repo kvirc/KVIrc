@@ -5056,7 +5056,7 @@ msgid ""
 "!m-k %Q\r"
 "%Q\r"
 "\""
-msgstr "%Q [%Q@%Q] ha impostato la chiave del canale in \"↩!m-k %Q↩%Q↩\""
+msgstr "%Q [%Q@%Q] ha impostato la chiave del canale in \"\r!m-k %Q\r%Q\r\""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2139
 msgid "%Q [%Q@%Q] has unset the channel key"
@@ -5105,7 +5105,7 @@ msgid ""
 "%Q [%Q@%Q] has set mode %c%c \r"
 "!m%c%c %Q\r"
 "%Q\r"
-msgstr "%Q [%Q@%Q] ha impostato il modo %c%c ↩!m%c%c %Q↩%Q↩"
+msgstr "%Q [%Q@%Q] ha impostato il modo %c%c \r!m%c%c %Q\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2544
 msgid "%Q [%Q@%Q] has set mode %s %Q"
@@ -5569,7 +5569,7 @@ msgid ""
 "!n\r"
 "%Q\r"
 "%c is a registered nickname"
-msgstr "%c↩!n↩%Q↩%c è un nickname registrato"
+msgstr "%c\r!n\r%Q\r%c è un nickname registrato"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1890
 msgid ""
@@ -5835,7 +5835,7 @@ msgid ""
 "End of channel \"%c\" %Q for \r"
 "!c\r"
 "%Q\r"
-msgstr "File del \"%c\" %Q di canale per ↩!c↩%Q↩"
+msgstr "File del \"%c\" %Q di canale per \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3114
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3134

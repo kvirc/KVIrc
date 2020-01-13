@@ -4615,7 +4615,7 @@ msgid ""
 "!h\r"
 "%Q\r"
 "] now has user %Q"
-msgstr "↩!n↩%Q↩ [%Q@↩!h↩%Q↩] agora tem de usuário %Q"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] agora tem de usuário %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:217
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:239
@@ -4629,7 +4629,7 @@ msgid ""
 "] now has host \r"
 "!h\r"
 "%Q\r"
-msgstr "↩!n↩%Q↩ [%Q@↩!h↩%Q↩] agora tem de host ↩!h↩%Q↩"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] agora tem de host \r!h\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:222
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:244
@@ -4643,7 +4643,7 @@ msgid ""
 "] now has user@host %Q@\r"
 "!h\r"
 "%Q\r"
-msgstr "↩!n↩%Q↩ [%Q@↩!h↩%Q↩] agora tem de user@host %Q@↩!h↩%Q↩"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] agora tem de user@host %Q@\r!h\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:280
 msgid "Missing channel parameter in join message"
@@ -5420,7 +5420,7 @@ msgid ""
 "!n\r"
 "%1\r"
 ": the server said '%2: %3'"
-msgstr "Não há forma de fazer login como ↩!n↩%1↩: o servidor diz '%2: %3'"
+msgstr "Não há forma de fazer login como \r!n\r%1\r: o servidor diz '%2: %3'"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1172
 msgid "Trying to use %1 as nickname"
