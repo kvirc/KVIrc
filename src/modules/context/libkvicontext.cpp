@@ -401,7 +401,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		<string> $context.state(<irc_context_id:uint>)
 	@description:
 		Returns a string describing the state of the specified IRC context.
-		The string will be either [i]idle[/i], [i]connecting[/i], [i]loggingin[/i] or [i]connected[/i].
+		The string will be either [i]idle[/i], [i]pending[/i], [i]connecting[/i], [i]loggingin[/i] or [i]connected[/i].
 		If no irc_context_id is specified then the current irc_context is used.
 		If the irc_context_id specification is not valid then this function
 		returns nothing.
