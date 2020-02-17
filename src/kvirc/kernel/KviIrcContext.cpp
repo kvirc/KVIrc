@@ -825,13 +825,14 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 
 void KviIrcContext::abortReconnect()
 {
-	if(m_pReconnectTimer)
+	if(m_eState == KviIrcContext::PendingReconnection)
 	{
 		delete m_pReconnectTimer;
 		m_pReconnectTimer = 0;
 		destroyAsynchronousConnectionData();
 		m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
 			__tr2qs("Reconnect attempt aborted"));
+		setState(KviIrcContext::Idle);
 	}
 }
 
