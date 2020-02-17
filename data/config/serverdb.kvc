@@ -566,6 +566,14 @@ NServers=2
 NServers=2
 Encoding=UTF-8
 Description=Russian%20Network
+[SciFiCenter]
+0_Hostname=irc.scificenter.de
+0_Description=SciFiCenter:%20Random%20server
+1_Hostname=irc.scificenter.de
+1_Description=SciFiCenter:%20Random%20server%20SSL
+1_Port=6697
+1_SSL=true
+NServers=2
 [ShadowFire]
 0_Hostname=irc.shadowfire.org
 0_Description=ShadowFire:%20Random%20server
