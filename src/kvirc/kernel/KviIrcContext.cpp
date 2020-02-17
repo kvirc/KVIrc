@@ -325,16 +325,7 @@ void KviIrcContext::connectButtonClicked()
 		if(m_pReconnectTimer)
 		{
 			// reconnection was in progress...
-			delete m_pReconnectTimer;
-			m_pReconnectTimer = nullptr;
-			destroyAsynchronousConnectionData();
-
-			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
-			    __tr2qs("Reconnect attempt aborted"));
-
-			if(m_eState == KviIrcContext::PendingReconnection)
-				setState(Idle);
-
+			abortReconnect();
 			return;
 		}
 
@@ -829,6 +820,18 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 			// should never end here!
 			KVI_ASSERT(false);
 			break;
+	}
+}
+
+void KviIrcContext::abortReconnect()
+{
+	if(m_pReconnectTimer)
+	{
+		delete m_pReconnectTimer;
+		m_pReconnectTimer = 0;
+		destroyAsynchronousConnectionData();
+		m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
+			__tr2qs("Reconnect attempt aborted"));
 	}
 }
 
