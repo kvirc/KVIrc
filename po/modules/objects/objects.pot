@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.9.3\n"
+"Project-Id-Version: KVIrc 5.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,8 +38,8 @@ msgstr ""
 #: src/modules/objects/KvsObject_listWidget.cpp:417
 #: src/modules/objects/KvsObject_painter.cpp:970
 #: src/modules/objects/KvsObject_painter.cpp:1054
-#: src/modules/objects/KvsObject_painter.cpp:1914
-#: src/modules/objects/KvsObject_painter.cpp:2009
+#: src/modules/objects/KvsObject_painter.cpp:1912
+#: src/modules/objects/KvsObject_painter.cpp:2006
 #: src/modules/objects/KvsObject_pixmap.cpp:149
 #: src/modules/objects/KvsObject_pixmap.cpp:264
 msgid "The opacity parameter didn't evaluate to integer"
@@ -49,7 +49,7 @@ msgstr ""
 #: src/modules/objects/KvsObject_listWidget.cpp:428
 #: src/modules/objects/KvsObject_painter.cpp:982
 #: src/modules/objects/KvsObject_painter.cpp:1066
-#: src/modules/objects/KvsObject_painter.cpp:2020
+#: src/modules/objects/KvsObject_painter.cpp:2017
 #: src/modules/objects/KvsObject_pixmap.cpp:160
 #: src/modules/objects/KvsObject_pixmap.cpp:275
 msgid "Color name or triplet RGB/HSV value required"
@@ -59,8 +59,8 @@ msgstr ""
 #: src/modules/objects/KvsObject_listWidget.cpp:433
 #: src/modules/objects/KvsObject_painter.cpp:987
 #: src/modules/objects/KvsObject_painter.cpp:1071
-#: src/modules/objects/KvsObject_painter.cpp:1933
-#: src/modules/objects/KvsObject_painter.cpp:2025
+#: src/modules/objects/KvsObject_painter.cpp:1931
+#: src/modules/objects/KvsObject_painter.cpp:2022
 #: src/modules/objects/KvsObject_pixmap.cpp:165
 #: src/modules/objects/KvsObject_pixmap.cpp:280
 msgid "One of the triplet parameters didn't evaluate to an integer"
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 msgstr ""
 
-#: src/modules/objects/KvsObject_comboBox.cpp:335
+#: src/modules/objects/KvsObject_comboBox.cpp:333
 msgid "Invalid insertion policy '%Q'"
 msgstr ""
 
@@ -115,8 +115,8 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_file.cpp:41
 #: src/modules/objects/KvsObject_file.cpp:514
-#: src/modules/objects/KvsObject_socket.cpp:394
-#: src/modules/objects/KvsObject_socket.cpp:452
+#: src/modules/objects/KvsObject_socket.cpp:393
+#: src/modules/objects/KvsObject_socket.cpp:451
 msgid "File is not open!"
 msgstr ""
 
@@ -147,16 +147,16 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_file.cpp:401
 #: src/modules/objects/KvsObject_file.cpp:523
-#: src/modules/objects/KvsObject_pixmap.cpp:636
-#: src/modules/objects/KvsObject_socket.cpp:379
-#: src/modules/objects/KvsObject_socket.cpp:439
+#: src/modules/objects/KvsObject_pixmap.cpp:634
+#: src/modules/objects/KvsObject_socket.cpp:378
+#: src/modules/objects/KvsObject_socket.cpp:438
 msgid "Buffer parameter is not an object"
 msgstr ""
 
 #: src/modules/objects/KvsObject_file.cpp:406
 #: src/modules/objects/KvsObject_file.cpp:544
-#: src/modules/objects/KvsObject_pixmap.cpp:641
-#: src/modules/objects/KvsObject_socket.cpp:401
+#: src/modules/objects/KvsObject_pixmap.cpp:639
+#: src/modules/objects/KvsObject_socket.cpp:400
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr ""
 
@@ -192,7 +192,7 @@ msgstr ""
 #: src/modules/objects/KvsObject_hBox.cpp:194
 #: src/modules/objects/KvsObject_label.cpp:263
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:860
-#: src/modules/objects/KvsObject_painter.cpp:1337
+#: src/modules/objects/KvsObject_painter.cpp:1335
 msgid "Unknown alignment '%Q'"
 msgstr ""
 
@@ -203,7 +203,7 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_hBox.cpp:143
 #: src/modules/objects/KvsObject_hBox.cpp:175
-#: src/modules/objects/KvsObject_vBox.cpp:190
+#: src/modules/objects/KvsObject_vBox.cpp:187
 msgid "The widget must be a child of this hbox"
 msgstr ""
 
@@ -243,7 +243,7 @@ msgid "The widget must be a child of this layout"
 msgstr ""
 
 #: src/modules/objects/KvsObject_layout.cpp:321
-#: src/modules/objects/KvsObject_vBox.cpp:210
+#: src/modules/objects/KvsObject_vBox.cpp:207
 msgid "Unknown alignment: '%Q'"
 msgstr ""
 
@@ -264,7 +264,7 @@ msgid "Unknown '%Q' completion mode, switching to default PopupCompletion"
 msgstr ""
 
 #: src/modules/objects/KvsObject_listWidget.cpp:262
-#: src/modules/objects/KvsObject_tableWidget.cpp:796
+#: src/modules/objects/KvsObject_tableWidget.cpp:792
 #: src/modules/objects/KvsObject_treeWidgeteItem.cpp:277
 msgid "Unknown item flag '%Q'"
 msgstr ""
@@ -296,7 +296,7 @@ msgstr ""
 #: src/modules/objects/KvsObject_mainWindow.cpp:83
 #: src/modules/objects/KvsObject_toolButton.cpp:263
 #: src/modules/objects/KvsObject_trayIcon.cpp:196
-#: src/modules/objects/KvsObject_webView.cpp:1142
+#: src/modules/objects/KvsObject_webView.cpp:1141
 #: src/modules/objects/KvsObject_widget.cpp:1901
 #: src/modules/objects/KvsObject_widget.cpp:2146
 #: src/modules/objects/object_macros.h:106
@@ -306,7 +306,7 @@ msgstr ""
 #: src/modules/objects/KvsObject_mainWindow.cpp:88
 #: src/modules/objects/KvsObject_toolButton.cpp:268
 #: src/modules/objects/KvsObject_trayIcon.cpp:201
-#: src/modules/objects/KvsObject_webView.cpp:1147
+#: src/modules/objects/KvsObject_webView.cpp:1146
 #: src/modules/objects/KvsObject_widget.cpp:1906
 #: src/modules/objects/object_macros.h:111
 msgid "Widget parameter is not a valid object"
@@ -397,7 +397,7 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:787
 #: src/modules/objects/KvsObject_pixmap.cpp:516
-#: src/modules/objects/KvsObject_pixmap.cpp:559
+#: src/modules/objects/KvsObject_pixmap.cpp:557
 #: src/modules/objects/KvsObject_textBrowser.cpp:102
 msgid "I can't find the specified file '%Q'."
 msgstr ""
@@ -494,38 +494,38 @@ msgstr ""
 msgid "Widget or pixmap required "
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1374
-#: src/modules/objects/KvsObject_painter.cpp:1427
-#: src/modules/objects/KvsObject_painter.cpp:1538
+#: src/modules/objects/KvsObject_painter.cpp:1372
+#: src/modules/objects/KvsObject_painter.cpp:1425
+#: src/modules/objects/KvsObject_painter.cpp:1536
 #: src/modules/objects/KvsObject_widget.cpp:2010
 msgid "Pixmap parameter is not an object"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1379
-#: src/modules/objects/KvsObject_painter.cpp:1432
-#: src/modules/objects/KvsObject_painter.cpp:1543
+#: src/modules/objects/KvsObject_painter.cpp:1377
+#: src/modules/objects/KvsObject_painter.cpp:1430
+#: src/modules/objects/KvsObject_painter.cpp:1541
 #: src/modules/objects/KvsObject_widget.cpp:2015
 msgid "Pixmap object required"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1582
+#: src/modules/objects/KvsObject_painter.cpp:1580
 #: src/modules/objects/KvsObject_pixmap.cpp:389
 msgid "Unknown axis '%Q' switching to default ZAxis"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1830
+#: src/modules/objects/KvsObject_painter.cpp:1828
 msgid "Unknown pen style '%Q'"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1858
+#: src/modules/objects/KvsObject_painter.cpp:1856
 msgid "Unknown brush style '%Q'"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1928
+#: src/modules/objects/KvsObject_painter.cpp:1926
 msgid "Color name or triplet RGB/HSV values required"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:2142
+#: src/modules/objects/KvsObject_painter.cpp:2139
 msgid "Unknown composition mode '%Q'"
 msgstr ""
 
@@ -544,8 +544,8 @@ msgstr ""
 #: src/modules/objects/KvsObject_pixmap.cpp:454
 #: src/modules/objects/KvsObject_pixmap.cpp:489
 #: src/modules/objects/KvsObject_pixmap.cpp:499
-#: src/modules/objects/KvsObject_pixmap.cpp:584
-#: src/modules/objects/KvsObject_pixmap.cpp:596
+#: src/modules/objects/KvsObject_pixmap.cpp:582
+#: src/modules/objects/KvsObject_pixmap.cpp:594
 msgid "The pixmap is null"
 msgstr ""
 
@@ -554,7 +554,7 @@ msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
 msgstr ""
 
 #: src/modules/objects/KvsObject_popupMenu.cpp:243
-#: src/modules/objects/KvsObject_webView.cpp:1176
+#: src/modules/objects/KvsObject_webView.cpp:1175
 msgid "Icon '%Q' doesn't exist"
 msgstr ""
 
@@ -578,26 +578,26 @@ msgstr ""
 msgid "Unknown tickmark '%Q'"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:464
+#: src/modules/objects/KvsObject_socket.cpp:463
 msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:486
+#: src/modules/objects/KvsObject_socket.cpp:485
 #, c-format
 msgid ""
 "Only values in the range of 0-255 are allowed: integer %d is out of range"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:501
+#: src/modules/objects/KvsObject_socket.cpp:500
 msgid "Datatype not supported"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:556
+#: src/modules/objects/KvsObject_socket.cpp:555
 #, c-format
 msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:574
+#: src/modules/objects/KvsObject_socket.cpp:573
 #, c-format
 msgid ""
 "Value %d for port is out of range (values allowed are from 0 to 65535): "
@@ -664,7 +664,7 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_toolButton.cpp:273
 #: src/modules/objects/KvsObject_trayIcon.cpp:206
-#: src/modules/objects/KvsObject_webView.cpp:1152
+#: src/modules/objects/KvsObject_webView.cpp:1151
 msgid "Can't add a non-popupmenu object"
 msgstr ""
 
@@ -676,11 +676,11 @@ msgstr ""
 msgid "Invalid message Icon: switch to default NoIcon '%Q'"
 msgstr ""
 
-#: src/modules/objects/KvsObject_treeWidget.cpp:388
+#: src/modules/objects/KvsObject_treeWidget.cpp:387
 msgid "Invalid selection mode '%Q'"
 msgstr ""
 
-#: src/modules/objects/KvsObject_treeWidget.cpp:407
+#: src/modules/objects/KvsObject_treeWidget.cpp:406
 msgid "Unknown '%Q' sort order: switching to ascending order"
 msgstr ""
 
@@ -694,7 +694,7 @@ msgid ""
 "listview"
 msgstr ""
 
-#: src/modules/objects/KvsObject_vBox.cpp:160
+#: src/modules/objects/KvsObject_vBox.cpp:157
 msgid "The widget must be a child of this vbox"
 msgstr ""
 
@@ -753,11 +753,11 @@ msgstr ""
 msgid "Unknown frame '%Q'"
 msgstr ""
 
-#: src/modules/objects/KvsObject_webView.cpp:1166
+#: src/modules/objects/KvsObject_webView.cpp:1165
 msgid "Unknown action '%Q':"
 msgstr ""
 
-#: src/modules/objects/KvsObject_webView.cpp:1321
+#: src/modules/objects/KvsObject_webView.cpp:1320
 msgid "Invalid file path '%Q'"
 msgstr ""
 

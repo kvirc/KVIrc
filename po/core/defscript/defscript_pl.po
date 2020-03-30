@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
+# Janusz Pekacz <penteljapan@o2.pl>, 2019-2020
 # Sölve Svartskogen <solaizen@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-09 14:46+0200\n"
-"PO-Revision-Date: 2018-04-09 20:32+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"PO-Revision-Date: 2020-03-30 09:01+0000\n"
+"Last-Translator: Janusz Pekacz <penteljapan@o2.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/kvirc/KVIrc/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,17 +21,17 @@ msgstr ""
 
 #: data/defscript/actions.kvs:5
 msgid "Global Option Controllers"
-msgstr ""
+msgstr "Główne kontrolery zdarzeń"
 
 #: data/defscript/actions.kvs:5
 msgid ""
 "Opens a global control dialog for easy CTCP ignore and joins/parts/quits "
 "management."
-msgstr ""
+msgstr "Otwiera okno dialogowe głównej kontroli dla łatwego ignorowania CTCP i zarządanie dołączeniami/opuszczeniami/wyjściami"
 
 #: data/defscript/actions.kvs:41
 msgid "Global Option Controllers - KVIrc"
-msgstr ""
+msgstr "Główne kontrolery zdarzeń - KVIrc"
 
 #: data/defscript/actions.kvs:53
 msgid "CTCP Ignore Controllers"
@@ -58,7 +59,7 @@ msgstr "Włącz ignorowanie CTCP FINGER"
 
 #: data/defscript/actions.kvs:86
 msgid "When checked, all CTCP FINGER requests are ignored."
-msgstr "Gdy zaznaczone, wszystkie żądania CTCP FINGER są ignorowane."
+msgstr "Gdy zaznaczone, wszystkie zapytania CTCP FINGER są ignorowane."
 
 #: data/defscript/actions.kvs:95
 msgid "Disabled ignore for CTCP FINGER"
@@ -106,7 +107,7 @@ msgstr "Włącz ignorowanie CTCP CLIENTINFO"
 
 #: data/defscript/actions.kvs:152
 msgid "When checked, all CTCP CLIENTINFO requests are ignored."
-msgstr "Gdy zaznaczone, wszystkie żądania CTCP CLIENTINFO są ignorowane."
+msgstr "Gdy zaznaczone, wszystkie zapytania CTCP CLIENTINFO są ignorowane."
 
 #: data/defscript/actions.kvs:161
 msgid "Disabled ignore for CTCP CLIENTINFO"
@@ -122,7 +123,7 @@ msgstr "Włącz ignorowanie CTCP SOURCE"
 
 #: data/defscript/actions.kvs:174
 msgid "When checked, all CTCP SOURCE requests are ignored."
-msgstr "Gdy zaznaczone, wszystkie żądania CTCP SOURCE są ignorowane."
+msgstr "Gdy zaznaczone, wszystkie zapytania CTCP SOURCE są ignorowane."
 
 #: data/defscript/actions.kvs:183
 msgid "Disabled ignore for CTCP SOURCE"
@@ -138,7 +139,7 @@ msgstr "Włącz ignorowanie CTCP TIME"
 
 #: data/defscript/actions.kvs:196
 msgid "When checked, all CTCP TIME requests are ignored."
-msgstr "Gdy zaznaczone, wszystkie żądania CTCP TIME są ignorowane."
+msgstr "Gdy zaznaczone, wszystkie zapytania CTCP TIME są ignorowane."
 
 #: data/defscript/actions.kvs:205
 msgid "Disabled ignore for CTCP TIME"
@@ -154,7 +155,7 @@ msgstr "Włącz ignorowanie CTCP PAGE"
 
 #: data/defscript/actions.kvs:218
 msgid "When checked, all CTCP PAGE requests are ignored."
-msgstr "Gdy zaznaczone, wszystkie żądania CTCP PAGE są ignorowane."
+msgstr "Gdy zaznaczone, wszystkie zapytania CTCP PAGE są ignorowane."
 
 #: data/defscript/actions.kvs:227
 msgid "Disabled ignore for CTCP PAGE"
@@ -170,7 +171,7 @@ msgstr "Włącz ignorowanie CTCP AVATAR"
 
 #: data/defscript/actions.kvs:240
 msgid "When checked, all CTCP AVATAR requests are ignored."
-msgstr "Gdy zaznaczone, wszystkie żądania CTCP AVATAR są ignorowane."
+msgstr "Gdy zaznaczone, wszystkie zapytania CTCP AVATAR są ignorowane."
 
 #: data/defscript/actions.kvs:249
 msgid "Disabled ignore for CTCP AVATAR"
@@ -186,7 +187,7 @@ msgstr "Włącz ignorowanie CTCP DCC"
 
 #: data/defscript/actions.kvs:262
 msgid "When checked, all CTCP DCC requests are ignored."
-msgstr "Gdy zaznaczone, wszystkie żądania CTCP DCC są ignorowane."
+msgstr "Gdy zaznaczone, wszystkie zapytania CTCP DCC są ignorowane."
 
 #: data/defscript/actions.kvs:271
 msgid "Disabled ignore for CTCP DCC"
@@ -252,7 +253,7 @@ msgstr "Zamknij"
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
-msgstr "Brak celu, akcja nie została podjęta"
+msgstr "Brakujący cel, akcja nie została podjęta"
 
 #: data/defscript/aliases.kvs:111 data/defscript/aliases.kvs:165
 msgid "Usage"
@@ -288,7 +289,7 @@ msgstr "-h: wysyła ogłoszenie do wszystkich półoperatorów kanału"
 
 #: data/defscript/aliases.kvs:117
 msgid "-v: send notice to all channel voices"
-msgstr "-v: wysyła ogłoszenie do wszystkich użytkowników mających prawo głosu"
+msgstr "-v: wysyła powiadomienie do wszystkich użytkowników mających prawo wypowiedzi"
 
 #: data/defscript/aliases.kvs:118
 msgid "-q: quiet mode"
@@ -296,7 +297,7 @@ msgstr "-q: tryb cichy"
 
 #: data/defscript/aliases.kvs:126
 msgid "Parameter message missing"
-msgstr "Brakujący parametr wiadomości"
+msgstr "Brakuje parametru wiadomość"
 
 #: data/defscript/aliases.kvs:127
 msgid "Type /gnotice for help"
@@ -304,7 +305,7 @@ msgstr "Wpisz /gnotice, by uzyskać pomoc"
 
 #: data/defscript/aliases.kvs:170
 msgid "Sending wallop to"
-msgstr "Wysyłanie wallop do"
+msgstr ""
 
 #: data/defscript/aliases.kvs:217 data/defscript/aliases.kvs:231
 #: data/defscript/aliases.kvs:245 data/defscript/aliases.kvs:262
@@ -376,7 +377,7 @@ msgstr "[Instalator] Błąd: pierwszy argument copyFiles musi być katalogiem ź
 msgid ""
 "[Installer] Error: the second argument of copyFiles must be a file name or "
 "file regexp"
-msgstr "[Instalator] Błąd: drugi argument copyFiles musi być nazwą pliku lub wyrażeniem regularnym"
+msgstr ""
 
 #: data/defscript/classes.kvs:30
 msgid ""
@@ -403,7 +404,7 @@ msgstr "Dziennik"
 
 #: data/defscript/events.kvs:92 data/defscript/events.kvs:105
 msgid "Global option controllers"
-msgstr ""
+msgstr "Główne kontrolery zdarzeń"
 
 #: data/defscript/popups.kvs:22 data/defscript/popups.kvs:1385
 msgid "Stop Highlighting (Local)"
@@ -449,7 +450,7 @@ msgstr "Wyczyść bufor"
 #: data/defscript/popups.kvs:791 data/defscript/popups.kvs:867
 #: data/defscript/popups.kvs:1210
 msgid "You're not connected to a server"
-msgstr "Nie połączono z serwerem"
+msgstr "Nie jesteś połączony z serwerem"
 
 #: data/defscript/popups.kvs:145 data/defscript/popups.kvs:319
 #: data/defscript/popups.kvs:619 data/defscript/popups.kvs:1212
@@ -504,12 +505,12 @@ msgstr "&Rejestracja"
 #: data/defscript/popups.kvs:226 data/defscript/popups.kvs:638
 #: data/defscript/popups.kvs:1235
 msgid "&Hop"
-msgstr "&Wyjdź i wejdź"
+msgstr "&Wyjdź i wejdź na"
 
 #: data/defscript/popups.kvs:231 data/defscript/popups.kvs:643
 #: data/defscript/popups.kvs:1240
 msgid "&Part"
-msgstr "&Opuszczenie"
+msgstr "&Wyjdź z kanału"
 
 #: data/defscript/popups.kvs:237 data/defscript/popups.kvs:649
 #: data/defscript/popups.kvs:1246
@@ -526,7 +527,7 @@ msgstr "Wprowadź tekst wiadomości"
 
 #: data/defscript/popups.kvs:302
 msgid "&Page"
-msgstr "&Przywołanie"
+msgstr "&Przywołaj"
 
 #: data/defscript/popups.kvs:302 data/defscript/popups.kvs:1164
 #: data/defscript/popups.kvs:1191
@@ -551,7 +552,7 @@ msgstr "l (Połączenia)"
 
 #: data/defscript/popups.kvs:371 data/defscript/popups.kvs:470
 msgid "m (Command Usage)"
-msgstr "m (Składnia polecenia)"
+msgstr "m (Dostępne polecenia)"
 
 #: data/defscript/popups.kvs:376 data/defscript/popups.kvs:475
 msgid "o (Operators)"
@@ -635,7 +636,7 @@ msgstr "Zamknij wszystkie martwe rozmowy"
 
 #: data/defscript/popups.kvs:745
 msgid "Global &Option Controllers"
-msgstr ""
+msgstr "Główne &Kontrolery zdarzeń"
 
 #: data/defscript/popups.kvs:752
 msgid "Unhighlight All Windows"
@@ -684,7 +685,7 @@ msgstr "Czat bezpośredni z"
 
 #: data/defscript/popups.kvs:946
 msgid "Reverse Chat with"
-msgstr "Odwrotny czat z"
+msgstr "Odwrotny bezpośredni czat z"
 
 #: data/defscript/popups.kvs:951
 msgid "Secure Chat with"
@@ -700,7 +701,7 @@ msgstr "Wyślij bezpiecznie do"
 
 #: data/defscript/popups.kvs:968
 msgid "Reverse Send to"
-msgstr "Odwrotne wysyłanie do"
+msgstr "Odwrotne bezpośrednie wysyłanie do"
 
 #: data/defscript/popups.kvs:973
 msgid "Secure Reverse Send to"
@@ -764,11 +765,11 @@ msgstr "&Zabierz półoperatora"
 
 #: data/defscript/popups.kvs:1144
 msgid "&Voice"
-msgstr "&Udziel głosu"
+msgstr "&Udziel prawo wypowiedzi"
 
 #: data/defscript/popups.kvs:1149
 msgid "D&evoice"
-msgstr "Z&abierz prawo głosu"
+msgstr "Z&abierz prawo wypowiedzi"
 
 #: data/defscript/popups.kvs:1156 data/defscript/popups.kvs:1164
 msgid "&Kick"
@@ -891,7 +892,7 @@ msgstr "Włącz ignorowanie"
 
 #: data/defscript/popups.kvs:1645
 msgid "Disable Ignore"
-msgstr ""
+msgstr "Wyłącz ignorowanie"
 
 #: data/defscript/popups.kvs:1662
 msgid "is registered as"

@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.9.3\n"
+"Project-Id-Version: KVIrc 5.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -224,9 +224,9 @@ msgstr ""
 #: src/modules/actioneditor/ActionEditor.cpp:747
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:877
 #: src/modules/editor/ScriptEditorImplementation.cpp:876
-#: src/modules/eventeditor/EventEditorWindow.cpp:513
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1233
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1283
+#: src/modules/eventeditor/EventEditorWindow.cpp:517
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1228
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1278
 #: src/modules/raweditor/RawEditorWindow.cpp:426
 #: src/modules/raweditor/RawEditorWindow.cpp:463
 msgid "Writing to File Failed - KVIrc"
@@ -245,9 +245,9 @@ msgstr ""
 #: src/modules/classeditor/ClassEditorWindow.cpp:1200
 #: src/modules/classeditor/ClassEditorWindow.cpp:1241
 #: src/modules/editor/ScriptEditorImplementation.cpp:485
-#: src/modules/eventeditor/EventEditorWindow.cpp:553
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1233
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1283
+#: src/modules/eventeditor/EventEditorWindow.cpp:557
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1228
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1278
 #: src/modules/raweditor/RawEditorWindow.cpp:463
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:188
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:254
@@ -275,8 +275,8 @@ msgstr ""
 #: src/modules/actioneditor/ActionEditor.cpp:905
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1266
 #: src/modules/editor/ScriptEditorImplementation.cpp:489
-#: src/modules/eventeditor/EventEditorWindow.cpp:576
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1429
+#: src/modules/eventeditor/EventEditorWindow.cpp:580
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1424
 #: src/modules/raweditor/RawEditorWindow.cpp:487
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:193
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:424
@@ -290,8 +290,8 @@ msgid "Alias"
 msgstr ""
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:140
-#: src/modules/eventeditor/EventEditorWindow.cpp:104
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1088
+#: src/modules/eventeditor/EventEditorWindow.cpp:108
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1083
 #: src/modules/raweditor/RawEditorWindow.cpp:95
 msgid "&Export All to..."
 msgstr ""
@@ -302,9 +302,9 @@ msgstr ""
 #: src/modules/classeditor/ClassEditorWindow.cpp:206
 #: src/modules/classeditor/ClassEditorWindow.cpp:213
 #: src/modules/classeditor/ClassEditorWindow.cpp:756
-#: src/modules/eventeditor/EventEditorWindow.cpp:123
-#: src/modules/eventeditor/EventEditorWindow.cpp:418
-#: src/modules/eventeditor/EventEditorWindow.cpp:442
+#: src/modules/eventeditor/EventEditorWindow.cpp:127
+#: src/modules/eventeditor/EventEditorWindow.cpp:422
+#: src/modules/eventeditor/EventEditorWindow.cpp:446
 msgid "No item selected"
 msgstr ""
 
@@ -319,7 +319,7 @@ msgid "Edit the alias or namespace name"
 msgstr ""
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:339
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1156
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1151
 msgid "Confirm Overwriting Current - KVIrc"
 msgstr ""
 
@@ -570,10 +570,10 @@ msgstr ""
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1187
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1195
 #: src/modules/classeditor/ClassEditorWindow.cpp:1603
-#: src/modules/eventeditor/EventEditorWindow.cpp:505
-#: src/modules/eventeditor/EventEditorWindow.cpp:548
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1225
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1278
+#: src/modules/eventeditor/EventEditorWindow.cpp:509
+#: src/modules/eventeditor/EventEditorWindow.cpp:552
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1220
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1273
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:414
 msgid "Enter a Filename - KVIrc"
 msgstr ""
@@ -583,17 +583,17 @@ msgid "Alias Editor"
 msgstr ""
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1256
-#: src/modules/eventeditor/EventEditorWindow.cpp:513
-#: src/modules/eventeditor/EventEditorWindow.cpp:566
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1419
+#: src/modules/eventeditor/EventEditorWindow.cpp:517
+#: src/modules/eventeditor/EventEditorWindow.cpp:570
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1414
 #: src/modules/raweditor/RawEditorWindow.cpp:426
 #: src/modules/raweditor/RawEditorWindow.cpp:477
 msgid "&OK"
 msgstr ""
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1261
-#: src/modules/eventeditor/EventEditorWindow.cpp:571
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1424
+#: src/modules/eventeditor/EventEditorWindow.cpp:575
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1419
 #: src/modules/raweditor/RawEditorWindow.cpp:482
 msgid "&Apply"
 msgstr ""
@@ -798,7 +798,7 @@ msgid ""
 "available in the code as $0, $1, $2, .."
 msgstr ""
 
-#: src/modules/codetester/CodeTesterWindow.cpp:110
+#: src/modules/codetester/CodeTesterWindow.cpp:109
 msgid "Script Tester"
 msgstr ""
 
@@ -917,59 +917,59 @@ msgstr ""
 msgid "&Replace in all editor's items"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:118
+#: src/modules/eventeditor/EventEditorWindow.cpp:122
 msgid "E&nabled"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:124
+#: src/modules/eventeditor/EventEditorWindow.cpp:128
 msgid "Edit the event handler name."
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:211
+#: src/modules/eventeditor/EventEditorWindow.cpp:215
 msgid "Event"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:242
+#: src/modules/eventeditor/EventEditorWindow.cpp:246
 #: src/modules/raweditor/RawEditorWindow.cpp:151
 msgid "&Enable Handler"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:246
+#: src/modules/eventeditor/EventEditorWindow.cpp:250
 #: src/modules/raweditor/RawEditorWindow.cpp:154
 msgid "&Disable Handler"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:250
+#: src/modules/eventeditor/EventEditorWindow.cpp:254
 #: src/modules/raweditor/RawEditorWindow.cpp:157
 msgid "Re&move Handler"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:254
+#: src/modules/eventeditor/EventEditorWindow.cpp:258
 #: src/modules/raweditor/RawEditorWindow.cpp:160
 msgid "&Export Handler to..."
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:261
+#: src/modules/eventeditor/EventEditorWindow.cpp:265
 #: src/modules/raweditor/RawEditorWindow.cpp:165
 msgid "&New Handler"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:275
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1382
+#: src/modules/eventeditor/EventEditorWindow.cpp:279
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1377
 #: src/modules/raweditor/RawEditorWindow.cpp:182
 msgid "unnamed"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:313
+#: src/modules/eventeditor/EventEditorWindow.cpp:317
 #: src/modules/raweditor/RawEditorWindow.cpp:247
 msgid "default"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:446
+#: src/modules/eventeditor/EventEditorWindow.cpp:450
 msgid "None"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:449
+#: src/modules/eventeditor/EventEditorWindow.cpp:453
 msgid ""
 "\n"
 "\n"
@@ -980,16 +980,16 @@ msgid ""
 "%2"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:513
-#: src/modules/eventeditor/EventEditorWindow.cpp:553
+#: src/modules/eventeditor/EventEditorWindow.cpp:517
+#: src/modules/eventeditor/EventEditorWindow.cpp:557
 msgid "Unable to write to the events file."
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:553
+#: src/modules/eventeditor/EventEditorWindow.cpp:557
 msgid "Writing to File Failed"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:614
+#: src/modules/eventeditor/EventEditorWindow.cpp:618
 msgid "Event Editor"
 msgstr ""
 
@@ -1177,47 +1177,47 @@ msgstr ""
 msgid "Paste Inside"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:458
+#: src/modules/popupeditor/PopupEditorWindow.cpp:455
 msgid "New Menu Prologue"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:463
+#: src/modules/popupeditor/PopupEditorWindow.cpp:458
 msgid "New Menu Epilogue"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1084
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1079
 msgid "Popup"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1090
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1085
 msgid "&Export Selected to..."
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1157
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1152
 msgid ""
 "An external script has changed the popup you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1187
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1204
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1182
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1199
 msgid "&New Popup"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1190
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1185
 msgid "Re&move Popup"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1194
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1189
 msgid "&Export Popup to..."
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1233
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1283
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1228
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1278
 msgid "Unable to write to the popups file."
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1457
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1452
 msgid "Popup Editor"
 msgstr ""
 

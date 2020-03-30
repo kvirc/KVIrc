@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.9.3\n"
+"Project-Id-Version: KVIrc 5.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -146,53 +146,57 @@ msgid "%1 on %2"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:455
+msgid "Export All Log Files to"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:456
 msgid "Remove All Log Files Within This Folder"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:459
+#: src/modules/logview/LogViewWindow.cpp:460
 msgid "Export Log File to"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:460
+#: src/modules/logview/LogViewWindow.cpp:461
 msgid "Remove Log File"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:478
+#: src/modules/logview/LogViewWindow.cpp:479
 msgid "Confirm Current User Log Deletion"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:479
+#: src/modules/logview/LogViewWindow.cpp:480
 msgid "Do you really wish to delete this log?"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:496
+#: src/modules/logview/LogViewWindow.cpp:497
 msgid "Confirm Current User Logs Deletion"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:497
+#: src/modules/logview/LogViewWindow.cpp:498
 msgid "Do you really wish to delete all these logs?"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:609
+#: src/modules/logview/LogViewWindow.cpp:610
 msgid "Export Log - KVIrc"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:689
+#: src/modules/logview/LogViewWindow.cpp:690
 msgid "Channel %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:692
+#: src/modules/logview/LogViewWindow.cpp:693
 msgid "Console on %1"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:695
+#: src/modules/logview/LogViewWindow.cpp:696
 msgid "Query with: %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:698
+#: src/modules/logview/LogViewWindow.cpp:699
 msgid "DCC Chat with: %1"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:701
+#: src/modules/logview/LogViewWindow.cpp:702
 msgid "Something on: %1"
 msgstr ""

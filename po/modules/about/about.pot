@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.9.3\n"
+"Project-Id-Version: KVIrc 5.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,61 +17,60 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/about/AboutDialog.cpp:79
+#: src/modules/about/AboutDialog.cpp:83
 msgid "About KVIrc"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:80
+#: src/modules/about/AboutDialog.cpp:84
 msgid "Close"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:102
+#: src/modules/about/AboutDialog.cpp:106
 msgid "Forged by the <b>KVIrc Development Team</b>"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:108
+#: src/modules/about/AboutDialog.cpp:112
 msgid "About"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:121
+#: src/modules/about/AboutDialog.cpp:125
 msgid "Runtime Info"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:123
-#: src/modules/about/AboutDialog.cpp:162
+#: src/modules/about/AboutDialog.cpp:127
 msgid "System name"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:131
+#: src/modules/about/AboutDialog.cpp:135
 msgid "System version"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:135
+#: src/modules/about/AboutDialog.cpp:139
 msgid "Architecture"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:139
+#: src/modules/about/AboutDialog.cpp:143
 #: src/modules/about/AboutDialog.cpp:187
 msgid "Qt version"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:143
+#: src/modules/about/AboutDialog.cpp:147
 msgid "Qt theme"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:148
+#: src/modules/about/AboutDialog.cpp:152
 msgid "Build Info"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:150
+#: src/modules/about/AboutDialog.cpp:154
 msgid "Build date"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:154
+#: src/modules/about/AboutDialog.cpp:158
 msgid "Sources date"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:158
+#: src/modules/about/AboutDialog.cpp:162
 msgid "Revision number"
 msgstr ""
 
@@ -99,21 +98,33 @@ msgstr ""
 msgid "Features"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:197
+#: src/modules/about/AboutDialog.cpp:196
+msgid "OpenSSL version"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:204
+msgid "OpenSSL compiler flags"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:212
+msgid "OpenSSL "
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:223
 msgid "Executable Information"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:209
+#: src/modules/about/AboutDialog.cpp:235
 msgid "Honor && Glory"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:227
+#: src/modules/about/AboutDialog.cpp:253
 msgid ""
 "Oops! Can't find the license file.\n"
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:235
+#: src/modules/about/AboutDialog.cpp:261
 msgid "License"
 msgstr ""
