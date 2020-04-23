@@ -1,0 +1,27 @@
+[KVIrc]
+uNextTip=0
+uNumTips=23
+TranslatorHint=This-file-MUST-be-encoded-in-UTF8
+0=Możesz utworzyć połączenia do wielu serwerów w pojedynczym oknie KVIrc, poprostu wybierz z menu "Nowy kontekst IRC".
+1=IPv6 jest teraz w pełni wspierany, nawet dla transferów bezpośrenich połączeń klientów (DCC). A polecenie to <br><b>/server -i &lt;nazwaserwera&gt;</b> :)
+2=KVIrc wspiera szyfrowanie SSL.<br>Połączenia szyfrowane SSL mogą być ustanowione używając <b>/server -s</b>, a bezpośrednie połączenie klientów (DCC) używając <b>/dcc.chat -s</b><br>To także działa dla IPv6.
+3=<b>Kontekst IRC</b> jest zestawem zasobów do obsługi pojedynczego połączenia serwera. Ma powiązane okno <b>Konsoli</b>, które wyświetla wiadomości z systemu i od serwera.
+4=KVIrc jest wysoko modułową aplikacją. Moduły są ładowane i wyładowywane w tle dla użytkownika  (i nawet dla skrypciarza!). Możesz także napisać swoje własne moduły które rozszerzą język skryptowy, lub dodać inne funkcjonalności.
+5=KVIrc supports multiple handler scripts for a single event. This allows multiple scripts to be installed at the same time, avoids handler collisions and helps in adding/removing and activating/deactivating script sections.
+6=KVIrc wspiera <b>irc://</b> Uniform Resource Locator (URL). Uruchom polecenie: <br><b>kvirc irc://irc.twojserwer.org:6667/kanał</b><br> aby połączyć się z tym serwerem.<br>Ogólna składnia :<br><b>irc[6]://&lt;nazwa-serwera&gt;[:&lt;port&gt;][/[&lt;kanał&gt;[?&lt;hasło&gt;]]]</b>
+7=Plik wykonywalny KVIrc zachowuje się jak polecenie "netscape -remote", jeżeli już jest uruchomiona instancja KVIrc, parametry linii polecenia są przekazywane do tej instancji poprzez IPC. Możesz nadpisać to zachowanie przełącznikiem <b>-f</b>.
+8=KVIrc może obsługiwać URL <b>irc://</b> Twojej przeglądarki. Jeżeli KVIrc ma włączone wsparcie KDE powinieneś być w stanie uruchomić to wpisując URL <b>irc://</b> do paska lokalizacji Konqueror.<br>Spróbuj <b>irc://irc.freenode.net/kvirc</b> :)
+9=URL mogą być także wykonywane dla serwerów IRC IPv6, następująca składnia ma zastosowanie w tym przypadku:<br><b>irc6://&lt;ipv6-nazwa-serwera&gt;[:&lt;port&gt;][/[&lt;kanał&gt;[?&lt;hasło&gt;]]]</b>
+10=Możesz przełączać pomiędzy oknami naciskając <b>Alt+Góra/Dół</b> ma to zastosowanie do wszystkich okien. Albo <b>Shift+Alt+Góra/Dół</b> tylko w aktualnym kontekście.
+11=Szybką metodą połączenia sie z serwerem w nowym konteście IRC jest <b>/server -n &lt;nazwaserwera&gt;</b>
+12=KVIrc jest przenośny pomiędzy Windowsami, Mac OSX, Linux i innymi różnymi pochodnymi maszynami Unixa. Jeżeli jesteś dobrym skrypciarzem, Twoje skrypty będą także przenośne!
+13=Chcesz automatycznie dołączyć na kanał po ustanowieniu połączenia?<br>To proste!<br>Poprostu kliknij "Zaawansowane" w ustawieniach serwera i dodaj kanał w zakładce "Kanały dołączane automatycznie". To polecenie zadziała na wszystkie serwery, spróbuj <b>/event(OnIrc,autojoin){ join #twojkanał; }</b>
+14=Czy wiesz czym jest awatar? Sprawdź <b>/help The AVATAR idea</b>
+15=Strona ustawień bezpośredniego połączenia klientów (DCC) ma mnóstwo opcji, które pomogą Ci rozwiązać wiele częstych problemów DCC. Ludzie za zaporami ogniowymi będą w stanie wysyłać także dane. To tylko kwestia ustawień. :)
+16=KVIrc supports many 8-bit character encodings. You can "speak" KOI8-R based Russian on one channel and Japanese on another over the same connection (with appropriate fonts). We strongly encourage you to use <b>Unicode</b> (UTF-8), which supports almost every language in the world.
+17=Aby ominąc nadmiernych transferów bezpośrednich połączeń klientów, jest zalecane udostępnić swoje awatary w Internecie. Możesz również użyć jakiegokolwiek dostępnego obrazu w Internecie jako awataru.Polecenie <br><b>/avatar #twójkan http://śmiesznyhost.com/śmieszne/śmieszne.png</b> zadziała!
+18=KVIrc ma wbudowanego klienta HTTP, możesz pobierać pliki z Internetu używając polecenia <b>/http.get</b>.
+19=Nie podoba ci się drzewiasty tryb okna? Możesz wybrać tradycyjny pasek zadań (podobny do mIRC) w preferencjach motywu -> Lista okien.
+20=Możesz skopiować tekst z okna tekstowego do schowka po prostu zaznaczając go myszką. Jeżeli przytrzymasz Shift wtedy kody koloru zostaną także skopiowane.
+21=Możesz zmieniać motywy w KVIrc po prostu wybierając Ustawienia -> Zarządzanie motywami (Ctrl+Shift+M).
+22=To jest ostatnia wskazówka. Możesz dodać własne wskazówki - Sprawdź <b>/help tip.open</b>. Nie krępuj się wysłać więcej wskazówek (w jakimkolwiek języku) do <b>trisk-kvirc(at)quasarnet.org</b>.
