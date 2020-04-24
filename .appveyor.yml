@@ -78,9 +78,9 @@ install:
         if (Test-Path "c:/spellcheck-dicts/zip/en_US.zip") {
             echo "using en dict from cache"
         } else {
-            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2018.04.16/hunspell-en_US-2018.04.16.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
-            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2018.04.16/hunspell-en_GB-ize-2018.04.16.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
-            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2018.04.16/hunspell-en_GB-ise-2018.04.16.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2019.10.06/hunspell-en_US-2019.10.06.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2019.10.06/hunspell-en_GB-ize-2019.10.06.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2019.10.06/hunspell-en_GB-ise-2019.10.06.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
             c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/unzip; 7z x -y ../zip/en_US.zip; 7z x -y ../zip/en_GB-ize.zip; 7z x -y ../zip/en_GB-ise.zip"
         }
     - ps: |
@@ -124,7 +124,7 @@ build_script:
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libiconv-2.dll release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/$env:mingw_libgcc release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libstdc++-6.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libhunspell-1.6-0.dll release/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libhunspell-1.7-0.dll release/
         c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/hunspell/dicts/
         c:\cygwin\bin\touch release/share/locale
         c:\cygwin\bin\cp -pv $env:mingw_root/share/enchant/enchant.ordering release/share/enchant/
