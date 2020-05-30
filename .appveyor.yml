@@ -98,7 +98,26 @@ build_script:
     - vcpkg install zlib:%arch%-windows
     - vcpkg install openssl:%arch%-windows
     - ps: |
-        cmake .. "-GNMake Makefiles" "-DCMAKE_TOOLCHAIN_FILE=C:/Tools/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DCMAKE_BUILD_TYPE=$env:cmake_build_type" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DWANT_OPENSSL=YES" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant-2;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant-2.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES" "-DWANT_QTWEBKIT=NO"
+        $args = (
+            "-GNMake Makefiles",
+            "-DCMAKE_TOOLCHAIN_FILE=C:/Tools/vcpkg/scripts/buildsystems/vcpkg.cmake",
+            "-DCMAKE_BUILD_TYPE=$env:cmake_build_type",
+            "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver",
+            "-DWANT_OPENSSL=YES",
+            "-DWANT_PERL=YES",
+            "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe",
+            "-DWANT_PHONON=NO",
+            "-DCMAKE_START_TEMP_FILE=",
+            "-DCMAKE_END_TEMP_FILE=",
+            "-DCMAKE_VERBOSE_MAKEFILE=1",
+            "-DEnchant_FOUND=1",
+            "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant-2;$env:mingw_root/include/glib-2.0",
+            "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant-2.dll.a",
+            "-DWANT_KDE=NO",
+            "-DWANT_PYTHON=YES",
+            "-DWANT_QTWEBKIT=NO"
+        )
+        cmake .. $args
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - nmake install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
