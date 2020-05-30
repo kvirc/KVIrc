@@ -71,7 +71,7 @@ install:
         if (Test-Path "c:/spellcheck-dicts/zip/ru.zip") { # LGPL
             echo "using ru dict from cache"
         } else {
-            Invoke-WebRequest https://extensions.libreoffice.org/extensions/russian-spellcheck-dictionary.-based-on-works-of-aot-group/0-4.3/@@download/file/dict_ru_ru-aot-0.4.3.oxt -OutFile c:\spellcheck-dicts\zip\ru.zip
+            Invoke-WebRequest https://extensions.libreoffice.org/assets/downloads/z/dict-ru-ru-aot-0-4-3.oxt -OutFile c:\spellcheck-dicts\zip\ru.zip
             c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/ru; 7z x -y ../zip/ru.zip"
         }
     - ps: |
@@ -101,42 +101,42 @@ build_script:
         cmake .. "-GNMake Makefiles" "-DCMAKE_TOOLCHAIN_FILE=C:/Tools/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DCMAKE_BUILD_TYPE=$env:cmake_build_type" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DWANT_OPENSSL=YES" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant-2;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant-2.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES" "-DWANT_QTWEBKIT=NO"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - nmake install VERBOSE=1
-    # - c:\cygwin\bin\ls -l release/
+    - c:\cygwin\bin\ls -l release/
     - ps: |
         $env:Path += ";c:/Qt/$env:qt_ver/bin"
         if ($env:cmake_build_type -eq "Debug") {
-            windeployqt "--pdb" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
+            windeployqt "--pdb" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"; if (!$?) { exit 1 }
         } else {
-            windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
+            windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"; if (!$?) { exit 1 }
         }
     - ps: |
         if ($env:cmake_build_type -eq "Debug") {
-            c:\cygwin\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/zlibd.pdb" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/zlibd1.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/libeay32.*" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/ssleay32.*" "c:/Program Files (x86)/Windows Kits/10/bin/$env:arch/ucrt/ucrtbased.dll" release/
+            c:\cygwin\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/zlibd.pdb" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/zlibd1.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/libeay32.*" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/ssleay32.*" "c:/Program Files (x86)/Windows Kits/10/bin/$env:arch/ucrt/ucrtbased.dll" release/; if (!$?) { exit 1 }
         } else {
-            c:\cygwin\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/bin/zlib1.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/libeay32.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/ssleay32.dll" release/
+            c:\cygwin\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/bin/zlib1.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/libeay32.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/ssleay32.dll" release/; if (!$?) { exit 1 }
         }
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant-2.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libpcre-1.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libglib-2.0-0.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libgmodule-2.0-0.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libintl-8.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libwinpthread-1.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libiconv-2.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/$env:mingw_libgcc release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libstdc++-6.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libhunspell-1.7-0.dll release/
-        c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/hunspell/dicts/
-        c:\cygwin\bin\touch release/share/locale
-        c:\cygwin\bin\cp -pv $env:mingw_root/share/enchant/enchant.ordering release/share/enchant/
-        c:\cygwin\bin\cp -pv $env:mingw_root/lib/enchant-2/enchant_hunspell.dll release/lib/enchant/
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.aff release/share/hunspell/dicts/ru_RU_yo.aff
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.dic release/share/hunspell/dicts/ru_RU_yo.dic
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.aff release/share/hunspell/dicts/
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.dic release/share/hunspell/dicts/
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.dic release/share/hunspell/dicts/en_GB_ise.dic
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.aff release/share/hunspell/dicts/en_GB_ise.aff
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.dic release/share/hunspell/dicts/en_GB_ize.dic
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.aff release/share/hunspell/dicts/en_GB_ize.aff
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant-2.dll release/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libpcre-1.dll release/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libglib-2.0-0.dll release/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libgmodule-2.0-0.dll release/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libintl-8.dll release/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libwinpthread-1.dll release/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libiconv-2.dll release/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/$env:mingw_libgcc release/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libstdc++-6.dll release/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libhunspell-1.7-0.dll release/; if (!$?) { exit 1 }
+        c:\cygwin\bin\mkdir -p release/lib/enchant-2/ release/share/enchant/ release/share/hunspell/; if (!$?) { exit 1 }
+        c:\cygwin\bin\touch release/share/locale; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv $env:mingw_root/share/enchant/enchant.ordering release/share/enchant/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv $env:mingw_root/lib/enchant-2/enchant_hunspell.dll release/lib/enchant-2/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.aff release/share/hunspell/ru_RU_yo.aff; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.dic release/share/hunspell/ru_RU_yo.dic; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.aff release/share/hunspell/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.dic release/share/hunspell/; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.dic release/share/hunspell/en_GB_ise.dic; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.aff release/share/hunspell/en_GB_ise.aff; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.dic release/share/hunspell/en_GB_ize.dic; if (!$?) { exit 1 }
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.aff release/share/hunspell/en_GB_ize.aff; if (!$?) { exit 1 }
     - '"c:\Program Files (x86)\NSIS\makensis.exe" KVIrc.nsi'
     - ps: |
         $exe = dir -name *.exe
