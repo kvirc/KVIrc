@@ -9,4 +9,5 @@ import os
 print(json.dumps({
     'bin': sys.argv[1],
     'commit': os.environ['TRAVIS_COMMIT'],
+    'size': os.stat(sys.argv[2]).st_size,
 }))

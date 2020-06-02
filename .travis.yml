@@ -133,7 +133,7 @@ after_success:
               kvi_version="$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')";
               git_desc="$(git describe)";
               dmg_name="KVIrc-${kvi_version}-dev-${git_desc}.dmg"
-              python .travis-gen-latest-json.py "${dmg_name}" > latest
+              python .travis-gen-latest-json.py "${dmg_name}" KVIrc.dmg > latest
               echo -e "put KVIrc.dmg x/${dmg_name}\nput latest x/latest-macos" | sftp artifacts
           fi
 env:

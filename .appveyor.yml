@@ -167,8 +167,11 @@ build_script:
         Push-AppveyorArtifact $exe -FileName $new_name
         $cmake_name = $exe.Replace(".exe", "-$env:target_arch.cmake.txt")
         #Push-AppveyorArtifact CMakeCache.txt -FileName $cmake_name
-        $json = New-Object PSObject
-        (New-Object PSObject | Add-Member -PassThru NoteProperty bin $new_name | Add-Member -PassThru NoteProperty cmake $cmake_name | Add-Member -PassThru NoteProperty commit $env:APPVEYOR_REPO_COMMIT) | ConvertTo-JSON | Out-File -FilePath "latest-$env:target_arch-$env:cmake_build_type" -Encoding ASCII
+        (New-Object PSObject |
+            Add-Member -PassThru NoteProperty bin $new_name |
+            Add-Member -PassThru NoteProperty commit $env:APPVEYOR_REPO_COMMIT |
+            Add-Member -PassThru NoteProperty size (Get-Item $exe).length) |
+          ConvertTo-JSON | Out-File -FilePath "latest-$env:target_arch-$env:cmake_build_type" -Encoding ASCII
         Push-AppveyorArtifact "latest-$env:target_arch-$env:cmake_build_type"
 test: off
 deploy:
