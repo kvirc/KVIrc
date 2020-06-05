@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+# Janusz Pekacz <penteljapan@o2.pl>, 2019
+# Sölve Svartskogen <solaizen@gmail.com>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
+"PO-Revision-Date: 2019-10-12 11:17+0000\n"
+"Last-Translator: Janusz Pekacz <penteljapan@o2.pl>\n"
+"Language-Team: Polish (http://www.transifex.com/kvirc/KVIrc/language/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: src/modules/python/libkvipython.cpp:42
+msgid "The pythoncore module can't be loaded: Python support not available"
+msgstr "Moduł pythoncore nie może być załadowany: Wsparcie python niedostępne"
+
+#: src/modules/python/libkvipython.cpp:43
+msgid "To see more details about loading failure try /pythoncore.load"
+msgstr "Aby zobaczyć szczegóły dotyczące błędu ładowania, wpisz /pythoncore.load"
+
+#: src/modules/python/libkvipython.cpp:56
+msgid ""
+"This KVIrc executable has been compiled without Python scripting support"
+msgstr "Plik wykonywalny KVIrc został skompilowany bez wsparcia skryptów Python"
+
+#: src/modules/python/libkvipython.cpp:407
+#: src/modules/python/libkvipython.cpp:473
+msgid ""
+"The pythoncore module failed to execute the code: something is wrong with "
+"the Python support"
+msgstr "Modułowi pythoncore nie udało się wykonać kodu: coś jest nie tak ze wsparciem Pythona"
+
+#: src/modules/python/libkvipython.cpp:419
+msgid "Python execution error:"
+msgstr "Błąd wykonania Pythona:"
+
+#: src/modules/pythoncore/libkvipythoncore.cpp:113
+msgid "Internal error: Python interpreter not initialized"
+msgstr "Błąd wewnętrzny: Interpreter Pythona nie został zainicjalizowany"

@@ -1,0 +1,983 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+# MarongHappy <daemul72@gmail.com>, 2020
+# ks k, 2020
+# ks k, 2020
+# MarongHappy <daemul72@gmail.com>, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
+"PO-Revision-Date: 2020-05-31 06:45+0000\n"
+"Last-Translator: ks k\n"
+"Language-Team: Korean (http://www.transifex.com/kvirc/KVIrc/language/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/defscript/actions.kvs:5
+msgid "Global Option Controllers"
+msgstr "전반적인 선택사항 제어기"
+
+#: data/defscript/actions.kvs:5
+msgid ""
+"Opens a global control dialog for easy CTCP ignore and joins/parts/quits "
+"management."
+msgstr "전반적인 제어 대화상자를 열어 CTCP 무시 및 입장/퇴장/질문 관리를 용이하게 합니다."
+
+#: data/defscript/actions.kvs:41
+msgid "Global Option Controllers - KVIrc"
+msgstr "전반적인 선택사항 제어기 - KVIrc"
+
+#: data/defscript/actions.kvs:53
+msgid "CTCP Ignore Controllers"
+msgstr "CTCP 무시 제어기"
+
+#: data/defscript/actions.kvs:63
+msgid "Enable ignore for CTCP PING"
+msgstr "CTCP 핑에 대해 무시 기능을 사용 되도록 설정"
+
+#: data/defscript/actions.kvs:64
+msgid "When checked, all CTCP PING requests are ignored."
+msgstr "이 선택사항이 되면 모든 CTCP 핑 요청이 무시됩니다."
+
+#: data/defscript/actions.kvs:73
+msgid "Disabled ignore for CTCP PING"
+msgstr "CTCP 핑에 대해 무시를 사용 안되도록 설정됨"
+
+#: data/defscript/actions.kvs:78
+msgid "Enabled ignore for CTCP PING"
+msgstr "CTCP 핑에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:85
+msgid "Enable ignore for CTCP FINGER"
+msgstr "CTCP 핑거에 대해 무시 사용 되도록 설정"
+
+#: data/defscript/actions.kvs:86
+msgid "When checked, all CTCP FINGER requests are ignored."
+msgstr "이 선택사항을 선택하면 모든 CTCP 핑거 요청이 무시됩니다."
+
+#: data/defscript/actions.kvs:95
+msgid "Disabled ignore for CTCP FINGER"
+msgstr "CTCP 핑거에 대해 무시를 사용하지 않습니다"
+
+#: data/defscript/actions.kvs:100
+msgid "Enabled ignore for CTCP FINGER"
+msgstr "CTCP 핑거에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:107
+msgid "Enable ignore for CTCP VERSION"
+msgstr "CTCP VERSION 에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:108
+msgid "When checked, all CTCP VERSION requests are ignored."
+msgstr "이 선택사항을 선택하면 모든 CTCP VERSION 요청이 무시됩니다."
+
+#: data/defscript/actions.kvs:117
+msgid "Disabled ignore for CTCP VERSION"
+msgstr "CTCP 버전에 대해 무시를 사용 안되도록 설정"
+
+#: data/defscript/actions.kvs:122
+msgid "Enabled ignore for CTCP VERSION"
+msgstr "CTCP 버전에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:129
+msgid "Enable ignore for CTCP USERINFO"
+msgstr "CTCP 사용자 정보에 대해 무시를 사용 되도록 설정"
+
+#: data/defscript/actions.kvs:130
+msgid "When checked, all CTCP USERINFO requests are ignored."
+msgstr "이 선택사항을 선택하면 모든 CTCP 사용자 정보 요청이 무시됩니다."
+
+#: data/defscript/actions.kvs:139
+msgid "Disabled ignore for CTCP USERINFO"
+msgstr "CTCP 사용자 정보에 대해 무시를 사용 안되도록 설정됨"
+
+#: data/defscript/actions.kvs:144
+msgid "Enabled ignore for CTCP USERINFO"
+msgstr "CTCP 사용자 정보에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:151
+msgid "Enable ignore for CTCP CLIENTINFO"
+msgstr "CTCP CLIENTINFO 에 대해 무시를 사용 되도록 설정"
+
+#: data/defscript/actions.kvs:152
+msgid "When checked, all CTCP CLIENTINFO requests are ignored."
+msgstr "이 선택사항을 선택하면 모든 CTCP CLIENTINFO 요청이 무시됩니다."
+
+#: data/defscript/actions.kvs:161
+msgid "Disabled ignore for CTCP CLIENTINFO"
+msgstr "CTCP CLIENTINFO 에 대해 무시를 사용 안되도록 설정됨"
+
+#: data/defscript/actions.kvs:166
+msgid "Enabled ignore for CTCP CLIENTINFO"
+msgstr "CTCP CLIENTINFO 에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:173
+msgid "Enable ignore for CTCP SOURCE"
+msgstr "CTCP SOURCE 에 대해 무시를 사용 되도록 설정"
+
+#: data/defscript/actions.kvs:174
+msgid "When checked, all CTCP SOURCE requests are ignored."
+msgstr "이 선택사항을 선택하면 모든 CTCP 소스 요청이 무시됩니다."
+
+#: data/defscript/actions.kvs:183
+msgid "Disabled ignore for CTCP SOURCE"
+msgstr "CTCP 소스에 대해 무시를 사용하지 않습니다"
+
+#: data/defscript/actions.kvs:188
+msgid "Enabled ignore for CTCP SOURCE"
+msgstr "CTCP 소스에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:195
+msgid "Enable ignore for CTCP TIME"
+msgstr "CTCP 시간에 대해 무시를 사용 되도록 설정"
+
+#: data/defscript/actions.kvs:196
+msgid "When checked, all CTCP TIME requests are ignored."
+msgstr "이 선택사항을 선택하면 모든 CTCP 시간 요청이 무시됩니다."
+
+#: data/defscript/actions.kvs:205
+msgid "Disabled ignore for CTCP TIME"
+msgstr "CTCP 시간에 대해 무시를 사용하지 않습니다"
+
+#: data/defscript/actions.kvs:210
+msgid "Enabled ignore for CTCP TIME"
+msgstr "CTCP 시간에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:217
+msgid "Enable ignore for CTCP PAGE"
+msgstr "CTCP 페이지에 대해 무시를 사용 되도록 설정"
+
+#: data/defscript/actions.kvs:218
+msgid "When checked, all CTCP PAGE requests are ignored."
+msgstr "이 선택사항을 선택하면 모든 CTCP 페이지 요청이 무시됩니다."
+
+#: data/defscript/actions.kvs:227
+msgid "Disabled ignore for CTCP PAGE"
+msgstr "CTCP 페이지에 대해 무시를 사용 안되도록 설정됨"
+
+#: data/defscript/actions.kvs:232
+msgid "Enabled ignore for CTCP PAGE"
+msgstr "CTCP 페이지에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:239
+msgid "Enable ignore for CTCP AVATAR"
+msgstr "CTCP 아바타에 대해 무시를 사용 되도록 설정"
+
+#: data/defscript/actions.kvs:240
+msgid "When checked, all CTCP AVATAR requests are ignored."
+msgstr "이 선택사항을 선택하면 모든 CTCP 아바타 요청이 무시됩니다."
+
+#: data/defscript/actions.kvs:249
+msgid "Disabled ignore for CTCP AVATAR"
+msgstr "CTCP 아바타에 대해 무시를 사용 안되도록 설정됨"
+
+#: data/defscript/actions.kvs:254
+msgid "Enabled ignore for CTCP AVATAR"
+msgstr "CTCP 아바타에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:261
+msgid "Enable ignore for CTCP DCC"
+msgstr "CTCP DCC에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:262
+msgid "When checked, all CTCP DCC requests are ignored."
+msgstr "이 선택사항을 선택하면 모든 CTCP DCC 요청이 무시됩니다."
+
+#: data/defscript/actions.kvs:271
+msgid "Disabled ignore for CTCP DCC"
+msgstr "CTCP DCC에 대해 무시를 사용 안되도록 설정됨"
+
+#: data/defscript/actions.kvs:276
+msgid "Enabled ignore for CTCP DCC"
+msgstr "CTCP DCC에 대해 무시를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:284
+msgid "Message Suppression Controllers"
+msgstr "메시지 억제 제어기"
+
+#: data/defscript/actions.kvs:294
+msgid "Enable join message suppression"
+msgstr "입장 메시지 억제를 사용"
+
+#: data/defscript/actions.kvs:295
+msgid "When checked, all join messages are hidden."
+msgstr "이 선택사항을 선택하면 모든 입장 메시지가 숨겨집니다."
+
+#: data/defscript/actions.kvs:304
+msgid "Disabled join message suppression"
+msgstr "입장 메시지 억제 사용 안되도록 설정됨"
+
+#: data/defscript/actions.kvs:309
+msgid "Enabled join message suppression"
+msgstr "입장 메시지 억제를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:317
+msgid "Enable part message suppression"
+msgstr "퇴장 메시지 억제를 사용 되도록 설정"
+
+#: data/defscript/actions.kvs:318 data/defscript/actions.kvs:339
+msgid "When checked, all part messages are hidden."
+msgstr "이 선택사항을 선택하면 모든 퇴장 메시지가 숨겨집니다."
+
+#: data/defscript/actions.kvs:326
+msgid "Disabled part message suppression"
+msgstr "퇴장 메시지 억제를 사용 안되도록 설정됨"
+
+#: data/defscript/actions.kvs:331
+msgid "Enabled part message suppression"
+msgstr "퇴장 메시지 억제를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:338
+msgid "Enable quit message suppression"
+msgstr "종료 메시지 억제를 사용 되도록 설정"
+
+#: data/defscript/actions.kvs:348
+msgid "Disabled quit message suppression"
+msgstr "종료 메시지 억제를 사용하지 않았음"
+
+#: data/defscript/actions.kvs:353
+msgid "Enabled quit message suppression"
+msgstr "종료 메시지 억제를 사용 되도록 설정됨"
+
+#: data/defscript/actions.kvs:365 data/defscript/popups.kvs:159
+#: data/defscript/popups.kvs:330 data/defscript/popups.kvs:631
+#: data/defscript/popups.kvs:1228
+msgid "Close"
+msgstr "닫기"
+
+#: data/defscript/aliases.kvs:21
+msgid "Missing target, no action taken"
+msgstr "대상이 누락되었으며 동작이 수행되지 않았습니다"
+
+#: data/defscript/aliases.kvs:111 data/defscript/aliases.kvs:165
+msgid "Usage"
+msgstr "사용방법"
+
+#: data/defscript/aliases.kvs:111
+msgid "channel"
+msgstr "대화방"
+
+#: data/defscript/aliases.kvs:111 data/defscript/aliases.kvs:165
+msgid "message"
+msgstr "메시지"
+
+#: data/defscript/aliases.kvs:112
+msgid "-m: send a message instead of a notice"
+msgstr "-m: 알림 대신 메시지 보내기"
+
+#: data/defscript/aliases.kvs:113
+msgid "-w: send notice to all channel owners"
+msgstr "-w: 모든 대화방의 소유자에게 알림 보내기"
+
+#: data/defscript/aliases.kvs:114
+msgid "-a: send notice to all channel admins"
+msgstr "-a: 모든 대화방 관리자 알림 보내기"
+
+#: data/defscript/aliases.kvs:115
+msgid "-o: send notice to all channel ops"
+msgstr "-o: 모든 대화방 운영자에게 알림 보내기"
+
+#: data/defscript/aliases.kvs:116
+msgid "-h: send notice to all channel halfops"
+msgstr "-h: 모든 대화방 반운영자에게 알림 보내기"
+
+#: data/defscript/aliases.kvs:117
+msgid "-v: send notice to all channel voices"
+msgstr "-v : 모든 대화방 발언권에 알림 보내기"
+
+#: data/defscript/aliases.kvs:118
+msgid "-q: quiet mode"
+msgstr "-q: 조용한 모드"
+
+#: data/defscript/aliases.kvs:126
+msgid "Parameter message missing"
+msgstr "매개 변수 메시지 누락"
+
+#: data/defscript/aliases.kvs:127
+msgid "Type /gnotice for help"
+msgstr "도움말에 대한 /gnotice 를 입력하십시오"
+
+#: data/defscript/aliases.kvs:170
+msgid "Sending wallop to"
+msgstr "다음 사용자에게 wallop 보내고 있습니다"
+
+#: data/defscript/aliases.kvs:217 data/defscript/aliases.kvs:231
+#: data/defscript/aliases.kvs:245 data/defscript/aliases.kvs:262
+#: data/defscript/aliases.kvs:280 data/defscript/aliases.kvs:382
+#: data/defscript/aliases.kvs:425 data/defscript/aliases.kvs:506
+#: data/defscript/aliases.kvs:574 data/defscript/aliases.kvs:643
+msgid "Usage:"
+msgstr "사용방법:"
+
+#: data/defscript/aliases.kvs:281
+msgid "reason"
+msgstr "이유"
+
+#: data/defscript/aliases.kvs:287 data/defscript/aliases.kvs:512
+msgid "This is not a channel window"
+msgstr "이것은 대화방 창이 없습니다"
+
+#: data/defscript/aliases.kvs:494
+msgid "Unsupported type:"
+msgstr "지원되지 않은 유형:"
+
+#: data/defscript/aliases.kvs:518
+msgid "Channel Owner"
+msgstr "대화방 소유자"
+
+#: data/defscript/aliases.kvs:522
+msgid "Channel Administrator"
+msgstr "대화방 관리자"
+
+#: data/defscript/aliases.kvs:526
+msgid "Channel Operator"
+msgstr "대화방 운영자"
+
+#: data/defscript/aliases.kvs:530
+msgid "Half Operator"
+msgstr "절반 운영자"
+
+#: data/defscript/aliases.kvs:534
+msgid "Voice"
+msgstr "발언권"
+
+#: data/defscript/aliases.kvs:538
+msgid "User Operator"
+msgstr "번역확인->운영 사용자"
+
+#: data/defscript/aliases.kvs:542
+msgid "Normal User"
+msgstr "일반 사용자"
+
+#: data/defscript/aliases.kvs:562
+msgid "You must use DNS in an IRC context"
+msgstr "IRC 맥락에서 DNS를 사용해야 합니다"
+
+#: data/defscript/aliases.kvs:568
+msgid "You must be connected to a server"
+msgstr "서버에 연결되어 있어야 합니다"
+
+#: data/defscript/aliases.kvs:585
+msgid "No such user:"
+msgstr "사용자가 없음:"
+
+#: data/defscript/classes.kvs:18
+msgid ""
+"[Installer] Error: the first argument of copyFiles must be a source "
+"directory"
+msgstr "[설치기] 오류: 파일 복사의 첫 번째 인수는 원본 디렉토리 여야 합니다"
+
+#: data/defscript/classes.kvs:24
+msgid ""
+"[Installer] Error: the second argument of copyFiles must be a file name or "
+"file regexp"
+msgstr "[설치기] 오류: 파일 복사의 두 번째 인수는 파일 이름 또는 파일 정규식이어야 합니다"
+
+#: data/defscript/classes.kvs:30
+msgid ""
+"[Installer] Error: the third argument of copyFiles must be a destination "
+"directory"
+msgstr "[설치기] 오류: 파일 복사의 세 번째 인수는 대상 디렉토리여야 합니다"
+
+#: data/defscript/default.kvs:35
+msgid "The default script has been successfully installed."
+msgstr "기본 스크립트가 설치되었습니다."
+
+#: data/defscript/default.kvs:36
+msgid "To connect to a server, type /server <server name>"
+msgstr "서버에 연결하려면,  /server <서버 이름> 을 입력하십시오"
+
+#: data/defscript/default.kvs:38
+msgid "Happy ircing :)"
+msgstr "즐거운 IRC하세요 ^^"
+
+#: data/defscript/events.kvs:87 data/defscript/events.kvs:100
+#: data/defscript/events.kvs:134 data/defscript/popups.kvs:657
+msgid "Logging"
+msgstr "기록하고 있음"
+
+#: data/defscript/events.kvs:92 data/defscript/events.kvs:105
+msgid "Global option controllers"
+msgstr "전반적인 선택사항 제어기"
+
+#: data/defscript/popups.kvs:22 data/defscript/popups.kvs:1385
+msgid "Stop Highlighting (Local)"
+msgstr "강조 표시 중지 (로컬)"
+
+#: data/defscript/popups.kvs:27 data/defscript/popups.kvs:1390
+msgid "Start Highlighting (Local)"
+msgstr "강조 표시 시작 (로컬)"
+
+#: data/defscript/popups.kvs:32 data/defscript/popups.kvs:71
+msgid "Always Highlight"
+msgstr "항상 강조 표시"
+
+#: data/defscript/popups.kvs:34 data/defscript/popups.kvs:40
+#: data/defscript/popups.kvs:46 data/defscript/popups.kvs:52
+#: data/defscript/popups.kvs:58 data/defscript/popups.kvs:64
+msgid "Highlight As"
+msgstr "다음으로 강조 표시"
+
+#: data/defscript/popups.kvs:76
+msgid "Stop Highlighting"
+msgstr "강조 표시 중지"
+
+#: data/defscript/popups.kvs:97 data/defscript/popups.kvs:138
+#: data/defscript/popups.kvs:786 data/defscript/popups.kvs:1069
+msgid "Multiple Users"
+msgstr "여러 사용자"
+
+#: data/defscript/popups.kvs:110 data/defscript/popups.kvs:209
+#: data/defscript/popups.kvs:1267 data/defscript/popups.kvs:1834
+msgid "Notify Avatar"
+msgstr "아바타 알림"
+
+#: data/defscript/popups.kvs:117 data/defscript/popups.kvs:216
+#: data/defscript/popups.kvs:425 data/defscript/popups.kvs:557
+#: data/defscript/popups.kvs:859 data/defscript/popups.kvs:919
+#: data/defscript/popups.kvs:1283
+msgid "Clear Buffer"
+msgstr "내용 지우기"
+
+#: data/defscript/popups.kvs:143 data/defscript/popups.kvs:224
+#: data/defscript/popups.kvs:317 data/defscript/popups.kvs:555
+#: data/defscript/popups.kvs:791 data/defscript/popups.kvs:867
+#: data/defscript/popups.kvs:1210
+msgid "You're not connected to a server"
+msgstr "서버에 연결되지 않았습니다"
+
+#: data/defscript/popups.kvs:145 data/defscript/popups.kvs:319
+#: data/defscript/popups.kvs:619 data/defscript/popups.kvs:1212
+msgid "Dock"
+msgstr "도구집"
+
+#: data/defscript/popups.kvs:152 data/defscript/popups.kvs:793
+#: data/defscript/popups.kvs:1772
+msgid "/WHOIS ?s (idle time)"
+msgstr "/WHOIS ?s (유휴 시간)"
+
+#: data/defscript/popups.kvs:166 data/defscript/popups.kvs:342
+#: data/defscript/popups.kvs:441 data/defscript/popups.kvs:800
+#: data/defscript/popups.kvs:1780
+msgid "&Information"
+msgstr "정보(&I)"
+
+#: data/defscript/popups.kvs:168 data/defscript/popups.kvs:802
+#: data/defscript/popups.kvs:1782
+msgid "/WHOIS ?s"
+msgstr "/WHOIS ?s"
+
+#: data/defscript/popups.kvs:173 data/defscript/popups.kvs:807
+#: data/defscript/popups.kvs:1787
+msgid "/WHOWAS ?s"
+msgstr "/WHOWAS ?s"
+
+#: data/defscript/popups.kvs:178 data/defscript/popups.kvs:812
+#: data/defscript/popups.kvs:1792
+msgid "/WHO ?s"
+msgstr "/WHO ?s"
+
+#: data/defscript/popups.kvs:185 data/defscript/popups.kvs:819
+#: data/defscript/popups.kvs:1799
+msgid "DNS for"
+msgstr "다음의 DNS"
+
+#: data/defscript/popups.kvs:191 data/defscript/popups.kvs:825
+#: data/defscript/popups.kvs:1805
+msgid "Mask for"
+msgstr "다음의 마스크"
+
+#: data/defscript/popups.kvs:205
+msgid "&Ignore"
+msgstr "무시(&I)"
+
+#: data/defscript/popups.kvs:207 data/defscript/popups.kvs:846
+#: data/defscript/popups.kvs:1828
+msgid "&Registration"
+msgstr "등록(&R)"
+
+#: data/defscript/popups.kvs:226 data/defscript/popups.kvs:638
+#: data/defscript/popups.kvs:1235
+msgid "&Hop"
+msgstr "번역확인->홉 or 반운영권(&H)"
+
+#: data/defscript/popups.kvs:231 data/defscript/popups.kvs:643
+#: data/defscript/popups.kvs:1240
+msgid "&Part"
+msgstr "퇴장(&P)"
+
+#: data/defscript/popups.kvs:237 data/defscript/popups.kvs:649
+#: data/defscript/popups.kvs:1246
+msgid "&Join"
+msgstr "입장(&J)"
+
+#: data/defscript/popups.kvs:256
+msgid "Copy Channel Address"
+msgstr "대화방 주소 복사"
+
+#: data/defscript/popups.kvs:302
+msgid "Enter the message text"
+msgstr "메시지 글자를 입력하십시오"
+
+#: data/defscript/popups.kvs:302
+msgid "&Page"
+msgstr "페이지(&P)"
+
+#: data/defscript/popups.kvs:302 data/defscript/popups.kvs:1164
+#: data/defscript/popups.kvs:1191
+msgid "Cancel"
+msgstr "취소"
+
+#: data/defscript/popups.kvs:326 data/defscript/popups.kvs:1219
+msgid "Default Channels"
+msgstr "기본 대화방"
+
+#: data/defscript/popups.kvs:337 data/defscript/popups.kvs:1221
+msgid "&Join Channels..."
+msgstr "대화방 입장(&J)..."
+
+#: data/defscript/popups.kvs:361 data/defscript/popups.kvs:460
+msgid "d (Debug/DNS?)"
+msgstr "d (디버그/DNS?)"
+
+#: data/defscript/popups.kvs:366 data/defscript/popups.kvs:465
+msgid "l (Connections)"
+msgstr "1 (연결)"
+
+#: data/defscript/popups.kvs:371 data/defscript/popups.kvs:470
+msgid "m (Command Usage)"
+msgstr "m (사용자쪽 명령 사용방법)"
+
+#: data/defscript/popups.kvs:376 data/defscript/popups.kvs:475
+msgid "o (Operators)"
+msgstr "o (운영자)"
+
+#: data/defscript/popups.kvs:381 data/defscript/popups.kvs:480
+msgid "t (Connection Stats?)"
+msgstr "t (연결 통계?)"
+
+#: data/defscript/popups.kvs:386 data/defscript/popups.kvs:485
+msgid "u (Uptime)"
+msgstr "u (구동시간)"
+
+#: data/defscript/popups.kvs:391 data/defscript/popups.kvs:490
+msgid "y (Y-Lines)"
+msgstr "y (Y-줄)"
+
+#: data/defscript/popups.kvs:396 data/defscript/popups.kvs:495
+msgid "z (Debug Stats?)"
+msgstr "z (디버그 통계?)"
+
+#: data/defscript/popups.kvs:433
+msgid "Copy to Clipboard"
+msgstr "클립 보드에 복사"
+
+#: data/defscript/popups.kvs:524 data/defscript/popups.kvs:888
+msgid "Traceroute to"
+msgstr "번역확인-> 추적경로 대상"
+
+#: data/defscript/popups.kvs:532 data/defscript/popups.kvs:896
+msgid "Traceroute6 to"
+msgstr "번역확인-> 추적경로6 대상"
+
+#: data/defscript/popups.kvs:624
+msgid "Undock"
+msgstr "창 분리"
+
+#: data/defscript/popups.kvs:659
+msgid "Set Window Properties As Default"
+msgstr "창 속성을 기본값으로 설정"
+
+#: data/defscript/popups.kvs:666
+msgid "Automatically Join Channel"
+msgstr "대화방 자동 입장"
+
+#: data/defscript/popups.kvs:668
+msgid "When Connecting to Server '?s'"
+msgstr "'?s' 서버에 연결할때"
+
+#: data/defscript/popups.kvs:675
+msgid "When Connecting to Network '?s'"
+msgstr "'?s' 네트워크에 연결할때"
+
+#: data/defscript/popups.kvs:683
+msgid "Stop Auto-joining Channel on Server '?s'"
+msgstr "'?s' 서버에서 대화방 자동 입장을 중지"
+
+#: data/defscript/popups.kvs:696
+msgid "Stop Auto-joining Channel on Network '?s'"
+msgstr "'?s' 네트워크에서 대화방 자동 입장을 중지"
+
+#: data/defscript/popups.kvs:711
+msgid "Part All Channels"
+msgstr "모든 대화방 퇴장"
+
+#: data/defscript/popups.kvs:718
+msgid "Close All Queries"
+msgstr "모든 질의 닫기"
+
+#: data/defscript/popups.kvs:724
+msgid "Rejoin All Dead Channels"
+msgstr "모든 죽은 대화방 다시 입장"
+
+#: data/defscript/popups.kvs:731
+msgid "Close All Dead Channels"
+msgstr "모든 죽은 대화방 닫기"
+
+#: data/defscript/popups.kvs:737
+msgid "Close All Dead Queries"
+msgstr "모든 죽은 질의 닫기"
+
+#: data/defscript/popups.kvs:745
+msgid "Global &Option Controllers"
+msgstr "전반적인 선택사항 제어기(&O)"
+
+#: data/defscript/popups.kvs:752
+msgid "Unhighlight All Windows"
+msgstr "모든 창 강조 표시 해제"
+
+#: data/defscript/popups.kvs:758
+msgid "Unhighlight All Channels"
+msgstr "모든 대화방 강조 표시 해제"
+
+#: data/defscript/popups.kvs:764
+msgid "Unhighlight All Queries"
+msgstr "모든 질의 강조 표시 해제"
+
+#: data/defscript/popups.kvs:833 data/defscript/popups.kvs:1815
+msgid "&Query"
+msgstr "질의(&Q)"
+
+#: data/defscript/popups.kvs:848 data/defscript/popups.kvs:1830
+msgid "Ig&nore"
+msgstr "무시(&N)"
+
+#: data/defscript/popups.kvs:850 data/defscript/popups.kvs:1274
+#: data/defscript/popups.kvs:1832
+msgid "&Highlight"
+msgstr "강조(&H)"
+
+#: data/defscript/popups.kvs:852
+msgid "Notify avatar"
+msgstr "아바타 알림"
+
+#: data/defscript/popups.kvs:869
+msgid "Look Up"
+msgstr "찾기"
+
+#: data/defscript/popups.kvs:876
+msgid "Open"
+msgstr "열기"
+
+#: data/defscript/popups.kvs:881
+msgid "Telnet to"
+msgstr "텔넷 대상"
+
+#: data/defscript/popups.kvs:941
+msgid "Chat with"
+msgstr "대화 대상"
+
+#: data/defscript/popups.kvs:946
+msgid "Reverse Chat with"
+msgstr "대화 되돌리기 대상"
+
+#: data/defscript/popups.kvs:951
+msgid "Secure Chat with"
+msgstr "안전한 대화 대상"
+
+#: data/defscript/popups.kvs:958
+msgid "Send to"
+msgstr "보낼 대상"
+
+#: data/defscript/popups.kvs:963
+msgid "Secure Send to"
+msgstr "안전한 보내기 대상"
+
+#: data/defscript/popups.kvs:968
+msgid "Reverse Send to"
+msgstr "뒤로 보낼 대상"
+
+#: data/defscript/popups.kvs:973
+msgid "Secure Reverse Send to"
+msgstr "안전한 뒤로 보낼 대상"
+
+#: data/defscript/popups.kvs:980
+msgid "TDCC Send to"
+msgstr "TDCC 보낼 대상"
+
+#: data/defscript/popups.kvs:985
+msgid "TDCC Reverse Send to"
+msgstr "TDCC 뒤로 보낼 대상"
+
+#: data/defscript/popups.kvs:992
+msgid "Voice Chat"
+msgstr "발언권 대화"
+
+#: data/defscript/popups.kvs:994
+msgid "Default"
+msgstr "기본값"
+
+#: data/defscript/popups.kvs:1065
+msgid "Ban"
+msgstr "입장금지"
+
+#: data/defscript/popups.kvs:1078 data/defscript/popups.kvs:1174
+msgid "&Ban"
+msgstr "금지(&B)"
+
+#: data/defscript/popups.kvs:1104
+msgid "O&wner"
+msgstr "소유자 (&W)"
+
+#: data/defscript/popups.kvs:1109
+msgid "&Deowner"
+msgstr "소유자 해제(&D)"
+
+#: data/defscript/popups.kvs:1114
+msgid "&Administrator"
+msgstr "관리자(&A)"
+
+#: data/defscript/popups.kvs:1119
+msgid "&Deadministrator"
+msgstr "관리자 해제(&D)"
+
+#: data/defscript/popups.kvs:1124
+msgid "&Op"
+msgstr "운영권(&O)"
+
+#: data/defscript/popups.kvs:1129
+msgid "&Deop"
+msgstr "운영권 해제(&D)"
+
+#: data/defscript/popups.kvs:1134
+msgid "&Halfop"
+msgstr "절반 운영권(&H)"
+
+#: data/defscript/popups.kvs:1139
+msgid "&Dehalfop"
+msgstr "절반 운영권 해제(&D)"
+
+#: data/defscript/popups.kvs:1144
+msgid "&Voice"
+msgstr "발언권(&V)"
+
+#: data/defscript/popups.kvs:1149
+msgid "D&evoice"
+msgstr "발언권 해제(&E)"
+
+#: data/defscript/popups.kvs:1156 data/defscript/popups.kvs:1164
+msgid "&Kick"
+msgstr "추방(&K)"
+
+#: data/defscript/popups.kvs:1162
+msgid "K&ick"
+msgstr "추방(&I)"
+
+#: data/defscript/popups.kvs:1162
+msgid "With..."
+msgstr "대상..."
+
+#: data/defscript/popups.kvs:1164
+msgid "Kick Reason"
+msgstr "추방 이유"
+
+#: data/defscript/popups.kvs:1164
+msgid "Enter a kick reason"
+msgstr "추방 이유를 입력하십시오"
+
+#: data/defscript/popups.kvs:1184 data/defscript/popups.kvs:1189
+msgid "Kick/Ban"
+msgstr "추방/금지"
+
+#: data/defscript/popups.kvs:1189
+msgid "with..."
+msgstr "대상..."
+
+#: data/defscript/popups.kvs:1191
+msgid "Kick/Ban Reason"
+msgstr "추방/입장 금지 이유"
+
+#: data/defscript/popups.kvs:1191
+msgid "Enter a kick/ban reason"
+msgstr "추방/입장 금지 이유를 입력하십시오"
+
+#: data/defscript/popups.kvs:1191
+msgid "&Kick/Ban"
+msgstr "추방/입장 금지(&K)"
+
+#: data/defscript/popups.kvs:1202
+msgid "Configure Ban Mask..."
+msgstr "입장 금지 마스크 구성..."
+
+#: data/defscript/popups.kvs:1276
+msgid "Copy Channel URL to Clipboard"
+msgstr "대화방 URL을 클립보드에 복사"
+
+#: data/defscript/popups.kvs:1291 data/defscript/popups.kvs:1296
+#: data/defscript/popups.kvs:1301 data/defscript/popups.kvs:1306
+#: data/defscript/popups.kvs:1311 data/defscript/popups.kvs:1316
+msgid "Join"
+msgstr "입장"
+
+#: data/defscript/popups.kvs:1332
+msgid "Logging to"
+msgstr "기록하고 있음"
+
+#: data/defscript/popups.kvs:1334
+msgid "Flush Log File"
+msgstr "기록 파일 없애기 플러시"
+
+#: data/defscript/popups.kvs:1341
+msgid "Stop Logging"
+msgstr "기록 중지"
+
+#: data/defscript/popups.kvs:1346
+msgid "Not Logging"
+msgstr "기록 없음"
+
+#: data/defscript/popups.kvs:1348 data/defscript/popups.kvs:1353
+msgid "Log to Default File"
+msgstr "기본 파일에 기록"
+
+#: data/defscript/popups.kvs:1353 data/defscript/popups.kvs:1366
+msgid "Include Existing Buffer"
+msgstr "기존 버퍼에 포함"
+
+#: data/defscript/popups.kvs:1358 data/defscript/popups.kvs:1366
+msgid "Log to..."
+msgstr "번역확인 -> 다음으로 기록..."
+
+#: data/defscript/popups.kvs:1360 data/defscript/popups.kvs:1368
+msgid "Choose Log Filename"
+msgstr "기록 파일 이름 선택"
+
+#: data/defscript/popups.kvs:1407
+msgid "is being ignored"
+msgstr "은(는) 무시되고 있습니다"
+
+#: data/defscript/popups.kvs:1409 data/defscript/popups.kvs:1415
+msgid "is not being ignored"
+msgstr "은(는) 무시되고 있지 않습니다"
+
+#: data/defscript/popups.kvs:1421
+msgid "Ignore As..."
+msgstr "다음으로 무시..."
+
+#: data/defscript/popups.kvs:1423 data/defscript/popups.kvs:1431
+#: data/defscript/popups.kvs:1439 data/defscript/popups.kvs:1447
+#: data/defscript/popups.kvs:1455 data/defscript/popups.kvs:1463
+#: data/defscript/popups.kvs:1471 data/defscript/popups.kvs:1479
+#: data/defscript/popups.kvs:1487 data/defscript/popups.kvs:1495
+#: data/defscript/popups.kvs:1503 data/defscript/popups.kvs:1511
+#: data/defscript/popups.kvs:1519 data/defscript/popups.kvs:1527
+#: data/defscript/popups.kvs:1535 data/defscript/popups.kvs:1543
+#: data/defscript/popups.kvs:1551 data/defscript/popups.kvs:1559
+#: data/defscript/popups.kvs:1567 data/defscript/popups.kvs:1575
+#: data/defscript/popups.kvs:1583 data/defscript/popups.kvs:1591
+#: data/defscript/popups.kvs:1599 data/defscript/popups.kvs:1607
+#: data/defscript/popups.kvs:1615 data/defscript/popups.kvs:1623
+#: data/defscript/popups.kvs:1631
+msgid "Ignore As"
+msgstr "다음으로 무시"
+
+#: data/defscript/popups.kvs:1640
+msgid "Enable Ignore"
+msgstr "무시를 사용 되도록 설정"
+
+#: data/defscript/popups.kvs:1645
+msgid "Disable Ignore"
+msgstr "무시 사용 안함"
+
+#: data/defscript/popups.kvs:1662
+msgid "is registered as"
+msgstr "번역확인-> 로 등록"
+
+#: data/defscript/popups.kvs:1666
+msgid "is in the notify list"
+msgstr "은(는) 알림 목록에 있습니다"
+
+#: data/defscript/popups.kvs:1670
+msgid "has a default avatar"
+msgstr "은(는) 기본 아바타입니다"
+
+#: data/defscript/popups.kvs:1675
+msgid "is not registered"
+msgstr "님은 등록되지 않았습니다"
+
+#: data/defscript/popups.kvs:1681
+msgid "Register..."
+msgstr "등록..."
+
+#: data/defscript/popups.kvs:1686
+msgid "Quick Registration"
+msgstr "빠른 등록"
+
+#: data/defscript/popups.kvs:1688 data/defscript/popups.kvs:1693
+#: data/defscript/popups.kvs:1698 data/defscript/popups.kvs:1703
+#: data/defscript/popups.kvs:1708 data/defscript/popups.kvs:1713
+msgid "Register As"
+msgstr "다음으로 등록"
+
+#: data/defscript/popups.kvs:1719
+msgid "Edit Registration..."
+msgstr "등록 편집..."
+
+#: data/defscript/popups.kvs:1725
+msgid "Unregister"
+msgstr "등록 해제"
+
+#: data/defscript/popups.kvs:1732
+msgid "Add to Notify"
+msgstr "알림에 추가"
+
+#: data/defscript/popups.kvs:1737
+msgid "Remove from Notify"
+msgstr "알림에서 삭제"
+
+#: data/defscript/popups.kvs:1742
+msgid "Avatar"
+msgstr "아바타"
+
+#: data/defscript/popups.kvs:1744
+msgid "Choose..."
+msgstr "선택..."
+
+#: data/defscript/popups.kvs:1746
+msgid "Choose Avatar Image File"
+msgstr "아바타 그림 파일 선택"
+
+#: data/defscript/popups.kvs:1755
+msgid "Set As Default"
+msgstr "기본으로 설정"
+
+#: data/defscript/popups.kvs:1760
+msgid "Clear Default"
+msgstr "기본값 지우기"
+
+#: data/defscript/popups.kvs:1811
+msgid "&User Control"
+msgstr "사용자 제어(&U)"
+
+#: data/defscript/toolbars.kvs:3
+msgid "IRC Context"
+msgstr "IRC 맥락"
+
+#: data/defscript/toolbars.kvs:18
+msgid "Options"
+msgstr "선택사항"
+
+#: data/defscript/toolbars.kvs:26
+msgid "Help"
+msgstr "도움말"
+
+#: data/defscript/toolbars.kvs:35
+msgid "Scripting"
+msgstr "스크립팅"

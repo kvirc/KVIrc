@@ -1,0 +1,515 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+# MarongHappy <daemul72@gmail.com>, 2020
+# ks k, 2020
+# MarongHappy <daemul72@gmail.com>, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
+"PO-Revision-Date: 2020-05-31 06:48+0000\n"
+"Last-Translator: ks k\n"
+"Language-Team: Korean (http://www.transifex.com/kvirc/KVIrc/language/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/regchan/libkviregchan.cpp:126
+#: src/modules/regchan/libkviregchan.cpp:190
+msgid "No such channel/netmask entry in the database"
+msgstr "데이터베이스에 해당 대화방/넷마스크 항목이 없습니다"
+
+#: src/modules/regchan/libkviregchan.cpp:210
+msgid "Registered channel list:"
+msgstr "등록된 대화방 목록:"
+
+#: src/modules/regchan/libkviregchan.cpp:225
+msgid "Channel: %1%2@%3"
+msgstr "대화방: %1%2@%3"
+
+#: src/modules/regchan/libkviregchan.cpp:234
+msgid "    Property: %1=%2"
+msgstr "    속성: %1=%2"
+
+#: src/modules/regchan/libkviregchan.cpp:241
+#, c-format
+msgid "Total %d channels"
+msgstr "총 %d 개의 대화방"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:75
+msgid "Property Editor - KVIrc"
+msgstr "속성 편집기 - KVIrc"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:88
+msgid "Property"
+msgstr "속성"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:89
+msgid "Value"
+msgstr "값"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:99
+msgid "&New"
+msgstr "신규(&N)"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:103
+msgid "&Remove"
+msgstr "제거(&R)"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:111
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:255
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:470
+#: src/modules/reguser/RegisteredUsersDialog.cpp:303
+msgid "&OK"
+msgstr "확인(&O)"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:115
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:259
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
+#: src/modules/reguser/RegisteredUsersDialog.cpp:308
+msgid "Cancel"
+msgstr "취소"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:209
+msgid "Mask Editor - KVIrc"
+msgstr "마스 편집기 - KVIrc"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:213
+msgid ""
+"Insert a mask for this user.<br>It can contain the wildcard characters '*' "
+"and '?'."
+msgstr "이 사용자에 대한 마스크를 삽입합니다.<br>와일드 카드 문자 '*'와 '?'를 포함할 수 있습니다."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:223
+msgid ""
+"This is the <b>nickname</b> that will match this user, default value is the "
+"registered name."
+msgstr "이 사용자와 일치하는 <b>대화명</b>이며, 기본값은 등록된 이름입니다."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:232
+msgid ""
+"This is the <b>username</b> that will match this user. <b>*</b> will match "
+"any username."
+msgstr "이 사용자와 일치하는 <b>사용자 이름</b>입니다. <b>*</b>는 모든 사용자 이름과 일치합니다."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:241
+msgid ""
+"This is the <b>hostname</b> that will match this user. <b>*</b> will match "
+"any hostname."
+msgstr "이 사용자와 일치하는 <b>호스트 이름</b>입니다. <b>*</b>는 모든 호스트 이름과 일치합니다."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:318
+msgid "Registered User Entry - KVIrc"
+msgstr "등록된 사용자 항목 - KVIrc"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:324
+msgid "Name:"
+msgstr "이름:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:330
+#: src/modules/reguser/RegisteredUsersDialog.cpp:141
+msgid "Comment:"
+msgstr "의견:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:340
+msgid "Masks:"
+msgstr "마스크:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:353
+#: src/modules/reguser/RegisteredUsersDialog.cpp:256
+msgid "&Add..."
+msgstr "추가...(&A)"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:357
+#: src/modules/reguser/RegisteredUsersDialog.cpp:266
+msgid "Re&move"
+msgstr "제거(&M)"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:362
+msgid "&Edit"
+msgstr "편집(&E)"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:370
+msgid "Identity"
+msgstr "신분"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:376
+msgid "Notify when user is online"
+msgstr "사용자가 온라인 상태 일 때 알림"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:379
+msgid "Notify nicknames:"
+msgstr "알림 대화명:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:382
+msgid "You can enter a space separated list of nicknames."
+msgstr "공백으로 구분된 대화명 목록을 입력 할 수 있습니다."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:406
+msgid "Avatar:"
+msgstr "아바타:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:413
+msgid "Use custom color in userlist"
+msgstr "사용자 목록에서 맞춤 색상을 사용"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:421
+msgid "All Properties..."
+msgstr "모든 속성..."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:428
+msgid "Properties"
+msgstr "속성"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:434
+msgid "Enable ignore for this user"
+msgstr "이 사용자에 대해 무시를 사용 되도록 설정"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:436
+msgid "Ignore Features"
+msgstr "기능 거부"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:443
+msgid "Ignore query messages"
+msgstr "질의 메시지 무시"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:446
+msgid "Ignore channel messages"
+msgstr "대화방 메시지 거부"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:449
+msgid "Ignore notice messages"
+msgstr "알림 메시지 거부"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:452
+msgid "Ignore CTCP messages"
+msgstr "클라이언트간 메시지 거부"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:455
+msgid "Ignore invites"
+msgstr "초대 거부"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:458
+msgid "Ignore DCCs"
+msgstr "DCC 거부"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:461
+msgid "Ignore highlights"
+msgstr "강조 기능 거부"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:467
+msgid "Ignore"
+msgstr "거부"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:84
+msgid "Name"
+msgstr "이름"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:84
+msgid "Flags"
+msgstr "플래그"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:96
+msgid ""
+"This is the list of registered users. KVIrc can automatically recognize and "
+"associate properties to them.<br>Use the buttons on the right to add, edit "
+"and remove entries. The \"notify\" column allows you to quickly add users to"
+" the notify list. Notify list fine-tuning can be performed by editing the "
+"entry properties."
+msgstr "등록된 사용자 목록입니다. KVIrc는 속성을 자동으로 인식하고 연결할 수 있습니다.<br>오른쪽 버튼을 사용하여 항목을 추가, 편집, 제거합니다. \"알림\" 열을 사용하면 사용자를 알림 목록에 빠르게 추가할 수 있습니다. 알림 목록 미세 조정은 항목 속성을 편집하여 수행할 수 있습니다."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:124
+msgid "Notify disabled"
+msgstr "알림 사용안함"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:128
+msgid "Notify as:"
+msgstr "다음과 같이 알림:"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:137
+msgid "No comment set"
+msgstr "의견 집합이 없습니다"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:235
+msgid "Registered Users and Configuration - KVIrc"
+msgstr "등록된 사용자 및 구성 - KVIrc"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:251
+msgid "Add Wizard..."
+msgstr "마법사 추가..."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:253
+msgid "Add a registered user by means of a user-friendly wizard."
+msgstr "사용자 친화적인 마법사를 사용하여 등록된 사용자를 추가하십시오."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:258
+msgid "Open the edit dialog to create a new user entry."
+msgstr "편집 대화 상자를 열어 새 사용자 항목을 만드십시오."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:261
+msgid "&Add Group..."
+msgstr "묶음 추가...(&A)"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:263
+msgid "Adds a new group"
+msgstr "새 묶음 추가"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:269
+msgid "Remove the currently selected entries."
+msgstr "현재 선택한 항목을 제거하십시오."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:272
+msgid "&Edit..."
+msgstr "편집...(&E)"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:275
+msgid "Edit the first selected entry."
+msgstr "처음 선택한 항목을 편집하십시오."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:281
+msgid "Select All"
+msgstr "모두 선택"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:283
+msgid "Select all the entries"
+msgstr "모든 항목을 선택"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:286
+msgid "Export to..."
+msgstr "다음으로 내보내기..."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:289
+msgid ""
+"Export the selected entries to a file.<br>All the data associated with the "
+"selected registered users will be exported.<br>You (or anyone else) can "
+"later import the entries by using the \"Import\" button."
+msgstr "선택한 항목을 파일로 내보냅니다.<br>선택한 등록된 사용자와 관련된 모든 자료를 내보냅니다.<br>다른 사용자는 나중에 \"가져오기\" 버튼을 사용하여 항목을 가져올 수 있습니다."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:292
+msgid "Import from..."
+msgstr "다음에서 가져오기..."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:294
+msgid ""
+"Import entries from a file exported earlier by the \"export\" function of "
+"this dialog."
+msgstr "이 대화 상자의 \"내보내기\" 기능으로 이전에 내보낸 파일에서 항목을 가져옵니다."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:429
+#: src/modules/reguser/RegisteredUsersDialog.cpp:443
+msgid "Group name:"
+msgstr "묶음 이름:"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:497
+msgid "Move to Group"
+msgstr "묶음으로 이동"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:537
+#: src/modules/reguser/RegisteredUsersDialog.cpp:542
+#: src/modules/reguser/RegisteredUsersDialog.cpp:544
+#: src/modules/reguser/RegisteredUsersDialog.cpp:548
+#: src/modules/reguser/RegisteredUsersDialog.cpp:550
+msgid "Default"
+msgstr "기본값"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:722
+msgid "No entries selected."
+msgstr "선택된 항목이 없습니다."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:728
+msgid "Enter a Filename - KVIrc"
+msgstr "파일 이름 입력 - KVIrc"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:737
+msgid "Can't open file %Q for writing."
+msgstr "쓰기 위한 %Q 파일을 열 수 없습니다."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:838
+msgid "Can't export the registered users database: write error."
+msgstr "등록된 사용자 데이터베이스를 내보낼 수 없습니다: 쓰기 오류."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:857
+msgid "Select a File - KVIrc"
+msgstr "파일 선택 - KVIrc"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:866
+msgid "Can't open file %Q for reading."
+msgstr "읽기 전용 %Q 파일을 열 수 없습니다."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:878
+msgid "The file %Q doesn't appear to be a valid registered users database."
+msgstr "%Q 파일이 올바른 등록된 사용자 데이터베이스가 아닌 것 같습니다."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:885
+msgid "The file %Q contains an invalid registered users database version."
+msgstr "%Q 파일에 등록된 사용자 데이터베이스 버전이 잘못되었습니다."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:964
+msgid "Can't import the registered users database: read error."
+msgstr "등록된 사용자 데이터베이스를 가져올 수 없습니다: 읽기 오류."
+
+#: src/modules/reguser/RegistrationWizard.cpp:75
+msgid "User Registration Wizard - KVIrc"
+msgstr "사용자 등록 마법사 - KVIrc"
+
+#: src/modules/reguser/RegistrationWizard.cpp:86
+msgid ""
+"<p>Welcome to the user registration wizard.<br>This process allows you to add an IRC user to the database and set properties for that user. KVIrc will be (hopefully) able to recognize the user, add him to the notify list, and display the associated avatar.<br><br>First of all, you must insert an <b>entry name or real name</b> for the user you're going to register. The name will be used to identify the database entry and has no specific requirements, it can be a given name, nickname, or just some text to remind you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n"
+"</p>"
+msgstr "<p> 사용자 등록 마법사에 오신 것을 환영합니다.<br> 이 프로세스를 통해 IRC 사용자를 데이터베이스에 추가하고 해당 사용자의 속성을 설정할 수 있습니다. KVIrc는 사용자를 인식하여 알림 목록에 추가하고 관련 아바타를 표시할 수 있기를 희망합니다.<br><br>먼저 등록하려는 사용자의 <b>항목 이름 또는 진짜 이름</b>을 삽입해야 합니다. 이 이름은 데이터베이스 항목을 식별하는 데 사용되며 특정 요구 사항이 없으며 지정된 이름, 대화명, 실제 사용자를 연상시키는 글자일 수 있습니다. <br>예: \"조지 W 부시\", \"두비아\"  <- 조지부시 별명 .\n</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:97
+msgid "Entry name:"
+msgstr "이름 입력:"
+
+#: src/modules/reguser/RegistrationWizard.cpp:101
+msgid "Step 1: Entry Name"
+msgstr "1 단계: 이름 입력"
+
+#: src/modules/reguser/RegistrationWizard.cpp:116
+msgid ""
+"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
+"mask must be in the following "
+"form:<br><b>nickname!username@hostname</b><br>and can contain wildcard "
+"characters '*' and '?'. Be careful in choosing the masks, as they are the "
+"only way to verify the identity of a registered user.<br><br>You can enter "
+"at most two masks here, if you wish to add more masks, use the "
+"\"<b>Edit</b>\" button in the Registered Users dialog. You must enter at "
+"least one mask.</p>"
+msgstr "<p>등록 된 사용자는 하나 이상의 <b>IRC 마스크</b>로 식별됩니다.<br>마스크는 다음 형식이어야 합니다.<br><b>대화명!사용자 이름@호스트 이름</b><br>이며 와일드 카드 문자 '*' 와 '?' 를 포함 할 수 있습니다. 마스크는 등록된 사용자의 신원을 확인할 수 있는 유일한 방법이므로 마스크를 선택하는데 주의하십시오.<br>br>더 많은 마스크를 추가하려면 여기에 가장 큰 두 개의 마스크를 입력 할 수 있습니다. 등록된 사용자 대화 상자에서 \"<b>편집</b>\"버튼을 사용하십시오. 하나 이상의 마스크를 입력해야합니다.</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:179
+msgid "Step 2: Mask Selection"
+msgstr "2 단계: 마스크 선택"
+
+#: src/modules/reguser/RegistrationWizard.cpp:189
+msgid ""
+"<p>If you want to store an avatar image for this user, you can set it here. "
+"KVIrc will show the avatar in the userlist next to the user's "
+"nickname.<br>An avatar can be in any supported image format (PNG is "
+"recommended). Keep in mind that KVIrc stores avatars in memory and has to "
+"resize them to fit in the userlist, thus it's better to use small, low-"
+"resolution images.</p>"
+msgstr "<p>이 사용자를 위해 아바타 그림을 저장하려면 여기서 설정하십시오. KVIrc는 사용자 대화명 옆에 있는 사용자 목록에 아바타를 표시합니다.<br>아바타는 지원되는 그림 형식일 수 있습니다(PNG 권장). KVIrc는 아바타를 메모리에 저장하고 사용자 목록에 맞도록 크기를 조정해야 하므로 낮은 해상도 그림을 사용하는 것이 좋습니다.</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:198
+msgid "Store an avatar for this user:"
+msgstr "이 사용자의 아바타를 저장:"
+
+#: src/modules/reguser/RegistrationWizard.cpp:202
+msgid "Step 3: Avatar Selection"
+msgstr "3 단계: 아바타 선택"
+
+#: src/modules/reguser/RegistrationWizard.cpp:212
+msgid ""
+"<p>If you want to be notified when this user is online or goes offline, you "
+"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
+"enter at most two nicknames here, if you wish to add more nicknames, use the"
+" \"<b>Edit</b>\" button in the  \"Registered Users\" dialog.</p>"
+msgstr "<p>이 사용자가 온라인 상태이거나 오프라인 상태일 때 알림을 받으려면 KVIrc가 검색할 대화명 목록을 지정해야 합니다.<br><br>원하는 경우 여기에 대화명을 가장 큰 두 개 입력할 수 있으며, 더 많은 대화명을 더 추가하려면 \"등록된 사용자\" 대화 상자의 \"<b>편집</b>\" 단추를 사용하십시오.</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:217
+msgid "Add this user to the notify list"
+msgstr "이 사용자를 알림 목록에 추가"
+
+#: src/modules/reguser/RegistrationWizard.cpp:223
+msgid "Nickname:"
+msgstr "대화명:"
+
+#: src/modules/reguser/RegistrationWizard.cpp:227
+msgid "Nickname 2:"
+msgstr "대화명 2:"
+
+#: src/modules/reguser/RegistrationWizard.cpp:241
+msgid "Step 4: Notify List"
+msgstr "4 단계: 알림 목록"
+
+#: src/modules/reguser/RegistrationWizard.cpp:251
+msgid ""
+"<p>That's it. The user registration has been completed.<br><br>Click "
+"\"<b>Finish</b>\" to close this dialog.</p>"
+msgstr "그게 다 입니다. 사용자 등록이 완료되었습니다. 대화 상자를 닫으려면 \"<b>마침</b>\"를 클릭하십시오.</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:256
+msgid "Registration Complete"
+msgstr "등록 완료"
+
+#: src/modules/reguser/libkvireguser.cpp:192
+#: src/modules/reguser/libkvireguser.cpp:277
+#: src/modules/reguser/libkvireguser.cpp:343
+#: src/modules/reguser/libkvireguser.cpp:466
+#: src/modules/reguser/libkvireguser.cpp:536
+#: src/modules/reguser/libkvireguser.cpp:717
+msgid "No name specified"
+msgstr "이름이 지정되지 않았습니다"
+
+#: src/modules/reguser/libkvireguser.cpp:210
+msgid "User already registered: found exact name match"
+msgstr "이미 등록된 사용자: 정확히 일치하는 이름을 발견했습니다"
+
+#: src/modules/reguser/libkvireguser.cpp:229
+msgid "Mask %Q is already used to identify user %s"
+msgstr "%Q 마스크가 %s 사용자를 식별하는 데 이미 사용됨"
+
+#: src/modules/reguser/libkvireguser.cpp:283
+msgid "User not found (%Q)"
+msgstr "사용자를 찾을 수 없습니다 (%Q)"
+
+#: src/modules/reguser/libkvireguser.cpp:349
+#: src/modules/reguser/libkvireguser.cpp:416
+msgid "No mask specified"
+msgstr "마스크가 지정되지 않았습니다"
+
+#: src/modules/reguser/libkvireguser.cpp:356
+#: src/modules/reguser/libkvireguser.cpp:474
+#: src/modules/reguser/libkvireguser.cpp:544
+#: src/modules/reguser/libkvireguser.cpp:732
+msgid "User %Q not found"
+msgstr "%Q 사용자를 찾을 수 없습니다"
+
+#: src/modules/reguser/libkvireguser.cpp:368
+msgid "Mask %Q already used to identify user %Q"
+msgstr "%Q 마스크가 %Q 사용자를 식별하는 데 이미 사용되었습니다"
+
+#: src/modules/reguser/libkvireguser.cpp:423
+msgid "Mask %Q not found"
+msgstr "%Q 마스크를 찾을 수 없습니다"
+
+#: src/modules/reguser/libkvireguser.cpp:724
+msgid "No property specified"
+msgstr "속성을 지정하지 않았습니다"
+
+#: src/modules/reguser/libkvireguser.cpp:834
+msgid "Registered users database dump:"
+msgstr "등록된 사용자 데이터베이스 덤프:"
+
+#: src/modules/reguser/libkvireguser.cpp:845
+msgid "User: %c%Q"
+msgstr "사용자: %c%Q"
+
+#: src/modules/reguser/libkvireguser.cpp:849
+msgid "Warning: this user has no registration masks"
+msgstr "경고: 이 사용자에게 등록 마스크가 없습니다"
+
+#: src/modules/reguser/libkvireguser.cpp:855
+msgid "Mask: %Q!%Q@%Q"
+msgstr "마스크: %Q!%Q@%Q"
+
+#: src/modules/reguser/libkvireguser.cpp:866
+msgid "Property: %Q=%Q"
+msgstr "속성: %Q=%Q"
+
+#: src/modules/reguser/libkvireguser.cpp:871
+msgid "No properties"
+msgstr "속성 없음"
+
+#: src/modules/reguser/libkvireguser.cpp:877
+#, c-format
+msgid "Total: %d matching users (of %d in the database)"
+msgstr "합계: 일치하는 사용자 %d 명 (데이터베이스에 사용자 %d 명 있음)"

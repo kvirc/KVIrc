@@ -1,0 +1,441 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+# MarongHappy <daemul72@gmail.com>, 2020
+# ks k, 2020
+# MarongHappy <daemul72@gmail.com>, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
+"PO-Revision-Date: 2020-05-31 06:45+0000\n"
+"Last-Translator: ks k\n"
+"Language-Team: Korean (http://www.transifex.com/kvirc/KVIrc/language/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/addon/AddonFunctions.cpp:53
+msgid "The selected file doesn't seem to be a valid KVIrc addon package"
+msgstr "선택한 파일이 올바른 KVIrc 부가 기능 꾸러미가 아닌 것 같습니다"
+
+#: src/modules/addon/AddonFunctions.cpp:74
+msgid "The selected file doesn't seem to be a valid KVIrc package: %1"
+msgstr "선택한 파일이 올바른 KVIrc 꾸러미가 아닌 것 같습니다: %1"
+
+#: src/modules/addon/AddonFunctions.cpp:122
+msgid "Author"
+msgstr "제작자"
+
+#: src/modules/addon/AddonFunctions.cpp:123
+msgid "Created at"
+msgstr "다음에서 생성됨"
+
+#: src/modules/addon/AddonFunctions.cpp:124
+msgid "Created with"
+msgstr "다음 항목으로 생성됨"
+
+#: src/modules/addon/AddonFunctions.cpp:155
+msgid "Warning: The addon might be incompatible with this version of KVIrc"
+msgstr "경고: 부가 기능이 이 KVIrc 버전과 호환되지 않을 수 있습니다"
+
+#: src/modules/addon/AddonFunctions.cpp:193
+msgid "Install Addon Pack - KVIrc"
+msgstr "부가 기능 팩을 설치하기 - KVIrc"
+
+#: src/modules/addon/AddonFunctions.cpp:194
+msgid "You're about to install the following addon package"
+msgstr "다음과 같은 부가 기능 패키지를 설치하려고 합니다"
+
+#: src/modules/addon/AddonFunctions.cpp:195
+msgid "Do you want to proceed with the installation?"
+msgstr "설치를 계속하시겠습니까?"
+
+#: src/modules/addon/AddonFunctions.cpp:196
+msgid "Do Not Install"
+msgstr "설치하지 않음"
+
+#: src/modules/addon/AddonFunctions.cpp:197
+msgid "Yes, Proceed"
+msgstr "네, 실행하겠습니다"
+
+#: src/modules/addon/AddonFunctions.cpp:231
+msgid "Failed to unpack the selected file: %1"
+msgstr "선택한 파일의 압축을 풀지 못함: %1"
+
+#: src/modules/addon/AddonFunctions.cpp:244
+msgid "Warning While Unpacking Addon - KVIrc"
+msgstr "부가 기능의 포장을 풀때 경고 - KVIrc"
+
+#: src/modules/addon/AddonFunctions.cpp:244
+msgid "Failed to delete the directory '%1'"
+msgstr "디렉토리 '% 1'을 (를) 삭제하지 못했습니다."
+
+#: src/modules/addon/AddonFunctions.cpp:280
+msgid "The selected directory doesn't exist."
+msgstr "선택한 디렉토리가 존재하지 않습니다."
+
+#: src/modules/addon/AddonFunctions.cpp:287
+msgid "The initialization script (install.kvs) doesn't exist."
+msgstr "초기화 스크립트(install.kvs)가 없습니다."
+
+#: src/modules/addon/AddonFunctions.cpp:321
+msgid "Failed to load the image at %1"
+msgstr "%1에서 그림을 불러오지 못했습니다"
+
+#: src/modules/addon/AddonFunctions.cpp:339
+msgid "The package file list is empty"
+msgstr "패키지 파일 목록이 비어 있습니다"
+
+#: src/modules/addon/AddonFunctions.cpp:367
+msgid "Save path is empty"
+msgstr "저장 경로가 비어 있습니다"
+
+#: src/modules/addon/AddonManagementDialog.cpp:97
+msgid "Manage Addons - KVIrc"
+msgstr "부가 기능 관리 - KVIrc"
+
+#: src/modules/addon/AddonManagementDialog.cpp:119
+msgid "Configure addon..."
+msgstr "부가 기능 구성..."
+
+#: src/modules/addon/AddonManagementDialog.cpp:125
+msgid "Show help"
+msgstr "도움말 표시"
+
+#: src/modules/addon/AddonManagementDialog.cpp:131
+msgid "Delete selected addon"
+msgstr "선택한 부가 기능 삭제"
+
+#: src/modules/addon/AddonManagementDialog.cpp:141
+msgid "Create an addon as a distributable package"
+msgstr "배포 가능한 패키지로 부가 기능 만들기"
+
+#: src/modules/addon/AddonManagementDialog.cpp:151
+msgid "Install addon package from disk"
+msgstr "디스크에서 부가 기능 패키지 설치"
+
+#: src/modules/addon/AddonManagementDialog.cpp:157
+msgid "Get more addons..."
+msgstr "부가 정보를 얻습니다..."
+
+#: src/modules/addon/AddonManagementDialog.cpp:179
+msgid "Close"
+msgstr "닫기"
+
+#: src/modules/addon/AddonManagementDialog.cpp:277
+msgid "Do you really want to uninstall the addon \"%1\"?"
+msgstr "%1 부가 기능을 제거하시겠습니까?"
+
+#: src/modules/addon/AddonManagementDialog.cpp:282
+msgid "Confirm Addon Uninstallation - KVIrc"
+msgstr "부가 기능 제거 확인 - KVIrc"
+
+#: src/modules/addon/AddonManagementDialog.cpp:283
+msgid "Yes"
+msgstr "예"
+
+#: src/modules/addon/AddonManagementDialog.cpp:283
+msgid "No"
+msgstr "아니오"
+
+#: src/modules/addon/AddonManagementDialog.cpp:311
+msgid "Select a Installation File - KVIrc"
+msgstr "설치 파일 선택 - KVIrc"
+
+#: src/modules/addon/AddonManagementDialog.cpp:324
+#: src/modules/addon/AddonManagementDialog.cpp:339
+msgid "Install Addon - KVIrc"
+msgstr "부가 기능 설치 - KVIrc"
+
+#: src/modules/addon/PackAddonDialog.cpp:50
+msgid "Create Addon Package - KVIrc"
+msgstr "부가 기능 꾸러미 생성 - KVIrc"
+
+#: src/modules/addon/PackAddonDialog.cpp:84
+msgid "Welcome"
+msgstr "환영합니다"
+
+#: src/modules/addon/PackAddonDialog.cpp:88
+msgid ""
+"This procedure allows you to export the selected addon to a single "
+"package.<br>It is useful when you want to distribute your addon to the "
+"public."
+msgstr "이 절차를 통해 선택한 부가 기능을 단일 꾸러미로 내보낼 수 있습니다.<br>부가 기능을 대중에게 배포하고 싶을 때 유용합니다."
+
+#: src/modules/addon/PackAddonDialog.cpp:94
+msgid ""
+"You will be asked to provide some information like the package name, the "
+"version, a description and so on."
+msgstr "꾸러미 이름, 버전, 설명 등과 같은 몇 가지 정보를 입력하라는 메시지가 표시됩니다."
+
+#: src/modules/addon/PackAddonDialog.cpp:96
+msgid "Hit the \"Next\" button to begin."
+msgstr "\"다음\" 버튼을 누르면 시작합니다."
+
+#: src/modules/addon/PackAddonDialog.cpp:158
+msgid "Exporting Addon Confirmation - KVIrc"
+msgstr "부가 기능 내보내기 확인 - KVIrc"
+
+#: src/modules/addon/PackAddonDialog.cpp:159
+msgid "File %1 already exists. Do you want to overwrite it?"
+msgstr "%1 파일이 이미 있습니다. 덮어쓰시겠습니까?"
+
+#: src/modules/addon/PackAddonDialog.cpp:180
+msgid "Addon Packaging - KVIrc"
+msgstr "부가 기능 꾸리고 있음 - KVIrc"
+
+#: src/modules/addon/PackAddonDialog.cpp:185
+msgid "Exporting Addon Completed - KVIrc"
+msgstr "부가 기능 내보내기 완료"
+
+#: src/modules/addon/PackAddonDialog.cpp:185
+msgid "The package was saved successfully in %1"
+msgstr "꾸러미가 %1 에 올바르게 저장되었습니다"
+
+#: src/modules/addon/PackAddonDialog.cpp:194
+msgid "Package Information"
+msgstr "꾸러미 정보"
+
+#: src/modules/addon/PackAddonDialog.cpp:195
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr "여기에서는 사용자 (꾸러미 관리자)에 대한 정보와 작성중인 꾸러미에 대한 간단한 설명을 제공해야합니다."
+
+#: src/modules/addon/PackAddonDialog.cpp:200
+msgid "Package &author:"
+msgstr "꾸러미 작성자(&A):"
+
+#: src/modules/addon/PackAddonDialog.cpp:208
+msgid "Package &name:"
+msgstr "꾸러미 이름(&N):"
+
+#: src/modules/addon/PackAddonDialog.cpp:212
+msgid "No spaces allowed"
+msgstr "공백은 허용되지 않습니다"
+
+#: src/modules/addon/PackAddonDialog.cpp:217
+msgid "Package &version:"
+msgstr "꾸러미 버전 (&V):"
+
+#: src/modules/addon/PackAddonDialog.cpp:226
+msgid "Package &description:"
+msgstr "꾸러미 설명 (&D):"
+
+#: src/modules/addon/PackAddonDialog.cpp:235
+msgid "Minimum &KVIrc version:"
+msgstr "가장 적은 KVIrc 버전(&K):"
+
+#: src/modules/addon/PackAddonDialog.cpp:258
+msgid "Package Files"
+msgstr "꾸러미 파일"
+
+#: src/modules/addon/PackAddonDialog.cpp:259
+msgid ""
+"Here you need to select the directory where the addon files to be packed are"
+" located."
+msgstr "여기서 포장할 부가 기능 파일이 있는 디렉터리를 선택해야 합니다."
+
+#: src/modules/addon/PackAddonDialog.cpp:264
+msgid "Select the source directory:"
+msgstr "소스 디렉터리 선택:"
+
+#: src/modules/addon/PackAddonDialog.cpp:268
+msgid "Select the image file:"
+msgstr "그림 파일을 선택:"
+
+#: src/modules/addon/PackAddonDialog.cpp:283
+msgid "Save Package"
+msgstr "꾸러미 저장"
+
+#: src/modules/addon/PackAddonDialog.cpp:284
+msgid ""
+"Here you need to provide the path where to save the created addon package"
+msgstr "여기서 생성된 부가 기능 패키지를 저장할 경로를 제공해야 합니다"
+
+#: src/modules/addon/PackAddonDialog.cpp:291
+msgid "Select save path:"
+msgstr "저장 경로 선택:"
+
+#: src/modules/addon/PackAddonDialog.cpp:325
+msgid "Final Information"
+msgstr "최종 정보"
+
+#: src/modules/addon/PackAddonDialog.cpp:326
+msgid ""
+"Here are the details you provided. If this information is correct, hit the "
+"\"Finish\" button to complete the packaging operations."
+msgstr "여기 당신이 제공한 세부사항이 있습니다. 이 정보가 올바르면 \"마침\" 버튼을 눌러 꾸리기 조작을 완료합니다."
+
+#: src/modules/addon/PackAddonDialog.cpp:348
+msgid "This is what I will check for:"
+msgstr "이것이 내가 확인할 것:"
+
+#: src/modules/addon/PackAddonDialog.cpp:350
+msgid "Package author"
+msgstr "꾸러미 제작자"
+
+#: src/modules/addon/PackAddonDialog.cpp:354
+msgid "Package name"
+msgstr "꾸러미 이름"
+
+#: src/modules/addon/PackAddonDialog.cpp:358
+msgid "Package version"
+msgstr "꾸러미 버전"
+
+#: src/modules/addon/PackAddonDialog.cpp:362
+msgid "Package description"
+msgstr "꾸러미 설명"
+
+#: src/modules/addon/PackAddonDialog.cpp:366
+msgid "Minimum KVIrc version"
+msgstr "가장 적은 KVIrc 버전"
+
+#: src/modules/addon/PackAddonDialog.cpp:370
+msgid "Image file"
+msgstr "그림 파일"
+
+#: src/modules/addon/PackAddonDialog.cpp:374
+msgid "Source directory"
+msgstr "소스 디렉토리"
+
+#: src/modules/addon/PackAddonDialog.cpp:378
+msgid "Save path"
+msgstr "저장 경로"
+
+#: src/modules/addon/PackAddonDialog.cpp:389
+msgid "File Summary Review - KVIrc"
+msgstr "파일 요약 검토"
+
+#: src/modules/addon/PackAddonDialog.cpp:396
+msgid ""
+"Here are the files found in the directories you provided.\n"
+"If the files listed below are correct, hit the \"Finish\" button to complete the packaging operation."
+msgstr "여기 제공한 디렉토리에서 발견된 파일들이 있습니다.\n아래 나열된 파일이 맞으면 \"완료\" 단추를 눌러 꾸리기 조작을 완료합니다."
+
+#: src/modules/addon/PackAddonDialog.cpp:405
+msgid "Cancel"
+msgstr "취소"
+
+#: src/modules/addon/PackAddonDialog.cpp:409
+msgid "Finish"
+msgstr "마침"
+
+#: src/modules/addon/WebAddonInterfaceDialog.cpp:42
+msgid "Download Addons - KVIrc"
+msgstr "부가 기능 내려받기 - KVIrc"
+
+#: src/modules/addon/libkviaddon.cpp:151
+msgid "%cAddon ID %Q, version %Q%c"
+msgstr "%c부가 기능 아이디 %Q, 버전 %Q%c"
+
+#: src/modules/addon/libkviaddon.cpp:152
+msgid "Name: %Q"
+msgstr "이름: %Q"
+
+#: src/modules/addon/libkviaddon.cpp:153
+msgid "Description: %Q"
+msgstr "설명: %Q"
+
+#: src/modules/addon/libkviaddon.cpp:159
+#, c-format
+msgid "Total: %d addons installed"
+msgstr "총: %d 개의 부가 기능을 설치했습니다"
+
+#: src/modules/addon/libkviaddon.cpp:198 src/modules/addon/libkviaddon.cpp:563
+msgid "Uninstalling existing addon version %Q"
+msgstr "기존에 있는 부가 기능 %Q  버전을 삭제하고 있습니다"
+
+#: src/modules/addon/libkviaddon.cpp:206 src/modules/addon/libkviaddon.cpp:256
+#: src/modules/addon/libkviaddon.cpp:307 src/modules/addon/libkviaddon.cpp:355
+#: src/modules/addon/libkviaddon.cpp:404 src/modules/addon/libkviaddon.cpp:639
+msgid "The addon \"%1\" doesn't exist"
+msgstr "\"%1\" 부가 기능이 없습니다"
+
+#: src/modules/addon/libkviaddon.cpp:246
+msgid "The addon \"%1\" has no configure callback set"
+msgstr "\"%1\" 부가 기능에 콜백 구성 집합이 없습니다"
+
+#: src/modules/addon/libkviaddon.cpp:297
+msgid "The addon \"%1\" has no help callback set"
+msgstr "\"%1\" 부가 기능에는 도움말 콜백 세트가 없습니다"
+
+#: src/modules/addon/libkviaddon.cpp:519
+msgid "Internal error: call a head-shrinker"
+msgstr "내부 오류: 머리부 수축기를 호출"
+
+#: src/modules/addon/libkviaddon.cpp:528
+msgid "The specified version \"%Q\" is not a valid version string"
+msgstr "지정된 버전 \"%Q\" 는 올바른 버전의 문자열이 아닙니다"
+
+#: src/modules/addon/libkviaddon.cpp:534
+msgid "The specified KVIrc version \"%Q\" is not a valid version string"
+msgstr "지정한 KVIrc 버전 \"%Q\" 는 올바른 버전의 문자열이 아닙니다"
+
+#: src/modules/addon/libkviaddon.cpp:540
+msgid ""
+"This KVIrc executable is too old to run this addon (minimum version required"
+" is %Q)"
+msgstr "이 KVIrc 실행 파일이 너무 오래되어 이 부가 기능을 실행할 수 없습니다(필요한 가장 적은 버전은 %Q 입니다)"
+
+#: src/modules/addon/libkviaddon.cpp:545
+msgid "Attempting to register addon \"%Q\" with version %Q"
+msgstr "버전 %Q 에 부가 기능 \"%Q\" 을 등록하려고합니다"
+
+#: src/modules/addon/libkviaddon.cpp:557
+msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
+msgstr "\"%Q\" 버전이 %Q 보다 높은 부가 기능이 이미 있습니다"
+
+#: src/modules/addon/libkviaddon.cpp:573
+msgid "Addon registration failed"
+msgstr "부가 기능이 등록되지 않았습니다"
+
+#: src/modules/addon/libkviaddon.cpp:578
+msgid "Addon successfully registered"
+msgstr "부가 기능이 등록되었습니다"
+
+#: src/modules/addon/libkviaddon.cpp:644
+msgid "The target path can't be empty"
+msgstr "대상 경로는 비워 둘 수 없습니다"
+
+#: src/modules/addon/libkviaddon.cpp:647
+msgid "The target path can't contain .."
+msgstr "대상 경로는 ..을 포함 할 수 없습니다"
+
+#: src/modules/addon/libkviaddon.cpp:652
+msgid "Empty file list"
+msgstr "파일 목록이 비어 있습니다"
+
+#: src/modules/addon/libkviaddon.cpp:683
+msgid "The directory '%1' doesn't exist"
+msgstr "'%1' 디렉토리가 존재하지 않습니다"
+
+#: src/modules/addon/libkviaddon.cpp:685 src/modules/addon/libkviaddon.cpp:707
+msgid "Skipping non-existent entry '%1'"
+msgstr "존재하지 않는 항목 '%1' 을 건너뛰고 있습니다"
+
+#: src/modules/addon/libkviaddon.cpp:705
+msgid "The file '%1' doesn't exist"
+msgstr "'%1' 파일이 없습니다"
+
+#: src/modules/addon/libkviaddon.cpp:714
+msgid "The entry '%1' is not a file"
+msgstr "%1 항목이 파일이 아닙니다"
+
+#: src/modules/addon/libkviaddon.cpp:716
+msgid "Skipping invalid entry '%1'"
+msgstr "잘못된 항목 '%1'을 건너뛰고 있습니다"
+
+#: src/modules/addon/libkviaddon.cpp:742
+msgid "Installing file '%1' into '%2'"
+msgstr "'%1' 파일을 '%2'에 설치하고 있습니다"
+
+#: src/modules/addon/libkviaddon.cpp:800
+msgid "Error installing addon package: %Q"
+msgstr "부가 기능 꾸러미 설치하는 동안 오류 발생: %Q"

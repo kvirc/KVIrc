@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# Janusz Pekacz <penteljapan@o2.pl>, 2019
+# Janusz Pekacz <penteljapan@o2.pl>, 2019-2020
 # Sölve Svartskogen <solaizen@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
-"PO-Revision-Date: 2019-09-05 10:48+0000\n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
+"PO-Revision-Date: 2020-05-07 21:24+0000\n"
 "Last-Translator: Janusz Pekacz <penteljapan@o2.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/kvirc/KVIrc/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -19,59 +19,59 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: src/modules/about/AboutDialog.cpp:79
+#: src/modules/about/AboutDialog.cpp:83
 msgid "About KVIrc"
 msgstr "O KVIrc"
 
-#: src/modules/about/AboutDialog.cpp:80
+#: src/modules/about/AboutDialog.cpp:84
 msgid "Close"
 msgstr "Zamknij"
 
-#: src/modules/about/AboutDialog.cpp:102
+#: src/modules/about/AboutDialog.cpp:106
 msgid "Forged by the <b>KVIrc Development Team</b>"
 msgstr "Wykuto przez <b>KVIrc Development Team</b>"
 
-#: src/modules/about/AboutDialog.cpp:108
+#: src/modules/about/AboutDialog.cpp:112
 msgid "About"
 msgstr "O"
 
-#: src/modules/about/AboutDialog.cpp:121
+#: src/modules/about/AboutDialog.cpp:125
 msgid "Runtime Info"
-msgstr "Informacje środowiska wykonawczego"
+msgstr "Informacje o środowisku wykonawczym"
 
-#: src/modules/about/AboutDialog.cpp:123 src/modules/about/AboutDialog.cpp:162
+#: src/modules/about/AboutDialog.cpp:127
 msgid "System name"
 msgstr "Nazwa systemu"
 
-#: src/modules/about/AboutDialog.cpp:131
+#: src/modules/about/AboutDialog.cpp:135
 msgid "System version"
 msgstr "Wersja systemu"
 
-#: src/modules/about/AboutDialog.cpp:135
+#: src/modules/about/AboutDialog.cpp:139
 msgid "Architecture"
 msgstr "Architektura"
 
-#: src/modules/about/AboutDialog.cpp:139 src/modules/about/AboutDialog.cpp:187
+#: src/modules/about/AboutDialog.cpp:143 src/modules/about/AboutDialog.cpp:187
 msgid "Qt version"
 msgstr "Wersja Qt"
 
-#: src/modules/about/AboutDialog.cpp:143
+#: src/modules/about/AboutDialog.cpp:147
 msgid "Qt theme"
 msgstr "Motyw Qt"
 
-#: src/modules/about/AboutDialog.cpp:148
+#: src/modules/about/AboutDialog.cpp:152
 msgid "Build Info"
-msgstr "Informacje budowy"
-
-#: src/modules/about/AboutDialog.cpp:150
-msgid "Build date"
-msgstr "Data budowy"
+msgstr "Informacje o budowli"
 
 #: src/modules/about/AboutDialog.cpp:154
+msgid "Build date"
+msgstr "Data zbudowania"
+
+#: src/modules/about/AboutDialog.cpp:158
 msgid "Sources date"
 msgstr "Data źródeł"
 
-#: src/modules/about/AboutDialog.cpp:158
+#: src/modules/about/AboutDialog.cpp:162
 msgid "Revision number"
 msgstr "Numer rewizji"
 
@@ -85,7 +85,7 @@ msgstr "Polecenie budowy"
 
 #: src/modules/about/AboutDialog.cpp:174
 msgid "Build flags"
-msgstr "Flagi budowy"
+msgstr "Użyte flagi budowania"
 
 #: src/modules/about/AboutDialog.cpp:179
 msgid "Compiler name"
@@ -99,21 +99,33 @@ msgstr "Flagi kompilatora"
 msgid "Features"
 msgstr "Funkcjonalności"
 
-#: src/modules/about/AboutDialog.cpp:197
+#: src/modules/about/AboutDialog.cpp:196
+msgid "OpenSSL version"
+msgstr "Wersja OpenSSL"
+
+#: src/modules/about/AboutDialog.cpp:204
+msgid "OpenSSL compiler flags"
+msgstr "Flagi kompilatora OpenSSL"
+
+#: src/modules/about/AboutDialog.cpp:212
+msgid "OpenSSL "
+msgstr "OpenSSL"
+
+#: src/modules/about/AboutDialog.cpp:223
 msgid "Executable Information"
 msgstr "Informacje pliku wykonywalnego"
 
-#: src/modules/about/AboutDialog.cpp:209
+#: src/modules/about/AboutDialog.cpp:235
 msgid "Honor && Glory"
 msgstr "Honor && Chwała"
 
-#: src/modules/about/AboutDialog.cpp:227
+#: src/modules/about/AboutDialog.cpp:253
 msgid ""
 "Oops! Can't find the license file.\n"
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr "Ups! Nie udało się znaleźć pliku licencji.\nMUSI być ona zawarta w dystrybucji...\nProszę zgłosić to do <pragma at kvirc dot net>"
 
-#: src/modules/about/AboutDialog.cpp:235
+#: src/modules/about/AboutDialog.cpp:261
 msgid "License"
 msgstr "Licencja"

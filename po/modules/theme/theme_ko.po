@@ -1,0 +1,441 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+# MarongHappy <daemul72@gmail.com>, 2020
+# ks k, 2020
+# ks k, 2020
+# MarongHappy <daemul72@gmail.com>, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
+"PO-Revision-Date: 2020-05-31 10:12+0000\n"
+"Last-Translator: ks k\n"
+"Language-Team: Korean (http://www.transifex.com/kvirc/KVIrc/language/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/theme/PackThemeDialog.cpp:57
+#: src/modules/theme/PackThemeDialog.cpp:357
+#: src/modules/theme/PackThemeDialog.cpp:436
+msgid "Export Theme - KVIrc"
+msgstr "테마 내보내기 - KVIrc"
+
+#: src/modules/theme/PackThemeDialog.cpp:94
+#: src/modules/theme/SaveThemeDialog.cpp:85
+msgid "Welcome"
+msgstr "환영합니다"
+
+#: src/modules/theme/PackThemeDialog.cpp:97
+msgid ""
+"This procedure allows you to export the selected themes to a single package."
+" It is useful when you want to distribute your themes to the public."
+msgstr "이 절차를 통해 선택한 테마를 단일 꾸러미로 내보낼 수 있습니다. 테마를 대중에게 배포하고 싶을 때 유용합니다."
+
+#: src/modules/theme/PackThemeDialog.cpp:99
+msgid ""
+"You will be asked to provide a package name, a description and, if you want,"
+" an icon/screenshot."
+msgstr "꾸러미 이름, 설명, 원하는 경우 아이콘/갈무리를 제공하라는 메시지가 표시됩니다."
+
+#: src/modules/theme/PackThemeDialog.cpp:101
+#: src/modules/theme/SaveThemeDialog.cpp:78
+msgid "Hit the \"Next\" button to begin."
+msgstr "\"다음\" 버튼을 눌러 시작합니다."
+
+#: src/modules/theme/PackThemeDialog.cpp:134
+msgid "Theme Data"
+msgstr "테마 자료"
+
+#: src/modules/theme/PackThemeDialog.cpp:135
+msgid ""
+"This is the information list for the themes you're packaging. If it looks OK"
+" press \"Next\" to continue, otherwise press \"Cancel\" and review your "
+"themes first."
+msgstr "이것은 꾸리고 있는 테마에 대한 정보 목록입니다. OK로 표시되면 \"다음\"을 눌러 계속 진행하고, 그렇지 않으면 \"취소\"를 누르고 테마를 먼저 검토하십시오."
+
+#: src/modules/theme/PackThemeDialog.cpp:153
+msgid "Your name here"
+msgstr "여기에 당신의 이름"
+
+#: src/modules/theme/PackThemeDialog.cpp:155
+msgid "Enter a package description here..."
+msgstr "여기에 꾸러미 설명을 입력하십시오..."
+
+#: src/modules/theme/PackThemeDialog.cpp:248
+msgid "Package Information"
+msgstr "꾸러미 정보"
+
+#: src/modules/theme/PackThemeDialog.cpp:249
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr "여기서는 (꾸러미 꾸리는) 사용자에 대한 정보와 작성중인 꾸러미에 대한 간단한 설명을 제공해야 합니다."
+
+#: src/modules/theme/PackThemeDialog.cpp:254
+msgid "Package name:"
+msgstr "꾸러미 이름:"
+
+#: src/modules/theme/PackThemeDialog.cpp:263
+#: src/modules/theme/SaveThemeDialog.cpp:111
+msgid "Version:"
+msgstr "버전:"
+
+#: src/modules/theme/PackThemeDialog.cpp:272
+#: src/modules/theme/SaveThemeDialog.cpp:123
+msgid "Description:"
+msgstr "설명:"
+
+#: src/modules/theme/PackThemeDialog.cpp:281
+msgid "Package author:"
+msgstr "꾸러미 작성자:"
+
+#: src/modules/theme/PackThemeDialog.cpp:317
+msgid "Icon/Screenshot"
+msgstr "아이콘/갈무리"
+
+#: src/modules/theme/PackThemeDialog.cpp:318
+msgid ""
+"Here you can choose the image that will appear in the installation dialog "
+"for your theme package. It can be an icon, a logo or a screenshot and it "
+"should be not larger than 300x225. If you don't provide an image a simple "
+"default icon will be used at installation stage."
+msgstr "여기서 테마 꾸러미의 설치 대화 상자에 표시할 그림을 선택할 수 있습니다. 아이콘 또는 로고, 갈무리일 수 있으며 300x225보다 크지 않아야합니다. 그림을 제공하지 않으면 설치 단계에서 간단한 기본 아이콘이 사용됩니다."
+
+#: src/modules/theme/PackThemeDialog.cpp:357
+#: src/modules/theme/SaveThemeDialog.cpp:228
+msgid "Failed to load the selected image!"
+msgstr "선택한 그림을 불러오지 못했습니다!"
+
+#: src/modules/theme/PackThemeDialog.cpp:368
+msgid "Package Path"
+msgstr "꾸러미 경로"
+
+#: src/modules/theme/PackThemeDialog.cpp:369
+msgid ""
+"Here you must choose the file name for the theme package. It should have a "
+"*%1 extension."
+msgstr "여기서 테마 꾸러미의 파일 이름을 선택해야 합니다. 확장자는 * %1 이어야 합니다."
+
+#: src/modules/theme/PackThemeDialog.cpp:380
+msgid "Finally hit the \"Finish\" button to complete the packaging operation."
+msgstr "마지막으로 \"마침\" 단추를 눌러 꾸리기 조작을 완료합니다."
+
+#: src/modules/theme/PackThemeDialog.cpp:443
+msgid "Exporting Theme - KVIrc"
+msgstr "테마 내보내기를 하고 있음 - KVIrc"
+
+#: src/modules/theme/SaveThemeDialog.cpp:61
+#: src/modules/theme/SaveThemeDialog.cpp:228
+#: src/modules/theme/SaveThemeDialog.cpp:266
+#: src/modules/theme/SaveThemeDialog.cpp:288
+#: src/modules/theme/SaveThemeDialog.cpp:297
+#: src/modules/theme/SaveThemeDialog.cpp:307
+#: src/modules/theme/SaveThemeDialog.cpp:316
+msgid "Save Current Theme - KVIrc"
+msgstr "현재 테마 저장 - KVIrc"
+
+#: src/modules/theme/SaveThemeDialog.cpp:74
+msgid ""
+"This procedure allows you to save the current theme settings to a single "
+"directory. It is useful if you want to apply other themes or play with the "
+"theme settings and later come back to this theme with a single click. It "
+"will also allow you to manually modify the theme settings and later export "
+"them to a distributable package."
+msgstr "이 절차에서는 현재 테마 설정을 단일 디렉터리에 저장할 수 있습니다. 다른 테마를 적용하거나 테마 설정으로 재생하고 나중에 한 번의 클릭으로 이 테마로 돌아오려는 경우에 유용합니다. 또한 테마 설정을 수동으로 수정한 후 나중에 배포 가능한 꾸러미로 내보낼 수도 있습니다."
+
+#: src/modules/theme/SaveThemeDialog.cpp:76
+msgid ""
+"You will be asked to provide a theme name, a description and, if you want, a"
+" screenshot."
+msgstr "테마 이름, 설명, 원하는 경우 갈무리를 입력하라는 메시지가 표시됩니다."
+
+#: src/modules/theme/SaveThemeDialog.cpp:97
+msgid ""
+"Here you need to provide information about you (the author) and a short "
+"description of the theme you're creating."
+msgstr "여기서는 본인(제작자)에 대한 정보와 작성 중인 테마에 대한 간단한 설명을 제공해야 합니다."
+
+#: src/modules/theme/SaveThemeDialog.cpp:103
+msgid "Theme name:"
+msgstr "테마 이름:"
+
+#: src/modules/theme/SaveThemeDialog.cpp:131
+msgid "Theme author:"
+msgstr "테마 작성자:"
+
+#: src/modules/theme/SaveThemeDialog.cpp:141
+msgid "Theme Information"
+msgstr "테마 정보"
+
+#: src/modules/theme/SaveThemeDialog.cpp:151
+msgid "Save icons and images with theme"
+msgstr "아이콘과 그림을 테마로 저장"
+
+#: src/modules/theme/SaveThemeDialog.cpp:157
+msgid ""
+"To use the default and latest icon/image set automatically, uncheck this "
+"option.<br><br>To replace specific icons/images in your theme, include only "
+"those you wish to replace."
+msgstr "기본 및 최신 아이콘/그림 집합을 자동으로 사용하려면 이 선택사항을 선택취소하십시오.<br><br> 테마에서 특정 아이콘/그림을 바꾸려면 바꾸려는 그림만 포함하십시오."
+
+#: src/modules/theme/SaveThemeDialog.cpp:159
+msgid "Hit the <b>\"Next\"</b> button to continue."
+msgstr "계속하려면 <b>\"다음\"</b> 버튼을 누릅니다."
+
+#: src/modules/theme/SaveThemeDialog.cpp:167
+msgid "Theme options"
+msgstr "테마 선택사항"
+
+#: src/modules/theme/SaveThemeDialog.cpp:179
+msgid ""
+"Here you can either choose a screenshot image from disk or make one now. The"
+" screenshot will be displayed in the tooltips of the theme management dialog"
+" and will be also visible in the package installation dialog if you will "
+"export the theme to a distributable package."
+msgstr "여기서 디스크에서 갈무리 그림을 선택하거나 지금 만들 수 있습니다. 갈무리는 테마 관리 대화 상자의 도구 설명에 표시되며 테마를 배포 가능한 꾸러미로 내보낼 경우 꾸러미 설치 대화 상자에도 표시됩니다."
+
+#: src/modules/theme/SaveThemeDialog.cpp:195
+msgid "Make Screenshot Now"
+msgstr "지금 갈무리 만들기"
+
+#: src/modules/theme/SaveThemeDialog.cpp:202
+msgid "Screenshot"
+msgstr "갈무리"
+
+#: src/modules/theme/SaveThemeDialog.cpp:250
+msgid "Acquire Screenshot - KVIrc"
+msgstr "갈무리 획득 - KVIrc"
+
+#: src/modules/theme/SaveThemeDialog.cpp:250
+msgid "Failed to make a theme screenshot."
+msgstr "테마 갈무리를 만들지 못했습니다."
+
+#: src/modules/theme/SaveThemeDialog.cpp:266
+msgid "You must choose a theme name."
+msgstr "테마 이름을 선택해야 합니다."
+
+#: src/modules/theme/SaveThemeDialog.cpp:288
+msgid "Unable to create theme directory."
+msgstr "테마 디렉토리를 만들 수 없습니다."
+
+#: src/modules/theme/SaveThemeDialog.cpp:296
+msgid "Unable to save theme: %1"
+msgstr "테마를 저장할 수 없습니다: %1"
+
+#: src/modules/theme/SaveThemeDialog.cpp:307
+msgid "Failed to load the selected screenshot image: please fix it"
+msgstr "선택한 갈무리 그림을 불러오지 못했음: 수정하십시오"
+
+#: src/modules/theme/SaveThemeDialog.cpp:314
+msgid "Theme saved successfully to %1"
+msgstr "테마가 %1 에 저장되었습니다"
+
+#: src/modules/theme/ThemeFunctions.cpp:53
+msgid "The selected file doesn't seem to be a valid KVIrc theme package"
+msgstr "선택한 파일이 올바른 KVIrc 테마 꾸러미가 아닌 것 같습니다"
+
+#: src/modules/theme/ThemeFunctions.cpp:75
+msgid "The selected file doesn't seem to be a valid KVIrc package: %1"
+msgstr "선택한 파일이 올바른 KVIrc 꾸러미가 아닌 것 같습니다: %1"
+
+#: src/modules/theme/ThemeFunctions.cpp:134
+#: src/modules/theme/ThemeFunctions.cpp:317
+msgid "Author"
+msgstr "작성자"
+
+#: src/modules/theme/ThemeFunctions.cpp:135
+#: src/modules/theme/ThemeFunctions.cpp:318
+msgid "Created at"
+msgstr "다음에서 생성됨"
+
+#: src/modules/theme/ThemeFunctions.cpp:136
+#: src/modules/theme/ThemeFunctions.cpp:319
+msgid "Created with"
+msgstr "다음 항목으로 생성됨"
+
+#: src/modules/theme/ThemeFunctions.cpp:215
+msgid "Warning: this theme might be incompatible with this version of KVIrc"
+msgstr "경고: 이 테마는 이 KVIrc 버전과 호환되지 않을 수 있습니다"
+
+#: src/modules/theme/ThemeFunctions.cpp:224
+msgid "Go Back to Package Data"
+msgstr "꾸러미 자료로 돌아가기"
+
+#: src/modules/theme/ThemeFunctions.cpp:231
+msgid ""
+"Warning: the theme contained in this package might be either corrupted or "
+"incompatible with this version of KVIrc"
+msgstr "경고: 이 꾸러미에 포함된 테마가 손상되었거나 이 버전의 KVIrc와 호환되지 않을 수 있습니다"
+
+#: src/modules/theme/ThemeFunctions.cpp:235
+msgid "Show Details"
+msgstr "상세정보 표시"
+
+#: src/modules/theme/ThemeFunctions.cpp:275
+msgid "Install Theme Pack - KVIrc"
+msgstr "테마 꾸러미 설치 - KVIrc"
+
+#: src/modules/theme/ThemeFunctions.cpp:276
+msgid "You're about to install the following theme package"
+msgstr "다음 테마 꾸러미를 설치하려고 합니다"
+
+#: src/modules/theme/ThemeFunctions.cpp:277
+msgid "Do you want to proceed with the installation?"
+msgstr "설치를 진행하시겠습니까?"
+
+#: src/modules/theme/ThemeFunctions.cpp:278
+msgid "Do Not Install"
+msgstr "설치하지 마십시오"
+
+#: src/modules/theme/ThemeFunctions.cpp:279
+msgid "Yes, Proceed"
+msgstr "예, 진행하십시오"
+
+#: src/modules/theme/ThemeFunctions.cpp:295
+msgid "Failed to unpack the selected file: %1"
+msgstr "선택한 파일의 압축을 풀지 못했습니다: %1"
+
+#: src/modules/theme/ThemeFunctions.cpp:320
+msgid "Theme engine version"
+msgstr "테마 엔진 버전"
+
+#: src/modules/theme/ThemeFunctions.cpp:321
+msgid "Subdirectory"
+msgstr "하위 디렉토리"
+
+#: src/modules/theme/ThemeFunctions.cpp:402
+msgid "Invalid empty package path"
+msgstr "빈 꾸러미 경로가 잘못되었습니다"
+
+#: src/modules/theme/ThemeFunctions.cpp:408
+msgid "Invalid empty package name"
+msgstr "빈 꾸러미 이름이 잘못되었습니다"
+
+#: src/modules/theme/ThemeFunctions.cpp:419
+msgid "Failed to load the selected image: please fix it"
+msgstr "선택한 그림을 불러오지 못했습니다: 수정하십시오"
+
+#: src/modules/theme/ThemeFunctions.cpp:462
+msgid "Invalid theme name"
+msgstr "잘못된 테마 이름"
+
+#: src/modules/theme/ThemeFunctions.cpp:467
+msgid "Invalid theme version"
+msgstr "잘못된 테마 버전"
+
+#: src/modules/theme/ThemeFunctions.cpp:505
+#: src/modules/theme/ThemeFunctions.cpp:516
+msgid "Packaging failed"
+msgstr "꾸리지 못했습니다"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:94
+msgid "by"
+msgstr "다음에 의해"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:121
+msgid "Manage Themes - KVIrc"
+msgstr "테마를 관리 - KVIrc"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:139
+msgid "Save current theme..."
+msgstr "현재 테마를 저장..."
+
+#: src/modules/theme/ThemeManagementDialog.cpp:150
+msgid "Export selected themes to a distributable package"
+msgstr "선택한 테마를 배포 가능한 꾸러미로 내보내기"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:156
+msgid "Delete selected themes"
+msgstr "선택한 테마 삭제"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:166
+msgid "Install theme package from disk"
+msgstr "디스크에서 테마 꾸러미를 설치"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:172
+msgid "Get more themes..."
+msgstr "더 많은 테마를 가져오기..."
+
+#: src/modules/theme/ThemeManagementDialog.cpp:204
+msgid "<b><u>Current Installed Theme:</u> "
+msgstr "<b><u>현재 설치된 테마:</u> "
+
+#: src/modules/theme/ThemeManagementDialog.cpp:331
+msgid "&Remove Theme"
+msgstr "테마 제거(&R)"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:333
+msgid "&Apply Theme"
+msgstr "테마 적용(&A)"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:351
+#: src/modules/theme/ThemeManagementDialog.cpp:363
+msgid "Apply Theme - KVIrc"
+msgstr "테마 적용 - KVIrc"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:352
+msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
+msgstr "\"%Q\"(버전 %Q) 테마를 적용하시겠습니까?"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:362
+msgid "Failed to apply the specified theme: %1"
+msgstr "지정한 테마를 적용하지 못했습니다: %1"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:368
+msgid "<b><u>Current Installed Theme:</u> %1</b>"
+msgstr "<b><u>현재 설치된 테마:</u> %1</b>"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:385
+msgid "Delete Selected Theme - KVIrc"
+msgstr "선택한 테마 삭제 - KVIrc"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:386
+msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
+msgstr "\"%Q\"(버전 %Q) 테마를 삭제하시겠습니까?"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:404
+msgid "Select a Installation File - KVIrc"
+msgstr "설치 파일 선택 - KVIrc"
+
+#: src/modules/theme/WebThemeInterfaceDialog.cpp:40
+msgid "Download Themes - KVIrc"
+msgstr "테마를 다운로드 - KVIrc"
+
+#: src/modules/theme/libkvitheme.cpp:73
+msgid "Error installing theme package: %Q"
+msgstr "테마 꾸러미 설치 중 오류 발생했습니다: %Q"
+
+#: src/modules/theme/libkvitheme.cpp:130
+msgid "Failed to apply theme: %Q"
+msgstr "테마를 적용하지 못했습니다: %Q"
+
+#: src/modules/theme/libkvitheme.cpp:163
+msgid "The theme package '%Q' doesn't exist"
+msgstr "'%Q' 테마 꾸러미가 없습니다"
+
+#: src/modules/theme/libkvitheme.cpp:205
+msgid "Enter a Filename - KVIrc"
+msgstr "파일 이름을 입력하십시오 - KVIrc"
+
+#: src/modules/theme/libkvitheme.cpp:231
+msgid "Error capturing and saving screenshot!"
+msgstr "갈무리후 저장할때 오류가 발생했습니다!"
+
+#: src/modules/theme/libkvitheme.cpp:303
+msgid "No themes specified"
+msgstr "테마를 지정하지 않았습니다"
+
+#: src/modules/theme/libkvitheme.cpp:331
+msgid "Failed to load theme from directory %Q: %Q"
+msgstr "%Q:%Q 디렉토리에서 테마를 불러오지 못했습니다"
+
+#: src/modules/theme/libkvitheme.cpp:341
+msgid "No themes specified: refusing to create an empty theme package"
+msgstr "테마를 지정하지 않았습니다: 빈 테마 꾸러미 생성을 거부합니다"

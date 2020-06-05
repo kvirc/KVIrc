@@ -1,0 +1,1383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+# MarongHappy <daemul72@gmail.com>, 2020
+# ks k, 2020
+# ks k, 2020
+# MarongHappy <daemul72@gmail.com>, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
+"PO-Revision-Date: 2020-05-31 06:46+0000\n"
+"Last-Translator: ks k\n"
+"Language-Team: Korean (http://www.transifex.com/kvirc/KVIrc/language/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/actioneditor/ActionEditor.cpp:101
+msgid "Name:"
+msgstr "이름:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:105
+msgid "Internal unique name for the action"
+msgstr "동작의 내부 고유 이름"
+
+#: src/modules/actioneditor/ActionEditor.cpp:107
+msgid "Label:"
+msgstr "수준:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:111
+msgid ""
+"Visible name for this action.<br>This string will be displayed to the user "
+"so it is a good idea to use $tr() here"
+msgstr "이 동작의 이름이 표시됩니다.<br>이 문자열은 사용자에게 표시되므로 $tr() 를 여기에서 사용하는 것이 좋습니다"
+
+#: src/modules/actioneditor/ActionEditor.cpp:122
+msgid "Action code"
+msgstr "동작 코드"
+
+#: src/modules/actioneditor/ActionEditor.cpp:124
+msgid "Code"
+msgstr "코드"
+
+#: src/modules/actioneditor/ActionEditor.cpp:130
+msgid "Category:"
+msgstr "범주:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:134
+msgid "Choose the category that best fits for this action"
+msgstr "이 동작에 가장 적합한 범주를 선택하십시오"
+
+#: src/modules/actioneditor/ActionEditor.cpp:136
+msgid "Description:"
+msgstr "설명:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:140
+msgid ""
+"Visible short description for this action.<br>This string will be displayed "
+"to the user so it is a good idea to use $tr() here"
+msgstr "이 동작에 대한 간단한 설명이 표시됩니다.<br>이 문자열은 사용자에게 표시되므로 $tr() 를 여기에서 사용하는 것이 좋습니다"
+
+#: src/modules/actioneditor/ActionEditor.cpp:142
+msgid "Small icon:"
+msgstr "작은 아이콘:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:150
+msgid ""
+"The small icon associated to this action.<br>It will appear at least in the "
+"popup menus when this action is inserted.<br>It has to be 16x16 pixels."
+msgstr "이 동작에 연결된 작은 아이콘입니다.<br>이 동작을 삽입하면 팝업 메뉴에 가장 적은 표시됩니다.<br>16x16 픽셀이어야 합니다."
+
+#: src/modules/actioneditor/ActionEditor.cpp:157
+msgid "Big icon:"
+msgstr "큰 아이콘:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:166
+msgid ""
+"The big icon associated to this action.<br>It will appear at least in the "
+"toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
+msgstr "이 동작과 관련된 큰 아이콘입니다.<br>이 동작을 삽입하면 적어도 도구 막대 단추에 나타납니다.<br>32x32 픽셀이어야 합니다."
+
+#: src/modules/actioneditor/ActionEditor.cpp:173
+msgid "Key sequence:"
+msgstr "키 순서:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:177
+msgid ""
+"Optional keyboard sequence that will activate this action.<br>The sequence "
+"has to be expressed as a string of up to four key codes separated by commas "
+"eventually combined with the modifiers \"Ctrl\", \"Shift\", \"Alt\" and "
+"\"Meta\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", "
+"\"Ctrl+X,Ctrl+C\"."
+msgstr "이 동작을 활성화하는 선택적 키보드 순서입니다.<br>순서는 쉼표로 구분된 가장 큰 4개의 키 코드 문자열로 최종적으로 \"Ctrl\", \"Shift\", \"Alt\", \"Meta\" 같은 수정자와 결합하여 표현되어야 합니다.<br>이러한 순서의 예로는 \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X, Ctrl+C\" 가 있습니다."
+
+#: src/modules/actioneditor/ActionEditor.cpp:187
+msgid "Properties"
+msgstr "속성"
+
+#: src/modules/actioneditor/ActionEditor.cpp:193
+msgid "Needs IRC context"
+msgstr "IRC 맥락 필요"
+
+#: src/modules/actioneditor/ActionEditor.cpp:195
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window belongs to an IRC context"
+msgstr "활성 창이 IRC 맥락에 속할때만 이 동작을 사용 되도록 설정하려면 이 선택사항을 선택하십시오"
+
+#: src/modules/actioneditor/ActionEditor.cpp:204
+msgid "Needs IRC connection"
+msgstr "IRC 연결이 필요"
+
+#: src/modules/actioneditor/ActionEditor.cpp:206
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window has an active IRC connection"
+msgstr "활성 창에 활성화된 IRC 연결이 있는 경우에만 이 동작을 사용 되도록 설정하려면 이 선택사항을 선택하십시오"
+
+#: src/modules/actioneditor/ActionEditor.cpp:215
+msgid "Enable at login"
+msgstr "로그인 때 사용 되도록 설정"
+
+#: src/modules/actioneditor/ActionEditor.cpp:216
+msgid ""
+"Check this option if this action should be enabled also during the login "
+"operations. i.e. when the logical IRC connection hasn't been established "
+"yet."
+msgstr "로그인 조작 중에 이 동작을 사용 되도록 설정하려면 이 선택사항을 선택하십시오. 즉, 논리적 IRC 연결이 아직 설정되지 않은 경우입니다."
+
+#: src/modules/actioneditor/ActionEditor.cpp:221
+msgid "Enable only in specified windows"
+msgstr "지정된 창에서 사용 되도록 설정"
+
+#: src/modules/actioneditor/ActionEditor.cpp:223
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is of a specified type"
+msgstr "활성 창이 지정된 유형인 경우에만 이 동작을 사용 되도록 설정하려면 이 선택사항을 선택하십시오"
+
+#: src/modules/actioneditor/ActionEditor.cpp:228
+msgid "Enable in console windows"
+msgstr "콘솔 창에서 사용 가능"
+
+#: src/modules/actioneditor/ActionEditor.cpp:229
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a console"
+msgstr "활성 창이 콘솔인 경우에만 이 동작을 사용 되도록 설정하려면 이 선택사항을 선택하십시오"
+
+#: src/modules/actioneditor/ActionEditor.cpp:235
+#: src/modules/actioneditor/ActionEditor.cpp:248
+#: src/modules/actioneditor/ActionEditor.cpp:261
+msgid "Only if there are selected users"
+msgstr "선택된 사용자가 있는 경우에만 해당됨"
+
+#: src/modules/actioneditor/ActionEditor.cpp:236
+#: src/modules/actioneditor/ActionEditor.cpp:249
+#: src/modules/actioneditor/ActionEditor.cpp:262
+msgid ""
+"This will enable the action only if there are selected users in the active "
+"window"
+msgstr "활성 창에서 선택된 사용자가 있는 경우에만 동작을 사용 되도록 설정 합니다"
+
+#: src/modules/actioneditor/ActionEditor.cpp:241
+msgid "Enable in channel windows"
+msgstr "대화방 창에서 활성화"
+
+#: src/modules/actioneditor/ActionEditor.cpp:242
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a channel"
+msgstr "활성 창이 대화방인 경우에만 이 동작을 사용 되도록 설정하려면 이 선택사항을 선택하십시오"
+
+#: src/modules/actioneditor/ActionEditor.cpp:254
+msgid "Enable in query windows"
+msgstr "질의 창에서 활성화"
+
+#: src/modules/actioneditor/ActionEditor.cpp:255
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a query"
+msgstr "활성 창이 질의일 때만 이 동작을 사용 되도록 설정하려면 이 선택사항을 선택하십시오"
+
+#: src/modules/actioneditor/ActionEditor.cpp:267
+msgid "Enable in DCC chat windows"
+msgstr "DCC 대화 창에서 활성화"
+
+#: src/modules/actioneditor/ActionEditor.cpp:268
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a DCC chat"
+msgstr "활성 창이 DCC 대화일 때만 이 동작을 사용 되도록 설정하려면 이 선택사항을 선택하십시오"
+
+#: src/modules/actioneditor/ActionEditor.cpp:278
+msgid "Flags"
+msgstr "플래그"
+
+#: src/modules/actioneditor/ActionEditor.cpp:605
+msgid "Action"
+msgstr "동작"
+
+#: src/modules/actioneditor/ActionEditor.cpp:644
+msgid "New Action"
+msgstr "새로운 동작"
+
+#: src/modules/actioneditor/ActionEditor.cpp:647
+msgid "Delete Actions"
+msgstr "동작 삭제"
+
+#: src/modules/actioneditor/ActionEditor.cpp:650
+msgid "Export Actions..."
+msgstr "동작 내보내기..."
+
+#: src/modules/actioneditor/ActionEditor.cpp:714
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:860
+#: src/modules/classeditor/ClassEditorWindow.cpp:1224
+#: src/modules/editor/ScriptEditorImplementation.cpp:866
+#: src/modules/raweditor/RawEditorWindow.cpp:418
+#: src/modules/raweditor/RawEditorWindow.cpp:458
+msgid "Choose a Filename - KVIrc"
+msgstr "파일 이름 선택 - KVIrc"
+
+#: src/modules/actioneditor/ActionEditor.cpp:747
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:877
+#: src/modules/editor/ScriptEditorImplementation.cpp:876
+#: src/modules/eventeditor/EventEditorWindow.cpp:517
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1228
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1278
+#: src/modules/raweditor/RawEditorWindow.cpp:426
+#: src/modules/raweditor/RawEditorWindow.cpp:463
+msgid "Writing to File Failed - KVIrc"
+msgstr "파일에 쓰지 못했습니다 - KVIrc"
+
+#: src/modules/actioneditor/ActionEditor.cpp:747
+msgid "Unable to write to the actions file."
+msgstr "동작 파일에 쓸 수 없습니다."
+
+#: src/modules/actioneditor/ActionEditor.cpp:747
+#: src/modules/actioneditor/ActionEditor.cpp:895
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:752
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:835
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:877
+#: src/modules/classeditor/ClassEditorWindow.cpp:1097
+#: src/modules/classeditor/ClassEditorWindow.cpp:1200
+#: src/modules/classeditor/ClassEditorWindow.cpp:1241
+#: src/modules/editor/ScriptEditorImplementation.cpp:485
+#: src/modules/eventeditor/EventEditorWindow.cpp:557
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1228
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1278
+#: src/modules/raweditor/RawEditorWindow.cpp:463
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:188
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:254
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:478
+msgid "OK"
+msgstr "확인"
+
+#: src/modules/actioneditor/ActionEditor.cpp:795
+#: src/modules/actioneditor/ActionEditor.cpp:796
+msgid "My Action"
+msgstr "내 동작"
+
+#: src/modules/actioneditor/ActionEditor.cpp:797
+msgid "Put here a short description of your action"
+msgstr "여기에 당신의 동작에 대한 간단한 설명을 넣으십시오"
+
+#: src/modules/actioneditor/ActionEditor.cpp:888
+msgid "Action Editor"
+msgstr "동작 편집"
+
+#: src/modules/actioneditor/ActionEditor.cpp:900
+msgid "Apply"
+msgstr "적용"
+
+#: src/modules/actioneditor/ActionEditor.cpp:905
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1266
+#: src/modules/editor/ScriptEditorImplementation.cpp:489
+#: src/modules/eventeditor/EventEditorWindow.cpp:580
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1424
+#: src/modules/raweditor/RawEditorWindow.cpp:487
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:193
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:424
+msgid "Cancel"
+msgstr "취소"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:104
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:358
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:564
+msgid "Alias"
+msgstr "별칭"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:140
+#: src/modules/eventeditor/EventEditorWindow.cpp:108
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1083
+#: src/modules/raweditor/RawEditorWindow.cpp:95
+msgid "&Export All to..."
+msgstr "다음으로 모두 내보내기...(&E)"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:147
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:542
+#: src/modules/classeditor/ClassEditorWindow.cpp:191
+#: src/modules/classeditor/ClassEditorWindow.cpp:206
+#: src/modules/classeditor/ClassEditorWindow.cpp:213
+#: src/modules/classeditor/ClassEditorWindow.cpp:756
+#: src/modules/eventeditor/EventEditorWindow.cpp:127
+#: src/modules/eventeditor/EventEditorWindow.cpp:422
+#: src/modules/eventeditor/EventEditorWindow.cpp:446
+msgid "No item selected"
+msgstr "선택한 항목이 없음"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:148
+#: src/modules/classeditor/ClassEditorWindow.cpp:194
+#: src/modules/classeditor/ClassEditorWindow.cpp:208
+msgid "Rename"
+msgstr "이름 바꾸기"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:152
+msgid "Edit the alias or namespace name"
+msgstr "별칭 또는 네임스페이스 이름을 편집합니다"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:339
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1151
+msgid "Confirm Overwriting Current - KVIrc"
+msgstr "현재 덮어쓰기를 확인 - KVIrc"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:340
+msgid ""
+"An external script has changed the alias you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr "외부 스크립트가 현재 편집하고있는 별명을 바꿨습니다. 외부 변경 사항을 받아들이겠습니까?"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:356
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:552
+#: src/modules/classeditor/ClassEditorWindow.cpp:773
+msgid "Namespace"
+msgstr "네임스페이스"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:451
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:453
+#: src/modules/classeditor/ClassEditorWindow.cpp:657
+msgid "Enter a New Name - KVIrc"
+msgstr "새로운 이름을 입력하십시오 - KVIrc"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:451
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1187
+msgid "Please enter the new name for the alias."
+msgstr "별칭의 새 이름을 입력하십시오."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:453
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1195
+#: src/modules/classeditor/ClassEditorWindow.cpp:657
+msgid "Please enter the new name for the namespace."
+msgstr "네임스페이스의 새 이름을 입력하십시오."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:467
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:481
+#: src/modules/classeditor/ClassEditorWindow.cpp:516
+#: src/modules/classeditor/ClassEditorWindow.cpp:579
+#: src/modules/classeditor/ClassEditorWindow.cpp:668
+#: src/modules/classeditor/ClassEditorWindow.cpp:675
+msgid "Name Already Exists - KVIrc"
+msgstr "이미 이름이 있습니다 - KVIrc"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:468
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:482
+msgid "This name is already in use. Please choose another one."
+msgstr "이미 이 이름은 사용하고 있습니다. 다른 것을 선택하십시오."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:469
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:483
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1052
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1065
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1079
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1090
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1121
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1134
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1148
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1159
+#: src/modules/classeditor/ClassEditorWindow.cpp:518
+#: src/modules/classeditor/ClassEditorWindow.cpp:581
+#: src/modules/classeditor/ClassEditorWindow.cpp:670
+#: src/modules/classeditor/ClassEditorWindow.cpp:677
+#: src/modules/classeditor/ClassEditorWindow.cpp:1515
+#: src/modules/classeditor/ClassEditorWindow.cpp:1528
+#: src/modules/classeditor/ClassEditorWindow.cpp:1542
+#: src/modules/classeditor/ClassEditorWindow.cpp:1553
+msgid "OK, Let me try again..."
+msgstr "좋아요, 다시 해 보겠습니다..."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:584
+msgid "Add Alias"
+msgstr "별칭을 추가"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:589
+#: src/modules/classeditor/ClassEditorWindow.cpp:873
+msgid "Add Namespace"
+msgstr "네임스페이스를 추가"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:599
+#: src/modules/classeditor/ClassEditorWindow.cpp:905
+msgid "Remove Selected"
+msgstr "선택한것 삭제"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:607
+#: src/modules/classeditor/ClassEditorWindow.cpp:913
+msgid "Export Selected..."
+msgstr "선택한것 내보내기..."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:613
+msgid "Export Selected into Single Files..."
+msgstr "선택한 파일을 단일 파일로 내보내기..."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:619
+#: src/modules/classeditor/ClassEditorWindow.cpp:926
+msgid "Export All..."
+msgstr "모두 내보내기..."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:627
+msgid "Find in Aliases..."
+msgstr "별칭에서 찾기..."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:633
+msgid "Collapse All Namespaces"
+msgstr "모든 네임스페이스 축소"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:665
+msgid "Find in Aliases"
+msgstr "별칭에서 찾기"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:666
+msgid ""
+"Please enter the text to be searched for. The matching aliases will be "
+"highlighted."
+msgstr "검색할 글자를 입력하십시오. 일치하는 별칭이 강조 표시됩니다."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:752
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:835
+#: src/modules/classeditor/ClassEditorWindow.cpp:1097
+#: src/modules/classeditor/ClassEditorWindow.cpp:1200
+msgid "Warning While Exporting - KVIrc"
+msgstr "내보내는 동안 경고 - KVIrc"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:752
+#: src/modules/classeditor/ClassEditorWindow.cpp:1097
+msgid "Must select an entry from the list to export!"
+msgstr "내보낼 목록에서 항목을 선택해야 합니다!"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:760
+#: src/modules/classeditor/ClassEditorWindow.cpp:1105
+msgid "Choose a Directory - KVIrc"
+msgstr "디렉토리를 선택하십시오 - KVIrc"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:787
+#: src/modules/classeditor/ClassEditorWindow.cpp:1129
+msgid "The file \"%1\" exists. Do you want to replace it?"
+msgstr "\"%1\" 파일이 있습니다. 교체하시겠습니까?"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:788
+#: src/modules/classeditor/ClassEditorWindow.cpp:1130
+msgid "Confirm Replacing File - KVIrc"
+msgstr "파일 교체를 확인 - KVIrc"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:788
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:990
+#: src/modules/classeditor/ClassEditorWindow.cpp:1130
+#: src/modules/classeditor/ClassEditorWindow.cpp:1375
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:422
+msgid "Yes"
+msgstr "예"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:788
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:990
+#: src/modules/classeditor/ClassEditorWindow.cpp:1130
+#: src/modules/classeditor/ClassEditorWindow.cpp:1375
+msgid "Yes to All"
+msgstr "모두 예"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:788
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:990
+#: src/modules/classeditor/ClassEditorWindow.cpp:1130
+#: src/modules/classeditor/ClassEditorWindow.cpp:1375
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:423
+msgid "No"
+msgstr "아니오"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:835
+msgid "The exported file could be empty: cowardly refusing to write it."
+msgstr "내보낸 파일이 비어 있을 수 있음: 비겁하게도 파일을 쓰는 것을 거부합니다."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:877
+msgid "Unable to write to the aliases file."
+msgstr "별칭 파일에 쓸 수 없습니다."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:981
+msgid "Do you really want to remove the alias \"%1\"?"
+msgstr "\"%1\" 별칭을 제거하시겠습니까?"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:984
+#: src/modules/classeditor/ClassEditorWindow.cpp:1365
+msgid "Do you really want to remove the namespace \"%1\"?"
+msgstr "\"%1\" 네임스페이스를 제거하시겠습니까?"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:986
+msgid "Please note that all the child items will be deleted too."
+msgstr "모든 하위 항목도 삭제됩니다."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:990
+#: src/modules/classeditor/ClassEditorWindow.cpp:1375
+msgid "Confirm Removing Item - KVIrc"
+msgstr "항목 제거 확인 - KVIrc"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1050
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1119
+#: src/modules/classeditor/ClassEditorWindow.cpp:1513
+msgid "Invalid or Missing Name - KVIrc"
+msgstr "이름이 잘못되었거나 없습니다 - KVIrc"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1051
+msgid "You must specify a valid name for the alias."
+msgstr "별칭의 올바른 이름을 지정해야 합니다."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1063
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1077
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1088
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1132
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1146
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1157
+#: src/modules/classeditor/ClassEditorWindow.cpp:1526
+#: src/modules/classeditor/ClassEditorWindow.cpp:1540
+#: src/modules/classeditor/ClassEditorWindow.cpp:1551
+msgid "Invalid Name - KVIrc"
+msgstr "잘못된 이름 - KVIrc"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1064
+msgid ""
+"Aliases names can contain only letters, digits, underscores and '::' "
+"namespace separators."
+msgstr "별칭 이름은 문자, 숫자, 밑줄, 네임스페이스 구분 기호인 '::' 만 포함 할 수 있습니다."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1078
+msgid ""
+"Stray ':' character in alias name: did you mean ...<namespace>::<name>?"
+msgstr "별칭 이름에 ':' 문자를 입력하십시오: <namespace>::<name>... 를 의미 한것입니까?"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1089
+msgid "Found an empty namespace in alias name."
+msgstr "별칭 이름에서 빈 네임스페이스를 찾았습니다."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1120
+#: src/modules/classeditor/ClassEditorWindow.cpp:1514
+msgid "You must specify a valid name for the namespace."
+msgstr "네임스페이스의 올바른 이름을 지정해야 합니다."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1133
+#: src/modules/classeditor/ClassEditorWindow.cpp:1527
+msgid ""
+"Namespace names can contain only letters, digits, underscores and '::' "
+"namespace separators."
+msgstr "네임스페이스 이름에는 문자, 숫자, 밑줄, 네임스페이스 구분 기호인 '::' 만 포함 할 수 있습니다."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1147
+msgid ""
+"Stray ':' character in namespace name: did you mean... <namespace>::<name>?"
+msgstr "네임스페이스 이름에 ':' 문자를 입력하십시오: <namespace>::<name>... 를 의미 한것입니까?"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1158
+#: src/modules/classeditor/ClassEditorWindow.cpp:1552
+msgid "Found an empty namespace in namespace name."
+msgstr "네임스페이스 이름에서 빈 네임스페이스를 찾았습니다."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1187
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1195
+#: src/modules/classeditor/ClassEditorWindow.cpp:1603
+#: src/modules/eventeditor/EventEditorWindow.cpp:509
+#: src/modules/eventeditor/EventEditorWindow.cpp:552
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1220
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1273
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:414
+msgid "Enter a Filename - KVIrc"
+msgstr "파일 이름 입력 - KVIrc"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1249
+msgid "Alias Editor"
+msgstr "별칭 편집기"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1256
+#: src/modules/eventeditor/EventEditorWindow.cpp:517
+#: src/modules/eventeditor/EventEditorWindow.cpp:570
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1414
+#: src/modules/raweditor/RawEditorWindow.cpp:426
+#: src/modules/raweditor/RawEditorWindow.cpp:477
+msgid "&OK"
+msgstr "확인(&O)"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1261
+#: src/modules/eventeditor/EventEditorWindow.cpp:575
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1419
+#: src/modules/raweditor/RawEditorWindow.cpp:482
+msgid "&Apply"
+msgstr "적용(&A)"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:70
+#: src/modules/classeditor/ClassEditorWindow.cpp:788
+msgid "Class"
+msgstr "분류"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:195
+msgid "Edit the class or namespace name"
+msgstr "분류 또는 네임스페이스의 이름을 편집"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:209
+msgid "Edit the function member name"
+msgstr "맴버 함수 이름 편집"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:517
+msgid "This function name is already in use. Please choose another one."
+msgstr "이 함수 이름은 이미 사용하고 있습니다. 다른 것을 선택하십시오."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:580
+#: src/modules/classeditor/ClassEditorWindow.cpp:669
+msgid "This class name is already in use. Please choose another one."
+msgstr "이 클래스 이름은 이미 사용하고 있습니다. 다른 것을 선택하십시오."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:676
+msgid "This namespace name is already in use. Please choose another one."
+msgstr "이 네임스페이스 이름이 이미 사용하고 있습니다. 다른 것을 선택하십시오."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:792
+msgid "inherits from class "
+msgstr "클래스에서 물려받음 "
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:798
+msgid "Member Function"
+msgstr "맴버 함수"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:809
+msgid "Reminder text."
+msgstr "알림 글자입니다."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:882
+msgid "Add Class"
+msgstr "클래스 추가"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:891
+msgid "Add Member Function"
+msgstr "맴버 함수 추가"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:919
+msgid "Export Selected in Single Files..."
+msgstr "단일 파일로 선택한것 내보내기..."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:934
+msgid "Find in Classes..."
+msgstr "클래스 찾기..."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:940
+msgid "Collapse All Items"
+msgstr "모든 아이템 축소"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:986
+msgid "Find In Classes"
+msgstr "클래스에서 찾기"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:987
+msgid ""
+"Please enter the text to be searched for. The matching function will be "
+"highlighted."
+msgstr "검색할 글자를 입력하십시오. 일치하는 기능이 강조 표시됩니다."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1200
+msgid "The exported class file could be empty: cowardly refusing to write it"
+msgstr "내보낸 클래스 파일이 비어 있을 수 있음: 비겁하게도 그것을 쓰는 것을 거부합니다"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1241
+msgid "Write to Classes File Failed - KVIrc"
+msgstr "클래스 파일에 쓰지 못했습니다 - KVIrc"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1241
+msgid "Unable to write to the classes file."
+msgstr "클래스 파일에 쓸 수 없습니다."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1361
+msgid "Do you really want to remove the class \"%1\"?"
+msgstr "\"%1\" 클래스를 제거하시겠습니까?"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1367
+msgid "Please note that all the child classes/functions will also be deleted."
+msgstr "모든 하위 클래스/기능도 삭제됩니다."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1371
+msgid "Do you really want to remove the function \"%1\"?"
+msgstr "\"%1\" 함수를 제거하시겠습니까?"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1541
+msgid ""
+"Stray ':' character in namespace name: did you mean ...<namespace>::<name>?"
+msgstr "네임스페이스 이름에 ':' 문자를 입력하십시오: <namespace>::<name>... 를 의미 한것입니까?"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1603
+msgid "Please enter the name for the new namespace."
+msgstr "새로운 네임스페이스의 이름을 입력하십시오."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1700
+msgid "Unable to compile class: "
+msgstr "클래스를 컴파일할 수 없습니다: "
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1707
+msgid "These inherited classes will be not compiled too:"
+msgstr "이러한 물려받은 클래스도 컴파일되지 않습니다:"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1716
+msgid "Compilation Error - KVIrc"
+msgstr "컴파일 오류 - KVIrc"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1850
+msgid "Class Editor"
+msgstr "분류 편집기"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1857
+msgid "&Build"
+msgstr "구축or빌드(&B)"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1862
+msgid "&Save"
+msgstr "저장(&S)"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1867
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:336
+msgid "Close"
+msgstr "닫기"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1931
+msgid "Please enter the name for the class:"
+msgstr "클래스 이름을 입력하십시오:"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1942
+msgid "Class names can contain only letters, digits and underscores"
+msgstr "클래스 이름은 문자, 숫자, 밑줄(언더스코어)만 포함 할 수 있습니다"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1948
+msgid ""
+"In rename mode class names can contain only letters, digits and underscores "
+"and namespaces :: separator"
+msgstr "이름 바꾸기 모드에서 클래스 이름은 문자, 숫자, 밑줄(언더스코어), 네임스페이스::구분기호 만 포함 할 수 있습니다"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1961
+msgid "Inherits class:"
+msgstr "물려받은 클래스:"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2007
+msgid "&Rename Class"
+msgstr "클래스 이름변경(&R)"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2010
+msgid "&Create Class"
+msgstr "클래스 만들기(&C)"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2017
+#: src/modules/classeditor/ClassEditorWindow.cpp:2118
+#: src/modules/editor/ScriptEditorImplementation.cpp:1032
+msgid "&Cancel"
+msgstr "취소(&C)"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2054
+msgid "Please enter the name for the member function:"
+msgstr "맴버 함수의 이름을 입력하십시오:"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2063
+msgid "Function names can contain only letters, digits and underscores"
+msgstr "함수 이름은 문자, 숫자, 밑줄 만 포함 할 수 있습니다"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2075
+msgid "Please enter the optional reminder string for the member function:"
+msgstr "맴버 함수에 대한 선택적 알림 문자열을 입력하십시오:"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2088
+msgid "Set as <b>Internal</b> Function: "
+msgstr "<b>내부</b>함수로 설정: "
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2108
+msgid "&Add"
+msgstr "추가(&A)"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2110
+msgid "&Rename"
+msgstr "이름변경(&R)"
+
+#: src/modules/codetester/CodeTesterWindow.cpp:64
+msgid "&Execute"
+msgstr "실행(&E)"
+
+#: src/modules/codetester/CodeTesterWindow.cpp:68
+msgid "Params:"
+msgstr "매개 변수:"
+
+#: src/modules/codetester/CodeTesterWindow.cpp:71
+msgid ""
+"Here you can specify a semicolon-separated list of parameters that will be "
+"available in the code as $0, $1, $2, .."
+msgstr "여기서 코드에서 사용할 수 있는 매개 변수의 세미콜론으로 구분된 목록을 $0, $1, $2, .. 로 지정할 수 있습니다."
+
+#: src/modules/codetester/CodeTesterWindow.cpp:109
+msgid "Script Tester"
+msgstr "스크립트 검사기"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:267
+msgid "Context Sensitive Help"
+msgstr "상황에 맞는 도움말"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:268
+#: src/modules/editor/ScriptEditorImplementation.cpp:1037
+msgid "&Replace"
+msgstr "바꾸기(&R)"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:281
+msgid "Find & Replace"
+msgstr "찾기 및 바꾸기"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:459
+msgid "Editor Configuration - KVIrc"
+msgstr "편집기 구성 - KVIrc"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:468
+msgid "Font:"
+msgstr "글꼴:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:470
+msgid "Colors"
+msgstr "색상"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:473
+msgid "Background:"
+msgstr "배경:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:474
+msgid "Normal text:"
+msgstr "일반 글자:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:475
+msgid "Brackets:"
+msgstr "대괄호:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:476
+msgid "Comments:"
+msgstr "의견:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:477
+msgid "Functions:"
+msgstr "함수:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:478
+msgid "Keywords:"
+msgstr "중요단어:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:479
+msgid "Variables:"
+msgstr "변수:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:480
+msgid "Punctuation:"
+msgstr "구두점:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:481
+#: src/modules/editor/ScriptEditorImplementation.cpp:748
+msgid "Find:"
+msgstr "찾기:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:731
+msgid "Options"
+msgstr "선택사항"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:736
+msgid "&Open..."
+msgstr "열기...(&O)"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:737
+msgid "&Save As..."
+msgstr "다른 이름으로 저장...(&S)"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:739
+msgid "&Configure Editor..."
+msgstr "편집기 설정...(&C)"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:752
+msgid "&Find"
+msgstr "찾기(&F)"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:755
+#: src/modules/editor/ScriptEditorImplementation.cpp:934
+msgid "Line: %1 Col: %2"
+msgstr "줄: %1 칸: %2"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:877
+msgid "Can't open file %1 for writing."
+msgstr "%1 파일을 쓰기 위해 열 수 없습니다."
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:951
+msgid "Select a File - KVIrc"
+msgstr "파일 선택하십시오 - KVIrc"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:964
+msgid "Opening File Failed - KVIrc"
+msgstr "파일을 열지 못했습니다 - KVIrc"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:965
+msgid "Can't open file %1 for reading."
+msgstr "%1 파일을 읽기 위해 열 수 없습니다."
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:1007
+msgid "Word to find:"
+msgstr "찾을 단어:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:1016
+msgid "Replace with:"
+msgstr "다음으로 바꿈:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:1027
+msgid "&Replace in all editor's items"
+msgstr "모든 편집기의 항목으로 바꾸기(&R)"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:122
+msgid "E&nabled"
+msgstr "사용가능(&N)"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:128
+msgid "Edit the event handler name."
+msgstr "사건 처리기 이름을 편집합니다."
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:215
+msgid "Event"
+msgstr "사건"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:246
+#: src/modules/raweditor/RawEditorWindow.cpp:151
+msgid "&Enable Handler"
+msgstr "처리기를 사용 되도록 설정(&E)"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:250
+#: src/modules/raweditor/RawEditorWindow.cpp:154
+msgid "&Disable Handler"
+msgstr "처리기를 사용 안되도록 설정(&E)"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:254
+#: src/modules/raweditor/RawEditorWindow.cpp:157
+msgid "Re&move Handler"
+msgstr "처리기 제거(&M)"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:258
+#: src/modules/raweditor/RawEditorWindow.cpp:160
+msgid "&Export Handler to..."
+msgstr "처리기 다음으로 내보내기...(&E)"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:265
+#: src/modules/raweditor/RawEditorWindow.cpp:165
+msgid "&New Handler"
+msgstr "새 처리기(&N)"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:279
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1377
+#: src/modules/raweditor/RawEditorWindow.cpp:182
+msgid "unnamed"
+msgstr "번역확인->이름없음"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:317
+#: src/modules/raweditor/RawEditorWindow.cpp:247
+msgid "default"
+msgstr "기본값"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:450
+msgid "None"
+msgstr "없음"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:453
+msgid ""
+"\n"
+"\n"
+"Event:\n"
+"%1\n"
+"\n"
+"Parameters:\n"
+"%2"
+msgstr "\n\n사건:\n%1\n\n매개변수:\n%2"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:517
+#: src/modules/eventeditor/EventEditorWindow.cpp:557
+msgid "Unable to write to the events file."
+msgstr "사건 파일에 쓸 수 없습니다."
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:557
+msgid "Writing to File Failed"
+msgstr "파일에 쓰지 못했습니다"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:618
+msgid "Event Editor"
+msgstr "사건 편집기"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:74
+#: src/modules/popupeditor/PopupEditorWindow.cpp:203
+msgid "Item"
+msgstr "아이템"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:77
+msgid "Submenu"
+msgstr "하위 차림표"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:80
+msgid "External Menu"
+msgstr "외부 차림표"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:84
+msgid "Separator"
+msgstr "구분기호"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:87
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:149
+msgid "Label"
+msgstr "딱지"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:90
+msgid "### Epilogue ###"
+msgstr "### 맺음말 ###"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:91
+msgid "Epilogue"
+msgstr "맺음말"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:94
+msgid "### Prologue ###"
+msgstr "### 처음말 ###"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:95
+msgid "Prologue"
+msgstr "처음말"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:189
+msgid "Popup name"
+msgstr "팝업 이름"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:193
+msgid "Test"
+msgstr "시험"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:203
+msgid "Type"
+msgstr "유형"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:221
+msgid "Text:"
+msgstr "글자:"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:226
+msgid ""
+"<b>Visible text</b><br>May contain identifiers that will be evaluated at "
+"popup call time.<br>For labels, this text can contain also limited HTML "
+"tags."
+msgstr "<b>보이는 글자<b>팝업 호출 시 계산될 식별자를 포함할 수 있습니다.<br>딱지의 경우 이 텍스트에는 제한된 HTML 태그도 포함될 수 있습니다."
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:229
+msgid "Condition:"
+msgstr "조건:"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:235
+msgid ""
+"<b>Boolean condition</b><br>Will be evaluated at popup call time in order to"
+" decide if this entry has to be shown.<br>An empty condition evaluates to "
+"true."
+msgstr "<b>부울 조건</b><br>이 항목을 표시해야 하는지 여부를 결정하기 위해 팝업 호출 시간에 계산됩니다.<br>빈 조건은 참으로 평가합니다."
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:238
+msgid "Icon:"
+msgstr "아이콘:"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:244
+msgid ""
+"<b>Icon identifier</b><br>May be an internal icon ID, an absolute path or a "
+"relative path.<br>Portable scripts should never use absolute paths."
+msgstr "<b>아이콘 식별자</b><br>내부 아이콘 ID, 절대 경로 또는 상대 경로일 수 있습니다.<br>휴대용 스크립트는 절대 경로를 사용하면 안 됩니다."
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:247
+msgid "External menu:"
+msgstr "외부 차림표:"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:253
+msgid ""
+"<b>External menu name</b><br>This allows one to nest externally defined "
+"popup menus. The popup menu with the specified name will be looked up at "
+"menu setup time."
+msgstr "<b>외부 차림표 이름</b><br>이렇게 하면 외부에서 정의된 팝업 차림표가 겹쳐질 수 있습니다. 지정된 이름의 팝업 차림표는 차림표 설정 시간에 조회됩니다."
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:256
+msgid "Item ID:"
+msgstr "아이템 아이디:"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:262
+msgid "<b>Item ID</b><br>This will allow you to use delpopupitem later."
+msgstr "<b>아이템 아이디</b><br>이렇게하면 나중에 delpopupitem을 사용할 수 있습니다."
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:394
+msgid "New Separator Below"
+msgstr "아래쪽 새로운 구분기호"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:395
+msgid "New Separator Above"
+msgstr "새로운 구분기호 위쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:397
+msgid "New Separator Inside"
+msgstr "새로운 구분기호 안쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:402
+msgid "New Label Below"
+msgstr "새로운 딱지 아래쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:403
+msgid "New Label Above"
+msgstr "새로운 딱지 위쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:405
+msgid "New Label Inside"
+msgstr "새로운 딱지 안쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:410
+msgid "New Item Below"
+msgstr "새로운 딱지 아래쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:411
+msgid "New Item Above"
+msgstr "새로운 딱지 위쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:413
+msgid "New Item Inside"
+msgstr "새로운 아이템 안쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:418
+msgid "New Menu Below"
+msgstr "새로운 차림표 아래쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:419
+msgid "New Menu Above"
+msgstr "새로운 차림표 위쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:421
+msgid "New Menu Inside"
+msgstr "새로운 차림표 안쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:426
+msgid "New External Menu Below"
+msgstr "새로운 외부 차림표 아래쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:427
+msgid "New External Menu Above"
+msgstr "새로운 외부 차림표 외부"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:429
+msgid "New External Menu Inside"
+msgstr "새로운 외부 차림표 안쪽"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:435
+msgid "Cu&t"
+msgstr "잘라내기(&T)"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:438
+msgid "&Copy"
+msgstr "복사하기(&C)"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:441
+msgid "Re&move"
+msgstr "제거(&M)"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:444
+msgid "&Paste Below"
+msgstr "아래에 붙여넣기(&P)"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:447
+msgid "Paste Above"
+msgstr "위에 붙여넣기"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:450
+msgid "Paste Inside"
+msgstr "안쪽에 붙여넣기"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:455
+msgid "New Menu Prologue"
+msgstr "새로운 차림표 처음말"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:458
+msgid "New Menu Epilogue"
+msgstr "새로운 차림표 맺음말"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1079
+msgid "Popup"
+msgstr "팝업"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1085
+msgid "&Export Selected to..."
+msgstr "선택한 항목 내보내기...(&E)"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1152
+msgid ""
+"An external script has changed the popup you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr "외부 스크립트가 현재 편집중인 팝업을 바꿨습니다. 외부 변경 사항을 수락 하시겠습니까?"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1182
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1199
+msgid "&New Popup"
+msgstr "새로운 팝업(&N)"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1185
+msgid "Re&move Popup"
+msgstr "팝업 제거(&M)"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1189
+msgid "&Export Popup to..."
+msgstr "팝업을 다음으로 내보내기...(&E)"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1228
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1278
+msgid "Unable to write to the popups file."
+msgstr "팝업 파일에 쓸 수 없습니다."
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1452
+msgid "Popup Editor"
+msgstr "팝업 편집기"
+
+#: src/modules/raweditor/RawEditorWindow.cpp:83
+msgid "RAW Event"
+msgstr "RAW 사건"
+
+#: src/modules/raweditor/RawEditorWindow.cpp:100
+msgid "Edit the RAW event handler name."
+msgstr "RAW 사건 처리기 이름을 편집합니다."
+
+#: src/modules/raweditor/RawEditorWindow.cpp:172
+msgid "&Add RAW Event..."
+msgstr "RAW 사건 추가...(&A)"
+
+#: src/modules/raweditor/RawEditorWindow.cpp:211
+msgid "New RAW Event"
+msgstr "새로운 RAW 사건"
+
+#: src/modules/raweditor/RawEditorWindow.cpp:211
+msgid "Enter the numeric code of the message (0-999)"
+msgstr "메시지의 숫자 코드(0-999)를 입력합니다"
+
+#: src/modules/raweditor/RawEditorWindow.cpp:361
+msgid ""
+"\n"
+"\n"
+"RAW Event:\n"
+"%1"
+msgstr "\n\nRAW 사건:\n%1"
+
+#: src/modules/raweditor/RawEditorWindow.cpp:426
+#: src/modules/raweditor/RawEditorWindow.cpp:463
+msgid "Unable to write to the RAW events file."
+msgstr "RAW 사건 파일에 쓸 수 없습니다."
+
+#: src/modules/raweditor/RawEditorWindow.cpp:525
+msgid "RAW Editor"
+msgstr "RAW 편집기"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:66
+msgid "Drop here the icons from the toolbars to remove them"
+msgstr "도구 막대에서 아이콘을 클릭하여 제거합니다"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:140
+msgid "Toolbar Properties - KVIrc"
+msgstr "도구 막대 속성 - KVIrc"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:157
+msgid "Icon"
+msgstr "아이콘"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:173
+msgid "ID"
+msgstr "아이디"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:198
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:287
+msgid "Advanced..."
+msgstr "고급..."
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:230
+msgid "Choose a Toolbar Icon - KVIrc"
+msgstr "도구 막대 아이콘을 선택하십시오 - KVIrc"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:254
+msgid "Invalid Toolbar Label - KVIrc"
+msgstr "도구 막대 딱지가 잘못되었습니다 - KVIrc"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:254
+msgid "The toolbar label can't be empty!"
+msgstr "도구 막대 딱지는 비워 둘 수 없습니다!"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:267
+msgid "Duplicate Toolbar ID - KVIrc"
+msgstr "도구 막대 ID가 중복되었습니다 - KVIrc"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:268
+msgid ""
+"The specified toolbar ID already exists.<br>Would you like KVIrc to assign "
+"it automatically (so it doesn't collide with any other toolbar) or you "
+"prefer to do it manually?"
+msgstr "지정한 도구 막대 ID가 이미 있습니다.<br>KVIrc가 자동으로 할당 하시겠습니까(따라서 다른 도구 막대와 충돌하지 않음) 아니면 수동으로 할당 하시겠습니까?"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:271
+msgid "Manually"
+msgstr "수동으로"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:271
+msgid "Automatically"
+msgstr "자동으로"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:292
+msgid "Hide Advanced"
+msgstr "고급 숨기기"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:300
+msgid "Customize Toolbars - KVIrc"
+msgstr "맞춤화된 도구 막대 - KVIrc"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:309
+msgid "New Toolbar"
+msgstr "도구 막대 만들기"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:313
+msgid "Delete Toolbar"
+msgstr "도구 막대 삭제"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:317
+msgid "Edit Toolbar"
+msgstr "도구 막대 편집"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:325
+msgid "Export Toolbar"
+msgstr "도구 막대 내보내기"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:329
+msgid "Import Toolbar"
+msgstr "도구 막대 가져오기"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:391
+msgid "Confirm Toolbar Deletion - KVIrc"
+msgstr "도구 막대 삭제 확인 - KVIrc"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:392
+msgid "Do you really want to delete toolbar \"%1\"?"
+msgstr "\"%1\" 도구 막대를 삭제하시겠습니까?"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:420
+msgid "Confirm Toolbar Export - KVIrc"
+msgstr "도구 막대 내보내기 확인 - KVIrc"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:421
+msgid "Do you want the associated actions to be exported with the toolbar?"
+msgstr "도구 막대와 함께 관련 동작을 내보내시겠습니까?"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:478
+msgid "Write to Toolbar File Failed - KVIrc"
+msgstr "도구 막대 파일에 쓰지 못했습니다 - KVIrc"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:478
+msgid "Unable to write to the toolbar file."
+msgstr "도구 막대 파일에 쓸 수 없습니다."
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:494
+msgid "Please specify the properties for the toolbar \"%1\""
+msgstr "\"%1\" 도구 막대에 대한 속성을 지정하십시오"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:521
+msgid "Please specify the properties for the new toolbar"
+msgstr "새 도구 막대에 대한 속성을 지정하십시오"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:522
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:523
+msgid "My Toolbar"
+msgstr "내 도구 막대"
