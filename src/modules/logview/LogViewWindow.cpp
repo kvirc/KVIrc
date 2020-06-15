@@ -547,8 +547,30 @@ void LogViewWindow::exportLog(int iId)
 
 	if(!pItem->childCount())
 	{
+		LogFile * pLog = pItem->log();
+
+		QString szDate = pLog->date().toString("yyyy.MM.dd");
+
+		QString szLog = KVI_OPTION_STRING(KviOption_stringLogsExportPath).trimmed();
+		if(!szLog.isEmpty())
+			szLog += KVI_PATH_SEPARATOR_CHAR;
+		szLog += QString("%1_%2.%3_%4").arg(pLog->typeString(), pLog->name(), pLog->network(), szDate);
+		KviFileUtils::adjustFilePath(szLog);
+
+		// Getting output file path from the user, with overwrite confirmation
+		if(!KviFileDialog::askForSaveFileName(
+		       szLog,
+		       __tr2qs_ctx("Export Log - KVIrc", "log"),
+		       szLog,
+		       QString(),
+		       false,
+		       true,
+		       true,
+		       this))
+			return;
+
 		// Export the log
-		createLog(pItem->log(), iId);
+		createLog(pLog, iId, szLog);
 		return;
 	}
 
@@ -579,42 +601,38 @@ void LogViewWindow::exportLog(int iId)
 		}
 	}
 
+	// Select output directory
+	QString szDir = KVI_OPTION_STRING(KviOption_stringLogsExportPath).trimmed();
+	if(!KviFileDialog::askForDirectoryName(
+	       szDir,
+	       __tr2qs_ctx("Export Log - KVIrc", "log"),
+	       szDir,
+	       QString(),
+	       false,
+	       true,
+	       this))
+		return;
+
 	// Scan the list
 	for(unsigned int u = 0; u < logList.count(); u++)
 	{
 		LogListViewItem * pCurItem = logList.at(u);
-		createLog(pCurItem->log(), iId);
+		LogFile * pLog = pCurItem->log();
+		QString szDate = pLog->date().toString("yyyy.MM.dd");
+		QString szLog = szDir + KVI_PATH_SEPARATOR_CHAR + QString("%1_%2.%3_%4").arg(pLog->typeString(), pLog->name(), pLog->network(), szDate);
+		KviFileUtils::adjustFilePath(szLog);
+		createLog(pLog, iId, szLog);
 	}
 }
 
-void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
+void LogViewWindow::createLog(LogFile * pLog, int iId, QString szLog, QString * pszFile)
 {
 	if(!pLog)
 		return;
 
 	QRegExp rx;
-	QString szLog, szLogDir, szInputBuffer, szOutputBuffer, szLine, szTmp;
+	QString szLogDir, szInputBuffer, szOutputBuffer, szLine, szTmp;
 	QString szDate = pLog->date().toString("yyyy.MM.dd");
-
-	/* Fetching previous export path and concatenating with generated filename
-	 * adjustFilePath is for file paths not directory paths */
-	szLog = KVI_OPTION_STRING(KviOption_stringLogsExportPath).trimmed();
-	if(!szLog.isEmpty())
-		szLog += KVI_PATH_SEPARATOR_CHAR;
-	szLog += QString("%1_%2.%3_%4").arg(pLog->typeString(), pLog->name(), pLog->network(), szDate);
-	KviFileUtils::adjustFilePath(szLog);
-
-	// Getting output file path from the user, with overwrite confirmation
-	if(!KviFileDialog::askForSaveFileName(
-	       szLog,
-	       __tr2qs_ctx("Export Log - KVIrc", "log"),
-	       szLog,
-	       QString(),
-	       false,
-	       true,
-	       true,
-	       this))
-		return;
 
 	/* Save export directory - this directory path is also used in the HTML export
 	 * and info is used when working with pszFile */

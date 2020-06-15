@@ -52,7 +52,7 @@ class LogViewListView : public QTreeWidget
 	Q_OBJECT
 public:
 	LogViewListView(QWidget *);
-	~LogViewListView(){};
+	~LogViewListView() {};
 
 protected:
 	void mousePressEvent(QMouseEvent * pEvent) override;
@@ -109,10 +109,11 @@ public:
 	* \brief Exports the log and creates the file in the selected format
 	* \param pLog The log file associated with the item selected in the popup
 	* \param iId The id of the item in the popup
+	* \param pszDir The directory to save the exported log in
 	* \param pszFile The buffer to store the exported log name
 	* \return void
 	*/
-	void createLog(LogFile * pLog, int iId, QString * pszFile = nullptr);
+	void createLog(LogFile * pLog, int iId, QString szLog, QString * pszFile = nullptr);
 
 protected:
 	void exportLog(int iId);
