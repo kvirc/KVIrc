@@ -57,6 +57,7 @@
 #include <QTabWidget>
 #include <QCheckBox>
 #include <QMenu>
+#include <QtConcurrent>
 
 #include <climits> //for INT_MAX
 
@@ -621,7 +622,11 @@ void LogViewWindow::exportLog(int iId)
 		QString szDate = pLog->date().toString("yyyy.MM.dd");
 		QString szLog = szDir + KVI_PATH_SEPARATOR_CHAR + QString("%1_%2.%3_%4").arg(pLog->typeString(), pLog->name(), pLog->network(), szDate);
 		KviFileUtils::adjustFilePath(szLog);
-		createLog(pLog, iId, szLog);
+		QtConcurrent::run([this, iId, szLog](LogFile log) {
+			LogFile * pLog = &log;
+			this->createLog(pLog, iId, szLog);
+		},
+		    *pLog);
 	}
 }
 
