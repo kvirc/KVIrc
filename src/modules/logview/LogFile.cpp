@@ -143,7 +143,7 @@ LogFile::LogFile(const QString & szName)
 	}
 }
 
-void LogFile::getText(QString & szText)
+void LogFile::getText(QString & szText) const
 {
 	QString szLogName = fileName();
 	QFile logFile;

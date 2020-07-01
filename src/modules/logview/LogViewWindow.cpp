@@ -452,7 +452,6 @@ void LogViewWindow::rightButtonClicked(QTreeWidgetItem * pItem, const QPoint &)
 	QMenu * pPopup = new QMenu(this);
 	if(((LogListViewItem *)pItem)->childCount())
 	{
-		// TODO: probably should allow to specify a directory instead of asking for file path on each log file
 		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Save)), __tr2qs_ctx("Export All Log Files to", "log"))->setMenu(m_pExportLogPopup);
 		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)), __tr2qs_ctx("Remove All Log Files Within This Folder", "log"), this, SLOT(deleteCurrent()));
 	}
@@ -535,12 +534,12 @@ void LogViewWindow::exportLog(QAction * pAction)
 	 * sent with the old activated signal - the ordinal is now stored as
 	 * QAction user data */
 	if(pAction)
-		exportLog(pAction->data().toInt());
+		exportLog(static_cast<LogFile::ExportType>(pAction->data().toInt()));
 	else
 		qDebug("LogViewWindow::exportLog called with invalid pAction");
 }
 
-void LogViewWindow::exportLog(int iId)
+void LogViewWindow::exportLog(LogFile::ExportType iId)
 {
 	LogListViewItem * pItem = (LogListViewItem *)(m_pListView->currentItem());
 	if(!pItem)
@@ -571,7 +570,7 @@ void LogViewWindow::exportLog(int iId)
 			return;
 
 		// Export the log
-		createLog(pLog, iId, szLog);
+		createLog(*pLog, iId, szLog);
 		return;
 	}
 
@@ -622,22 +621,18 @@ void LogViewWindow::exportLog(int iId)
 		QString szDate = pLog->date().toString("yyyy.MM.dd");
 		QString szLog = szDir + KVI_PATH_SEPARATOR_CHAR + QString("%1_%2.%3_%4").arg(pLog->typeString(), pLog->name(), pLog->network(), szDate);
 		KviFileUtils::adjustFilePath(szLog);
-		QtConcurrent::run([this, iId, szLog](LogFile log) {
-			LogFile * pLog = &log;
-			this->createLog(pLog, iId, szLog);
+		QtConcurrent::run([iId, szLog](LogFile log) {
+			LogViewWindow::createLog(log, iId, szLog);
 		},
 		    *pLog);
 	}
 }
 
-void LogViewWindow::createLog(LogFile * pLog, int iId, QString szLog, QString * pszFile)
+void LogViewWindow::createLog(const LogFile & rLog, LogFile::ExportType iId, QString szLog, QString * pszFile)
 {
-	if(!pLog)
-		return;
-
 	QRegExp rx;
 	QString szLogDir, szInputBuffer, szOutputBuffer, szLine, szTmp;
-	QString szDate = pLog->date().toString("yyyy.MM.dd");
+	QString szDate = rLog.date().toString("yyyy.MM.dd");
 
 	/* Save export directory - this directory path is also used in the HTML export
 	 * and info is used when working with pszFile */
@@ -647,7 +642,7 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString szLog, QString * 
 
 	/* Reading in log file - LogFiles are read in as bytes, so '\r' isn't
 	 * sanitised by default */
-	pLog->getText(szInputBuffer);
+	rLog.getText(szInputBuffer);
 	QStringList lines = szInputBuffer.replace('\r', "").split('\n');
 
 	switch(iId)
@@ -707,22 +702,22 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString szLog, QString * 
 			bool bFirstLine = true;
 
 			QString szTitle;
-			switch(pLog->type())
+			switch(rLog.type())
 			{
 				case LogFile::Channel:
-					szTitle = __tr2qs_ctx("Channel %1 on %2", "log").arg(pLog->name(), pLog->network());
+					szTitle = __tr2qs_ctx("Channel %1 on %2", "log").arg(rLog.name(), rLog.network());
 					break;
 				case LogFile::Console:
-					szTitle = __tr2qs_ctx("Console on %1", "log").arg(pLog->network());
+					szTitle = __tr2qs_ctx("Console on %1", "log").arg(rLog.network());
 					break;
 				case LogFile::Query:
-					szTitle = __tr2qs_ctx("Query with: %1 on %2", "log").arg(pLog->name(), pLog->network());
+					szTitle = __tr2qs_ctx("Query with: %1 on %2", "log").arg(rLog.name(), rLog.network());
 					break;
 				case LogFile::DccChat:
-					szTitle = __tr2qs_ctx("DCC Chat with: %1", "log").arg(pLog->name());
+					szTitle = __tr2qs_ctx("DCC Chat with: %1", "log").arg(rLog.name());
 					break;
 				case LogFile::Other:
-					szTitle = __tr2qs_ctx("Something on: %1", "log").arg(pLog->network());
+					szTitle = __tr2qs_ctx("Something on: %1", "log").arg(rLog.network());
 					break;
 			}
 

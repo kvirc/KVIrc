@@ -113,10 +113,10 @@ public:
 	* \param pszFile The buffer to store the exported log name
 	* \return void
 	*/
-	void createLog(LogFile * pLog, int iId, QString szLog, QString * pszFile = nullptr);
+	static void createLog(const LogFile & rLog, LogFile::ExportType iId, QString szLog, QString * pszFile = nullptr);
 
 protected:
-	void exportLog(int iId);
+	void exportLog(LogFile::ExportType iId);
 	void recurseDirectory(const QString & szDir);
 	void setupItemList();
 

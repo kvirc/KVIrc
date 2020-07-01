@@ -143,7 +143,7 @@ public:
 	* \param szText The buffer where to save the contents of the log
 	* \return void
 	*/
-	void getText(QString & szText);
+	void getText(QString & szText) const;
 };
 
 #endif // _LOGFILE_H_
