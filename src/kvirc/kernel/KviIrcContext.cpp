@@ -828,7 +828,7 @@ void KviIrcContext::abortReconnect()
 	if(m_eState == KviIrcContext::PendingReconnection)
 	{
 		delete m_pReconnectTimer;
-		m_pReconnectTimer = 0;
+		m_pReconnectTimer = nullptr;
 		destroyAsynchronousConnectionData();
 		m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
 			__tr2qs("Reconnect attempt aborted"));
