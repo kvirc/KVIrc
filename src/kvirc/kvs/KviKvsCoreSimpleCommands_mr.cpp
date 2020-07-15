@@ -1138,6 +1138,8 @@ namespace KviKvsCoreSimpleCommands
 			the -f switch is used. You can control all the [i]unexpected disconnection[/i]
 			options in the options dialog.
 			If the -q switch is specified, this command terminates KVIrc immediately.[br]
+			If the IRC context is disconnect but a delayed reconnect is pending,
+			the reconnect will be aborted.
 		@examples:
 			[example]
 				quit Time to sleep
@@ -1157,8 +1159,13 @@ namespace KviKvsCoreSimpleCommands
 		}
 		else
 		{
-			KVSCSC_REQUIRE_CONNECTION
-			KVSCSC_pWindow->context()->terminateConnectionRequest(KVSCSC_pSwitches->find('f', "force"), szReason, KVSCSC_pSwitches->find('u', "unexpected"));
+			if(!KVSCSC_pIrcContext) return KVSCSC_pContext->errorNoIrcContext();
+			if(KVSCSC_pConnection)
+				KVSCSC_pIrcContext->terminateConnectionRequest(KVSCSC_pSwitches->find('f',"force"),szReason,KVSCSC_pSwitches->find('u',"unexpected"));
+			else if(KVSCSC_pIrcContext->state() == KviIrcContext::PendingReconnection)
+				KVSCSC_pIrcContext->abortReconnect();
+			else
+				return KVSCSC_pContext->warningNoIrcConnection();
 		}
 		return true;
 	}
