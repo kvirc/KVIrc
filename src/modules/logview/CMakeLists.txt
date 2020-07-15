@@ -5,6 +5,7 @@ set(kvilogview_SRCS
 	LogFile.cpp
 	LogViewWidget.cpp
 	LogViewWindow.cpp
+	ExportOperation.cpp
 )
 
 set(kvi_module_name kvilogview)

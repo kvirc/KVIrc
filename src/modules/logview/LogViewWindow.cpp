@@ -41,6 +41,8 @@
 #include "KviFileDialog.h"
 #include "KviControlCodes.h"
 
+#include "ExportOperation.h"
+
 #include <QList>
 #include <QFileInfo>
 #include <QDir>
@@ -53,6 +55,7 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 #include <QProgressBar>
+#include <QProgressDialog>
 #include <QTextStream>
 #include <QTabWidget>
 #include <QCheckBox>
@@ -612,9 +615,10 @@ void LogViewWindow::exportLog(LogFile::ExportType iId)
 	       true,
 	       this))
 		return;
+	KVI_OPTION_STRING(KviOption_stringLogsExportPath) = szDir;
 
 	// Scan the list
-	for(unsigned int u = 0; u < logList.count(); u++)
+	/*for(unsigned int u = 0; u < logList.count(); u++)
 	{
 		LogListViewItem * pCurItem = logList.at(u);
 		LogFile * pLog = pCurItem->log();
@@ -625,7 +629,20 @@ void LogViewWindow::exportLog(LogFile::ExportType iId)
 			LogViewWindow::createLog(log, iId, szLog);
 		},
 		    *pLog);
+	}*/
+
+	std::vector<LogFile *> logs;
+	logs.reserve(logList.count());
+	for(unsigned int u = 0; u < logList.count(); u++)
+	{
+		LogListViewItem * pCurItem = logList.at(u);
+		LogFile * pLog = pCurItem->log();
+		LogFile * logCopy = new LogFile(*pLog);
+		logs.push_back(logCopy);
 	}
+
+	ExportOperation * worker = new ExportOperation(std::move(logs), iId, szDir);
+	worker->start();
 }
 
 void LogViewWindow::createLog(const LogFile & rLog, LogFile::ExportType iId, QString szLog, QString * pszFile)
@@ -638,7 +655,6 @@ void LogViewWindow::createLog(const LogFile & rLog, LogFile::ExportType iId, QSt
 	 * and info is used when working with pszFile */
 	QFileInfo info(szLog);
 	szLogDir = info.absoluteDir().absolutePath();
-	KVI_OPTION_STRING(KviOption_stringLogsExportPath) = szLogDir;
 
 	/* Reading in log file - LogFiles are read in as bytes, so '\r' isn't
 	 * sanitised by default */
