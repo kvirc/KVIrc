@@ -9,14 +9,15 @@
 # Elephantman <elephantman@europnet.org>, 2008
 # Jocelyn <jocelyn.flament@gmail.com>, 2015,2019
 # Ludovic Bellière <xrogaan@gmail.com>, 2020
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>, 2020
 # _Otaku, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-30 13:26+0200\n"
-"PO-Revision-Date: 2020-03-30 23:09+0000\n"
-"Last-Translator: Ludovic Bellière <xrogaan@gmail.com>\n"
+"PO-Revision-Date: 2020-07-13 20:01+0000\n"
+"Last-Translator: Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>\n"
 "Language-Team: French (http://www.transifex.com/kvirc/KVIrc/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +27,7 @@ msgstr ""
 
 #: src/modules/options/OptionsDialog.cpp:111
 msgid "General Preferences"
-msgstr "Préférences Générales"
+msgstr "Préférences générales"
 
 #: src/modules/options/OptionsDialog.cpp:115
 msgid "Theme Preferences"
@@ -122,13 +123,13 @@ msgstr "Si vous activez cette option, KVIrc va surligner tous les messages des u
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:62
 msgid "Words/Nick matching is case sensitive"
-msgstr ""
+msgstr "Les mots et les pseudos sont sensibles à la casse "
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:63
 msgid ""
 "If this option is enabled, KVIrc will match your nick and/or the words you "
 "specified in a case sensitive manner."
-msgstr ""
+msgstr "Si l'option est activée, KVIrc trouvera le pseudo ou les mots que vous spécifiez dépendamment de la casse. "
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:65
 msgid "Highlighting Method"
@@ -136,7 +137,7 @@ msgstr "Méthode de surlignage"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:72
 msgid "Highlight every occurrence of a word inside text"
-msgstr ""
+msgstr "Surligner tous les occurrences d'un mot dans le texte"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:75
 msgid ""
@@ -148,7 +149,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:79
 msgid "Highlight only whole words splitting on space and on:"
-msgstr ""
+msgstr "Surligner seulement les mots entiers séparés par des espaces et par :"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:82
 msgid ""
@@ -252,7 +253,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_antiSpam.cpp:39
 msgid "Enable Anti-spam for"
-msgstr ""
+msgstr "Activer l'antipourriel pour"
 
 #: src/modules/options/OptionsWidget_antiSpam.cpp:40
 #: src/modules/options/OptionsWidget_query.cpp:43
@@ -499,14 +500,14 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_channel.cpp:77
 msgid "Open channel windows without focus"
-msgstr ""
+msgstr "Ouvrir les fenêtres de salon sans le focus"
 
 #: src/modules/options/OptionsWidget_channel.cpp:78
 msgid ""
 "This option prevents newly created channel windows from diverting "
 "application focus.<br>Enable this if you don't like channel windows popping "
 "up while you're typing something in a channel."
-msgstr ""
+msgstr "Cette option évite que les fenêtres nouvellement créées altèrent le focus.<br>Activer cette options si vous ne souhaitez pas avoir une fenêtre qui apparaisse lorsque vous tapez quelque chose dans un salon."
 
 #: src/modules/options/OptionsWidget_channel.cpp:98
 msgid "Log joined channels history"
@@ -562,7 +563,7 @@ msgstr "Afficher le temps de synchronisation du salon"
 
 #: src/modules/options/OptionsWidget_channel.cpp:135
 msgid "Paste last channel log"
-msgstr ""
+msgstr "Collez le journal du dernier salon"
 
 #: src/modules/options/OptionsWidget_channel.cpp:139
 #: src/modules/options/OptionsWidget_query.cpp:93
@@ -578,7 +579,7 @@ msgstr " lignes"
 #: src/modules/options/OptionsWidget_channel.cpp:141
 #: src/modules/options/OptionsWidget_query.cpp:96
 msgid "Minimum value: <b>1 lines</b><br>Maximum value: <b>32767 lines</b>"
-msgstr ""
+msgstr "Valeur minimale : <b>1 ligne</b><br>Valeur maximale : <b>32767 lignes</b>"
 
 #: src/modules/options/OptionsWidget_channel.cpp:145
 #: src/modules/options/OptionsWidget_query.cpp:100
@@ -593,7 +594,7 @@ msgstr "jours"
 #: src/modules/options/OptionsWidget_channel.cpp:147
 #: src/modules/options/OptionsWidget_query.cpp:103
 msgid "Minimum value: <b>1 days</b><br>Maximum value: <b>3652 days</b>"
-msgstr ""
+msgstr "Valeur minimale : <b>1 jour</b><br>Valeur maximale : <b>3652 jours</b>"
 
 #: src/modules/options/OptionsWidget_channel.cpp:151
 msgid "Keep away list updated"
@@ -643,7 +644,7 @@ msgstr "Garder les salons ouverts"
 
 #: src/modules/options/OptionsWidget_connection.cpp:47
 msgid "This option will cause KVIrc to keep channels open after disconnect."
-msgstr ""
+msgstr "Cette option conduira KVIrc à garder les salons ouverts après une déconnexion. "
 
 #: src/modules/options/OptionsWidget_connection.cpp:49
 #: src/modules/options/OptionsWidget_connection.cpp:57
@@ -662,7 +663,7 @@ msgstr "En cas de déconnexion imprevue"
 msgid ""
 "This option will cause KVIrc to keep channels open after an unexpected "
 "disconnect."
-msgstr ""
+msgstr "Cette option conduira KVIrc à garder les salons ouverts après une déconnexion inattendue."
 
 #: src/modules/options/OptionsWidget_connection.cpp:58
 msgid ""
@@ -678,7 +679,7 @@ msgstr "Rejoindre les salons après une reconnexion"
 msgid ""
 "This option will cause KVIrc to rejoin channels after a successful reconnect"
 " attempt."
-msgstr ""
+msgstr "Cette option conduira KVIrc à rejoindre des salons lorsqu'une tentative connexion a réussi."
 
 #: src/modules/options/OptionsWidget_connection.cpp:63
 msgid "Reopen queries after reconnect"
@@ -712,7 +713,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_connection.cpp:80
 msgid "Maximum attempts (0 = unlimited):"
-msgstr ""
+msgstr "Nombre maximum de tentative (0 pour aucune limite) :"
 
 #: src/modules/options/OptionsWidget_connection.cpp:84
 msgid "Delay between attempts:"
@@ -720,7 +721,7 @@ msgstr "Délai entre deux tentatives :"
 
 #: src/modules/options/OptionsWidget_connection.cpp:89
 msgid "Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b>"
-msgstr ""
+msgstr "Valeur minimale : <b>0 s</b><br>Valeur maximale : <b>86400 s</b>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:109
 msgid "Certificate"
@@ -781,7 +782,7 @@ msgstr " msec"
 
 #: src/modules/options/OptionsWidget_connection.cpp:158
 msgid "Limit outgoing traffic per connection"
-msgstr ""
+msgstr "Limiter le trafic sortant par connexion"
 
 #: src/modules/options/OptionsWidget_connection.cpp:159
 msgid "Limit to 1 message every:"
@@ -794,7 +795,7 @@ msgstr " usec"
 #: src/modules/options/OptionsWidget_connection.cpp:162
 msgid ""
 "Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</b>"
-msgstr ""
+msgstr "Valeur minimale : <b>10000 µs</b><br>Valueur maximale : <b>10000000 µs</b>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:165
 msgid "Network Interfaces"
@@ -824,7 +825,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_connection.cpp:185
 msgid "Drop connection on SASL authentication failure"
-msgstr ""
+msgstr "Annuler la connexion lors de l'échec d'une authentification SASL"
 
 #: src/modules/options/OptionsWidget_connection.cpp:186
 msgid ""
@@ -944,7 +945,7 @@ msgstr "À ajouter à la réponse à VERSION :"
 msgid ""
 "This text will be appended to the CTCP VERSION reply.<br>For example, you "
 "can place a script name here."
-msgstr ""
+msgstr "Ce texte sera ajouté à la réponse CTCP VERSION.<br>Par exemple, vous pouvez y mettre le nom d'un script."
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:49
 msgid "Append to SOURCE reply:"
@@ -954,7 +955,7 @@ msgstr "À ajouter à la réponse à SOURCE :"
 msgid ""
 "This text will be appended to the CTCP SOURCE reply.<br>For example, you can"
 " place the source URL for a script here."
-msgstr ""
+msgstr "Ce texte sera ajouté à la réponse à CTCP SOURCE<br>Par exemple, vous pouvez y mettre une URL pour un script."
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:55
 msgid "PAGE reply:"
@@ -1003,7 +1004,7 @@ msgstr " requêtes"
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:86
 msgid ""
 "Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 requests</b>"
-msgstr ""
+msgstr "Valeur minimale : <b>0 requête</b><br>Valueur maximale : <b>10 000 requêtes</b>"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:89
 msgid "within:"
@@ -1011,11 +1012,11 @@ msgstr "en :"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:91
 msgid "Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b>"
-msgstr ""
+msgstr "Valeur minimale : <b>1 s</b><br>Valeur maximale : <b>3 600 s</b>"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:94
 msgid "Ignored CTCP Requests"
-msgstr ""
+msgstr "Ignorer les requêtes CTCP"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:95
 msgid "PING"
@@ -1179,7 +1180,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:133
 msgid "Maximum number of DCC sessions:"
-msgstr ""
+msgstr "Nombre maximum de session DCC :"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:134
 msgid ""
@@ -1265,7 +1266,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:197
 msgid "Open transfer window without focus"
-msgstr ""
+msgstr "Ouvrir la fenêtre de transfert sans le focus"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:222
 msgid "Bug Compatibility"
@@ -1320,7 +1321,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:243
 msgid "Send 64-bit ACKs for files larger than 4GiB"
-msgstr ""
+msgstr "Envoyer un ACK de 64 bits pour les fichiers de plus de 4 Gio"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:244
 msgid ""
@@ -1344,17 +1345,17 @@ msgstr "octets/sec"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:257
 msgid "Limit download bandwidth to:"
-msgstr ""
+msgstr "Limiter la bande passante en téléchargement à :"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:262
 msgid "Maximum number of DCC transfers:"
-msgstr ""
+msgstr "Nombre maximum de transfert DCC :"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:263
 msgid ""
 "This is the maximum number of concurrent DCC transfers. KVIrc will refuse "
 "the requests when this limit is reached."
-msgstr ""
+msgstr "Ceci est le nombre maximum de transfert concurrent DCC. KVIrc refusera toute requête quand la cette limite est atteinte."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:266
 msgid "Tweaks"
@@ -1521,7 +1522,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_general.h:30
 msgid "General Options"
-msgstr ""
+msgstr "Options Générales"
 
 #: src/modules/options/OptionsWidget_identity.cpp:61
 msgid "Nickname Alternatives - KVIrc"
@@ -1562,7 +1563,7 @@ msgstr "Téléchargement d'un avatar - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:126
 msgid "Please wait while the avatar is being downloaded"
-msgstr ""
+msgstr "Veuillez patienter le temps que l'avatar soit téléchargé"
 
 #: src/modules/options/OptionsWidget_identity.cpp:129
 msgid "Abort"
@@ -1599,7 +1600,7 @@ msgstr "&Parcourir..."
 #: src/modules/options/OptionsWidget_message.cpp:644
 #: src/modules/options/OptionsWidget_textIcons.cpp:190
 msgid "Select a File - KVIrc"
-msgstr ""
+msgstr "Sélectionner un fichier - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:298
 msgid "Basic Properties"
@@ -1653,7 +1654,7 @@ msgid ""
 "This text will appear when someone does a /WHOIS on you.<br>It is intended "
 "to be your real name, but people tend to put random quotes and phrases here "
 "too."
-msgstr ""
+msgstr "Ce texte apparaîtra lorsque quelqu'un fait un /WHOIS sur vous.<br>Il est normalement fait pour contenir votre nom réel, mais certaines personnes préfèrent y mettre des citations ou des phrases de leur choix."
 
 #: src/modules/options/OptionsWidget_identity.cpp:330
 msgid ""
@@ -1739,7 +1740,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:482
 msgid "Use avatar:"
-msgstr ""
+msgstr "Utiliser l'avatar :"
 
 #: src/modules/options/OptionsWidget_identity.cpp:504
 msgid "Choose..."
@@ -1807,7 +1808,7 @@ msgstr "Notices de serveur (+s)"
 #: src/modules/options/OptionsWidget_identity.cpp:679
 #: src/modules/options/OptionsWidget_servers.cpp:639
 msgid "WALLOPS (+w)"
-msgstr ""
+msgstr "WALLOPS (+w)"
 
 #: src/modules/options/OptionsWidget_identity.cpp:681
 msgid "Default Messages"
@@ -1844,11 +1845,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:740
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: src/modules/options/OptionsWidget_identity.cpp:741
 msgid "Network"
-msgstr ""
+msgstr "Réseau"
 
 #: src/modules/options/OptionsWidget_identity.cpp:742
 #: src/modules/options/OptionsWidget_nickserv.cpp:238
@@ -1862,11 +1863,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:744
 msgid "Username"
-msgstr ""
+msgstr "Nom d'utilisateur"
 
 #: src/modules/options/OptionsWidget_identity.cpp:745
 msgid "Real Name"
-msgstr ""
+msgstr "Nom réel"
 
 #: src/modules/options/OptionsWidget_identity.cpp:754
 msgid ""
@@ -1878,15 +1879,15 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:768
 msgid "Add Profile"
-msgstr ""
+msgstr "Ajouter un profile"
 
 #: src/modules/options/OptionsWidget_identity.cpp:771
 msgid "Edit Profile"
-msgstr ""
+msgstr "Éditer un profile"
 
 #: src/modules/options/OptionsWidget_identity.cpp:774
 msgid "Delete Profile"
-msgstr ""
+msgstr "Supprimer un profile"
 
 #: src/modules/options/OptionsWidget_identity.cpp:869
 msgid "Invalid Profile Rule - KVIrc"
@@ -1902,7 +1903,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:921
 msgid "Profile name:"
-msgstr ""
+msgstr "Nom du profile :"
 
 #: src/modules/options/OptionsWidget_identity.cpp:925
 msgid "Put here the name of the profile"
@@ -1910,15 +1911,15 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:929
 msgid "Network name:"
-msgstr ""
+msgstr "Nom du réseau :"
 
 #: src/modules/options/OptionsWidget_identity.cpp:933
 msgid "Put here the name of the network"
-msgstr ""
+msgstr "Y mettre le nom du réseau"
 
 #: src/modules/options/OptionsWidget_identity.cpp:940
 msgid "Put here the nickname you want to use"
-msgstr ""
+msgstr "Y mettre le pseudonyme que vous souhaitez utiliser"
 
 #: src/modules/options/OptionsWidget_identity.cpp:943
 #: src/modules/options/OptionsWidget_servers.cpp:176
@@ -1932,11 +1933,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:954
 msgid "Put here the username you want to use"
-msgstr ""
+msgstr "Y mettre le nom d'utilisateur que vous souhaitez utiliser"
 
 #: src/modules/options/OptionsWidget_identity.cpp:961
 msgid "Put here the real name you want to use"
-msgstr ""
+msgstr "Y mettre le nom réel que vous souhaitez utiliser"
 
 #: src/modules/options/OptionsWidget_identity.h:131
 #: src/modules/options/OptionsWidget_servers.cpp:648
@@ -1949,7 +1950,7 @@ msgstr "Avatar"
 
 #: src/modules/options/OptionsWidget_identity.h:218
 msgid "Profiles"
-msgstr ""
+msgstr "Profiles"
 
 #: src/modules/options/OptionsWidget_ignore.cpp:39
 msgid "Enable Ignore for"

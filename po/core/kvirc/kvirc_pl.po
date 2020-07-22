@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-30 13:26+0200\n"
-"PO-Revision-Date: 2020-05-28 18:43+0000\n"
+"PO-Revision-Date: 2020-07-15 16:23+0000\n"
 "Last-Translator: Janusz Pekacz <penteljapan@o2.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/kvirc/KVIrc/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -299,11 +299,11 @@ msgstr "Nierozpoznana odpowiedź pośrednika"
 
 #: src/kvilib/core/KviError.cpp:118
 msgid "Proxy response: auth failed: access denied"
-msgstr "Odpowiedź pośrednika: autoryzacja nie powiodła się : brak dostępu"
+msgstr "Odpowiedź pośrednika: uwierzytelnianie nie powiodło się : odmowa dostępu"
 
 #: src/kvilib/core/KviError.cpp:119
 msgid "Proxy response: no acceptable auth method: request rejected"
-msgstr "Odpowiedź pośrednika: autoryzacja nie powiodła się - brak dostępu"
+msgstr "Odpowiedź pośrednika: nieakceptowalna metoda uwierzytelnienia - zapytanie odrzucone"
 
 #: src/kvilib/core/KviError.cpp:120
 msgid "Proxy response: request failed"
@@ -2668,7 +2668,7 @@ msgstr "Wygłuszenia"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1703
 msgid "Need auth to join channel"
-msgstr "Potrzebna autoryzacja aby dołączyć do kanału"
+msgstr "Potrzebne uwierzytelnienie, aby dołączyć do kanału"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1706
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1746
@@ -2766,7 +2766,7 @@ msgstr "Przekierowanie gdy kanał jest pełny (tryb +l)"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2002
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2081
 msgid "Need auth to speak and change nick"
-msgstr "Potrzebna autoryzacja aby mówić i zmieniać pseudonim"
+msgstr "Potrzebne uwierzytelnienie, aby pisać i zmieniać pseudonim"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1862
 msgid "Forbid nick change"
@@ -2846,7 +2846,7 @@ msgstr "Przyblokuj ponowne dołączenie po wyrzuceniu na (<secs>)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2084
 msgid "Need auth to change nick"
-msgstr "Potrzebna autoryzacja do zmiany pseudonimu"
+msgstr "Potrzebne uwierzytelnienie aby zmienić pseudonim"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2105
 msgid "Channel exemptions"
@@ -3069,7 +3069,7 @@ msgstr "Połączenie zakończone [%s (%s:%u)]"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:720
 msgid "The connection terminated unexpectedly. Trying to reconnect..."
-msgstr "Połączenie zakończone niespodziewanie. Próbowanie ponownego połączenia..."
+msgstr "Niespodziewanie zakończone połączenie. Próbowanie ponownego połączenia..."
 
 #: src/kvirc/kernel/KviIrcContext.cpp:816
 msgid "Sent QUIT, waiting for the server to close the connection..."
@@ -6610,7 +6610,7 @@ msgstr "Podwójny klik aby otworzyć ten odnośnik"
 #: src/kvirc/ui/KviIrcView_events.cpp:1108
 #: src/kvirc/ui/KviIrcView_events.cpp:1121
 msgid "Right-click to view other options"
-msgstr "Prawo klik myszki aby zobaczyć inne opcje"
+msgstr "Prawoklik myszką aby zobaczyć inne opcje"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:940
 #: src/kvirc/ui/KviIrcView_events.cpp:947 src/kvirc/ui/KviStatusBar.cpp:584
@@ -6644,7 +6644,7 @@ msgstr "Nieznany serwer"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1016
 msgid "Double-click to read the MOTD"
-msgstr "Dwuklik myszki aby odzytać wiadomość dnia"
+msgstr "Dwuklik myszką aby odczytać wiadomość dnia"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1037
 msgid "You're not an operator: you may not change channel modes"
@@ -7114,7 +7114,7 @@ msgstr "<b>Shift+Przeciągnięcie</b> lub <b>Ctrl+Przeciągnięcie</b> aby przem
 
 #: src/kvirc/ui/KviStatusBar.cpp:328
 msgid "Right-click to see the other options"
-msgstr "Prawoklik myszki aby zobaczyć inne opcje"
+msgstr "Prawoklik myszką aby zobaczyć inne opcje"
 
 #: src/kvirc/ui/KviStatusBar.cpp:339
 msgid "Double-click to get network information"
@@ -7122,7 +7122,7 @@ msgstr "Dwuklik myszki aby otrzymać informacje o sieci"
 
 #: src/kvirc/ui/KviStatusBar.cpp:344
 msgid "Right-click to add / remove applets"
-msgstr "Prawoklik myszki aby dodać / usunąć aplet"
+msgstr "Prawoklik myszką aby dodać / usunąć aplet"
 
 #: src/kvirc/ui/KviStatusBar.cpp:385
 msgid "Remove %1"

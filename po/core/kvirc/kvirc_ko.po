@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-30 13:26+0200\n"
-"PO-Revision-Date: 2020-05-31 06:46+0000\n"
+"PO-Revision-Date: 2020-06-23 17:42+0000\n"
 "Last-Translator: ks k\n"
 "Language-Team: Korean (http://www.transifex.com/kvirc/KVIrc/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -4576,7 +4576,7 @@ msgid ""
 "!s\r"
 "%Q\r"
 " (PING %Q), replied pong"
-msgstr "\r!s\r%Q\r (PING %Q )로부터 핑을 받았으며, 퐁이라고 응답했습니다."
+msgstr "\r!s\r%Q\r (PING %Q )로부터 핑을 받았으며, 퐁이라고 응답했습니다"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:121
 #, c-format
@@ -4881,7 +4881,7 @@ msgid ""
 "!h\r"
 "%Q\r"
 "]: %Q"
-msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q  에서 대화방-PRIVMSG 를 무시하고 있습니다"
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q 에서 대화방-PRIVMSG 를 무시하고 있습니다"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1293
 msgid ""
@@ -4913,7 +4913,7 @@ msgid ""
 "!h\r"
 "%Q\r"
 "]: %Q (matching spamword \"%Q\")"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (\"%s\" 스팸 낱말과 일치하고 있습니다 ) 에서 스팸 알림"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (\"%Q\" 스팸 낱말과 일치하고 있습니다 ) 에서 스팸 알림"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1701
 msgid "Received a topic message for an unknown channel, possible desync"
@@ -4987,7 +4987,7 @@ msgid ""
 "!h\r"
 "%Q\r"
 "]"
-msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r]  에서 초대를 무시하고 있습니다"
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] 에서 초대를 무시하고 있습니다"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1911
 msgid "auto joining"
@@ -5227,7 +5227,7 @@ msgid ""
 "No topic is set for channel \r"
 "!c\r"
 "%Q\r"
-msgstr "\r!c\r%Q\r  대화방은 주제가 없습니다"
+msgstr "\r!c\r%Q\r 대화방은 주제가 없습니다"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:705
 msgid "Topic was set by %Q on %Q"
@@ -5291,7 +5291,7 @@ msgid ""
 "!m-%c\r"
 "%Q\r"
 " (set by %Q on %Q)"
-msgstr "번역확인-> \r!c\r%Q\r: \r!m-%c\r%Q\r용 %Q (%Q에서 %Q로 설정합니다) "
+msgstr "번역확인-> \r!c\r%Q\r: \r!m-%c\r%Q\r용 %Q (%Q에서 %Q로 설정합니다)"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:803
 msgid "Ban listing"
@@ -5491,7 +5491,7 @@ msgid ""
 "!h\r"
 "%Q\r"
 "%c"
-msgstr "%c\r!n\r%Q\r%c 는 %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c 였습니다."
+msgstr "%c\r!n\r%Q\r%c 는 %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c 였습니다"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1633
 msgid ""
@@ -5546,7 +5546,7 @@ msgid ""
 "!n\r"
 "%Q\r"
 "%c is authenticated as %Q"
-msgstr "%c\r!n\r%Q\r%c 는 %Q 로 인증되었습니다."
+msgstr "%c\r!n\r%Q\r%c 는 %Q 로 인증되었습니다"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1859
 msgid ""
@@ -7027,11 +7027,11 @@ msgid ""
 "!h\r"
 "%Q\r"
 "]"
-msgstr "\r!n\r%Q\r  [%Q@\r!h\r%Q\r] 에 대한 공통 대화방이 없습니다"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] 에 대한 공통 대화방이 없습니다"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:528
 msgid "This query has no active targets, no message sent"
-msgstr "이 질의에는 활성 타겟이 없으며 메시지가 전송되지 않았습니다."
+msgstr "이 질의에는 활성 타겟이 없으며 메시지가 전송되지 않았습니다"
 
 #: src/kvirc/ui/KviSelectors.cpp:179 src/kvirc/ui/KviSelectors.cpp:232
 msgid "Reveal password"
