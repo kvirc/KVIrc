@@ -166,5 +166,7 @@ elseif(UNIX)
 elseif(WIN32)
 	# For DLL platforms the DLL part of a shared library is treated as a RUNTIME target and the corresponding import library is treated as an ARCHIVE target
 	install(TARGETS ${KVILIB_BINARYNAME} RUNTIME DESTINATION "${KVIRC_LIB_PATH}")
-	install(FILES $<TARGET_PDB_FILE:${KVILIB_BINARYNAME}> DESTINATION ${KVIRC_LIB_PATH} OPTIONAL)
+	if(MSVC)
+		install(FILES $<TARGET_PDB_FILE:${KVILIB_BINARYNAME}> DESTINATION ${KVIRC_LIB_PATH} OPTIONAL)
+	endif()
 endif()
