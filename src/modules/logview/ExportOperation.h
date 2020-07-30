@@ -13,10 +13,10 @@ class ExportOperation : public QObject
 
 	std::vector<LogFile *> m_logs;
 	const QString m_szDir;
-	const LogFile::ExportType m_iId;
+	const LogFile::ExportType m_type;
 
 public:
-	ExportOperation(std::vector<LogFile *> logs, LogFile::ExportType iId, QString szDir, QObject * parent = nullptr);
+	ExportOperation(std::vector<LogFile *> logs, LogFile::ExportType type, QString szDir, QObject * parent = nullptr);
 	~ExportOperation();
 	void start();
 };

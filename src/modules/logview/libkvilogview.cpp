@@ -114,9 +114,9 @@ static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pP
 		return false;
 
 	LogFile log { pData->szName };
-	LogFile::ExportType iId = LogFile::PlainText;
+	LogFile::ExportType exportType = LogFile::PlainText;
 	if(pData->szType == QLatin1String("html"))
-		iId = LogFile::HTML;
+		exportType = LogFile::HTML;
 
 	QString szDate = log.date().toString("yyyy.MM.dd");
 	QString szLog = KVI_OPTION_STRING(KviOption_stringLogsExportPath).trimmed();
@@ -137,7 +137,7 @@ static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pP
 	       g_pLogViewWindow))
 		return false;
 
-	g_pLogViewWindow->createLog(log, iId, szLog, &(pData->szFile));
+	log.createLog(exportType, szLog, &(pData->szFile));
 
 	return true;
 }

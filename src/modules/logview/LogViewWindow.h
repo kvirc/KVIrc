@@ -104,19 +104,8 @@ protected:
 	QTimer * m_pTimer;
 	QMenu * m_pExportLogPopup;
 
-public:
-	/**
-	* \brief Exports the log and creates the file in the selected format
-	* \param pLog The log file associated with the item selected in the popup
-	* \param iId The id of the item in the popup
-	* \param pszDir The directory to save the exported log in
-	* \param pszFile The buffer to store the exported log name
-	* \return void
-	*/
-	static void createLog(const LogFile & rLog, LogFile::ExportType iId, QString szLog, QString * pszFile = nullptr);
-
 protected:
-	void exportLog(LogFile::ExportType iId);
+	void exportLog(LogFile::ExportType exportType);
 	void recurseDirectory(const QString & szDir);
 	void setupItemList();
 

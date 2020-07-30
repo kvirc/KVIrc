@@ -144,6 +144,15 @@ public:
 	* \return void
 	*/
 	void getText(QString & szText) const;
+
+	/**
+	* \brief Exports the log and creates the file in the selected format
+	* \param exportType The type of file to export the log as. Either PlainText or HTML.
+	* \param szLog The absolute path of the file to be created
+	* \param pszFile The buffer to store the exported log name
+	* \return void
+	*/
+	void createLog(ExportType exportType, QString szLog, QString * pszFile = nullptr) const;
 };
 
 #endif // _LOGFILE_H_

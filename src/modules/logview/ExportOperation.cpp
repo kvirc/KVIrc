@@ -9,13 +9,12 @@
 #include "LogViewWindow.h"
 #include "KviFileUtils.h"
 
-ExportOperation::ExportOperation(std::vector<LogFile *> logs, LogFile::ExportType iId, QString szDir, QObject * parent)
+ExportOperation::ExportOperation(std::vector<LogFile *> logs, LogFile::ExportType type, QString szDir, QObject * parent)
     : QObject(parent)
     , m_logs(std::move(logs))
-    , m_iId(iId)
+    , m_type(type)
     , m_szDir(szDir)
 {
-	//m_szDir.detach();
 }
 
 void ExportOperation::start()
@@ -33,7 +32,7 @@ void ExportOperation::start()
 	pFutureWatcher->setFuture(QtConcurrent::map(m_logs, [this](LogFile * pLog) {
 		const QString szDate = pLog->date().toString("yyyy.MM.dd");
 		const QString szLog = m_szDir + KVI_PATH_SEPARATOR_CHAR + QString("%1_%2.%3_%4").arg(pLog->typeString(), pLog->name(), pLog->network(), szDate);
-		LogViewWindow::createLog(*pLog, m_iId, szLog);
+		pLog->createLog(m_type, szLog);
 	}));
 	pProgressDialog->exec();
 }
