@@ -6,18 +6,18 @@
 #include <QObject>
 
 #include <vector>
+#include <memory>
 
 class ExportOperation : public QObject
 {
 	Q_OBJECT
 
-	std::vector<LogFile *> m_logs;
+	std::vector<std::shared_ptr<LogFile>> m_logs;
 	const QString m_szDir;
 	const LogFile::ExportType m_type;
 
 public:
-	ExportOperation(std::vector<LogFile *> logs, LogFile::ExportType type, QString szDir, QObject * parent = nullptr);
-	~ExportOperation();
+	ExportOperation(const std::vector<std::shared_ptr<LogFile>> & logs, LogFile::ExportType type, QString szDir, QObject * parent = nullptr);
 	void start();
 };
 

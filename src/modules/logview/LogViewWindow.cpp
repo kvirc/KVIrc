@@ -272,14 +272,14 @@ void LogViewWindow::recurseDirectory(const QString & szDir)
 		}
 		else if((info.suffix() == "gz") || (info.suffix() == "log"))
 		{
-			m_logList.append(new LogFile(info.filePath()));
+			m_logList.emplace_back(new LogFile(info.filePath()));
 		}
 	}
 }
 
 void LogViewWindow::setupItemList()
 {
-	if(m_logList.isEmpty())
+	if(m_logList.empty())
 		return;
 
 	m_pFilterButton->setEnabled(false);
@@ -287,12 +287,12 @@ void LogViewWindow::setupItemList()
 
 	m_bAborted = false;
 	m_pBottomLayout->setVisible(true);
-	m_pProgressBar->setRange(0, m_logList.count());
+	m_pProgressBar->setRange(0, m_logList.size());
 	m_pProgressBar->setValue(0);
 
 	m_pLastCategory = nullptr;
 	m_pLastGroupItem = nullptr;
-	m_logList.first();
+	m_currentLog = m_logList.begin();
 	m_pTimer->start(); //singleshot
 }
 
@@ -309,8 +309,9 @@ void LogViewWindow::abortFilter()
 void LogViewWindow::filterNext()
 {
 	QString szCurGroup;
-	LogFile * pFile = m_logList.current();
-	if(!pFile)
+	std::shared_ptr<LogFile> pFile = *m_currentLog;
+
+	if(m_currentLog == m_logList.end())
 		goto filter_last;
 
 	if(pFile->type() == LogFile::Channel && !m_pShowChannelsCheck->isChecked())
@@ -390,10 +391,11 @@ void LogViewWindow::filterNext()
 	new LogListViewLog(m_pLastGroupItem, pFile->type(), pFile);
 
 filter_next:
-	pFile = m_logList.next();
+	++m_currentLog;
+	pFile = *m_currentLog;
 
 filter_last:
-	if(pFile && !m_bAborted)
+	if((m_currentLog != m_logList.end()) && !m_bAborted)
 	{
 		m_pProgressBar->setValue(m_pProgressBar->value() + 1);
 		m_pTimer->start(); //singleshot
@@ -618,16 +620,16 @@ void LogViewWindow::exportLog(LogFile::ExportType exportType)
 	KVI_OPTION_STRING(KviOption_stringLogsExportPath) = szDir;
 
 	// Create isolated copies for ExportOperation to work on
-	std::vector<LogFile *> logs;
+	std::vector<std::shared_ptr<LogFile>> logs;
 	logs.reserve(logList.count());
 	for(unsigned int u = 0; u < logList.count(); u++)
 	{
 		LogListViewItem * pCurItem = logList.at(u);
 		LogFile * pLog = pCurItem->log();
-		LogFile * logCopy = new LogFile(*pLog);
+		auto logCopy = std::make_shared<LogFile>(*pLog);
 		logs.push_back(logCopy);
 	}
 
-	ExportOperation * worker = new ExportOperation(std::move(logs), exportType, szDir);
+	ExportOperation * worker = new ExportOperation(logs, exportType, szDir);
 	worker->start();
 }

@@ -36,6 +36,8 @@
 #include "KviPointerList.h"
 
 #include <QTreeWidget>
+#include <vector>
+#include <memory>
 
 class KviLogViewWidget;
 class LogListViewItem;
@@ -68,7 +70,8 @@ public:
 	~LogViewWindow();
 
 protected:
-	KviPointerList<LogFile> m_logList;
+	std::vector<std::shared_ptr<LogFile>> m_logList;
+	std::vector<std::shared_ptr<LogFile>>::const_iterator m_currentLog;
 
 	LogViewListView * m_pListView;
 
