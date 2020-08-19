@@ -34,5 +34,5 @@ void ExportOperation::start()
 		const QString szLog = m_szDir + KVI_PATH_SEPARATOR_CHAR + QString("%1_%2.%3_%4").arg(pLog->typeString(), pLog->name(), pLog->network(), szDate);
 		pLog->createLog(m_type, szLog);
 	}));
-	pProgressDialog->exec();
+	pProgressDialog->show();
 }
