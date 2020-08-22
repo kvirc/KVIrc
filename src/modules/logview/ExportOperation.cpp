@@ -19,7 +19,7 @@ ExportOperation::ExportOperation(const std::vector<std::shared_ptr<LogFile>> & l
 
 void ExportOperation::start()
 {
-	QProgressDialog * pProgressDialog = new QProgressDialog("Exporting Logs...", "Cancel", 0, m_logs.size());
+	QProgressDialog * pProgressDialog = new QProgressDialog("Exporting logs...", "Cancel", 0, m_logs.size());
 	QFutureWatcher<void> * pFutureWatcher = new QFutureWatcher<void>();
 
 	QObject::connect(pFutureWatcher, &QFutureWatcher<void>::finished, pProgressDialog, &QProgressDialog::deleteLater);
@@ -29,6 +29,10 @@ void ExportOperation::start()
 	QObject::connect(pProgressDialog, &QProgressDialog::canceled, pFutureWatcher, &QFutureWatcher<void>::cancel);
 	QObject::connect(pFutureWatcher, &QFutureWatcher<void>::progressValueChanged, pProgressDialog, &QProgressDialog::setValue);
 
+	// The directory string and the export type could be captured by value if
+	// this function was inlined. However, because the QtConcurrent functions
+	// aside from QtConcurrent::run only operate on references the list of
+	// pointers might expire, hence the purpose of this class.
 	pFutureWatcher->setFuture(QtConcurrent::map(m_logs, [this](const std::shared_ptr<LogFile> & pLog) {
 		const QString szDate = pLog->date().toString("yyyy.MM.dd");
 		const QString szLog = m_szDir + KVI_PATH_SEPARATOR_CHAR + QString("%1_%2.%3_%4").arg(pLog->typeString(), pLog->name(), pLog->network(), szDate);

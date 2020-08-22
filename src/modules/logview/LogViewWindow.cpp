@@ -552,7 +552,7 @@ void LogViewWindow::exportLog(LogFile::ExportType exportType)
 
 	if(!pItem->childCount())
 	{
-		LogFile * pLog = pItem->log();
+		std::shared_ptr<LogFile> pLog { pItem->log() };
 
 		QString szDate = pLog->date().toString("yyyy.MM.dd");
 
@@ -580,14 +580,15 @@ void LogViewWindow::exportLog(LogFile::ExportType exportType)
 	}
 
 	// We selected a node in the log list, scan the children
-	KviPointerList<LogListViewItem> logList; // TODO: Why are we collecting tree nodes instead of logs?
-	logList.setAutoDelete(false);
+	std::vector<std::shared_ptr<LogFile>> logList;
 	for(int i = 0; i < pItem->childCount(); i++)
 	{
 		if(!pItem->child(i)->childCount())
 		{
 			// The child is a log file, append it to the list
-			logList.append((LogListViewItem *)pItem->child(i));
+			LogListViewItem * pViewItem = static_cast<LogListViewItem *>(pItem->child(i));
+			std::shared_ptr<LogFile> pLog { pViewItem->log() };
+			logList.push_back(pLog);
 			continue;
 		}
 
@@ -602,7 +603,9 @@ void LogViewWindow::exportLog(LogFile::ExportType exportType)
 			}
 
 			// Add the child to the list
-			logList.append((LogListViewItem *)pChild->child(j));
+			LogListViewItem * pViewItem = static_cast<LogListViewItem *>(pItem->child(j));
+			std::shared_ptr<LogFile> pLog { pViewItem->log() };
+			logList.push_back(pLog);
 		}
 	}
 
@@ -619,17 +622,7 @@ void LogViewWindow::exportLog(LogFile::ExportType exportType)
 		return;
 	KVI_OPTION_STRING(KviOption_stringLogsExportPath) = szDir;
 
-	// Create isolated copies for ExportOperation to work on
-	std::vector<std::shared_ptr<LogFile>> logs;
-	logs.reserve(logList.count());
-	for(unsigned int u = 0; u < logList.count(); u++)
-	{
-		LogListViewItem * pCurItem = logList.at(u);
-		LogFile * pLog = pCurItem->log();
-		auto logCopy = std::make_shared<LogFile>(*pLog);
-		logs.push_back(logCopy);
-	}
-
-	ExportOperation * worker = new ExportOperation(logs, exportType, szDir);
+	// Begin asynchronously writing the logs to persistent storage
+	ExportOperation * worker = new ExportOperation(logList, exportType, szDir);
 	worker->start();
 }

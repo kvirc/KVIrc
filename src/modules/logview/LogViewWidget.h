@@ -45,7 +45,7 @@ public:
 	std::shared_ptr<LogFile> m_pFileData;
 
 public:
-	LogFile * log() { return m_pFileData.get(); };
+	std::weak_ptr<LogFile> log() { return m_pFileData; };
 	virtual QString fileName() const { return QString(); };
 };
 

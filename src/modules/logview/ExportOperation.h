@@ -8,6 +8,9 @@
 #include <vector>
 #include <memory>
 
+// ExportOperation is a small container class for the data necessary
+// to export log files. The purpose of ExportOperation is to ensure the
+// lifetime of that data--in particular, the list of log files.
 class ExportOperation : public QObject
 {
 	Q_OBJECT
