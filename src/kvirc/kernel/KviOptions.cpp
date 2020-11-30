@@ -188,7 +188,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("DccSendFakeAddressByDefault", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("UseWindowListActivityMeter", false, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("CloseServerWidgetAfterConnect", false, KviOption_sectFlagFrame),
-	BOOL_OPTION("PrioritizeLastActionTime", false, KviOption_sectFlagInput),
+	BOOL_OPTION("PrioritizeLastActionTime", true, KviOption_sectFlagInput),
 	BOOL_OPTION("ShowUserChannelIcons", true, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ShowUserChannelState", false, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("EnableIgnoreOnPrivMsg", true, KviOption_sectFlagConnection),
