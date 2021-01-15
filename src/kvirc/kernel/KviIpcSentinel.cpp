@@ -83,7 +83,7 @@ static void kvi_ipcSetRemoteCommand(Window w, const char * command)
 	::memcpy(buffer + 8, command, len);
 
 	XChangeProperty(kvi_ipc_get_xdisplay(), w, kvi_atom_ipc_remote_command,
-	    XA_STRING, 8, PropModeReplace, (const unsigned char *)buffer, len + 8);
+		XA_STRING, 8, PropModeReplace, (const unsigned char *)buffer, len + 8);
 
 	::free(buffer);
 }
@@ -172,6 +172,12 @@ bool kvi_sendIpcMessage(const char * message)
 	}
 #elif defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 2, 0)
+	if (!QX11Info::isPlatformX11()) {
+		return false;
+	}
+#endif
+
 	kvi_ipcLoadAtoms();
 
 	Window sentinel = kvi_x11_findIpcSentinel(kvi_ipc_get_xrootwin());
@@ -196,10 +202,16 @@ KviIpcSentinel::KviIpcSentinel() : QWidget(nullptr)
 	setWindowFlags(Qt::FramelessWindowHint);
 	setWindowTitle("kvirc4_ipc_sentinel");
 #elif defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 2, 0)
+	if (!QX11Info::isPlatformX11()) {
+		return;
+	}
+#endif
 	kvi_ipcLoadAtoms();
 
 	XChangeProperty(kvi_ipc_get_xdisplay(), winId(), kvi_atom_ipc_sentinel_window, XA_STRING, 8,
-	    PropModeReplace, (const unsigned char *)kvi_sentinel_id.ptr(), kvi_sentinel_id.len());
+		PropModeReplace, (const unsigned char *)kvi_sentinel_id.ptr(), kvi_sentinel_id.len());
 
 	kvi_ipcSetRemoteCommand(winId(), "");
 #endif //!COMPILE_NO_X && !COMPILE_ON_WINDOWS
