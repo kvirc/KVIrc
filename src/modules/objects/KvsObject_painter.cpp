@@ -632,7 +632,7 @@ if(m_pPrinter)
 	delete m_pPrinter;
 m_pPrinter = nullptr;
 
-KVSO_END_CONSTRUCTOR(KvsObject_painter)
+KVSO_END_DESTRUCTOR(KvsObject_painter)
 
 #define KVSO_PARAMETERS_PAINTER(__pXOrArray, __iY, __iW, __iH)                                                                  \
 	if(__pXOrArray->isArray())                                                                                                  \
@@ -661,8 +661,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_painter)
 	{                                                                                                                           \
 		if(c->params()->count() < 4)                                                                                            \
 		{                                                                                                                       \
-			QString error = function + __tr2qs_ctx(" requires either an array as first parameter or four integers", "objects"); \
-			c->error(error);                                                                                                    \
+			c->error(__tr2qs_ctx("%Q requires either an array as first parameter or four integers", "objects"),&function);      \
 			return false;                                                                                                       \
 		}                                                                                                                       \
 		if(!__pXOrArray->asInteger(iX))                                                                                         \
@@ -697,8 +696,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_painter)
 	{                                                                                                                          \
 		if(c->params()->count() < 2)                                                                                           \
 		{                                                                                                                      \
-			QString error = function + __tr2qs_ctx(" requires either an array as first parameter or two integers", "objects"); \
-			c->error(error);                                                                                                   \
+			c->error(__tr2qs_ctx("%Q requires either an array as first parameter or two integers", "objects"),&function);      \
 			return false;                                                                                                      \
 		}                                                                                                                      \
 		if(!__pXOrArray->asInteger(iX))                                                                                        \
@@ -743,8 +741,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_painter)
 	{                                                                                                                        \
 		if(c->params()->count() < 3)                                                                                         \
 		{                                                                                                                    \
-			QString error = function + __tr2qs_ctx(" requires either an array as first parameter or 3 integers", "objects"); \
-			c->error(error);                                                                                                 \
+			c->error(__tr2qs_ctx("%Q requires either an array as first parameter or 3 integers", "objects"),&function);      \
 			return false;                                                                                                    \
 		}                                                                                                                    \
 		if(!__pCol1OrArray->asInteger(iCol1))                                                                                \
@@ -766,8 +763,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_painter)
 		{                                                                                                                                   \
 			if(c->params()->count() < 3)                                                                                                    \
 			{                                                                                                                               \
-				QString error=function+__tr2qs_ctx(" requires either an array as first parameter and 2 integers or six integers","objects");\
-				c->error(error);                                                                                                            \
+				c->error(__tr2qs_ctx("%Q requires either an array as first parameter and 2 integers or six integers","objects"),&function); \
 				return false;                                                                                                               \
 			}                                                                                                                               \
 			__iA1 = __iY;                                                                                                                   \
@@ -803,8 +799,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_painter)
 	} else {                                                                                                                                \
 		if(c->params()->count() < 6)                                                                                                        \
 		{                                                                                                                                   \
-			QString error=function+__tr2qs_ctx(" requires either an array as first parameter or six integers","objects");                   \
-			c->error(error);                                                                                                                \
+			c->error(__tr2qs_ctx("%Q requires either an array as first parameter or six integers","objects"),&function);                    \
 			return false;                                                                                                                   \
 		}                                                                                                                                   \
 		if(!__pXOrArray->asInteger(iX))                                                                                                     \
