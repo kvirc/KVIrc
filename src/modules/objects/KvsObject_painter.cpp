@@ -754,6 +754,66 @@ KVSO_END_CONSTRUCTOR(KvsObject_painter)
 		}                                                                                                                    \
 	}
 
+#define KVSO_6OR4ARRAYPARAMETERS(__pXOrArray,__iY,__iW,__iH,__iA1,__iA2)                                                                    \
+	if(__pXOrArray->isArray())                                                                                                              \
+	{                                                                                                                                       \
+		if(__pXOrArray->array()->size() < 4)                                                                                                \
+		{                                                                                                                                   \
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 4 elements","objects"));                              \
+			return false;                                                                                                                   \
+		}                                                                                                                                   \
+		if(__pXOrArray->array()->size() < 6)                                                                                                \
+		{                                                                                                                                   \
+			if(c->params()->count() < 3)                                                                                                    \
+			{                                                                                                                               \
+				QString error=function+__tr2qs_ctx(" requires either an array as first parameter and 2 integers or six integers","objects");\
+				c->error(error);                                                                                                            \
+				return false;                                                                                                               \
+			}                                                                                                                               \
+			__iA1 = __iY;                                                                                                                   \
+			__iA2 = __iW;                                                                                                                   \
+		} else {                                                                                                                            \
+			KviKvsVariant * pA1 = __pXOrArray->array()->at(4);                                                                              \
+			KviKvsVariant * pA2 = __pXOrArray->array()->at(5);                                                                              \
+			if(!(pA1 && pA2))                                                                                                               \
+			{                                                                                                                               \
+				c->error(__tr2qs_ctx("One of the geometry array parameters is empty","objects"));                                           \
+				return false;                                                                                                               \
+			}                                                                                                                               \
+			if(!(pA1->asInteger(__iA1) && pA2->asInteger(__iA2)))                                                                           \
+			{                                                                                                                               \
+				c->error(__tr2qs_ctx("One of the geometry array parameters didn't evaluate to an integer","objects"));                      \
+				return false;                                                                                                               \
+			}                                                                                                                               \
+		}                                                                                                                                   \
+		KviKvsVariant * pX = __pXOrArray->array()->at(0);                                                                                   \
+		KviKvsVariant * pY = __pXOrArray->array()->at(1);                                                                                   \
+		KviKvsVariant * pW = __pXOrArray->array()->at(2);                                                                                   \
+		KviKvsVariant * pH = __pXOrArray->array()->at(3);                                                                                   \
+		if(!(pX && pY && pW && pH))                                                                                                         \
+		{                                                                                                                                   \
+			c->error(__tr2qs_ctx("One of the geometry array parameters is empty","objects"));                                               \
+			return false;                                                                                                                   \
+		}                                                                                                                                   \
+		if(!(pX->asInteger(iX) && pY->asInteger(__iY) && pW->asInteger(__iW) && pH->asInteger(__iH)))                                       \
+		{                                                                                                                                   \
+			c->error(__tr2qs_ctx("One of the geometry array parameters didn't evaluate to an integer","objects"));                          \
+			return false;                                                                                                                   \
+		}                                                                                                                                   \
+	} else {                                                                                                                                \
+		if(c->params()->count() < 6)                                                                                                        \
+		{                                                                                                                                   \
+			QString error=function+__tr2qs_ctx(" requires either an array as first parameter or six integers","objects");                   \
+			c->error(error);                                                                                                                \
+			return false;                                                                                                                   \
+		}                                                                                                                                   \
+		if(!__pXOrArray->asInteger(iX))                                                                                                     \
+		{                                                                                                                                   \
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));                              \
+			return false;                                                                                                                   \
+		}                                                                                                                                   \
+	}
+
 KVSO_CLASS_FUNCTION(painter, setFont)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
@@ -761,8 +821,8 @@ KVSO_CLASS_FUNCTION(painter, setFont)
 	QStringList szListStyle;
 	kvs_int_t iSize;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("size", KVS_PT_INTEGER, 0, iSize)
 	KVSO_PARAMETER("family", KVS_PT_STRING, 0, szFamily)
+	KVSO_PARAMETER("size", KVS_PT_INTEGER, 0, iSize)
 	KVSO_PARAMETER("style", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, szListStyle)
 	KVSO_PARAMETERS_END(c)
 	QFont font = m_pPainter->font();
@@ -876,17 +936,17 @@ KVSO_CLASS_FUNCTION(painter, drawRoundRect)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
-	kvs_int_t iXrnd, iYrnd, iX, iY, iW, iH;
+	kvs_int_t iX, iY, iW, iH, iXrnd, iYrnd;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("x_round", KVS_PT_INT, 0, iXrnd)
-	KVSO_PARAMETER("y_round", KVS_PT_INT, 0, iYrnd)
 	KVSO_PARAMETER("x_or_array", KVS_PT_VARIANT, 0, pXOrArray)
 	KVSO_PARAMETER("y", KVS_PT_INT, KVS_PF_OPTIONAL, iY)
 	KVSO_PARAMETER("w", KVS_PT_INT, KVS_PF_OPTIONAL, iW)
 	KVSO_PARAMETER("h", KVS_PT_INT, KVS_PF_OPTIONAL, iH)
+	KVSO_PARAMETER("x_round", KVS_PT_INT, KVS_PF_OPTIONAL, iXrnd)
+	KVSO_PARAMETER("y_round", KVS_PT_INT, KVS_PF_OPTIONAL, iYrnd)
 	KVSO_PARAMETERS_END(c)
 	QString function = "$drawRoundRect";
-	KVSO_PARAMETERS_PAINTER(pXOrArray, iY, iW, iH)
+	KVSO_6OR4ARRAYPARAMETERS(pXOrArray, iY, iW, iH, iXrnd, iYrnd)
 	m_pPainter->drawRoundRect(iX, iY, iW, iH, iXrnd, iYrnd);
 	return true;
 }
@@ -895,17 +955,17 @@ KVSO_CLASS_FUNCTION(painter, drawArc)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
-	kvs_int_t iSangle, iLena, iX, iY, iW, iH;
+	kvs_int_t iX, iY, iW, iH, iSangle, iLena;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("start_angle", KVS_PT_INT, 0, iSangle)
-	KVSO_PARAMETER("a_lenght", KVS_PT_INT, 0, iLena)
 	KVSO_PARAMETER("x_or_array", KVS_PT_VARIANT, 0, pXOrArray)
 	KVSO_PARAMETER("y", KVS_PT_INT, KVS_PF_OPTIONAL, iY)
 	KVSO_PARAMETER("w", KVS_PT_INT, KVS_PF_OPTIONAL, iW)
 	KVSO_PARAMETER("h", KVS_PT_INT, KVS_PF_OPTIONAL, iH)
+	KVSO_PARAMETER("start_angle", KVS_PT_INT, KVS_PF_OPTIONAL, iSangle)
+	KVSO_PARAMETER("a_lenght", KVS_PT_INT, KVS_PF_OPTIONAL, iLena)
 	KVSO_PARAMETERS_END(c)
 	QString function = "$drawArc";
-	KVSO_PARAMETERS_PAINTER(pXOrArray, iY, iW, iH)
+	KVSO_6OR4ARRAYPARAMETERS(pXOrArray, iY, iW, iH, iSangle, iLena)
 	m_pPainter->drawArc(iX, iY, iW, iH, iSangle, iLena);
 	return true;
 }
@@ -914,17 +974,17 @@ KVSO_CLASS_FUNCTION(painter, drawChord)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
-	kvs_int_t iSangle, iLena, iX, iY, iW, iH;
+	kvs_int_t iX, iY, iW, iH, iSangle, iLena;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("start_angle", KVS_PT_INT, 0, iSangle)
-	KVSO_PARAMETER("a_lenght", KVS_PT_INT, 0, iLena)
 	KVSO_PARAMETER("x_or_array", KVS_PT_VARIANT, 0, pXOrArray)
 	KVSO_PARAMETER("y", KVS_PT_INT, KVS_PF_OPTIONAL, iY)
 	KVSO_PARAMETER("w", KVS_PT_INT, KVS_PF_OPTIONAL, iW)
 	KVSO_PARAMETER("h", KVS_PT_INT, KVS_PF_OPTIONAL, iH)
+	KVSO_PARAMETER("start_angle", KVS_PT_INT, KVS_PF_OPTIONAL, iSangle)
+	KVSO_PARAMETER("a_lenght", KVS_PT_INT, KVS_PF_OPTIONAL, iLena)
 	KVSO_PARAMETERS_END(c)
 	QString function = "$drawChord";
-	KVSO_PARAMETERS_PAINTER(pXOrArray, iY, iW, iH)
+	KVSO_6OR4ARRAYPARAMETERS(pXOrArray, iY, iW, iH, iSangle, iLena)
 	m_pPainter->drawChord(iX, iY, iW, iH, iSangle, iLena);
 	return true;
 }
@@ -1088,17 +1148,17 @@ KVSO_CLASS_FUNCTION(painter, drawPie)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
-	kvs_int_t iSangle, iLena, iX, iY, iW, iH;
+	kvs_int_t iX, iY, iW, iH, iSangle, iLena;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("start_angle", KVS_PT_INT, 0, iSangle)
-	KVSO_PARAMETER("a_lenght", KVS_PT_INT, 0, iLena)
 	KVSO_PARAMETER("x_or_array", KVS_PT_VARIANT, 0, pXOrArray)
 	KVSO_PARAMETER("y", KVS_PT_INT, KVS_PF_OPTIONAL, iY)
 	KVSO_PARAMETER("w", KVS_PT_INT, KVS_PF_OPTIONAL, iW)
 	KVSO_PARAMETER("h", KVS_PT_INT, KVS_PF_OPTIONAL, iH)
+	KVSO_PARAMETER("start_angle", KVS_PT_INT, KVS_PF_OPTIONAL, iSangle)
+	KVSO_PARAMETER("a_lenght", KVS_PT_INT, KVS_PF_OPTIONAL, iLena)
 	KVSO_PARAMETERS_END(c)
 	QString function = "$drawPie";
-	KVSO_PARAMETERS_PAINTER(pXOrArray, iY, iW, iH)
+	KVSO_6OR4ARRAYPARAMETERS(pXOrArray, iY, iW, iH, iSangle, iLena)
 	m_pPainter->drawPie(iX, iY, iW, iH, iSangle, iLena);
 	return true;
 }
