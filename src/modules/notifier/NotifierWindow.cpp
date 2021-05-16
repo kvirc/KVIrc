@@ -231,7 +231,7 @@ void NotifierWindow::stopAutoHideTimer()
 static bool active_window_is_full_screen()
 {
 	WId activeId = KWindowSystem::activeWindow();
-	KWindowInfo wi = KWindowSystem::windowInfo(activeId, NET::WMState);
+	KWindowInfo wi = KWindowInfo(activeId, NET::WMState);
 	return (wi.valid() && wi.hasState(NET::FullScreen));
 }
 #else // COMPILE_KDE_SUPPORT
