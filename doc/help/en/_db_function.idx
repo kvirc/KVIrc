@@ -1,0 +1,453 @@
+$active<!>Retrieves the window ID of the active window<!>fnc_active.html
+$aliasBody<!>Returns the body of an alias, if it exists<!>fnc_aliasbody.html
+$ascii<!>Returns the Unicode code of a character<!>fnc_ascii.html
+$asciiToBase64<!>Returns an encoded base64 string<!>fnc_asciitobase64.html
+$asciiToHex<!>Returns an encoded hex string<!>fnc_asciitohex.html
+$array<!>Explicitly creates an array<!>fnc_array.html
+$away<!>Returns true if the current user is away<!>fnc_away.html
+$b<!>Returns the BOLD mIRC control character<!>fnc_b.html
+$base64ToAscii<!>Returns a decoded base64 string<!>fnc_base64toascii.html
+$boolean<!>Casts a variable to a boolean<!>fnc_boolean.html
+$bool<!>Casts a variable to a boolean<!>fnc_bool.html
+$certificate<!>Returns information about the local certificate<!>fnc_certificate.html
+$channel<!>Retrieves the window ID of a specified channel<!>fnc_channel.html
+$char<!>Returns a character specified by Unicode<!>fnc_char.html
+$classdefined<!>Checks if a class is defined<!>fnc_classdefined.html
+$console<!>Retrieves the window ID of a specified console<!>fnc_console.html
+$context<!>Retrieves the ID of the specified IRC context<!>fnc_context.html
+$countStatusBarItems<!>Returns the number of items in the statusbar<!>fnc_countstatusbaritems.html
+$cr<!>Returns a carriage return character<!>fnc_cr.html
+$date<!>Returns a date/time string using a specified format<!>fnc_date.html
+$escape<!>Returns a kvs-escaped version of the string<!>fnc_escape.html
+$false<!>The boolean false constant<!>fnc_false.html
+$features<!>Returns the features that KVIrc supports<!>fnc_features.html
+$firstConnectedConsole<!>Returns the window ID of the first connected console<!>fnc_firstconnectedconsole.html
+$flatten<!>Returns a flattened array of items<!>fnc_flatten.html
+$fmtlink<!>Returns a formatted link buffer<!>fnc_fmtlink.html
+$gender<!>Returns the gender of the specified user<!>fnc_gender.html
+$globals<!>Dump globals variables<!>fnc_globals.html
+$hash<!>Explicitly creates a hash<!>fnc_hash.html
+$hexToAscii<!>Returns a decoded hex string<!>fnc_hextoascii.html
+$hostname<!>Returns the hostname of the specified user<!>fnc_hostname.html
+$lag<!>Returns the lag on the current server<!>fnc_lag.html
+$hptimestamp<!>Returns a high precision timestamp<!>fnc_hptimestamp.html
+$i<!>Returns the ITALIC mIRC control character<!>fnc_i.html
+$icon<!>Returns the ID of an icon<!>fnc_icon.html
+$iconname<!>Returns the name of an icon<!>fnc_iconname.html
+$insideAlias<!>Returns true if kvs is executing an alias<!>fnc_insidealias.html
+$integer<!>Casts a variable to an integer<!>fnc_integer.html
+$int<!>Casts a variable to an integer<!>fnc_int.html
+$isbot<!>Returns <b>1</b> if the user is a bot. Otherwise return 0.<!>fnc_isbot.html
+$isMainWindowActive<!>Checks if main KVirc window is active<!>fnc_ismainwindowactive.html
+$isMainWindowMinimized<!>Checks if main KVirc window is minimized<!>fnc_ismainwindowminimized.html
+$isEmpty<!>Checks if a variable is set (empty or non empty)<!>fnc_isempty.html
+$isEventEnabled<!>Checks if an event enabled<!>fnc_iseventenabled.html
+$isNumeric<!>Finds whether a variable contains a representation of a number<!>fnc_isnumeric.html
+$isSet<!>Checks if a variable is set (non-empty)<!>fnc_isset.html
+$isTimer<!>Checks for a timer existence<!>fnc_istimer.html
+$isWellKnown<!>Returns $true if the specified user is well known<!>fnc_iswellknown.html
+$k<!>Returns the COLOR mIRC control character<!>fnc_k.html
+$keys<!>Returns the array of keys of a hash<!>fnc_keys.html
+$lang<!>Returns name of currently used language<!>fnc_lang.html
+$length<!>Returns the length of a variable<!>fnc_length.html
+$lf<!>Returns a line feed character<!>fnc_lf.html
+$link<!>Returns the text specified as a link<!>fnc_link.html
+$listtimers<!>Returns a list of the active timers<!>fnc_listtimers.html
+$mask<!>Retrieves the host mask of a user<!>fnc_mask.html
+$me<!>Returns the current nickname<!>fnc_me.html
+$msgtype<!>Returns the ID of a message type color set<!>fnc_msgtype.html
+$new<!>Creates a new object<!>fnc_new.html
+$nothing<!>Evaluates to an empty variable<!>fnc_nothing.html
+$null<!>Evaluates to the null object handle.<!>fnc_null.html
+$o<!>Returns the RESET mIRC control character<!>fnc_o.html
+$option<!>Returns the value of an option<!>fnc_option.html
+$query<!>Retrieves the window ID of a specified query<!>fnc_query.html
+$r<!>Returns the REVERSE mIRC control character<!>fnc_r.html
+$rand<!>Generates a random number<!>fnc_rand.html
+$real<!>Casts a variable to a real<!>fnc_real.html
+$realname<!>Returns the realname of the specified user<!>fnc_realname.html
+$receivedBytes<!>Returns total received bytes<!>fnc_receivedbytes.html
+$rsort<!>Sorts an array in reverse order<!>fnc_rsort.html
+$scriptContextName<!>Returns the actual script context's name..<!>fnc_scriptcontextname.html
+$selected<!>Returns the list of selected nicknames in the channel<!>fnc_selected.html
+$sentBytes<!>Returns total sent bytes<!>fnc_sentbytes.html
+$serialize<!>Encodes variable to JSON string<!>fnc_serialize.html
+$server<!>Returns the current server name (if any)<!>fnc_server.html
+$sort<!>Sorts an array<!>fnc_sort.html
+$string<!>Casts a variable to a string<!>fnc_string.html
+$sw<!>Returns the value of a switch for an alias<!>fnc_sw.html
+$target<!>Returns the target of the current window<!>fnc_target.html
+$this<!>Retrieves the ID of the current object<!>fnc_this.html
+$$<!>Retrieves the ID of the current object<!>fnc_$.html
+$tr<!>Translates an English string to the current language<!>fnc_tr.html
+$true<!>The boolean true constant<!>fnc_true.html
+$typeof<!>Returns the internal data type of a variable<!>fnc_typeof.html
+$u<!>Returns the UNDERLINE mIRC control character<!>fnc_u.html
+$uflags<!>Retrieves the user flags of a user<!>fnc_uflags.html
+$unicode<!>Returns the Unicode code of a set of characters<!>fnc_unicode.html
+$unixTime<!>Returns the current UNIX time<!>fnc_unixtime.html
+$unserialize<!>Decodes JSON-encoded string<!>fnc_unserialize.html
+$username<!>Returns the username of the specified user<!>fnc_username.html
+$version<!>Returns information about the version of KVIrc.<!>fnc_version.html
+$window<!>Retrieve the ID of a specified window.<!>fnc_window.html
+$action.exists<!>Checks if an action is currently defined<!>fnc_action.exists.html
+$action.isEnabled<!>Checks if an action is currently enabled.<!>fnc_action.isenabled.html
+$addon.exists<!>Checks if an addon is currently installed<!>fnc_addon.exists.html
+$addon.version<!>Returns the version of an installed addon<!>fnc_addon.version.html
+$avatar.name<!>Returns the avatar name for the specified user<!>fnc_avatar.name.html
+$avatar.path<!>Returns the avatar path for the specified user<!>fnc_avatar.path.html
+$chan.name<!>Returns the name of a channel<!>fnc_chan.name.html
+$chan.getUrl<!>Returns the URL of a channel<!>fnc_chan.geturl.html
+$chan.isDead<!>Checks if a channel is dead<!>fnc_chan.isdead.html
+$chan.topic<!>Returns the topic of a channel<!>fnc_chan.topic.html
+$chan.topicsetby<!>Returns the author of the topic of a channel<!>fnc_chan.topicsetby.html
+$chan.topicsetat<!>Returns the set time of the topic of a channel<!>fnc_chan.topicsetat.html
+$chan.usercount<!>Returns the number of users on a channel<!>fnc_chan.usercount.html
+$chan.ownercount<!>Returns the number of channel owner users on a channel<!>fnc_chan.ownercount.html
+$chan.admincount<!>Returns the number of channel admin users on a channel<!>fnc_chan.admincount.html
+$chan.opcount<!>Returns the number of op users on a channel<!>fnc_chan.opcount.html
+$chan.voicecount<!>Returns the number of voiced users on a channel<!>fnc_chan.voicecount.html
+$chan.halfopcount<!>Returns the number of halfop users on a channel<!>fnc_chan.halfopcount.html
+$chan.useropcount<!>Returns the number of userop users on a channel<!>fnc_chan.useropcount.html
+$chan.bancount<!>Returns the number of entries in the channel ban list<!>fnc_chan.bancount.html
+$chan.banexceptioncount<!>Returns the number of entries in the channel ban exception list<!>fnc_chan.banexceptioncount.html
+$chan.invitecount<!>Returns the number of entries in the channel invite list<!>fnc_chan.invitecount.html
+$chan.maskcount<!>Returns the number of entries in the mask list for a channel mode<!>fnc_chan.maskcount.html
+$chan.ison<!>Checks if a user is on a channel<!>fnc_chan.ison.html
+$chan.getflag<!>Returns the channel-user mode flag of a user<!>fnc_chan.getflag.html
+$chan.isowner<!>Checks if a user is at least a channel owner<!>fnc_chan.isowner.html
+$chan.isadmin<!>Checks if a user is at least channel administrator<!>fnc_chan.isadmin.html
+$chan.isop<!>Checks if a user is at least an op on a channel<!>fnc_chan.isop.html
+$chan.isvoice<!>Checks if a user is at least voiced on a channel<!>fnc_chan.isvoice.html
+$chan.ishalfop<!>Checks if a user is at least halfop on a channel<!>fnc_chan.ishalfop.html
+$chan.isuserop<!>Checks if a user is at least a userop on a channel<!>fnc_chan.isuserop.html
+$chan.isMeOwner<!>Checks if the current user is at least an owner on a channel<!>fnc_chan.ismeowner.html
+$chan.isMeAdmin<!>Checks if the current user is at least an administrator on a channel<!>fnc_chan.ismeadmin.html
+$chan.isMeOp<!>Checks if the current user is at least op on a channel<!>fnc_chan.ismeop.html
+$chan.isMeHalfOp<!>Checks if the current user is at least an half operator on a channel<!>fnc_chan.ismehalfop.html
+$chan.isMeVoice<!>Checks if the current user is at least voice on a channel<!>fnc_chan.ismevoice.html
+$chan.isMeUserOp<!>Checks if the current user is at least a user operator on a channel<!>fnc_chan.ismeuserop.html
+$chan.mode<!>Returns the mode string of a channel<!>fnc_chan.mode.html
+$chan.key<!>Returns the key of a channel<!>fnc_chan.key.html
+$chan.limit<!>Returns the limit of a channel<!>fnc_chan.limit.html
+$chan.modeParam<!>Returns the parameter for a set mode of a channel<!>fnc_chan.modeparam.html
+$chan.users<!>Returns an array of channel user nicknames<!>fnc_chan.users.html
+$chan.banlist<!>Returns an array of channel ban masks<!>fnc_chan.banlist.html
+$chan.banexceptionlist<!>Returns an array of channel ban exception masks<!>fnc_chan.banexceptionlist.html
+$chan.invitelist<!>Returns an array of channel invite masks<!>fnc_chan.invitelist.html
+$chan.masklist<!>Returns an array of masks for a channel mode<!>fnc_chan.masklist.html
+$chan.matchban<!>Matches a mask against the channel ban list<!>fnc_chan.matchban.html
+$chan.matchbanexception<!>Matches a mask against the channel ban exception list<!>fnc_chan.matchbanexception.html
+$chan.matchinvite<!>Matches a mask against the channel invite list<!>fnc_chan.matchinvite.html
+$chan.matchqban<!>Matches a mask against the channel ban list searching for +q bans (aka mute bans)<!>fnc_chan.matchqban.html
+$chan.matchmask<!>Matches a mask against the channel list for a specific mode<!>fnc_chan.matchmask.html
+$chan.usermodelevel<!>Returns the channel user-mode level<!>fnc_chan.usermodelevel.html
+$chan.userJoinTime<!>Returns the time that a user has joined the channel<!>fnc_chan.userjointime.html
+$chan.userLastActionTime<!>Returns the time that a user has last performed some kind of action on the channel<!>fnc_chan.userlastactiontime.html
+$chan.common<!>Returns the common channel with a user<!>fnc_chan.common.html
+$config.open<!>Opens a config file<!>fnc_config.open.html
+$config.id<!>Returns the ID of an open config file<!>fnc_config.id.html
+$config.read<!>Reads an entry from a config file<!>fnc_config.read.html
+$config.section<!>Returns the name of the current section of a config file<!>fnc_config.section.html
+$config.readonly<!>Checks whether a config file is opened in read-only mode<!>fnc_config.readonly.html
+$config.filename<!>Returns the filename of an open config file<!>fnc_config.filename.html
+$config.hassection<!>Checks whether a section is present in a config file<!>fnc_config.hassection.html
+$config.sectionlist<!>Returns a list of the sections in a config file<!>fnc_config.sectionlist.html
+$config.keylist<!>Returns a list of keys in a config file<!>fnc_config.keylist.html
+$config.filelist<!>Returns a list of open config files<!>fnc_config.filelist.html
+$context.networkName<!>Returns the IRC network name of an IRC context<!>fnc_context.networkname.html
+$context.serverdbNetworkName<!>Returns the original IRC network name of an IRC context<!>fnc_context.serverdbnetworkname.html
+$context.serverHostName<!>Returns the IRC server name of an IRC context<!>fnc_context.serverhostname.html
+$context.serverdbServerHostName<!>Returns the original IRC server name of an IRC context<!>fnc_context.serverdbserverhostname.html
+$context.serverIpAddress<!>Returns the IRC server IP address of an IRC context<!>fnc_context.serveripaddress.html
+$context.serverIsIPV6<!>Returns the IPv6 state of an IRC context<!>fnc_context.serverisipv6.html
+$context.serverIsSSL<!>Returns the SSL state of an IRC context<!>fnc_context.serverisssl.html
+$context.serverSoftware<!>Returns the software running on the IRC server, if recognized<!>fnc_context.serversoftware.html
+$context.serverPassword<!>Returns the password used to login to the server of an IRC context<!>fnc_context.serverpassword.html
+$context.serverPort<!>Returns the port of the IRC server of an IRC context<!>fnc_context.serverport.html
+$context.state<!>Returns the state of an IRC context<!>fnc_context.state.html
+$context.list<!>Returns a list of existing IRC contexts<!>fnc_context.list.html
+$context.connectionStartTime<!>Returns the connection start time of an IRC context<!>fnc_context.connectionstarttime.html
+$context.lastMessageTime<!>Returns the last message time of an IRC context<!>fnc_context.lastmessagetime.html
+$context.queueSize<!>Returns the size of the current server message queue<!>fnc_context.queuesize.html
+$context.getSSLCertInfo<!>Returns the requested information about certificates used in an SSL enabled IRC session<!>fnc_context.getsslcertinfo.html
+$dcc.protocol<!>Returns the protocol of the specified DCC session<!>fnc_dcc.protocol.html
+$dcc.connectionType<!>Returns the connection type of the specified DCC session<!>fnc_dcc.connectiontype.html
+$dcc.isFileTransfer<!>Checks if a DCC is a file transfer<!>fnc_dcc.isfiletransfer.html
+$dcc.isFileUpload<!>Checks if a DCC is an upload file transfer<!>fnc_dcc.isfileupload.html
+$dcc.isFileDownload<!>Checks if a DCC is a download file transfer<!>fnc_dcc.isfiledownload.html
+$dcc.localNick<!>Returns the local nickname associated with the specified DCC session<!>fnc_dcc.localnick.html
+$dcc.localUser<!>Returns the local username associated with the specified DCC session<!>fnc_dcc.localuser.html
+$dcc.localHost<!>Returns the local hostname associated with the specified DCC session<!>fnc_dcc.localhost.html
+$dcc.localIp<!>Returns the local IP address associated with the specified DCC session<!>fnc_dcc.localip.html
+$dcc.localPort<!>Returns the local port associated with the specified DCC session<!>fnc_dcc.localport.html
+$dcc.localFileName<!>Returns the local file name associated with the specified DCC session<!>fnc_dcc.localfilename.html
+$dcc.localFileSize<!>Returns the local file size associated with the specified DCC session<!>fnc_dcc.localfilesize.html
+$dcc.remoteNick<!>Returns the remote nickname associated with the specified DCC session<!>fnc_dcc.remotenick.html
+$dcc.remoteUser<!>Returns the remote username associated with the specified DCC session<!>fnc_dcc.remoteuser.html
+$dcc.remoteHost<!>Returns the remote hostname associated with the specified DCC session<!>fnc_dcc.remotehost.html
+$dcc.remoteIp<!>Returns the remote IP address associated with the specified DCC session<!>fnc_dcc.remoteip.html
+$dcc.remotePort<!>Returns the remote port associated with the specified DCC session<!>fnc_dcc.remoteport.html
+$dcc.remoteFileName<!>Returns the remote file name associated with the specified DCC session<!>fnc_dcc.remotefilename.html
+$dcc.remoteFileSize<!>Returns the remote file size associated with the specified DCC session<!>fnc_dcc.remotefilesize.html
+$dcc.ircContext<!>Returns the ircContext from which this DCC has originated<!>fnc_dcc.irccontext.html
+$dcc.transferStatus<!>Returns the current status of a DCC file transfer<!>fnc_dcc.transferstatus.html
+$dcc.transferredBytes<!>Returns the number of transferred bytes in a DCC file transfer<!>fnc_dcc.transferredbytes.html
+$dcc.averageSpeed<!>Returns the average speed of a DCC file transfer<!>fnc_dcc.averagespeed.html
+$dcc.currentSpeed<!>Returns the current speed of a DCC file transfer<!>fnc_dcc.currentspeed.html
+$dcc.session<!>Returns the DCC session identifier associated with a window<!>fnc_dcc.session.html
+$dcc.sessionList<!>List the existing DCC session identifiers<!>fnc_dcc.sessionlist.html
+$dcc.getSSLCertInfo<!>Returns the requested information about certificates used in an SSL enabled DCC session<!>fnc_dcc.getsslcertinfo.html
+$dialog.yesno<!>Shows a simple yes/no dialog<!>fnc_dialog.yesno.html
+$file.exists<!>Check if a file or directory exists<!>fnc_file.exists.html
+$file.type<!>Checks the type of a path<!>fnc_file.type.html
+$file.size<!>Returns the size of a file<!>fnc_file.size.html
+$file.allSizes<!>Returns the size of each file in a specified directory.<!>fnc_file.allsizes.html
+$file.fixpath<!>Converts file paths<!>fnc_file.fixpath.html
+$file.ps<!>Returns the path separator<!>fnc_file.ps.html
+$file.ls<!>Returns a directory listing<!>fnc_file.ls.html
+$file.read<!>Reads a text file<!>fnc_file.read.html
+$file.readBytes<!>Reads a binary file<!>fnc_file.readbytes.html
+$file.readLines<!>Reads lines of a text file<!>fnc_file.readlines.html
+$file.localdir<!>Get the KVIrc local directory<!>fnc_file.localdir.html
+$file.homedir<!>Get the user's HOME directory<!>fnc_file.homedir.html
+$file.rootdir<!>Get the system root directory<!>fnc_file.rootdir.html
+$file.currentdir<!>Get the current directory<!>fnc_file.cwd.html
+$file.globaldir<!>Get the KVIrc global directory<!>fnc_file.globaldir.html
+$file.extractpath<!>Extract the parent directory path from a file path<!>fnc_file.extractpath.html
+$file.extractfilename<!>Extract the filename from a file path<!>fnc_file.extractfilename.html
+$file.diskspace<!>Return the available diskspace.<!>fnc_file.diskspace.html
+$file.digest<!>Returns a digest/hash string of the given file contents<!>fnc_file.digest.html
+$file.time<!>Returns the datetime of a file in unixtime format<!>fnc_file.time.html
+$language.detect<!>Tries to detect the language and encoding of a string<!>fnc_language.detect.html
+$log.file<!>Returns the current log filename<!>fnc_log.file.html
+$log.export<!>Exports the specified log to the given format and returns the filename<!>fnc_log.export.html
+$mask.match<!>Matches a mask against a wildcarded one<!>fnc_mask.match.html
+$mask.nick<!>Returns the nick part of an IRC mask<!>fnc_mask.nick.html
+$mask.user<!>Returns the username part of an IRC mask<!>fnc_mask.user.html
+$mask.host<!>Returns the hostname part of an IRC mask<!>fnc_mask.host.html
+$mask.hasNumericHost<!>Checks if a host part of a mask is numeric<!>fnc_mask.hasnumerichost.html
+$math.sin<!>Returns the sinus of the specified angle in radiants<!>fnc_math.sin.html
+$math.cos<!>Returns the cosinus of the specified angle in radiants<!>fnc_math.cos.html
+$math.tan<!>Returns the tangent of the specified angle in radiants<!>fnc_math.tan.html
+$math.asin<!>Returns the angle in radiants that has the specified sinus value.<!>fnc_math.asin.html
+$math.acos<!>Returns the angle in radiants that has the specified cosinus value.<!>fnc_math.acos.html
+$math.atan<!>Returns the angle in radiants that has the specified tangent value.<!>fnc_math.atan.html
+$math.sqrt<!>Returns the square root of a number<!>fnc_math.sqrt.html
+$math.cbrt<!>Returns the cube root of a number<!>fnc_math.cbrt.html
+$math.abs<!>Returns the absolute value of a number<!>fnc_math.abs.html
+$math.floor<!>Rounds down to the nearest integer<!>fnc_math.floor.html
+$math.ceil<!>Rounds up to the nearest integer<!>fnc_math.ceil.html
+$math.exp<!>Returns the exponential of the specified number<!>fnc_math.exp.html
+$math.log<!>Returns the natural logarithm of the specified number<!>fnc_math.log.html
+$math.log10<!>Returns the base 10 logarithm of the specified number<!>fnc_math.log10.html
+$math.isnan<!>Checks if the value is not a number<!>fnc_math.isnan.html
+$math.isinf<!>Checks if the value is the infinity<!>fnc_math.isinf.html
+$math.pow<!>Returns a to the power of b<!>fnc_math.pow.html
+$math.pi<!>Returns the value of pi<!>fnc_math.pi.html
+$math.e<!>Returns the value of e<!>fnc_math.e.html
+$mediaplayer.player<!>Returns the currently set media player interface<!>fnc_mediaplayer.player.html
+$mediaplayer.playerList<!>Returns a the list of the supported media player interfaces<!>fnc_mediaplayer.playerlist.html
+$mediaplayer.getVol<!>Returns the current volume of the media player<!>fnc_mediaplayer.getvol.html
+$mediaplayer.mrl<!>Returns the MRL of the currently playing media<!>fnc_mediaplayer.mrl.html
+$mediaplayer.nowPlaying<!>Returns a description of the currently played media<!>fnc_mediaplayer.nowplaying.html
+$mediaplayer.title<!>Returns the title of the current media<!>fnc_mediaplayer.title.html
+$mediaplayer.artist<!>Returns the artist of the media player<!>fnc_mediaplayer.artist.html
+$mediaplayer.genre<!>Returns the genre of the media player<!>fnc_mediaplayer.genre.html
+$mediaplayer.year<!>Returns the year of the media player<!>fnc_mediaplayer.year.html
+$mediaplayer.comment<!>Returns the comment of the media player<!>fnc_mediaplayer.comment.html
+$mediaplayer.album<!>Returns the album of the media player<!>fnc_mediaplayer.album.html
+$mediaplayer.mediaType<!>Returns the currently played media type<!>fnc_mediaplayer.mediatype.html
+$mediaplayer.bitRate<!>Returns the bit rate of the current song<!>fnc_mediaplayer.bitrate.html
+$mediaplayer.sampleRate<!>Returns the sample rate of the current song<!>fnc_mediaplayer.samplerate.html
+$mediaplayer.length<!>Returns the length of the current media<!>fnc_mediaplayer.length.html
+$mediaplayer.position<!>Returns the position of the current media<!>fnc_mediaplayer.position.html
+$mediaplayer.channels<!>Returns the number of channels of the current song<!>fnc_mediaplayer.channels.html
+$mediaplayer.getPlayListPos<!>Get the position for the current song.<!>fnc_mediaplayer.getplaylistpos.html
+$mediaplayer.getListLength<!>Return the play list length.<!>fnc_mediaplayer.getlistlength.html
+$mediaplayer.getRepeat<!>Return if <i>Repeat</i> is on.<!>fnc_mediaplayer.getrepeat.html
+$mediaplayer.getShuffle<!>Return if <i>shuffle</i> is on.<!>fnc_mediaplayer.getshuffle.html
+$mediaplayer.getEqData<!>Return the equalizer value.<!>fnc_mediaplayer.geteqdata.html
+$mediaplayer.localFile<!>Returns the name of the local file played by the media player<!>fnc_mediaplayer.localfile.html
+$mediaplayer.status<!>Returns the status of the media player<!>fnc_mediaplayer.status.html
+$my.nick<!>Returns the current nickname<!>fnc_my.nick.html
+$my.globalIdle<!>Returns the current user global idle time<!>fnc_my.globalidle.html
+$my.umode<!>Returns the current user mode flags<!>fnc_my.umode.html
+$my.user<!>Returns the current username<!>fnc_my.user.html
+$my.host<!>Returns the current hostname<!>fnc_my.host.html
+$my.ip<!>Returns the current IP address<!>fnc_my.ip.html
+$my.serverIsIPV6<!>Returns <b>1</b> if the current server connection use IPv6.<!>fnc_my.serverisipv6.html
+$my.serverIsSSL<!>Returns <b>1</b> if the current server connection uses SSL<!>fnc_my.serverisssl.html
+$my.server<!>Returns the current server name<!>fnc_my.server.html
+$my.network<!>Returns the current network name<!>fnc_my.network.html
+$notifier.isEnabled<!>Returns <b>1</b> if the notifier window is enabled<!>fnc_notifier.isenabled.html
+$objects.exists<!>Check if an object exists.<!>fnc_objects.exists.html
+$objects.instances<!>List object instances<!>fnc_objects.instances.html
+$objects.variables<!>List object's variables.<!>fnc_objects.variables.html
+$objects.classAllHandlers<!>List all the functions .<!>fnc_objects.classallhandlers.html
+$objects.classes<!>List user defined classes<!>fnc_objects.classes.html
+$objects.name<!>Returns class name<!>fnc_objects.name.html
+$objects.dump<!>Dump the KVIrc widgets.<!>fnc_objects.dump.html
+$options.isdialog<!>Returns the options dialog state<!>fnc_options.isdialog.html
+$package.info<!>Returns information about a KVIrc package file<!>fnc_package.info.html
+$perl.isAvailable<!>Check if Perl scripting support is available<!>fnc_perl.isavailable.html
+$popup.exists<!>Returns true if a popup exists<!>fnc_popup.exists.html
+$popup.isEmpty<!>Returns true if a popup is empty<!>fnc_popup.isempty.html
+$popup.currentItemId<!>Returns the popup item ID that owns the executing code<!>fnc_popup.currentitemid.html
+$proxydb.protocol<!>Returns the protocol<!>fnc_proxydb.protocol.html
+$proxydb.hostname<!>Returns the hostname<!>fnc_proxydb.hostname.html
+$proxydb.ip<!>Returns the IP<!>fnc_proxydb.ip.html
+$proxydb.password<!>Returns the password<!>fnc_proxydb.password.html
+$proxydb.username<!>Returns the username<!>fnc_proxydb.username.html
+$proxydb.isIPv6<!>Returns the isIPv6<!>fnc_proxydb.isipv6.html
+$proxydb.port<!>Returns the port<!>fnc_proxydb.port.html
+$python.isAvailable<!>Check if Python scripting support is available<!>fnc_python.isavailable.html
+$regchan.list<!>Get a list of registered channels<!>fnc_regchan.list.html
+$regchan.property<!>Returns a property of an entry in the registered channels database<!>fnc_regchan.property.html
+$regchan.match<!>Checks if a channel is registered<!>fnc_regchan.match.html
+$regchan.find<!>Checks if a channel is registered<!>fnc_regchan.find.html
+$reguser.getIgnoreFlags<!>Returns ignore flags for registered user<!>fnc_reguser.getignoreflags.html
+$reguser.isIgnoreEnabled<!>Returns if ignore enabled registered user<!>fnc_reguser.isignoreenabled.html
+$reguser.list<!>Get a list of registered user masks<!>fnc_reguser.list.html
+$reguser.match<!>Returns an entry in the registered user database<!>fnc_reguser.match.html
+$reguser.exactMatch<!>Returns an entry in the registered user database<!>fnc_reguser.exactmatch.html
+$reguser.mask<!>Returns the registration masks for a db entry<!>fnc_reguser.mask.html
+$reguser.property<!>Returns a property of an entry in the registered user database<!>fnc_reguser.property.html
+$reguser.matchProperty<!>Returns a property of an entry in the registered user database<!>fnc_reguser.matchproperty.html
+$serverdb.networkExists<!>Checks if the network already exists in the DB<!>fnc_serverdb.networkexists.html
+$serverdb.serverExists<!>Checks if the network already exists in the DB<!>fnc_serverdb.serverexists.html
+$serverdb.networkNickName<!>Returns the nickname<!>fnc_serverdb.networknickname.html
+$serverdb.networkUserName<!>Returns the username<!>fnc_serverdb.networkusername.html
+$serverdb.networkRealName<!>Returns the real name<!>fnc_serverdb.networkrealname.html
+$serverdb.networkEncoding<!>Returns the encoding<!>fnc_serverdb.networkencoding.html
+$serverdb.networkTextEncoding<!>Returns the encoding<!>fnc_serverdb.networktextencoding.html
+$serverdb.networkDescription<!>Returns the description<!>fnc_serverdb.networkdescription.html
+$serverdb.networkConnectCommand<!>Returns the connect command<!>fnc_serverdb.networkconnectcommand.html
+$serverdb.networkLoginCommand<!>Returns the login command<!>fnc_serverdb.networklogincommand.html
+$serverdb.networkName<!>Returns the name<!>fnc_serverdb.networkname.html
+$serverdb.networkJoinChannels<!>Returns the list of autojoin channels<!>fnc_serverdb.networkjoinchannels.html
+$serverdb.serverNickName<!>Returns the nickname<!>fnc_serverdb.servernickname.html
+$serverdb.serverUserName<!>Returns the username<!>fnc_serverdb.serverusername.html
+$serverdb.serverRealName<!>Returns the real name<!>fnc_serverdb.serverrealname.html
+$serverdb.serverEncoding<!>Returns the encoding<!>fnc_serverdb.serverencoding.html
+$serverdb.serverTextEncoding<!>Returns the encoding<!>fnc_serverdb.servertextencoding.html
+$serverdb.serverDescription<!>Returns the description<!>fnc_serverdb.serverdescription.html
+$serverdb.serverConnectCommand<!>Returns the connect command<!>fnc_serverdb.serverconnectcommand.html
+$serverdb.serverLoginCommand<!>Returns the login command<!>fnc_serverdb.serverlogincommand.html
+$serverdb.serverIp<!>Returns the IP address<!>fnc_serverdb.serverip.html
+$serverdb.serverId<!>Returns the ID<!>fnc_serverdb.serverid.html
+$serverdb.serverPassword<!>Returns the password<!>fnc_serverdb.serverpassword.html
+$serverdb.serverPort<!>Returns the port<!>fnc_serverdb.serverport.html
+$serverdb.isAutoConnect<!>Returns the autoconnect status<!>fnc_serverdb.isautoconnect.html
+$serverdb.isIPv6<!>Returns the IPv6 status<!>fnc_serverdb.isipv6.html
+$serverdb.isSSL<!>Returns the SSL status<!>fnc_serverdb.isssl.html
+$serverdb.cacheIp<!>Returns the cache-ip status<!>fnc_serverdb.cacheip.html
+$serverdb.favorite<!>Returns if the server is favorited<!>fnc_serverdb.favorite.html
+$serverdb.serverJoinChannels<!>Returns the list of autojoin channels<!>fnc_serverdb.serverjoinchannels.html
+$snd.isMuted<!>Returns if the sounds muted<!>fnc_snd.ismuted.html
+$spellchecker.available_dictionaries<!>Return available dictionaries.<!>fnc_spellchecker.available_dictionaries.html
+$spellchecker.check<!>Check a single work for spelling mistakes.<!>fnc_spellchecker.check.html
+$spellchecker.suggestions<!>Get spelling suggestions for a single word<!>fnc_spellchecker.suggestions.html
+$str.section<!>Returns a section of the string.<!>fnc_str.section.html
+$str.fromClipboard<!>Returns a string from clipboard.<!>fnc_str.fromclipboard.html
+$str.len<!>Returns the length of the given string<!>fnc_str.len.html
+$str.length<!>Returns the length of the given string<!>fnc_str.length.html
+$str.lowcase<!>Returns the given string with all characters turned to toLower case<!>fnc_str.lowcase.html
+$str.upcase<!>Returns the given string with all characters turned to upper case<!>fnc_str.upcase.html
+$str.localelowcase<!>Returns the given string with all characters turned to toLower case<!>fnc_str.localelowcase.html
+$str.localeupcase<!>Returns the given string with all characters turned to toUpper case<!>fnc_str.localeupcase.html
+$str.isnumber<!>Returns <b>1</b> if the given string represents a number<!>fnc_str.isnumber.html
+$str.isunsignednumber<!>Returns <b>1</b> if the given string represents an unsigned number<!>fnc_str.isunsignednumber.html
+$str.isempty<!>Returns <b>1</b> if the given string don't have any character.<!>fnc_str.isempty.html
+$str.contains<!>Returns <b>1</b> if the first parameter contains the second<!>fnc_str.contains.html
+$str.equal<!>Returns <b>1</b> if the two string parameters are equal<!>fnc_str.equal.html
+$str.cmp<!>Compare two strings alphabetically<!>fnc_str.cmp.html
+$str.find<!>Find the index of the nth occurrence of a substring in a string<!>fnc_str.find.html
+$str.findfirst<!>Find the index of a substring in a string<!>fnc_str.findfirst.html
+$str.findlast<!>Find the last index of a substring in a string<!>fnc_str.findlast.html
+$str.left<!>Returns a substring starting from the left until the given index.<!>fnc_str.left.html
+$str.right<!>Returns a substring starting from the right until the given index.<!>fnc_str.right.html
+$str.mid<!>Returns a substring starting from a given index.<!>fnc_str.mid.html
+$str.append<!>Append one string to another.<!>fnc_str.append.html
+$str.prepend<!>Prepend one string to another.<!>fnc_str.prepend.html
+$str.insert<!>Inserts a substring in a string at a given index<!>fnc_str.insert.html
+$str.strip<!>Returns a whitespace stripped string<!>fnc_str.strip.html
+$str.stripleft<!>Returns a left whitespace stripped string<!>fnc_str.stripleft.html
+$str.stripright<!>Returns a right whitespace stripped string<!>fnc_str.stripright.html
+$str.stripcolors<!>Returns a mIRC color codes stripped string<!>fnc_str.stripcolors.html
+$str.replace<!>Replace substrings in a string<!>fnc_str.replace.html
+$str.urlencode<!>Returns a browser formatted string<!>fnc_str.urlencode.html
+$str.lefttofirst<!>Returns the left part of a string until a given substring<!>fnc_str.lefttofirst.html
+$str.lefttolast<!>Returns the left part of a string until the last occurrence of a given substring<!>fnc_str.lefttolast.html
+$str.rightfromfirst<!>Returns the right part of a string from the first occurrence of a given substring<!>fnc_str.rightfromfirst.html
+$str.rightfromlast<!>Returns the right part of a string from the last occurrence of a given substring<!>fnc_str.rightfromlast.html
+$str.match<!>Matches a fixed string against a wildcard expression<!>fnc_str.match.html
+$str.word<!>Returns the nth word in a string<!>fnc_str.word.html
+$str.token<!>Returns the nth token in a string<!>fnc_str.token.html
+$str.charsum<!>Returns the sum of the character codes of the string<!>fnc_str.charsum.html
+$str.chop<!>Returns a string removing n characters from the end of it.<!>fnc_str.chop.html
+$str.digest<!>Returns the sum of the character codes of the string<!>fnc_str.digest.html
+$str.join<!>Returns a string joined from several strings<!>fnc_str.join.html
+$str.grep<!>Performs a search in an array of strings via regular expression matching<!>fnc_str.grep.html
+$str.split<!>Splits a string to an array<!>fnc_str.split.html
+$str.printf<!>Returns a formatted string in a C sprintf-like fashion.<!>fnc_str.printf.html
+$str.evpSign<!>Returns a signature for a message created using your certificate's private key<!>fnc_str.evpsign.html
+$str.evpVerify<!>Verifies the signature for a message against a public key<!>fnc_str.evpverify.html
+$system.ostype<!>Returns the type of the operating system<!>fnc_system.ostype.html
+$system.osname<!>Returns the name of the operating system<!>fnc_system.osname.html
+$system.osversion<!>Returns the version of the operating system<!>fnc_system.osversion.html
+$system.osrelease<!>Returns the release of the operating system<!>fnc_system.osrelease.html
+$system.osmachine<!>Returns the machine of the operating system<!>fnc_system.osmachine.html
+$system.osnodename<!>Returns the nodename of the operating system<!>fnc_system.osnodename.html
+$system.getenv<!>Returns the value of an environment variable<!>fnc_system.getenv.html
+$system.clipboard<!>Returns the value of the system clipboard<!>fnc_system.clipboard.html
+$system.selection<!>Returns the value of the system selection<!>fnc_system.selection.html
+$system.checkModule<!>Checks if a KVIrc module is loadable<!>fnc_system.checkmodule.html
+$system.hostname<!>Returns the hostname of the machine that KVIrc is running on<!>fnc_system.hostname.html
+$system.dbus<!>Performs a D-Bus call<!>fnc_system.dbus.html
+$system.call<!>Allows to call functions of a plugin<!>fnc_system.call.html
+$system.ntohi<!>Convert an integer from network to host byte order.<!>fnc_system.ntohi.html
+$system.htoni<!>Convert an integer from host to network byte order.<!>fnc_system.htoni.html
+$texticons.get<!>Retreives texticon data<!>fnc_texticons.get.html
+$theme.info<!>Return info about a user defined theme.<!>fnc_theme.info.html
+$tmphighlight.isNickHighlighted<!>Returns <b>1</b> if the user is highlighted on this channel, and <b>0</b> otherwise<!>fnc_tmphighlight.isnickhighlighted.html
+$tmphighlight.isChannelHighlighted<!>Returns <b>1</b> if the channel is highlighted on this IRC network, and <b>0</b> otherwise<!>fnc_tmphighlight.ischannelhighlighted.html
+$toolbar.exists<!>Checks if a toolbar exists<!>fnc_toolbar.exists.html
+$toolbar.isVisible<!>Checks if a toolbar is visible<!>fnc_toolbar.isvisible.html
+$toolbar.list<!>Returns a list of defined toolbars<!>fnc_toolbar.list.html
+$toolbar.items<!>Returns the list of items in a specified toolbar<!>fnc_toolbar.items.html
+$torrent.maxUploadSpeed<!>Returns maximum upload speed set in client.<!>fnc_torrent.maxuploadspeed.html
+$torrent.maxDownloadSpeed<!>Returns maximum download speed set in client.<!>fnc_torrent.maxdownloadspeed.html
+$torrent.speedUp<!>Returns current total upload speed<!>fnc_torrent.speedup.html
+$torrent.speedDown<!>Returns current total download speed<!>fnc_torrent.speeddown.html
+$torrent.trafficUp<!>Returns the total number of bytes uploaded<!>fnc_torrent.trafficup.html
+$torrent.trafficDown<!>Returns the total number of bytes downloaded<!>fnc_torrent.trafficdown.html
+$torrent.count<!>Returns number of torrents in client<!>fnc_torrent.count.html
+$torrent.name<!>Returns torrent name as displayed in client<!>fnc_torrent.name.html
+$torrent.fileCount<!>Returns the number of files in a torrent.<!>fnc_torrent.filecount.html
+$torrent.fileName<!>Returns the name of a file in a torrent.<!>fnc_torrent.filename.html
+$torrent.filePriority<!>Returns the priority of a file in a torrent.<!>fnc_torrent.filepriority.html
+$torrent.client<!>Returns the currently set torrent client interface<!>fnc_torrent.client.html
+$torrent.clientList<!>Returns a list of all supported clients.<!>fnc_torrent.clientlist.html
+$torrent.state<!>Returns state of torrent (Stopped, Stalled, Seeding, Downloading)<!>fnc_torrent.state.html
+$trayicon.isVisible<!>Returns the state of the dock widget<!>fnc_trayicon.isvisible.html
+$upnp.getExternalIpAddress<!>Return the external IP address using UPnP<!>fnc_upnp.getexternalipaddress.html
+$upnp.isGatewayAvailable<!>Returns if a UPnP-capable gateway has been found on the local network<!>fnc_upnp.isgatewayavailable.html
+$userlist.selected<!>Returns the list of selected nicknames in the channel's userlist<!>fnc_userlist.selected.html
+$window.activityLevel<!>Returns the current activity level of a window<!>fnc_window.activitylevel.html
+$window.activityTemperature<!>Returns the current activity temperature of a window<!>fnc_window.activitytemperature.html
+$window.isDocked<!>Checks if a window is currently docked<!>fnc_window.isdocked.html
+$window.isSplitView<!>Checks if a window is currently in split view mode<!>fnc_window.issplitview.html
+$window.hasInput<!>Checks if a window has an input field<!>fnc_window.hasinput.html
+$window.hasUserFocus<!>Checks if a window has the user focus<!>fnc_window.hasuserfocus.html
+$window.console<!>Returns the console that a window is attached to<!>fnc_window.console.html
+$window.hasOutput<!>Checks if a window has a text output widget<!>fnc_window.hasoutput.html
+$window.exists<!>Checks for the existence of a window<!>fnc_window.exists.html
+$window.highlightLevel<!>Returns the current highlight (alert) level of a window<!>fnc_window.highlightlevel.html
+$window.type<!>Returns the type of a window<!>fnc_window.type.html
+$window.context<!>Returns the IRC context of a window<!>fnc_window.context.html
+$window.caption<!>Returns the caption of a window<!>fnc_window.caption.html
+$window.list<!>Generates lists of windows<!>fnc_window.list.html
+$window.open<!>Creates and opens a new window<!>fnc_window.open.html
+$window.inputText<!>Returns the window input line text<!>fnc_$window.inputtext.html
+$window.cryptEngine<!>Returns the name of the encryption engine currently set in a window<!>fnc_$window.cryptengine.html

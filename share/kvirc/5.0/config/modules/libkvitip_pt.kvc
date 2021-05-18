@@ -1,0 +1,26 @@
+[KVIrc]
+uNextTip=0
+uNumTips=22
+TranslatorHint=This-file-MUST-be-encoded-in-UTF8
+0=Pode abrir conexões para múltiplos servidores numa única janela do KVIrc, seleccione "Novo Contexto IRC" a partir do menu KVIrc.
+1=O IPv6 é agora totalmente suportado, até para as transferências DCC.O comando é <br><b>/server -i &lt;nome do servidor&gt;</b>.
+2=O KVIrc suporta a encriptação SSL.<br>As conexões IRC encriptadas com SSL podem ser estabelecidas usando <b>/server -s</b>, e as conexões DCC usando <b>/dcc.chat -s</b><br>Também funciona em IPv6.
+3=Um <b>Contexto IRC</b> é um conjunto de recursos que lidam com uma única conexão. Tem uma janela de <b>Consola</b> associada que mostra as mensagens do sistema e do servidor.
+4=O KVIrc é uma aplicação altamente modular. Os módulos são carregados e descarregados transparentemente para o utilizador (e até para o 'scripter'!). Pode também escrever os seus próprios módulos que extendem a linguagem do 'script', ou adicionar outras capacidades.
+5=O KVIrc suporta vários manipuladores de 'scripts' para um único evento. Isto permite que vários 'scripts' sejam instalados ao mesmo tempo, evita colisões de manipuladores e ajuda ao adicionar/remover e ao activar/desactivar as secções do 'script'.
+6=O KVIrc suporta o <b>irc://</b> Uniform Resource Locator (URL). Corra o comando: <br><b>kvirc irc://irc.oseuservidor.org:6667/canal</b><br> para conectar a este servidor.<br>A sintaxe geral é:<br><b>irc[6]://&lt;nome_servidor&gt;[:&lt;porta&gt;][/[&lt;canal&gt;[?&lt;senha&gt;]]]</b>
+7=O executável KVIrc actua como o comando "netscape -remote", se uma instância do KVIrc já estiver a correr, os parâmetros da linha de comandos são passados para essa instância via IPC. Pode sobrepor este comportamento usando a opção <b>-f</b>.
+8=O KVIrc pode ser o manipulador do seu navegador para <b>irc://</b> URLs. Se o KVIrc tiver suporte KDE, deve-o  poder correr simplesmente escrevendo <b>irc://</b> URL na barra de localização do Konqueror.<br>Tente <b>irc://irc.freenode.net/kvirc</b> :)
+9=Os URLs podem também ser feitos para os servidores IRC IPv6, a seguinte sintaxe aplica-se neste caso:<br><b>irc6://&lt;nome-servidor-ipv6&gt;[:&lt;porto&gt;][/[&lt;canal&gt;[?&lt;senha&gt;]]]</b>
+10=Pode também alternar entre as janelas premindo <b>Alt+Up/Down</b>. <b>Shift+Alt+Up/Down</b> muda apenas entre as janelas do contexto actual.
+11=Um método rápido para conectar a um servidor num novo contexto IRC é <b>/server -n &lt;nomedoservidor&gt;</b>
+12=O KVIrc é portável entre o Windows, Mac OSX, Linux e outros das máquina Unixs. Se for um bom 'scripter', os seus 'scripts' serão portáveis também!
+13=Deseja entrar automaticamente num canal ao conectar-se?<br>É fácil!<br>Clique apenas em "Avançado" nas definições do servidor e adicione um canal no separador "Canais". Para algo que funcione em todos os servidores, tente <b>/event(OnIrc,autojoin){ join #oseucanal; }</b>
+14=Deseja saber o que é um avatar? Veja <b>/help The AVATAR idea</b>
+15=A página de definições DCC tem muitas opções que o podem ajudar a resolver muitos problemas de conexão DCC comuns. As pessoas atrás das 'firewalls' podem enviar dados, também. É apenas uma questão de ajustar as definições. :)
+16=O KVIrc suporta muitas codificações de caracteres 8-bit. Pode "falar" KOI8-R baseado em Russo num canal e Japonês noutro sempre na mesma conexão (com os tipos de letra apropriados). Recomendamos fortemente que use <b>Unicode</b> (UTF-8), que suporta quase todas as línguas que existem no mundo.
+17=Para evitar transferências DCC excessivas, recomenda-se que ponha os seus avatares disponíveis na Web. Pode também usar uma imagem existente na Web como um avatar.<br><b>/avatar #oseucanal http://funnyhost.com/funny/funny.png</b> e irá funcionar!
+18=O KVIrc tem um cliente HTTP embutido, e pode transferir ficheiros da Web usando o comando <b>/http.get</b>.
+19=Não gosta do modo da barra de tarefas em árvore na janela? Pode optar por uma barra de tarefas tradicional (similar ao mIRC) nas página de definições da barra de tarefas dentro das preferências.
+20=Pode facilmente copiar texto de uma janela para a àrea de transferência ao seleccionar o texto com o rato. Se também mantiver a tecla Shift premida, então os códigos de cor serão copiados também.
+21=Esta é a última dica. Pode adicionar as suas próprias dicas - Veja <b>/help tip.open</b>. E sinta-se à vontade para enviar mais dicas (em qualquer língua) para <b>trisk-kvirc(em)quasarnet.org</b>.

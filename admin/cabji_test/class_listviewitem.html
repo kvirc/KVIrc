@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>listviewtitem class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>listviewtitem class</div>      <div class='title-secondary-text'>A listviewitem class</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_listviewitem.html">listviewitem</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The listviewitem class implements a list view item.
+A list view item is a multi-column object capable of displaying itself in a <a href="class_listview.html">listview</a>.
+To use this class you must instantiate it with another listviewitem or a <a href="class_listview.html">listview</a>
+as parent. The item will be automatically displayed.
+You can set the text and a pixmap in each column and you can make it checkable
+with <a href="class_listviewitem.html#setcheckable">$setcheckable</a>().
+A checkable listviewitem will display a small check mark in the first column.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setText">$setText(&lt;column:integer&gt;,&lt;text:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the text in column column to text, if column is a valid column number and text is different from the existing text.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; text">&lt;string&gt; $text(&lt;column:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the text of the specified column.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setPixmap">$setPixmap(&lt;column:integer&gt;,&lt;pixmap:hobject or imageID&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the pixmap in column column to pm, if pm is non-null and different from the current pixmap, and if column is non-negative. Pixmap can be a KVIrc image ID, an image file or a <a href="class_pixmap.html">pixmap</a> object.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setItemEditable">$setItemEditable(&lt;bEnabled:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>If bEnabled is true (1), this item can be in-place editable by the user; otherwise it cannot be editable in-place.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="isItemEditable">$isItemEditable()</a></font></b></code></td></tr>
+<tr><td>Returns $true if this item is editable and $false otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setEnabled">$setEnabled(&lt;bEnabled:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Enables or disables the item.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="isEnabled">$isEnabled()</a></font></b></code></td></tr>
+<tr><td>Returns $true if this item is enabled and $false otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setOpen">$setOpen(&lt;bOpen:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Opens or closes the item to show its child items.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="isOpen">$isOpen()</a></font></b></code></td></tr>
+<tr><td>Returns the open state of this item</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setCheckable">$setCheckable(&lt;bCheckable:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Makes this item checkable or not. This function should be called immediately after the item creation: changing this property later at runtime may have strange results (like the item being moved inside the list, text disappearing, hidden child items etc... don't do it :D ).</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="isCheckable">$isCheckable()</a></font></b></code></td></tr>
+<tr><td>Returns $true if this item is checkable and $false otherwise</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setChecked">$setChecked(&lt;bChecked:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets this item to be checked or not. <a href="class_listviewitem.html#setcheckable">$setcheckable</a>() must have been previously called.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="isChecked">$isChecked()</a></font></b></code></td></tr>
+<tr><td>Returns the check status of this item. <a href="class_listviewitem.html#setcheckable">$setcheckable</a>() must have been previously called.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setFlags">$setFlags(&lt;flag1:string&gt;, &lt;flag2:string&gt;, ...)</a></font></b></code></td></tr>
+<tr><td>Sets the flags for the item to the given flags. These determine whether the item can be selected or modified.<br> This is often used to disable an item. Supported flags are: </td></tr><tr><td class="example-box"><pre><code class="c"><br> - noitemflag : no flag sets;<br><br> - selectable : item is selectable;<br><br> - editable : item is editable;<br><br> - dragEnabled : item can dragged;<br><br> - dropEnabled : item can used as drop target;<br><br> - userCheckable : item is checkable;<br><br> - enabled : item is enabled;<br><br> - tristate : item is checkable with three separate states.<br> </code></pre></td></tr><tr><td bgcolor="#EAEAEA"></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

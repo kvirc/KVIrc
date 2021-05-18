@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>dialog.message</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>dialog.message</div>      <div class='title-secondary-text'>Shows a message box</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>dialog.message</b> <font color="#8080a0">[</font>-b<font color="#8080a0">]</font> <b>(</b><font color="#8080a0">&lt;</font>caption<font color="#8080a0">&gt;</font>,<font color="#8080a0">&lt;</font>message_text<font color="#8080a0">&gt;</font>,<font color="#8080a0">&lt;</font>icon<font color="#8080a0">&gt;</font>,<font color="#8080a0">&lt;</font>button0<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>button1<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>button2<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>magic1<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>magic2<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>...<font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font><b>)</b><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">&lt;</font>callback_command<font color="#8080a0">&gt;</font><br>
+}</div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Shows a message dialog box with the specified &lt;caption&gt;, &lt;message_text&gt;, &lt;icon&gt; and
+buttons.<br>
+&lt;caption&gt; is a text string that will appear in the caption of the dialog box.<br>
+&lt;message_text&gt; is a text string that will appear in the dialog box and can contain HTML formatting.<br>
+&lt;icon&gt; is an <a href="doc_image_id.html">image identifier</a> that defines an icon to be placed in the dialog box.
+&lt;icon&gt; can be a relative or absolute path to an image file, a signed number (in that case it defines
+an internal KVIrc image) or one of the special strings <i>critical</i>, <i>information</i> and <i>warning</i>.<br>
+&lt;button0&gt; is the text of the first button (on the left).<br>
+&lt;button1&gt; is the text of the second button (if empty or specified, only one button will appear in the dialog).<br>
+&lt;button2&gt; is the text of the third button (if empty or specified, only two buttons will appear in the dialog).<br>
+The first button is the default button - it is activated when the user presses the
+enter key. The third (or the second if only two buttons are present) is treated as the escape button
+and is activated when the user presses the Esc key or closes the dialog with the window manager close button.<br>
+If one of the button text strings starts with a <i>default=</i> prefix then that button is assumed
+to be the default button of the dialog.<br>
+If one of the button text strings starts with a <i>escape=</i> prefix then that button is assumed
+to be the escape button of the dialog.<br>
+&lt;magic1&gt;, &lt;magic2&gt;... are the magic parameters - evaluated at dialog.message call time and passed
+to the &lt;callback_command&gt; as positional parameters.<br>
+If the -b or -modal switch is specified the dialog will have blocking modal behaviour -
+it will appear above its parent widget and block its input until the dialog is closed.<br>
+Once the dialog is displayed, the user will click one of the buttons. At this point the dialog
+is hidden and the &lt;callback_command&gt; is executed, passing the number of the button clicked
+as $0 and the magic parameters as positional parameters $1, $2, $3.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="comment-text"># Just a warning dialog</span><br>
+dialog.message<span class="example-paren">(</span>"Warning","You're being &lt;b&gt;warned&lt;/b&gt;",warning,"OK"<span class="example-paren">)</span><span class="example-bracket">{</span> echo The user clicked OK; <span class="example-bracket">}</span><br>
+<span class="comment-text"># A question</span><br>
+dialog.message<span class="example-paren">(</span>"And now?","What do you want to do?",information,"Go home","Watch TV","Scream"<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>$0 == 0<span class="example-paren">)</span>echo "The user wants to go home"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else if<span class="example-paren">(</span>$0 == 1<span class="example-paren">)</span>echo "The user wants to watch TV"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else echo "The user wants to scream!"<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

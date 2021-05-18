@@ -1,0 +1,98 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>python.begin</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>python.begin</div>      <div class='title-secondary-text'>Starts a Python code snippet</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>python.begin</b> <font color="#8080a0">[</font>-n<font color="#8080a0">]</font> <font color="#8080a0">[</font>-q<font color="#8080a0">]</font> <font color="#8080a0">[</font><b>(</b><font color="#8080a0">&lt;</font>python_context<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>arg0<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>arg1<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>...<font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font><b>)</b><font color="#8080a0">]</font><br>
+<font color="#8080a0">&lt;</font>python code<font color="#8080a0">&gt;</font><br>
+<b>python.end</b></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Indicates the beginning of a snippet of Python code.
+The whole code part between python.begin and python.end
+is executed in a Python interpreter.
+If python.end is omitted then it is implicitly assumed
+that the code from python.begin to the end of the command
+buffer is Python.<br>
+Each Python code execution is bound to a
+python context (that is in fact a particular instance
+of a Python interpreter). If &lt;python_context&gt; is not specified
+or it is an empty string then temporary Python interpreter is created
+and destroyed just after the code snippet has terminated execution.
+If &lt;python_context&gt; is specified then a Python interpreter
+keyed to that context is used: if it was already existing
+then it is reused otherwise it is created.
+Any &lt;python_context&gt; is persistent: it maintains the function
+declarations and Python variable states until explicitly
+destroyed with <a href="cmd_python.destroy.html">python.destroy</a> (or the pythoncore
+module is forcibly unloaded).<br>
+The &lt;arg0&gt;,&lt;arg1&gt;,... arguments, if present, are passed
+to the Python code snippet in the aArgs list (accessible as aArgs[0],aArgs[1]...).<br>
+The return value of the Python code is propagated to the current
+context (just like <a href="cmd_setreturn.html">setreturn</a> was called on it) unless
+the -n switch is used.<br>
+The -q switch prevents from the command from printing any
+warning.<br>
+See the <a href="doc_python_and_kvs.html">python scripting documentation</a>
+for more information.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-q | --quiet</td></tr>
+<tr><td class="switch-body-table-cell">Prevents the command from printing any warnings.</td></tr>
+<tr><td class="switch-title-table-cell">-n | --no-return</td></tr>
+<tr><td class="switch-body-table-cell">Prevents the Python script return value to be propagated to the current context.</td></tr>
+<tr><td class="switch-title-table-cell">-f | --fail-on-error</td></tr>
+<tr><td>Treat Python errors as KVS errors and abort execution of the current script. Incompatible with -q</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+python.begin<br>
+kvirc.eval<span class="example-paren">(</span>"echo \"Hello World from python!\""<span class="example-paren">)</span>;<br>
+python.end<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

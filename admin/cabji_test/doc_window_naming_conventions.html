@@ -1,0 +1,190 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Window naming conventions</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Window naming conventions</div>      <div class='title-secondary-text'>KVIrc window structure and the window naming conventions</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Introduction</div></td></tr><tr><td bgcolor="#EAEAEA">
+Starting from the release 3.0.0, KVIrc window structure has
+grown in complexity. Older releases allowed one connection
+per <i>frame window</i> and thus had a dedicated command parser
+for each connection. Finding a window in that scenario
+was quite easy: it was enough to designate it by <i>name</i>
+(that was exactly the text displayed in the window caption).
+It was sufficient to have an <i>unique</i> name for ever window;
+condition that was granted by the underlying IRC protocol
+and by the KVIrc core design.<br>
+In this version, the unique window names are impossible to be granted.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Scenario</div></td></tr><tr><td bgcolor="#EAEAEA">
+The command parser is now <i>global</i> to the application.
+There can be two or more consoles in each frame and the user
+is able to join the same channel with two different nicknames
+using two separate connections.
+<ul>
+<li>
+Application (Unique command parser)
+&nbsp;&nbsp;&nbsp;&nbsp;<ul>
+&nbsp;&nbsp;&nbsp;&nbsp;<li>
+&nbsp;&nbsp;&nbsp;&nbsp;Frame X
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console M (IRC context)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Channel windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Query windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Other connection related windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console N (IRC context)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Channel windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Query windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Other connection related windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other windows
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ul>
+&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;<li>
+&nbsp;&nbsp;&nbsp;&nbsp;Frame Y
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console O (IRC context)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Channel windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Query windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Other connection related windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console P (IRC context)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Channel windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Query windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Other connection related windows</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other windows
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ul>
+&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;<li>
+&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;</ul>
+</li>
+</ul>
+<br>
+A naming convention has become necessary to resolve ambiguities.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Basic assumptions</div></td></tr><tr><td bgcolor="#EAEAEA">
+Every KVIrc window has four main properties:<br>
+-<b>an unique numeric identifier</b><br>
+-<b>the logical name</b><br>
+-<b>the type identifier</b><br>
+-<b>the caption text</b><br>
+The <b>numeric identifier</b> is unique to the whole application,
+and is the one returned by the <a href="fnc_window.html">$window</a> function.<br>
+The identifier is assigned by KVIrc when the window is created
+and is not changed until the window is destroyed.
+This identifier will be referred as <b>window ID</b>.<br>
+The <b>logical name</b> is a property of some kind of windows.
+It usually corresponds to the first part of the window caption.
+For example, for channel windows it is the channel name, for
+queries it is the list of the targets. For some other windows
+the logical name corresponds to the caption text. This will be discussed later.<br>
+The <b>type identifier</b> describes the properties of a certain window.
+For channel windows the type identifier is <i>channel</i>, for query windows is <i>query</i>,
+for console windows it is <i>console</i>, etc.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">IRC Contexts</div></td></tr><tr><td bgcolor="#EAEAEA">
+The KVIrc frame windows are numbered starting from 0 and named
+<i>frame_&lt;number&gt;</i>. Each frame can contain an unlimited number of consoles.<br>
+Each console is bound to an <b>IRC context</b>. (The part <i>is bound to</i> could
+be substituted by <i>defines</i> or <i>is contained in</i>).<br>
+<i>An <b>IRC context</b> is a set of resources that can deal with a single
+IRC connection.</i><br>
+The association between an <b>IRC context</b>
+and a console is bijective: each <b>IRC context</b> is associated
+to a single console window.<br>
+An <b>IRC context</b> can be in connected or not-connected state.
+When in connected state, it contains a set of windows beside the console:
+mainly channels and query windows.
+The channels and query windows can exist <b>only</b> if the associated
+<b>IRC context</b> exists.<br>
+Channels and queries have unique names inside a connection so
+there is no way to confuse it. (Theoretically there can
+be more than one query window with the same name, but in fact
+all the windows refer to the same target so they are instances
+of the same resource).
+All this creates a sort of namespace: the channels and queries can be identified
+as <i>bound</i> to a specific <b>IRC context</b>.<br>
+An <b>IRC context</b> can <i>contain</i> other windows, such as the <i>sockets</i>
+window or the <i>list</i> window. KVIrc takes care of making them
+unique inside the <b>IRC context</b> namespace.<br>
+Each <b>IRC context</b> has its own unique <b>IRC context ID</b> (see <a href="fnc_context.html">$context</a>).<br>
+Since to a single <b>IRC context</b> may correspond only a single IRC connection,
+when in connected state, the <b>IRC context</b> may be referred also as <b>connection</b>
+or <b>connection context</b>, and the associated <b>IRC context Id</b> can be
+referred as <b>connection ID</b> or <b>connection context ID</b>.<br>
+There are classes of windows that are not bound to any <b>IRC context</b>:
+this includes user created windows, DCC windows, browsers etc.<br>
+KVIrc will try to keep that windows with unique logical names.
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">How to identify a window</div></td></tr><tr><td bgcolor="#EAEAEA">
+So what we have until now is:
+<ul>
+<li>Each window has its own unique <b>window ID</b>: we
+will refer windows always using this identifier.</li>
+<li>Each window has a set of properties including:
+window type, logical name.</li>
+<li>Subsets of windows are bound to a single <b>IRC context</b></li>
+</ul>
+The simplest (but also the less significant) method of looking for
+a window is to finding it by caption.<br>
+The <a href="fnc_window.html">$window</a> function finds the first KVIrc window matching
+the <i>caption text</i> and returns its <b>window ID</b>.<br>
+This method will likely fail when there are more windows with the same
+caption text; for this reason several specific functions
+have been added to allow finding the correct window.<br>
+The <a href="fnc_console.html">$console</a> finds a console window bound to a specified
+<b>IRC context</b>.<br>
+The <a href="fnc_channel.html">$channel</a> finds a channel window matching the specified
+name and bound to a specified <b>IRC context</b>.<br>
+The <a href="fnc_query.html">$query</a> finds a query window that has a specified target
+and is bound to a specified <b>IRC context</b>.<br>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_language_index_all.html">Language Overview</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

@@ -299,8 +299,12 @@ void KviIrcLink::processData(char * buffer, int iLen)
 		//The m_pReadBuffer contains at max 1 IRC message...
 		//that can not be longer than 510 bytes (the message is not CRLF terminated)
 		// FIXME: Is this limit *really* valid on all servers ?
-		if(m_uReadBufferLen > 510)
-			qDebug("WARNING: receiving an invalid IRC message from server.");
+		if(m_uReadBufferLen > 510) {
+
+		    //roboirc
+		    //qDebug("WARNING: receiving an invalid IRC message from server.");
+
+        }
 	}
 	KviMemory::free(cMessageBuffer);
 }

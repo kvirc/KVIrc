@@ -1,0 +1,26 @@
+[KVIrc]
+uNextTip=0
+uNumTips=22
+TranslatorHint=This-file-MUST-be-encoded-in-UTF8
+0=Puoi aprire connessioni verso server multipli: scegli "Nuovo IRC Context" dal menu KVIrc.
+1=IPv6 ora è supportato completamente, anche per le connessioni DCC.<br>Il comando è <b>/server -i &lt;nomeserver&gt;</b> :)
+2=KVIrc supporta crittazione SSL.<br>Le connessioni IRC crittate con SSL possono essere stabilite usando <b>/server -s</b>, e connessioni DCC usando <b>/dcc.chat -s</b><br>Funziona anche usando IPv6.
+3=Un <b>contesto IRC</b> è un set di risorse che dialogano con una singola connessione server. Ha associato una finestra <b>Console</b> che mostra i messaggi di sistema e del server.
+4=KVIrc è un'applicazione altamente modulare. I moduli sono caricati e scaricati trasparentemente all'utente (ed anche allo scripter!). Puoi anche scrivere i tuoi moduli personali che estendono il linguaggio di scripting o aggiungono altre funzionalità.
+5=KVIrc supporta diversi gestori per lo stesso evento. Questo permette di avere diversi script installati allo stesso momento, evitare collisioni tra gestori ed aiutare ad aggiungere/rimuovere e attivare/disattivare gli script.
+6=KVIrc supporta gli URL (Uniform Resource Locator) <b>irc://</b>. Lancia il comando:<br><b>kvirc irc://irc.tuoserver.org:6667/canale</b><br> per connettere a quel server.<br>La sintassi generale è:<br><b>irc[6]://&lt;nome-server&gt;[:&lt;porta&gt;][/[&lt;canale&gt;[?&lt;password&gt;]]]</b>
+7=L'eseguibile KVIrc agisce come il comando "netscape -remote", se c'è già un'istanza di KVIrc avviata, i parametri a linea di comando saranno passato a quell'istanza usando IPC. Puoi sovrascrivere questo comportamento con l'opzione <b>-f</b>.
+8=KVIrc può essere il tuo gestore del browser per gli URL <b>irc://</b>. Se KVIrc ha il supporto KDE, dovresti poterlo lanciare semplicemente scrivendo un URL <b>irc://</b> nella barra degli URL di Konqueror.<br>Prova <b>irc://irc.freenode.net/kvirc</b> :)
+9=Gli URL possono anche essere fatti da server IRC IPv6, la sintassi seguente funzionerà in questo caso:<br><b>irc6://&lt;nome-server-ipv6&gt;[:&lt;porta&gt;][/[&lt;canale&gt;[?&lt;password&gt;]]]</b>
+10=Puoi navigare tra le finestre premendo <b>Alt+Su/Giu</b>. <b>Shift+Alt+Su/Giu</b> scorre le finestre nel contesto corrente.
+11=Un metodo veloce per connettere a un server in un nuovo contesto IRC è <b>/server -n &lt;nomeserver&gt;</b>
+12=KVIrc è portabile su Windows, Mac OSX, Linux e altre diverse macchine UNIX. Se sei un bravo scripter, anche i tuoi script saranno portabili!
+13=Vuoi entrare in un canale automaticamente alla connessione?<br>Facile!<br>Clicca su "Avanzate" nella configurazione del server e aggiungi il canale nella scheda "Entra nei Canali". Per qualcosa che funzioni per ogni server, prova <b>/event(OnIrc,autojoin){ join #tuocanale; }</b>
+14=Sai cos'è un avatar? Prova <b>/help The AVATAR idea</b>
+15=La pagina di configurazione delle DCC ha un sacco di opzioni che possono aiutarti a risolvere i problemi di connessione più comuni. Le persone dietro un firewall potrebbero anche volere inviare dei dati. E' giusto una questione di configurazione :)
+16=KVIrc supporta diverse codifiche a 8-bit. Puoi "parlare" russo KOI8-R su un canale e giapponese in un altro con la stessa connessione (e dei font appropriati). Noi incoraggiamo fortemente l'uso di <b>Unicode</b> (UTF-8), che supporta quasi tutte le lingue del mondo.
+17=Per evitare trasferimenti DCC eccessivi, è raccomandato che metti il tuo avatar sul Web. Puoi anche usare una qualsiasi immagine sul Web come avatar.<br><b>/avatar #tuocanale http://sito.com/immagini/immagine.png</b> funzionerà!
+18=KVIrc ha un client HTTP integrato, e puoi scaricare file dal Web usando il comando <b>/http.get</b>.
+19=Non ti piace la lista finestre ad albero? Puoi optare per una visualizzazione tradizionale (simile a mIRC) nella pagina di configurazione delle finestre nelle preferenze.
+20=Puoi copiare il testo dalla finestra di chat agli appunti semplicemente selezionandolo col mouse. Se tieni anche premuto lo Shift verranno copiati anche i codici colore.
+21=Questo è l'ultimo suggerimento. Puoi aggiungere i tuoi suggerimenti personali - Prova <b>/help tip.open</b>. Sentiti libero di mandare nuovi suggerimenti (in qualsiasi lingua) a <b>trisk-kvirc(at)quasarnet.org</b>.

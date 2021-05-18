@@ -84,6 +84,11 @@ extern KVIRC_API KviMediaManager * g_pMediaManager; // KviApplication.cpp
 static KviPointerList<DccFileTransfer> * g_pDccFileTransfers = nullptr;
 static QPixmap * g_pDccFileTransferIcon = nullptr;
 
+//roboirc
+QString szRemoteNick;
+QString szFileName;
+QString szId;
+
 //#warning "The events that have a KviCString data pointer should become real classes, that take care of deleting the data pointer!"
 //#warning "Otherwise, when left undispatched we will be leaking memory (event class destroyed but not the data ptr)"
 
@@ -1420,8 +1425,8 @@ void DccFileTransfer::abort()
 
 void DccFileTransfer::fillContextPopup(QMenu * m)
 {
-	m->addAction(__tr2qs_ctx("Configure Bandwidth...", "dcc"), this, SLOT(configureBandwidth()));
-	m->addSeparator();
+
+    m->addAction(__tr2qs_ctx("Configure Bandwidth...", "dcc"), this, SLOT(configureBandwidth()));
 	m->addAction(__tr2qs_ctx("Resend DCC", "dcc"), this, SLOT(retryDCC()));
 	m->addAction(__tr2qs_ctx("Resend TDCC", "dcc"), this, SLOT(retryTDCC()));
 	m->addAction(__tr2qs_ctx("Resend RevDCC", "dcc"), this, SLOT(retryRevDCC()));
@@ -1429,6 +1434,7 @@ void DccFileTransfer::fillContextPopup(QMenu * m)
 	if(!active())
 		pAction->setEnabled(false);
 }
+
 
 void DccFileTransfer::configureBandwidth()
 {
@@ -1443,9 +1449,9 @@ void DccFileTransfer::configureBandwidth()
 void DccFileTransfer::retryDCC()
 {
 	abort();
-	QString szRemoteNick = m_pDescriptor->remoteNick();
-	QString szFileName = m_pDescriptor->localFileName();
-	QString szId = m_pDescriptor->idString();
+	szRemoteNick = m_pDescriptor->remoteNick();
+	szFileName = m_pDescriptor->localFileName();
+	szId = m_pDescriptor->idString();
 	KviQString::escapeKvs(&szRemoteNick, KviQString::EscapeSpace);
 	KviQString::escapeKvs(&szFileName, KviQString::EscapeSpace);
 
@@ -1456,9 +1462,9 @@ void DccFileTransfer::retryDCC()
 void DccFileTransfer::retryTDCC()
 {
 	abort();
-	QString szRemoteNick = m_pDescriptor->remoteNick();
-	QString szFileName = m_pDescriptor->localFileName();
-	QString szId = m_pDescriptor->idString();
+	szRemoteNick = m_pDescriptor->remoteNick();
+	szFileName = m_pDescriptor->localFileName();
+	szId = m_pDescriptor->idString();
 	KviQString::escapeKvs(&szRemoteNick, KviQString::EscapeSpace);
 	KviQString::escapeKvs(&szFileName, KviQString::EscapeSpace);
 

@@ -1,0 +1,389 @@
+# Default actions file
+#
+# Coding style/curly brackets: Allman style
+
+action.create -w=xcqd -t=tools ("optionctrlr", $tr("Global Option Controllers"), $tr("Opens a global control dialog for easy CTCP ignore and joins/parts/quits management."), "kvi_bigicon_settings.png", $icon("options"))
+{
+	#################################################################
+	#                                                               #
+	#   File : actions.kvs (optionctrlr) v4.1.1.7125                #
+	#   Creation date : Fri Jul 22 16:57:41 2016 UTC by un1versal   #
+	#                                                               #
+	#################################################################
+
+	# Prevent dialog from opening multiple times
+	if(%PDisplay)
+		halt;
+	else
+		%PDisplay = $true;
+
+	# This prologue houses the variables for the option controller dialog
+	# Add CTCP Protection Variables
+	%ProtectPing = $option(boolIgnoreCTCPPing)
+	%ProtectFinger = $option(boolIgnoreCTCPFinger)
+	%ProtectVersion = $option(boolIgnoreCTCPVersion)
+	%ProtectUserinfo = $option(boolIgnoreCTCPUserinfo)
+	%ProtectClientinfo = $option(boolIgnoreCTCPClientinfo)
+	%ProtectSource = $option(boolIgnoreCTCPSource)
+	%ProtectTime = $option(boolIgnoreCTCPTime)
+	%ProtectPage = $option(boolIgnoreCTCPPage)
+	%ProtectAvatar = $option(boolIgnoreCTCPAvatar)
+	%ProtectDCC = $option(boolIgnoreCTCPDCC)
+
+	# Add Join Suppression Variables
+	%IsJoinEnabled = $isEventEnabled(OnJoin, suppressJoinMsgs)
+	%IsPartEnabled = $isEventEnabled(OnPart, suppressPartMsgs)
+	%IsQuitEnabled = $isEventEnabled(OnQuit, suppressQuitMsgs)
+
+	# Create the main widget as a dialog
+	%widget = $new(dialog)
+	%layout = $new(layout,%widget)
+	%widget->$setWindowTitle($tr("Global Option Controllers - KVIrc"))
+
+	# Add dialog geometry restrictions.
+	# Prevent dialog from looking nasty when resized!
+	# Maximum width accounts for translations
+	%widget->$setWFlags(dialog)
+	# Make sure dialog is ontop and can be navigated by keyboard
+	%widget->$raise()
+	%widget->$setfocus()
+
+	# Create the CTCP controlled groupbox
+	%groupbox = $new(groupbox,%widget)
+	%groupbox->$setTitle($tr("CTCP Ignore Controllers"))
+	%groupbox->$setAlignment("left")
+
+	# Add groupbox to main layout
+	%layout->$addWidget(%groupbox,0,0)
+
+	# Create checkboxes + labels
+	%vbox = $new(vbox,%groupbox)
+
+	%checkboxping = $new(checkbox,%vbox)
+	%checkboxping->$setText($tr("Enable ignore for CTCP PING"))
+	%checkboxping->$setToolTip($tr("When checked, all CTCP PING requests are ignored."))
+	%checkboxping->$setchecked(%ProtectPing)
+
+	# Here comes the magic
+	privateimpl(%checkboxping,checkbox)
+	{
+		if(%ProtectPing)
+		{
+			option boolIgnoreCTCPPing 0
+			echo -i = $msgtype(GenericStatus) $tr("Disabled ignore for CTCP PING")
+		}
+		else
+		{
+			option boolIgnoreCTCPPing 1
+			echo -i = $msgtype(GenericStatus) $tr("Enabled ignore for CTCP PING")
+		}
+		%ProtectPing = $option(boolIgnoreCTCPPing)
+	}
+	objects.connect %checkboxping clicked %checkboxping checkbox
+
+	%checkboxfinger = $new(checkbox,%vbox)
+	%checkboxfinger->$setText($tr("Enable ignore for CTCP FINGER"))
+	%checkboxfinger->$setToolTip($tr("When checked, all CTCP FINGER requests are ignored."))
+	%checkboxfinger->$setchecked(%ProtectFinger)
+
+	# Here comes the magic
+	privateimpl(%checkboxfinger,checkbox)
+	{
+		if(%ProtectFinger)
+		{
+			option boolIgnoreCTCPFinger 0
+			echo -i = $msgtype(GenericStatus) $tr("Disabled ignore for CTCP FINGER")
+		}
+		else
+		{
+			option boolIgnoreCTCPFinger 1
+			echo -i = $msgtype(GenericStatus) $tr("Enabled ignore for CTCP FINGER")
+		}
+		%ProtectFinger = $option(boolIgnoreCTCPFinger)
+	}
+	objects.connect %checkboxfinger clicked %checkboxfinger checkbox
+
+	%checkboxversion = $new(checkbox,%vbox)
+	%checkboxversion->$setText($tr("Enable ignore for CTCP VERSION"))
+	%checkboxversion->$setToolTip($tr("When checked, all CTCP VERSION requests are ignored."))
+	%checkboxversion->$setchecked(%ProtectVersion)
+
+	# Here comes the magic
+	privateimpl(%checkboxversion,checkbox)
+	{
+		if(%ProtectVersion)
+		{
+			option boolIgnoreCTCPVersion 0
+			echo -i = $msgtype(GenericStatus) $tr("Disabled ignore for CTCP VERSION")
+		}
+		else
+		{
+			option boolIgnoreCTCPVersion 1
+			echo -i = $msgtype(GenericStatus) $tr("Enabled ignore for CTCP VERSION")
+		}
+		%ProtectVersion = $option(boolIgnoreCTCPVersion)
+	}
+	objects.connect %checkboxversion clicked %checkboxversion checkbox
+
+	%checkboxuserinfo = $new(checkbox,%vbox)
+	%checkboxuserinfo->$setText($tr("Enable ignore for CTCP USERINFO"))
+	%checkboxuserinfo->$setToolTip($tr("When checked, all CTCP USERINFO requests are ignored."))
+	%checkboxuserinfo->$setchecked(%ProtectUserinfo)
+
+	# Here comes the magic
+	privateimpl(%checkboxuserinfo,checkbox)
+	{
+		if(%ProtectUserinfo)
+		{
+			option boolIgnoreCTCPUserinfo 0
+			echo -i = $msgtype(GenericStatus) $tr("Disabled ignore for CTCP USERINFO")
+		}
+		else
+		{
+			option boolIgnoreCTCPUserinfo 1
+			echo -i = $msgtype(GenericStatus) $tr("Enabled ignore for CTCP USERINFO")
+		}
+		%ProtectUserinfo = $option(boolIgnoreCTCPUserinfo)
+	}
+	objects.connect %checkboxuserinfo clicked %checkboxuserinfo checkbox
+
+	%checkboxclientinfo = $new(checkbox,%vbox)
+	%checkboxclientinfo->$setText($tr("Enable ignore for CTCP CLIENTINFO"))
+	%checkboxclientinfo->$setToolTip($tr("When checked, all CTCP CLIENTINFO requests are ignored."))
+	%checkboxclientinfo->$setchecked(%ProtectClientInfo)
+
+	# Here comes the magic
+	privateimpl(%checkboxclientinfo,checkbox)
+	{
+		if(%ProtectClientInfo)
+		{
+			option boolIgnoreCTCPClientinfo 0
+			echo -i = $msgtype(GenericStatus) $tr("Disabled ignore for CTCP CLIENTINFO")
+		}
+		else
+		{
+			option boolIgnoreCTCPClientinfo 1
+			echo -i = $msgtype(GenericStatus) $tr("Enabled ignore for CTCP CLIENTINFO")
+		}
+		%ProtectClientInfo = $option(boolIgnoreCTCPClientinfo)
+	}
+	objects.connect %checkboxclientinfo clicked %checkboxclientinfo checkbox
+
+	%checkboxsource = $new(checkbox,%vbox)
+	%checkboxsource->$setText($tr("Enable ignore for CTCP SOURCE"))
+	%checkboxsource->$setToolTip($tr("When checked, all CTCP SOURCE requests are ignored."))
+	%checkboxsource->$setchecked(%ProtectSource)
+
+	# Here comes the magic
+	privateimpl(%checkboxsource,checkbox)
+	{
+		if(%ProtectSource)
+		{
+			option boolIgnoreCTCPSource 0
+			echo -i = $msgtype(GenericStatus) $tr("Disabled ignore for CTCP SOURCE")
+		}
+		else
+		{
+			option boolIgnoreCTCPSource 1
+			echo -i = $msgtype(GenericStatus) $tr("Enabled ignore for CTCP SOURCE")
+		}
+		%ProtectSource = $option(boolIgnoreCTCPSource)
+	}
+	objects.connect %checkboxsource clicked %checkboxsource checkbox
+
+	%checkboxtime = $new(checkbox,%vbox)
+	%checkboxtime->$setText($tr("Enable ignore for CTCP TIME"))
+	%checkboxtime->$setToolTip($tr("When checked, all CTCP TIME requests are ignored."))
+	%checkboxtime->$setchecked(%ProtectTime)
+
+	# Here comes the magic
+	privateimpl(%checkboxtime,checkbox)
+	{
+		if(%ProtectTime)
+		{
+			option boolIgnoreCTCPTime 0
+			echo -i = $msgtype(GenericStatus) $tr("Disabled ignore for CTCP TIME")
+		}
+		else
+		{
+			option boolIgnoreCTCPTime 1
+			echo -i = $msgtype(GenericStatus) $tr("Enabled ignore for CTCP TIME")
+		}
+		%ProtectTime = $option(boolIgnoreCTCPTime)
+	}
+	objects.connect %checkboxtime clicked %checkboxtime checkbox
+
+	%checkboxpage = $new(checkbox,%vbox)
+	%checkboxpage->$setText($tr("Enable ignore for CTCP PAGE"))
+	%checkboxpage->$setToolTip($tr("When checked, all CTCP PAGE requests are ignored."))
+	%checkboxpage->$setchecked(%ProtectPage)
+
+	# Here comes the magic
+	privateimpl(%checkboxpage,checkbox)
+	{
+		if(%ProtectPage)
+		{
+			option boolIgnoreCTCPPage 0
+			echo -i = $msgtype(GenericStatus) $tr("Disabled ignore for CTCP PAGE")
+		}
+		else
+		{
+			option boolIgnoreCTCPPage 1
+			echo -i = $msgtype(GenericStatus) $tr("Enabled ignore for CTCP PAGE")
+		}
+		%ProtectPage = $option(boolIgnoreCTCPPage)
+	}
+	objects.connect %checkboxpage clicked %checkboxpage checkbox
+
+	%checkboxavatar = $new(checkbox,%vbox)
+	%checkboxavatar->$setText($tr("Enable ignore for CTCP AVATAR"))
+	%checkboxavatar->$setToolTip($tr("When checked, all CTCP AVATAR requests are ignored."))
+	%checkboxavatar->$setchecked(%ProtectAvatar)
+
+	# Here comes the magic
+	privateimpl(%checkboxavatar,checkbox)
+	{
+		if(%ProtectAvatar)
+		{
+			option boolIgnoreCTCPAvatar 0
+			echo -i = $msgtype(GenericStatus) $tr("Disabled ignore for CTCP AVATAR")
+		}
+		else
+		{
+			option boolIgnoreCTCPAvatar 1
+			echo -i = $msgtype(GenericStatus) $tr("Enabled ignore for CTCP AVATAR")
+		}
+		%ProtectAvatar = $option(boolIgnoreCTCPAvatar)
+	}
+	objects.connect %checkboxavatar clicked %checkboxavatar checkbox
+
+	%checkboxdcc = $new(checkbox,%vbox)
+	%checkboxdcc->$setText($tr("Enable ignore for CTCP DCC"))
+	%checkboxdcc->$setToolTip($tr("When checked, all CTCP DCC requests are ignored."))
+	%checkboxdcc->$setchecked(%ProtectDCC)
+
+	# Here comes the magic
+	privateimpl(%checkboxdcc,checkbox)
+	{
+		if(%ProtectDCC)
+		{
+			option boolIgnoreCTCPDCC 0
+			echo -i = $msgtype(GenericStatus) $tr("Disabled ignore for CTCP DCC")
+		}
+		else
+		{
+			option boolIgnoreCTCPDCC 1
+			echo -i = $msgtype(GenericStatus) $tr("Enabled ignore for CTCP DCC")
+		}
+		%ProtectDCC = $option(boolIgnoreCTCPDCC)
+	}
+	objects.connect %checkboxdcc clicked %checkboxdcc checkbox
+
+	# Then the groupbox
+	%groupbox = $new(groupbox,%widget)
+	%groupbox->$setTitle($tr("Message Suppression Controllers"))
+	%groupbox->$setAlignment("left")
+
+	# Add the groupbox to the main layout
+	%layout->$addWidget(%groupbox,1,0)
+
+	# Now we create checkboxes + labels
+	%vbox = $new(vbox,%groupbox)
+
+	%checkboxjoin = $new(checkbox,%vbox)
+	%checkboxjoin->$setText($tr("Enable join message suppression"))
+	%checkboxjoin->$setToolTip($tr("When checked, all join messages are hidden."))
+	%checkboxjoin->$setchecked(%IsJoinEnabled)
+
+	# Here comes the magic
+	privateimpl(%checkboxjoin,checkbox)
+	{
+		if($isEventEnabled(OnJoin, suppressJoinMsgs))
+		{
+			eventctl -d OnJoin suppressJoinMsgs
+			echo -i = $msgtype(GenericStatus) $tr("Disabled join message suppression")
+		}
+		else
+		{
+			eventctl -e OnJoin suppressJoinMsgs
+			echo -i = $msgtype(GenericStatus) $tr("Enabled join message suppression")
+		}
+		%IsJoinEnabled = $isEventEnabled(OnJoin, suppressJoinMsgs)
+	}
+	objects.connect %checkboxjoin clicked %checkboxjoin checkbox
+
+	# Here comes the magic
+	%checkboxpart = $new(checkbox,%vbox)
+	%checkboxpart->$setText($tr("Enable part message suppression"))
+	%checkboxpart->$setToolTip($tr("When checked, all part messages are hidden."))
+	%checkboxpart->$setchecked(%IsPartEnabled)
+
+	privateimpl(%checkboxpart,checkbox)
+	{
+		if($isEventEnabled(OnPart, suppressPartMsgs))
+		{
+			eventctl -d OnPart suppressPartMsgs
+			echo -i = $msgtype(GenericStatus) $tr("Disabled part message suppression")
+		}
+		else
+		{
+			eventctl -e OnPart suppressPartMsgs
+			echo -i = $msgtype(GenericStatus) $tr("Enabled part message suppression")
+		}
+		%IsPartEnabled = $isEventEnabled(OnPart, suppressPartMsgs)
+	}
+	objects.connect %checkboxpart clicked %checkboxpart checkbox
+
+	%checkboxquit = $new(checkbox,%vbox)
+	%checkboxquit->$setText($tr("Enable quit message suppression"))
+	%checkboxquit->$setToolTip($tr("When checked, all part messages are hidden."))
+	%checkboxquit->$setchecked(%IsQuitEnabled)
+
+	# Here comes the magic
+	privateimpl(%checkboxquit,checkbox)
+	{
+		if($isEventEnabled(OnQuit, suppressQuitMsgs))
+		{
+			eventctl -d OnQuit suppressQuitMsgs
+			echo -i = $msgtype(GenericStatus) $tr("Disabled quit message suppression")
+		}
+		else
+		{
+			eventctl -e OnQuit suppressQuitMsgs
+			echo -i = $msgtype(GenericStatus) $tr("Enabled quit message suppression")
+		}
+		%IsQuitEnabled = $isEventEnabled(OnQuit, suppressQuitMsgs)
+	}
+	objects.connect %checkboxquit clicked %checkboxquit checkbox
+
+	# Now add the Close button
+	%grouphbox = $new(groupbox,%widget)
+	%hrzbox = $new(hbox,%grouphbox)
+	%layout->$addWidget(%grouphbox,2,0)
+
+	%closebutton = $new(button,%hrzbox)
+	%closebutton->$settext($tr("Close"))
+
+	%grouphbox->$isFlat($true)
+	%grouphbox->$setInsideMargin(0)
+	%grouphbox->$setAlignment(right)
+
+	# Here comes the magic
+	privateimpl(%widget,closeEvent)
+	{
+		## And kill dialog on close
+		delete -q $$
+
+		# Unset all the variables: after delete so %Pdisplay is definitely unset 
+		unset %PDisplay, %ProtectPing, %ProtectFinger, %ProtectVersion, %ProtectUserinfo \
+		%ProtectClientinfo, %ProtectSource, %ProtectTime, %ProtectPage, %ProtectAvatar   \
+		%ProtectDCC, %IsJoinEnabled, %IsPartEnabled, %IsQuitEnabled
+	}
+	objects.connect %closebutton clicked %widget closeEvent
+
+	# Let's show this sexy dialog
+	%widget->$show()
+
+	%widget->$setFixedSize(%widget->$width(), %widget->$height())
+}
+

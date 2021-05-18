@@ -1,0 +1,183 @@
+# Default events file
+#
+# KVIrc has a lot of events that merely ask for a popup to be shown :)
+# Notice: when adding new events here use no spaces in the event name
+#
+# Coding style/curly brackets: Allman style
+
+
+event(OnServerLinkPopupRequest,default)
+{
+	if($0 != "") popup.show serverpopup $0;
+}
+
+event(OnDccChatPopupRequest,default)
+{
+	popup.show dccchat $dcc.remoteNick($0);
+}
+
+event(OnChannelPopupRequest,default)
+{
+	popup.show channeltextview $target;
+}
+
+event(OnConsolePopupRequest,default)
+{
+	popup.show consoletextview;
+}
+
+event(OnChannelLinkPopupRequest,default)
+{
+	if($0 != "")
+		popup.show channelpopup $0;
+}
+
+event(OnQueryPopupRequest,default)
+{
+	if($target)
+		popup.show querytextview $target;
+}
+
+event(OnQueryNickPopupRequest,default)
+{
+	if($0 != "")
+		popup.show querytextview $0;
+}
+
+event(OnQueryFileDropped,default)
+{
+	if($0 != "")
+		dcc.send $target $0;
+}
+
+event(OnNickLinkDefaultActionRequest,default)
+{
+	if($0 != "")
+		whois $0;
+}
+
+event(OnNickLinkPopupRequest,default)
+{
+	if($0 != "")
+		popup.show defaulttextview $0;
+}
+
+event(OnNotifyListDefaultActionRequest,default)
+{
+	if($0 != "")
+	{
+		query $0;
+		whois $0 $0;
+	}
+}
+
+event(OnNotifyListPopupRequest,default)
+{
+	if($0 != "")
+		popup.show defaulttextview $0;
+};
+
+event(OnWindowPopupRequest,default)
+{
+	popup.show windowpopup;
+}
+
+event(OnChannelWindowCreated,default)
+{
+	button(w,Logging,$icon("log"),$tr("Logging","defscript"))
+	{
+		popup.show -p=$0,$1 logging;
+	}
+
+	button(w,Controllers,$icon("options"),$tr("Global option controllers","defscript"))
+	{
+		action.trigger optionctrlr;
+	}
+}
+
+event(OnQueryWindowCreated,default)
+{
+	button(w,Logging,$icon("log"),$tr("Logging","defscript"))
+	{
+		popup.show -p=$0,$1 logging;
+	}
+
+	button(w,Controllers,$icon("options"),$tr("Global option controllers","defscript"))
+	{
+		action.trigger optionctrlr;
+	}
+}
+
+event(OnJoin,suppressJoinMsgs)
+{
+	halt;
+}
+
+eventctl -d OnJoin suppressJoinMsgs
+
+event(OnPart,suppressPartMsgs)
+{
+	halt;
+}
+
+eventctl -d OnPart suppressPartMsgs
+
+event(OnQuit,suppressQuitMsgs)
+{
+	halt;
+}
+
+eventctl -d OnQuit suppressQuitMsgs
+
+event(OnDCCChatWindowCreated,default)
+{
+	button(w,Logging,$icon("log"),$tr("Logging","defscript"))
+	{
+		popup.show -p=$0,$1 logging;
+	}
+}
+
+event(OnChannelNickLinkClick,default)
+{
+	if($0 != "")
+	{
+		window.insertInInputText $window $0$option(stringNickCompletionPostfix);
+		userlist.select $0
+		userlist.ensureVisible $0
+	}
+}
+
+event(OnChannelNickPopupRequest,default)
+{
+	if($0 != "") popup.show channel $0;
+}
+
+event(OnChannelNickDefaultActionRequest,default)
+{
+	if(!$isEmpty($0))
+		query $0;
+}
+
+event(OnURLLinkClick,default)
+{
+	openurl $0
+}
+
+# Fix bug https://github.com/kvirc/KVIrc/issues/2140
+eventctl -d -q OnURLLinkPopupRequest "URL popup"
+eventctl -d -q OnURLLinkPopupRequest "URLpopup"
+
+event(OnURLLinkPopupRequest,default)
+{
+	popup.show urlpopup $0
+}
+
+event(OnHostLinkPopupRequest,default)
+{
+	popup.show hostpopup $0;
+}
+
+event(OnKVIrcStartup,autoloadfish)
+{
+	fish.load
+}

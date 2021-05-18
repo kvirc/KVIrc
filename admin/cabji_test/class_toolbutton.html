@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>toolbutton class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>toolbutton class</div>      <div class='title-secondary-text'>Provides a toolbutton for toolbar widget.</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The toolbutton class provides a quick-access button to commands or options, usually used inside a toolBar.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setImage">$setImage(&lt;icon_id:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the image for this button.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setUsesBigPixmap">$setUsesBigPixmap(&lt;bEnabled:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets whether this toolbutton uses big pixmaps to enable.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="usesBigPixmap">$usesBigPixmap(&lt;bEnabled:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>This property holds whether this toolbutton uses big pixmaps.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setUsesTextLabel">setUsesTextLabel(&lt;bEnabled:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets whether the toolbutton show a texlabel below the pixmap of the button.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="usesTextLabel">$usesTextLabel()</a></font></b></code></td></tr>
+<tr><td>Return 1 if the setUsesTextLabel is enabled, otherwise return 0.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setTextLabel">$setTextLabel(&lt;text:String&gt;,[tooltip:string])</a></font></b></code></td></tr>
+<tr><td>Sets the label of this button to &lt;text&gt; and automatically sets it as a tooltip if &lt;tip&gt; is true.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; textLabel">&lt;string&gt; $textLabel()</a></font></b></code></td></tr>
+<tr><td>Returns the label of the button.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setAutoRaise">$setAutoRaise(&lt;bAutoraise:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets whether auto-raising is enabled.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; autoRaise">&lt;boolean&gt; $autoRaise()</a></font></b></code></td></tr>
+<tr><td>Returns 1 if autoRaise is enabled, otherwise returns 0.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setToggleButton">$setToggleButton(&lt;bToggle:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets whether the tool button is a toggle button 1 enable, 0 disable.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; toggle">&lt;boolean&gt; $toggle()</a></font></b></code></td></tr>
+<tr><td>Toggles the state of the tool button.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setOn">$setOn(&lt;bEnabled:boolean&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets whether the tool button is on to the bool value: 1 enable, 0 disable.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setPopup ">$setPopup (&lt;popupmenu:object&gt;)</a></font></b></code></td></tr>
+<tr><td>Associates the given &lt;popupmenu&gt; with this tool button.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="openPopup">$openPopup()</a></font></b></code></td></tr>
+<tr><td>Opens the associated popup menu. If there is no such menu, this function does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setTextPosition">setTextPosition(&lt;text_position:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the position of the tool button's textLabel in relation to the tool button's icon.<br> Valid texpos values are:<br> - BesideIcon : The text appears beside the icon.<br> - BelowIcon  : The text appears below the icon.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; textPosition">&lt;string&gt; $textPosition()</a></font></b></code></td></tr>
+<tr><td>Returns the position of the text label of this button.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="clickEvent">$clickEvent()</a></font></b></code></td></tr>
+<tr><td>This function is called when the toolbutton is clicked.<br> You can reimplement it to handle the user click events.<br> The default implementation emits the <a href="#clicked">$clicked</a>() signal.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="clicked">$clicked()</a></font></b></code></td></tr>
+<tr><td>This signal is emitted by the default implementation of <a href="#clickEvent">$clickEvent</a>().<br></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

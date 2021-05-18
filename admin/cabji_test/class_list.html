@@ -1,0 +1,98 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>list class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>list class</div>      <div class='title-secondary-text'>Abstracts a double linked list of strings</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This object class abstracts a double linked list of strings.
+You can insert/remove items by zero based position, at the end (tail) or at the
+beginning (head). The list incorporates an efficient iteration
+method by using the <a href="class_list.html#movefirst">$movefirst</a>(),<a href="class_list.html#movelast">$movelast</a>(),
+<a href="class_list.html#movenext">$movenext</a>(),<a href="class_list.html#moveprev">$moveprev</a>(),
+<a href="class_list.html#current">$current</a>() and <a href="class_list.html#eof">$eof</a>() functions.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="sort">$sort(&lt;bReverse:bool&gt;)</a></font></b></code></td></tr>
+<tr><td>Sorts items in the list alphabetically ($true) or in reverse order ($false); Default to $false. </td></tr><tr><td class="example-box"><pre><code class="c"><br> <span class="example-variable">%list</span>=$new<span class="example-paren">(</span>list<span class="example-paren">)</span>;<br><br> <span class="example-variable">%list</span>-&gt;$append<span class="example-paren">(</span>'Foo'<span class="example-paren">)</span>;<br><br> <span class="example-variable">%list</span>-&gt;$append<span class="example-paren">(</span>'Bar'<span class="example-paren">)</span>;<br><br> <span class="example-variable">%list</span>-&gt;$append<span class="example-paren">(</span>'Dummy'<span class="example-paren">)</span>;<br><br> <span class="example-variable">%list</span>-&gt;$append<span class="example-paren">(</span>'Aria'<span class="example-paren">)</span>;<br><br> <br><br> <span class="example-variable">%list</span>-&gt;$sort<span class="example-paren">(</span>true<span class="example-paren">)</span>;<br><br> <span class="example-variable">%list</span>-&gt;$moveFirst<span class="example-paren">()</span>;<br><br> while<span class="example-paren">(</span><span class="example-variable">%list</span>-&gt;$eof<span class="example-paren">())</span><br><br> <span class="example-bracket">{</span><br><br>   echo <span class="example-variable">%list</span>-&gt;$current<span class="example-paren">()</span>;<br><br>   <span class="example-variable">%list</span>-&gt;$moveNext<span class="example-paren">()</span>;<br><br> <span class="example-bracket">}</span><br><br> </code></pre></td></tr><tr><td bgcolor="#EAEAEA"></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; count">&lt;integer&gt; $count()</a></font></b></code></td></tr>
+<tr><td>Returns the number of items in the list</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; isEmpty">&lt;boolean&gt; $isEmpty()</a></font></b></code></td></tr>
+<tr><td>Returns $true if the list is empty, $false otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="clear">$clear()</a></font></b></code></td></tr>
+<tr><td>Removes all the items from the list.This is the same as <a href="class_list.html#removeall">$removeall</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="removeAll">$removeAll()</a></font></b></code></td></tr>
+<tr><td>Removes all the items from the list. This is the same as <a href="class_list.html#clear">$clear</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="append">$append(&lt;item:variant&gt;)</a></font></b></code></td></tr>
+<tr><td>Inserts the &lt;item&gt; at the end (tail) of the list.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="prepend">$prepend(&lt;item:variant&gt;)</a></font></b></code></td></tr>
+<tr><td>Inserts the &lt;item&gt; at the beginning (head) of the list.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="insert">$insert(&lt;index:uint&gt;,&lt;item:variant&gt;)</a></font></b></code></td></tr>
+<tr><td>Inserts the &lt;item&gt; at zero-based position &lt;index&gt; in the list. If &lt;index&gt; is greater or equal to <a href="class_list.html#count">$count</a>() then the item is simply appended to the end of the list.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="add">$add(&lt;index:uint&gt;,&lt;item:variant&gt;)</a></font></b></code></td></tr>
+<tr><td>This is exactly the same as <a href="class_list.html#insert">$insert</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;variant&gt; item">&lt;variant&gt; $item(&lt;index:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the item at zero-based &lt;index&gt;. If &lt;index&gt; is greater or equal to <a href="class_list.html#count">$count</a>() (beyond the end of the list) then <a href="fnc_nothing.html">$nothing</a> is returned.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; remove">&lt;boolean&gt; $remove(&lt;index:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Removes the item at zero-based &lt;index&gt;. Returns $true if the item was successfully removed and $false otherwise (i.e. &lt;index&gt; pointed beyond the end of the list).</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; removeFirst">&lt;boolean&gt; $removeFirst()</a></font></b></code></td></tr>
+<tr><td>Removes the first item from the list. Returns $true if the item was successfully removed (the list was not empty) and $false otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; removeLast">&lt;boolean&gt; $removeLast()</a></font></b></code></td></tr>
+<tr><td>Removes the last item from the list. Returns $true if the item was successfully removed (the list was not empty) and $false otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; removeCurrent">&lt;boolean&gt; $removeCurrent()</a></font></b></code></td></tr>
+<tr><td>Removes the current item from the list. Returns $true if the item was successfully removed or $false otherwise. Invalidates any iteration operation.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; moveFirst">&lt;boolean&gt; $moveFirst()</a></font></b></code></td></tr>
+<tr><td>Moves the iterator to the first item in the list and returns $true if the move was successful (i.e., the list is not empty) and $false otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; moveLast">&lt;boolean&gt; $moveLast()</a></font></b></code></td></tr>
+<tr><td>Moves the iterator to the last item in the list and returns $true if the move was successful (i.e., the list is not empty) and $false otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; movePrev">&lt;boolean&gt; $movePrev()</a></font></b></code></td></tr>
+<tr><td>Moves the iterator to the previous item and returns $true if the move was successful (i.e., there IS a previous item) and $false otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; moveNext">&lt;boolean&gt; $moveNext()</a></font></b></code></td></tr>
+<tr><td>Moves the iterator to the next item and returns $true if the move was successful (i.e., there IS a next item) and $false otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; eof">&lt;boolean&gt; $eof()</a></font></b></code></td></tr>
+<tr><td>Returns $true if the iterator points to a valid item in the list (and thus <a href="class_list.html#current">$current</a>() would return a valid value) and $false otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; current">&lt;boolean&gt; $current()</a></font></b></code></td></tr>
+<tr><td>Returns the item pointed by the current iterator or <a href="fnc_nothing.html">$nothing</a> is the iterator is not valid (points beyond the end of the list).</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

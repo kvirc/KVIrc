@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>file class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>file class</div>      <div class='title-secondary-text'>I/O device that operates on files</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This object class provides access to files - basic I/O
+operations, copying, removing etc.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setName">$setName(&lt;file_name:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the file name to &lt;file_name&gt;. It does <b>not move</b> the file, it just changes the file the object is <i>pointing to</i>. You can not change names of already open files.<br> See also: <a href="#open">$open</a>(), <a href="#name">$name</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; name">&lt;string&gt; $name()</a></font></b></code></td></tr>
+<tr><td>Returns name set by <a href="#setName">$setName</a>().<br> See also: <a href="#setName">$setName</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="open">$open(&lt;mode1:string&gt;, &lt;mode2:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Attempts to open the file in specified mode or modes <i>sum</i>. Valid modes are:<br> <pre><br> RAW     - RAW, non-buffered access<br> ReadOnly     - opens the file read-only<br> WriteOnly    - opens the file write-only<br> ReadWrite    - opens the file in read-write mode<br> Append       - opens the file in append mode. The file index is set to the end of the file.<br> Truncate     - truncates the file<br> </pre> If you call this function without any parameters, the file is opened in read-only mode.<br> When working with buffered files, data is not written directly to the file at once. You must call <a href="#flush">$flush</a>() to force it.<br> See also: <a href="#close">$close</a>(), <a href="#flush">$flush</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; isOpen">&lt;boolean&gt; $isOpen()</a></font></b></code></td></tr>
+<tr><td>Returns '1' if the file is open, '0' otherwise.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="close">$close()</a></font></b></code></td></tr>
+<tr><td>Closes the file, flushing the buffers first.<br> See also: <a href="#flush">$flush</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="flush">$flush()</a></font></b></code></td></tr>
+<tr><td>Flushes the file buffer to disk. Calling this after opening the file in RAW mode doesn't make much sense.<br> See also: <a href="#open">$open</a>(), <a href="#close">$close</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; size">&lt;integer&gt; $size()</a></font></b></code></td></tr>
+<tr><td>Returns current file size.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;boolean&gt; atEnd">&lt;boolean&gt; $atEnd()</a></font></b></code></td></tr>
+<tr><td>Returns '1' if you have reached end of the file, <b>0</b> otherwise. <br>See also: <a href="#seek">$seek</a>(), <a href="#where">$where</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; where">&lt;integer&gt; $where()</a></font></b></code></td></tr>
+<tr><td>Returns current position in the file (file index).<br> See also: <a href="#seek">$seek</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="seek">$seek(&lt;index:integer&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the file index to &lt;index&gt;.<br> See also: <a href="#where">$where</a>(), <a href="#atEnd">$atEnd</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="putch">$putch(&lt;char&gt;)</a></font></b></code></td></tr>
+<tr><td>Writes character &lt;char&gt; to the file and increments file index.<br> See also: <a href="#getch">$getch</a>(), <a href="#ungetch">$ungetch</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;char&gt; getch">&lt;char&gt; $getch()</a></font></b></code></td></tr>
+<tr><td>Reads a character from the file and increments file index.<br> See also: <a href="#putch">$putch</a>(), <a href="#ungetch">$ungetch</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="ungetch">$ungetch(&lt;char&gt;)</a></font></b></code></td></tr>
+<tr><td>Puts the character &lt;char&gt; back to the file and decrements the file index. This is usually called to undo a $getch() call.<br> See also: <a href="#getch">$getch</a>, <a href="#putch">$putch</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="readLine">$readLine(&lt;text_line:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Reads a line of text from the file and increments file index.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="writeLine">$writeLine(&lt;text_line:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Appends a line of text to the end of the file. $readBlock() $writeBlock()</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

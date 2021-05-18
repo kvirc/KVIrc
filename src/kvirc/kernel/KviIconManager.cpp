@@ -24,6 +24,8 @@
 
 #define _KVI_ICONMANAGER_CPP_
 
+#include <QString>
+#include "kvi_debug.h"
 #include "KviIconManager.h"
 #include "KviApplication.h"
 #include "kvi_settings.h"
@@ -41,6 +43,11 @@
 #include <QLabel>
 #include <QLayout>
 #include <QMimeData>
+#include <QString>
+#include <QDesktopWidget>
+#include <QWidget>
+
+
 
 /*
 	@doc: image_id
@@ -437,33 +444,66 @@ void KviIconWidget::init()
 	setWindowTitle(__tr2qs("Icon Table - KVIrc"));
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager))));
 
+
 	int iRows = KviIconManager::IconCount / 20;
 	if((iRows * 20) < KviIconManager::IconCount)
 		iRows++;
 
 	QGridLayout * pLayout = new QGridLayout(this);
+
+	// roboirc
+	// column labels
 	for(int i = 0; i < 20; i++)
 	{
 		KviCString szTmp(KviCString::Format, "%d", i);
 		QLabel * pLabel = new QLabel(szTmp.ptr(), this);
 		pLayout->addWidget(pLabel, 0, i + 1);
 	}
+
+
+    // row labels
 	for(int i = 0; i < iRows; i++)
 	{
 		KviCString szTmp(KviCString::Format, "%d", i * 20);
 		QLabel * pLabel = new QLabel(szTmp.ptr(), this);
 		pLayout->addWidget(pLabel, i + 1, 0);
 	}
+
 	for(int i = 0; i < KviIconManager::IconCount; i++)
 	{
 		KviCString szTmp(KviCString::Format, "%d", i);
 		QLabel * pLabel = new QLabel(this);
 		pLabel->setObjectName(szTmp.ptr());
-		pLabel->setPixmap(*(g_pIconManager->getSmallIcon(i)));
+
+        // roboirc
+        QPixmap pixmap(*(g_pIconManager->getSmallIcon(i)));
+        pLabel->setPixmap(pixmap.scaled(40, 40, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        pLabel->setToolTip(__tr2qs(g_pIconManager->getSmallIconName(i)));
+
+
 		pLabel->installEventFilter(this);
 		pLabel->setAcceptDrops(true);
-		pLayout->addWidget(pLabel, (i / 20) + 1, (i % 20) + 1);
+
+        pLayout->addWidget(pLabel, (i / 20) + 1, (i % 20) + 1 );
+
 	}
+
+	//roboirc
+    this->setGeometry(0,0,(this->width())*1.5, (this->height())*1.5);
+    QDesktopWidget *desktop = QApplication::desktop();
+
+    int width = this->width();
+    int height = this->height();
+
+    int screenWidth = desktop->width();
+    int screenHeight = desktop->height();
+
+    // padding
+    this->move((screenWidth-width)/2, (screenHeight-height)/2);
+
+
+
+
 }
 
 KviIconWidget::~KviIconWidget()

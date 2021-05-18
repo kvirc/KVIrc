@@ -189,8 +189,10 @@ QString KviQueryWindow::getInfoLabelText()
 				if(pEntry->hasServer())
 					szTmp += __tr2qs(", using server: %1").arg(pEntry->server());
 
+				/* roboirc
 				if(pEntry->hasHops())
 					szTmp += __tr2qs(", hops: %1").arg(pEntry->hops());
+                */
 
 				if(pEntry->hasAccountName())
 					szTmp += __tr2qs(", account: %1").arg(pEntry->accountName());

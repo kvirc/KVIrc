@@ -1,0 +1,1320 @@
+irc<!>Introduction to IRC<!>doc_ircintro.html
+channel<!>Introduction to IRC<!>doc_ircintro.html
+channels<!>Introduction to IRC<!>doc_ircintro.html
+channel operator<!>Introduction to IRC<!>doc_ircintro.html
+irc server<!>Introduction to IRC<!>doc_ircintro.html
+server<!>Introduction to IRC<!>doc_ircintro.html
+irc network<!>Introduction to IRC<!>doc_ircintro.html
+irc user<!>Introduction to IRC<!>doc_ircintro.html
+irc users<!>Introduction to IRC<!>doc_ircintro.html
+irc client<!>Introduction to IRC<!>doc_ircintro.html
+internet relay chat<!>Introduction to IRC<!>doc_ircintro.html
+nickname<!>Introduction to IRC<!>doc_ircintro.html
+nicknames<!>Introduction to IRC<!>doc_ircintro.html
+irc etiquette<!>Introduction to IRC<!>doc_ircintro.html
+Introduction to IRC<!>Introduction to IRC<!>doc_ircintro.html
+KVIrc<!>Introduction to KVIrc<!>doc_kvircintro.html
+Introduction to KVIrc<!>Introduction to KVIrc<!>doc_kvircintro.html
+irc<!>The IRC protocol specification (revised)<!>doc_rfc2812.html
+protocol<!>The IRC protocol specification (revised)<!>doc_rfc2812.html
+bnf<!>The IRC protocol specification (revised)<!>doc_rfc2812.html
+irc user<!>The IRC protocol specification (revised)<!>doc_rfc2812.html
+irc channel<!>The IRC protocol specification (revised)<!>doc_rfc2812.html
+server protocol<!>The IRC protocol specification (revised)<!>doc_rfc2812.html
+server messages<!>The IRC protocol specification (revised)<!>doc_rfc2812.html
+server replies<!>The IRC protocol specification (revised)<!>doc_rfc2812.html
+numeric messages<!>The IRC protocol specification (revised)<!>doc_rfc2812.html
+RFC2812<!>The IRC protocol specification (revised)<!>doc_rfc2812.html
+Keyboard shortcuts<!>The list of the common keyboard shortcuts<!>doc_keyboard.html
+Keyboard shortcuts<!>The list of the common keyboard shortcuts<!>doc_keyboard.html
+cryptography<!>Crypt/text transformation engines and how to use them<!>doc_crypt_engines.html
+encryption<!>Crypt/text transformation engines and how to use them<!>doc_crypt_engines.html
+privacy<!>Crypt/text transformation engines and how to use them<!>doc_crypt_engines.html
+private key<!>Crypt/text transformation engines and how to use them<!>doc_crypt_engines.html
+text transformation<!>Crypt/text transformation engines and how to use them<!>doc_crypt_engines.html
+Cryptography and text transformation<!>Crypt/text transformation engines and how to use them<!>doc_crypt_engines.html
+registered users<!>Registration of users in KVIrc<!>doc_registered_users.html
+registration mask<!>Registration of users in KVIrc<!>doc_registered_users.html
+registered user properties<!>Registration of users in KVIrc<!>doc_registered_users.html
+user properties<!>Registration of users in KVIrc<!>doc_registered_users.html
+notify property<!>Registration of users in KVIrc<!>doc_registered_users.html
+avatar property<!>Registration of users in KVIrc<!>doc_registered_users.html
+Registered users<!>Registration of users in KVIrc<!>doc_registered_users.html
+file sharing<!>Automatically sharing your files with other IRC users<!>doc_shared_files.html
+Sharing files with KVIrc<!>Automatically sharing your files with other IRC users<!>doc_shared_files.html
+The AVATAR idea<!>Extending IRC fun: the AVATAR idea<!>doc_ctcp_avatar.html
+irc masks<!>Description of the standard IRC masks<!>doc_irc_masks.html
+nickname<!>Description of the standard IRC masks<!>doc_irc_masks.html
+username<!>Description of the standard IRC masks<!>doc_irc_masks.html
+hostname<!>Description of the standard IRC masks<!>doc_irc_masks.html
+wildcard<!>Description of the standard IRC masks<!>doc_irc_masks.html
+IRC masks<!>Description of the standard IRC masks<!>doc_irc_masks.html
+NickServ<!>Automatic authentication with NickServ<!>doc_nickserv_proto.html
+automatic authentication with NickServ<!>Automatic authentication with NickServ<!>doc_nickserv_proto.html
+Authentication with NickServ<!>Automatic authentication with NickServ<!>doc_nickserv_proto.html
+image identifier<!>Semantics of the &lt;image_id&gt; parameter<!>doc_image_id.html
+using builtin images<!>Semantics of the &lt;image_id&gt; parameter<!>doc_image_id.html
+how KVIrc locates image files<!>Semantics of the &lt;image_id&gt; parameter<!>doc_image_id.html
+The image identifier<!>Semantics of the &lt;image_id&gt; parameter<!>doc_image_id.html
+notify property<!>Tracking users on IRC<!>doc_notify_list.html
+watch property<!>Tracking users on IRC<!>doc_notify_list.html
+notify lists<!>Tracking users on IRC<!>doc_notify_list.html
+Notify lists<!>Tracking users on IRC<!>doc_notify_list.html
+events<!>Events: user reactions<!>doc_events.html
+event handlers<!>Events: user reactions<!>doc_events.html
+event<!>Events: user reactions<!>doc_events.html
+Events<!>Events: user reactions<!>doc_events.html
+OnKVIrcStartup<!>Triggered on KVIrc startup<!>event_onkvircstartup.html
+OnKVIrcShutdown<!>Triggered on KVIrc shutdown<!>event_onkvircshutdown.html
+OnIRCContextCreated<!>Triggered when a new IRC context is created<!>event_onirccontextcreated.html
+OnIRCContextDestroyed<!>Triggered when an IRC context is destroyed<!>event_onirccontextdestroyed.html
+OnFrameWindowCreated<!>Triggered when a new frame window is opened<!>event_onframewindowcreated.html
+OnFrameWindowDestroyed<!>Triggered when a frame window is being destroyed<!>event_onframewindowdestroyed.html
+OnURL<!>Triggered when an URL appears in one of the output windows<!>event_onurl.html
+OnError<!>Triggered when an ERROR message is received from the server<!>event_onerror.html
+OnAccelKeyPressed<!>Triggered when an accelerator key was pressed<!>event_onaccelkeypressed.html
+OnHighlight<!>Triggered when a channel or query message is going to be highlighted<!>event_onhighlight.html
+OnWindowActivated<!>Triggered when a window has just been activated<!>event_onwindowactivated.html
+OnNotifyOnline<!>A user in the notify list is on-line<!>event_onnotifyonline.html
+OnNotifyOffline<!>A user in the notify list went off-line<!>event_onnotifyoffline.html
+OnPing<!>Server ping handler<!>event_onping.html
+OnPong<!>Server pong handler<!>event_onpong.html
+OnLagAlarmTimeUp<!>High-Lag Alarm Started<!>event_onlagalarmtimeup.html
+OnLagAlarmTimeDown<!>High-Lag Alarm Stopped<!>event_onlagalarmtimedown.html
+OnLagCheck<!>The lag metering engine has checked the lag<!>event_onlagcheck.html
+OnTextInput<!>The user has just entered some text in the text input<!>event_ontextinput.html
+OnNotifyListDefaultActionRequest<!>Notify list double click customization<!>event_onnotifylistdefaultactionrequest.html
+OnWallops<!>Triggered when a WALLOPS message is received from the server<!>event_onwallops.html
+OnIgnoredMessage<!>Triggered when a message is ignored.<!>event_onignoredmessage.html
+OnServerNotice<!>A server NOTICE have been issued.<!>event_onservernotice.html
+OnIRCConnectionEstablished<!>Triggered when a new IRC connection has been established<!>event_onircconnectionestablished.html
+OnIRCConnectionTerminated<!>Triggered when an IRC connection has been terminated<!>event_onircconnectionterminated.html
+OnIRC<!>Triggered when the login operations are terminated<!>event_onirc.html
+OnNetsplit<!>A netsplit has been detected<!>event_onnetsplit.html
+OnDisconnectRequest<!>Triggered when the user requests a disconnection<!>event_ondisconnectrequest.html
+OnHTTPGetTerminated<!>A http.get command has terminated execution<!>event_onhttpgetterminated.html
+OnUnhandledLiteral<!>An unhandled literal server message has been received<!>event_onunhandledliteral.html
+OnOutboundTraffic<!>Triggered on outbound traffic.<br>USE THIS EVENT WITH REAL CAUTION: an improper use can lead to many problems to KVIrc; especially avoid the use of the 'halt' command.<!>event_onoutboundtraffic.html
+OnChannelPopupRequest<!>Triggered when the channel text view is right-clicked<!>event_onchannelpopuprequest.html
+OnConsolePopupRequest<!>Triggered when the console text view is right-clicked<!>event_onconsolepopuprequest.html
+OnQueryPopupRequest<!>Triggered when the query text view is right-clicked<!>event_onquerypopuprequest.html
+OnWindowPopupRequest<!>Triggered when the user middle-clicks in a text view (or right-clicks with the Ctrl key pressed).<!>event_onwindowpopuprequest.html
+OnHostLinkPopupRequest<!>Triggered when a user right clicks on a hostname link in the text view.<!>event_onhostlinkpopuprequest.html
+OnURLLinkPopupRequest<!>URL link popup customization<!>event_onurllinkpopuprequest.html
+OnServerLinkPopupRequest<!>Server link popup customization<!>event_onserverlinkpopuprequest.html
+OnChannelLinkPopupRequest<!>Channel link popup customization<!>event_onchannellinkpopuprequest.html
+OnNickLinkPopupRequest<!>Nick link popup customization<!>event_onnicklinkpopuprequest.html
+OnQueryNickPopupRequest<!>Query nicklist popup customization<!>event_onquerynickpopuprequest.html
+OnChannelNickPopupRequest<!>Allows customization of the nick-on-channel context popup<!>event_onchannelnickpopuprequest.html
+OnNotifyListPopupRequest<!>Notify list context popup customization<!>event_onnotifylistpopuprequest.html
+OnDCCChatPopupRequest<!>Triggered when the DCC chat text view is right-clicked<!>event_ondccchatpopuprequest.html
+OnChannelWindowCreated<!>A channel window has just been opened<!>event_onchannelwindowcreated.html
+OnChannelSync<!>Triggered when all channel information have been received<!>event_onchannelsync.html
+OnChannelMessage<!>A message has been received from the channel<!>event_onchannelmessage.html
+OnChannelNotice<!>A NOTICE have been issued to a channel<!>event_onchannelnotice.html
+OnQueryMessage<!>A message has been received from a query<!>event_onquerymessage.html
+OnQueryNotice<!>A private notice has been received<!>event_onquerynotice.html
+OnQueryWindowRequest<!>A new query window is going to be opened because a remote message has been received<!>event_onquerywindowrequest.html
+OnQueryWindowCreated<!>A query window has just been opened<!>event_onquerywindowcreated.html
+OnQueryTargetAdded<!>A new query target has been added<!>event_onquerytargetadded.html
+OnQueryFileDropped<!>A file is dropped in a query<!>event_onqueryfiledropped.html
+OnMeAway<!>Local user sets the AWAY status<!>event_onmeaway.html
+OnMeBack<!>Local user cancels the AWAY status<!>event_onmeback.html
+OnJoin<!>Non-local user joining a channel<!>event_onjoin.html
+OnMeJoin<!>Local user joining a channel<!>event_onmejoin.html
+OnPart<!>Non-local user is leaving a channel<!>event_onpart.html
+OnMePart<!>Local user is leaving a channel<!>event_onmepart.html
+OnKick<!>Non-local user is being kicked from a channel<!>event_onkick.html
+OnMeKick<!>Local user is being kicked from a channel<!>event_onmekick.html
+OnTopic<!>Topic change on a channel<!>event_ontopic.html
+OnQuit<!>An user is leaving IRC<!>event_onquit.html
+OnChannelModeChange<!>The channel mode has been changed<!>event_onchannelmodechange.html
+OnUserModeChange<!>The local user has changed mode<!>event_onusermodechange.html
+OnBan<!>Someone has set a +b flag on the channel<!>event_onban.html
+OnUnban<!>Someone has set a -b flag on the channel<!>event_onunban.html
+OnMeBan<!>Local user is being banned in a channel<!>event_onmeban.html
+OnMeUnban<!>Local user is being de-banned in a channel<!>event_onmeunban.html
+OnBanException<!>Someone has set a +e flag on the channel<!>event_onbanexception.html
+OnBanExceptionRemove<!>Someone has set a -e flag on the channel<!>event_onbanexceptionremove.html
+OnMeBanException<!>Someone has set a +e flag on the local user<!>event_onmebanexception.html
+OnMeBanExceptionRemove<!>Someone has set a -e flag on the local user<!>event_onmebanexceptionremove.html
+OnInvite<!>The local user has received an invitation<!>event_oninvite.html
+OnInviteException<!>A +I mode has been set<!>event_oninviteexception.html
+OnInviteExceptionRemove<!>Mode -I has been set<!>event_oninviteexceptionremove.html
+OnMeInviteException<!>A +I mode has been set on the local user<!>event_onmeinviteexception.html
+OnMeInviteExceptionRemove<!>Move -I has been set<!>event_onmeinviteexceptionremove.html
+OnLimitSet<!>The channel users limit has been set<!>event_onlimitset.html
+OnLimitUnSet<!>The channel users limit has been unset<!>event_onlimitunset.html
+OnKeySet<!>The channel users key has been set<!>event_onkeyset.html
+OnKeyUnset<!>The channel users key has been unset<!>event_onkeyunset.html
+OnNickChange<!>Someone has changed his nickname<!>event_onnickchange.html
+OnMeNickChange<!>The local user has changed his nickname<!>event_onmenickchange.html
+OnChanOwner<!>Someone has given a user the +q flag<!>event_onchanowner.html
+OnDeChanOwner<!>Someone has given a user the -q flag<!>event_ondechanowner.html
+OnMeChanOwner<!>Someone has given the +q flag to the local user<!>event_onmechanowner.html
+OnMeDeChanOwner<!>Someone has given the -q flag to the local user<!>event_onmedechanowner.html
+OnChanAdmin<!>Someone has given a user the +a flag<!>event_onchanadmin.html
+OnDeChanAdmin<!>Someone has given a user the -a flag<!>event_ondechanadmin.html
+OnMeChanAdmin<!>Someone has given the +a flag to the local user<!>event_onmechanadmin.html
+OnMeDeChanAdmin<!>Someone has given the -a flag to the local user<!>event_onmedechanadmin.html
+OnOp<!>Someone has given a user the +o flag<!>event_onop.html
+OnDeOp<!>Someone has given a user the -o flag<!>event_ondeop.html
+OnMeOp<!>Someone has given the +o flag to the local user<!>event_onmeop.html
+OnMeDeOp<!>Someone has given the -o flag to the local user<!>event_onmedeop.html
+OnHalfOp<!>Someone has given a user the +h flag<!>event_onhalfop.html
+OnDeHalfOp<!>Someone has given a user the -h flag<!>event_ondehalfop.html
+OnMeHalfOp<!>Someone has given the local user the +h flag<!>event_onmehalfop.html
+OnMeDeHalfOp<!>Someone has given the local user the -h flag<!>event_onmedehalfop.html
+OnVoice<!>Someone has given a user the +v flag<!>event_onvoice.html
+OnDeVoice<!>Someone has given a user the -v flag<!>event_ondevoice.html
+OnMeVoice<!>Someone has give the local user a +v flag<!>event_onmevoice.html
+OnMeDeVoice<!>Someone has give the local user a -v flag<!>event_onmedevoice.html
+OnUserOp<!>Someone has given a user the +u flag<!>event_onuserop.html
+OnDeUserOp<!>Someone has given a user a -u flag<!>event_ondeuserop.html
+OnMeUserOp<!>Someone has given the local user the +u flag<!>event_onmeuserop.html
+OnMeDeUserOp<!>Someone has given the local user the -u flag<!>event_onmedeuserop.html
+OnIrcOp<!>Someone has given a user the +O flag<!>event_onircop.html
+OnDeIrcOp<!>Someone has given a user the -O flag<!>event_ondeircop.html
+OnMeIrcOp<!>Someone has given the +O flag to the local user<!>event_onmeircop.html
+OnMeDeIrcOp<!>Someone has given the -O flag to the local user<!>event_onmedeircop.html
+OnChanServNotice<!>A notice from ChanServ has been received<!>event_onchanservnotice.html
+OnNickServNotice<!>A notice from NickServ has been received<!>event_onnickservnotice.html
+OnNickServAuth<!>IRCd set a registered user mode<!>event_onnickservauth.html
+OnAction<!>Someone issued a CTCP ACTION<!>event_onaction.html
+OnMeAction<!>User issued a CTCP ACTION<!>event_onmeaction.html
+OnCTCPRequest<!>A CTCP request has been received<!>event_onctcprequest.html
+OnCTCPReply<!>A CTCP reply has been received<!>event_onctcpreply.html
+OnCTCPFlood<!>Someone tried to flood you with CTCP requests<!>event_onctcpflood.html
+OnDCCSessionCreated<!>A new DCC session has just been created<!>event_ondccsessioncreated.html
+OnDCCSessionDestroyed<!>A new DCC session has just been destroyed<!>event_ondccsessiondestroyed.html
+OnDCCChatWindowCreated<!>A DCC Chat window has been just created<!>event_ondccchatwindowcreated.html
+OnDCCChatConnectionInProgress<!>A DCC Chat connection has just been started<!>event_ondccchatconnectioninprogress.html
+OnDCCChatConnected<!>A DCC Chat connection has been established<!>event_ondccchatconnected.html
+OnDCCChatMessage<!>A DCC Chat message has just been received<!>event_ondccchatmessage.html
+OnDCCChatError<!>A DCC Chat error has just been triggered<!>event_ondccchaterror.html
+OnDCCChatDisconnected<!>A DCC Chat has been just disconnected<!>event_ondccchatdisconnected.html
+OnDCCChatWindowClosing<!>A DCC Chat is going to be closed<!>event_ondccchatwindowclosing.html
+OnDCCFileTransferConnectionInProgress<!>Triggered when a DCC File transfer is waiting for a connection<!>event_ondccfiletransferconnectioninprogress.html
+OnDCCFileTransferBegin<!>Triggered when a DCC File transfer begins<!>event_ondccfiletransferbegin.html
+OnDCCFileTransferSuccess<!>Triggered when a DCC File transfer succeeds<!>event_ondccfiletransfersuccess.html
+OnDCCFileTransferFailed<!>Triggered when a DCC File transfer fails<!>event_ondccfiletransferfailed.html
+OnChannelNickLinkClick<!>Clicked on nickname in channel<!>event_onchannelnicklinkclick.html
+OnQueryNickLinkClick<!>Triggered when user clicks on nickname in query window<!>event_onquerynicklinkclick.html
+OnConsoleNickLinkClick<!>Triggered when user clicks on nickname in console window<!>event_onconsolenicklinkclick.html
+OnHostLinkClick<!>Triggered when user clicks on any hostname in any window<!>event_onhostlinkclick.html
+OnURLLinkClick<!>Triggered when user clicks on any URL link in any window<!>event_onurllinkclick.html
+OnChannelLinkClick<!>Triggered when user clicks on any channel name in any window<!>event_onchannellinkclick.html
+OnServerLinkClick<!>Triggered when user clicks on server name in any window<!>event_onserverlinkclick.html
+OnTextViewDoubleClicked<!>Text view link double click customization<!>event_ontextviewdoublecliked.html
+OnNickLinkDefaultActionRequest<!>Nick link double click customization<!>event_onnicklinkdefaultactionrequest.html
+OnChannelNickDefaultActionRequest<!>Allows customization of the double click on nicknames<!>event_onchannelnickdefaultactionrequest.html
+OnQueryNickDefaultActionRequest<!>Query double click customization<!>event_onquerynickdefaultactionrequest.html
+OnWindowTitleRequest<!>Triggered when a window title needs to be set<!>event_onwindowtitlerequest.html
+OnInputBarPaste<!>Triggered when the user paste some text on the inputbar<!>event_oninputbarpaste.html
+OnMemoServNotice<!>A notice from MemoServ has been received<!>event_onmemoservnotice.html
+OnBroadcastNotice<!>A broadcast NOTICE has been received.<!>event_onbroadcastnotice.html
+OnQuietBan<!>Someone has set a +q flag on the channel<!>event_onquietban.html
+OnQuietUnban<!>Someone has set a -q flag on the channel<!>event_onquietunban.html
+OnMeQuietBan<!>Local user is being quiet-banned (+q) in a channel<!>event_onmequietban.html
+OnMeQuietUnban<!>Local user is being quiet-debanned (-q) in a channel<!>event_onmequietunban.html
+OnMeHostChange<!>Local user's visible hostname is changed<!>event_onmehostchange.html
+OnHostChange<!>Someone's visible hostname has changed<!>event_onhostchange.html
+OnAccount<!>Someone's account name has changed<!>event_onaccount.html
+OnAway<!>Someone's away status has changed<!>event_onaway.html
+OnCap<!>Received a capability update from the IRCd<!>event_oncap.html
+ahost<!>DNS lookup<!>cmd_ahost.html
+alias<!>Adds a new alias or modifies an existing one<!>cmd_alias.html
+function<!>A synonym for alias<!>cmd_function.html
+awhois<!>Asynchronous WHOIS<!>cmd_awhois.html
+button<!>Adds/removes/changes user definable buttons<!>cmd_button.html
+event<!>Adds a new event handler<!>cmd_event.html
+exec<!>Asynchronous execution of external programs<!>cmd_exec.html
+privateimpl<!>Adds a private implementation of a function<!>cmd_privateimpl.html
+timer<!>Starts a timer<!>cmd_timer.html
+$active<!>Retrieves the window ID of the active window<!>fnc_active.html
+$aliasBody<!>Returns the body of an alias, if it exists<!>fnc_aliasbody.html
+$ascii<!>Returns the Unicode code of a character<!>fnc_ascii.html
+$asciiToBase64<!>Returns an encoded base64 string<!>fnc_asciitobase64.html
+$asciiToHex<!>Returns an encoded hex string<!>fnc_asciitohex.html
+$array<!>Explicitly creates an array<!>fnc_array.html
+$away<!>Returns true if the current user is away<!>fnc_away.html
+$b<!>Returns the BOLD mIRC control character<!>fnc_b.html
+$base64ToAscii<!>Returns a decoded base64 string<!>fnc_base64toascii.html
+$boolean<!>Casts a variable to a boolean<!>fnc_boolean.html
+$bool<!>Casts a variable to a boolean<!>fnc_bool.html
+$certificate<!>Returns information about the local certificate<!>fnc_certificate.html
+$channel<!>Retrieves the window ID of a specified channel<!>fnc_channel.html
+$char<!>Returns a character specified by Unicode<!>fnc_char.html
+$classdefined<!>Checks if a class is defined<!>fnc_classdefined.html
+$console<!>Retrieves the window ID of a specified console<!>fnc_console.html
+$context<!>Retrieves the ID of the specified IRC context<!>fnc_context.html
+$countStatusBarItems<!>Returns the number of items in the statusbar<!>fnc_countstatusbaritems.html
+$cr<!>Returns a carriage return character<!>fnc_cr.html
+$date<!>Returns a date/time string using a specified format<!>fnc_date.html
+$escape<!>Returns a kvs-escaped version of the string<!>fnc_escape.html
+$false<!>The boolean false constant<!>fnc_false.html
+$features<!>Returns the features that KVIrc supports<!>fnc_features.html
+$firstConnectedConsole<!>Returns the window ID of the first connected console<!>fnc_firstconnectedconsole.html
+$flatten<!>Returns a flattened array of items<!>fnc_flatten.html
+$fmtlink<!>Returns a formatted link buffer<!>fnc_fmtlink.html
+$gender<!>Returns the gender of the specified user<!>fnc_gender.html
+$globals<!>Dump globals variables<!>fnc_globals.html
+$hash<!>Explicitly creates a hash<!>fnc_hash.html
+$hexToAscii<!>Returns a decoded hex string<!>fnc_hextoascii.html
+$hostname<!>Returns the hostname of the specified user<!>fnc_hostname.html
+$lag<!>Returns the lag on the current server<!>fnc_lag.html
+$hptimestamp<!>Returns a high precision timestamp<!>fnc_hptimestamp.html
+$i<!>Returns the ITALIC mIRC control character<!>fnc_i.html
+$icon<!>Returns the ID of an icon<!>fnc_icon.html
+$iconname<!>Returns the name of an icon<!>fnc_iconname.html
+$insideAlias<!>Returns true if kvs is executing an alias<!>fnc_insidealias.html
+$integer<!>Casts a variable to an integer<!>fnc_integer.html
+$int<!>Casts a variable to an integer<!>fnc_int.html
+$isbot<!>Returns <b>1</b> if the user is a bot. Otherwise return 0.<!>fnc_isbot.html
+$isMainWindowActive<!>Checks if main KVirc window is active<!>fnc_ismainwindowactive.html
+$isMainWindowMinimized<!>Checks if main KVirc window is minimized<!>fnc_ismainwindowminimized.html
+$isEmpty<!>Checks if a variable is set (empty or non empty)<!>fnc_isempty.html
+$isEventEnabled<!>Checks if an event enabled<!>fnc_iseventenabled.html
+$isNumeric<!>Finds whether a variable contains a representation of a number<!>fnc_isnumeric.html
+$isSet<!>Checks if a variable is set (non-empty)<!>fnc_isset.html
+$isTimer<!>Checks for a timer existence<!>fnc_istimer.html
+$isWellKnown<!>Returns $true if the specified user is well known<!>fnc_iswellknown.html
+$k<!>Returns the COLOR mIRC control character<!>fnc_k.html
+$keys<!>Returns the array of keys of a hash<!>fnc_keys.html
+$lang<!>Returns name of currently used language<!>fnc_lang.html
+$length<!>Returns the length of a variable<!>fnc_length.html
+$lf<!>Returns a line feed character<!>fnc_lf.html
+$link<!>Returns the text specified as a link<!>fnc_link.html
+$listtimers<!>Returns a list of the active timers<!>fnc_listtimers.html
+$mask<!>Retrieves the host mask of a user<!>fnc_mask.html
+$me<!>Returns the current nickname<!>fnc_me.html
+$msgtype<!>Returns the ID of a message type color set<!>fnc_msgtype.html
+$new<!>Creates a new object<!>fnc_new.html
+$nothing<!>Evaluates to an empty variable<!>fnc_nothing.html
+$null<!>Evaluates to the null object handle.<!>fnc_null.html
+$o<!>Returns the RESET mIRC control character<!>fnc_o.html
+$option<!>Returns the value of an option<!>fnc_option.html
+$query<!>Retrieves the window ID of a specified query<!>fnc_query.html
+$r<!>Returns the REVERSE mIRC control character<!>fnc_r.html
+$rand<!>Generates a random number<!>fnc_rand.html
+$real<!>Casts a variable to a real<!>fnc_real.html
+$realname<!>Returns the realname of the specified user<!>fnc_realname.html
+$receivedBytes<!>Returns total received bytes<!>fnc_receivedbytes.html
+$rsort<!>Sorts an array in reverse order<!>fnc_rsort.html
+$scriptContextName<!>Returns the actual script context's name..<!>fnc_scriptcontextname.html
+$selected<!>Returns the list of selected nicknames in the channel<!>fnc_selected.html
+$sentBytes<!>Returns total sent bytes<!>fnc_sentbytes.html
+$serialize<!>Encodes variable to JSON string<!>fnc_serialize.html
+$server<!>Returns the current server name (if any)<!>fnc_server.html
+$sort<!>Sorts an array<!>fnc_sort.html
+$string<!>Casts a variable to a string<!>fnc_string.html
+$sw<!>Returns the value of a switch for an alias<!>fnc_sw.html
+$target<!>Returns the target of the current window<!>fnc_target.html
+$this<!>Retrieves the ID of the current object<!>fnc_this.html
+$$<!>Retrieves the ID of the current object<!>fnc_$.html
+Localization of scripts<!>Explains how to add translation capabilities to your scripts<!>doc_script_localization.html
+$tr<!>Translates an English string to the current language<!>fnc_tr.html
+$true<!>The boolean true constant<!>fnc_true.html
+$typeof<!>Returns the internal data type of a variable<!>fnc_typeof.html
+$u<!>Returns the UNDERLINE mIRC control character<!>fnc_u.html
+$uflags<!>Retrieves the user flags of a user<!>fnc_uflags.html
+$unicode<!>Returns the Unicode code of a set of characters<!>fnc_unicode.html
+$unixTime<!>Returns the current UNIX time<!>fnc_unixtime.html
+$unserialize<!>Decodes JSON-encoded string<!>fnc_unserialize.html
+$username<!>Returns the username of the specified user<!>fnc_username.html
+$version<!>Returns information about the version of KVIrc.<!>fnc_version.html
+$window<!>Retrieve the ID of a specified window.<!>fnc_window.html
+RFC2812 Wrappers<!>Wrappers for RFC2812 commands<!>doc_rfc2812wrappers.html
+admin<!>Requests the admin info from a server<!>cmd_admin.html
+away<!>Puts you into 'away' state<!>cmd_away.html
+back<!>Allows you to return from being away<!>cmd_back.html
+ban<!>Sets ban masks for the channel<!>cmd_ban.html
+beep<!>Beep beep!<!>cmd_beep.html
+buttonctl<!>changes user definable buttons<!>cmd_buttonctl.html
+cap<!>Sends a CAP command<!>cmd_cap.html
+chanadmin<!>Sets chan admin status from the specified users<!>cmd_chanadmin.html
+chanowner<!>Sets chan owner status from the specified users<!>cmd_chanowner.html
+codepage<!>Tries to set the codepage on server<!>cmd_codepage.html
+CTCP<!>Sends a CTCP message<!>cmd_ctcp.html
+debug<!>Outputs text to the debug window<!>cmd_debug.html
+dechanadmin<!>Removes chan admin status from the specified users<!>cmd_dechanadmin.html
+dechanowner<!>Removes chan owner status from the specified users<!>cmd_dechanowner.html
+dehalfop<!>Removes half op status from the specified users<!>cmd_dehalfop.html
+delete<!>Destroys an object<!>cmd_delete.html
+destroy<!>Destroys an object<!>cmd_destroy.html
+delpopupitem<!>Deletes an item from a popup<!>cmd_delpopupitem.html
+deop<!>Removes chanop status from the specified users<!>cmd_deop.html
+deuserop<!>Removes user op status from the specified users<!>cmd_deuserop.html
+devoice<!>Removes voice flag for the specified users<!>cmd_devoice.html
+die<!>Prints an error message and stops the script<!>cmd_die.html
+echo<!>Outputs text to a KVIrc window<!>cmd_echo.html
+echoprivmsg<!>Outputs text to a KVIrc window<!>cmd_echoprivmsg.html
+error<!>Prints an error message and stops the script<!>cmd_error.html
+eval<!>Change the behaviour of a set of commands<!>cmd_eval.html
+eventctl<!>Controls the execution of event handlers<!>cmd_eventctl.html
+exit<!>Closes KVIrc<!>cmd_exit.html
+halfop<!>Sets halfop status to the specified users<!>cmd_halfop.html
+halt<!>Stops the execution of the current script<!>cmd_halt.html
+help<!>Shows a help document<!>cmd_help.html
+host<!>DNS lookup<!>cmd_host.html
+include<!>A builtin alias for parse<!>cmd_include.html
+info<!>Requests the server daemon info from a server<!>cmd_info.html
+inject<!>Injects &lt;text&gt; to the socket<!>cmd_inject.html
+invite<!>Invites a user to a channel<!>cmd_invite.html
+ison<!>Checks if a user is online<!>cmd_ison.html
+join<!>Joins the specified channels<!>cmd_join.html
+kick<!>Kicks a user from a channel<!>cmd_kick.html
+killtimer<!>Stops a timer<!>cmd_killtimer.html
+leave<!>Alias for part<!>cmd_leave.html
+links<!>Lists server links<!>cmd_links.html
+list<!>Lists channels<!>cmd_list.html
+listtimers<!>Lists the active timers<!>cmd_listtimers.html
+lusers<!>Requests statistics about users on IRC<!>cmd_lusers.html
+map<!>Displays a map of connected servers<!>cmd_map.html
+me<!>Sends a CTCP ACTION<!>cmd_me.html
+mode<!>Sends a MODE IRC message<!>cmd_mode.html
+motd<!>Requests the Message of the day<!>cmd_motd.html
+msg<!>Alias for privmsg<!>cmd_msg.html
+nick<!>Changes your nickname<!>cmd_nick.html
+notice<!>Sends a private notice<!>cmd_notice.html
+op<!>Sets op status to the specified users<!>cmd_op.html
+openurl<!>Opens an URL<!>cmd_openurl.html
+oper<!>Requests IRC operator status<!>cmd_oper.html
+operwall<!>Broadcasts an OPERWALL message<!>cmd_operwall.html
+option<!>Sets an internal option<!>cmd_option.html
+parse<!>Executes commands from a file<!>cmd_parse.html
+part<!>Leaves the specified channels<!>cmd_part.html
+pass<!>Sends a password to the server<!>cmd_pass.html
+play<!>DEPRECATED: Use $snd.play instead!<!>cmd_play.html
+popup<!>Shows a popup menu<!>cmd_popup.html
+privmsg<!>Sends a private message<!>cmd_privmsg.html
+query<!>Opens one or more query windows<!>cmd_query.html
+quit<!>Terminates the current IRC connection or the entire application<!>cmd_quit.html
+quote<!>Builtin alias for RAW<!>cmd_quote.html
+raise<!>Raises the KVIrc frame window<!>cmd_raise.html
+raw<!>Sends RAW data to the server<!>cmd_raw.html
+rebind<!>Rebinds a command sequence to a specified window<!>cmd_rebind.html
+return<!>Returns from the current command sequence and sets it return value<!>cmd_return.html
+run<!>Runs an external process<!>cmd_run.html
+say<!>Type text in a window<!>cmd_say.html
+connecting to a server<!>Connects to the specified server<!>cmd_server.html
+server<!>Connects to the specified server<!>cmd_server.html
+service<!>Registers a new service<!>cmd_service.html
+setmenu<!>Adds a popup menu to the menu bar<!>cmd_setmenu.html
+setreturn<!>Sets the return value of the current command sequence<!>cmd_setreturn.html
+sockets<!>Requests the sockets info from a server<!>cmd_sockets.html
+squery<!>Sends a message to a service<!>cmd_squery.html
+squit<!>Disconnects a server socket (ircops only)<!>cmd_squit.html
+srand<!>Initializes the random number generator<!>cmd_srand.html
+stats<!>Requests the stats info from  a server<!>cmd_stats.html
+time<!>Requests the current local time info from a server<!>cmd_time.html
+topic<!>Changes topic for the specified channel<!>cmd_topic.html
+trace<!>Requests trace information about a specified machine in the network<!>cmd_trace.html
+trload<!>Loads a translation catalogue<!>cmd_trload.html
+trunload<!>Unloads a translation catalogue<!>cmd_trunload.html
+unban<!>Unsets ban masks for the channel<!>cmd_unban.html
+userop<!>Sets userop flag for the specified users<!>cmd_userop.html
+version<!>Requests the version of a server<!>cmd_version.html
+voice<!>Sets voice flag for the specified users<!>cmd_voice.html
+warning<!>Prints a warning message<!>cmd_warning.html
+wallops<!>Broadcasts a WALLOPS message<!>cmd_wallops.html
+who<!>Requests WHO information<!>cmd_who.html
+whois<!>Requests user information<!>cmd_whois.html
+whowas<!>Requests user information<!>cmd_whowas.html
+objects<!>Object scripting overview<!>doc_objects.html
+object scripting<!>Object scripting overview<!>doc_objects.html
+complex data structures<!>Object scripting overview<!>doc_objects.html
+Object scripting<!>Object scripting overview<!>doc_objects.html
+object class<!>Base class for all the KVIrc objects<!>class_object.html
+object<!>Base class for all the KVIrc objects<!>class_object.html
+class<!>Base class for all the KVIrc objects<!>class_object.html
+object class<!>Base class for all the KVIrc objects<!>class_object.html
+kvs<!>KVS scripting language introduction<!>doc_kvs_introduction.html
+compilation<!>KVS scripting language introduction<!>doc_kvs_introduction.html
+KVIrc scripting language introduction<!>KVS scripting language introduction<!>doc_kvs_introduction.html
+script<!>KVS basic concepts<!>doc_kvs_basicconcepts.html
+KVS basic concepts<!>KVS basic concepts<!>doc_kvs_basicconcepts.html
+aliases<!>KVS Functions and aliases<!>doc_kvs_aliasesandfunctions.html
+functions<!>KVS Functions and aliases<!>doc_kvs_aliasesandfunctions.html
+KVS Functions and aliases<!>KVS Functions and aliases<!>doc_kvs_aliasesandfunctions.html
+Rebinding commands to another window<!>Standard rebinding switch<!>doc_command_rebinding.html
+Standard rebinding switch<!>Standard rebinding switch<!>doc_command_rebinding.html
+IRC context<!>KVIrc window structure and the window naming conventions<!>doc_window_naming_conventions.html
+window ID<!>KVIrc window structure and the window naming conventions<!>doc_window_naming_conventions.html
+frame window<!>KVIrc window structure and the window naming conventions<!>doc_window_naming_conventions.html
+connection ID<!>KVIrc window structure and the window naming conventions<!>doc_window_naming_conventions.html
+Window naming conventions<!>KVIrc window structure and the window naming conventions<!>doc_window_naming_conventions.html
+IRC context<!><!>doc_connection_dependent_commands.html
+connection dependent commands<!><!>doc_connection_dependent_commands.html
+Connection dependent commands<!><!>doc_connection_dependent_commands.html
+aliases<!>Aliases : user definable command sequences<!>doc_aliases.html
+Aliases<!>Aliases : user definable command sequences<!>doc_aliases.html
+addons<!>Writing KVIrc addons<!>doc_kvs_addons.html
+addon<!>Writing KVIrc addons<!>doc_kvs_addons.html
+The KVIrc addon system<!>Writing KVIrc addons<!>doc_kvs_addons.html
+indentation<!>Generic coding tips for scripters (and not only)<!>doc_kvs_codingtips.html
+indent<!>Generic coding tips for scripters (and not only)<!>doc_kvs_codingtips.html
+readability<!>Generic coding tips for scripters (and not only)<!>doc_kvs_codingtips.html
+Coding tips<!>Generic coding tips for scripters (and not only)<!>doc_kvs_codingtips.html
+productions<!>Syntactic rules of the KVIrc scripting language<!>doc_syntactic_rules.html
+Syntactic rules<!>Syntactic rules of the KVIrc scripting language<!>doc_syntactic_rules.html
+global variable<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+global variables<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+local variable<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+local variables<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+variables<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+variable<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+array<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+hash<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+dictionary<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+global variables<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+local variables<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+variable evaluation<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+associative arrays<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+scalars<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+data types<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+percent sign and extended scope<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+Variables and Data types<!>All about the KVS variable and datatype management<!>doc_kvs_datatypes.html
+expressions<!>Expression evaluation identifier<!>doc_expressioneval.html
+Expression evaluation identifier<!>Expression evaluation identifier<!>doc_expressioneval.html
+operator<!>Variable operators, assignments & co.<!>doc_operators.html
+operators<!>Variable operators, assignments & co.<!>doc_operators.html
+assignment<!>Variable operators, assignments & co.<!>doc_operators.html
+assign<!>Variable operators, assignments & co.<!>doc_operators.html
+Operators<!>Variable operators, assignments & co.<!>doc_operators.html
+assignment<!>Assignment operation<!>doc_assignment.html
+Assignment operation<!>Assignment operation<!>doc_assignment.html
+increment<!>Increment and decrement operations<!>doc_incrementdecrement.html
+decrement<!>Increment and decrement operations<!>doc_incrementdecrement.html
+Increment and decrement operations<!>Increment and decrement operations<!>doc_incrementdecrement.html
+Arithmetic self-operators<!>Arithmetic self-operators<!>doc_selfarithmetic.html
+Bitwise self-operators<!>Bitwise self-operators<!>doc_selfbitwise.html
+String concatenation operators<!>String concatenation operators<!>doc_stringconcatenation.html
+Array concatenation operator<!>Array concatenation operator<!>doc_arrayconcatenation.html
+Binding operator<!>Binding operator<!>doc_binding.html
+break<!>Interrupts an iteration loop<!>cmd_break.html
+continue<!>Continues an iteration loop<!>cmd_continue.html
+unsetting variables<!>Unsets a set of variables<!>cmd_unset.html
+unset<!>Unsets a set of variables<!>cmd_unset.html
+explicitly declaring global variables<!>Explicitly declares global variables<!>cmd_global.html
+global<!>Explicitly declares global variables<!>cmd_global.html
+defining an object class<!>Defines a new object class<!>cmd_class.html
+class<!>Defines a new object class<!>cmd_class.html
+iteration commands<!>Iteration command<!>cmd_while.html
+flow control commands<!>Iteration command<!>cmd_while.html
+while<!>Iteration command<!>cmd_while.html
+iteration commands<!>Iteration command<!>cmd_do.html
+flow control commands<!>Iteration command<!>cmd_do.html
+do<!>Iteration command<!>cmd_do.html
+conditional commands<!>Flow control command<!>cmd_if.html
+flow control commands<!>Flow control command<!>cmd_if.html
+if<!>Flow control command<!>cmd_if.html
+iterational control commands<!>Iteration control command<!>cmd_for.html
+for<!>Iteration control command<!>cmd_for.html
+iteration commands<!>Iteration command<!>cmd_foreach.html
+flow control commands<!>Iteration command<!>cmd_foreach.html
+foreach<!>Iteration command<!>cmd_foreach.html
+switch<!>Another flow control command<!>cmd_switch.html
+defpopup<!>Defines a popup menu<!>cmd_defpopup.html
+module loading<!>KVIrc modules model<!>doc_modules.html
+functions exported by modules<!>KVIrc modules model<!>doc_modules.html
+commands exported by modules<!>KVIrc modules model<!>doc_modules.html
+module naming convention<!>KVIrc modules model<!>doc_modules.html
+module locking<!>KVIrc modules model<!>doc_modules.html
+plugins<!>KVIrc modules model<!>doc_modules.html
+functions exported by modules<!>KVIrc modules model<!>doc_modules.html
+dots in command names<!>KVIrc modules model<!>doc_modules.html
+dots in function names<!>KVIrc modules model<!>doc_modules.html
+Loadable modules<!>KVIrc modules model<!>doc_modules.html
+spam<!><!>doc_antispam.html
+Anti-spam protection<!><!>doc_antispam.html
+KVIrc and CTCP<!>For developers: Client-To-Client Protocol handling in KVIrc<!>doc_ctcp_handling.html
+The Commandline Input Features<!>Commandline input features<!>doc_commandline.html
+Escape sequences and clickable links<!><!>doc_escape_sequences.html
+about.kvirc<!>Shows the About KVIrc dialog<!>cmd_about.kvirc.html
+action.list<!>Lists the available actions<!>cmd_action.list.html
+action.trigger<!>Triggers an action<!>cmd_action.trigger.html
+action.enable<!>Enables an action<!>cmd_action.enable.html
+action.disable<!>Disables an action<!>cmd_action.disable.html
+action.destroy<!>Destroy an action<!>cmd_action.destroy.html
+action.create<!>Defines a new action<!>cmd_action.create.html
+$action.exists<!>Checks if an action is currently defined<!>fnc_action.exists.html
+$action.isEnabled<!>Checks if an action is currently enabled.<!>fnc_action.isenabled.html
+actioneditor.open<!>Shows the action editor<!>cmd_actioneditor.open.html
+$addon.exists<!>Checks if an addon is currently installed<!>fnc_addon.exists.html
+$addon.version<!>Returns the version of an installed addon<!>fnc_addon.version.html
+addon.list<!>Lists the installed addons<!>cmd_addon.list.html
+addon.uninstall<!>Uninstalls an addon<!>cmd_addon.uninstall.html
+addon.configure<!>Executes an addon's configuration callback<!>cmd_addon.configure.html
+addon.help<!>Executes an addon's help callback<!>cmd_addon.help.html
+addon.setconfigurecallback<!>Sets an addon's configuration callback<!>cmd_addon.setconfigurecallback.html
+addon.sethelpcallback<!>Sets an addon's help callback<!>cmd_addon.sethelpcallback.html
+addon.register<!>Registers a script-based addon<!>cmd_addon.register.html
+addon.installfiles<!>Installs a set of files for an addon<!>cmd_addon.installfiles.html
+addon.dialog<!>Shows the addon management editor<!>cmd_addon.dialog.html
+addon.install<!>Installs the addon<!>cmd_addon.install.html
+addon.pack<!>Creates a kva package containing an addon<!>cmd_addon.pack.html
+aliaseditor.open<!>Shows the alias editor<!>cmd_aliaseditor.open.html
+setting your avatar<!>Sets the local user's avatar<!>cmd_avatar.set.html
+avatar<!>Sets the local user's avatar<!>cmd_avatar.set.html
+avatar.set<!>Sets the local user's avatar<!>cmd_avatar.set.html
+avatar.unset<!>Unsets the local user's avatar<!>cmd_avatar.unset.html
+avatar.notify<!>Notifies the current avatar to a remote target<!>cmd_avatar.notify.html
+$avatar.name<!>Returns the avatar name for the specified user<!>fnc_avatar.name.html
+$avatar.path<!>Returns the avatar path for the specified user<!>fnc_avatar.path.html
+avatar.query<!>Queries the avatar of a remote target<!>cmd_avatar.query.html
+$chan.name<!>Returns the name of a channel<!>fnc_chan.name.html
+$chan.getUrl<!>Returns the URL of a channel<!>fnc_chan.geturl.html
+$chan.isDead<!>Checks if a channel is dead<!>fnc_chan.isdead.html
+$chan.topic<!>Returns the topic of a channel<!>fnc_chan.topic.html
+$chan.topicsetby<!>Returns the author of the topic of a channel<!>fnc_chan.topicsetby.html
+$chan.topicsetat<!>Returns the set time of the topic of a channel<!>fnc_chan.topicsetat.html
+$chan.usercount<!>Returns the number of users on a channel<!>fnc_chan.usercount.html
+$chan.ownercount<!>Returns the number of channel owner users on a channel<!>fnc_chan.ownercount.html
+$chan.admincount<!>Returns the number of channel admin users on a channel<!>fnc_chan.admincount.html
+$chan.opcount<!>Returns the number of op users on a channel<!>fnc_chan.opcount.html
+$chan.voicecount<!>Returns the number of voiced users on a channel<!>fnc_chan.voicecount.html
+$chan.halfopcount<!>Returns the number of halfop users on a channel<!>fnc_chan.halfopcount.html
+$chan.useropcount<!>Returns the number of userop users on a channel<!>fnc_chan.useropcount.html
+$chan.bancount<!>Returns the number of entries in the channel ban list<!>fnc_chan.bancount.html
+$chan.banexceptioncount<!>Returns the number of entries in the channel ban exception list<!>fnc_chan.banexceptioncount.html
+$chan.invitecount<!>Returns the number of entries in the channel invite list<!>fnc_chan.invitecount.html
+$chan.maskcount<!>Returns the number of entries in the mask list for a channel mode<!>fnc_chan.maskcount.html
+$chan.ison<!>Checks if a user is on a channel<!>fnc_chan.ison.html
+$chan.getflag<!>Returns the channel-user mode flag of a user<!>fnc_chan.getflag.html
+$chan.isowner<!>Checks if a user is at least a channel owner<!>fnc_chan.isowner.html
+$chan.isadmin<!>Checks if a user is at least channel administrator<!>fnc_chan.isadmin.html
+$chan.isop<!>Checks if a user is at least an op on a channel<!>fnc_chan.isop.html
+$chan.isvoice<!>Checks if a user is at least voiced on a channel<!>fnc_chan.isvoice.html
+$chan.ishalfop<!>Checks if a user is at least halfop on a channel<!>fnc_chan.ishalfop.html
+$chan.isuserop<!>Checks if a user is at least a userop on a channel<!>fnc_chan.isuserop.html
+$chan.isMeOwner<!>Checks if the current user is at least an owner on a channel<!>fnc_chan.ismeowner.html
+$chan.isMeAdmin<!>Checks if the current user is at least an administrator on a channel<!>fnc_chan.ismeadmin.html
+$chan.isMeOp<!>Checks if the current user is at least op on a channel<!>fnc_chan.ismeop.html
+$chan.isMeHalfOp<!>Checks if the current user is at least an half operator on a channel<!>fnc_chan.ismehalfop.html
+$chan.isMeVoice<!>Checks if the current user is at least voice on a channel<!>fnc_chan.ismevoice.html
+$chan.isMeUserOp<!>Checks if the current user is at least a user operator on a channel<!>fnc_chan.ismeuserop.html
+$chan.mode<!>Returns the mode string of a channel<!>fnc_chan.mode.html
+$chan.key<!>Returns the key of a channel<!>fnc_chan.key.html
+$chan.limit<!>Returns the limit of a channel<!>fnc_chan.limit.html
+$chan.modeParam<!>Returns the parameter for a set mode of a channel<!>fnc_chan.modeparam.html
+$chan.users<!>Returns an array of channel user nicknames<!>fnc_chan.users.html
+$chan.banlist<!>Returns an array of channel ban masks<!>fnc_chan.banlist.html
+$chan.banexceptionlist<!>Returns an array of channel ban exception masks<!>fnc_chan.banexceptionlist.html
+$chan.invitelist<!>Returns an array of channel invite masks<!>fnc_chan.invitelist.html
+$chan.masklist<!>Returns an array of masks for a channel mode<!>fnc_chan.masklist.html
+$chan.matchban<!>Matches a mask against the channel ban list<!>fnc_chan.matchban.html
+$chan.matchbanexception<!>Matches a mask against the channel ban exception list<!>fnc_chan.matchbanexception.html
+$chan.matchinvite<!>Matches a mask against the channel invite list<!>fnc_chan.matchinvite.html
+$chan.matchqban<!>Matches a mask against the channel ban list searching for +q bans (aka mute bans)<!>fnc_chan.matchqban.html
+$chan.matchmask<!>Matches a mask against the channel list for a specific mode<!>fnc_chan.matchmask.html
+$chan.usermodelevel<!>Returns the channel user-mode level<!>fnc_chan.usermodelevel.html
+$chan.userJoinTime<!>Returns the time that a user has joined the channel<!>fnc_chan.userjointime.html
+$chan.userLastActionTime<!>Returns the time that a user has last performed some kind of action on the channel<!>fnc_chan.userlastactiontime.html
+$chan.common<!>Returns the common channel with a user<!>fnc_chan.common.html
+channelsjoin.open<!>Opens a window to join channels<!>cmd_channelsjoin.open.html
+classeditor.open<!>Shows the class editor<!>cmd_classeditor.open.html
+codetester.open<!>Shows the code tester window<!>cmd_codetester.open.html
+$config.open<!>Opens a config file<!>fnc_config.open.html
+$config.id<!>Returns the ID of an open config file<!>fnc_config.id.html
+$config.read<!>Reads an entry from a config file<!>fnc_config.read.html
+$config.section<!>Returns the name of the current section of a config file<!>fnc_config.section.html
+$config.readonly<!>Checks whether a config file is opened in read-only mode<!>fnc_config.readonly.html
+$config.filename<!>Returns the filename of an open config file<!>fnc_config.filename.html
+$config.hassection<!>Checks whether a section is present in a config file<!>fnc_config.hassection.html
+$config.sectionlist<!>Returns a list of the sections in a config file<!>fnc_config.sectionlist.html
+$config.keylist<!>Returns a list of keys in a config file<!>fnc_config.keylist.html
+$config.filelist<!>Returns a list of open config files<!>fnc_config.filelist.html
+storing & reading configuration entries<!>Closes a config file<!>cmd_config.close.html
+config.close<!>Closes a config file<!>cmd_config.close.html
+storing & reading configuration entries<!>Flushes a config file<!>cmd_config.flush.html
+config.flush<!>Flushes a config file<!>cmd_config.flush.html
+storing & reading configuration entries<!>Clears a config file<!>cmd_config.clear.html
+config.clear<!>Clears a config file<!>cmd_config.clear.html
+storing & reading configuration entries<!>Clears a section in a config file<!>cmd_config.clearsection.html
+config.clearsection<!>Clears a section in a config file<!>cmd_config.clearsection.html
+storing & reading configuration entries<!>Writes a data field to a config file<!>cmd_config.write.html
+config.write<!>Writes a data field to a config file<!>cmd_config.write.html
+storing & reading configuration entries<!>Changes the current section of a config file<!>cmd_config.setsection.html
+config.setsection<!>Changes the current section of a config file<!>cmd_config.setsection.html
+The config module<!>Managing of configuration files<!>module_config.html
+$context.networkName<!>Returns the IRC network name of an IRC context<!>fnc_context.networkname.html
+$context.serverdbNetworkName<!>Returns the original IRC network name of an IRC context<!>fnc_context.serverdbnetworkname.html
+$context.serverHostName<!>Returns the IRC server name of an IRC context<!>fnc_context.serverhostname.html
+$context.serverdbServerHostName<!>Returns the original IRC server name of an IRC context<!>fnc_context.serverdbserverhostname.html
+$context.serverIpAddress<!>Returns the IRC server IP address of an IRC context<!>fnc_context.serveripaddress.html
+$context.serverIsIPV6<!>Returns the IPv6 state of an IRC context<!>fnc_context.serverisipv6.html
+$context.serverIsSSL<!>Returns the SSL state of an IRC context<!>fnc_context.serverisssl.html
+$context.serverSoftware<!>Returns the software running on the IRC server, if recognized<!>fnc_context.serversoftware.html
+$context.serverPassword<!>Returns the password used to login to the server of an IRC context<!>fnc_context.serverpassword.html
+$context.serverPort<!>Returns the port of the IRC server of an IRC context<!>fnc_context.serverport.html
+$context.state<!>Returns the state of an IRC context<!>fnc_context.state.html
+$context.list<!>Returns a list of existing IRC contexts<!>fnc_context.list.html
+$context.connectionStartTime<!>Returns the connection start time of an IRC context<!>fnc_context.connectionstarttime.html
+$context.lastMessageTime<!>Returns the last message time of an IRC context<!>fnc_context.lastmessagetime.html
+context.clearqueue<!>Removes messages from the socked output queue.<!>cmd_context.clearqueue.html
+$context.queueSize<!>Returns the size of the current server message queue<!>fnc_context.queuesize.html
+$context.getSSLCertInfo<!>Returns the requested information about certificates used in an SSL enabled IRC session<!>fnc_context.getsslcertinfo.html
+dcc.chat<!>Starts a DCC chat connection<!>cmd_dcc.chat.html
+dcc.send<!>Sends a file<!>cmd_dcc.send.html
+dcc.recv<!>Sets up a file receiving connection<!>cmd_dcc.recv.html
+dcc.rsend<!>Sends a file by using the Reverse DCC SEND protocol<!>cmd_dcc.rsend.html
+dcc.get<!>Requests a file<!>cmd_dcc.get.html
+dcc.voice<!>Starts a DCC Voice connection<!>cmd_dcc.voice.html
+DCC without IRC<!>Overview of the DCC internals<!>doc_dcc_connection.html
+DCC negotiation and connection<!>Overview of the DCC internals<!>doc_dcc_connection.html
+dcc.abort<!>Aborts a DCC session<!>cmd_dcc.abort.html
+dcc.setBandwidthLimit<!>Set the bandwidthlimit of a dcc.send session.<!>cmd_dcc.setbandwidthlimit.html
+$dcc.protocol<!>Returns the protocol of the specified DCC session<!>fnc_dcc.protocol.html
+$dcc.connectionType<!>Returns the connection type of the specified DCC session<!>fnc_dcc.connectiontype.html
+$dcc.isFileTransfer<!>Checks if a DCC is a file transfer<!>fnc_dcc.isfiletransfer.html
+$dcc.isFileUpload<!>Checks if a DCC is an upload file transfer<!>fnc_dcc.isfileupload.html
+$dcc.isFileDownload<!>Checks if a DCC is a download file transfer<!>fnc_dcc.isfiledownload.html
+$dcc.localNick<!>Returns the local nickname associated with the specified DCC session<!>fnc_dcc.localnick.html
+$dcc.localUser<!>Returns the local username associated with the specified DCC session<!>fnc_dcc.localuser.html
+$dcc.localHost<!>Returns the local hostname associated with the specified DCC session<!>fnc_dcc.localhost.html
+$dcc.localIp<!>Returns the local IP address associated with the specified DCC session<!>fnc_dcc.localip.html
+$dcc.localPort<!>Returns the local port associated with the specified DCC session<!>fnc_dcc.localport.html
+$dcc.localFileName<!>Returns the local file name associated with the specified DCC session<!>fnc_dcc.localfilename.html
+$dcc.localFileSize<!>Returns the local file size associated with the specified DCC session<!>fnc_dcc.localfilesize.html
+$dcc.remoteNick<!>Returns the remote nickname associated with the specified DCC session<!>fnc_dcc.remotenick.html
+$dcc.remoteUser<!>Returns the remote username associated with the specified DCC session<!>fnc_dcc.remoteuser.html
+$dcc.remoteHost<!>Returns the remote hostname associated with the specified DCC session<!>fnc_dcc.remotehost.html
+$dcc.remoteIp<!>Returns the remote IP address associated with the specified DCC session<!>fnc_dcc.remoteip.html
+$dcc.remotePort<!>Returns the remote port associated with the specified DCC session<!>fnc_dcc.remoteport.html
+$dcc.remoteFileName<!>Returns the remote file name associated with the specified DCC session<!>fnc_dcc.remotefilename.html
+$dcc.remoteFileSize<!>Returns the remote file size associated with the specified DCC session<!>fnc_dcc.remotefilesize.html
+$dcc.ircContext<!>Returns the ircContext from which this DCC has originated<!>fnc_dcc.irccontext.html
+$dcc.transferStatus<!>Returns the current status of a DCC file transfer<!>fnc_dcc.transferstatus.html
+$dcc.transferredBytes<!>Returns the number of transferred bytes in a DCC file transfer<!>fnc_dcc.transferredbytes.html
+$dcc.averageSpeed<!>Returns the average speed of a DCC file transfer<!>fnc_dcc.averagespeed.html
+$dcc.currentSpeed<!>Returns the current speed of a DCC file transfer<!>fnc_dcc.currentspeed.html
+$dcc.session<!>Returns the DCC session identifier associated with a window<!>fnc_dcc.session.html
+$dcc.sessionList<!>List the existing DCC session identifiers<!>fnc_dcc.sessionlist.html
+$dcc.getSSLCertInfo<!>Returns the requested information about certificates used in an SSL enabled DCC session<!>fnc_dcc.getsslcertinfo.html
+The DCC module<!>Direct Client Connection<!>module_dcc.html
+dialog.message<!>Shows a message box<!>cmd_dialog.message.html
+dialog.textinput<!>Shows a dialog that accepts user input as text<!>cmd_dialog.textinput.html
+dialog.file<!>Shows a file dialog<!>cmd_dialog.file.html
+dialog.image<!>Shows a image dialog<!>cmd_dialog.image.html
+$dialog.yesno<!>Shows a simple yes/no dialog<!>fnc_dialog.yesno.html
+Why are there no blocking dialogs in KVIrc?<!>Technical answer<!>doc_noblockingdialogs.html
+eventeditor.open<!>Shows the event editor<!>cmd_eventeditor.open.html
+copying files<!>Makes a copy of a file<!>cmd_file.copy.html
+file.copy<!>Makes a copy of a file<!>cmd_file.copy.html
+file.addimagepath<!>Adds a path to the image search path list<!>cmd_file.addimagepath.html
+file.delimagepath<!>Removes a path from the image search path list<!>cmd_file.delimagepath.html
+writing data to files<!>Writes a character data string to a file<!>cmd_file.write.html
+file.write<!>Writes a character data string to a file<!>cmd_file.write.html
+writing data to files<!>Writes binary data to a file<!>cmd_file.writebytes.html
+file.writeBytes<!>Writes binary data to a file<!>cmd_file.writebytes.html
+renaming files<!>Renames a file<!>cmd_file.rename.html
+file.rename<!>Renames a file<!>cmd_file.rename.html
+creating directories<!>Creates a directory<!>cmd_file.mkdir.html
+file.mkdir<!>Creates a directory<!>cmd_file.mkdir.html
+removing files<!>Removes a file<!>cmd_file.remove.html
+file.remove<!>Removes a file<!>cmd_file.remove.html
+removing directories<!>Removes a directory<!>cmd_file.rmdir.html
+file.rmdir<!>Removes a directory<!>cmd_file.rmdir.html
+$file.exists<!>Check if a file or directory exists<!>fnc_file.exists.html
+$file.type<!>Checks the type of a path<!>fnc_file.type.html
+$file.size<!>Returns the size of a file<!>fnc_file.size.html
+$file.allSizes<!>Returns the size of each file in a specified directory.<!>fnc_file.allsizes.html
+$file.fixpath<!>Converts file paths<!>fnc_file.fixpath.html
+$file.ps<!>Returns the path separator<!>fnc_file.ps.html
+$file.ls<!>Returns a directory listing<!>fnc_file.ls.html
+$file.read<!>Reads a text file<!>fnc_file.read.html
+$file.readBytes<!>Reads a binary file<!>fnc_file.readbytes.html
+$file.readLines<!>Reads lines of a text file<!>fnc_file.readlines.html
+file.writeLines<!>Writes an array of lines to a file<!>cmd_file.writelines.html
+$file.localdir<!>Get the KVIrc local directory<!>fnc_file.localdir.html
+$file.homedir<!>Get the user's HOME directory<!>fnc_file.homedir.html
+$file.rootdir<!>Get the system root directory<!>fnc_file.rootdir.html
+$file.currentdir<!>Get the current directory<!>fnc_file.cwd.html
+$file.globaldir<!>Get the KVIrc global directory<!>fnc_file.globaldir.html
+$file.extractpath<!>Extract the parent directory path from a file path<!>fnc_file.extractpath.html
+$file.extractfilename<!>Extract the filename from a file path<!>fnc_file.extractfilename.html
+$file.diskspace<!>Return the available diskspace.<!>fnc_file.diskspace.html
+$file.digest<!>Returns a digest/hash string of the given file contents<!>fnc_file.digest.html
+$file.time<!>Returns the datetime of a file in unixtime format<!>fnc_file.time.html
+filetransferwindow.open<!>Opens the file transfer window<!>cmd_filetransferwindow.open.html
+filetransferwindow.clear<!>Clears the list of transfers<!>cmd_filetransferwindow.clear.html
+The FISH module<!>A FISH implementation<!>module_fish.html
+help.open<!>Shows a help document<!>cmd_help.open.html
+HTTP extension<!>Retrieves a file via HTTP GET<!>cmd_http.get.html
+http.get<!>Retrieves a file via HTTP GET<!>cmd_http.get.html
+HTTP extension<!>Retrieves a file via HTTP GET and triggers a callback<!>cmd_http.asyncget.html
+http.asyncGet<!>Retrieves a file via HTTP GET and triggers a callback<!>cmd_http.asyncget.html
+ident.start<!>Starts the builtin Ident service<!>cmd_ident.start.html
+ident.stop<!>Stops the Ident service<!>cmd_ident.stop.html
+iograph.open<!>Opens the I/O Traffic Graph chart<!>cmd_iograph.open.html
+The lamerizer module<!>The Lamerizer text transformation engine<!>module_lamerizer.html
+$language.detect<!>Tries to detect the language and encoding of a string<!>fnc_language.detect.html
+links.open<!>Opens a links window<!>cmd_links.open.html
+list.open<!>Opens a list window<!>cmd_list.open.html
+logging<!>Interface to the KVirc log subsystem<!>module_log.html
+The log interface module<!>Interface to the KVirc log subsystem<!>module_log.html
+logging<!>Starts logging in a specified window<!>cmd_log.start.html
+log.start<!>Starts logging in a specified window<!>cmd_log.start.html
+logging<!>Stops logging in a specified window<!>cmd_log.stop.html
+log.stop<!>Stops logging in a specified window<!>cmd_log.stop.html
+logging<!>Flushes the log file for a specified window<!>cmd_log.flush.html
+log.flush<!>Flushes the log file for a specified window<!>cmd_log.flush.html
+$log.file<!>Returns the current log filename<!>fnc_log.file.html
+$log.export<!>Exports the specified log to the given format and returns the filename<!>fnc_log.export.html
+logview.open<!>Opens the log viewer window<!>cmd_logview.open.html
+$mask.match<!>Matches a mask against a wildcarded one<!>fnc_mask.match.html
+$mask.nick<!>Returns the nick part of an IRC mask<!>fnc_mask.nick.html
+$mask.user<!>Returns the username part of an IRC mask<!>fnc_mask.user.html
+$mask.host<!>Returns the hostname part of an IRC mask<!>fnc_mask.host.html
+$mask.hasNumericHost<!>Checks if a host part of a mask is numeric<!>fnc_mask.hasnumerichost.html
+$math.sin<!>Returns the sinus of the specified angle in radiants<!>fnc_math.sin.html
+$math.cos<!>Returns the cosinus of the specified angle in radiants<!>fnc_math.cos.html
+$math.tan<!>Returns the tangent of the specified angle in radiants<!>fnc_math.tan.html
+$math.asin<!>Returns the angle in radiants that has the specified sinus value.<!>fnc_math.asin.html
+$math.acos<!>Returns the angle in radiants that has the specified cosinus value.<!>fnc_math.acos.html
+$math.atan<!>Returns the angle in radiants that has the specified tangent value.<!>fnc_math.atan.html
+$math.sqrt<!>Returns the square root of a number<!>fnc_math.sqrt.html
+$math.cbrt<!>Returns the cube root of a number<!>fnc_math.cbrt.html
+$math.abs<!>Returns the absolute value of a number<!>fnc_math.abs.html
+$math.floor<!>Rounds down to the nearest integer<!>fnc_math.floor.html
+$math.ceil<!>Rounds up to the nearest integer<!>fnc_math.ceil.html
+$math.exp<!>Returns the exponential of the specified number<!>fnc_math.exp.html
+$math.log<!>Returns the natural logarithm of the specified number<!>fnc_math.log.html
+$math.log10<!>Returns the base 10 logarithm of the specified number<!>fnc_math.log10.html
+$math.isnan<!>Checks if the value is not a number<!>fnc_math.isnan.html
+$math.isinf<!>Checks if the value is the infinity<!>fnc_math.isinf.html
+$math.pow<!>Returns a to the power of b<!>fnc_math.pow.html
+$math.pi<!>Returns the value of pi<!>fnc_math.pi.html
+$math.e<!>Returns the value of e<!>fnc_math.e.html
+mediaplayer.play<!>Starts media playback in the selected media player<!>cmd_mediaplayer.play.html
+mediaplayer.hide<!>Hide the mediaplayer [-q]<!>cmd_mediaplayer.hide.html
+mediaplayer.show<!>Show the mediaplayer.<!>cmd_mediaplayer.show.html
+mediaplayer.minimize<!>Minimize the mediaplayer.<!>cmd_mediaplayer.minimize.html
+mediaplayer.stop<!>Stops media playback in the selected media player<!>cmd_mediaplayer.stop.html
+mediaplayer.next<!>Starts playback of the next song (mediaplayer interface module)<!>cmd_mediaplayer.next.html
+mediaplayer.prev<!>Starts playback of the previous song (mediaplayer interface module)<!>cmd_mediaplayer.prev.html
+mediaplayer.quit<!>Quits the remote media player (mediaplayer interface module)<!>cmd_mediaplayer.quit.html
+mediaplayer.pause<!>Pauses playback (mediaplayer interface module)<!>cmd_mediaplayer.pause.html
+mediaplayer.detect<!>Detects the media player interface to use<!>cmd_mediaplayer.detect.html
+mediaplayer.setPlayer<!>Sets the media player interface<!>cmd_mediaplayer.setplayer.html
+$mediaplayer.player<!>Returns the currently set media player interface<!>fnc_mediaplayer.player.html
+$mediaplayer.playerList<!>Returns a the list of the supported media player interfaces<!>fnc_mediaplayer.playerlist.html
+mediaplayer.playMrl<!>Plays the specified media on the selected media player<!>cmd_mediaplayer.playmrl.html
+mediaplayer.jumpTo<!>Sets the position in seconds of the current song.<!>cmd_mediaplayer.jumpto.html
+mediaplayer.setVol<!>Set the media player volume to &lt;vol&gt; (from 0-255)<!>cmd_mediaplayer.setvol.html
+$mediaplayer.getVol<!>Returns the current volume of the media player<!>fnc_mediaplayer.getvol.html
+mediaplayer.mute<!>Mute the volume selected media player<!>cmd_mediaplayer.mute.html
+$mediaplayer.mrl<!>Returns the MRL of the currently playing media<!>fnc_mediaplayer.mrl.html
+$mediaplayer.nowPlaying<!>Returns a description of the currently played media<!>fnc_mediaplayer.nowplaying.html
+$mediaplayer.title<!>Returns the title of the current media<!>fnc_mediaplayer.title.html
+$mediaplayer.artist<!>Returns the artist of the media player<!>fnc_mediaplayer.artist.html
+$mediaplayer.genre<!>Returns the genre of the media player<!>fnc_mediaplayer.genre.html
+$mediaplayer.year<!>Returns the year of the media player<!>fnc_mediaplayer.year.html
+$mediaplayer.comment<!>Returns the comment of the media player<!>fnc_mediaplayer.comment.html
+$mediaplayer.album<!>Returns the album of the media player<!>fnc_mediaplayer.album.html
+$mediaplayer.mediaType<!>Returns the currently played media type<!>fnc_mediaplayer.mediatype.html
+$mediaplayer.bitRate<!>Returns the bit rate of the current song<!>fnc_mediaplayer.bitrate.html
+$mediaplayer.sampleRate<!>Returns the sample rate of the current song<!>fnc_mediaplayer.samplerate.html
+$mediaplayer.length<!>Returns the length of the current media<!>fnc_mediaplayer.length.html
+$mediaplayer.position<!>Returns the position of the current media<!>fnc_mediaplayer.position.html
+$mediaplayer.channels<!>Returns the number of channels of the current song<!>fnc_mediaplayer.channels.html
+mediaplayer.setPlayListPos<!>Set the position for the current song.<!>cmd_mediaplayer.setplaylistpos.html
+$mediaplayer.getPlayListPos<!>Get the position for the current song.<!>fnc_mediaplayer.getplaylistpos.html
+$mediaplayer.getListLength<!>Return the play list length.<!>fnc_mediaplayer.getlistlength.html
+$mediaplayer.getRepeat<!>Return if <i>Repeat</i> is on.<!>fnc_mediaplayer.getrepeat.html
+$mediaplayer.getShuffle<!>Return if <i>shuffle</i> is on.<!>fnc_mediaplayer.getshuffle.html
+$mediaplayer.getEqData<!>Return the equalizer value.<!>fnc_mediaplayer.geteqdata.html
+mediaplayer.setEqData<!>Return the equalizer value.<!>cmd_mediaplayer.seteqdata.html
+$mediaplayer.localFile<!>Returns the name of the local file played by the media player<!>fnc_mediaplayer.localfile.html
+$mediaplayer.status<!>Returns the status of the media player<!>fnc_mediaplayer.status.html
+The mediaplayer interface module<!>Interface to various media players<!>module_mediaplayer.html
+mediaplayer.setRepeat<!>Set the repeat flag.<!>cmd_mediaplayer.setrepeat.html
+mediaplayer.setShuffle<!>Set the repeat flag.<!>cmd_mediaplayer.setshuffle.html
+$my.nick<!>Returns the current nickname<!>fnc_my.nick.html
+my.startIdleTimer<!>Starts a global idle hook<!>cmd_my.startidletimer.html
+my.stopIdleTimer<!>Stops a global idle hook<!>cmd_my.stopidletimer.html
+$my.globalIdle<!>Returns the current user global idle time<!>fnc_my.globalidle.html
+$my.umode<!>Returns the current user mode flags<!>fnc_my.umode.html
+$my.user<!>Returns the current username<!>fnc_my.user.html
+$my.host<!>Returns the current hostname<!>fnc_my.host.html
+$my.ip<!>Returns the current IP address<!>fnc_my.ip.html
+$my.serverIsIPV6<!>Returns <b>1</b> if the current server connection use IPv6.<!>fnc_my.serverisipv6.html
+$my.serverIsSSL<!>Returns <b>1</b> if the current server connection uses SSL<!>fnc_my.serverisssl.html
+$my.server<!>Returns the current server name<!>fnc_my.server.html
+$my.network<!>Returns the current network name<!>fnc_my.network.html
+notifier.message<!>Adds a message to the notifier window<!>cmd_notifier.message.html
+notifier.hide<!>Hides the notifier window<!>cmd_notifier.hide.html
+notifier.show<!>Shows the notifier window<!>cmd_notifier.show.html
+$notifier.isEnabled<!>Returns <b>1</b> if the notifier window is enabled<!>fnc_notifier.isenabled.html
+button class<!>Button widget.<!>class_button.html
+buttongroup object class<!>Provides a buttongroup control.<!>class_buttongroup.html
+buttongroup class<!>Provides a buttongroup control.<!>class_buttongroup.html
+checkbox class<!>Check box with a text description<!>class_checkbox.html
+colordialog class<!>Check box with a text description<!>class_colordialog.html
+combobox object class<!>Combined button and popup list<!>class_combobox.html
+selection<!>Combined button and popup list<!>class_combobox.html
+combobox class<!>Combined button and popup list<!>class_combobox.html
+datetimeedit class<!>Datetimeedit widget.<!>class_datetimeedit.html
+dialog class<!>A top-level dialog object class.<!>class_dialog.html
+dockwindow class<!>A window dockable to the KVIrc main frame<!>class_dockwindow.html
+file object class<!>I/O device that operates on files<!>class_file.html
+creating files<!>I/O device that operates on files<!>class_file.html
+file class<!>I/O device that operates on files<!>class_file.html
+ftp object class<!>An implementation of the client side of FTP protocol.<!>class_ftp.html
+ftp class<!>An implementation of the client side of FTP protocol.<!>class_ftp.html
+groupbox<!>Provides a groupbox bar.<!>class_groupbox.html
+group<!>Provides a groupbox bar.<!>class_groupbox.html
+groupbox object class<!>Provides a groupbox bar.<!>class_groupbox.html
+hbox object class<!>Manages child widget horizontal geometry<!>class_hbox.html
+child widgets<!>Manages child widget horizontal geometry<!>class_hbox.html
+hbox class<!>Manages child widget horizontal geometry<!>class_hbox.html
+http object class<!>An implementation of the client side of HTTP protocol.<!>class_http.html
+http class<!>An implementation of the client side of HTTP protocol.<!>class_http.html
+label object class<!>Displays text or an image<!>class_label.html
+show image<!>Displays text or an image<!>class_label.html
+label class<!>Displays text or an image<!>class_label.html
+layout object class<!>Manages child widget geometry<!>class_layout.html
+child widgets<!>Manages child widget geometry<!>class_layout.html
+layout class<!>Manages child widget geometry<!>class_layout.html
+lcdnumber object class<!>The lcdNumber widget displays a number with LCD-like digits.<!>class_lcdnumber.html
+lcd<!>The lcdNumber widget displays a number with LCD-like digits.<!>class_lcdnumber.html
+lcdnumber class<!>The lcdNumber widget displays a number with LCD-like digits.<!>class_lcdnumber.html
+lineedit object class<!>Simple line editor for inputting short text<!>class_lineedit.html
+line editor<!>Simple line editor for inputting short text<!>class_lineedit.html
+input<!>Simple line editor for inputting short text<!>class_lineedit.html
+lineedit class<!>Simple line editor for inputting short text<!>class_lineedit.html
+list object class<!>Abstracts a double linked list of strings<!>class_list.html
+sorted list<!>Abstracts a double linked list of strings<!>class_list.html
+list class<!>Abstracts a double linked list of strings<!>class_list.html
+listbox class<!>A widget displaying a list of items.<!>class_listbox.html
+mainwindow object class<!>Provides a mainwindow.<!>class_mainwindow.html
+mainwindow class<!>Provides a mainwindow.<!>class_mainwindow.html
+object class<!>A class container to manage binary data.<!>class_memorybuffer.html
+memorybuffer class<!>A class container to manage binary data.<!>class_memorybuffer.html
+menubar class<!>A menu bar object implementation<!>class_menubar.html
+multilineedit object class<!>An editor for inputting larger portions of text<!>class_multilineedit.html
+line editor<!>An editor for inputting larger portions of text<!>class_multilineedit.html
+input<!>An editor for inputting larger portions of text<!>class_multilineedit.html
+multilineedit class<!>An editor for inputting larger portions of text<!>class_multilineedit.html
+painter object class<!>This class provide a painter to paint line and shapes.<!>class_painter.html
+line editor<!>This class provide a painter to paint line and shapes.<!>class_painter.html
+input<!>This class provide a painter to paint line and shapes.<!>class_painter.html
+painter class<!>This class provide a painter to paint line and shapes.<!>class_painter.html
+pixmap object class<!>This class provide a pixmap.<!>class_pixmap.html
+pixmap class<!>This class provide a pixmap.<!>class_pixmap.html
+popupmenu object class<!>Provides a popup menu.<!>class_popupmenu.html
+popupmenu class<!>Provides a popup menu.<!>class_popupmenu.html
+process object class<!>A class to manage process.<!>class_process.html
+process<!>A class to manage process.<!>class_process.html
+process class<!>A class to manage process.<!>class_process.html
+progressbar object class<!>Provides a horizontal progress bar.<!>class_progressbar.html
+progressbar class<!>Provides a horizontal progress bar.<!>class_progressbar.html
+radiobutton widget class<!>A radiobutton class<!>class_radiobutton.html
+radiobutton class<!>A radiobutton class<!>class_radiobutton.html
+slider object class<!>The slider widget provides a vertical or horizontal slider.<!>class_slider.html
+slider class<!>The slider widget provides a vertical or horizontal slider.<!>class_slider.html
+socket object class<!>A IPv4/IPv6 TCP socket<!>class_socket.html
+socket class<!>A IPv4/IPv6 TCP socket<!>class_socket.html
+spinbox object class<!>Provides a simple spin button.<!>class_spinbox.html
+spinbox class<!>Provides a simple spin button.<!>class_spinbox.html
+Sql database.<!>A SQL database interface.<!>class_sql.html
+sql class<!>A SQL database interface.<!>class_sql.html
+tablewidget class<!>Tablewidget widget.<!>class_tablewidget.html
+tabWidget object class<!>Provides a Tab Widget.<!>class_tabwidget.html
+tabWidget class<!>Provides a Tab Widget.<!>class_tabwidget.html
+textBrowser browser widget class<!>Provides a class that can display HTML pages.<!>class_textbrowser.html
+textBrowser class<!>Provides a class that can display HTML pages.<!>class_textbrowser.html
+toolbar object class<!>Provides a toolbar for widget.<!>class_toolbar.html
+toolbar class<!>Provides a toolbar for widget.<!>class_toolbar.html
+toolbutton object class<!>Provides a toolbutton for toolbar widget.<!>class_toolbutton.html
+toolbutton class<!>Provides a toolbutton for toolbar widget.<!>class_toolbutton.html
+trayicon object class<!>An implementation of the the system tray icon.<!>class_trayicon.html
+trayicon class<!>An implementation of the the system tray icon.<!>class_trayicon.html
+listview widget class<!>A listview widget class<!>class_listview.html
+listview class<!>A listview widget class<!>class_listview.html
+listview tlistviewitem class<!>A listviewitem class<!>class_listviewitem.html
+listviewtitem class<!>A listviewitem class<!>class_listviewitem.html
+vbox object class<!>Manages child widget vertical geometry<!>class_vbox.html
+child widgets<!>Manages child widget vertical geometry<!>class_vbox.html
+vbox class<!>Manages child widget vertical geometry<!>class_vbox.html
+An embedded webview widget<!>Provides web support in a widget using webkit.<!>class_webview.html
+webview<!>Provides web support in a widget using webkit.<!>class_webview.html
+widget object class<!>Base class for all widgets<!>class_widget.html
+widget class<!>Base class for all widgets<!>class_widget.html
+window class<!>A window object<!>class_window.html
+wizard object class<!>The wizard class provides a framework for wizard dialogs.<!>class_wizard.html
+wizard class<!>The wizard class provides a framework for wizard dialogs.<!>class_wizard.html
+workspace object class<!>Provides a MDI workspace object<!>class_workspace.html
+workspace class<!>Provides a MDI workspace object<!>class_workspace.html
+wrapper object class<!>A wrapper for the existing Qt widgets.<!>class_wrapper.html
+wrapper class<!>A wrapper for the existing Qt widgets.<!>class_wrapper.html
+xml<!>A simple XML document parser<!>class_xmlreader.html
+xmlreader class<!>A simple XML document parser<!>class_xmlreader.html
+objects.killclass<!>Removes a class definition<!>cmd_objects.killclass.html
+objects.clearObjects<!>Removes all the user class definitions<!>cmd_objects.clearobjects.html
+objects.connect<!>Connects a signal to a slot<!>cmd_objects.connect.html
+$objects.exists<!>Check if an object exists.<!>fnc_objects.exists.html
+$objects.instances<!>List object instances<!>fnc_objects.instances.html
+$objects.variables<!>List object's variables.<!>fnc_objects.variables.html
+$objects.classAllHandlers<!>List all the functions .<!>fnc_objects.classallhandlers.html
+$objects.classes<!>List user defined classes<!>fnc_objects.classes.html
+$objects.name<!>Returns class name<!>fnc_objects.name.html
+objects.disconnect<!>Disconnects a signal from a slot<!>cmd_objects.disconnect.html
+dump objects<!>Dump the KVIrc widgets.<!>fnc_objects.dump.html
+$objects.dump<!>Dump the KVIrc widgets.<!>fnc_objects.dump.html
+options.save<!>Saves the configuration to disk<!>cmd_options.save.html
+options.dialog<!>Shows the preferences dialog<!>cmd_options.dialog.html
+options.pages<!>Lists the option pages<!>cmd_options.pages.html
+options.edit [-n]<!>Shows a single options page<!>cmd_options.edit.html
+$options.isdialog<!>Returns the options dialog state<!>fnc_options.isdialog.html
+options.close<!>Close an options dialog<!>cmd_options.close.html
+ctcp flood<!>Protection against CTCP flooding<!>doc_ctcpfloodprotectionoptions.html
+CTCP flood protection options<!>Protection against CTCP flooding<!>doc_ctcpfloodprotectionoptions.html
+$package.info<!>Returns information about a KVIrc package file<!>fnc_package.info.html
+package.extractfield<!>Extract a package binary field and save it to a file.<!>cmd_package.extractfield.html
+Using Perl from KVS and vice-versa.<!>How to use Perl from KVS and KVS from Perl.<!>doc_perl_and_kvs.html
+Including Perl code snippets in KVS<!>Starts a Perl code snippet<!>cmd_perl.begin.html
+perl.begin<!>Starts a Perl code snippet<!>cmd_perl.begin.html
+perl.end<!>Ends a Perl code snippet<!>cmd_perl.end.html
+perl.destroy<!>Destroys a Perl execution context<!>cmd_perl.destroy.html
+$perl.isAvailable<!>Check if Perl scripting support is available<!>fnc_perl.isavailable.html
+popup.addItem<!>Adds an item to a popup<!>cmd_popup.additem.html
+popup.addPrologue<!>Adds a prologue to a popup<!>cmd_popup.addprologue.html
+popup.addEpilogue<!>Adds an epilogue to a popup<!>cmd_popup.addepilogue.html
+popup.addExtPopup<!>Adds an external popup to a popup<!>cmd_popup.addextpopup.html
+popup.addLabel<!>Adds a label to a popup<!>cmd_popup.addlabel.html
+popup.addSubPopup<!>Adds a nested popup to a popup<!>cmd_popup.addsubpopup.html
+popup.addSeparator<!>Adds a separator to a popup<!>cmd_popup.addseparator.html
+popup.clear<!>Clears all the items of a popup<!>cmd_popup.clear.html
+popup.create<!>Creates a popup<!>cmd_popup.create.html
+popup.destroy<!>Destroies a popup<!>cmd_popup.destroy.html
+popup.delitem<!>Deletes an item from a popup<!>cmd_popup.delitem.html
+$popup.exists<!>Returns true if a popup exists<!>fnc_popup.exists.html
+$popup.isEmpty<!>Returns true if a popup is empty<!>fnc_popup.isempty.html
+$popup.currentItemId<!>Returns the popup item ID that owns the executing code<!>fnc_popup.currentitemid.html
+popup.show<!>Shows a popup menu<!>cmd_popup.show.html
+popupeditor.open<!>Shows the popup editor<!>cmd_popupeditor.open.html
+$proxydb.protocol<!>Returns the protocol<!>fnc_proxydb.protocol.html
+$proxydb.hostname<!>Returns the hostname<!>fnc_proxydb.hostname.html
+$proxydb.ip<!>Returns the IP<!>fnc_proxydb.ip.html
+$proxydb.password<!>Returns the password<!>fnc_proxydb.password.html
+$proxydb.username<!>Returns the username<!>fnc_proxydb.username.html
+$proxydb.isIPv6<!>Returns the isIPv6<!>fnc_proxydb.isipv6.html
+$proxydb.port<!>Returns the port<!>fnc_proxydb.port.html
+proxydb.addProxy<!>Adds a server<!>cmd_proxydb.addproxy.html
+proxydb.setPort<!>Sets the port for a proxy<!>cmd_proxydb.setport.html
+proxydb.setIp<!>Sets the IP for a proxy<!>cmd_proxydb.setip.html
+proxydb.setIPv6<!>Sets the port for a proxy<!>cmd_proxydb.setipv6.html
+proxydb.setProtocol<!>Sets the protocol for a proxy<!>cmd_proxydb.setprotocol.html
+proxydb.setHostname<!>Sets the hostname for a proxy<!>cmd_proxydb.sethostname.html
+proxydb.setPass<!>Sets the password for a proxy<!>cmd_proxydb.setpass.html
+proxydb.setUser<!>Sets the username for a proxy<!>cmd_proxydb.setuser.html
+Using Python from KVS and vice-versa.<!>How to use Python from KVS and KVS from Python.<!>doc_python_and_kvs.html
+Including Python code snippets in KVS<!>Starts a Python code snippet<!>cmd_python.begin.html
+python.begin<!>Starts a Python code snippet<!>cmd_python.begin.html
+python.end<!>Ends a Python code snippet<!>cmd_python.end.html
+python.destroy<!>Destroys a Python execution context<!>cmd_python.destroy.html
+$python.isAvailable<!>Check if Python scripting support is available<!>fnc_python.isavailable.html
+raweditor.open<!>Shows the RAW events editor<!>cmd_raweditor.open.html
+registering channels<!>Registers a channel<!>cmd_regchan.add.html
+regchan.add<!>Registers a channel<!>cmd_regchan.add.html
+unregistering channels<!>Unregisters a channel<!>cmd_regchan.remove.html
+regchan.remove<!>Unregisters a channel<!>cmd_regchan.remove.html
+regchan.setproperty<!>Sets a property for a registered channel<!>cmd_regchan.setproperty.html
+regchan.showlist<!>Lists the registered channels<!>cmd_regchan.showlist.html
+$regchan.list<!>Get a list of registered channels<!>fnc_regchan.list.html
+$regchan.property<!>Returns a property of an entry in the registered channels database<!>fnc_regchan.property.html
+$regchan.match<!>Checks if a channel is registered<!>fnc_regchan.match.html
+$regchan.find<!>Checks if a channel is registered<!>fnc_regchan.find.html
+The reguser module<!>Interface to the registered users database<!>module_reguser.html
+registering users<!>Opens the registeredusers dialog<!>cmd_reguser.edit.html
+reguser.edit<!>Opens the registeredusers dialog<!>cmd_reguser.edit.html
+registering users<!>Registers a user<!>cmd_reguser.add.html
+reguser.add<!>Registers a user<!>cmd_reguser.add.html
+unregistering users<!>Removes an entry from the regusers database<!>cmd_reguser.remove.html
+reguser.remove<!>Removes an entry from the regusers database<!>cmd_reguser.remove.html
+registering users<!>Adds a mask to a registered user<!>cmd_reguser.addmask.html
+reguser.addmask<!>Adds a mask to a registered user<!>cmd_reguser.addmask.html
+registering users<!>Removes a mask from the regusers database<!>cmd_reguser.delmask.html
+reguser.delmask<!>Removes a mask from the regusers database<!>cmd_reguser.delmask.html
+enable/disable ignoring of this user<!>Enable/disable ignoring of this user<!>cmd_reguser.setignoreenabled.html
+reguser.setIgnoreEnabled<!>Enable/disable ignoring of this user<!>cmd_reguser.setignoreenabled.html
+Sets ignore flags for registered user<!>Sets ignore flags for registered user<!>cmd_reguser.setignoreflags.html
+reguser.setIgnoreFlags<!>Sets ignore flags for registered user<!>cmd_reguser.setignoreflags.html
+$reguser.getIgnoreFlags<!>Returns ignore flags for registered user<!>fnc_reguser.getignoreflags.html
+$reguser.isIgnoreEnabled<!>Returns if ignore enabled registered user<!>fnc_reguser.isignoreenabled.html
+setting user properties<!>Sets a property of a registered user<!>cmd_reguser.setproperty.html
+reguser.setproperty<!>Sets a property of a registered user<!>cmd_reguser.setproperty.html
+$reguser.list<!>Get a list of registered user masks<!>fnc_reguser.list.html
+registered users<!>Lists the registered users<!>cmd_reguser.showlist.html
+reguser.showlist<!>Lists the registered users<!>cmd_reguser.showlist.html
+$reguser.match<!>Returns an entry in the registered user database<!>fnc_reguser.match.html
+$reguser.exactMatch<!>Returns an entry in the registered user database<!>fnc_reguser.exactmatch.html
+$reguser.mask<!>Returns the registration masks for a db entry<!>fnc_reguser.mask.html
+$reguser.property<!>Returns a property of an entry in the registered user database<!>fnc_reguser.property.html
+$reguser.matchProperty<!>Returns a property of an entry in the registered user database<!>fnc_reguser.matchproperty.html
+registering users<!>Shows a registration wizard dialog<!>cmd_reguser.wizard.html
+registration wizard<!>Shows a registration wizard dialog<!>cmd_reguser.wizard.html
+reguser.wizard<!>Shows a registration wizard dialog<!>cmd_reguser.wizard.html
+The Rijndael module<!>The Rijndael cryptographic engines<!>module_rijndael.html
+The ROT13 module<!>The ROT13 text transformation engine<!>module_rot13.html
+The serverDB module<!>Interface to the servers database<!>module_serverdb.html
+$serverdb.networkExists<!>Checks if the network already exists in the DB<!>fnc_serverdb.networkexists.html
+$serverdb.serverExists<!>Checks if the network already exists in the DB<!>fnc_serverdb.serverexists.html
+$serverdb.networkNickName<!>Returns the nickname<!>fnc_serverdb.networknickname.html
+$serverdb.networkUserName<!>Returns the username<!>fnc_serverdb.networkusername.html
+$serverdb.networkRealName<!>Returns the real name<!>fnc_serverdb.networkrealname.html
+$serverdb.networkEncoding<!>Returns the encoding<!>fnc_serverdb.networkencoding.html
+$serverdb.networkTextEncoding<!>Returns the encoding<!>fnc_serverdb.networktextencoding.html
+$serverdb.networkDescription<!>Returns the description<!>fnc_serverdb.networkdescription.html
+$serverdb.networkConnectCommand<!>Returns the connect command<!>fnc_serverdb.networkconnectcommand.html
+$serverdb.networkLoginCommand<!>Returns the login command<!>fnc_serverdb.networklogincommand.html
+$serverdb.networkName<!>Returns the name<!>fnc_serverdb.networkname.html
+$serverdb.networkJoinChannels<!>Returns the list of autojoin channels<!>fnc_serverdb.networkjoinchannels.html
+$serverdb.serverNickName<!>Returns the nickname<!>fnc_serverdb.servernickname.html
+$serverdb.serverUserName<!>Returns the username<!>fnc_serverdb.serverusername.html
+$serverdb.serverRealName<!>Returns the real name<!>fnc_serverdb.serverrealname.html
+$serverdb.serverEncoding<!>Returns the encoding<!>fnc_serverdb.serverencoding.html
+$serverdb.serverTextEncoding<!>Returns the encoding<!>fnc_serverdb.servertextencoding.html
+$serverdb.serverDescription<!>Returns the description<!>fnc_serverdb.serverdescription.html
+$serverdb.serverConnectCommand<!>Returns the connect command<!>fnc_serverdb.serverconnectcommand.html
+$serverdb.serverLoginCommand<!>Returns the login command<!>fnc_serverdb.serverlogincommand.html
+$serverdb.serverIp<!>Returns the IP address<!>fnc_serverdb.serverip.html
+$serverdb.serverId<!>Returns the ID<!>fnc_serverdb.serverid.html
+$serverdb.serverPassword<!>Returns the password<!>fnc_serverdb.serverpassword.html
+$serverdb.serverPort<!>Returns the port<!>fnc_serverdb.serverport.html
+$serverdb.isAutoConnect<!>Returns the autoconnect status<!>fnc_serverdb.isautoconnect.html
+$serverdb.isIPv6<!>Returns the IPv6 status<!>fnc_serverdb.isipv6.html
+$serverdb.isSSL<!>Returns the SSL status<!>fnc_serverdb.isssl.html
+$serverdb.cacheIp<!>Returns the cache-ip status<!>fnc_serverdb.cacheip.html
+$serverdb.favorite<!>Returns if the server is favorited<!>fnc_serverdb.favorite.html
+$serverdb.serverJoinChannels<!>Returns the list of autojoin channels<!>fnc_serverdb.serverjoinchannels.html
+serverdb.addNetwork<!>Adds a network<!>cmd_serverdb.addnetwork.html
+serverdb.addServer<!>Adds a server<!>cmd_serverdb.addserver.html
+serverdb.setNetworkNickName<!>Sets the nickname<!>cmd_serverdb.setnetworknickname.html
+serverdb.setNetworkUserName<!>Sets the username<!>cmd_serverdb.setnetworkusername.html
+serverdb.setNetworkRealName<!>Sets the realn ame<!>cmd_serverdb.setnetworkrealname.html
+serverdb.setNetworkEncoding<!>Sets the encoding<!>cmd_serverdb.setnetworkencoding.html
+serverdb.setNetworkTextEncoding<!>Sets the encoding<!>cmd_serverdb.setnetworktextencoding.html
+serverdb.setNetworkDescription<!>Sets the description<!>cmd_serverdb.setnetworkdescription.html
+serverdb.setNetworkConnectCommand<!>Sets the connect command<!>cmd_serverdb.setnetworkconnectcommand.html
+serverdb.setNetworkLoginCommand<!>Sets the login command<!>cmd_serverdb.setnetworklogincommand.html
+serverdb.setNetworkJoinChannels<!>Sets the autojoin channels list<!>cmd_serverdb.setnetworkjoinchannels.html
+serverdb.setServerNickName<!>Sets the nickname<!>cmd_serverdb.setservernickname.html
+serverdb.setServerUserName<!>Sets the username<!>cmd_serverdb.setserverusername.html
+serverdb.setServerRealName<!>Sets the real name<!>cmd_serverdb.setserverrealname.html
+serverdb.setServerEncoding<!>Sets the encoding<!>cmd_serverdb.setserverencoding.html
+serverdb.setServerTextEncoding<!>Sets the text encoding<!>cmd_serverdb.setservertextencoding.html
+serverdb.setServerDescription<!>Sets the description<!>cmd_serverdb.setserverdescription.html
+serverdb.setServerConnectCommand<!>Sets the connect command<!>cmd_serverdb.setserverconnectcommand.html
+serverdb.setServerLoginCommand<!>Sets the login command<!>cmd_serverdb.setserverlogincommand.html
+serverdb.setServerJoinChannels<!>Sets the autojoin channels list<!>cmd_serverdb.setserverjoinchannels.html
+trading files by DCC<!>Adds a file sharedfile<!>cmd_sharedfile.add.html
+sharedfile.add<!>Adds a file sharedfile<!>cmd_sharedfile.add.html
+trading files by DCC<!>Removes a shared file<!>cmd_sharedfile.remove.html
+sharedfile.remove<!>Removes a shared file<!>cmd_sharedfile.remove.html
+trading files by DCC<!>Clears the shared files list<!>cmd_sharedfile.clear.html
+shared files<!>Clears the shared files list<!>cmd_sharedfile.clear.html
+sharedfile.clear<!>Clears the shared files list<!>cmd_sharedfile.clear.html
+trading files by DCC<!>Lists the active file sharedfile<!>cmd_sharedfile.list.html
+sharedfile.list<!>Lists the active file sharedfile<!>cmd_sharedfile.list.html
+sharedfileswindow.open<!>Opens the shared files window<!>cmd_sharedfileswindow.open.html
+snd.play<!>Play a sound file from the disk<!>cmd_snd.play.html
+snd.mute<!>Mute all sounds<!>cmd_snd.mute.html
+snd.unmute<!>UnMute all sounds<!>cmd_snd.unmute.html
+$snd.isMuted<!>Returns if the sounds muted<!>fnc_snd.ismuted.html
+socketspy.open<!>Opens a Socket Spy window<!>cmd_socketspy.open.html
+spaste.file<!>Sends the contents of a file to a window, with a delay between each line<!>cmd_spaste.file.html
+spaste.clipboard<!>Sends the contents of the clipboard to a window, pausing between each line<!>cmd_spaste.clipboard.html
+spaste.stop<!>Stops one or more slow-paste process.<!>cmd_spaste.stop.html
+spaste.list<!>Lists all the running spaste processes.<!>cmd_spaste.list.html
+spaste.setdelay<!>Sets the delay time in milliseconds for the spaste module command delay<!>cmd_spaste.setdelay.html
+$spellchecker.available_dictionaries<!>Return available dictionaries.<!>fnc_spellchecker.available_dictionaries.html
+$spellchecker.check<!>Check a single work for spelling mistakes.<!>fnc_spellchecker.check.html
+$spellchecker.suggestions<!>Get spelling suggestions for a single word<!>fnc_spellchecker.suggestions.html
+spellchecker.reloadDictionaries<!>Reload spell checker dictionaries<!>cmd_spellchecker.reloaddictionaries.html
+$str.section<!>Returns a section of the string.<!>fnc_str.section.html
+$str.fromClipboard<!>Returns a string from clipboard.<!>fnc_str.fromclipboard.html
+OS clipboard<!>Sets the OS clipboard contents<!>cmd_str.toclipboard.html
+str.toClipboard<!>Sets the OS clipboard contents<!>cmd_str.toclipboard.html
+$str.len<!>Returns the length of the given string<!>fnc_str.len.html
+$str.length<!>Returns the length of the given string<!>fnc_str.length.html
+$str.lowcase<!>Returns the given string with all characters turned to toLower case<!>fnc_str.lowcase.html
+$str.upcase<!>Returns the given string with all characters turned to upper case<!>fnc_str.upcase.html
+$str.localelowcase<!>Returns the given string with all characters turned to toLower case<!>fnc_str.localelowcase.html
+$str.localeupcase<!>Returns the given string with all characters turned to toUpper case<!>fnc_str.localeupcase.html
+$str.isnumber<!>Returns <b>1</b> if the given string represents a number<!>fnc_str.isnumber.html
+$str.isunsignednumber<!>Returns <b>1</b> if the given string represents an unsigned number<!>fnc_str.isunsignednumber.html
+$str.isempty<!>Returns <b>1</b> if the given string don't have any character.<!>fnc_str.isempty.html
+$str.contains<!>Returns <b>1</b> if the first parameter contains the second<!>fnc_str.contains.html
+$str.equal<!>Returns <b>1</b> if the two string parameters are equal<!>fnc_str.equal.html
+$str.cmp<!>Compare two strings alphabetically<!>fnc_str.cmp.html
+$str.find<!>Find the index of the nth occurrence of a substring in a string<!>fnc_str.find.html
+$str.findfirst<!>Find the index of a substring in a string<!>fnc_str.findfirst.html
+$str.findlast<!>Find the last index of a substring in a string<!>fnc_str.findlast.html
+$str.left<!>Returns a substring starting from the left until the given index.<!>fnc_str.left.html
+$str.right<!>Returns a substring starting from the right until the given index.<!>fnc_str.right.html
+$str.mid<!>Returns a substring starting from a given index.<!>fnc_str.mid.html
+$str.append<!>Append one string to another.<!>fnc_str.append.html
+$str.prepend<!>Prepend one string to another.<!>fnc_str.prepend.html
+$str.insert<!>Inserts a substring in a string at a given index<!>fnc_str.insert.html
+$str.strip<!>Returns a whitespace stripped string<!>fnc_str.strip.html
+$str.stripleft<!>Returns a left whitespace stripped string<!>fnc_str.stripleft.html
+$str.stripright<!>Returns a right whitespace stripped string<!>fnc_str.stripright.html
+$str.stripcolors<!>Returns a mIRC color codes stripped string<!>fnc_str.stripcolors.html
+$str.replace<!>Replace substrings in a string<!>fnc_str.replace.html
+$str.urlencode<!>Returns a browser formatted string<!>fnc_str.urlencode.html
+$str.lefttofirst<!>Returns the left part of a string until a given substring<!>fnc_str.lefttofirst.html
+$str.lefttolast<!>Returns the left part of a string until the last occurrence of a given substring<!>fnc_str.lefttolast.html
+$str.rightfromfirst<!>Returns the right part of a string from the first occurrence of a given substring<!>fnc_str.rightfromfirst.html
+$str.rightfromlast<!>Returns the right part of a string from the last occurrence of a given substring<!>fnc_str.rightfromlast.html
+$str.match<!>Matches a fixed string against a wildcard expression<!>fnc_str.match.html
+$str.word<!>Returns the nth word in a string<!>fnc_str.word.html
+$str.token<!>Returns the nth token in a string<!>fnc_str.token.html
+$str.charsum<!>Returns the sum of the character codes of the string<!>fnc_str.charsum.html
+$str.chop<!>Returns a string removing n characters from the end of it.<!>fnc_str.chop.html
+$str.digest<!>Returns the sum of the character codes of the string<!>fnc_str.digest.html
+$str.join<!>Returns a string joined from several strings<!>fnc_str.join.html
+$str.grep<!>Performs a search in an array of strings via regular expression matching<!>fnc_str.grep.html
+$str.split<!>Splits a string to an array<!>fnc_str.split.html
+$str.printf<!>Returns a formatted string in a C sprintf-like fashion.<!>fnc_str.printf.html
+$str.evpSign<!>Returns a signature for a message created using your certificate's private key<!>fnc_str.evpsign.html
+$str.evpVerify<!>Verifies the signature for a message against a public key<!>fnc_str.evpverify.html
+$system.ostype<!>Returns the type of the operating system<!>fnc_system.ostype.html
+$system.osname<!>Returns the name of the operating system<!>fnc_system.osname.html
+$system.osversion<!>Returns the version of the operating system<!>fnc_system.osversion.html
+$system.osrelease<!>Returns the release of the operating system<!>fnc_system.osrelease.html
+$system.osmachine<!>Returns the machine of the operating system<!>fnc_system.osmachine.html
+$system.osnodename<!>Returns the nodename of the operating system<!>fnc_system.osnodename.html
+Environment variables<!>Returns the value of an environment variable<!>fnc_system.getenv.html
+$system.getenv<!>Returns the value of an environment variable<!>fnc_system.getenv.html
+Clipboard management<!>Returns the value of the system clipboard<!>fnc_system.clipboard.html
+$system.clipboard<!>Returns the value of the system clipboard<!>fnc_system.clipboard.html
+Clipboard management<!>Sets the current system clipboard contents<!>cmd_system.setclipboard.html
+system.setClipboard<!>Sets the current system clipboard contents<!>cmd_system.setclipboard.html
+Clipboard management<!>Sets the current system selection contents<!>cmd_system.setselection.html
+system.setSelection<!>Sets the current system selection contents<!>cmd_system.setselection.html
+Clipboard management<!>Returns the value of the system selection<!>fnc_system.selection.html
+$system.selection<!>Returns the value of the system selection<!>fnc_system.selection.html
+Module checking<!>Checks if a KVIrc module is loadable<!>fnc_system.checkmodule.html
+$system.checkModule<!>Checks if a KVIrc module is loadable<!>fnc_system.checkmodule.html
+System information<!>Returns the hostname of the machine that KVIrc is running on<!>fnc_system.hostname.html
+$system.hostname<!>Returns the hostname of the machine that KVIrc is running on<!>fnc_system.hostname.html
+System information<!>Performs a D-Bus call<!>fnc_system.dbus.html
+$system.dbus<!>Performs a D-Bus call<!>fnc_system.dbus.html
+Environment variables<!>Sets an environment variable<!>cmd_system.setenv.html
+system.setenv<!>Sets an environment variable<!>cmd_system.setenv.html
+call plugin<!>Allows to call functions of a plugin<!>fnc_system.call.html
+$system.call<!>Allows to call functions of a plugin<!>fnc_system.call.html
+system.runcmd<!>Runs the specified command in a terminal<!>cmd_system.runcmd.html
+$system.ntohi<!>Convert an integer from network to host byte order.<!>fnc_system.ntohi.html
+$system.htoni<!>Convert an integer from host to network byte order.<!>fnc_system.htoni.html
+easyplugins<!>Small plugins which can be called in scripts<!>doc_easyplugins.html
+Easyplugins<!>Small plugins which can be called in scripts<!>doc_easyplugins.html
+term.open<!>Shows a terminal emulator<!>cmd_term.open.html
+$texticons.get<!>Retreives texticon data<!>fnc_texticons.get.html
+texticons.set<!>Sets texticon data<!>cmd_texticons.set.html
+The KVIrc TextIcons extension<!>The KVIrc TextIcons extension<!>doc_texticons.html
+theme.install<!>Shows the theme management editor<!>cmd_theme.install.html
+theme.apply<!>Apply a theme.<!>cmd_theme.apply.html
+$theme.info<!>Return info about a user defined theme.<!>fnc_theme.info.html
+theme.screenshot<!>Makes a screenshot of the KVIrc window<!>cmd_theme.screenshot.html
+theme.dialog<!>Shows the theme theme management editor<!>cmd_theme.dialog.html
+theme.pack<!>Creates a kvt package containing a set of themes<!>cmd_theme.pack.html
+tip.open<!>Opens the "Did You Know..." tip window<!>cmd_tip.open.html
+tmphighlight.addNick<!>Adds a user to the channel temporary highlight list<!>cmd_tmphighlight.addnick.html
+tmphighlight.removeNick<!>Remove a user from the channel temporary highlight list<!>cmd_tmphighlight.removenick.html
+tmphighlight.addChannel<!>Adds a channel to the IRC context temporary highlight list<!>cmd_tmphighlight.addchannel.html
+tmphighlight.removeChannel<!>Remove a channel from the IRC context temporary highlight list<!>cmd_tmphighlight.removechannel.html
+$tmphighlight.isNickHighlighted<!>Returns <b>1</b> if the user is highlighted on this channel, and <b>0</b> otherwise<!>fnc_tmphighlight.isnickhighlighted.html
+$tmphighlight.isChannelHighlighted<!>Returns <b>1</b> if the channel is highlighted on this IRC network, and <b>0</b> otherwise<!>fnc_tmphighlight.ischannelhighlighted.html
+Creating toolbars<!>Creates a toolbar<!>cmd_toolbar.create.html
+toolbar.create<!>Creates a toolbar<!>cmd_toolbar.create.html
+toolbar.clear<!>Clears a toolbar<!>cmd_toolbar.clear.html
+Destroying a toolbar<!>Destroys a toolbar<!>cmd_toolbar.destroy.html
+toolbar.destroy<!>Destroys a toolbar<!>cmd_toolbar.destroy.html
+toolbar.show<!>Shows a toolbar<!>cmd_toolbar.show.html
+toolbar.hide<!>Hides a toolbar<!>cmd_toolbar.hide.html
+$toolbar.exists<!>Checks if a toolbar exists<!>fnc_toolbar.exists.html
+$toolbar.isVisible<!>Checks if a toolbar is visible<!>fnc_toolbar.isvisible.html
+$toolbar.list<!>Returns a list of defined toolbars<!>fnc_toolbar.list.html
+Removing toolbar items<!>Removes a toolbar item<!>cmd_toolbar.remove.html
+toolbar.remove<!>Removes a toolbar item<!>cmd_toolbar.remove.html
+Adding toolbar items<!>Adds a new item to a toolbar<!>cmd_toolbar.additem.html
+toolbar.additem<!>Adds a new item to a toolbar<!>cmd_toolbar.additem.html
+$toolbar.items<!>Returns the list of items in a specified toolbar<!>fnc_toolbar.items.html
+toolbareditor.open<!>Shows the script toolbar editor<!>cmd_toolbareditor.open.html
+torrent.detect<!>Detects the torrent client interface to use<!>cmd_torrent.detect.html
+$torrent.maxUploadSpeed<!>Returns maximum upload speed set in client.<!>fnc_torrent.maxuploadspeed.html
+$torrent.maxDownloadSpeed<!>Returns maximum download speed set in client.<!>fnc_torrent.maxdownloadspeed.html
+torrent.setMaxUploadSpeed<!>Sets maximum upload speed<!>cmd_torrent.setmaxuploadspeed.html
+torrent.setMaxDownloadSpeed<!>Sets maximum download speed<!>cmd_torrent.setmaxdownloadspeed.html
+$torrent.speedUp<!>Returns current total upload speed<!>fnc_torrent.speedup.html
+$torrent.speedDown<!>Returns current total download speed<!>fnc_torrent.speeddown.html
+$torrent.trafficUp<!>Returns the total number of bytes uploaded<!>fnc_torrent.trafficup.html
+$torrent.trafficDown<!>Returns the total number of bytes downloaded<!>fnc_torrent.trafficdown.html
+$torrent.count<!>Returns number of torrents in client<!>fnc_torrent.count.html
+$torrent.name<!>Returns torrent name as displayed in client<!>fnc_torrent.name.html
+torrent.start<!>Starts downloading of torrent &lt;torrent_number&gt;<!>cmd_torrent.start.html
+torrent.stop<!>Stops downloading of torrent &lt;torrent_number&gt;<!>cmd_torrent.stop.html
+torrent.announce<!>Manually announces torrent to tracker<!>cmd_torrent.announce.html
+$torrent.fileCount<!>Returns the number of files in a torrent.<!>fnc_torrent.filecount.html
+$torrent.fileName<!>Returns the name of a file in a torrent.<!>fnc_torrent.filename.html
+$torrent.filePriority<!>Returns the priority of a file in a torrent.<!>fnc_torrent.filepriority.html
+torrent.setFilePriority<!>Sets the priority of a file in a torrent.<!>cmd_torrent.setfilepriority.html
+torrent.startAll<!>Starts downloading of all torrents<!>cmd_torrent.startall.html
+torrent.stopAll<!>Stops downloading of all torrents<!>cmd_torrent.stopall.html
+torrent.setClient<!>Sets the torrent client interface<!>cmd_torrent.setclient.html
+$torrent.client<!>Returns the currently set torrent client interface<!>fnc_torrent.client.html
+$torrent.clientList<!>Returns a list of all supported clients.<!>fnc_torrent.clientlist.html
+$torrent.state<!>Returns state of torrent (Stopped, Stalled, Seeding, Downloading)<!>fnc_torrent.state.html
+The torrent module<!>Interface to the torrent clients<!>module_torrent.html
+dock widget<!>Shows the tray icon (dock widget)<!>cmd_trayicon.show.html
+system tray<!>Shows the tray icon (dock widget)<!>cmd_trayicon.show.html
+trayicon.show<!>Shows the tray icon (dock widget)<!>cmd_trayicon.show.html
+trayicon.hide<!>Hides the tray icon for the current frame window<!>cmd_trayicon.hide.html
+trayicon.hidewindow<!>Hides the window, associated with trayicon<!>cmd_trayicon.hidewindow.html
+$trayicon.isVisible<!>Returns the state of the dock widget<!>fnc_trayicon.isvisible.html
+$upnp.getExternalIpAddress<!>Return the external IP address using UPnP<!>fnc_upnp.getexternalipaddress.html
+$upnp.isGatewayAvailable<!>Returns if a UPnP-capable gateway has been found on the local network<!>fnc_upnp.isgatewayavailable.html
+upnp.addPortMapping<!>Add a port mapping to gateway using UPnP<!>cmd_upnp.addportmapping.html
+upnp.delPortMapping<!>Delete a port mapping on the gateway using UPnP<!>cmd_upnp.delportmapping.html
+upnp.refresh<!>Rescan the local network for a gateway using UPnP<!>cmd_upnp.refresh.html
+url.list<!>Opens URL list<!>cmd_url.list.html
+url.config<!>Loads URL list module<!>cmd_url.config.html
+The URL list module<!>The URL list module: keeps track of all URLs shown in KVIrc windows<!>module_url.html
+$userlist.selected<!>Returns the list of selected nicknames in the channel's userlist<!>fnc_userlist.selected.html
+window.clearOutput<!>Clears the output a window<!>cmd_window.clearoutput.html
+window.close<!>Closes a window<!>cmd_window.close.html
+window.dock<!>Docks a window<!>cmd_window.dock.html
+window.undock<!>Undocks a window<!>cmd_window.undock.html
+window.splitView<!>Splits the view of a channel window<!>cmd_window.splitview.html
+window.unsplitView<!>Unsplits the view of a channel window<!>cmd_window.unsplitview.html
+window.activate<!>Activates a window<!>cmd_window.activate.html
+window.demandAttention<!>Flashes a window's system taskbar entry<!>cmd_window.demandattention.html
+$window.activityLevel<!>Returns the current activity level of a window<!>fnc_window.activitylevel.html
+$window.activityTemperature<!>Returns the current activity temperature of a window<!>fnc_window.activitytemperature.html
+$window.isDocked<!>Checks if a window is currently docked<!>fnc_window.isdocked.html
+$window.isSplitView<!>Checks if a window is currently in split view mode<!>fnc_window.issplitview.html
+$window.hasInput<!>Checks if a window has an input field<!>fnc_window.hasinput.html
+$window.hasUserFocus<!>Checks if a window has the user focus<!>fnc_window.hasuserfocus.html
+$window.console<!>Returns the console that a window is attached to<!>fnc_window.console.html
+$window.hasOutput<!>Checks if a window has a text output widget<!>fnc_window.hasoutput.html
+$window.exists<!>Checks for the existence of a window<!>fnc_window.exists.html
+window.highlight<!>Sets the highlight (alert) level of a window<!>cmd_window.highlight.html
+$window.highlightLevel<!>Returns the current highlight (alert) level of a window<!>fnc_window.highlightlevel.html
+$window.type<!>Returns the type of a window<!>fnc_window.type.html
+$window.context<!>Returns the IRC context of a window<!>fnc_window.context.html
+$window.caption<!>Returns the caption of a window<!>fnc_window.caption.html
+window.listtypes<!>Lists available types of windows<!>cmd_window.listtypes.html
+$window.list<!>Generates lists of windows<!>fnc_window.list.html
+$window.open<!>Creates and opens a new window<!>fnc_window.open.html
+window.setWindowTitle<!>Sets the caption of a user window<!>cmd_window.setwindowtitle.html
+window.setInputText<!>Sets the window input text to &lt;text&gt;<!>cmd_window.setinputtext.html
+window.insertInInputText<!>Sets the window input text to &lt;text&gt;<!>cmd_window.insertininputtext.html
+$window.inputText<!>Returns the window input line text<!>fnc_$window.inputtext.html
+window.setBackground<!>Sets the background image of a window<!>cmd_window.setbackground.html
+window.savePropertiesAsDefault<!>Saves the window properties as default<!>cmd_window.savepropertiesasdefault.html
+window.setCryptEngine<!>Sets the crypt engine for a window that supports it<!>cmd_window.setcryptengine.html
+$window.cryptEngine<!>Returns the name of the encryption engine currently set in a window<!>fnc_$window.cryptengine.html

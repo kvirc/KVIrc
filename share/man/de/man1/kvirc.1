@@ -1,0 +1,147 @@
+.TH KVIRC 1 "02/09/2009" Version 4.0.0
+.SH NAME
+KVIrc - ein Internet-Relay-Chat-Client.
+.SH SYNOPSIS
+.B kvirc [Optionen] [Server [Port]] [ircurl [ircurl [...]]]
+
+.SH BESCHREIBUNG
+.PP
+KVIrc ist ein auf der Qt-Bibliothek basierender IRC Client mit grafischer Oberfläche.
+.PP
+KVIrc stellt eine benutzerfreundliche Schnittstelle zum IRC-Protokoll (siehe \fIRFC1459\fP)
+und seinen Erweiterungen dar.
+.SH OPTIONEN
+\fIKVIrc\fP akzeptiert die folgenden Optionen:
+.TP 8
+.B  \-h, \-\-help
+Gibt eine Liste aller Befehlszeilenoptionen aus und beendet das Programm.
+.TP 8
+.B \-v, \-\-version
+Zeigt die Versionsinformationen an.
+.TP 8
+.B \-c \fI<Datei>\fP
+\fI<Datei>\fP statt ~/.kvirc4.rc als Konfigruationsdatei verwenden. Wenn \fI<Datei>\fP
+nicht existiert, wird $HOME/.kvirc4.rc genutzt.
+.TP 8
+.B \-n \fI<Datei>\fP
+\fI<Datei>\fP statt ~/.kvirc4.rc als Konfigruationsdatei verwenden.
+Erstelle \fI<Datei>\fP, falls sie nicht existiert.
+.TP 8
+.B \-f
+Eine neue KVIrc-Sitzung erzwingen, selbst wenn bereits ein laufende vorhanden ist.
+.TP 8
+.B \-e \fI<Befehle>\fP
+Wenn bereits eine KVIrc-Sitzung ausgeführt wird, führe die \fI<Befehle>\fP in dieser
+aus, anderenfalls starte normal und führe die \fI<Befehle>\fP aus.
+\fI<Befehle>\fP muss ein einzelner Shell-Token sein.
+Diese Option kann mehrfach angegeben werden.
+.TP 8
+.B \-x \fI<commands>\fP
+Wenn bereits eine KVIrc-Sitzung ausgeführt wird, führe die \fI<Befehle>\fP in dieser
+aus, anderenfalls tue nichts und breche ab.
+\fI<Befehle>\fP muss ein einzelner Shell-Token sein.
+Diese Option kann mehrfach angegeben werden.
+.TP 8
+.B \-r \fI<commands>\fP
+Wenn bereits eine KVIrc-Sitzung ausgeführt wird, führe \fI<Befehle>\fP in dieser aus,
+anderenfalls starte normal (und führe \fI<Befehle>\fP NICHT aus).
+\fI<Befehle>\fP muss ein einzelner Shell-Token sein.
+Diese Option kann mehrfach angegeben werden.
+.TP 8
+.B \-m
+Sollte bereits eine Sitzung laufen, zeige einen darüber informierenden
+Popup-Dialog an, anstatt die Meldung auf einer Konsole auszugeben.
+Dies ist besonders dann hilfreich, wenn KVIrc mittels eines grafischen
+Buttons in der Taskleise gestartet wird.
+.TP 8
+.B [Server]
+Nach dem Start zu diesem Server verbinden.
+.TP 8
+.B [port]
+Zum zuvor zwingend anzugebenden Server zu diesem Ports verbinden.
+.TP 8
+.B [ircurl]
+Eine URL der Form
+
+  irc[6]://<Server>[:<Port>][/<Kanal>[?<Passwort>]]
+
+Für jede auf der Befehlszeile angegebene URL einen neuen IRC-Kontext
+erstellen und versuchen, zu <Server> auf <Port> zu verbinden.
+Der optionale Parameter <Kanal> gibt den nach dem Verbinden automatisch zu
+betretenen Kanal an.
+
+.SH UMGEBUNG
+.PP
+.TP 8
+.B KVIRC_LANG
+Spracheinstellung.
+Wenn nicht gesetzt, wird KVIrc $LANG nutzen.
+.TP 8
+.B LANG
+Spracheinstellung.
+Falls nicht angegeben (oder falls auf »en«, »POSIX« oder »C« gesetzt), wird KVIrc die
+Standardsprache (Englisch) verwenden.
+.TP 8
+
+.SH DATEIEN
+
+\fB$PREFIX\fP/share/kvirc/\fBVERSION\fP/*
+Verzeichnis welches die globalen KVIrc-Einstellungen, Module usw. enthält.
+
+\fB$HOME\fP/.kvirc4.rc KVIrc sucht zuerst nach dieser Datei.
+Sollte der »-c«-Parameter übergeben worden sein, wird die damit angegebene Datei
+statt dieser verwandt.
+Sollte die Datei gefunden werden, wird die erste nicht leere Zeile als
+Pfadangabe zum \fILokalen KVIrc-Verzeichnis\fP interpretiert.
+Sollte entweder diese Datei nicht gefunden werden oder das
+\fILokale KVIrc-Verzeichnis\fP nicht existieren, startet KVIrc im
+Setup-Modus und erlaubt die Auswahl eines neuen
+\fILokalen KVIrc-Verzeichnisses\fP.
+
+\fBLokales KVIrc-Verzeichnis\fP/*
+Verzeichnis, welches die lokalen (benutzerspezifischen) KVIrc-Einstellungen
+enthält.
+Ähnelt dem globalen Verzeichnis.
+
+.SH SIEHE AUCH
+.BR X (1)
+.BR talk (1)
+.SH COPYRIGHT
+Copyright \(co  1999-2009 Szymon Stefanek und The KVIrc Development Team
+
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
+provided that the above copyright notice appear in all copies and that
+both that copyright notice and this permission notice appear in
+supporting documentation.
+
+.SH VERBESSERUNGSVORSCHLÄGE UND FEHLER (BUGS)
+Alle gefundenen Bugs und Verbesserungsvorschläge sollten unter
+\fI<https://github.com/kvirc/KVIrc/issues/>\fP berichtet werden.
+
+.SH OFFIZIELLE WEBSEITE
+
+http://www.kvirc.net
+
+.SH AUTOREN
+Szymon 'Pragma' Stefanek \fI<pragma at kvirc dot net>\fP
+
+Code, Fehlerbehebungen, neue Features und vieles mehr von
+Alessandro 'Noldor@freenode' Carbone, Elvio 'HelLViS69@freenode' Basello,
+Fabio 'CtrlAltCa@freenode' Bas, Alexey 'Alexey@freenode' Uzhva,
+Voker57@freenode
+
+Alte Autoren:
+
+Mit Patches, Fehlerbereinigungen, Erweiterugen und mehr von:
+[Anodine]@efnet, Till 'BuTi@ircnet' Busch, Fritz 'KNFritz@ircnet' Elfert, RAD Kade 1
+
+Mit vielen Hilfen (Bug-Suche, scharfem Nachdenken, im IRC verbrachten Nächten,
+großartigen Ideen von vielen Leuten aus dem Internet, unter anderem:
+Paul 'infected@ircnet' Boehm, Olle 'Crocodile@ircnet' H\[:a]lln\[:a]s, Diablo@ircnet,
+Andrew 'Drosha@ircnet' Frolov, MalboroLi@ircnet, munehiro@ircnet
+
+Diese Übersetzung der Handbuchseite wurde von Kai Wasserbäch <debian@carbon-project.org> für das
+Debian-Projekt angefertigt, darf aber auch von anderen unter den selben Bediungen wie KVIrc
+verwandt werden.
+Aktualisiert von Markus Rennings <kvirc@mrmx.de>.

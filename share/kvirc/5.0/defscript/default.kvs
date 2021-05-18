@@ -1,0 +1,39 @@
+#################################################################################################
+#
+# This is the default script for KVIrc
+# Feel free to use it as base for writing your own scripts
+# It is a good starting point; I have tried to add as many comments as possible.
+#
+# Have fun :)
+#   Szymon Stefanek
+#
+#################################################################################################
+
+%mypath = "$file.extractpath($0)$file.ps"
+
+# Fetch default scripts data
+include "actions.kvs" %mypath
+include "aliases.kvs" %mypath
+include "events.kvs" %mypath
+include "popups.kvs" %mypath
+include "toolbars.kvs" %mypath
+include "classes.kvs" %mypath
+
+#
+# Set the default spam words...(for the anti-spam) detector
+#
+
+# FIXME: these should be MERGED!!!!
+
+#%tmp = $option(stringlistSpamWords)
+#%tmp[] = $array() ???
+
+option stringlistSpamWords "http:","#","www.","auto","query","ftp:","sex","free","msg","chat","dynamirc","script"
+
+options.save
+
+echo $tr("The default script has been successfully installed.","defscript")
+echo $tr("To connect to a server, type /server <server name>","defscript")
+echo "---"
+echo $tr("Happy ircing :)","defscript")
+echo "- Szymon Stefanek $tr("and the KVIrc Development Team","defscript")"

@@ -57,6 +57,8 @@
 #include <QMenu>
 #include <QListWidget>
 #include <QPainter>
+#include <QDebug>
+
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <windows.h>
@@ -91,6 +93,9 @@ static QFont g_fntNormal(KVI_SCRIPTEDITOR_DEFAULT_FONT, KVI_SCRIPTEDITOR_DEFAULT
 static bool bSemaphore = false;
 static bool bCompleterReady = false;
 
+QString szFileName;
+
+
 ScriptEditorWidget::ScriptEditorWidget(QWidget * pParent)
     : QTextEdit(pParent)
 {
@@ -108,7 +113,8 @@ ScriptEditorWidget::ScriptEditorWidget(QWidget * pParent)
 	iModulesCount = 0;
 	iIndex = 0;
 	QString szPath;
-	g_pApp->getLocalKvircDirectory(szPath, KviApplication::ConfigPlugins, tmp);
+
+    g_pApp->getLocalKvircDirectory(szPath, KviApplication::ConfigPlugins, tmp);
 
 	if(!KviFileUtils::fileExists(szPath))
 	{
@@ -708,18 +714,23 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	if(g_pScriptEditorWindowList.empty())
 		loadOptions();
 	g_pScriptEditorWindowList.insert(this);
-	m_lastCursorPos = 0;
-	QGridLayout * g = new QGridLayout(this);
 
-	m_pEditor = new ScriptEditorWidget(this);
+	m_lastCursorPos = 0;
+
+	QGridLayout * g = new QGridLayout(this);
 
 	m_pFindLineEdit = new QLineEdit(" ", this);
 	m_pFindLineEdit->setText("");
-
 	QPalette p = m_pFindLineEdit->palette();
 	p.setColor(QPalette::Text, g_clrFind);
 	m_pFindLineEdit->setPalette(p);
 
+	//roboirc
+    //QLabel * Title = new QLabel(this);
+    //Title->setText(__tr2qs_ctx("KVirc Script Editor:", "editor"));
+    //g->addWidget(Title, 0, 2.5, 1, 1);
+
+    m_pEditor = new ScriptEditorWidget(this);
 	g->addWidget(m_pEditor, 0, 0, 1, 5);
 	g->setRowStretch(0, 1);
 
@@ -733,8 +744,10 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	g->addWidget(b, 1, 0);
 
 	QMenu * pop = new QMenu(b);
+	pop->addAction(__tr2qs_ctx("&New...", "editor"), this, SLOT(newFile()));
 	pop->addAction(__tr2qs_ctx("&Open...", "editor"), this, SLOT(loadFromFile()));
-	pop->addAction(__tr2qs_ctx("&Save As...", "editor"), this, SLOT(saveToFile()));
+    pop->addAction(__tr2qs_ctx("&Save...", "editor"), this, SLOT(saveFile()));
+	pop->addAction(__tr2qs_ctx("Save &As...", "editor"), this, SLOT(saveFileAs()));
 	pop->addSeparator();
 	pop->addAction(__tr2qs_ctx("&Configure Editor...", "editor"), this, SLOT(configureColors()));
 	b->setMenu(pop);
@@ -764,6 +777,11 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	connect(m_pEditor, SIGNAL(cursorPositionChanged()), this, SLOT(updateRowColLabel()));
 	connect(m_pEditor, SIGNAL(selectionChanged()), this, SLOT(updateRowColLabel()));
 	m_lastCursorPos = 0;
+
+	//roboirc
+	//QString columns = QString::number(g->columnCount());
+    //QString rows = QString::number(g->rowCount());
+    //qDebug() << columns;
 }
 
 ScriptEditorImplementation::~ScriptEditorImplementation()
@@ -859,26 +877,6 @@ void ScriptEditorImplementation::setEnabled(bool bEnabled)
 	m_pRowColLabel->setEnabled(bEnabled);
 }
 
-void ScriptEditorImplementation::saveToFile()
-{
-	QString szFileName;
-	if(KviFileDialog::askForSaveFileName(szFileName,
-	       __tr2qs_ctx("Choose a Filename - KVIrc", "editor"),
-	       QString::null,
-	       QString::null, false, true, true, this))
-	{
-		QString szBuffer = m_pEditor->toPlainText();
-
-		if(!KviFileUtils::writeFile(szFileName, szBuffer))
-		{
-			QString szTmp;
-			QMessageBox::warning(this,
-			    __tr2qs_ctx("Writing to File Failed - KVIrc", "editor"),
-			    szTmp = QString(__tr2qs_ctx("Can't open file %1 for writing.", "editor")).arg(szFileName));
-		}
-	}
-}
-
 void ScriptEditorImplementation::setText(const char * txt)
 {
 	setText(QByteArray(txt));
@@ -944,9 +942,16 @@ void ScriptEditorImplementation::setCursorPosition(int iPos)
 	updateRowColLabel();
 }
 
+void ScriptEditorImplementation::newFile()
+{
+    m_pEditor->clear();
+    setCursorPosition(0);
+
+}
+
 void ScriptEditorImplementation::loadFromFile()
 {
-	QString szFileName;
+
 	if(KviFileDialog::askForOpenFileName(szFileName,
 	       __tr2qs_ctx("Select a File - KVIrc", "editor"),
 	       QString::null, KVI_FILTER_SCRIPT, false, true, this))
@@ -966,6 +971,48 @@ void ScriptEditorImplementation::loadFromFile()
 		}
 	}
 }
+
+void ScriptEditorImplementation::saveFile() {
+
+    if(szFileName!= nullptr) {
+        QString szBuffer = m_pEditor->toPlainText();
+
+        if (!KviFileUtils::writeFile(szFileName, szBuffer)) {
+            QString szTmp;
+            QMessageBox::warning(this,
+                                 __tr2qs_ctx("Writing to File Failed - KVIrc", "editor"),
+                                 szTmp = QString(__tr2qs_ctx("Can't open file %1 for writing.", "editor")).arg(
+                                         szFileName));
+        }
+
+
+    }
+
+}
+
+void ScriptEditorImplementation::saveFileAs()
+{
+
+
+    if (KviFileDialog::askForSaveFileName(szFileName,
+                                              __tr2qs_ctx("Choose a Filename - KVIrc", "editor"),
+                                              QString::null,
+                                              QString::null, false, true, true, this)) {
+
+            QString szBuffer = m_pEditor->toPlainText();
+
+            if (!KviFileUtils::writeFile(szFileName, szBuffer)) {
+                QString szTmp;
+                QMessageBox::warning(this,
+                                     __tr2qs_ctx("Writing to File Failed - KVIrc", "editor"),
+                                     szTmp = QString(__tr2qs_ctx("Can't open file %1 for writing.", "editor")).arg(
+                                             szFileName));
+            }
+        }
+
+}
+
+
 
 void ScriptEditorImplementation::configureColors()
 {

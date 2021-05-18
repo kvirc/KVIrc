@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>dialog.file</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>dialog.file</div>      <div class='title-secondary-text'>Shows a file dialog</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>dialog.file</b> <font color="#8080a0">[</font>-b<font color="#8080a0">]</font> <b>(</b><font color="#8080a0">&lt;</font>mode<font color="#8080a0">&gt;</font>,<font color="#8080a0">&lt;</font>caption<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>initial_selection<font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>file_filter<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>magic1<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>,<font color="#8080a0">&lt;</font>magic2<font color="#8080a0">&gt;</font><font color="#8080a0">[</font>...<font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font><font color="#8080a0">]</font><b>)</b><br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080a0">&lt;</font>callback_command<font color="#8080a0">&gt;</font><br>
+}</div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Shows an open file dialog box with the specified &lt;caption&gt;, &lt;initial_selection&gt;, and &lt;file_filter&gt;.<br>
+&lt;mode&gt; can be <i>open</i>, <i>openm</i>, <i>save</i> or <i>dir</i>:<br>
+<b>open</b> causes the dialog to return an existing file<br>
+<b>openm</b> is similar to open but allows returning multiple files as a comma separated list<br>
+<b>save</b> causes the dialog to return any file name (no overwrite confirmation is built in the dialog!)<br>
+<b>dir</b> causes the dialog to return an existing directory name<br>
+&lt;mode&gt; defaults to <i>open</i>.<br>
+&lt;caption&gt; is a text string that will appear in the caption of the dialog box.<br>
+&lt;initial_selection&gt; can be a directory or filename that will be initially selected in the dialog.<br>
+Only files matching &lt;file_filter&gt; are selectable. If filter is an empty string, all files are selectable.<br>
+In the filter string multiple filters can be specified separated by either two semicolons next to each
+other or separated by newlines. To add two filters, one to show all C++ files and one to show all
+header files, the filter string could look like <i>C++ Files (*.cpp *.cc *.C *.cxx *.c++);;Header Files (*.h *.hxx *.h++)</i>
+&lt;magic1&gt;, &lt;magic2&gt;... are the magic parameters: evaluated at dialog.message call time and passed
+to the &lt;callback_command&gt; as positional parameters.<br>
+If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
+it will appear above its parent widget and block its input until it's closed.<br>
+Once the dialog has been shown, the user will select an EXISTING file and click either
+Ok or Cancel. At this point the dialog is hidden and the &lt;callback_command&gt; is executed passing the selected file(s) as $0
+and the magic parameters as positional parameters $1, $2, $3....<br>
+If the user clicks <i>Cancel</i> or does not select any file the positional parameter $0 will be empty.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+dialog.file<span class="example-paren">(</span>open,Choose an audio file,/home/pragma/TheAudio.au,"Audio files <span class="example-paren">(</span>*.au *.wav *.snd<span class="example-paren">)</span>"<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if<span class="example-paren">(</span>"$0" != ""<span class="example-paren">)</span>run play $0<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

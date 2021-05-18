@@ -1,0 +1,88 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Easyplugins</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Easyplugins</div>      <div class='title-secondary-text'>Small plugins which can be called in scripts</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>If you want to know how to call easyplugins please have a look at: $system.call()<br>
+This part of the documentation handles only the way how to write an easyplugin. An easyplugin is simply a dll/so. You can create one like you normally make such so/dll files.<br>
+The important thing is that these so/dll-files export some of the following functions.
+<br><br>
+<b>Exported functions by easyplugin (C/C++-Examples):</b><br>
+<b>_free function</b> <i> (needed)</i><br><br>
+This function is important! Since KVIrc can not free directly the memory of the dll, the plugins need the _free function so that the memory can be freed by the plugin to prevent memory-leaks.
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+int _free<span class="example-paren">(</span>void * p<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment-text">// Always free the memory here!</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;free<span class="example-paren">(</span>p<span class="example-paren">)</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+<b>_load function</b> <i>(optional)</i><br><br>
+After the plugin has be loaded, KVIrc will call the _load-function. Here you can prepare your plugin stuff.
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+int _load<span class="example-paren">()</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+<b>_unload function</b> <i>((optional)</i><br><br>
+This function will be called before the plugins is unloaded. In this function you can clean up memory or other things.
+After this call there is no guarantee that the plugin will be kept in memory.
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+int _unload<span class="example-paren">()</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+<br><b>_canunload function</b> <i>(optional)</i><br>
+The _canunload-function will be called by KVIrc to check if it may unload the plugin.
+If return value is true KVIrc will unload the plugin, false means he will try unloading it at the next check.<br>
+Important: KVIrc will ignore this if unload of plugins will be forced! So you have to be sure that the _unload function of your plugins cleans up!
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+int _canunload<span class="example-paren">()</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+<br><b>user function</b><br>
+This is the general structure of a user function call.<br>
+The important thing here is the handling of return values. To return a value to KVIrc you have to allocate memory and write the pointer to it into pBuffer.<br>
+Have a look at the example for more details.
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+int about<span class="example-paren">(</span>int argc, char * argv[], char ** pBuffer<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;*pBuffer = <span class="example-paren">(</span>char*<span class="example-paren">)</span>malloc<span class="example-paren">(</span>1024<span class="example-paren">)</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sprintf<span class="example-paren">((</span>char*<span class="example-paren">)</span>*pBuffer, "Hello World"<span class="example-paren">)</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br>
+<span class="example-bracket">}</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_generic_index_all.html">Miscellaneous</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

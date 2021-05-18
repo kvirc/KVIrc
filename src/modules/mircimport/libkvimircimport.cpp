@@ -141,7 +141,7 @@ void KviMircServersIniImport::die()
 	delete this;
 }
 
-#define KVI_WWWMIRCCOUK_SERVERSINI "http://www.mirc.co.uk/servers.ini"
+#define KVI_WWWMIRCCOUK_SERVERSINI "http://www.mirc.com/servers.ini"
 
 KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircServersIniImport * f)
     : KviTalWizard(nullptr)
@@ -331,7 +331,7 @@ static bool mircimport_module_init(KviModule * m)
 
 	KviModuleExtensionDescriptor * d = m->registerExtension("serverimport",
 	    "mIRC servers.ini import filter",
-	    __tr("Import from servers.ini"),
+	    __tr("Import from local servers.ini"),
 	    mircimport_local_filter_alloc);
 
 	if(d && pix)
@@ -339,7 +339,7 @@ static bool mircimport_module_init(KviModule * m)
 
 	d = m->registerExtension("serverimport",
 	    "Remote mIRC servers.ini import filter",
-	    __tr("Import from http://www.mirc.co.uk/servers.ini"),
+	    __tr("Import from http://www.mirc.com/servers.ini"),
 	    mircimport_remote_filter_alloc);
 
 	if(d && pix)

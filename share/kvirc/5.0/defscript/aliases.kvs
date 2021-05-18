@@ -1,0 +1,650 @@
+# Default aliases file
+#
+# TODO:
+#	ignore, notify and unignore should go in the core
+#
+#	If possible, get rid of $str.* from the default popups
+#	avoiding to load the module at every channel popup open action...
+#	(Find a core function that retrieves the number of nicknames passed ?)
+#	Another solution would be to increase the str.module core lock-time ?
+#
+# Coding style/curly brackets: Allman style
+
+#
+# Backward compatibility stuff
+#
+alias(avatar)
+{
+	# avatar target file
+	if(!$0)
+	{
+		echo $tr("Missing target, no action taken","defscript")
+		return
+	}
+	if($1)
+	{
+		avatar.set $1
+	}
+	avatar.notify $0
+}
+
+alias(clear)
+{
+	window.clearOutput
+}
+
+alias(connect)
+{
+	objects.connect $0 $1 $2 $3
+}
+
+alias(disconnect)
+{
+	objects.disconnect $0 $1 $2 $3
+}
+
+alias(killclass)
+{
+	objects.killclass $0
+}
+
+alias(clearobjects)
+{
+	objects.clearObjects $0
+}
+
+alias(authserv)
+{
+	# Silent
+	raw -q AuthServ $0-
+}
+
+alias(nickserv)
+{
+	# Silent
+	raw -q NickServ $0-
+}
+
+alias(chanserv)
+{
+	# Silent
+	raw -q ChanServ $0-
+}
+
+alias(memoserv)
+{
+	# Silent
+	raw -q MemoServ $0-
+}
+
+alias(as)
+{
+	# Silent
+	raw -q AuthServ $0-
+}
+
+alias(ns)
+{
+	# Silent
+	raw -q NickServ $0-
+}
+
+alias(cs)
+{
+	# Silent
+	raw -q ChanServ $0-
+}
+
+alias(ms)
+{
+	# Silent
+	raw -q MemoServ $0-
+}
+
+alias(gnotice)
+{
+	# Global notice
+	# Check channel validity
+	%szChan = $0
+	if(!%szChan)
+	{
+		echo $tr("Usage","defscript"): /gnotice [-mwaohvq] <$tr("channel","defscript")> <$tr("message","defscript")>
+		echo $tr("-m: send a message instead of a notice","defscript")
+		echo $tr("-w: send notice to all channel owners","defscript")
+		echo $tr("-a: send notice to all channel admins","defscript")
+		echo $tr("-o: send notice to all channel ops","defscript")
+		echo $tr("-h: send notice to all channel halfops","defscript")
+		echo $tr("-v: send notice to all channel voices","defscript")
+		echo $tr("-q: quiet mode")
+		halt
+	}
+
+	# Check the message validity
+	%szMsg = $1-
+	if($str.length(%szMsg) == 0)
+	{
+		echo $tr("Parameter message missing","defscript")
+		echo $tr("Type /gnotice for help","defscript")
+		halt
+	}
+
+	# Detect message type
+	if($sw(m,message))
+		%szCmd = "msg"
+	else
+		%szCmd = "notice"
+
+	# Check for quiet message
+	if($sw(q,quiet))
+		%szCmd = $str.append(%szCmd," -q")
+
+	# Check null switches
+	if((!$sw(w,owners)) && (!$sw(a,admins)) && (!$sw(o,ops)) && (!$sw(h,halfops)) && (!$sw(v,voices)))
+	{
+		eval %szCmd %szChan %szMsg
+		halt
+	}
+
+	# Check switches passed
+	if($sw(w,owners))
+		eval %szCmd \~%szChan %szMsg
+	if($sw(a,admins))
+		eval %szCmd \!%szChan %szMsg
+	if($sw(o,ops))
+		eval %szCmd \@%szChan %szMsg
+	if($sw(h,halfops))
+		eval %szCmd \%%szChan %szMsg
+	if($sw(v,voices))
+		eval %szCmd \+%szChan %szMsg
+}
+
+alias(wallop)
+{
+	if(!$0)
+	{
+		echo $tr("Usage","defscript"): /wallop <$tr("message","defscript")>
+		halt
+	}
+
+	# Due to server flood, timing may be very high
+	echo -w=$active $tr("Sending wallop to","defscript") $chan.name($active)
+	timer(wallop,5000,$chan.users(,,o),$0-)
+	{
+		if(%:localOps == "")
+		{
+			%:localOps = $chan.users(,,o);
+			%:curIndex = 0;
+		}
+		if(%:curIndex == %:localOps[]#)
+		{
+			killtimer wallop;
+			return;
+		}
+
+		for(%i=0;%i<1;%i++)
+		{
+			if(%:localOps[%:curIndex] != $my.nick)
+			{
+				if(%:curIndex == %:localOps[]#)
+				{
+					killtimer wallop;
+					return;
+				}
+				msg -q %:localOps[%:curIndex] $1-
+				%:curIndex++
+			}
+		}
+	}
+}
+
+alias(kill)
+{
+	raw -q kill $0 :$1-
+}
+
+alias(ms)
+{
+	# Silent
+	quote ms $0-
+}
+
+# j: This is a really common one
+alias(j)
+{
+	#first we do a test if a chan is given as parameter
+	if(!$0)
+	{
+		echo $tr("Usage:","defscript")
+		echo "	/j <chan>"
+	}
+	else
+	{
+		join $0 $1
+	}
+}
+
+# s: This too
+alias(s)
+{
+	if(!$0)
+	{
+		echo $tr("Usage:","defscript")
+		echo "	/s <server>"
+	}
+	else
+	{
+		server $0-
+	}
+}
+
+# q: Ok, I am lazy :P
+alias(q)
+{
+	if(!$0)
+	{
+		echo $tr("Usage:","defscript")
+		echo "	/q <nicklist> [message]"
+	}
+	else
+	{
+		query $0 $1-
+	}
+}
+
+
+# names: maybe this should be implemented on the core?
+alias(names)
+{
+	if(!$0)
+	{
+		if($window.type($active)!="channel")
+		{
+			echo $tr("Usage:","defscript") "/names <channel>"
+		}
+		else
+		{
+			raw names $chan.name($active)
+		}
+	}
+	else
+	{
+		raw names $0-
+	}
+}
+
+# kickban
+alias(kb)
+{
+	if(!$0)
+	{
+		echo $tr("Usage:","defscript")
+		echo "	/kb <nick_list> [" $tr("reason","defscript") "]"
+		halt;
+	}
+
+	if(!$channel)
+	{
+		echo "[KB]: "$tr("This is not a channel window","defscript")
+		halt;
+	}
+
+	foreach(%nick,$str.split(",",$0))
+	{
+		if(%nick)
+		{
+			#if we don't know the user ident/host (yet), we can only ban his nick
+			if($isWellKnown(%nick))
+				%mask = $mask(%nick,$option(uintDefaultBanType));
+			else
+				%mask = %nick;
+
+			if(!%mask)
+				%mask = %nick; # plain ban
+
+			%reason = $1-
+			#if(!%reason)
+			#%reason = $tr("You're not welcome here!","defscript")
+
+			# This is tricky : we send everything
+			# as a single raw message just because
+			# we do not want delays between kick and ban
+			# if anti-server-flood is enabled
+
+			%raw = "kick $target %nick :%reason"
+
+			# kick %nick %reason
+
+			if($chan.isOp(%nick))
+				%raw2 = "mode $target -o+b %nick %mask"
+			else
+				%raw2 = "mode $target +b %mask"
+
+			raw -q %raw2$cr$lf%raw
+		}
+	}
+}
+
+# ame and amsg
+alias(ame)
+{
+	foreach(%i,$window.list(channel))
+	{
+		if(%i!="")
+			me -r=%i $0-
+	}
+}
+
+alias(amsg)
+{
+	foreach(%i,$window.list(channel))
+		msg $target(%i) $0-
+}
+
+alias(amsgall)
+{
+	foreach(%i,$window.list(channel),$window.list(query))
+		msg $target(%i) $0-
+}
+
+alias(ameall)
+{
+	foreach(%i,$window.list(channel),$window.list(query))
+	{
+		if(%i!="")
+			me -r=%i $0-
+	}
+}
+
+alias(awayall)
+{
+	foreach(%w,$window.list(console,all))
+		away -r=%w $0-;
+}
+
+alias(backall)
+{
+	foreach(%w,$window.list(console,all))
+		back -r=%w;
+}
+
+# notify: this is a bit more complex
+# We want to add an user to the notify list with a single command
+# The notify lists are handled through the registered users database
+alias(notify)
+{
+	# This one adds a registered users database entry
+	# For the specified nick and uses the specified mask
+	# If no mask is specified , a default one is constructed
+	# Then the "notify" property is set for the user
+
+	if(!$0)
+	{
+		echo $tr("Usage:","defscript")
+		echo "	/notify <nick> [mask]"
+		halt
+	}
+
+	# Get the mask
+
+	%mask = $1
+
+	# no mask specified ? build it
+
+	if(!%mask)
+		%mask = $0!*@*
+
+	# Now add the user (but do not replace old entries)
+
+	reguser.add -f -q $0 %mask
+
+	# Merge the notify property part with the old one (if any)
+
+	%oldNicks = $reguser.property($0,notify)
+
+	# It would be a good idea to check if the nickname is already in the %oldNicks list
+	# but this is left as exercise for the reader.
+
+	%oldNicks << $0
+
+	# And finally set the property (use -n so the notify lists will be restarted)
+
+	reguser.setproperty -n $0 notify $0
+
+	# done...the notify list should be restarted now
+}
+
+alias(ignore)
+{
+	# This one adds a registered users database entry
+	# For the specified nick and uses the specified mask
+	# If no mask is specified, a default one is constructed
+	# Then the "ignore" property is set for the user to 1
+
+	if(!$0)
+	{
+		echo $tr("Usage:","defscript")
+		echo "	/ignore [-m|--remove] [-p|--query] [-c|--channel] [-n|--notice] [-t|--ctcp] [-i|--invite] [-d|--dcc] [-h|--highlight] <nick>"
+		halt
+	}
+
+	# Now add the user (but do not replace old entries)
+
+	reguser.add -f -q $0 $mask($0,15);
+
+	# And finally set the property
+	# Check if ignore or unignore the user
+
+	if($sw(m,remove))
+	{
+		reguser.setIgnoreEnabled $0 0
+	}
+	else
+	{
+		reguser.setIgnoreEnabled $0 1
+		%flags="";
+		if($sw(p, query))
+			%flags = $str.append(%flags," -p")
+		if($sw(c, channel))
+			%flags = $str.append(%flags," -c")
+		if($sw(n, notice))
+			%flags = $str.append(%flags," -n")
+		if($sw(t, ctcp))
+			%flags = $str.append(%flags," -t")
+		if($sw(i, invite))
+			%flags = $str.append(%flags," -i")
+		if($sw(d, dcc))
+			%flags = $str.append(%flags," -d")
+		if($sw(h, highlight))
+			%flags = $str.append(%flags," -h")
+
+		# if no flag has been passed, enable them all
+		if($isEmpty(%flags))
+			%flags = " -p -c -n -t -i -d -h"
+		eval reguser.setIgnoreFlags %flags $escape($0)
+	}
+}
+
+# DCC... people commonly use "dcc send" instead of "dcc.send"
+alias(dcc)
+{
+	switch($0)
+	{
+		case(send):
+		{
+			dcc.send $1-
+			break
+		}
+		case(chat):
+		{
+			dcc.chat $1-
+			break
+		}
+		case(voice):
+		{
+			dcc.voice $1-
+			break
+		}
+		case(allow):
+		{
+			dccallow $1-
+			break
+		}
+		default:
+		{
+			echo "[DCC]: "$tr("Unsupported type:","defscript") $0
+		}
+	}
+}
+
+#
+# return a string with the name of the current usermode
+#
+alias(usermodename)
+{
+	if(!$0)
+	{
+		echo $tr("Usage:","defscript")
+		echo "	/usermodename <nick>"
+		halt;
+	}
+	if(!$channel)
+	{
+		echo "[USERMODENAME]: " $tr("This is not a channel window","defscript")
+		halt;
+	}
+
+	if($chan.isOwner($0,$channel))
+	{
+		return $tr("Channel Owner","defscript")
+	}
+	elseif($chan.isAdmin($0,$channel))
+	{
+		return $tr("Channel Administrator","defscript")
+	}
+	elseif($chan.isOp($0,$channel))
+	{
+		return $tr("Channel Operator","defscript")
+	}
+	elseif($chan.isHalfOp($0,$channel))
+	{
+		return $tr("Half Operator","defscript")
+	}
+	elseif($chan.isVoice($0,$channel))
+	{
+		return $tr("Voice","defscript")
+	}
+	elseif($chan.isUserOp($0,$channel))
+	{
+		return $tr("User Operator","defscript")
+	}
+	else
+	{
+		return $tr("Normal User","defscript")
+	}
+}
+
+#shortcut for commonly called algorithm
+alias(md5)
+{
+	return $str.digest($0-,md5)
+}
+
+alias(sha1)
+{
+	return $str.digest($0-,sha1)
+}
+
+# DNS : people like it
+alias(dns)
+{
+	if(!$context)
+	{
+		echo "[DNS]: " $tr("You must use DNS in an IRC context","defscript")
+		halt
+	}
+
+	if(!$server)
+	{
+		echo "[DNS]: " $tr("You must be connected to a server","defscript")
+		halt
+	}
+
+	if(!$0)
+	{
+		echo $tr("Usage:","defscript")
+		echo "  /dns <nickname>"
+		halt
+	}
+
+	if($isWellKnown($0))host -a $hostname($0)
+	else {
+		awhois($0)
+		{
+			if(!$2)
+			{
+				echo "[DNS]: " $tr("No such user:","defscript") $0
+			}
+			else
+			{
+				host -a $2
+			}
+		}
+	}
+}
+
+alias(ss)
+{
+	# Silent
+	msg -q SeenServ $0-
+}
+
+alias(seenserv)
+{
+	# Silent
+	msg -q SeenServ $0-
+}
+
+alias(hs)
+{
+	# Silent
+	msg -q HostServ $0-
+}
+
+alias(hop)
+{
+	%chan=$0
+
+	// Retrieve channel
+	if(!%chan)
+		%chan=$chan.name
+
+	// Retrieve channel key
+	if($channel(%chan)!=0)
+		%key=$chan.key($channel(%chan))
+	else
+		%key=0
+
+	// Exit channel
+	if($window.type($channel(%chan))=="channel")
+		eval "part --keep $escape(%chan) $option(stringPartMessage)"
+
+	// Rejoin channel
+	if(!%key)
+		join %chan
+	else
+		join %chan %key
+}
+
+# wii: whois with idle
+alias(wii)
+{
+	if(!$0)
+	{
+		echo $tr("Usage:","defscript")
+		echo "	/wii <nick>"
+	}
+	else
+	{
+		whois $0 $0
+	}
+}

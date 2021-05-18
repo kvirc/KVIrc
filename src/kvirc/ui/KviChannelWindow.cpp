@@ -104,17 +104,21 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	    this, SLOT(topicSelected(const QString &)));
 	// mode label follows the topic widget
 	m_pModeWidget = new KviModeWidget(m_pTopSplitter, *this, "mode_");
-	KviTalToolTip::add(m_pModeWidget, __tr2qs("Channel modes"));
+	KviTalToolTip::add(m_pModeWidget, __tr2qs("Channel settings button."));
 	connect(m_pModeWidget, SIGNAL(setMode(const QString &)), this, SLOT(setMode(const QString &)));
 
-	createTextEncodingButton(m_pButtonContainer);
+    // roboirc
+    //createTextEncodingButton(m_pButtonContainer);
+    delete m_pTextEncodingButton;
+    m_pTextEncodingButton = createToolButton(m_pButtonContainer, "text_encoding_button", KviIconManager::TextEncoding, __tr2qs("Text encoding"), false);
+    connect(m_pTextEncodingButton, SIGNAL(clicked()), this, SLOT(textEncodingButtonClicked()));
 
 	// Central splitter
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	m_pSplitter->setObjectName(szName);
 	m_pSplitter->setChildrenCollapsible(false);
 
-	// Spitted vertially on the left
+	// Spitted vertically on the left
 	m_pVertSplitter = new KviTalSplitter(Qt::Vertical, m_pSplitter);
 	m_pVertSplitter->setChildrenCollapsible(false);
 
@@ -221,6 +225,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	m_pHideToolsButton->setAutoRaise(true);
 	m_pHideToolsButton->setIconSize(QSize(22, 22));
 	m_pHideToolsButton->setFixedWidth(16);
+    m_pHideToolsButton->setToolTip(__tr2qs("Show/Hide channel settings"));
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
 		m_pHideToolsButton->setIcon(QIcon(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))));
@@ -230,6 +235,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	m_pUserListView = new KviUserListView(m_pSplitter, m_pListViewButton, connection()->userDataBase(), this, KVI_CHANNEL_AVERAGE_USERS, __tr2qs("User list"), "user_list_view");
 	//m_pEditorsContainer->addWidget(m_pUserListView);
 	//m_pEditorsContainer->raiseWidget(m_pUserListView);
+
 	// And finally the input line on the bottom
 	m_pInput = new KviInput(this, m_pUserListView);
 
@@ -246,6 +252,8 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	applyOptions();
 	m_joinTime = QDateTime::currentDateTime();
 	m_tLastReceivedWhoReply = (kvi_time_t)m_joinTime.toTime_t();
+
+
 }
 
 KviChannelWindow::~KviChannelWindow()
@@ -281,9 +289,11 @@ void KviChannelWindow::toggleToolButtons()
 		return;
 
 	toggleButtonContainer();
+
 	QPixmap * pPix = buttonContainer()->isVisible() ? g_pIconManager->getBigIcon("kvi_horizontal_left.png") : g_pIconManager->getBigIcon("kvi_horizontal_right.png");
 	if(pPix)
 		m_pHideToolsButton->setIcon(QIcon(*pPix));
+
 }
 
 void KviChannelWindow::triggerCreationEvents()
@@ -864,6 +874,7 @@ void KviChannelWindow::getTalkingUsersStats(QString & szBuffer, QStringList & li
 		szBuffer += " ";
 		szBuffer += bPast ? __tr2qs("were talking recently") : __tr2qs("are talking");
 	}
+
 }
 
 void KviChannelWindow::getWindowListTipText(QString & szBuffer)

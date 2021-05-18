@@ -1,0 +1,219 @@
+<html>
+
+<head>
+<title>CTCP flood protection options</title>
+<style type="text/css">
+body {
+ font-size: 10pt;
+ margin-left: 8px;
+ margin-right: 8px;
+ margin-top: 6px;
+ margin-bottom: 6px;
+ font-family:Verdana,Helvetica,Arial;
+}
+table, td, tr {
+ font-size: 10pt;
+ font-family:Verdana,Helvetica,Arial;
+ color: #3c3c3c;
+}
+td {
+ padding: 6px;
+}
+a:link {
+ text-decoration: none;
+ color: #2883e2;
+}
+a:visited {
+ text-decoration: none;
+ color: #6856cc;
+}
+a:hover {
+ text-decoration: underline;
+ color: #186CC4;
+}
+a:active {
+ text-decoration: underline;
+ color: #186CC4;
+}
+.title-table-cell {
+ border-top-left-radius: 3px;
+ border-top-right-radius: 3px;
+ background-color: #F2DFB1;
+}
+.title-text {
+ font-family:Verdana,Helvetica,Arial;
+ font-size: 18pt;
+ font-weight: bold;
+ padding-bottom: 3px;
+ color: #404040;
+ text-shadow: 0px 2px 0px rgba(247,247,247,1);
+}
+.title-secondary-text {
+ font-family:Verdana,Helvetica,Arial;
+ font-size: 11pt;
+ padding-top: 3px;
+ color: #474747;
+ text-shadow: 0px 2px 0px rgba(247,247,247,1);
+}
+.subtitle-table-cell {
+ background-color: #D6D6D6;
+}
+.subtitle-text {
+ font-family:Verdana,Helvetica,Arial;
+ font-size: 11pt;
+ color: #000000;
+ text-shadow: 0px 1px 0px rgba(247,247,247,1);
+}
+.subsubtitle-table-cell {
+ background-color: #E3E3E3;
+}
+.subsubtitle-text {
+ font-family:Verdana,Helvetica,Arial;
+ font-size: 10pt;
+ color: #474747;
+}
+.syntax-text {
+ font-family:"Lucida Console", Monaco, monospace, "Courier New";
+ font-size: 10pt;
+ font-weight: bold;
+ white-space: pre;
+ color: #800000;
+}
+.example-box {
+ font-family:"Lucida Console", Monaco, monospace, "Courier New";
+ font-size: 10pt;
+ white-space: pre;
+ background-color: #f5f5f5;
+ border: 1px solid #d5d5d5;
+ color: #800000;
+ padding: 10px;
+ margin-top: 6px;
+ margin-bottom: 6px;
+}
+.example-box a:link {
+ color: #600030;
+}
+.example-box a:visited {
+ color: #600030;
+}
+.example-box a:hover {
+ color: #FF2B46;
+}
+.example-box a:active {
+ color: #FF2B46;
+}
+.comment-text {
+ color: #578A57;
+}
+.comment-text a:link {
+ color: #578A57;
+}
+.comment-text a:visited {
+ color: #578A57;
+}
+.comment-text a:hover {
+ color: #35BD58;
+}
+.comment-text a:active {
+ color: #35BD58;
+}
+.example-paren {
+ color: #8A7000;
+}
+.example-bracket {
+ color: #9C7914;
+}
+.example-oper {
+ color: #9C7914;
+}
+.example-variable {
+ color: #AB6332;
+}
+.comment-text .example-variable {
+ color: #578A57;
+}
+.comment-text .example-oper {
+ color: #578A57;
+}
+.comment-text .example-paren {
+ color: #578A57;
+}
+.comment-text .example-bracket {
+ color: #578A57;
+}
+.switch-table {
+ width: 100%;
+ border-collapse: collapse;
+}
+.switch-title-table-cell {
+ font-family:"Lucida Console", Monaco, monospace, "Courier New";
+ font-size: 10pt;
+ color: #670000;
+ background-color: #EDEDED;
+}
+.switch-body-table-cell {
+}
+.footer {
+ border-top: 1px solid #a2a2a2;
+ color: #a2a2a2;
+ margin-top: 8px;
+ padding-top: 4px;
+ font-style: italic;
+ font-size: 8pt;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>CTCP flood protection options</div>      <div class='title-secondary-text'>Protection against CTCP flooding</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Here, you can configure the CTCP flood protection system.<br>
+The CTCP engine in IRC clients may be subject to an attack, called "CTCP flooding".<br>
+Basically, the attackers (usually there is more than one offending client) sends a stream
+of CTCP requests to the victim's client, and the client attempts to respond to all requests
+by sending a stream of replies to the server, which causes the server to disconnect the user
+due to excess flood for sending too many messages before the server can process them.<br>
+Many user defined scripts choose to completely ignore all the CTCP requests in order to prevent such attacks.<br>
+KVIrc offers an alternative method that allows you to take advantage of the CTCP protocol
+and at the same time prevent the flood attacks.<br>
+The method is really simple: the client will only respond to a limited number of CTCP requests within a
+specified time interval.<br>
+The "Use flood protection" option enables this protection method.<br>
+In the "Allowed up to" field you should enter the maximum number of CTCP requests that KVIrc should
+respond to within the interval of time defined in the second field.<br>
+A strong protection against floods would be replying to 4 requests every 20 seconds.<br>
+The minimum effective setting is about 3 messages every 6 seconds.<br>
+Please note that 3 messages every 6 seconds is <b>not</b> the same as 10 messages every 20 seconds;
+the first setting would allow 3 requests within one second, but the client would
+ignore all the requests for the next 5 seconds, the second setting would allow 10 messages within one second
+and ignore everything for the next 19 seconds. Therefore, 3/6 is a safer setting.<br>
+The maximum protection you can set is 0 messages within any number of seconds; in that case any
+CTCP request will be considered a flood and ignored.<br>
+<br><br>
+You can also decide to ignore specific CTCP requests. For example, if you don't want to reply to PING
+requests, just select "PING" under the "Ignored Requests" section.<br>
+<br><br>
+Some specific protection options can be set also in other CTCP options sections:
+see the <a href="widget_ctcpavatarprotooptions.html">ctcp avatar protocol options</a> and <a href="widget_ctcpdccprotooptions.html">ctcp dcc protocol options</a>.<br>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_widget_index_all.html">Features</a>
+
+</body>
+
+</html>

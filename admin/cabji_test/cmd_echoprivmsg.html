@@ -1,0 +1,114 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>echoprivmsg</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>echoprivmsg</div>      <div class='title-secondary-text'>Outputs text to a KVIrc window</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>echoprivmsg</b> <font color="#8080a0">[</font>switches<font color="#8080a0">]</font> <font color="#8080a0">&lt;</font>nick<font color="#808080">:string</font><font color="#8080a0">&gt;</font> <font color="#8080a0">&lt;</font>user<font color="#808080">:string</font><font color="#8080a0">&gt;</font> <font color="#8080a0">&lt;</font>host<font color="#808080">:string</font><font color="#8080a0">&gt;</font> <font color="#8080a0">&lt;</font>text<font color="#808080">:string</font><font color="#8080a0">&gt;</font></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>Outputs a &lt;text&gt; to the current window in the privmsg format.<br>
+The &lt;nick&gt; &lt;user&gt; and &lt;host&gt; parameters are formatted
+as specified by the user preferences (for example
+the nick may use smart colorization).
+If you don't know the username and host then just use '*' for
+that parameters.
+The message will also get the highlighting rules applied.
+If the 'w' switch is present, outputs &lt;text&gt;
+to the specified window instead of the current one.
+The &lt;window_id&gt; parameter is the <a href="doc_window_naming_conventions.html">global ID</a> of the window
+that has to be used.<br>
+Please note that this is not the same as the standard
+<a href="doc_command_rebinding.html">-r rebinding switch</a>:
+-w causes the specified window to be used only for output,
+but the command parameters are evaluated in the current window.<br>
+If the 'i' switch is given, it uses the specified
+icon scheme (icon and colors), otherwise it uses
+the default one.<br>
+If the -n switch is present then the highlighting rules
+are not applied.<br>
+If the -x switch is present then the message will never cause
+the notifier window to be popped up.<br>
+If the -f switch is present then the message will never cause
+the system taskbar to flash.<br>
+Actually -x and -f have a sense only if highlighting is used and thus -n is not present.<br>
+For more information about the icon/color schemes see <a href="fnc_msgtype.html">$msgtype</a>.
+The KVIrc view widgets support clickable sockets that can be realized by using special <a href="doc_escape_sequences.html">escape sequences</a>.<br>
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-p[=&lt;nick_prefix&gt;] | --prefix[=&lt;prefix&gt;]</td></tr>
+<tr><td class="switch-body-table-cell">The message is printed with the specified custom nickname prefix. If &lt;nick_prefix&gt; is omitted then an empty string is assumed.</td></tr>
+<tr><td class="switch-title-table-cell">-s[=&lt;nick_suffix&gt;] | --suffix[=&lt;nicksuffix&gt;]</td></tr>
+<tr><td class="switch-body-table-cell">The message is printed with the specified custom nickname suffix. If &lt;nick_suffix&gt; is omitted then an empty string is assumed.</td></tr>
+<tr><td class="switch-title-table-cell">-w=&lt;window_id&gt; | --window=&lt;window_id&gt;</td></tr>
+<tr><td class="switch-body-table-cell">The message is printed to the window specified by <a href="doc_window_naming_conventions.html">window_id</a></td></tr>
+<tr><td class="switch-title-table-cell">-i=&lt;color_set&gt; | --color-set=&lt;color_set&gt;</td></tr>
+<tr><td class="switch-body-table-cell">Causes the message to use the specified icon scheme (icon and colors).</td></tr>
+<tr><td class="switch-title-table-cell">-n | --no-highlighting</td></tr>
+<tr><td class="switch-body-table-cell">Do not apply the highlighting rules</td></tr>
+<tr><td class="switch-title-table-cell">-x | --no-notifier</td></tr>
+<tr><td class="switch-body-table-cell">Never cause the notifier window to pop up</td></tr>
+<tr><td class="switch-title-table-cell">-f | --no-flashing</td></tr>
+<tr><td>Never cause the window taskbar entry to flash (this works only on some platforms)</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+echoprivmsg Test * * This is a test message<br>
+echoprivmsg -i=$msgtype<span class="example-paren">(</span>ChanPrivmsgCrypted<span class="example-paren">)</span> Pragma pragma staff.kvirc.net Hi people! :<span class="example-paren">)</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>See also</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="fnc_window.html">$window</a>,
+<a href="fnc_window.caption.html">$window.caption</a>,
+<a href="fnc_msgtype.html">$msgtype</a>,
+<a href="cmd_echo.html">echo</a>,
+<a href="doc_window_naming_conventions.html">Window Naming Conventions</a>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

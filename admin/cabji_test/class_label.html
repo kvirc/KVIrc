@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>label class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>label class</div>      <div class='title-secondary-text'>Displays text or an image</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This widget can be used to display a text or an image.<br>
+It can have different frame styles and text/image alignment.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setText">$setText(&lt;text:string&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the text to be displayed by the label. The text can contain limited HTML tags. See also <a href="#text">$text</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; text">&lt;string&gt; $text()</a></font></b></code></td></tr>
+<tr><td>Returns the text currently displayed by the label. See also <a href="#setText">$setText</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;integer&gt; margin">&lt;integer&gt; $margin()</a></font></b></code></td></tr>
+<tr><td>Returns current value of margin for this label (default is 0). See also <a href="#setMargin">$setMargin</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setMargin">$setMargin(&lt;margin:uint&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets margin width / height to &lt;margin&gt;. See also <a href="#margin">$margin</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; alignment">&lt;string&gt; $alignment()</a></font></b></code></td></tr>
+<tr><td>Returns a string containing alignment flags that are set for this label. The flags are separated by commas.<br> An example output could look like this:<br> <pre>Bottom, Right</pre> See <a href="#setAlignment">$setAlignment</a>() for explanation of all alignment flags.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setAlignment">$setAlignment(&lt;flag1:string&gt;, &lt;flag2:string&gt;, ...)</a></font></b></code></td></tr>
+<tr><td>This function sets alignment flags, given as parameters, for this label. Valid flags are: <pre><br> Right     - Text is aligned to right border<br> Left      - Text is aligned to left border<br> Top       - Text is aligned to the top border<br> Bottom    - Text is aligned to the bottom border<br> HCenter   - Text is horizontally centered<br> VCenter   - Text is vertically centered<br> Center    - Equals HCenter + VCenter<br> Justify   - Text is spaced apart to cover available room<br> </pre> It is obvious that you can not set <i>Right</i> and <i>Left</i> simultaneously - this will <b>not</b> result in an error message - it will simply not work :)</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="clear">$clear()</a></font></b></code></td></tr>
+<tr><td>Clears the label. Equal to calling <a href="#setText">$setText</a>("")</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="&lt;string&gt; frameStyle">&lt;string&gt; $frameStyle()</a></font></b></code></td></tr>
+<tr><td>Returns a string containing this label's frame-style flags, separated with commas. Output from this function could look like this: <pre>Panel, Raised</pre> See <a href="#setFrameStyle">$setFrameStyle</a>() for a list of all frame-style flags and their explanation.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setFrameStyle">$setFrameStyle(&lt;flag1&gt;, &lt;flag2&gt;, ...)</a></font></b></code></td></tr>
+<tr><td>Sets the frame-style flags to the ones passed as arguments. The flags determine the shape or shadow of the label's frame. Valid shape flags are:<br> <pre><br> NoFrame   - Draw no frame. You shouldn't specify a shadow when using this.<br> Box       - Draws a rectangular box. Its borders can be <i>Raised</i> or <i>Sunken</i><br> Panel     - Draws a rectangular panel which can be <i>Raised</i> or <i>Sunken</i><br> WinPanel  - Similar to <i>Panel</i>, but is more in Win95 style<br> Hline     - Draws a horizontal line that frames nothing <span class="example-paren">(</span>useful as separator<span class="example-paren">)</span><br> </pre> Valid shadow flags are:<br> <pre><br> Plain     - No 3D effect <span class="example-paren">(</span>draws using foreground color<span class="example-paren">)</span><br> Raised    - Makes the label look like it was raised above the parent widget<br> Sunken    - Makes the label look like it was <i>pushed</i> inside the parent widget<br> </pre></td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setImage">$setImage(&lt;image_id&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets the image to be displayed on this label. Giving empty argument clears the pixmap.<br> See the <a href="doc_image_id.html">image identifier</a> documentation for the explanation of the &lt;image_id&gt; parameter.</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

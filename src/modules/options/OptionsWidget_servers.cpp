@@ -1326,18 +1326,21 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	columLabels.append(__tr2qs_ctx("Server", "options"));
 	columLabels.append(__tr2qs_ctx("Description", "options"));
 	m_pTreeWidget->setColumnWidth(0, 300);
-	m_pTreeWidget->setColumnWidth(1, 300);
-
+    m_pTreeWidget->setColumnWidth(1, 300);
 	m_pTreeWidget->setSortingEnabled(true);
-	m_pTreeWidget->sortByColumn(0, Qt::AscendingOrder);
+	m_pTreeWidget->sortByColumn(1, Qt::AscendingOrder);
 	m_pTreeWidget->setHeaderLabels(columLabels);
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+
+
 	connect(m_pTreeWidget, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(customContextMenuRequested(const QPoint &)));
 	connect(m_pTreeWidget, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
 	connect(m_pTreeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(itemDoubleClicked(QTreeWidgetItem *, int)));
+
+
 
 	QString tiptxt = __tr2qs_ctx("This is the list of available IRC servers.<br>"
 	                             "Right-click on the list to add or remove servers and perform other actions.<br>"
@@ -1345,6 +1348,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	KviTalToolTip::add(m_pTreeWidget, tiptxt);
 	KviTalToolTip::add(m_pTreeWidget->viewport(), tiptxt);
+
 
 	KviTalVBox * vbox = new KviTalVBox(this);
 	vbox->setSpacing(0);

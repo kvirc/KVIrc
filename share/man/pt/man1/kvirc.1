@@ -1,0 +1,141 @@
+.TH KVIRC 1 "02/09/2009" Version 4.0.0
+.SH NAME
+KVIrc - um cliente IRC (Internet Relay Chat).
+.SH SYNOPSIS
+.B kvirc [opções] [servidor [porto]] [ircurl [ircurl [...]]]
+
+.SH DESCRIPTION
+.PP
+O KVIrc é um cliente IRC Visual baseado na biblioteca Qt.
+.PP
+Tenciona ser um interface "amigável" para o protocolo IRC (ver \fIRFC1459\fP)
+e as suas extensões.
+.SH OPTIONS
+O \fIKVIrc\fP aceita as seguintes opções:
+.TP 8
+.B  \-h, \-\-help
+Mostra uma lista de todas as opções da linha de comandos e sai.
+.TP 8
+.B \-v, \-\-version
+Mostra a versão.
+.TP 8
+.B \-c \fI<ficheiro>\fP
+Usa o \fI<ficheiro>\fP como ficheiro de configuração em vez de ~/.kvirc4.rc .
+Predefine para $HOME/.kvirc4.rc se o \fI<ficheiro>\fP não existir
+.TP 8
+.B \-n \fI<ficheiro>\fP
+Usa o \fI<ficheiro>\fP como ficheiro de configuração em vez de ~/.kvirc4.rc .
+Cria o \fI<ficheiro>\fP se este não existir.
+.TP 8
+.B \-f
+Força uma nova sessão KVIrc, mesmo que já exista uma sessão a correr.
+.TP 8
+.B \-e \fI<comandos>\fP
+Se uma sessão do KVIrc já extiver a correr, execute os \fI<comandos>\fP
+nessa sessão, senão inicie normalmente e execute os \fI<comandos>\fP.
+Os \fI<comandos>\fP têm que estar numa única linha de entrada da consola.
+Pode eventualmente usar esta opção mais do que uma vez.
+.TP 8
+.B \-x \fI<comandos>\fP
+Se uma sessão do KVIrc já extiver a correr, execute os \fI<comandos>\fP
+nessa sessão, senão não faça nada e saia.
+Os \fI<comandos>\fP têm que estar numa única linha de entrada da consola.
+Pode eventualmente usar esta opção mais do que uma vez.
+.TP 8
+.B \-r \fI<comandos>\fP
+Se uma sessão do KVIrc já extiver a correr, execute os \fI<comandos>\fP
+nessa sessão, senão inicie normalmente (não execute).
+Os \fI<comandos>\fP têm que estar numa única linha de entrada da consola.
+Pode eventualmente usar esta opção mais do que uma vez.
+.TP 8
+.B \-m
+Se uma sessão do KVIrc já extiver a correr, mostra uma caixa de diálogo
+informacional em vez de escrever para a consola.
+Isto é útil quando inicia o KVIrc de um botão da barra de tarefas.
+.TP 8
+.B [servidor]
+Conecta a este servidor após iniciar.
+.TP 8
+.B [porto]
+Usa este porto para a conexão.
+Esta opção requer também um nome de servidor.
+.TP 8
+.B [ircurl]
+Um url na seguinte forma:
+
+  irc[6]://<servidor>[:<porto>][/<canal>[?<senha>]]
+
+Para cada url na linha de comandos, cria um novo contexto irc
+e tenta conectar ao <servidor> no <porto> especificado.
+O <canal> é opcional e entra-se neste logo após a conexão
+ter sido estabelecida.
+
+.SH ENVIRONMENT
+.PP
+.TP 8
+.B KVIRC_LANG
+Definição da língua.
+Se não estiver definido, o KVIrc verificará a $LANG
+.TP 8
+.B LANG
+Definição da língua.
+Se não estiver definido, (ou definido para 'EN','POSIX' ou 'C') o KVIrc usará
+a língua predefinida (inglês).
+.TP 8
+
+.SH FILES
+
+\fB$PREFIX\fP/share/kvirc/\fBVERSION\fP/*
+Directório com as definições globais KVIrc, módulos, etc...
+
+\fB$HOME\fP/.kvirc4.rc . This is the first file that KVIrc looks for.
+Se a opção da linha de comandos \-c for especificada, o ficheiro
+passado como opção de parâmetro será usado em vez deste.
+Se o ficheiro for encontrado, o KVIrc lê a primeira linha não vazia
+e trata-a como o caminho para o \fIdirectório Local KVIrc\fP.
+Se o ficheiro não for encontrado ou o \fIdirectório Local KVIrc\fP
+não existir, o KVIrc entra no modo de configuração e permite
+seleccionar um novo \fIdirectório Local KVIrc\fP.
+
+\fBDirectório Local KVIrc\fP/*
+Directório com as definições (por utilizador) KVIrc locais.
+Similar ao global.
+
+.SH SEE ALSO
+.BR X (1)
+.BR talk (1)
+.SH COPYRIGHT
+Direitos de autor \(co  1999-2009 Szymon Stefanek e a Equipa de Desenvolvimento KVIrc
+
+Tem permissão para usar, copiar, modificar, e distribuir este programa e a sua
+documentação para qualquer propósito e sem qualquer taxa remuneradora, desde que
+faça menção dos direitos de autor acima referidos em todas as cópias e que tanto
+as referências dos direitos de autor e a notícia de permissão apareçam na
+documentação de suporte.
+
+.SH SUGGESTIONS AND BUG REPORTS
+Quaisquer errors ou problemas encontrados (e pedidos) devem ser reportados
+para:
+\fI<https://github.com/kvirc/KVIrc/issues/>\fP
+
+.SH OFFICIAL WWW SITE
+
+http://www.kvirc.net
+Em Russo - http://www.kvirc.net.ru
+
+.SH AUTHORS
+Szymon 'Pragma' Stefanek \fI<pragma em kvirc ponto net>\fP
+
+Código, correcções, novas opções, e muito mais de
+Alessandro 'Noldor@freenode' Carbone, Elvio 'HelLViS69@freenode' Basello, Fabio 'CtrlAltCa@freenode' Bas, Alexey 'Alexey@freenode' Uzhva, Voker57@freenode
+
+Antigos autores
+
+Com 'patches', correcções, extensões, e muito mais de
+[Anodine]@efnet, Till 'BuTi@ircnet' Busch, Fritz 'KNFritz@ircnet' Elfert, RAD Kade 1
+
+Com procura de erros, pensamentos profundos, consumo da visão,
+noites gastas no IRC, grandes sugestões e mais de bastantes pessoas de toda a rede,
+incluindo mas não limitado ao
+Paul 'infected@ircnet' Boehm, Olle 'Crocodile@ircnet' H\[:a]lln\[:a]s, Diablo@ircnet,
+Andrew 'Drosha@ircnet' Frolov, MalboroLi@ircnet, munehiro@ircnet

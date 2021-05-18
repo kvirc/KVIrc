@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>eval</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>eval</div>      <div class='title-secondary-text'>Change the behaviour of a set of commands</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Usage</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><div class='syntax-text'><b>eval</b> <font color="#8080a0">[</font>-q<font color="#8080a0">]</font> <font color="#8080a0">[</font>-r=<font color="#8080a0">&lt;</font>window<font color="#808080">:integer</font><font color="#8080a0">&gt;</font><font color="#8080a0">]</font> <font color="#8080a0">&lt;</font>command<font color="#808080">:string</font><font color="#8080a0">&gt;</font></div></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This command is useful to execute variable command sequences.<br>
+&lt;command&gt; is first evaluated as a normal parameter (thus identifiers
+and variables are substituted) then the evaluated string is executed
+as a command sequence.<br>
+-q causes eval to run quietly and don't display any errors in the inner command.<br>
+-f causes eval to ignore the errors inside &lt;command&gt; and continue execution.<br>
+This command may be used to rebind the &lt;command&gt; to a specified window.
+&lt;command&gt; shares the local variables with this command scope so you
+can easily exchange data with it.
+Remember that &lt;command&gt; is still a normal parameter and it must be
+enclosed in quotes if you want it to be a complex command sequence.
+eval propagates the &lt;command&gt; return value.<br>
+<br>
+<b>WARNING: If some part of the &lt;command&gt; comes from external input you MUST
+sanitize it by using <a href="fnc_escape.html">$escape</a>() in order to avoid command injection.</b>
+Note that nicknames, usernames, hostnames, channel names and any kind of text that
+isn't generated under your control may contain malicious code. For instance, if you
+try to eval the string built by concatenating <i>echo</i> and the result of <a href="fnc_channel.name.html">$channel.name</a>
+inside a channel named <i>#test;quit</i> (yes, that's a valid channel name) you'll obtain
+a disconnection as a side effect. To avoid this you need to use <a href="fnc_escape.html">$escape</a>() around
+<a href="fnc_chan.name.html">$chan.name</a>.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Switches</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table class="switch-table">
+<tr><td class="switch-title-table-cell">-q | --quiet</td></tr>
+<tr><td class="switch-body-table-cell">Disable any error output</td></tr>
+<tr><td class="switch-title-table-cell">-f | --force</td></tr>
+<tr><td>Continue execution even if &lt;command&gt; fails with an error</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Examples</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td></td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="comment-text"># evaluate a variable command</span><br>
+<a href="cmd_if.html">if</a><span class="example-paren">(</span><span class="example-variable">%somecondition</span><span class="example-paren">)</span><span class="example-variable">%tmp</span> = "echo yeah"<br>
+else <span class="example-variable">%tmp</span> = "echo -i=10 yeah"<br>
+eval <span class="example-variable">%tmp</span><br>
+<span class="comment-text"># Rebind the command to the #linux channel to get the user list</span><br>
+eval -r=<a href="fnc_channel.html">$channel</a><span class="example-paren">(</span>#linux<span class="example-paren">)</span> "<span class="example-variable">%Nicks</span>[]=$chan.array;"<br>
+<span class="comment-text"># A nice alias that allows iterating commands through all the consoles</span><br>
+<span class="comment-text"># This is by LatinSuD :<span class="example-paren">)</span></span><br>
+<a href="cmd_alias.html">alias</a><span class="example-paren">(</span>iterate<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-variable">%ctxt</span>[]=<a href="fnc_window.list.html">$window.list</a><span class="example-paren">(</span>console,all<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_for.html">for</a><span class="example-paren">(</span><span class="example-variable">%i</span>=0;<span class="example-variable">%i</span>&lt;<span class="example-variable">%ctxt</span>[]#;<span class="example-variable">%i</span>++<span class="example-paren">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_eval.html">eval</a> -r=<span class="example-variable">%ctxt</span>[<span class="example-variable">%i</span>] $0-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-bracket">}</span><br>
+<span class="example-bracket">}</span><br>
+iterate <a href="cmd_echo.html">echo</a> Hi ppl! :<span class="example-paren">)</span><br>
+<span class="comment-text"># A little bit shorter <span class="example-paren">(</span>but less "colorful"<span class="example-paren">)</span> version might be...</span><br>
+<a href="cmd_alias.html">alias</a><span class="example-paren">(</span>iterate<span class="example-paren">)</span><br>
+<span class="example-bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_foreach.html">foreach</a><span class="example-paren">(</span><span class="example-variable">%x</span>,<a href="fnc_window.list.html">$window.list</a><span class="example-paren">(</span>console,all<span class="example-paren">))</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="cmd_eval.html">eval</a> -r=<span class="example-variable">%x</span> $0-;<br>
+<span class="example-bracket">}</span><br>
+iterate <a href="cmd_echo.html">echo</a> Hi again!<br>
+<span class="comment-text"># Evaluate a command block</span><br>
+eval "<span class="example-bracket">{</span> echo First command!; echo Second command!; <span class="example-bracket">}</span>"<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>See also</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="fnc_escape.html">$escape</a>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_command_alphabetic_a.html">Commands</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

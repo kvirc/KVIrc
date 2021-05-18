@@ -1,0 +1,68 @@
+# Default classes file
+
+# Compatibility only: do not use.
+# Use /addon.installfiles instead.
+
+# A helper class for installing files and generating an uninstallation alias on the fly
+class(installer,object)
+{
+	constructor()
+	{
+		$$->%iNumFiles = 0
+	}
+
+	copyFiles($0 = source dir, $1 = file regexp, $2 = target dir)
+	{
+		if($0 == "")
+		{
+			echo $tr("[Installer] Error: the first argument of copyFiles must be a source directory","defscript")
+			halt
+		}
+
+		if($1 == "")
+		{
+			echo $tr("[Installer] Error: the second argument of copyFiles must be a file name or file regexp","defscript")
+			halt
+		}
+
+		if($2 == "")
+		{
+			echo $tr("[Installer] Error: the third argument of copyFiles must be a destination directory","defscript")
+			halt
+		}
+
+		if($file.exists($0))
+		{
+			%files[] = $file.ls($0,f,$1)
+			if($length(%files[]))
+			{
+				file.mkdir $2
+				foreach(%file,%files[])
+				{
+					$$->%lFiles[$$->%iNumFiles] = $str.replace($file.fixpath("$2/%file"),"\\\\","\\")
+					$$->%iNumFiles++;
+					file.copy -o "$0/%file" "$2/%file"
+				}
+			}
+		}
+	}
+
+	generateUninstallAlias($0 = alias name)
+	{
+		%c  = "alias($0)$lf"
+		%c .= "{$lf"
+		if($$->%iNumFiles > 0)
+		{
+			foreach(%file,$$->%lFiles[])
+			{
+				%c .= "file.remove \"%file\"$lf";
+			}
+		}
+		else
+		{
+			%c .= ";$lf";
+		}
+		%c .= "}"
+		eval %c
+	}
+};

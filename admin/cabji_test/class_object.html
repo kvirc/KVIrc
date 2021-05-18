@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>object class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>object class</div>      <div class='title-secondary-text'>Base class for all the KVIrc objects</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>none</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This is the base class for all builtin KVIrc object classes.
+It exports functions to retrieve an object's name, to iterate
+through child objects and to lookup a child object by name or class.
+Additionally, this class provides builtin timer functionality.
+The <a href="#constructor">$constructor</a> and <a href="#destructor">$destructor</a>
+functions are empty implementations that all the other classes inherit.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Functions</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="constructor">$constructor()</a></font></b></code></td></tr>
+<tr><td>Constructor for this object class. The default implementation does nothing.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="destructor">$destructor()</a></font></b></code></td></tr>
+<tr><td>Destructor for this object class. The default implementation emits the signal <i><a href="#destroyed">destroyed</a></i>.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="name">$name()</a></font></b></code></td></tr>
+<tr><td>Returns the name of this object.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="parent">$parent()</a></font></b></code></td></tr>
+<tr><td>Returns the parent object of this object or 0 if this object has no parent.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="timerEvent">$timerEvent(&lt;timerId&gt;)</a></font></b></code></td></tr>
+<tr><td>Handler for the timer events. The default implementation does nothing. See also <a href="#startTimer">$startTimer</a>() and <a href="#killTimer">$killTimer</a>().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="startTimer">$startTimer(&lt;timeout&gt;)</a></font></b></code></td></tr>
+<tr><td>Starts a builtin timer for this object and returns its timer ID as a string or '-1' if &lt;timeout&gt; was invalid. The <a href="#timerEvent">$timerEvent</a>() handler function will be called every &lt;timeout&gt; milliseconds until the timer is stopped by $killTimer().</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="killTimer">$killTimer(&lt;timer id&gt;)</a></font></b></code></td></tr>
+<tr><td>Stops the timer specified by &lt;timer id&gt;.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="className">$className()</a></font></b></code></td></tr>
+<tr><td>Returns the class name of this object instance</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="findChild">$findChild(&lt;class&gt;,&lt;name&gt;)</a></font></b></code></td></tr>
+<tr><td>Returns the first child that matches &lt;class&gt; and &lt;name&gt;. If &lt;class&gt; is an empty string, any class matches, if &lt;name&gt; is an empty string, any name matches. This function traverses the entire child tree but is <b>not</b> recursive.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="childCount">$childCount()</a></font></b></code></td></tr>
+<tr><td>Returns the number of child objects</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="emit">$emit(&lt;signal_name&gt;[,parameters])</a></font></b></code></td></tr>
+<tr><td>Emits the signal &lt;signal_name&gt; passing the optional [parameters]. See the <a href="doc_objects.html">objects documentation</a> for an overview of signals and slots.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="children">$children()</a></font></b></code></td></tr>
+<tr><td>Returns an array of child object identifiers.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="signalSender">$signalSender()</a></font></b></code></td></tr>
+<tr><td>Returns the current signal sender when in a slot connected to a signal. In other contexts this function returns an empty string. You can safely use it to test if the current function has been triggered directly or from a signal emission.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="signalName">$signalName()</a></font></b></code></td></tr>
+<tr><td>Returns the name of the last signal that has triggered one of this object's slots. When called in a slot handler, the triggering signal name is returned.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="property">$property(&lt;Qt property name&gt;[,bNowarning:boolean])</a></font></b></code></td></tr>
+<tr><td>This is for really advanced scripting.<br> All KVIrc widgets are based on the Qt library ones.<br> The Qt library allows to set and read special properties.<br> You will have to take a look at the Qt documentation for each widget type to see the available property names.<br> The supported property types are: Rect, Size, Point, Color, String, CString, Int, UInt, Bool and enumeration types.<br> For example, the widget's x coordinate can be retrieved by using the <a href="#x">$x</a>() function or by calling $property(x).<br> There are many properties that are available only through the <a href="#property">$property</a>() call:<br> For example, you can find out if the widget accepts drops by calling <a href="#property">$property</a>(acceptDrops).<br> This function will be mainly useful in the <a href="class_wrapper.html">wrapper</a> class.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="setProperty">$setProperty(&lt;Qt property&gt;,&lt;property value&gt;)</a></font></b></code></td></tr>
+<tr><td>Sets a qt property for this widget.<br> This is for advanced scripting, and can control really many features of the Qt widgets.<br> For example, the <a href="class_multilineedit.html">multilineedit</a> widgets can be set to the <i>password</i> echo mode only by using this function call: </td></tr><tr><td class="example-box"><pre><code class="c"><br> <span class="example-variable">%X</span>=$new<span class="example-paren">(</span>lineedit, 0, a_name<span class="example-paren">)</span><br><br> <span class="example-variable">%X</span>-&gt;$show<span class="example-paren">()</span><br><br> <span class="example-variable">%X</span>-&gt;$setProperty<span class="example-paren">(</span>echoMode,Password<span class="example-paren">)</span><br> </code></pre></td></tr><tr><td bgcolor="#EAEAEA"> The available properties to be set are listed by <a href="#listProperties">$listProperties</a>()<br> and must appear in the list as writable.<br> This function will be mainly useful in the <a href="class_wrapper.html">wrapper</a> class.</td></tr>
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="listProperties">$listProperties([bArray])</a></font></b></code></td></tr>
+<tr><td>Lists the properties of this object.<br> If &lt;bArray&gt; is $true then the function returns the properties as an array of descriptive strings, otherwise the properties are dumped to the active window. If &lt;bArray&gt; is not passed then it is assumed to be $false. This function will be mainly useful in the <a href="class_wrapper.html">wrapper</a> class.</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Signals</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>
+      <table bgcolor="#EDEDED">
+<tr bgcolor="#D5D5D5"><td><code><b><font color=""><a name="destroyed">destroyed()</a></font></b></code></td></tr>
+<tr><td>Emitted by the default implementation of <a href="#destructor">$destructor</a>. If you reimplement <a href="#destructor">$destructor</a> in one of the derived classes (or as a private implementation), and still want this signal to be emitted you must emit it by yourself, or (better) call the base class destructor.</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

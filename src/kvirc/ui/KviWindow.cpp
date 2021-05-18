@@ -382,9 +382,7 @@ void KviWindow::createCryptControllerButton(QWidget *)
 
 void KviWindow::createTextEncodingButton(QWidget * pPar)
 {
-	delete m_pTextEncodingButton;
-	m_pTextEncodingButton = createToolButton(pPar, "text_encoding_button", KviIconManager::TextEncoding, __tr2qs("Text encoding"), false);
-	connect(m_pTextEncodingButton, SIGNAL(clicked()), this, SLOT(textEncodingButtonClicked()));
+
 }
 
 void KviWindow::textEncodingButtonClicked()
@@ -607,11 +605,16 @@ void KviWindow::loadProperties(KviConfigurationFile * pCfg)
 	}
 
 	setTextEncoding(szCodec.toUtf8().data());
+
+	// roboirc
+	// If Input box exists, set the mode for user friendly
 	if(m_pInput)
 	{
 		m_pInput->setButtonsHidden(pCfg->readBoolEntry("inputToolButtonsHidden", KVI_OPTION_BOOL(KviOption_boolHideInputToolButtons)));
-		m_pInput->setUserFriendly(pCfg->readBoolEntry("commandLineIsUserFriendly", KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault)));
+		//m_pInput->setUserFriendly(pCfg->readBoolEntry("commandLineIsUserFriendly", KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault)));
+        m_pInput->setUserFriendly(KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault));
 	}
+
 	/*
 	if(m_pIrcView && m_eType == KviWindow::Channel)
 	{

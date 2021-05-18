@@ -1,0 +1,143 @@
+.TH KVIRC 1 "02/09/2009" Version 4.0.0
+.SH NAME
+KVIrc - un client IRC graphique.
+.SH SYNOPSIS
+.B kvirc [options] [server [port]] [ircurl [ircurl [...]]]
+
+.SH DESCRIPTION
+.PP
+KVIrc est un client IRC visuel basée sur la bibliothéque Qt.
+.PP
+Il a l'intention d'être une interface facile d'utilisation pour le protocole IRC (voir \fIRFC1459\fP)
+avec des extensions.
+.SH OPTIONS
+\fIKVIrc\fP acceptes les options suivantes :
+.TP 8
+.B  \-h, \-\-help
+Affiche une liste de toutes les commandes en lignes.
+.TP 8
+.B \-v, \-\-version
+Affiche des informations sur la version.
+.TP 8
+.B \-c \fI<fichier>\fP
+Utilise \fI<fichier>\fP en tant que fichier de configuration au lieu de ~/.kvirc4.rc
+Si \fI<fichier>\fP n'existe pas, utilise par défaut $HOME/.kvirc4.rc
+.TP 8
+.B \-n \fI<fichier>\fP
+Utilise \fI<fichier>\fP en tant que fichier de configuration au lieu de ~/.kvirc4.rc
+Crée \fI<fichier>\fP si il n'existe pas.
+.TP 8
+.B \-f
+Force une nouvelle session de KVIrc, même si KVIrc est déjà lancer.
+.TP 8
+.B \-e \fI<commands>\fP
+If a KVIrc session is already running, execute the \fI<commands>\fP
+in that session, otherwise startup normally and execute \fI<commands>\fP.
+\fI<commands>\fP must be a single shell token.
+You can eventually use this switch more than once.
+.TP 8
+.B \-x \fI<commands>\fP
+If a KVIrc session is already running, execute the \fI<commands>\fP
+in that session, otherwise do nothing and exit.
+\fI<commands>\fP must be a single shell token.
+You can eventually use this switch more than once.
+.TP 8
+.B \-r \fI<commands>\fP
+If a KVIrc session is already running, execute the \fI<commands>\fP
+in that session, otherwise start up normally (do not execute).
+\fI<commands>\fP must be a single shell token.
+You can eventually use this switch more than once.
+.TP 8
+.B \-m
+If a KVIrc session is already running, show an informational popup dialog
+instead of writing to the console.
+This is useful when starting KVIrc from a graphical taskbar button.
+.TP 8
+.B \-\-nosplash
+Do not show the splash screen at startup
+.TP 8
+.B [server]
+Connect to this server after startup.
+.TP 8
+.B [port]
+Use this port for connection.
+This option requires also a server name.
+.TP 8
+.B [ircurl]
+A URL in the following form:
+
+  irc[6]://<server>[:<port>][/<channel>[?<pass>]]
+
+For each URL on the commandline create a new irc-context
+and attempt to connect to <server> on the specified <port>.
+The optional <channel> is joined just after the connection
+has been established.
+
+.SH ENVIRONMENT
+.PP
+.TP 8
+.B KVIRC_LANG
+Language setting.
+If not set KVIrc will check for $LANG
+.TP 8
+.B LANG
+Language setting.
+If not set (or set to 'EN','POSIX' or 'C') KVIrc will use the default language (English).
+.TP 8
+
+.SH FILES
+
+\fB$PREFIX\fP/share/kvirc/\fBVERSION\fP/*
+Directory with the global KVIrc settings, modules etc...
+
+\fB$HOME\fP/.kvirc4.rc . This is the first file that KVIrc looks for.
+If the \-c commandline option is specified , the file passed
+as the option parameter is used instead of this one.
+If the file is found , KVIrc reads the first non-empty line
+and treats it as the path to the \fIKVIrc Local directory\fP.
+If the file can not be found or the \fIKVIrc Local directory\fP
+is not existing , KVIrc enters the setup mode and allows
+selecting a new \fIKVIrc Local directory\fP.
+
+\fBKVIrc Local directory\fP/*
+Directory with the local (per user) KVIrc settings.
+Similar to the global one.
+
+.SH SEE ALSO
+.BR X (1)
+.BR talk (1)
+.SH COPYRIGHT
+Copyright \(co  1999-2009 Szymon Stefanek and The KVIrc Development Team
+
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
+provided that the above copyright notice appear in all copies and that
+both that copyright notice and this permission notice appear in
+supporting documentation.
+
+.SH SUGGESTIONS AND BUG REPORTS
+Any bugs found (and feature requests) should be reported to the tracker
+at:
+\fI<https://github.com/kvirc/KVIrc/issues/>\fP
+
+.SH OFFICIAL WWW SITE
+
+http://www.kvirc.net
+En Français - http://www.kvirc.fr
+
+.SH AUTHORS
+Szymon 'Pragma' Stefanek \fI<pragma at kvirc dot net>\fP
+
+Codage, corrections, nouvelles fonctionnalités et bien plus encore de la part de
+Alessandro 'Noldor@freenode' Carbone, Elvio 'HelLViS69@freenode' Basello, Fabio 'CtrlAltCa@freenode' Bas, Alexey 'Alexey@freenode' Uzhva, Voker57@freenode
+
+Ancients contributeurs
+
+With patches, fixes, extensions, and more from
+[Anodine]@efnet, Till 'BuTi@ircnet' Busch, Fritz 'KNFritz@ircnet' Elfert, RAD Kade 1
+
+With bug-hunting, hard-thinking, eyes-consuming,
+nights spent on IRC, great suggestions and more from lots
+of people all over the net, including but not limited to
+Paul 'infected@ircnet' Boehm, Olle 'Crocodile@ircnet' H\[:a]lln\[:a]s, Diablo@ircnet,
+Andrew 'Drosha@ircnet' Frolov, MalboroLi@ircnet, munehiro@ircnet

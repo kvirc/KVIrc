@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Escape sequences and clickable links</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>Escape sequences and clickable links</div>    </td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>The KVIrc view widgets support clickable links.<br>
+The links can be created using special escape sequences in the text passed to the <a href="cmd_echo.html">echo</a> command.<br>
+KVIrc uses some escape sequences in the text <i>echoed</i> internally.<br>
+The simplest way to explain it is to use an example:
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+echo This is a $cr![!dbl]echo You have clicked it! $cr\clickable link$cr !<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+The example above will show the following text line: "This is a clickable link".
+If you move the mouse over the words <i>clickable link</i>, you will see the text highlighted.<br>
+Once you double-click one of that words, the command <i><a href="cmd_echo.html">echo</a> You have clicked it!</i> will be executed.<br>
+The format looks complex?... it is not...just read on.
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+&lt;cr&gt;!&lt;link_type&gt;&lt;cr&gt;&lt;visible text&gt;&lt;cr&gt;<br><br>
+&lt;cr&gt;!&lt;escape_command&gt;&lt;cr&gt;&lt;visible text&gt;&lt;cr&gt;<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">Escape format</div></td></tr><tr><td bgcolor="#EAEAEA">
+The whole escape sequence format is the following:
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<b>&lt;cr&gt;!&lt;escape_command&gt;&lt;cr&gt;&lt;visible text&gt;&lt;cr&gt;</b><br><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="note-box">&nbsp;&nbsp;&nbsp;&nbsp;<b>&lt;cr&gt;</b> is the carriage return character. You can obtain it by using the <a href="fnc_cr.html">$cr</a> function.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>&lt;visible text&gt;</b> is the text that will appear as <i>link</i> when you move the mouse over it.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>&lt;escape_command&gt;</b> is the description of the actions to be taken when the user interacts with the link.
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="note-box">&nbsp;&nbsp;&nbsp;&nbsp;The <b>&lt;escape_command&gt;</b> has the two following syntactic forms:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>&lt;escape_command&gt; ::= &lt;user_defined_commands&gt;</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>&lt;escape_command&gt; ::= &lt;builtin_link_description&gt;</b>
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">User defined links</div></td></tr><tr><td bgcolor="#EAEAEA">
+The user defined links allow you to perform arbitrary commands when the user interacts with the link.<br>
+The commands are specified in the &lt;escape_command&gt; part by using the following syntax:
+</td></tr><tr><td class="note-box">&nbsp;&nbsp;&nbsp;&nbsp;&lt;escape_command&gt; ::= &lt;user_defined_commands&gt;<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;user_defined_commands&gt; ::= &lt;command_rule&gt; [&lt;user_defined_commands&gt;]<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;command_rule&gt; ::= &lt;action_tag&gt;&lt;command&gt;<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;action_tag&gt; ::= "[!" &lt;action&gt; "]"<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;action&gt; ::= "rbt" | "mbt" | "dbl" | "txt"<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;command&gt; ::= any KVIrc command (see notes below)
+</td></tr><tr><td bgcolor="#EAEAEA">
+</td></tr><tr><td class="subtitle-table-cell"><div class="subtitle-text">A shortcut</div></td></tr><tr><td bgcolor="#EAEAEA">
+You may have a look at the <a href="fnc_fmtlink.html">$fmtlink</a> function: it does automatically some of the job explained
+in this document.
+</td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>See also</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="fnc_fmtlink.html">$fmtlink</a>
+<a href="fnc_cr.html">$cr</a>
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_generic_index_all.html">Miscellaneous</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

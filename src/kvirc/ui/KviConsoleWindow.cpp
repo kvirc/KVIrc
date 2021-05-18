@@ -338,6 +338,8 @@ void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e,
 		buffer += "<tr><td style=\"white-space: pre\">";
 		buffer += __tr2qs("Using server: <b>%1</b>").arg(KviQString::toHtmlEscaped(e->server()));
 
+		// roboirc
+		/*
 		if(e->hasHops())
 		{
 			buffer += R"(<tr><td bgcolor="#E0E0E0"><font color="#000000">)";
@@ -346,9 +348,10 @@ void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e,
 		}
 		else
 		{
+		*/
 			buffer += enr;
 			buffer += "</table>";
-		}
+
 	}
 
 	if(e->hasAccountName())

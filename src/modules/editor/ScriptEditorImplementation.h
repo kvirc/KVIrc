@@ -182,7 +182,9 @@ private:
 	void loadOptions();
 	void saveOptions();
 protected slots:
-	void saveToFile();
+    void newFile();
+    void saveFile();
+	void saveFileAs();
 	void loadFromFile();
 	void configureColors();
 	void updateRowColLabel();

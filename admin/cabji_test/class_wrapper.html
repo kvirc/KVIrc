@@ -1,0 +1,148 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>wrapper class</title>
+<link rel="stylesheet" href="kvirc_docs_styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release.16.2/build/highlight.min.js"></script>
+<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/night-owl.css">
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+ <tr>
+  <td align="left" bgcolor="#FFFFFF">
+    <a href="index.html"><img src="helplogoleft.png" iorder="0"></a>
+  </td>
+  <td align="right" bgcolor="#FFFFFF">
+    <img src="helplogoright.png">
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td class='title-table-cell'>
+      <div class='title-text'>wrapper class</div>      <div class='title-secondary-text'>A wrapper for the existing Qt widgets.</div>    </td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Inherits</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td><a href="class_object.html">object</a>
+<a href="class_widget.html">widget</a></td>
+  </tr>
+  <tr>
+    <td class='subtitle-table-cell'><div class='subtitle-text'>Description</div></td>
+  </tr>
+  <tr bgcolor="#EAEAEA">
+    <td>This class "wraps" existing KVIrc widgets and allows using the <a href="class_widget.html">widget</a>
+class API to manipulate them. You can use it, for example, to set the geometry of the
+KVIrc main window or to apply some crazy graphical changes to the UI.<br>
+The KVIrc Qt widgets are arranged in trees (just as the objects). The difference is that there can be more than one
+toplevel widget and so more than one tree. You can use <a href="fnc_objects.dump.html">$objects.dump()</a> to take a look at the KVIrc Qt objects tree.<br>
+Here is a part of the tree:
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+Ptr 23786128: top level object: kvirc_frame, class KviMainWindow, visible, rect = 1678, -3, 1680, 1030<br>
+&gt;Ptr 23496976: object: qt_rubberband, class QRubberBand<br>
+&gt;Ptr 23536608: object: main_frame_splitter, class QSplitter<br>
+&gt;&gt;Ptr 23795232: object: mdi_manager, class KviWindowStack<br>
+&gt;&gt;&gt;Ptr 23863200: object: qt_scrollarea_hcontainer, class QWidget<br>
+&gt;&gt;&gt;&gt;Ptr 23418224: object: , class QScrollBar<br>
+&gt;&gt;&gt;Ptr 23864832: object: qt_scrollarea_vcontainer, class QWidget<br>
+&gt;&gt;&gt;&gt;Ptr 22383424: object: , class QScrollBar<br>
+&gt;&gt;Ptr 25750832: object: mdi_manager, class KviWindowStack<br>
+&gt;&gt;&gt;Ptr 26112928: object: , class QWidget<br>
+&gt;&gt;&gt;&gt;Ptr 45381568: object: , class Oxygen::MdiWindowShadow<br>
+&gt;&gt;&gt;&gt;Ptr 45952496: object: mdi_child_Azzurra_#kvirc, class KviMdiChild<br>
+&gt;&gt;&gt;&gt;&gt;Ptr 43714656: object: #kvirc, class KviChannelWindow<br>
+&gt;Ptr 18004432: object: , class KviStatusBar<br>
+&gt;&gt;Ptr 18007408: object: msgstatuslabel, class QLabel<br>
+&gt;&gt;&gt;Ptr 24067088: object: , class Oxygen::TransitionWidget<br>
+&gt;Ptr 24503248: object: windowlist, class KviTreeWindowList<br>
+&gt;&gt;Ptr 24459744: object: qt_dockwidget_floatbutton, class QDockWidgetTitleButton<br>
+&gt;&gt;Ptr 24498560: object: qt_dockwidget_closebutton, class QDockWidgetTitleButton<br>
+&gt;&gt;Ptr 23996288: object: tree_windowlist, class KviTreeWindowListTreeWidget<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+As you can see the objects are identified by their names (for example "mdi_manager") and
+by their class names (for example KviChannelWindow).<br>
+To wrap a specific widget you must provide a path in the tree composed of search specifiers.<br>
+Each search specifier can have one of the following forms:
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-paren">(</span>1<span class="example-paren">)</span> &lt;class&gt;<br>
+<span class="example-paren">(</span>2<span class="example-paren">)</span> &lt;class&gt;::&lt;name&gt;<br>
+<span class="example-paren">(</span>3<span class="example-paren">)</span> ::&lt;name&gt;<br>
+<span class="example-paren">(</span>4<span class="example-paren">)</span> !Window::&lt;window_identifier&gt;<br>
+<span class="example-paren">(</span>5<span class="example-paren">)</span> !Parent::N<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+The first three forms may be preceded by the prefix <b>*</b> which will tell KVS to perform
+a recursive search from this point. Let's see some examples.<br>
+The form (1) matches the first widget with the specified class name.<br>
+For instance:
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%Frame</span> = $new<span class="example-paren">(</span>wrapper,0,test,KviMainWindow<span class="example-paren">)</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+This will wrap the first top level object with class KviMainWindow. Now you can use
+any <a href="class_widget.html">widget</a> or <a href="class_object.html">object</a> methods on it.
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%Frame</span> = $new<span class="example-paren">(</span>wrapper,0,test,KviMainWindow<span class="example-paren">)</span><br>
+<span class="example-variable">%Frame</span>-&gt;$setGeometry<span class="example-paren">(</span>20,20,400,400<span class="example-paren">)</span>;<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+If you want to wrap the KVIrc status bar you can use a composite path:
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%StatusBar</span> = $new<span class="example-paren">(</span>wrapper,0,test,KviMainWindow,KviStatusBar<span class="example-paren">)</span><br>
+<span class="example-variable">%StatusBar</span>-&gt;$setProperty<span class="example-paren">(</span>autoFillBackground,1<span class="example-paren">)</span><br>
+<span class="example-variable">%StatusBar</span>-&gt;$setBackgroundColor<span class="example-paren">(</span>80,80,0<span class="example-paren">)</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+The form (2) matches both the class and the widget name. In this way you can differentiate
+between children that have the same class.<br>
+For instance:
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%VerticalScrollBar</span> = $new<span class="example-paren">(</span>wrapper,0,test,KviMainWindow,QSplitter,KviWindowStack,QWidget::qt_scrollarea_vcontainer,QScrollBar<span class="example-paren">)</span><br>
+<span class="example-variable">%VerticalScrollBar</span>-&gt;$setProperty<span class="example-paren">(</span>invertedAppearance,1<span class="example-paren">)</span>;<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+In this way KVS was able to pick the vertical scrollbar instead of the horizontal one (which comes first in the list).
+(Now try to move a window out of the MDI area: the vertical scroll bar will be inverted!).<br>
+The form (3) matches only the name and ignores the class.<br>
+In our sample tree the following example is equivalent to the previous one.
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%VerticalScrollBar</span> = $new<span class="example-paren">(</span>wrapper,0,test,KviMainWindow,QSplitter,KviWindowStack,::qt_scrollarea_vcontainer,QScrollBar<span class="example-paren">)</span><br>
+<span class="example-variable">%VerticalScrollBar</span>-&gt;$setProperty<span class="example-paren">(</span>invertedAppearance,1<span class="example-paren">)</span>;<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+If you don't want to specify the full path to the widget you can try to use a recursive search which may skip some levels.
+Keep in mind that the recursive search is breadth-first and will return the first widget that matches.<br>
+In our sample tree the following would match the first widget with class KviChannelWindow.
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%Chan</span> = $new<span class="example-paren">(</span>wrapper,0,test,*KviChannelWindow<span class="example-paren">)</span><br>
+<span class="example-variable">%Chan</span>-&gt;$setBackgroundColor<span class="example-paren">(</span>80,0,0<span class="example-paren">)</span>;<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+The following would match the first widget with name #kvirc
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%Chan</span> = $new<span class="example-paren">(</span>wrapper,0,test,*::#kvirc<span class="example-paren">)</span><br>
+<span class="example-variable">%Chan</span>-&gt;$setBackgroundColor<span class="example-paren">(</span>80,0,0<span class="example-paren">)</span>;<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+The recursive search can start at any level, so if starting from the root does not work properly you might try
+specifying a part of the path and then searching recursively.
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%Chan</span> = $new<span class="example-paren">(</span>wrapper,0,test,KviMainWindow,*::#kvirc<span class="example-paren">)</span><br>
+<span class="example-variable">%Chan</span>-&gt;$setBackgroundColor<span class="example-paren">(</span>80,0,0<span class="example-paren">)</span>;<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+The form (4) allows you to jump directly to a specific KVIrc channel/query/console window,
+without the need of looking it up in the tree.
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%Win</span> = $new<span class="example-paren">(</span>wrapper,0,test,!Window::$window<span class="example-paren">)</span><br>
+<span class="example-variable">%Win</span>-&gt;$setBackgroundColor<span class="example-paren">(</span>80,0,0<span class="example-paren">)</span>;<br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+Finally the last form allows you to jump N levels up in the tree.<br>
+If N is omitted it is assumed to be 1.
+</td></tr><tr><td class="example-box"><pre><code class="c"><br>
+<span class="example-variable">%Win</span> = $new<span class="example-paren">(</span>wrapper,0,test,!Window::$window,!Parent::3<span class="example-paren">)</span><br>
+<span class="example-variable">%Win</span>-&gt;$setGeometry<span class="example-paren">(</span>10,10,40,40<span class="example-paren">)</span><br>
+</code></pre></td></tr><tr><td bgcolor="#EAEAEA">
+Experiment with it :)
+</td>
+  </tr>
+</table>
+<hr><a href="index.html">Index</a>, <a href="doc_class_index_all.html">Object Classes</a>
+<div class='footer'>KVIrc 4.9.2 Documentation - generated by gmagoon on Mon Dec  2 09:56:04 2019</div>
+</body>
+</html>

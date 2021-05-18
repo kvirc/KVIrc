@@ -115,13 +115,9 @@ void KviMenuBar::setupHelpPopup(QMenu * pop)
 
 	QAction * pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)), __tr2qs("&Tip of the Day"));
 	pAction->setData(KVI_INTERNALCOMMAND_TIP_OPEN);
-	help->addSeparator();
 
-	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Info)), __tr2qs("About &KVIrc"));
-	pAction->setData(KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
-	pAction->setMenuRole(QAction::AboutRole);
 
-	help->addSeparator();
+
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)), __tr2qs("KVIrc Home&page"));
 	pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE);
 	if(QString::compare(KviLocale::instance()->localeName(), QLatin1String("ru"), Qt::CaseInsensitive) == 0)
@@ -129,12 +125,16 @@ void KviMenuBar::setupHelpPopup(QMenu * pop)
 		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)), __tr2qs("KVIrc Russian Home&page"));
 		pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_RU);
 	}
-	help->addSeparator();
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Bug)), __tr2qs("Report a Bug / Propose Improvements"));
 	pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_BUGTRACK);
-	help->addSeparator();
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)), __tr2qs("Join KVIrc's Channel on freenode"));
 	pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_ON_FREENODE);
+
+    pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Info)), __tr2qs("About &KVIrc"));
+
+    pAction->setData(KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
+    pAction->setMenuRole(QAction::AboutRole);
+
 }
 
 void KviMenuBar::actionTriggered(QAction * pAction)
