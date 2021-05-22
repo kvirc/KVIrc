@@ -849,7 +849,7 @@ END_SERVERDB_GET_SERVER_PROPERTY
 		Autoconnect this network at KVIrc start.
 	@examples:
 		[example]
-		if(![fnc]$serverdb.networkExists[/fnc](freenode)) serverdb.addNetwork -q freenode
+		if(![fnc]$serverdb.networkExists[/fnc](LiberaChat)) serverdb.addNetwork -q LiberaChat
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -924,8 +924,8 @@ static bool serverdb_kvs_cmd_addNetwork(KviKvsModuleCommandCall * c)
 		Use password <password> to connect to the server.
 	@examples:
 		[example]
-		[comment]Sets the nickname HelLViS69 for the server irc.freenode.net[/comment][br]
-		serverdb.setNickName -s irc.freenode.net HelLViS69
+		[comment]Sets the nickname HelLViS69 for the server irc.libera.chat[/comment][br]
+		serverdb.setNickName -s irc.libera.chat HelLViS69
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1096,8 +1096,8 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the nickname HelLViS69 for the freenode network[/comment][br]
-		serverdb.setNetworkNickName -q freenode HelLViS69
+		[comment]Quietly sets the nickname HelLViS69 for the LiberaChat network[/comment][br]
+		serverdb.setNetworkNickName -q LiberaChat HelLViS69
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1122,8 +1122,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkNickName, setNickName)
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the username kvirc for the freenode network[/comment][br]
-		serverdb.setNetworkUserName -q freenode kvirc
+		[comment]Quietly sets the username kvirc for the LiberaChat network[/comment][br]
+		serverdb.setNetworkUserName -q LiberaChat kvirc
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1148,8 +1148,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkUserName, setUserName)
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the real name KVIrc 4.0 for the freenode network[/comment][br]
-		serverdb.setNetworkRealName -q freenode KVIrc 4.0
+		[comment]Quietly sets the real name KVIrc 4.0 for the LiberaChat network[/comment][br]
+		serverdb.setNetworkRealName -q LiberaChat KVIrc 4.0
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1175,8 +1175,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkRealName, setRealName)
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the encoding UTF-8 for the freenode network[/comment][br]
-		serverdb.setNetworkEncoding -q freenode UTF-8
+		[comment]Quietly sets the encoding UTF-8 for the LiberaChat network[/comment][br]
+		serverdb.setNetworkEncoding -q LiberaChat UTF-8
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1201,8 +1201,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkEncoding, setEncoding)
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the text encoding UTF-8 for the freenode network[/comment][br]
-		serverdb.setNetworkTextEncoding -q freenode UTF-8
+		[comment]Quietly sets the text encoding UTF-8 for the LiberaChat network[/comment][br]
+		serverdb.setNetworkTextEncoding -q LiberaChat UTF-8
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1227,8 +1227,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkTextEncoding, setTextEn
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the description for the freenode network[/comment][br]
-		serverdb.setNetworkDescription -q freenode The FOSS Network
+		[comment]Quietly sets the description for the LiberaChat network[/comment][br]
+		serverdb.setNetworkDescription -q LiberaChat The FOSS Network
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1253,8 +1253,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkDescription, setDescrip
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the connect command for the freenode network[/comment][br]
-		serverdb.setNetworkConnectCommand -q freenode ns identify HelLViS69 foobar
+		[comment]Quietly sets the connect command for the LiberaChat network[/comment][br]
+		serverdb.setNetworkConnectCommand -q LiberaChat ns identify HelLViS69 foobar
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1279,8 +1279,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkConnectCommand, setOnCo
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the login command for the freenode network[/comment][br]
-		serverdb.setNetworkLoginCommand -q freenode join #KVIrc
+		[comment]Quietly sets the login command for the LiberaChat network[/comment][br]
+		serverdb.setNetworkLoginCommand -q LiberaChat join #KVIrc
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1303,8 +1303,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkLoginCommand, setOnLogi
 		Items in the list have to be separated by a comma, and each item has to be in the form <channel:string>:<password:string>
 	@examples:
 		[example]
-		[comment]Set two autojoin channels for freenode[/comment][br]
-		serverdb.setNetworkJoinChannels freenode #kvirc:,#secretchan:password
+		[comment]Set two autojoin channels for LiberaChat[/comment][br]
+		serverdb.setNetworkJoinChannels LiberaChat #kvirc:,#secretchan:password
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1329,8 +1329,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkJoinChannels, setAutoJo
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the nickname HelLViS69 for the freenode network[/comment][br]
-		serverdb.setServerNickName -q irc.freenode.net HelLViS69
+		[comment]Quietly sets the nickname HelLViS69 for the LiberaChat network[/comment][br]
+		serverdb.setServerNickName -q irc.libera.chat HelLViS69
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1355,8 +1355,8 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerNickName, setNickName)
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the username kvirc for the freenode server[/comment][br]
-		serverdb.setServerUserName -q irc.freenode.net kvirc
+		[comment]Quietly sets the username kvirc for the LiberaChat server[/comment][br]
+		serverdb.setServerUserName -q irc.libera.chat kvirc
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1381,8 +1381,8 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerUserName, setUserName)
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the real name KVIrc 4.0 for the freenode server[/comment][br]
-		serverdb.setServerRealName -q irc.freenode.net KVIrc 4.0
+		[comment]Quietly sets the real name KVIrc 4.0 for the LiberaChat server[/comment][br]
+		serverdb.setServerRealName -q irc.libera.chat KVIrc 4.0
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1408,8 +1408,8 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerRealName, setRealName)
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the encoding UTF-8 for the irc.freenode.net server[/comment][br]
-		serverdb.setServerEncoding -q irc.freenode.net UTF-8
+		[comment]Quietly sets the encoding UTF-8 for the irc.libera.chat server[/comment][br]
+		serverdb.setServerEncoding -q irc.libera.chat UTF-8
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1434,8 +1434,8 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerEncoding, setEncoding)
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the text encoding UTF-8 for the irc.freenode.net server[/comment][br]
-		serverdb.setServerTextEncoding -q irc.freenode.net UTF-8
+		[comment]Quietly sets the text encoding UTF-8 for the irc.libera.chat server[/comment][br]
+		serverdb.setServerTextEncoding -q irc.libera.chat UTF-8
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1460,8 +1460,8 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerTextEncoding, setTextEnco
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the description for the freenode server[/comment][br]
-		serverdb.setServerDescription -q irc.freenode.net The FOSS Network
+		[comment]Quietly sets the description for the LiberaChat server[/comment][br]
+		serverdb.setServerDescription -q irc.libera.chat The FOSS Network
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1486,8 +1486,8 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerDescription, setDescripti
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the connect command for the freenode server[/comment][br]
-		serverdb.setServerConnectCommand -q irc.freenode.net ns identify HelLViS69 foobar
+		[comment]Quietly sets the connect command for the LiberaChat server[/comment][br]
+		serverdb.setServerConnectCommand -q irc.libera.chat ns identify HelLViS69 foobar
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1512,8 +1512,8 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerConnectCommand, setOnConn
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the login command for the freenode server[/comment][br]
-		serverdb.setServerLoginCommand -q irc.freenode.net join #KVIrc
+		[comment]Quietly sets the login command for the LiberaChat server[/comment][br]
+		serverdb.setServerLoginCommand -q irc.libera.chat join #KVIrc
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1536,8 +1536,8 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerLoginCommand, setOnLoginC
 		Items in the list have to be separated by a comma, and each item has to be in the form <channel:string>:<password:string>
 	@examples:
 		[example]
-		[comment]Set two autojoin channels for irc.freenode.net[/comment][br]
-		serverdb.setServerJoinChannels irc.freenode.net #kvirc:,#secretchan:password
+		[comment]Set two autojoin channels for irc.libera.chat[/comment][br]
+		serverdb.setServerJoinChannels irc.libera.chat #kvirc:,#secretchan:password
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]

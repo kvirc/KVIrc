@@ -133,7 +133,7 @@ void KviMenuBar::setupHelpPopup(QMenu * pop)
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Bug)), __tr2qs("Report a Bug / Propose Improvements"));
 	pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_BUGTRACK);
 	help->addSeparator();
-	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)), __tr2qs("Join KVIrc's Channel on freenode"));
+	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)), __tr2qs("Join KVIrc's Channel on Libera.Chat"));
 	pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_ON_FREENODE);
 }
 

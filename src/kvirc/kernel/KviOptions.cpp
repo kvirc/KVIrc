@@ -424,7 +424,7 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS] = {
 KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST_OPTIONS] = {
 	STRINGLIST_OPTION("HighlightWords", KviOption_sectFlagIrcView),
 	STRINGLIST_OPTION("SpamWords", KviOption_sectFlagAntiSpam),
-	STRINGLIST_OPTION_WITHDEFAULT("RecentChannels", KviOption_sectFlagRecent, "#kvirc" KVI_RECENT_CHANNELS_SEPARATOR "freenode"),
+	STRINGLIST_OPTION_WITHDEFAULT("RecentChannels", KviOption_sectFlagRecent, "#kvirc" KVI_RECENT_CHANNELS_SEPARATOR "LiberaChat"),
 	STRINGLIST_OPTION("RecentServers", KviOption_sectFlagRecent),
 	STRINGLIST_OPTION("RecentNicknames", KviOption_sectFlagRecent),
 	STRINGLIST_OPTION("ModuleExtensionToolbars", KviOption_sectFlagFrame),
