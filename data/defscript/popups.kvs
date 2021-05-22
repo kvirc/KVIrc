@@ -1288,9 +1288,9 @@ defpopup(channeltextview)
 
 defpopup(channels)
 {
-	item($tr("Join","defscript") #freenode,$icon("channel"))
+	item($tr("Join","defscript") #libera,$icon("channel"))
 	{
-		j #freenode;
+		j #libera;
 	}
 
 	item($tr("Join","defscript") #kde,$icon("channel"))

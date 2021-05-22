@@ -22,7 +22,7 @@ KVIrc is written by Szymon Stefanek and the KVIrc development team, with [contri
 * [KVIrc API](http://www.kvirc.net/api)
 * [How to submit a bug report](https://github.com/kvirc/KVIrc/wiki/Submitting-a-bug-report)
 * [Open a bug report or make a suggestion](https://github.com/kvirc/KVIrc/issues)
-* Talk to us - [Join #KVIrc](https://webchat.freenode.net?nick=kvirc-user&channels=%23kvirc&prompt=1&uio=OT10cnVlde) on freenode.net
+* Talk to us - #KVIrc on Irc.Libera.Chat
 
 ---
 
