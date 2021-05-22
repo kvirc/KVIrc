@@ -421,6 +421,14 @@ NServers=1
 1_Port=6697
 1_SSL=true
 NServers=2
+[LiberaChat]
+0_Hostname=irc.libera.chat
+0_Description=Libera.Chat:%20Random%20server
+1_Hostname=irc.libera.chat
+1_Description=Libera.Chat:%20Random%20server%20SSL
+1_Port=6697
+1_SSL=true
+NServers=2
 [LibraIRC]
 0_Hostname=irc.librairc.net
 0_Description=LibraIRC:%20Random%20server
