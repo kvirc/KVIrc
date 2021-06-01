@@ -460,12 +460,26 @@ void KviIrcConnection::handleInitialCapAck()
 
 	m_pStateData->setInsideInitialCapReq(false);
 
+	bool bError = false;
 	bool bUsed = false;
 
 	//SASL
 	if(target()->server()->enabledSASL() && m_pStateData->enabledCaps().contains("sasl", Qt::CaseInsensitive))
 	{
-		if(target()->server()->saslMethod() == QStringLiteral("EXTERNAL"))
+		QMap<QString, QString>::const_iterator i = serverInfo()->supportedCaps().constFind("sasl");
+		if(i == serverInfo()->supportedCaps().constEnd())
+		{
+			// BUG: we have enabled sasl but can't find the sasl cap value.
+			bError = true;
+		}
+		else if(!i.value().isEmpty())
+		{
+			QStringList lMechList = i.value().split(',', QString::SkipEmptyParts);
+			if (!lMechList.contains(target()->server()->saslMethod(), Qt::CaseInsensitive))
+				bError = true; // Configured SASL mechanism not available.
+		}
+
+		if(!bError && target()->server()->saslMethod() == QStringLiteral("EXTERNAL"))
 		{
 			if(KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate) && link()->socket()->usingSSL())
 			{
@@ -476,7 +490,7 @@ void KviIrcConnection::handleInitialCapAck()
 		}
 
 		// Assume PLAIN if all other SASL methods are not chosen or we're attempting a fallback
-		if(!bUsed && !target()->server()->saslNick().isEmpty() && !target()->server()->saslPass().isEmpty())
+		if(!bError && !bUsed && !target()->server()->saslNick().isEmpty() && !target()->server()->saslPass().isEmpty())
 		{
 			bUsed = true;
 			sendFmtData("AUTHENTICATE PLAIN");
