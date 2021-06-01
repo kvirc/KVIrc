@@ -37,26 +37,16 @@ void KviIrcConnectionStateData::changeEnabledCapList(const QString & szCapList)
 {
 	for(auto szCap : szCapList.split(' ', QString::SkipEmptyParts))
 	{
-		// cap modifiers are:
-		//  '-' : disable a capability (should not be present in a LS message...)
-		//  '=' : sticky (can't be disabled once enabled)
-		//  '~' : needs ack for modification
-
 		bool bRemove = false;
-
-		switch(szCap[0].unicode())
+		if(szCap[0].unicode() == '-')
 		{
-			case '-':
-				bRemove = true;
-			// fall through
-			case '~':
-			case '=':
-				szCap.remove(0, 1);
-				break;
-			default:
-				// ok
-				break;
+			// Capability is being removed.
+			bRemove = true;
+			szCap.remove(0, 1);
 		}
+
+		if(szCap.length() < 1)
+			continue; // Malformed cap which just had a negation.
 
 		szCap = szCap.toLower();
 
@@ -67,5 +57,18 @@ void KviIrcConnectionStateData::changeEnabledCapList(const QString & szCapList)
 			m_lEnabledCaps.removeAll(szCap);
 		else if(!m_lEnabledCaps.contains(szCap))
 			m_lEnabledCaps.append(szCap);
+	}
+}
+
+void KviIrcConnectionStateData::disableEnabledCapList(const QString & szCapList)
+{
+	for(auto szCap : szCapList.split(' ', QString::SkipEmptyParts))
+	{
+		szCap = szCap.toLower();
+
+		if(szCap == "identify-msg")
+			m_bIdentifyMsgCapabilityEnabled = false;
+
+		m_lEnabledCaps.removeAll(szCap);
 	}
 }

@@ -2555,9 +2555,9 @@ void KviIrcServerParser::parseLiteralCap(KviIrcMessage * msg)
 	// :prefix CAP <nickname> <command> [*] :tls userhost-in-names multi-prefix sasl
 
 	// Server2client subcommands:
-	// LIST, LS, ACK, NAK
+	// LIST, LS, ACK, NAK, ADD, DEL
 	// Client2server subcommands:
-	// LIST, LS, REQ, CLEAR, END
+	// LIST, LS, REQ, END
 
 	QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
 	QString szCmd = msg->connection()->decodeText(msg->safeParam(1));
@@ -2632,6 +2632,25 @@ void KviIrcServerParser::parseLiteralCap(KviIrcMessage * msg)
 
 		if(!msg->haltOutput())
 			msg->console()->output(KVI_OUT_CAP, __tr2qs("Currently enabled capabilities: %Q"), &szProtocols);
+	}
+	else if(szCmd.compare("NEW", Qt::CaseInsensitive) == 0)
+	{
+		// :prefix CAP <nickname> NEW :<cap1> <cap2> <cap3> ....
+
+		msg->connection()->serverInfo()->addSupportedCaps(szProtocols);
+
+		if(!msg->haltOutput())
+			msg->console()->output(KVI_OUT_CAP, __tr2qs("New server capabilities: %Q"), &szProtocols);
+	}
+	else if(szCmd.compare("DEL", Qt::CaseInsensitive) == 0)
+	{
+		// :prefix CAP <nickname> DEL :<cap1> <cap2> <cap3> ....
+
+		msg->connection()->serverInfo()->deleteSupportedCaps(szProtocols);
+		msg->connection()->stateData()->disableEnabledCapList(szProtocols);
+
+		if(!msg->haltOutput())
+			msg->console()->output(KVI_OUT_CAP, __tr2qs("Server capabilities removed: %Q"), &szProtocols);
 	}
 	else if(!msg->haltOutput())
 		msg->console()->output(KVI_OUT_CAP, __tr2qs("Received unknown extended capability message: %Q %Q"), &szCmd, &szProtocols);

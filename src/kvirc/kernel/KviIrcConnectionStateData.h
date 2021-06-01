@@ -118,6 +118,7 @@ public:
 
 	const QStringList & enabledCaps() const { return m_lEnabledCaps; }
 	void changeEnabledCapList(const QString & szCapList);
+	void disableEnabledCapList(const QString & szCapList);
 
 	bool identifyMsgCapabilityEnabled() const
 	{

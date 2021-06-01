@@ -53,33 +53,46 @@ void KviIrcConnectionServerInfo::addSupportedCaps(const QString & szCapList)
 {
 	m_bSupportsCap = true;
 
-	QStringList lTmp = szCapList.split(' ', QString::SkipEmptyParts);
-	foreach(QString szCap, lTmp)
+	for(auto szCap : szCapList.split(' ', QString::SkipEmptyParts))
 	{
-		// cap modifiers are:
-		//  '-' : disable a capability (should not be present in a LS message...)
-		//  '=' : sticky (can't be disabled once enabled)
-		//  '~' : needs ack for modification
-
-		if(szCap.length() < 1)
-			continue; // shouldn't happen
-
-		switch(szCap[0].unicode())
+		bool bRemove = false;
+		if(szCap[0].unicode() == '-')
 		{
-			case '-':
-			case '~':
-			case '=':
-				szCap.remove(0, 1);
-				break;
-			default:
-				// ok
-				break;
+			// Capability is being removed.
+			bRemove = true;
+			szCap.remove(0, 1);
 		}
 
-		szCap = szCap.toLower();
+		if(szCap.length() < 1)
+			continue; // Malformed cap which just had a negation.
 
-		if(!m_lSupportedCaps.contains(szCap))
-			m_lSupportedCaps.append(szCap);
+		if(bRemove)
+		{
+			m_szSupportedCaps.remove(szCap.toLower());
+		}
+		else
+		{
+			QString szCapValue;
+			int iValuePos = szCap.indexOf('=');
+			if(iValuePos != -1)
+			{
+				szCapValue = szCap.mid(iValuePos + 1);
+				szCap.truncate(iValuePos);
+
+				if(szCap.length() < 1)
+					continue; // Malformed cap which has a value but no name.
+			}
+
+			m_szSupportedCaps[szCap.toLower()] = szCapValue;
+		}
+	}
+}
+
+void KviIrcConnectionServerInfo::deleteSupportedCaps(const QString & szCapList)
+{
+	for(auto szCap : szCapList.split(' ', QString::SkipEmptyParts))
+	{
+		m_szSupportedCaps.remove(szCap.toLower());
 	}
 }
 

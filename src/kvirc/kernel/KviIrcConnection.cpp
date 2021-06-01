@@ -329,7 +329,7 @@ void KviIrcConnection::linkEstablished()
 
 		// FIXME: The PING method does NOT work with bouncers. We need a timeout here.
 
-		if(sendFmtData("CAP LS\r\nPING :%Q", &(target()->server()->hostName())))
+		if(sendFmtData("CAP LS 302\r\nPING :%Q", &(target()->server()->hostName())))
 			return;
 
 		//m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Failed to send the CAP LS request. Server capabilities will not be detected."));
@@ -411,7 +411,7 @@ void KviIrcConnection::handleInitialCapLs()
 // STARTTLS support: this has to be checked first because it could imply
 // a full cap renegotiation
 #ifdef COMPILE_SSL_SUPPORT
-	if((!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS() && serverInfo()->supportedCaps().contains("tls", Qt::CaseInsensitive))
+	if((!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS() && serverInfo()->supportedCaps().contains("tls"))
 	{
 		if(trySTARTTLS(false))
 			return; // STARTTLS negotiation in progress
@@ -421,7 +421,7 @@ void KviIrcConnection::handleInitialCapLs()
 	QString szRequests;
 
 	auto cap_add = [&](const char * c) {
-		if(serverInfo()->supportedCaps().contains(c, Qt::CaseInsensitive))
+		if(serverInfo()->supportedCaps().contains(c))
 		{
 			szRequests.append(c);
 			szRequests.append(" ");
@@ -440,6 +440,7 @@ void KviIrcConnection::handleInitialCapLs()
 	cap_add("userhost-in-names");
 	cap_add("chghost");
 	cap_add("znc.in/self-message");
+	cap_add("cap-notify");
 
 	if(szRequests.isEmpty())
 	{

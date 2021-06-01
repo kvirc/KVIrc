@@ -28,7 +28,7 @@
 #include "KviQString.h"
 #include "kvi_inttypes.h"
 
-#include <QStringList>
+#include <QMap>
 
 class KviIrcConnectionServerInfo;
 
@@ -322,7 +322,7 @@ private:
 	// Mode that changes a setting and never has a parameter (eg: "m" as channel moderated)
 	QString m_szPlainModes = "pstnmi";
 	bool m_bSupportsCap = false;
-	QStringList m_lSupportedCaps;
+	QMap<QString, QString> m_szSupportedCaps;
 	bool m_bSupportsWhox = false; // supports WHOX
 public:
 	char registerModeChar() const { return m_pServInfo ? m_pServInfo->getRegisterModeChar() : 0; }
@@ -342,7 +342,7 @@ public:
 	const QString & supportedParameterWhenSetModes() const { return m_szParameterWhenSetModes; }
 	const QString & supportedPlainModes() const { return m_szPlainModes; }
 	bool supportsCap() const { return m_bSupportsCap; }
-	const QStringList & supportedCaps() const { return m_lSupportedCaps; }
+	const QMap<QString, QString> & supportedCaps() const { return m_szSupportedCaps; }
 	bool supportsWatchList() const { return m_bSupportsWatchList; }
 	bool supportsCodePages() const { return m_bSupportsCodePages; }
 	bool supportsWhox() const { return m_bSupportsWhox; }
@@ -378,6 +378,7 @@ protected:
 	void setSupportsWatchList(bool bSupportsWatchList) { m_bSupportsWatchList = bSupportsWatchList; }
 	void setSupportsCodePages(bool bSupportsCodePages) { m_bSupportsCodePages = bSupportsCodePages; }
 	void addSupportedCaps(const QString & szCapList);
+	void deleteSupportedCaps(const QString & szCapList);
 	void setMaxTopicLen(int iTopLen) { m_iMaxTopicLen = iTopLen; }
 	void setMaxModeChanges(int iModes) { m_iMaxModeChanges = iModes; }
 	void setSupportsWhox(bool bSupportsWhox) { m_bSupportsWhox = bSupportsWhox; }
