@@ -431,16 +431,16 @@ void KviIrcConnection::handleInitialCapLs()
 	if(target()->server()->enabledSASL())
 		cap_add("sasl");
 
-	cap_add("znc.in/server-time-iso");
-	cap_add("server-time");
-	cap_add("multi-prefix");
-	cap_add("away-notify");
 	cap_add("account-notify");
-	cap_add("extended-join");
-	cap_add("userhost-in-names");
-	cap_add("chghost");
-	cap_add("znc.in/self-message");
+	cap_add("away-notify");
 	cap_add("cap-notify");
+	cap_add("chghost");
+	cap_add("extended-join");
+	cap_add("multi-prefix");
+	cap_add("server-time");
+	cap_add("userhost-in-names");
+	cap_add("znc.in/self-message");
+	cap_add("znc.in/server-time-iso");
 
 	if(szRequests.isEmpty())
 	{
