@@ -57,8 +57,9 @@
 		are two users: A and B.[br]
 		When user A wants to see the B's avatar he simply sends a CTCP AVATAR request
 		to B (the request is sent through a PRIVMSG IRC command). This is negotiated by
-		hiding an U+0003 '4' U+000F sequence at the start of B's realname, which doesn't
-		show up on IRC clients.[br]
+		hiding an U+0003 '4' U+000F, U+0003 '5' U+000F, U+0003 '6' U+000F or
+		U+0003 '7' U+000F sequence (with values other than '4' being deprecated) at the
+		start of B's realname, which doesn't show up on IRC clients.[br]
 		User B replies with a CTCP AVATAR notification (sent through a NOTICE IRC command)
 		with the name or URL of his avatar.[br]
 		The actual syntax for the notification is:[br]
