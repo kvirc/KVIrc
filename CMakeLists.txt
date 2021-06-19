@@ -452,6 +452,13 @@ if(Qt5Multimedia_FOUND)
 	list(APPEND qt5_kvirc_modules Qt5::Multimedia)
 endif()
 
+# Qt Concurrent
+find_package(Qt5Concurrent)
+if(Qt5Concurrent_FOUND)
+	include_directories(${Qt5Concurrent_INCLUDE_DIRS})
+	list(APPEND qt5_kvirc_modules Qt5::Concurrent)
+endif()
+
 # Qt D-Bus support
 if(WANT_QTDBUS)
 	find_package(Qt5DBus)

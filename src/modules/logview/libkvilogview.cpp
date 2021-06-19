@@ -32,6 +32,12 @@
 #include "KviIconManager.h"
 #include "KviLocale.h"
 #include "KviApplication.h"
+#include "KviOptions.h"
+#include "KviFileUtils.h"
+#include "KviFileDialog.h"
+
+#include <QString>
+#include <QDate>
 
 static QRect g_rectLogViewGeometry;
 LogViewWindow * g_pLogViewWindow = nullptr;
@@ -107,12 +113,31 @@ static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pP
 	if(!pData)
 		return false;
 
-	LogFile log{pData->szName};
-	int iId = LogFile::PlainText;
+	LogFile log { pData->szName };
+	LogFile::ExportType exportType = LogFile::PlainText;
 	if(pData->szType == QLatin1String("html"))
-		iId = LogFile::HTML;
+		exportType = LogFile::HTML;
 
-	g_pLogViewWindow->createLog(&log, iId, &(pData->szFile));
+	QString szDate = log.date().toString("yyyy.MM.dd");
+	QString szLog = KVI_OPTION_STRING(KviOption_stringLogsExportPath).trimmed();
+	if(!szLog.isEmpty())
+		szLog += KVI_PATH_SEPARATOR_CHAR;
+	szLog += QString("%1_%2.%3_%4").arg(log.typeString(), log.name(), log.network(), szDate);
+	KviFileUtils::adjustFilePath(szLog);
+
+	// Getting output file path from the user, with overwrite confirmation
+	if(!KviFileDialog::askForSaveFileName(
+	       szLog,
+	       __tr2qs_ctx("Export Log - KVIrc", "log"),
+	       szLog,
+	       QString(),
+	       false,
+	       true,
+	       true,
+	       g_pLogViewWindow))
+		return false;
+
+	log.createLog(exportType, szLog, &(pData->szFile));
 
 	return true;
 }

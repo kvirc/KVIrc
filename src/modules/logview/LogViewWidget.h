@@ -31,19 +31,21 @@
 
 #include <QTreeWidget>
 
+#include <memory>
+
 class LogListViewItem : public QTreeWidgetItem
 {
 public:
-	LogListViewItem(QTreeWidgetItem * pPar, LogFile::Type eType, LogFile * pLog);
-	LogListViewItem(QTreeWidget * pPar, LogFile::Type eType, LogFile * pLog);
-	~LogListViewItem(){};
+	LogListViewItem(QTreeWidgetItem * pPar, LogFile::Type eType, std::shared_ptr<LogFile> pLog);
+	LogListViewItem(QTreeWidget * pPar, LogFile::Type eType, std::shared_ptr<LogFile> pLog);
+	~LogListViewItem() {};
 
 public:
 	LogFile::Type m_eType;
-	LogFile * m_pFileData;
+	std::shared_ptr<LogFile> m_pFileData;
 
 public:
-	LogFile * log() { return m_pFileData; };
+	std::weak_ptr<LogFile> log() { return m_pFileData; };
 	virtual QString fileName() const { return QString(); };
 };
 
@@ -51,7 +53,7 @@ class LogListViewItemFolder : public LogListViewItem
 {
 public:
 	LogListViewItemFolder(QTreeWidgetItem * pPar, const QString & szLabel);
-	~LogListViewItemFolder(){};
+	~LogListViewItemFolder() {};
 
 public:
 };
@@ -60,15 +62,16 @@ class LogListViewItemType : public LogListViewItem
 {
 public:
 	LogListViewItemType(QTreeWidget * pPar, LogFile::Type eType);
-	~LogListViewItemType(){};
+	~LogListViewItemType() {};
 };
 
 class LogListViewLog : public LogListViewItem
 {
 public:
-	LogListViewLog(QTreeWidgetItem * pPar, LogFile::Type eType, LogFile * pLog);
-	~LogListViewLog(){};
+	LogListViewLog(QTreeWidgetItem * pPar, LogFile::Type eType, std::shared_ptr<LogFile> pLog);
+	~LogListViewLog() {};
 	virtual QString fileName() const { return m_pFileData->fileName(); };
+
 protected:
 	bool operator<(const QTreeWidgetItem & other) const
 	{
