@@ -329,7 +329,7 @@ void KviIrcConnection::linkEstablished()
 
 		// FIXME: The PING method does NOT work with bouncers. We need a timeout here.
 
-		if(sendFmtData("CAP LS\r\nPING :%Q", &(target()->server()->hostName())))
+		if(sendFmtData("CAP LS 302\r\nPING :%Q", &(target()->server()->hostName())))
 			return;
 
 		//m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Failed to send the CAP LS request. Server capabilities will not be detected."));
@@ -411,7 +411,7 @@ void KviIrcConnection::handleInitialCapLs()
 // STARTTLS support: this has to be checked first because it could imply
 // a full cap renegotiation
 #ifdef COMPILE_SSL_SUPPORT
-	if((!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS() && serverInfo()->supportedCaps().contains("tls", Qt::CaseInsensitive))
+	if((!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS() && serverInfo()->supportedCaps().contains("tls"))
 	{
 		if(trySTARTTLS(false))
 			return; // STARTTLS negotiation in progress
@@ -421,7 +421,7 @@ void KviIrcConnection::handleInitialCapLs()
 	QString szRequests;
 
 	auto cap_add = [&](const char * c) {
-		if(serverInfo()->supportedCaps().contains(c, Qt::CaseInsensitive))
+		if(serverInfo()->supportedCaps().contains(c))
 		{
 			szRequests.append(c);
 			szRequests.append(" ");
@@ -431,15 +431,16 @@ void KviIrcConnection::handleInitialCapLs()
 	if(target()->server()->enabledSASL())
 		cap_add("sasl");
 
-	cap_add("znc.in/server-time-iso");
-	cap_add("server-time");
-	cap_add("multi-prefix");
-	cap_add("away-notify");
 	cap_add("account-notify");
-	cap_add("extended-join");
-	cap_add("userhost-in-names");
+	cap_add("away-notify");
+	cap_add("cap-notify");
 	cap_add("chghost");
+	cap_add("extended-join");
+	cap_add("multi-prefix");
+	cap_add("server-time");
+	cap_add("userhost-in-names");
 	cap_add("znc.in/self-message");
+	cap_add("znc.in/server-time-iso");
 
 	if(szRequests.isEmpty())
 	{
@@ -459,12 +460,26 @@ void KviIrcConnection::handleInitialCapAck()
 
 	m_pStateData->setInsideInitialCapReq(false);
 
+	bool bError = false;
 	bool bUsed = false;
 
 	//SASL
 	if(target()->server()->enabledSASL() && m_pStateData->enabledCaps().contains("sasl", Qt::CaseInsensitive))
 	{
-		if(target()->server()->saslMethod() == QStringLiteral("EXTERNAL"))
+		QMap<QString, QString>::const_iterator i = serverInfo()->supportedCaps().constFind("sasl");
+		if(i == serverInfo()->supportedCaps().constEnd())
+		{
+			// BUG: we have enabled sasl but can't find the sasl cap value.
+			bError = true;
+		}
+		else if(!i.value().isEmpty())
+		{
+			QStringList lMechList = i.value().split(',', QString::SkipEmptyParts);
+			if (!lMechList.contains(target()->server()->saslMethod(), Qt::CaseInsensitive))
+				bError = true; // Configured SASL mechanism not available.
+		}
+
+		if(!bError && target()->server()->saslMethod() == QStringLiteral("EXTERNAL"))
 		{
 			if(KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate) && link()->socket()->usingSSL())
 			{
@@ -475,7 +490,7 @@ void KviIrcConnection::handleInitialCapAck()
 		}
 
 		// Assume PLAIN if all other SASL methods are not chosen or we're attempting a fallback
-		if(!bUsed && !target()->server()->saslNick().isEmpty() && !target()->server()->saslPass().isEmpty())
+		if(!bError && !bUsed && !target()->server()->saslNick().isEmpty() && !target()->server()->saslPass().isEmpty())
 		{
 			bUsed = true;
 			sendFmtData("AUTHENTICATE PLAIN");
