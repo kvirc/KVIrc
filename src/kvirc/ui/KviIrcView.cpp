@@ -1671,14 +1671,17 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 		}
 	}
 
-	// Need to draw the sunken rect around the view now...
-	pa.setPen(palette().dark().color());
-	pa.drawLine(0, 0, widgetWidth, 0);
-	pa.drawLine(0, 0, 0, widgetHeight);
-	pa.setPen(palette().light().color());
-	widgetWidth--;
-	pa.drawLine(1, widgetHeight - 1, widgetWidth, widgetHeight - 1);
-	pa.drawLine(widgetWidth, 1, widgetWidth, widgetHeight);
+	if(KVI_OPTION_BOOL(KviOption_boolDrawShadePanel))
+	{
+		// Need to draw the sunken rect around the view now...
+		pa.setPen(palette().dark().color());
+		pa.drawLine(0, 0, widgetWidth, 0);
+		pa.drawLine(0, 0, 0, widgetHeight);
+		pa.setPen(palette().light().color());
+		widgetWidth--;
+		pa.drawLine(1, widgetHeight - 1, widgetWidth, widgetHeight - 1);
+		pa.drawLine(widgetWidth, 1, widgetWidth, widgetHeight);
+	}
 }
 
 //
