@@ -57,9 +57,10 @@
 		are two users: A and B.[br]
 		When user A wants to see the B's avatar he simply sends a CTCP AVATAR request
 		to B (the request is sent through a PRIVMSG IRC command). This is negotiated by
-		a hidden color-code bitfield at the start of B's realname, which doesn't show up
-		on IRC clients, where bit 2, that is U+0003 '4' U+000F, U+0003 '5' U+000F,
-		U+0003 '6' U+000F or U+0003 '7' U+000F, signals an avatar being present.[br]
+		the ASCII sequence ETX, '0'-'7', SI, which doesn't show up on IRC clients, at the
+		start of B's realname, where bit 2 of the ASCII digit is set when an avatar is
+		present. (Bits 0 and 1 are unrelated to avatar negotiation and should be left unset
+		if not being used.)[br]
 		User B replies with a CTCP AVATAR notification (sent through a NOTICE IRC command)
 		with the name or URL of his avatar.[br]
 		The actual syntax for the notification is:[br]
