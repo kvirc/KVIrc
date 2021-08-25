@@ -56,7 +56,11 @@
 		Every IRC user has a client-side property called AVATAR. Let's say that there
 		are two users: A and B.[br]
 		When user A wants to see the B's avatar he simply sends a CTCP AVATAR request
-		to B (the request is sent through a PRIVMSG IRC command).[br]
+		to B (the request is sent through a PRIVMSG IRC command). The presence of the avatar
+		is announced by the ASCII sequence ETX, one of '0'-'7', SI, which doesn't show up
+		on IRC clients, at the start of B's realname, where bit 2 (the fours place) of the
+		ASCII digit is set when an avatar is present. (Bits 0 and 1 are unrelated to avatar
+		negotiation and should be left unset if not being used.)[br]
 		User B replies with a CTCP AVATAR notification (sent through a NOTICE IRC command)
 		with the name or URL of his avatar.[br]
 		The actual syntax for the notification is:[br]
