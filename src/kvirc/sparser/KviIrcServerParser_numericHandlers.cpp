@@ -376,7 +376,7 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 				if((!_OUTPUT_MUTE) && (!msg->haltOutput()) && KVI_OPTION_BOOL(KviOption_boolShowExtendedServerInfo))
 					msg->console()->outputNoFmt(KVI_OUT_SERVERINFO, __tr2qs("This server supports the WHOX, extra information will be retrieved"));
 			}
-			else if(kvi_strEqualCIN("UTF8ONLY", p, 4))
+			else if(kvi_strEqualCIN("UTF8ONLY", p, 8))
 			{
 				msg->connection()->setEncoding("UTF-8");
 			}
