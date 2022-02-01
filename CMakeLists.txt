@@ -1108,7 +1108,7 @@ if(WANT_DOXYGEN)
 		set(CMAKE_STATUS_DOXYGEN_SUPPORT "Yes")
 		add_custom_target(
 			devdocs
-			@echo Generating api documentation
+			COMMENT "Generating API documentation..."
 		)
 
 		add_custom_command(
@@ -1143,7 +1143,7 @@ endif()
 if(UNIX)
 	add_custom_target(
 		distclean
-		@echo Cleaning for source distribution
+		COMMENT "Cleaning for source distribution..."
 	)
 	set(
 		DISTCLEANED
