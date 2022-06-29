@@ -864,8 +864,8 @@ void ScriptEditorImplementation::saveToFile()
 	QString szFileName;
 	if(KviFileDialog::askForSaveFileName(szFileName,
 	       __tr2qs_ctx("Choose a Filename - KVIrc", "editor"),
-	       QString::null,
-	       QString::null, false, true, true, this))
+	       QString(),
+	       QString(), false, true, true, this))
 	{
 		QString szBuffer = m_pEditor->toPlainText();
 
@@ -949,7 +949,7 @@ void ScriptEditorImplementation::loadFromFile()
 	QString szFileName;
 	if(KviFileDialog::askForOpenFileName(szFileName,
 	       __tr2qs_ctx("Select a File - KVIrc", "editor"),
-	       QString::null, KVI_FILTER_SCRIPT, false, true, this))
+	       QString(), KVI_FILTER_SCRIPT, false, true, this))
 	{
 		QString szBuffer;
 		if(KviFileUtils::loadFile(szFileName, szBuffer))

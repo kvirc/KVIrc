@@ -47,7 +47,7 @@ public:
 	    const QString & szNickServMask,
 	    const QString & szMessageRegexp,
 	    const QString & szIdentifyCommand,
-	    const QString & szServerMask = QString::null)
+	    const QString & szServerMask = QString())
 	    : KviHeapObject(),
 	      m_szRegisteredNick(szRegisteredNick),
 	      m_szNickServMask(szNickServMask),
@@ -72,7 +72,7 @@ public:
 	    const QString & szNickServMask,
 	    const QString & szMessageRegexp,
 	    const QString & szIdentifyCommand,
-	    const QString & szServerMask = QString::null);
+	    const QString & szServerMask = QString());
 
 	void save(KviConfigurationFile * cfg, const QString & prefix);
 	// returns false if the loaded data has no sense

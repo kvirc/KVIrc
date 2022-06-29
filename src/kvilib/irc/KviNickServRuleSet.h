@@ -53,7 +53,7 @@ public:
 	void setEnabled(bool bEnabled) { m_bEnabled = bEnabled; };
 	bool isEmpty() { return m_pRules ? m_pRules->isEmpty() : true; };
 	void addRule(KviNickServRule * r);
-	KviNickServRule * matchRule(const QString & szNick, const KviIrcMask * nickServ, const QString & szMsg, const QString & szServer = QString::null);
+	KviNickServRule * matchRule(const QString & szNick, const KviIrcMask * nickServ, const QString & szMsg, const QString & szServer = QString());
 	void copyFrom(const KviNickServRuleSet & src);
 	void load(const QString & szConfigFile);
 	void save(const QString & szConfigFile);
