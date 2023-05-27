@@ -50,12 +50,13 @@
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT
-#include <KToolInvocation> // invokeTerminal() for system.runcmd
-#else                      // tools we need to work around the absence of
+// invokeTerminal() for system.runcmd
+// tools we need to work around the absence of
+#include <KToolInvocation>
+#endif
 // invokeTerminal()
 #include <QProcess>
 #include <QStringList>
-#endif
 
 PluginManager * g_pPluginManager;
 
