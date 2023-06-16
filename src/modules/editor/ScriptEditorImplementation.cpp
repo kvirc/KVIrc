@@ -173,6 +173,10 @@ void ScriptEditorWidget::asyncCompleterCreation()
 		m_pListModulesNames = new QStringList(d.entryList(QDir::Files | QDir::Readable));
 		iModulesCount = m_pListModulesNames->count();
 	}
+
+	if (iIndex <= m_pListModulesNames->size())
+		return;
+
 	QString szModuleName = m_pListModulesNames->at(iIndex);
 	iIndex++;
 
