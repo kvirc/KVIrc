@@ -62,6 +62,10 @@ install:
         # Strawberry perl doesn't support MSVC, but we force the support.
         c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
     - ps: |
+        gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv 46bd761f7a49b0ec
+        pacman-key --finger 5F944B027F7FE2091985AA2EFA11531AA0AA7F57
+        pacman-key --lsign-key 5F944B027F7FE2091985AA2EFA11531AA0AA7F57
+        c:\msys64\usr\bin\pacman -Syyu
         c:\msys64\usr\bin\pacman -Fy
         c:\msys64\usr\bin\pacman -Q
         c:\msys64\usr\bin\pacman -S --noconfirm $env:mingw_fourple-enchant
