@@ -58,15 +58,8 @@ install:
     - ps: Invoke-WebRequest https://cygwin.com/setup-x86.exe -OutFile c:\cygwin-setup.exe
     - c:\cygwin-setup.exe --quiet-mode --no-shortcuts --no-startmenu --no-desktop --upgrade-also --only-site --site http://cygwin.mirror.constant.com/ --root c:\cygwin --packages bash --allow-unsupported-windows option --site http://ctm.crouchingtigerhiddenfruitbat.org/pub/cygwin/circa/2022/11/23/063457
     - ps: |
-        choco install strawberryperl -y --version 5.28.2.1 $env:choco_arch
-        # Strawberry perl doesn't support MSVC, but we force the support.
-        cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h
+        choco install strawberryperl -y --version 5.32.1.1 $env:choco_arch
     - ps: |
-        gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv 46bd761f7a49b0ec
-        pacman-key --finger 5F944B027F7FE2091985AA2EFA11531AA0AA7F57
-        pacman-key --lsign-key 5F944B027F7FE2091985AA2EFA11531AA0AA7F57
-        c:\msys64\usr\bin\pacman -Syyu
-        c:\msys64\usr\bin\pacman -Fy
         c:\msys64\usr\bin\pacman -Q
         c:\msys64\usr\bin\pacman -S --noconfirm $env:mingw_fourple-enchant
     - ps: |
