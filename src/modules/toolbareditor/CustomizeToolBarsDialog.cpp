@@ -53,8 +53,8 @@
 #include <QEvent>
 #include <QSplitter>
 #include <QDropEvent>
-#include <QDesktopWidget>
 #include <QMimeData>
+#include <QScreen>
 
 CustomizeToolBarsDialog * CustomizeToolBarsDialog::m_pInstance = nullptr;
 extern QRect g_rectToolBarEditorDialogGeometry;
@@ -376,7 +376,7 @@ void CustomizeToolBarsDialog::currentToolBarChanged()
 
 void CustomizeToolBarsDialog::showEvent(QShowEvent * e)
 {
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+	QRect rect = g_pMainWindow->screen()->availableGeometry();
 	move(rect.x() + ((rect.width() - width()) / 2), rect.y() + ((rect.height() - height()) / 2));
 
 	QWidget::showEvent(e);

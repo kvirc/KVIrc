@@ -499,14 +499,14 @@ void saveUrlList()
 
 	QTextStream stream(&file);
 
-	stream << g_List.size() << endl;
+	stream << g_List.size() << Qt::endl;
 
 	for(auto tmp : g_List)
 	{
-		stream << tmp->url << endl;
-		stream << tmp->window << endl;
-		stream << tmp->count << endl;
-		stream << tmp->timestamp << endl;
+		stream << tmp->url << Qt::endl;
+		stream << tmp->window << Qt::endl;
+		stream << tmp->count << Qt::endl;
+		stream << tmp->timestamp << Qt::endl;
 	}
 	file.flush();
 	file.close();
@@ -569,10 +569,10 @@ void saveBanList()
 
 	QTextStream stream(&file);
 
-	stream << g_BanList.size() << endl;
+	stream << g_BanList.size() << Qt::endl;
 	for(auto tmp : g_BanList)
 	{
-		stream << *tmp << endl;
+		stream << *tmp << Qt::endl;
 	}
 	file.flush();
 	file.close();
@@ -749,7 +749,7 @@ bool urllist_module_event_onUrl(KviKvsModuleEventCall * c)
 		QString tmpTimestamp;
 		QDate d = QDate::currentDate();
 		QString date;
-		date.sprintf("%d-%d%d-%d%d", d.year(), d.month() / 10, d.month() % 10, d.day() / 10, d.day() % 10);
+		date.asprintf("%d-%d%d-%d%d", d.year(), d.month() / 10, d.month() % 10, d.day() / 10, d.day() % 10);
 		tmpTimestamp = "[" + date + "]" + " [";
 		tmpTimestamp += QTime::currentTime().toString() + "]";
 		tmp->url = szUrl;

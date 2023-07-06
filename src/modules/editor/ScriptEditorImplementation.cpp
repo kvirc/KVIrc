@@ -95,7 +95,7 @@ ScriptEditorWidget::ScriptEditorWidget(QWidget * pParent)
     : QTextEdit(pParent)
 {
 	m_pSyntaxHighlighter = nullptr;
-	setTabStopWidth(48);
+	setTabStopDistance(48);
 	setAcceptRichText(false);
 	setWordWrapMode(QTextOption::NoWrap);
 	m_pParent = pParent;

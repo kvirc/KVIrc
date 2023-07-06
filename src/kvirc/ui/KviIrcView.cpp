@@ -409,7 +409,6 @@ void KviIrcView::setFont(const QFont & f)
 
 	QFont newFont(f);
 	newFont.setKerning(false);
-	newFont.setStyleStrategy(QFont::StyleStrategy(newFont.styleStrategy() | QFont::ForceIntegerMetrics));
 	QWidget::setFont(newFont);
 	update();
 }
@@ -1685,7 +1684,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 // The IrcView : calculate line wraps
 //
 
-#define IRCVIEW_WCHARWIDTH(c) (((c).unicode() < 0xff) ? m_iFontCharacterWidth[(c).unicode()] : m_pFm->width(c))
+#define IRCVIEW_WCHARWIDTH(c) (((c).unicode() < 0xff) ? m_iFontCharacterWidth[(c).unicode()] : m_pFm->horizontalAdvance(c))
 
 void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 {
@@ -2100,7 +2099,7 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 
 	// cache the first 256 characters
 	for(unsigned short i = 0; i < 256; i++)
-		m_iFontCharacterWidth[i] = m_pFm->width(QChar(i));
+		m_iFontCharacterWidth[i] = m_pFm->horizontalAdvance(QChar(i));
 
 	// Currently KviIrcView requires that the bold font variant has the same metrics as the non-bold one.
 	// To ensure this, we check if the width of the bold and non-bold variants of the first 256 characters match.
@@ -2111,9 +2110,9 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 		fontBold.setBold(true);
 		QFontMetrics fmBold = QFontMetrics(fontBold);
 		for(unsigned short i = 32; i < 256; i++)
-			if (m_iFontCharacterWidth[i] && fmBold.width(QChar(i)) != m_iFontCharacterWidth[i])
+			if (m_iFontCharacterWidth[i] && fmBold.horizontalAdvance(QChar(i)) != m_iFontCharacterWidth[i])
 			{
-				//printf("Char %d: %d != %d\n", i, fmBold.width(QChar(i)), m_iFontCharacterWidth[i]);
+				//printf("Char %d: %d != %d\n", i, fmBold.horizontalAdvance(QChar(i)), m_iFontCharacterWidth[i]);
 				m_bUseRealBold = false;
 				break;
 			}
@@ -2121,7 +2120,7 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 	}
 
 	// fix for #489 (horizontal tabulations)
-	m_iFontCharacterWidth[9] = m_pFm->width("\t");
+	m_iFontCharacterWidth[9] = m_pFm->horizontalAdvance("\t");
 
 	if(m_iFontLineWidth < 1)
 		m_iFontLineWidth = 1;
@@ -2132,20 +2131,20 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 		QDateTime datetime = KVI_OPTION_BOOL(KviOption_boolIrcViewTimestampUTC) ? QDateTime::currentDateTime().toUTC() : QDateTime::currentDateTime();
 		szTimestamp = datetime.toString(KVI_OPTION_STRING(KviOption_stringIrcViewTimestampFormat));
 		szTimestamp.append(' ');
-		m_iWrapMargin = m_pFm->width(szTimestamp);
+		m_iWrapMargin = m_pFm->horizontalAdvance(szTimestamp);
 	}
 	else
 	{
-		m_iWrapMargin = m_pFm->width("wwww");
+		m_iWrapMargin = m_pFm->horizontalAdvance("wwww");
 	}
 
-	m_iMinimumPaintWidth = (((int)(m_pFm->width('w'))) << 1);
+	m_iMinimumPaintWidth = (((int)(m_pFm->horizontalAdvance('w'))) << 1);
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))
 		m_iMinimumPaintWidth += m_iWrapMargin;
 
 	m_iRelativePixmapY = (int)(m_iFontLineSpacing + KVI_IRCVIEW_PIXMAP_SIZE) >> 1;
 
-	m_iIconWidth = (int)m_pFm->width("w");
+	m_iIconWidth = (int)m_pFm->horizontalAdvance("w");
 
 	if(fi.fixedPitch() && (m_iIconWidth > 0))
 	{
@@ -2665,12 +2664,12 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 					curChar = l->szText.at(l->pBlocks[i].block_start + retValue);
 					if (curChar >= 0xD800 && curChar <= 0xDC00) // Surrogate pair
 					{
-						iLeft += m_pFm->width(l->szText.mid(retValue), 2);
+						iLeft += m_pFm->horizontalAdvance(l->szText.mid(retValue), 2);
 						retValue+=2;
 					}
 					else
 					{
-						iLeft += (curChar < 0xff) ? m_iFontCharacterWidth[curChar.unicode()] : m_pFm->width(curChar);
+						iLeft += (curChar < 0xff) ? m_iFontCharacterWidth[curChar.unicode()] : m_pFm->horizontalAdvance(curChar);
 						retValue++;
 					}
 				}

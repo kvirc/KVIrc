@@ -657,29 +657,29 @@ void OptionsWidget_messageColors::load()
 		{
 			MessageListWidgetItem * it = (MessageListWidgetItem *)m_pListView->item(i);
 
-			tmp.sprintf("Fore%d", it->optionId());
+			tmp.asprintf("Fore%d", it->optionId());
 			int fore = cfg.readIntEntry(tmp, it->msgType()->fore());
 			if(fore < 0 || fore > 15)
 				fore = 0;
 			it->msgType()->setFore(fore);
 
-			tmp.sprintf("Back%d", it->optionId());
+			tmp.asprintf("Back%d", it->optionId());
 			int back = cfg.readIntEntry(tmp, it->msgType()->back());
 			if(back < 0 || back > 15)
 				back = KviControlCodes::Transparent;
 			it->msgType()->setBack(back);
 
-			tmp.sprintf("Icon%d", it->optionId());
+			tmp.asprintf("Icon%d", it->optionId());
 			int ico = cfg.readIntEntry(tmp, it->msgType()->pixId());
 			if(ico < 0 || ico >= KviIconManager::IconCount)
 				ico = 0;
 			it->msgType()->setPixId(ico);
 
-			tmp.sprintf("Log%d", it->optionId());
+			tmp.asprintf("Log%d", it->optionId());
 			bool bLog = cfg.readBoolEntry(tmp, it->msgType()->logEnabled());
 			it->msgType()->enableLogging(bLog);
 
-			tmp.sprintf("Level%d", it->optionId());
+			tmp.asprintf("Level%d", it->optionId());
 			int iLevel = cfg.readIntEntry(tmp, it->msgType()->level());
 			it->msgType()->setLevel(iLevel);
 

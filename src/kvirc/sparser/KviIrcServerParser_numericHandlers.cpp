@@ -680,7 +680,7 @@ void KviIrcServerParser::parseNumericTopicWhoTime(KviIrcMessage * msg)
 			szDate = date.toString(Qt::ISODate);
 			break;
 		case 2:
-			szDate = date.toString(Qt::SystemLocaleShortDate);
+			szDate = QLocale().toString(date, QLocale::ShortFormat);
 			break;
 	}
 
@@ -771,7 +771,7 @@ void getDateTimeStringFromCharTimeT(QString & szBuffer, const char * time_t_stri
 				szBuffer = date.toString(Qt::ISODate);
 				break;
 			case 2:
-				szBuffer = date.toString(Qt::SystemLocaleShortDate);
+				szBuffer = QLocale().toString(date, QLocale::ShortFormat);
 				break;
 		}
 	}
@@ -1656,7 +1656,7 @@ void KviIrcServerParser::parseNumericWhoisChannels(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 
-		QStringList sl = szChans.split(" ", QString::SkipEmptyParts);
+		QStringList sl = szChans.split(" ", Qt::SkipEmptyParts);
 		QString szChanList;
 
 		for(auto szCur : sl)
@@ -1767,7 +1767,7 @@ void KviIrcServerParser::parseNumericWhoisIdle(KviIrcMessage * msg)
 					szTmp = date.toString(Qt::ISODate);
 					break;
 				case 2:
-					szTmp = date.toString(Qt::SystemLocaleShortDate);
+					szTmp = QLocale().toString(date, QLocale::ShortFormat);
 					break;
 			}
 
@@ -2100,7 +2100,7 @@ void KviIrcServerParser::parseNumericCreationTime(KviIrcMessage * msg)
 			szDate = date.toString(Qt::ISODate);
 			break;
 		case 2:
-			szDate = date.toString(Qt::SystemLocaleShortDate);
+			szDate = QLocale().toString(date, QLocale::ShortFormat);
 			break;
 	}
 

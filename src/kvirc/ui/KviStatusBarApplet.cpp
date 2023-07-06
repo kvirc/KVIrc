@@ -133,7 +133,7 @@ KviStatusBarAwayIndicator::KviStatusBarAwayIndicator(KviStatusBar * pParent, Kvi
 
 	updateDisplay();
 
-	if(!pixmap())
+	if(pixmap(Qt::ReturnByValue).isNull())
 		setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)));
 }
 
@@ -383,16 +383,16 @@ void KviStatusBarClock::adjustMinWidth()
 	if(m_b24h)
 	{
 		if(m_iType == KviStatusBarClock::HMS)
-			setFixedWidth(fm.width("00:00:00"));
+			setFixedWidth(fm.horizontalAdvance("00:00:00"));
 		else
-			setFixedWidth(fm.width("00:00"));
+			setFixedWidth(fm.horizontalAdvance("00:00"));
 	}
 	else
 	{
 		if(m_iType == KviStatusBarClock::HMS)
-			setFixedWidth(fm.width("00:00:00 AM"));
+			setFixedWidth(fm.horizontalAdvance("00:00:00 AM"));
 		else
-			setFixedWidth(fm.width("00:00 AM"));
+			setFixedWidth(fm.horizontalAdvance("00:00 AM"));
 	}
 }
 
@@ -504,7 +504,7 @@ KviStatusBarConnectionTimer::KviStatusBarConnectionTimer(KviStatusBar * pParent,
 	m_bTotal = false;
 
 	QFontMetrics fm(font());
-	setFixedWidth(fm.width("000 d 00 h 00 m 00 s"));
+	setFixedWidth(fm.horizontalAdvance("000 d 00 h 00 m 00 s"));
 }
 
 KviStatusBarConnectionTimer::~KviStatusBarConnectionTimer()
@@ -615,7 +615,7 @@ KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,
 
 	updateDisplay();
 
-	if(!pixmap())
+	if(pixmap(Qt::ReturnByValue).isNull())
 		setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::NotUpdate)));
 }
 

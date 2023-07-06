@@ -833,14 +833,14 @@ void DccVoiceWindow::connectionInProgress()
 const QString & DccVoiceWindow::target()
 {
 	// This may change on the fly...
-	m_szTarget.sprintf("%s@%s:%s",
+	m_szTarget.asprintf("%s@%s:%s",
 	    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 	return m_szTarget;
 }
 
 void DccVoiceWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer.sprintf("dccvoice_%s_%s_%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
+	buffer.asprintf("dccvoice_%s_%s_%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 }
 
 void DccVoiceWindow::fillCaptionBuffers()

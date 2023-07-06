@@ -49,7 +49,7 @@ KviModeEditor::KviModeEditor(QWidget * par, KviWindowToolPageButton * button, co
 	setFocusPolicy(Qt::ClickFocus);
 
 	QScrollArea * pScrollArea = new QScrollArea(this);
-	pScrollArea->viewport()->setBackgroundRole(QPalette::Background);
+	pScrollArea->viewport()->setBackgroundRole(QPalette::Window);
 	pMasterLayout->addWidget(pScrollArea, 0, 0);
 
 	pMasterLayout->setRowStretch(1, 1);

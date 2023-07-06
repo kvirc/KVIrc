@@ -57,20 +57,20 @@ namespace UPnP
 	    , m_iPort(port)
 	{
 		m_szInformationUrl = informationUrl;
-		qDebug() << "UPnP::Service: created information service url='" << m_szInformationUrl << "'." << endl;
+		qDebug() << "UPnP::Service: created information service url='" << m_szInformationUrl << "'." << Qt::endl;
 	}
 
 	// The constructor for action services
 	Service::Service(const ServiceParameters & params)
 	    : m_szControlUrl(params.controlUrl), m_szInformationUrl(params.scpdUrl), m_iPendingRequests(0), m_szServiceId(params.serviceId), m_szServiceType(params.serviceType), m_szBaseXmlPrefix("s"), m_szHostname(params.hostname), m_iPort(params.port)
 	{
-		qDebug() << "CREATED UPnP::Service: url='" << m_szControlUrl << "' id='" << m_szServiceId << "'." << endl;
+		qDebug() << "CREATED UPnP::Service: url='" << m_szControlUrl << "' id='" << m_szServiceId << "'." << Qt::endl;
 	}
 
 	// The destructor
 	Service::~Service()
 	{
-		qDebug() << "DESTROYED UPnP::Service [url=" << m_szControlUrl << ",  id=" << m_szServiceId << "]" << endl;
+		qDebug() << "DESTROYED UPnP::Service [url=" << m_szControlUrl << ",  id=" << m_szServiceId << "]" << Qt::endl;
 	}
 
 	// Makes a UPnP action request
@@ -89,7 +89,7 @@ namespace UPnP
 	// Makes a UPnP action request (keeps pointers from the external interface)
 	int Service::callActionInternal(const QString & actionName, const QMap<QString, QString> * arguments, const QString & prefix)
 	{
-		qDebug() << "UPnP::Service: calling remote procedure '" << actionName << "'." << endl;
+		qDebug() << "UPnP::Service: calling remote procedure '" << actionName << "'." << Qt::endl;
 
 		// Create the data message
 		//NOTE: we shouldm use serviceId_ instead of serviceType_, but it seems that my router
@@ -162,7 +162,7 @@ namespace UPnP
 	// TODO: rename to downloadFile()
 	int Service::callInformationUrl()
 	{
-		qDebug() << "UPnP::Service: requesting file '" << m_szInformationUrl << "'." << endl;
+		qDebug() << "UPnP::Service: requesting file '" << m_szInformationUrl << "'." << Qt::endl;
 
 		// Send the GET request
 		// TODO: User-Agent: Mozilla/4.0 (compatible; UPnP/1.0; Windows NT/5.1)
@@ -193,20 +193,20 @@ namespace UPnP
 		QString faultString = XmlFunctions::getNodeValue(response, "/faultstring");
 		QString errorCode = XmlFunctions::getNodeValue(response, "/detail/" + faultString + "/errorCode");
 		QString errorDescription = XmlFunctions::getNodeValue(response, "/detail/" + faultString + "/errorDescription");
-		qWarning() << "UPnP::Service - Action failed: " << errorCode << " " << errorDescription << endl;
+		qWarning() << "UPnP::Service - Action failed: " << errorCode << " " << errorDescription << Qt::endl;
 	}
 
 	// The control point received a response to callAction()
 	void Service::gotActionResponse(const QString & responseType, const QMap<QString, QString> & /*resultValues*/)
 	{
-		qWarning() << "UPnP::Service - Action response '" << responseType << "' is not handled." << endl;
+		qWarning() << "UPnP::Service - Action response '" << responseType << "' is not handled." << Qt::endl;
 	}
 
 	// The control point received a response to callInformationUrl()
 	void Service::gotInformationResponse(const QDomNode & response)
 	{
 		QString rootTagName = response.nodeName();
-		qWarning() << "UPnP::Service - Service response (with root '" << rootTagName << "') is not handled." << endl;
+		qWarning() << "UPnP::Service - Service response (with root '" << rootTagName << "') is not handled." << Qt::endl;
 	}
 
 	// The QHttp object retrieved data.
@@ -214,11 +214,11 @@ namespace UPnP
 	{
 		QNetworkReply * reply = qobject_cast<QNetworkReply *>(sender());
 
-		qDebug() << "UPnP::Service: received HTTP response for request " << endl;
+		qDebug() << "UPnP::Service: received HTTP response for request " << Qt::endl;
 
 		if(!reply)
 		{
-			qWarning() << "UPnP::Service - HTTP Request failed: " << reply->errorString() << endl;
+			qWarning() << "UPnP::Service - HTTP Request failed: " << reply->errorString() << Qt::endl;
 			m_iPendingRequests--;
 			emit queryFinished(true);
 			return;
@@ -226,7 +226,7 @@ namespace UPnP
 
 		if(reply->error() != QNetworkReply::NoError)
 		{
-			qWarning() << "UPnP::Service - HTTP Request failed: " << reply->errorString() << endl;
+			qWarning() << "UPnP::Service - HTTP Request failed: " << reply->errorString() << Qt::endl;
 			m_iPendingRequests--;
 			emit queryFinished(true);
 			reply->deleteLater();
@@ -254,7 +254,7 @@ namespace UPnP
 				if(cutAt > -1)
 				{
 					baseNamespace.truncate(cutAt);
-					qDebug() << "Device is using " << baseNamespace << " as XML namespace" << endl;
+					qDebug() << "Device is using " << baseNamespace << " as XML namespace" << Qt::endl;
 					m_szBaseXmlPrefix = baseNamespace;
 				}
 			}
@@ -262,13 +262,13 @@ namespace UPnP
 			// Determine how to process the data
 			if(xml.namedItem(m_szBaseXmlPrefix + ":Envelope").isNull())
 			{
-				qDebug() << "UPnP::Service: plain XML detected, calling gotInformationResponse()." << endl;
+				qDebug() << "UPnP::Service: plain XML detected, calling gotInformationResponse()." << Qt::endl;
 				// No SOAP envelope found, this is a normal response to callService()
 				gotInformationResponse(xml.lastChild());
 			}
 			else
 			{
-				qDebug() << xml.toString() << endl;
+				qDebug() << xml.toString() << Qt::endl;
 				// Got a SOAP message response to callAction()
 				QDomNode resultNode = XmlFunctions::getNode(xml, "/" + m_szBaseXmlPrefix + ":Envelope/" + m_szBaseXmlPrefix + ":Body").firstChild();
 
@@ -278,7 +278,7 @@ namespace UPnP
 				{
 					if(resultNode.nodeName().startsWith("m:") || resultNode.nodeName().startsWith("u:"))
 					{
-						qDebug() << "UPnP::Service: SOAP envelope detected, calling gotActionResponse()." << endl;
+						qDebug() << "UPnP::Service: SOAP envelope detected, calling gotActionResponse()." << Qt::endl;
 						// Action success, return SOAP body
 						QMap<QString, QString> resultValues;
 
@@ -298,7 +298,7 @@ namespace UPnP
 				}
 				else
 				{
-					qDebug() << "UPnP::Service: SOAP error detected, calling gotActionResponse()." << endl;
+					qDebug() << "UPnP::Service: SOAP error detected, calling gotActionResponse()." << Qt::endl;
 
 					// Action failed
 					gotActionErrorResponse(resultNode);
@@ -307,7 +307,7 @@ namespace UPnP
 		}
 		else
 		{
-			qWarning() << "UPnP::Service - XML parsing failed: " << errorMessage << endl;
+			qWarning() << "UPnP::Service - XML parsing failed: " << errorMessage << Qt::endl;
 		}
 
 		// Only emit when bytes>0

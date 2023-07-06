@@ -173,22 +173,22 @@ QString KviTreeWindowListItem::key() const
 			QString szText;
 			KviWindowListBase::getTextForConsole(szText, (KviConsoleWindow *)m_pWindow);
 
-			ret.sprintf("%2d%s", iType, szText.toLower().toUtf8().data());
+			ret.asprintf("%2d%s", iType, szText.toLower().toUtf8().data());
 		}
 		else
 		{
-			ret.sprintf("%2d%s", iType, m_pWindow->windowName().toLower().toUtf8().data());
+			ret.asprintf("%2d%s", iType, m_pWindow->windowName().toLower().toUtf8().data());
 		}
 	}
 	else
 	{
 		if(iType == KviWindow::Console)
 		{
-			ret.sprintf("%2d%4u", iType, ((KviConsoleWindow *)m_pWindow)->context() ? ((KviConsoleWindow *)m_pWindow)->context()->id() : 9999);
+			ret.asprintf("%2d%4u", iType, ((KviConsoleWindow *)m_pWindow)->context() ? ((KviConsoleWindow *)m_pWindow)->context()->id() : 9999);
 		}
 		else
 		{
-			ret.sprintf("%2d%4d", iType, parent() ? parent()->indexOfChild((QTreeWidgetItem *)this) : 9999);
+			ret.asprintf("%2d%4d", iType, parent() ? parent()->indexOfChild((QTreeWidgetItem *)this) : 9999);
 		}
 	}
 	return ret;
@@ -230,9 +230,9 @@ void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent * e)
 
 	if(KVI_OPTION_BOOL(KviOption_boolWheelScrollsWindowsList))
 	{
-		if(e->delta() < 0)
+		if(e->pixelDelta().x() < 0)
 			((KviTreeWindowList *)parent())->switchWindow(true, false);
-		else if(e->delta() > 0)
+		else if(e->pixelDelta().x() > 0)
 			((KviTreeWindowList *)parent())->switchWindow(false, false);
 	}
 	else
@@ -245,7 +245,7 @@ void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent * e)
 			return;
 
 		if(
-		    ((e->delta() < 0) && (pBar->value() < pBar->maximum())) || ((e->delta() > 0) && (pBar->value() > pBar->minimum())))
+		    ((e->pixelDelta().x() < 0) && (pBar->value() < pBar->maximum())) || ((e->pixelDelta().x() > 0) && (pBar->value() > pBar->minimum())))
 			QApplication::sendEvent(pBar, e);
 	}
 }
@@ -283,7 +283,7 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent * e)
 			//right click: open popup
 			wnd->contextPopup();
 		}
-		else if(e->button() & Qt::MidButton)
+		else if(e->button() & Qt::MiddleButton)
 		{
 			//mid click: close window
 			wnd->delayedClose();

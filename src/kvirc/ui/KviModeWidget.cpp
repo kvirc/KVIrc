@@ -174,7 +174,7 @@ std::map<QChar, QString> KviModeWidget::parseChannelModeString(const QString& sz
 {
 	std::map<QChar, QString> modeDict;
 
-	for(const auto & szSubstring : szModes.split(QChar(' '), QString::SkipEmptyParts))
+	for(const auto & szSubstring : szModes.split(QChar(' '), Qt::SkipEmptyParts))
 	{
 		if(szSubstring.size() >= 3 && szSubstring.at(1) == QChar(':'))
 		{

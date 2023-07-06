@@ -115,7 +115,7 @@ namespace ThemeFunctions
 		// load its picture
 		pByteArray = r.binaryInfoFields()->find("Image");
 		if(pByteArray)
-			pix.loadFromData(*pByteArray, nullptr, nullptr);
+			pix.loadFromData(*pByteArray);
 
 		if(pix.isNull())
 		{
@@ -182,7 +182,7 @@ namespace ThemeFunctions
 			QPixmap pixScreenshot;
 			pByteArray = r.binaryInfoFields()->find(szTmp);
 			if(pByteArray)
-				pixScreenshot.loadFromData(*pByteArray, nullptr, nullptr);
+				pixScreenshot.loadFromData(*pByteArray);
 
 			if(szThemeName.isEmpty() || szThemeVersion.isEmpty() || szThemeSubdirectory.isEmpty() || szThemeEngineVersion.isEmpty())
 				bValid = false;

@@ -102,7 +102,6 @@ KviConsoleWindow::KviConsoleWindow(int iFlags) : KviWindow(KviWindow::Console, _
 	m_pButtonBox->setMargin(0);
 	new QLabel(__tr2qs("Address:"), m_pButtonBox);
 	m_pAddressEdit = new KviThemedComboBox(m_pButtonBox, this, "url_editor");
-	m_pAddressEdit->setAutoCompletion(true);
 	m_pAddressEdit->setDuplicatesEnabled(false);
 	m_pAddressEdit->setEditable(true);
 	m_pAddressEdit->addItem(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Url))), "");
@@ -1282,7 +1281,7 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 				szTmp = date.toString(Qt::ISODate);
 				break;
 			case 2:
-				szTmp = date.toString(Qt::SystemLocaleShortDate);
+				szTmp = QLocale().toString(date, QLocale::ShortFormat);
 				break;
 		}
 

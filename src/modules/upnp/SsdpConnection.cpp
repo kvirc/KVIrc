@@ -62,7 +62,7 @@ namespace UPnP
 	// Data was received by the socket
 	void SsdpConnection::slotDataReceived()
 	{
-		qDebug() << "UPnP::SsdpConnection: received " << m_pSocket->bytesAvailable() << " bytes." << endl;
+		qDebug() << "UPnP::SsdpConnection: received " << m_pSocket->bytesAvailable() << " bytes." << Qt::endl;
 
 		// Response from Diederik's Acatel router:
 		//
@@ -114,7 +114,7 @@ namespace UPnP
 	// Send a broadcast to detect all devices
 	void SsdpConnection::queryDevices(int bindPort)
 	{
-		qDebug() << "UPnP::SsdpConnection: sending broadcast packet." << endl;
+		qDebug() << "UPnP::SsdpConnection: sending broadcast packet." << Qt::endl;
 
 		// Send a packet to a broadcast address
 		QHostAddress address("239.255.255.250");
@@ -130,7 +130,7 @@ namespace UPnP
 		bool success = m_pSocket->bind(bindPort);
 		if(!success)
 		{
-			qDebug() << "UPnP::SsdpConnection: failed to bind to port " << bindPort << "." << endl;
+			qDebug() << "UPnP::SsdpConnection: failed to bind to port " << bindPort << "." << Qt::endl;
 		}
 
 		// Send the data
@@ -139,7 +139,7 @@ namespace UPnP
 
 		if(bytesWritten == -1)
 		{
-			qDebug() << "UPnP::SsdpConnection: failed to send the UPnP broadcast packet." << endl;
+			qDebug() << "UPnP::SsdpConnection: failed to send the UPnP broadcast packet." << Qt::endl;
 		}
 	}
 

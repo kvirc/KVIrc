@@ -69,7 +69,7 @@ bool KviKvsProcessAsyncOperation::start()
 
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_NOSHELL)
 	{
-		args = m_pData->szCommandline.split(" ", QString::SkipEmptyParts);
+		args = m_pData->szCommandline.split(" ", Qt::SkipEmptyParts);
 	}
 	else
 	{
@@ -90,7 +90,7 @@ bool KviKvsProcessAsyncOperation::start()
 			szShell = "sh -c";
 #endif
 		}
-		args = szShell.split(" ", QString::SkipEmptyParts);
+		args = szShell.split(" ", Qt::SkipEmptyParts);
 		args.append(m_pData->szCommandline);
 	}
 
@@ -316,7 +316,7 @@ void KviKvsProcessAsyncOperation::processStarted()
 		return;
 
 	QString szPid;
-	szPid.setNum((intptr_t)(m_pProcess->pid()));
+	szPid.setNum(m_pProcess->processId());
 	if(trigger(EventStarted, szPid))
 	{
 		triggerSelfDelete();

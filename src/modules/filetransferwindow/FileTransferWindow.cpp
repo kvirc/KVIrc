@@ -49,17 +49,15 @@
 #include <QKeyEvent>
 #include <QWidgetAction>
 #include <QHeaderView>
+#include <QMimeDatabase>
 #include <vector>
 
-#ifdef COMPILE_KDE4_SUPPORT
-#include <kurl.h>
-#include <krun.h>
-#include <kmimetype.h>
-#include <kmimetypetrader.h>
-#include <kiconloader.h>
-#else
-#include <QMimeDatabase>
-#endif //COMPILE_KDE4_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
+#include <KApplicationTrader>
+#include <KTerminalLauncherJob>
+#include <KIO/ApplicationLauncherJob>
+#include <KIO/JobUiDelegateFactory>
+#endif //COMPILE_KDE_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <shellapi.h>
@@ -440,15 +438,9 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 					tmp += __tr2qs_ctx("Size: %1", "filetransferwindow").arg(KviQString::makeSizeReadable(fi.size()));
 				}
 
-#ifdef COMPILE_KDE4_SUPPORT
-				tmp += "<br>";
-				tmp += "Mime: ";
-				tmp += KMimeType::findByPath(szFile)->name();
-#else
 				tmp += "<br>";
 				tmp += "Mime: ";
 				tmp += QMimeDatabase().mimeTypeForFile(szFile).name();
-#endif //COMPILE_KDE4_SUPPORT
 
 				QWidgetAction * pWaction = new QWidgetAction(m_pLocalFilePopup);
 				QLabel * l = new QLabel(tmp, m_pLocalFilePopup);
@@ -458,9 +450,9 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 				pWaction->setDefaultWidget(l);
 				m_pLocalFilePopup->addAction(pWaction);
 
-#ifdef COMPILE_KDE4_SUPPORT
-				QString mimetype = KMimeType::findByPath(szFile)->name();
-				KService::List offers = KMimeTypeTrader::self()->query(mimetype, "Application");
+#ifdef COMPILE_KDE_SUPPORT
+				QString mimetype = QMimeDatabase().mimeTypeForFile(szFile).name();
+				KService::List offers = KApplicationTrader::queryByMimeType(mimetype);
 
 				pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Open", "filetransferwindow"), this, SLOT(openLocalFile()));
 				pAction->setData(-1);
@@ -473,8 +465,8 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 				    itOffers != offers.end(); ++itOffers)
 				{
 					pAction = m_pOpenFilePopup->addAction(
-					    SmallIcon((*itOffers).data()->icon()),
-					    (*itOffers).data()->name());
+					    QIcon::fromTheme(itOffers->data()->icon()),
+					    itOffers->data()->name());
 					pAction->setData(idx);
 					idx++;
 				}
@@ -489,7 +481,7 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &Location", "filetransferwindow"), this, SLOT(openLocalFileFolder()));
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Terminal at Location", "filetransferwindow"), this, SLOT(openLocalFileTerminal()));
 				m_pLocalFilePopup->addSeparator();
-#endif //COMPILE_KDE4_SUPPORT
+#endif //COMPILE_KDE_SUPPORT
 
 //-| Grifisx & Noldor |-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -560,7 +552,7 @@ KviFileTransfer * FileTransferWindow::selectedTransfer()
 
 void FileTransferWindow::openFilePopupActivated(QAction * pAction)
 {
-#ifdef COMPILE_KDE4_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	bool bOk = false;
 	int ip = pAction->data().toInt(&bOk);
 	if(!bOk || ip < 0)
@@ -573,8 +565,8 @@ void FileTransferWindow::openFilePopupActivated(QAction * pAction)
 	if(tmp.isEmpty())
 		return;
 
-	QString mimetype = KMimeType::findByPath(tmp)->name();
-	KService::List offers = KMimeTypeTrader::self()->query(mimetype, "Application");
+	QString mimetype = QMimeDatabase().mimeTypeForFile(tmp).name();
+	KService::List offers = KApplicationTrader::queryByMimeType(mimetype);
 
 	int idx = 0;
 	for(KService::List::Iterator itOffers = offers.begin();
@@ -582,16 +574,20 @@ void FileTransferWindow::openFilePopupActivated(QAction * pAction)
 	{
 		if(idx == ip)
 		{
-			KUrl::List lst;
-			KUrl url;
+			QList<QUrl> lst;
+			QUrl url;
 			url.setPath(tmp);
 			lst.append(url);
-			KRun::run(*((*itOffers).data()), lst, g_pMainWindow);
+			KService::Ptr service(itOffers->data());
+			auto *job = new KIO::ApplicationLauncherJob(service);
+			job->setUrls(lst);
+			job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, g_pMainWindow));
+			job->start();
 			break;
 		}
 		idx++;
 	}
-#endif //COMPILE_KDE4_SUPPORT
+#endif //COMPILE_KDE_SUPPORT
 }
 
 void FileTransferWindow::openLocalFileTerminal()
@@ -613,7 +609,7 @@ void FileTransferWindow::openLocalFileTerminal()
 	tmp.prepend("cmd.exe /k cd \"");
 	system(tmp.toLocal8Bit().data());
 #else // G&N end
-#ifdef COMPILE_KDE4_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)
 		return;
@@ -629,8 +625,10 @@ void FileTransferWindow::openLocalFileTerminal()
 	tmp.prepend("konsole --workdir=\"");
 	tmp.append("\"");
 
-	KRun::runCommand(tmp, g_pMainWindow);
-#endif //COMPILE_KDE4_SUPPORT
+    auto job = new KTerminalLauncherJob(QString());
+    job->setWorkingDirectory(tmp);
+    job->start();
+#endif //COMPILE_KDE_SUPPORT
 #endif
 }
 
@@ -669,7 +667,7 @@ void FileTransferWindow::openLocalFile()
 	ShellExecute(0, TEXT("open"), tmp.toStdWString().c_str(), nullptr, nullptr, SW_SHOWNORMAL); //You have to link the shell32.lib
 #else
 // G&N end
-#ifdef COMPILE_KDE4_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)
 		return;
@@ -677,21 +675,23 @@ void FileTransferWindow::openLocalFile()
 	if(tmp.isEmpty())
 		return;
 
-	QString mimetype = KMimeType::findByPath(tmp)->name(); //KMimeType
-	KService::Ptr offer = KMimeTypeTrader::self()->preferredService(mimetype, "Application");
-	if(!offer)
+	QString mimetype = QMimeDatabase().mimeTypeForFile(tmp).name();
+	KService::Ptr service = KApplicationTrader::preferredService(mimetype);
+	if(!service)
 	{
 		openLocalFileWith();
 		return;
 	}
 
-	KUrl::List lst;
-	KUrl url;
+	QList<QUrl> lst;
+	QUrl url;
 	url.setPath(tmp);
 	lst.append(url);
-
-	KRun::run(*offer, lst, g_pMainWindow);
-#endif //COMPILE_KDE4_SUPPORT
+	auto *job = new KIO::ApplicationLauncherJob(service);
+	job->setUrls(lst);
+	job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, g_pMainWindow));
+	job->start();
+#endif //COMPILE_KDE_SUPPORT
 #endif
 }
 
@@ -710,7 +710,7 @@ void FileTransferWindow::openLocalFileWith()
 	WinExec(tmp.toLocal8Bit().data(), SW_SHOWNORMAL);
 #else
 // G&N end
-#ifdef COMPILE_KDE4_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)
 		return;
@@ -718,12 +718,16 @@ void FileTransferWindow::openLocalFileWith()
 	if(tmp.isEmpty())
 		return;
 
-	KUrl::List lst;
-	KUrl url;
+	QList<QUrl> lst;
+	QUrl url;
 	url.setPath(tmp);
 	lst.append(url);
-	KRun::displayOpenWithDialog(lst, g_pMainWindow);
-#endif //COMPILE_KDE4_SUPPORT
+	// no service parameter brings up Run::displayOpenWithDialog
+	auto *job = new KIO::ApplicationLauncherJob();
+	job->setUrls(lst);
+	job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, g_pMainWindow));
+	job->start();
+#endif //COMPILE_KDE_SUPPORT
 #endif
 }
 
@@ -754,7 +758,7 @@ void FileTransferWindow::openLocalFileFolder()
 	WinExec(tmp.toLocal8Bit().data(), SW_MAXIMIZE);
 #else
 // G&N end
-#ifdef COMPILE_KDE4_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)
 		return;
@@ -767,17 +771,20 @@ void FileTransferWindow::openLocalFileFolder()
 		return;
 	tmp = tmp.left(idx);
 
-	QString mimetype = KMimeType::findByPath(tmp)->name(); // inode/directory
-	KService::Ptr offer = KMimeTypeTrader::self()->preferredService(mimetype, "Application");
-	if(!offer)
+	QString mimetype = QMimeDatabase().mimeTypeForFile(tmp).name(); // inode/directory
+	KService::Ptr service = KApplicationTrader::preferredService(mimetype);
+	if(!service)
 		return;
 
-	KUrl::List lst;
-	KUrl url;
+	QList<QUrl> lst;
+	QUrl url;
 	url.setPath(tmp);
 	lst.append(url);
-	KRun::run(*offer, lst, g_pMainWindow);
-#endif //COMPILE_KDE4_SUPPORT
+	auto *job = new KIO::ApplicationLauncherJob(service);
+	job->setUrls(lst);
+	job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, g_pMainWindow));
+	job->start();
+#endif //COMPILE_KDE_SUPPORT
 #endif
 }
 
@@ -840,7 +847,7 @@ void FileTransferWindow::clearTerminated()
 
 void FileTransferWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer.sprintf("FILETRANSFER");
+	buffer.asprintf("FILETRANSFER");
 }
 
 QPixmap * FileTransferWindow::myIconPtr()

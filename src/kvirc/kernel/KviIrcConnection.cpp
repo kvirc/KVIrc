@@ -1570,7 +1570,7 @@ void KviIrcConnection::loginToIrcServer()
 		int iBack = KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground);
 		if(iBack != KviControlCodes::Transparent)
 		{
-			szTags.sprintf("%c%d,%d%c",
+			szTags.asprintf("%c%d,%d%c",
 			    KviControlCodes::Color,
 			    KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),
 			    iBack,
@@ -1582,7 +1582,7 @@ void KviIrcConnection::loginToIrcServer()
 	if(iGenderAvatarTag != 0)
 	{
 		QString szTags;
-		szTags.sprintf("%c%d%c",
+		szTags.asprintf("%c%d%c",
 		    KviControlCodes::Color,
 		    iGenderAvatarTag,
 		    KviControlCodes::Reset);

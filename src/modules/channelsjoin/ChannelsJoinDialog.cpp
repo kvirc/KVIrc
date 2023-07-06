@@ -38,7 +38,6 @@
 
 #include <QCheckBox>
 #include <QCloseEvent>
-#include <QDesktopWidget>
 #include <QEvent>
 #include <QGroupBox>
 #include <QHeaderView>
@@ -47,6 +46,7 @@
 #include <QLineEdit>
 #include <QMouseEvent>
 #include <QPushButton>
+#include <QScreen>
 #include <QString>
 
 extern ChannelsJoinDialog * g_pChannelsWindow;
@@ -131,7 +131,7 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 
 	resize(g_rectChannelsJoinGeometry.width(), g_rectChannelsJoinGeometry.height());
 
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+	QRect rect = g_pMainWindow->screen()->availableGeometry();
 	move(rect.x() + ((rect.width() - g_rectChannelsJoinGeometry.width()) / 2), rect.y() + ((rect.height() - g_rectChannelsJoinGeometry.height()) / 2));
 
 	enableJoin();

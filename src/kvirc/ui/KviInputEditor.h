@@ -55,7 +55,7 @@
 class KviUserListView;
 class QDragEnterEvent;
 class QKeyEvent;
-class QFontMetricsF;
+class QFontMetrics;
 
 #define KVI_INPUT_MAX_BUFFER_SIZE 400
 #define KVI_INPUT_XTRAPADDING 1
@@ -109,7 +109,7 @@ public:
 
 protected:
 	static int g_iInputFontCharWidth[256];
-	static QFontMetricsF * g_pLastFontMetrics;
+	static QFontMetrics * g_pLastFontMetrics;
 	static int g_iInputInstances;
 	static int g_iCachedHeight;
 	QString m_szTextBuffer; // original buffer
@@ -521,9 +521,9 @@ private:
 	/**
 	* \brief Returns the current input editor font metrics (globally shared)
 	* \param font The current input editor font
-	* \return QFontMetricsF *
+	* \return QFontMetrics *
 	*/
-	QFontMetricsF * getLastFontMetrics(const QFont & font);
+	QFontMetrics * getLastFontMetrics(const QFont & font);
 
 public slots:
 	/**

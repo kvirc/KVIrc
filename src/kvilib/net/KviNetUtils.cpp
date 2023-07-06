@@ -274,7 +274,7 @@ namespace KviNetUtils
 #ifndef HAVE_INET_ATON
 		QString szAddr = szStringIp.simplified();
 		quint32 iAddr = 0;
-		QStringList ipv4 = szAddr.split(".", QString::KeepEmptyParts, Qt::CaseInsensitive);
+		QStringList ipv4 = szAddr.split(".", Qt::KeepEmptyParts, Qt::CaseInsensitive);
 		if(ipv4.count() == 4)
 		{
 			int i = 0;

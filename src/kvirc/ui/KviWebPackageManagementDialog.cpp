@@ -37,7 +37,7 @@
 #include "KviMainWindow.h"
 #include "KviNetworkAccessManager.h"
 
-#include <QDesktopWidget>
+#include <QScreen>
 #include <QToolButton>
 #include <QLineEdit>
 #include <QToolTip>
@@ -265,7 +265,7 @@ void KviWebPackageManagementDialog::slotCommandFinished()
 void KviWebPackageManagementDialog::showEvent(QShowEvent *)
 {
 	m_pProgressBar->hide();
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+	QRect rect = g_pMainWindow->screen()->availableGeometry();
 	move(rect.x() + ((rect.width() - width()) / 2), rect.y() + ((rect.height() - height()) / 2));
 }
 

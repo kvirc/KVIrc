@@ -83,7 +83,7 @@ python.begin <python code> python.end
                                                                                                                           \
 		const QChar * pInterpreterBegin = KVSP_curCharPointer;                                                            \
 		QString szName;                                                                                                   \
-		szName.sprintf("%s", #__name);                                                                                    \
+		szName.asprintf("%s", #__name);                                                                                    \
 		szName = szName.toLower();                                                                                        \
                                                                                                                           \
 		/* now look for [interpreter].end[terminator] */                                                                  \

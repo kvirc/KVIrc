@@ -55,7 +55,7 @@ namespace UPnP
 	// Recursively add all devices and embedded devices to the deviceServices_ map
 	void RootService::addDeviceServices(const QDomNode & device)
 	{
-		qDebug() << "UPnP discovered device " << XmlFunctions::getNodeValue(device, "/UDN") << endl;
+		qDebug() << "UPnP discovered device " << XmlFunctions::getNodeValue(device, "/UDN") << Qt::endl;
 
 		if(XmlFunctions::getNodeValue(device, "/deviceType") == InternetGatewayDeviceType)
 		{
@@ -68,7 +68,7 @@ namespace UPnP
 			if(description.isNull())
 				description = __tr2qs("Unknown");
 
-			qDebug() << "Model: " << description << endl;
+			qDebug() << "Model: " << description << Qt::endl;
 
 			g_pApp->activeConsole()->output(KVI_OUT_GENERICSTATUS, __tr2qs_ctx("[UPNP]: found gateway device: %s", "upnp"), description.toUtf8().data());
 		}
@@ -174,7 +174,7 @@ namespace UPnP
 		else
 		{
 			qWarning() << "UPnP::RootService::getServiceByType -"
-			           << " type '" << serviceType << "' not found for device '" << deviceUdn << "'." << endl;
+			           << " type '" << serviceType << "' not found for device '" << deviceUdn << "'." << Qt::endl;
 
 			return false;
 		}

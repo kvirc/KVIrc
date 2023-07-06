@@ -38,7 +38,6 @@
 #include "KviThemedLineEdit.h"
 
 #include <QApplication>
-#include <QDesktopWidget>
 #include <QEvent>
 #include <QFontMetrics>
 #include <QImage>
@@ -47,6 +46,7 @@
 #include <QPaintEvent>
 #include <QPen>
 #include <QRegExp>
+#include <QScreen>
 #include <QToolTip>
 
 extern NotifierWindow * g_pNotifierWindow;
@@ -75,8 +75,7 @@ NotifierWindow::NotifierWindow()
 	hide();
 
 	// Positioning the notifier bottom-right
-	QDesktopWidget * pDesktop = QApplication::desktop();
-	QRect r = pDesktop->availableGeometry(pDesktop->primaryScreen());
+	QRect r = g_pApp->primaryScreen()->availableGeometry();
 
 	m_wndRect.setRect(
 	    r.x() + r.width() - (WDG_MIN_WIDTH + SPACING),
@@ -227,10 +226,11 @@ void NotifierWindow::stopAutoHideTimer()
 
 #if COMPILE_KDE_SUPPORT
 #include <kwindowsystem.h>
+#include <kx11extras.h>
 
 static bool active_window_is_full_screen()
 {
-	WId activeId = KWindowSystem::activeWindow();
+	WId activeId = KX11Extras::activeWindow();
 	KWindowInfo wi = KWindowInfo(activeId, NET::WMState);
 	return (wi.valid() && wi.hasState(NET::FullScreen));
 }

@@ -145,7 +145,7 @@ namespace KviStringConversion
 
 	void toString(const QRect & rValue, QString & szBuffer)
 	{
-		szBuffer.sprintf("%d,%d,%d,%d", rValue.x(), rValue.y(), rValue.width(), rValue.height());
+		szBuffer.asprintf("%d,%d,%d,%d", rValue.x(), rValue.y(), rValue.width(), rValue.height());
 	}
 
 	bool fromString(const QString & szValue, QRect & buffer)
@@ -195,7 +195,7 @@ namespace KviStringConversion
 
 	void toString(const KviMessageTypeSettings & mValue, QString & szBuffer)
 	{
-		szBuffer.sprintf("%d,%u,%u,%d,%d", mValue.m_iPixId, mValue.m_cForeColor, mValue.m_cBackColor, mValue.m_bLogEnabled, mValue.m_iLevel);
+		szBuffer.asprintf("%d,%u,%u,%d,%d", mValue.m_iPixId, mValue.m_cForeColor, mValue.m_cBackColor, mValue.m_bLogEnabled, mValue.m_iLevel);
 	}
 
 	bool fromString(const QString & szValue, KviMessageTypeSettings & buffer)
@@ -226,7 +226,7 @@ namespace KviStringConversion
 	void toString(const QFont & font, QString & szBuffer)
 	{
 		QString szFamily(font.family());
-		szBuffer.sprintf("%s,%d,%d,%d", szFamily.toUtf8().data(), font.pointSize(), font.styleHint(), font.weight());
+		szBuffer.asprintf("%s,%d,%d,%d", szFamily.toUtf8().data(), font.pointSize(), font.styleHint(), font.weight());
 		QString szOptions;
 		if(font.bold())
 			szOptions.append('b');

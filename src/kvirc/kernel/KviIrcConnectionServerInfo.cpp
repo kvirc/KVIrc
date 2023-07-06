@@ -53,7 +53,7 @@ void KviIrcConnectionServerInfo::addSupportedCaps(const QString & szCapList)
 {
 	m_bSupportsCap = true;
 
-	QStringList lTmp = szCapList.split(' ', QString::SkipEmptyParts);
+	QStringList lTmp = szCapList.split(' ', Qt::SkipEmptyParts);
 	foreach(QString szCap, lTmp)
 	{
 		// cap modifiers are:
@@ -85,7 +85,7 @@ void KviIrcConnectionServerInfo::addSupportedCaps(const QString & szCapList)
 
 void KviIrcConnectionServerInfo::setSupportedChannelModes(const QString & szSupportedChannelModes)
 {
-	QStringList szAllModes = szSupportedChannelModes.split(',', QString::KeepEmptyParts);
+	QStringList szAllModes = szSupportedChannelModes.split(',', Qt::KeepEmptyParts);
 
 	if(szAllModes.count() != 4)
 	{

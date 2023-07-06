@@ -380,7 +380,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		QStringList slChans = szChans.split(",", QString::SkipEmptyParts);
+		QStringList slChans = szChans.split(",", Qt::SkipEmptyParts);
 
 		QString szChanTypes = KVSCSC_pConnection->serverInfo()->supportedChannelTypes();
 		for(auto & slChan : slChans)

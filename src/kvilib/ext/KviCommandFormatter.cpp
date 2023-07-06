@@ -135,7 +135,7 @@ namespace KviCommandFormatter
 
 	void unindent(QString & szBuffer)
 	{
-		QStringList list = szBuffer.split("\n", QString::KeepEmptyParts);
+		QStringList list = szBuffer.split("\n", Qt::KeepEmptyParts);
 
 		while(hasLeadingChars(list, QChar('\t')) || hasLeadingChars(list, QChar(' ')))
 			trimLeading(list);
@@ -199,7 +199,7 @@ namespace KviCommandFormatter
 
 	void indent(QString & szBuffer)
 	{
-		QStringList list = szBuffer.split("\n", QString::KeepEmptyParts);
+		QStringList list = szBuffer.split("\n", Qt::KeepEmptyParts);
 
 		addLeading(list, QChar('\t'));
 		//szBuffer = list.join("\n"); join implementation sux :D

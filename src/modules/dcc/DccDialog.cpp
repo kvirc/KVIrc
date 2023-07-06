@@ -33,11 +33,11 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QStringList>
-#include <QDesktopWidget>
 #include <QEvent>
 #include <QCloseEvent>
 #include <QShowEvent>
 #include <QIcon>
+#include <QScreen>
 
 DccDialog::DccDialog(DccBroker * br, DccDescriptor * dcc)
 {
@@ -120,10 +120,10 @@ void DccAcceptDialog::closeEvent(QCloseEvent * e)
 
 void DccAcceptDialog::showEvent(QShowEvent * e)
 {
-	int iScreen = g_pApp->desktop()->screenNumber(g_pMainWindow);
-	if(iScreen < 0)
-		iScreen = g_pApp->desktop()->primaryScreen();
-	QRect rect = g_pApp->desktop()->screenGeometry(iScreen);
+	QScreen *pScreen = g_pMainWindow->screen();
+	if(!pScreen)
+		pScreen = g_pApp->primaryScreen();
+	QRect rect = pScreen->availableGeometry();
 	move(rect.x() + ((rect.width() - width()) / 2),rect.y() + ((rect.height() - height()) / 2));
 	QWidget::showEvent(e);
 }
@@ -186,10 +186,10 @@ void DccRenameDialog::closeEvent(QCloseEvent * e)
 
 void DccRenameDialog::showEvent(QShowEvent * e)
 {
-	int iScreen = g_pApp->desktop()->screenNumber(g_pMainWindow);
-	if(iScreen < 0)
-		iScreen = g_pApp->desktop()->primaryScreen();
-	QRect rect = g_pApp->desktop()->screenGeometry(iScreen);
+	QScreen *pScreen = g_pMainWindow->screen();
+	if(!pScreen)
+		pScreen = g_pApp->primaryScreen();
+	QRect rect = pScreen->availableGeometry();
 	move(rect.x() + ((rect.width() - width()) / 2),rect.y() + ((rect.height() - height()) / 2));
 	QWidget::showEvent(e);
 }

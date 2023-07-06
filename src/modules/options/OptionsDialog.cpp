@@ -45,8 +45,8 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QShortcut>
+#include <QScreen>
 #include <QHeaderView>
-#include <QDesktopWidget>
 #include <QStackedWidget>
 #include <QMenu>
 
@@ -289,7 +289,7 @@ OptionsDialog::~OptionsDialog()
 void OptionsDialog::showEvent(QShowEvent * e)
 {
 	// setup a minimum size and move to the screen the main kvirc window is
-	QRect r = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+	QRect r = g_pMainWindow->screen()->availableGeometry();
 
 	int w = r.width();
 	int h = r.height();
@@ -466,7 +466,7 @@ void OptionsDialog::search(const QStringList & lKeywords)
 
 void OptionsDialog::search(const QString & szKeywords)
 {
-	QStringList lKeywords = szKeywords.split(" ", QString::SkipEmptyParts);
+	QStringList lKeywords = szKeywords.split(" ", Qt::SkipEmptyParts);
 	search(lKeywords);
 }
 

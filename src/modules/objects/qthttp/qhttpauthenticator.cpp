@@ -50,6 +50,7 @@
 #include <qendian.h>
 #include <qstring.h>
 #include <qdatetime.h>
+#include <QRandomGenerator>
 
 //#define NTLMV1_CLIENT
 
@@ -284,7 +285,7 @@ void QHttpAuthenticator::detach()
 	if(!d)
 	{
 		d = new QHttpAuthenticatorPrivate;
-		d->ref.store(1);
+		d->ref.storeRelaxed(1);
 		return;
 	}
 
@@ -351,7 +352,7 @@ bool QHttpAuthenticator::isNull() const
 QHttpAuthenticatorPrivate::QHttpAuthenticatorPrivate()
     : ref(0), method(None), hasFailed(false), phase(Start), nonceCount(0)
 {
-	cnonce = QCryptographicHash::hash(QByteArray::number(qrand(), 16) + QByteArray::number(qrand(), 16),
+	cnonce = QCryptographicHash::hash(QByteArray::number(QRandomGenerator::global()->generate(), 16) + QByteArray::number(QRandomGenerator::global()->generate(), 16),
 	             QCryptographicHash::Md5)
 	             .toHex();
 	nonceCount = 0;

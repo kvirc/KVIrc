@@ -49,13 +49,12 @@ KviThemedLineEdit::KviThemedLineEdit(QWidget * par, KviWindow * pWindow, const c
 
 	setFrame(false);
 
-	int l, t, r, b;
-	getTextMargins(&l, &t, &r, &b);
-	if(l < 4)
-		l = 4;
-	if(r < 4)
-		r = 4;
-	setTextMargins(l, t, r, b);
+	QMargins m = textMargins();
+	if(m.left() < 4)
+		m.setLeft(4);
+	if(m.right() < 4)
+		m.setRight(4);
+	setTextMargins(m);
 
 	setAutoFillBackground(false);
 	applyOptions();

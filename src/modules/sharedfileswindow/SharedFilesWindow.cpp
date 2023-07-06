@@ -337,7 +337,7 @@ void SharedFilesWindow::sharedFileRemoved(KviSharedFile * f)
 
 void SharedFilesWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer.sprintf("SHAREDFILES");
+	buffer.asprintf("SHAREDFILES");
 }
 
 QPixmap * SharedFilesWindow::myIconPtr()

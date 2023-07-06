@@ -814,7 +814,7 @@ namespace KviKvsCoreSimpleCommands
 
 		QByteArray szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
 
-		QStringList sl = szChans.split(",", QString::SkipEmptyParts);
+		QStringList sl = szChans.split(",", Qt::SkipEmptyParts);
 
 		if(szMsg.isEmpty())
 			szMsg = KVI_OPTION_STRING(KviOption_stringPartMessage);
@@ -1065,7 +1065,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KviQueryWindow * query;
 
-		QStringList sl = szTargets.split(",", QString::SkipEmptyParts);
+		QStringList sl = szTargets.split(",", Qt::SkipEmptyParts);
 		for(auto szNick : sl)
 		{
 			if(szNick.isEmpty())

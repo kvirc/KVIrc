@@ -54,7 +54,7 @@ RawTreeWidgetItem::RawTreeWidgetItem(QTreeWidget * par, int idx, bool bEnabled)
 {
 	m_iIdx = idx;
 	QString szName;
-	szName.sprintf("%03d", idx);
+	szName.asprintf("%03d", idx);
 	setText(0, szName);
 	setEnabled(bEnabled);
 }

@@ -96,7 +96,7 @@ namespace UPnP
 	void WanConnectionService::gotActionResponse(const QString & responseType, const QMap<QString, QString> & resultValues)
 	{
 		qDebug() << "UPnP::WanConnectionService: parsing action response:"
-		         << " type='" << responseType << "'." << endl;
+		         << " type='" << responseType << "'." << Qt::endl;
 
 		// Check the message type
 		if(responseType == "GetExternalIPAddressResponse")
@@ -104,14 +104,14 @@ namespace UPnP
 			// Get the external IP address from the response
 			m_szExternalIpAddress = resultValues["NewExternalIPAddress"];
 
-			qDebug() << "UPnP::WanConnectionService: externalIp='" << m_szExternalIpAddress << "'." << endl;
+			qDebug() << "UPnP::WanConnectionService: externalIp='" << m_szExternalIpAddress << "'." << Qt::endl;
 		}
 		else if(responseType == "GetNATRSIPStatusResponse")
 		{
 			// Get the nat status from the response
 			m_bNatEnabled = (resultValues["NewNATEnabled"] == "1");
 
-			qDebug() << "UPnP::WanConnectionService: natEnabled=" << m_bNatEnabled << "." << endl;
+			qDebug() << "UPnP::WanConnectionService: natEnabled=" << m_bNatEnabled << "." << Qt::endl;
 		}
 		else if(responseType == "GetGenericPortMappingEntryResponse")
 		{
@@ -133,20 +133,20 @@ namespace UPnP
 
 			qDebug() << "UPnP::WanConnectionService - Received mapping: " << map->protocol << " " << map->remoteHost << ":" << map->externalPort
 			         << " to " << map->internalClient << ":" << map->internalPort
-			         << "    max " << map->leaseDuration << "s '" << map->description << "' " << (map->enabled ? "enabled" : "disabled") << endl;
+			         << "    max " << map->leaseDuration << "s '" << map->description << "' " << (map->enabled ? "enabled" : "disabled") << Qt::endl;
 		}
 		else if(responseType == "AddPortMappingResponse")
 		{
-			qDebug() << "UPnP::WanConnectionService - Received mapping enabled" << endl;
+			qDebug() << "UPnP::WanConnectionService - Received mapping enabled" << Qt::endl;
 		}
 		else if(responseType == "DeletePortMappingResponse")
 		{
-			qDebug() << "UPnP::WanConnectionService - Received mapping disabled" << endl;
+			qDebug() << "UPnP::WanConnectionService - Received mapping disabled" << Qt::endl;
 		}
 		else
 		{
 			qDebug() << "UPnP::WanConnectionService - Unexpected response type"
-			         << " '" << responseType << "' encountered." << endl;
+			         << " '" << responseType << "' encountered." << Qt::endl;
 		}
 	}
 

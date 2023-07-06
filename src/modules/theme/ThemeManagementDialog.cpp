@@ -54,7 +54,6 @@
 #include <QRegExp>
 #include <QMessageBox>
 #include <QDir>
-#include <QDesktopWidget>
 #include <QStringList>
 #include <QDateTime>
 #include <QFileDialog>
@@ -68,6 +67,7 @@
 #include <QAbstractTextDocumentLayout>
 #include <QShortcut>
 #include <QMenu>
+#include <QScreen>
 
 extern QRect g_rectManagementDialogGeometry;
 
@@ -230,7 +230,7 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	resize(g_rectManagementDialogGeometry.width(),
 	    g_rectManagementDialogGeometry.height());
 
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+	QRect rect = g_pMainWindow->screen()->availableGeometry();
 	move(rect.x() + ((rect.width() - g_rectManagementDialogGeometry.width()) / 2), rect.y() + ((rect.height() - g_rectManagementDialogGeometry.height()) / 2));
 
 	new QShortcut(Qt::Key_Escape, this, SLOT(closeClicked()));

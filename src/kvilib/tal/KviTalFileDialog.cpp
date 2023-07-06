@@ -24,23 +24,11 @@
 
 #include "KviTalFileDialog.h"
 
-#if defined(COMPILE_KDE4_SUPPORT)
-
-KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char *, bool)
-    : KFileDialog(KUrl(szDirName), szFilter, pParent)
-{
-	//clearWFlags(WDestructiveClose);
-}
-
-#else //!defined(COMPILE_KDE4_SUPPORT))
-
 KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char *, bool bModal)
     : QFileDialog(pParent, "", szDirName, szFilter)
 {
 	setModal(bModal);
 }
-
-#endif //!defined(COMPILE_KDE4_SUPPORT))
 
 KviTalFileDialog::~KviTalFileDialog()
     = default;
@@ -49,30 +37,6 @@ void KviTalFileDialog::setFileMode(FileMode m)
 {
 	switch(m)
 	{
-#if defined(COMPILE_KDE4_SUPPORT)
-		case AnyFile:
-			setMode(KFile::File | KFile::LocalOnly);
-			setOperationMode(Saving);
-			break;
-		case ExistingFile:
-			setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
-			setOperationMode(Opening);
-			break;
-		case ExistingFiles:
-			setMode(KFile::Files | KFile::ExistingOnly | KFile::LocalOnly);
-			setOperationMode(Opening);
-			break;
-		case Directory:
-			setMode(KFile::Directory);
-			break;
-		case DirectoryOnly:
-			setMode(KFile::Directory);
-			break;
-		default:
-			setMode(KFile::File | KFile::LocalOnly);
-			setOperationMode(Saving);
-			break;
-#else  //!defined(COMPILE_KDE4_SUPPORT)
 		case AnyFile:
 			QFileDialog::setFileMode(QFileDialog::AnyFile);
 			setAcceptMode(QFileDialog::AcceptSave);
@@ -87,21 +51,11 @@ void KviTalFileDialog::setFileMode(FileMode m)
 			QFileDialog::setFileMode(QFileDialog::Directory);
 			break;
 		case DirectoryOnly:
-			QFileDialog::setFileMode(QFileDialog::DirectoryOnly);
+			QFileDialog::setOption(ShowDirsOnly, true);
 			break;
 		default:
 			QFileDialog::setFileMode(QFileDialog::AnyFile);
 			setAcceptMode(QFileDialog::AcceptSave);
 			break;
-#endif //!defined(COMPILE_KDE4_SUPPORT)
 	}
-}
-
-void KviTalFileDialog::setDirectory(const QString & szDirectory)
-{
-#if defined(COMPILE_KDE4_SUPPORT)
-	setUrl(KUrl(szDirectory));
-#else  //!defined(COMPILE_KDE4_SUPPORT)
-	QFileDialog::setDirectory(szDirectory);
-#endif //!defined(COMPILE_KDE4_SUPPORT)
 }

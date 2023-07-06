@@ -33,7 +33,6 @@
 #include "KviRegisteredUserDataBase.h"
 #include "KviIconManager.h"
 
-#include <QDesktopWidget>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
@@ -41,6 +40,7 @@
 #include <QLayout>
 #include <QVariant>
 #include <QFrame>
+#include <QScreen>
 
 extern KVIRC_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
 extern KviPointerList<RegistrationWizard> * g_pRegistrationWizardList;
@@ -404,7 +404,7 @@ void RegistrationWizard::showEvent(QShowEvent * e)
 	if(height() < 420)
 		resize(width(), 420);
 
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	QRect rect = g_pApp->primaryScreen()->availableGeometry();
 	move((rect.width() - width()) / 2, (rect.height() - height()) / 2);
 	KviTalWizard::showEvent(e);
 }

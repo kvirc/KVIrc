@@ -50,9 +50,7 @@
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT
-// invokeTerminal() for system.runcmd
-// tools we need to work around the absence of
-#include <KToolInvocation>
+#include <KTerminalLauncherJob>
 #endif
 // invokeTerminal()
 #include <QProcess>
@@ -759,10 +757,10 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall * c)
 	}
 
 #ifdef COMPILE_KDE_SUPPORT // We have invokeTerminal().
-
-	KToolInvocation::invokeTerminal(szCommand.toLocal8Bit());
-
-#else                                                        // No invokeTerminal() for us, we'll use a
+	auto job = new KTerminalLauncherJob(szCommand);
+	job->start();
+#else
+	// No invokeTerminal() for us, we'll use a
 	// combination of QStringList and QProcess.
 	QStringList szTerminals;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW) // Only »cmd.exe /k« in the list.
