@@ -86,7 +86,7 @@ install:
 build_script:
     - mkdir build
     - cd build
-    - '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %vc_arch%'
+    - '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %vc_arch%'
     - path
     - vcpkg remove --outdated --recurse
     - vcpkg install gettext:%arch%-windows
