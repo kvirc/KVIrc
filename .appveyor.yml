@@ -125,9 +125,9 @@ build_script:
         }
     - ps: |
         if ($env:cmake_build_type -eq "Debug") {
-            c:\cygwin64\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/zlibd.pdb" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/zlibd1.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/libcrypto.*" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/libssl.*" "c:/Program Files (x86)/Windows Kits/10/bin/$env:arch/ucrt/ucrtbased.dll" release/; if (!$?) { exit 1 }
+            c:\cygwin64\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/zlibd.pdb" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/zlibd1.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/libcrypto-3.*" "c:/Tools/vcpkg/installed/$env:arch-windows/debug/bin/libssl-3.*" "c:/Program Files (x86)/Windows Kits/10/bin/$env:arch/ucrt/ucrtbased.dll" release/; if (!$?) { exit 1 }
         } else {
-            c:\cygwin64\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/bin/zlib1.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/libcrypto.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/libssl.dll" release/; if (!$?) { exit 1 }
+            c:\cygwin64\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/bin/zlib1.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/libcrypto-3.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/libssl-3.dll" release/; if (!$?) { exit 1 }
         }
         c:\cygwin64\bin\cp -pv $env:mingw_root/bin/libenchant-2.dll release/; if (!$?) { exit 1 }
         c:\cygwin64\bin\cp -pv $env:mingw_root/bin/libpcre-1.dll release/; if (!$?) { exit 1 }
