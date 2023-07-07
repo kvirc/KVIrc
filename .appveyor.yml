@@ -15,7 +15,7 @@ environment:
           mingw_fourple: mingw64/mingw-w64-x86_64
           mingw_root: c:/msys64/mingw64
           mingw_libgcc: libgcc_s_seh-1.dll
-          $env:cygwin_dir_dir: $env:cygwin_dir64
+          cygwin_dir_dir: $env:cygwin_dir64
 
         - cmake_build_type: Release
           arch: x86
@@ -27,7 +27,7 @@ environment:
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
           mingw_libgcc: libgcc_s_dw2-1.dll
-          $env:cygwin_dir_dir: $env:cygwin_dir
+          cygwin_dir_dir: $env:cygwin_dir
 
         - cmake_build_type: Debug
           arch: x64
@@ -39,7 +39,7 @@ environment:
           mingw_fourple: mingw64/mingw-w64-x86_64
           mingw_root: c:/msys64/mingw64
           mingw_libgcc: libgcc_s_seh-1.dll
-          $env:cygwin_dir_dir: $env:cygwin_dir64
+          cygwin_dir_dir: $env:cygwin_dir64
 
         - cmake_build_type: Debug
           arch: x86
@@ -51,13 +51,13 @@ environment:
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
           mingw_libgcc: libgcc_s_dw2-1.dll
-          $env:cygwin_dir_dir: $env:cygwin_dir
+          cygwin_dir_dir: $env:cygwin_dir
 matrix:
     fast_finish: true
 install:
     # - systeminfo
     - ps: |
-        choco install strawberryperl -y --version 5.28.2.1 $env:choco_arch
+        choco install strawberryperl -y --version 5.32.1.1 $env:choco_arch
         # Strawberry perl doesn't support MSVC, but we force the support.
         c:\$env:cygwin_dir\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
     - ps: |
