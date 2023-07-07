@@ -131,7 +131,7 @@ build_script:
             c:\cygwin64\bin\cp -pv "c:/Tools/vcpkg/installed/$env:arch-windows/bin/zlib1.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/libcrypto*.dll" "c:/Tools/vcpkg/installed/$env:arch-windows/bin/libssl*.dll" release/; if (!$?) { exit 1 }
         }
         c:\cygwin64\bin\cp -pv $env:mingw_root/bin/libenchant-2.dll release/; if (!$?) { exit 1 }
-        c:\cygwin64\bin\cp -pv $env:mingw_root/bin/libpcre-1.dll release/; if (!$?) { exit 1 }
+        c:\cygwin64\bin\cp -pv $env:mingw_root/bin/libpcre2-*.dll release/; if (!$?) { exit 1 }
         c:\cygwin64\bin\cp -pv $env:mingw_root/bin/libglib-2.0-0.dll release/; if (!$?) { exit 1 }
         c:\cygwin64\bin\cp -pv $env:mingw_root/bin/libgmodule-2.0-0.dll release/; if (!$?) { exit 1 }
         c:\cygwin64\bin\cp -pv $env:mingw_root/bin/libintl-8.dll release/; if (!$?) { exit 1 }
