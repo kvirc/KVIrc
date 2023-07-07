@@ -749,7 +749,7 @@ bool urllist_module_event_onUrl(KviKvsModuleEventCall * c)
 		QString tmpTimestamp;
 		QDate d = QDate::currentDate();
 		QString date;
-		date.asprintf("%d-%d%d-%d%d", d.year(), d.month() / 10, d.month() % 10, d.day() / 10, d.day() % 10);
+		date = QString::asprintf("%d-%d%d-%d%d", d.year(), d.month() / 10, d.month() % 10, d.day() / 10, d.day() % 10);
 		tmpTimestamp = "[" + date + "]" + " [";
 		tmpTimestamp += QTime::currentTime().toString() + "]";
 		tmp->url = szUrl;

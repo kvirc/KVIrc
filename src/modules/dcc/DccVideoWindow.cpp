@@ -657,13 +657,13 @@ const QString & DccVideoWindow::target()
 	if(!m_pszTarget)
 		m_pszTarget = new QString();
 
-	m_pszTarget->asprintf("%s@%s:%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
+	m_pszTarget = QString::asprintf("%s@%s:%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 	return *m_pszTarget;
 }
 
 void DccVideoWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer.asprintf("dccvideo_%s_%s_%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
+	buffer = QString::asprintf("dccvideo_%s_%s_%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 }
 
 void DccVideoWindow::fillCaptionBuffers()

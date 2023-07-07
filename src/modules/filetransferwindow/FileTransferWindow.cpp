@@ -847,7 +847,7 @@ void FileTransferWindow::clearTerminated()
 
 void FileTransferWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer.asprintf("FILETRANSFER");
+	buffer = QString::asprintf("FILETRANSFER");
 }
 
 QPixmap * FileTransferWindow::myIconPtr()

@@ -2010,7 +2010,7 @@ void DccFileTransfer::addToTransferLog(const QString & s)
 {
 	QDateTime dt = QDateTime::currentDateTime();
 	QString ts;
-	ts.asprintf("[%4d.%2d.%2d %2d:%2d:%2d] ", dt.date().year(), dt.date().month(), dt.date().day(), dt.time().hour(), dt.time().minute(), dt.time().second());
+	ts = QString::asprintf("[%4d.%2d.%2d %2d:%2d:%2d] ", dt.date().year(), dt.date().month(), dt.date().day(), dt.time().hour(), dt.time().minute(), dt.time().second());
 	m_szTransferLog += ts + s;
 	m_szTransferLog += "<br>";
 }

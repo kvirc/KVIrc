@@ -275,7 +275,7 @@ ListWindow::~ListWindow()
 
 void ListWindow::getBaseLogFileName(QString & szBuffer)
 {
-	szBuffer.asprintf("LIST_%d", context()->id());
+	szBuffer = QString::asprintf("LIST_%d", context()->id());
 }
 
 void ListWindow::requestList()

@@ -1091,7 +1091,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	if(cas.dActionsPerMinute >= 0.1)
 	{
 		QString szNum;
-		szNum.asprintf(" [%u%% ", cas.uHotActionPercent);
+		szNum = QString::asprintf(" [%u%% ", cas.uHotActionPercent);
 		szBuffer += szNum;
 		szBuffer += __tr2qs("human");
 		szBuffer += "]";

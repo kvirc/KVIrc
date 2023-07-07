@@ -842,7 +842,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 
 			KviNotifierMessageParam s;
 			s.pWindow = pWnd;
-			s.szIcon.asprintf("%d", iIconId);
+			s.szIcon = QString::asprintf("%d", iIconId);
 			s.szMessage = szMsg;
 			s.uMessageLifetime = uMessageLifetime;
 
