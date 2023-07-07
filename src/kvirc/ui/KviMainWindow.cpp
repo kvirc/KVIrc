@@ -61,13 +61,13 @@
 
 #include <QCheckBox>
 #include <QCloseEvent>
-#include <QDesktopWidget>
 #include <QEvent>
 #include <QFile>
 #include <QLayout>
 #include <QLineEdit>
 #include <QMenu>
 #include <QMessageBox>
+#include <QScreen>
 #include <QShortcut>
 #include <QSplitter>
 #include <QString>
@@ -105,10 +105,8 @@ KviMainWindow::KviMainWindow(QWidget * pParent)
 	// We try to avois this as much as possible, since it forces the use of the low-res 16x16 icon
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)));
 #endif
-#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
 	// set name of the app desktop file; used by wayland to load the window icon
 	QGuiApplication::setDesktopFileName("kvirc");
-#endif
 	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 
 	m_pSplitter = new QSplitter(Qt::Horizontal, this);
@@ -143,12 +141,11 @@ KviMainWindow::KviMainWindow(QWidget * pParent)
 
 	createWindowList();
 
-	if((KVI_OPTION_RECT(KviOption_rectFrameGeometry).width() < 100) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).height() < 100) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).x() > g_pApp->desktop()->width()) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).y() > g_pApp->desktop()->height()))
+	if((KVI_OPTION_RECT(KviOption_rectFrameGeometry).width() < 100) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).height() < 100) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).x() > g_pMainWindow->screen()->availableSize().width()) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).y() > g_pMainWindow->screen()->availableSize().height()))
 	{
 		// Try to find some reasonable defaults
 		// prefer primary screen for first startup
-		int primary_screen = g_pApp->desktop()->primaryScreen();
-		QRect r = g_pApp->desktop()->screenGeometry(primary_screen);
+		QRect r = g_pApp->primaryScreen()->availableGeometry();
 		r.setLeft(r.left() + 10);
 		r.setRight(r.right() - 100);
 		r.setTop(r.top() + 10);

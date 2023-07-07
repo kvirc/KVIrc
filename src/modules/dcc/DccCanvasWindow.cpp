@@ -134,7 +134,7 @@ DccCanvasWindow::~DccCanvasWindow()
 const QString & DccCanvasWindow::target()
 {
 	// This may change on the fly...
-	m_szTarget.sprintf("%s@%s:%s",
+	m_szTarget = QString::asprintf("%s@%s:%s",
 	    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 	return m_szTarget;
 }

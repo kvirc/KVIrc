@@ -1610,7 +1610,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 			// OFTC replaced RPL_HOSTHIDDEN with a server notice
 			if(version == "Hybrid+Oftc")
 			{
-				QStringList parts = szMsgText.split(" ", QString::SkipEmptyParts);
+				QStringList parts = szMsgText.split(" ", Qt::SkipEmptyParts);
 				if(parts.count() == 3)
 				{
 					if(parts[0] == "Activating" && parts[1] == "Cloak:")
@@ -1729,7 +1729,7 @@ void KviIrcServerParser::parseLiteralTopic(KviIrcMessage * msg)
 			szTmp = date.toString(Qt::ISODate);
 			break;
 		case 2:
-			szTmp = date.toString(Qt::SystemLocaleShortDate);
+			szTmp = QLocale().toString(date, QLocale::ShortFormat);
 			break;
 	}
 	chan->topicWidget()->setTopicSetAt(szTmp);

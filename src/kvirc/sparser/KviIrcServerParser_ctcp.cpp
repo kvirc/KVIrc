@@ -1382,7 +1382,7 @@ void KviIrcServerParser::parseCtcpRequestTime(KviCtcpMessage * msg)
 					szTmp = date.toString(Qt::ISODate);
 					break;
 				case 2:
-					szTmp = date.toString(Qt::SystemLocaleShortDate);
+					szTmp = QLocale().toString(date, QLocale::ShortFormat);
 					break;
 			}
 			replyCtcp(msg, szTmp);

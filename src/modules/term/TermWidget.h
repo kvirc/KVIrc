@@ -26,13 +26,13 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_KDE4_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 #include <QFrame>
 #include <QLabel>
 #include <QPushButton>
 #include "KviTalHBox.h"
 
-#include "kparts/part.h"
+#include <KParts/Part>
 
 class KviMainWindow;
 

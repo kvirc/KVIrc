@@ -136,9 +136,6 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 	// 190
 	pDialog->setFileMode(KviTalFileDialog::AnyFile);
 //pDialog->setShowHiddenFiles(showHidden);
-#ifdef COMPILE_KDE4_SUPPORT
-	pDialog->setKeepLocation(true);
-#endif
 	while(pDialog->exec() == QDialog::Accepted)
 	{
 		QStringList szFiles = pDialog->selectedFiles();
@@ -200,11 +197,6 @@ bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCa
 #else
 bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool, bool, QWidget * pParent)
 {
-#ifdef COMPILE_KDE4_SUPPORT
-	// the KDE based dir selection dialog is now quite nice
-	szBuffer = KFileDialog::getExistingDirectory(szInitial, pParent, szCaption);
-	return !szBuffer.isEmpty();
-#endif
 #endif
 
 	KviFileDialog * pDialog = new KviFileDialog(szInitial,

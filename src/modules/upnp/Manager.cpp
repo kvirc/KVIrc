@@ -62,7 +62,7 @@ namespace UPnP
 	// Initialize the manager, detect all devices
 	void Manager::initialize()
 	{
-		qDebug() << "UPnP::Manager: initiating a broadcast to detect UPnP devices..." << endl;
+		qDebug() << "UPnP::Manager: initiating a broadcast to detect UPnP devices..." << Qt::endl;
 
 		// Create the SSDP object to detect devices
 		m_pSsdpConnection = new SsdpConnection();
@@ -126,7 +126,7 @@ namespace UPnP
 	{
 		if(!m_bBroadcastFoundIt)
 		{
-			qDebug() << "UPnP::Manager: timeout, no broadcast response received!" << endl;
+			qDebug() << "UPnP::Manager: timeout, no broadcast response received!" << Qt::endl;
 
 			m_bBroadcastFailed = true;
 		}
@@ -135,7 +135,7 @@ namespace UPnP
 	// A device was discovered by the SSDP broadcast
 	void Manager::slotDeviceFound(const QString & hostname, int port, const QString & rootUrl)
 	{
-		qDebug() << "UPnP::Manager: device found, initializing IgdControlPoint to query it." << endl;
+		qDebug() << "UPnP::Manager: device found, initializing IgdControlPoint to query it." << Qt::endl;
 
 		// this blocks the action of our timeout timer
 		m_bBroadcastFoundIt = true;

@@ -102,7 +102,7 @@ namespace AddonFunctions
 		// load its picture
 		pByteArray = r.binaryInfoFields()->find("Image");
 		if(pByteArray)
-			pix.loadFromData(*pByteArray, nullptr, nullptr);
+			pix.loadFromData(*pByteArray);
 
 		if(pix.isNull())
 		{

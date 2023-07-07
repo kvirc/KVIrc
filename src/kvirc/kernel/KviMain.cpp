@@ -43,11 +43,7 @@ extern bool kvi_sendIpcMessage(const char * message); // KviIpcSentinel.cpp
 #include <QMessageBox>
 
 #ifdef COMPILE_KDE_SUPPORT
-#ifdef COMPILE_KDE4_SUPPORT
-#include <KCmdLineArgs>
-#else
 #include <KLocalizedString>
-#endif
 #include <KAboutData>
 #endif
 
@@ -361,26 +357,6 @@ int main(int argc, char ** argv)
 	}
 
 #ifdef COMPILE_KDE_SUPPORT
-#ifdef COMPILE_KDE4_SUPPORT
-	// KDE4
-	KAboutData * pAboutData = new KAboutData( // FIXME: this is never deleted ? Should it be ?
-	    "kvirc",                              // internal program name
-	    "kvirc",                              // message catalogue name
-	    ki18n("KVIrc"),                       // user-visible program name
-	    KVI_VERSION,                          // program version
-	    ki18n("Visual IRC Client"),           // description
-	    KAboutData::License_GPL,              // license
-	    ki18n("(c) 1998-2016 The KVIrc Development Team"),
-	    ki18n("???"),                           // *some other text* ????
-	    "http://www.kvirc.net",                 // homepage
-	    "https://github.com/kvirc/KVIrc/issues" // bug address
-	    );
-
-	//fake argc/argv initialization: kde will use argv[0] as out appName in some dialogs
-	// (eg: kdebase/workspace/kwin/killer/killer.cpp)
-	KCmdLineArgs::init(1, &argv[0], pAboutData);
-#else  //!COMPILE_KDE4_SUPPORT
-	// KDE5
 	KAboutData * pAboutData = new KAboutData(  // FIXME: this is never deleted ? Should it be ?
 	    "kvirc",                               // internal program name
 	    "KVIrc",                               // user-visible program name
@@ -392,7 +368,6 @@ int main(int argc, char ** argv)
 	    "http://www.kvirc.net",                 // homepage
 	    "https://github.com/kvirc/KVIrc/issues" // bug address
 	    );
-#endif //!COMPILE_KDE4_SUPPORT
 #endif
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -402,12 +377,8 @@ int main(int argc, char ** argv)
 	KviApplication * pTheApp = new KviApplication(argc, argv);
 
 #ifdef COMPILE_KDE_SUPPORT
-#ifdef COMPILE_KDE4_SUPPORT
-	pTheApp->setAboutData(pAboutData);
-#else
 	KAboutData::setApplicationData(*pAboutData);
 	delete pAboutData;
-#endif
 #endif
 
 #ifdef COMPILE_DBUS_SUPPORT

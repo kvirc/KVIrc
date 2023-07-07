@@ -1693,7 +1693,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 						szTmp = date.toString(Qt::ISODate);
 						break;
 					case 2:
-						szTmp = date.toString(Qt::SystemLocaleShortDate);
+						szTmp = QLocale().toString(date, QLocale::ShortFormat);
 						break;
 				}
 

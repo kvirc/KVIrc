@@ -116,12 +116,11 @@ void KviThemedComboBox::paintEvent(QPaintEvent * event)
 		style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, p, this);
 
 		r = style()->subElementRect(QStyle::SE_LineEditContents, &option, le);
-		int left, right, top, bottom;
-		le->getTextMargins(&left, &top, &right, &bottom);
-		r.setX(r.x() + left);
-		r.setY(r.y() + top);
-		r.setRight(r.right() - right);
-		r.setBottom(r.bottom() - bottom);
+		QMargins m = le->textMargins();
+		r.setX(r.x() + m.left());
+		r.setY(r.y() + m.top());
+		r.setRight(r.right() - m.right());
+		r.setBottom(r.bottom() - m.bottom());
 		p->setClipRect(r);
 	} // else not editable
 

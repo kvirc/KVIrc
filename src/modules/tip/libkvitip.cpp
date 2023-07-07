@@ -34,8 +34,8 @@
 #include <QPushButton>
 #include <QFont>
 #include <QPainter>
-#include <QDesktopWidget>
 #include <QCloseEvent>
+#include <QScreen>
 
 TipWindow * g_pTipWindow = nullptr;
 
@@ -115,7 +115,7 @@ TipWindow::~TipWindow()
 
 void TipWindow::showEvent(QShowEvent *)
 {
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	QRect rect = g_pApp->primaryScreen()->availableGeometry();
 	move((rect.width() - width()) / 2, (rect.height() - height()) / 2);
 }
 

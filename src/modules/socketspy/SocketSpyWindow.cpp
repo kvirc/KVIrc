@@ -74,7 +74,7 @@ QSize SocketSpyWindow::sizeHint() const
 
 void SocketSpyWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer.sprintf("SOCKETSPY_%d", context()->id());
+	buffer = QString::asprintf("SOCKETSPY_%d", context()->id());
 }
 
 void SocketSpyWindow::fillCaptionBuffers()

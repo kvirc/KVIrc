@@ -272,7 +272,7 @@ void KviIrcView::add2Log(const QString & szBuffer, const QDateTime & aDate, int 
 				szDate += " ";
 				break;
 			case 2:
-				szDate = date.toString(Qt::SystemLocaleShortDate);
+				szDate = QLocale().toString(date, QLocale::ShortFormat);
 				szDate += " ";
 				break;
 		}

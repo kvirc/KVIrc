@@ -37,19 +37,9 @@
 * \brief Toolkit Abstraction Layer: menubar class
 */
 
-#ifdef COMPILE_KDE4_SUPPORT
-
-#include <kmenubar.h>
-
-class KVILIB_API KviTalMenuBar : public KMenuBar
-
-#else //!COMPILE_KDE4_SUPPORT
-
 #include <QMenuBar>
 
 class KVILIB_API KviTalMenuBar : public QMenuBar
-
-#endif //!COMPILE_KDE4_SUPPORT
 {
 	Q_OBJECT
 public:

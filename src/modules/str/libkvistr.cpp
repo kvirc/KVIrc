@@ -1720,7 +1720,6 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETER("maxitems", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iMaxItems)
 	KVSM_PARAMETERS_END(c)
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 4, 0)
 	if(c->params()->count() < 4)
 	    iMaxItems = -1;
 
@@ -1738,7 +1737,7 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 	bool bWild = szFla.contains('w', Qt::CaseInsensitive);
 	bool bContainsR = szFla.contains('r', Qt::CaseInsensitive);
 
-	QString::SplitBehavior splitBehavior = szFla.contains('n', Qt::CaseInsensitive) ? QString::SkipEmptyParts : QString::KeepEmptyParts;
+	Qt::SplitBehavior splitBehavior = szFla.contains('n', Qt::CaseInsensitive) ? Qt::SkipEmptyParts : Qt::KeepEmptyParts;
 	Qt::CaseSensitivity sensitivity = szFla.contains('s', Qt::CaseInsensitive) ? Qt::CaseSensitive : Qt::CaseInsensitive;
 
 	QVector<QStringRef> list;
@@ -1758,113 +1757,6 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 			a->append(new KviKvsVariant{list[i].toString()});
 		a->append(new KviKvsVariant{szStr.mid(list[iMaxItems - 1].position())});
 	}
-#else //QT_VERSION
-	if(c->params()->count() < 4)
-		iMaxItems = -1;
-
-	KviKvsArray * a = new KviKvsArray();
-	c->returnValue()->setArray(a);
-
-	if(szSep.isEmpty())
-	{
-		a->set(0, new KviKvsVariant(szStr));
-		return true;
-	}
-
-	if(iMaxItems == 0)
-		return true;
-
-	bool bWild = szFla.contains('w', Qt::CaseInsensitive);
-	bool bContainsR = szFla.contains('r', Qt::CaseInsensitive);
-	bool bCaseSensitive = szFla.contains('s', Qt::CaseInsensitive);
-	bool bNoEmpty = szFla.contains('n', Qt::CaseInsensitive);
-
-	int id = 0;
-
-	int iMatch = 0;
-	int iStrLen = szStr.length();
-	int iBegin = 0;
-
-	if(bContainsR || bWild)
-	{
-		QRegExp re(szSep, bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive, bWild ? QRegExp::Wildcard : QRegExp::RegExp2);
-
-		while((iMatch != -1) && (iMatch < iStrLen) && ((id < (iMaxItems - 1)) || (iMaxItems < 0)))
-		{
-			iMatch = re.indexIn(szStr, iBegin);
-			if(iMatch != -1)
-			{
-				int len = re.matchedLength();
-				if((len == 0) && (iBegin == iMatch))
-					iMatch++; // safety measure for empty string matching
-
-				QString tmp = szStr.mid(iBegin, iMatch - iBegin);
-				if(bNoEmpty)
-				{
-					if(!tmp.isEmpty())
-					{
-						a->set(id, new KviKvsVariant(tmp));
-						id++;
-					}
-				}
-				else
-				{
-					a->set(id, new KviKvsVariant(tmp));
-					id++;
-				}
-
-				iMatch += len;
-				iBegin = iMatch;
-			}
-		}
-	}
-	else
-	{
-		while((iMatch != -1) && (iMatch < iStrLen) && ((id < (iMaxItems - 1)) || (iMaxItems < 0)))
-		{
-			iMatch = szStr.indexOf(szSep, iBegin, bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive);
-			if(iMatch != -1)
-			{
-				QString tmp = szStr.mid(iBegin, iMatch - iBegin);
-				if(bNoEmpty)
-				{
-					if(!tmp.isEmpty())
-					{
-						a->set(id, new KviKvsVariant(tmp));
-						id++;
-					}
-				}
-				else
-				{
-					a->set(id, new KviKvsVariant(tmp));
-					id++;
-				}
-
-				iMatch += szSep.length();
-				iBegin = iMatch;
-			}
-		}
-	}
-
-	if(iBegin < iStrLen)
-	{
-		QString tmpx = szStr.right(iStrLen - iBegin);
-		if(bNoEmpty)
-		{
-			if(!tmpx.isEmpty())
-				a->set(id, new KviKvsVariant(tmpx));
-		}
-		else
-		{
-			a->set(id, new KviKvsVariant(tmpx));
-		}
-	}
-	else
-	{
-		if(!bNoEmpty)
-			a->set(id, new KviKvsVariant(QString())); // empty string at the end
-	}
-#endif //QT_VERSION
 
 	return true;
 }

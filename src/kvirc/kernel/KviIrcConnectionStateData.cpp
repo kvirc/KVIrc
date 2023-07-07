@@ -35,7 +35,7 @@ KviIrcConnectionStateData::~KviIrcConnectionStateData()
 
 void KviIrcConnectionStateData::changeEnabledCapList(const QString & szCapList)
 {
-	for(auto szCap : szCapList.split(' ', QString::SkipEmptyParts))
+	for(auto szCap : szCapList.split(' ', Qt::SkipEmptyParts))
 	{
 		// cap modifiers are:
 		//  '-' : disable a capability (should not be present in a LS message...)

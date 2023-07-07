@@ -49,9 +49,9 @@ namespace UPnP
 	    : QObject(), m_bGatewayAvailable(false), m_iIgdPort(0), m_pRootService(nullptr), m_pWanConnectionService(nullptr)
 	{
 		qDebug() << "CREATED UPnP::IgdControlPoint: created control point"
-		         << " url='" << hostname << ":" << port << "/" << rootUrl << "'." << endl;
+		         << " url='" << hostname << ":" << port << "/" << rootUrl << "'." << Qt::endl;
 
-		qDebug() << "UPnP::IgdControlPoint: querying services..." << endl;
+		qDebug() << "UPnP::IgdControlPoint: querying services..." << Qt::endl;
 
 		// Store device url
 		m_szIgdHostname = hostname;
@@ -68,7 +68,7 @@ namespace UPnP
 		delete m_pRootService;
 		delete m_pWanConnectionService;
 
-		qDebug() << "DESTROYED UPnP::IgdControlPoint [host=" << m_szIgdHostname << ", port=" << m_iIgdPort << "]" << endl;
+		qDebug() << "DESTROYED UPnP::IgdControlPoint [host=" << m_szIgdHostname << ", port=" << m_iIgdPort << "]" << Qt::endl;
 	}
 
 	// Return the external IP address
@@ -113,7 +113,7 @@ namespace UPnP
 				m_bGatewayAvailable = true;
 
 				qDebug() << "UPnP::IgdControlPoint: WAN/IP connection service found, "
-				         << "querying service '" << params.serviceId << "' for external IP address..." << endl;
+				         << "querying service '" << params.serviceId << "' for external IP address..." << Qt::endl;
 
 				// Call the service
 				m_pWanConnectionService = new WanConnectionService(params);
@@ -122,7 +122,7 @@ namespace UPnP
 			}
 			else
 			{
-				qDebug() << "UPnP::IgdControlPoint: no PPP/IP connection service found :(" << endl;
+				qDebug() << "UPnP::IgdControlPoint: no PPP/IP connection service found :(" << Qt::endl;
 			}
 		}
 	}
@@ -132,12 +132,12 @@ namespace UPnP
 	{
 		if(!error)
 		{
-			qDebug() << "IgdControlPoint: UPnP gateway device found." << endl;
+			qDebug() << "IgdControlPoint: UPnP gateway device found." << Qt::endl;
 		}
 		else
 		{
 			// Just started, the request for the external IP failed. This should succeed, abort portation
-			qDebug() << "Requesting external IP address failed, leaving UPnP gateway device untouched." << endl;
+			qDebug() << "Requesting external IP address failed, leaving UPnP gateway device untouched." << Qt::endl;
 		}
 	}
 

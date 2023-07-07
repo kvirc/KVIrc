@@ -534,7 +534,7 @@ void KviStatusBar::mousePressEvent(QMouseEvent * e)
 			dr->setPixmap(pixmap);
 			// Start the drag and drop operation
 			m_pAppletList->sort();
-			dr->start();
+			dr->exec();
 		}
 	}
 }

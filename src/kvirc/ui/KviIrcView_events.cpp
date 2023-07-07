@@ -419,7 +419,7 @@ void KviIrcView::triggerMouseRelatedKvsEvents(QMouseEvent * e)
 		else if(e->button() & Qt::RightButton)
 			emit rightClicked();
 	}
-	else if((e->button() & Qt::MidButton) || ((e->button() & Qt::RightButton) && (e->modifiers() & Qt::ControlModifier)))
+	else if((e->button() & Qt::MiddleButton) || ((e->button() & Qt::RightButton) && (e->modifiers() & Qt::ControlModifier)))
 	{
 		QString tmp;
 		getLinkEscapeCommand(tmp, linkCmd, QString("[!mbt]"));

@@ -30,7 +30,6 @@ int IdlePlatform::secondsIdle() const { return 0; }
 #else
 // COMPILE_XSS_SUPPORT implies COMPILE_QX11INFO_SUPPORT
 #include <QApplication>
-#include <QDesktopWidget>
 #include <QX11Info>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>

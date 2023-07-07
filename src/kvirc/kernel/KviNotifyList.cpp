@@ -175,7 +175,7 @@ void KviNotifyListManager::notifyOnLine(const QString & szNick, const QString & 
 	while(KviRegisteredUser * pUser = it.current())
 	{
 		QString szProp = pUser->getProperty("notify");
-		if(!szProp.isEmpty() && szProp.split(',', QString::SkipEmptyParts).contains(szNick))
+		if(!szProp.isEmpty() && szProp.split(',', Qt::SkipEmptyParts).contains(szNick))
 		{
 			QString szComment = pUser->getProperty("comment");
 			if(!szComment.isEmpty())
@@ -236,7 +236,7 @@ void KviNotifyListManager::notifyOffLine(const QString & szNick, const QString &
 		while(KviRegisteredUser * pUser = it.current())
 		{
 			QString szProp = pUser->getProperty("notify");
-			if(!szProp.isEmpty() && szProp.split(',', QString::SkipEmptyParts).contains(szNick))
+			if(!szProp.isEmpty() && szProp.split(',', Qt::SkipEmptyParts).contains(szNick))
 			{
 				QString szComment = pUser->getProperty("comment");
 				if(!szComment.isEmpty())
@@ -363,7 +363,7 @@ void KviIsOnNotifyListManager::buildRegUserDict()
 		QString notify;
 		if(u->getProperty("notify", notify))
 		{
-			for(const auto & single : notify.trimmed().split(' ', QString::SkipEmptyParts))
+			for(const auto & single : notify.trimmed().split(' ', Qt::SkipEmptyParts))
 				m_pRegUserDict.emplace(single, u->name());
 		}
 		++it;
@@ -992,7 +992,7 @@ bool KviStupidNotifyListManager::handleIsOn(KviIrcMessage * msg)
 		}
 	}
 	// ok... check the users that have left irc now...
-	QStringList sl = m_szLastIsOnMsg.isEmpty() ? QStringList() : m_szLastIsOnMsg.split(' ', QString::SkipEmptyParts);
+	QStringList sl = m_szLastIsOnMsg.isEmpty() ? QStringList() : m_szLastIsOnMsg.split(' ', Qt::SkipEmptyParts);
 
 	for(auto & it : sl)
 	{
@@ -1088,7 +1088,7 @@ void KviWatchNotifyListManager::buildRegUserDict()
 		if(u->getProperty("notify", notify))
 		{
 			notify = notify.trimmed();
-			QStringList sl = notify.split(' ', QString::SkipEmptyParts);
+			QStringList sl = notify.split(' ', Qt::SkipEmptyParts);
 			for(auto & slit : sl)
 				m_pRegUserDict.emplace(slit, u->name());
 		}

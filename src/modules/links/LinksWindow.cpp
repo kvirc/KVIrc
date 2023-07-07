@@ -107,7 +107,7 @@ LinksWindow::~LinksWindow()
 
 void LinksWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer.sprintf("LINKS_%d", context()->id());
+	buffer = QString::asprintf("LINKS_%d", context()->id());
 }
 
 void LinksWindow::requestLinks()

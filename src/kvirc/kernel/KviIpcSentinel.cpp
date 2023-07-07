@@ -172,11 +172,9 @@ bool kvi_sendIpcMessage(const char * message)
 	}
 #elif defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 2, 0)
 	if (!QX11Info::isPlatformX11()) {
 		return false;
 	}
-#endif
 
 	kvi_ipcLoadAtoms();
 
@@ -203,11 +201,9 @@ KviIpcSentinel::KviIpcSentinel() : QWidget(nullptr)
 	setWindowTitle("kvirc4_ipc_sentinel");
 #elif defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 2, 0)
 	if (!QX11Info::isPlatformX11()) {
 		return;
 	}
-#endif
 	kvi_ipcLoadAtoms();
 
 	XChangeProperty(kvi_ipc_get_xdisplay(), winId(), kvi_atom_ipc_sentinel_window, XA_STRING, 8,

@@ -1091,7 +1091,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	if(cas.dActionsPerMinute >= 0.1)
 	{
 		QString szNum;
-		szNum.sprintf(" [%u%% ", cas.uHotActionPercent);
+		szNum = QString::asprintf(" [%u%% ", cas.uHotActionPercent);
 		szBuffer += szNum;
 		szBuffer += __tr2qs("human");
 		szBuffer += "]";
@@ -2092,7 +2092,7 @@ void KviChannelWindow::preprocessMessage(QString & szMessage)
 	if(szMessage.contains(szNonStandardLinkPrefix))
 		return; // contains a non standard link that may contain spaces, do not break it.
 
-	QStringList strings = szMessage.split(" ", QString::KeepEmptyParts);
+	QStringList strings = szMessage.split(" ", Qt::KeepEmptyParts);
 	for(auto & it : strings)
 	{
 		if(it.contains('\r'))

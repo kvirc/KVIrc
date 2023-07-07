@@ -389,7 +389,7 @@ endif()
 # Check for Qt5
 ############################################################################
 
-find_package(Qt5Widgets)
+find_package(Qt5Widgets 5.15)
 if(Qt5Widgets_FOUND)
 	set(CMAKE_STATUS_QT_VERSION "${Qt5Widgets_VERSION_STRING}")
 	set(qt5_kvirc_modules)
@@ -521,17 +521,15 @@ if(WANT_KDE)
 				XmlGui          # KMainWindow
 				WindowSystem    # KWindowSystem
 				Notifications   # KNotification
-				Service         # KToolInvocation
+				Service         # KService, KApplicationTrader
+				KIO             # KTerminalLauncherJob, KIO/ApplicationLauncherJob
+				Parts           # KParts
 			)
 
 		if(KF5_FOUND)
 			set(CMAKE_RESULT_USING_KDE true)
-			#include_directories(${KDE4_INCLUDES})
-			#add_definitions(${KDE4_DEFINITIONS})
 			set(COMPILE_KDE_SUPPORT 1)
-			# There seems to be no portable way to figure out if KDE version is 4 or 5
-			set(COMPILE_KDE5_SUPPORT 1)
-			list(APPEND LIBS KF5::CoreAddons KF5::I18n KF5::XmlGui KF5::WindowSystem KF5::Notifications KF5::Service)
+			list(APPEND LIBS KF5::CoreAddons KF5::I18n KF5::XmlGui KF5::WindowSystem KF5::Notifications KF5::Service KF5::KIOCore KF5::KIOGui KF5::KIOWidgets KF5::Parts)
 			set(CMAKE_STATUS_KDE_SUPPORT "Yes")
 			if(DEFINED KF5_VERSION)
 				set(CMAKE_STATUS_KDE_VERSION ${KF5_VERSION})

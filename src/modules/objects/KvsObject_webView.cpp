@@ -1115,7 +1115,7 @@ KVSO_CLASS_FUNCTION(webView, hitTestContent)
 		return true;
 	KviKvsHash * pHash = new KviKvsHash();
 	pHash->set("imageurl", new KviKvsVariant(res.imageUrl().toString()));
-	pHash->set("linktitle", new KviKvsVariant(res.linkTitle().toString()));
+	pHash->set("linktitle", new KviKvsVariant(res.linkTitleString()));
 	pHash->set("linktext", new KviKvsVariant(res.linkText()));
 	pHash->set("linkelement", new KviKvsVariant((kvs_int_t)insertElement(res.linkElement())));
 	pHash->set("enclosingelement", new KviKvsVariant((kvs_int_t)insertElement(res.enclosingBlockElement())));

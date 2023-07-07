@@ -34,11 +34,10 @@
 #include <QToolTip>
 #include <QTimer>
 
-#ifdef COMPILE_KDE4_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 
-#include "klibloader.h"
-#include "kparts/part.h"
-#include "kparts/factory.h"
+#include <KPluginFactory>
+#include <KParts/ReadOnlyPart>
 #include <kde_terminal_interface.h>
 
 #include <unordered_set>
@@ -78,32 +77,23 @@ TermWidget::TermWidget(QWidget * par, bool bIsStandalone)
 
 	setFrameStyle(QFrame::Sunken | QFrame::Panel);
 
-	KPluginFactory * pKonsoleFactory = KPluginLoader("libkonsolepart").factory();
+	m_pKonsolePart = KPluginFactory::instantiatePlugin<KParts::ReadOnlyPart>(KPluginMetaData(QStringLiteral("konsolepart")), this).plugin;
 
-	if(pKonsoleFactory)
+	if(m_pKonsolePart)
 	{
-		m_pKonsolePart = static_cast<KParts::ReadOnlyPart *>(pKonsoleFactory->create<QObject>(this, this));
+		// start the terminal
+		qobject_cast<TerminalInterface *>(m_pKonsolePart)->showShellInDir(QString());
 
-		if(m_pKonsolePart)
-		{
-			// start the terminal
-			qobject_cast<TerminalInterface *>(m_pKonsolePart)->showShellInDir(QString());
+		m_pKonsoleWidget = m_pKonsolePart->widget();
 
-			m_pKonsoleWidget = m_pKonsolePart->widget();
+		setFocusProxy(m_pKonsoleWidget);
+		m_pKonsoleWidget->show();
 
-			setFocusProxy(m_pKonsoleWidget);
-			m_pKonsoleWidget->show();
-
-			connect(m_pKonsolePart, SIGNAL(destroyed()), this, SLOT(konsoleDestroyed()));
-		}
-		else
-		{
-			m_pKonsoleWidget = new QLabel(__tr2qs("Can't create the terminal emulation part"), this);
-		}
+		connect(m_pKonsolePart, SIGNAL(destroyed()), this, SLOT(konsoleDestroyed()));
 	}
 	else
 	{
-		m_pKonsoleWidget = new QLabel(__tr2qs("Can't retrieve the terminal emulation factory"), this);
+		m_pKonsoleWidget = new QLabel(__tr2qs("Can't create the terminal emulation part"), this);
 	}
 }
 
@@ -183,4 +173,4 @@ QSize TermWidget::sizeHint() const
 	return QSize(wdth + 2, hght + 2);
 }
 
-#endif //COMPILE_KDE4_SUPPORT
+#endif //COMPILE_KDE_SUPPORT

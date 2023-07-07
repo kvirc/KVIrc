@@ -187,7 +187,7 @@ void HelpWindow::startSearch()
 	QString buf = str;
 	str = str.replace("-", " ");
 	str = str.replace(QRegExp(R"(\s[\S]?\s)"), " ");
-	m_terms = str.split(" ", QString::SkipEmptyParts);
+	m_terms = str.split(" ", Qt::SkipEmptyParts);
 	QStringList termSeq;
 	QStringList seqWords;
 	QStringList::iterator it = m_terms.begin();
@@ -218,7 +218,7 @@ void HelpWindow::startSearch()
 					    __tr2qs("Using a wildcard within phrases is not allowed."));
 					return;
 				}
-				seqWords += s.split(' ', QString::SkipEmptyParts);
+				seqWords += s.split(' ', Qt::SkipEmptyParts);
 				termSeq << s;
 				beg = str.indexOf('\"', end + 1);
 			}
