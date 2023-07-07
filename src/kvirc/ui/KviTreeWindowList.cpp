@@ -230,9 +230,9 @@ void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent * e)
 
 	if(KVI_OPTION_BOOL(KviOption_boolWheelScrollsWindowsList))
 	{
-		if(e->pixelDelta().x() < 0)
+		if(e->angleDelta().y() < 0)
 			((KviTreeWindowList *)parent())->switchWindow(true, false);
-		else if(e->pixelDelta().x() > 0)
+		else if(e->angleDelta().y() > 0)
 			((KviTreeWindowList *)parent())->switchWindow(false, false);
 	}
 	else
@@ -245,7 +245,7 @@ void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent * e)
 			return;
 
 		if(
-		    ((e->pixelDelta().x() < 0) && (pBar->value() < pBar->maximum())) || ((e->pixelDelta().x() > 0) && (pBar->value() > pBar->minimum())))
+		    ((e->angleDelta().y() < 0) && (pBar->value() < pBar->maximum())) || ((e->angleDelta().y() > 0) && (pBar->value() > pBar->minimum())))
 			QApplication::sendEvent(pBar, e);
 	}
 }

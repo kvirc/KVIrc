@@ -165,7 +165,7 @@ void KviWindowListBase::switchWindow(bool bNext, bool bInContextOnly, bool bHigh
 
 void KviWindowListBase::wheelEvent(QWheelEvent * e)
 {
-	if(e->pixelDelta().x() > 0)
+	if(e->angleDelta().y() > 0)
 		switchWindow(false, false);
 	else
 		switchWindow(true, false);
