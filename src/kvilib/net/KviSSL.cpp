@@ -56,6 +56,7 @@ static inline void my_ssl_unlock()
 	g_pSSLMutex->unlock();
 }
 
+#if OPENSSL_VERSION_NUMBER < 0x30000000L
 // THIS PART OF OpenSSL SUCKS
 
 static DH * dh_512 = nullptr;
@@ -235,6 +236,7 @@ DH * my_ugly_dh_callback(SSL *, int, int keylength)
 	my_ssl_unlock();
 	return dh;
 }
+#endif
 
 void KviSSL::globalInit()
 {
@@ -247,6 +249,7 @@ void KviSSL::globalDestroy()
 {
 	if(!g_pSSLMutex)
 		return;
+#if OPENSSL_VERSION_NUMBER < 0x30000000L
 	if(dh_512)
 		DH_free(dh_512);
 	if(dh_1024)
@@ -255,6 +258,7 @@ void KviSSL::globalDestroy()
 		DH_free(dh_2048);
 	if(dh_4096)
 		DH_free(dh_4096);
+#endif
 	globalSSLDestroy();
 	delete g_pSSLMutex;
 	g_pSSLMutex = nullptr;
@@ -379,7 +383,11 @@ bool KviSSL::initContext(Method m)
 	// (so we can use secure dcc without a cert)
 	// NOTE: see bug ticket #155
 	SSL_CTX_set_cipher_list(m_pSSLCtx, "ALL:!eNULL:!EXP:!SSLv2:+ADH@STRENGTH");
+#if OPENSSL_VERSION_NUMBER >= 0x30000000L
+	SSL_CTX_set_dh_auto(m_pSSLCtx, 1);
+#else
 	SSL_CTX_set_tmp_dh_callback(m_pSSLCtx, my_ugly_dh_callback);
+#endif
 	return true;
 }
 
