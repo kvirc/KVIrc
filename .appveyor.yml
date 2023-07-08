@@ -15,6 +15,7 @@ environment:
           mingw_fourple: mingw64/mingw-w64-x86_64
           mingw_root: c:/msys64/mingw64
           mingw_libgcc: libgcc_s_seh-1.dll
+          perl_enabled: YES
 
         - cmake_build_type: Release
           arch: x86
@@ -25,6 +26,7 @@ environment:
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
           mingw_libgcc: libgcc_s_dw2-1.dll
+          perl_enabled: NO
 
         - cmake_build_type: Debug
           arch: x64
@@ -35,6 +37,7 @@ environment:
           mingw_fourple: mingw64/mingw-w64-x86_64
           mingw_root: c:/msys64/mingw64
           mingw_libgcc: libgcc_s_seh-1.dll
+          perl_enabled: YES
 
         - cmake_build_type: Debug
           arch: x86
@@ -45,6 +48,7 @@ environment:
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
           mingw_libgcc: libgcc_s_dw2-1.dll
+          perl_enabled: NO
 matrix:
     fast_finish: true
 install:
@@ -95,7 +99,7 @@ build_script:
             "-DCMAKE_BUILD_TYPE=$env:cmake_build_type",
             "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver",
             "-DWANT_OPENSSL=YES",
-            "-DWANT_PERL=YES",
+            "-DWANT_PERL=$env:perl_enabled",
             "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe",
             "-DWANT_PHONON=NO",
             "-DCMAKE_START_TEMP_FILE=",
