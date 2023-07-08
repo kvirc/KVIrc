@@ -116,6 +116,7 @@
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <QPluginLoader>
 #include <QtWin>
+#include <QScreen>
 #endif
 
 #ifdef COMPILE_DBUS_SUPPORT
