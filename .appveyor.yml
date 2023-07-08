@@ -10,7 +10,6 @@ environment:
           arch: x64
           target_arch: x86_64
           vc_arch: amd64
-          choco_arch:
           qt_ver: 5.15\msvc2019_64
           MSYSTEM: MINGW64
           mingw_fourple: mingw64/mingw-w64-x86_64
@@ -21,7 +20,6 @@ environment:
           arch: x86
           target_arch: x86
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
-          choco_arch: --x86
           qt_ver: 5.15\msvc2019
           MSYSTEM: MINGW32
           mingw_fourple: mingw32/mingw-w64-i686
@@ -32,7 +30,6 @@ environment:
           arch: x64
           target_arch: x86_64
           vc_arch: amd64
-          choco_arch:
           qt_ver: 5.15\msvc2019_64
           MSYSTEM: MINGW64
           mingw_fourple: mingw64/mingw-w64-x86_64
@@ -43,7 +40,6 @@ environment:
           arch: x86
           target_arch: x86
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
-          choco_arch: --x86
           qt_ver: 5.15\msvc2019_64
           MSYSTEM: MINGW32
           mingw_fourple: mingw32/mingw-w64-i686
@@ -54,7 +50,6 @@ matrix:
 install:
     # - systeminfo
     - ps: |
-        choco install strawberryperl -y --version 5.32.1.1 $env:choco_arch
         # Strawberry perl doesn't support MSVC, but we force the support.
         c:\cygwin64\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
     - ps: |
