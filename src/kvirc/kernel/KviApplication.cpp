@@ -687,9 +687,9 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 
 		if(!bKNotifyConfigFileChecked)
 		{
-			QString szFileName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/" + QString::fromUtf8("kvirc/kvirc.notifyrc");
+			QString szFileName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/" + QString::fromUtf8("knotifications5/kvirc.notifyrc");
 			if(szFileName.isEmpty())
-				szFileName = QString::fromUtf8("%1/.kde/share/apps/kvirc/kvirc.notifyrc").arg(QDir::homePath());
+				szFileName = QString::fromUtf8("%1/.local/share/knotifications5/kvirc.notifyrc").arg(QDir::homePath());
 
 			QFileInfo inf(szFileName);
 
