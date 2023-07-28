@@ -3,18 +3,19 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# MarongHappy <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
 # ks k, 2020
 # ks k, 2020
-# MarongHappy <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-30 13:26+0200\n"
-"PO-Revision-Date: 2020-06-23 17:45+0000\n"
-"Last-Translator: ks k\n"
-"Language-Team: Korean (http://www.transifex.com/kvirc/KVIrc/language/ko/)\n"
+"PO-Revision-Date: 2015-08-01 09:12+0000\n"
+"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
+"Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +32,7 @@ msgstr "테마 설정"
 
 #: src/modules/options/OptionsDialog.cpp:119
 msgid "KVIrc Preferences"
-msgstr "KVIrc 설정"
+msgstr "KVIrc 환경설정"
 
 #: src/modules/options/OptionsDialog.cpp:122
 msgid ""
@@ -705,7 +706,7 @@ msgid ""
 " an alias that sends the bouncer \"detach\" command immediately before the "
 "\"quit\" command.<br><tt>alias(bncdetach){ raw bouncer detach; quit; "
 "}</tt></p>"
-msgstr "이 선택사항은 예상치 않은 연결이 끊긴 뒤에 자동으로 다시 연결 기능을 사용 되도록 설정합니다. 예상치 못한 연결 끊기는 QUIT 메시지를 통해 <b>사용자가 요청하지 않은</b> <b>완전히 연결된 IRC 세션</b>이 <b>종료</b>되는 것입니다.<p><b>경고:</b>/RAW를 사용하여 QUIT 메시지를 서버로 보내는(발송) 경우 이 선택사항은 나가는(발신) QUIT 메시지를 감지or탐지하지 못하므로 서버가 연결을 종료된 뒤에 다시 연결을 시도하기 때문에 이 선택사항이 올바르게 작동하지 않습니다. 이 선택사항은 분리를 지원하는 바운서or 경비원에서 잘못 동작할 수도 있습니다. 이 경우 \"quit\" 명령 바로 앞에 바운서or 경비원 \"detach\" 사용자쪽 명령을 보내는 별칭을 준비하는 것이 해결책이 될 수 있습니다.<br><tt>alias(bncdetach){ 원시 바운서or경비원 분리; quit; }</tt></p>"
+msgstr "이 선택사항은 예상치 않은 연결이 끊긴 뒤에 자동으로 다시 연결 기능을 사용 되도록 설정합니다. 예상치 못한 연결 끊기는 QUIT 메시지를 통해 <b>사용자가 요청하지 않은</b> <b>완전히 연결된 IRC 세션</b>이 <b>종료</b>되는 것입니다.<p><b>경고:</b>/RAW를 사용하여 QUIT 메시지를 서버로 송신하는 경우 이 선택사항은 송신 QUIT 메시지를 감지하지 못하므로 서버가 연결을 종료된 뒤에 다시 연결을 시도하기 때문에 이 선택사항이 올바르게 작동하지 않습니다. 이 선택사항은 분리를 지원하는 바운서or 경비원에서 잘못 동작할 수도 있습니다. 이 경우 \"quit\" 명령 바로 앞에 바운서or 경비원 \"detach\" 사용자쪽 명령을 보내는 별칭을 준비하는 것이 해결책이 될 수 있습니다.<br><tt>alias(bncdetach){ 원시 바운서or경비원 분리; quit; }</tt></p>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:80
 msgid "Maximum attempts (0 = unlimited):"
@@ -721,7 +722,7 @@ msgstr "가장 적은 값: <b>0초</b><br>가장 큰 값: <b>86400초</b>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:109
 msgid "Certificate"
-msgstr "번역확인->인증"
+msgstr "인증"
 
 #: src/modules/options/OptionsWidget_connection.cpp:111
 msgid "Use SSL certificate (PEM format only)"
@@ -765,7 +766,7 @@ msgstr "연결 시간 초과:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:156
 msgid "Outgoing data queue flush timeout:"
-msgstr "번역확인--> 송신or 발신 데이터 대기열 플러시 시간 초과:"
+msgstr "송신 데이터 대기열 플러시 시간 초과:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:157
 #: src/modules/options/OptionsWidget_dcc.cpp:283
@@ -778,7 +779,7 @@ msgstr " 밀리 초"
 
 #: src/modules/options/OptionsWidget_connection.cpp:158
 msgid "Limit outgoing traffic per connection"
-msgstr "연결 당 나가는 트래픽 제한"
+msgstr "연결 당 송신 트래픽 제한"
 
 #: src/modules/options/OptionsWidget_connection.cpp:159
 msgid "Limit to 1 message every:"
@@ -977,7 +978,7 @@ msgstr "대화방 CTCP 페이지 요청에 대한 대화 상자를 표시"
 
 #: src/modules/options/OptionsWidget_ctcp.h:30
 msgid "CTCP"
-msgstr "클라이언트 대 클라이언트 프로토콜"
+msgstr "CTCP"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:81
 msgid "Use flood protection for CTCP requests (recommended)"
@@ -1060,7 +1061,7 @@ msgstr "홍수 방지"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:46
 msgid "Use workaround for firewall"
-msgstr "방화벽의 회비를 사용"
+msgstr "방화벽에 대한 해결 방법 사용"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:47
 msgid ""
@@ -1083,7 +1084,7 @@ msgid ""
 "of the available IP addresses to be used for outgoing DCCs.<br>This is "
 "especially useful when you use IPv6 and IPv4 addresses. You can force KVIrc "
 "to always choose the IPv4 interface."
-msgstr "다중 호스트 시스템에 있고 사용 가능한 IP 주소 중 하나를 나가는  DCC에 사용하도록 하려면 이 선택사항을 사용 되도록 설정하십시오.<br>이 기능은 IPv6 및 IPv4 주소를 사용할 때 특히 유용합니다. KVIrc가 항상 IPv4 인터페이스를 선택하도록 할 수 있습니다."
+msgstr "다중 호스트 시스템에 있고 사용 가능한 IP 주소 중 하나를 송신 DCC에 사용하도록 하려면 이 선택사항을 사용 되도록 설정하십시오.<br>이 기능은 IPv6 및 IPv4 주소를 사용할 때 특히 유용합니다. KVIrc가 항상 IPv4 인터페이스를 선택하도록 할 수 있습니다."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:76
 msgid "Listen on address/interface:"
@@ -1095,7 +1096,7 @@ msgid ""
 "outgoing DCC transfers.<br>On UNIX systems that support it, you can also "
 "specify IPv4 interface names (such as <b>ppp0</b>).<br>If you set it to "
 "<b>0.0.0.0</b>, KVIrc will try to use the first available IPv4 interface."
-msgstr "나가는 DCC 전송에 기본적으로 사용할 인터페이스의 IP 주소 또는 이름입니다.<br>이를 지원하는 UNIX 시스템에서는 IPv4 인터페이스 이름 (예: <b>ppp0</b>)을 지정할 수도 있습니다. <br><b>0.0.0.0</b>으로 지정하면, KVIrc는 사용 가능한 첫 번째 IPv4 인터페이스를 사용하려고 시도합니다."
+msgstr "송신 DCC 전송에 기본적으로 사용할 인터페이스의 IP 주소 또는 이름입니다.<br>이를 지원하는 UNIX 시스템에서는 IPv4 인터페이스 이름 (예: <b>ppp0</b>)을 지정할 수도 있습니다. <br><b>0.0.0.0</b>으로 지정하면, KVIrc는 사용 가능한 첫 번째 IPv4 인터페이스를 사용하려고 시도합니다."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:84
 msgid "Use user-defined port range"
@@ -1306,14 +1307,14 @@ msgstr "이 선택사항은 KVIrc가 일치하지 않는 포트로 RESUME 요청
 
 #: src/modules/options/OptionsWidget_dcc.cpp:239
 msgid "Replace spaces with underscores in outgoing filenames"
-msgstr "보내는 파일 이름에서 공백을 밑줄(언더스코어 _)로 바꿉니다"
+msgstr "송신 파일 이름에서 공백을 밑줄(언더스코어 _)로 바꿉니다"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:240
 msgid ""
 "This option causes KVIrc to replace spaces with underscores in filenames for"
 " all the outgoing file transfers. This will fix filename handling with some "
 "buggy clients (e.g. some versions of mIRC)."
-msgstr "이 선택사항은 KVIrc가 모든 발신or 송신 파일 전송에 대해 파일 이름에서 공백을 밑줄(언더스코어 _)로 바꿉니다. 이렇게 하면 일부 버기 클라이언트(예: mIRC 일부 버전)의 파일 이름 처리가 수정됩니다."
+msgstr "이 선택사항은 KVIrc가 모든 송신 파일 전송에 대해 파일 이름에서 공백을 밑줄(언더스코어 _)로 바꿉니다. 이렇게 하면 일부 버기 클라이언트(예: mIRC 일부 버전)의 파일 이름 처리가 수정됩니다."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:243
 msgid "Send 64-bit ACKs for files larger than 4GiB"
@@ -2510,7 +2511,7 @@ msgid ""
 "OnLagAlarmTimeDown events. When the lag goes above the threshold "
 "OnLagAlarmTimeUp will be triggered and when the lag falls back below the "
 "threshold then OnLagAlarmTimeDown will be triggered"
-msgstr "이 옵션은 OnLagAlarmTimeUp 및 OnLagAlarmTimeDown 사건의 임계 값을 제어합니다. 시간 지연이 임계 값을 초과하면 OnLagAlarmTimeUp이 트리거되고 시간 지연이 임계 값 아래로 떨어지면 OnLagAlarmTimeDown이 트리거됩니다"
+msgstr "이 선택사항은 OnLagAlarmTimeUp 및 OnLagAlarmTimeDown 사건의 임계 값을 제어합니다. 시간 지연이 임계 값을 초과하면 OnLagAlarmTimeUp이 트리거되고 시간 지연이 임계 값 아래로 떨어지면 OnLagAlarmTimeDown이 트리거됩니다"
 
 #: src/modules/options/OptionsWidget_lag.cpp:65
 msgid "Show lag in IRC context display"
@@ -3553,7 +3554,7 @@ msgid ""
 "Advanced: you can also use this option to force a certain server name to "
 "resolve to a fixed IP address when either the DNS for that server is "
 "temporarily unreachable or you want to avoid the round-robin lookups."
-msgstr "이 검사는 이 서버에 대한 <b>IP 주소 캐싱</b>을 사용 되도록 설정할 것입니다:<br>DNS 조회는 시간이 많이 걸리고 일부 플랫폼에서 차단될 수 있습니다.이 선택사항은 KVIrc가 서버 호스트 이름을 한 번만 찾게합니다.<br><br>고급 :이 옵션을 사용하여 해당 서버의 DNS에 일시적으로 도달 할 수 없거나 라운드 로빈 조회를 피하려는 경우 특정 서버 이름을 고정 IP 주소로 강제로 확인할 수 있습니다."
+msgstr "이 검사는 이 서버에 대한 <b>IP 주소 캐싱</b>을 사용 되도록 설정할 것입니다:<br>DNS 조회는 시간이 많이 걸리고 일부 플랫폼에서 차단될 수 있습니다.이 선택사항은 KVIrc가 서버 호스트 이름을 한 번만 찾게합니다.<br><br>고급 :이 선택사항을 사용하여 해당 서버의 DNS에 일시적으로 도달 할 수 없거나 라운드 로빈 조회를 피하려는 경우 특정 서버 이름을 고정 IP 주소로 강제로 확인할 수 있습니다."
 
 #: src/modules/options/OptionsWidget_servers.cpp:710
 msgid "Connect to this server at startup"
@@ -4154,7 +4155,7 @@ msgid ""
 "This option makes all KVIrc windows look transparent.<br>You must choose a "
 "blending background image below or check the \"Use desktop background for "
 "transparency\" option."
-msgstr "이 옵션을 사용하면 모든 KVIrc 창이 투명하게 보입니다. 아래에서 혼합 배경 이미지를 선택하거나 \"투명성을 위해 바탕 화면 배경 사용\"옵션을 선택해야합니다."
+msgstr "이 선택사항을 사용하면 모든 KVIrc 창이 투명하게 보입니다. 아래에서 혼합 배경 이미지를 선택하거나 \"투명성을 위해 바탕 화면 배경 사용\" 선택사항을 선택해야합니다."
 
 #: src/modules/options/OptionsWidget_theme.cpp:79
 msgid ""
@@ -4320,7 +4321,7 @@ msgid ""
 "debug window. This makes tracking of scripts that might be running in "
 "several windows far easier. The messages in the debug window also contain a "
 "deeper call stack which will help you to identify the scripting problems."
-msgstr "이 옵션은 특수 디버그 창에도 스크립트 오류 및 경고가 표시됩니다. 따라서 여러 창에서 실행될 수있는 스크립트를 훨씬 쉽게 추적 할 수 있습니다. 디버그 창의 메시지에는 더 깊은 호출 스택도 포함되어 있어 스크립팅 문제를 식별하는 데 도움이됩니다."
+msgstr "이 선택사항은 특수 디버그 창에도 스크립트 오류 및 경고가 표시됩니다. 따라서 여러 창에서 실행될 수있는 스크립트를 훨씬 쉽게 추적 할 수 있습니다. 디버그 창의 메시지에는 더 깊은 호출 스택도 포함되어 있어 스크립팅 문제를 식별하는 데 도움이됩니다."
 
 #: src/modules/options/OptionsWidget_uparser.cpp:60
 msgid "Create debug window without focus"
@@ -4697,7 +4698,7 @@ msgstr "클래식 창 목록"
 
 #: src/modules/options/libkvioptions.cpp:104
 msgid "No such options_group %Q"
-msgstr "Q% 같은 옵션이 없습니다"
+msgstr "Q% 같은 선택사항이 없습니다"
 
 #: src/modules/options/libkvioptions.cpp:214
 msgid "No such options page class name %Q"

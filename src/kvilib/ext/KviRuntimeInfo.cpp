@@ -50,7 +50,7 @@ typedef BOOL(WINAPI * PGETPRODUCTINFO)(DWORD, DWORD, DWORD, DWORD, PDWORD);
 
 #define BUFSIZE 1024
 
-// stolen from WinNT.h (last updated from 10.0.17763.0 SDK)
+// stolen from WinNT.h (last updated from 10.0.22567.0 SDK)
 //
 // Product types
 // This list grows with each OS release.
@@ -187,6 +187,7 @@ typedef BOOL(WINAPI * PGETPRODUCTINFO)(DWORD, DWORD, DWORD, DWORD, PDWORD);
 #define PRODUCT_ENTERPRISE_S_EVALUATION             0x00000081
 #define PRODUCT_ENTERPRISE_S_N_EVALUATION           0x00000082
 #define PRODUCT_HOLOGRAPHIC                         0x00000087
+#define PRODUCT_HOLOGRAPHIC_BUSINESS                0x00000088
 #define PRODUCT_PRO_SINGLE_LANGUAGE                 0x0000008A
 #define PRODUCT_PRO_CHINA                           0x0000008B
 #define PRODUCT_ENTERPRISE_SUBSCRIPTION             0x0000008C
@@ -214,9 +215,25 @@ typedef BOOL(WINAPI * PGETPRODUCTINFO)(DWORD, DWORD, DWORD, DWORD, PDWORD);
 #define PRODUCT_HUBOS                               0x000000B4
 #define PRODUCT_ONECOREUPDATEOS                     0x000000B6
 #define PRODUCT_CLOUDE                              0x000000B7
-#define PRODUCT_ANDROMEDA                           0x000000B8
 #define PRODUCT_IOTOS                               0x000000B9
 #define PRODUCT_CLOUDEN                             0x000000BA
+#define PRODUCT_IOTEDGEOS                           0x000000BB
+#define PRODUCT_IOTENTERPRISE                       0x000000BC
+#define PRODUCT_LITE                                0x000000BD
+#define PRODUCT_IOTENTERPRISES                      0x000000BF
+#define PRODUCT_XBOX_SYSTEMOS                       0x000000C0
+#define PRODUCT_XBOX_NATIVEOS                       0x000000C1
+#define PRODUCT_XBOX_GAMEOS                         0x000000C2
+#define PRODUCT_XBOX_ERAOS                          0x000000C3
+#define PRODUCT_XBOX_DURANGOHOSTOS                  0x000000C4
+#define PRODUCT_XBOX_SCARLETTHOSTOS                 0x000000C5
+#define PRODUCT_AZURE_SERVER_CLOUDHOST              0x000000C7
+#define PRODUCT_AZURE_SERVER_CLOUDMOS               0x000000C8
+#define PRODUCT_CLOUDEDITIONN                       0x000000CA
+#define PRODUCT_CLOUDEDITION                        0x000000CB
+#define PRODUCT_AZURESTACKHCI_SERVER_CORE           0x00000196
+#define PRODUCT_DATACENTER_SERVER_AZURE_EDITION     0x00000197
+#define PRODUCT_DATACENTER_SERVER_CORE_AZURE_EDITION 0x00000198
 
 #define PRODUCT_UNLICENSED                          0xABCDABCD
 // clang-format on
@@ -302,7 +319,7 @@ static QString queryWinInfo(QueryInfo info)
 			PGETPRODUCTINFO pGetProductInfo;
 			pGetProductInfo = (PGETPRODUCTINFO)GetProcAddress(
 			    GetModuleHandle(TEXT("kernel32.dll")), "GetProductInfo");
-			// from MSDN, Document Date 12/05/2018
+			// from MSDN, Document Date 01/27/2022
 			// https://docs.microsoft.com/en-us/windows/desktop/api/sysinfoapi/nf-sysinfoapi-getproductinfo
 			// the entire PRODUCT_CORE group has the base Windows version in the
 			// returned value. rip out "Windows" of all PRODUCT values as well

@@ -1,102 +1,143 @@
 [main]
 host = https://www.transifex.com
 
-[KVIrc.defscriptpot]
-file_filter = po/core/defscript/defscript_<lang>.po
-source_file = po/core/defscript/defscript.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:aboutpot]
+file_filter            = po/modules/about/about_<lang>.po
+source_file            = po/modules/about/about.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.kvircpot]
-file_filter = po/core/kvirc/kvirc_<lang>.po
-source_file = po/core/kvirc/kvirc.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:addonpot]
+file_filter            = po/modules/addon/addon_<lang>.po
+source_file            = po/modules/addon/addon.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.kvspot]
-file_filter = po/core/kvs/kvs_<lang>.po
-source_file = po/core/kvs/kvs.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:dccpot]
+file_filter            = po/modules/dcc/dcc_<lang>.po
+source_file            = po/modules/dcc/dcc.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.aboutpot]
-file_filter = po/modules/about/about_<lang>.po
-source_file = po/modules/about/about.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:defscriptpot]
+file_filter            = po/core/defscript/defscript_<lang>.po
+source_file            = po/core/defscript/defscript.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.addonpot]
-file_filter = po/modules/addon/addon_<lang>.po
-source_file = po/modules/addon/addon.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:editorpot]
+file_filter            = po/modules/editor/editor_<lang>.po
+source_file            = po/modules/editor/editor.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.dccpot]
-file_filter = po/modules/dcc/dcc_<lang>.po
-source_file = po/modules/dcc/dcc.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:filetransferwindowpot]
+file_filter            = po/modules/filetransferwindow/filetransferwindow_<lang>.po
+source_file            = po/modules/filetransferwindow/filetransferwindow.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.editorpot]
-file_filter = po/modules/editor/editor_<lang>.po
-source_file = po/modules/editor/editor.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:kvircpot]
+file_filter            = po/core/kvirc/kvirc_<lang>.po
+source_file            = po/core/kvirc/kvirc.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.filetransferwindowpot]
-file_filter = po/modules/filetransferwindow/filetransferwindow_<lang>.po
-source_file = po/modules/filetransferwindow/filetransferwindow.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:kvspot]
+file_filter            = po/core/kvs/kvs_<lang>.po
+source_file            = po/core/kvs/kvs.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.logpot]
-file_filter = po/modules/log/log_<lang>.po
-source_file = po/modules/log/log.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:logpot]
+file_filter            = po/modules/log/log_<lang>.po
+source_file            = po/modules/log/log.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.mediaplayerpot]
-file_filter = po/modules/mediaplayer/mediaplayer_<lang>.po
-source_file = po/modules/mediaplayer/mediaplayer.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:mediaplayerpot]
+file_filter            = po/modules/mediaplayer/mediaplayer_<lang>.po
+source_file            = po/modules/mediaplayer/mediaplayer.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.notifierpot]
-file_filter = po/modules/notifier/notifier_<lang>.po
-source_file = po/modules/notifier/notifier.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:notifierpot]
+file_filter            = po/modules/notifier/notifier_<lang>.po
+source_file            = po/modules/notifier/notifier.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.objectspot]
-file_filter = po/modules/objects/objects_<lang>.po
-source_file = po/modules/objects/objects.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:objectspot]
+file_filter            = po/modules/objects/objects_<lang>.po
+source_file            = po/modules/objects/objects.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.optionspot]
-file_filter = po/modules/options/options_<lang>.po
-source_file = po/modules/options/options.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:optionspot]
+file_filter            = po/modules/options/options_<lang>.po
+source_file            = po/modules/options/options.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.perlpot]
-file_filter = po/modules/perl/perl_<lang>.po
-source_file = po/modules/perl/perl.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:perlpot]
+file_filter            = po/modules/perl/perl_<lang>.po
+source_file            = po/modules/perl/perl.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.pythonpot]
-file_filter = po/modules/python/python_<lang>.po
-source_file = po/modules/python/python.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:pythonpot]
+file_filter            = po/modules/python/python_<lang>.po
+source_file            = po/modules/python/python.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.registerpot]
-file_filter = po/modules/register/register_<lang>.po
-source_file = po/modules/register/register.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:registerpot]
+file_filter            = po/modules/register/register_<lang>.po
+source_file            = po/modules/register/register.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.serverdbpot]
-file_filter = po/modules/serverdb/serverdb_<lang>.po
-source_file = po/modules/serverdb/serverdb.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:serverdbpot]
+file_filter            = po/modules/serverdb/serverdb_<lang>.po
+source_file            = po/modules/serverdb/serverdb.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.sharedfileswindowpot]
-file_filter = po/modules/sharedfileswindow/sharedfileswindow_<lang>.po
-source_file = po/modules/sharedfileswindow/sharedfileswindow.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:sharedfileswindowpot]
+file_filter            = po/modules/sharedfileswindow/sharedfileswindow_<lang>.po
+source_file            = po/modules/sharedfileswindow/sharedfileswindow.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.themepot]
-file_filter = po/modules/theme/theme_<lang>.po
-source_file = po/modules/theme/theme.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:themepot]
+file_filter            = po/modules/theme/theme_<lang>.po
+source_file            = po/modules/theme/theme.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
 
-[KVIrc.torrentpot]
-file_filter = po/modules/torrent/torrent_<lang>.po
-source_file = po/modules/torrent/torrent.pot
-source_lang = en
+[o:kvirc:p:KVIrc:r:torrentpot]
+file_filter            = po/modules/torrent/torrent_<lang>.po
+source_file            = po/modules/torrent/torrent.pot
+source_lang            = en
+replace_edited_strings = false
+keep_translations      = false
+
