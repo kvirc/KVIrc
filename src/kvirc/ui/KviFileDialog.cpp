@@ -203,7 +203,7 @@ bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCa
 	    szFilter, pParent, "directory_name_dialog", true);
 	pDialog->setWindowTitle(szCaption);
 	// Move to tal and settle matters there?
-	pDialog->setFileMode(KviTalFileDialog::Directory);
+	pDialog->setFileMode(KviTalFileDialog::DirectoryOnly);
 	//pDialog->setShowHiddenFiles(showHidden);
 
 	if(pDialog->exec() == QDialog::Accepted)

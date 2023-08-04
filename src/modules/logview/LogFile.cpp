@@ -207,7 +207,7 @@ void LogFile::createLog(ExportType exportType, QString szLog, QString * pszFile)
 	/* Save export directory - this directory path is also used in the HTML export
 	 * and info is used when working with pszFile */
 	QFileInfo info(szLog);
-	szLogDir = info.absoluteDir().absolutePath();
+	szLogDir = info.absoluteDir().absolutePath() + KVI_PATH_SEPARATOR_CHAR;
 
 	/* Reading in log file - LogFiles are read in as bytes, so '\r' isn't
 	 * sanitised by default */
