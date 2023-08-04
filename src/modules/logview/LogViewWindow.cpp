@@ -392,7 +392,6 @@ void LogViewWindow::filterNext()
 
 filter_next:
 	++m_currentLog;
-	pFile = *m_currentLog;
 
 filter_last:
 	if((m_currentLog != m_logList.end()) && !m_bAborted)
