@@ -267,12 +267,27 @@ bool KviApplication::findLocalKvircDirectory()
 	if(m_szConfigFile.isEmpty())
 	{
 		// don't do that if user supplied a config file :)
-		KConfig oKCfg("kvirc");
-		KConfigGroup oKCfgMainGroup(&oKCfg, "Main");
 
-		m_szLocalKvircDir = oKCfgMainGroup.readEntry("LocalKvircDirectory");
+		// if a "kvirc" config exists, migrate its data to "kvircrc" and remove it
+		QFile oOldConfig(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation)
+			 + QLatin1String("/kvirc"));
+		if(oOldConfig.exists())
+		{
+			QFile oNewConfig(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation)
+			 + QLatin1String("/kvircrc"));
+			if(oOldConfig.open(QIODevice::ReadOnly) && oNewConfig.open(QIODevice::Append))
+			{
+				qDebug("Migrating old kde config to kvircrc");
+				oNewConfig.write(oOldConfig.readAll());
+				oOldConfig.remove();
+			}
+		}
+		KConfig kCfg(KVI_HOME_CONFIG_FILE_NAME);
+		KConfigGroup kCfgGroup(&kCfg, "Main");
 
-		unsigned int uSourcesDate = oKCfgMainGroup.readEntry("SourcesDate").toInt();
+		m_szLocalKvircDir = kCfgGroup.readEntry("LocalKvircDirectory");
+
+		unsigned int uSourcesDate = kCfgGroup.readEntry("SourcesDate").toInt();
 		if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
 			return false; // we force a setup anyway
 
@@ -451,23 +466,18 @@ void KviApplication::saveKvircDirectory()
 {
 // Here we save the local directory path
 #ifdef COMPILE_KDE_SUPPORT
-	// In KDE we use the application config file
+	// In KDE we use the application config file $HOME/.config/kvircrc
 	if(m_szConfigFile.isEmpty())
 	{
 		// not if user supplied a config file
-		KConfig * pCfg = new KConfig("kvirc");
-		KConfigGroup * pCfgMainGroup = new KConfigGroup(pCfg, "Main");
-		if(pCfg)
+		KConfig kCfg(KVI_HOME_CONFIG_FILE_NAME);
+		if (kCfg.isConfigWritable(true))
 		{
-			if(pCfg->accessMode() == KConfig::ReadWrite)
-			{
-				pCfgMainGroup->writeEntry("LocalKvircDirectory", m_szLocalKvircDir);
-				pCfgMainGroup->writeEntry("SourcesDate", KVI_SOURCES_DATE_NUMERIC);
-				pCfg->sync();
-				delete pCfgMainGroup;
-				pCfgMainGroup = nullptr;
-				return;
-			}
+			KConfigGroup kCfgGroup(&kCfg, "Main");
+			kCfgGroup.writeEntry("LocalKvircDirectory", m_szLocalKvircDir);
+			kCfgGroup.writeEntry("SourcesDate", KVI_SOURCES_DATE_NUMERIC);
+			kCfgGroup.sync();
+			return;
 		}
 	}
 #endif //COMPILE_KDE_SUPPORT
