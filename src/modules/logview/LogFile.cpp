@@ -352,6 +352,11 @@ void LogFile::createLog(ExportType exportType, QString szLog, QString * pszFile)
 					szTmp.prepend("<br />\n");
 				}
 
+				// remove internal tags before nickname
+				rx.setPattern(">([+%@&~!]?)!nc");
+				szTmp.replace(rx, ">\\1");
+				szTmp.replace(">&amp;!nc", ">&amp;");
+
 				szOutputBuffer += szTmp;
 				bFirstLine = false;
 			}
@@ -404,9 +409,6 @@ void LogFile::createLog(ExportType exportType, QString szLog, QString * pszFile)
 			// remove internal tags
 			rx.setPattern("<qt>|</qt>|smallicons:");
 			szOutputBuffer.replace(rx, "");
-			szOutputBuffer.replace(">!nc", ">");
-			szOutputBuffer.replace("@!nc", "@");
-			szOutputBuffer.replace("%!nc", "%");
 
 			// Close the document
 			szOutputBuffer += "</body>\n</html>\n";
