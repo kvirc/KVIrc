@@ -106,6 +106,15 @@ public:
 	const char * getSoftware() const override { return "Ircd-seven"; }
 };
 
+class KVIRC_API KviIrcdSolanumIrcServerInfo : public KviIrcdSevenIrcServerInfo
+{
+	// libera
+public:
+	KviIrcdSolanumIrcServerInfo(KviIrcConnectionServerInfo * pParent = nullptr, const QString & version = KviQString::Empty)
+	    : KviIrcdSevenIrcServerInfo(pParent, version) {}
+	const char * getSoftware() const override { return "Solanum"; }
+};
+
 class KVIRC_API KviPlexusIrcServerInfo : public KviHybridServerInfo
 {
 	// rizon; note: plexus is an extension to hybrid
