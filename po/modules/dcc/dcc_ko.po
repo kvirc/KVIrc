@@ -3,18 +3,19 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# MarongHappy <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
 # ks k, 2020
 # ks k, 2020
-# MarongHappy <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-30 13:26+0200\n"
-"PO-Revision-Date: 2020-05-31 06:45+0000\n"
-"Last-Translator: ks k\n"
-"Language-Team: Korean (http://www.transifex.com/kvirc/KVIrc/language/ko/)\n"
+"PO-Revision-Date: 2015-08-01 08:58+0000\n"
+"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
+"Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,7 +50,7 @@ msgstr "연결의 수동적인 측면이 될 것입니다"
 
 #: src/modules/dcc/DccBroker.cpp:311
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
-msgstr "연결 대상은 포트 <b>%2</b>의 <b>%1</b> 호스트가 됩니다<br>"
+msgstr "번역확인:어순->연결 대상은 <b>%1</b> 호스트의 <b>%2</b> 포트가 됩니다<br>"
 
 #: src/modules/dcc/DccBroker.cpp:315 src/modules/dcc/DccBroker.cpp:644
 msgid "DCC %1 Request - KVIrc"
@@ -60,7 +61,7 @@ msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>VOICE</b> mode.<br>The connection target will be host <b>%4</b> on port "
 "<b>%5</b><br>"
-msgstr "<b>%1 [%2@%3]</b> 는<br><b>발언권</b> 모드에서 <b>직접 클라이언트 연결</b>을 요청합니다.<br>연결 대상은 포트<b>%5</b>의 <b>%4</b> 호스트입니다<br>"
+msgstr "번역확인:어순-><b>%1 [%2@%3]</b> 는<br><b>발언권</b> 모드에서 <b>직접 클라이언트 연결</b>을 요청합니다.<br>연결 대상은 <b>%4</b>호스트의 <b>%5</b>포트 입니다<br>"
 
 #: src/modules/dcc/DccBroker.cpp:372
 msgid "DCC VOICE request"
@@ -71,7 +72,7 @@ msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>VIDEO</b> mode.<br>The connection target will be host <b>%4</b> on port "
 "<b>%5</b><br>"
-msgstr "<b>%1 [%2@%3]</b> 는<br><b>화상</b> 모드에서 <b>직접 클라이언트 연결</b>을 요청합니다.<br>연결 대상은 포트 <b>%5</b>의 호스트 <b>%4</b>입니다<br>"
+msgstr "번역확인:어순-><b>%1 [%2@%3]</b> 는<br><b>화상</b> 모드에서 <b>직접 클라이언트 연결</b>을 요청합니다.<br>연결 대상은 <b>%4</b>호스트의 <b>%5</b>포트 입니다<br>"
 
 #: src/modules/dcc/DccBroker.cpp:439
 msgid "DCC VIDEO request"
@@ -82,7 +83,7 @@ msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
 "<b>%5</b><br>"
-msgstr "<b>%1 [%2@%3]</b> 는<br><b>캔버스</b>모드에서 <b>직접 클라이언트 연결</b>을 요청합니다.<br>연결 대상은 포트<b>%5</b>의 호스트<b>%4</b>입니다<br>"
+msgstr "번역확인:어순-><b>%1 [%2@%3]</b> 는<br><b>캔버스</b>모드에서 <b>직접 클라이언트 연결</b>을 요청합니다.<br>연결 대상은 <b>%4</b>호스트의 <b>%5</b>포트 입니다<br>"
 
 #: src/modules/dcc/DccBroker.cpp:515
 msgid "DCC CANVAS request"
@@ -92,7 +93,7 @@ msgstr "DCC 캔버스 요청"
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> "
 "large.<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
-msgstr "<b>%1 [%2@%3]</b> 에서 '<b>%4</b>', <b>%5</b> large 파일을 보내려고 합니다.<br>연결 대상은 포트 <b>%7</b> 의 호스트 <b>%6</b> 입니다<br>"
+msgstr "번역확인:어순-><b>%1 [%2@%3]</b> 에서 '<b>%4</b>', <b>%5</b> large 파일을 보내려고 합니다.<br>연결 대상은 호스트 <b>%6</b>의 포트 <b>%7</b> 입니다<br>"
 
 #: src/modules/dcc/DccBroker.cpp:617
 msgid ""
@@ -121,7 +122,7 @@ msgstr "저장할 파일을 선택하십시오 - KVIrc"
 
 #: src/modules/dcc/DccBroker.cpp:758
 msgid "Auto-saving DCC %Q file %Q as %Q"
-msgstr "DCC %Q 파일을 %Q 로 자동 저장합니다"
+msgstr "%Q DCC %Q 파일을 %Q 로 자동 저장합니다"
 
 #: src/modules/dcc/DccBroker.cpp:793
 msgid ""
@@ -398,7 +399,7 @@ msgstr "끝: "
 #: src/modules/dcc/DccFileTransfer.cpp:1779
 #: src/modules/dcc/DccFileTransfer.cpp:1788
 msgid "%1 of %2 (%3%)"
-msgstr "%2 의 %1 (%3%)"
+msgstr "번역확인:어순->%1 / %2(%3%)"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1793
 msgid "%1"
@@ -418,11 +419,11 @@ msgstr "전송 기록"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2031
 msgid "Contacting host %1 on port %2"
-msgstr "%2 포트의 %1 호스트에서 연결하고 있습니다"
+msgstr "번역확인:어순->%1 호스트의 %2 포트에서 연결하고 있습니다"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2038
 msgid "Listening on interface %1 port %2"
-msgstr "%1 포트 %2 인터페이스에서 받기를 기다리고 있습니다"
+msgstr "번역확인:어순->%1 인터페이스의 %2 포트에서 받기를 기다리고 있습니다"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2063
 msgid "The local IP address is private, determining from IRC server: %1"
@@ -430,7 +431,7 @@ msgstr "로컬 IP 주소는 비공개이며 IRC 서버에서 결정됩니다: %1
 
 #: src/modules/dcc/DccFileTransfer.cpp:2127
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
-msgstr "원격 클라이언트의 연결을 기다리는 동안 %2 에 DCC %1 요청을 보냈습니다..."
+msgstr "번역확인:어순-> DCC %1 요청을 %2 에 보냈습니다. 원격 클라이언트가 연결되기를 기다리고 있습니다..."
 
 #: src/modules/dcc/DccFileTransfer.cpp:2131
 msgid "DCC %1 request not sent, awaiting manual connection"
@@ -486,7 +487,7 @@ msgstr "재개 요청의 내부 오류가 있습니다"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2409
 msgid "Invalid RESUME request: position %1 is larger than file size"
-msgstr "잘못된 재개 요청:  %1 위치가 파일 크기보다 큽니다"
+msgstr "잘못된 재개 요청: %1 위치가 파일 크기보다 큽니다"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2413
 msgid "Accepting RESUME request, transfer will begin at position %1"
@@ -804,11 +805,11 @@ msgstr "무시하고 있습니다"
 
 #: src/modules/dcc/requests.cpp:101
 msgid "Concurrent transfer limit reached (%1 of %2 transfers running)"
-msgstr "동시 전송 제한에 도달했습니다 (%2 의 %1 이 전송 실행 중)"
+msgstr "번역확인:어순->동시 전송 제한에 도달했습니다 (%1 / %2 이 전송 실행 중)"
 
 #: src/modules/dcc/requests.cpp:116
 msgid "Slot limit reached (%1 slots of %2)"
-msgstr "슬롯 제한에 도달했습니다 (%2 의 슬롯 %1 개)"
+msgstr "번역확인:어순->슬롯 제한에 도달했습니다 (%1 개 / %2 개 슬롯)"
 
 #: src/modules/dcc/requests.cpp:124
 msgid "Too many pending connections"
@@ -824,7 +825,7 @@ msgstr "이전 형식 %1 의 IP 주소가 잘못되었습니다"
 
 #: src/modules/dcc/requests.cpp:201
 msgid "Invalid IP address %1"
-msgstr "%1  IP 주소가 잘못되었습니다"
+msgstr "%1 IP 주소가 잘못되었습니다"
 
 #: src/modules/dcc/requests.cpp:269
 #, c-format
@@ -871,7 +872,7 @@ msgstr "이 실행 파일은 SSL 지원없이 컴파일되었으며 DCC 보내�
 #: src/modules/dcc/requests.cpp:565
 msgid ""
 "Can't proceed with DCC RECV: transfer not initiated for file %1 on port %2"
-msgstr "DCC 받기를 진행할 수 없음: %2 포트의 %1 파일에 대해 전송이 시작되지 않았습니다"
+msgstr "번역확인:어순->DCC 받기를 진행할 수 없음: %1 파일의 %2 포트에 대해 전송이 시작되지 않았습니다"
 
 #: src/modules/dcc/requests.cpp:590
 msgid "Invalid resume position argument '%1'"
@@ -881,7 +882,7 @@ msgstr "'%1' 재개 위치 인수가 잘못되었습니다"
 msgid ""
 "Can't proceed with DCC SEND: transfer not initiated for file %1 on port %2, "
 "or invalid resume size"
-msgstr "DCC 보내기를 계속 진행할 수 없음: %2 포트의 %1 파일에 대해 전송이 시작되지 않았거나 재개 크기가 잘못되었습니다"
+msgstr "번역확인:어순->DCC 보내기를 계속 진행할 수 없음:  %1 파일의 %2 포트에 대해 전송이 시작되지 않았거나 재개 크기가 잘못되었습니다"
 
 #: src/modules/dcc/requests.cpp:627
 msgid ""
@@ -938,7 +939,7 @@ msgstr "이 실행 파일은 SSL 지원없이 컴파일되었으며 DCC 가져�
 
 #: src/modules/dcc/requests.cpp:887
 msgid "No file offer named '%1' (with size %2) available for %3 [%4@%5]"
-msgstr "%3 [%4@%5] 에 사용할 수 있는 파일 이름이 '%1' (크기 %2) 이 없습니다"
+msgstr "번역확인:어순->파일 이름이 '%1' (크기 %2) 이 없습니다. %3 [%4@%5] 에 사용할 수 있음"
 
 #: src/modules/dcc/requests.cpp:887
 msgid "\"any\""
@@ -948,13 +949,13 @@ msgstr "\"아무거나\""
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %s since we can't accept incoming connections (user option)"
-msgstr "'%s' (실제 파일: %Q) 에 대한 %Q [%Q@%Q] 의 파일 요청을 수락하고 수신 연결을 수락할 수 없으므로 DCC %s 를 제공합니다 (사용자 선택사항)"
+msgstr "번역확인:어순 수정안함->'%s' (실제 파일: %Q) 에 대한 %Q [%Q@%Q] 의 파일 요청을 수락하고 수신 연결을 수락할 수 없으므로 DCC %s 를 제공합니다 (사용자 선택사항)"
 
 #: src/modules/dcc/requests.cpp:987
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %Q"
-msgstr "%Q [%Q@%Q] 에서 '%s' (실제 파일: %Q) 에 대한 DCC %Q 를 제공하는 파일 요청을 수락하고 있습니다"
+msgstr "번역확인:어순 수정안함->%Q [%Q@%Q] 에서 '%s' (실제 파일: %Q) 에 대한 DCC %Q 를 제공하는 파일 요청을 수락하고 있습니다"
 
 #: src/modules/dcc/requests.cpp:1023
 msgid ""

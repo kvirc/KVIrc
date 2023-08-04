@@ -1676,8 +1676,8 @@ void DccFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 			QString szFrom = __tr2qs_ctx("From: ", "dcc");
 			QString szTo = __tr2qs_ctx("To: ", "dcc");
 
-			int daW1 = fm.width(szFrom);
-			int daW2 = fm.width(szTo);
+			int daW1 = fm.horizontalAdvance(szFrom);
+			int daW2 = fm.horizontalAdvance(szTo);
 			if(daW1 < daW2)
 				daW1 = daW2;
 			int iLineSpacing = fm.lineSpacing();
@@ -2010,7 +2010,7 @@ void DccFileTransfer::addToTransferLog(const QString & s)
 {
 	QDateTime dt = QDateTime::currentDateTime();
 	QString ts;
-	ts.sprintf("[%4d.%2d.%2d %2d:%2d:%2d] ", dt.date().year(), dt.date().month(), dt.date().day(), dt.time().hour(), dt.time().minute(), dt.time().second());
+	ts = QString::asprintf("[%4d.%2d.%2d %2d:%2d:%2d] ", dt.date().year(), dt.date().month(), dt.date().day(), dt.time().hour(), dt.time().minute(), dt.time().second());
 	m_szTransferLog += ts + s;
 	m_szTransferLog += "<br>";
 }

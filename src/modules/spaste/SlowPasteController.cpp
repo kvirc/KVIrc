@@ -88,11 +88,11 @@ bool SlowPasteController::pasteClipboardInit()
 	QString tmp(g_pApp->clipboard()->text());
 	if(m_pClipBuff)
 	{
-		(*m_pClipBuff) += tmp.isEmpty() ? QStringList() : tmp.split("\n", QString::KeepEmptyParts);
+		(*m_pClipBuff) += tmp.isEmpty() ? QStringList() : tmp.split("\n", Qt::KeepEmptyParts);
 	}
 	else
 	{
-		m_pClipBuff = new QStringList(tmp.isEmpty() ? QStringList() : tmp.split("\n", QString::KeepEmptyParts));
+		m_pClipBuff = new QStringList(tmp.isEmpty() ? QStringList() : tmp.split("\n", Qt::KeepEmptyParts));
 	}
 	//avoid double connection
 	disconnect(m_pTimer, SIGNAL(timeout()), nullptr, nullptr);

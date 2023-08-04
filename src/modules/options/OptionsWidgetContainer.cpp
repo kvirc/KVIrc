@@ -33,11 +33,11 @@
 
 #include <QLayout>
 #include <QPushButton>
-#include <QDesktopWidget>
 #include <QEvent>
 #include <QGridLayout>
 #include <QCloseEvent>
 #include <QIcon>
+#include <QScreen>
 
 extern OptionsInstanceManager * g_pOptionsInstanceManager;
 
@@ -142,7 +142,7 @@ void OptionsWidgetContainer::showEvent(QShowEvent * e)
 {
 	if(!parent())
 	{
-		QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+		QRect rect = g_pMainWindow->screen()->availableGeometry();
 		move(rect.x() + ((rect.width() - width()) / 2), rect.y() + ((rect.height() - height()) / 2));
 	}
 

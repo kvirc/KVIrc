@@ -147,8 +147,8 @@ void HttpFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 			QString szFrom = __tr2qs_ctx("From: ", "http");
 			QString szTo = __tr2qs_ctx("To: ", "http");
 
-			int daW1 = fm.width(szFrom);
-			int daW2 = fm.width(szTo);
+			int daW1 = fm.horizontalAdvance(szFrom);
+			int daW2 = fm.horizontalAdvance(szTo);
 			if(daW1 < daW2)
 				daW1 = daW2;
 			int iLineSpacing = fm.lineSpacing();

@@ -102,7 +102,7 @@ struct KviIrcViewWrappedBlock
 	KviIrcViewLineChunk * pChunk; // pointer to real line chunk or 0 for word wraps
 	int block_start;              // this is generally different than pAttribute->block_idx!
 	int block_len;                // length if the block in characters
-	int block_width;              // width of the block in pixels
+	float block_width;              // width of the block in pixels
 } _KVI_PACKED;
 
 struct KviIrcViewLine
@@ -135,11 +135,11 @@ struct KviIrcViewWrappedBlockSelectionInfo
 {
 	int selection_type;
 	int part_1_length;
-	int part_1_width;
+	float part_1_width;
 	int part_2_length;
-	int part_2_width;
+	float part_2_width;
 	int part_3_length;
-	int part_3_width;
+	float part_3_width;
 };
 
 #ifdef COMPILE_ON_WINDOWS

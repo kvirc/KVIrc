@@ -293,7 +293,7 @@ QPixmap * DccChatWindow::myIconPtr()
 
 void DccChatWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer.sprintf("%s_%s_%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
+	buffer = QString::asprintf("%s_%s_%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 }
 
 void DccChatWindow::ownMessage(const QString & text, bool bUserFeedback)

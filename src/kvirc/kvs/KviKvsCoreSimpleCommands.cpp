@@ -164,7 +164,7 @@ namespace KviKvsCoreSimpleCommands
 			return true;
 		}
 
-		QStringList sl = szTokens.split(QRegExp("[, ]+"), QString::SkipEmptyParts);
+		QStringList sl = szTokens.split(QRegExp("[, ]+"), Qt::SkipEmptyParts);
 
 		QByteArray szFlags;
 		QByteArray szTarget = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->windowName());

@@ -409,7 +409,6 @@ void KviIrcView::setFont(const QFont & f)
 
 	QFont newFont(f);
 	newFont.setKerning(false);
-	newFont.setStyleStrategy(QFont::StyleStrategy(newFont.styleStrategy() | QFont::ForceIntegerMetrics));
 	QWidget::setFont(newFont);
 	update();
 }
@@ -1134,7 +1133,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 	// Have lines visible
 	int curBottomCoord = widgetHeight - KVI_IRCVIEW_VERTICAL_BORDER;
 	int maxLineWidth = widgetWidth - KVI_IRCVIEW_DOUBLEBORDER_WIDTH;
-	int defLeftCoord = KVI_IRCVIEW_HORIZONTAL_BORDER;
+	float defLeftCoord = KVI_IRCVIEW_HORIZONTAL_BORDER;
 	int lineWrapsHeight;
 
 	// if we draw an icon as a line preamble, we have to change borders geometry accordingly
@@ -1201,7 +1200,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 		bool bacWasTransp = false;
 		char curFore = defaultFore;
 		char curBack = defaultBack;
-		int curLeftCoord = defLeftCoord;
+		float curLeftCoord = defLeftCoord;
 		curBottomCoord -= m_iFontDescent; //rise up the text...
 
 		//
@@ -1355,7 +1354,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 #define DRAW_SELECTED_TEXT(_text_str, _text_idx, _text_len, _text_width)                                                                                                               \
 	SET_PEN(KVI_OPTION_MSGTYPE(KVI_OUT_SELECT).fore(), block->pChunk ? block->pChunk->customFore : QColor());                                                                          \
 	{                                                                                                                                                                                  \
-		int theWdth = _text_width;                                                                                                                                                     \
+		float theWdth = _text_width;                                                                                                                                                     \
 		if(theWdth < 0)                                                                                                                                                                \
 			theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);                                                                                       \
 		pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, getMircColor(KVI_OPTION_MSGTYPE(KVI_OUT_SELECT).back())); \
@@ -1444,7 +1443,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 							break;
 						case KVI_IRCVIEW_BLOCK_SELECTION_ICON:
 						{
-							int theWdth = block->block_width;
+							float theWdth = block->block_width;
 							if(theWdth < 0)
 								theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);
 							pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing,
@@ -1458,7 +1457,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 				{
 					if(block->pChunk && block->pChunk->type == KviControlCodes::Icon)
 						goto no_selection_paint;
-					int wdth = block->block_width;
+					float wdth = block->block_width;
 					if(wdth == 0)
 					{
 						// Last block before a word wrap, or a zero characters attribute block ?
@@ -1480,7 +1479,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 			no_selection_paint:
 				if(block->pChunk && block->pChunk->type == KviControlCodes::Icon)
 				{
-					int wdth = block->block_width;
+					float wdth = block->block_width;
 					if(wdth < 0)
 						wdth = widgetWidth - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER);
 					int imageYPos = curBottomCoord - m_iRelativePixmapY;
@@ -1514,7 +1513,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 				}
 				else
 				{
-					int wdth = block->block_width;
+					float wdth = block->block_width;
 					if(wdth < 0)
 						wdth = widgetWidth - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER);
 
@@ -1685,7 +1684,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 // The IrcView : calculate line wraps
 //
 
-#define IRCVIEW_WCHARWIDTH(c) (((c).unicode() < 0xff) ? m_iFontCharacterWidth[(c).unicode()] : m_pFm->width(c))
+#define IRCVIEW_WCHARWIDTH(c) (((c).unicode() < 0xff) ? m_iFontCharacterWidth[(c).unicode()] : m_pFm->horizontalAdvance(c))
 
 void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 {
@@ -1702,7 +1701,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 	ptr->uLineWraps = 0;                                                                          // no line wraps yet
 
 	unsigned int curAttrBlock = 0; // Current attribute block
-	int curLineWidth = 0;
+	float curLineWidth = 0;
 
 	// init the first block
 	ptr->pBlocks->block_start = 0;
@@ -1720,7 +1719,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 		const QChar * p = unicode + ptr->pBlocks[ptr->iBlockCount].block_start;
 
 		int curBlockLen = 0;
-		int curBlockWidth = 0;
+		float curBlockWidth = 0;
 
 		if(ptr->pChunks[curAttrBlock].type == KviControlCodes::Icon)
 		{
@@ -2088,7 +2087,7 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 	if(m_pFm)
 		delete m_pFm;
 
-	m_pFm = new QFontMetrics(font);
+	m_pFm = new QFontMetricsF(font);
 
 	m_iFontLineSpacing = m_pFm->lineSpacing();
 
@@ -2100,7 +2099,7 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 
 	// cache the first 256 characters
 	for(unsigned short i = 0; i < 256; i++)
-		m_iFontCharacterWidth[i] = m_pFm->width(QChar(i));
+		m_iFontCharacterWidth[i] = m_pFm->horizontalAdvance(QChar(i));
 
 	// Currently KviIrcView requires that the bold font variant has the same metrics as the non-bold one.
 	// To ensure this, we check if the width of the bold and non-bold variants of the first 256 characters match.
@@ -2111,9 +2110,9 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 		fontBold.setBold(true);
 		QFontMetrics fmBold = QFontMetrics(fontBold);
 		for(unsigned short i = 32; i < 256; i++)
-			if (m_iFontCharacterWidth[i] && fmBold.width(QChar(i)) != m_iFontCharacterWidth[i])
+			if (m_iFontCharacterWidth[i] && fmBold.horizontalAdvance(QChar(i)) != m_iFontCharacterWidth[i])
 			{
-				//printf("Char %d: %d != %d\n", i, fmBold.width(QChar(i)), m_iFontCharacterWidth[i]);
+				//printf("Char %d: %d != %d\n", i, fmBold.horizontalAdvance(QChar(i)), m_iFontCharacterWidth[i]);
 				m_bUseRealBold = false;
 				break;
 			}
@@ -2121,7 +2120,7 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 	}
 
 	// fix for #489 (horizontal tabulations)
-	m_iFontCharacterWidth[9] = m_pFm->width("\t");
+	m_iFontCharacterWidth[9] = m_pFm->horizontalAdvance("\t");
 
 	if(m_iFontLineWidth < 1)
 		m_iFontLineWidth = 1;
@@ -2132,20 +2131,20 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 		QDateTime datetime = KVI_OPTION_BOOL(KviOption_boolIrcViewTimestampUTC) ? QDateTime::currentDateTime().toUTC() : QDateTime::currentDateTime();
 		szTimestamp = datetime.toString(KVI_OPTION_STRING(KviOption_stringIrcViewTimestampFormat));
 		szTimestamp.append(' ');
-		m_iWrapMargin = m_pFm->width(szTimestamp);
+		m_iWrapMargin = m_pFm->horizontalAdvance(szTimestamp);
 	}
 	else
 	{
-		m_iWrapMargin = m_pFm->width("wwww");
+		m_iWrapMargin = m_pFm->horizontalAdvance("wwww");
 	}
 
-	m_iMinimumPaintWidth = (((int)(m_pFm->width('w'))) << 1);
+	m_iMinimumPaintWidth = (((int)(m_pFm->horizontalAdvance('w'))) << 1);
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))
 		m_iMinimumPaintWidth += m_iWrapMargin;
 
 	m_iRelativePixmapY = (int)(m_iFontLineSpacing + KVI_IRCVIEW_PIXMAP_SIZE) >> 1;
 
-	m_iIconWidth = (int)m_pFm->width("w");
+	m_iIconWidth = (int)m_pFm->horizontalAdvance("w");
 
 	if(fi.fixedPitch() && (m_iIconWidth > 0))
 	{
@@ -2665,12 +2664,12 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 					curChar = l->szText.at(l->pBlocks[i].block_start + retValue);
 					if (curChar >= 0xD800 && curChar <= 0xDC00) // Surrogate pair
 					{
-						iLeft += m_pFm->width(l->szText.mid(retValue), 2);
+						iLeft += m_pFm->horizontalAdvance(l->szText.mid(retValue), 2);
 						retValue+=2;
 					}
 					else
 					{
-						iLeft += (curChar < 0xff) ? m_iFontCharacterWidth[curChar.unicode()] : m_pFm->width(curChar);
+						iLeft += (curChar < 0xff) ? m_iFontCharacterWidth[curChar.unicode()] : m_pFm->horizontalAdvance(curChar);
 						retValue++;
 					}
 				}

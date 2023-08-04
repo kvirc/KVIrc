@@ -41,7 +41,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QPushButton>
-#include <QDesktopWidget>
+#include <QScreen>
 #include <QEvent>
 #include <QCloseEvent>
 
@@ -444,7 +444,7 @@ void KviKvsCallbackTextInput::done(int code)
 
 void KviKvsCallbackTextInput::showEvent(QShowEvent * e)
 {
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	QRect rect = g_pApp->primaryScreen()->availableGeometry();
 	move((rect.width() - width()) / 2, (rect.height() - height()) / 2);
 
 	QDialog::showEvent(e);
@@ -583,11 +583,7 @@ void KviKvsCallbackFileDialog::done(int code)
 
 	if(code == QDialog::Accepted)
 	{
-#ifdef COMPILE_KDE4_SUPPORT
-		if(mode() == KFile::ExistingOnly)
-#else
 		if(fileMode() == QFileDialog::ExistingFiles)
-#endif
 		{
 			KviKvsArray * a = new KviKvsArray();
 			QStringList sl = selectedFiles();

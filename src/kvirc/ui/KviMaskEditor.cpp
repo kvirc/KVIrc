@@ -55,7 +55,7 @@ KviMaskItem::KviMaskItem(QTreeWidget * pParent, KviMaskEntry * pEntry)
 			szDate = date.toString(Qt::ISODate);
 			break;
 		case 2:
-			szDate = date.toString(Qt::SystemLocaleShortDate);
+			szDate = QLocale().toString(date, QLocale::ShortFormat);
 			break;
 	}
 	setText(0, mask()->szMask);

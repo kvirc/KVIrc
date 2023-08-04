@@ -29,7 +29,7 @@
 
 #include <QSplitter>
 
-#ifdef COMPILE_KDE4_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 #include "TermWidget.h"
 #include "TermWindow.h"
 
@@ -66,7 +66,7 @@ KviModule * g_pTermModule = nullptr;
 
 static bool term_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-#ifdef COMPILE_KDE4_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	c->module()->lock(); // multiple locks are allowed
 	if(
 	    c->hasSwitch('m', "mdi") || // compat only
@@ -81,7 +81,7 @@ static bool term_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		w->show();
 	}
 #else
-	c->warning("Terminal emulation service not supported (non-KDE4 compilation)");
+	c->warning("Terminal emulation service not supported (non-KDE compilation)");
 #endif
 	return true;
 }
@@ -96,9 +96,9 @@ static bool term_module_init(KviModule * m)
 
 static bool term_module_cleanup(KviModule *)
 {
-#ifdef COMPILE_KDE4_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	while(!g_pTermWidgetList.empty())
-		delete *g_pSocketSpyWindowList.begin();
+		delete *g_pTermWidgetList.begin();
 
 	while(!g_pTermWindowList.empty())
 		(*g_pTermWindowList.begin())->close();

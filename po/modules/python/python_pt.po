@@ -1,50 +1,48 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-#
+# 
 # Translators:
+# Peter J. Mello <admin@petermello.net>, 2021
 # Zé <mmodem00@gmail.com>, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
-"PO-Revision-Date: 2017-09-22 12:41+0000\n"
-"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.com/kvirc/KVIrc/language/"
-"pt/)\n"
-"Language: pt\n"
+"POT-Creation-Date: 2020-03-30 13:26+0200\n"
+"PO-Revision-Date: 2015-08-01 09:13+0000\n"
+"Last-Translator: Peter J. Mello <admin@petermello.net>, 2021\n"
+"Language-Team: Portuguese (http://app.transifex.com/kvirc/KVIrc/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: src/modules/pythoncore/libkvipythoncore.cpp:113
-msgid "Internal error: Python interpreter not initialized"
-msgstr ""
-
-#: src/modules/python/libkvipython.cpp:419
-msgid "Python execution error:"
-msgstr "Erro de execução python:"
+"Language: pt\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: src/modules/python/libkvipython.cpp:42
 msgid "The pythoncore module can't be loaded: Python support not available"
-msgstr ""
+msgstr "Não se pode importar o módulo pythoncore: O suporte de Python não está disponível"
+
+#: src/modules/python/libkvipython.cpp:43
+msgid "To see more details about loading failure try /pythoncore.load"
+msgstr "Para ver mais detalhes acerca da falha do carregamento, tente /pythoncore.load"
+
+#: src/modules/python/libkvipython.cpp:56
+msgid ""
+"This KVIrc executable has been compiled without Python scripting support"
+msgstr "Este executável KVIrc foi compilado sem suporte de guiões Python"
 
 #: src/modules/python/libkvipython.cpp:407
 #: src/modules/python/libkvipython.cpp:473
 msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
 "the Python support"
-msgstr ""
+msgstr "O módulo pythoncore falhou em executar o código: qualquer coisa está errada com o suporte Python"
 
-#: src/modules/python/libkvipython.cpp:56
-msgid ""
-"This KVIrc executable has been compiled without Python scripting support"
-msgstr ""
+#: src/modules/python/libkvipython.cpp:419
+msgid "Python execution error:"
+msgstr "Erro de execução python:"
 
-#: src/modules/python/libkvipython.cpp:43
-msgid "To see more details about loading failure try /pythoncore.load"
-msgstr ""
-"Para ver mais detalhes acerca da falha do carregamento, tente /pythoncore."
-"load"
+#: src/modules/pythoncore/libkvipythoncore.cpp:113
+msgid "Internal error: Python interpreter not initialized"
+msgstr "Erro interno: O intérprete Python não foi inicializado"

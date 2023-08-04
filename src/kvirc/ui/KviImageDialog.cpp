@@ -43,7 +43,7 @@ int KviImageDialogItem::height(const KviTalListWidget * lb) const
 
 int KviImageDialogItem::width(const KviTalListWidget * lb) const
 {
-	int w = lb->fontMetrics().width(text()) + 4;
+	int w = lb->fontMetrics().horizontalAdvance(text()) + 4;
 	if(w > 100)
 		w = 100;
 	else if(w < 24)
@@ -75,7 +75,7 @@ void KviImageDialogItem::paint(QPainter * p)
 
 	QFontMetrics fm(p->fontMetrics());
 
-	int wdth = fm.width(t);
+	int wdth = fm.horizontalAdvance(t);
 
 	int idx = t.length();
 	while(wdth > (daRect.width() - 6) && idx > 3)
@@ -83,7 +83,7 @@ void KviImageDialogItem::paint(QPainter * p)
 		t = text();
 		t.truncate(idx);
 		t.append("...");
-		wdth = fm.width(t);
+		wdth = fm.horizontalAdvance(t);
 		idx--;
 	}
 
@@ -202,9 +202,9 @@ void KviImageDialog::startJob(int type, const QString & szInitialPath)
 	{
 		QDir d(szInitialPath);
 		if(!d.exists())
-			d = QDir::homePath();
+			d.setPath(QDir::homePath());
 		if(!d.exists())
-			d = QDir::rootPath();
+			d.setPath(QDir::rootPath());
 		m_szJobPath = d.absolutePath();
 		KVI_OPTION_STRING(KviOption_stringLastImageDialogPath) = m_szJobPath;
 		m_lJobFileList = d.entryList(QDir::Hidden | QDir::AllEntries, QDir::DirsFirst | QDir::Name | QDir::IgnoreCase);

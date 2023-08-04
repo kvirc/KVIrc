@@ -120,18 +120,18 @@ QSize ChannelTreeWidgetItemDelegate::sizeHint(const QStyleOptionViewItem & sovIt
 	{
 		case 0:
 			//channel
-			return QSize(fm.width(item->itemData()->m_szChan), iHeight);
+			return QSize(fm.horizontalAdvance(item->itemData()->m_szChan), iHeight);
 			break;
 		case 1:
 			//users
-			return QSize(fm.width(item->itemData()->m_szUsers.toInt()), iHeight);
+			return QSize(fm.horizontalAdvance(item->itemData()->m_szUsers.toInt()), iHeight);
 			break;
 		case 2:
 		default:
 			//topic
 			if(item->itemData()->m_szStrippedTopic.isEmpty())
 				item->itemData()->m_szStrippedTopic = KviControlCodes::stripControlBytes(item->itemData()->m_szTopic);
-			return QSize(fm.width(item->itemData()->m_szStrippedTopic), iHeight);
+			return QSize(fm.horizontalAdvance(item->itemData()->m_szStrippedTopic), iHeight);
 			break;
 	}
 	//make gcc happy
@@ -275,7 +275,7 @@ ListWindow::~ListWindow()
 
 void ListWindow::getBaseLogFileName(QString & szBuffer)
 {
-	szBuffer.sprintf("LIST_%d", context()->id());
+	szBuffer = QString::asprintf("LIST_%d", context()->id());
 }
 
 void ListWindow::requestList()
@@ -382,7 +382,7 @@ void ListWindow::exportList()
 				szDate = date.toString(Qt::ISODate);
 				break;
 			case 2:
-				szDate = date.toString(Qt::SystemLocaleShortDate);
+				szDate = QLocale().toString(date, QLocale::ShortFormat);
 				break;
 		}
 		szFile = QString(__tr2qs("Channel list for %1 - %2")).arg(connection()->currentNetworkName(), szDate);

@@ -34,7 +34,7 @@
 ###############################################################################
 
 # Minimum CMake version
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.16)
 
 # Name of the project
 project(kvirc)
@@ -389,7 +389,7 @@ endif()
 # Check for Qt5
 ############################################################################
 
-find_package(Qt5Widgets)
+find_package(Qt5Widgets 5.15)
 if(Qt5Widgets_FOUND)
 	set(CMAKE_STATUS_QT_VERSION "${Qt5Widgets_VERSION_STRING}")
 	set(qt5_kvirc_modules)
@@ -528,17 +528,15 @@ if(WANT_KDE)
 				XmlGui          # KMainWindow
 				WindowSystem    # KWindowSystem
 				Notifications   # KNotification
-				Service         # KToolInvocation
+				Service         # KService, KApplicationTrader
+				KIO             # KTerminalLauncherJob, KIO/ApplicationLauncherJob
+				Parts           # KParts
 			)
 
 		if(KF5_FOUND)
 			set(CMAKE_RESULT_USING_KDE true)
-			#include_directories(${KDE4_INCLUDES})
-			#add_definitions(${KDE4_DEFINITIONS})
 			set(COMPILE_KDE_SUPPORT 1)
-			# There seems to be no portable way to figure out if KDE version is 4 or 5
-			set(COMPILE_KDE5_SUPPORT 1)
-			list(APPEND LIBS KF5::CoreAddons KF5::I18n KF5::XmlGui KF5::WindowSystem KF5::Notifications KF5::Service)
+			list(APPEND LIBS KF5::CoreAddons KF5::I18n KF5::XmlGui KF5::WindowSystem KF5::Notifications KF5::Service KF5::KIOCore KF5::KIOGui KF5::KIOWidgets KF5::Parts)
 			set(CMAKE_STATUS_KDE_SUPPORT "Yes")
 			if(DEFINED KF5_VERSION)
 				set(CMAKE_STATUS_KDE_VERSION ${KF5_VERSION})
@@ -682,8 +680,6 @@ if(WANT_OPENSSL)
 			list(APPEND LIBS ${OPENSSL_LIBRARIES})
 			set(COMPILE_SSL_SUPPORT 1)
 			set(CMAKE_STATUS_SSL_SUPPORT "Yes")
-			# CMake FindOpenSSL is incomplete and does not add -lcrypto to LIBS...
-			list(APPEND LIBS -lcrypto)
 		endif()
 	else()
 		set(CMAKE_STATUS_SSL_SUPPORT "Not available")
@@ -1117,7 +1113,7 @@ if(WANT_DOXYGEN)
 		set(CMAKE_STATUS_DOXYGEN_SUPPORT "Yes")
 		add_custom_target(
 			devdocs
-			@echo Generating api documentation
+			COMMENT "Generating API documentation..."
 		)
 
 		add_custom_command(
@@ -1152,7 +1148,7 @@ endif()
 if(UNIX)
 	add_custom_target(
 		distclean
-		@echo Cleaning for source distribution
+		COMMENT "Cleaning for source distribution..."
 	)
 	set(
 		DISTCLEANED

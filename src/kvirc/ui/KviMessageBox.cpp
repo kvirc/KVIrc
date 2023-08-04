@@ -75,7 +75,9 @@ namespace KviMessageBox
 		kvi_va_end(list);
 		bool bRet;
 #ifdef COMPILE_KDE_SUPPORT
-		bRet = (KMessageBox::questionYesNo(nullptr, s, caption) == KMessageBox::Yes);
+    	bRet = (KMessageBox::questionTwoActions(nullptr, s, caption,
+    				KStandardGuiItem::cont(), KStandardGuiItem::stop())
+	  		== KMessageBox::PrimaryAction);
 #else
 		bRet = (QMessageBox::information(0, caption, s,
 		            QMessageBox::Yes | QMessageBox::Default,

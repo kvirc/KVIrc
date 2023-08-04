@@ -90,7 +90,7 @@ extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 
 //static members initialization
 int KviInputEditor::g_iInputInstances = 0;
-QFontMetricsF * KviInputEditor::g_pLastFontMetrics = nullptr;
+QFontMetrics * KviInputEditor::g_pLastFontMetrics = nullptr;
 int KviInputEditor::g_iCachedHeight = 0;
 
 #define KVI_INPUT_MAX_UNDO_SIZE 256
@@ -220,7 +220,6 @@ void KviInputEditor::applyOptions(bool bRefreshCachedMetrics)
 	//set the font
 	QFont newFont(KVI_OPTION_FONT(KviOption_fontInput));
 	newFont.setKerning(false);
-	newFont.setStyleStrategy(QFont::StyleStrategy(newFont.styleStrategy() | QFont::ForceIntegerMetrics));
 	setFont(newFont);
 
 	//set cursor custom width
@@ -288,18 +287,18 @@ void KviInputEditor::dropEvent(QDropEvent * e)
 	}
 }
 
-QFontMetricsF * KviInputEditor::getLastFontMetrics(const QFont & font)
+QFontMetrics * KviInputEditor::getLastFontMetrics(const QFont & font)
 {
 	if(g_pLastFontMetrics)
 		return g_pLastFontMetrics;
 
-	g_pLastFontMetrics = new QFontMetricsF(font);
+	g_pLastFontMetrics = new QFontMetrics(font);
 
-	m_p->fFontElisionWidth = g_pLastFontMetrics->width(m_p->szFontElision);
+	m_p->fFontElisionWidth = g_pLastFontMetrics->horizontalAdvance(m_p->szFontElision);
 
 	//height calculation
 
-	int h = qMax(g_pLastFontMetrics->height(), 14.0) + 2 * (KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING);
+	int h = qMax(g_pLastFontMetrics->height(), 14) + 2 * (KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING);
 	int w = 100;
 	QStyleOptionFrame option;
 	option.initFrom(this);
@@ -534,7 +533,7 @@ void KviInputEditor::rebuildTextBlocks()
 	    (c > 32) || ((c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Italic) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::CryptEscape) && (c != KviControlCodes::Icon)))
 
 	// FIXME: get rid of getLastFontMetrics() ?
-	QFontMetricsF * fm = getLastFontMetrics(font());
+	QFontMetrics * fm = getLastFontMetrics(font());
 
 	unsigned int uFlags = 0;
 	unsigned char uCurFore = KVI_INPUT_DEF_FORE;
@@ -573,7 +572,7 @@ void KviInputEditor::rebuildTextBlocks()
 				pBlock->uForeground = uCurFore;
 				pBlock->uBackground = uCurBack;
 				pBlock->uFlags = uFlags;
-				pBlock->fWidth = fm->width(pBlock->szText);
+				pBlock->fWidth = fm->horizontalAdvance(pBlock->szText);
 				pBlock->iLength = pBlock->szText.length();
 				m_p->lTextBlocks.append(pBlock);
 				continue;
@@ -647,7 +646,7 @@ void KviInputEditor::rebuildTextBlocks()
 
 			QChar cSubstitute = getSubstituteChar(c);
 			pBlock = new KviInputEditorTextBlock(QString(cSubstitute));
-			pBlock->fWidth = fm->width(pBlock->szText) + 4;
+			pBlock->fWidth = fm->horizontalAdvance(pBlock->szText) + 4;
 			pBlock->uFlags = uFlags | KviInputEditorTextBlock::IsControlBlock;
 			pBlock->uForeground = uCurFore;
 			pBlock->uBackground = uCurBack;
@@ -707,11 +706,11 @@ void KviInputEditor::rebuildTextBlocks()
 					pBlock2->uForeground = pBlock->uForeground;
 					pBlock2->uBackground = pBlock->uBackground;
 					pBlock2->uFlags = pBlock->uFlags;
-					pBlock2->fWidth = fm->width(pBlock2->szText);
+					pBlock2->fWidth = fm->horizontalAdvance(pBlock2->szText);
 					pBlock2->iLength = iLeft;
 					m_p->lTextBlocks.insert(idx, pBlock2);
 					pBlock->szText.remove(0, iLeft);
-					pBlock->fWidth = fm->width(pBlock->szText);
+					pBlock->fWidth = fm->horizontalAdvance(pBlock->szText);
 					pBlock->iLength -= iLeft;
 					pBlock->uFlags |= KviInputEditorTextBlock::IsSelected;
 					iCurStart += iLeft;
@@ -731,11 +730,11 @@ void KviInputEditor::rebuildTextBlocks()
 					pBlock2->uForeground = pBlock->uForeground;
 					pBlock2->uBackground = pBlock->uBackground;
 					pBlock2->uFlags = pBlock->uFlags;
-					pBlock2->fWidth = fm->width(pBlock2->szText);
+					pBlock2->fWidth = fm->horizontalAdvance(pBlock2->szText);
 					pBlock2->iLength = iLeft;
 					m_p->lTextBlocks.insert(idx, pBlock2);
 					pBlock->szText.remove(0, iLeft);
-					pBlock->fWidth = fm->width(pBlock->szText);
+					pBlock->fWidth = fm->horizontalAdvance(pBlock->szText);
 					pBlock->iLength = pBlock->szText.length();
 					pBlock->uFlags &= ~KviInputEditorTextBlock::IsSelected;
 					break;
@@ -833,7 +832,7 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 void KviInputEditor::drawContents(QPainter * p)
 {
 	QRect rect = p->clipRegion().boundingRect();
-	QFontMetricsF * fm = getLastFontMetrics(font());
+	QFontMetrics * fm = getLastFontMetrics(font());
 
 	if(m_p->bTextBlocksDirty)
 		rebuildTextBlocks();
@@ -2523,7 +2522,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 
 	qreal fWidth = fXPos - fCurX;
 
-	QFontMetricsF * fm = getLastFontMetrics(font());
+	QFontMetrics * fm = getLastFontMetrics(font());
 
 	QString szPart = fm->elidedText(pBlock->szText, Qt::ElideRight, fWidth + m_p->fFontElisionWidth);
 
@@ -2532,7 +2531,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 
 	// OK, now we have a good starting point
 
-	qreal fPrevWidth = fm->width(szPart);
+	qreal fPrevWidth = fm->horizontalAdvance(szPart);
 	int iBlockLength = pBlock->szText.length();
 
 	if(fPrevWidth <= fWidth)
@@ -2546,7 +2545,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 
 			szPart = pBlock->szText.left(iPartLength + 1);
 
-			qreal fNextWidth = fm->width(szPart);
+			qreal fNextWidth = fm->horizontalAdvance(szPart);
 
 			if(fNextWidth >= fWidth)
 			{
@@ -2573,7 +2572,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 
 			szPart = pBlock->szText.left(iPartLength - 1);
 
-			qreal fNextWidth = fm->width(szPart);
+			qreal fNextWidth = fm->horizontalAdvance(szPart);
 
 			if(fNextWidth <= fWidth)
 			{
@@ -2603,7 +2602,7 @@ qreal KviInputEditor::xPositionFromCharIndex(int iChIdx)
 	if(m_p->lTextBlocks.isEmpty())
 		return fCurX;
 
-	QFontMetricsF * fm = getLastFontMetrics(font());
+	QFontMetrics * fm = getLastFontMetrics(font());
 	int iCurChar = 0;
 
 	foreach(KviInputEditorTextBlock * pBlock, m_p->lTextBlocks)
@@ -2613,7 +2612,7 @@ qreal KviInputEditor::xPositionFromCharIndex(int iChIdx)
 		{
 			if(iChIdx == iCurChar)
 				return fCurX;
-			return fCurX + fm->width(pBlock->szText.left(iChIdx - iCurChar));
+			return fCurX + fm->horizontalAdvance(pBlock->szText.left(iChIdx - iCurChar));
 		}
 		iCurChar = iNextChar;
 		fCurX += pBlock->fWidth;

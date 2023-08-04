@@ -41,19 +41,8 @@
 * \brief Toolkit Abstraction Layer: filedialog class
 */
 
-#if defined(COMPILE_KDE4_SUPPORT)
-
-#include <KFileDialog>
-class KVILIB_API KviTalFileDialog : public KFileDialog
-
-#else //!defined(COMPILE_KDE4_SUPPORT)
-
-// no KDE or KDE5 (which has no KFileDialog)
-
 #include <QFileDialog>
 class KVILIB_API KviTalFileDialog : public QFileDialog
-
-#endif //!defined(COMPILE_KDE4_SUPPORT)
 {
 	Q_OBJECT
 public:
@@ -95,13 +84,6 @@ public:
 	void setFileMode(FileMode m);
 
 	/**
-	* \brief Sets the current directory
-	* \param szDirectory The directory
-	* \return void
-	*/
-	void setDirectory(const QString & szDirectory);
-
-	/**
 	* \brief Returns an existing directory selected by the user
 	* \param szDir The directory to display
 	* \param szCaption The caption of the dialog
@@ -110,13 +92,7 @@ public:
 	*/
 	static QString getExistingDirectoryPath(const QString & szDir = QString(), const QString & szCaption = QString(), QWidget * pParent = nullptr)
 	{
-#if defined(COMPILE_KDE4_SUPPORT)
-		// QFileDialog allows making new directories...kfiledialog not :/
-		return KFileDialog::getExistingDirectory(KUrl(szDir), pParent, szCaption);
-//return getExistingDirectory(dir,parent,caption);
-#else  //!defined(COMPILE_KDE4_SUPPORT)
 		return getExistingDirectory(pParent, szCaption, szDir);
-#endif //!defined(COMPILE_KDE4_SUPPORT)
 	};
 };
 

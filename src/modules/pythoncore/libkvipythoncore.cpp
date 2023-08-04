@@ -213,7 +213,9 @@ static bool pythoncore_module_init(KviModule *)
 {
 #ifdef COMPILE_PYTHON_SUPPORT
 	Py_Initialize();
+#if PY_VERSION_HEX < 0x03070000
 	PyEval_InitThreads();
+#endif
 
 	mainThreadState = PyEval_SaveThread();
 

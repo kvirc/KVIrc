@@ -142,7 +142,7 @@ void KviIrcUrl::split(const QString & url, KviIrcUrlParts & result)
 	if(result.szHost.isEmpty())
 		result.iError |= InvalidUrl;
 
-	result.chanList = rx.cap(8).isEmpty() ? QStringList() : rx.cap(8).split(',', QString::SkipEmptyParts);
+	result.chanList = rx.cap(8).isEmpty() ? QStringList() : rx.cap(8).split(',', Qt::SkipEmptyParts);
 }
 
 void KviIrcUrl::join(QString & uri, KviIrcServer * server)

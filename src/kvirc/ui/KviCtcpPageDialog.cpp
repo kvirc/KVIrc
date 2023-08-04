@@ -32,7 +32,7 @@
 #include <QLayout>
 #include <QLabel>
 #include <QPixmap>
-#include <QDesktopWidget>
+#include <QScreen>
 #include <QStackedWidget>
 #include <QPushButton>
 #include <QTabWidget>
@@ -70,7 +70,7 @@ KviCtcpPageDialog::~KviCtcpPageDialog()
 
 void KviCtcpPageDialog::center()
 {
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	QRect rect = g_pApp->primaryScreen()->availableGeometry();
 	move((rect.width() - width()) / 2, (rect.height() - height()) / 2);
 }
 
@@ -95,7 +95,7 @@ void KviCtcpPageDialog::addPage(const QString & szNick, const QString & szUser, 
 			szDate = date.toString(Qt::ISODate);
 			break;
 		case 2:
-			szDate = date.toString(Qt::SystemLocaleShortDate);
+			szDate = QLocale().toString(date, QLocale::ShortFormat);
 			break;
 	}
 

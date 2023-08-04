@@ -93,7 +93,7 @@ KviTopicListBoxItem::~KviTopicListBoxItem()
 
 int KviTopicListBoxItem::width(const KviTalListWidget * lb) const
 {
-	return lb->fontMetrics().width(KviControlCodes::stripControlBytes(text()));
+	return lb->fontMetrics().horizontalAdvance(KviControlCodes::stripControlBytes(text()));
 }
 
 KviTopicWidget::KviTopicWidget(QWidget * par, KviChannelWindow * pChannel, const char * name)
@@ -177,7 +177,6 @@ void KviTopicWidget::applyOptions()
 	m_pLabel->applyOptions();
 	QFont newFont(KVI_OPTION_FONT(KviOption_fontLabel));
 	newFont.setKerning(false);
-	newFont.setStyleStrategy(QFont::StyleStrategy(newFont.styleStrategy() | QFont::ForceIntegerMetrics));
 	setFont(newFont);
 	if(m_pCompletionBox)
 		m_pCompletionBox->setFont(newFont);
@@ -221,7 +220,7 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 		{
 			QString szText = text.mid(start, len);
 
-			wdth = fm.width(szText);
+			wdth = fm.horizontalAdvance(szText);
 
 			if(curFore == KVI_LABEL_DEF_FORE)
 			{
@@ -230,7 +229,7 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 			else
 			{
 				if(curFore > KVI_EXTCOLOR_MAX)
-					p->setPen(cg.background().color());
+					p->setPen(cg.window().color());
 				else
 					p->setPen(getMircColor(curFore));
 			}
@@ -441,7 +440,7 @@ QSize KviTopicWidget::sizeHint() const
 {
 	QFontMetrics fm(font());
 	int h = qMax(fm.height(), 14) + 2 * (KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING);
-	int w = fm.width(QLatin1Char('x')) * 17 + 2 * (KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING);
+	int w = fm.horizontalAdvance(QLatin1Char('x')) * 17 + 2 * (KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING);
 	QStyleOptionFrame option;
 	option.initFrom(this);
 	option.rect = rect();

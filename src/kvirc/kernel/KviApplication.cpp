@@ -116,6 +116,7 @@
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <QPluginLoader>
 #include <QtWin>
+#include <QScreen>
 #endif
 
 #ifdef COMPILE_DBUS_SUPPORT
@@ -123,11 +124,7 @@
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT
-#ifdef COMPILE_KDE4_SUPPORT
-#include <KStandardDirs>
-#else
 #include <QStandardPaths>
-#endif
 #include <KNotification>
 #endif
 
@@ -189,7 +186,6 @@ KVIRC_API QPixmap * g_pShadedParentGlobalDesktopBackground = nullptr; // the pix
 KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground = nullptr;  // the pixmap that we use for MdiChild
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <winuser.h>
-#include <QDesktopWidget>
 #endif
 #endif
 
@@ -691,13 +687,9 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 
 		if(!bKNotifyConfigFileChecked)
 		{
-#ifdef COMPILE_KDE4_SUPPORT
-			QString szFileName = KStandardDirs::locateLocal("data", QString::fromUtf8("kvirc/kvirc.notifyrc"));
-#else
-			QString szFileName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/" + QString::fromUtf8("kvirc/kvirc.notifyrc");
-#endif
+			QString szFileName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/" + QString::fromUtf8("knotifications5/kvirc.notifyrc");
 			if(szFileName.isEmpty())
-				szFileName = QString::fromUtf8("%1/.kde/share/apps/kvirc/kvirc.notifyrc").arg(QDir::homePath());
+				szFileName = QString::fromUtf8("%1/.local/share/knotifications5/kvirc.notifyrc").arg(QDir::homePath());
 
 			QFileInfo inf(szFileName);
 
@@ -797,26 +789,14 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 			pIcon = g_pIconManager->getSmallIcon(eIcon);
 
 		KNotification * pNotify = nullptr;
-#if defined(COMPILE_KDE4_SUPPORT)
-#if KDE_IS_VERSION(4, 4, 0)
-		pNotify = new KNotification("incomingMessage", KNotification::CloseWhenWidgetActivated, this);
-#else
-		pNotify = new KNotification("incomingMessage", g_pMainWindow, KNotification::CloseWhenWidgetActivated);
-#endif
-#else
-		pNotify = new KNotification("incomingMessage", g_pMainWindow, KNotification::CloseWhenWidgetActivated);
-#endif
-		pNotify->setFlags(KNotification::Persistent);
+		pNotify = new KNotification("incomingMessage");
+		pNotify->setWidget(g_pMainWindow);
+		pNotify->setFlags(KNotification::CloseWhenWidgetActivated|KNotification::Persistent);
 		pNotify->setTitle(szTitle);
 		pNotify->setText(szText);
 		pNotify->setActions(actions);
 		pNotify->setPixmap(*pIcon);
-
-#if defined(COMPILE_KDE4_SUPPORT)
-		pNotify->setComponentData(KComponentData(aboutData()));
-#else
 		pNotify->setComponentName("kvirc");
-#endif
 
 		connect(pNotify, SIGNAL(activated()), this, SLOT(showParentFrame()));
 		connect(pNotify, SIGNAL(action1Activated()), this, SLOT(showParentFrame()));
@@ -863,7 +843,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 
 			KviNotifierMessageParam s;
 			s.pWindow = pWnd;
-			s.szIcon.sprintf("%d", iIconId);
+			s.szIcon = QString::asprintf("%d", iIconId);
 			s.szMessage = szMsg;
 			s.uMessageLifetime = uMessageLifetime;
 
@@ -1277,7 +1257,7 @@ void KviApplication::updatePseudoTransparency()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		if(KVI_OPTION_BOOL(KviOption_boolUseWindowsDesktopForTransparency))
 		{
-			QSize size = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen()).size();
+			QSize size = g_pApp->primaryScreen()->size();
 			// get the Program Manager
 			HWND hWnd = FindWindow(TEXT("Progman"), TEXT("Program Manager"));
 			// Create and setup bitmap

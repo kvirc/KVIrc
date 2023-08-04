@@ -188,7 +188,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("DccSendFakeAddressByDefault", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("UseWindowListActivityMeter", false, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("CloseServerWidgetAfterConnect", false, KviOption_sectFlagFrame),
-	BOOL_OPTION("PrioritizeLastActionTime", false, KviOption_sectFlagInput),
+	BOOL_OPTION("PrioritizeLastActionTime", true, KviOption_sectFlagInput),
 	BOOL_OPTION("ShowUserChannelIcons", true, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ShowUserChannelState", false, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("EnableIgnoreOnPrivMsg", true, KviOption_sectFlagConnection),
@@ -424,7 +424,7 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS] = {
 KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST_OPTIONS] = {
 	STRINGLIST_OPTION("HighlightWords", KviOption_sectFlagIrcView),
 	STRINGLIST_OPTION("SpamWords", KviOption_sectFlagAntiSpam),
-	STRINGLIST_OPTION_WITHDEFAULT("RecentChannels", KviOption_sectFlagRecent, "#kvirc" KVI_RECENT_CHANNELS_SEPARATOR "freenode"),
+	STRINGLIST_OPTION_WITHDEFAULT("RecentChannels", KviOption_sectFlagRecent, "#kvirc" KVI_RECENT_CHANNELS_SEPARATOR "LiberaChat"),
 	STRINGLIST_OPTION("RecentServers", KviOption_sectFlagRecent),
 	STRINGLIST_OPTION("RecentNicknames", KviOption_sectFlagRecent),
 	STRINGLIST_OPTION("ModuleExtensionToolbars", KviOption_sectFlagFrame),

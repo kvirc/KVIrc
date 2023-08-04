@@ -45,7 +45,7 @@ bool g_bFoundMirc;
 #include <QValidator>
 #include <QTextCodec>
 #include <QLayout>
-#include <QDesktopWidget>
+#include <QScreen>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <winnls.h>  // for MultiByteToWideChar
@@ -608,8 +608,7 @@ SetupWizard::~SetupWizard()
 
 void SetupWizard::showEvent(QShowEvent * e)
 {
-	int primary_screen = g_pApp->desktop()->primaryScreen();
-	QRect r = g_pApp->desktop()->screenGeometry(primary_screen);
+	QRect r = g_pApp->primaryScreen()->availableGeometry();
 
 	int w = r.width();
 	int h = r.height();

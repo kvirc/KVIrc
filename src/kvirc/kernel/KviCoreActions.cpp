@@ -320,7 +320,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 	    KVI_COREACTION_KVIRCHOMEPAGE,
-	    "openurl http://www.kvirc.net",
+	    "openurl https://www.kvirc.net",
 	    __tr2qs("KVIrc WWW"),
 	    __tr2qs("Opens the KVIrc homepage"),
 	    KviActionManager::categoryGeneric(),

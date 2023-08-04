@@ -887,7 +887,7 @@ KVSO_CLASS_FUNCTION(painter, drawRoundRect)
 	KVSO_PARAMETERS_END(c)
 	QString function = "$drawRoundRect";
 	KVSO_PARAMETERS_PAINTER(pXOrArray, iY, iW, iH)
-	m_pPainter->drawRoundRect(iX, iY, iW, iH, iXrnd, iYrnd);
+	m_pPainter->drawRoundedRect(iX, iY, iW, iH, iXrnd, iYrnd);
 	return true;
 }
 
@@ -1140,7 +1140,7 @@ KVSO_CLASS_FUNCTION(painter, fontMetricsWidth)
 	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
 	if(m_pPainter->isActive())
-		c->returnValue()->setInteger(m_pPainter->fontMetrics().width(szText));
+		c->returnValue()->setInteger(m_pPainter->fontMetrics().horizontalAdvance(szText));
 	else
 		c->warning(__tr2qs_ctx("$fontMetricsWidth: the painter is not active!", "objects"));
 	return true;
@@ -1193,7 +1193,7 @@ KVSO_CLASS_FUNCTION(painter, begin)
 				QPrintDialog printDialog(m_pPrinter, nullptr);
 				if(printDialog.exec() == QDialog::Accepted)
 				{
-					qDebug("papersize %d", m_pPrinter->paperSize());
+					qDebug("papersize %d", m_pPrinter->pageLayout().pageSize().id());
 					m_pPainter->begin(m_pPrinter);
 					return true;
 				}

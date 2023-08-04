@@ -53,7 +53,6 @@
 #include <QImageReader>
 #include <QImage>
 #include <QString>
-#include <QDesktopWidget>
 #include <QComboBox>
 #include <QToolTip>
 #include <QStyle>
@@ -64,6 +63,7 @@
 #include <QAbstractItemView>
 #include <QAbstractTextDocumentLayout>
 #include <QShortcut>
+#include <QScreen>
 
 #include <memory>
 
@@ -331,7 +331,7 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 		resize(KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry).width(),
 		    KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry).height());
 
-		QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+		QRect rect = g_pMainWindow->screen()->availableGeometry();
 		move(rect.x() + ((rect.width() - KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry).width()) / 2), rect.y() + ((rect.height() - KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry).height()) / 2));
 	}
 }

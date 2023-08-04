@@ -38,6 +38,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QTextStream>
+#include <QLocale>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 #include <zlib.h>
@@ -99,14 +100,14 @@ LogFile::LogFile(const QString & szName)
 			m_date = QDate::fromString(szDate, Qt::ISODate);
 			break;
 		case 2:
-			m_date = QDate::fromString(szDate, Qt::SystemLocaleShortDate);
+			m_date = QLocale().toDate(szDate, QLocale::ShortFormat);
 			if(!m_date.isValid())
 			{
 				// some locale date formats use '/' as a separator; we change them to '-'
 				// when creating log files. Try to reverse that change here
 				QString szUnescapedDate = szDate;
 				szUnescapedDate.replace('-', KVI_PATH_SEPARATOR_CHAR);
-				m_date = QDate::fromString(szUnescapedDate, Qt::SystemLocaleShortDate);
+				m_date = QLocale().toDate(szUnescapedDate, QLocale::ShortFormat);
 				if(m_date.isValid())
 				{
 					//qt4 defaults to 1900 for years. So "11" means "1911" instead of "2011".. what a pity
@@ -130,14 +131,14 @@ LogFile::LogFile(const QString & szName)
 			m_date = QDate::fromString(szDate, Qt::ISODate);
 			if(!m_date.isValid())
 			{
-				m_date = QDate::fromString(szDate, Qt::SystemLocaleShortDate);
+				m_date = QLocale().toDate(szDate, QLocale::ShortFormat);
 				if(!m_date.isValid())
 				{
 					// some locale date formats use '/' as a separator; we change them to '-'
 					// when creating log files. Try to reverse that change here
 					QString szUnescapedDate = szDate;
 					szUnescapedDate.replace('-', KVI_PATH_SEPARATOR_CHAR);
-					m_date = QDate::fromString(szUnescapedDate, Qt::SystemLocaleShortDate);
+					m_date = QLocale().toDate(szUnescapedDate, QLocale::ShortFormat);
 					if(m_date.isValid())
 					{
 						//qt4 defaults to 1900 for years. So "11" means "1911" instead of "2011".. what a pity

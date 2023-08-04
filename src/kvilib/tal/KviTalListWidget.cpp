@@ -110,7 +110,7 @@ int KviTalListWidgetText::height(const KviTalListWidget * lb) const
 
 int KviTalListWidgetText::width(const KviTalListWidget * lb) const
 {
-	int w = lb ? lb->fontMetrics().width(text()) + 6 : 0;
+	int w = lb ? lb->fontMetrics().horizontalAdvance(text()) + 6 : 0;
 	return qMax(w, QApplication::globalStrut().width());
 }
 
@@ -183,7 +183,7 @@ int KviTalListWidgetPixmap::width(const KviTalListWidget * lb) const
 {
 	if(text().isEmpty())
 		return qMax(pm.width() + 6, QApplication::globalStrut().width());
-	return qMax(pm.width() + lb->fontMetrics().width(text()) + 6,
+	return qMax(pm.width() + lb->fontMetrics().horizontalAdvance(text()) + 6,
 	    QApplication::globalStrut().width());
 }
 

@@ -267,11 +267,17 @@ void KviLagMeter::lagCheckAbort(const char * key)
 
 	QList<KviLagCheck *> lAborted;
 
-	for(auto c : m_lCheckList)
+	auto c = m_lCheckList.begin();
+	while(c != m_lCheckList.end())
 	{
-		if(kvi_strEqualCS(c->szKey.ptr(), key))
-			lAborted.append(c);
+		if(kvi_strEqualCS((*c)->szKey.ptr(), key))
+		{
+			delete *c;
+			c = m_lCheckList.erase(c);
+		}
+		else
+		{
+			++c;
+		}
 	}
-	
-	qDeleteAll(lAborted);
 }

@@ -761,7 +761,7 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	QFlags<QDir::Filter> iFlags = nullptr;
+	QFlags<QDir::Filter> iFlags;
 	if(szFlags.isEmpty())
 		iFlags = QDir::Dirs | QDir::Files | QDir::NoSymLinks | QDir::Readable | QDir::Writable | QDir::Executable | QDir::Hidden | QDir::System;
 	else
@@ -784,7 +784,7 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 			iFlags |= QDir::System;
 	}
 
-	QFlags<QDir::SortFlag> iSort = nullptr;
+	QFlags<QDir::SortFlag> iSort;
 	if(szFlags.isEmpty())
 		iSort = QDir::Unsorted;
 	else
@@ -1666,7 +1666,7 @@ static bool file_kvs_fnc_time(KviKvsModuleFunctionCall * c)
 	}
 	else if(szType.toLower() == "c")
 	{
-		time = f.created();
+		time = f.birthTime();
 	}
 	else if(szType.toLower() == "m")
 	{
