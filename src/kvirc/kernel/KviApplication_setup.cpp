@@ -267,8 +267,23 @@ bool KviApplication::findLocalKvircDirectory()
 	if(m_szConfigFile.isEmpty())
 	{
 		// don't do that if user supplied a config file :)
-		KConfig kCfg("kvircrc");
-		KConfigGroup kCfgGroup(&kCfg, "General");
+
+		// if a "kvirc" config exists, migrate its data to "kvircrc" and remove it
+		QFile oOldConfig(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation)
+			 + QLatin1String("/kvirc"));
+		if(oOldConfig.exists())
+		{
+			QFile oNewConfig(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation)
+			 + QLatin1String("/kvircrc"));
+			if(oOldConfig.open(QIODevice::ReadOnly) && oNewConfig.open(QIODevice::Append))
+			{
+				qDebug("Migrating old kde config to kvircrc");
+				oNewConfig.write(oOldConfig.readAll());
+				oOldConfig.remove();
+			}
+		}
+		KConfig kCfg(KVI_HOME_CONFIG_FILE_NAME);
+		KConfigGroup kCfgGroup(&kCfg, "Main");
 
 		m_szLocalKvircDir = kCfgGroup.readEntry("LocalKvircDirectory");
 
@@ -451,14 +466,14 @@ void KviApplication::saveKvircDirectory()
 {
 // Here we save the local directory path
 #ifdef COMPILE_KDE_SUPPORT
-	// In KDE we use the application config file
+	// In KDE we use the application config file $HOME/.config/kvircrc
 	if(m_szConfigFile.isEmpty())
 	{
 		// not if user supplied a config file
-		KConfig kCfg("kvircrc");
+		KConfig kCfg(KVI_HOME_CONFIG_FILE_NAME);
 		if (kCfg.isConfigWritable(true))
 		{
-			KConfigGroup kCfgGroup(&kCfg, "General");
+			KConfigGroup kCfgGroup(&kCfg, "Main");
 			kCfgGroup.writeEntry("LocalKvircDirectory", m_szLocalKvircDir);
 			kCfgGroup.writeEntry("SourcesDate", KVI_SOURCES_DATE_NUMERIC);
 			kCfgGroup.sync();

@@ -55,7 +55,9 @@
 
 #include "kvi_settings.h"
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#ifdef COMPILE_KDE_SUPPORT
+#define KVI_HOME_CONFIG_FILE_NAME "kvircrc"
+#elif defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #define KVI_HOME_CONFIG_FILE_NAME "kvirc4.ini"
 #else
 #define KVI_HOME_CONFIG_FILE_NAME ".kvirc4.rc"
