@@ -41,6 +41,8 @@
 #include "KviFileDialog.h"
 #include "KviControlCodes.h"
 
+#include "ExportOperation.h"
+
 #include <QList>
 #include <QFileInfo>
 #include <QDir>
@@ -53,10 +55,12 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 #include <QProgressBar>
+#include <QProgressDialog>
 #include <QTextStream>
 #include <QTabWidget>
 #include <QCheckBox>
 #include <QMenu>
+#include <QtConcurrent>
 
 #include <climits> //for INT_MAX
 
@@ -268,14 +272,14 @@ void LogViewWindow::recurseDirectory(const QString & szDir)
 		}
 		else if((info.suffix() == "gz") || (info.suffix() == "log"))
 		{
-			m_logList.append(new LogFile(info.filePath()));
+			m_logList.emplace_back(new LogFile(info.filePath()));
 		}
 	}
 }
 
 void LogViewWindow::setupItemList()
 {
-	if(m_logList.isEmpty())
+	if(m_logList.empty())
 		return;
 
 	m_pFilterButton->setEnabled(false);
@@ -283,12 +287,12 @@ void LogViewWindow::setupItemList()
 
 	m_bAborted = false;
 	m_pBottomLayout->setVisible(true);
-	m_pProgressBar->setRange(0, m_logList.count());
+	m_pProgressBar->setRange(0, m_logList.size());
 	m_pProgressBar->setValue(0);
 
 	m_pLastCategory = nullptr;
 	m_pLastGroupItem = nullptr;
-	m_logList.first();
+	m_currentLog = m_logList.begin();
 	m_pTimer->start(); //singleshot
 }
 
@@ -305,8 +309,9 @@ void LogViewWindow::abortFilter()
 void LogViewWindow::filterNext()
 {
 	QString szCurGroup;
-	LogFile * pFile = m_logList.current();
-	if(!pFile)
+	std::shared_ptr<LogFile> pFile = *m_currentLog;
+
+	if(m_currentLog == m_logList.end())
 		goto filter_last;
 
 	if(pFile->type() == LogFile::Channel && !m_pShowChannelsCheck->isChecked())
@@ -386,10 +391,10 @@ void LogViewWindow::filterNext()
 	new LogListViewLog(m_pLastGroupItem, pFile->type(), pFile);
 
 filter_next:
-	pFile = m_logList.next();
+	++m_currentLog;
 
 filter_last:
-	if(pFile && !m_bAborted)
+	if((m_currentLog != m_logList.end()) && !m_bAborted)
 	{
 		m_pProgressBar->setValue(m_pProgressBar->value() + 1);
 		m_pTimer->start(); //singleshot
@@ -451,7 +456,6 @@ void LogViewWindow::rightButtonClicked(QTreeWidgetItem * pItem, const QPoint &)
 	QMenu * pPopup = new QMenu(this);
 	if(((LogListViewItem *)pItem)->childCount())
 	{
-		// TODO: probably should allow to specify a directory instead of asking for file path on each log file
 		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Save)), __tr2qs_ctx("Export All Log Files to", "log"))->setMenu(m_pExportLogPopup);
 		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)), __tr2qs_ctx("Remove All Log Files Within This Folder", "log"), this, SLOT(deleteCurrent()));
 	}
@@ -534,12 +538,12 @@ void LogViewWindow::exportLog(QAction * pAction)
 	 * sent with the old activated signal - the ordinal is now stored as
 	 * QAction user data */
 	if(pAction)
-		exportLog(pAction->data().toInt());
+		exportLog(static_cast<LogFile::ExportType>(pAction->data().toInt()));
 	else
 		qDebug("LogViewWindow::exportLog called with invalid pAction");
 }
 
-void LogViewWindow::exportLog(int iId)
+void LogViewWindow::exportLog(LogFile::ExportType exportType)
 {
 	LogListViewItem * pItem = (LogListViewItem *)(m_pListView->currentItem());
 	if(!pItem)
@@ -547,20 +551,43 @@ void LogViewWindow::exportLog(int iId)
 
 	if(!pItem->childCount())
 	{
+		std::shared_ptr<LogFile> pLog { pItem->log() };
+
+		QString szDate = pLog->date().toString("yyyy.MM.dd");
+
+		QString szLog = KVI_OPTION_STRING(KviOption_stringLogsExportPath).trimmed();
+		if(!szLog.isEmpty())
+			szLog += KVI_PATH_SEPARATOR_CHAR;
+		szLog += QString("%1_%2.%3_%4").arg(pLog->typeString(), pLog->name(), pLog->network(), szDate);
+		KviFileUtils::adjustFilePath(szLog);
+
+		// Getting output file path from the user, with overwrite confirmation
+		if(!KviFileDialog::askForSaveFileName(
+		       szLog,
+		       __tr2qs_ctx("Export Log - KVIrc", "log"),
+		       szLog,
+		       QString(),
+		       false,
+		       true,
+		       true,
+		       this))
+			return;
+
 		// Export the log
-		createLog(pItem->log(), iId);
+		pLog->createLog(exportType, szLog);
 		return;
 	}
 
 	// We selected a node in the log list, scan the children
-	KviPointerList<LogListViewItem> logList;
-	logList.setAutoDelete(false);
+	std::vector<std::shared_ptr<LogFile>> logList;
 	for(int i = 0; i < pItem->childCount(); i++)
 	{
 		if(!pItem->child(i)->childCount())
 		{
 			// The child is a log file, append it to the list
-			logList.append((LogListViewItem *)pItem->child(i));
+			LogListViewItem * pViewItem = static_cast<LogListViewItem *>(pItem->child(i));
+			std::shared_ptr<LogFile> pLog { pViewItem->log() };
+			logList.push_back(pLog);
 			continue;
 		}
 
@@ -575,275 +602,26 @@ void LogViewWindow::exportLog(int iId)
 			}
 
 			// Add the child to the list
-			logList.append((LogListViewItem *)pChild->child(j));
+			LogListViewItem * pViewItem = static_cast<LogListViewItem *>(pItem->child(j));
+			std::shared_ptr<LogFile> pLog { pViewItem->log() };
+			logList.push_back(pLog);
 		}
 	}
 
-	// Scan the list
-	for(unsigned int u = 0; u < logList.count(); u++)
-	{
-		LogListViewItem * pCurItem = logList.at(u);
-		createLog(pCurItem->log(), iId);
-	}
-}
-
-void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
-{
-	if(!pLog)
-		return;
-
-	QRegExp rx;
-	QString szLog, szLogDir, szInputBuffer, szOutputBuffer, szLine, szTmp;
-	QString szDate = pLog->date().toString("yyyy.MM.dd");
-
-	/* Fetching previous export path and concatenating with generated filename
-	 * adjustFilePath is for file paths not directory paths */
-	szLog = KVI_OPTION_STRING(KviOption_stringLogsExportPath).trimmed();
-	if(!szLog.isEmpty())
-		szLog += KVI_PATH_SEPARATOR_CHAR;
-	szLog += QString("%1_%2.%3_%4").arg(pLog->typeString(), pLog->name(), pLog->network(), szDate);
-	KviFileUtils::adjustFilePath(szLog);
-
-	// Getting output file path from the user, with overwrite confirmation
-	if(!KviFileDialog::askForSaveFileName(
-	       szLog,
+	// Select output directory
+	QString szDir = KVI_OPTION_STRING(KviOption_stringLogsExportPath).trimmed();
+	if(!KviFileDialog::askForDirectoryName(
+	       szDir,
 	       __tr2qs_ctx("Export Log - KVIrc", "log"),
-	       szLog,
+	       szDir,
 	       QString(),
 	       false,
 	       true,
-	       true,
 	       this))
 		return;
+	KVI_OPTION_STRING(KviOption_stringLogsExportPath) = szDir;
 
-	/* Save export directory - this directory path is also used in the HTML export
-	 * and info is used when working with pszFile */
-	QFileInfo info(szLog);
-	szLogDir = info.absoluteDir().absolutePath();
-	KVI_OPTION_STRING(KviOption_stringLogsExportPath) = szLogDir;
-
-	/* Reading in log file - LogFiles are read in as bytes, so '\r' isn't
-	 * sanitised by default */
-	pLog->getText(szInputBuffer);
-	QStringList lines = szInputBuffer.replace('\r', "").split('\n');
-
-	switch(iId)
-	{
-		case LogFile::PlainText:
-		{
-			/* Only append extension if it isn't there already (e.g. a specific
-			 * file is to be overwritten) */
-			if(!szLog.endsWith(".txt"))
-				szLog += ".txt";
-
-			// Scan the file
-			for(auto & line : lines)
-			{
-				szTmp = line;
-				szLine = KviControlCodes::stripControlBytes(szTmp);
-
-				// Remove icons' code
-				rx.setPattern("^\\d{1,3}\\s");
-				szLine.replace(rx, "");
-
-				// Remove link from a user speaking, deal with (and keep) various ranks
-				// e.g.: <!ncHelLViS69>  -->  <HelLViS69>
-				rx.setPattern("\\s<([+%@&~!]?)!nc");
-				szLine.replace(rx, " <\\1");
-
-				// Remove link from a nick in a mask
-				// e.g.: !nFoo [~bar@!hfoo.bar]  -->  Foo [~bar@!hfoo.bar]
-				rx.setPattern("\\s!n");
-				szLine.replace(rx, " ");
-
-				// Remove link from a host in a mask
-				// e.g.: Foo [~bar@!hfoo.bar]  -->  Foo [~bar@foo.bar]
-				rx.setPattern("@!h");
-				szLine.replace(rx, "@");
-
-				// Remove link from a channel
-				// e.g.: !c#KVIrc  -->  #KVIrc
-				rx.setPattern("!c#");
-				szLine.replace(rx, "#");
-
-				szOutputBuffer += szLine;
-				szOutputBuffer += "\n";
-			}
-
-			break;
-		}
-		case LogFile::HTML:
-		{
-			/* Only append extension if it isn't there already (e.g. a specific
-			 * file is to be overwritten) */
-			if(!szLog.endsWith(".html"))
-				szLog += ".html";
-
-			szTmp = QString("KVIrc %1 %2").arg(KVI_VERSION).arg(KVI_RELEASE_NAME);
-			QString szNick = "";
-			bool bFirstLine = true;
-
-			QString szTitle;
-			switch(pLog->type())
-			{
-				case LogFile::Channel:
-					szTitle = __tr2qs_ctx("Channel %1 on %2", "log").arg(pLog->name(), pLog->network());
-					break;
-				case LogFile::Console:
-					szTitle = __tr2qs_ctx("Console on %1", "log").arg(pLog->network());
-					break;
-				case LogFile::Query:
-					szTitle = __tr2qs_ctx("Query with: %1 on %2", "log").arg(pLog->name(), pLog->network());
-					break;
-				case LogFile::DccChat:
-					szTitle = __tr2qs_ctx("DCC Chat with: %1", "log").arg(pLog->name());
-					break;
-				case LogFile::Other:
-					szTitle = __tr2qs_ctx("Something on: %1", "log").arg(pLog->network());
-					break;
-			}
-
-			// Prepare HTML document
-			szOutputBuffer += "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n";
-			szOutputBuffer += "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n";
-			szOutputBuffer += "<head>\n";
-			szOutputBuffer += "\t<meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=utf-8\" />\n";
-			szOutputBuffer += "\t<meta name=\"author\" content=\"" + szTmp + "\" />\n";
-			szOutputBuffer += "\t<title>" + szTitle + "</title>\n";
-			szOutputBuffer += "</head>\n<body>\n";
-			szOutputBuffer += "<h2>" + szTitle + "</h2>\n<h3>Date: " + szDate + "</h3>\n";
-
-			// Scan the file
-			for(auto & line : lines)
-			{
-				szTmp = line;
-
-				// Find who has talked
-				QString szTmpNick = szTmp.section(" ", 2, 2);
-				if((szTmpNick.left(1) != "<") && (szTmpNick.right(1) != ">"))
-					szTmpNick = "";
-
-				// locate msgtype
-				QString szNum = szTmp.section(' ', 0, 0);
-				bool bOk;
-				int iMsgType = szNum.toInt(&bOk);
-
-				// only human text for now...
-				if(iMsgType != 24 && iMsgType != 25 && iMsgType != 26)
-					continue;
-
-				// remove msgtype tag
-				szTmp = szTmp.remove(0, szNum.length() + 1);
-
-				szTmp = KviHtmlGenerator::convertToHtml(szTmp, true);
-
-				// insert msgtype icon at start of the current text line
-				KviMessageTypeSettings msg(KVI_OPTION_MSGTYPE(iMsgType));
-				QString szIcon = g_pIconManager->getSmallIconResourceName((KviIconManager::SmallIcon)msg.pixId());
-				szTmp.prepend("<img src=\"" + szIcon + R"(" alt="" /> )");
-
-				/*
-				 * Check if the nick who has talked is the same of the above line.
-				 * If so, we have to put the line as it is, otherwise we have to
-				 * open a new paragraph
-				 */
-				if(szTmpNick != szNick)
-				{
-					/*
-					 * People is not the same, close the paragraph opened
-					 * before and open a new one
-					 */
-					if(!bFirstLine)
-						szOutputBuffer += "</p>\n";
-					szTmp.prepend("<p>");
-
-					szNick = szTmpNick;
-				}
-				else
-				{
-					// Break the line
-					szTmp.prepend("<br />\n");
-				}
-
-				szOutputBuffer += szTmp;
-				bFirstLine = false;
-			}
-
-			// Close the last paragraph
-			szOutputBuffer += "</p>\n";
-
-			// regexp to search all embedded icons
-			rx.setPattern("<img src=\"smallicons:([^\"]+)");
-			int iIndex = szOutputBuffer.indexOf(rx);
-			QStringList szImagesList;
-
-			// search for icons
-			while(iIndex >= 0)
-			{
-				int iLength = rx.matchedLength();
-				QString szCap = rx.cap(1);
-
-				// if the icon isn't in the images list then add
-				if(szImagesList.indexOf(szCap) == -1)
-					szImagesList.append(szCap);
-				iIndex = szOutputBuffer.indexOf(rx, iIndex + iLength);
-			}
-
-			// get current theme path
-			QString szCurrentThemePath;
-			g_pApp->getLocalKvircDirectory(szCurrentThemePath, KviApplication::Themes, KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
-			szCurrentThemePath += KVI_PATH_SEPARATOR_CHAR;
-
-			// current coresmall path
-			szCurrentThemePath += "coresmall";
-			szCurrentThemePath += KVI_PATH_SEPARATOR_CHAR;
-
-			// check if coresmall exists in current theme
-			if(!KviFileUtils::directoryExists(szCurrentThemePath))
-			{
-				// get global coresmall path
-				g_pApp->getGlobalKvircDirectory(szCurrentThemePath, KviApplication::Pics, "coresmall");
-				KviQString::ensureLastCharIs(szCurrentThemePath, QChar(KVI_PATH_SEPARATOR_CHAR));
-			}
-
-			// copy all icons to the log destination folder
-			for(int i = 0; i < szImagesList.count(); i++)
-			{
-				QString szSourceFile = szCurrentThemePath + szImagesList.at(i);
-				QString szDestFile = szLogDir + szImagesList.at(i);
-				KviFileUtils::copyFile(szSourceFile, szDestFile);
-			}
-
-			// remove internal tags
-			rx.setPattern("<qt>|</qt>|smallicons:");
-			szOutputBuffer.replace(rx, "");
-			szOutputBuffer.replace(">!nc", ">");
-			szOutputBuffer.replace("@!nc", "@");
-			szOutputBuffer.replace("%!nc", "%");
-
-			// Close the document
-			szOutputBuffer += "</body>\n</html>\n";
-
-			break;
-		}
-	}
-
-	// File overwriting already dealt with when file path was obtained
-	QFile log(szLog);
-	if(!log.open(QIODevice::WriteOnly | QIODevice::Text))
-		return;
-
-	if(pszFile)
-	{
-		*pszFile = "";
-		*pszFile = info.filePath();
-	}
-
-	// Ensure we're writing in UTF-8
-	QTextStream output(&log);
-	output.setCodec("UTF-8");
-	output << szOutputBuffer;
-
-	// Close file descriptors
-	log.close();
+	// Begin asynchronously writing the logs to persistent storage
+	ExportOperation * worker = new ExportOperation(logList, exportType, szDir);
+	worker->start();
 }

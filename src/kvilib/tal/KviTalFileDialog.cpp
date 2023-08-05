@@ -51,6 +51,7 @@ void KviTalFileDialog::setFileMode(FileMode m)
 			QFileDialog::setFileMode(QFileDialog::Directory);
 			break;
 		case DirectoryOnly:
+			QFileDialog::setFileMode(QFileDialog::Directory);
 			QFileDialog::setOption(ShowDirsOnly, true);
 			break;
 		default:

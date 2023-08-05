@@ -36,6 +36,8 @@
 #include "KviPointerList.h"
 
 #include <QTreeWidget>
+#include <vector>
+#include <memory>
 
 class KviLogViewWidget;
 class LogListViewItem;
@@ -52,7 +54,7 @@ class LogViewListView : public QTreeWidget
 	Q_OBJECT
 public:
 	LogViewListView(QWidget *);
-	~LogViewListView(){};
+	~LogViewListView() {};
 
 protected:
 	void mousePressEvent(QMouseEvent * pEvent) override;
@@ -68,7 +70,8 @@ public:
 	~LogViewWindow();
 
 protected:
-	KviPointerList<LogFile> m_logList;
+	std::vector<std::shared_ptr<LogFile>> m_logList;
+	std::vector<std::shared_ptr<LogFile>>::const_iterator m_currentLog;
 
 	LogViewListView * m_pListView;
 
@@ -104,18 +107,8 @@ protected:
 	QTimer * m_pTimer;
 	QMenu * m_pExportLogPopup;
 
-public:
-	/**
-	* \brief Exports the log and creates the file in the selected format
-	* \param pLog The log file associated with the item selected in the popup
-	* \param iId The id of the item in the popup
-	* \param pszFile The buffer to store the exported log name
-	* \return void
-	*/
-	void createLog(LogFile * pLog, int iId, QString * pszFile = nullptr);
-
 protected:
-	void exportLog(int iId);
+	void exportLog(LogFile::ExportType exportType);
 	void recurseDirectory(const QString & szDir);
 	void setupItemList();
 

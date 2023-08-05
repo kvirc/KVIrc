@@ -38,14 +38,18 @@
 #include <zlib.h>
 #endif
 
-LogListViewItem::LogListViewItem(QTreeWidgetItem * pPar, LogFile::Type eType, LogFile * pLog)
-    : QTreeWidgetItem(pPar), m_eType(eType), m_pFileData(pLog)
+LogListViewItem::LogListViewItem(QTreeWidgetItem * pPar, LogFile::Type eType, std::shared_ptr<LogFile> pLog)
+    : QTreeWidgetItem(pPar)
+    , m_eType(eType)
+    , m_pFileData(pLog)
 {
 	setText(0, m_pFileData ? m_pFileData->name() : QString());
 }
 
-LogListViewItem::LogListViewItem(QTreeWidget * pPar, LogFile::Type eType, LogFile * pLog)
-    : QTreeWidgetItem(pPar), m_eType(eType), m_pFileData(pLog)
+LogListViewItem::LogListViewItem(QTreeWidget * pPar, LogFile::Type eType, std::shared_ptr<LogFile> pLog)
+    : QTreeWidgetItem(pPar)
+    , m_eType(eType)
+    , m_pFileData(pLog)
 {
 	setText(0, m_pFileData ? m_pFileData->name() : QString());
 }
@@ -89,7 +93,7 @@ LogListViewItemType::LogListViewItemType(QTreeWidget * pPar, LogFile::Type eType
 	setText(0, szText);
 }
 
-LogListViewLog::LogListViewLog(QTreeWidgetItem * pPar, LogFile::Type eType, LogFile * pLog)
+LogListViewLog::LogListViewLog(QTreeWidgetItem * pPar, LogFile::Type eType, std::shared_ptr<LogFile> pLog)
     : LogListViewItem(pPar, eType, pLog)
 {
 	setText(0, m_pFileData->date().toString("yyyy-MM-dd"));
