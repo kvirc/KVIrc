@@ -1,0 +1,46 @@
+name: Build Linux
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+    tags:
+      - '*'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: build-linux-release
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+
+      - name: Install other prerequisites
+        run: |
+          sudo apt update
+          sudo apt install -y enchant-2 libenchant-2-dev libperl-dev
+
+      - name: Configure CMake
+        run: |
+          cd '${{github.workspace}}'
+          mkdir build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER_LAUNCHER=ccache ..
+
+      - name: Build
+        run: |
+          cd '${{github.workspace}}'
+          cd build
+          cmake --build .
