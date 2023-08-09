@@ -1,0 +1,73 @@
+name: Build macOS
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+    tags:
+      - '*'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: build-macos-release
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+
+      - name: Install other prerequisites
+        run: |
+          brew update
+          brew install enchant openssl --force-bottle
+
+      - name: Configure CMake
+        run: |
+          cd '${{github.workspace}}'
+          mkdir build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER_LAUNCHER=ccache ..
+
+      - name: Build
+        run: |
+          cd '${{github.workspace}}'
+          cd build
+          cmake --build .
+
+      - name: Install
+        run: |
+          cd '${{github.workspace}}'
+          cd build
+          cmake --install .
+
+      - name: Detect version
+        shell: bash
+        run: |
+          cd '${{github.workspace}}'
+          kvi_version=$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')
+          git_desc=$(git describe --always)
+          echo "dmg_name=KVIrc-$kvi_version-dev-$git_desc" >> "$GITHUB_ENV"
+
+      - name: Create DMG
+        uses: QQxiaoming/create-dmg-action@v0.0.2
+        with:
+          name: '${{ env.dmg_name }}'
+          srcdir: 'build/KVIrc.app'
+
+
+      - name: Publish artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.dmg_name }}
+          path: ${{ env.dmg_name }}.dmg
