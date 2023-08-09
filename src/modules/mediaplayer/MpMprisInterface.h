@@ -62,29 +62,13 @@ public:
 	virtual int position();
 	virtual int length();
 	virtual bool jumpTo(kvs_int_t & iPos);
+	virtual QVariant getTrackId();
 };
 
 class MpAudaciousInterface : public MpMprisInterface
 {
 public:
 	MpAudaciousInterface();
-
-public:
-	virtual bool quit();
-	virtual MpInterface::PlayerStatus status();
-	virtual QString mrl();
-	virtual int length();
-
-	virtual int getPlayListPos();
-	virtual QString year();
-	virtual QString mediaType();
-};
-
-class MpBmpxInterface : public MpMprisInterface
-{
-public:
-	MpBmpxInterface();
-	virtual MpInterface::PlayerStatus status();
 };
 
 class MpAmarok2Interface : public MpMprisInterface
@@ -103,13 +87,6 @@ class MpXmms2Interface : public MpMprisInterface
 {
 public:
 	MpXmms2Interface();
-};
-
-class MpSongbirdInterface : public MpMprisInterface
-{
-public:
-	MpSongbirdInterface();
-	virtual MpInterface::PlayerStatus status();
 };
 
 class MpTotemInterface : public MpMprisInterface
@@ -131,11 +108,9 @@ public:
 };
 
 MP_DECLARE_DESCRIPTOR(MpAudaciousInterface)
-MP_DECLARE_DESCRIPTOR(MpBmpxInterface)
 MP_DECLARE_DESCRIPTOR(MpAmarok2Interface)
 MP_DECLARE_DESCRIPTOR(MpQmmpInterface)
 MP_DECLARE_DESCRIPTOR(MpXmms2Interface)
-MP_DECLARE_DESCRIPTOR(MpSongbirdInterface)
 MP_DECLARE_DESCRIPTOR(MpTotemInterface)
 MP_DECLARE_DESCRIPTOR(MpVlcInterface)
 MP_DECLARE_DESCRIPTOR(MpClementineInterface)

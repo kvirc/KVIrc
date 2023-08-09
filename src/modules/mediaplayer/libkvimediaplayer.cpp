@@ -1616,10 +1616,8 @@ static bool mediaplayer_module_init(KviModule * m)
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousClassicInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmmsInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpXmms2Interface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpBmpxInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpAmarok2Interface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpQmmpInterface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpSongbirdInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpTotemInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpVlcInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpClementineInterface));
