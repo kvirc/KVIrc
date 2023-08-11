@@ -28,7 +28,7 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-#include <QtWebKitWidgets/QWebView>
+#include <QWebEngineView>
 #else
 #include <QTextBrowser>
 #endif
@@ -53,7 +53,7 @@ private:
 	QToolBar * m_pToolBar;
 	QToolBar * m_pToolBarHighlight;
 	QLineEdit * m_pFindText;
-	QWebView * m_pTextBrowser;
+	QWebEngineView * m_pTextBrowser;
 #else
 	QVBoxLayout * m_pLayout;
 	QToolBar * m_pToolBar;
@@ -77,7 +77,7 @@ protected slots:
 #endif
 public:
 #ifdef COMPILE_WEBKIT_SUPPORT
-	QWebView * textBrowser()
+	QWebEngineView * textBrowser()
 	{
 		return m_pTextBrowser;
 	}

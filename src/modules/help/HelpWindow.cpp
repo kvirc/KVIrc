@@ -52,6 +52,7 @@ HelpWindow::HelpWindow(const char * name)
     : KviWindow(KviWindow::Help, name)
 {
 	g_pHelpWindowList->append(this);
+	setMinimumSize(600, 500);
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	m_pSplitter->setObjectName("main_splitter");
 	m_pSplitter->setChildrenCollapsible(false);
@@ -268,7 +269,7 @@ void HelpWindow::startSearch()
 }
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-QWebView * HelpWindow::textBrowser()
+QWebEngineView * HelpWindow::textBrowser()
 #else
 QTextBrowser * HelpWindow::textBrowser()
 #endif

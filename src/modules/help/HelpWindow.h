@@ -32,7 +32,7 @@
 
 #include <QTabWidget>
 #ifdef COMPILE_WEBKIT_SUPPORT
-#include <QtWebKitWidgets/QWebView>
+#include <QWebEngineView>
 #else
 class QTextBrowser;
 #endif
@@ -80,7 +80,7 @@ protected:
 
 public:
 #ifdef COMPILE_WEBKIT_SUPPORT
-	QWebView * textBrowser();
+	QWebEngineView * textBrowser();
 #else
 	QTextBrowser * textBrowser();
 #endif

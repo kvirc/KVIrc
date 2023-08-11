@@ -30,13 +30,35 @@
 #ifdef COMPILE_WEBKIT_SUPPORT
 
 #include <QWidget>
+#include <QWebEnginePage>
 
 class QToolBar;
 class QVBoxLayout;
-class QWebView;
+class QWebEngineView;
 class QFile;
 class QProgressBar;
 class QUrl;
+
+class KviWebPackagePage : public QWebEnginePage
+{
+    Q_OBJECT
+public:
+    KviWebPackagePage(QObject* parent = 0) : QWebEnginePage(parent){}
+
+    bool acceptNavigationRequest(const QUrl & url, QWebEnginePage::NavigationType type, bool)
+    {
+        if (type == QWebEnginePage::NavigationTypeLinkClicked)
+        {
+            emit linkClicked(url);
+            return false;
+        }
+        return true;
+    }
+
+signals:
+    void linkClicked(const QUrl&);
+
+};
 
 ///
 /// \class KviWebPackageManagementDialog
@@ -63,7 +85,7 @@ public:
 private:
 	QToolBar * m_pToolBar;
 	QVBoxLayout * m_pLayout;
-	QWebView * m_pWebView;
+	QWebEngineView * m_pWebView;
 	bool m_bBusy;
 	QProgressBar * m_pProgressBar;
 	QString m_szPackagePageUrl;
