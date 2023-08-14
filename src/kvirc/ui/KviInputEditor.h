@@ -114,6 +114,7 @@ protected:
 	static int g_iCachedHeight;
 	QString m_szTextBuffer; // original buffer
 	int m_iCursorPosition;
+	int m_iSpellCheckPosition;
 	int m_iSelectionBegin;
 	int m_iSelectionEnd;
 	int m_iMaxBufferSize;

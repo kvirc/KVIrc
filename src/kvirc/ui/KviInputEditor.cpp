@@ -153,6 +153,7 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_pInputParent = pPar;
 	m_iMaxBufferSize = KVI_INPUT_MAX_BUFFER_SIZE;
 	m_iCursorPosition = 0;       //Index of the char AFTER the cursor
+	m_iSpellCheckPosition = 0;   //Index of the char where spell checking is occuring
 	m_iSelectionBegin = -1;      //Index of the first char in the selection
 	m_iSelectionEnd = -1;        //Index of the last char in the selection
 	m_bIMComposing = false;      //Whether the input method is active (composing).
@@ -1145,6 +1146,7 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 	std::vector<KviInputEditorSpellCheckerBlock *> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lBuffer);
 
+	m_iSpellCheckPosition = std::min(charIndexFromXPosition(pos.x()), m_szTextBuffer.length());
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
 
 	if(pCurrentBlock && pCurrentBlock->bSpellCheckable && (!pCurrentBlock->bCorrect))
@@ -1179,14 +1181,14 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 	// 		g_pInputPopup->addAction(imActions.at(i));
 	// }
 
-	g_pInputPopup->popup(pos);
+	g_pInputPopup->popup(mapToGlobal(pos));
 }
 
 void KviInputEditor::showContextPopupHere()
 {
 	qreal fXPos = xPositionFromCharIndex(m_iCursorPosition);
 	int iBottom = heightHint() - KVI_INPUT_MARGIN - KVI_INPUT_XTRAPADDING; // not exact but easy
-	showContextPopup(mapToGlobal(QPoint(fXPos, iBottom)));
+	showContextPopup(QPoint(fXPos, iBottom));
 }
 
 KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(std::vector<KviInputEditorSpellCheckerBlock *> & lBlocks)
@@ -1195,7 +1197,7 @@ KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(
 
 	for(auto pBlock : lBlocks)
 	{
-		if(m_iCursorPosition <= (pBlock->iStart + pBlock->iLength))
+		if(m_iSpellCheckPosition <= (pBlock->iStart + pBlock->iLength))
 		{
 			pCurrentBlock = pBlock;
 			break;
@@ -1277,9 +1279,10 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 
 void KviInputEditor::showSpellCheckerCorrectionsPopup()
 {
+	m_iSpellCheckPosition = m_iCursorPosition;
 	fillSpellCheckerCorrectionsPopup();
 
-	qreal fXPos = xPositionFromCharIndex(m_iCursorPosition);
+	qreal fXPos = xPositionFromCharIndex(m_iSpellCheckPosition);
 	if(fXPos > 24)
 		fXPos -= 24;
 
@@ -1333,7 +1336,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 
 	if(e->button() & Qt::RightButton)
 	{
-		showContextPopup(mapToGlobal(e->pos()));
+		showContextPopup(e->pos());
 		return;
 	}
 
