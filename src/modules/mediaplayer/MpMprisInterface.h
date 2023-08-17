@@ -107,6 +107,19 @@ public:
 	MpClementineInterface();
 };
 
+class MpStrawberryInterface : public MpMprisInterface
+{
+public:
+	MpStrawberryInterface();
+};
+
+class MpMprisGenericInterface : public MpMprisInterface
+{
+public:
+	MpMprisGenericInterface();
+	virtual int detect(bool bStart) override;
+};
+
 MP_DECLARE_DESCRIPTOR(MpAudaciousInterface)
 MP_DECLARE_DESCRIPTOR(MpAmarok2Interface)
 MP_DECLARE_DESCRIPTOR(MpQmmpInterface)
@@ -114,6 +127,8 @@ MP_DECLARE_DESCRIPTOR(MpXmms2Interface)
 MP_DECLARE_DESCRIPTOR(MpTotemInterface)
 MP_DECLARE_DESCRIPTOR(MpVlcInterface)
 MP_DECLARE_DESCRIPTOR(MpClementineInterface)
+MP_DECLARE_DESCRIPTOR(MpStrawberryInterface)
+MP_DECLARE_DESCRIPTOR(MpMprisGenericInterface)
 #endif //COMPILE_ON_WINDOWS
 
 #endif //_MP_AUDACIOUSINTERFACE_H_

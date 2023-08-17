@@ -47,10 +47,10 @@ int MpMprisInterface::detect(bool)
 	return 1; /* dbus works, player may be closed */
 }
 
-#define MPRIS_SIMPLE_CALL(__path, __action)                                           \
+#define MPRIS_SIMPLE_CALL(_path, _action)                                           \
 	QDBusInterface dbus_iface(m_szServiceName, "/org/mpris/MediaPlayer2",             \
-	    __path, QDBusConnection::sessionBus());                                       \
-	QDBusMessage reply = dbus_iface.call(QDBus::Block, __action);                     \
+	    _path, QDBusConnection::sessionBus());                                       \
+	QDBusMessage reply = dbus_iface.call(QDBus::Block, _action);                     \
 	if(reply.type() == QDBusMessage::ErrorMessage)                                    \
 	{                                                                                 \
 		QDBusError err = reply;                                                       \
@@ -89,40 +89,40 @@ bool MpMprisInterface::quit()
 	MPRIS_SIMPLE_CALL("org.mpris.MediaPlayer2", "Quit")
 }
 
-#define MPRIS_GET_PROPERTY(__property, __return_if_fail)                  \
+#define MPRIS_GET_PROPERTY(_property, _return_if_fail)                  \
 	QDBusInterface dbus_iface(m_szServiceName, "/org/mpris/MediaPlayer2", \
 	    "org.mpris.MediaPlayer2.Player", QDBusConnection::sessionBus());  \
-	QVariant reply = dbus_iface.property(__property);                     \
+	QVariant reply = dbus_iface.property(_property);                     \
 	if(!reply.isValid())                                                  \
-		return __return_if_fail;
+		return _return_if_fail;
 
-#define MPRIS_GET_METADATA_FIELD(__field, __return_type, __return_if_fail) \
+#define MPRIS_GET_METADATA_FIELD(_field, _return_type, _return_if_fail) \
 	if(this->status() != MpInterface::Playing)                             \
-		return __return_if_fail;                                           \
-	MPRIS_GET_PROPERTY("Metadata", __return_if_fail)                       \
+		return _return_if_fail;                                           \
+	MPRIS_GET_PROPERTY("Metadata", _return_if_fail)                       \
 	QVariantMap map = reply.toMap();                                       \
 	foreach (const QString &key, map.keys())                               \
 	{                                                                      \
-		if(key == __field)                                                 \
-			return map.value(key).value<__return_type>();                  \
+		if(key == _field)                                                 \
+			return map.value(key).value<_return_type>();                  \
 	}                                                                      \
-	return __return_if_fail;
+	return _return_if_fail;
 
-#define MPRIS_SET_PROPERTY(__property, __arg, __return_if_fail)           \
+#define MPRIS_SET_PROPERTY(_property, _arg, _return_if_fail)           \
 	QDBusInterface dbus_iface(m_szServiceName, "/org/mpris/MediaPlayer2", \
 	    "org.mpris.MediaPlayer2.Player", QDBusConnection::sessionBus());  \
-	if(false == dbus_iface.setProperty(__property, __arg))                \
-		return __return_if_fail;
+	if(false == dbus_iface.setProperty(_property, _arg))                \
+		return _return_if_fail;
 
-#define MPRIS_CALL_METHOD_WITH_TWO_ARG(__method, __arg1, __arg2, __return_if_fail)    \
+#define MPRIS_CALL_METHOD_WITH_TWO_ARG(_method, _arg1, _arg2, _return_if_fail)    \
 	QDBusInterface dbus_iface(m_szServiceName, "/org/mpris/MediaPlayer2",             \
 	    "org.mpris.MediaPlayer2.Player", QDBusConnection::sessionBus());              \
-	QDBusMessage reply = dbus_iface.call(QDBus::Block, __method, __arg1, __arg2);     \
+	QDBusMessage reply = dbus_iface.call(QDBus::Block, _method, _arg1, _arg2);     \
 	if(reply.type() == QDBusMessage::ErrorMessage)                                    \
 	{                                                                                 \
 		QDBusError err = reply;                                                       \
 		qDebug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
-		return __return_if_fail;                                                      \
+		return _return_if_fail;                                                      \
 	}
 
 MpInterface::PlayerStatus MpMprisInterface::status()
@@ -376,5 +376,49 @@ MpClementineInterface::MpClementineInterface()
     : MpMprisInterface()
 {
 	m_szServiceName = "org.mpris.MediaPlayer2.clementine";
+}
+
+/* Strawberry interface */
+MP_IMPLEMENT_DESCRIPTOR(
+    MpStrawberryInterface,
+    "strawberry",
+    __tr2qs_ctx(
+        "An interface for Strawberry.\n"
+        "Download it from https://www.strawberrymusicplayer.org/\n",
+        "mediaplayer"))
+
+MpStrawberryInterface::MpStrawberryInterface()
+    : MpMprisInterface()
+{
+	m_szServiceName = "org.mpris.MediaPlayer2.strawberry";
+}
+
+/* Generic Mpris interface */
+MP_IMPLEMENT_DESCRIPTOR(
+    MpMprisGenericInterface,
+    "generic mpris 2",
+    __tr2qs_ctx(
+        "An generic interface for MPRIS 2 media players.",
+        "mediaplayer"))
+
+MpMprisGenericInterface::MpMprisGenericInterface()
+    : MpMprisInterface()
+{
+}
+
+int MpMprisGenericInterface::detect(bool)
+{
+	QDBusReply<QStringList> reply = QDBusConnection::sessionBus().interface()->registeredServiceNames();
+	if(!reply.isValid()) /* something fishy with dbus, it won't work */
+		return 0;
+
+	foreach(QString name, reply.value())
+		if(name.startsWith("org.mpris.MediaPlayer2.")) {
+			m_szServiceName = name;
+			// prefer the player-specific interfaces
+			return 99;
+		}
+
+	return 1; /* dbus works, player may be closed */
 }
 #endif //COMPILE_ON_WINDOWS

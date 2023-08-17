@@ -1621,6 +1621,8 @@ static bool mediaplayer_module_init(KviModule * m)
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpTotemInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpVlcInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpClementineInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpStrawberryInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpMprisGenericInterface));
 #endif
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
