@@ -30,7 +30,7 @@ jobs:
       - name: Install other prerequisites
         run: |
           brew update
-          brew install enchant openssl --force-bottle
+          brew install enchant openssl create-dmg --force-bottle
 
       - name: Configure CMake
         run: |
@@ -60,11 +60,16 @@ jobs:
           echo "dmg_name=KVIrc-$kvi_version-dev-$git_desc" >> "$GITHUB_ENV"
 
       - name: Create DMG
-        uses: QQxiaoming/create-dmg-action@v0.0.2
-        with:
-          name: '${{ env.dmg_name }}'
-          srcdir: 'build/KVIrc.app'
-
+        shell: bash
+        run: |
+          cd '${{github.workspace}}'
+          create-dmg --volname "${{ env.dmg_name }}" \
+            --background "dist/macos/installer_background.png" \
+            --window-pos 200 120 \
+            --window-size 800 450 \
+            --icon KVIrc.app 200 190 \
+            --icon-size 100 \
+            --app-drop-link 600 185 "${{ env.dmg_name }}.dmg" "build/KVIrc.app"
 
       - name: Publish artifact
         uses: actions/upload-artifact@v3
