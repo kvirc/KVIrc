@@ -69,7 +69,7 @@ jobs:
             --window-size 800 450 \
             --icon KVIrc.app 200 190 \
             --icon-size 100 \
-            --app-drop-link 600 185 ${{ env.dmg_name }} "build/KVIrc.app"
+            --app-drop-link 600 185 "${{ env.dmg_name }}.dmg" "build/KVIrc.app"
 
       - name: Publish artifact
         uses: actions/upload-artifact@v3
