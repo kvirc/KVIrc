@@ -75,7 +75,14 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	setObjectName("input_widget");
 	m_pLayout = new QGridLayout(this);
 
-	m_pLayout->setMargin(0);
+	if(KVI_OPTION_BOOL(KviOption_boolDrawShadePanel))
+	{
+		m_pLayout->setMargin(0);
+	}
+	else
+	{
+		m_pLayout->setContentsMargins(0, 1, 0, 0);
+	}
 	m_pLayout->setSpacing(0);
 
 	m_pWindow = pPar;
@@ -382,7 +389,8 @@ void KviInput::focusInEvent(QFocusEvent *)
 
 int KviInput::heightHint() const
 {
-	return m_pMultiLineEditor ? (m_pInputEditor->heightHint() * 6) : m_pInputEditor->heightHint();
+	int iHint = m_pMultiLineEditor ? (m_pInputEditor->heightHint() * 6) : m_pInputEditor->heightHint();
+	return KVI_OPTION_BOOL(KviOption_boolDrawShadePanel) ? iHint : iHint + 1;
 }
 
 void KviInput::setText(const QString & szText)
@@ -428,6 +436,15 @@ void KviInput::applyOptions()
 			KviTalToolTip::add(m_pHistoryButton, __tr2qs("Input history disabled"));
 			m_pHistoryButton->disconnect(SIGNAL(clicked()));
 		}
+	}
+
+	if(KVI_OPTION_BOOL(KviOption_boolDrawShadePanel))
+	{
+		m_pLayout->setMargin(0);
+	}
+	else
+	{
+		m_pLayout->setContentsMargins(0, 1, 0, 0);
 	}
 
 	m_pInputEditor->applyOptions();
