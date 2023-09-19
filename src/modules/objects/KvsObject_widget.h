@@ -33,7 +33,7 @@
 #include <QGraphicsEffect>
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-#include <QtWebKitWidgets/QWebView>
+#include <QWebEngineView>
 #endif
 
 class KvsObject_widget : public KviKvsObject
@@ -49,7 +49,7 @@ protected:
 	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-	QWebView * m_pWebview = nullptr;
+	QWebEngineView * m_pWebview = nullptr;
 #endif
 	bool eventFilter(QObject * o, QEvent * e) override;
 	KviKvsRunTimeContext * m_pContext = nullptr;

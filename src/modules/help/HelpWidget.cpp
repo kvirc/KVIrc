@@ -49,8 +49,6 @@ extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 #include <QShortcut>
 #include <QAction>
 
-#define HIGHLIGHT_FLAGS QWebPage::HighlightAllOccurrences
-
 HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
     : QWidget(par)
 {
@@ -74,7 +72,7 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 	m_pLayout->addWidget(m_pToolBar);
 
 	// webview
-	m_pTextBrowser = new QWebView(this);
+	m_pTextBrowser = new QWebEngineView(this);
 	m_pTextBrowser->setObjectName("text_browser");
 	m_pTextBrowser->setStyleSheet("QTextBrowser { background-color:white; color:black; }");
 	m_pLayout->addWidget(m_pTextBrowser);
@@ -101,10 +99,10 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 	m_pToolBar->addAction(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPINDEX), __tr2qs("Show index"), this, SLOT(showIndex()));
 
 	QAction * pAction;
-	pAction = m_pTextBrowser->pageAction(QWebPage::Back);
+	pAction = m_pTextBrowser->pageAction(QWebEnginePage::Back);
 	pAction->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPBACK));
 	m_pToolBar->addAction(pAction);
-	pAction = m_pTextBrowser->pageAction(QWebPage::Forward);
+	pAction = m_pTextBrowser->pageAction(QWebEnginePage::Forward);
 	pAction->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPFORWARD));
 	m_pToolBar->addAction(pAction);
 
@@ -120,7 +118,7 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 
 void HelpWidget::slotCopy()
 {
-	m_pTextBrowser->triggerPageAction(QWebPage::Copy);
+	m_pTextBrowser->triggerPageAction(QWebEnginePage::Copy);
 }
 
 void HelpWidget::slotShowHideFind()
@@ -128,7 +126,7 @@ void HelpWidget::slotShowHideFind()
 	if(m_pToolBarHighlight->isVisible())
 	{
 		m_pToolBarHighlight->hide();
-		m_pTextBrowser->findText("", HIGHLIGHT_FLAGS);
+		m_pTextBrowser->findText("");
 	}
 	else
 	{
@@ -139,18 +137,18 @@ void HelpWidget::slotShowHideFind()
 
 void HelpWidget::slotLoadFinished(bool)
 {
-	m_pTextBrowser->findText(m_pFindText->text(), HIGHLIGHT_FLAGS);
+	m_pTextBrowser->findText(m_pFindText->text());
 }
 
 void HelpWidget::slotTextChanged(const QString szFind)
 {
-	m_pTextBrowser->findText("", HIGHLIGHT_FLAGS);
-	m_pTextBrowser->findText(szFind, HIGHLIGHT_FLAGS);
+	m_pTextBrowser->findText("");
+	m_pTextBrowser->findText(szFind);
 }
 
 void HelpWidget::slotFindPrev()
 {
-	m_pTextBrowser->findText(m_pFindText->text(), QWebPage::FindBackward);
+	m_pTextBrowser->findText(m_pFindText->text(), QWebEnginePage::FindBackward);
 }
 
 void HelpWidget::slotFindNext()

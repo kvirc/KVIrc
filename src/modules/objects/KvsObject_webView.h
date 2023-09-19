@@ -30,14 +30,15 @@
 #include "object_macros.h"
 #include <QFile>
 #include <QNetworkAccessManager>
-#include <QWebView>
-#include <QWebFrame>
-#include <QWebElement>
+#include <QWebEngineView>
+#include <QWebEnginePage>
 #include <QMouseEvent>
 #include <QContextMenuEvent>
 
+class QWebEngineDownloadItem;
 class KvsObject_webView;
-class KviKvsWebView : public QWebView
+
+class KviKvsWebView : public QWebEngineView
 {
 	Q_OBJECT
 public:
@@ -59,6 +60,47 @@ protected:
 	*/
 };
 
+class KviKvsWebViewPage : public QWebEnginePage
+{
+    Q_OBJECT
+public:
+	enum LinkDelegationPolicy
+	{
+		DontDelegateLinks,
+		DelegateAllLinks
+	};
+
+    KviKvsWebViewPage(QObject* parent = 0) : QWebEnginePage(parent){}
+
+    bool acceptNavigationRequest(const QUrl & url, QWebEnginePage::NavigationType type, bool)
+    {
+        if (type == QWebEnginePage::NavigationTypeLinkClicked)
+        {
+   			emit linkClicked(url);
+	    	switch(m_ePolicy)
+	    	{
+	    		case DelegateAllLinks:
+	    			return false;
+	    		case DontDelegateLinks:
+	    		default:
+	    			return true;
+	    	}
+        }
+        return true;
+    }
+
+    void setLinkDelegationPolicy(LinkDelegationPolicy policy)
+    {
+		m_ePolicy = policy;
+    }
+
+protected:
+	LinkDelegationPolicy m_ePolicy = DontDelegateLinks;
+signals:
+    void linkClicked(const QUrl&);
+
+};
+
 class KvsObject_webView : public KviKvsObject
 {
 	Q_OBJECT
@@ -66,61 +108,19 @@ public:
 	KVSO_DECLARE_OBJECT(KvsObject_webView)
 protected:
 	KviKvsRunTimeContext * m_pContext = nullptr;
-	int elementMapId = 1;
-	int insertElement(const QWebElement & ele);
-	QWebElement getElement(int iIdx);
-	int getElementId(const QWebElement &);
-	QHash<int, QWebElement> m_elementMapper;
-	KviPointerList<KviKvsObject> * lWebelement = nullptr;
-	QHash<QString, QWebElement *> m_dictCache;
 	KviPointerList<QNetworkReply> * m_pReplyList = nullptr;
 	QNetworkAccessManager * m_pNetworkManager = nullptr;
-	QWebElementCollection m_webElementCollection;
-	QWebElement m_currentElement;
 
 public:
 	QWidget * widget() { return (QWidget *)object(); }
 protected:
-	void getFrames(QWebFrame * pCurFrame, QStringList & szFramesNames);
-	QWebFrame * findFrame(QWebFrame * pCurFrame, QString & szFrameName);
 	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
-	bool removeFromDocument(KviKvsObjectFunctionCall * c);
 	bool makePreview(KviKvsObjectFunctionCall * c);
-
-	bool removeClass(KviKvsObjectFunctionCall * c);
-	bool addClass(KviKvsObjectFunctionCall * c);
-
-	bool classes(KviKvsObjectFunctionCall * c);
-
-	bool firstChild(KviKvsObjectFunctionCall * c);
-	bool lastChild(KviKvsObjectFunctionCall * c);
-	bool parentElement(KviKvsObjectFunctionCall * c);
-	bool nextSibling(KviKvsObjectFunctionCall * c);
-
-	bool toPlainText(KviKvsObjectFunctionCall * c);
-	bool setPlainText(KviKvsObjectFunctionCall * c);
 	bool load(KviKvsObjectFunctionCall * c);
 	bool setHtml(KviKvsObjectFunctionCall * c);
-	bool getDocumentElement(KviKvsObjectFunctionCall * c);
-	bool elementTagName(KviKvsObjectFunctionCall * c);
-	bool findAll(KviKvsObjectFunctionCall * c);
-	bool appendInside(KviKvsObjectFunctionCall * c);
-	bool appendOutside(KviKvsObjectFunctionCall * c);
-
-	bool findFirst(KviKvsObjectFunctionCall * c);
 	bool findText(KviKvsObjectFunctionCall * c);
-
-	bool hitTestContent(KviKvsObjectFunctionCall * c);
-
-	bool elementAttributeNames(KviKvsObjectFunctionCall * c);
 	bool setLinkDelegationPolicy(KviKvsObjectFunctionCall * c);
-	bool setElementAttribute(KviKvsObjectFunctionCall * c);
 	bool setWebSetting(KviKvsObjectFunctionCall * c);
-	bool elementAttribute(KviKvsObjectFunctionCall * c);
-	bool frames(KviKvsObjectFunctionCall * c);
-
-	bool setStyleProperty(KviKvsObjectFunctionCall * c);
-	bool styleProperty(KviKvsObjectFunctionCall * c);
 	bool appendWebViewActionToMenu(KviKvsObjectFunctionCall * c);
 
 	bool loadStartedEvent(KviKvsObjectFunctionCall * c);
@@ -134,7 +134,6 @@ protected:
 	bool evaluateJavaScript(KviKvsObjectFunctionCall * c);
 
 	//
-	bool setEventFilter(KviKvsObjectFunctionCall * c);
 	bool jsChangeEvent(KviKvsObjectFunctionCall * c);
 	bool jsSubmitEvent(KviKvsObjectFunctionCall * c);
 	bool jsClickEvent(KviKvsObjectFunctionCall * c);
@@ -144,7 +143,7 @@ protected slots:
 	void slotLoadFinished(bool);
 	void slotLoadProgress(int);
 	void slotLoadStarted();
-	void slotDownloadRequest(const QNetworkRequest &);
+	void slotDownloadRequest(QWebEngineDownloadItem *);
 	void slotLinkClicked(const QUrl &);
 
 	void slotOnChange(QString);
@@ -158,18 +157,17 @@ class KviKvsDownloadHandler : public QObject
 {
 	Q_OBJECT
 public:
-	KviKvsDownloadHandler(KvsObject_webView * pParent, QFile * pFile, QNetworkReply * pNetReply, int iId);
+	KviKvsDownloadHandler(KvsObject_webView * pParent, QString &szFilePath, QWebEngineDownloadItem * pDownload, int iId);
 
 	~KviKvsDownloadHandler();
 
 protected:
 	KvsObject_webView * m_pParentScript;
-	QFile * m_pFile;
-	QNetworkReply * m_pReply;
+	QWebEngineDownloadItem * m_pDownload;
 	int m_Id;
 protected slots:
-	void slotReadyRead();
-	void slotReplyFinished();
+	void slotDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);
+	void slotFinished();
 };
 
 #endif // COMPILE_WEBKIT_SUPPORT
