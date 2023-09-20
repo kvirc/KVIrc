@@ -31,7 +31,7 @@
 
 #include <QString>
 
-class QStringList;
+#include <QStringList>
 
 class KVILIB_API KviProxy
 {

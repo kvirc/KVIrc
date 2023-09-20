@@ -45,7 +45,7 @@
 #include <QMenu>
 
 class QLineEdit;
-class QStringList;
+#include <QStringList>
 class QPushButton;
 class QCheckBox;
 class QLabel;

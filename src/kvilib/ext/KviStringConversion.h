@@ -32,7 +32,7 @@ class QColor;
 class QFont;
 class QRect;
 class QString;
-class QStringList;
+#include <QStringList>
 
 namespace KviStringConversion
 {

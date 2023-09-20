@@ -43,7 +43,7 @@ class KviLogViewWidget;
 class LogListViewItem;
 class LogListViewItemFolder;
 class QProgressBar;
-class QStringList;
+#include <QStringList>
 class QLineEdit;
 class QDateEdit;
 class QTabWidget;

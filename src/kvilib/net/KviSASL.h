@@ -28,7 +28,7 @@
 
 class KviCString;
 class QByteArray;
-class QStringList;
+#include <QStringList>
 
 /**
 * \namespace KviSASL

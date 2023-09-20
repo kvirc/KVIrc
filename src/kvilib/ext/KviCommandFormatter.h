@@ -28,7 +28,7 @@
 
 class KviCString;
 class QChar;
-class QStringList;
+#include <QStringList>
 
 namespace KviCommandFormatter
 {
