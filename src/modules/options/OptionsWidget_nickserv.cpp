@@ -114,7 +114,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par, bool bUseServerMaskField)
 	}
 
 	l = new QLabel(__tr2qs_ctx("Hint: Move the mouse cursor over the fields to get help", "options"), this);
-	l->setMargin(10);
+	l->setContentsMargins(10, 10, 10, 10);
 	gl->addWidget(l, iNextLine, 0, 1, 4);
 	//	gl->addMultiCellWidget(l,iNextLine,iNextLine,0,3);
 

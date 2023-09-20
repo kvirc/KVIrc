@@ -314,7 +314,7 @@ KviPixmapSelector::KviPixmapSelector(QWidget * par, const QString & txt, KviPixm
 
 	g->setRowStretch(1, 1);
 	g->setColumnStretch(0, 1);
-	g->setMargin(0);
+	g->setContentsMargins(0, 0, 0, 0);
 
 	setEnabled(bEnabled);
 }
@@ -416,7 +416,7 @@ KviFileSelector::KviFileSelector(QWidget * par, const QString & txt, QString * p
 
 	m_pOption = pOption;
 
-	m_Layout->setMargin(0);
+	m_Layout->setContentsMargins(0, 0, 0, 0);
 	setEnabled(bEnabled);
 }
 

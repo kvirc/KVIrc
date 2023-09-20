@@ -293,7 +293,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	m_szAltNicknames[2] = KVI_OPTION_STRING(KviOption_stringNickname4);
 
 	createLayout();
-	layout()->setMargin(10);
+	layout()->setContentsMargins(10, 10, 10, 10);
 
 	KviTalGroupBox * gbox = addGroupBox(0, 0, 0, 0, Qt::Horizontal, __tr2qs_ctx("Basic Properties", "options"));
 	KviTalHBox * hb = new KviTalHBox(gbox);
@@ -465,7 +465,7 @@ OptionsWidget_identityAvatar::OptionsWidget_identityAvatar(QWidget * parent)
     : KviOptionsWidget(parent)
 {
 	createLayout();
-	layout()->setMargin(10);
+	layout()->setContentsMargins(10, 10, 10, 10);
 
 	m_pLocalAvatar = new KviPixmap(KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar));
 
@@ -671,7 +671,7 @@ OptionsWidget_identityAdvanced::OptionsWidget_identityAdvanced(QWidget * parent)
 	m_bS = m_sModeStr.contains('s');
 
 	createLayout();
-	layout()->setMargin(10);
+	layout()->setContentsMargins(10, 10, 10, 10);
 
 	KviTalGroupBox * gbox = addGroupBox(0, 0, 0, 0, Qt::Horizontal, __tr2qs_ctx("User Mode", "options"));
 	m_pISelector = addBoolSelector(gbox, __tr2qs_ctx("Invisible (+i)", "options"), &m_bI);

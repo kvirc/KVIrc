@@ -227,7 +227,7 @@ KVSO_CLASS_FUNCTION(label, setMargin)
 	KVSO_PARAMETERS_BEGIN(c)
 	KVSO_PARAMETER("margin", KVS_PT_UNSIGNEDINTEGER, 0, iMargin)
 	KVSO_PARAMETERS_END(c)
-	((QLabel *)widget())->setMargin(iMargin);
+	((QLabel *)widget())->setContentsMargins(iMargin, iMargin, iMargin, iMargin);
 	return true;
 }
 KVSO_CLASS_FUNCTION(label, margin)

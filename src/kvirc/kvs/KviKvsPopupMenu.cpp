@@ -296,10 +296,10 @@ void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu, KviKvsPopupMenuTopL
 
 #ifdef COMPILE_ON_MAC
 	m_pLabel->setIndent(16);
-	m_pLabel->setMargin(2);
+	m_pLabel->setContentsMargins(2, 2, 2, 2);
 #else
 	m_pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
-	m_pLabel->setMargin(5);
+	m_pLabel->setContentsMargins(5, 5, 5, 5);
 #endif
 
 	if(pPix)

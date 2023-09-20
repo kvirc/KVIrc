@@ -188,7 +188,7 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 
 	KviTalHBox * pBox = new KviTalHBox(m_pTopSplitter);
 	pBox->setSpacing(1);
-	pBox->setMargin(0);
+	pBox->setContentsMargins(0, 0, 0, 0);
 
 	m_pOpenButton = new QToolButton(pBox);
 	m_pOpenButton->setObjectName("import_list");

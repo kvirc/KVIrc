@@ -126,7 +126,7 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	//QGridLayout * g = new QGridLayout(this);
 	QVBoxLayout * pVBox = new QVBoxLayout(this);
 	KviTalHBox * pHBox = new KviTalHBox(this);
-	pHBox->setMargin(1);
+	pHBox->setContentsMargins(1, 1, 1, 1);
 	pHBox->setSpacing(1);
 	//g->addWidget(pHBox,0,0);
 	pVBox->addWidget(pHBox);

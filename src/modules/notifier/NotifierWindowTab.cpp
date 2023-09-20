@@ -82,7 +82,7 @@ NotifierWindowTab::NotifierWindowTab(KviWindow * pWnd, QTabWidget * pParent)
 	m_pVBox = new QVBoxLayout(m_pVWidget);
 	m_pVBox->setSizeConstraint(QLayout::SetFixedSize);
 	m_pVBox->setSpacing(SPACING);
-	m_pVBox->setMargin(SPACING);
+	m_pVBox->setContentsMargins(SPACING, SPACING, SPACING, SPACING);
 
 	setWidget(m_pVWidget);
 }

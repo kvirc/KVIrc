@@ -747,7 +747,7 @@ DccVoiceWindow::DccVoiceWindow(DccDescriptor * dcc, const char * name)
 	connect(m_pTalkButton, SIGNAL(toggled(bool)), this, SLOT(startOrStopTalking(bool)));
 
 	m_pHBox->setStretchFactor(vbox, 1);
-	m_pHBox->setMargin(2);
+	m_pHBox->setContentsMargins(2, 2, 2, 2);
 	m_pHBox->setSpacing(1);
 
 	m_pMarshal = new DccMarshal(this);

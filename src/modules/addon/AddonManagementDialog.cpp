@@ -106,7 +106,7 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 	QGridLayout * g = new QGridLayout(this);
 
 	KviTalHBox * hb = new KviTalHBox(this);
-	hb->setMargin(1);
+	hb->setContentsMargins(1, 1, 1, 1);
 	hb->setSpacing(1);
 	g->addWidget(hb, 0, 0);
 
@@ -181,7 +181,7 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 	connect(pCloseBtn, SIGNAL(clicked()), this, SLOT(closeClicked()));
 	g->addWidget(pCloseBtn, 2, 0);
 
-	g->setMargin(5);
+	g->setContentsMargins(5, 5, 5, 5);
 	g->setSpacing(5);
 	g->setAlignment(pCloseBtn, Qt::AlignRight);
 

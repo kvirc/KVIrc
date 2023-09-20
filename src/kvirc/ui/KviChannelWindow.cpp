@@ -89,14 +89,14 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	// Button box
 	m_pButtonBox = new KviTalHBox(this);
 	m_pButtonBox->setSpacing(0);
-	m_pButtonBox->setMargin(0);
+	m_pButtonBox->setContentsMargins(0, 0, 0, 0);
 
 	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal, m_pButtonBox);
 	m_pTopSplitter->setChildrenCollapsible(false);
 
 	m_pButtonContainer = new KviTalHBox(m_pButtonBox);
 	m_pButtonContainer->setSpacing(0);
-	m_pButtonContainer->setMargin(0);
+	m_pButtonContainer->setContentsMargins(0, 0, 0, 0);
 	// Topic widget on the left
 	m_pTopicWidget = new KviTopicWidget(m_pTopSplitter, this, "topic_widget");
 

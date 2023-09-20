@@ -103,7 +103,7 @@ public:
 	void setInsideMargin(int iMargin)
 	{
 		if(layout())
-			layout()->setMargin(iMargin);
+			layout()->setContentsMargins(iMargin, iMargin, iMargin, iMargin);
 	};
 
 	/**
@@ -124,7 +124,7 @@ public:
 	int insideMargin()
 	{
 		if(layout())
-			return layout()->margin();
+			return layout()->contentsMargins().top();
 		return 0;
 	};
 
