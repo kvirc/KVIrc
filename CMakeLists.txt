@@ -421,6 +421,15 @@ set(CMAKE_STATUS_QX11INFO_SUPPORT "Not available")
 include_directories(${Qt${QT_VERSION_MAJOR}Widgets_INCLUDE_DIRS})
 list(APPEND qt_kvirc_modules Qt::Widgets)
 
+# Qt6 Compat module for Qt5; Needed by QRegExp
+if(${QT_VERSION_MAJOR} EQUAL 6)
+	find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
+	if(Qt6Core5Compat_FOUND)
+		include_directories(${Qt6Core5Compat_INCLUDE_DIRS})
+		list(APPEND qt_kvirc_modules Qt::Core5Compat)
+	endif()
+endif()
+
 # Qt SQL
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Sql)
 if(Qt${QT_VERSION_MAJOR}Sql_FOUND)
