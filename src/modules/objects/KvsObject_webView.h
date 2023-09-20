@@ -26,7 +26,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#if defined(COMPILE_WEBKIT_SUPPORT)
+#if defined(COMPILE_WEBENGINE_SUPPORT)
 #include "object_macros.h"
 #include <QFile>
 #include <QNetworkAccessManager>
@@ -170,5 +170,5 @@ protected slots:
 	void slotFinished();
 };
 
-#endif // COMPILE_WEBKIT_SUPPORT
+#endif // COMPILE_WEBENGINE_SUPPORT
 #endif // _CLASS_WEBVIEW_H_

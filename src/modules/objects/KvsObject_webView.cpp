@@ -33,7 +33,7 @@
 
 #include <QMenu>
 
-#if defined(COMPILE_WEBKIT_SUPPORT)
+#if defined(COMPILE_WEBENGINE_SUPPORT)
 #include <QWebEngineProfile>
 #include <QWebEngineView>
 #include <QWebEngineSettings>
@@ -276,12 +276,12 @@ const char * const actions_tbl[] = {
 	@type:
 		class
 	@short:
-		Provides web support in a widget using webkit.
+		Provides web support in a widget using webengine.
 	@inherits:
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		Provides an embedded web browser using webkit. Page structure can be managed by web element's unique identifiers.
+		Provides an embedded web browser using webengine. Page structure can be managed by web element's unique identifiers.
 	@functions:
 		!fn: $load(<url:string>)
 		Sets the current URL for the webView and starts loading it
@@ -787,4 +787,4 @@ bool KviKvsWebView::event(QEvent * e)
 }
 KviKvsWebView::~KviKvsWebView()
     = default;
-#endif // COMPILE_WEBKIT_SUPPORT
+#endif // COMPILE_WEBENGINE_SUPPORT

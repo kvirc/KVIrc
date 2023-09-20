@@ -110,7 +110,7 @@ build_script:
             "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant-2.dll.a",
             "-DWANT_KDE=NO",
             "-DWANT_PYTHON=YES",
-            "-DWANT_QTWEBKIT=NO"
+            "-DWANT_QTWEBENGINE=NO"
         )
         cmake .. $args
     - ps: Push-AppveyorArtifact CMakeCache.txt

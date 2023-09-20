@@ -26,7 +26,7 @@
 
 #include "KviWebPackageManagementDialog.h"
 
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 
 #include "KviLocale.h"
 #include "KviApplication.h"
@@ -249,4 +249,4 @@ void KviWebPackageManagementDialog::showEvent(QShowEvent *)
 	move(rect.x() + ((rect.width() - width()) / 2), rect.y() + ((rect.height() - height()) / 2));
 }
 
-#endif //COMPILE_WEBKIT_SUPPORT
+#endif //COMPILE_WEBENGINE_SUPPORT

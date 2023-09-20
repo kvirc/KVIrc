@@ -24,7 +24,7 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 
 #include "WebThemeInterfaceDialog.h"
 #include "ThemeFunctions.h"
@@ -62,9 +62,9 @@ bool WebThemeInterfaceDialog::installPackage(const QString & szPath, QString & s
 bool WebThemeInterfaceDialog::packageIsInstalled(const QString & szId, const QString & szVersion)
 {
 	QString szSubdir = szId + QString("-") + szVersion;
-	szSubdir.replace(QRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"), "_");
+	szSubdir.replace(QRegularExpression("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"), "_");
 
 	return KviFileUtils::fileExists(m_szGlobalThemesPath + szSubdir) || KviFileUtils::fileExists(m_szLocalThemesPath + szSubdir);
 }
 
-#endif //COMPILE_WEBKIT_SUPPORT
+#endif //COMPILE_WEBENGINE_SUPPORT

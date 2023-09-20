@@ -27,7 +27,7 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 
 #include <QWidget>
 #include <QWebEnginePage>
@@ -108,6 +108,6 @@ protected slots:
 
 }; // class KviWebPackageManagementDialog
 
-#endif //COMPILE_WEBKIT_SUPPORT
+#endif //COMPILE_WEBENGINE_SUPPORT
 
 #endif //!_KviWebPackageManagementDialog_h_

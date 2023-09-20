@@ -27,7 +27,7 @@
 #include "HelpIndex.h"
 #include "kvi_settings.h"
 
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 #include <QWebEngineView>
 #else
 #include <QTextBrowser>
@@ -48,7 +48,7 @@ public:
 	~HelpWidget();
 
 private:
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	QVBoxLayout * m_pLayout;
 	QToolBar * m_pToolBar;
 	QToolBar * m_pToolBarHighlight;
@@ -65,7 +65,7 @@ private:
 
 protected slots:
 	void showIndex();
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	void slotLoadFinished(bool ok);
 	void slotFindNext();
 	void slotFindPrev();
@@ -76,7 +76,7 @@ protected slots:
 	void slotShowHideFind();
 #endif
 public:
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	QWebEngineView * textBrowser()
 	{
 		return m_pTextBrowser;

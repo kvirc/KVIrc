@@ -32,7 +32,7 @@
 
 #include <QGraphicsEffect>
 
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 #include <QWebEngineView>
 #endif
 
@@ -48,7 +48,7 @@ public:
 protected:
 	bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams) override;
 
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	QWebEngineView * m_pWebview = nullptr;
 #endif
 	bool eventFilter(QObject * o, QEvent * e) override;
@@ -130,7 +130,7 @@ protected:
 	bool y(KviKvsObjectFunctionCall *);
 
 	bool grab(KviKvsObjectFunctionCall *);
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	bool setWebView(KviKvsObjectFunctionCall * c);
 #endif
 

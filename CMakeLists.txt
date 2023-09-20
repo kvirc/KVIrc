@@ -408,7 +408,8 @@ else()
 	option(WANT_QTDBUS "Whether to compile Qt D-Bus support" ON)
 endif()
 
-option(WANT_QTWEBKIT "Whether to compile Qt WebKit support" ON)
+option(WANT_QTWEBENGINE "Whether to compile Qt WebEngine support" ON)
+option(WANT_QTWEBKIT "Alias for WANT_QTWEBENGINE" OFF)
 option(WANT_QTSVG "Whether to compile Qt SVG support" ON)
 
 # May be re-set below, if the proper libs are found.
@@ -469,13 +470,13 @@ if(WANT_QTDBUS)
 	endif()
 endif()
 
-# Qt WebKit support
-if(WANT_QTWEBKIT)
-	find_package(Qt5WebEngineWidgets)
-	if(Qt5WebEngineWidgets_FOUND)
-		list(APPEND qt5_kvirc_modules Qt5::WebEngineWidgets)
-		include_directories(${Qt5WebEngineWidgets_INCLUDE_DIRS})
-		set(COMPILE_WEBKIT_SUPPORT 1)
+# Qt WebEngine support
+if(WANT_QTWEBENGINE OR WANT_QTWEBKIT)
+	find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WebEngineWidgets)
+	if(Qt${QT_VERSION_MAJOR}WebEngineWidgets_FOUND)
+		list(APPEND qt_kvirc_modules Qt${QT_VERSION_MAJOR}::WebEngineWidgets)
+		include_directories(${Qt${QT_VERSION_MAJOR}WebKitWidgets_INCLUDE_DIRS})
+		set(COMPILE_WEBENGINE_SUPPORT 1)
 	endif()
 endif()
 

@@ -24,7 +24,7 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 
 #include "WebAddonInterfaceDialog.h"
 #include "AddonFunctions.h"
@@ -66,4 +66,4 @@ bool WebAddonInterfaceDialog::packageIsInstalled(const QString & szId, const QSt
 	return KviMiscUtils::compareVersions(pAddon->version(), szVersion) < 0;
 }
 
-#endif //COMPILE_WEBKIT_SUPPORT
+#endif //COMPILE_WEBENGINE_SUPPORT

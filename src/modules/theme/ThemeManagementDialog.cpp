@@ -23,7 +23,7 @@
 //=============================================================================
 #include "kvi_settings.h"
 
-#if defined(COMPILE_WEBKIT_SUPPORT)
+#if defined(COMPILE_WEBENGINE_SUPPORT)
 #include "WebThemeInterfaceDialog.h"
 #endif
 
@@ -114,7 +114,7 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
     : QWidget(parent)
 {
 	m_pItemDelegate = nullptr;
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	m_pWebThemeInterfaceDialog = nullptr;
 #endif
 	setObjectName("theme_options_widget");
@@ -242,13 +242,13 @@ ThemeManagementDialog::~ThemeManagementDialog()
 		delete m_pItemDelegate;
 	g_rectManagementDialogGeometry = QRect(pos().x(), pos().y(), size().width(), size().height());
 	m_pInstance = nullptr;
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	if(m_pWebThemeInterfaceDialog)
 	{
 		m_pWebThemeInterfaceDialog->deleteLater();
 		m_pWebThemeInterfaceDialog = nullptr;
 	}
-#endif //COMPILE_WEBKIT_SUPPORT
+#endif //COMPILE_WEBENGINE_SUPPORT
 }
 
 void ThemeManagementDialog::closeClicked()
@@ -420,7 +420,7 @@ void ThemeManagementDialog::installFromFile()
 
 void ThemeManagementDialog::getMoreThemes()
 {
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	if(m_pWebThemeInterfaceDialog)
 	{
 		m_pWebThemeInterfaceDialog->show();
@@ -440,7 +440,7 @@ void ThemeManagementDialog::getMoreThemes()
 
 void ThemeManagementDialog::webThemeInterfaceDialogDestroyed()
 {
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	m_pWebThemeInterfaceDialog = nullptr;
 #endif
 	fillThemeBox();
