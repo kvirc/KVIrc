@@ -63,7 +63,7 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 
 	// layout
 	m_pLayout = new QVBoxLayout(this);
-	m_pLayout->setMargin(0);
+	m_pLayout->setContentsMargins(0, 0, 0, 0);
 	m_pLayout->setSpacing(0);
 	setLayout(m_pLayout);
 
@@ -187,7 +187,7 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 
 	// layout
 	m_pLayout = new QVBoxLayout(this);
-	m_pLayout->setMargin(0);
+	m_pLayout->setContentsMargins(0, 0, 0, 0);
 	m_pLayout->setSpacing(0);
 	setLayout(m_pLayout);
 

@@ -33,7 +33,7 @@ KviTalVBox::KviTalVBox(QWidget * pParent, char * pcName)
 	setObjectName(pcName);
 
 	m_pLayout = new QVBoxLayout(this);
-	m_pLayout->setMargin(3);
+	m_pLayout->setContentsMargins(3, 3, 3, 3);
 	m_pLayout->setSpacing(2);
 
 	setLayout(m_pLayout);

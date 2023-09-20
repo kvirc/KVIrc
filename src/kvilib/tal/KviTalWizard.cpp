@@ -183,7 +183,7 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 	KviTalHBox * pButtonBox = new KviTalHBox(this);
 	m_p->pLayout->addWidget(pButtonBox, 4, 0, 1, 7);
 
-	pButtonBox->setMargin(0);
+	pButtonBox->setContentsMargins(0, 0, 0, 0);
 	pButtonBox->setSpacing(0);
 
 	m_p->pCancelButton = new QPushButton(__tr("Cancel"), pButtonBox);
@@ -243,7 +243,7 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 	    this,
 	    SLOT(finishButtonClicked()));
 
-	m_p->pLayout->setMargin(8);
+	m_p->pLayout->setContentsMargins(8, 8, 8, 8);
 	m_p->pLayout->setSpacing(4);
 	m_p->pLayout->setRowStretch(2, 1);
 	m_p->pLayout->setColumnStretch(0, 1);

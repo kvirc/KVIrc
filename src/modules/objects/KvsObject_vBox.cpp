@@ -124,7 +124,7 @@ KVSO_CLASS_FUNCTION(vBox, setMargin)
 	KVSO_PARAMETERS_BEGIN(c)
 	KVSO_PARAMETER("margin", KVS_PT_INT, 0, iMargin)
 	KVSO_PARAMETERS_END(c)
-	((KviTalVBox *)widget())->setMargin(iMargin);
+	((KviTalVBox *)widget())->setContentsMargins(iMargin, iMargin, iMargin, iMargin);
 	return true;
 }
 

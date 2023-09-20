@@ -94,7 +94,7 @@ void KviOptionsWidget::createLayout()
 	if(m_pLayout)
 		delete m_pLayout;
 	m_pLayout = new QGridLayout(this); //,rows,cols,KVI_OPTIONSWIDGET_GRIDLAYOUT_BORDER,KVI_OPTIONSWIDGET_GRIDLAYOUT_SPACE);
-	m_pLayout->setMargin(4);
+	m_pLayout->setContentsMargins(4, 4, 4, 4);
 	m_pLayout->setSpacing(6);
 	if(g_pApp->style()->metaObject()->className() == QString("QMacStyle"))
 		m_pLayout->setVerticalSpacing(8);
@@ -105,7 +105,7 @@ void KviOptionsWidget::createTabbedPage()
 	if(m_pTabWidget)
 		return; // already created (may happen with reparenting)
 	createLayout();
-	layout()->setMargin(0);
+	layout()->setContentsMargins(0, 0, 0, 0);
 	layout()->setSpacing(6);
 	m_pTabWidget = new QTabWidget(this);
 	m_pTabWidget->installEventFilter(this);
@@ -169,7 +169,7 @@ void KviOptionsWidget::addOptionsWidget(const QString & szText, const QIcon & ic
 		return; // already there ?
 
 	if(pWidget->layout())
-		pWidget->layout()->setMargin(8);
+		pWidget->layout()->setContentsMargins(8, 8, 8, 8);
 
 	m_pTabWidget->addTab(pWidget, iconSet, szText);
 

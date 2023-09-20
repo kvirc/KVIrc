@@ -465,7 +465,7 @@ ScriptEditorWidgetColorOptions::ScriptEditorWidgetColorOptions(QWidget * pParent
 	QGridLayout * g = new QGridLayout(this);
 	KviTalVBox * box = new KviTalVBox(this);
 	g->addWidget(box, 0, 0);
-	box->setMargin(0);
+	box->setContentsMargins(0, 0, 0, 0);
 	box->setSpacing(0);
 	box->setMinimumWidth(280);
 

@@ -39,7 +39,7 @@ NotifierMessage::NotifierMessage(QPixmap * pPixmap, QString szText)
 {
 	m_pHBox = new QHBoxLayout(this);
 	m_pHBox->setSpacing(SPACING);
-	m_pHBox->setMargin(SPACING);
+	m_pHBox->setContentsMargins(SPACING, SPACING, SPACING, SPACING);
 
 	updateGui();
 }

@@ -1090,7 +1090,7 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 
 			QLabel * pLabel = new QLabel(szLabel, g_pInputPopup);
 			pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
-			pLabel->setMargin(5);
+			pLabel->setContentsMargins(5, 5, 5, 5);
 
 			QWidgetAction * pAction = new QWidgetAction(g_pInputPopup);
 			pAction->setDefaultWidget(pLabel);
@@ -1214,7 +1214,7 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 	QWidgetAction * pWidgetAction = new QWidgetAction(g_pInputPopup);
 	QLabel * pLabel = new QLabel(&m_SpellCheckerPopup);
 	pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
-	pLabel->setMargin(5);
+	pLabel->setContentsMargins(5, 5, 5, 5);
 
 	pWidgetAction->setDefaultWidget(pLabel);
 	m_SpellCheckerPopup.addAction(pWidgetAction);

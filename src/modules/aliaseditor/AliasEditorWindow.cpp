@@ -133,7 +133,7 @@ AliasEditorWidget::AliasEditorWidget(QWidget * par)
 
 	KviTalVBox * box = new KviTalVBox(m_pSplitter);
 	box->setSpacing(0);
-	box->setMargin(0);
+	box->setContentsMargins(0, 0, 0, 0);
 
 	m_pTreeWidget = new AliasEditorTreeWidget(box);
 
@@ -143,7 +143,7 @@ AliasEditorWidget::AliasEditorWidget(QWidget * par)
 	box = new KviTalVBox(m_pSplitter);
 	KviTalHBox * hbox = new KviTalHBox(box);
 	hbox->setSpacing(0);
-	hbox->setMargin(0);
+	hbox->setContentsMargins(0, 0, 0, 0);
 	m_pNameLabel = new QLabel(__tr2qs_ctx("No item selected", "editor"), hbox);
 	m_pRenameButton = new QPushButton(__tr2qs_ctx("Rename", "editor"), hbox);
 	m_pRenameButton->setEnabled(false);

@@ -169,7 +169,7 @@ void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 
 	KviTalHBox * pBox = new KviTalHBox(nullptr);
 	pBox->setSpacing(0);
-	pBox->setMargin(0);
+	pBox->setContentsMargins(0, 0, 0, 0);
 
 	m_pCurrentIconButton = new QToolButton(pBox);
 	m_pCurrentIconButton->setMinimumWidth(90);
@@ -245,7 +245,7 @@ void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem * cur, QTableW
 
 	KviTalHBox * pBox = new KviTalHBox(nullptr);
 	pBox->setSpacing(0);
-	pBox->setMargin(0);
+	pBox->setContentsMargins(0, 0, 0, 0);
 
 	m_pCurrentIconButton = new QToolButton(pBox);
 	m_pCurrentIconButton->setMinimumWidth(90);

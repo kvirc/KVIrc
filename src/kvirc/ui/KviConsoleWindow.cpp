@@ -99,7 +99,7 @@ KviConsoleWindow::KviConsoleWindow(int iFlags) : KviWindow(KviWindow::Console, _
 
 	m_pButtonBox = new KviTalHBox(this);
 	m_pButtonBox->setSpacing(0);
-	m_pButtonBox->setMargin(0);
+	m_pButtonBox->setContentsMargins(0, 0, 0, 0);
 	new QLabel(__tr2qs("Address:"), m_pButtonBox);
 	m_pAddressEdit = new KviThemedComboBox(m_pButtonBox, this, "url_editor");
 	m_pAddressEdit->setDuplicatesEnabled(false);

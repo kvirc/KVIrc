@@ -73,7 +73,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 	setContentsMargins(0, 0, 0, 0);
 
 	QHBoxLayout * pLayout = new QHBoxLayout(this);
-	pLayout->setMargin(2);
+	pLayout->setContentsMargins(2, 2, 2, 2);
 	pLayout->setSpacing(2);
 
 	QPushButton * pButton = new QPushButton(QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Close)), QString(), this);

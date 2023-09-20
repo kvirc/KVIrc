@@ -31,7 +31,7 @@ KviTalGroupBox::KviTalGroupBox(QWidget * pParent, char * pcName)
 {
 	setObjectName(pcName);
 	m_pLayout = new QHBoxLayout(this);
-	m_pLayout->setMargin(4);
+	m_pLayout->setContentsMargins(4, 4, 4, 4);
 	m_pLayout->setContentsMargins(8, 8, 8, 8);
 	m_pLayout->setSpacing(6);
 	QGroupBox::setLayout(m_pLayout);
@@ -56,7 +56,7 @@ KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, QWidget * pParent)
 		m_pLayout = new QHBoxLayout(this);
 	else
 		m_pLayout = new QVBoxLayout(this);
-	m_pLayout->setMargin(4);
+	m_pLayout->setContentsMargins(4, 4, 4, 4);
 	m_pLayout->setContentsMargins(8, 8, 8, 8);
 	m_pLayout->setSpacing(6);
 	QGroupBox::setLayout(m_pLayout);
@@ -70,7 +70,7 @@ KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, const QString & szTi
 		m_pLayout = new QHBoxLayout(this);
 	else
 		m_pLayout = new QVBoxLayout(this);
-	m_pLayout->setMargin(4);
+	m_pLayout->setContentsMargins(4, 4, 4, 4);
 	m_pLayout->setContentsMargins(8, 8, 8, 8);
 	m_pLayout->setSpacing(6);
 	QGroupBox::setLayout(m_pLayout);

@@ -64,7 +64,7 @@ DccAcceptDialog::DccAcceptDialog(DccBroker * br, DccDescriptor * dcc, const QStr
 	setObjectName("dcc_accept_box");
 	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);
 	QVBoxLayout * vb = new QVBoxLayout(this);
-	vb->setMargin(4);
+	vb->setContentsMargins(4, 4, 4, 4);
 	vb->setSpacing(4);
 	QLabel * l = new QLabel(text, this);
 	l->setWordWrap(true);
@@ -134,7 +134,7 @@ DccRenameDialog::DccRenameDialog(DccBroker * br, DccDescriptor * dcc, const QStr
 	setObjectName("dcc_rename_box");
 	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);
 	QVBoxLayout * vb = new QVBoxLayout(this);
-	vb->setMargin(4);
+	vb->setContentsMargins(4, 4, 4, 4);
 	vb->setSpacing(4);
 	QLabel * l = new QLabel(text, this);
 	l->setWordWrap(true);

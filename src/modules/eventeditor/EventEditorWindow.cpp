@@ -101,7 +101,7 @@ EventEditor::EventEditor(QWidget * par)
 
 	KviTalVBox * vbox = new KviTalVBox(spl);
 	vbox->setSpacing(0);
-	vbox->setMargin(0);
+	vbox->setContentsMargins(0, 0, 0, 0);
 
 	m_pTreeWidget = new EventEditorTreeWidget(vbox);
 
@@ -113,7 +113,7 @@ EventEditor::EventEditor(QWidget * par)
 	spl->setStretchFactor(2, 80);
 
 	box->setSpacing(0);
-	box->setMargin(0);
+	box->setContentsMargins(0, 0, 0, 0);
 
 	KviTalHBox * hbox = new KviTalHBox(box);
 	hbox->setContentsMargins(10, 0, 10, 0);

@@ -180,14 +180,14 @@ ClassEditorWidget::ClassEditorWidget(QWidget * pParent)
 
 	KviTalVBox * pVBox = new KviTalVBox(m_pSplitter);
 	pVBox->setSpacing(0);
-	pVBox->setMargin(0);
+	pVBox->setContentsMargins(0, 0, 0, 0);
 	m_pTreeWidget = new ClassEditorTreeWidget(pVBox);
 
 	pVBox = new KviTalVBox(m_pSplitter);
 
 	KviTalHBox * pHBox = new KviTalHBox(pVBox);
 	pHBox->setSpacing(0);
-	pHBox->setMargin(0);
+	pHBox->setContentsMargins(0, 0, 0, 0);
 	m_pClassNameLabel = new QLabel(__tr2qs_ctx("No item selected", "editor"), pHBox);
 	pHBox->setStretchFactor(m_pClassNameLabel, 2);
 	m_pClassNameLabel->setWordWrap(true);
@@ -198,11 +198,11 @@ ClassEditorWidget::ClassEditorWidget(QWidget * pParent)
 
 	pHBox = new KviTalHBox(pVBox);
 	pHBox->setSpacing(0);
-	pHBox->setMargin(0);
+	pHBox->setContentsMargins(0, 0, 0, 0);
 
 	pHBox = new KviTalHBox(pVBox);
 	pHBox->setSpacing(0);
-	pHBox->setMargin(0);
+	pHBox->setContentsMargins(0, 0, 0, 0);
 	m_pFunctionNameLabel = new QLabel(__tr2qs_ctx("No item selected", "editor"), pHBox);
 	pHBox->setStretchFactor(m_pFunctionNameLabel, 2);
 	m_pFunctionNameRenameButton = new QPushButton(__tr2qs_ctx("Rename", "editor"), pHBox);
@@ -1923,7 +1923,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 
 	KviTalHBox * pHBox = new KviTalHBox(this);
 	pHBox->setSpacing(0);
-	pHBox->setMargin(0);
+	pHBox->setContentsMargins(0, 0, 0, 0);
 	pLayout->addWidget(pHBox, 0, 0);
 
 	QLabel * pLabel = new QLabel(pHBox);
@@ -1953,7 +1953,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 
 	pHBox = new KviTalHBox(this);
 	pHBox->setSpacing(0);
-	pHBox->setMargin(0);
+	pHBox->setContentsMargins(0, 0, 0, 0);
 	pLayout->addWidget(pHBox, 1, 0);
 
 	pLabel = new QLabel(pHBox);
@@ -1998,7 +1998,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 
 	pHBox = new KviTalHBox(this);
 	pHBox->setSpacing(0);
-	pHBox->setMargin(0);
+	pHBox->setContentsMargins(0, 0, 0, 0);
 	pLayout->addWidget(pHBox, 2, 0);
 
 	m_pNewClassButton = new QPushButton(pHBox);
@@ -2037,7 +2037,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 
 	KviTalHBox * pHBox = new KviTalHBox(this);
 	pHBox->setSpacing(0);
-	pHBox->setMargin(0);
+	pHBox->setContentsMargins(0, 0, 0, 0);
 	pLayout->addWidget(pHBox, 0, 0);
 
 	QLabel * pLabel = new QLabel(pHBox);
@@ -2046,7 +2046,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 
 	pHBox = new KviTalHBox(this);
 	pHBox->setSpacing(0);
-	pHBox->setMargin(0);
+	pHBox->setContentsMargins(0, 0, 0, 0);
 	pLayout->addWidget(pHBox, 1, 0);
 
 	pLabel = new QLabel(pHBox);
@@ -2066,7 +2066,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 
 	pHBox = new KviTalHBox(this);
 	pHBox->setSpacing(0);
-	pHBox->setMargin(0);
+	pHBox->setContentsMargins(0, 0, 0, 0);
 	pLayout->addWidget(pHBox, 2, 0);
 
 	pLabel = new QLabel(pHBox);
@@ -2080,7 +2080,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 
 	pHBox = new KviTalHBox(this);
 	pHBox->setSpacing(0);
-	pHBox->setMargin(0);
+	pHBox->setContentsMargins(0, 0, 0, 0);
 	pLayout->addWidget(pHBox, 3, 0);
 
 	pLabel = new QLabel(pHBox);
@@ -2099,7 +2099,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 
 	pHBox = new KviTalHBox(this);
 	pHBox->setSpacing(0);
-	pHBox->setMargin(0);
+	pHBox->setContentsMargins(0, 0, 0, 0);
 	pLayout->addWidget(pHBox, 4, 0);
 
 	m_pNewFunctionButton = new QPushButton(pHBox);

@@ -224,7 +224,7 @@ KVSO_CLASS_FUNCTION(layout, setMargin)
 	KVSO_PARAMETERS_BEGIN(c)
 	KVSO_PARAMETER("margin", KVS_PT_UNSIGNEDINTEGER, 0, uMargin)
 	KVSO_PARAMETERS_END(c)
-	((QGridLayout *)object())->setMargin(uMargin);
+	((QGridLayout *)object())->setContentsMargins(uMargin, uMargin, uMargin, uMargin);
 	return true;
 }
 
