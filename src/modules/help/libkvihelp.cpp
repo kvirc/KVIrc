@@ -184,7 +184,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 		if(w)
 		{
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 			w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
 #else
 			w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
@@ -198,7 +198,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	if(c->switches()->find('m', "mdi"))
 	{
 		HelpWindow * w = new HelpWindow("Help browser");
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 		w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
 #else
 		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
@@ -208,7 +208,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	else
 	{
 		HelpWidget * w = new HelpWidget(g_pMainWindow->splitter(), true);
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 		w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
 #else
 		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));

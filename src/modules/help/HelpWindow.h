@@ -31,7 +31,7 @@
 #include "kvi_settings.h"
 
 #include <QTabWidget>
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 #include <QWebEngineView>
 #else
 class QTextBrowser;
@@ -79,7 +79,7 @@ protected:
 	void loadProperties(KviConfigurationFile * cfg) override;
 
 public:
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	QWebEngineView * textBrowser();
 #else
 	QTextBrowser * textBrowser();

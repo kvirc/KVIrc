@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 
 #include "KviWebPackageManagementDialog.h"
 
@@ -58,6 +58,6 @@ protected:
 
 }; // class WebAddonInterfaceDialog
 
-#endif //COMPILE_WEBKIT_SUPPORT
+#endif //COMPILE_WEBENGINE_SUPPORT
 
 #endif //!_WebAddonInterfaceDialog_h_

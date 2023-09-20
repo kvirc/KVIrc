@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 
 #include "KviWebPackageManagementDialog.h"
 
@@ -46,6 +46,6 @@ protected:
 	bool installPackage(const QString & szPath, QString & szError) override;
 };
 
-#endif //COMPILE_WEBKIT_SUPPORT
+#endif //COMPILE_WEBENGINE_SUPPORT
 
 #endif //_WEBTHEMEINTERFACEDIALOG_H_

@@ -45,7 +45,7 @@ extern HelpIndex * g_pDocIndex;
 extern KviPointerList<HelpWindow> * g_pHelpWindowList;
 extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 #include <QShortcut>
 #include <QAction>
 
@@ -238,7 +238,7 @@ void HelpWidget::showIndex()
 
 	g_pApp->getGlobalKvircDirectory(szHelpDir, KviApplication::Help);
 	dirHelp = QDir(szHelpDir);
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	m_pTextBrowser->load(QUrl::fromLocalFile(dirHelp.absoluteFilePath("index.html")));
 #else
 	m_pTextBrowser->setSource(QUrl::fromLocalFile(dirHelp.absoluteFilePath("index.html")));

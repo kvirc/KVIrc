@@ -268,7 +268,7 @@ void HelpWindow::startSearch()
 	setCursor(Qt::ArrowCursor);
 }
 
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 QWebEngineView * HelpWindow::textBrowser()
 #else
 QTextBrowser * HelpWindow::textBrowser()
@@ -282,7 +282,7 @@ void HelpWindow::showIndexTopic()
 	if(m_pIndexSearch->text().isEmpty() || !m_pIndexListWidget->selectedItems().count())
 		return;
 	int i = g_pDocIndex->titlesList().indexOf(m_pIndexListWidget->selectedItems().at(0)->text());
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	textBrowser()->load(QUrl(g_pDocIndex->documentList()[i]));
 #else
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[i]));
@@ -311,7 +311,7 @@ void HelpWindow::indexSelected(QListWidgetItem * item)
 	if(!item)
 		return;
 	int i = g_pDocIndex->titlesList().indexOf(item->text());
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	textBrowser()->load(QUrl(g_pDocIndex->documentList()[i]));
 #else
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[i]));
@@ -323,7 +323,7 @@ void HelpWindow::searchSelected(QListWidgetItem * item)
 	if(!item)
 		return;
 	int i = g_pDocIndex->titlesList().indexOf(item->text());
-#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBENGINE_SUPPORT
 	textBrowser()->load(QUrl(g_pDocIndex->documentList()[i]));
 #else
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[i]));
