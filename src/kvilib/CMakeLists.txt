@@ -128,16 +128,11 @@ if(MINGW)
 endif()
 
 add_library(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
-target_link_libraries(${KVILIB_BINARYNAME} ${LIBS})
+target_link_libraries(${KVILIB_BINARYNAME} ${LIBS} ${qt_kvirc_modules})
 
 # Enable C++17
 set_property(TARGET ${KVILIB_BINARYNAME} PROPERTY CXX_STANDARD 17)
 set_property(TARGET ${KVILIB_BINARYNAME} PROPERTY CXX_STANDARD_REQUIRED ON)
-
-
-if(Qt5Widgets_FOUND)
-	target_link_libraries(${KVILIB_BINARYNAME} ${qt5_kvirc_modules})
-endif()
 
 set_target_properties(${KVILIB_BINARYNAME} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 
