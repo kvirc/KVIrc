@@ -13,11 +13,7 @@ add_library(${kvi_module_name} MODULE ${${kvi_module_name}_SRCS} ${${kvi_module_
 set_property(TARGET ${kvi_module_name} PROPERTY CXX_STANDARD 17)
 set_property(TARGET ${kvi_module_name} PROPERTY CXX_STANDARD_REQUIRED ON)
 
-target_link_libraries(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
-
-if(Qt5Widgets_FOUND)
-	target_link_libraries(${kvi_module_name} ${qt5_kvirc_modules})
-endif()
+target_link_libraries(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS} ${qt_kvirc_modules})
 
 set_target_properties(${kvi_module_name} PROPERTIES LINK_FLAGS "${MODULE_ADDITIONAL_LINK_FLAGS}")
 set_target_properties(${kvi_module_name} PROPERTIES COMPILE_FLAGS "${ADDITIONAL_COMPILE_FLAGS}")

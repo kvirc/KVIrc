@@ -194,7 +194,7 @@ if(WANT_ENV_FLAGS)
 	set(CMAKE_STATUS_DEBUG_SUPPORT "Environment-driven")
 else()
 	if(MSVC)
-		# Qt5 has /Zc:wchar_t
+		# Qt has /Zc:wchar_t
 		set(CMAKE_CXX_FLAGS "/MP /Zc:wchar_t /EHsc /source-charset:utf-8")
 		set(CMAKE_C_FLAGS "/MP /Zc:wchar_t /EHsc /source-charset:utf-8")
 	endif()
@@ -386,18 +386,21 @@ if(ZLIB_FOUND)
 endif()
 
 ############################################################################
-# Check for Qt5
+# Check for Qt
 ############################################################################
 
-find_package(Qt5Widgets 5.15)
-if(Qt5Widgets_FOUND)
-	set(CMAKE_STATUS_QT_VERSION "${Qt5Widgets_VERSION_STRING}")
-	set(qt5_kvirc_modules)
+# first check if Qt6 or Qt5 has to be used
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
+# second, detect available modules for the specific Qt version
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+if(Qt${QT_VERSION_MAJOR}Widgets_FOUND)
+	set(CMAKE_STATUS_QT_VERSION "${QT_VERSION}")
+	set(qt_kvirc_modules)
 else()
-	message(FATAL_ERROR "No Qt5 found!")
+	message(FATAL_ERROR "No Qt5 or Qt6 found!")
 endif()
 
-# automoc is used by both qt4 and qt5
+# automoc is used by qt
 set(CMAKE_AUTOMOC TRUE)
 
 # Shared options
@@ -415,57 +418,57 @@ option(WANT_QTSVG "Whether to compile Qt SVG support" ON)
 # May be re-set below, if the proper libs are found.
 set(CMAKE_STATUS_QX11INFO_SUPPORT "Not available")
 
-include_directories(${Qt5Widgets_INCLUDE_DIRS})
-list(APPEND qt5_kvirc_modules Qt5::Widgets)
+include_directories(${Qt${QT_VERSION_MAJOR}Widgets_INCLUDE_DIRS})
+list(APPEND qt_kvirc_modules Qt::Widgets)
 
 # Qt SQL
-find_package(Qt5Sql)
-if(Qt5Sql_FOUND)
-	include_directories(${Qt5Sql_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules Qt5::Sql)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Sql)
+if(Qt${QT_VERSION_MAJOR}Sql_FOUND)
+	include_directories(${Qt${QT_VERSION_MAJOR}Sql_INCLUDE_DIRS})
+	list(APPEND qt_kvirc_modules Qt::Sql)
 endif()
 
 # Qt XML
-find_package(Qt5Xml)
-if(Qt5Xml_FOUND)
-	include_directories(${Qt5Xml_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules Qt5::Xml)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Xml)
+if(Qt${QT_VERSION_MAJOR}Xml_FOUND)
+	include_directories(${Qt${QT_VERSION_MAJOR}Xml_INCLUDE_DIRS})
+	list(APPEND qt_kvirc_modules Qt::Xml)
 endif()
 
 # Qt Network
-find_package(Qt5Network)
-if(Qt5Network_FOUND)
-	include_directories(${Qt5Network_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules Qt5::Network)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Network)
+if(Qt${QT_VERSION_MAJOR}Network_FOUND)
+	include_directories(${Qt${QT_VERSION_MAJOR}Network_INCLUDE_DIRS})
+	list(APPEND qt_kvirc_modules Qt::Network)
 endif()
 
 # Qt PrintSupport
-find_package(Qt5PrintSupport)
-if(Qt5PrintSupport_FOUND)
-	include_directories(${Qt5PrintSupport_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules Qt5::PrintSupport)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS PrintSupport)
+if(Qt${QT_VERSION_MAJOR}PrintSupport_FOUND)
+	include_directories(${Qt${QT_VERSION_MAJOR}PrintSupport_INCLUDE_DIRS})
+	list(APPEND qt_kvirc_modules Qt::PrintSupport)
 endif()
 
 # Qt Multimedia
-find_package(Qt5Multimedia)
-if(Qt5Multimedia_FOUND)
-	include_directories(${Qt5Multimedia_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules Qt5::Multimedia)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Multimedia)
+if(Qt${QT_VERSION_MAJOR}Multimedia_FOUND)
+	include_directories(${Qt${QT_VERSION_MAJOR}Multimedia_INCLUDE_DIRS})
+	list(APPEND qt_kvirc_modules Qt::Multimedia)
 endif()
 
 # Qt Concurrent
-find_package(Qt5Concurrent)
-if(Qt5Concurrent_FOUND)
-	include_directories(${Qt5Concurrent_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules Qt5::Concurrent)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Concurrent)
+if(Qt${QT_VERSION_MAJOR}Concurrent_FOUND)
+	include_directories(${Qt${QT_VERSION_MAJOR}Concurrent_INCLUDE_DIRS})
+	list(APPEND qt_kvirc_modules Qt::Concurrent)
 endif()
 
 # Qt D-Bus support
 if(WANT_QTDBUS)
-	find_package(Qt5DBus)
-	if(Qt5DBus_FOUND)
-		list(APPEND qt5_kvirc_modules Qt5::DBus)
-		include_directories(${Qt5DBus_INCLUDE_DIRS})
+	find_package(Qt${QT_VERSION_MAJOR} COMPONENTS DBus)
+	if(Qt${QT_VERSION_MAJOR}DBus_FOUND)
+		list(APPEND qt_kvirc_modules Qt::DBus)
+		include_directories(${Qt${QT_VERSION_MAJOR}DBus_INCLUDE_DIRS})
 		set(COMPILE_DBUS_SUPPORT 1)
 	endif()
 endif()
@@ -482,30 +485,34 @@ endif()
 
 # Qt SVG support
 if(WANT_QTSVG)
-	find_package(Qt5Svg)
-	if(Qt5Svg_FOUND)
-		list(APPEND qt5_kvirc_modules Qt5::Svg)
-		include_directories(${Qt5Svg_INCLUDE_DIRS})
+	find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Svg)
+	if(Qt${QT_VERSION_MAJOR}Svg_FOUND)
+		list(APPEND qt_kvirc_modules Qt::Svg)
+		include_directories(${Qt${QT_VERSION_MAJOR}Svg_INCLUDE_DIRS})
 		set(COMPILE_SVG_SUPPORT 1)
 	endif()
 endif()
 
 if(WIN32)
-	find_package(Qt5WinExtras)
-	if(Qt5WinExtras_FOUND)
-		list(APPEND qt5_kvirc_modules Qt5::WinExtras)
-		include_directories(${Qt5WinExtras_INCLUDE_DIRS})
+	find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WinExtras)
+	if(Qt${QT_VERSION_MAJOR}WinExtras_FOUND)
+		list(APPEND qt_kvirc_modules Qt::WinExtras)
+		include_directories(${Qt${QT_VERSION_MAJOR}WinExtras_INCLUDE_DIRS})
 	endif()
 endif()
 
-# Qt5 requires the X11Extras module for the QX11Info class (which is needed for XSS support and other stuff)
+# Qt requires the X11Extras module for the QX11Info class (which is needed for XSS support and other stuff)
 if(UNIX AND NOT APPLE)
-	find_package(Qt5X11Extras)
-	if(Qt5X11Extras_FOUND)
-		set(COMPILE_QX11INFO_SUPPORT 1)
-		set(CMAKE_STATUS_QX11INFO_SUPPORT "Yes")
-		list(APPEND qt5_kvirc_modules Qt5::X11Extras)
-		include_directories(${Qt5X11Extras_INCLUDE_DIRS})
+	if(${QT_VERSION_MAJOR} EQUAL 5)
+		find_package(Qt${QT_VERSION_MAJOR} COMPONENTS X11Extras)
+		if(Qt${QT_VERSION_MAJOR}X11Extras_FOUND)
+			set(COMPILE_QX11INFO_SUPPORT 1)
+			set(CMAKE_STATUS_QX11INFO_SUPPORT "Yes")
+			list(APPEND qt_kvirc_modules Qt::X11Extras)
+			include_directories(${Qt${QT_VERSION_MAJOR}X11Extras_INCLUDE_DIRS})
+		endif()
+	else()
+		set(CMAKE_STATUS_QX11INFO_SUPPORT "Not supported on Qt6")
 	endif()
 endif()
 
@@ -518,12 +525,12 @@ option(WANT_KDE "Whether to use KDE support" ON)
 set(CMAKE_RESULT_USING_KDE false)
 
 if(WANT_KDE)
-	# Using Qt5 -> KDE5
+	# Using QtX -> KDEX
 	find_package(ECM 1.0.0 QUIET NO_MODULE)
 	if(DEFINED ECM_VERSION_MAJOR)
 		set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_MODULE_PATH})
 
-		find_package(KF5 "5.2.0" COMPONENTS
+		find_package(KF${QT_VERSION_MAJOR} "5.2.0" COMPONENTS
 				CoreAddons      # KAboutData
 				I18n            # KLocalizedString
 				XmlGui          # KMainWindow
@@ -534,18 +541,18 @@ if(WANT_KDE)
 				Parts           # KParts
 			)
 
-		if(KF5_FOUND)
+		if(KF${QT_VERSION_MAJOR}_FOUND)
 			set(CMAKE_RESULT_USING_KDE true)
 			set(COMPILE_KDE_SUPPORT 1)
-			list(APPEND LIBS KF5::CoreAddons KF5::I18n KF5::XmlGui KF5::WindowSystem KF5::Notifications KF5::Service KF5::KIOCore KF5::KIOGui KF5::KIOWidgets KF5::Parts)
+			list(APPEND LIBS KF${QT_VERSION_MAJOR}::CoreAddons KF${QT_VERSION_MAJOR}::I18n KF${QT_VERSION_MAJOR}::XmlGui KF${QT_VERSION_MAJOR}::WindowSystem KF${QT_VERSION_MAJOR}::Notifications KF${QT_VERSION_MAJOR}::Service KF${QT_VERSION_MAJOR}::KIOCore KF${QT_VERSION_MAJOR}::KIOGui KF${QT_VERSION_MAJOR}::KIOWidgets KF${QT_VERSION_MAJOR}::Parts)
 			set(CMAKE_STATUS_KDE_SUPPORT "Yes")
-			if(DEFINED KF5_VERSION)
-				set(CMAKE_STATUS_KDE_VERSION ${KF5_VERSION})
+			if(DEFINED KF${QT_VERSION_MAJOR}_VERSION)
+				set(CMAKE_STATUS_KDE_VERSION ${KF${QT_VERSION_MAJOR}_VERSION})
 			else()
 				set(CMAKE_STATUS_KDE_VERSION "5.X")
 			endif()
 		else()
-			set(CMAKE_STATUS_KDE_SUPPORT "Not available (KF5 not found)")
+			set(CMAKE_STATUS_KDE_SUPPORT "Not available (KF${QT_VERSION_MAJOR} not found)")
 		endif()
 	else()
 		set(CMAKE_STATUS_KDE_SUPPORT "Not available (ECM not found)")
@@ -596,8 +603,8 @@ endif()
 # Phonon support
 option(WANT_PHONON "Whether to compile Phonon support" ON)
 if(WANT_PHONON)
-	find_package(Phonon4Qt5 NO_MODULE)
-	if(Phonon4Qt5_FOUND)
+	find_package(Phonon4Qt${QT_VERSION_MAJOR} NO_MODULE)
+	if(Phonon4Qt${QT_VERSION_MAJOR}_FOUND)
 		set(COMPILE_PHONON_SUPPORT 1)
 		list(APPEND LIBS ${PHONON_LIBRARY})
 		list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Phonon")
@@ -605,8 +612,8 @@ if(WANT_PHONON)
 endif()
 
 # this is a no-op - not nice i know, but real no point in making it optional...
-if(Qt5Multimedia_FOUND)
-	list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Qt5Multimedia")
+if(Qt${QT_VERSION_MAJOR}Multimedia_FOUND)
+	list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Qt${QT_VERSION_MAJOR}Multimedia")
 endif()
 
 # ESD
@@ -899,10 +906,10 @@ option(WANT_DCC_VIDEO "Compile DCC video support" OFF)
 
 if(WANT_DCC_VIDEO)
 	# Qt MultimediaWidgets
-	find_package(Qt5MultimediaWidgets)
-	if(Qt5MultimediaWidgets_FOUND)
-	    include_directories(${Qt5MultimediaWidgets_INCLUDE_DIRS})
-	    list(APPEND qt5_kvirc_modules Qt5::MultimediaWidgets)
+	find_package(Qt${QT_VERSION_MAJOR} COMPONENTS MultimediaWidgets)
+	if(Qt${QT_VERSION_MAJOR}MultimediaWidgets_FOUND)
+	    include_directories(${Qt${QT_VERSION_MAJOR}MultimediaWidgets_INCLUDE_DIRS})
+	    list(APPEND qt_kvirc_modules Qt::MultimediaWidgets)
 	    set(COMPILE_DISABLE_DCC_VIDEO 0)
 	    set(CMAKE_STATUS_DCC_VIDEO_SUPPORT "Yes")
 	else()
@@ -1322,7 +1329,7 @@ message(STATUS "   Memory checks support       : ${CMAKE_STATUS_MEMORY_CHECKS_SU
 message(STATUS "Features:")
 message(STATUS "   X11 support                 : ${CMAKE_STATUS_X11_SUPPORT}")
 message(STATUS "   Qt version                  : ${CMAKE_STATUS_QT_VERSION}")
-message(STATUS "   Qt modules                  : ${qt5_kvirc_modules}")
+message(STATUS "   Qt modules                  : ${qt_kvirc_modules}")
 message(STATUS "   Qt/X11 interface            : ${CMAKE_STATUS_QX11INFO_SUPPORT}")
 message(STATUS "   KDE support                 : ${CMAKE_STATUS_KDE_SUPPORT}")
 if(CMAKE_RESULT_USING_KDE)

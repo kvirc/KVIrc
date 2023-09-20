@@ -268,15 +268,11 @@ else()
 	add_executable(${KVIRC_BINARYNAME} ${kvirc_SRCS} ${kvirc_MOC_SRCS})
 endif()
 
-target_link_libraries(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS})
+target_link_libraries(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS} ${qt_kvirc_modules})
 
 # Enable C++17
 set_property(TARGET ${KVIRC_BINARYNAME} PROPERTY CXX_STANDARD 17)
 set_property(TARGET ${KVIRC_BINARYNAME} PROPERTY CXX_STANDARD_REQUIRED ON)
-
-if(Qt5Widgets_FOUND)
-	target_link_libraries(${KVIRC_BINARYNAME} ${qt5_kvirc_modules})
-endif()
 
 if(MINGW)
 	# For some reason CMake doesn't do this itself...
