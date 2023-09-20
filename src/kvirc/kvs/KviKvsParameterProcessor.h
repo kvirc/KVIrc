@@ -31,7 +31,7 @@ class KviKvsHash;
 class KviKvsArray;
 class KviKvsArrayCast;
 class KviKvsVariant;
-class QStringList;
+#include <QStringList>
 class QByteArray;
 class QString;
 

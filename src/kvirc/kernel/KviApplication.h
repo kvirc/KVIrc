@@ -66,7 +66,7 @@ class KviIrcServerDataBase;
 class QPixmap;
 class QTextCodec;
 class QDomElement;
-class QStringList;
+#include <QStringList>
 
 struct KviPendingAvatarChange
 {

@@ -33,9 +33,9 @@
 
 #include "kvi_settings.h"
 #include "kvi_sourcesdate.h"
+#include <QStringList>
 
 class QString;
-class QStringList;
 
 extern KVILIB_API const QStringList feature_list;
 
