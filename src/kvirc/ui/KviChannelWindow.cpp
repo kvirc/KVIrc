@@ -245,7 +245,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 
 	applyOptions();
 	m_joinTime = QDateTime::currentDateTime();
-	m_tLastReceivedWhoReply = (kvi_time_t)m_joinTime.toTime_t();
+	m_tLastReceivedWhoReply = (kvi_time_t)m_joinTime.toSecsSinceEpoch();
 }
 
 KviChannelWindow::~KviChannelWindow()

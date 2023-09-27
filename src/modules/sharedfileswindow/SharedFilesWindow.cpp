@@ -141,7 +141,7 @@ KviSharedFile * SharedFileEditDialog::getResult() const
 	QDateTime dt = m_pExpireDateTimeEdit->dateTime();
 	bool bExpires = m_pExpireCheckBox->isChecked();
 	QFileInfo f(szPath);
-	return new KviSharedFile(szName, szPath, szMask, bExpires ? dt.toTime_t() : (time_t)0, f.size());
+	return new KviSharedFile(szName, szPath, szMask, bExpires ? dt.toSecsSinceEpoch() : (time_t)0, f.size());
 }
 
 void SharedFileEditDialog::okClicked()

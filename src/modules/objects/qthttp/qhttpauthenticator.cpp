@@ -1314,7 +1314,7 @@ static QByteArray qEncodeNtlmv2Response(const QHttpAuthenticatorPrivate * ctx,
 		// 369 years, 89 leap years
 		// ((369 * 365) + 89) * 24 * 3600 = 11644473600
 
-		time = Q_UINT64_C(currentTime.toTime_t() + 11644473600);
+		time = Q_UINT64_C(currentTime.toSecsSinceEpoch() + 11644473600);
 
 		// represented as 100 nano seconds
 		time = Q_UINT64_C(time * 10000000);
