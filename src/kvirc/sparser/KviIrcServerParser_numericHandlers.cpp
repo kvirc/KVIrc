@@ -672,7 +672,7 @@ void KviIrcServerParser::parseNumericTopicWhoTime(KviIrcMessage * msg)
 
 	QString szDate;
 	QDateTime date;
-	date.setTime_t(t);
+	date.setSecsSinceEpoch(t);
 
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
@@ -763,7 +763,7 @@ void getDateTimeStringFromCharTimeT(QString & szBuffer, const char * time_t_stri
 	if(bOk)
 	{
 		QDateTime date;
-		date.setTime_t(uTime);
+		date.setSecsSinceEpoch(uTime);
 
 		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 		{
@@ -1759,7 +1759,7 @@ void KviIrcServerParser::parseNumericWhoisIdle(KviIrcMessage * msg)
 		{
 			QString szTmp;
 			QDateTime date;
-			date.setTime_t((time_t)uTime);
+			date.setSecsSinceEpoch(uTime);
 
 			switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 			{
@@ -2085,7 +2085,7 @@ void KviIrcServerParser::parseNumericCreationTime(KviIrcMessage * msg)
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 	KviCString tmstr = msg->safeParam(2);
 	QDateTime date;
-	date.setTime_t((time_t)tmstr.toUInt());
+	date.setSecsSinceEpoch(tmstr.toUInt());
 
 	if(!tmstr.isUnsignedNum())
 	{
