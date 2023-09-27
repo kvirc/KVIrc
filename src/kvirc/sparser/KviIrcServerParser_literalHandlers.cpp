@@ -2232,7 +2232,7 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 
 					aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
 					// we call setModeInList anyway to fill the "mode q editor"
-					chan->setModeInList(*aux, aParam, bSet, msg->connection()->decodeText(msg->safePrefix()), QDateTime::currentDateTime().toTime_t());
+					chan->setModeInList(*aux, aParam, bSet, msg->connection()->decodeText(msg->safePrefix()), QDateTime::currentDateTime().toSecsSinceEpoch());
 					if(aParam.contains('!'))
 					{
 						// it's a mask
@@ -2369,7 +2369,7 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 #define CHANNEL_MODE(modefl, evmeset, evmeunset, evset, evunset, icomeset, icomeunset, icoset, icounset)                                    \
 	case modefl:                                                                                                                            \
 		aParam = msg->connection()->decodeText(msg->safeParam(curParam++));                                                                 \
-		chan->setModeInList(*aux, aParam, bSet, msg->connection()->decodeText(msg->safePrefix()), QDateTime::currentDateTime().toTime_t()); \
+		chan->setModeInList(*aux, aParam, bSet, msg->connection()->decodeText(msg->safePrefix()), QDateTime::currentDateTime().toSecsSinceEpoch()); \
 		{                                                                                                                                   \
 		KviIrcMask auxMask(aParam);                                                                                                         \
 		bIsMe = auxMask.matchesFixed(                                                                                                       \
@@ -2413,7 +2413,7 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 				 * spam filter with parameter like mode "g" in inspircd
 				 */
 					aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
-					chan->setModeInList(*aux, aParam, bSet, msg->connection()->decodeText(msg->safePrefix()), QDateTime::currentDateTime().toTime_t());
+					chan->setModeInList(*aux, aParam, bSet, msg->connection()->decodeText(msg->safePrefix()), QDateTime::currentDateTime().toSecsSinceEpoch());
 
 					if(!(msg->haltOutput() || bShowAsCompact))
 					{

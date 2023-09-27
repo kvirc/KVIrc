@@ -1016,7 +1016,7 @@ namespace KviKvsCoreFunctions
 					szFmtTime += qDt.toString("hh:mm");
 					break;
 				case 's': // seconds since epoch (currently 1970-01-01 00:00:00 UTC)
-					szFmtTime += QString::number(qDt.toTime_t());
+					szFmtTime += QString::number(qDt.toSecsSinceEpoch());
 					break;
 				case 'S': // seconds (00-60)
 					cDiv = '0';
