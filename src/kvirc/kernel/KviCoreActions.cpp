@@ -649,7 +649,7 @@ bool KviConnectAction::addToPopupMenu(QMenu * p)
 			case KviIrcContext::Idle:
 				t = m_szConnectString;
 				if(!m_szKeySequence.isEmpty())
-					t += '\t' + m_szKeySequence;
+					t += "\t" + m_szKeySequence;
 				p->addAction(t, this, SLOT(activate()));
 				break;
 			case KviIrcContext::PendingReconnection:
@@ -657,19 +657,19 @@ bool KviConnectAction::addToPopupMenu(QMenu * p)
 			case KviIrcContext::LoggingIn:
 				t = m_szAbortConnectionString;
 				if(!m_szKeySequence.isEmpty())
-					t += '\t' + m_szKeySequence;
+					t += "\t" + m_szKeySequence;
 				p->addAction(t, this, SLOT(activate()));
 				break;
 			case KviIrcContext::Connected:
 				t = m_szDisconnectString;
 				if(!m_szKeySequence.isEmpty())
-					t += '\t' + m_szKeySequence;
+					t += "\t" + m_szKeySequence;
 				p->addAction(t, this, SLOT(activate()));
 				break;
 			default:
 				t = m_szConnectString;
 				if(!m_szKeySequence.isEmpty())
-					t += '\t' + m_szKeySequence;
+					t += "\t" + m_szKeySequence;
 				pAction = p->addAction(t, this, SLOT(activate()));
 				pAction->setEnabled(false);
 				break;
@@ -679,7 +679,7 @@ bool KviConnectAction::addToPopupMenu(QMenu * p)
 	{
 		t = m_szConnectString;
 		if(!m_szKeySequence.isEmpty())
-			t += '\t' + m_szKeySequence;
+			t += "\t" + m_szKeySequence;
 		pAction = p->addAction(t, this, SLOT(activate()));
 		pAction->setEnabled(false);
 	}
@@ -1147,14 +1147,14 @@ bool KviGoAwayAction::addToPopupMenu(QMenu * p)
 			{
 				t = m_szBackString;
 				if(!m_szKeySequence.isEmpty())
-					t += '\t' + m_szKeySequence;
+					t += "\t" + m_szKeySequence;
 				p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Away)), t, this, SLOT(activate()));
 			}
 			else
 			{
 				t = m_szAwayString;
 				if(!m_szKeySequence.isEmpty())
-					t += '\t' + m_szKeySequence;
+					t += "\t" + m_szKeySequence;
 				p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)), t, this, SLOT(activate()));
 			}
 		}
@@ -1162,7 +1162,7 @@ bool KviGoAwayAction::addToPopupMenu(QMenu * p)
 		{
 			t = m_szAwayString;
 			if(!m_szKeySequence.isEmpty())
-				t += '\t' + m_szKeySequence;
+				t += "\t" + m_szKeySequence;
 			pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)), t, this, SLOT(activate()));
 			pAction->setEnabled(false);
 		}
@@ -1171,7 +1171,7 @@ bool KviGoAwayAction::addToPopupMenu(QMenu * p)
 	{
 		t = m_szAwayString;
 		if(!m_szKeySequence.isEmpty())
-			t += '\t' + m_szKeySequence;
+			t += "\t" + m_szKeySequence;
 		pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)), t, this, SLOT(activate()));
 		pAction->setEnabled(false);
 	}

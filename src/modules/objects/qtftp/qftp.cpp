@@ -837,9 +837,9 @@ void QFtpPI::readyRead()
 			}
 		}
 		QString endOfMultiLine;
-		endOfMultiLine[0] = '0' + replyCode[0];
-		endOfMultiLine[1] = '0' + replyCode[1];
-		endOfMultiLine[2] = '0' + replyCode[2];
+		endOfMultiLine[0] = QString::number(replyCode[0])[0];
+		endOfMultiLine[1] = QString::number(replyCode[1])[0];
+		endOfMultiLine[2] = QString::number(replyCode[2])[0];
 		endOfMultiLine[3] = QLatin1Char(' ');
 		QString lineCont(endOfMultiLine);
 		lineCont[3] = QLatin1Char('-');

@@ -494,7 +494,7 @@ bool KviAction::addToPopupMenu(QMenu * pMenu)
 	QString szTmp = visibleName();
 
 	if(!m_szKeySequence.isEmpty())
-		szTmp += '\t' + m_szKeySequence;
+		szTmp += "\t" + m_szKeySequence;
 
 	QAction * pAction;
 	if(pPix)

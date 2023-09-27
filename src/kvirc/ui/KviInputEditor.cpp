@@ -1351,7 +1351,7 @@ void KviInputEditor::iconPopupActivated(QAction * pAction)
 	QString szText = pAction->text();
 	if(!szText.isEmpty())
 	{
-		szText.prepend(KviControlCodes::Icon);
+		szText.prepend((char) KviControlCodes::Icon);
 		szText.append(' ');
 		insertText(szText);
 	}
@@ -1499,7 +1499,7 @@ void KviInputEditor::insertText(const QString & szTxt)
 			m_p->bTextBlocksDirty = true;
 
 			int iPos = 0;
-			while((iPos < ((int)(m_szTextBuffer.length()))) && (m_szTextBuffer[iPos] < 33))
+			while((iPos < ((int)(m_szTextBuffer.length()))) && (m_szTextBuffer[iPos].unicode() < 33))
 				iPos++;
 			if((iPos < ((int)(m_szTextBuffer.length()))) && (m_szTextBuffer[iPos] == QChar('/')))
 				m_szTextBuffer.insert(iPos, "\\");
@@ -2850,37 +2850,37 @@ void KviInputEditor::nextWordSelection()
 void KviInputEditor::insertBold()
 {
 	if(!m_bReadOnly)
-		insertChar(KviControlCodes::Bold);
+		insertChar((char) KviControlCodes::Bold);
 }
 
 void KviInputEditor::insertItalic()
 {
 	if(!m_bReadOnly)
-		insertChar(KviControlCodes::Italic);
+		insertChar((char) KviControlCodes::Italic);
 }
 
 void KviInputEditor::insertReset()
 {
 	if(!m_bReadOnly)
-		insertChar(KviControlCodes::Reset);
+		insertChar((char) KviControlCodes::Reset);
 }
 
 void KviInputEditor::insertUnderline()
 {
 	if(!m_bReadOnly)
-		insertChar(KviControlCodes::Underline);
+		insertChar((char) KviControlCodes::Underline);
 }
 
 void KviInputEditor::insertReverse()
 {
 	if(!m_bReadOnly)
-		insertChar(KviControlCodes::Reverse);
+		insertChar((char) KviControlCodes::Reverse);
 }
 
 void KviInputEditor::insertPlainText()
 {
 	if(!m_bReadOnly)
-		insertChar(KviControlCodes::CryptEscape); // DO NOT CRYPT THIS STUFF
+		insertChar((char) KviControlCodes::CryptEscape); // DO NOT CRYPT THIS STUFF
 }
 
 void KviInputEditor::insertIcon()
@@ -2888,7 +2888,7 @@ void KviInputEditor::insertIcon()
 	if(m_bReadOnly)
 		return;
 
-	insertChar(KviControlCodes::Icon); // THE NEXT WORD IS AN ICON NAME
+	insertChar((char) KviControlCodes::Icon); // THE NEXT WORD IS AN ICON NAME
 
 	popupTextIconWindow();
 }
@@ -2914,17 +2914,17 @@ void KviInputEditor::insertIconCode(const QString & szCode)
 {
 	if(m_iCursorPosition == 0)
 	{
-		insertChar(KviControlCodes::Icon);
+		insertChar((char) KviControlCodes::Icon);
 		insertText(szCode);
 		insertChar(' ');
 		return;
 	}
 
-	int idx = m_szTextBuffer.lastIndexOf(KviControlCodes::Icon, m_iCursorPosition - 1);
+	int idx = m_szTextBuffer.lastIndexOf((char) KviControlCodes::Icon, m_iCursorPosition - 1);
 	int idx2 = m_szTextBuffer.lastIndexOf(QChar(' '), m_iCursorPosition - 1);
 	if((idx == -1) || (idx2 > idx))
 	{
-		insertChar(KviControlCodes::Icon);
+		insertChar((char) KviControlCodes::Icon);
 		insertText(szCode);
 		insertChar(' ');
 		return;
@@ -2934,7 +2934,7 @@ void KviInputEditor::insertIconCode(const QString & szCode)
 
 	if(!szCode.startsWith(szPart))
 	{
-		insertChar(KviControlCodes::Icon);
+		insertChar((char) KviControlCodes::Icon);
 		insertText(szCode);
 		insertChar(' ');
 		return;
@@ -2950,7 +2950,7 @@ void KviInputEditor::insertColor()
 {
 	if(m_bReadOnly)
 		return;
-	insertChar(KviControlCodes::Color);
+	insertChar((char) KviControlCodes::Color);
 	int xPos = xPositionFromCharIndex(m_iCursorPosition);
 	if(xPos > 24)
 		xPos -= 24;

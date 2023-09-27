@@ -85,7 +85,7 @@ void KviIrcUserEntry::setRealName(const QString & szReal)
 			unsigned char cFore, cBack;
 			int iPos = KviControlCodes::getUnicodeColorBytes(m_szRealName, 1, &cFore, &cBack);
 			// extract smart nick color code
-			if(iPos > 1 && m_szRealName[iPos] == KviControlCodes::Reset)
+			if(iPos > 1 && m_szRealName[iPos].unicode() == KviControlCodes::Reset)
 			{
 				m_szRealName.truncate(iPos);
 				int iColor = KviNickColors::getSmartColorIntByMircColor(cFore, cBack);
