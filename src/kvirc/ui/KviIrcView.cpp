@@ -2662,14 +2662,14 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 					oldIndex = retValue; oldLeft = iLeft;
 
 					curChar = l->szText.at(l->pBlocks[i].block_start + retValue);
-					if (curChar >= 0xD800 && curChar <= 0xDC00) // Surrogate pair
+					if (curChar.unicode() >= 0xD800 && curChar.unicode() <= 0xDC00) // Surrogate pair
 					{
 						iLeft += m_pFm->horizontalAdvance(l->szText.mid(retValue), 2);
 						retValue+=2;
 					}
 					else
 					{
-						iLeft += (curChar < 0xff) ? m_iFontCharacterWidth[curChar.unicode()] : m_pFm->horizontalAdvance(curChar);
+						iLeft += (curChar.unicode() < 0xff) ? m_iFontCharacterWidth[curChar.unicode()] : m_pFm->horizontalAdvance(curChar);
 						retValue++;
 					}
 				}

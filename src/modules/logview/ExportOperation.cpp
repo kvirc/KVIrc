@@ -36,8 +36,8 @@ void ExportOperation::start()
 	pFutureWatcher->setFuture(QtConcurrent::map(m_logs, [this](const std::shared_ptr<LogFile> & pLog) {
 		const QString szDate = pLog->date().toString("yyyy.MM.dd");
 		QString filename = QString("%1_%2.%3_%4").arg(pLog->typeString(), pLog->name(), pLog->network(), szDate);
-		filename.replace(QRegExp("[\\\\/:*?\"<>|]"), "_");
-		QString szLog = m_szDir + KVI_PATH_SEPARATOR_CHAR + filename;
+		filename.replace(KviRegExp("[\\\\/:*?\"<>|]"), "_");
+		QString szLog = m_szDir + QString(KVI_PATH_SEPARATOR_CHAR) + filename;
 		KviFileUtils::adjustFilePath(szLog);
 		pLog->createLog(m_type, szLog);
 	}));

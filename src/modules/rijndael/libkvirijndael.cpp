@@ -281,7 +281,7 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 			return KviCryptEngine::EncryptError;
 		}
 	}
-	outBuffer.prepend(KviControlCodes::CryptEscape);
+	outBuffer.prepend((char) KviControlCodes::CryptEscape);
 	return KviCryptEngine::Encrypted;
 }
 

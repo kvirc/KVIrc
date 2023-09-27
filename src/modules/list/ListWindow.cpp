@@ -124,7 +124,7 @@ QSize ChannelTreeWidgetItemDelegate::sizeHint(const QStyleOptionViewItem & sovIt
 			break;
 		case 1:
 			//users
-			return QSize(fm.horizontalAdvance(item->itemData()->m_szUsers.toInt()), iHeight);
+			return QSize(fm.horizontalAdvance(item->itemData()->m_szUsers), iHeight);
 			break;
 		case 2:
 		default:

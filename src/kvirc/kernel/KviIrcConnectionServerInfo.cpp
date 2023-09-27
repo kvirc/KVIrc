@@ -187,7 +187,7 @@ bool KviIrcConnectionServerInfo::isSupportedModeFlag(QChar c) const
 QChar KviIrcConnectionServerInfo::modePrefixChar(kvi_u32_t flag) const
 {
 	if(!m_pModePrefixTable)
-		return { 0 };
+		return QChar(0);
 	for(unsigned int i = 0; i < m_uPrefixes; i++)
 	{
 		if(m_pModePrefixTable[i * 3 + 2] & flag)
@@ -199,7 +199,7 @@ QChar KviIrcConnectionServerInfo::modePrefixChar(kvi_u32_t flag) const
 QChar KviIrcConnectionServerInfo::modeFlagChar(kvi_u32_t flag) const
 {
 	if(!m_pModePrefixTable)
-		return { 0 };
+		return QChar(0);
 	for(unsigned int i = 0; i < m_uPrefixes; i++)
 	{
 		if(m_pModePrefixTable[i * 3 + 2] & flag)

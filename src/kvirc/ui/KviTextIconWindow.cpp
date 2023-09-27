@@ -245,7 +245,7 @@ void KviTextIconWindow::cellSelected(int row, int column)
 	QString szItem = m_pTable->cellWidget(row, column)->toolTip();
 
 	if(m_bAltMode)
-		szItem.prepend(KviControlCodes::Icon);
+		szItem.prepend((char) KviControlCodes::Icon);
 
 	if(KviInputEditor * pOwner = qobject_cast<KviInputEditor *>(m_pOwner); pOwner)
 		pOwner->insertIconCode(szItem);

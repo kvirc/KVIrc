@@ -311,7 +311,7 @@ void KviChannelWindow::getBaseLogFileName(QString & szBuffer)
 		szBuffer = szChan;
 		szBuffer.append(".");
 		if(context())
-			szBuffer.append(context()->id());
+			szBuffer.append(QString::number(context()->id()));
 		else
 			szBuffer.append("0");
 	}
@@ -1363,7 +1363,7 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 #ifdef COMPILE_CRYPT_SUPPORT
 	if(cryptSessionInfo() && cryptSessionInfo()->m_bDoEncrypt)
 	{
-		if(szTmpBuffer[0] != KviControlCodes::CryptEscape)
+		if(szTmpBuffer[0].unicode() != KviControlCodes::CryptEscape)
 		{
 			KviCString szEncrypted;
 			cryptSessionInfo()->m_pEngine->setMaxEncryptLen(iMaxMsgLen);

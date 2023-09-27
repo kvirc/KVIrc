@@ -387,7 +387,7 @@ void KviConsoleWindow::getBaseLogFileName(QString & buffer)
 	if(context()->connection())
 		buffer = context()->connection()->target()->network()->name();
 	else
-		buffer = context()->id();
+		buffer = QString::number(context()->id());
 }
 
 void KviConsoleWindow::showNotifyList(bool bShow, bool bIgnoreSizeChange)
@@ -824,14 +824,14 @@ void KviConsoleWindow::outputPrivmsg(KviWindow * wnd,
 				szNick.prepend(KviNickColors::getSmartColor(sum, KVI_OPTION_BOOL(KviOption_boolColorNicksWithBackground)));
 			}
 		}
-		szNick.prepend(KviControlCodes::Color);
-		szNick.append(KviControlCodes::Color);
+		szNick.prepend((char) KviControlCodes::Color);
+		szNick.append((char) KviControlCodes::Color);
 	}
 
 	if(KVI_OPTION_BOOL(KviOption_boolBoldedNicks))
 	{
-		szNick.prepend(KviControlCodes::Bold);
-		szNick.append(KviControlCodes::Bold);
+		szNick.prepend((char) KviControlCodes::Bold);
+		szNick.append((char) KviControlCodes::Bold);
 	}
 
 	QString szMessage;
@@ -1269,7 +1269,7 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 
 		QString szTmp;
 		QDateTime date;
-		date.setTime_t(connection()->statistics()->connectionStartTime());
+		date.setSecsSinceEpoch(connection()->statistics()->connectionStartTime());
 		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 		{
 			case 0:
