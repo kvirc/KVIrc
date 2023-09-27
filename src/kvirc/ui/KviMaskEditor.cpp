@@ -43,7 +43,7 @@ KviMaskItem::KviMaskItem(QTreeWidget * pParent, KviMaskEntry * pEntry)
 {
 	QString szDate;
 	QDateTime date;
-	date.setTime_t(mask()->uSetAt);
+	date.setSecsSinceEpoch(mask()->uSetAt);
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
 		case 0:

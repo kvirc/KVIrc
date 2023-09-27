@@ -108,7 +108,7 @@ SharedFileEditDialog::SharedFileEditDialog(QWidget * par, KviSharedFile * f)
 		m_pFilePathEdit->setText(f->absFilePath());
 		m_pUserMaskEdit->setText(f->userMask());
 		QDateTime dt;
-		dt.setTime_t(f->expireTime());
+		dt.setSecsSinceEpoch(f->expireTime());
 		m_pExpireDateTimeEdit->setDateTime(dt);
 		m_pExpireCheckBox->setChecked(f->expires());
 		m_pExpireDateTimeEdit->setEnabled(f->expires());
@@ -189,7 +189,7 @@ SharedFilesTreeWidgetItem::SharedFilesTreeWidgetItem(QTreeWidget * lv, KviShared
 	if(f->expires())
 	{
 		QDateTime dt;
-		dt.setTime_t(f->expireTime());
+		dt.setSecsSinceEpoch(f->expireTime());
 		setText(3, dt.toString());
 	}
 	else

@@ -1680,7 +1680,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 			{
 				QString szTmp;
 				QDateTime date;
-				date.setTime_t(pEntry->m_joinTime);
+				date.setSecsSinceEpoch(pEntry->m_joinTime);
 
 				switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 				{

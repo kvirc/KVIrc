@@ -903,7 +903,7 @@ namespace KviKvsCoreFunctions
 		QChar cDiv;
 
 		if(KVSCF_pParams->count() > 1)
-			qDt.setTime_t(iTime);
+			qDt.setSecsSinceEpoch(iTime);
 		else
 			qDt = QDateTime::currentDateTime();
 
