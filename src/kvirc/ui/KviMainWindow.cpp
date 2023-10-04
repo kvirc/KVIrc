@@ -275,16 +275,16 @@ void KviMainWindow::installAccelerators()
 	m_pAccellerators.push_back(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_TAB, this, SLOT(switchToNextWindow()), nullptr, Qt::ApplicationShortcut));
 
 	static int accel_table[] = {
-		Qt::Key_1 + Qt::ControlModifier, // script accels...
-		Qt::Key_2 + Qt::ControlModifier,
-		Qt::Key_3 + Qt::ControlModifier,
-		Qt::Key_4 + Qt::ControlModifier,
-		Qt::Key_5 + Qt::ControlModifier,
-		Qt::Key_6 + Qt::ControlModifier,
-		Qt::Key_7 + Qt::ControlModifier,
-		Qt::Key_8 + Qt::ControlModifier,
-		Qt::Key_9 + Qt::ControlModifier,
-		Qt::Key_0 + Qt::ControlModifier,
+		Qt::Key_1 | Qt::ControlModifier, // script accels...
+		Qt::Key_2 | Qt::ControlModifier,
+		Qt::Key_3 | Qt::ControlModifier,
+		Qt::Key_4 | Qt::ControlModifier,
+		Qt::Key_5 | Qt::ControlModifier,
+		Qt::Key_6 | Qt::ControlModifier,
+		Qt::Key_7 | Qt::ControlModifier,
+		Qt::Key_8 | Qt::ControlModifier,
+		Qt::Key_9 | Qt::ControlModifier,
+		Qt::Key_0 | Qt::ControlModifier,
 		Qt::Key_F2,
 		Qt::Key_F3,
 		Qt::Key_F4,
@@ -296,18 +296,18 @@ void KviMainWindow::installAccelerators()
 		Qt::Key_F10,
 		Qt::Key_F11,
 		Qt::Key_F12,
-		Qt::Key_F1 + Qt::ShiftModifier,
-		Qt::Key_F2 + Qt::ShiftModifier,
-		Qt::Key_F3 + Qt::ShiftModifier,
-		Qt::Key_F4 + Qt::ShiftModifier,
-		Qt::Key_F5 + Qt::ShiftModifier,
-		Qt::Key_F6 + Qt::ShiftModifier,
-		Qt::Key_F7 + Qt::ShiftModifier,
-		Qt::Key_F8 + Qt::ShiftModifier,
-		Qt::Key_F9 + Qt::ShiftModifier,
-		Qt::Key_F10 + Qt::ShiftModifier,
-		Qt::Key_F11 + Qt::ShiftModifier,
-		Qt::Key_F12 + Qt::ShiftModifier
+		Qt::Key_F1 | Qt::ShiftModifier,
+		Qt::Key_F2 | Qt::ShiftModifier,
+		Qt::Key_F3 | Qt::ShiftModifier,
+		Qt::Key_F4 | Qt::ShiftModifier,
+		Qt::Key_F5 | Qt::ShiftModifier,
+		Qt::Key_F6 | Qt::ShiftModifier,
+		Qt::Key_F7 | Qt::ShiftModifier,
+		Qt::Key_F8 | Qt::ShiftModifier,
+		Qt::Key_F9 | Qt::ShiftModifier,
+		Qt::Key_F10 | Qt::ShiftModifier,
+		Qt::Key_F11 | Qt::ShiftModifier,
+		Qt::Key_F12 | Qt::ShiftModifier
 	};
 
 	for(auto key : accel_table)

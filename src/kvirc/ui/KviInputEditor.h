@@ -66,7 +66,7 @@ class QFontMetrics;
 #define KVI_INPUT_DEF_FORE 101
 
 #ifndef ACCEL_KEY
-#define ACCEL_KEY(k) "\t" + QKeySequence(Qt::ControlModifier | Qt::Key_##k).toString()
+#define ACCEL_KEY(k) "\t" + QKeySequence(Qt::ControlModifier + Qt::Key_##k).toString()
 #endif
 
 class KviInputEditorSpellCheckerBlock
