@@ -384,7 +384,7 @@ void KviMenuBar::updateToolbarsPopup()
 
 int KviMenuBar::getDefaultItemRealIndex(int iDefaultIndex)
 {
-	return std::clamp(iDefaultIndex, 0, actions().count());
+	return qBound(0, iDefaultIndex, actions().count());
 }
 
 KviScriptMenuBarItem * KviMenuBar::findMenu(const QString & text)

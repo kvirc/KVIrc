@@ -1146,7 +1146,7 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 	std::vector<KviInputEditorSpellCheckerBlock *> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lBuffer);
 
-	m_iSpellCheckPosition = std::min(charIndexFromXPosition(pos.x()), m_szTextBuffer.length());
+	m_iSpellCheckPosition = qMin(charIndexFromXPosition(pos.x()), m_szTextBuffer.length());
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
 
 	if(pCurrentBlock && pCurrentBlock->bSpellCheckable && (!pCurrentBlock->bCorrect))
@@ -1325,7 +1325,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 {
 	if(e->button() & Qt::LeftButton)
 	{
-		m_iCursorPosition = std::min(charIndexFromXPosition(e->pos().x()), m_szTextBuffer.length());
+		m_iCursorPosition = qMin(charIndexFromXPosition(e->pos().x()), m_szTextBuffer.length());
 		m_iSelectionAnchorChar = m_iCursorPosition;
 		clearSelection();
 		repaintWithCursorOn();
@@ -1675,7 +1675,7 @@ void KviInputEditor::handleDragSelection()
 
 	QPoint pnt = mapFromGlobal(QCursor::pos());
 
-	m_iCursorPosition = std::min(charIndexFromXPosition(pnt.x()), m_szTextBuffer.length());
+	m_iCursorPosition = qMin(charIndexFromXPosition(pnt.x()), m_szTextBuffer.length());
 
 	if(m_iCursorPosition == m_iSelectionAnchorChar)
 		clearSelection();
@@ -2304,7 +2304,7 @@ void KviInputEditor::completion(bool bShift)
 
 			for(auto szTmp : tmp)
 			{
-				szMatch.truncate(std::mismatch(szMatch.data(), szMatch.data() + std::min(szMatch.size(), szTmp.size()), szTmp.data(), predicate).first - szMatch.data());
+				szMatch.truncate(std::mismatch(szMatch.data(), szMatch.data() + qMin(szMatch.size(), szTmp.size()), szTmp.data(), predicate).first - szMatch.data());
 
 				if(!szAll.isEmpty())
 					szAll.append(", ");
