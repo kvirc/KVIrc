@@ -127,7 +127,11 @@ protected:
 	void mouseReleaseEvent(QMouseEvent * e) override;
 	void mouseMoveEvent(QMouseEvent * e) override;
 	void leaveEvent(QEvent * e) override;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	void enterEvent(QEvent * e) override;
+#else
+	void enterEvent(QEnterEvent * e) override;
+#endif
 	bool eventFilter(QObject * pEdit, QEvent * e) override;
 	void keyPressEvent(QKeyEvent * e) override;
 public slots:

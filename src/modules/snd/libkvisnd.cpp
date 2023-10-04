@@ -34,7 +34,11 @@
 #include "KviLocale.h"
 #include "KviQString.h"
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QSound>
+#else
+#include <QSoundEffect>
+#endif
 
 #ifdef COMPILE_PHONON_SUPPORT
 #include <phonon/mediaobject.h>
@@ -347,7 +351,13 @@ bool KviSoundPlayer::playQt(const QString & szFileName)
 {
 	if(isMuted())
 		return true;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	QSound::play(szFileName);
+#else
+	QSoundEffect effect;
+	effect.setSource(QUrl::fromLocalFile(szFileName));
+	effect.play();
+#endif
 	return true;
 }
 

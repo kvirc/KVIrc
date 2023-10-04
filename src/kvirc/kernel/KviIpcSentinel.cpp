@@ -318,7 +318,11 @@ struct fake_xcb_property_notify_event_t
 }
 #endif
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 bool KviIpcSentinel::nativeEvent(const QByteArray & id, void * msg, long * res)
+#else
+bool KviIpcSentinel::nativeEvent(const QByteArray & id, void * msg, qintptr * res)
+#endif
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return winEvent((MSG *)msg, res);

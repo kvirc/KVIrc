@@ -49,8 +49,6 @@
 #include <qscopedpointer.h>
 #include <qtcpsocket.h>
 
-QT_BEGIN_HEADER
-
 class QTcpSocket;
 class QTimerEvent;
 class QIODevice;
@@ -299,7 +297,5 @@ private:
 	friend class QHttpCloseRequest;
 	friend class QHttpPGHRequest;
 };
-
-QT_END_HEADER
 
 #endif // QHTTP_H

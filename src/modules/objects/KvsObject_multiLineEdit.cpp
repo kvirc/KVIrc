@@ -403,7 +403,11 @@ bool KvsObject_textedit::functionText(KviKvsObjectFunctionCall * c)
 bool KvsObject_textedit::functionHtml(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 		c->returnValue()->setString(((QTextEdit *)widget())->document()->toHtml(QByteArray("utf-8")));
+#else
+		c->returnValue()->setString(((QTextEdit *)widget())->document()->toHtml());
+#endif
 	return true;
 }
 
@@ -823,7 +827,11 @@ bool KvsObject_textedit::functionsaveFile(KviKvsObjectFunctionCall * c)
 	KVSO_PARAMETERS_END(c)
 
 	if (KviQString::equalCI(szFormat, "html"))
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 		szData = ((QTextEdit *)widget())->document()->toHtml(QByteArray("utf-8"));
+#else
+		szData = ((QTextEdit *)widget())->document()->toHtml();
+#endif
 	else {
 		if (!szFormat.isEmpty() && !KviQString::equalCI(szFormat, "text"))
 			c->warning(__tr2qs_ctx("Unknown text document format '%Q'. Writing the document as plain text.", "objects"), &szFormat);

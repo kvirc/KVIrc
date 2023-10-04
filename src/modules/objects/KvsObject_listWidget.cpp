@@ -39,7 +39,7 @@ const int item_flags[] = {
 	Qt::ItemIsDropEnabled,
 	Qt::ItemIsUserCheckable,
 	Qt::ItemIsEnabled,
-	Qt::ItemIsTristate
+	Qt::ItemIsUserTristate
 };
 
 const char * const itemflags_tbl[] = {
