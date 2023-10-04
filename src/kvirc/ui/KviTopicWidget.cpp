@@ -449,7 +449,7 @@ QSize KviTopicWidget::sizeHint() const
 	option.state |= QStyle::State_Sunken;
 	option.features = QStyleOptionFrame::None;
 
-	return (style()->sizeFromContents(QStyle::CT_LineEdit, &option, QSize(w, h).expandedTo(QApplication::globalStrut()), this));
+	return (style()->sizeFromContents(QStyle::CT_LineEdit, &option, QSize(w, h), this));
 }
 
 void KviTopicWidget::switchMode()
