@@ -329,7 +329,6 @@ void KviTreeWindowListTreeWidget::reverseSort()
 void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 {
 	QPainter * p = new QPainter(viewport());
-	QStyleOptionViewItem option = viewOptions();
 	QRect rect = event->rect();
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
