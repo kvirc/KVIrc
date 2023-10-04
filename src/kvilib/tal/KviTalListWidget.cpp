@@ -104,14 +104,12 @@ void KviTalListWidgetText::paint(QPainter * painter)
 
 int KviTalListWidgetText::height(const KviTalListWidget * lb) const
 {
-	int h = lb ? lb->fontMetrics().lineSpacing() + 2 : 0;
-	return qMax(h, QApplication::globalStrut().height());
+	return lb ? lb->fontMetrics().lineSpacing() + 2 : 0;
 }
 
 int KviTalListWidgetText::width(const KviTalListWidget * lb) const
 {
-	int w = lb ? lb->fontMetrics().horizontalAdvance(text()) + 6 : 0;
-	return qMax(w, QApplication::globalStrut().width());
+	return lb ? lb->fontMetrics().horizontalAdvance(text()) + 6 : 0;
 }
 
 int KviTalListWidgetText::rtti() const
@@ -176,15 +174,14 @@ int KviTalListWidgetPixmap::height(const KviTalListWidget * lb) const
 		h = pm.height();
 	else
 		h = qMax(pm.height(), lb->fontMetrics().lineSpacing() + 2);
-	return qMax(h, QApplication::globalStrut().height());
+	return h;
 }
 
 int KviTalListWidgetPixmap::width(const KviTalListWidget * lb) const
 {
 	if(text().isEmpty())
-		return qMax(pm.width() + 6, QApplication::globalStrut().width());
-	return qMax(pm.width() + lb->fontMetrics().horizontalAdvance(text()) + 6,
-	    QApplication::globalStrut().width());
+		return pm.width() + 6;
+	return pm.width() + lb->fontMetrics().horizontalAdvance(text()) + 6;
 }
 
 int KviTalListWidgetPixmap::rtti() const

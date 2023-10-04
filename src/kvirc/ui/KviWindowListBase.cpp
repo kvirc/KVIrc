@@ -229,10 +229,10 @@ QSize KviWindowListTitleWidget::sizeHint() const
 		h = 6;
 	}
 	QStyleOption opt(0);
-	opt.init(m_pParent);
+	opt.initFrom(m_pParent);
 	opt.state = QStyle::State_None;
 	//
-	return m_pParent->style()->sizeFromContents(QStyle::CT_Splitter, &opt, QSize(w, h), m_pParent).expandedTo(QApplication::globalStrut());
+	return m_pParent->style()->sizeFromContents(QStyle::CT_Splitter, &opt, QSize(w, h), m_pParent);
 }
 //
 // KviWindowListItem

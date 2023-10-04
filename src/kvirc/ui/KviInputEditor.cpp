@@ -310,7 +310,7 @@ QFontMetrics * KviInputEditor::getLastFontMetrics(const QFont & font)
 	option.state |= QStyle::State_Sunken;
 	option.features = QStyleOptionFrame::None;
 
-	QSize dummySize = style()->sizeFromContents(QStyle::CT_LineEdit, &option, QSize(w, h).expandedTo(QApplication::globalStrut()), this);
+	QSize dummySize = style()->sizeFromContents(QStyle::CT_LineEdit, &option, QSize(w, h), this);
 
 	g_iCachedHeight = dummySize.height();
 	return g_pLastFontMetrics;
