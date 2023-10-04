@@ -53,12 +53,13 @@
 #include "qtcpsocket.h"
 #include "qurlinfo.h"
 #include "qstringlist.h"
-#include "qregexp.h"
 #include "qtimer.h"
 #include "qfileinfo.h"
 #include "qhash.h"
 #include "qtcpserver.h"
 #include "qlocale.h"
+
+#include "KviRegExp.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -488,7 +489,7 @@ bool QFtpDTP::parseDir(const QByteArray & buffer, const QString & userName, QUrl
 	QString bufferStr = QString::fromLatin1(buffer).trimmed();
 
 	// Unix style FTP servers
-	QRegExp unixPattern(QLatin1String("^([\\-dl])([a-zA-Z\\-]{9,9})\\s+\\d+\\s+(\\S*)\\s+"
+	KviRegExp unixPattern(QLatin1String("^([\\-dl])([a-zA-Z\\-]{9,9})\\s+\\d+\\s+(\\S*)\\s+"
 	                                  "(\\S*)\\s+(\\d+)\\s+(\\S+\\s+\\S+\\s+\\S+)\\s+(\\S.*)"));
 	if(unixPattern.indexIn(bufferStr) == 0)
 	{
@@ -497,7 +498,7 @@ bool QFtpDTP::parseDir(const QByteArray & buffer, const QString & userName, QUrl
 	}
 
 	// DOS style FTP servers
-	QRegExp dosPattern(QLatin1String("^(\\d\\d-\\d\\d-\\d\\d\\d?\\d?\\ \\ \\d\\d:\\d\\d[AP]M)\\s+"
+	KviRegExp dosPattern(QLatin1String("^(\\d\\d-\\d\\d-\\d\\d\\d?\\d?\\ \\ \\d\\d:\\d\\d[AP]M)\\s+"
 	                                 "(<DIR>|\\d+)\\s+(\\S.*)$"));
 	if(dosPattern.indexIn(bufferStr) == 0)
 	{
@@ -964,7 +965,7 @@ bool QFtpPI::processReply()
 		// both examples where the parenthesis are used, and where
 		// they are missing. We need to scan for the address and host
 		// info.
-		QRegExp addrPortPattern(QLatin1String(R"((\d+),(\d+),(\d+),(\d+),(\d+),(\d+))"));
+		KviRegExp addrPortPattern(QLatin1String(R"((\d+),(\d+),(\d+),(\d+),(\d+),(\d+))"));
 		if(addrPortPattern.indexIn(replyText) == -1)
 		{
 #if defined(QFTPPI_DEBUG)

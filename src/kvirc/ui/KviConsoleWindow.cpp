@@ -69,6 +69,7 @@
 #include "KviKvsEventTriggers.h"
 #include "KviTalHBox.h"
 #include "KviNickColors.h"
+#include "KviRegExp.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 #include "KviSSLMaster.h"
@@ -79,7 +80,6 @@
 #include <QMessageBox>
 #include <QStringList>
 #include <QCloseEvent>
-#include <QRegExp>
 #include <QMenu>
 
 #include "kvi_debug.h"
@@ -627,8 +627,9 @@ int KviConsoleWindow::applyHighlighting(KviWindow * wnd, int type, const QString
 	QString szPattern = KVI_OPTION_STRING(KviOption_stringWordSplitters);
 	QString szSource;
 	QString szStripMsg = KviControlCodes::stripControlBytes(szMsg);
-	QRegExp rgxHlite;
+	KviRegExp rgxHlite;
 	Qt::CaseSensitivity cs = KVI_OPTION_BOOL(KviOption_boolCaseSensitiveHighlighting) ? Qt::CaseSensitive : Qt::CaseInsensitive;
+	KviRegExp::CaseSensitivity regexpCs = KVI_OPTION_BOOL(KviOption_boolCaseSensitiveHighlighting) ? KviRegExp::CaseSensitive : KviRegExp::CaseInsensitive;
 
 	if(KVI_OPTION_BOOL(KviOption_boolAlwaysHighlightNick) && connection())
 	{
@@ -641,11 +642,11 @@ int KviConsoleWindow::applyHighlighting(KviWindow * wnd, int type, const QString
 		{
 			if(!szPattern.isEmpty())
 				rgxHlite.setPattern(
-				    QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(QRegExp::escape(szPattern), QRegExp::escape(connection()->userInfo()->nickName())));
+				    QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(KviRegExp::escape(szPattern), KviRegExp::escape(connection()->userInfo()->nickName())));
 			else
 				rgxHlite.setPattern(
-				    QString("(?:\\s|^)%1(?:\\s|$)").arg(QRegExp::escape(connection()->userInfo()->nickName())));
-			rgxHlite.setCaseSensitivity(cs);
+				    QString("(?:\\s|^)%1(?:\\s|$)").arg(KviRegExp::escape(connection()->userInfo()->nickName())));
+			rgxHlite.setCaseSensitivity(regexpCs);
 			if(szStripMsg.contains(rgxHlite))
 				return triggerOnHighlight(wnd, type, nick, user, host, szMsg, connection()->userInfo()->nickName());
 		}
@@ -667,11 +668,11 @@ int KviConsoleWindow::applyHighlighting(KviWindow * wnd, int type, const QString
 			{
 				if(!szPattern.isEmpty())
 					rgxHlite.setPattern(
-					    QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(QRegExp::escape(szPattern), QRegExp::escape(it)));
+					    QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(KviRegExp::escape(szPattern), KviRegExp::escape(it)));
 				else
 					rgxHlite.setPattern(
-					    QString("(?:\\s|^)%1(?:\\s|$)").arg(QRegExp::escape(it)));
-				rgxHlite.setCaseSensitivity(cs);
+					    QString("(?:\\s|^)%1(?:\\s|$)").arg(KviRegExp::escape(it)));
+				rgxHlite.setCaseSensitivity(regexpCs);
 				if(szStripMsg.contains(rgxHlite))
 					return triggerOnHighlight(wnd, type, nick, user, host, szMsg, it);
 			}

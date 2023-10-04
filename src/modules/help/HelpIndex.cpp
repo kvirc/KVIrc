@@ -190,29 +190,6 @@ void HelpIndex::insertInDict(const QString & str, int docNum)
 	}
 }
 
-QString HelpIndex::getCharsetForDocument(QFile * file)
-{
-	QTextStream s(file);
-	QString contents = s.readAll();
-
-	QString encoding;
-	int start = contents.indexOf(QLatin1String("<meta"), 0, Qt::CaseInsensitive);
-	if(start > 0)
-	{
-		int end = contents.indexOf(QLatin1String(">"), start);
-		QString meta = contents.mid(start + 5, end - start);
-		meta = meta.toLower();
-		QRegExp r(QLatin1String("charset=([^\"\\s]+)"));
-		if(r.indexIn(meta) != -1)
-			encoding = r.cap(1);
-	}
-
-	file->seek(0);
-	if(encoding.isEmpty())
-		return QLatin1String("utf-8");
-	return encoding;
-}
-
 void HelpIndex::parseDocument(const QString & filename, int docNum)
 {
 	QFile file(filename);
@@ -223,9 +200,7 @@ void HelpIndex::parseDocument(const QString & filename, int docNum)
 	}
 
 	QTextStream s(&file);
-	QString en = getCharsetForDocument(&file);
-	s.setCodec(QTextCodec::codecForName(en.toLatin1().constData()));
-
+	s.setCodec(QTextCodec::codecForMib(106));
 	QString text = s.readAll();
 	if(text.isNull())
 		return;

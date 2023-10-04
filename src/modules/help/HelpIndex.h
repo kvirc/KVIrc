@@ -128,7 +128,6 @@ private:
 	bool searchForPattern(const QStringList &, const QStringList &, const QString &);
 	void buildMiniDict(const QString &);
 
-	QString getCharsetForDocument(QFile *);
 	QStringList docList;
 	QStringList titleList;
 	QHash<QString, Entry *> dict;

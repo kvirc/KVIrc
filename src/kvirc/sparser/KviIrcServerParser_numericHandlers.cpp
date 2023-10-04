@@ -53,6 +53,7 @@
 #include "KviKvsVariantList.h"
 #include "KviIdentityProfileSet.h"
 #include "KviIrcMessage.h"
+#include "KviRegExp.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"
@@ -62,7 +63,6 @@
 #include <QPixmap>
 #include <QDateTime>
 #include <QTextCodec>
-#include <QRegExp>
 #include <QByteArray>
 #include <QLocale>
 
@@ -81,7 +81,7 @@ void KviIrcServerParser::parseNumeric001(KviIrcMessage * msg)
 	// :prefix 001 target :Welcome to the Internet Relay Network <usermask>
 	// FIXME: #warning "SET THE USERMASK FROM SERVER"
 	QString szText = msg->connection()->decodeText(msg->safeTrailing());
-	QRegExp rx(" ([^ ]+)!([^ ]+)@([^ ]+)$");
+	KviRegExp rx(" ([^ ]+)!([^ ]+)@([^ ]+)$");
 	if(rx.indexIn(szText) != -1)
 	{
 		msg->connection()->userInfo()->setUnmaskedHostName(rx.cap(3));
@@ -520,7 +520,7 @@ void KviIrcServerParser::parseNumericNames(KviIrcMessage * msg)
 			// ^  +a is a weird mode: it also breaks nicknames on some networks!
 			// not a valid first char(s) of nickname, must be a mode prefix
 
-			while(pServerInfo->isSupportedModePrefix(static_cast<unsigned char>(*aux)))
+			while(pServerInfo->isSupportedModePrefix(*aux))
 			{
 				// leading umode flag(s)
 				iFlags |= pServerInfo->modeFlagFromPrefixChar(*aux);

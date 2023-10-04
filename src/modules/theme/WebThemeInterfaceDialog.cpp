@@ -33,6 +33,7 @@
 #include "KviFileUtils.h"
 #include "KviIconManager.h"
 #include "KviLocale.h"
+#include "KviRegExp.h"
 
 WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
     : KviWebPackageManagementDialog(par)
@@ -62,7 +63,7 @@ bool WebThemeInterfaceDialog::installPackage(const QString & szPath, QString & s
 bool WebThemeInterfaceDialog::packageIsInstalled(const QString & szId, const QString & szVersion)
 {
 	QString szSubdir = szId + QString("-") + szVersion;
-	szSubdir.replace(QRegularExpression("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"), "_");
+	szSubdir.replace(KviRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"), "_");
 
 	return KviFileUtils::fileExists(m_szGlobalThemesPath + szSubdir) || KviFileUtils::fileExists(m_szLocalThemesPath + szSubdir);
 }

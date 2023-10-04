@@ -49,7 +49,6 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <QPushButton>
-#include <QRegExp>
 
 extern KviColorWindow * g_pColorWindow;
 

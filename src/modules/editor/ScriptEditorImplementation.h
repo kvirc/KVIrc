@@ -26,6 +26,7 @@
 
 #include "KviScriptEditor.h"
 #include "KviSelectors.h"
+#include "KviRegExp.h"
 
 #include <QCompleter>
 #include <QLabel>
@@ -123,13 +124,13 @@ public:
 private:
 	struct KviScriptHighlightingRule
 	{
-		QRegExp pattern;
+		KviRegExp pattern;
 		QTextCharFormat format;
 	};
 
 	QVector<KviScriptHighlightingRule> highlightingRules;
-	QRegExp commentStartExpression;
-	QRegExp commentEndExpression;
+	KviRegExp commentStartExpression;
+	KviRegExp commentEndExpression;
 
 	QTextCharFormat bracketFormat;
 	QTextCharFormat punctuationFormat;

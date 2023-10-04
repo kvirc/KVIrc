@@ -25,8 +25,7 @@
 #include "kvi_debug.h"
 #include "KviIrcMask.h"
 #include "KviQString.h"
-
-#include <QRegExp>
+#include "KviRegExp.h"
 
 /*
 	@doc: irc_masks
@@ -387,7 +386,7 @@ bool KviIrcMask::matchWildString(const QString & szExp, const QString & szStr) c
 		}
 		pPtr++;
 	}
-	QRegExp re(szWildcard, Qt::CaseInsensitive, QRegExp::Wildcard);
+	KviRegExp re(szWildcard, KviRegExp::CaseInsensitive, KviRegExp::Wildcard);
 
 	return re.exactMatch(szStr);
 }

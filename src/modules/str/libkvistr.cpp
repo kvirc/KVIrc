@@ -34,9 +34,9 @@
 #include "KviMemory.h"
 #include "KviKvsArrayCast.h"
 #include "KviOptions.h"
+#include "KviRegExp.h"
 
 #include <QClipboard>
-#include <QRegExp>
 
 #ifdef COMPILE_SSL_SUPPORT
 // The current implementation
@@ -1595,7 +1595,7 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 	int i = 0;
 	if(bRegexp || bWild)
 	{
-		QRegExp re(szMatch, bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive, bRegexp ? QRegExp::RegExp2 : QRegExp::Wildcard);
+		KviRegExp re(szMatch, bCaseSensitive ? KviRegExp::CaseSensitive : KviRegExp::CaseInsensitive, bRegexp ? KviRegExp::RegExp : KviRegExp::Wildcard);
 		while(idx < cnt)
 		{
 			KviKvsVariant * v = a->at(idx);
@@ -1721,41 +1721,109 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	if(c->params()->count() < 4)
-	    iMaxItems = -1;
+		iMaxItems = -1;
 
 	KviKvsArray * a = new KviKvsArray();
 	c->returnValue()->setArray(a);
 
+	if(szSep.isEmpty())
+	{
+		a->set(0, new KviKvsVariant(szStr));
+		return true;
+	}
+
 	if(iMaxItems == 0)
 		return true;
-	if(iMaxItems == 1)
+
+	bool bWild = szFla.indexOf('w', 0, Qt::CaseInsensitive) != -1;
+	bool bContainsR = szFla.indexOf('r', 0, Qt::CaseInsensitive) != -1;
+	bool bCaseSensitive = szFla.indexOf('s', 0, Qt::CaseInsensitive) != -1;
+	bool bNoEmpty = szFla.indexOf('n', 0, Qt::CaseInsensitive) != -1;
+
+	int id = 0;
+
+	int iMatch = 0;
+	int iStrLen = szStr.length();
+	int iBegin = 0;
+
+	if(bContainsR || bWild)
 	{
-		a->append(new KviKvsVariant{szStr});
-		return true;
+		KviRegExp re(szSep, bCaseSensitive ? KviRegExp::CaseSensitive : KviRegExp::CaseInsensitive, bWild ? KviRegExp::Wildcard : KviRegExp::RegExp);
+
+		while((iMatch != -1) && (iMatch < iStrLen) && ((id < (iMaxItems - 1)) || (iMaxItems < 0)))
+		{
+			iMatch = re.indexIn(szStr, iBegin);
+			if(iMatch != -1)
+			{
+				int len = re.matchedLength();
+				if((len == 0) && (iBegin == iMatch))
+					iMatch++; // safety measure for empty string matching
+
+				QString tmp = szStr.mid(iBegin, iMatch - iBegin);
+				if(bNoEmpty)
+				{
+					if(!tmp.isEmpty())
+					{
+						a->set(id, new KviKvsVariant(tmp));
+						id++;
+					}
+				}
+				else
+				{
+					a->set(id, new KviKvsVariant(tmp));
+					id++;
+				}
+
+				iMatch += len;
+				iBegin = iMatch;
+			}
+		}
+	}
+	else
+	{
+		while((iMatch != -1) && (iMatch < iStrLen) && ((id < (iMaxItems - 1)) || (iMaxItems < 0)))
+		{
+			iMatch = szStr.indexOf(szSep, iBegin, bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive);
+			if(iMatch != -1)
+			{
+				QString tmp = szStr.mid(iBegin, iMatch - iBegin);
+				if(bNoEmpty)
+				{
+					if(!tmp.isEmpty())
+					{
+						a->set(id, new KviKvsVariant(tmp));
+						id++;
+					}
+				}
+				else
+				{
+					a->set(id, new KviKvsVariant(tmp));
+					id++;
+				}
+
+				iMatch += szSep.length();
+				iBegin = iMatch;
+			}
+		}
 	}
 
-	bool bWild = szFla.contains('w', Qt::CaseInsensitive);
-	bool bContainsR = szFla.contains('r', Qt::CaseInsensitive);
-
-	Qt::SplitBehavior splitBehavior = szFla.contains('n', Qt::CaseInsensitive) ? Qt::SkipEmptyParts : Qt::KeepEmptyParts;
-	Qt::CaseSensitivity sensitivity = szFla.contains('s', Qt::CaseInsensitive) ? Qt::CaseSensitive : Qt::CaseInsensitive;
-
-	QVector<QStringRef> list;
-	if(bWild || bContainsR)
-		list = szStr.splitRef(QRegExp{szSep, sensitivity, bWild ? QRegExp::Wildcard : QRegExp::RegExp2}, splitBehavior);
-	else
-		list = szStr.splitRef(szSep, splitBehavior, sensitivity);
-
-	if(iMaxItems < 0 || iMaxItems >= list.size())
+	if(iBegin < iStrLen)
 	{
-		for(auto&& str : list)
-			a->append(new KviKvsVariant{str.toString()});
+		QString tmpx = szStr.right(iStrLen - iBegin);
+		if(bNoEmpty)
+		{
+			if(!tmpx.isEmpty())
+				a->set(id, new KviKvsVariant(tmpx));
+		}
+		else
+		{
+			a->set(id, new KviKvsVariant(tmpx));
+		}
 	}
 	else
 	{
-		for(int i{0}; i < iMaxItems - 1; ++i)
-			a->append(new KviKvsVariant{list[i].toString()});
-		a->append(new KviKvsVariant{szStr.mid(list[iMaxItems - 1].position())});
+		if(!bNoEmpty)
+			a->set(id, new KviKvsVariant(QString())); // empty string at the end
 	}
 
 	return true;

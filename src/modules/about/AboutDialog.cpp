@@ -32,13 +32,13 @@
 #include "kvi_sourcesdate.h"
 #include "KviBuildInfo.h"
 #include "KviRuntimeInfo.h"
+#include "KviRegExp.h"
 
 #include <QTextEdit>
 #include <QWidget>
 #include <QLayout>
 #include <QLabel>
 #include <QPixmap>
-#include <QRegExp>
 #include <QEvent>
 #include <QCloseEvent>
 
@@ -174,7 +174,7 @@ AboutDialog::AboutDialog()
 	infoString += __tr2qs_ctx("Build flags", "about");
 	infoString += ": <br>&nbsp;&nbsp;&nbsp;";
 	QString flags = KviBuildInfo::buildFlags();
-	infoString += flags.replace(QRegExp(";"), "<br>&nbsp;&nbsp;&nbsp;");
+	infoString += flags.replace(KviRegExp(";"), "<br>&nbsp;&nbsp;&nbsp;");
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("Compiler name", "about");
 	infoString += ": ";

@@ -37,6 +37,7 @@ bool g_bFoundMirc;
 #include "KviOptions.h"
 #include "KviConfigurationFile.h"
 #include "KviTalHBox.h"
+#include "KviRegExp.h"
 
 #include <QTextEdit>
 #include <QMessageBox>
@@ -326,7 +327,7 @@ SetupWizard::SetupWizard()
 	m_pNickSelector->setContentsMargins(0, 0, 0, 0);
 	QObject::connect(m_pNickSelector->lineEdit(), SIGNAL(textChanged(const QString &)), this, SLOT(nickSelectorTextChanged(const QString &)));
 
-	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"), gbox);
+	QValidator * v = new QRegularExpressionValidator(KviRegExp("[^-0-9 ][^ ]*"), gbox);
 	m_pNickSelector->setValidator(v);
 
 	QString szOptionalCtcpUserInfo = __tr2qs("This field is optional and will appear as part of the CTCP USERINFO reply.");

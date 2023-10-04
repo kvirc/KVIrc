@@ -94,9 +94,9 @@
 #include "KviAnimatedPixmap.h"
 #include "KviPixmapUtils.h"
 #include "KviTrayIcon.h"
+#include "KviRegExp.h"
 
 #include <QPainter>
-#include <QRegExp>
 #include <QFontMetrics>
 #include <QMessageBox>
 #include <QPaintEvent>
@@ -2439,7 +2439,7 @@ void KviIrcView::findNext(const QString & szText, bool bCaseS, bool bRegExp, boo
 
 			if(bRegExp)
 			{
-				QRegExp re(szText, bCaseS ? Qt::CaseSensitive : Qt::CaseInsensitive, bExtended ? QRegExp::RegExp : QRegExp::Wildcard);
+				KviRegExp re(szText, bCaseS ? KviRegExp::CaseSensitive : KviRegExp::CaseInsensitive, bExtended ? KviRegExp::RegExp : KviRegExp::Wildcard);
 				idx = re.indexIn(l->szText, 0);
 			}
 			else
@@ -2498,7 +2498,7 @@ void KviIrcView::findPrev(const QString & szText, bool bCaseS, bool bRegExp, boo
 
 			if(bRegExp)
 			{
-				QRegExp re(szText, bCaseS ? Qt::CaseSensitive : Qt::CaseInsensitive, bExtended ? QRegExp::RegExp : QRegExp::Wildcard);
+				KviRegExp re(szText, bCaseS ? KviRegExp::CaseSensitive : KviRegExp::CaseInsensitive, bExtended ? KviRegExp::RegExp : KviRegExp::Wildcard);
 				idx = re.indexIn(l->szText, 0);
 			}
 			else

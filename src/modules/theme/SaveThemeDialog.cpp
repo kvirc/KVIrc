@@ -37,13 +37,13 @@
 #include "KviMessageBox.h"
 #include "KviSelectors.h"
 #include "KviMiscUtils.h"
+#include "KviRegExp.h"
 #include "kvi_sourcesdate.h"
 
 #include <QTextEdit>
 #include <QLayout>
 #include <QPushButton>
 #include <QLineEdit>
-#include <QRegExp>
 #include <QMessageBox>
 #include <QDir>
 #include <QComboBox>
@@ -54,6 +54,7 @@
 #include <QBuffer>
 #include <QLabel>
 #include <QCheckBox>
+#include <QRegularExpressionValidator>
 
 SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
     : KviTalWizard(pParent)
@@ -113,8 +114,8 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 
 	m_pThemeVersionEdit = new QLineEdit(pPage);
 	m_pThemeVersionEdit->setText(info.version());
-	QRegExp rx(R"(\d{1,2}\.\d{1,2}(\.\d{1,2})?)");
-	QValidator * validator = new QRegExpValidator(rx, this);
+	KviRegExp rx(R"(\d{1,2}\.\d{1,2}(\.\d{1,2})?)");
+	QValidator * validator = new QRegularExpressionValidator(rx, this);
 	m_pThemeVersionEdit->setValidator(validator);
 
 	pLayout->addWidget(m_pThemeVersionEdit, 2, 1);
@@ -279,7 +280,7 @@ bool SaveThemeDialog::saveTheme()
 		sto.setVersion("1.0.0");
 
 	QString szSubdir = sto.name() + QString("-") + sto.version();
-	szSubdir.replace(QRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"), "_");
+	szSubdir.replace(KviRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"), "_");
 	sto.setDirectoryAndLocation(szSubdir, KviThemeInfo::User);
 
 	QString szAbsDir = sto.directory();

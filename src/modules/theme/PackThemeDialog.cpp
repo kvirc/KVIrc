@@ -37,13 +37,12 @@
 #include "kvi_fileextensions.h"
 #include "KviSelectors.h"
 #include "KviMiscUtils.h"
+#include "KviRegExp.h"
 #include "kvi_sourcesdate.h"
 
 #include <QLineEdit>
 #include <QLabel>
 #include <QTextEdit>
-
-#include <QRegExp>
 #include <QMessageBox>
 #include <QDir>
 #include <QDateTime>
@@ -165,7 +164,7 @@ void PackThemeDataWidget::parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoL
 			szPackageVersion = pThemeInfo->version();
 
 			szPackagePath += pThemeInfo->subdirectory();
-			if(szPackagePath.indexOf(QRegExp("[0-9]\\.[0-9]")) == -1)
+			if(szPackagePath.indexOf(KviRegExp("[0-9]\\.[0-9]")) == -1)
 			{
 				szPackagePath += "-";
 				szPackagePath += szPackageVersion;

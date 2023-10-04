@@ -56,6 +56,7 @@
 #include "KviTalToolTip.h"
 #include "KviIrcNetwork.h"
 #include "KviSASL.h"
+#include "KviRegExp.h"
 
 #include <QLineEdit>
 #include <QCursor>
@@ -165,7 +166,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par, KviIrcNetwork * 
 	pPropertiesBoxLayout->addWidget(l, 2, 0);
 
 	m_pNickEditor = new QLineEdit(gbox);
-	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*", Qt::CaseSensitive), gbox);
+	QValidator * v = new QRegularExpressionValidator(KviRegExp("[^-0-9 ][^ ]*", KviRegExp::CaseSensitive), gbox);
 	m_pNickEditor->setValidator(v);
 	m_pNickEditor->setText(n->nickName());
 	pPropertiesBoxLayout->addWidget(m_pNickEditor, 2, 1);
@@ -177,7 +178,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par, KviIrcNetwork * 
 	pPropertiesBoxLayout->addWidget(l, 3, 0);
 
 	m_pAlternativeNickEditor = new QLineEdit(gbox);
-	v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*", Qt::CaseSensitive), gbox);
+	v = new QRegularExpressionValidator(KviRegExp("[^-0-9 ][^ ]*", KviRegExp::CaseSensitive), gbox);
 	m_pAlternativeNickEditor->setValidator(v);
 	m_pAlternativeNickEditor->setText(n->alternativeNickName());
 	pPropertiesBoxLayout->addWidget(m_pAlternativeNickEditor, 3, 1);
@@ -582,7 +583,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par, KviIrcServer * s)
 	pPropertiesBoxLayout->addWidget(l, 2, 0);
 
 	m_pNickEditor = new QLineEdit(gbox);
-	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"), gbox);
+	QValidator * v = new QRegularExpressionValidator(KviRegExp("[^-0-9 ][^ ]*"), gbox);
 	m_pNickEditor->setValidator(v);
 	m_pNickEditor->setText(s->nickName());
 	pPropertiesBoxLayout->addWidget(m_pNickEditor, 2, 1);
@@ -596,7 +597,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par, KviIrcServer * s)
 	pPropertiesBoxLayout->addWidget(l, 3, 0);
 
 	m_pAlternativeNickEditor = new QLineEdit(gbox);
-	v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"), gbox);
+	v = new QRegularExpressionValidator(KviRegExp("[^-0-9 ][^ ]*"), gbox);
 	m_pAlternativeNickEditor->setValidator(v);
 	m_pAlternativeNickEditor->setText(s->alternativeNickName());
 	pPropertiesBoxLayout->addWidget(m_pAlternativeNickEditor, 3, 1);

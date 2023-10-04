@@ -37,6 +37,7 @@
 #include "KviCommandFormatter.h"
 #include "kvi_fileextensions.h"
 #include "KviQString.h"
+#include "KviRegExp.h"
 #include "KviKvsEventManager.h"
 #include "KviTalVBox.h"
 #include "KviTalHBox.h"
@@ -127,7 +128,7 @@ EventEditor::EventEditor(QWidget * par)
 	m_pNameEditor->setText(__tr2qs_ctx("No item selected", "editor"));
 	m_pNameEditor->setToolTip(__tr2qs_ctx("Edit the event handler name.", "editor"));
 	m_pNameEditor->setEnabled(false);
-	QRegExpValidator * pValidator = new QRegExpValidator(QRegExp(KVI_KVS_EVENT_HANDLER_NAME_REG_EXP), this);
+	QRegularExpressionValidator * pValidator = new QRegularExpressionValidator(KviRegExp(KVI_KVS_EVENT_HANDLER_NAME_REG_EXP), this);
 	m_pNameEditor->setValidator(pValidator);
 	m_pNameEditor->setEnabled(false);
 
