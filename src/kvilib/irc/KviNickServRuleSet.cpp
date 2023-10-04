@@ -26,8 +26,7 @@
 #include "KviConfigurationFile.h"
 #include "KviIrcMask.h"
 #include "KviQString.h"
-
-#include <QRegExp>
+#include "KviRegExp.h"
 
 /*
 	@doc: nickserv_proto
@@ -209,13 +208,13 @@ KviNickServRule * KviNickServRuleSet::matchRule(const QString & szNick, const Kv
 
 		if(!szServer.isEmpty())
 		{
-			QRegExp res(r->serverMask(), Qt::CaseInsensitive, QRegExp::Wildcard);
+			KviRegExp res(r->serverMask(), KviRegExp::CaseInsensitive, KviRegExp::Wildcard);
 			if(!res.exactMatch(szServer))
 				continue;
 		}
 		if(!pNickServ->matchedBy(KviIrcMask(r->nickServMask())))
 			continue;
-		QRegExp re(r->messageRegexp(), Qt::CaseInsensitive, QRegExp::Wildcard);
+		KviRegExp re(r->messageRegexp(), KviRegExp::CaseInsensitive, KviRegExp::Wildcard);
 		if(re.exactMatch(szMsg))
 			return r;
 	}

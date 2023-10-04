@@ -29,10 +29,10 @@
 #include "KviFile.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
+#include "KviRegExp.h"
 #include "kvi_debug.h"
 
 #include <QDir>
-#include <QRegExp>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -327,7 +327,7 @@ KviMediaType * KviMediaManager::findMediaTypeForRegularFile(const char * szFullP
 		{
 			if(len && m->szMagicBytes.hasData())
 			{
-				QRegExp re(m->szMagicBytes.ptr());
+				KviRegExp re(m->szMagicBytes.ptr());
 				// It looks like they can't decide the name for this function :D
 				// ... well, maybe the latest choice is the best one.
 				if(re.indexIn(buffer) > -1)

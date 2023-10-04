@@ -46,7 +46,6 @@
 #include <QPainter>
 #include <QTimer>
 #include <QEvent>
-#include <QRegExp>
 #include <QWidgetAction>
 #include <QMenu>
 

@@ -40,6 +40,7 @@
 #include "KviCommandFormatter.h"
 #include "KviModule.h"
 #include "KviTalVBox.h"
+#include "KviRegExp.h"
 #include "kvi_fileextensions.h"
 
 #include <QList>
@@ -50,7 +51,6 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QInputDialog>
-#include <QRegExp>
 #include <QTreeWidget>
 #include <QMouseEvent>
 #include <QList>
@@ -1055,7 +1055,7 @@ QString AliasEditorWidget::askForAliasName(const QString & szAction, const QStri
 		}
 
 		// we allow only [\w:]+
-		QRegExp re("[\\w:]+");
+		KviRegExp re("[\\w:]+");
 		if(!re.exactMatch(szNewName))
 		{
 			g_pAliasEditorModule->lock();
@@ -1124,7 +1124,7 @@ QString AliasEditorWidget::askForNamespaceName(const QString & szAction, const Q
 		}
 
 		// we allow only [\w:]+
-		QRegExp re("[\\w:]+");
+		KviRegExp re("[\\w:]+");
 		if(!re.exactMatch(szNewName))
 		{
 			g_pAliasEditorModule->lock();

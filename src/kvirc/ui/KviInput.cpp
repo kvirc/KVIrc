@@ -42,6 +42,7 @@
 #include "KviShortcut.h"
 #include "KviTalHBox.h"
 #include "KviTalToolTip.h"
+#include "KviRegExp.h"
 
 #include <QLabel>
 #include <QFileDialog>
@@ -307,7 +308,7 @@ void KviInput::multiLineEditorButtonToggled(bool bOn)
 		delete m_pHelpLabel;
 		m_pHelpLabel = nullptr;
 
-		szTmp.replace(QRegularExpression("[\a\f\n\r\v]"), QString(" "));
+		szTmp.replace(KviRegExp("[\a\f\n\r\v]"), QString(" "));
 		szTmp.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' ')); //expand tabs to spaces
 		m_pInputEditor->setText(szTmp);
 		m_pInputEditor->show();

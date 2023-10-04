@@ -31,6 +31,7 @@
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviModule.h"
+#include "KviRegExp.h"
 #include "KviConfigurationFile.h"
 #include "kvi_sourcesdate.h"
 
@@ -39,7 +40,6 @@
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QPushButton>
-#include <QRegExp>
 #include <QToolTip>
 #include <QTimer>
 
@@ -187,7 +187,7 @@ void HelpWindow::startSearch()
 	str = str.replace("`", "\"");
 	QString buf = str;
 	str = str.replace("-", " ");
-	str = str.replace(QRegExp(R"(\s[\S]?\s)"), " ");
+	str = str.replace(KviRegExp(R"(\s[\S]?\s)"), " ");
 	m_terms = str.split(" ", Qt::SkipEmptyParts);
 	QStringList termSeq;
 	QStringList seqWords;

@@ -5,6 +5,7 @@
 #include <QVector>
 #include <QtConcurrent>
 
+#include "KviRegExp.h"
 #include "LogFile.h"
 #include "LogViewWindow.h"
 #include "KviFileUtils.h"

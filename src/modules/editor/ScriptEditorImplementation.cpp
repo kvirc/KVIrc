@@ -268,8 +268,8 @@ void ScriptEditorWidget::insertCompletion(const QString & szCompletion)
 void ScriptEditorWidget::contextMenuEvent(QContextMenuEvent * e)
 {
 	QMenu * pMenu = createStandardContextMenu();
-	pMenu->addAction(__tr2qs_ctx("Context Sensitive Help", "editor"), this, SLOT(slotHelp()), Qt::CTRL + Qt::Key_H);
-	pMenu->addAction(__tr2qs_ctx("&Replace", "editor"), this, SLOT(slotReplace()), Qt::CTRL + Qt::Key_R);
+	pMenu->addAction(__tr2qs_ctx("Context Sensitive Help", "editor"), this, SLOT(slotHelp()), Qt::CTRL | Qt::Key_H);
+	pMenu->addAction(__tr2qs_ctx("&Replace", "editor"), this, SLOT(slotReplace()), Qt::CTRL | Qt::Key_R);
 	pMenu->exec(e->globalPos());
 	delete pMenu;
 }
@@ -385,7 +385,7 @@ void ScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 	bool isShortcut = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_E); // CTRL+E
 	if(!m_pCompleter || !isShortcut)                                                     // don't process the shortcut when we have a completer
 		QTextEdit::keyPressEvent(e);
-	const bool ctrlOrShift = e->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier);
+	const bool ctrlOrShift = e->modifiers() & (Qt::ControlModifier + Qt::ShiftModifier);
 	if(!m_pCompleter || (ctrlOrShift && e->text().isEmpty()))
 		return;
 	static QString eow("~!@#$%^&*()_+{}|:\"<>?,/;'[]\\-="); // end of word
@@ -521,23 +521,23 @@ ScriptEditorSyntaxHighlighter::ScriptEditorSyntaxHighlighter(ScriptEditorWidget 
 
 	KviScriptHighlightingRule rule;
 
-	rule.pattern = QRegExp("([=()[\\]!\"?<>;:.,+-])+");
+	rule.pattern = KviRegExp("([=()[\\]!\"?<>;:.,+-])+");
 	rule.format = punctuationFormat;
 	highlightingRules.append(rule);
 
-	rule.pattern = QRegExp("[{};](|[a-zA-Z]|[a-zA-Z]+[a-zA-Z0-9_\\.:]*)");
+	rule.pattern = KviRegExp("[{};]([a-zA-Z]+[a-zA-Z0-9_\\.:]*)");
 	rule.format = keywordFormat;
 	highlightingRules.append(rule);
 
-	rule.pattern = QRegExp("[$](|[a-zA-Z0-9]+[a-zA-Z0-9_\\.:]*)");
+	rule.pattern = KviRegExp("[$]([a-zA-Z0-9]+[a-zA-Z0-9_\\.:]*)");
 	rule.format = functionFormat;
 	highlightingRules.append(rule);
 
-	rule.pattern = QRegExp("[%](|[a-zA-Z]|[a-zA-Z]+[a-zA-Z0-9_\\.]*)");
+	rule.pattern = KviRegExp("[%]([a-zA-Z]+[a-zA-Z0-9_\\.]*)");
 	rule.format = variableFormat;
 	highlightingRules.append(rule);
 
-	rule.pattern = QRegExp("([{}])+");
+	rule.pattern = KviRegExp("([{}])+");
 	rule.format = bracketFormat;
 	highlightingRules.append(rule);
 }
@@ -677,16 +677,16 @@ void ScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 	int index = 0;
 	foreach(KviScriptHighlightingRule rule, highlightingRules)
 	{
-		QRegExp expression(rule.pattern);
+		KviRegExp expression(rule.pattern);
 		QString sz = expression.pattern();
 
-		index = szText.indexOf(expression, iIndexStart);
+		index = expression.indexIn(szText, iIndexStart);
 
 		while(index >= 0)
 		{
 			int length = expression.matchedLength();
 			setFormat(index, length, rule.format);
-			index = szText.indexOf(expression, index + length);
+			index = expression.indexIn(szText, index + length);
 		}
 	}
 

@@ -41,6 +41,7 @@
 #include "KviKvsObjectController.h"
 #include "KviCommandFormatter.h"
 #include "KviModule.h"
+#include "KviRegExp.h"
 #include "KviTalVBox.h"
 #include "kvi_fileextensions.h"
 #include "KviModuleManager.h"
@@ -53,7 +54,6 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QInputDialog>
-#include <QRegExp>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QBrush>
@@ -1518,7 +1518,7 @@ bool ClassEditorWidget::askForNamespaceName(const QString & szAction, const QStr
 		}
 
 		// we allow only [\w:]+
-		QRegExp re("[\\w:]+");
+		KviRegExp re("[\\w:]+");
 		if(!re.exactMatch(szNewName))
 		{
 			g_pClassEditorModule->lock();
@@ -1934,7 +1934,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 	m_pClassNameLineEdit->setObjectName("classnameineedit");
 	m_pClassNameLineEdit->setText(szClassName);
 	pLabel->setBuddy(m_pClassNameLineEdit);
-	QRegExp re;
+	KviRegExp re;
 	if(!bRenameMode)
 	{
 		// we allow only [\w:]+ class name
@@ -1947,7 +1947,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 		re.setPattern("[\\w]+(::[\\w]+)+");
 		m_pClassNameLineEdit->setToolTip(__tr2qs_ctx("In rename mode class names can contain only letters, digits and underscores and namespaces :: separator", "editor"));
 	}
-	QRegExpValidator * pValidator = new QRegExpValidator(re, this);
+	QRegularExpressionValidator * pValidator = new QRegularExpressionValidator(re, this);
 	m_pClassNameLineEdit->setValidator(pValidator);
 	m_pClassNameLineEdit->setObjectName("functionameineedit");
 
@@ -2056,8 +2056,8 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 	m_pFunctionNameLineEdit = new QLineEdit(pHBox);
 
 	// we allow only [\w:]+ function name
-	QRegExp re("[\\w]+");
-	QRegExpValidator * pValidator = new QRegExpValidator(re, this);
+	KviRegExp re("[\\w]+");
+	QRegularExpressionValidator * pValidator = new QRegularExpressionValidator(re, this);
 	m_pFunctionNameLineEdit->setValidator(pValidator);
 	m_pFunctionNameLineEdit->setObjectName("functionameineedit");
 	m_pFunctionNameLineEdit->setToolTip(__tr2qs_ctx("Function names can contain only letters, digits and underscores", "editor"));

@@ -27,8 +27,7 @@
 #include "KviKvsTreeNodeInstruction.h"
 #include "KviKvsRunTimeContext.h"
 #include "KviLocale.h"
-
-#include <QRegExp>
+#include "KviRegExp.h"
 
 KviKvsTreeNodeSpecialCommandSwitchLabel::KviKvsTreeNodeSpecialCommandSwitchLabel(const QChar * pLocation)
     : KviKvsTreeNode(pLocation)
@@ -192,9 +191,7 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelMatch::execute(KviKvsRunTimeContext 
 
 		QString reg;
 		v.asString(reg);
-
-		//QRegExp rx(reg,false,true);
-		QRegExp rx(reg, Qt::CaseInsensitive, QRegExp::Wildcard);
+		KviRegExp rx(reg, KviRegExp::CaseInsensitive, KviRegExp::Wildcard);
 		QString val;
 		pRealParameter->asString(val);
 
@@ -251,9 +248,7 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::execute(KviKvsRunTimeContext
 
 		QString reg;
 		v.asString(reg);
-
-		//	QRegExp rx(reg,false,false);
-		QRegExp rx(reg, Qt::CaseInsensitive, QRegExp::RegExp);
+		KviRegExp rx(reg, KviRegExp::CaseInsensitive, KviRegExp::RegExp);
 		QString val;
 		pRealParameter->asString(val);
 

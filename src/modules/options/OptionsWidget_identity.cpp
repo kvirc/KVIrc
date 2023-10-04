@@ -39,6 +39,7 @@
 #include "KviIdentityProfileSet.h"
 #include "KviTalToolTip.h"
 #include "KviTalHBox.h"
+#include "KviRegExp.h"
 
 #include <QTreeWidget>
 #include <QCheckBox>
@@ -306,7 +307,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	                          "the server refuses to accept the default one.",
 	                  "options"));
 
-	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"), hb);
+	QValidator * v = new QRegularExpressionValidator(KviRegExp("[^-0-9 ][^ ]*"), hb);
 	sel->setValidator(v);
 
 	QPushButton * pb = new QPushButton(__tr2qs_ctx("Alternatives...", "options"), hb);

@@ -38,6 +38,7 @@ set(kvilib_SRCS
 	ext/KviNickColors.cpp
 	ext/KviProxy.cpp
 	ext/KviProxyDataBase.cpp
+	ext/KviRegExp.cpp
 	ext/KviRegisteredChannel.cpp
 	ext/KviRegisteredChannelDataBase.cpp
 	ext/KviRegisteredUser.cpp

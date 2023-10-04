@@ -33,6 +33,7 @@
 #include "KviIconManager.h"
 #include "KviMiscUtils.h"
 #include "kvi_sourcesdate.h"
+#include "KviRegExp.h"
 #include "KviTheme.h"
 #include "KviMainWindow.h"
 
@@ -469,7 +470,7 @@ namespace ThemeFunctions
 			}
 
 			QString szSubdir = pInfo->name() + QString("-") + pInfo->version();
-			szSubdir.replace(QRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"), "_");
+			szSubdir.replace(KviRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"), "_");
 
 			szTmp = QString("Theme%1Name").arg(iIdx);
 			f.addInfoField(szTmp, pInfo->name());

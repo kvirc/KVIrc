@@ -45,6 +45,7 @@
 #include "KviLocale.h"
 #include "KviOptions.h"
 #include "KviPixmapUtils.h"
+#include "KviRegExp.h"
 #include "KviQString.h"
 #include "KviShortcut.h"
 #include "KviTextIconManager.h"
@@ -62,7 +63,6 @@
 #include <QMimeData>
 #include <QPainter>
 #include <QPixmap>
-#include <QRegExp>
 #include <QStyle>
 #include <QStyleOption>
 #include <QTextBoundaryFinder>
@@ -1052,7 +1052,7 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 		if(!szClip.isEmpty())
 		{
 			// Prevent too many newlines from spamming the context menu
-			szClip.replace(QRegExp("^((?:[^\n]*\n){6}).*"), "\\1...");
+			szClip.replace(KviRegExp("^((?:[^\n]*\n){6}).*"), "\\1...");
 
 			if(szClip.length() > 60)
 			{

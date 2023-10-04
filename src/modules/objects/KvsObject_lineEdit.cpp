@@ -24,10 +24,11 @@
 //=============================================================================
 
 #include "KviError.h"
+#include "KviRegExp.h"
 #include "kvi_debug.h"
 #include "KviLocale.h"
 #include "KvsObject_lineEdit.h"
-#include <QRegExpValidator>
+#include <QRegularExpressionValidator>
 #include <QLineEdit>
 #include <QCompleter>
 static const char * mode_tbl[] = {
@@ -270,7 +271,7 @@ KVSO_CLASS_FUNCTION(lineEdit, setInputValidator)
 	KVSO_PARAMETERS_BEGIN(c)
 	KVSO_PARAMETER("reg_expression", KVS_PT_STRING, 0, szReg)
 	KVSO_PARAMETERS_END(c)
-	((QLineEdit *)widget())->setValidator(new QRegExpValidator(QRegExp(szReg), ((QLineEdit *)widget())));
+	((QLineEdit *)widget())->setValidator(new QRegularExpressionValidator(KviRegExp(szReg), ((QLineEdit *)widget())));
 	return true;
 }
 KVSO_CLASS_FUNCTION(lineEdit, maxLength)

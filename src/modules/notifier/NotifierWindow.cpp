@@ -36,6 +36,7 @@
 #include "KviOptions.h"
 #include "KviUserInput.h"
 #include "KviThemedLineEdit.h"
+#include "KviRegExp.h"
 
 #include <QApplication>
 #include <QEvent>
@@ -45,7 +46,6 @@
 #include <QPainter>
 #include <QPaintEvent>
 #include <QPen>
-#include <QRegExp>
 #include <QScreen>
 #include <QToolTip>
 
@@ -141,7 +141,7 @@ void NotifierWindow::addMessage(KviWindow * pWnd, const QString & szImageId, con
 {
 	QPixmap * pIcon = nullptr;
 	QString szMessage = szText;
-	szMessage.replace(QRegExp("\r([^\r])*\r([^\r])+\r"), "\\2");
+	szMessage.replace(KviRegExp("\r([^\r])*\r([^\r])+\r"), "\\2");
 	if(!szImageId.isEmpty())
 		pIcon = g_pIconManager->getImage(szImageId);
 

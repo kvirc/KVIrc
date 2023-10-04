@@ -51,7 +51,6 @@
 #include <QLayout>
 #include <QPushButton>
 #include <QLineEdit>
-#include <QRegExp>
 #include <QMessageBox>
 #include <QDir>
 #include <QStringList>

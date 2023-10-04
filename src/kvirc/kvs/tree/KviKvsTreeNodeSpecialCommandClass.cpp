@@ -28,6 +28,7 @@
 #include "KviKvsKernel.h"
 #include "KviKvsObjectController.h"
 #include "KviKvsObjectClass.h"
+#include "KviRegExp.h"
 
 KviKvsTreeNodeSpecialCommandClassFunctionDefinition::KviKvsTreeNodeSpecialCommandClassFunctionDefinition(const QChar * pLocation, const QString & szName, const QString & szBuffer, const QString & szReminder, unsigned int uHandlerFlags)
     : KviKvsTreeNode(pLocation)
@@ -103,7 +104,7 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 	QString szClassName;
 	QString szBaseClassName;
 	pClassName->asString(szClassName);
-	QRegExp re("[\\w:]+");
+	KviRegExp re("[\\w:]+");
 	if(!re.exactMatch(szClassName))
 	{
 		c->error(this, __tr2qs_ctx("Class names can contain only letters, digits, underscores and '::' namespace separators", "kvs"));

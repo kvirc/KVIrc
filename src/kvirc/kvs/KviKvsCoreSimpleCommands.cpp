@@ -30,8 +30,8 @@
 #include "KviIrcConnection.h"
 #include "KviLocale.h"
 #include "KviKvsTreeNodeCommand.h"
+#include "KviRegExp.h"
 
-#include <QRegExp>
 #include <QStringList>
 
 namespace KviKvsCoreSimpleCommands
@@ -164,7 +164,7 @@ namespace KviKvsCoreSimpleCommands
 			return true;
 		}
 
-		QStringList sl = szTokens.split(QRegExp("[, ]+"), Qt::SkipEmptyParts);
+		QStringList sl = szTokens.split(KviRegExp("[, ]+"), Qt::SkipEmptyParts);
 
 		QByteArray szFlags;
 		QByteArray szTarget = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->windowName());

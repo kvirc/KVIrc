@@ -39,8 +39,7 @@
 #include "KviKvsEventHandler.h"
 #include "KviLagMeter.h"
 #include "KviIrcUserEntry.h"
-
-#include <QRegExp>
+#include "KviRegExp.h"
 
 namespace KviKvsCoreFunctions
 {
@@ -1124,7 +1123,7 @@ namespace KviKvsCoreFunctions
 			return true;
 
 		KviKvsArray * a = new KviKvsArray();
-		QRegExp re(szText, bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive, bRegexp ? QRegExp::RegExp : QRegExp::Wildcard);
+		KviRegExp re(szText, bCaseSensitive ? KviRegExp::CaseSensitive : KviRegExp::CaseInsensitive, bRegexp ? KviRegExp::RegExp : KviRegExp::Wildcard);
 		KviPointerHashTableIterator<QString, KviKvsTimer> it(*pTimerDict);
 
 		while(KviKvsTimer * pTimer = it.current())

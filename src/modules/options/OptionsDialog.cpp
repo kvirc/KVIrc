@@ -32,6 +32,7 @@
 #include "KviMainWindow.h"
 #include "KviModule.h"
 #include "KviPointerHashTable.h"
+#include "KviRegExp.h"
 #include "KviTalVBox.h"
 #include "KviTalToolTip.h"
 #include "KviTalGroupBox.h"
@@ -342,7 +343,7 @@ bool OptionsDialog::searchInSelectors(KviOptionsWidget * pOptionsWidget, const Q
 			else
 			{
 				QString szTmp = pWidget->toolTip();
-				szTmp = szTmp.replace(QRegExp("<[^<>]+>"), "");
+				szTmp = szTmp.replace(KviRegExp("<[^<>]+>"), "");
 				szText.append(szTmp);
 				if(!szText.isEmpty())
 				{

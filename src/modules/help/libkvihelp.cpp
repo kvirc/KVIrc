@@ -28,6 +28,7 @@
 #include "KviLocale.h"
 #include "KviModule.h"
 #include "KviFileUtils.h"
+#include "KviRegExp.h"
 #include "kvi_sourcesdate.h"
 #include "KviApplication.h"
 #include "KviMainWindow.h"
@@ -148,7 +149,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 				}
 			}
 
-			int i = g_pDocIndex->titlesList().indexOf(QRegExp(QRegExp::escape(szParam), Qt::CaseInsensitive));
+			int i = g_pDocIndex->titlesList().indexOf((QRegularExpression) KviRegExp(KviRegExp::escape(szParam), KviRegExp::CaseInsensitive));
 			if(i != -1)
 			{
 				szDoc = QUrl(g_pDocIndex->documentList()[i]).toLocalFile();
@@ -157,9 +158,9 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 			else
 			{
 				QString szTmpDocName(".*/doc_");
-				szTmpDocName.append(QRegExp::escape(szParam));
+				szTmpDocName.append(KviRegExp::escape(szParam));
 				szTmpDocName.append("\\.html");
-				i = g_pDocIndex->documentList().indexOf(QRegExp(szTmpDocName, Qt::CaseInsensitive));
+				i = g_pDocIndex->documentList().indexOf((QRegularExpression) KviRegExp(szTmpDocName, KviRegExp::CaseInsensitive));
 				if(i != -1)
 				{
 					szDoc = QUrl(g_pDocIndex->documentList()[i]).toLocalFile();

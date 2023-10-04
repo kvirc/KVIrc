@@ -34,6 +34,7 @@
 #include "KviLocale.h"
 #include "KviOptions.h"
 #include "KviFileUtils.h"
+#include "KviRegExp.h"
 
 #include <QFileInfo>
 #include <QDir>
@@ -200,7 +201,7 @@ void LogFile::getText(QString & szText) const
 
 void LogFile::createLog(ExportType exportType, QString szLog, QString * pszFile) const
 {
-	QRegExp rx;
+	KviRegExp rx;
 	QString szLogDir, szInputBuffer, szOutputBuffer, szLine, szTmp;
 	QString szDate = date().toString("yyyy.MM.dd");
 

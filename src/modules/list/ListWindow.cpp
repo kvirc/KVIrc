@@ -41,6 +41,7 @@
 #include "KviHtmlGenerator.h"
 #include "KviThemedLineEdit.h"
 #include "KviIrcMessage.h"
+#include "KviRegExp.h"
 
 #include <QTimer>
 #include <QHeaderView>
@@ -487,7 +488,7 @@ void ListWindow::startOfList()
 
 void ListWindow::liveSearch(const QString & szText)
 {
-	QRegExp res(szText, Qt::CaseInsensitive, QRegExp::Wildcard);
+	KviRegExp res(szText, KviRegExp::CaseInsensitive, KviRegExp::Wildcard);
 
 	ChannelTreeWidgetItem * pItem = nullptr;
 	for(int i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
@@ -525,7 +526,7 @@ void ListWindow::processData(KviIrcMessage * pMsg)
 	else
 	{
 		//rfc2812 permits wildcards here (section 3.2.6)
-		QRegExp res(m_pParamsEdit->text(), Qt::CaseInsensitive, QRegExp::Wildcard);
+		KviRegExp res(m_pParamsEdit->text(), KviRegExp::CaseInsensitive, KviRegExp::Wildcard);
 		if(
 		    res.exactMatch(pMsg->connection()->decodeText(pMsg->safeParam(1))) || res.exactMatch(pMsg->connection()->decodeText(pMsg->safeTrailing())))
 		{

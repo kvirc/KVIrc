@@ -45,6 +45,7 @@
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionServerInfo.h"
 #include "KviPixmapUtils.h"
+#include "KviRegExp.h"
 
 #include <QLabel>
 #include <QScrollBar>
@@ -55,7 +56,6 @@
 #include <QEvent>
 #include <QPaintEvent>
 #include <QScrollBar>
-#include <QRegExp>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -470,7 +470,7 @@ void KviUserListView::completeNickBashLike(const QString & szBegin, std::vector<
 		if(!bEqual && KVI_OPTION_BOOL(KviOption_boolIgnoreSpecialCharactersInNickCompletion))
 		{
 			QString szTmp = pEntry->m_szNick;
-			szTmp.remove(QRegExp("[^a-zA-Z0-9]"));
+			szTmp.remove(KviRegExp("[^a-zA-Z0-9]"));
 			bEqual = KviQString::equalCIN(szBegin, szTmp, szBegin.length());
 		}
 
@@ -502,7 +502,7 @@ bool KviUserListView::completeNickLastAction(const QString & szBegin, const QStr
 			if(!bEqual && KVI_OPTION_BOOL(KviOption_boolIgnoreSpecialCharactersInNickCompletion))
 			{
 				QString szTmp = pEntry->m_szNick;
-				szTmp.remove(QRegExp("[^a-zA-Z0-9]"));
+				szTmp.remove(KviRegExp("[^a-zA-Z0-9]"));
 				bEqual = KviQString::equalCIN(szBegin, szTmp, szBegin.length());
 			}
 
@@ -591,7 +591,7 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, const QStrin
 			if(!bEqual && KVI_OPTION_BOOL(KviOption_boolIgnoreSpecialCharactersInNickCompletion))
 			{
 				QString szTmp = pEntry->m_szNick;
-				szTmp.remove(QRegExp("[^a-zA-Z0-9]"));
+				szTmp.remove(KviRegExp("[^a-zA-Z0-9]"));
 				bEqual = KviQString::equalCIN(szBegin, szTmp, szBegin.length());
 			}
 
