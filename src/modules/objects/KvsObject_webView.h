@@ -35,7 +35,14 @@
 #include <QMouseEvent>
 #include <QContextMenuEvent>
 
-class QWebEngineDownloadItem;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#define DOWNLOAD_CLASS_NAME QWebEngineDownloadItem
+#else
+#define DOWNLOAD_CLASS_NAME QWebEngineDownloadRequest
+#endif
+
+class DOWNLOAD_CLASS_NAME;
+
 class KvsObject_webView;
 
 class KviKvsWebView : public QWebEngineView
@@ -143,7 +150,7 @@ protected slots:
 	void slotLoadFinished(bool);
 	void slotLoadProgress(int);
 	void slotLoadStarted();
-	void slotDownloadRequest(QWebEngineDownloadItem *);
+	void slotDownloadRequest(DOWNLOAD_CLASS_NAME *);
 	void slotLinkClicked(const QUrl &);
 
 	void slotOnChange(QString);
@@ -157,13 +164,13 @@ class KviKvsDownloadHandler : public QObject
 {
 	Q_OBJECT
 public:
-	KviKvsDownloadHandler(KvsObject_webView * pParent, QString &szFilePath, QWebEngineDownloadItem * pDownload, int iId);
+	KviKvsDownloadHandler(KvsObject_webView * pParent, QString &szFilePath, DOWNLOAD_CLASS_NAME * pDownload, int iId);
 
 	~KviKvsDownloadHandler();
 
 protected:
 	KvsObject_webView * m_pParentScript;
-	QWebEngineDownloadItem * m_pDownload;
+	DOWNLOAD_CLASS_NAME * m_pDownload;
 	int m_Id;
 protected slots:
 	void slotDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);

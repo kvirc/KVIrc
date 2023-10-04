@@ -299,7 +299,12 @@ void KviIrcView::mousePressEvent(QMouseEvent * e)
 		// We actually trigger the click event after the double click interval
 		// is elapsed without a second click.
 		m_iMouseTimer = startTimer(QApplication::doubleClickInterval());
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 		m_pLastEvent = new QMouseEvent(*e);
+#else
+		m_pLastEvent = new QMouseEvent(e->type(), e->position(), e->globalPosition(), e->button(), e->buttons(), e->modifiers(), e->pointingDevice());
+#endif
 	}
 }
 

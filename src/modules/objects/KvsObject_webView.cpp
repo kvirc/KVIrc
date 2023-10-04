@@ -37,7 +37,11 @@
 #include <QWebEngineProfile>
 #include <QWebEngineView>
 #include <QWebEngineSettings>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QWebEngineDownloadItem>
+#else
+#include <QWebEngineDownloadRequest>
+#endif
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QPixmap>
@@ -48,7 +52,7 @@
 #include <QToolTip>
 
 static int g_iDownloadId = 1;
-KviKvsDownloadHandler::KviKvsDownloadHandler(KvsObject_webView * pParent, QString &szFilePath, QWebEngineDownloadItem * pDownload, int iId)
+KviKvsDownloadHandler::KviKvsDownloadHandler(KvsObject_webView * pParent, QString &szFilePath, DOWNLOAD_CLASS_NAME * pDownload, int iId)
     : QObject(pParent)
 {
 	m_Id = iId;
@@ -401,8 +405,8 @@ bool KvsObject_webView::init(KviKvsRunTimeContext * c, KviKvsVariantList *)
 	connect(pView, SIGNAL(loadFinished(bool)), this, SLOT(slotLoadFinished(bool)));
 	connect(pView, SIGNAL(loadProgress(int)), this, SLOT(slotLoadProgress(int)));
 	connect(pPage, SIGNAL(linkClicked(const QUrl &)), this, SLOT(slotLinkClicked(const QUrl &)));
-	connect(QWebEngineProfile::defaultProfile(), SIGNAL(downloadRequested(QWebEngineDownloadItem*)),
-                this, SLOT(slotDownloadRequest(QWebEngineDownloadItem*)));
+	connect(QWebEngineProfile::defaultProfile(), SIGNAL(downloadRequested(DOWNLOAD_CLASS_NAME*)),
+                this, SLOT(slotDownloadRequest(DOWNLOAD_CLASS_NAME*)));
 	return true;
 }
 
@@ -717,7 +721,7 @@ void KvsObject_webView::slotLinkClicked(const QUrl & url)
 	callFunction(this, "linkClickedEvent", &params);
 }
 
-void KvsObject_webView::slotDownloadRequest(QWebEngineDownloadItem *pDownload)
+void KvsObject_webView::slotDownloadRequest(DOWNLOAD_CLASS_NAME *pDownload)
 {
 	QString szFilePath = "";
 	KviKvsVariant * filepathret = new KviKvsVariant(szFilePath);

@@ -313,7 +313,7 @@ KviIrcView::KviIrcView(QWidget * parent, KviWindow * pWnd)
 	setSizePolicy(oSizePolicy);
 }
 
-static inline void delete_text_line(KviIrcViewLine * line, QHash<KviIrcViewLine *, KviAnimatedPixmap *> * animatedSmiles)
+static inline void delete_text_line(KviIrcViewLine * line, QMultiHash<KviIrcViewLine *, KviAnimatedPixmap *> * animatedSmiles)
 {
 	QMultiHash<KviIrcViewLine *, KviAnimatedPixmap *>::iterator it = animatedSmiles->find(line);
 	while(it != animatedSmiles->end() && it.key() == line)

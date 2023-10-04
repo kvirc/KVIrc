@@ -29,6 +29,7 @@
 #include "KviOptions.h"
 
 #include <array>
+#include <QActionGroup>
 #include <QCursor>
 #include <QEvent>
 #include <QMenu>

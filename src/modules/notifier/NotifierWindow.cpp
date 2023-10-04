@@ -880,7 +880,11 @@ void NotifierWindow::setCursor(int iCur)
 	}
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void NotifierWindow::enterEvent(QEvent *)
+#else
+void NotifierWindow::enterEvent(QEnterEvent *)
+#endif
 {
 	if(!m_pShowHideTimer)
 	{

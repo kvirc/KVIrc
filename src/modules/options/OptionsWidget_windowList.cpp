@@ -123,7 +123,7 @@ void addAlertLevels(KviOptionsWidget * widget, KviTalGroupBox * g)
 		QString help_text = available_options_text + "<br>";
 		for (const auto& alert_type : alert_list)
 		{
-			if (alert_type != &alert_list.back())
+			if (alert_type != alert_list.back())
 				help_text += alert_type + ", ";
 			else
 				help_text += alert_type;
