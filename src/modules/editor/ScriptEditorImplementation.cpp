@@ -385,7 +385,7 @@ void ScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 	bool isShortcut = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_E); // CTRL+E
 	if(!m_pCompleter || !isShortcut)                                                     // don't process the shortcut when we have a completer
 		QTextEdit::keyPressEvent(e);
-	const bool ctrlOrShift = e->modifiers() & (Qt::ControlModifier + Qt::ShiftModifier);
+	const bool ctrlOrShift = e->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier);
 	if(!m_pCompleter || (ctrlOrShift && e->text().isEmpty()))
 		return;
 	static QString eow("~!@#$%^&*()_+{}|:\"<>?,/;'[]\\-="); // end of word

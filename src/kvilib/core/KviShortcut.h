@@ -32,6 +32,7 @@
 
 class QShortcut;
 class QWidget;
+class QObject;
 
 class KVILIB_API KviShortcut
 {
@@ -40,9 +41,15 @@ private:
 	~KviShortcut();
 
 public:
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	static QShortcut * create(const char * key, QWidget * parent, const char * member = nullptr, const char * ambiguousMember = nullptr, Qt::ShortcutContext context = Qt::WindowShortcut);
 	static QShortcut * create(const QKeySequence & key, QWidget * parent, const char * member = nullptr, const char * ambiguousMember = nullptr, Qt::ShortcutContext context = Qt::WindowShortcut);
-	static void create(QKeySequence::StandardKey key, QWidget * parent, const char * member = nullptr, const char * ambiguousMember = nullptr, Qt::ShortcutContext context = Qt::WindowShortcut, KviPointerList<QShortcut> * pBufferList = nullptr);
+	static QShortcut * create(Qt::KeyboardModifier mod, Qt::Key key, QWidget * parent, const char * member = nullptr, const char * ambiguousMember = nullptr, Qt::ShortcutContext context = Qt::WindowShortcut);
+#else
+	static QShortcut * create(const char * key, QObject * parent, const char * member = nullptr, const char * ambiguousMember = nullptr, Qt::ShortcutContext context = Qt::WindowShortcut);
+	static QShortcut * create(const QKeySequence & key, QObject * parent, const char * member = nullptr, const char * ambiguousMember = nullptr, Qt::ShortcutContext context = Qt::WindowShortcut);
+	static QShortcut * create(Qt::KeyboardModifier mod, Qt::Key key, QObject * parent, const char * member = nullptr, const char * ambiguousMember = nullptr, Qt::ShortcutContext context = Qt::WindowShortcut);
+#endif
 };
 
 #endif //_KVI_SHORTCUT_CLASSFILE_H_

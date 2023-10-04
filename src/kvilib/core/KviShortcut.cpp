@@ -26,27 +26,32 @@
 
 #include <QShortcut>
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 QShortcut * KviShortcut::create(const char * key, QWidget * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext context)
+#else
+QShortcut * KviShortcut::create(const char * key, QObject * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext context)
+#endif
 {
 	//qDebug("New Plain Shortcut %s\n", QKeySequence(key).toString().toUtf8().data());
 	return new QShortcut(QKeySequence(key), parent, member, ambiguousMember, context);
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 QShortcut * KviShortcut::create(const QKeySequence & key, QWidget * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext context)
+#else
+QShortcut * KviShortcut::create(const QKeySequence & key, QObject * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext context)
+#endif
 {
 	//qDebug("New KeySe Shortcut %s\n", key.toString().toUtf8().data());
 	return new QShortcut(key, parent, member, ambiguousMember, context);
 }
 
-void KviShortcut::create(QKeySequence::StandardKey key, QWidget * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext context, KviPointerList<QShortcut> * pBufferList)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+QShortcut * KviShortcut::create(Qt::KeyboardModifier mod, Qt::Key key, QWidget * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext context)
+#else
+QShortcut * KviShortcut::create(Qt::KeyboardModifier mod, Qt::Key key, QObject * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext context)
+#endif
 {
-	QKeySequence singleKey;
-	QList<QKeySequence> allKeys = QKeySequence::keyBindings(key);
-	foreach(singleKey, allKeys)
-	{
-		//qDebug("New Multi Shortcut %s\n", singleKey.toString().toUtf8().data());
-		QShortcut * pShortcut = new QShortcut(singleKey, parent, member, ambiguousMember, context);
-		if(pBufferList)
-			pBufferList->append(pShortcut);
-	}
+	//qDebug("New KeySe Shortcut %s\n", key.toString().toUtf8().data());
+	return new QShortcut(QKeySequence(mod, key), parent, member, ambiguousMember, context);
 }
