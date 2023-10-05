@@ -34,7 +34,11 @@
 #include <QString>
 #include <QStringList>
 #include <QtGlobal>
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 #include <QTextCodec>
+#else
+#include <QStringConverter>
+#endif
 #include <QTextStream>
 
 namespace KviFileUtils
@@ -263,7 +267,13 @@ namespace KviFileUtils
 		KviFile f(szPath);
 		if(!f.open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 			return false;
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 		QByteArray szTmp = QTextCodec::codecForLocale()->fromUnicode(szData);
+#else
+		QStringEncoder enc = QStringEncoder(QStringConverter::Latin1);
+		QByteArray szTmp = enc.encode(szData);
+#endif
+
 		if(f.write(szTmp.data(), szTmp.length()) != ((unsigned int)(szTmp.length())))
 			return false;
 		return true;
@@ -326,14 +336,16 @@ namespace KviFileUtils
 	bool readLine(QFile * pFile, QString & szBuffer, bool bUtf8)
 	{
 		QTextStream stream(pFile);
-		// By default, QTextCodec::codecForLocale() is used, and automatic unicode detection is enabled.
-		if(bUtf8)
-			stream.setCodec(QTextCodec::codecForMib(106));
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 		/*
 		* Name: UTF-8
 		* MIBenum: 106
 		* from: http://www.iana.org/assignments/character-sets
 		*/
+    	stream.setCodec(bUtf8 ? QTextCodec::codecForMib(106) : QTextCodec::codecForLocale());
+#else
+		stream.setEncoding(bUtf8 ? QStringConverter::Utf8 : QStringConverter::Latin1);
+#endif
 		szBuffer = stream.readLine();
 		return !szBuffer.isNull();
 	}
@@ -341,9 +353,12 @@ namespace KviFileUtils
 	bool readLines(QFile * pFile, QStringList & buffer, int iStartLine, int iCount, bool bUtf8)
 	{
 		QTextStream stream(pFile);
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 		//please read comments in the readLine(...) method
-		if(bUtf8)
-			stream.setCodec(QTextCodec::codecForMib(106));
+    	stream.setCodec(bUtf8 ? QTextCodec::codecForMib(106) : QTextCodec::codecForLocale());
+#else
+		stream.setEncoding(bUtf8 ? QStringConverter::Utf8 : QStringConverter::Latin1);
+#endif
 
 		for(int i = 0; i < iStartLine; i++)
 			stream.readLine();

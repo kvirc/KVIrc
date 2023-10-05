@@ -421,7 +421,7 @@ set(CMAKE_STATUS_QX11INFO_SUPPORT "Not available")
 include_directories(${Qt${QT_VERSION_MAJOR}Widgets_INCLUDE_DIRS})
 list(APPEND qt_kvirc_modules Qt::Widgets)
 
-# Qt6 Compat module for Qt5; Needed by QRegExp
+# Qt6 Compat module for Qt5; Needed by QTextCodec
 if(${QT_VERSION_MAJOR} EQUAL 6)
 	find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
 	if(Qt6Core5Compat_FOUND)
