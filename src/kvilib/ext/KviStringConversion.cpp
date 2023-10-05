@@ -226,7 +226,13 @@ namespace KviStringConversion
 	void toString(const QFont & font, QString & szBuffer)
 	{
 		QString szFamily(font.family());
-		szBuffer = QString::asprintf("%s,%d,%d,%d", szFamily.toUtf8().data(), font.pointSize(), font.styleHint(), font.weight());
+		szBuffer = QString::asprintf("%s,%d,%d,%d", szFamily.toUtf8().data(), font.pointSize(), font.styleHint(),
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+			font.weight()
+#else
+			font.legacyWeight()
+#endif
+		);
 		QString szOptions;
 		if(font.bold())
 			szOptions.append('b');
@@ -266,8 +272,11 @@ namespace KviStringConversion
 			buffer.setStyleHint((QFont::StyleHint)i);
 		i = weight.toInt(&bOk);
 		if(bOk && (i >= 0))
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 			buffer.setWeight(i);
-
+#else
+			buffer.setLegacyWeight(i);
+#endif
 		buffer.setBold(str.contains("b"));
 		buffer.setItalic(str.contains("i"));
 		buffer.setUnderline(str.contains("u"));

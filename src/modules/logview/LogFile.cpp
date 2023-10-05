@@ -40,6 +40,11 @@
 #include <QDir>
 #include <QTextStream>
 #include <QLocale>
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+#include <QTextCodec>
+#else
+#include <QStringConverter>
+#endif
 
 #ifdef COMPILE_ZLIB_SUPPORT
 #include <zlib.h>
@@ -431,7 +436,11 @@ void LogFile::createLog(ExportType exportType, QString szLog, QString * pszFile)
 
 	// Ensure we're writing in UTF-8
 	QTextStream output(&log);
-	output.setCodec("UTF-8");
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    output.setCodec(QTextCodec::codecForMib(106));
+#else
+	output.setEncoding(QStringConverter::Utf8);
+#endif
 	output << szOutputBuffer;
 
 	// Close file descriptors

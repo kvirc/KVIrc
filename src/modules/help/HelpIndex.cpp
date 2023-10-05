@@ -44,7 +44,11 @@
 #include <QByteArray>
 #include <QTextStream>
 #include <QUrl>
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 #include <QTextCodec>
+#else
+#include <QStringConverter>
+#endif
 #include <cctype>
 #include <QTextDocument>
 #include <QTimer>
@@ -200,7 +204,11 @@ void HelpIndex::parseDocument(const QString & filename, int docNum)
 	}
 
 	QTextStream s(&file);
-	s.setCodec(QTextCodec::codecForMib(106));
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    s.setCodec(QTextCodec::codecForMib(106));
+#else
+	s.setEncoding(QStringConverter::Utf8);
+#endif
 	QString text = s.readAll();
 	if(text.isNull())
 		return;
