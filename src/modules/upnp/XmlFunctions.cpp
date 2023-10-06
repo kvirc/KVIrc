@@ -34,6 +34,7 @@
 #include "XmlFunctions.h"
 
 #include <QStringList>
+#include <QIODevice>
 
 // Helper function, get a specific node
 QDomNode XmlFunctions::getNode(const QDomNode & rootNode, const QString & path)
@@ -112,11 +113,7 @@ QString XmlFunctions::getNodeValue(const QDomNode & rootNode, const QString & pa
 QString XmlFunctions::getSource(const QDomNode & node, int indent)
 {
 	QString source;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	QTextStream textStream(&source, QIODevice::WriteOnly);
-#else
-	QTextStream textStream(&source, QIODeviceBase::WriteOnly);
-#endif
 	node.save(textStream, indent);
 	return source;
 }
