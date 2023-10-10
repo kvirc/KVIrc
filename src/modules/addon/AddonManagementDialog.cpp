@@ -280,8 +280,8 @@ void AddonManagementDialog::uninstallScript()
 	if(QMessageBox::question(
 	       this,
 	       __tr2qs_ctx("Confirm Addon Uninstallation - KVIrc", "addon"),
-	       txt, __tr2qs_ctx("Yes", "addon"), __tr2qs_ctx("No", "addon"), nullptr, 1)
-	    != 0)
+	       txt)
+	    != QMessageBox::Yes)
 		return;
 
 	KviKvsScriptAddonManager::instance()->unregisterAddon(it->addon()->name(), g_pActiveWindow);
@@ -322,10 +322,7 @@ void AddonManagementDialog::installScript()
 			QMessageBox::critical(
 			    this,
 			    __tr2qs_ctx("Install Addon - KVIrc", "addon"),
-			    szError,
-			    QMessageBox::Ok,
-			    QMessageBox::NoButton,
-			    QMessageBox::NoButton);
+			    szError);
 			return;
 		}
 	}
@@ -337,10 +334,7 @@ void AddonManagementDialog::installScript()
 		QMessageBox::critical(
 		    this,
 		    __tr2qs_ctx("Install Addon - KVIrc", "addon"),
-		    szError,
-		    QMessageBox::Ok,
-		    QMessageBox::NoButton,
-		    QMessageBox::NoButton);
+		    szError);
 	}
 
 	fillListView();

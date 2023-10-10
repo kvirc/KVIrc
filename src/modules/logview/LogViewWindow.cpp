@@ -481,9 +481,8 @@ void LogViewWindow::deleteCurrent()
 			if(QMessageBox::question(
 			       this,
 			       __tr2qs_ctx("Confirm Current User Log Deletion", "log"),
-			       __tr2qs_ctx("Do you really wish to delete this log?", "log"),
-			       __tr2qs("Yes"), __tr2qs("No"), nullptr, 1)
-			    != 0)
+			       __tr2qs_ctx("Do you really wish to delete this log?", "log"))
+			    != QMessageBox::Yes)
 				return;
 
 			KviFileUtils::removeFile(pItem->fileName());
@@ -499,9 +498,8 @@ void LogViewWindow::deleteCurrent()
 	if(QMessageBox::question(
 	       this,
 	       __tr2qs_ctx("Confirm Current User Logs Deletion", "log"),
-	       __tr2qs_ctx("Do you really wish to delete all these logs?", "log"),
-	       __tr2qs("Yes"), __tr2qs("No"), nullptr, 1)
-	    != 0)
+	       __tr2qs_ctx("Do you really wish to delete all these logs?", "log"))
+	    != QMessageBox::Yes)
 		return;
 	KviPointerList<LogListViewItem> itemsList;
 	itemsList.setAutoDelete(false);

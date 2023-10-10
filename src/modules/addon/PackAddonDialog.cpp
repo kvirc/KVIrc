@@ -156,9 +156,7 @@ bool PackAddonDialog::packAddon()
 		if(QMessageBox::question(
 		       this,
 		       __tr2qs_ctx("Exporting Addon Confirmation - KVIrc", "addon"),
-		       __tr2qs_ctx("File %1 already exists. Do you want to overwrite it?", "addon").arg(info.szSavePath),
-		       QMessageBox::Yes,
-		       QMessageBox::No)
+		       __tr2qs_ctx("File %1 already exists. Do you want to overwrite it?", "addon").arg(info.szSavePath))
 		    == QMessageBox::No)
 			return false;
 	}
@@ -177,12 +175,11 @@ bool PackAddonDialog::packAddon()
 	if(!AddonFunctions::pack(info, szError))
 	{
 		QMessageBox::critical(this,
-		    __tr2qs_ctx("Addon Packaging - KVIrc", "addon"),
-		    szError, QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+		    __tr2qs_ctx("Addon Packaging - KVIrc", "addon"), szError);
 		return false;
 	}
 
-	QMessageBox::information(this, __tr2qs_ctx("Exporting Addon Completed - KVIrc", "addon"), __tr2qs_ctx("The package was saved successfully in %1", "addon").arg(info.szSavePath), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+	QMessageBox::information(this, __tr2qs_ctx("Exporting Addon Completed - KVIrc", "addon"), __tr2qs_ctx("The package was saved successfully in %1", "addon").arg(info.szSavePath));
 
 	return true;
 }

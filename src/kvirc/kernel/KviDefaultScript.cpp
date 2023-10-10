@@ -118,13 +118,13 @@ void KviDefaultScriptManager::restore()
 	// Check data
 	if(!compareVersions(szGlobal, &szError))
 	{
-		QMessageBox::warning(nullptr, __tr2qs("Restore Default - KVIrc"), szError, QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+		QMessageBox::warning(nullptr, __tr2qs("Restore Default - KVIrc"), szError);
 		return;
 	}
 
 	if(m_bNoNeedToRestore)
 	{
-		if(QMessageBox::warning(nullptr, __tr2qs("Restore Default - KVIrc"), szError, QMessageBox::Yes, QMessageBox::No) != QMessageBox::Yes)
+		if(QMessageBox::question(nullptr, __tr2qs("Restore Default - KVIrc"), szError) != QMessageBox::Yes)
 			return;
 	}
 

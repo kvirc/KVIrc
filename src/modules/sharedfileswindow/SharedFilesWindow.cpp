@@ -155,16 +155,14 @@ void SharedFileEditDialog::okClicked()
 		QMessageBox::warning(this, __tr2qs_ctx("Invalid Expiry Time - KVIrc", "sharedfileswindow"),
 		    __tr2qs_ctx("The expiry date/time is in the past: please either remove the \"Expires at\""
 		                "check mark or specify a expiry date/time in the future",
-		                         "sharedfileswindow"),
-		    __tr2qs_ctx("OK", "sharedfileswindow"));
+		                         "sharedfileswindow"));
 		return;
 	}
 
 	if(szName.isEmpty())
 	{
 		QMessageBox::warning(this, __tr2qs_ctx("Invalid Share Name - KVIrc", "sharedfileswindow"),
-		    __tr2qs_ctx("The share name can't be empty, please correct it", "sharedfileswindow"),
-		    __tr2qs_ctx("OK", "sharedfileswindow"));
+		    __tr2qs_ctx("The share name can't be empty, please correct it", "sharedfileswindow"));
 		return;
 	}
 
@@ -172,8 +170,7 @@ void SharedFileEditDialog::okClicked()
 	if(!(f.exists() && f.isFile() && f.isReadable()))
 	{
 		QMessageBox::warning(this, __tr2qs_ctx("Error Opening File - KVIrc", "sharedfileswindow"),
-		    __tr2qs_ctx("The file doesn't exist or it is not readable, please check the path", "sharedfileswindow"),
-		    __tr2qs_ctx("OK", "sharedfileswindow"));
+		    __tr2qs_ctx("The file doesn't exist or it is not readable, please check the path", "sharedfileswindow"));
 		return;
 	}
 

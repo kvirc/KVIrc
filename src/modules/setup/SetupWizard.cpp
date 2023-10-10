@@ -734,13 +734,8 @@ void SetupWizard::chooseOldDataPath()
 		        this,
 		        __tr2qs("Confirm Setting Configuration Folder - KVIrc Setup"),
 		        __tr2qs("The folder %1 doesn't seem to be a valid KVIrc settings folder. Do you want to use it anyway?")
-		            .arg(szBuffer),
-		        __tr2qs("&Yes"),
-		        __tr2qs("&No"),
-		        QString(),
-		        0,
-		        1)
-		    == 0)
+		            .arg(szBuffer))
+		    == QMessageBox::Yes)
 			m_pOldDataPathEdit->setText(szBuffer);
 	}
 	else
@@ -940,9 +935,8 @@ void SetupWizard::setUrlHandlers()
 
 void SetupWizard::reject()
 {
-	if(QMessageBox::warning(this, __tr2qs("Confirm Setup Abort - KVIrc Setup"),
-	       __tr2qs("You have chosen to abort the setup.<br>KVIrc can't run until you complete this procedure.<br><br>Do you really wish to abort?"),
-	       QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape)
+	if(QMessageBox::question(this, __tr2qs("Confirm Setup Abort - KVIrc Setup"),
+	       __tr2qs("You have chosen to abort the setup.<br>KVIrc can't run until you complete this procedure.<br><br>Do you really wish to abort?"))
 	    != QMessageBox::Yes)
 		return;
 

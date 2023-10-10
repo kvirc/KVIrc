@@ -514,8 +514,7 @@ void ClassEditorWidget::renameFunction()
 			g_pClassEditorModule->lock();
 			QMessageBox::information(this,
 			    __tr2qs_ctx("Name Already Exists - KVIrc", "editor"),
-			    __tr2qs_ctx("This function name is already in use. Please choose another one.", "editor"),
-			    __tr2qs_ctx("OK, Let me try again...", "editor"));
+			    __tr2qs_ctx("This function name is already in use. Please choose another one.", "editor"));
 			g_pClassEditorModule->unlock();
 			return;
 		}
@@ -577,8 +576,7 @@ void ClassEditorWidget::renameClass(ClassEditorTreeWidgetItem * pClassItem)
 		g_pClassEditorModule->lock();
 		QMessageBox::information(this,
 		    __tr2qs_ctx("Name Already Exists - KVIrc", "editor"),
-		    __tr2qs_ctx("This class name is already in use. Please choose another one.", "editor"),
-		    __tr2qs_ctx("OK, Let me try again...", "editor"));
+		    __tr2qs_ctx("This class name is already in use. Please choose another one.", "editor"));
 		g_pClassEditorModule->unlock();
 		return;
 	}
@@ -587,8 +585,7 @@ void ClassEditorWidget::renameClass(ClassEditorTreeWidgetItem * pClassItem)
 		g_pClassEditorModule->lock();
 		QMessageBox::information(this,
 			__tr2qs_ctx("Bad Namespace Name","editor"),
-			__tr2qs_ctx("Found an empty namespace in namespace name","editor"),
-			__tr2qs_ctx("OK, Let me try again...","editor"));
+			__tr2qs_ctx("Found an empty namespace in namespace name","editor"));
 		g_pClassEditorModule->unlock();
 		szNewName = "";
 		continue;
@@ -666,15 +663,13 @@ void ClassEditorWidget::renameNamespace(ClassEditorTreeWidgetItem * pOldNamespac
 		{
 			QMessageBox::information(this,
 			    __tr2qs_ctx("Name Already Exists - KVIrc", "editor"),
-			    __tr2qs_ctx("This class name is already in use. Please choose another one.", "editor"),
-			    __tr2qs_ctx("OK, Let me try again...", "editor"));
+			    __tr2qs_ctx("This class name is already in use. Please choose another one.", "editor"));
 		}
 		else
 		{
 			QMessageBox::information(this,
 			    __tr2qs_ctx("Name Already Exists - KVIrc", "editor"),
-			    __tr2qs_ctx("This namespace name is already in use. Please choose another one.", "editor"),
-			    __tr2qs_ctx("OK, Let me try again...", "editor"));
+			    __tr2qs_ctx("This namespace name is already in use. Please choose another one.", "editor"));
 		}
 		g_pClassEditorModule->unlock();
 		return;
@@ -1094,7 +1089,7 @@ void ClassEditorWidget::exportSelectionInSinglesFiles(KviPointerList<ClassEditor
 	if(!pList->first())
 	{
 		g_pClassEditorModule->lock();
-		QMessageBox::warning(this, __tr2qs_ctx("Warning While Exporting - KVIrc", "editor"), __tr2qs_ctx("Must select an entry from the list to export!", "editor"), __tr2qs_ctx("OK", "editor"));
+		QMessageBox::warning(this, __tr2qs_ctx("Warning While Exporting - KVIrc", "editor"), __tr2qs_ctx("Must select an entry from the list to export!", "editor"));
 		g_pClassEditorModule->unlock();
 		return;
 	}
@@ -1126,13 +1121,23 @@ void ClassEditorWidget::exportSelectionInSinglesFiles(KviPointerList<ClassEditor
 		QString szCompletePath = m_szDir + szFileName;
 		if(KviFileUtils::fileExists(szCompletePath) && !bReplaceAll)
 		{
-			QString szMsg = __tr2qs_ctx("The file \"%1\" exists. Do you want to replace it?", "editor").arg(szFileName);
-			int iRet = QMessageBox::question(this, __tr2qs_ctx("Confirm Replacing File - KVIrc", "editor"), szMsg, __tr2qs_ctx("Yes", "editor"), __tr2qs_ctx("Yes to All", "editor"), __tr2qs_ctx("No", "editor"));
-			if(iRet != 2)
+			QMessageBox pMsgBox;
+			pMsgBox.setWindowTitle(__tr2qs_ctx("Confirm Replacing File - KVIrc", "editor"));
+			pMsgBox.setText(QString(__tr2qs_ctx("The file \"%1\" exists. Do you want to replace it?", "editor")).arg(szFileName));
+			pMsgBox.setIcon(QMessageBox::Question);
+			QAbstractButton * pYesButton = pMsgBox.addButton(__tr2qs_ctx("Yes", "editor"), QMessageBox::YesRole);
+			QAbstractButton * pAlwaysButton = pMsgBox.addButton(__tr2qs_ctx("Yes to All", "editor"), QMessageBox::YesRole);
+			QAbstractButton * pNoButton = pMsgBox.addButton( __tr2qs_ctx("No", "editor"), QMessageBox::NoRole);
+			pMsgBox.setDefaultButton(qobject_cast<QPushButton *>(pNoButton));
+			pMsgBox.exec();
+			if(pMsgBox.clickedButton() == pYesButton)
 			{
 				KviFileUtils::writeFile(szCompletePath, szTmp);
-				if(iRet == 1)
-					bReplaceAll = true;
+			} else if(pMsgBox.clickedButton() == pAlwaysButton) {
+				KviFileUtils::writeFile(szCompletePath, szTmp);
+				bReplaceAll = true;
+			} else if(pMsgBox.clickedButton() == pNoButton || pMsgBox.clickedButton() == nullptr) {
+				// nothing
 			}
 		}
 		else
@@ -1197,7 +1202,7 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 	if(szOut.isEmpty())
 	{
 		g_pClassEditorModule->lock();
-		QMessageBox::warning(this, __tr2qs_ctx("Warning While Exporting - KVIrc", "editor"), __tr2qs_ctx("The exported class file could be empty: cowardly refusing to write it", "editor"), __tr2qs_ctx("OK", "editor"));
+		QMessageBox::warning(this, __tr2qs_ctx("Warning While Exporting - KVIrc", "editor"), __tr2qs_ctx("The exported class file could be empty: cowardly refusing to write it", "editor"));
 		g_pClassEditorModule->unlock();
 		return;
 	}
@@ -1238,7 +1243,7 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 	if(!KviFileUtils::writeFile(szFile, szOut))
 	{
 		g_pClassEditorModule->lock();
-		QMessageBox::warning(this, __tr2qs_ctx("Write to Classes File Failed - KVIrc", "editor"), __tr2qs_ctx("Unable to write to the classes file.", "editor"), __tr2qs_ctx("OK", "editor"));
+		QMessageBox::warning(this, __tr2qs_ctx("Write to Classes File Failed - KVIrc", "editor"), __tr2qs_ctx("Unable to write to the classes file.", "editor"));
 		g_pClassEditorModule->unlock();
 	}
 }
@@ -1372,19 +1377,23 @@ bool ClassEditorWidget::removeItem(ClassEditorTreeWidgetItem * pItem, KviPointer
 		}
 
 		g_pClassEditorModule->lock();
-		int iRet = QMessageBox::question(this, __tr2qs_ctx("Confirm Removing Item - KVIrc", "editor"), szMsg, __tr2qs_ctx("Yes", "editor"), __tr2qs_ctx("Yes to All", "editor"), __tr2qs_ctx("No", "editor"));
+		QMessageBox pMsgBox;
+		pMsgBox.setWindowTitle(__tr2qs_ctx("Confirm Removing Item - KVIrc", "editor"));
+		pMsgBox.setText(szMsg);
+		pMsgBox.setIcon(QMessageBox::Question);
+		QAbstractButton * pYesButton = pMsgBox.addButton(__tr2qs_ctx("Yes", "editor"), QMessageBox::YesRole);
+		QAbstractButton * pAlwaysButton = pMsgBox.addButton(__tr2qs_ctx("Yes to All", "editor"), QMessageBox::YesRole);
+		QAbstractButton * pNoButton = pMsgBox.addButton(__tr2qs_ctx("No", "editor"), QMessageBox::NoRole);
+		pMsgBox.setDefaultButton(qobject_cast<QPushButton *>(pNoButton));
+		pMsgBox.exec();
 		g_pClassEditorModule->unlock();
-		switch(iRet)
+		if(pMsgBox.clickedButton() == pYesButton)
 		{
-			case 0:
-				// nothing
-				break;
-			case 1:
-				*pbYesToAll = true;
-				break;
-			default:
-				return false;
-				break;
+			// nothing
+		} else if(pMsgBox.clickedButton() == pAlwaysButton) {
+			*pbYesToAll = true;
+		} else if(pMsgBox.clickedButton() == pNoButton || pMsgBox.clickedButton() == nullptr) {
+			return false;
 		}
 	}
 
@@ -1511,8 +1520,7 @@ bool ClassEditorWidget::askForNamespaceName(const QString & szAction, const QStr
 			g_pClassEditorModule->lock();
 			QMessageBox::warning(this,
 			    __tr2qs_ctx("Invalid or Missing Name - KVIrc", "editor"),
-			    __tr2qs_ctx("You must specify a valid name for the namespace.", "editor"),
-			    __tr2qs_ctx("OK, Let me try again...", "editor"));
+			    __tr2qs_ctx("You must specify a valid name for the namespace.", "editor"));
 			g_pClassEditorModule->unlock();
 			continue;
 		}
@@ -1524,8 +1532,7 @@ bool ClassEditorWidget::askForNamespaceName(const QString & szAction, const QStr
 			g_pClassEditorModule->lock();
 			QMessageBox::information(this,
 			    __tr2qs_ctx("Invalid Name - KVIrc", "editor"),
-			    __tr2qs_ctx("Namespace names can contain only letters, digits, underscores and '::' namespace separators.", "editor"),
-			    __tr2qs_ctx("OK, Let me try again...", "editor"));
+			    __tr2qs_ctx("Namespace names can contain only letters, digits, underscores and '::' namespace separators.", "editor"));
 			g_pClassEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1538,8 +1545,7 @@ bool ClassEditorWidget::askForNamespaceName(const QString & szAction, const QStr
 			g_pClassEditorModule->lock();
 			QMessageBox::information(this,
 			    __tr2qs_ctx("Invalid Name - KVIrc", "editor"),
-			    __tr2qs_ctx("Stray ':' character in namespace name: did you mean ...<namespace>::<name>?", "editor"),
-			    __tr2qs_ctx("OK, Let me try again...", "editor"));
+			    __tr2qs_ctx("Stray ':' character in namespace name: did you mean ...<namespace>::<name>?", "editor"));
 			g_pClassEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1549,8 +1555,7 @@ bool ClassEditorWidget::askForNamespaceName(const QString & szAction, const QStr
 			g_pClassEditorModule->lock();
 			QMessageBox::information(this,
 			    __tr2qs_ctx("Invalid Name - KVIrc", "editor"),
-			    __tr2qs_ctx("Found an empty namespace in namespace name.", "editor"),
-			    __tr2qs_ctx("OK, Let me try again...", "editor"));
+			    __tr2qs_ctx("Found an empty namespace in namespace name.", "editor"));
 			g_pClassEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1713,8 +1718,7 @@ void ClassEditorWidget::build()
 							skipClasses.append(lInheritedClasses.at(u));
 						}
 					}
-					QMessageBox::critical(this, __tr2qs_ctx("Compilation Error - KVIrc", "editor"), szError,
-					    QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+					QMessageBox::critical(this, __tr2qs_ctx("Compilation Error - KVIrc", "editor"), szError);
 					break;
 				}
 				//else qDebug("class compiled %s :\n",szClass.toUtf8().data());

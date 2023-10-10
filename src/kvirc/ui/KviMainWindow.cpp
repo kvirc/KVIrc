@@ -826,21 +826,24 @@ void KviMainWindow::closeEvent(QCloseEvent * e)
 
 		if(bGotRunningConnection)
 		{
-			QString txt =  __tr2qs("There are active connections, are you sure you wish to quit KVIrc?");
-
-			switch(QMessageBox::warning(this, __tr2qs("Confirm Close - KVIrc"), txt, __tr2qs("&Yes"), __tr2qs("&Always"), __tr2qs("&No"), 2, 2))
+			QMessageBox pMsgBox;
+			pMsgBox.setWindowTitle(__tr2qs("Confirm Close - KVIrc"));
+			pMsgBox.setText(__tr2qs("There are active connections, are you sure you wish to quit KVIrc?"));
+			pMsgBox.setIcon(QMessageBox::Question);
+			QAbstractButton * pYesButton = pMsgBox.addButton(__tr2qs("&Yes"), QMessageBox::YesRole);
+			QAbstractButton * pAlwaysButton = pMsgBox.addButton(__tr2qs("&Always"), QMessageBox::YesRole);
+			QAbstractButton * pNoButton = pMsgBox.addButton(__tr2qs("&No"), QMessageBox::NoRole);
+			pMsgBox.setDefaultButton(qobject_cast<QPushButton *>(pNoButton));
+			pMsgBox.exec();
+			if(pMsgBox.clickedButton() == pYesButton)
 			{
-				case 0:
-					// ok to close
-					break;
-				case 1:
-					// ok to close but don't ask again
-					KVI_OPTION_BOOL(KviOption_boolConfirmCloseWhenThereAreConnections) = false;
-					break;
-				case 2:
-					e->ignore();
-					return;
-					break;
+				// ok to close
+			} else if(pMsgBox.clickedButton() == pAlwaysButton) {
+				// ok to close but don't ask again
+				KVI_OPTION_BOOL(KviOption_boolConfirmCloseWhenThereAreConnections) = false;
+			} else if(pMsgBox.clickedButton() == pNoButton || pMsgBox.clickedButton() == nullptr) {
+				e->ignore();
+				return;
 			}
 		}
 	}

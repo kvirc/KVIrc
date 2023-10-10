@@ -2270,7 +2270,7 @@ void KviIrcView::chooseBackground()
 	QPixmap p(f);
 	if(p.isNull())
 	{
-		QMessageBox::information(this, __tr2qs("Invalid Image - KVIrc"), __tr2qs("Failed to load the selected image!"), __tr2qs("OK"));
+		QMessageBox::information(this, __tr2qs("Invalid Image - KVIrc"), __tr2qs("Failed to load the selected image!"));
 		return;
 	}
 

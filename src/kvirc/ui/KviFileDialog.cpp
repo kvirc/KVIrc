@@ -115,7 +115,7 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 
 			QString szTmp = QString(__tr2qs("The file %1 already exists.<br>Do you wish to overwrite it?")).arg(szBuffer);
 
-			switch(QMessageBox::information(pParent, __tr2qs("File Already Exists - KVIrc"), szTmp, QMessageBox::Yes, QMessageBox::No | QMessageBox::Default, QMessageBox::Cancel | QMessageBox::Escape))
+			switch(QMessageBox::question(pParent, __tr2qs("File Already Exists - KVIrc"), szTmp, QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel))
 			{
 				case QMessageBox::Cancel:
 					return false;
@@ -156,7 +156,7 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 			{
 				QString szTmp = QString(__tr2qs("The file %1 already exists.<br>Do you wish to overwrite it?")).arg(szBuffer);
 
-				switch(QMessageBox::information(pDialog, __tr2qs("File Already Exists - KVIrc"), szTmp, QMessageBox::Yes, QMessageBox::No | QMessageBox::Default, QMessageBox::Cancel | QMessageBox::Escape))
+				switch(QMessageBox::question(pDialog, __tr2qs("File Already Exists - KVIrc"), szTmp, QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel))
 				{
 					case QMessageBox::Cancel:
 						delete pDialog;

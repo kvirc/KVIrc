@@ -744,7 +744,7 @@ void ActionEditor::exportActions()
 
 	if(!KviFileUtils::writeFile(szFile, szCode))
 	{
-		QMessageBox::warning(this, __tr2qs_ctx("Writing to File Failed - KVIrc", "editor"), __tr2qs_ctx("Unable to write to the actions file.", "editor"), __tr2qs_ctx("OK", "editor"));
+		QMessageBox::warning(this, __tr2qs_ctx("Writing to File Failed - KVIrc", "editor"), __tr2qs_ctx("Unable to write to the actions file.", "editor"));
 	}
 }
 
@@ -762,7 +762,7 @@ void ActionEditor::deleteActions()
 	if(l.isEmpty())
 		return;
 
-	//if(QMessageBox::question(this,__tr2qs_ctx("Confirm Actions Deletion - KVIrc","editor"),__tr2qs_ctx("Do you really want to delete the selected actions?","editor"),__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("No","editor")) != 0)
+	//if(QMessageBox::question(this,__tr2qs_ctx("Confirm Actions Deletion - KVIrc","editor"),__tr2qs_ctx("Do you really want to delete the selected actions?","editor")) != QMessageBox::Yes)
 	//	return;
 
 	for(ActionEditorTreeWidgetItem * i = l.first(); i; i = l.next())

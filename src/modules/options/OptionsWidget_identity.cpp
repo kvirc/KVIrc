@@ -566,8 +566,7 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 					    __tr2qs_ctx("Failed to load the avatar image.<br>"
 					                "It may be an inaccessible file or an "
 					                "unsupported image format.",
-					                         "options"),
-					    QMessageBox::Ok, QMessageBox::NoButton);
+					                         "options"));
 				} // else loaded!
 			}
 			else
@@ -577,7 +576,7 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 				                                    "<b>%1</b>",
 				                            "options"))
 				                    .arg(dlg.errorMessage());
-				QMessageBox::warning(this, __tr2qs_ctx("Avatar Download Failed - KVIrc", "options"), szTmp, QMessageBox::Ok, QMessageBox::NoButton);
+				QMessageBox::warning(this, __tr2qs_ctx("Avatar Download Failed - KVIrc", "options"), szTmp);
 				szCurrent = "";
 				m_pLocalAvatar->setNull();
 			}
@@ -616,8 +615,7 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 			    __tr2qs_ctx("Failed to load the avatar image.<br>"
 			                "It may be an inaccessible file or an "
 			                "unsupported image format.",
-			                         "options"),
-			    QMessageBox::Ok, QMessageBox::NoButton);
+			                         "options"));
 			szCurrent = "";
 		}
 	}
@@ -867,7 +865,7 @@ void OptionsWidget_identityProfile::editProfileOkPressed()
 	{
 		if(m_pEditor->m_pNameEdit->text() == m_pTreeWidget->topLevelItem(i)->text(0) && i != m_iCurrentEditedProfile)
 		{
-			QMessageBox::warning(this, __tr2qs_ctx("Invalid Profile Rule - KVIrc", "options"), __tr2qs_ctx("There is already a profile with that name", "options"), __tr2qs_ctx("OK", "options"));
+			QMessageBox::warning(this, __tr2qs_ctx("Invalid Profile Rule - KVIrc", "options"), __tr2qs_ctx("There is already a profile with that name", "options"));
 			return;
 		}
 	}

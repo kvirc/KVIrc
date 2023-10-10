@@ -353,8 +353,7 @@ void PackThemeImageWidget::imageSelectionChanged(const QString & szImagePath)
 		return;
 	}
 
-	QMessageBox::critical(this, __tr2qs_ctx("Export Theme - KVIrc", "theme"), __tr2qs_ctx("Failed to load the selected image!", "theme"),
-	    QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+	QMessageBox::critical(this, __tr2qs_ctx("Export Theme - KVIrc", "theme"), __tr2qs_ctx("Failed to load the selected image!", "theme"));
 
 	m_pImageSelector->setSelection("");
 	m_pImageLabel->setPixmap(QPixmap());
@@ -433,15 +432,13 @@ bool PackThemeDialog::packTheme()
 	{
 		QMessageBox::critical(this,
 		    __tr2qs_ctx("Export Theme - KVIrc", "theme"),
-		    szError,
-		    QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+		    szError);
 		return false;
 	}
 
 	QMessageBox::information(this,
 	    __tr2qs_ctx("Exporting Theme - KVIrc", "theme"),
-	    __tr2qs("Theme package saved successfully."),
-	    QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+	    __tr2qs("Theme package saved successfully."));
 
 	return true;
 }

@@ -431,7 +431,7 @@ int main(int argc, char ** argv)
 				KviCString szTmp(KviCString::Format, "Another KVIrc session is already running on this display and with this user ID.\nUse %s -f if you want to force a new session.", argv[0]);
 				if(a.bShowPopup)
 				{
-					QMessageBox::information(nullptr, "Duplicate Session - KVIrc", szTmp.ptr(), QMessageBox::Ok);
+					QMessageBox::information(nullptr, "Duplicate Session - KVIrc", szTmp.ptr());
 				}
 				else
 				{

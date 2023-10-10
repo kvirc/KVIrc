@@ -94,7 +94,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	if(szParam.isEmpty())
 	{
 		szParam = QString("index.html");
-		qDebug("No file, use default at path %s", szDoc.toUtf8().data());
+		qDebug("No file, use default at path %s", szParam.toUtf8().data());
 	}
 
 	/*
