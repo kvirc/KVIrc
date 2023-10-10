@@ -79,9 +79,7 @@ namespace KviMessageBox
     				KStandardGuiItem::cont(), KStandardGuiItem::stop())
 	  		== KMessageBox::PrimaryAction);
 #else
-		bRet = (QMessageBox::information(0, caption, s,
-		            QMessageBox::Yes | QMessageBox::Default,
-		            QMessageBox::No | QMessageBox::Escape)
+		bRet = (QMessageBox::question(0, caption, s)
 		    == QMessageBox::Yes);
 #endif
 		return bRet;

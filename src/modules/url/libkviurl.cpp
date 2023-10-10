@@ -192,7 +192,7 @@ void UrlDialog::remove()
 {
 	if(!m_pUrlList->currentItem())
 	{
-		QMessageBox::warning(nullptr, __tr2qs("Entry Selection - KVIrc"), __tr2qs("Must select a URL entry from the list to remove it."), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+		QMessageBox::warning(nullptr, __tr2qs("Entry Selection - KVIrc"), __tr2qs("Must select a URL entry from the list to remove it."));
 		return;
 	}
 
@@ -270,7 +270,7 @@ void UrlDialog::sayToWin(QAction * act)
 	}
 	else
 	{
-		QMessageBox::warning(nullptr, __tr2qs("Window Not Found - KVIrc"), __tr2qs("Window not found."), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+		QMessageBox::warning(nullptr, __tr2qs("Window Not Found - KVIrc"), __tr2qs("Window not found."));
 	}
 }
 
@@ -458,7 +458,7 @@ void BanFrame::removeBan()
 
 	if(!m_pBanList->currentItem()->isSelected())
 	{
-		QMessageBox::warning(nullptr, __tr2qs("Entry Selection - KVIrc"), __tr2qs("Must select a ban entry from the list to remove it."), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+		QMessageBox::warning(nullptr, __tr2qs("Entry Selection - KVIrc"), __tr2qs("Must select a ban entry from the list to remove it."));
 		return;
 	}
 	QString item(m_pBanList->currentItem()->text());

@@ -251,7 +251,7 @@ void CustomToolBarPropertiesDialog::okClicked()
 {
 	if(m_szLabel.isEmpty())
 	{
-		QMessageBox::information(this, __tr2qs_ctx("Invalid Toolbar Label - KVIrc", "editor"), __tr2qs_ctx("The toolbar label can't be empty!", "editor"), __tr2qs_ctx("OK", "editor"));
+		QMessageBox::information(this, __tr2qs_ctx("Invalid Toolbar Label - KVIrc", "editor"), __tr2qs_ctx("The toolbar label can't be empty!", "editor"));
 		return;
 	}
 
@@ -264,12 +264,21 @@ void CustomToolBarPropertiesDialog::okClicked()
 	{
 		if(m_szId != m_szOriginalId)
 		{
-			if(QMessageBox::information(this, __tr2qs_ctx("Duplicate Toolbar ID - KVIrc", "editor"),
-			       __tr2qs_ctx("The specified toolbar ID already exists.<br>"
-			                   "Would you like KVIrc to assign it automatically (so it doesn't "
-			                   "collide with any other toolbar) or you prefer to do it manually?", "editor"),
-			       __tr2qs_ctx("Manually", "editor"), __tr2qs_ctx("Automatically", "editor")) == 0)
+			QMessageBox pMsgBox;
+			pMsgBox.setWindowTitle(__tr2qs_ctx("Duplicate Toolbar ID - KVIrc", "editor"));
+			pMsgBox.setText(__tr2qs_ctx("The specified toolbar ID already exists.<br>"
+						                "Would you like KVIrc to assign it automatically (so it doesn't "
+						                "collide with any other toolbar) or you prefer to do it manually?", "editor"));
+			pMsgBox.setIcon(QMessageBox::Question);
+			QAbstractButton * pYesButton = pMsgBox.addButton(__tr2qs_ctx("Manually", "editor"), QMessageBox::YesRole);
+			QAbstractButton * pNoButton = pMsgBox.addButton(__tr2qs_ctx("Automatically", "editor"), QMessageBox::NoRole);
+			pMsgBox.exec();
+			if(pMsgBox.clickedButton() == pYesButton)
+			{
 				return;
+			} else if(pMsgBox.clickedButton() == pNoButton || pMsgBox.clickedButton() == nullptr) {
+				// nothing
+			}
 			m_szId = KviCustomToolBarManager::instance()->idForNewToolBar(m_szLabel);
 		}
 	}
@@ -416,19 +425,15 @@ void CustomizeToolBarsDialog::exportToolBar()
 
 	QString szCode;
 
-	int ret = QMessageBox::question(this,
+	QMessageBox::StandardButton ret = QMessageBox::question(this,
 	    __tr2qs_ctx("Confirm Toolbar Export - KVIrc", "editor"),
 	    __tr2qs_ctx("Do you want the associated actions to be exported with the toolbar?", "editor"),
-	    __tr2qs_ctx("Yes", "editor"),
-	    __tr2qs_ctx("No", "editor"),
-	    __tr2qs_ctx("Cancel", "editor"));
+	    QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
 
-	if(ret == 2)
+	if(ret == QMessageBox::Cancel)
 		return;
 
-	bool bExportActions = ret == 0;
-
-	if(bExportActions)
+	if(ret == QMessageBox::Yes)
 	{
 		KviPointerList<QString> * a = t->descriptor()->actions();
 		if(a)
@@ -475,7 +480,7 @@ void CustomizeToolBarsDialog::exportToolBar()
 
 	if(!KviFileUtils::writeFile(szFile, szCode))
 	{
-		QMessageBox::warning(this, __tr2qs_ctx("Write to Toolbar File Failed - KVIrc", "editor"), __tr2qs_ctx("Unable to write to the toolbar file.", "editor"), __tr2qs_ctx("OK", "editor"));
+		QMessageBox::warning(this, __tr2qs_ctx("Write to Toolbar File Failed - KVIrc", "editor"), __tr2qs_ctx("Unable to write to the toolbar file.", "editor"));
 	}
 }
 

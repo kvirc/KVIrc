@@ -145,17 +145,16 @@ bool NickServRuleEditor::validate()
 	QString s = m_pRegisteredNickEdit->text();
 
 	QString m = __tr2qs_ctx("Invalid NickServ Rule - KVIrc", "options");
-	QString o = __tr2qs_ctx("OK", "options");
 
 	if(s.isEmpty())
 	{
-		QMessageBox::warning(this, m, __tr2qs_ctx("The nickname field can't be empty!", "options"), o);
+		QMessageBox::warning(this, m, __tr2qs_ctx("The nickname field can't be empty!", "options"));
 		return false;
 	}
 
 	if(s.indexOf(QChar(' ')) != -1)
 	{
-		QMessageBox::warning(this, m, __tr2qs_ctx("The nickname field can't contain spaces!", "options"), o);
+		QMessageBox::warning(this, m, __tr2qs_ctx("The nickname field can't contain spaces!", "options"));
 		return false;
 	}
 
@@ -163,7 +162,7 @@ bool NickServRuleEditor::validate()
 
 	if(s.isEmpty())
 	{
-		QMessageBox::warning(this, m, __tr2qs_ctx("The NickServ mask can't be empty!<br>You must put at least * there.", "options"), o);
+		QMessageBox::warning(this, m, __tr2qs_ctx("The NickServ mask can't be empty!<br>You must put at least * there.", "options"));
 		return false;
 	}
 
@@ -171,7 +170,7 @@ bool NickServRuleEditor::validate()
 
 	if(s.isEmpty())
 	{
-		QMessageBox::warning(this, m, __tr2qs_ctx("The message regexp can't be empty!<br>You must put at least * there.", "options"), o);
+		QMessageBox::warning(this, m, __tr2qs_ctx("The message regexp can't be empty!<br>You must put at least * there.", "options"));
 		return false;
 	}
 
@@ -179,7 +178,7 @@ bool NickServRuleEditor::validate()
 
 	if(s.isEmpty())
 	{
-		QMessageBox::warning(this, m, __tr2qs_ctx("The IDENTIFY command can't be empty!", "options"), o);
+		QMessageBox::warning(this, m, __tr2qs_ctx("The IDENTIFY command can't be empty!", "options"));
 		return false;
 	}
 

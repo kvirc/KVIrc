@@ -222,7 +222,7 @@ void OptionsWidget_textEncoding::commit()
 		g_szPrevSetLocale = m_pForcedLocaleCombo->itemText(idx);
 		if(!KviFileUtils::writeFile(szLangFile, m_pForcedLocaleCombo->itemText(idx)))
 		{
-			QMessageBox::critical(this, "Writing to File Failed - KVIrc", __tr2qs_ctx("Unable to write language information to", "options") + "\n" + szLangFile, __tr2qs_ctx("OK", "options"));
+			QMessageBox::critical(this, "Writing to File Failed - KVIrc", __tr2qs_ctx("Unable to write language information to", "options") + "\n" + szLangFile);
 		}
 	}
 

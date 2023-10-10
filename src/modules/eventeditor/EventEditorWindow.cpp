@@ -515,7 +515,7 @@ void EventEditor::exportCurrentHandler()
 
 	if(!KviFileUtils::writeFile(szFile, szOut))
 	{
-		QMessageBox::warning(this, __tr2qs_ctx("Writing to File Failed - KVIrc", "editor"), __tr2qs_ctx("Unable to write to the events file.", "editor"), __tr2qs_ctx("&OK", "editor"));
+		QMessageBox::warning(this, __tr2qs_ctx("Writing to File Failed - KVIrc", "editor"), __tr2qs_ctx("Unable to write to the events file.", "editor"));
 	}
 }
 
@@ -555,7 +555,7 @@ void EventEditor::exportAllEvents()
 
 	if(!KviFileUtils::writeFile(szFile, out))
 	{
-		QMessageBox::warning(this, __tr2qs_ctx("Writing to File Failed", "editor"), __tr2qs_ctx("Unable to write to the events file.", "editor"), __tr2qs_ctx("OK", "editor"));
+		QMessageBox::warning(this, __tr2qs_ctx("Writing to File Failed", "editor"), __tr2qs_ctx("Unable to write to the events file.", "editor"));
 	}
 }
 

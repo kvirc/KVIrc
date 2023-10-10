@@ -2161,8 +2161,8 @@ void OptionsWidget_servers::clearList()
 	QString txt = __tr2qs_ctx("If you click <b>Yes</b>, all of your saved networks, servers, settings, and passwords will be lost.<br>"
 	                          "Would you like to continue?", "options");
 
-	if(QMessageBox::question(this,__tr2qs_ctx("Confirm Clearing Server List - KVIrc", "options"), txt,
-	                              __tr2qs_ctx("Yes", "options"), __tr2qs_ctx("No", "options"), nullptr, 1) != 0) return;
+	if(QMessageBox::question(this,__tr2qs_ctx("Confirm Clearing Server List - KVIrc", "options"), txt) != QMessageBox::Yes)
+		return;
 
 	m_pTreeWidget->clear();
 	m_pLastEditedItem = nullptr;
