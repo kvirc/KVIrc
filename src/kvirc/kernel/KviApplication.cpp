@@ -234,6 +234,9 @@ KviApplication::KviApplication(int & argc, char ** argv)
 		setPalette(style()->standardPalette());
 	}
 #endif
+
+	// Restore Qt5-like rounding to fix HiDPI support on QWebEngine
+	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::Round);
 }
 
 void KviApplication::setup()
