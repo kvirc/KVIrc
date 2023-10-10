@@ -112,7 +112,7 @@ KviConsoleWindow::KviConsoleWindow(int iFlags) : KviWindow(KviWindow::Console, _
 	m_pButtonBox->setObjectName(QLatin1String("kvi_window_button_box"));
 
 	KviTalToolTip::add(m_pAddressEdit, __tr2qs("Current IRC URI"));
-	connect(m_pAddressEdit, SIGNAL(activated(const QString &)), this, SLOT(ircUriChanged(const QString &)));
+	connect(m_pAddressEdit, SIGNAL(textActivated(const QString &)), this, SLOT(ircUriChanged(const QString &)));
 	connect(m_pAddressEdit, SIGNAL(returnPressed(const QString &)), this, SLOT(ircUriChanged(const QString &)));
 	connect(g_pApp, SIGNAL(recentUrlsChanged()), this, SLOT(recentUrlsChanged()));
 
