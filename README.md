@@ -1,6 +1,7 @@
 # ![KVIrc-Midnight](https://github.com/kvirc/KVIrc/wiki/images/KVIrc-midnight.png) KVIrc
 
-[![Travis Build Status](https://travis-ci.org/kvirc/KVIrc.svg?branch=master)](https://travis-ci.org/kvirc/KVIrc)
+[![Linux build](https://github.com/kvirc/KVIrc/actions/workflows/build_linux.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_linux.yml)
+[![macOS build](https://github.com/kvirc/KVIrc/actions/workflows/build_macos.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_macos.yml)
 [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/j6tjel0eaeyixcbn/branch/master?svg=true)](https://ci.appveyor.com/project/DarthGandalf/kvirc/branch/master)
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/6841/badge.svg)](https://scan.coverity.com/projects/kvirc-coverity)
 
