@@ -25,11 +25,7 @@ toolbar.show options
 
 toolbar.create help $tr("Help","defscript") $icon("help")
 toolbar.additem help kvirc.helpindex
-if($lang(short)==en)
-	toolbar.additem help kvirc.kvirchomepage
-else
-	toolbar.additem help kvirc.kvircruhomepage
-	toolbar.additem help kvirc.separator
+toolbar.additem help kvirc.kvirchomepage
 toolbar.show help
 
 toolbar.create scripting $tr("Scripting","defscript") $icon("scriptcenter")
