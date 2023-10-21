@@ -80,7 +80,6 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS] = {
 	"dialog.file(open,$tr(\"Select a File - KVIrc\")){ if(!$str.isEmpty($0))parse $0; }",
 	"actioneditor.open",
 	"quit",
-	"openurl http://www.kvirc.ru",
 	JOIN_CHANNEL_ON_NETWORK("#KVIrc", "LiberaChat")
 };
 
