@@ -76,3 +76,21 @@ jobs:
         with:
           name: ${{ env.dmg_name }}
           path: ${{ env.dmg_name }}.dmg
+
+      - name: Prepare for nightly
+        shell: bash
+        run: |
+          echo '{"bin": "${{ env.dmg_name }}.dmg", "size":' $(wc -c <"${{ env.dmg_name }}.dmg") '}' > latest-macos
+
+      - name: Upload to nightly
+        if: ${{ github.repository == 'kvirc/KVIrc' && github.event_name == 'push' }}
+        uses: Dylan700/sftp-upload-action@latest
+        with:
+          server: nightly.kvirc.net
+          username: ${{secrets.NIGHTLY_SFTP_USER}}
+          key: ${{secrets.NIGHTLY_SFTP_KEY}}
+          uploads: uploads: |
+            . => ./x/
+          ignore: |
+            !*.dmg
+            !latest-macos
