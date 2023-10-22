@@ -84,13 +84,10 @@ jobs:
 
       - name: Upload to nightly
         if: ${{ github.repository == 'kvirc/KVIrc' && github.event_name == 'push' }}
-        uses: Dylan700/sftp-upload-action@latest
+        uses: SamKirkland/web-deploy@v1
         with:
-          server: nightly.kvirc.net
-          username: ${{secrets.NIGHTLY_SFTP_USER}}
-          key: ${{secrets.NIGHTLY_SFTP_KEY}}
-          uploads: |
-            . => ./x/
-          ignore: |
-            !*.dmg
-            !latest-macos
+          target-server: nightly.kvirc.net
+          remote-user: ${{secrets.NIGHTLY_SFTP_USER}}
+          private-ssh-key: ${{secrets.NIGHTLY_SFTP_KEY}}
+          destination-path: x/
+          rsync-options: "--archive --verbose --compress --human-readable --progress --delete-after --exclude=* --include=*.dmg --include=latest-macos"
