@@ -83,10 +83,14 @@ jobs:
           NIGHTLY_SFTP_KEY: ${{secrets.NIGHTLY_SFTP_KEY}}
         run: |
           brew install lftp
-          echo "$NIGHTLY_SFTP_KEY" > ~/.ssh/id_rsa
+          echo "$NIGHTLY_SFTP_KEY" > ~/.ssh/upload.key
           echo 'nightly.kvirc.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPWXPg8wxcaZqGLfFpS+TxkterxB4luo8e/bxh33poGQ' >> ~/.ssh/known_hosts
-          chmod 600 ~/.ssh/id_rsa ~/.ssh/known_hosts
+          echo '' >> ~/.ssh/config
+          echo 'Host nightly.kvirc.net'
+          echo 'User ${{secrets.NIGHTLY_SFTP_USER}}' >> ~/.ssh/config
+          echo 'IdentityFile ~/.ssh/upload.key'
+          chmod 600 ~/.ssh/upload.key ~/.ssh/known_hosts ~/.ssh/config
           mkdir upload-area
           echo '{"bin": "${{ env.dmg_name }}.dmg", "size":' $(wc -c <"${{ env.dmg_name }}.dmg") '}' > upload-area/latest-macos
           mv *.dmg upload-area/
-          lftp -c "connect -u ${{secrets.NIGHTLY_SFTP_USER}} sftp://nightly.kvirc.net; mirror -R upload-area x/"
+          lftp -c "connect sftp://nightly.kvirc.net; mirror -R upload-area x/"
