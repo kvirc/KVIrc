@@ -77,21 +77,18 @@ jobs:
           name: ${{ env.dmg_name }}
           path: ${{ env.dmg_name }}.dmg
 
-      - name: Prepare for nightly
+      - name: Upload to nightly
         shell: bash
+        env:
+          NIGHTLY_SFTP_KEY: ${{secrets.NIGHTLY_SFTP_KEY}}
         run: |
+          brew install lftp
+          mkdir ~/.ssh
+          chmod 700 ~/.ssh
+          echo "$NIGHTLY_SFTP_KEY" > ~/.ssh/id_rsa
+          echo 'nightly.kvirc.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPWXPg8wxcaZqGLfFpS+TxkterxB4luo8e/bxh33poGQ' > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/id_rsa ~/.ssh/known_hosts
           mkdir upload-area
           mv *.dmg upload-area/
           echo '{"bin": "${{ env.dmg_name }}.dmg", "size":' $(wc -c <"${{ env.dmg_name }}.dmg") '}' > upload-area/latest-macos
-
-      - name: Upload to nightly
-        if: ${{ github.repository == 'kvirc/KVIrc' && github.event_name == 'push' }}
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-          server: nightly.kvirc.net
-          username: ${{secrets.NIGHTLY_SFTP_USER}}
-          ssh_private_key: ${{secrets.NIGHTLY_SFTP_KEY}}
-          local_path: upload-area/
-          remote_path: x/
-          sftp_only: true
-          sftpArgs: '-o ConnectTimeout=5'
+          lftp -c "connect -u ${{secrets.NIGHTLY_SFTP_USER}} sftp://nightly.kvirc.net; mirror -R upload-area x/"
