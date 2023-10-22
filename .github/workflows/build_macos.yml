@@ -86,9 +86,9 @@ jobs:
           echo "$NIGHTLY_SFTP_KEY" > ~/.ssh/upload.key
           echo 'nightly.kvirc.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPWXPg8wxcaZqGLfFpS+TxkterxB4luo8e/bxh33poGQ' >> ~/.ssh/known_hosts
           echo '' >> ~/.ssh/config
-          echo 'Host nightly.kvirc.net'
+          echo 'Host nightly.kvirc.net' >> ~/.ssh/config
           echo 'User ${{secrets.NIGHTLY_SFTP_USER}}' >> ~/.ssh/config
-          echo 'IdentityFile ~/.ssh/upload.key'
+          echo 'IdentityFile ~/.ssh/upload.key' >> ~/.ssh/config
           chmod 600 ~/.ssh/upload.key ~/.ssh/known_hosts ~/.ssh/config
           mkdir upload-area
           echo '{"bin": "${{ env.dmg_name }}.dmg", "size":' $(wc -c <"${{ env.dmg_name }}.dmg") '}' > upload-area/latest-macos
