@@ -57,7 +57,7 @@ jobs:
           cd '${{github.workspace}}'
           kvi_version=$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')
           git_desc=$(git describe --always)
-          echo "dmg_name=KVIrc-$kvi_version-dev-$git_desc" >> "$GITHUB_ENV"
+          echo "dmg_name=KVIrc-$kvi_version-dev-$(date +%F)-git-$git_desc" >> "$GITHUB_ENV"
 
       - name: Create DMG
         shell: bash
