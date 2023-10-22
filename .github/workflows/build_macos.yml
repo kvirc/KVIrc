@@ -93,4 +93,4 @@ jobs:
           mkdir upload-area
           echo '{"bin": "${{ env.dmg_name }}.dmg", "size":' $(wc -c <"${{ env.dmg_name }}.dmg") '}' > upload-area/latest-macos
           mv *.dmg upload-area/
-          lftp -c "connect sftp://nightly.kvirc.net; mirror -R upload-area x/"
+          lftp -c "connect sftp://nightly.kvirc.net; mirror -R upload-area x"
