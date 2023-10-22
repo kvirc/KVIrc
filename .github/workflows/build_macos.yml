@@ -80,14 +80,18 @@ jobs:
       - name: Prepare for nightly
         shell: bash
         run: |
-          echo '{"bin": "${{ env.dmg_name }}.dmg", "size":' $(wc -c <"${{ env.dmg_name }}.dmg") '}' > latest-macos
+          mkdir upload-area
+          mv *.dmg upload-area/
+          echo '{"bin": "${{ env.dmg_name }}.dmg", "size":' $(wc -c <"${{ env.dmg_name }}.dmg") '}' > upload-area/latest-macos
 
       - name: Upload to nightly
         if: ${{ github.repository == 'kvirc/KVIrc' && github.event_name == 'push' }}
-        uses: SamKirkland/web-deploy@v1
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          target-server: nightly.kvirc.net
-          remote-user: ${{secrets.NIGHTLY_SFTP_USER}}
-          private-ssh-key: ${{secrets.NIGHTLY_SFTP_KEY}}
-          destination-path: x/
-          rsync-options: "--archive --verbose --compress --human-readable --progress --exclude=* --include=*.dmg --include=latest-macos"
+          server: nightly.kvirc.net
+          username: ${{secrets.NIGHTLY_SFTP_USER}}
+          ssh_private_key: ${{secrets.NIGHTLY_SFTP_KEY}}
+          local_path: upload-area/
+          remote_path: x/
+          sftp_only: true
+          sftpArgs: '-o ConnectTimeout=5'
