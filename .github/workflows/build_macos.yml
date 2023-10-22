@@ -90,4 +90,4 @@ jobs:
           remote-user: ${{secrets.NIGHTLY_SFTP_USER}}
           private-ssh-key: ${{secrets.NIGHTLY_SFTP_KEY}}
           destination-path: x/
-          rsync-options: "--archive --verbose --compress --human-readable --progress --delete-after --exclude=* --include=*.dmg --include=latest-macos"
+          rsync-options: "--archive --verbose --compress --human-readable --progress --exclude=* --include=*.dmg --include=latest-macos"
