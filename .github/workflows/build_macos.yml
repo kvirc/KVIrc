@@ -83,8 +83,7 @@ jobs:
           NIGHTLY_SFTP_KEY: ${{secrets.NIGHTLY_SFTP_KEY}}
         run: |
           brew install lftp
-          mkdir ~/.ssh
-          chmod 700 ~/.ssh
+          ls -l ~/.ssh
           echo "$NIGHTLY_SFTP_KEY" > ~/.ssh/id_rsa
           echo 'nightly.kvirc.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPWXPg8wxcaZqGLfFpS+TxkterxB4luo8e/bxh33poGQ' > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/id_rsa ~/.ssh/known_hosts
