@@ -89,7 +89,7 @@ jobs:
           server: nightly.kvirc.net
           username: ${{secrets.NIGHTLY_SFTP_USER}}
           key: ${{secrets.NIGHTLY_SFTP_KEY}}
-          uploads: uploads: |
+          uploads: |
             . => ./x/
           ignore: |
             !*.dmg
