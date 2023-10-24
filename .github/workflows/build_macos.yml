@@ -57,7 +57,7 @@ jobs:
           cd '${{github.workspace}}'
           kvi_version=$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')
           git_desc=$(git describe --always)
-          echo "dmg_name=KVIrc-$kvi_version-dev-$git_desc" >> "$GITHUB_ENV"
+          echo "dmg_name=KVIrc-$kvi_version-dev-$(date +%F)-git-$git_desc" >> "$GITHUB_ENV"
 
       - name: Create DMG
         shell: bash
@@ -74,23 +74,5 @@ jobs:
       - name: Publish artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.dmg_name }}
+          name: ${{ env.dmg_name }}.dmg
           path: ${{ env.dmg_name }}.dmg
-
-      - name: Upload to nightly
-        shell: bash
-        env:
-          NIGHTLY_SFTP_KEY: ${{secrets.NIGHTLY_SFTP_KEY}}
-        run: |
-          brew install lftp
-          echo "$NIGHTLY_SFTP_KEY" > ~/.ssh/upload.key
-          echo 'nightly.kvirc.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPWXPg8wxcaZqGLfFpS+TxkterxB4luo8e/bxh33poGQ' >> ~/.ssh/known_hosts
-          echo '' >> ~/.ssh/config
-          echo 'Host nightly.kvirc.net' >> ~/.ssh/config
-          echo 'User ${{secrets.NIGHTLY_SFTP_USER}}' >> ~/.ssh/config
-          echo 'IdentityFile ~/.ssh/upload.key' >> ~/.ssh/config
-          chmod 600 ~/.ssh/upload.key ~/.ssh/known_hosts ~/.ssh/config
-          mkdir upload-area
-          echo '{"bin": "${{ env.dmg_name }}.dmg", "size":' $(wc -c <"${{ env.dmg_name }}.dmg") '}' > upload-area/latest-macos
-          mv *.dmg upload-area/
-          lftp -c "connect sftp://nightly.kvirc.net; mirror -R upload-area x"
