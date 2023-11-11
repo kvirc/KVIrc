@@ -73,8 +73,8 @@ class KviInputEditorSpellCheckerBlock
 {
 public:
 	QString szText;
-	int iStart;
-	int iLength;
+	qsizetype iStart;
+	qsizetype iLength;
 	bool bSpellCheckable;
 	bool bCorrect;
 };
@@ -975,8 +975,8 @@ protected:
 	QVariant inputMethodQuery(Qt::InputMethodQuery query) const override;
 	void paintEvent(QPaintEvent * e) override;
 	bool checkWordSpelling(const QString & szWord);
-	void splitTextIntoSpellCheckerBlocks(const QString & szText, std::vector<KviInputEditorSpellCheckerBlock *> & lBuffer);
-	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(std::vector<KviInputEditorSpellCheckerBlock *> & lBlocks);
+	void splitTextIntoSpellCheckerBlocks(const QString & szText, std::vector<KviInputEditorSpellCheckerBlock> & lBuffer);
+	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(std::vector<KviInputEditorSpellCheckerBlock> & lBlocks);
 	void fillSpellCheckerCorrectionsPopup();
 
 	void rebuildTextBlocks();
