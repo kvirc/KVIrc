@@ -45,7 +45,7 @@ KviThemedLabel::KviThemedLabel(QWidget * par, KviWindow * pWindow, const char * 
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
-	setMargin(4);
+	setMargin(0);
 	setAutoFillBackground(false);
 	applyOptions();
 }
@@ -61,7 +61,7 @@ void KviThemedLabel::applyOptions()
 	bool bIsTrasparent = false;
 #endif
 
-	QString szStyle = QString("QLabel { background: %1; background-clip: content; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
+	QString szStyle = QString("QLabel { background: %1; background-clip: content; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6; margin-left: 4px; margin-right: 4px;}")
 	                      .arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
 	                      .arg(bIsTrasparent ? getMircColor(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
 	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).family())

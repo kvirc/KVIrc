@@ -101,6 +101,7 @@ public:
 	* \return KviInputEditor
 	*/
 	KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView * pView = nullptr);
+	KviInputEditor(QWidget * pPar, QWidget * pInputParent, KviWindow * pWnd, KviUserListView * pView = nullptr);
 
 	/**
 	* \brief Destroys the Input editor object

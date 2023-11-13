@@ -139,6 +139,11 @@ public:
 };
 
 KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView * pView)
+    : KviInputEditor(pPar, pPar, pWnd, pView)
+{
+}
+
+KviInputEditor::KviInputEditor(QWidget * pPar, QWidget * pInputParent, KviWindow * pWnd, KviUserListView * pView)
     : QWidget(pPar)
 {
 	m_p = new KviInputEditorPrivate();
@@ -150,7 +155,7 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	setObjectName("input_widget");
 
 	m_pIconMenu = nullptr;
-	m_pInputParent = pPar;
+	m_pInputParent = pInputParent;
 	m_iMaxBufferSize = KVI_INPUT_MAX_BUFFER_SIZE;
 	m_iCursorPosition = 0;       //Index of the char AFTER the cursor
 	m_iSpellCheckPosition = 0;   //Index of the char where spell checking is occuring

@@ -36,9 +36,11 @@
 class KviChannelWindow;
 class KviIrcConnection;
 class KviThemedLabel;
+class KviTalHBox;
 class QComboBox;
 class QMenu;
 class QPushButton;
+class QStackedWidget;
 
 class KVIRC_API KviTopicListBoxItemDelegate : public KviTalIconAndRichTextItemDelegate
 {
@@ -83,6 +85,8 @@ private:
 	QMenu * m_pContextPopup;
 	QAbstractItemDelegate * m_pItemDelegate;
 	KviThemedLabel * m_pLabel;
+	KviTalHBox * m_pInputBox;
+	QStackedWidget * m_pLabelAndInputBoxStack;
 	KviInputEditor * m_pInput;
 	KviTalListWidget * m_pCompletionBox;
 	KviChannelWindow * m_pKviChannelWindow;
