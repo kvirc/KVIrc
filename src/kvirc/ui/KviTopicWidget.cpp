@@ -184,6 +184,22 @@ void KviTopicWidget::applyOptions()
 	m_pLabel->setText(KviHtmlGenerator::convertToHtml(m_szTopic, true));
 }
 
+static bool isKviControlCode(unsigned short c)
+{
+	switch (c) {
+	case KviControlCodes::Color:
+	case KviControlCodes::Bold:
+	case KviControlCodes::Italic:
+	case KviControlCodes::Underline:
+	case KviControlCodes::Reverse:
+	case KviControlCodes::Reset:
+	case KviControlCodes::Icon:
+		return true;
+	default:
+		return false;
+	}
+}
+
 void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette & cg, const QRect & rect)
 {
 	QFontMetrics fm(p->fontMetrics());
@@ -202,15 +218,17 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 
 	while((idx < (unsigned int)text.length()) && (curX < maxX))
 	{
-		unsigned short c = text[(int)idx].unicode();
-
+		unsigned short c;
 		unsigned int start = idx;
 
-		while((idx < (unsigned int)text.length()) && (c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Italic) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Icon))
+		do
 		{
-			idx++;
 			c = text[(int)idx].unicode();
-		}
+			if (isKviControlCode(c))
+				break;
+
+			idx++;
+		} while((idx < (unsigned int)text.length()));
 
 		int len = idx - start;
 		int wdth;
