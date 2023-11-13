@@ -355,16 +355,10 @@ bool KviInputEditor::checkWordSpelling(const QString & szWord)
 #define ADD_SPELLCHECKER_BLOCK(_lBuffer, _szText, _iStart, _bSpellCheckable, _bCorrect)   \
 	do                                                                                    \
 	{                                                                                     \
-		KviInputEditorSpellCheckerBlock * pBlock = new KviInputEditorSpellCheckerBlock(); \
-		pBlock->szText = _szText;                                                         \
-		pBlock->iStart = _iStart;                                                         \
-		pBlock->iLength = pBlock->szText.length();                                        \
-		pBlock->bSpellCheckable = _bSpellCheckable;                                       \
-		pBlock->bCorrect = _bCorrect;                                                     \
-		_lBuffer.push_back(pBlock);                                                       \
+		_lBuffer.push_back({_szText, _iStart, _szText.length(), _bSpellCheckable, _bCorrect}); \
 	} while(0)
 
-void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, std::vector<KviInputEditorSpellCheckerBlock *> & lBuffer)
+void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, std::vector<KviInputEditorSpellCheckerBlock> & lBuffer)
 {
 #ifdef COMPILE_ENCHANT_SUPPORT
 	if(szText.isEmpty())
@@ -521,7 +515,7 @@ void KviInputEditor::rebuildTextBlocks()
 	qDeleteAll(m_p->lTextBlocks);
 	m_p->lTextBlocks.clear();
 
-	std::vector<KviInputEditorSpellCheckerBlock *> lSpellCheckerBlocks;
+	std::vector<KviInputEditorSpellCheckerBlock> lSpellCheckerBlocks;
 
 #ifdef COMPILE_ENCHANT_SUPPORT
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lSpellCheckerBlocks);
@@ -547,16 +541,16 @@ void KviInputEditor::rebuildTextBlocks()
 
 	KviInputEditorTextBlock * pBlock;
 
-	for(auto spb : lSpellCheckerBlocks)
+	for(auto& spb : lSpellCheckerBlocks)
 	{
-		if(spb->bSpellCheckable && !spb->bCorrect)
+		if(spb.bSpellCheckable && !spb.bCorrect)
 			uFlags |= KviInputEditorTextBlock::IsSpellingMistake;
 		else
 			uFlags &= ~KviInputEditorTextBlock::IsSpellingMistake;
 
-		const QChar * pBuffer = spb->szText.unicode();
+		const QChar * pBuffer = spb.szText.unicode();
 		const QChar * p = pBuffer;
-		const QChar * e = p + spb->szText.length();
+		const QChar * e = p + spb.szText.length();
 
 		while(p < e)
 		{
@@ -628,7 +622,7 @@ void KviInputEditor::rebuildTextBlocks()
 					{
 						unsigned char uFore;
 						unsigned char uBack;
-						/* int iNextChar = */ KviControlCodes::getUnicodeColorBytes(spb->szText, p - spb->szText.unicode(), &uFore, &uBack);
+						/* int iNextChar = */ KviControlCodes::getUnicodeColorBytes(spb.szText, p - spb.szText.unicode(), &uFore, &uBack);
 						if(uFore != KviControlCodes::NoChange)
 						{
 							uCurFore = uFore;
@@ -1148,7 +1142,7 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 #ifdef COMPILE_ENCHANT_SUPPORT
 	// check if the cursor is in a spell-checkable block
 
-	std::vector<KviInputEditorSpellCheckerBlock *> lBuffer;
+	std::vector<KviInputEditorSpellCheckerBlock> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lBuffer);
 
 	m_iSpellCheckPosition = qMin(charIndexFromXPosition(pos.x()), m_szTextBuffer.length());
@@ -1196,15 +1190,15 @@ void KviInputEditor::showContextPopupHere()
 	showContextPopup(QPoint(fXPos, iBottom));
 }
 
-KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(std::vector<KviInputEditorSpellCheckerBlock *> & lBlocks)
+KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(std::vector<KviInputEditorSpellCheckerBlock> & lBlocks)
 {
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = nullptr;
 
-	for(auto pBlock : lBlocks)
+	for(auto& block : lBlocks)
 	{
-		if(m_iSpellCheckPosition <= (pBlock->iStart + pBlock->iLength))
+		if(m_iSpellCheckPosition <= (block.iStart + block.iLength))
 		{
-			pCurrentBlock = pBlock;
+			pCurrentBlock = &block;
 			break;
 		}
 	}
@@ -1227,7 +1221,7 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 #ifdef COMPILE_ENCHANT_SUPPORT
 	// check if the cursor is in a spellcheckable block
 
-	std::vector<KviInputEditorSpellCheckerBlock *> lBuffer;
+	std::vector<KviInputEditorSpellCheckerBlock> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lBuffer);
 
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
@@ -1310,7 +1304,7 @@ void KviInputEditor::spellCheckerPopupCorrectionActionTriggered()
 	if(szWord.isEmpty())
 		return;
 
-	std::vector<KviInputEditorSpellCheckerBlock *> lBuffer;
+	std::vector<KviInputEditorSpellCheckerBlock> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lBuffer);
 
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
