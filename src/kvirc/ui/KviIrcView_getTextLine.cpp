@@ -584,7 +584,6 @@ found_tab:
 			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr);
 			NEW_LINE_CHUNK(KviControlCodes::ArbitraryBreak);
 			data_ptr = p;
-			p++;
 		break;
 		case '\r':
 #ifdef COMPILE_USE_DYNAMIC_LABELS
