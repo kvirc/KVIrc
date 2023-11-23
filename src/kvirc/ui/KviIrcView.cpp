@@ -1684,6 +1684,8 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 // The IrcView : calculate line wraps
 //
 
+#define IRCVIEW_ISHIGHSURROGATE(c) ((c).unicode() >= 0xD800 && (c).unicode() <= 0xDBFF)
+#define IRCVIEW_ISLOWSURROGATE(c) ((c).unicode() >= 0xDC00 && (c).unicode() <= 0xDFFF)
 #define IRCVIEW_WCHARWIDTH(c) (((c).unicode() < 0xff) ? m_iFontCharacterWidth[(c).unicode()] : m_pFm->horizontalAdvance(c))
 
 void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
@@ -1730,9 +1732,17 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 			while(curBlockLen < maxBlockLen)
 			{
 				// FIXME: this is ugly :/
-				curBlockWidth += IRCVIEW_WCHARWIDTH(*p);
-				curBlockLen++;
-				p++;
+				if(IRCVIEW_ISHIGHSURROGATE(*p) && curBlockLen < maxBlockLen - 1)
+				{
+					// extract and calculate width of both chars together
+					curBlockWidth += m_pFm->horizontalAdvance(QString(p, 2));
+					curBlockLen += 2;
+					p += 2;
+				} else {
+					curBlockWidth += IRCVIEW_WCHARWIDTH(*p);
+					curBlockLen++;
+					p++;
+				}
 			}
 		}
 
@@ -1768,7 +1778,15 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 		{
 			p--;
 			curBlockLen--;
-			curLineWidth -= IRCVIEW_WCHARWIDTH(*p);
+			if(IRCVIEW_ISLOWSURROGATE(*p) && curBlockLen > 0)
+			{
+				// avoid splitting in the middle of a surrogate pair
+				p--;
+				curBlockLen--;
+				curLineWidth -= m_pFm->horizontalAdvance(QString(p, 2));
+			} else {
+				curLineWidth -= IRCVIEW_WCHARWIDTH(*p);
+			}
 		}
 
 		// Now look for a space (or a tabulation)
@@ -1776,7 +1794,15 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 		{
 			p--;
 			curBlockLen--;
-			curLineWidth -= IRCVIEW_WCHARWIDTH(*p);
+			if(IRCVIEW_ISLOWSURROGATE(*p) && curBlockLen > 0)
+			{
+				// avoid splitting in the middle of a surrogate pair
+				p--;
+				curBlockLen--;
+				curLineWidth -= m_pFm->horizontalAdvance(QString(p, 2));
+			} else {
+				curLineWidth -= IRCVIEW_WCHARWIDTH(*p);
+			}
 		}
 
 		if(curBlockLen == 0)
@@ -1805,16 +1831,31 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 				uint uLoopedChars = 0;
 				do
 				{
-					curBlockLen++;
 					p++;
-					curLineWidth += IRCVIEW_WCHARWIDTH(*p);
+					curBlockLen++;
 					uLoopedChars++;
+					if(IRCVIEW_ISHIGHSURROGATE(*p) && curBlockLen < maxBlockLen - 1)
+					{
+						// extract and calculate width of both chars together
+						curLineWidth += m_pFm->horizontalAdvance(QString(p, 2));
+						// add the second char
+						p++;
+						curBlockLen++;
+					} else {
+						curLineWidth += IRCVIEW_WCHARWIDTH(*p);
+					}
 				} while((curLineWidth < maxWidth) && (curBlockLen < maxBlockLen));
 				// Now overrun, go back 1 char (if we ran over at least 2 chars)
 				if(uLoopedChars > 1)
 				{
 					p--;
 					curBlockLen--;
+					if(IRCVIEW_ISLOWSURROGATE(*p) && curBlockLen > 0)
+					{
+						// avoid splitting in the middle of a surrogate pair
+						p--;
+						curBlockLen--;
+					}
 				}
 			}
 			//K...wrap
@@ -1937,15 +1978,35 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line, int bufIndex)
 			m_pWrappedBlockSelectionInfo->part_2_width = 0;
 			for(int i = 0; i < m_pWrappedBlockSelectionInfo->part_1_length; i++)
 			{
-				int www = IRCVIEW_WCHARWIDTH(*p);
+				int www;
+				if(IRCVIEW_ISHIGHSURROGATE(*p) && i < m_pWrappedBlockSelectionInfo->part_1_length - 1)
+				{
+					// extract and calculate width of both chars together
+					www = m_pFm->horizontalAdvance(QString(p, 2));
+					p += 2;
+					i++;
+				} else {
+					www = IRCVIEW_WCHARWIDTH(*p);
+					p++;
+				}
+
 				m_pWrappedBlockSelectionInfo->part_1_width += www;
-				p++;
 			}
 			for(int i = 0; i < m_pWrappedBlockSelectionInfo->part_2_length; i++)
 			{
-				int www = IRCVIEW_WCHARWIDTH(*p);
+				int www;
+				if(IRCVIEW_ISHIGHSURROGATE(*p) && i < m_pWrappedBlockSelectionInfo->part_2_length - 1)
+				{
+					// extract and calculate width of both chars together
+					www = m_pFm->horizontalAdvance(QString(p, 2));
+					p += 2;
+					i++;
+				} else {
+					www = IRCVIEW_WCHARWIDTH(*p);
+					p++;
+				}
+
 				m_pWrappedBlockSelectionInfo->part_2_width += www;
-				p++;
 			}
 			m_pWrappedBlockSelectionInfo->part_3_width = line->pBlocks[bufIndex].block_width - m_pWrappedBlockSelectionInfo->part_1_width - m_pWrappedBlockSelectionInfo->part_2_width;
 			return true;
@@ -1959,9 +2020,19 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line, int bufIndex)
 			m_pWrappedBlockSelectionInfo->part_1_width = 0;
 			for(int i = 0; i < m_pWrappedBlockSelectionInfo->part_1_length; i++)
 			{
-				int www = IRCVIEW_WCHARWIDTH(*p);
+				int www;
+				if(IRCVIEW_ISHIGHSURROGATE(*p) && i < m_pWrappedBlockSelectionInfo->part_1_length - 1)
+				{
+					// extract and calculate width of both chars together
+					www = m_pFm->horizontalAdvance(QString(p, 2));
+					p += 2;
+					i++;
+				} else {
+					www = IRCVIEW_WCHARWIDTH(*p);
+					p++;
+				}
+
 				m_pWrappedBlockSelectionInfo->part_1_width += www;
-				p++;
 			}
 			m_pWrappedBlockSelectionInfo->part_2_length = line->pBlocks[bufIndex].block_len - m_pWrappedBlockSelectionInfo->part_1_length;
 			m_pWrappedBlockSelectionInfo->part_2_width = line->pBlocks[bufIndex].block_width - m_pWrappedBlockSelectionInfo->part_1_width;
@@ -1976,9 +2047,19 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line, int bufIndex)
 			m_pWrappedBlockSelectionInfo->part_1_width = 0;
 			for(int i = 0; i < m_pWrappedBlockSelectionInfo->part_1_length; i++)
 			{
-				int www = IRCVIEW_WCHARWIDTH(*p);
+				int www;
+				if(IRCVIEW_ISHIGHSURROGATE(*p) && i < m_pWrappedBlockSelectionInfo->part_1_length - 1)
+				{
+					// extract and calculate width of both chars together
+					www = m_pFm->horizontalAdvance(QString(p, 2));
+					p += 2;
+					i++;
+				} else {
+					www = IRCVIEW_WCHARWIDTH(*p);
+					p++;
+				}
+
 				m_pWrappedBlockSelectionInfo->part_1_width += www;
-				p++;
 			}
 			m_pWrappedBlockSelectionInfo->part_2_length = line->pBlocks[bufIndex].block_len - m_pWrappedBlockSelectionInfo->part_1_length;
 			m_pWrappedBlockSelectionInfo->part_2_width = line->pBlocks[bufIndex].block_width - m_pWrappedBlockSelectionInfo->part_1_width;
@@ -2020,9 +2101,19 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line, int bufIndex)
 			m_pWrappedBlockSelectionInfo->part_1_width = 0;
 			for(int i = 0; i < m_pWrappedBlockSelectionInfo->part_1_length; i++)
 			{
-				int www = IRCVIEW_WCHARWIDTH(*p);
+				int www;
+				if(IRCVIEW_ISHIGHSURROGATE(*p) && i < m_pWrappedBlockSelectionInfo->part_1_length - 1)
+				{
+					// extract and calculate width of both chars together
+					www = m_pFm->horizontalAdvance(QString(p, 2));
+					p += 2;
+					i++;
+				} else {
+					www = IRCVIEW_WCHARWIDTH(*p);
+					p++;
+				}
+
 				m_pWrappedBlockSelectionInfo->part_1_width += www;
-				p++;
 			}
 			m_pWrappedBlockSelectionInfo->part_2_length = line->pBlocks[bufIndex].block_len - m_pWrappedBlockSelectionInfo->part_1_length;
 			m_pWrappedBlockSelectionInfo->part_2_width = line->pBlocks[bufIndex].block_width - m_pWrappedBlockSelectionInfo->part_1_width;
@@ -2065,9 +2156,19 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line, int bufIndex)
 			m_pWrappedBlockSelectionInfo->part_1_width = 0;
 			for(int i = 0; i < m_pWrappedBlockSelectionInfo->part_1_length; i++)
 			{
-				int www = IRCVIEW_WCHARWIDTH(*p);
+				int www;
+				if(IRCVIEW_ISHIGHSURROGATE(*p) && i < m_pWrappedBlockSelectionInfo->part_1_length - 1)
+				{
+					// extract and calculate width of both chars together
+					www = m_pFm->horizontalAdvance(QString(p, 2));
+					p += 2;
+					i++;
+				} else {
+					www = IRCVIEW_WCHARWIDTH(*p);
+					p++;
+				}
+
 				m_pWrappedBlockSelectionInfo->part_1_width += www;
-				p++;
 			}
 			m_pWrappedBlockSelectionInfo->part_2_length = line->pBlocks[bufIndex].block_len - m_pWrappedBlockSelectionInfo->part_1_length;
 			m_pWrappedBlockSelectionInfo->part_2_width = line->pBlocks[bufIndex].block_width - m_pWrappedBlockSelectionInfo->part_1_width;
@@ -2662,7 +2763,7 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 					oldIndex = retValue; oldLeft = iLeft;
 
 					curChar = l->szText.at(l->pBlocks[i].block_start + retValue);
-					if (curChar.unicode() >= 0xD800 && curChar.unicode() <= 0xDC00) // Surrogate pair
+					if (IRCVIEW_ISHIGHSURROGATE(curChar)) // Surrogate pair
 					{
 						iLeft += m_pFm->horizontalAdvance(l->szText.mid(retValue), 2);
 						retValue+=2;
