@@ -1748,6 +1748,9 @@ void KviInputEditor::focusOutEvent(QFocusEvent * e)
 	e->accept();
 }
 
+#define INPUT_ISHIGHSURROGATE(c) ((c).unicode() >= 0xD800 && (c).unicode() <= 0xDBFF)
+#define INPUT_ISLOWSURROGATE(c) ((c).unicode() >= 0xDC00 && (c).unicode() <= 0xDFFF)
+
 void KviInputEditor::internalCursorRight(bool bShift)
 {
 	if(m_iCursorPosition >= ((int)(m_szTextBuffer.length())))
@@ -1757,34 +1760,42 @@ void KviInputEditor::internalCursorRight(bool bShift)
 		return;
 	}
 
+	int iNewCursorPosition = m_iCursorPosition;
+	if(INPUT_ISHIGHSURROGATE(m_szTextBuffer.at(iNewCursorPosition)))
+	{
+		// avoid to position the cursor in the middle of a surrogate pair
+		iNewCursorPosition += 2;
+	} else {
+		iNewCursorPosition++;
+	}
+
 	//Grow the selection if needed
 	if(bShift)
 	{
 		if((m_iSelectionBegin != -1) && (m_iSelectionEnd != -1))
 		{
 			if(m_iSelectionEnd <= m_iCursorPosition)
-				m_iSelectionEnd = m_iCursorPosition + 1;
+				m_iSelectionEnd = iNewCursorPosition;
 			else if(m_iSelectionBegin >= m_iCursorPosition)
-				m_iSelectionBegin = m_iCursorPosition + 1;
+				m_iSelectionBegin = iNewCursorPosition;
 			else
 			{
 				m_iSelectionBegin = m_iCursorPosition;
-				m_iSelectionEnd = m_iCursorPosition + 1;
+				m_iSelectionEnd = iNewCursorPosition;
 			}
 		}
 		else
 		{
 			m_iSelectionBegin = m_iCursorPosition;
-			m_iSelectionEnd = m_iCursorPosition + 1;
+			m_iSelectionEnd = iNewCursorPosition;
 		}
-		m_iCursorPosition++;
 	}
 	else
 	{
-		m_iCursorPosition++;
 		clearSelection();
 	}
 
+	m_iCursorPosition = iNewCursorPosition;
 	m_p->bTextBlocksDirty = true;
 	ensureCursorVisible();
 }
@@ -1798,33 +1809,39 @@ void KviInputEditor::internalCursorLeft(bool bShift)
 		return;
 	}
 
+	int iNewCursorPosition = m_iCursorPosition - 1;
+	if(INPUT_ISLOWSURROGATE(m_szTextBuffer.at(iNewCursorPosition)))
+	{
+		// avoid to position the cursor in the middle of a surrogate pair
+		iNewCursorPosition--;
+	}
+
 	if(bShift)
 	{
 		if((m_iSelectionBegin != -1) && (m_iSelectionEnd != -1))
 		{
 			if(m_iSelectionBegin >= m_iCursorPosition)
-				m_iSelectionBegin = m_iCursorPosition - 1;
+				m_iSelectionBegin = iNewCursorPosition;
 			else if(m_iSelectionEnd <= m_iCursorPosition)
-				m_iSelectionEnd = m_iCursorPosition - 1;
+				m_iSelectionEnd = iNewCursorPosition;
 			else
 			{
 				m_iSelectionEnd = m_iCursorPosition;
-				m_iSelectionBegin = m_iCursorPosition - 1;
+				m_iSelectionBegin = iNewCursorPosition;
 			}
 		}
 		else
 		{
 			m_iSelectionEnd = m_iCursorPosition;
-			m_iSelectionBegin = m_iCursorPosition - 1;
+			m_iSelectionBegin = iNewCursorPosition;
 		}
-		m_iCursorPosition--;
 	}
 	else
 	{
-		m_iCursorPosition--;
 		clearSelection();
 	}
 
+	m_iCursorPosition = iNewCursorPosition;
 	m_p->bTextBlocksDirty = true;
 	ensureCursorVisible();
 }
@@ -2516,82 +2533,35 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 	if(!pBlock)
 		return iCurChar;
 
-	// This is very tricky. Qt does not provide a simple means to figure out the cursor position
-	// from an x position on the text. We use QFontMetrics::elidedText() to guess it.
-
-	// Additionally Qt::ElideNone does not work as expected (see QTBUG-40315): it just ignores clipping altogether.
-	// So we use Qt::ElideRight here but we must take into account the width of the elision
-
 	qreal fWidth = fXPos - fCurX;
-
+	qreal fCurWidth = 0, fCharWidth = 0;
 	QFontMetrics * fm = getLastFontMetrics(font());
-
-	QString szPart = fm->elidedText(pBlock->szText, Qt::ElideRight, fWidth + m_p->fFontElisionWidth);
-
-	if(szPart.endsWith(m_p->szFontElision))
-		szPart.truncate(szPart.length() - 1); // kill the elision
-
-	// OK, now we have a good starting point
-
-	qreal fPrevWidth = fm->horizontalAdvance(szPart);
 	int iBlockLength = pBlock->szText.length();
+	int iCurPosInBlock = 0;
+	const QChar * p = pBlock->szText.unicode();
 
-	if(fPrevWidth <= fWidth)
+	while(iCurPosInBlock < iBlockLength)
 	{
-		// move up adding characters
-		for(;;)
+		if(INPUT_ISHIGHSURROGATE(*p) && iCurPosInBlock < iBlockLength - 1)
 		{
-			int iPartLength = szPart.length();
-			if(iPartLength == iBlockLength)
-				return iCurChar + iBlockLength;
-
-			szPart = pBlock->szText.left(iPartLength + 1);
-
-			qreal fNextWidth = fm->horizontalAdvance(szPart);
-
-			if(fNextWidth >= fWidth)
-			{
-				// gotcha.
-				qreal fMiddle = (fPrevWidth + fNextWidth) / 2.0;
-
-				if(fWidth < fMiddle)
-					return iCurChar + iPartLength;
-
-				return iCurChar + iPartLength + 1;
-			}
-
-			fPrevWidth = fNextWidth;
-		}
-	}
-	else
-	{
-		// move down removing characters
-		for(;;)
-		{
-			int iPartLength = szPart.length();
-			if(iPartLength == 0)
-				return iCurChar;
-
-			szPart = pBlock->szText.left(iPartLength - 1);
-
-			qreal fNextWidth = fm->horizontalAdvance(szPart);
-
-			if(fNextWidth <= fWidth)
-			{
-				// gotcha.
-				qreal fMiddle = (fPrevWidth + fNextWidth) / 2.0;
-
-				if(fWidth < fMiddle)
-					return iCurChar + iPartLength - 1;
-
-				return iCurChar + iPartLength;
-			}
-
-			fPrevWidth = fNextWidth;
+			// extract and calculate width of both chars together
+			fCharWidth = fm->horizontalAdvance(QString(p, 2));
+			if(fCurWidth + fCharWidth >= fWidth)
+				break;
+			fCurWidth += fCharWidth;
+			iCurPosInBlock += 2;
+			p += 2;
+		} else {
+			fCharWidth = fm->horizontalAdvance(*p);
+			if(fCurWidth + fCharWidth >= fWidth)
+				break;
+			fCurWidth += fCharWidth;
+			iCurPosInBlock++;
+			p++;
 		}
 	}
 
-	Q_ASSERT(false); // not reached
+	return iCurChar + iCurPosInBlock;
 }
 
 qreal KviInputEditor::xPositionFromCharIndex(int iChIdx)
@@ -3328,8 +3298,16 @@ void KviInputEditor::backspaceHit()
 	else if(m_iCursorPosition > 0)
 	{
 		m_iCursorPosition--;
-		addUndo(new EditCommand(EditCommand::RemoveText, m_szTextBuffer.mid(m_iCursorPosition, 1), m_iCursorPosition));
-		m_szTextBuffer.remove(m_iCursorPosition, 1);
+		int iDeletedSize = 1;
+		if(INPUT_ISLOWSURROGATE(m_szTextBuffer.at(m_iCursorPosition)) && m_iCursorPosition > 0)
+		{
+			// avoid splitting in the middle of a surrogate pair
+			m_iCursorPosition--;
+			iDeletedSize++;
+		}
+
+		addUndo(new EditCommand(EditCommand::RemoveText, m_szTextBuffer.mid(m_iCursorPosition, iDeletedSize), m_iCursorPosition));
+		m_szTextBuffer.remove(m_iCursorPosition, iDeletedSize);
 		m_p->bTextBlocksDirty = true;
 	}
 
@@ -3351,7 +3329,13 @@ void KviInputEditor::deleteHit()
 
 	if(m_iCursorPosition < m_szTextBuffer.length())
 	{
-		m_szTextBuffer.remove(m_iCursorPosition, 1);
+		if(INPUT_ISHIGHSURROGATE(m_szTextBuffer.at(m_iCursorPosition)) && m_iCursorPosition < m_szTextBuffer.length() - 1)
+		{
+			m_szTextBuffer.remove(m_iCursorPosition, 2);
+		} else {
+			m_szTextBuffer.remove(m_iCursorPosition, 1);
+		}
+
 		m_p->bTextBlocksDirty = true;
 		clearSelection();
 		ensureCursorVisible();
