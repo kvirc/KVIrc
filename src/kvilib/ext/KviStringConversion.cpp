@@ -226,13 +226,6 @@ namespace KviStringConversion
 	void toString(const QFont & font, QString & szBuffer)
 	{
 		QString szFamily(font.family());
-		szBuffer = QString::asprintf("%s,%d,%d,%d", szFamily.toUtf8().data(), font.pointSize(), font.styleHint(),
-#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
-			font.weight()
-#else
-			font.legacyWeight()
-#endif
-		);
 		QString szOptions;
 		if(font.bold())
 			szOptions.append('b');
@@ -245,11 +238,15 @@ namespace KviStringConversion
 		if(font.fixedPitch())
 			szOptions.append('f');
 
-		if(!szOptions.isEmpty())
-		{
-			szBuffer.append(',');
-			szBuffer.append(szOptions);
-		}
+		szBuffer = QString::asprintf("%s,%d,%d,%d,%s,%s", szFamily.toUtf8().data(), font.pointSize(), font.styleHint(),
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+			font.weight(),
+#else
+			font.legacyWeight(),
+#endif
+			szOptions.toUtf8().data(),
+			font.styleName().toUtf8().data()
+		);
 	}
 
 	bool fromString(const QString & szValue, QFont & buffer)
@@ -260,6 +257,7 @@ namespace KviStringConversion
 		str.getToken(pointSize, ',');
 		str.getToken(styleHint, ',');
 		str.getToken(weight, ',');
+		str.getToken(options, ',');
 		if(!family.isEmpty())
 			buffer.setFamily(family.ptr());
 		int i;
@@ -277,11 +275,13 @@ namespace KviStringConversion
 #else
 			buffer.setLegacyWeight(i);
 #endif
-		buffer.setBold(str.contains("b"));
-		buffer.setItalic(str.contains("i"));
-		buffer.setUnderline(str.contains("u"));
-		buffer.setStrikeOut(str.contains("s"));
-		buffer.setFixedPitch(str.contains("f"));
+		buffer.setBold(options.contains("b"));
+		buffer.setItalic(options.contains("i"));
+		buffer.setUnderline(options.contains("u"));
+		buffer.setStrikeOut(options.contains("s"));
+		buffer.setFixedPitch(options.contains("f"));
+		if(!str.isEmpty())
+			buffer.setStyleName(str.ptr());
 		return true;
 	}
 
