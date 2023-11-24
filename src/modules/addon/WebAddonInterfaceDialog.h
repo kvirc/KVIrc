@@ -26,8 +26,6 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_WEBENGINE_SUPPORT
-
 #include "KviWebPackageManagementDialog.h"
 
 ///
@@ -57,7 +55,5 @@ protected:
 	virtual bool installPackage(const QString & szPath, QString & szError);
 
 }; // class WebAddonInterfaceDialog
-
-#endif //COMPILE_WEBENGINE_SUPPORT
 
 #endif //!_WebAddonInterfaceDialog_h_

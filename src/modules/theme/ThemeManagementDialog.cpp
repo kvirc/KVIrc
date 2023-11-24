@@ -23,10 +23,7 @@
 //=============================================================================
 #include "kvi_settings.h"
 
-#if defined(COMPILE_WEBENGINE_SUPPORT)
 #include "WebThemeInterfaceDialog.h"
-#endif
-
 #include "ThemeManagementDialog.h"
 #include "PackThemeDialog.h"
 #include "SaveThemeDialog.h"
@@ -113,9 +110,8 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
     : QWidget(parent)
 {
 	m_pItemDelegate = nullptr;
-#ifdef COMPILE_WEBENGINE_SUPPORT
 	m_pWebThemeInterfaceDialog = nullptr;
-#endif
+
 	setObjectName("theme_options_widget");
 	setWindowTitle(__tr2qs_ctx("Manage Themes - KVIrc", "theme"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Theme)));
@@ -144,7 +140,6 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 
 	m_pPackThemeButton = new QToolButton(pHBox);
 	m_pPackThemeButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
-
 	m_pPackThemeButton->setIconSize(QSize(32, 32));
 	m_pPackThemeButton->setToolTip(__tr2qs_ctx("Export selected themes to a distributable package", "theme"));
 	connect(m_pPackThemeButton, SIGNAL(clicked()), this, SLOT(packTheme()));
@@ -241,13 +236,11 @@ ThemeManagementDialog::~ThemeManagementDialog()
 		delete m_pItemDelegate;
 	g_rectManagementDialogGeometry = QRect(pos().x(), pos().y(), size().width(), size().height());
 	m_pInstance = nullptr;
-#ifdef COMPILE_WEBENGINE_SUPPORT
 	if(m_pWebThemeInterfaceDialog)
 	{
 		m_pWebThemeInterfaceDialog->deleteLater();
 		m_pWebThemeInterfaceDialog = nullptr;
 	}
-#endif //COMPILE_WEBENGINE_SUPPORT
 }
 
 void ThemeManagementDialog::closeClicked()
@@ -418,7 +411,6 @@ void ThemeManagementDialog::installFromFile()
 
 void ThemeManagementDialog::getMoreThemes()
 {
-#ifdef COMPILE_WEBENGINE_SUPPORT
 	if(m_pWebThemeInterfaceDialog)
 	{
 		m_pWebThemeInterfaceDialog->show();
@@ -429,18 +421,11 @@ void ThemeManagementDialog::getMoreThemes()
 		QObject::connect(m_pWebThemeInterfaceDialog, SIGNAL(destroyed()), this, SLOT(webThemeInterfaceDialogDestroyed()));
 		m_pWebThemeInterfaceDialog->show();
 	}
-#else
-	if(!g_pMainWindow)
-		return;
-	g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_OPENURL_KVIRC_THEMES);
-#endif
 }
 
 void ThemeManagementDialog::webThemeInterfaceDialogDestroyed()
 {
-#ifdef COMPILE_WEBENGINE_SUPPORT
 	m_pWebThemeInterfaceDialog = nullptr;
-#endif
 	fillThemeBox();
 }
 
