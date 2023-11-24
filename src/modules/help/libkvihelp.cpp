@@ -185,11 +185,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 		if(w)
 		{
-#ifdef COMPILE_WEBENGINE_SUPPORT
-			w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
-#else
 			w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
-#endif
 			HelpWindow * pHelpWindow = g_pHelpWindowList->first();
 			if (pHelpWindow)
 				pHelpWindow->delayedAutoRaise();
@@ -199,21 +195,13 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	if(c->switches()->find('m', "mdi"))
 	{
 		HelpWindow * w = new HelpWindow("Help browser");
-#ifdef COMPILE_WEBENGINE_SUPPORT
-		w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
-#else
 		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
-#endif
 		g_pMainWindow->addWindow(w);
 	}
 	else
 	{
 		HelpWidget * w = new HelpWidget(g_pMainWindow->splitter(), true);
-#ifdef COMPILE_WEBENGINE_SUPPORT
-		w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
-#else
 		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
-#endif
 		w->show();
 	}
 
