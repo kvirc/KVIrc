@@ -108,6 +108,7 @@ void KviWebPackageListItem::downloadIcon(const QString & szIconUrl)
 				setIcon(pixImage);
 			}
 		}
+		pReply->deleteLater();
 	});
 }
 
@@ -296,32 +297,32 @@ void KviWebPackageManagementDialog::slotDataTransferProgress(qint64 iDone, qint6
 
 void KviWebPackageManagementDialog::slotDownloadFinished()
 {
-	QNetworkReply * reply = qobject_cast<QNetworkReply *>(sender());
+	QNetworkReply * pReply = qobject_cast<QNetworkReply *>(sender());
 
 	m_pProgressBar->hide();
 	m_pProgressBar->setValue(0);
 
-	if(reply == nullptr)
+	if(pReply == nullptr)
 		return;
 
-	if(reply->error() != QNetworkReply::NoError)
+	if(pReply->error() != QNetworkReply::NoError)
 	{
 		// get http status code
-		int httpStatus = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-		KviMessageBox::information(__tr2qs("Download failed: %1").arg(reply->errorString()));
-		reply->deleteLater();
+		int httpStatus = pReply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+		KviMessageBox::information(__tr2qs("Download failed: %1").arg(pReply->errorString()));
+		pReply->deleteLater();
 		return;
 	}
 
 	// read data from reply
-	QString szUrl = reply->url().toString();
+	QString szUrl = pReply->url().toString();
 	int iIdx = szUrl.lastIndexOf("/");
 	QString szFile = szUrl.right(szUrl.length() - iIdx - 1);
 	QFile tmpFile;
 	g_pApp->getLocalKvircDirectory(m_szLocalTemporaryPath, KviApplication::Tmp, szFile);
 	tmpFile.setFileName(m_szLocalTemporaryPath);
 	tmpFile.open(QIODevice::ReadWrite);
-	tmpFile.write(reply->readAll());
+	tmpFile.write(pReply->readAll());
 	tmpFile.close();
 
 	QString szError;
@@ -336,7 +337,7 @@ void KviWebPackageManagementDialog::slotDownloadFinished()
 
 	m_bBusy = false;
 	enableDisableButtons();
-	reply->deleteLater();
+	pReply->deleteLater();
 }
 
 void KviWebPackageManagementDialog::showEvent(QShowEvent *)
