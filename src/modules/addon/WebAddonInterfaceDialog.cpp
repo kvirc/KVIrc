@@ -39,7 +39,7 @@ WebAddonInterfaceDialog::WebAddonInterfaceDialog(QWidget * par)
 {
 	setWindowTitle(__tr2qs_ctx("Download Addons - KVIrc", "theme"));
 
-	setPackagePageUrl("http://127.0.0.1/kvirc-addons/");
+	setPackagePageUrl("https://kvirc.github.io/kvirc-addons/");
 }
 
 WebAddonInterfaceDialog::~WebAddonInterfaceDialog()

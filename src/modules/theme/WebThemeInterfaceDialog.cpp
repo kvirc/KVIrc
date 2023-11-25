@@ -46,7 +46,7 @@ WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
 	g_pApp->getGlobalKvircDirectory(m_szGlobalThemesPath, KviApplication::Themes);
 	m_szGlobalThemesPath += KVI_PATH_SEPARATOR_CHAR;
 
-	setPackagePageUrl("http://127.0.0.1/kvirc-themes/");
+	setPackagePageUrl("https://kvirc.github.io/kvirc-themes/");
 }
 WebThemeInterfaceDialog::~WebThemeInterfaceDialog()
     = default;
