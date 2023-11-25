@@ -114,8 +114,8 @@ void KviWebPackageListItem::downloadIcon(const QString & szIconUrl)
 void KviWebPackageListItem::showPopupImage()
 {
 	QDialog dlg;
-	QHBoxLayout *l = new QHBoxLayout(&dlg);
-	QLabel *label = new QLabel;
+	QHBoxLayout * l = new QHBoxLayout(&dlg);
+	QLabel * label = new QLabel;
 	l->addWidget(label);
 	label->setPixmap(icon().pixmap(800, 600));
 	dlg.exec();
@@ -167,7 +167,7 @@ KviWebPackageManagementDialog::KviWebPackageManagementDialog(QWidget * pParent)
 
 	m_pListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pListWidget->setSortingEnabled(true);
-	//connect(m_pListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(applyTheme(QListWidgetItem *)));
+	// connect(m_pListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(applyTheme(QListWidgetItem *)));
 
 	connect(m_pListWidget, SIGNAL(customContextMenuRequested(const QPoint &)),
 	    this, SLOT(contextMenuRequested(const QPoint &)));
@@ -244,7 +244,8 @@ void KviWebPackageManagementDialog::contextMenuRequested(const QPoint & pos)
 	m_pListWidget->setCurrentItem(pItem);
 	m_pContextPopup->clear();
 
-	if(!pItem->icon().isNull()) {
+	if(!pItem->icon().isNull())
+	{
 		m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Canvas)), __tr2qs("Show Preview"), pItem, SLOT(showPopupImage()));
 	}
 
@@ -305,14 +306,14 @@ void KviWebPackageManagementDialog::slotDownloadFinished()
 
 	if(reply->error() != QNetworkReply::NoError)
 	{
-		//get http status code
+		// get http status code
 		int httpStatus = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
 		KviMessageBox::information(__tr2qs("Download failed: %1").arg(reply->errorString()));
 		reply->deleteLater();
 		return;
 	}
 
-	//read data from reply
+	// read data from reply
 	QString szUrl = reply->url().toString();
 	int iIdx = szUrl.lastIndexOf("/");
 	QString szFile = szUrl.right(szUrl.length() - iIdx - 1);
