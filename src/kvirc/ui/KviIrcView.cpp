@@ -2765,7 +2765,7 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 					curChar = l->szText.at(l->pBlocks[i].block_start + retValue);
 					if (IRCVIEW_ISHIGHSURROGATE(curChar)) // Surrogate pair
 					{
-						iLeft += m_pFm->horizontalAdvance(l->szText.mid(retValue), 2);
+						iLeft += m_pFm->horizontalAdvance(l->szText.mid(l->pBlocks[i].block_start + retValue), 2);
 						retValue+=2;
 					}
 					else
