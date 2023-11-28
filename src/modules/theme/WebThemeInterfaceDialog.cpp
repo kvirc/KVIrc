@@ -24,8 +24,6 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_WEBENGINE_SUPPORT
-
 #include "WebThemeInterfaceDialog.h"
 #include "ThemeFunctions.h"
 
@@ -48,9 +46,7 @@ WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
 	g_pApp->getGlobalKvircDirectory(m_szGlobalThemesPath, KviApplication::Themes);
 	m_szGlobalThemesPath += KVI_PATH_SEPARATOR_CHAR;
 
-	setPackagePageUrl(
-	    QString::fromLatin1("https://www.kvirc.net/app/themes.php?version=" KVI_VERSION "&lang=%1")
-	        .arg(KviLocale::instance()->localeName()));
+	setPackagePageUrl("https://kvirc.github.io/kvirc-themes/");
 }
 WebThemeInterfaceDialog::~WebThemeInterfaceDialog()
     = default;
@@ -67,5 +63,3 @@ bool WebThemeInterfaceDialog::packageIsInstalled(const QString & szId, const QSt
 
 	return KviFileUtils::fileExists(m_szGlobalThemesPath + szSubdir) || KviFileUtils::fileExists(m_szLocalThemesPath + szSubdir);
 }
-
-#endif //COMPILE_WEBENGINE_SUPPORT

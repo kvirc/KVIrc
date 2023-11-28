@@ -26,8 +26,6 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_WEBENGINE_SUPPORT
-
 #include "KviWebPackageManagementDialog.h"
 
 class WebThemeInterfaceDialog : public KviWebPackageManagementDialog
@@ -45,7 +43,5 @@ protected:
 	bool packageIsInstalled(const QString & szId, const QString & szVersion) override;
 	bool installPackage(const QString & szPath, QString & szError) override;
 };
-
-#endif //COMPILE_WEBENGINE_SUPPORT
 
 #endif //_WEBTHEMEINTERFACEDIALOG_H_

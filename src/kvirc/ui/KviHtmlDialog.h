@@ -96,7 +96,6 @@ public:
 	virtual QVariant loadResource(int type, const QUrl & name)
 	{
 		QString p = m_pHt->htmlResource.value(name.path());
-		qDebug("resource %s type %d and page %s", name.path().toUtf8().data(), type, p.toUtf8().data());
 		if(!p.isEmpty())
 			return QVariant(p);
 		else
