@@ -226,6 +226,7 @@ void KviInputEditor::applyOptions(bool bRefreshCachedMetrics)
 	//set the font
 	QFont newFont(KVI_OPTION_FONT(KviOption_fontInput));
 	newFont.setKerning(false);
+	newFont.setHintingPreference(QFont::PreferFullHinting);
 	setFont(newFont);
 
 	//set cursor custom width

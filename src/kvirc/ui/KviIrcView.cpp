@@ -409,6 +409,7 @@ void KviIrcView::setFont(const QFont & f)
 
 	QFont newFont(f);
 	newFont.setKerning(false);
+	newFont.setHintingPreference(QFont::PreferFullHinting);
 	QWidget::setFont(newFont);
 	update();
 }

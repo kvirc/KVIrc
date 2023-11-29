@@ -218,6 +218,7 @@ void KviTopicWidget::applyOptions()
 	m_pLabel->applyOptions();
 	QFont newFont(KVI_OPTION_FONT(KviOption_fontLabel));
 	newFont.setKerning(false);
+	newFont.setHintingPreference(QFont::PreferFullHinting);
 	setFont(newFont);
 	if(m_pCompletionBox)
 		m_pCompletionBox->setFont(newFont);
