@@ -907,7 +907,7 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage * msg)
 	bool bIrcOp = szFlag.indexOf('*') != -1;
 
 	KviCString trailing = msg->safeTrailing();
-	KviCString hops = trailing.getToken(' ');
+	KviCString hops = trailing.getToken(' ', true);
 	bool bHopsOk = false;
 	int iHops = hops.toInt(&bHopsOk);
 

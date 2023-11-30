@@ -349,10 +349,10 @@ public:
 	// and returns true if there are more tokens to extract<br>
 	// Does not strip initial separators!!<br>
 	// str can NOT be this string.
-	bool getToken(KviCString & str, char sep);
+	bool getToken(KviCString & str, char sep, bool skipEmpty = false);
 	// Does not strip initial separators!<br>
 	// Can assign also to this string.
-	KviCString getToken(char sep);
+	KviCString getToken(char sep, bool skipEmpty = false);
 	// Extracts a line from the string.<br>
 	// Returns false if there was no data to extract
 	bool getLine(KviCString & str);

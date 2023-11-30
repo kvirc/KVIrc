@@ -2657,7 +2657,7 @@ KviCString & KviCString::stripLeft(char c)
 	return (*this);
 }
 
-bool KviCString::getToken(KviCString & str, char sep)
+bool KviCString::getToken(KviCString & str, char sep, bool skipEmpty)
 {
 	KVI_ASSERT(str.m_ptr);
 	KVI_ASSERT(str.m_ptr != m_ptr);
@@ -2673,7 +2673,11 @@ bool KviCString::getToken(KviCString & str, char sep)
 	KviMemory::copy(str.m_ptr, m_ptr, str.m_len);
 	*(str.m_ptr + str.m_len) = '\0';
 	while(*p && (*p == sep))
+	{
 		p++;
+		if(!skipEmpty)
+			break;
+	}
 	cutLeft(p - m_ptr);
 	return (m_len != 0);
 }
@@ -2700,14 +2704,18 @@ bool KviCString::getLine(KviCString & str)
 	return true;
 }
 
-KviCString KviCString::getToken(char sep)
+KviCString KviCString::getToken(char sep, bool skipEmpty)
 {
 	char * p = m_ptr;
 	while(*p && (*p != sep))
 		p++;
 	KviCString ret(m_ptr, p);
 	while(*p && (*p == sep))
+	{
 		p++;
+		if(!skipEmpty)
+			break;
+	}
 	cutLeft(p - m_ptr);
 	return ret;
 }
