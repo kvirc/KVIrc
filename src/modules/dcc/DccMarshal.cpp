@@ -602,6 +602,10 @@ void DccMarshal::doSSLHandshake(int)
 		return; // ops ?
 	}
 
+	// Enable the use of Anonymous DH cipher suites, to permit connection without a certificate
+	// Note: this is considered NOT SECURE since at least 2015 (Logjam), but it's still better than plain text
+	m_pSSL->enableADHCiphers();
+
 	KviSSL::Result r = m_bOutgoing ? m_pSSL->connect() : m_pSSL->accept();
 
 	switch(r)
