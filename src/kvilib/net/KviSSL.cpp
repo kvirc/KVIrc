@@ -378,16 +378,43 @@ bool KviSSL::initContext(Method m)
 		SSL_CTX_set_verify(m_pSSLCtx, SSL_VERIFY_PEER, verify_clientCallback);
 	}
 
+	SSL_CTX_set_options (m_pSSLCtx,
+		// disable old, unsecure protocols
+		SSL_OP_NO_SSLv2|SSL_OP_NO_SSLv3
+		|SSL_OP_NO_TLSv1|SSL_OP_NO_TLSv1_1
+		// disable unsecure defaults on old openSSL versions
+#ifdef SSL_OP_NO_COMPRESSION
+		|SSL_OP_NO_COMPRESSION
+#endif
+#ifdef SSL_OP_SINGLE_DH_USE
+		|SSL_OP_SINGLE_DH_USE
+#endif
+#ifdef SSL_OP_SINGLE_ECDH_USE
+		|SSL_OP_SINGLE_ECDH_USE
+#endif
+	);
 	// we want all ciphers to be available here, except insecure ones, orderer by strength;
-	// ADH are moved to the end since they are less secure, but they don't need a certificate
-	// (so we can use secure dcc without a cert)
-	// NOTE: see bug ticket #155
-	SSL_CTX_set_cipher_list(m_pSSLCtx, "ALL:!eNULL:!EXP:!SSLv2:+ADH@STRENGTH");
+	SSL_CTX_set_cipher_list(m_pSSLCtx, "ALL:!eNULL:!LOW:!EXP:!SSLv2:!SSLv3:!TLSv1:@STRENGTH");
 #if OPENSSL_VERSION_NUMBER >= 0x30000000L
 	SSL_CTX_set_dh_auto(m_pSSLCtx, 1);
 #else
 	SSL_CTX_set_tmp_dh_callback(m_pSSLCtx, my_ugly_dh_callback);
 #endif
+	return true;
+}
+
+bool KviSSL::enableADHCiphers()
+{
+	if(!m_pSSLCtx)
+		return false;
+	if(!m_pSSL)
+		return false;
+	// Add Anonymous DH cipher suites to the list of available ciphers.
+	// ADH don't need a certificate, so we can use secure dcc without a cert)
+	// They are moved to the end since they are considered NOT SECURE since at least 2015's Logjam
+	// NOTE: see bug ticket #155
+	if(!SSL_set_cipher_list(m_pSSL, "ALL:!eNULL:!LOW:!EXP:!SSLv2:!SSLv3:!TLSv1:+ADH:+AECDH:@STRENGTH:@SECLEVEL=0"))
+		return false;
 	return true;
 }
 
@@ -496,6 +523,13 @@ bool KviSSL::getLastErrorString(KviCString & buffer, bool bPeek)
 		return true;
 	}
 	return false;
+}
+
+bool KviSSL::setTLSHostname(const char * name)
+{
+	if(!m_pSSL)
+		return false;
+	return SSL_set_tlsext_host_name(m_pSSL, name) ? true : false;
 }
 
 KviSSL::Result KviSSL::connect()

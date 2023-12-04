@@ -1356,6 +1356,9 @@ void KviIrcSocket::doSSLHandshake(int)
 		return; // ops ?
 	}
 
+	// TLS: Set SNI hostname
+	m_pSSL->setTLSHostname(m_pIrcServer->hostName().toUtf8().data());
+
 	switch(m_pSSL->connect())
 	{
 		case KviSSL::Success:

@@ -192,6 +192,8 @@ public:
 	bool initSocket(kvi_socket_t fd);
 	bool initContext(KviSSL::Method m);
 	void shutdown();
+	bool setTLSHostname(const char * name);
+	bool enableADHCiphers();
 	KviSSL::Result connect();
 	KviSSL::Result accept();
 	int read(char * buffer, int len);
