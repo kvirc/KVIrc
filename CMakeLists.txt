@@ -90,7 +90,7 @@ if(MANUAL_REVISION_UNSET)
 		if(GIT_FOUND)
 			message(STATUS "Found Git ${GIT_VERSION_STRING}")
 			execute_process(
-				COMMAND ${GIT_EXECUTABLE} describe "--dirty"
+				COMMAND ${GIT_EXECUTABLE} describe "--dirty" "--always" "--tags"
 				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
 				RESULT_VARIABLE res_var
 				OUTPUT_VARIABLE GIT_COMMIT_ID
