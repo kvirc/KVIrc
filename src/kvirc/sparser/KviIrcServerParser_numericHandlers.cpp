@@ -1082,7 +1082,7 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage * msg)
 					msg->console()->checkDefaultAvatar(e, szNick, szUser, szHost);
 				}
 				//still no avatar? check if the user is exposing the fact that he's got one
-				if(!e->avatar())
+				if(!e->avatar() && szReal.size() > 2)
 				{
 					if((szReal[0].unicode() == KviControlCodes::Color) && (szReal[1].unicode() & 4) && (szReal[2].unicode() == KviControlCodes::Reset))
 					{
