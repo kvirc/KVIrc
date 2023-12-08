@@ -182,15 +182,14 @@
 #define KVI_SHORTCUTS_THEME "Ctrl+Shift+T"                     // Ctrl+Shift+T
 #define KVI_SHORTCUTS_EXEC "Ctrl+Shift+X"                      // Ctrl+Shift+X
 #define KVI_SHORTCUTS_INPUT_REDO QKeySequence::Redo            // Ctrl+Shift+Z
-
-#define KVI_SHORTCUTS_WIN_PREV Qt::AltModifier, Qt::Key_Up                               // Qt::AltModifier + Qt::Key_Up
-#define KVI_SHORTCUTS_WIN_NEXT Qt::AltModifier, Qt::Key_Down                             // Qt::AltModifier + Qt::Key_Down
-#define KVI_SHORTCUTS_WIN_NEXT_TAB QKeySequence::NextChild                                // Ctrl+Tab
-#define KVI_SHORTCUTS_WIN_PREV_TAB QKeySequence::PreviousChild                            // Ctrl+Shift+Tab
-#define KVI_SHORTCUTS_WIN_PREV_CONTEXT "Alt+Shift+Up"                                     // Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Up
-#define KVI_SHORTCUTS_WIN_NEXT_CONTEXT "Alt+Shift+Down"                                   // Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Down
-#define KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT Qt::AltModifier, Qt::Key_PageUp                 // Qt::AltModifier + Qt::Key_PageUp
-#define KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT Qt::AltModifier, Qt::Key_PageDown               // Qt::AltModifier + Qt::Key_PageDown
+#define KVI_SHORTCUTS_WIN_PREV "Alt+Up"                        // Qt::AltModifier + Qt::Key_Up
+#define KVI_SHORTCUTS_WIN_NEXT "Alt+Down"                      // Qt::AltModifier + Qt::Key_Down
+#define KVI_SHORTCUTS_WIN_NEXT_TAB QKeySequence::NextChild     // Ctrl+Tab
+#define KVI_SHORTCUTS_WIN_PREV_TAB QKeySequence::PreviousChild // Ctrl+Shift+Tab
+#define KVI_SHORTCUTS_WIN_PREV_CONTEXT "Alt+Shift+Up"          // Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Up
+#define KVI_SHORTCUTS_WIN_NEXT_CONTEXT "Alt+Shift+Down"        // Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Down
+#define KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT "Alt+PgUp"            // Qt::AltModifier + Qt::Key_PageUp
+#define KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT "Alt+PgDown"          // Qt::AltModifier + Qt::Key_PageDown
 #define KVI_SHORTCUTS_WIN_PREV_PAGE QKeySequence::MoveToPreviousPage                      // Qt::Key_PageUp
 #define KVI_SHORTCUTS_WIN_NEXT_PAGE QKeySequence::MoveToNextPage                          // Qt::Key_PageDown
 #define KVI_SHORTCUTS_WIN_HOME QKeySequence::MoveToStartOfDocument                        // Qt::ControlModifier + Qt::Key_Home
@@ -205,19 +204,19 @@
 //Ctrl+<digit>: Script accelerators (see OnAccelKeyPressed)                               // --------------
 //F2-F12, Shift+(F1-F12): Script accelerators (see OnAccelKeyPressed)                     // --------------
 //
-#define KVI_SHORTCUTS_INPUT_HISTORY Qt::ControlModifier, Qt::Key_PageUp                  // Qt::ControlModifier + Qt::Key_PageUp
+#define KVI_SHORTCUTS_INPUT_HISTORY "Ctrl+PgUp"                                           // Qt::ControlModifier + Qt::Key_PageUp
 #define KVI_SHORTCUTS_INPUT_PREV_CHAR QKeySequence::MoveToPreviousChar                    // Qt::Key_Left
 #define KVI_SHORTCUTS_INPUT_NEXT_CHAR QKeySequence::MoveToNextChar                        // Qt::Key_Right
 #define KVI_SHORTCUTS_INPUT_PREV_CHAR_SELECT QKeySequence::SelectPreviousChar             // Qt::ShiftModifier + Qt::Key_Left
 #define KVI_SHORTCUTS_INPUT_NEXT_CHAR_SELECT QKeySequence::SelectNextChar                 // Qt::ShiftModifier + Qt::Key_Right
 #define KVI_SHORTCUTS_INPUT_DELETE_PREV_WORD QKeySequence::DeleteStartOfWord              // Qt::ControlModifier + Qt::Key_Backspace
 #define KVI_SHORTCUTS_INPUT_DELETE_NEXT_WORD QKeySequence::DeleteEndOfWord                // Qt::ControlModifier + Qt::Key_Delete
-#define KVI_SHORTCUTS_INPUT_MULTILINE Qt::AltModifier, Qt::Key_Return                    // Qt::AltModifier + Qt::Key_Return
-#define KVI_SHORTCUTS_INPUT_MULTILINE_2 Qt::AltModifier, Qt::Key_Enter                   // Qt::AltModifier + Qt::Key_Enter
-#define KVI_SHORTCUTS_INPUT_SEND_PLAIN Qt::ControlModifier, Qt::Key_Return               // Qt::ControlModifier + Qt::Key_Return
-#define KVI_SHORTCUTS_INPUT_SEND_PLAIN_2 Qt::ControlModifier, Qt::Key_Enter              // Qt::ControlModifier + Qt::Key_Enter
-#define KVI_SHORTCUTS_INPUT_SEND_KVS Qt::ShiftModifier, Qt::Key_Return                   // Qt::ShiftModifier + Qt::Key_Return
-#define KVI_SHORTCUTS_INPUT_SEND_KVS_2 Qt::ShiftModifier, Qt::Key_Enter                  // Qt::ShiftModifier + Qt::Key_Enter
+#define KVI_SHORTCUTS_INPUT_MULTILINE "Alt+Return"                                        // Qt::AltModifier + Qt::Key_Return
+#define KVI_SHORTCUTS_INPUT_MULTILINE_2 "Alt+Enter"                                       // Qt::AltModifier + Qt::Key_Enter
+#define KVI_SHORTCUTS_INPUT_SEND_PLAIN "Ctrl+Return"                                      // Qt::ControlModifier + Qt::Key_Return
+#define KVI_SHORTCUTS_INPUT_SEND_PLAIN_2 "Ctrl+Enter"                                     // Qt::ControlModifier + Qt::Key_Enter
+#define KVI_SHORTCUTS_INPUT_SEND_KVS "Shift+Return"                                       // Qt::ShiftModifier + Qt::Key_Return
+#define KVI_SHORTCUTS_INPUT_SEND_KVS_2 "Shift+Enter"                                      // Qt::ShiftModifier + Qt::Key_Enter
 #define KVI_SHORTCUTS_INPUT_HOME QKeySequence::MoveToStartOfLine                          // Qt::Key_Home
 #define KVI_SHORTCUTS_INPUT_END QKeySequence::MoveToEndOfLine                             // Qt::Key_End
 #define KVI_SHORTCUTS_INPUT_HOME_SELECT QKeySequence::SelectStartOfLine                   // Qt::ShiftModifier + Qt::Key_Home
@@ -225,11 +224,11 @@
 #define KVI_SHORTCUTS_INPUT_HISTORY_PREV QKeySequence::MoveToPreviousLine                 // Qt::Key_Up
 #define KVI_SHORTCUTS_INPUT_HISTORY_NEXT QKeySequence::MoveToNextLine                     // Qt::Key_Down
 #define KVI_SHORTCUTS_INPUT_ESCAPE Qt::Key_Escape                                         // Qt::Key_Escape
-#define KVI_SHORTCUTS_INPUT_DUMMY Qt::ShiftModifier, Qt::Key_Escape                      // Qt::ShiftModifier + Qt::Key_Escape
+#define KVI_SHORTCUTS_INPUT_DUMMY "Shift+Escape"                                          // Qt::ShiftModifier + Qt::Key_Escape
 #define KVI_SHORTCUTS_WIN_ZOOM_IN QKeySequence::ZoomIn                                    // Ctrl++
 #define KVI_SHORTCUTS_WIN_ZOOM_OUT QKeySequence::ZoomOut                                  // Ctrl+-
-#define KVI_SHORTCUTS_WIN_ZOOM_DEFAULT Qt::ControlModifier, Qt::Key_0                    // Qt::ControlModifier + Qt::Key_0
-#define KVI_SHORTCUTS_INPUT_CORRECT_SPELLING Qt::ControlModifier, Qt::Key_G              // Qt::ControlModifier + Qt::Key_G
+#define KVI_SHORTCUTS_WIN_ZOOM_DEFAULT "Ctrl+0"                                           // Qt::ControlModifier + Qt::Key_0
+#define KVI_SHORTCUTS_INPUT_CORRECT_SPELLING "Ctrl+G"                                     // Qt::ControlModifier + Qt::Key_G
 #define KVI_SHORTCUTS_INPUT_MENU Qt::Key_Menu                                             // Qt::Key_Menu
 
 /*
