@@ -723,26 +723,31 @@ static bool trayicon_kvs_fnc_isvisible(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MAC)
-#define ICON_INFIX "mono"
-#else
-#define ICON_INFIX "normal"
-#endif
-
 ///////////////////////////////////////////////////////////////////////////////
 // init routine
 ///////////////////////////////////////////////////////////////////////////////
 
 static bool trayicon_module_init(KviModule * m)
 {
+	QString szIconTheme;
+#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MAC)
+	if (g_pApp->palette().window().color().value() > g_pApp->palette().windowText().color().value())
+	{
+		szIconTheme = "light";
+	} else {
+		szIconTheme = "dark";
+	}
+#else
+	szIconTheme = "normal";
+#endif
 	QString buffer;
-	g_pApp->findImage(buffer, QString("kvi_dock_" ICON_INFIX "_%1-0.png").arg(ICON_SIZE));
+	g_pApp->findImage(buffer, QString("kvi_dock_%1_%2-0.png").arg(szIconTheme).arg(ICON_SIZE));
 	g_pDock1 = new QPixmap(buffer);
 
-	g_pApp->findImage(buffer, QString("kvi_dock_" ICON_INFIX "_%1-1.png").arg(ICON_SIZE));
+	g_pApp->findImage(buffer, QString("kvi_dock_%1_%2-1.png").arg(szIconTheme).arg(ICON_SIZE));
 	g_pDock2 = new QPixmap(buffer);
 
-	g_pApp->findImage(buffer, QString("kvi_dock_" ICON_INFIX "_%1-2.png").arg(ICON_SIZE));
+	g_pApp->findImage(buffer, QString("kvi_dock_%1_%2-2.png").arg(szIconTheme).arg(ICON_SIZE));
 	g_pDock3 = new QPixmap(buffer);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "hide", trayicon_kvs_cmd_hide);
