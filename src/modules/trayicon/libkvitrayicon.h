@@ -27,7 +27,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviDynamicToolTip.h"
 #include "KviMainWindow.h"
 #include "KviTrayIcon.h"
 
@@ -46,7 +45,6 @@ public:
 	~KviTrayIconWidget() override;
 
 private:
-	KviDynamicToolTip m_Tip;
 	QMenu * m_pContextPopup;
 	QMenu m_awayPopup;
 #ifndef COMPILE_ON_MAC
@@ -73,7 +71,7 @@ public:
 
 private:
 	void grabActivityInfo();
-	bool event(QEvent * e) override;
+	const QString getToolTipText();
 private slots:
 	void fillContextPopup();
 	void toggleParentFrame();

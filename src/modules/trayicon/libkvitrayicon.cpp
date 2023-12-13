@@ -26,14 +26,12 @@
 
 #include "libkvitrayicon.h"
 
-#include "kvi_settings.h"
 #include "KviApplication.h"
 #include "KviModule.h"
 #include "KviLocale.h"
 #include "KviMemory.h"
 #include "KviWindowListBase.h"
 #include "KviWindow.h"
-#include "KviDynamicToolTip.h"
 #include "KviIconManager.h"
 #include "KviInternalCommand.h"
 #include "KviConsoleWindow.h"
@@ -45,7 +43,6 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QTimer>
-#include <QEvent>
 #include <QWidgetAction>
 #include <QMenu>
 
@@ -68,7 +65,7 @@ static QPixmap * g_pDock2 = nullptr;
 static QPixmap * g_pDock3 = nullptr;
 
 KviTrayIconWidget::KviTrayIconWidget()
-    : QSystemTrayIcon(g_pMainWindow), m_Tip(g_pMainWindow, "dock_tooltip"), m_CurrentPixmap(ICON_SIZE, ICON_SIZE)
+    : QSystemTrayIcon(g_pMainWindow), m_CurrentPixmap(ICON_SIZE, ICON_SIZE)
 {
 	g_pTrayIcon = this;
 	m_pContextPopup = new QMenu(nullptr);
@@ -186,52 +183,46 @@ static const char * idlemsgs[] = {
 
 static const std::size_t NIDLEMSGS = sizeof(idlemsgs) / sizeof(*idlemsgs);
 
-bool KviTrayIconWidget::event(QEvent * e)
+const QString KviTrayIconWidget::getToolTipText()
 {
-	if(e->type() == QEvent::ToolTip)
+	QString szTmp;
+
+	KviWindowListBase * t = g_pMainWindow->windowListWidget();
+
+	QString line;
+	bool first = true;
+
+	for(KviWindowListItem * b = t->firstItem(); b; b = t->nextItem())
 	{
-		QPoint pos = g_pMainWindow->mapFromGlobal(QCursor::pos());
-		QString tmp;
 
-		KviWindowListBase * t = g_pMainWindow->windowListWidget();
-
-		QString line;
-		bool first = true;
-
-		for(KviWindowListItem * b = t->firstItem(); b; b = t->nextItem())
+		if(b->kviWindow()->view())
 		{
-
-			if(b->kviWindow()->view())
+			if(b->kviWindow()->view()->haveUnreadedMessages())
 			{
-				if(b->kviWindow()->view()->haveUnreadedMessages())
+				line = b->kviWindow()->lastMessageText();
+				if(!line.isEmpty())
 				{
-					line = b->kviWindow()->lastMessageText();
-					if(!line.isEmpty())
-					{
-						if(!first)
-							tmp += "<br><br>\n";
-						else
-							first = false;
+					if(!first)
+						szTmp += "<br><br>\n";
+					else
+						first = false;
 
-						line.replace(QChar('&'), "&amp;");
-						line.replace(QChar('<'), "&lt;");
-						line.replace(QChar('>'), "&gt;");
-						tmp += "<b>";
-						tmp += b->kviWindow()->plainTextCaption();
-						tmp += "</b><br>";
-						tmp += line;
-					}
+					line.replace(QChar('&'), "&amp;");
+					line.replace(QChar('<'), "&lt;");
+					line.replace(QChar('>'), "&gt;");
+					szTmp += "<b>";
+					szTmp += b->kviWindow()->plainTextCaption();
+					szTmp += "</b><br>";
+					szTmp += line;
 				}
 			}
 		}
-
-		if(tmp.isEmpty())
-			tmp = __tr2qs_no_xgettext(idlemsgs[std::rand() % NIDLEMSGS]);
-
-		m_Tip.tip(QRect(pos, QSize(0, 0)), tmp);
-		return true;
 	}
-	return false;
+
+	if(szTmp.isEmpty())
+		szTmp = __tr2qs_no_xgettext(idlemsgs[std::rand() % NIDLEMSGS]);
+
+	return szTmp;
 }
 
 void KviTrayIconWidget::doAway(bool)
@@ -458,6 +449,7 @@ void KviTrayIconWidget::refresh()
 		    ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2);
 	}
 	updateIcon();
+	setToolTip(getToolTipText());
 }
 
 void KviTrayIconWidget::activatedSlot(QSystemTrayIcon::ActivationReason reason)
