@@ -30,14 +30,26 @@
 #include "KviMainWindow.h"
 #include "KviTrayIcon.h"
 
-#include <QSystemTrayIcon>
+#include <QObject>
 #include <QLabel>
 #include <QMenu>
+#include <QString>
 #include <QTimer>
+
+#ifdef COMPILE_KDE_SUPPORT
+#include <KStatusNotifierItem>
+#else
+#include <QSystemTrayIcon>
+#endif
 
 class QPixmap;
 
-class KviTrayIconWidget final : public QSystemTrayIcon, public KviTrayIcon
+class KviTrayIconWidget final
+#ifdef COMPILE_KDE_SUPPORT
+: public KStatusNotifierItem, public KviTrayIcon
+#else
+: public QSystemTrayIcon, public KviTrayIcon
+#endif
 {
 	Q_OBJECT
 public:
@@ -68,6 +80,9 @@ private:
 public:
 	void refresh() override;
 	void updateIcon();
+#ifdef COMPILE_KDE_SUPPORT
+	void show();
+#endif
 
 private:
 	void grabActivityInfo();
@@ -77,7 +92,9 @@ private slots:
 	void toggleParentFrame();
 	void doAway(bool);
 	void flashingTimerShot();
+#ifndef COMPILE_KDE_SUPPORT
 	void activatedSlot(QSystemTrayIcon::ActivationReason reason);
+#endif
 	void executeInternalCommand(bool);
 	void disableTrayIcon();
 };

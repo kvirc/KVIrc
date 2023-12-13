@@ -65,7 +65,12 @@ static QPixmap * g_pDock2 = nullptr;
 static QPixmap * g_pDock3 = nullptr;
 
 KviTrayIconWidget::KviTrayIconWidget()
-    : QSystemTrayIcon(g_pMainWindow), m_CurrentPixmap(ICON_SIZE, ICON_SIZE)
+#ifdef COMPILE_KDE_SUPPORT
+ 	: KStatusNotifierItem(g_pMainWindow),
+#else
+	: QSystemTrayIcon(g_pMainWindow),
+#endif
+	m_CurrentPixmap(ICON_SIZE, ICON_SIZE)
 {
 	g_pTrayIcon = this;
 	m_pContextPopup = new QMenu(nullptr);
@@ -83,7 +88,7 @@ KviTrayIconWidget::KviTrayIconWidget()
 
 	g_pMainWindow->setTrayIcon(this);
 
-#ifndef COMPILE_ON_MAC
+#if !defined(COMPILE_ON_MAC) && !defined(COMPILE_KDE_SUPPORT)
 	m_pTitleLabel = new QLabel(__tr2qs("<b><center>KVIrc Tray Options</center></b>"), m_pContextPopup);
 	QPalette p;
 	m_pTitleLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
@@ -114,20 +119,37 @@ KviTrayIconWidget::KviTrayIconWidget()
 
 	connect(m_pContextPopup, SIGNAL(aboutToShow()), this, SLOT(fillContextPopup()));
 
+#ifdef COMPILE_KDE_SUPPORT
+	setCategory(KStatusNotifierItem::ApplicationStatus);
+	setToolTipTitle("KVIrc");
+	setIconByPixmap(*g_pDock1);
+	setStandardActionsEnabled(false);
+#else
 	setIcon(*g_pDock1);
-
 	connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(activatedSlot(QSystemTrayIcon::ActivationReason)));
+#endif
 }
 
 KviTrayIconWidget::~KviTrayIconWidget()
 {
 	g_pTrayIcon = nullptr;
 	g_pMainWindow->setTrayIcon(nullptr);
+
+#ifndef COMPILE_KDE_SUPPORT
+	// KStatusNotifierItem takes ownership of the menu, avoid deleting it
 	if(m_bHidden)
 		m_pContextPopup->deleteLater();
 	else
 		delete m_pContextPopup;
+#endif
 }
+
+#ifdef COMPILE_KDE_SUPPORT
+void KviTrayIconWidget::show()
+{
+	setStatus(KStatusNotifierItem::Active);
+}
+#endif
 
 void KviTrayIconWidget::executeInternalCommand(bool)
 {
@@ -449,8 +471,17 @@ void KviTrayIconWidget::refresh()
 		    ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2);
 	}
 	updateIcon();
+
+#ifdef COMPILE_KDE_SUPPORT
+	setToolTipSubTitle(getToolTipText());
+#else
 	setToolTip(getToolTipText());
+#endif
 }
+
+#ifndef COMPILE_KDE_SUPPORT
+// Under Kde do nothing, KWin will restore/hide our window
+// See ctor doc: KStatusNotifierItem::KStatusNotifierItem ( QObject *  parent = nullptr )
 
 void KviTrayIconWidget::activatedSlot(QSystemTrayIcon::ActivationReason reason)
 {
@@ -475,6 +506,7 @@ void KviTrayIconWidget::activatedSlot(QSystemTrayIcon::ActivationReason reason)
 			break;
 	}
 }
+#endif
 
 void KviTrayIconWidget::grabActivityInfo()
 {
@@ -597,7 +629,11 @@ void KviTrayIconWidget::grabActivityInfo()
 
 void KviTrayIconWidget::updateIcon()
 {
+#ifdef COMPILE_KDE_SUPPORT
+	setIconByPixmap(QIcon(m_CurrentPixmap));
+#else
 	setIcon(QIcon(m_CurrentPixmap));
+#endif
 }
 
 /*
