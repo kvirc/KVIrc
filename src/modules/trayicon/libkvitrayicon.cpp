@@ -205,7 +205,7 @@ static const char * idlemsgs[] = {
 
 static const std::size_t NIDLEMSGS = sizeof(idlemsgs) / sizeof(*idlemsgs);
 
-const QString KviTrayIconWidget::getToolTipText()
+const QString KviTrayIconWidget::getToolTipText(bool bHtml)
 {
 	QString szTmp;
 
@@ -225,16 +225,18 @@ const QString KviTrayIconWidget::getToolTipText()
 				if(!line.isEmpty())
 				{
 					if(!first)
-						szTmp += "<br><br>\n";
+						szTmp += bHtml ? "<br><br>\n" : "\n\n";
 					else
 						first = false;
 
-					line.replace(QChar('&'), "&amp;");
-					line.replace(QChar('<'), "&lt;");
-					line.replace(QChar('>'), "&gt;");
-					szTmp += "<b>";
+					if(bHtml) {
+						line.replace(QChar('&'), "&amp;");
+						line.replace(QChar('<'), "&lt;");
+						line.replace(QChar('>'), "&gt;");
+						szTmp += "<b>";
+					}
 					szTmp += b->kviWindow()->plainTextCaption();
-					szTmp += "</b><br>";
+					szTmp += bHtml ? "</b><br>" : "\n";
 					szTmp += line;
 				}
 			}
@@ -473,9 +475,9 @@ void KviTrayIconWidget::refresh()
 	updateIcon();
 
 #ifdef COMPILE_KDE_SUPPORT
-	setToolTipSubTitle(getToolTipText());
+	setToolTipSubTitle(getToolTipText(true));
 #else
-	setToolTip(getToolTipText());
+	setToolTip(getToolTipText(false));
 #endif
 }
 

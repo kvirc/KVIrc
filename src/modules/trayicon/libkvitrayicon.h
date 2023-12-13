@@ -86,7 +86,7 @@ public:
 
 private:
 	void grabActivityInfo();
-	const QString getToolTipText();
+	const QString getToolTipText(bool bHtml);
 private slots:
 	void fillContextPopup();
 	void toggleParentFrame();
