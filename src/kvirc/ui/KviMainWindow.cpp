@@ -321,6 +321,7 @@ void KviMainWindow::freeAccelleratorKeySequence(const QString & key)
 	{
 		if(pS->key() == kS)
 		{
+			pS->setEnabled(false);
 			m_pAccellerators.erase(
 				std::remove(m_pAccellerators.begin(), m_pAccellerators.end(), pS),
 				m_pAccellerators.end()
