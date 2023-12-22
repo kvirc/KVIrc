@@ -690,9 +690,11 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 
 		if(!bKNotifyConfigFileChecked)
 		{
-			QString szFileName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/" + QString::fromUtf8("knotifications5/kvirc.notifyrc");
-			if(szFileName.isEmpty())
-				szFileName = QString::fromUtf8("%1/.local/share/knotifications5/kvirc.notifyrc").arg(QDir::homePath());
+			QString szDataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
+			if(szDataDir.isEmpty())
+				szDataDir = QString::fromUtf8("%1/.local/share").arg(QDir::homePath());
+			QString szFileName = QString::fromUtf8("%1/knotifications%2/kvirc.notifyrc")
+				.arg(szDataDir).arg(QT_VERSION_MAJOR);
 
 			QFileInfo inf(szFileName);
 
@@ -717,10 +719,6 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 
 			bKNotifyConfigFileChecked = true;
 		}
-
-		QStringList actions;
-		actions << __tr2qs("View");
-		actions << __tr2qs("Ignore");
 
 		QPixmap * pIcon = nullptr;
 		KviIconManager::SmallIcon eIcon = KviIconManager::None;
@@ -793,17 +791,39 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 
 		KNotification * pNotify = nullptr;
 		pNotify = new KNotification("incomingMessage");
-		pNotify->setWidget(g_pMainWindow);
-		pNotify->setFlags(KNotification::CloseWhenWidgetActivated|KNotification::Persistent);
 		pNotify->setTitle(szTitle);
 		pNotify->setText(szText);
-		pNotify->setActions(actions);
 		pNotify->setPixmap(*pIcon);
 		pNotify->setComponentName("kvirc");
+
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+		QStringList actions;
+		actions << __tr2qs("View");
+		actions << __tr2qs("Ignore");
+
+		pNotify->setActions(actions);
+		pNotify->setFlags(KNotification::CloseWhenWidgetActivated|KNotification::Persistent);
+		pNotify->setWidget(g_pMainWindow);
 
 		connect(pNotify, SIGNAL(activated()), this, SLOT(showParentFrame()));
 		connect(pNotify, SIGNAL(action1Activated()), this, SLOT(showParentFrame()));
 		connect(pNotify, SIGNAL(action2Activated()), pNotify, SLOT(close()));
+#else
+		KNotificationAction *action = nullptr;
+
+		action = pNotify->addDefaultAction(__tr2qs("View"));
+		connect(action, SIGNAL(activated()), this, SLOT(showParentFrame()));
+
+		action = pNotify->addAction(__tr2qs("View"));
+		connect(action, SIGNAL(activated()), this, SLOT(showParentFrame()));
+
+		action = pNotify->addAction(__tr2qs("Ignore"));
+		connect(action, SIGNAL(activated()), pNotify, SLOT(close()));
+
+		pNotify->setFlags(KNotification::CloseWhenWindowActivated|KNotification::Persistent);
+		pNotify->setWindow(g_pMainWindow->windowHandle());
+#endif
+
 		connect(pNotify, SIGNAL(ignored()), pNotify, SLOT(close()));
 
 		pNotify->sendEvent();
