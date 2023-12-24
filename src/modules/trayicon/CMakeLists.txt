@@ -8,18 +8,15 @@ set(imageFiles
 	kvi_dock_normal_16-0.png
 	kvi_dock_normal_16-1.png
 	kvi_dock_normal_16-2.png
-	kvi_dock_normal_22-0.png
-	kvi_dock_normal_22-1.png
-	kvi_dock_normal_22-2.png
 	kvi_dock_normal_48-0.png
 	kvi_dock_normal_48-1.png
 	kvi_dock_normal_48-2.png
-	kvi_dock_mono_22-0.png
-	kvi_dock_mono_22-1.png
-	kvi_dock_mono_22-2.png
-	kvi_dock_mono_48-0.png
-	kvi_dock_mono_48-1.png
-	kvi_dock_mono_48-2.png
+	kvi_dock_dark_48-0.png
+	kvi_dock_dark_48-1.png
+	kvi_dock_dark_48-2.png
+	kvi_dock_light_48-0.png
+	kvi_dock_light_48-1.png
+	kvi_dock_light_48-2.png
 )
 
 file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*.png")

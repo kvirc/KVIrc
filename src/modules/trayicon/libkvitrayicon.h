@@ -27,18 +27,29 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviDynamicToolTip.h"
 #include "KviMainWindow.h"
 #include "KviTrayIcon.h"
 
-#include <QSystemTrayIcon>
+#include <QObject>
 #include <QLabel>
 #include <QMenu>
+#include <QString>
 #include <QTimer>
+
+#ifdef COMPILE_KDE_SUPPORT
+#include <KStatusNotifierItem>
+#else
+#include <QSystemTrayIcon>
+#endif
 
 class QPixmap;
 
-class KviTrayIconWidget final : public QSystemTrayIcon, public KviTrayIcon
+class KviTrayIconWidget final
+#ifdef COMPILE_KDE_SUPPORT
+: public KStatusNotifierItem, public KviTrayIcon
+#else
+: public QSystemTrayIcon, public KviTrayIcon
+#endif
 {
 	Q_OBJECT
 public:
@@ -46,7 +57,6 @@ public:
 	~KviTrayIconWidget() override;
 
 private:
-	KviDynamicToolTip m_Tip;
 	QMenu * m_pContextPopup;
 	QMenu m_awayPopup;
 #ifndef COMPILE_ON_MAC
@@ -70,16 +80,21 @@ private:
 public:
 	void refresh() override;
 	void updateIcon();
+#ifdef COMPILE_KDE_SUPPORT
+	void show();
+#endif
 
 private:
 	void grabActivityInfo();
-	bool event(QEvent * e) override;
+	const QString getToolTipText(bool bHtml);
 private slots:
 	void fillContextPopup();
 	void toggleParentFrame();
 	void doAway(bool);
 	void flashingTimerShot();
+#ifndef COMPILE_KDE_SUPPORT
 	void activatedSlot(QSystemTrayIcon::ActivationReason reason);
+#endif
 	void executeInternalCommand(bool);
 	void disableTrayIcon();
 };

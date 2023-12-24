@@ -26,14 +26,12 @@
 
 #include "libkvitrayicon.h"
 
-#include "kvi_settings.h"
 #include "KviApplication.h"
 #include "KviModule.h"
 #include "KviLocale.h"
 #include "KviMemory.h"
 #include "KviWindowListBase.h"
 #include "KviWindow.h"
-#include "KviDynamicToolTip.h"
 #include "KviIconManager.h"
 #include "KviInternalCommand.h"
 #include "KviConsoleWindow.h"
@@ -45,7 +43,6 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QTimer>
-#include <QEvent>
 #include <QWidgetAction>
 #include <QMenu>
 
@@ -68,7 +65,12 @@ static QPixmap * g_pDock2 = nullptr;
 static QPixmap * g_pDock3 = nullptr;
 
 KviTrayIconWidget::KviTrayIconWidget()
-    : QSystemTrayIcon(g_pMainWindow), m_Tip(g_pMainWindow, "dock_tooltip"), m_CurrentPixmap(ICON_SIZE, ICON_SIZE)
+#ifdef COMPILE_KDE_SUPPORT
+ 	: KStatusNotifierItem(g_pMainWindow),
+#else
+	: QSystemTrayIcon(g_pMainWindow),
+#endif
+	m_CurrentPixmap(ICON_SIZE, ICON_SIZE)
 {
 	g_pTrayIcon = this;
 	m_pContextPopup = new QMenu(nullptr);
@@ -86,7 +88,7 @@ KviTrayIconWidget::KviTrayIconWidget()
 
 	g_pMainWindow->setTrayIcon(this);
 
-#ifndef COMPILE_ON_MAC
+#if !defined(COMPILE_ON_MAC) && !defined(COMPILE_KDE_SUPPORT)
 	m_pTitleLabel = new QLabel(__tr2qs("<b><center>KVIrc Tray Options</center></b>"), m_pContextPopup);
 	QPalette p;
 	m_pTitleLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
@@ -117,20 +119,37 @@ KviTrayIconWidget::KviTrayIconWidget()
 
 	connect(m_pContextPopup, SIGNAL(aboutToShow()), this, SLOT(fillContextPopup()));
 
+#ifdef COMPILE_KDE_SUPPORT
+	setCategory(KStatusNotifierItem::ApplicationStatus);
+	setToolTipTitle("KVIrc");
+	setIconByPixmap(*g_pDock1);
+	setStandardActionsEnabled(false);
+#else
 	setIcon(*g_pDock1);
-
 	connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(activatedSlot(QSystemTrayIcon::ActivationReason)));
+#endif
 }
 
 KviTrayIconWidget::~KviTrayIconWidget()
 {
 	g_pTrayIcon = nullptr;
 	g_pMainWindow->setTrayIcon(nullptr);
+
+#ifndef COMPILE_KDE_SUPPORT
+	// KStatusNotifierItem takes ownership of the menu, avoid deleting it
 	if(m_bHidden)
 		m_pContextPopup->deleteLater();
 	else
 		delete m_pContextPopup;
+#endif
 }
+
+#ifdef COMPILE_KDE_SUPPORT
+void KviTrayIconWidget::show()
+{
+	setStatus(KStatusNotifierItem::Active);
+}
+#endif
 
 void KviTrayIconWidget::executeInternalCommand(bool)
 {
@@ -186,52 +205,48 @@ static const char * idlemsgs[] = {
 
 static const std::size_t NIDLEMSGS = sizeof(idlemsgs) / sizeof(*idlemsgs);
 
-bool KviTrayIconWidget::event(QEvent * e)
+const QString KviTrayIconWidget::getToolTipText(bool bHtml)
 {
-	if(e->type() == QEvent::ToolTip)
+	QString szTmp;
+
+	KviWindowListBase * t = g_pMainWindow->windowListWidget();
+
+	QString line;
+	bool first = true;
+
+	for(KviWindowListItem * b = t->firstItem(); b; b = t->nextItem())
 	{
-		QPoint pos = g_pMainWindow->mapFromGlobal(QCursor::pos());
-		QString tmp;
 
-		KviWindowListBase * t = g_pMainWindow->windowListWidget();
-
-		QString line;
-		bool first = true;
-
-		for(KviWindowListItem * b = t->firstItem(); b; b = t->nextItem())
+		if(b->kviWindow()->view())
 		{
-
-			if(b->kviWindow()->view())
+			if(b->kviWindow()->view()->haveUnreadedMessages())
 			{
-				if(b->kviWindow()->view()->haveUnreadedMessages())
+				line = b->kviWindow()->lastMessageText();
+				if(!line.isEmpty())
 				{
-					line = b->kviWindow()->lastMessageText();
-					if(!line.isEmpty())
-					{
-						if(!first)
-							tmp += "<br><br>\n";
-						else
-							first = false;
+					if(!first)
+						szTmp += bHtml ? "<br><br>\n" : "\n\n";
+					else
+						first = false;
 
+					if(bHtml) {
 						line.replace(QChar('&'), "&amp;");
 						line.replace(QChar('<'), "&lt;");
 						line.replace(QChar('>'), "&gt;");
-						tmp += "<b>";
-						tmp += b->kviWindow()->plainTextCaption();
-						tmp += "</b><br>";
-						tmp += line;
+						szTmp += "<b>";
 					}
+					szTmp += b->kviWindow()->plainTextCaption();
+					szTmp += bHtml ? "</b><br>" : "\n";
+					szTmp += line;
 				}
 			}
 		}
-
-		if(tmp.isEmpty())
-			tmp = __tr2qs_no_xgettext(idlemsgs[std::rand() % NIDLEMSGS]);
-
-		m_Tip.tip(QRect(pos, QSize(0, 0)), tmp);
-		return true;
 	}
-	return false;
+
+	if(szTmp.isEmpty())
+		szTmp = __tr2qs_no_xgettext(idlemsgs[std::rand() % NIDLEMSGS]);
+
+	return szTmp;
 }
 
 void KviTrayIconWidget::doAway(bool)
@@ -458,7 +473,17 @@ void KviTrayIconWidget::refresh()
 		    ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2);
 	}
 	updateIcon();
+
+#ifdef COMPILE_KDE_SUPPORT
+	setToolTipSubTitle(getToolTipText(true));
+#else
+	setToolTip(getToolTipText(false));
+#endif
 }
+
+#ifndef COMPILE_KDE_SUPPORT
+// Under Kde do nothing, KWin will restore/hide our window
+// See ctor doc: KStatusNotifierItem::KStatusNotifierItem ( QObject *  parent = nullptr )
 
 void KviTrayIconWidget::activatedSlot(QSystemTrayIcon::ActivationReason reason)
 {
@@ -483,6 +508,7 @@ void KviTrayIconWidget::activatedSlot(QSystemTrayIcon::ActivationReason reason)
 			break;
 	}
 }
+#endif
 
 void KviTrayIconWidget::grabActivityInfo()
 {
@@ -605,7 +631,11 @@ void KviTrayIconWidget::grabActivityInfo()
 
 void KviTrayIconWidget::updateIcon()
 {
+#ifdef COMPILE_KDE_SUPPORT
+	setIconByPixmap(QIcon(m_CurrentPixmap));
+#else
 	setIcon(QIcon(m_CurrentPixmap));
+#endif
 }
 
 /*
@@ -723,26 +753,31 @@ static bool trayicon_kvs_fnc_isvisible(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MAC)
-#define ICON_INFIX "mono"
-#else
-#define ICON_INFIX "normal"
-#endif
-
 ///////////////////////////////////////////////////////////////////////////////
 // init routine
 ///////////////////////////////////////////////////////////////////////////////
 
 static bool trayicon_module_init(KviModule * m)
 {
+	QString szIconTheme;
+#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MAC)
+	if (g_pApp->palette().window().color().value() > g_pApp->palette().windowText().color().value())
+	{
+		szIconTheme = "light";
+	} else {
+		szIconTheme = "dark";
+	}
+#else
+	szIconTheme = "normal";
+#endif
 	QString buffer;
-	g_pApp->findImage(buffer, QString("kvi_dock_" ICON_INFIX "_%1-0.png").arg(ICON_SIZE));
+	g_pApp->findImage(buffer, QString("kvi_dock_%1_%2-0.png").arg(szIconTheme).arg(ICON_SIZE));
 	g_pDock1 = new QPixmap(buffer);
 
-	g_pApp->findImage(buffer, QString("kvi_dock_" ICON_INFIX "_%1-1.png").arg(ICON_SIZE));
+	g_pApp->findImage(buffer, QString("kvi_dock_%1_%2-1.png").arg(szIconTheme).arg(ICON_SIZE));
 	g_pDock2 = new QPixmap(buffer);
 
-	g_pApp->findImage(buffer, QString("kvi_dock_" ICON_INFIX "_%1-2.png").arg(ICON_SIZE));
+	g_pApp->findImage(buffer, QString("kvi_dock_%1_%2-2.png").arg(szIconTheme).arg(ICON_SIZE));
 	g_pDock3 = new QPixmap(buffer);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "hide", trayicon_kvs_cmd_hide);
