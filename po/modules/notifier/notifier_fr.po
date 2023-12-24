@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-#
+# 
 # Translators:
 # Ahinu <ahinu@wanadoo.fr>, 2005
 # Ludovic Bellière <xrogaan@gmail.com>, 2015
@@ -10,68 +10,68 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
-"PO-Revision-Date: 2017-09-23 21:28+0000\n"
-"Last-Translator: Ludovic Bellière <xrogaan@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/kvirc/KVIrc/language/fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 09:12+0000\n"
+"Last-Translator: Ludovic Bellière <xrogaan@gmail.com>, 2015\n"
+"Language-Team: French (http://app.transifex.com/kvirc/KVIrc/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: src/modules/notifier/NotifierWindow.cpp:937
-msgid "1 Hour"
-msgstr "1 heure"
+"Language: fr\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: src/modules/notifier/NotifierWindow.cpp:933
-msgid "1 Minute"
-msgstr "1 minute"
-
-#: src/modules/notifier/NotifierWindow.cpp:935
-msgid "15 Minutes"
-msgstr "15 Minutes"
-
-#: src/modules/notifier/NotifierWindow.cpp:936
-msgid "30 Minutes"
-msgstr "30 minutes"
-
-#: src/modules/notifier/NotifierWindow.cpp:934
-msgid "5 Minutes"
-msgstr "5 Minutes"
-
-#: src/modules/notifier/NotifierWindow.cpp:942
-msgid "Disable"
-msgstr "Désactiver"
-
-#: src/modules/notifier/NotifierWindow.cpp:930
-msgid "Hide"
-msgstr "Cacher"
-
-#: src/modules/notifier/NotifierWindow.cpp:940
-msgid "Permanently (Until Explicitly Enabled)"
-msgstr "En permanence (jusqu'à réactivation explicite)"
-
-#: src/modules/notifier/NotifierWindow.cpp:929
 msgid "Show/Hide input line"
 msgstr "Montrer/Cacher la ligne de saisie"
 
-#: src/modules/notifier/libkvinotifier.cpp:154
-msgid "The -t switch expects a timeout in seconds"
-msgstr "L'option -t nécessite un temps d'expiration en secondes"
+#: src/modules/notifier/NotifierWindow.cpp:934
+msgid "Hide"
+msgstr "Cacher"
 
-#: src/modules/notifier/libkvinotifier.cpp:149
-msgid "The specified timeout is not valid, assuming 0"
-msgstr "Le temps d'expiration spécifié est invalide, on suppose que c'est 0"
+#: src/modules/notifier/NotifierWindow.cpp:937
+msgid "1 Minute"
+msgstr "1 minute"
+
+#: src/modules/notifier/NotifierWindow.cpp:938
+msgid "5 Minutes"
+msgstr "5 Minutes"
+
+#: src/modules/notifier/NotifierWindow.cpp:939
+msgid "15 Minutes"
+msgstr "15 Minutes"
+
+#: src/modules/notifier/NotifierWindow.cpp:940
+msgid "30 Minutes"
+msgstr "30 minutes"
+
+#: src/modules/notifier/NotifierWindow.cpp:941
+msgid "1 Hour"
+msgstr "1 heure"
+
+#: src/modules/notifier/NotifierWindow.cpp:943
+msgid "Until KVIrc is Restarted"
+msgstr "Jusqu'à ce que KVIrc soit redémarré"
+
+#: src/modules/notifier/NotifierWindow.cpp:944
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr "En permanence (jusqu'à réactivation explicite)"
+
+#: src/modules/notifier/NotifierWindow.cpp:946
+msgid "Disable"
+msgstr "Désactiver"
+
+#: src/modules/notifier/NotifierWindow.cpp:1020
+msgid "Write text or commands to window"
+msgstr "Écrivez du texte ou des commandes dans la fenêtre"
 
 #: src/modules/notifier/libkvinotifier.cpp:135
 msgid "The specified window does not exist"
 msgstr "La fenêtre spécifiée n'existe pas"
 
-#: src/modules/notifier/NotifierWindow.cpp:939
-msgid "Until KVIrc is Restarted"
-msgstr "Jusqu'à ce que KVIrc soit redémarré"
+#: src/modules/notifier/libkvinotifier.cpp:149
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "Le temps d'expiration spécifié est invalide, on suppose que c'est 0"
 
-#: src/modules/notifier/NotifierWindow.cpp:1016
-msgid "Write text or commands to window"
-msgstr "Écrivez du texte ou des commandes dans la fenêtre"
+#: src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr "L'option -t nécessite un temps d'expiration en secondes"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-30 13:26+0200\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
 "PO-Revision-Date: 2015-08-01 09:12+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
@@ -22,19 +22,19 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/modules/options/OptionsDialog.cpp:111
+#: src/modules/options/OptionsDialog.cpp:112
 msgid "General Preferences"
 msgstr "일반 설정"
 
-#: src/modules/options/OptionsDialog.cpp:115
+#: src/modules/options/OptionsDialog.cpp:116
 msgid "Theme Preferences"
 msgstr "테마 설정"
 
-#: src/modules/options/OptionsDialog.cpp:119
+#: src/modules/options/OptionsDialog.cpp:120
 msgid "KVIrc Preferences"
 msgstr "KVIrc 환경설정"
 
-#: src/modules/options/OptionsDialog.cpp:122
+#: src/modules/options/OptionsDialog.cpp:123
 msgid ""
 "This dialog contains a set of KVIrc settings.<br> Use the icons on the left "
 "to navigate through the option pages. The text box in the bottom left corner"
@@ -42,20 +42,20 @@ msgid ""
 "related to the search term you have entered."
 msgstr "이 대화 상자에는 KVIrc 설정 집합이 포함되어 있습니다.<br> 선택사항 페이지를 탐색하려면 왼쪽에 있는 아이콘을 사용하십시오. 왼쪽 아래에 있는 텍스트 상자는 작은 검색 엔진입니다. 입력한 검색어와 관련된 선택사항이 포함된 페이지가 강조 표시됩니다."
 
-#: src/modules/options/OptionsDialog.cpp:129
+#: src/modules/options/OptionsDialog.cpp:130
 msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
 msgstr "대부분의 설정에는 몇 초 동안 커서를 딱지 위에 올려 놓으면 도구 설명이 표시됩니다."
 
-#: src/modules/options/OptionsDialog.cpp:133
+#: src/modules/options/OptionsDialog.cpp:134
 msgid ""
 "When you have finished, click \"<b>OK</b>\" to accept your changes or "
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
 "your changes without closing the window."
 msgstr "마치면 \"<b>확인</b>\"을 클릭하여 변경 사항을 적용하거나 \"<b>취소</b>\" 를 클릭하여 취소합니다. \"<b>적용</b>\"을 클릭하면 창을 닫지 않고 변경 사항을 커밋합니다."
 
-#: src/modules/options/OptionsDialog.cpp:201
+#: src/modules/options/OptionsDialog.cpp:202
 msgid ""
 "<p>This is the search tool for this options dialog.</p><p>You can enter a "
 "search term either in your native language or in English and press the "
@@ -64,38 +64,38 @@ msgid ""
 "them.</p><p>Try \"nickname\" for example.</p>"
 msgstr "<p>이것은 이 선택사항 대화상자의 검색 도구입니다.</p><p>모국어 또는 영어로 검색어를 입력하고 오른쪽 버튼을 누르면 됩니다. 검색어와 관련된 몇 가지 선택사항이 포함된 페이지가 강조 표시되어 빠르게 찾을 수 있습니다.</p><p>예를 들어 \"대화명\" 을 시도해십시오.</p>"
 
-#: src/modules/options/OptionsDialog.cpp:233
+#: src/modules/options/OptionsDialog.cpp:234
 #: src/modules/options/OptionsWidgetContainer.cpp:105
-#: src/modules/options/OptionsWidget_identity.cpp:239
-#: src/modules/options/OptionsWidget_servers.cpp:369
+#: src/modules/options/OptionsWidget_identity.cpp:240
+#: src/modules/options/OptionsWidget_servers.cpp:370
 msgid "&OK"
 msgstr "확인(&O)"
 
-#: src/modules/options/OptionsDialog.cpp:235
+#: src/modules/options/OptionsDialog.cpp:236
 #: src/modules/options/OptionsWidgetContainer.cpp:106
 msgid "Close this dialog, accepting all changes."
 msgstr "전체 변경을 허용하고 대화를 닫습니다."
 
-#: src/modules/options/OptionsDialog.cpp:241
+#: src/modules/options/OptionsDialog.cpp:242
 msgid "&Apply"
 msgstr "적용(&A)"
 
-#: src/modules/options/OptionsDialog.cpp:243
+#: src/modules/options/OptionsDialog.cpp:244
 msgid "Commit all changes immediately."
 msgstr "곧 모든 변경 사항을 적용합니다."
 
-#: src/modules/options/OptionsDialog.cpp:248
+#: src/modules/options/OptionsDialog.cpp:249
 #: src/modules/options/OptionsWidgetContainer.cpp:113
-#: src/modules/options/OptionsWidget_identity.cpp:97
-#: src/modules/options/OptionsWidget_identity.cpp:245
-#: src/modules/options/OptionsWidget_identity.cpp:968
+#: src/modules/options/OptionsWidget_identity.cpp:98
+#: src/modules/options/OptionsWidget_identity.cpp:246
+#: src/modules/options/OptionsWidget_identity.cpp:967
 #: src/modules/options/OptionsWidget_nickserv.cpp:123
-#: src/modules/options/OptionsWidget_servers.cpp:375
-#: src/modules/options/OptionsWidget_servers.cpp:1011
+#: src/modules/options/OptionsWidget_servers.cpp:376
+#: src/modules/options/OptionsWidget_servers.cpp:1012
 msgid "Cancel"
 msgstr "취소"
 
-#: src/modules/options/OptionsDialog.cpp:250
+#: src/modules/options/OptionsDialog.cpp:251
 #: src/modules/options/OptionsWidgetContainer.cpp:114
 msgid "Close this dialog, discarding all changes."
 msgstr "모든 변경 사항을 취소하고 대화를 닫습니다."
@@ -615,7 +615,7 @@ msgstr "대화방"
 #: src/modules/options/OptionsWidget_identity.h:144
 #: src/modules/options/OptionsWidget_irc.h:43
 #: src/modules/options/OptionsWidget_message.cpp:66
-#: src/modules/options/OptionsWidget_servers.cpp:252
+#: src/modules/options/OptionsWidget_servers.cpp:253
 #: src/modules/options/OptionsWidget_theme.h:32
 msgid "General"
 msgstr "일반"
@@ -626,7 +626,7 @@ msgstr "일반"
 #: src/modules/options/OptionsWidget_dcc.h:95
 #: src/modules/options/OptionsWidget_identity.h:193
 #: src/modules/options/OptionsWidget_irc.h:56
-#: src/modules/options/OptionsWidget_servers.cpp:990
+#: src/modules/options/OptionsWidget_servers.cpp:991
 msgid "Advanced"
 msgstr "고급 설정"
 
@@ -907,7 +907,7 @@ msgid ""
 msgstr "<p><b>경고:</b><br><b>식별 프로토콜</b> 사양 중 제한된 부분 집합or 하위집합만 구현하는 <b>비 RFC 1413 호환</b> ID 데몬입니다.<br>UNIX에서 인증 포트(113)에 바인딩하려면 루트 권한이 필요할 수도 있습니다.<br>대신 <b>실제</b> 시스템 전체 ID 데몬을 <b>사용하는 것이 좋으며</b>, ID가 필요하지 않은 경우에는 none를 선택합니다.</p>"
 
 #: src/modules/options/OptionsWidget_connection.h:33
-#: src/modules/options/OptionsWidget_servers.cpp:816
+#: src/modules/options/OptionsWidget_servers.cpp:817
 msgid "Connection"
 msgstr "연결"
 
@@ -1521,65 +1521,62 @@ msgstr "이 섹션에는 <b>소리, 미디어 파일, URL 처리기</b> 등... �
 msgid "General Options"
 msgstr "일반 선택사항"
 
-#: src/modules/options/OptionsWidget_identity.cpp:61
+#: src/modules/options/OptionsWidget_identity.cpp:62
 msgid "Nickname Alternatives - KVIrc"
 msgstr "대체 대화명 - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:64
+#: src/modules/options/OptionsWidget_identity.cpp:65
 msgid ""
 "Here you can choose up to three nickname alternatives to the primary one. "
 "KVIrc will use the alternatives if the primary nick is already used by "
 "someone else on a particular IRC network."
 msgstr "여기서는 기본 대화명 대신 가장 큰 3 개의 대화명을 선택할 수 있습니다. KVIrc는 기본 대화명이 특정 IRC 네트워크의 다른 사용자가 이미 사용하고 있는 경우 다른 대화명을 사용합니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:74
+#: src/modules/options/OptionsWidget_identity.cpp:75
 msgid "Alt. nickname 1:"
 msgstr "다른 대화명 1:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:81
+#: src/modules/options/OptionsWidget_identity.cpp:82
 msgid "Alt. nickname 2:"
 msgstr "다른 대화명 2:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:88
+#: src/modules/options/OptionsWidget_identity.cpp:89
 msgid "Alt. nickname 3:"
 msgstr "다른 대화명 3:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:100
-#: src/modules/options/OptionsWidget_identity.cpp:869
-#: src/modules/options/OptionsWidget_identity.cpp:972
+#: src/modules/options/OptionsWidget_identity.cpp:101
+#: src/modules/options/OptionsWidget_identity.cpp:971
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
-#: src/modules/options/OptionsWidget_nickserv.cpp:148
-#: src/modules/options/OptionsWidget_servers.cpp:1005
-#: src/modules/options/OptionsWidget_textEncoding.cpp:225
+#: src/modules/options/OptionsWidget_servers.cpp:1006
 msgid "OK"
 msgstr "확인"
 
-#: src/modules/options/OptionsWidget_identity.cpp:120
+#: src/modules/options/OptionsWidget_identity.cpp:121
 msgid "Avatar Download - KVIrc"
 msgstr "아바타 다운로드 - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:126
+#: src/modules/options/OptionsWidget_identity.cpp:127
 msgid "Please wait while the avatar is being downloaded"
 msgstr "아바타를 내려받는 동안 기다려 주십시오"
 
-#: src/modules/options/OptionsWidget_identity.cpp:129
+#: src/modules/options/OptionsWidget_identity.cpp:130
 msgid "Abort"
 msgstr "중단"
 
-#: src/modules/options/OptionsWidget_identity.cpp:160
+#: src/modules/options/OptionsWidget_identity.cpp:161
 msgid "Failed to start the download"
 msgstr "다운로드 시작에 실패했습니다"
 
-#: src/modules/options/OptionsWidget_identity.cpp:167
-#: src/modules/options/OptionsWidget_identity.cpp:174
+#: src/modules/options/OptionsWidget_identity.cpp:168
+#: src/modules/options/OptionsWidget_identity.cpp:175
 msgid "Download aborted by user"
 msgstr "사용자가 다운로드를 중단했습니다"
 
-#: src/modules/options/OptionsWidget_identity.cpp:203
+#: src/modules/options/OptionsWidget_identity.cpp:204
 msgid "Choose Avatar - KVIrc"
 msgstr "아바타의 선택 - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:207
+#: src/modules/options/OptionsWidget_identity.cpp:208
 msgid ""
 "Please select an avatar image.\n"
 "\n"
@@ -1589,28 +1586,28 @@ msgid ""
 "The full URL for an image (including http:// or https://) can also be entered manually."
 msgstr "아바타 그림을 선택하십시오.\n\n로컬 파일 또는 웹 상의 그림에 대한 전체 경로를 사용할 수 있습니다.\n로컬 그림 파일을 사용하려면 \"찾아보기\" 단추를 클릭하여 원하는 파일을 선택하십시오.\n\n그림의 전체 URL (http:// 또는 https:// 를 포함)도 수동으로 입력 할 수 있습니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:228
+#: src/modules/options/OptionsWidget_identity.cpp:229
 msgid "&Browse..."
 msgstr "둘러보기...(&B)"
 
-#: src/modules/options/OptionsWidget_identity.cpp:268
+#: src/modules/options/OptionsWidget_identity.cpp:269
 #: src/modules/options/OptionsWidget_message.cpp:644
 #: src/modules/options/OptionsWidget_textIcons.cpp:190
 msgid "Select a File - KVIrc"
 msgstr "파일 선택 - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:298
+#: src/modules/options/OptionsWidget_identity.cpp:299
 msgid "Basic Properties"
 msgstr "기본 속성"
 
-#: src/modules/options/OptionsWidget_identity.cpp:301
-#: src/modules/options/OptionsWidget_identity.cpp:936
-#: src/modules/options/OptionsWidget_servers.cpp:164
-#: src/modules/options/OptionsWidget_servers.cpp:581
+#: src/modules/options/OptionsWidget_identity.cpp:302
+#: src/modules/options/OptionsWidget_identity.cpp:935
+#: src/modules/options/OptionsWidget_servers.cpp:165
+#: src/modules/options/OptionsWidget_servers.cpp:582
 msgid "Nickname:"
 msgstr "대화명:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:303
+#: src/modules/options/OptionsWidget_identity.cpp:304
 msgid ""
 "Your <b>nickname</b> is your primary form of identification on IRC.<br>Since"
 " servers cannot accept multiple users sharing the same nickname (case "
@@ -1618,19 +1615,19 @@ msgid ""
 "server refuses to accept the default one."
 msgstr "당신의 <b>대화명</b>은 IRC에서 당신의 기본 식별 형식입니다.<br>서버는 동일한 대화명을 공유하는 여러 사용자 (대소문자 구분 안 함)를 허용 할 수 없으므로, 서버가 기본 대화명을 수락or 승인하지 않을 경우 사용할 다른 대화명을 제공 할 수 있습니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:312
+#: src/modules/options/OptionsWidget_identity.cpp:313
 msgid "Alternatives..."
 msgstr "대체 ..."
 
-#: src/modules/options/OptionsWidget_identity.cpp:315
-#: src/modules/options/OptionsWidget_identity.cpp:950
+#: src/modules/options/OptionsWidget_identity.cpp:316
+#: src/modules/options/OptionsWidget_identity.cpp:949
 #: src/modules/options/OptionsWidget_proxy.cpp:122
-#: src/modules/options/OptionsWidget_servers.cpp:144
-#: src/modules/options/OptionsWidget_servers.cpp:560
+#: src/modules/options/OptionsWidget_servers.cpp:145
+#: src/modules/options/OptionsWidget_servers.cpp:561
 msgid "Username:"
 msgstr "사용자 이름:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:317
+#: src/modules/options/OptionsWidget_identity.cpp:318
 msgid ""
 "This is the <b>username</b> that you will use to connect to the "
 "server.<br>In the past, it was used as a form of authentication, but it "
@@ -1639,63 +1636,63 @@ msgid ""
 "enter any word you like here."
 msgstr "이것은 서버에 연결하는 데 사용할 <b>사용자 이름</b>입니다.<br>과거에는 인증의 형태로 사용되었지만 지금은 특별한 용도가 없습니다.<br>대화명 외에도 IRC에서 <b>사용자이름@호스트이름</b>으로 식별됩니다.<br>기본적으로 여기에 원하는 단어를 입력할 수 있습니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:323
-#: src/modules/options/OptionsWidget_identity.cpp:957
-#: src/modules/options/OptionsWidget_servers.cpp:188
-#: src/modules/options/OptionsWidget_servers.cpp:607
+#: src/modules/options/OptionsWidget_identity.cpp:324
+#: src/modules/options/OptionsWidget_identity.cpp:956
+#: src/modules/options/OptionsWidget_servers.cpp:189
+#: src/modules/options/OptionsWidget_servers.cpp:608
 msgid "Real name:"
 msgstr "진짜 이름:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:326
+#: src/modules/options/OptionsWidget_identity.cpp:327
 msgid ""
 "This text will appear when someone does a /WHOIS on you.<br>It is intended "
 "to be your real name, but people tend to put random quotes and phrases here "
 "too."
 msgstr "이 글자는 다른 사용자가 당신을 /WHOIS 를 수행할 때 나타납니다.<br>이것은 여러분의 진짜 이름을 의도한 것이지만, 사람들은 여기에 아무런  따옴표와 문구를 넣는 경향이 있습니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:330
+#: src/modules/options/OptionsWidget_identity.cpp:331
 msgid ""
 "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr "번역확인--> 이 입력란은 선택 사항이며 CTCP USERINFO 응답의 일부로 나타납니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:333
+#: src/modules/options/OptionsWidget_identity.cpp:334
 msgid "Profile"
 msgstr "프로필"
 
-#: src/modules/options/OptionsWidget_identity.cpp:337
+#: src/modules/options/OptionsWidget_identity.cpp:338
 msgid "Age:"
 msgstr "나이:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:341
+#: src/modules/options/OptionsWidget_identity.cpp:342
 msgid "Here you can specify your age."
 msgstr "여기에서 당신의 나이를 지정할 수 있습니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:344
-#: src/modules/options/OptionsWidget_identity.cpp:372
+#: src/modules/options/OptionsWidget_identity.cpp:345
+#: src/modules/options/OptionsWidget_identity.cpp:373
 msgid "Unspecified"
 msgstr "미지정"
 
-#: src/modules/options/OptionsWidget_identity.cpp:365
+#: src/modules/options/OptionsWidget_identity.cpp:366
 msgid "Gender:"
 msgstr "성별:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:369
+#: src/modules/options/OptionsWidget_identity.cpp:370
 msgid "Here you can specify your gender."
 msgstr "여기에서 당신의 성별을 지정할 수 있습니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:373
+#: src/modules/options/OptionsWidget_identity.cpp:374
 msgid "Female"
 msgstr "여성"
 
-#: src/modules/options/OptionsWidget_identity.cpp:374
+#: src/modules/options/OptionsWidget_identity.cpp:375
 msgid "Male"
 msgstr "남성"
 
-#: src/modules/options/OptionsWidget_identity.cpp:385
+#: src/modules/options/OptionsWidget_identity.cpp:386
 msgid "Location:"
 msgstr "장소:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:387
+#: src/modules/options/OptionsWidget_identity.cpp:388
 msgid ""
 "You can describe here your approximate physical location. Something like "
 "\"Region, Country\" will be OK. Please note that this information will be "
@@ -1703,21 +1700,21 @@ msgid ""
 " <b>is not a good idea</b>."
 msgstr "대략적인 실제 위치를 여기에 설명 할 수 있습니다. \"지역, 국가\"와 같은 것이 괜찮을 것입니다. 이 정보는 누구나 볼 수 있으므로 일반적으로 (정확한 주소와 같은) 더 많은 자료를 넣는 것은 <b>좋은 생각이 아닙니다</b>."
 
-#: src/modules/options/OptionsWidget_identity.cpp:393
+#: src/modules/options/OptionsWidget_identity.cpp:394
 msgid "Languages:"
 msgstr "언어:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:395
+#: src/modules/options/OptionsWidget_identity.cpp:396
 msgid ""
 "You can put here the short names of the languages you can speak. An example "
 "might be \"EN, IT\" that would mean that you speak both Italian and English."
 msgstr "여기에 당신이 말할 수 있는 언어의 짧은 이름을 넣을 수 있습니다. 예를 들어 \"EN, IT\"는 이탈리아어와 영어를 모두 사용할 수 있다는 것을 의미합니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:400
+#: src/modules/options/OptionsWidget_identity.cpp:401
 msgid "Other:"
 msgstr "그 외:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:402
+#: src/modules/options/OptionsWidget_identity.cpp:403
 msgid ""
 "You can put here some additional personal data. It might be a funny quote or"
 " your homepage URL... Please note that this information will be viewable by "
@@ -1725,7 +1722,7 @@ msgid ""
 " card numbers)."
 msgstr "여기에 개인 자료를 추가로 넣을 수 있습니다. 재미있는 인용문이나 누리집 URL일 수도 있습니다... 이 정보는 누구나 볼 수 있으므로 적절한 자료 (암호나 전화 또는 신용카드 번호)를 입력하지 마십시오."
 
-#: src/modules/options/OptionsWidget_identity.cpp:474
+#: src/modules/options/OptionsWidget_identity.cpp:475
 msgid ""
 "Here you can choose your avatar image.<br>It will be visible by other people"
 " that request it.<br>Choose a nice image of yourself, possibly avoiding "
@@ -1735,20 +1732,20 @@ msgid ""
 "800x600 pixels since it will have to be viewable in everyone's monitor."
 msgstr "여기에서 아바타 그림을 선택할 수 있습니다.<br>요청한 다른 사용자가 볼 수 있습니다.<br>외설이나 불쾌감을 피할 수 있는 자신의 멋진 그림을 선택하십시오.<br>대부분의 클라이언트는 내려받기되는 아바타의 크기에 제한이 있으므로, 가장 큰 150Kb의 비교적 작은 파일을 선택하는 것이 좋습니다.<br>또한 이미지는 모든 사용자의 모니터에서 볼 수 있어야 하므로 800x600 픽셀보다 작아야 합니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:482
+#: src/modules/options/OptionsWidget_identity.cpp:483
 msgid "Use avatar:"
 msgstr "아바타를 사용:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:504
+#: src/modules/options/OptionsWidget_identity.cpp:505
 msgid "Choose..."
 msgstr "선택..."
 
-#: src/modules/options/OptionsWidget_identity.cpp:564
+#: src/modules/options/OptionsWidget_identity.cpp:565
 #: src/modules/options/OptionsWidget_identity.cpp:614
 msgid "Failed to Load Avatar - KVIrc"
 msgstr "아바타의로드 실패 - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:565
+#: src/modules/options/OptionsWidget_identity.cpp:566
 #: src/modules/options/OptionsWidget_identity.cpp:615
 msgid ""
 "Failed to load the avatar image.<br>It may be an inaccessible file or an "
@@ -1763,11 +1760,11 @@ msgstr "아바타 그림을 내려받지 못했습니다.<br><b>%1</b>"
 msgid "Avatar Download Failed - KVIrc"
 msgstr "아바타 다운로드에 실패했습니다 - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:630
+#: src/modules/options/OptionsWidget_identity.cpp:629
 msgid "File Dimensions - KVIrc"
 msgstr "번역확인--> 파일 치수or 크기 - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:632
+#: src/modules/options/OptionsWidget_identity.cpp:631
 msgid ""
 "The avatar you have chosen is bigger than 1024x768 pixels.<br>Such a big "
 "image will not be seen on all the user monitors<br>and will probably be "
@@ -1776,97 +1773,97 @@ msgid ""
 " or choose a different image."
 msgstr "당신이 선택한 아바타는 1024x768픽셀보다 큽니다.<br>이러한 큰 그림은 모든 사용자 모니터에서 볼 수 없으며<br>성능을 향상시키기 위해 품질<br>알고리즘이 낮은 원격 클라이언트에 의해 확장될 수 있습니다. 올바른 크기 (800x600과 같은)로<br>수동으로 크기를 조정하거나 다른 그림을 선택*해야* 합니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:646
+#: src/modules/options/OptionsWidget_identity.cpp:645
 msgid "File Size - KVIrc"
 msgstr "파일 크기 - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:648
+#: src/modules/options/OptionsWidget_identity.cpp:647
 msgid ""
 "The avatar you have chosen is bigger than 500 KiB<br>and most clients will "
 "refuse to download it.<br>You *should* either scale it, use a different "
 "storage<br>format or choose a different image."
 msgstr "당신이 선택한 아바타는 500KiB보다 크며<br>대부분의 클라이언트는 다운로드를 거부합니다.<br>크기를 조정하거나 다른 저장 <br>형식을 사용하거나 다른 그림을 선택해야합니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:676
-#: src/modules/options/OptionsWidget_servers.cpp:619
+#: src/modules/options/OptionsWidget_identity.cpp:675
+#: src/modules/options/OptionsWidget_servers.cpp:620
 msgid "User Mode"
 msgstr "사용자 모드"
 
-#: src/modules/options/OptionsWidget_identity.cpp:677
-#: src/modules/options/OptionsWidget_servers.cpp:631
+#: src/modules/options/OptionsWidget_identity.cpp:676
+#: src/modules/options/OptionsWidget_servers.cpp:632
 msgid "Invisible (+i)"
 msgstr "보이지 않음 (+i)"
 
-#: src/modules/options/OptionsWidget_identity.cpp:678
-#: src/modules/options/OptionsWidget_servers.cpp:635
+#: src/modules/options/OptionsWidget_identity.cpp:677
+#: src/modules/options/OptionsWidget_servers.cpp:636
 msgid "Server notices (+s)"
 msgstr "서버 알림 (+s)"
 
-#: src/modules/options/OptionsWidget_identity.cpp:679
-#: src/modules/options/OptionsWidget_servers.cpp:639
+#: src/modules/options/OptionsWidget_identity.cpp:678
+#: src/modules/options/OptionsWidget_servers.cpp:640
 msgid "WALLOPS (+w)"
 msgstr "WALLOPS (+w)"
 
-#: src/modules/options/OptionsWidget_identity.cpp:681
+#: src/modules/options/OptionsWidget_identity.cpp:680
 msgid "Default Messages"
 msgstr "기본 메시지"
 
-#: src/modules/options/OptionsWidget_identity.cpp:683
+#: src/modules/options/OptionsWidget_identity.cpp:682
 msgid "Part message:"
 msgstr "퇴장시 메시지:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:686
+#: src/modules/options/OptionsWidget_identity.cpp:685
 msgid ""
 "This is the default part message that will be used when you leave a channel "
 "by closing a channel window."
 msgstr "대화방 창을 닫아 대화방을 떠날 때 사용되는 기본 퇴장 메시지입니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:690
+#: src/modules/options/OptionsWidget_identity.cpp:689
 msgid "Quit message:"
 msgstr "종료시의 메시지:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:692
+#: src/modules/options/OptionsWidget_identity.cpp:691
 msgid ""
 "This is the default quit message that will be used when you quit your IRC "
 "session by closing the console window or disconnecting by pressing the "
 "disconnect button."
 msgstr "콘솔 창을 닫거나 연결 끊기 단추를 눌러 연결을 끊어 IRC 세션을 종료 할 때 사용되는 기본 종료 메시지입니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:728
+#: src/modules/options/OptionsWidget_identity.cpp:727
 msgid "Enable network profiles"
 msgstr "네트워크 프로파일을 사용 되도록 설정"
 
-#: src/modules/options/OptionsWidget_identity.cpp:729
+#: src/modules/options/OptionsWidget_identity.cpp:728
 msgid "This check enables the use of network profiles"
 msgstr "이 검사를 통해 네트워크 프로파일을 사용 되도록 설정합니다"
 
-#: src/modules/options/OptionsWidget_identity.cpp:740
+#: src/modules/options/OptionsWidget_identity.cpp:739
 msgid "Name"
 msgstr "이름"
 
-#: src/modules/options/OptionsWidget_identity.cpp:741
+#: src/modules/options/OptionsWidget_identity.cpp:740
 msgid "Network"
 msgstr "네트워크"
 
-#: src/modules/options/OptionsWidget_identity.cpp:742
-#: src/modules/options/OptionsWidget_nickserv.cpp:238
-#: src/modules/options/OptionsWidget_servers.cpp:317
+#: src/modules/options/OptionsWidget_identity.cpp:741
+#: src/modules/options/OptionsWidget_nickserv.cpp:237
+#: src/modules/options/OptionsWidget_servers.cpp:318
 msgid "Nickname"
 msgstr "대화명"
 
-#: src/modules/options/OptionsWidget_identity.cpp:743
+#: src/modules/options/OptionsWidget_identity.cpp:742
 msgid "Alt. Nickname"
 msgstr "다른 대화명"
 
-#: src/modules/options/OptionsWidget_identity.cpp:744
+#: src/modules/options/OptionsWidget_identity.cpp:743
 msgid "Username"
 msgstr "사용자 이름"
 
-#: src/modules/options/OptionsWidget_identity.cpp:745
+#: src/modules/options/OptionsWidget_identity.cpp:744
 msgid "Real Name"
 msgstr "진짜 이름"
 
-#: src/modules/options/OptionsWidget_identity.cpp:754
+#: src/modules/options/OptionsWidget_identity.cpp:753
 msgid ""
 "This is a set of rules to use profiles.<br>KVIrc will use them to handle the"
 " user connection data before the data is sent to the IRC server.<br>This is "
@@ -1874,70 +1871,70 @@ msgid ""
 "changing them at every connection attempt."
 msgstr "이것은 프로파일을 사용하기 위한 규칙 집합입니다.<br>KVIrc는 자료를 IRC 서버로 전송하기 전에 이 자료를 사용하여 사용자 연결 자료를 처리합니다.<br>이 기능은 사용자가 연결을 시도할 때마다 자료를 변경하지 않고 서로 다른 네트워크에서 서로 다른 자료를 사용하려는 경우에 유용합니다."
 
-#: src/modules/options/OptionsWidget_identity.cpp:768
+#: src/modules/options/OptionsWidget_identity.cpp:767
 msgid "Add Profile"
 msgstr "프로필 추가"
 
-#: src/modules/options/OptionsWidget_identity.cpp:771
+#: src/modules/options/OptionsWidget_identity.cpp:770
 msgid "Edit Profile"
 msgstr "프로필 편집"
 
-#: src/modules/options/OptionsWidget_identity.cpp:774
+#: src/modules/options/OptionsWidget_identity.cpp:773
 msgid "Delete Profile"
 msgstr "프로필 삭제"
 
-#: src/modules/options/OptionsWidget_identity.cpp:869
+#: src/modules/options/OptionsWidget_identity.cpp:868
 msgid "Invalid Profile Rule - KVIrc"
 msgstr "프로필 규칙이 잘못되었습니다 - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:869
+#: src/modules/options/OptionsWidget_identity.cpp:868
 msgid "There is already a profile with that name"
 msgstr "그 이름의 프로필은 이미 존재합니다"
 
-#: src/modules/options/OptionsWidget_identity.cpp:917
+#: src/modules/options/OptionsWidget_identity.cpp:916
 msgid "Profile Editor - KVIrc"
 msgstr "프로필 편집기 - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:921
+#: src/modules/options/OptionsWidget_identity.cpp:920
 msgid "Profile name:"
 msgstr "프로필 이름:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:925
+#: src/modules/options/OptionsWidget_identity.cpp:924
 msgid "Put here the name of the profile"
 msgstr "여기에 프로필의 이름을 입력합니다"
 
-#: src/modules/options/OptionsWidget_identity.cpp:929
+#: src/modules/options/OptionsWidget_identity.cpp:928
 msgid "Network name:"
 msgstr "네트워크 이름:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:933
+#: src/modules/options/OptionsWidget_identity.cpp:932
 msgid "Put here the name of the network"
 msgstr "여기에 네트워크 이름을 넣으십시오"
 
-#: src/modules/options/OptionsWidget_identity.cpp:940
+#: src/modules/options/OptionsWidget_identity.cpp:939
 msgid "Put here the nickname you want to use"
 msgstr "여기에 사용할 대화명을 넣으십시오"
 
-#: src/modules/options/OptionsWidget_identity.cpp:943
-#: src/modules/options/OptionsWidget_servers.cpp:176
-#: src/modules/options/OptionsWidget_servers.cpp:595
+#: src/modules/options/OptionsWidget_identity.cpp:942
+#: src/modules/options/OptionsWidget_servers.cpp:177
+#: src/modules/options/OptionsWidget_servers.cpp:596
 msgid "Alt. nickname:"
 msgstr "다른 대화명:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:947
+#: src/modules/options/OptionsWidget_identity.cpp:946
 msgid "Put here the alternative nickname you want to use"
 msgstr "여기에 사용할 다른 대화명을 넣으십시오"
 
-#: src/modules/options/OptionsWidget_identity.cpp:954
+#: src/modules/options/OptionsWidget_identity.cpp:953
 msgid "Put here the username you want to use"
 msgstr "여기에 사용할 사용자 이름을 넣으십시오"
 
-#: src/modules/options/OptionsWidget_identity.cpp:961
+#: src/modules/options/OptionsWidget_identity.cpp:960
 msgid "Put here the real name you want to use"
 msgstr "여기에 사용할 진짜 이름을 넣으십시오"
 
 #: src/modules/options/OptionsWidget_identity.h:131
-#: src/modules/options/OptionsWidget_servers.cpp:648
+#: src/modules/options/OptionsWidget_servers.cpp:649
 msgid "Identity"
 msgstr "신분"
 
@@ -2613,13 +2610,13 @@ msgid "MIME Type"
 msgstr "MIME 유형"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:78
-#: src/modules/options/OptionsWidget_servers.cpp:1327
+#: src/modules/options/OptionsWidget_servers.cpp:1328
 msgid "Description"
 msgstr "설명"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:89
-#: src/modules/options/OptionsWidget_servers.cpp:124
-#: src/modules/options/OptionsWidget_servers.cpp:539
+#: src/modules/options/OptionsWidget_servers.cpp:125
+#: src/modules/options/OptionsWidget_servers.cpp:540
 msgid "Description:"
 msgstr "설명:"
 
@@ -2916,56 +2913,56 @@ msgstr "힌트: 마우스 커서를 입력란 위로 이동하여 도움을 받�
 msgid "Invalid NickServ Rule - KVIrc"
 msgstr "NickServ 규칙이 잘못되었습니다 - KVIrc"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:152
+#: src/modules/options/OptionsWidget_nickserv.cpp:151
 msgid "The nickname field can't be empty!"
 msgstr "대화명 입력란은 비워 둘 수 없습니다!"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:158
+#: src/modules/options/OptionsWidget_nickserv.cpp:157
 msgid "The nickname field can't contain spaces!"
 msgstr "대화명 입력란은 공백을 포함 할 수 없습니다!"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:166
+#: src/modules/options/OptionsWidget_nickserv.cpp:165
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
 msgstr "NickServ 마스크는 비워둘 수 없습니다!<br>적어도 * 는 거기에 넣어야 합니다."
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:174
+#: src/modules/options/OptionsWidget_nickserv.cpp:173
 msgid "The message regexp can't be empty!<br>You must put at least * there."
 msgstr "정규식 메시지는 비워 둘 수 없습니다!<br>거기에는 적어도 * 는 넣어야 합니다."
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:182
+#: src/modules/options/OptionsWidget_nickserv.cpp:181
 msgid "The IDENTIFY command can't be empty!"
 msgstr "IDENTIFY 사용자쪽 명령은 비워 둘 수 없습니다!"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:227
-#: src/modules/options/OptionsWidget_servers.cpp:306
+#: src/modules/options/OptionsWidget_nickserv.cpp:226
+#: src/modules/options/OptionsWidget_servers.cpp:307
 msgid "Enable NickServ identification"
 msgstr "NickServ 식별을 사용 되도록 설정"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:230
-#: src/modules/options/OptionsWidget_servers.cpp:309
+#: src/modules/options/OptionsWidget_nickserv.cpp:229
+#: src/modules/options/OptionsWidget_servers.cpp:310
 msgid "This check enables the automatic identification with NickServ"
 msgstr "이 점검은 NickServ로 자동 식별을 가능하게합니다"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:239
+#: src/modules/options/OptionsWidget_nickserv.cpp:238
 msgid "Server Mask"
 msgstr "서버 마스크"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:240
-#: src/modules/options/OptionsWidget_servers.cpp:318
+#: src/modules/options/OptionsWidget_nickserv.cpp:239
+#: src/modules/options/OptionsWidget_servers.cpp:319
 msgid "NickServ Mask"
 msgstr "NickServ 마스크"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:241
-#: src/modules/options/OptionsWidget_servers.cpp:319
+#: src/modules/options/OptionsWidget_nickserv.cpp:240
+#: src/modules/options/OptionsWidget_servers.cpp:320
 msgid "NickServ Request Mask"
 msgstr "NickServ 요청 마스크"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:242
-#: src/modules/options/OptionsWidget_servers.cpp:320
+#: src/modules/options/OptionsWidget_nickserv.cpp:241
+#: src/modules/options/OptionsWidget_servers.cpp:321
 msgid "Identify Command"
 msgstr "식별 사용자쪽 명령"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:253
+#: src/modules/options/OptionsWidget_nickserv.cpp:252
 msgid ""
 "This is a list of NickServ identification rules. KVIrc will use them to "
 "model its automatic interaction with NickServ on all the networks.<br>Please"
@@ -2978,24 +2975,24 @@ msgid ""
 "the servers dialog)."
 msgstr "이것은 NickServ 식별 규칙의 목록입니다. KVIrc는이 기능을 사용하여 모든 네트워크에서 NickServ와의 자동 상호 작용을 모델링합니다.<br>이 기능을 잘못 사용하면 NickServ 암호를 도난당할 수 있습니다. NickServ 인증 프로토콜을 완전히 이해했는지 확인하십시오.<br>다시 말해서, 당신이 무엇을 하고 있는지 꼭 알고 있어야 한다는 것입니다.<br>또한 제공한 암호는 <b>일반 텍스트</b>로 저장됩니다.<br>KVIrc는 \"고급...\" 네트워크 선택사항에서 생성할 수 있는 네트워크별 NickServ 인증 규칙도 지원합니다 (서버 대화상자에서 접근 가능)."
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:262
-#: src/modules/options/OptionsWidget_servers.cpp:336
+#: src/modules/options/OptionsWidget_nickserv.cpp:261
+#: src/modules/options/OptionsWidget_servers.cpp:337
 msgid "Add Rule"
 msgstr "규칙 추가"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:266
-#: src/modules/options/OptionsWidget_servers.cpp:340
+#: src/modules/options/OptionsWidget_nickserv.cpp:265
+#: src/modules/options/OptionsWidget_servers.cpp:341
 msgid "Edit Rule"
 msgstr "규칙 편집"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:270
-#: src/modules/options/OptionsWidget_servers.cpp:344
+#: src/modules/options/OptionsWidget_nickserv.cpp:269
+#: src/modules/options/OptionsWidget_servers.cpp:345
 msgid "Delete Rule"
 msgstr "규칙 삭제"
 
 #: src/modules/options/OptionsWidget_nickserv.h:39
-#: src/modules/options/OptionsWidget_servers.cpp:367
-#: src/modules/options/OptionsWidget_servers.cpp:1003
+#: src/modules/options/OptionsWidget_servers.cpp:368
+#: src/modules/options/OptionsWidget_servers.cpp:1004
 msgid "NickServ"
 msgstr "NickServ"
 
@@ -3190,18 +3187,18 @@ msgid "Proxy:"
 msgstr "프록시:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:118
-#: src/modules/options/OptionsWidget_servers.cpp:655
+#: src/modules/options/OptionsWidget_servers.cpp:656
 msgid "Port:"
 msgstr "포트:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:120
-#: src/modules/options/OptionsWidget_servers.cpp:668
+#: src/modules/options/OptionsWidget_servers.cpp:669
 msgid "IP address:"
 msgstr "IP 주소:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:124
-#: src/modules/options/OptionsWidget_servers.cpp:155
-#: src/modules/options/OptionsWidget_servers.cpp:572
+#: src/modules/options/OptionsWidget_servers.cpp:156
+#: src/modules/options/OptionsWidget_servers.cpp:573
 msgid "Password:"
 msgstr "암호:"
 
@@ -3210,7 +3207,7 @@ msgid "Protocol:"
 msgstr "프로토콜:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:133
-#: src/modules/options/OptionsWidget_servers.cpp:717
+#: src/modules/options/OptionsWidget_servers.cpp:718
 msgid "Use IPv6 protocol"
 msgstr "IPv6 프로토콜을 사용"
 
@@ -3324,46 +3321,46 @@ msgstr "질의"
 msgid "chat"
 msgstr "대화"
 
-#: src/modules/options/OptionsWidget_servers.cpp:110
+#: src/modules/options/OptionsWidget_servers.cpp:111
 msgid "Network Details and Configuration - KVIrc"
 msgstr "네트워크 세부 정보 및 구성 - KVIrc"
 
-#: src/modules/options/OptionsWidget_servers.cpp:130
+#: src/modules/options/OptionsWidget_servers.cpp:131
 msgid "Put here a brief description of the network."
 msgstr "여기에 네트워크에 대한 간단한 설명을 넣으십시오."
 
-#: src/modules/options/OptionsWidget_servers.cpp:138
-#: src/modules/options/OptionsWidget_servers.cpp:554
+#: src/modules/options/OptionsWidget_servers.cpp:139
+#: src/modules/options/OptionsWidget_servers.cpp:555
 msgid "Properties"
 msgstr "속성"
 
-#: src/modules/options/OptionsWidget_servers.cpp:151
+#: src/modules/options/OptionsWidget_servers.cpp:152
 msgid ""
 "This is the <b>username</b> that KVIrc will use to login to servers on this network.\n"
 "If this field is left empty (most common case), KVIrc will use the default username specified in the \"Identity\" options tab."
 msgstr "KVIrc가 이 네트워크의 서버에 로그인할 때 사용하는 <b>사용자이름</b>입니다.\n이 입력란을 비워두면 (가장 일반적인 경우) KVIrc는 \"식별\" 선택사항 탭에 지정된 기본 사용자 이름을 사용합니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:162
+#: src/modules/options/OptionsWidget_servers.cpp:163
 msgid ""
 "If this network requires a password, put it in this field, otherwise leave "
 "it empty."
 msgstr "이 네트워크에 암호가 필요한 경우 이 입력란에 암호를 입력하고, 그렇지 않으면 비워 두십시오."
 
-#: src/modules/options/OptionsWidget_servers.cpp:173
+#: src/modules/options/OptionsWidget_servers.cpp:174
 msgid ""
 "You can specify a special nickname that will be used to login to the servers"
 " on this network.<br>If this field is left empty (most common case), the "
 "default nickname (specified in the \"Identity\" settings) will be used."
 msgstr "이 네트워크의 서버에 로그인하는 데 사용할 특수한 대화명을 지정할 수 있습니다.<br>이 입력란을 비워두면 (가장 일반적인 경우) 기본 대화명 (\"식별\" 설정에 지정된)이 사용됩니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:185
+#: src/modules/options/OptionsWidget_servers.cpp:186
 msgid ""
 "This nickname will be tried if the primary nickname for this network is "
 "already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead."
 msgstr "이 네트워크의 기본 대화명이 이미 사용중인 경우 이 대화명이 시도됩니다.<br>비워두면 식별 선택사항에 지정된 기본 대화명이 대신 시도됩니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:195
+#: src/modules/options/OptionsWidget_servers.cpp:196
 msgid ""
 "You can specify a special <b>real name</b> that will be used to login with "
 "the servers on this network.If you leave this field empty (most common "
@@ -3371,11 +3368,11 @@ msgid ""
 "will be used."
 msgstr "이 네트워크의 서버에 로그인 할 때 사용할 <b>진짜 이름</b>을 지정할 수 있습니다. 이 입력란을 비어 있는 경우(가장 일반적인 경우) 기본 \"진짜 이름\"(\"식별\" 설정에서 지정)이 사용됩니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:198
+#: src/modules/options/OptionsWidget_servers.cpp:199
 msgid "Server encoding:"
 msgstr "서버 인코딩:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:203
+#: src/modules/options/OptionsWidget_servers.cpp:204
 msgid ""
 "This box allows you to choose the preferred encoding for the servers in this"
 " network. This encoding will be used for server specific needs, like "
@@ -3384,12 +3381,12 @@ msgid ""
 "choose in the \"Encoding\" page of the options dialog."
 msgstr "이 상자에서 이 네트워크의 서버에 대한 기본 인코딩을 선택할 수 있습니다. 이 인코딩은 대화명 및 대화방 이름 참조와 같은 서버별 요구에 사용됩니다.<br>\"시스템 인코딩 사용\" 을 선택하면 선택사항 대화 상자의 \"인코딩\" 페이지에서 선택한 시스템 전체 값으로 인코딩이 설정됩니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:208
-#: src/modules/options/OptionsWidget_servers.cpp:755
+#: src/modules/options/OptionsWidget_servers.cpp:209
+#: src/modules/options/OptionsWidget_servers.cpp:756
 msgid "Text encoding:"
 msgstr "글자 인코딩:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:213
+#: src/modules/options/OptionsWidget_servers.cpp:214
 msgid ""
 "This box allows you to choose the preferred encoding for the servers in this"
 " network. This encoding will be used as the default for text messages.<br>If"
@@ -3398,39 +3395,39 @@ msgid ""
 "dialog."
 msgstr "이 상자에서 이 네트워크의 서버에 대한 기본 인코딩을 선택할 수 있습니다. 이 인코딩은 문자 메시지의 기본값으로 사용됩니다.<br>\"시스템 인코딩 사용\" 을 선택하면, 선택사항 대화 상자의 \"인코딩\" 페이지에서 선택한 시스템 전체 값으로 인코딩이 설정됩니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:221
 #: src/modules/options/OptionsWidget_servers.cpp:222
+#: src/modules/options/OptionsWidget_servers.cpp:223
 msgid "Use System Encoding"
 msgstr "시스템 인코딩을 사용"
 
-#: src/modules/options/OptionsWidget_servers.cpp:240
+#: src/modules/options/OptionsWidget_servers.cpp:241
 msgid "Connect to this network at startup"
 msgstr "시작할 때 마다 이 네트워크에 연결"
 
-#: src/modules/options/OptionsWidget_servers.cpp:244
+#: src/modules/options/OptionsWidget_servers.cpp:245
 msgid ""
 "This option will cause KVIrc to automatically connect to this network at "
 "startup"
 msgstr "이 선택사항을 사용하면 시작할 때 KVIrc가 이 네트워크에 자동으로 연결됩니다"
 
-#: src/modules/options/OptionsWidget_servers.cpp:260
-#: src/modules/options/OptionsWidget_servers.cpp:824
+#: src/modules/options/OptionsWidget_servers.cpp:261
+#: src/modules/options/OptionsWidget_servers.cpp:825
 msgid "Channels to Join Automatically upon Connect"
 msgstr "연결시 자동으로 입장할 채널"
 
-#: src/modules/options/OptionsWidget_servers.cpp:262
+#: src/modules/options/OptionsWidget_servers.cpp:263
 msgid ""
 "Here you can set a list of channels to be joined automatically after a "
 "connection to a server in this network has been established. To add a "
 "channel, type its name in the text input below and click \"<b>Add</b>\"."
 msgstr "여기서 이 네트워크의 서버에 연결된 뒤에 자동으로 입장할 대화방 목록을 설정할 수 있습니다. 대화방을 추가하려면 아래 글자 입력에 대화방 이름을 입력하고 \"<b>추가</b>\" 를 클릭하십시오."
 
-#: src/modules/options/OptionsWidget_servers.cpp:268
-#: src/modules/options/OptionsWidget_servers.cpp:831
+#: src/modules/options/OptionsWidget_servers.cpp:269
+#: src/modules/options/OptionsWidget_servers.cpp:832
 msgid "Join Channels"
 msgstr "대화방에 입장"
 
-#: src/modules/options/OptionsWidget_servers.cpp:278
+#: src/modules/options/OptionsWidget_servers.cpp:279
 msgid ""
 "The following commands will be executed after a connection to a server in "
 "this network has been established.<br><b>Important:</b> Enter commands "
@@ -3439,12 +3436,12 @@ msgid ""
 "then eventually PASS and NICK and then execute this command sequence."
 msgstr "이 네트워크의 서버에 연결된 뒤에 다음 사용자쪽 명령이 실행됩니다.<br><b>중요:</b> 바로 앞에 슬래시 <b>없이</b> 사용자쪽 명령을 입력하십시오 (예: <tt>/quote pass secret</tt> 대신 <tt>quote pass secret</tt>).<br>KVIrc는 먼저 USER 사용자쪽 명령을 보낸 다음 최종적으로 PASS 및 NICK를 전송한 다음 이 사용자쪽 명령 순서를 실행합니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:283
-#: src/modules/options/OptionsWidget_servers.cpp:845
+#: src/modules/options/OptionsWidget_servers.cpp:284
+#: src/modules/options/OptionsWidget_servers.cpp:846
 msgid "On Connect"
 msgstr "연결시"
 
-#: src/modules/options/OptionsWidget_servers.cpp:294
+#: src/modules/options/OptionsWidget_servers.cpp:295
 msgid ""
 "The following commands will be executed after a successful login to a server"
 " in this network.<br><b>Important:</b> Enter commands <b>without</b> a "
@@ -3453,12 +3450,12 @@ msgid ""
 "setting variables, etc."
 msgstr "다음 사용자쪽 명령은 이 네트워크의 서버에 로그인한 후 실행됩니다.<br><b>중요:</b> 바로 앞에 슬래시 <b>없이</b> 사용자쪽 명령을 입력하십시오 (예: <tt>/quote privatelog</tt> 대신 <tt>quote privatelog</tt>).<br>이 기능은 질의를 자동으로 열고 변수를 설정하는 등의 작업에 유용합니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:298
-#: src/modules/options/OptionsWidget_servers.cpp:860
+#: src/modules/options/OptionsWidget_servers.cpp:299
+#: src/modules/options/OptionsWidget_servers.cpp:861
 msgid "On Login"
 msgstr "로그인"
 
-#: src/modules/options/OptionsWidget_servers.cpp:329
+#: src/modules/options/OptionsWidget_servers.cpp:330
 msgid ""
 "This is a list of NickServ identification rules. KVIrc will use them to "
 "model its automatic interaction with NickServ on this network.<br>Please be "
@@ -3469,29 +3466,29 @@ msgid ""
 " TEXT</b>."
 msgstr "이것은 NickServ 식별 규칙의 목록입니다. KVIrc는이 네트워크를 사용하여 이 네트워크에서 NickServ와의 자동 상호 작용을 모델링합니다.<br>이 기능을 잘못 사용하면 NickServ 암호를 도난당할 수 있습니다. NickServ 인증 프로토콜을 완전히 이해했는지 확인하십시오.<br>다시말해, 당신이 수행중인 작업을 알고 있어야 합니다.<br> 또한 제공한 암호는 <b>일반텍스트</b>로 저장됩니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:530
+#: src/modules/options/OptionsWidget_servers.cpp:531
 msgid "Server Details and Configuration - KVIrc"
 msgstr "서버 세부 정보 및 구성 - KVIrc"
 
-#: src/modules/options/OptionsWidget_servers.cpp:545
+#: src/modules/options/OptionsWidget_servers.cpp:546
 msgid ""
 "This is a brief description of this server. This field has no restrictions "
 "but many server lists use it to describe the server's physical location"
 msgstr "이 서버에 대한 간략한 설명입니다. 이 입력란에는 제한이 없지만, 많은 서버 목록이 이를 사용하여 서버의 실제 위치를 설명합니다"
 
-#: src/modules/options/OptionsWidget_servers.cpp:567
+#: src/modules/options/OptionsWidget_servers.cpp:568
 msgid ""
 "This is the <b>username</b> that KVIrc will use to login to this server.\n"
 "If this field is left empty (most common case), KVIrc will first look if a username is specified for the network that this server belongs to, and if that is empty then KVIrc will use the default username specified in the \"Identity\" options tab."
 msgstr "KVIrc가 이 서버에 로그인하는 데 사용할 <b>사용자 이름</b>입니다.\n이 입력란이 비어 있는 경우 (가장 일반적인 경우) KVIrc는 먼저 이 서버가 속한 네트워크에  사용자 이름이 지정되어 있는지 확인하고, 이 사용자 이름이 비어 있으면 KVIrc는 \"식별\" 선택사항 탭에 지정된 기본 사용자 이름을 사용합니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:579
+#: src/modules/options/OptionsWidget_servers.cpp:580
 msgid ""
 "If this server requires a password, put it in this field, otherwise leave it"
 " empty."
 msgstr "이 서버에 암호가 필요한 경우 이 입력란에 암호를 입력하고, 그렇지 않은 경우 암호를 비워 두십시오."
 
-#: src/modules/options/OptionsWidget_servers.cpp:590
+#: src/modules/options/OptionsWidget_servers.cpp:591
 msgid ""
 "You can specify a special <b>nickname</b> that will be used to login to this"
 " server.<br>If this field is left empty (most common case), KVIrc will first"
@@ -3500,14 +3497,14 @@ msgid ""
 "\"Identity\" settings) will be used."
 msgstr "이 서버에 로그인하는 데 사용될 특수한 <b>대화명</b>을 지정할 수 있습니다.<br>이 입력란이 비어 있는 경우 (가장 일반적인 경우) KVIrc는 먼저 이 서버가 속한 네트워크에 대화명이 지정되었는지 확인하고, 이 대화명이 비어 있으면 기본 대화명 (\"식별\" 설정에서 지정됨) 이 사용됩니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:604
+#: src/modules/options/OptionsWidget_servers.cpp:605
 msgid ""
 "This nickname will be tried if the primary nickname for this server is "
 "already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead."
 msgstr "이 서버의 기본 대화명이 이미 사용하고 있으면 이 대화명이 시도됩니다.<br>비워두면 식별 선택사항에 지정된 기본 대화명이 대신 시도됩니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:614
+#: src/modules/options/OptionsWidget_servers.cpp:615
 msgid ""
 "You can specify a special <b>real name</b> that will be used to login with "
 "this server.<br>If you leave this field empty (most common case), KVIrc will"
@@ -3516,24 +3513,24 @@ msgid ""
 " \"Identity\" settings) will be used."
 msgstr "이 서버에 로그인하는 데 사용될 특수한 <b>진짜 이름</b>을 지정할 수 있습니다.<br>이 입력란을 비워두면 (가장 일반적인 경우) KVIrc는 먼저 이 서버가 속한 네트워크에 대해 진짜 이름이 지정되어 있는지 확인하고, 이 이름이 비어 있으면 기본 \"진짜 이름\" (\"식별\" 설정에서 지정됨)이 사용됩니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:622
+#: src/modules/options/OptionsWidget_servers.cpp:623
 msgid "Use default user mode"
 msgstr "기본 사용자 모드를 사용"
 
-#: src/modules/options/OptionsWidget_servers.cpp:623
+#: src/modules/options/OptionsWidget_servers.cpp:624
 msgid ""
 "If this is enabled, the global initial <b>user mode</b> (configured from the"
 " identity dialog) will be used. If disabled, you can configure an initial "
 "user mode for this server"
 msgstr "사용 되도록 설정하면, 전역 초기 <b>사용자 모드</b> (식별 대화 상자에서 구성)가 사용됩니다. 비활성화된 경우 이 서버에 대한 초기 사용자 모드를 구성할 수 있습니다"
 
-#: src/modules/options/OptionsWidget_servers.cpp:663
+#: src/modules/options/OptionsWidget_servers.cpp:664
 msgid ""
 "This is the default <b>port</b> that this server will be contacted "
 "on.<br>Usually <b>6667</b> is OK."
 msgstr "이 서버에 연결할 기본 <b>포트</b>입니다.<br>보통 <b>6667</b>이 정상입니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:672
+#: src/modules/options/OptionsWidget_servers.cpp:673
 msgid ""
 "This is the <b>IP address</b> of this server, it is here for caching "
 "purposes.<br>If you leave this field empty, KVIrc will fill it in the first "
@@ -3542,11 +3539,11 @@ msgid ""
 "up again."
 msgstr "이것은 이 서버의 <b>IP 주소</b>이며 캐싱을 위해 여기에 있습니다.<br>이 입력란을 비워두면 KVIrc가 서버에 처음 연결할 때 입력란을 채웁니다. 아래의 \"캐시 IP 주소\" 선택사항을 사용 되도록 설정하면, KVIrc는 이 선택사항을 \"캐시된 결과\"로 사용하고 다시 검색하지 않습니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:696
+#: src/modules/options/OptionsWidget_servers.cpp:697
 msgid "Cache IP address"
 msgstr "IP 주소 캐시"
 
-#: src/modules/options/OptionsWidget_servers.cpp:699
+#: src/modules/options/OptionsWidget_servers.cpp:700
 msgid ""
 "This check will enable <b>IP address caching</b> for this server:<br>DNS "
 "lookups can be time-consuming and might be blocking on some platforms; this "
@@ -3556,39 +3553,39 @@ msgid ""
 "temporarily unreachable or you want to avoid the round-robin lookups."
 msgstr "이 검사는 이 서버에 대한 <b>IP 주소 캐싱</b>을 사용 되도록 설정할 것입니다:<br>DNS 조회는 시간이 많이 걸리고 일부 플랫폼에서 차단될 수 있습니다.이 선택사항은 KVIrc가 서버 호스트 이름을 한 번만 찾게합니다.<br><br>고급 :이 선택사항을 사용하여 해당 서버의 DNS에 일시적으로 도달 할 수 없거나 라운드 로빈 조회를 피하려는 경우 특정 서버 이름을 고정 IP 주소로 강제로 확인할 수 있습니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:710
+#: src/modules/options/OptionsWidget_servers.cpp:711
 msgid "Connect to this server at startup"
 msgstr "시작할 때 마다 이 서버에 연결"
 
-#: src/modules/options/OptionsWidget_servers.cpp:715
+#: src/modules/options/OptionsWidget_servers.cpp:716
 msgid ""
 "This option will cause KVIrc to connect to the IRC server when it is "
 "started."
 msgstr "이 선택사항은 KVIrc가 시작될 때 IRC 서버에 연결되도록 합니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:727
+#: src/modules/options/OptionsWidget_servers.cpp:728
 msgid ""
 "This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use"
 " the IPv6 protocol (thus your OS <b>must</b> have a working IPv6 stack and "
 "you <b>must</b> have an IPv6 connection)."
 msgstr "이 검사는 IPv6 서버를 식별합니다.<br>사용 되도록 설정하면, KVIrc는 IPv6 프로토콜을 사용하려고 시도합니다 (따라서 OS에 작동 중인 IPv6 스택이 <b>반드시</b> 있어야 하며 IPv6 연결도 <b>반드시</b> 있어야 함)."
 
-#: src/modules/options/OptionsWidget_servers.cpp:730
+#: src/modules/options/OptionsWidget_servers.cpp:731
 msgid "Use SSL protocol"
 msgstr "SSL 프로토콜을 사용"
 
-#: src/modules/options/OptionsWidget_servers.cpp:733
+#: src/modules/options/OptionsWidget_servers.cpp:734
 msgid ""
 "This check will cause the connection to use the <b>Secure Socket Layer</b> "
 "encryption support. Obviously, this server must have support for this, too. "
 ":)"
 msgstr "이 검사를 수행하면 연결이 <b>보안 소켓 레이어</b> 암호화 지원을 사용하게합니다. 물론 이 서버도 이에대한 지원이 있어야 합니다. :)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:744
+#: src/modules/options/OptionsWidget_servers.cpp:745
 msgid "Protocol encoding:"
 msgstr "프로토콜 인코딩:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:749
+#: src/modules/options/OptionsWidget_servers.cpp:750
 msgid ""
 "This box allows you to choose the preferred encoding for this server. This "
 "encoding will be used for server specific needs, like referencing nicknames "
@@ -3596,7 +3593,7 @@ msgid ""
 "encoding will be inherited from the network that this server belongs to."
 msgstr "번역확인-> 이 상자에서 이 서버에 대한 기본 인코딩을 선택할 수 있습니다. 이 인코딩은 대화명 및 대화방 이름 참조와 같은 서버별 요구에 사용됩니다.<br>\"네트워크 인코딩 사용\" 을 선택하면 이 서버가 속한 네트워크에서 인코딩을 물려받습니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:760
+#: src/modules/options/OptionsWidget_servers.cpp:761
 msgid ""
 "This box allows you to choose the preferred encoding for this server. This "
 "will be used as the default encoding for all text messages.<br>If you choose"
@@ -3604,16 +3601,16 @@ msgid ""
 "network that this server belongs to."
 msgstr "이 상자에서 이 서버에 대한 기본 인코딩을 선택할 수 있습니다. 모든 텍스트 메시지의 기본 인코딩으로 사용됩니다. 이것은 모든 문자 메시지의 기본 인코딩으로 사용됩니다.<br>\"네트워크 인코딩 사용\"을 선택하면 이 서버가 속한 네트워크에서 인코딩을 물려받습니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:768
 #: src/modules/options/OptionsWidget_servers.cpp:769
+#: src/modules/options/OptionsWidget_servers.cpp:770
 msgid "Use Network Encoding"
 msgstr "네트워크의 인코딩을 사용"
 
-#: src/modules/options/OptionsWidget_servers.cpp:789
+#: src/modules/options/OptionsWidget_servers.cpp:790
 msgid "Proxy server:"
 msgstr "프록시 서버:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:793
+#: src/modules/options/OptionsWidget_servers.cpp:794
 msgid ""
 "Defines the connection type that KVIrc should use to connect to this "
 "server.<br>When it's set to *Default* KVIrc will use the global proxy "
@@ -3623,22 +3620,22 @@ msgid ""
 " *Connection* tab' \"Proxy hosts\" dialog."
 msgstr "KVIrc가이  서버에 연결하기 위해 사용해야하는 연결 유형을 정의합니다.<br>*기본값* 으로 설정된 경우 KVIrc는 전역 프록시 설정을 사용하고, *직접 연결* 로 설정된 경우 KVIrc는 프록시를 사용하지 않고 직접 연결하거나 이전에 추가했던 원하는 것을 선택합니다.<br>*일반 환경 설정* / *연결* 탭의 \"프록시 호스트\" 대화 상자에서 새로운 프록시 서버를 정의하거나 편집 할 수 있습니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:798
+#: src/modules/options/OptionsWidget_servers.cpp:799
 msgid "Default"
 msgstr "기본값"
 
-#: src/modules/options/OptionsWidget_servers.cpp:799
+#: src/modules/options/OptionsWidget_servers.cpp:800
 msgid "Direct Connection"
 msgstr "직접 연결"
 
-#: src/modules/options/OptionsWidget_servers.cpp:825
+#: src/modules/options/OptionsWidget_servers.cpp:826
 msgid ""
 "Here you can set a list of channels to be joined automatically after a "
 "connection to this server has been established. To add a channel, type its "
 "name in the text input below and click \"<b>Add</b>\"."
 msgstr "여기서 이 서버에 연결한 뒤 자동으로 입장할 대화방 목록을 설정할 수 있습니다. 대화방을 추가하려면 아래 글자 입력에 대화방 이름을 입력하고 \"<b>추가</b>\" 를 클릭합니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:840
+#: src/modules/options/OptionsWidget_servers.cpp:841
 msgid ""
 "The following commands will be executed after a connection has been "
 "established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -3648,7 +3645,7 @@ msgid ""
 "particularly useful for IRC bouncers that require login commands."
 msgstr "번역확인-> 연결이 완료되면 다음 사용자쪽 명령이 실행됩니다.<br><b>중요:</b> 바로 앞쪽 슬래시 <b>없이</b> 사용자쪽 명령을 입력하십시오 (예: <tt>/quote pass secret</tt> 대신 <tt>quote pass secret</tt>).<br>KVIrc는 먼저 USER 사용자쪽 명령을 보낸 다음 최종적으로 PASS 및 NICK를 보낸 다음 이 명령 순서를 실행합니다.<br>이 기능은 로그인 사용자쪽 명령이 필요한 IRC 경비원or 바운서에게 특히 유용합니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:856
+#: src/modules/options/OptionsWidget_servers.cpp:857
 msgid ""
 "The following commands will be executed after a successful login to this "
 "server.<br><b>Important:</b> Enter commands <b>without</b> a preceding slash"
@@ -3657,11 +3654,11 @@ msgid ""
 "setting variables, etc."
 msgstr "이 서버에 올바르게 로그인한 후 다음 사용자쪽 명령이 실행됩니다.<br><b>중요:</b> 바로 앞에 슬래시 <b>없이</b> 사용자쪽 명령어를 입력하십시오 (예: <tt>/quote privatelog</tt> 대신 <tt>quote privatelog</tt>).<br>이 기능은 질의를 자동으로 열고 변수를 설정하는 등에 유용합니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:867
+#: src/modules/options/OptionsWidget_servers.cpp:868
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
 msgstr "STARTTLS 확장을 사용하여 SSL/TLS로 전환"
 
-#: src/modules/options/OptionsWidget_servers.cpp:869
+#: src/modules/options/OptionsWidget_servers.cpp:870
 msgid ""
 "This check enables the use of the <b>Transport Layer Security</b> protocol. "
 "If you enable the Extended Capabilities below then the TLS protocol support "
@@ -3670,29 +3667,29 @@ msgid ""
 "of the connection."
 msgstr "이 검사를 통해 <b>전송 계층 보안</b> 프로토콜을 사용 되도록 설정합니다. 아래에서 확장 기능을 사용하도록 설정하면 CAP LS 사용자쪽 명령을 사용하여 TLS 프로토콜 지원이 감지 or 탐지됩니다. 아래의 확장 기능을 활성화하면 CAP LS 사용자쪽 명령을 사용하여 TLS 프로토콜 지원이 감지됩니다. \"확장 기능\"이 없으면 연결 시작시 STARTTLS 사용자쪽 명령이 강제로 전송됩니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:880
+#: src/modules/options/OptionsWidget_servers.cpp:881
 msgid "Extended Capabilities"
 msgstr "확장된 기능"
 
-#: src/modules/options/OptionsWidget_servers.cpp:886
+#: src/modules/options/OptionsWidget_servers.cpp:887
 msgid "Query extended capabilities on connect"
 msgstr "연결시 확장 기능을 질의"
 
-#: src/modules/options/OptionsWidget_servers.cpp:889
+#: src/modules/options/OptionsWidget_servers.cpp:890
 msgid ""
 "This check will cause the connection to use the <b>Extended Capability</b> "
 "support."
 msgstr "이 검사를 수행하면 연결에서 <b>확장 기능 지원</b>을 사용할 수 있습니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:892
+#: src/modules/options/OptionsWidget_servers.cpp:893
 msgid "SASL Authentication"
 msgstr "SASL 인증"
 
-#: src/modules/options/OptionsWidget_servers.cpp:897
+#: src/modules/options/OptionsWidget_servers.cpp:898
 msgid "Authenticate via SASL extension"
 msgstr "SASL 확장 인증"
 
-#: src/modules/options/OptionsWidget_servers.cpp:899
+#: src/modules/options/OptionsWidget_servers.cpp:900
 msgid ""
 "This check enables the use of the <b>SASL</b> authentication protocol If you"
 " enable the proper global option in the Connection/SSL tab and fill the SASL"
@@ -3700,53 +3697,53 @@ msgid ""
 "used for this server if available."
 msgstr "번역확인 -> 이 검사를 통해 <b>SASL</b> 인증 프로토콜을 사용 되도록 설정합니다. 연결/SSL 탭에서 적절한 전역 선택사항을 사용 되도록 설정하고 이 페이지의 SASL 대화명 및 SASL 암호 입력란을 채우면 SASL 프로토콜이 이 서버에 사용을 사용 되도록 설정합니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:905
+#: src/modules/options/OptionsWidget_servers.cpp:906
 msgid "SASL method:"
 msgstr "SASL 메소드:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:911
+#: src/modules/options/OptionsWidget_servers.cpp:912
 msgid ""
 "Select which SASL method you want to use to authenticate "
 "with.<br><br>EXTERNAL will fallback to PLAIN if a non-SSL connection is used"
 " or no .pem file is loaded."
 msgstr "인증 할 SASL 방법을 선택하십시오.<br><br>비SSL 연결이 사용되거나 .pem 파일이 불러와지지 않으면 EXTERNAL은 PLAIN 으로 돌아갑니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:919
+#: src/modules/options/OptionsWidget_servers.cpp:920
 msgid "SASL nickname:"
 msgstr "SASL 대화명:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:923
+#: src/modules/options/OptionsWidget_servers.cpp:924
 msgid ""
 "If you want to enable SASL authentication, insert your nickname here. (Not "
 "required for EXTERNAL)"
 msgstr "SASL 인증을 사용 되도록 설정하려면, 여기에 대화명을 삽입하십시오. (EXTERNAL에는 필요하지 않음)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:926
+#: src/modules/options/OptionsWidget_servers.cpp:927
 msgid "SASL password:"
 msgstr "SASL 암호:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:930
+#: src/modules/options/OptionsWidget_servers.cpp:931
 msgid ""
 "If you want to enable SASL authentication, insert your password here. (Not "
 "required for EXTERNAL)"
 msgstr "SASL 인증을 사용 되도록 설정하려면, 여기에 암호를 삽입하십시오. (EXTERNAL에는 필요하지 않음)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:938
+#: src/modules/options/OptionsWidget_servers.cpp:939
 msgid "Link filter:"
 msgstr "링크 거르개:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:972
+#: src/modules/options/OptionsWidget_servers.cpp:973
 msgid ""
 "This field specifies the name of a module that exports a link filter for "
 "this type of server.<br>For plain IRC connections, you don't need any link "
 "filters; this is used for incompatible protocols."
 msgstr "이 입력란은 이 유형의 서버에 대한 링크 필터를 내보내는 모듈의 이름을 지정합니다.<br>일반 IRC 연결의 경우 링크 거르개가 필요하지 않으며, 호환되지 않는 프로토콜에 사용됩니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:977
+#: src/modules/options/OptionsWidget_servers.cpp:978
 msgid "ID:"
 msgstr "ID:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:985
+#: src/modules/options/OptionsWidget_servers.cpp:986
 msgid ""
 "This field allows you to specify a really unique ID for this server. You "
 "will then be able to use /server -x &lt;this_id&gt; to make the connection. "
@@ -3754,193 +3751,185 @@ msgid ""
 "same hostname and port in different networks (bouncers?)"
 msgstr "이 입력란을 사용하면 이 서버의 실제 고유한 ID를 지정할 수 있습니다. 그러면 /server -x &lt;this_id&gt; 를 사용하여 연결할 수 있습니다. 이 기능은 서로 다른 네트워크 (바운서?)에서 호스트 이름과 포트가 같은 서버 항목이 여러 개인 경우에 특히 유용합니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:997
+#: src/modules/options/OptionsWidget_servers.cpp:998
 msgid ""
 "NickServ settings are available only for the whole IRC network, not for specific servers.\n"
 "To open network settings choose a network (with a globe) in list of networks and servers and click Advanced."
 msgstr "NickServ 설정은 특정 서버가 아닌 전체 IRC 네트워크에서만 사용할 수 있습니다.\n네트워크 설정을 열려면 네트워크 및 서버 목록에서 네트워크 (전역 포함)를 선택하고 고급을 클릭하십시오."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1306
+#: src/modules/options/OptionsWidget_servers.cpp:1307
 msgid "Filter:"
 msgstr "거르개:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1311
+#: src/modules/options/OptionsWidget_servers.cpp:1312
 msgid ""
 "If you are searching for a specific server or network, you can insert its "
 "name to filter the servers in the list"
 msgstr "특정 서버 또는 네트워크를 검색하는 경우 해당 이름을 삽입하여 목록에서 서버를 걸러낼 수 있습니다"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1318
+#: src/modules/options/OptionsWidget_servers.cpp:1319
 msgid ""
 "If this option is enabled, only servers you have favorited will be displayed"
 msgstr "이 선택사항을 사용 되도록 설정하면, 즐겨 찾는 서버만 표시됩니다"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1326
+#: src/modules/options/OptionsWidget_servers.cpp:1327
 msgid "Server"
 msgstr "서버"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1342
+#: src/modules/options/OptionsWidget_servers.cpp:1343
 msgid ""
 "This is the list of available IRC servers.<br>Right-click on the list to add"
 " or remove servers and perform other actions.<br>Double-click on a item for "
 "advanced options."
 msgstr "사용 가능한 IRC 서버 목록입니다.<br>목록에서 마우스 오른쪽 단추를 눌러 서버를 추가하거나 제거하고 다른 동작을 수행하십시오.<br>고급 선택사항에 대한 항목을 두 번 누르십시오."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1357
+#: src/modules/options/OptionsWidget_servers.cpp:1358
 msgid "New network"
 msgstr "새로운 네트워크"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1366
+#: src/modules/options/OptionsWidget_servers.cpp:1367
 msgid "New server"
 msgstr "새로운 서버"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1372
+#: src/modules/options/OptionsWidget_servers.cpp:1373
 msgid "Favorite / Unfavorite server"
 msgstr "인기있는 / 바람직하지 않은 서버"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1379
+#: src/modules/options/OptionsWidget_servers.cpp:1380
 msgid "Remove network / server"
 msgstr "네트워크/ 서버 제거"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1386
+#: src/modules/options/OptionsWidget_servers.cpp:1387
 msgid "Copy server"
 msgstr "서버 복사"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1393
+#: src/modules/options/OptionsWidget_servers.cpp:1394
 msgid "Paste server"
 msgstr "서버 붙여넣기"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1404
+#: src/modules/options/OptionsWidget_servers.cpp:1405
 msgid "Import server list"
 msgstr "서버목록 가져오기"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1409
+#: src/modules/options/OptionsWidget_servers.cpp:1410
 msgid "Active Configuration"
 msgstr "선택된 설정"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1410
-#: src/modules/options/OptionsWidget_servers.cpp:1711
+#: src/modules/options/OptionsWidget_servers.cpp:1411
+#: src/modules/options/OptionsWidget_servers.cpp:1712
 msgid "Server:"
 msgstr "서버:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1414
+#: src/modules/options/OptionsWidget_servers.cpp:1415
 msgid "This is the name of the currently selected server or network"
 msgstr "이것은 현재 선택된 서버 또는 네트워크의 이름입니다"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1416
+#: src/modules/options/OptionsWidget_servers.cpp:1417
 msgid "Advanced..."
 msgstr "고급..."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1418
+#: src/modules/options/OptionsWidget_servers.cpp:1419
 msgid "Click here to edit advanced options for this entry"
 msgstr "이 항목에 대한 고급 선택사항을 편집하려면 여기를 클릭하십시오"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1430
+#: src/modules/options/OptionsWidget_servers.cpp:1431
 msgid ""
 "This button shows a list of recently used servers.<br>It allows you to "
 "quickly find them in the list."
 msgstr "이 단추는 최근에 사용한 서버 목록을 표시합니다.<br>목록에서 빠르게 찾을 수 있습니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1437
+#: src/modules/options/OptionsWidget_servers.cpp:1438
 msgid "Connect &Now"
 msgstr "지금 연결 (&N)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1479
+#: src/modules/options/OptionsWidget_servers.cpp:1480
 msgid "Hit this button to connect to the currently selected server."
 msgstr "현재 선택한 서버에 연결하려면 이 단추를 누릅니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1485
+#: src/modules/options/OptionsWidget_servers.cpp:1486
 msgid "Show this dialog at startup"
 msgstr "시작할 때 마다 이 대화 상자를 표시"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1490
+#: src/modules/options/OptionsWidget_servers.cpp:1491
 msgid ""
 "If this option is enabled, the servers dialog will appear every time you "
 "start KVIrc"
 msgstr "이 선택사항을 사용 되도록 설정하면, KVIrc를 시작할 때마다 서버 대화 상자가 나타납니다"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1716
+#: src/modules/options/OptionsWidget_servers.cpp:1717
 msgid "Network:"
 msgstr "네트워크 정보:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1731
+#: src/modules/options/OptionsWidget_servers.cpp:1732
 msgid "No selection"
 msgstr "선택 없음"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1766
+#: src/modules/options/OptionsWidget_servers.cpp:1767
 msgid "UnknownNet"
 msgstr "알 수 없는 네트워크"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1845
-#: src/modules/options/OptionsWidget_servers.cpp:1983
+#: src/modules/options/OptionsWidget_servers.cpp:1846
+#: src/modules/options/OptionsWidget_servers.cpp:1984
 msgid "New Network"
 msgstr "새로운 네트워크 정보"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1846
+#: src/modules/options/OptionsWidget_servers.cpp:1847
 msgid "Remove Network"
 msgstr "네트워크 삭제"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1851
+#: src/modules/options/OptionsWidget_servers.cpp:1852
 msgid "&New Server"
 msgstr "새로운 서버 정보(&N)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1853
+#: src/modules/options/OptionsWidget_servers.cpp:1854
 msgid "Unfavorite Server"
 msgstr "바람직하지 않는 서버"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1855
+#: src/modules/options/OptionsWidget_servers.cpp:1856
 msgid "Re&move Server"
 msgstr "서버 정보 삭제(&M)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1857
+#: src/modules/options/OptionsWidget_servers.cpp:1858
 msgid "&Copy Server"
 msgstr "서버 정보 복사(&C)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1859
+#: src/modules/options/OptionsWidget_servers.cpp:1860
 msgid "&Paste Server"
 msgstr "서버 정보 붙여넣기(&P)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1864
+#: src/modules/options/OptionsWidget_servers.cpp:1865
 msgid "Import Server List"
 msgstr "서버 목록 가져오기"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1865
+#: src/modules/options/OptionsWidget_servers.cpp:1866
 msgid "Clear Server List"
 msgstr "서버 목록 지우기"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1903
+#: src/modules/options/OptionsWidget_servers.cpp:1904
 msgid ""
 "Oops! Something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr "이런! 이상한 일이 생겼습니다.<br>서버를 가져올 수 있는 모듈을 찾을 수 없습니다."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1923
+#: src/modules/options/OptionsWidget_servers.cpp:1924
 msgid ""
 "Oops! Something weird happened:<br>Can't find the module that was capable of"
 " this import action. :("
 msgstr "이런! 이상한 일이 생겼습니다:<br>이 가져오기 동작을 수행할 수 있는 모듈을 찾을 수 없습니다. :("
 
-#: src/modules/options/OptionsWidget_servers.cpp:2007
+#: src/modules/options/OptionsWidget_servers.cpp:2008
 msgid "irc.unknown.net"
 msgstr "irc.unknown.net"
 
-#: src/modules/options/OptionsWidget_servers.cpp:2160
+#: src/modules/options/OptionsWidget_servers.cpp:2161
 msgid ""
 "If you click <b>Yes</b>, all of your saved networks, servers, settings, and "
 "passwords will be lost.<br>Would you like to continue?"
 msgstr "<b>예</b>를 누르면 저장된 네트워크와 서버, 설정, 암호가 모두 손실됩니다.<br>계속 하시겠습니까?"
 
-#: src/modules/options/OptionsWidget_servers.cpp:2163
+#: src/modules/options/OptionsWidget_servers.cpp:2164
 msgid "Confirm Clearing Server List - KVIrc"
 msgstr "서버 목록 지우기 확인 - KVIrc"
-
-#: src/modules/options/OptionsWidget_servers.cpp:2164
-msgid "Yes"
-msgstr "예"
-
-#: src/modules/options/OptionsWidget_servers.cpp:2164
-msgid "No"
-msgstr "아니오"
 
 #: src/modules/options/OptionsWidget_servers.h:173
 msgid "Servers and Configuration"

@@ -1,0 +1,46 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 09:13+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Croatian (http://app.transifex.com/kvirc/KVIrc/language/hr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#: src/modules/python/libkvipython.cpp:42
+msgid "The pythoncore module can't be loaded: Python support not available"
+msgstr ""
+
+#: src/modules/python/libkvipython.cpp:43
+msgid "To see more details about loading failure try /pythoncore.load"
+msgstr ""
+
+#: src/modules/python/libkvipython.cpp:56
+msgid ""
+"This KVIrc executable has been compiled without Python scripting support"
+msgstr ""
+
+#: src/modules/python/libkvipython.cpp:407
+#: src/modules/python/libkvipython.cpp:473
+msgid ""
+"The pythoncore module failed to execute the code: something is wrong with "
+"the Python support"
+msgstr ""
+
+#: src/modules/python/libkvipython.cpp:419
+msgid "Python execution error:"
+msgstr ""
+
+#: src/modules/pythoncore/libkvipythoncore.cpp:114
+msgid "Internal error: Python interpreter not initialized"
+msgstr ""

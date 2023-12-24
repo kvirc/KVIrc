@@ -10,10 +10,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
-"PO-Revision-Date: 2018-04-09 20:32+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
-"Language-Team: Russian (http://www.transifex.com/kvirc/KVIrc/language/ru/)\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 08:57+0000\n"
+"Last-Translator: Alexey Sokolov <alexey+transifex@asokolov.org>, 2015\n"
+"Language-Team: Russian (http://app.transifex.com/kvirc/KVIrc/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -96,60 +96,52 @@ msgstr ""
 msgid "Save path is empty"
 msgstr "Путь сохранения пуст"
 
-#: src/modules/addon/AddonManagementDialog.cpp:97
+#: src/modules/addon/AddonManagementDialog.cpp:95
 msgid "Manage Addons - KVIrc"
 msgstr ""
 
-#: src/modules/addon/AddonManagementDialog.cpp:119
+#: src/modules/addon/AddonManagementDialog.cpp:115
 msgid "Configure addon..."
 msgstr "Конфигурация дополнения..."
 
-#: src/modules/addon/AddonManagementDialog.cpp:125
+#: src/modules/addon/AddonManagementDialog.cpp:121
 msgid "Show help"
 msgstr "Показать помощь"
 
-#: src/modules/addon/AddonManagementDialog.cpp:131
+#: src/modules/addon/AddonManagementDialog.cpp:127
 msgid "Delete selected addon"
 msgstr "Удалить выбранное дополнение"
 
-#: src/modules/addon/AddonManagementDialog.cpp:141
+#: src/modules/addon/AddonManagementDialog.cpp:137
 msgid "Create an addon as a distributable package"
 msgstr "Создать дополнение как распространяемый пакет"
 
-#: src/modules/addon/AddonManagementDialog.cpp:151
+#: src/modules/addon/AddonManagementDialog.cpp:147
 msgid "Install addon package from disk"
 msgstr "Установить пакет дополнения с диска"
 
-#: src/modules/addon/AddonManagementDialog.cpp:157
+#: src/modules/addon/AddonManagementDialog.cpp:153
 msgid "Get more addons..."
 msgstr "Ещё дополнения..."
 
-#: src/modules/addon/AddonManagementDialog.cpp:179
+#: src/modules/addon/AddonManagementDialog.cpp:175
 msgid "Close"
 msgstr "Закрыть "
 
-#: src/modules/addon/AddonManagementDialog.cpp:277
+#: src/modules/addon/AddonManagementDialog.cpp:271
 msgid "Do you really want to uninstall the addon \"%1\"?"
 msgstr "Вы действительно хотите удалить дополнение «%1»?"
 
-#: src/modules/addon/AddonManagementDialog.cpp:282
+#: src/modules/addon/AddonManagementDialog.cpp:276
 msgid "Confirm Addon Uninstallation - KVIrc"
 msgstr ""
 
-#: src/modules/addon/AddonManagementDialog.cpp:283
-msgid "Yes"
-msgstr "Да"
-
-#: src/modules/addon/AddonManagementDialog.cpp:283
-msgid "No"
-msgstr "Нет"
-
-#: src/modules/addon/AddonManagementDialog.cpp:311
+#: src/modules/addon/AddonManagementDialog.cpp:313
 msgid "Select a Installation File - KVIrc"
 msgstr ""
 
-#: src/modules/addon/AddonManagementDialog.cpp:324
-#: src/modules/addon/AddonManagementDialog.cpp:339
+#: src/modules/addon/AddonManagementDialog.cpp:326
+#: src/modules/addon/AddonManagementDialog.cpp:338
 msgid "Install Addon - KVIrc"
 msgstr "Установить дополнение - KVIrc"
 
@@ -186,148 +178,148 @@ msgstr ""
 msgid "File %1 already exists. Do you want to overwrite it?"
 msgstr "Файл «%1» существует. Хотите перезаписать его?"
 
-#: src/modules/addon/PackAddonDialog.cpp:180
+#: src/modules/addon/PackAddonDialog.cpp:178
 msgid "Addon Packaging - KVIrc"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:185
+#: src/modules/addon/PackAddonDialog.cpp:182
 msgid "Exporting Addon Completed - KVIrc"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:185
+#: src/modules/addon/PackAddonDialog.cpp:182
 msgid "The package was saved successfully in %1"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:194
+#: src/modules/addon/PackAddonDialog.cpp:191
 msgid "Package Information"
 msgstr "Информация о пакете"
 
-#: src/modules/addon/PackAddonDialog.cpp:195
+#: src/modules/addon/PackAddonDialog.cpp:192
 msgid ""
 "Here you need to provide information about you (the packager) and a short "
 "description of the package you're creating."
 msgstr "Здесь вы должны указать информацию о себе и краткое описание пакета."
 
-#: src/modules/addon/PackAddonDialog.cpp:200
+#: src/modules/addon/PackAddonDialog.cpp:197
 msgid "Package &author:"
 msgstr "&Автор пакета:"
 
-#: src/modules/addon/PackAddonDialog.cpp:208
+#: src/modules/addon/PackAddonDialog.cpp:205
 msgid "Package &name:"
 msgstr "Имя &пакета:"
 
-#: src/modules/addon/PackAddonDialog.cpp:212
+#: src/modules/addon/PackAddonDialog.cpp:209
 msgid "No spaces allowed"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:217
+#: src/modules/addon/PackAddonDialog.cpp:214
 msgid "Package &version:"
 msgstr "&Версия пакета:"
 
-#: src/modules/addon/PackAddonDialog.cpp:226
+#: src/modules/addon/PackAddonDialog.cpp:223
 msgid "Package &description:"
 msgstr "&Описание пакета:"
 
-#: src/modules/addon/PackAddonDialog.cpp:235
+#: src/modules/addon/PackAddonDialog.cpp:232
 msgid "Minimum &KVIrc version:"
 msgstr "Минимальная версия &KVIrc:"
 
-#: src/modules/addon/PackAddonDialog.cpp:258
+#: src/modules/addon/PackAddonDialog.cpp:255
 msgid "Package Files"
 msgstr "Файлы пакета"
 
-#: src/modules/addon/PackAddonDialog.cpp:259
+#: src/modules/addon/PackAddonDialog.cpp:256
 msgid ""
 "Here you need to select the directory where the addon files to be packed are"
 " located."
 msgstr "Здесь вам надо выбрать директорию, где расположены файлы дополнения."
 
-#: src/modules/addon/PackAddonDialog.cpp:264
+#: src/modules/addon/PackAddonDialog.cpp:261
 msgid "Select the source directory:"
 msgstr "Выберите исходную директорию:"
 
-#: src/modules/addon/PackAddonDialog.cpp:268
+#: src/modules/addon/PackAddonDialog.cpp:265
 msgid "Select the image file:"
 msgstr "Выберите файл картинки:"
 
-#: src/modules/addon/PackAddonDialog.cpp:283
+#: src/modules/addon/PackAddonDialog.cpp:280
 msgid "Save Package"
 msgstr "Сохранить пакет"
 
-#: src/modules/addon/PackAddonDialog.cpp:284
+#: src/modules/addon/PackAddonDialog.cpp:281
 msgid ""
 "Here you need to provide the path where to save the created addon package"
 msgstr "Здесь вам надо выбрать директорию для сохранения пакета дополнения."
 
-#: src/modules/addon/PackAddonDialog.cpp:291
+#: src/modules/addon/PackAddonDialog.cpp:288
 msgid "Select save path:"
 msgstr "Выберите путь сохранения:"
 
-#: src/modules/addon/PackAddonDialog.cpp:325
+#: src/modules/addon/PackAddonDialog.cpp:322
 msgid "Final Information"
 msgstr "Конечная информация"
 
-#: src/modules/addon/PackAddonDialog.cpp:326
+#: src/modules/addon/PackAddonDialog.cpp:323
 msgid ""
 "Here are the details you provided. If this information is correct, hit the "
 "\"Finish\" button to complete the packaging operations."
 msgstr "Здесь представлена введённая вами информация. Если эта информация верна, нажмите кнопку  «Готово» чтобы завершить упаковку."
 
-#: src/modules/addon/PackAddonDialog.cpp:348
+#: src/modules/addon/PackAddonDialog.cpp:345
 msgid "This is what I will check for:"
 msgstr "Вот что я буду проверять:"
 
-#: src/modules/addon/PackAddonDialog.cpp:350
+#: src/modules/addon/PackAddonDialog.cpp:347
 msgid "Package author"
 msgstr "Автор пакета"
 
-#: src/modules/addon/PackAddonDialog.cpp:354
+#: src/modules/addon/PackAddonDialog.cpp:351
 msgid "Package name"
 msgstr "Имя пакета"
 
-#: src/modules/addon/PackAddonDialog.cpp:358
+#: src/modules/addon/PackAddonDialog.cpp:355
 msgid "Package version"
 msgstr "Версия пакета"
 
-#: src/modules/addon/PackAddonDialog.cpp:362
+#: src/modules/addon/PackAddonDialog.cpp:359
 msgid "Package description"
 msgstr "Описание пакета"
 
-#: src/modules/addon/PackAddonDialog.cpp:366
+#: src/modules/addon/PackAddonDialog.cpp:363
 msgid "Minimum KVIrc version"
 msgstr "Минимальная версия KVIrc"
 
-#: src/modules/addon/PackAddonDialog.cpp:370
+#: src/modules/addon/PackAddonDialog.cpp:367
 msgid "Image file"
 msgstr "Файл картинки"
 
-#: src/modules/addon/PackAddonDialog.cpp:374
+#: src/modules/addon/PackAddonDialog.cpp:371
 msgid "Source directory"
 msgstr "Папка с исходниками"
 
-#: src/modules/addon/PackAddonDialog.cpp:378
+#: src/modules/addon/PackAddonDialog.cpp:375
 msgid "Save path"
 msgstr "Путь сохранения"
 
-#: src/modules/addon/PackAddonDialog.cpp:389
+#: src/modules/addon/PackAddonDialog.cpp:386
 msgid "File Summary Review - KVIrc"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:396
+#: src/modules/addon/PackAddonDialog.cpp:393
 msgid ""
 "Here are the files found in the directories you provided.\n"
 "If the files listed below are correct, hit the \"Finish\" button to complete the packaging operation."
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:405
+#: src/modules/addon/PackAddonDialog.cpp:402
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/modules/addon/PackAddonDialog.cpp:409
+#: src/modules/addon/PackAddonDialog.cpp:406
 msgid "Finish"
 msgstr "Готово"
 
-#: src/modules/addon/WebAddonInterfaceDialog.cpp:42
+#: src/modules/addon/WebAddonInterfaceDialog.cpp:40
 msgid "Download Addons - KVIrc"
 msgstr ""
 

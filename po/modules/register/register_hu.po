@@ -1,47 +1,63 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
-"PO-Revision-Date: 2017-09-23 21:28+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
-"Language-Team: Hungarian (http://www.transifex.com/kvirc/KVIrc/language/"
-"hu/)\n"
-"Language: hu\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 09:13+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Hungarian (http://app.transifex.com/kvirc/KVIrc/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/regchan/libkviregchan.cpp:126
+#: src/modules/regchan/libkviregchan.cpp:190
+msgid "No such channel/netmask entry in the database"
+msgstr "Nincs ilyen csatorna/netmaszk bejegyzés az adatbázisban"
+
+#: src/modules/regchan/libkviregchan.cpp:210
+msgid "Registered channel list:"
+msgstr "Regisztrált csatornák listája:"
+
+#: src/modules/regchan/libkviregchan.cpp:225
+msgid "Channel: %1%2@%3"
+msgstr "Csatorna: %1%2@%3"
 
 #: src/modules/regchan/libkviregchan.cpp:234
 msgid "    Property: %1=%2"
 msgstr "    Tulajdonság: %1=%2"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:261
-msgid "&Add Group..."
-msgstr "Csoport hozzá&adása..."
+#: src/modules/regchan/libkviregchan.cpp:241
+#, c-format
+msgid "Total %d channels"
+msgstr "Összesen %d csatorna"
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:353
-#: src/modules/reguser/RegisteredUsersDialog.cpp:256
-msgid "&Add..."
-msgstr "Hozzá&ad..."
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:75
+msgid "Property Editor - KVIrc"
+msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:362
-msgid "&Edit"
-msgstr "Sz&erkesztés"
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:88
+msgid "Property"
+msgstr "Tulajdonság"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:272
-msgid "&Edit..."
-msgstr "Sz&erkesztés..."
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:89
+msgid "Value"
+msgstr "Érték"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:99
 msgid "&New"
 msgstr "Új"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:103
+msgid "&Remove"
+msgstr "Eltávolít"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:111
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:255
@@ -50,125 +66,6 @@ msgstr "Új"
 msgid "&OK"
 msgstr "&Ok"
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:103
-msgid "&Remove"
-msgstr "Eltávolít"
-
-#: src/modules/reguser/RegistrationWizard.cpp:116
-msgid ""
-"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
-"mask must be in the following form:<br><b>nickname!username@hostname</"
-"b><br>and can contain wildcard characters '*' and '?'. Be careful in "
-"choosing the masks, as they are the only way to verify the identity of a "
-"registered user.<br><br>You can enter at most two masks here, if you wish to "
-"add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
-"dialog. You must enter at least one mask.</p>"
-msgstr ""
-"<p>Egy regisztrált felhasználót egy vagy több <b>IRC maszk</b> azonosítja."
-"<br>A maszknak az alábbi formátumban kell lennie:<br><b>becenev!"
-"felhasznalonev@hosztnev</b><br>és tartalmazhatja a '*' és '?' dzsóker-"
-"karaktereket. Óvatos légy a maszkválasztással, ugyanis ez az egyetlen "
-"lehetőség a regisztrált felhasználó azonosítására.<br><br>Maximum két "
-"maszkot adhatsz meg itt, de amennyiben többet szeretnél a \"<b>Szerkesztés</"
-"b>\" gommbal teheted meg a Regisztrált Felhasználók párbeszédablakban. "
-"Legalább egy maszkot meg kell adnod..</p>"
-
-#: src/modules/reguser/RegistrationWizard.cpp:212
-msgid ""
-"<p>If you want to be notified when this user is online or goes offline, you "
-"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
-"enter at most two nicknames here, if you wish to add more nicknames, use the "
-"\"<b>Edit</b>\" button in the  \"Registered Users\" dialog.</p>"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:189
-msgid ""
-"<p>If you want to store an avatar image for this user, you can set it here. "
-"KVIrc will show the avatar in the userlist next to the user's nickname."
-"<br>An avatar can be in any supported image format (PNG is recommended). "
-"Keep in mind that KVIrc stores avatars in memory and has to resize them to "
-"fit in the userlist, thus it's better to use small, low-resolution images.</"
-"p>"
-msgstr ""
-"<p>Ha szeretnél egy avatart eltárolni a felhasználóhoz, itt állíthatod azt "
-"be.A KVIrc a felhasználólistában fogja megjeleníteni azt, közvetlenül a "
-"felhasználó neve mellett.<br>Avatar bármilyen támogatott formátumú képfájl "
-"lehet (PNG a javasolt). Jó tudni, hogy a KVIrc az avatarokat a memóriában "
-"tárolja és át kell méreteznie, hogy beférjen a felhasználólistába, ezért "
-"érdemes kicsi, alacsony felbontású képet választani.</p>"
-
-#: src/modules/reguser/RegistrationWizard.cpp:251
-msgid ""
-"<p>That's it. The user registration has been completed.<br><br>Click "
-"\"<b>Finish</b>\" to close this dialog.</p>"
-msgstr ""
-"<p>Kész is, a regisztráció befejeződött.<br><br>Kattints a \"<b>Befejezés</"
-"b>re\" Az ablak bezárásához.</p>"
-
-#: src/modules/reguser/RegistrationWizard.cpp:86
-msgid ""
-"<p>Welcome to the user registration wizard.<br>This process allows you to "
-"add an IRC user to the database and set properties for that user. KVIrc will "
-"be (hopefully) able to recognize the user, add him to the notify list, and "
-"display the associated avatar.<br><br>First of all, you must insert an "
-"<b>entry name or real name</b> for the user you're going to register. The "
-"name will be used to identify the database entry and has no specific "
-"requirements, it can be a given name, nickname, or just some text to remind "
-"you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n"
-"</p>"
-msgstr ""
-"<p>Üdv a felhasználó regisztrációs varázslóban.<br>Ezzel a folyamat lehetővé "
-"teszi egy IRC felhasználó hozzáadását az adatbázishoz. A KVIrc "
-"(remélhetőelg) képes lesz felismerni a felhasználót, hozzáadni az értesítési "
-"listához és megjeleníteni a hozzá tartozó avatart.<br><br>Mindenekelőtt meg "
-"kell adnod a <b>valós nevét vagy egy nevet a bejegyzéshez</b>. Ez a név "
-"fogja azonosítani a felhasználót. Nincsenek extra követelmények, lehet "
-"becenév, keresztnév, valós név vagy bármilyen szöveg, amivel emlékezni fogsz "
-"a tényleges felhasználóra. <br>Pld: \"Nagy Géza\", \"Gezu\".\n"
-"</p>"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:251
-msgid "Add Wizard..."
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:253
-msgid "Add a registered user by means of a user-friendly wizard."
-msgstr ""
-"Regisztrált felhasználó hozzáadása egy felhasználóbarát varázsló "
-"segítségével."
-
-#: src/modules/reguser/RegistrationWizard.cpp:217
-msgid "Add this user to the notify list"
-msgstr "Felhasználó hozzáadása az értesítési listához"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:263
-msgid "Adds a new group"
-msgstr "Új csoportot hoz létre"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:421
-msgid "All Properties..."
-msgstr "Minden Tulajdonság..."
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:406
-msgid "Avatar:"
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:838
-msgid "Can't export the registered users database: write error."
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:964
-msgid "Can't import the registered users database: read error."
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:866
-msgid "Can't open file %Q for reading."
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:737
-msgid "Can't open file %Q for writing."
-msgstr "%Q fájl megnyitása írásra sikertelen."
-
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:115
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:259
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
@@ -176,309 +73,15 @@ msgstr "%Q fájl megnyitása írásra sikertelen."
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: src/modules/regchan/libkviregchan.cpp:225
-msgid "Channel: %1%2@%3"
-msgstr "Csatorna: %1%2@%3"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:330
-#: src/modules/reguser/RegisteredUsersDialog.cpp:141
-msgid "Comment:"
-msgstr "Komment:"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:537
-#: src/modules/reguser/RegisteredUsersDialog.cpp:542
-#: src/modules/reguser/RegisteredUsersDialog.cpp:544
-#: src/modules/reguser/RegisteredUsersDialog.cpp:548
-#: src/modules/reguser/RegisteredUsersDialog.cpp:550
-msgid "Default"
-msgstr "Alapértelmezett"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:275
-msgid "Edit the first selected entry."
-msgstr "Elsőként kiválasztott elem szerkesztése."
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:434
-msgid "Enable ignore for this user"
-msgstr "Mellőzés engedélyezése a felhasználóra"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:728
-msgid "Enter a Filename - KVIrc"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:97
-msgid "Entry name:"
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:289
-msgid ""
-"Export the selected entries to a file.<br>All the data associated with the "
-"selected registered users will be exported.<br>You (or anyone else) can "
-"later import the entries by using the \"Import\" button."
-msgstr ""
-"Kijelölt elemek exportállása fájlba.<br>Minden felhasználóhoz hozzárendelt "
-"adat mentésre kerül. <br>Te (vagy bárki más) később ezeket a bejegyzéseket "
-"importálhatja az \"Importálás...\" gomb használatával."
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:286
-msgid "Export to..."
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:84
-msgid "Flags"
-msgstr "Tulajdonságok"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:429
-#: src/modules/reguser/RegisteredUsersDialog.cpp:443
-msgid "Group name:"
-msgstr "Csoport neve:"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:370
-msgid "Identity"
-msgstr "Személyazonosság"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:467
-msgid "Ignore"
-msgstr "Mellőzés"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:452
-msgid "Ignore CTCP messages"
-msgstr "CTCP üzenetek mellőzése"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:458
-msgid "Ignore DCCs"
-msgstr "DCC-k mellőzése"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:436
-msgid "Ignore Features"
-msgstr ""
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:446
-msgid "Ignore channel messages"
-msgstr "Csatorna üzenetek mellőzése"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:461
-msgid "Ignore highlights"
-msgstr ""
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:455
-msgid "Ignore invites"
-msgstr "Meghívók mellőzése"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:449
-msgid "Ignore notice messages"
-msgstr "Értesítő üzenetek mellőzése"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:443
-msgid "Ignore query messages"
-msgstr "Privát üzenetek mellőzése"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:294
-msgid ""
-"Import entries from a file exported earlier by the \"export\" function of "
-"this dialog."
-msgstr "Korábban exportált bejegyzések betöltése fájlból."
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:292
-msgid "Import from..."
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:209
+msgid "Mask Editor - KVIrc"
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:213
 msgid ""
 "Insert a mask for this user.<br>It can contain the wildcard characters '*' "
 "and '?'."
-msgstr ""
-"Adj meg egy maszkot a felhasználóhoz.<br>Tartalmazhatja a '*' és '?' "
-"dzsókerkaraktereket."
-
-#: src/modules/reguser/libkvireguser.cpp:368
-msgid "Mask %Q already used to identify user %Q"
-msgstr "%Q maszkot már %Q azonosítására használom"
-
-#: src/modules/reguser/libkvireguser.cpp:229
-msgid "Mask %Q is already used to identify user %s"
-msgstr "%Q maszkot már használom %s azonosítására"
-
-#: src/modules/reguser/libkvireguser.cpp:423
-msgid "Mask %Q not found"
-msgstr "%Q maszk nem található"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:209
-msgid "Mask Editor - KVIrc"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:855
-msgid "Mask: %Q!%Q@%Q"
-msgstr ""
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:340
-msgid "Masks:"
-msgstr "Maszkok:"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:497
-msgid "Move to Group"
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:84
-msgid "Name"
-msgstr "Név"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:324
-msgid "Name:"
-msgstr "Név:"
-
-#: src/modules/reguser/RegistrationWizard.cpp:227
-msgid "Nickname 2:"
-msgstr "Név 2:"
-
-#: src/modules/reguser/RegistrationWizard.cpp:223
-msgid "Nickname:"
-msgstr "Név:"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:137
-msgid "No comment set"
-msgstr "Nincs komment megadva"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:722
-msgid "No entries selected."
-msgstr "Nincs(enek) bejegyzés(ek) kiválasztva."
-
-#: src/modules/reguser/libkvireguser.cpp:349
-#: src/modules/reguser/libkvireguser.cpp:416
-msgid "No mask specified"
-msgstr "Nincs maszk megadva"
-
-#: src/modules/reguser/libkvireguser.cpp:192
-#: src/modules/reguser/libkvireguser.cpp:277
-#: src/modules/reguser/libkvireguser.cpp:343
-#: src/modules/reguser/libkvireguser.cpp:466
-#: src/modules/reguser/libkvireguser.cpp:536
-#: src/modules/reguser/libkvireguser.cpp:717
-msgid "No name specified"
-msgstr "Nincs név megadva"
-
-#: src/modules/reguser/libkvireguser.cpp:871
-msgid "No properties"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:724
-msgid "No property specified"
-msgstr "Nincs tulajdonság megadva"
-
-#: src/modules/regchan/libkviregchan.cpp:126
-#: src/modules/regchan/libkviregchan.cpp:190
-msgid "No such channel/netmask entry in the database"
-msgstr "Nincs ilyen csatorna/netmaszk bejegyzés az adatbázisban"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:128
-msgid "Notify as:"
-msgstr "Értesítés, mint:"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:124
-msgid "Notify disabled"
-msgstr "Értesítés nincs engedélyezve"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:379
-msgid "Notify nicknames:"
-msgstr "Értesítési nevek:"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:376
-msgid "Notify when user is online"
-msgstr "Értesítés, ha a felhasználó elérhető"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:258
-msgid "Open the edit dialog to create a new user entry."
-msgstr "A szerkesztés párbeszédablak megnyitása új felhasználó hozzáadásához."
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:428
-msgid "Properties"
-msgstr "Tulajdonságok"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:88
-msgid "Property"
-msgstr "Tulajdonság"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:75
-msgid "Property Editor - KVIrc"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:866
-msgid "Property: %Q=%Q"
-msgstr ""
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:357
-#: src/modules/reguser/RegisteredUsersDialog.cpp:266
-msgid "Re&move"
-msgstr "Eltávolít"
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:318
-msgid "Registered User Entry - KVIrc"
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:235
-msgid "Registered Users and Configuration - KVIrc"
-msgstr ""
-
-#: src/modules/regchan/libkviregchan.cpp:210
-msgid "Registered channel list:"
-msgstr "Regisztrált csatornák listája:"
-
-#: src/modules/reguser/libkvireguser.cpp:834
-msgid "Registered users database dump:"
-msgstr "Regisztrált felhasználói adatbázis dump:"
-
-#: src/modules/reguser/RegistrationWizard.cpp:256
-msgid "Registration Complete"
-msgstr "Regisztráció Kész"
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:269
-msgid "Remove the currently selected entries."
-msgstr "Törli a kijelölt elemeket."
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:281
-msgid "Select All"
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:857
-msgid "Select a File - KVIrc"
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:283
-msgid "Select all the entries"
-msgstr "Minden elem kijelölése"
-
-#: src/modules/reguser/RegistrationWizard.cpp:101
-msgid "Step 1: Entry Name"
-msgstr "Első lépés: Bejegyzés Neve"
-
-#: src/modules/reguser/RegistrationWizard.cpp:179
-msgid "Step 2: Mask Selection"
-msgstr "Második lépés: Maszk kiválasztása"
-
-#: src/modules/reguser/RegistrationWizard.cpp:202
-msgid "Step 3: Avatar Selection"
-msgstr "Harmadik lépés: Avatar kiválasztása"
-
-#: src/modules/reguser/RegistrationWizard.cpp:241
-msgid "Step 4: Notify List"
-msgstr "Negyedik lépés: Értesítési Lista"
-
-#: src/modules/reguser/RegistrationWizard.cpp:198
-msgid "Store an avatar for this user:"
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:885
-msgid "The file %Q contains an invalid registered users database version."
-msgstr ""
-
-#: src/modules/reguser/RegisteredUsersDialog.cpp:878
-msgid "The file %Q doesn't appear to be a valid registered users database."
-msgstr ""
-
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:241
-msgid ""
-"This is the <b>hostname</b> that will match this user. <b>*</b> will match "
-"any hostname."
-msgstr ""
+msgstr "Adj meg egy maszkot a felhasználóhoz.<br>Tartalmazhatja a '*' és '?' dzsókerkaraktereket."
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:223
 msgid ""
@@ -492,28 +95,373 @@ msgid ""
 "any username."
 msgstr ""
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:96
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:241
 msgid ""
-"This is the list of registered users. KVIrc can automatically recognize and "
-"associate properties to them.<br>Use the buttons on the right to add, edit "
-"and remove entries. The \"notify\" column allows you to quickly add users to "
-"the notify list. Notify list fine-tuning can be performed by editing the "
-"entry properties."
+"This is the <b>hostname</b> that will match this user. <b>*</b> will match "
+"any hostname."
 msgstr ""
 
-#: src/modules/regchan/libkviregchan.cpp:241
-#, c-format
-msgid "Total %d channels"
-msgstr "Összesen %d csatorna"
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:318
+msgid "Registered User Entry - KVIrc"
+msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:877
-#, c-format
-msgid "Total: %d matching users (of %d in the database)"
-msgstr "Összesen: %d egyező felhasználó (ebből %d az adatbázisban)"
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:324
+msgid "Name:"
+msgstr "Név:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:330
+#: src/modules/reguser/RegisteredUsersDialog.cpp:141
+msgid "Comment:"
+msgstr "Komment:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:340
+msgid "Masks:"
+msgstr "Maszkok:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:353
+#: src/modules/reguser/RegisteredUsersDialog.cpp:256
+msgid "&Add..."
+msgstr "Hozzá&ad..."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:357
+#: src/modules/reguser/RegisteredUsersDialog.cpp:266
+msgid "Re&move"
+msgstr "Eltávolít"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:362
+msgid "&Edit"
+msgstr "Sz&erkesztés"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:370
+msgid "Identity"
+msgstr "Személyazonosság"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:376
+msgid "Notify when user is online"
+msgstr "Értesítés, ha a felhasználó elérhető"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:379
+msgid "Notify nicknames:"
+msgstr "Értesítési nevek:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:382
+msgid "You can enter a space separated list of nicknames."
+msgstr ""
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:406
+msgid "Avatar:"
+msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:413
 msgid "Use custom color in userlist"
 msgstr "Személyreszabott szín használata a felhasználólistában"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:421
+msgid "All Properties..."
+msgstr "Minden Tulajdonság..."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:428
+msgid "Properties"
+msgstr "Tulajdonságok"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:434
+msgid "Enable ignore for this user"
+msgstr "Mellőzés engedélyezése a felhasználóra"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:436
+msgid "Ignore Features"
+msgstr ""
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:443
+msgid "Ignore query messages"
+msgstr "Privát üzenetek mellőzése"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:446
+msgid "Ignore channel messages"
+msgstr "Csatorna üzenetek mellőzése"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:449
+msgid "Ignore notice messages"
+msgstr "Értesítő üzenetek mellőzése"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:452
+msgid "Ignore CTCP messages"
+msgstr "CTCP üzenetek mellőzése"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:455
+msgid "Ignore invites"
+msgstr "Meghívók mellőzése"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:458
+msgid "Ignore DCCs"
+msgstr "DCC-k mellőzése"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:461
+msgid "Ignore highlights"
+msgstr ""
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:467
+msgid "Ignore"
+msgstr "Mellőzés"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:84
+msgid "Name"
+msgstr "Név"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:84
+msgid "Flags"
+msgstr "Tulajdonságok"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:96
+msgid ""
+"This is the list of registered users. KVIrc can automatically recognize and "
+"associate properties to them.<br>Use the buttons on the right to add, edit "
+"and remove entries. The \"notify\" column allows you to quickly add users to"
+" the notify list. Notify list fine-tuning can be performed by editing the "
+"entry properties."
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:124
+msgid "Notify disabled"
+msgstr "Értesítés nincs engedélyezve"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:128
+msgid "Notify as:"
+msgstr "Értesítés, mint:"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:137
+msgid "No comment set"
+msgstr "Nincs komment megadva"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:235
+msgid "Registered Users and Configuration - KVIrc"
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:251
+msgid "Add Wizard..."
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:253
+msgid "Add a registered user by means of a user-friendly wizard."
+msgstr "Regisztrált felhasználó hozzáadása egy felhasználóbarát varázsló segítségével."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:258
+msgid "Open the edit dialog to create a new user entry."
+msgstr "A szerkesztés párbeszédablak megnyitása új felhasználó hozzáadásához."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:261
+msgid "&Add Group..."
+msgstr "Csoport hozzá&adása..."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:263
+msgid "Adds a new group"
+msgstr "Új csoportot hoz létre"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:269
+msgid "Remove the currently selected entries."
+msgstr "Törli a kijelölt elemeket."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:272
+msgid "&Edit..."
+msgstr "Sz&erkesztés..."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:275
+msgid "Edit the first selected entry."
+msgstr "Elsőként kiválasztott elem szerkesztése."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:281
+msgid "Select All"
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:283
+msgid "Select all the entries"
+msgstr "Minden elem kijelölése"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:286
+msgid "Export to..."
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:289
+msgid ""
+"Export the selected entries to a file.<br>All the data associated with the "
+"selected registered users will be exported.<br>You (or anyone else) can "
+"later import the entries by using the \"Import\" button."
+msgstr "Kijelölt elemek exportállása fájlba.<br>Minden felhasználóhoz hozzárendelt adat mentésre kerül. <br>Te (vagy bárki más) később ezeket a bejegyzéseket importálhatja az \"Importálás...\" gomb használatával."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:292
+msgid "Import from..."
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:294
+msgid ""
+"Import entries from a file exported earlier by the \"export\" function of "
+"this dialog."
+msgstr "Korábban exportált bejegyzések betöltése fájlból."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:429
+#: src/modules/reguser/RegisteredUsersDialog.cpp:443
+msgid "Group name:"
+msgstr "Csoport neve:"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:497
+msgid "Move to Group"
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:537
+#: src/modules/reguser/RegisteredUsersDialog.cpp:542
+#: src/modules/reguser/RegisteredUsersDialog.cpp:544
+#: src/modules/reguser/RegisteredUsersDialog.cpp:548
+#: src/modules/reguser/RegisteredUsersDialog.cpp:550
+msgid "Default"
+msgstr "Alapértelmezett"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:722
+msgid "No entries selected."
+msgstr "Nincs(enek) bejegyzés(ek) kiválasztva."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:728
+msgid "Enter a Filename - KVIrc"
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:737
+msgid "Can't open file %Q for writing."
+msgstr "%Q fájl megnyitása írásra sikertelen."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:838
+msgid "Can't export the registered users database: write error."
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:857
+msgid "Select a File - KVIrc"
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:866
+msgid "Can't open file %Q for reading."
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:878
+msgid "The file %Q doesn't appear to be a valid registered users database."
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:885
+msgid "The file %Q contains an invalid registered users database version."
+msgstr ""
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:964
+msgid "Can't import the registered users database: read error."
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:75
+msgid "User Registration Wizard - KVIrc"
+msgstr "Felhasználó Regisztrációs Varázsló - KVIrc"
+
+#: src/modules/reguser/RegistrationWizard.cpp:86
+msgid ""
+"<p>Welcome to the user registration wizard.<br>This process allows you to add an IRC user to the database and set properties for that user. KVIrc will be (hopefully) able to recognize the user, add him to the notify list, and display the associated avatar.<br><br>First of all, you must insert an <b>entry name or real name</b> for the user you're going to register. The name will be used to identify the database entry and has no specific requirements, it can be a given name, nickname, or just some text to remind you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n"
+"</p>"
+msgstr "<p>Üdv a felhasználó regisztrációs varázslóban.<br>Ezzel a folyamat lehetővé teszi egy IRC felhasználó hozzáadását az adatbázishoz. A KVIrc (remélhetőelg) képes lesz felismerni a felhasználót, hozzáadni az értesítési listához és megjeleníteni a hozzá tartozó avatart.<br><br>Mindenekelőtt meg kell adnod a <b>valós nevét vagy egy nevet a bejegyzéshez</b>. Ez a név fogja azonosítani a felhasználót. Nincsenek extra követelmények, lehet becenév, keresztnév, valós név vagy bármilyen szöveg, amivel emlékezni fogsz a tényleges felhasználóra. <br>Pld: \"Nagy Géza\", \"Gezu\".\n</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:97
+msgid "Entry name:"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:101
+msgid "Step 1: Entry Name"
+msgstr "Első lépés: Bejegyzés Neve"
+
+#: src/modules/reguser/RegistrationWizard.cpp:116
+msgid ""
+"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
+"mask must be in the following "
+"form:<br><b>nickname!username@hostname</b><br>and can contain wildcard "
+"characters '*' and '?'. Be careful in choosing the masks, as they are the "
+"only way to verify the identity of a registered user.<br><br>You can enter "
+"at most two masks here, if you wish to add more masks, use the "
+"\"<b>Edit</b>\" button in the Registered Users dialog. You must enter at "
+"least one mask.</p>"
+msgstr "<p>Egy regisztrált felhasználót egy vagy több <b>IRC maszk</b> azonosítja.<br>A maszknak az alábbi formátumban kell lennie:<br><b>becenev!felhasznalonev@hosztnev</b><br>és tartalmazhatja a '*' és '?' dzsóker-karaktereket. Óvatos légy a maszkválasztással, ugyanis ez az egyetlen lehetőség a regisztrált felhasználó azonosítására.<br><br>Maximum két maszkot adhatsz meg itt, de amennyiben többet szeretnél a \"<b>Szerkesztés</b>\" gommbal teheted meg a Regisztrált Felhasználók párbeszédablakban. Legalább egy maszkot meg kell adnod..</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:179
+msgid "Step 2: Mask Selection"
+msgstr "Második lépés: Maszk kiválasztása"
+
+#: src/modules/reguser/RegistrationWizard.cpp:189
+msgid ""
+"<p>If you want to store an avatar image for this user, you can set it here. "
+"KVIrc will show the avatar in the userlist next to the user's "
+"nickname.<br>An avatar can be in any supported image format (PNG is "
+"recommended). Keep in mind that KVIrc stores avatars in memory and has to "
+"resize them to fit in the userlist, thus it's better to use small, low-"
+"resolution images.</p>"
+msgstr "<p>Ha szeretnél egy avatart eltárolni a felhasználóhoz, itt állíthatod azt be.A KVIrc a felhasználólistában fogja megjeleníteni azt, közvetlenül a felhasználó neve mellett.<br>Avatar bármilyen támogatott formátumú képfájl lehet (PNG a javasolt). Jó tudni, hogy a KVIrc az avatarokat a memóriában tárolja és át kell méreteznie, hogy beférjen a felhasználólistába, ezért érdemes kicsi, alacsony felbontású képet választani.</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:198
+msgid "Store an avatar for this user:"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:202
+msgid "Step 3: Avatar Selection"
+msgstr "Harmadik lépés: Avatar kiválasztása"
+
+#: src/modules/reguser/RegistrationWizard.cpp:212
+msgid ""
+"<p>If you want to be notified when this user is online or goes offline, you "
+"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
+"enter at most two nicknames here, if you wish to add more nicknames, use the"
+" \"<b>Edit</b>\" button in the  \"Registered Users\" dialog.</p>"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:217
+msgid "Add this user to the notify list"
+msgstr "Felhasználó hozzáadása az értesítési listához"
+
+#: src/modules/reguser/RegistrationWizard.cpp:223
+msgid "Nickname:"
+msgstr "Név:"
+
+#: src/modules/reguser/RegistrationWizard.cpp:227
+msgid "Nickname 2:"
+msgstr "Név 2:"
+
+#: src/modules/reguser/RegistrationWizard.cpp:241
+msgid "Step 4: Notify List"
+msgstr "Negyedik lépés: Értesítési Lista"
+
+#: src/modules/reguser/RegistrationWizard.cpp:251
+msgid ""
+"<p>That's it. The user registration has been completed.<br><br>Click "
+"\"<b>Finish</b>\" to close this dialog.</p>"
+msgstr "<p>Kész is, a regisztráció befejeződött.<br><br>Kattints a \"<b>Befejezés</b>re\" Az ablak bezárásához.</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:256
+msgid "Registration Complete"
+msgstr "Regisztráció Kész"
+
+#: src/modules/reguser/libkvireguser.cpp:192
+#: src/modules/reguser/libkvireguser.cpp:277
+#: src/modules/reguser/libkvireguser.cpp:343
+#: src/modules/reguser/libkvireguser.cpp:466
+#: src/modules/reguser/libkvireguser.cpp:536
+#: src/modules/reguser/libkvireguser.cpp:717
+msgid "No name specified"
+msgstr "Nincs név megadva"
+
+#: src/modules/reguser/libkvireguser.cpp:210
+msgid "User already registered: found exact name match"
+msgstr "Felhasználó már regisztrálva: pontos egyezést találtam"
+
+#: src/modules/reguser/libkvireguser.cpp:229
+msgid "Mask %Q is already used to identify user %s"
+msgstr "%Q maszkot már használom %s azonosítására"
+
+#: src/modules/reguser/libkvireguser.cpp:283
+msgid "User not found (%Q)"
+msgstr "%Q felhasználó nem található"
+
+#: src/modules/reguser/libkvireguser.cpp:349
+#: src/modules/reguser/libkvireguser.cpp:416
+msgid "No mask specified"
+msgstr "Nincs maszk megadva"
 
 #: src/modules/reguser/libkvireguser.cpp:356
 #: src/modules/reguser/libkvireguser.cpp:474
@@ -522,30 +470,43 @@ msgstr "Személyreszabott szín használata a felhasználólistában"
 msgid "User %Q not found"
 msgstr "%Q felhasználó nem található"
 
-#: src/modules/reguser/RegistrationWizard.cpp:75
-msgid "User Registration Wizard - KVIrc"
-msgstr "Felhasználó Regisztrációs Varázsló - KVIrc"
+#: src/modules/reguser/libkvireguser.cpp:368
+msgid "Mask %Q already used to identify user %Q"
+msgstr "%Q maszkot már %Q azonosítására használom"
 
-#: src/modules/reguser/libkvireguser.cpp:210
-msgid "User already registered: found exact name match"
-msgstr "Felhasználó már regisztrálva: pontos egyezést találtam"
+#: src/modules/reguser/libkvireguser.cpp:423
+msgid "Mask %Q not found"
+msgstr "%Q maszk nem található"
 
-#: src/modules/reguser/libkvireguser.cpp:283
-msgid "User not found (%Q)"
-msgstr "%Q felhasználó nem található"
+#: src/modules/reguser/libkvireguser.cpp:724
+msgid "No property specified"
+msgstr "Nincs tulajdonság megadva"
+
+#: src/modules/reguser/libkvireguser.cpp:834
+msgid "Registered users database dump:"
+msgstr "Regisztrált felhasználói adatbázis dump:"
 
 #: src/modules/reguser/libkvireguser.cpp:845
 msgid "User: %c%Q"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:89
-msgid "Value"
-msgstr "Érték"
-
 #: src/modules/reguser/libkvireguser.cpp:849
 msgid "Warning: this user has no registration masks"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:382
-msgid "You can enter a space separated list of nicknames."
+#: src/modules/reguser/libkvireguser.cpp:855
+msgid "Mask: %Q!%Q@%Q"
 msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:866
+msgid "Property: %Q=%Q"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:871
+msgid "No properties"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:877
+#, c-format
+msgid "Total: %d matching users (of %d in the database)"
+msgstr "Összesen: %d egyező felhasználó (ebből %d az adatbázisban)"

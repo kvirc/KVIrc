@@ -1,75 +1,75 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-#
+# 
 # Translators:
 # Tadashi Jokagi <elf@elf.no-ip.org>, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
-"PO-Revision-Date: 2017-09-22 12:41+0000\n"
-"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/kvirc/KVIrc/language/ja/)\n"
-"Language: ja\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 09:12+0000\n"
+"Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>, 2010\n"
+"Language-Team: Japanese (http://app.transifex.com/kvirc/KVIrc/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/modules/notifier/NotifierWindow.cpp:937
-msgid "1 Hour"
-msgstr "1 時間"
-
 #: src/modules/notifier/NotifierWindow.cpp:933
-msgid "1 Minute"
-msgstr "1 分"
-
-#: src/modules/notifier/NotifierWindow.cpp:935
-msgid "15 Minutes"
-msgstr "15 分"
-
-#: src/modules/notifier/NotifierWindow.cpp:936
-msgid "30 Minutes"
-msgstr "30 分"
-
-#: src/modules/notifier/NotifierWindow.cpp:934
-msgid "5 Minutes"
-msgstr "5 分"
-
-#: src/modules/notifier/NotifierWindow.cpp:942
-msgid "Disable"
-msgstr "無効"
-
-#: src/modules/notifier/NotifierWindow.cpp:930
-msgid "Hide"
-msgstr "隠す"
-
-#: src/modules/notifier/NotifierWindow.cpp:940
-msgid "Permanently (Until Explicitly Enabled)"
-msgstr ""
-
-#: src/modules/notifier/NotifierWindow.cpp:929
 msgid "Show/Hide input line"
 msgstr "入力行を表示する/隠す"
 
-#: src/modules/notifier/libkvinotifier.cpp:154
-msgid "The -t switch expects a timeout in seconds"
-msgstr "スイッチ -t はタイムアウト(単位: 秒)を期待しています。"
+#: src/modules/notifier/NotifierWindow.cpp:934
+msgid "Hide"
+msgstr "隠す"
 
-#: src/modules/notifier/libkvinotifier.cpp:149
-msgid "The specified timeout is not valid, assuming 0"
-msgstr "タイムアウトの指定が正しくありません。0 とみなします。"
+#: src/modules/notifier/NotifierWindow.cpp:937
+msgid "1 Minute"
+msgstr "1 分"
+
+#: src/modules/notifier/NotifierWindow.cpp:938
+msgid "5 Minutes"
+msgstr "5 分"
+
+#: src/modules/notifier/NotifierWindow.cpp:939
+msgid "15 Minutes"
+msgstr "15 分"
+
+#: src/modules/notifier/NotifierWindow.cpp:940
+msgid "30 Minutes"
+msgstr "30 分"
+
+#: src/modules/notifier/NotifierWindow.cpp:941
+msgid "1 Hour"
+msgstr "1 時間"
+
+#: src/modules/notifier/NotifierWindow.cpp:943
+msgid "Until KVIrc is Restarted"
+msgstr "KVIrc ユーティリティは再起動しました。"
+
+#: src/modules/notifier/NotifierWindow.cpp:944
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr ""
+
+#: src/modules/notifier/NotifierWindow.cpp:946
+msgid "Disable"
+msgstr "無効"
+
+#: src/modules/notifier/NotifierWindow.cpp:1020
+msgid "Write text or commands to window"
+msgstr "ウィンドウにテキストかコマンドを書き込む"
 
 #: src/modules/notifier/libkvinotifier.cpp:135
 msgid "The specified window does not exist"
 msgstr "指定のウィンドウが存在しません"
 
-#: src/modules/notifier/NotifierWindow.cpp:939
-msgid "Until KVIrc is Restarted"
-msgstr "KVIrc ユーティリティは再起動しました。"
+#: src/modules/notifier/libkvinotifier.cpp:149
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "タイムアウトの指定が正しくありません。0 とみなします。"
 
-#: src/modules/notifier/NotifierWindow.cpp:1016
-msgid "Write text or commands to window"
-msgstr "ウィンドウにテキストかコマンドを書き込む"
+#: src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr "スイッチ -t はタイムアウト(単位: 秒)を期待しています。"

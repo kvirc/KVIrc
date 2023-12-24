@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# Janusz Pekacz <penteljapan@o2.pl>, 2019-2020
+# tojestzart <penteljapan@o2.pl>, 2019-2020,2023
 # Sölve Svartskogen <solaizen@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-30 13:26+0200\n"
-"PO-Revision-Date: 2020-04-18 17:58+0000\n"
-"Last-Translator: Janusz Pekacz <penteljapan@o2.pl>\n"
-"Language-Team: Polish (http://www.transifex.com/kvirc/KVIrc/language/pl/)\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 08:58+0000\n"
+"Last-Translator: tojestzart <penteljapan@o2.pl>, 2019-2020,2023\n"
+"Language-Team: Polish (http://app.transifex.com/kvirc/KVIrc/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +25,7 @@ msgstr "Wybierz pliki do wysłania - KVIrc"
 
 #: src/modules/dcc/DccBroker.cpp:211
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
-msgstr "Nie można wysłać zapytania DCC %Q do %Q: Połączenie z serwerem IRC zostało zakończone"
+msgstr "Nie można wysłać zapytania DCC %Q do %Q: Połączenie z serwerem IRC zostało przerwane"
 
 #: src/modules/dcc/DccBroker.cpp:221 src/modules/dcc/DccBroker.cpp:969
 msgid "Can't open file %Q for reading"

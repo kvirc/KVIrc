@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
+# ctrlaltca <ctrlaltca@gmail.com>, 2023
 # Elvio Basello <hell at hellvis69 dot netsons dot org>, 2010-2011,2014
 # Eva Schaller <eva@cyberbeat.it>, 2002-2004
 # ctrlaltca <ctrlaltca@gmail.com>, 2015
@@ -13,29 +14,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-30 13:26+0200\n"
-"PO-Revision-Date: 2020-03-30 11:41+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
-"Language-Team: Italian (http://www.transifex.com/kvirc/KVIrc/language/it/)\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 09:12+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>, 2023\n"
+"Language-Team: Italian (http://app.transifex.com/kvirc/KVIrc/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: src/modules/options/OptionsDialog.cpp:111
+#: src/modules/options/OptionsDialog.cpp:112
 msgid "General Preferences"
 msgstr "Impostazioni Generali"
 
-#: src/modules/options/OptionsDialog.cpp:115
+#: src/modules/options/OptionsDialog.cpp:116
 msgid "Theme Preferences"
 msgstr "Preferenze Tema"
 
-#: src/modules/options/OptionsDialog.cpp:119
+#: src/modules/options/OptionsDialog.cpp:120
 msgid "KVIrc Preferences"
 msgstr "Preferenze KVIrc"
 
-#: src/modules/options/OptionsDialog.cpp:122
+#: src/modules/options/OptionsDialog.cpp:123
 msgid ""
 "This dialog contains a set of KVIrc settings.<br> Use the icons on the left "
 "to navigate through the option pages. The text box in the bottom left corner"
@@ -43,20 +44,20 @@ msgid ""
 "related to the search term you have entered."
 msgstr "Questo dialog serve a configurare KVIrc.<br>Usa i pulsanti sulla sinistra per navigare attraverso le opzioni. La casella in basso a sinistra è un piccolo motore di ricerca. Evidenzierà le pagine che contengono le opzioni relative alle parole che hai cercato."
 
-#: src/modules/options/OptionsDialog.cpp:129
+#: src/modules/options/OptionsDialog.cpp:130
 msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
 msgstr "Molti settaggi hanno dei tooltip che possono essere mostrati tenendo il cursore del mouse sopra la loro etichetta per qualche secondo."
 
-#: src/modules/options/OptionsDialog.cpp:133
+#: src/modules/options/OptionsDialog.cpp:134
 msgid ""
 "When you have finished, click \"<b>OK</b>\" to accept your changes or "
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
 "your changes without closing the window."
 msgstr "Quando hai finito, clicca \"<b>OK</b>\" per accettare i cambiamenti o \"<b>Annulla</b>\" per tralasciarli. Cliccando \"<b>Applica</b>\" salverai i cambiamenti senza chiudere la finestra."
 
-#: src/modules/options/OptionsDialog.cpp:201
+#: src/modules/options/OptionsDialog.cpp:202
 msgid ""
 "<p>This is the search tool for this options dialog.</p><p>You can enter a "
 "search term either in your native language or in English and press the "
@@ -65,38 +66,38 @@ msgid ""
 "them.</p><p>Try \"nickname\" for example.</p>"
 msgstr "<p>Questo è lo strumento di ricerca per questa finestra.</p><p>Puoi inserire una parola da cercare nella tua lingua o in inglese e premere il pulsante sulla destra. Le pagine che contengono delle opzioni relative alla parola cercata saranno evidenziate e tu sarai così in grado di trovarle velocemente.</p><p>Per esempio prova ad inserire \"nickname\".</p>"
 
-#: src/modules/options/OptionsDialog.cpp:233
+#: src/modules/options/OptionsDialog.cpp:234
 #: src/modules/options/OptionsWidgetContainer.cpp:105
-#: src/modules/options/OptionsWidget_identity.cpp:239
-#: src/modules/options/OptionsWidget_servers.cpp:369
+#: src/modules/options/OptionsWidget_identity.cpp:240
+#: src/modules/options/OptionsWidget_servers.cpp:370
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/options/OptionsDialog.cpp:235
+#: src/modules/options/OptionsDialog.cpp:236
 #: src/modules/options/OptionsWidgetContainer.cpp:106
 msgid "Close this dialog, accepting all changes."
 msgstr "Chiudi questa finestra, confermando tutti i cambiamenti."
 
-#: src/modules/options/OptionsDialog.cpp:241
+#: src/modules/options/OptionsDialog.cpp:242
 msgid "&Apply"
 msgstr "&Applica"
 
-#: src/modules/options/OptionsDialog.cpp:243
+#: src/modules/options/OptionsDialog.cpp:244
 msgid "Commit all changes immediately."
 msgstr "Applica tutti i cambiamenti immediatamente."
 
-#: src/modules/options/OptionsDialog.cpp:248
+#: src/modules/options/OptionsDialog.cpp:249
 #: src/modules/options/OptionsWidgetContainer.cpp:113
-#: src/modules/options/OptionsWidget_identity.cpp:97
-#: src/modules/options/OptionsWidget_identity.cpp:245
-#: src/modules/options/OptionsWidget_identity.cpp:968
+#: src/modules/options/OptionsWidget_identity.cpp:98
+#: src/modules/options/OptionsWidget_identity.cpp:246
+#: src/modules/options/OptionsWidget_identity.cpp:967
 #: src/modules/options/OptionsWidget_nickserv.cpp:123
-#: src/modules/options/OptionsWidget_servers.cpp:375
-#: src/modules/options/OptionsWidget_servers.cpp:1011
+#: src/modules/options/OptionsWidget_servers.cpp:376
+#: src/modules/options/OptionsWidget_servers.cpp:1012
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/modules/options/OptionsDialog.cpp:250
+#: src/modules/options/OptionsDialog.cpp:251
 #: src/modules/options/OptionsWidgetContainer.cpp:114
 msgid "Close this dialog, discarding all changes."
 msgstr "Chiudi questa finestra, scartando tutti i cambiamenti."
@@ -107,7 +108,7 @@ msgstr "Attiva evidenziazione parole"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:53
 msgid "Words to Highlight"
-msgstr ""
+msgstr "Parole da evidenziare"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:59
 msgid "Highlight messages containing my nickname"
@@ -117,17 +118,17 @@ msgstr "Evidenzia i messaggi contenenti il mio nickname"
 msgid ""
 "If this option is enabled, KVIrc will highlight any user message containing "
 "your current nickname."
-msgstr ""
+msgstr "Se questa opzione è abilitata, KVIrc evidenzierà qualunque messaggio contenga il tuo nickname corrente"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:62
 msgid "Words/Nick matching is case sensitive"
-msgstr ""
+msgstr "La ricerca di parole/nick è case sensitive "
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:63
 msgid ""
 "If this option is enabled, KVIrc will match your nick and/or the words you "
 "specified in a case sensitive manner."
-msgstr ""
+msgstr "Se questa opzione è abilitata, KVIrc controllerà il tuo nick e/o le parole che hai specificato distinguendo le maiuscole"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:65
 msgid "Highlighting Method"
@@ -135,7 +136,7 @@ msgstr "Metodo Evidenziazione"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:72
 msgid "Highlight every occurrence of a word inside text"
-msgstr ""
+msgstr "Evidenzia ogni occorrenza della parola all'interno del testo"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:75
 msgid ""
@@ -143,7 +144,7 @@ msgid ""
 "nicknames inside the whole text. This will also highlight parts of "
 "words.<br>(e.g. if your nickname is Mark then Markus will be highlighted "
 "too)."
-msgstr ""
+msgstr "Questa opzione farà in modo che KVIrc cercherà le parole evidenziate o i nick all'interno di tutto il testo. Verranno inoltre evidenziate parti di parole.<br> (es. se il tuo nick è Mark allora verrà evidenziato anche Markus)."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:79
 msgid "Highlight only whole words splitting on space and on:"
@@ -154,7 +155,7 @@ msgid ""
 "This selection will first split the string on the specified "
 "boundaries<br>(including space) and then will compare all the parts with the"
 " highlighted words."
-msgstr ""
+msgstr "Questa opzione dividerà prima la stringa sui valori specificati<br>(inclusi gli spazi) e poi confronterà tutte le parti con le parole evidenziate."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:92
 msgid "Alert Options"
@@ -169,7 +170,7 @@ msgid ""
 "If this option is enabled, KVIrc will (attempt to) flash the system taskbar "
 "entry when a highlighted message is printed and KVIrc is not the active "
 "window."
-msgstr ""
+msgstr "Se questa opzione è abilitata, KVIrc proverà a far lampeggiare la barra delle applicazioni del sistema quando ci sono messaggi evidenziati e la finestra di KVIrc non è attiva."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:99
 msgid "Popup the notifier window on highlighted messages"
@@ -180,7 +181,7 @@ msgid ""
 "If this option is enabled, KVIrc will popup a little notifier window in the "
 "low right corner of your desktop when a highlighted message is printed and "
 "KVIrc is not the active window."
-msgstr ""
+msgstr "Se questa opzione è abilitata, KVIrc mostrerà una piccola finestra di notifica nell'angolo in basso a destra del desktop quando ci sono messaggi evidenziati e KVIrc non è la finestra attiva."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:123
 msgid "Alert Restrictions"
@@ -197,7 +198,7 @@ msgid ""
 "changes will be ignored.<br> This is useful if you are in channels with a "
 "high rate of traffic and only want to be alerted for messages that are "
 "interesting to you."
-msgstr ""
+msgstr "Se questa opzione è abilitata, KVIrc ti avvertirà nella lista delle finestre se ricevi un messaggio normale in un canale. Le azioni come le entrate, le uscite e il cambio dei modi saranno ignorate.<br>Questo è molto utile se sei in un canale con molto traffico e vuoi essere avvertito solo dei messaggi che potrebbero interessarti."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:129
 msgid "Alert for highlighted words"
@@ -207,7 +208,7 @@ msgstr "Avvisa per le parole evidenziate"
 msgid ""
 "If this option is enabled, the window list will also alert for messages "
 "which contain a word from the highlighted words list above."
-msgstr ""
+msgstr "Se questa opzione è abilitata, la lista delle finestre ti avvertirà anche dei messaggi contenenti una parola presente nella lista delle parole da evidenziare."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:133
 msgid "Alert for query messages"
@@ -217,7 +218,7 @@ msgstr "Avvisa dei messaggi di query"
 msgid ""
 "If this option is enabled, the window list will also alert for messages "
 "which are shown in queries."
-msgstr ""
+msgstr "Se questa opzione è abilitata, la lista delle finestre ti avvertirà anche dei messaggi mostrati nelle query."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:139
 msgid "Use custom alert level"
@@ -227,7 +228,7 @@ msgstr "Usa livello di avviso definito dall'utente"
 msgid ""
 "If this option is enabled, KVIrc will alert in the window list only if the "
 "specified alert level is reached."
-msgstr ""
+msgstr "Se questa opzione è abilitata, KVIrc ti avvertirà nella lista delle finestre solo se il livello di allerta specificato viene raggiunto."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:142
 msgid "Minimum alert level:"
@@ -235,7 +236,7 @@ msgstr "Livello di allerta minimo:"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:145
 msgid "This option sets the minimum alert level for the window list."
-msgstr ""
+msgstr "Questa opzione imposta il livello minimo di allerta per la lista delle finestre."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.h:33
 msgid "Alert/Highlight"
@@ -251,7 +252,7 @@ msgstr "Avvisi della lista finestre"
 
 #: src/modules/options/OptionsWidget_antiSpam.cpp:39
 msgid "Enable Anti-spam for"
-msgstr ""
+msgstr "Attiva Anti-spam per"
 
 #: src/modules/options/OptionsWidget_antiSpam.cpp:40
 #: src/modules/options/OptionsWidget_query.cpp:43
@@ -277,7 +278,7 @@ msgstr "Attiva Anti-Spam"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:41
 msgid "Scaling in Userlist"
-msgstr ""
+msgstr "Ridimensiona nella lista utenti"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:42
 msgid "Scale avatar images in userlist (recommended)"
@@ -288,7 +289,7 @@ msgid ""
 "This option will force KVIrc to scale avatars shown in the "
 "userlist.<br>Avatars will be scaled to fit the constraints set below. Better"
 " keep this option on."
-msgstr ""
+msgstr "Questa opzione forza KVIrc a ridimensionare gli avatar mostrati nella userlist.<br>Gli avatar verranno ridimensionati in base ai limiti del rettangolo settati qui sotto. Meglio attivare questa opzione."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:49
 msgid "Do not scale avatar if it is less than required size"
@@ -319,7 +320,7 @@ msgstr "Altezza immagine:"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:58
 msgid "Scaling on Load and in User Tooltips"
-msgstr ""
+msgstr "Ridimensiona al caricamento e nei tooltip utente"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:59
 msgid "Scale avatar images on image load"
@@ -337,7 +338,7 @@ msgstr "Richiedi avatar mancanti"
 msgid ""
 "This option will cause KVIrc to send a DCC GET request when someone sets an "
 "avatar and there is no cached copy available."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc invii una richiesta DCC GET se qualcuno setta un avatar e non ci sono copie disponibili in cache."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:74
 msgid "Maximum requested file size:"
@@ -352,7 +353,7 @@ msgstr " byte"
 msgid ""
 "This is the maximum size for avatar images that will be automatically "
 "requested.<br>A reasonable value might be 102400 bytes (100 K)."
-msgstr ""
+msgstr "Questa è la dimensione massima per gli avatar cheverranno richiesti automaticamente.<br>Un valore ragionevole può essere 102400 Byte (100 KB)."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:84
 msgid "Automatically accept incoming avatars"
@@ -364,7 +365,7 @@ msgid ""
 "avatars.<br>If you're using the \"Request missing avatars\" option above, "
 "enabling this may by useful.<br>Avatars will be saved in the local KVIrc "
 "directory."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc auto-accetti le richieste di DCC SEND per gli avatar in entrata<br>Se usi l'opzione \"Richiedi avatar mancanti\", abilitare anche questa può essere una buona idea.<br> Gli avatar verranno salvati nella cartella locale di KVIrc."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:92
 msgid "Remember avatars for registered users"
@@ -374,7 +375,7 @@ msgstr "Ricorda gli avatar per gli utenti registrati"
 msgid ""
 "Use a user's last known avatar by default (only for users that are "
 "registered)."
-msgstr ""
+msgstr "Usa l'ultimo avatar dell'utente come predefinito (solo per gli utenti registrati)."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:97
 msgid "Avatar offer timeout:"
@@ -399,7 +400,7 @@ msgid ""
 "with a CTCP AVATAR message containing the name and size of your avatar "
 "image.<br>A time-limited file offer is added for the image file to the "
 "requesting user."
-msgstr ""
+msgstr "Questa è la quantità di tempo in cui si rende disponibile al trasferimento un avatar quando richiesto.<br>Quando qualcuno invia una richiesta CTCP AVATAR, KVIrc risponderà con un messaggio CTCP AVATAR contenente il nome e la dimensione del tuo avatar.<br>Il file immagine rimane disponibile per l'utente che l'ha richiesto per una durata limite."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:107
 msgid "Ignore requests if no avatar is set"
@@ -443,7 +444,7 @@ msgstr "Usa nickname automatico ([prime 5 lettere ]AWAY)"
 #: src/modules/options/OptionsWidget_away.cpp:54
 #, no-c-format
 msgid "Custom nickname (%nick% means a current nick):"
-msgstr ""
+msgstr "Nickname (%nick% significa nick corrente):"
 
 #: src/modules/options/OptionsWidget_away.h:30
 msgid "Away"
@@ -461,7 +462,7 @@ msgstr "Rientra nei Canali"
 msgid ""
 "This option will cause KVIrc to attempt to rejoin a channel after being "
 "kicked."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc tenti di rientrare in un canale dopo essere stato kickato."
 
 #: src/modules/options/OptionsWidget_channel.cpp:60
 #: src/modules/options/OptionsWidget_channel.cpp:68
@@ -473,7 +474,7 @@ msgid ""
 "This option will cause KVIrc to keep the channel window open after being "
 "kicked. It might be a good idea to also enable the \"Rejoin channel\" "
 "option."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc lasci aperta la finestra del canale dopo essere stato kickato.E' una buona idea attivare anche l'opzione \"Rientra nei canali\"."
 
 #: src/modules/options/OptionsWidget_channel.cpp:66
 msgid "On Channel Part"
@@ -483,7 +484,7 @@ msgstr "All'uscita dal Canale"
 msgid ""
 "This option will cause KVIrc to keep the channel window open after leaving "
 "it."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc lasci aperte le finestre dei canali dopo l'uscita."
 
 #: src/modules/options/OptionsWidget_channel.cpp:72
 msgid "Automatically join channel on invite"
@@ -494,18 +495,18 @@ msgid ""
 "This option will cause KVIrc to automatically join a channel when an INVITE "
 "message for that channel is received.<br><b>Warning:</b> this may help "
 "spammers harass you."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc entri automaticamente in un canale quando un messaggio di INVITE viene ricevuto.<br><b>Attenzione: </b>può essere un aiuto per spammer che vogliono dar fastidio."
 
 #: src/modules/options/OptionsWidget_channel.cpp:77
 msgid "Open channel windows without focus"
-msgstr ""
+msgstr "Apri finestre canali senza dare focus"
 
 #: src/modules/options/OptionsWidget_channel.cpp:78
 msgid ""
 "This option prevents newly created channel windows from diverting "
 "application focus.<br>Enable this if you don't like channel windows popping "
 "up while you're typing something in a channel."
-msgstr ""
+msgstr "Questa opzione previene che le nuove finestre dei canali rubino il focus dell'applicazione.<br>Abilitala se non vuoi che le finestre dei canali si aprano mentre stai scrivendo qualcosa in un canale."
 
 #: src/modules/options/OptionsWidget_channel.cpp:98
 msgid "Log joined channels history"
@@ -529,7 +530,7 @@ msgid ""
 "may increase it if your server complains about flooding when joining many "
 "channels at once.<br>Minimum value: <b>0 secs</b><br>Maximum value: <b>10 "
 "secs</b>"
-msgstr ""
+msgstr "Questo è un ritardo artificiale per le richieste eseguite sui canali all'ingresso. <br>Puoi aumentarlo se il tuo server si lamenta del flooding quando entri in più canali alla volta.<br>Valore minimo: <b>0 sec</b><br>Valore massimo: <b>10 sec</b>"
 
 #: src/modules/options/OptionsWidget_channel.cpp:127
 msgid "Do not send /WHO request"
@@ -577,7 +578,7 @@ msgstr " linee"
 #: src/modules/options/OptionsWidget_channel.cpp:141
 #: src/modules/options/OptionsWidget_query.cpp:96
 msgid "Minimum value: <b>1 lines</b><br>Maximum value: <b>32767 lines</b>"
-msgstr ""
+msgstr "Valore minimo:<b>1 linea</b><br>Valore massimo: <b> 32767 linee</b>"
 
 #: src/modules/options/OptionsWidget_channel.cpp:145
 #: src/modules/options/OptionsWidget_query.cpp:100
@@ -592,7 +593,7 @@ msgstr " giorni"
 #: src/modules/options/OptionsWidget_channel.cpp:147
 #: src/modules/options/OptionsWidget_query.cpp:103
 msgid "Minimum value: <b>1 days</b><br>Maximum value: <b>3652 days</b>"
-msgstr ""
+msgstr "Valore minimo:<b>1 giorno</b><br>Valore massimo: <b>3652 giorni</b>"
 
 #: src/modules/options/OptionsWidget_channel.cpp:151
 msgid "Keep away list updated"
@@ -604,7 +605,7 @@ msgid ""
 "channel away list in sync. Use this option to disable this feature (and to "
 "save your IRC bandwidth).<br>If the server supports IRCv3.1's away-notify "
 "extension, it will be used instead of WHO requests."
-msgstr ""
+msgstr "KVIrc invia al canale un messaggio /WHO ogni tanto per tenere aggiornata la lista degli utenti away. Usa questa opzione per disabilitare questa funzionalità (e risparmiare sulla banda per IRC).<br>Se il server supporta l'estensione away-notify di IRCv3.1, questa verrà usata al posto delle richieste WHO."
 
 #: src/modules/options/OptionsWidget_channel.h:36
 msgid "Channel"
@@ -616,7 +617,7 @@ msgstr "Canale"
 #: src/modules/options/OptionsWidget_identity.h:144
 #: src/modules/options/OptionsWidget_irc.h:43
 #: src/modules/options/OptionsWidget_message.cpp:66
-#: src/modules/options/OptionsWidget_servers.cpp:252
+#: src/modules/options/OptionsWidget_servers.cpp:253
 #: src/modules/options/OptionsWidget_theme.h:32
 msgid "General"
 msgstr "Generale"
@@ -627,7 +628,7 @@ msgstr "Generale"
 #: src/modules/options/OptionsWidget_dcc.h:95
 #: src/modules/options/OptionsWidget_identity.h:193
 #: src/modules/options/OptionsWidget_irc.h:56
-#: src/modules/options/OptionsWidget_servers.cpp:990
+#: src/modules/options/OptionsWidget_servers.cpp:991
 msgid "Advanced"
 msgstr "Avanzate"
 
@@ -642,7 +643,7 @@ msgstr "Mantieni aperte le finestre dei canali"
 
 #: src/modules/options/OptionsWidget_connection.cpp:47
 msgid "This option will cause KVIrc to keep channels open after disconnect."
-msgstr ""
+msgstr "Questa opzione permette a KVIrc di lasciare aperte le finestre dei canali dopo la disconnessione."
 
 #: src/modules/options/OptionsWidget_connection.cpp:49
 #: src/modules/options/OptionsWidget_connection.cpp:57
@@ -651,7 +652,7 @@ msgstr "Mantieni aperte le finestre delle query"
 
 #: src/modules/options/OptionsWidget_connection.cpp:50
 msgid "This option will cause KVIrc to keep queries open after disconnect."
-msgstr ""
+msgstr "Questa opzione permette a KVIrc di lasciare aperte le finestre delle query dopo la disconnessione."
 
 #: src/modules/options/OptionsWidget_connection.cpp:52
 msgid "On Unexpected Disconnect"
@@ -661,13 +662,13 @@ msgstr "Dopo una Disconnessione Inaspettata"
 msgid ""
 "This option will cause KVIrc to keep channels open after an unexpected "
 "disconnect."
-msgstr ""
+msgstr "Questa opzione permette a KVIrc di lasciare aperte le finestre dei canali dopo una disconnessione inaspettata."
 
 #: src/modules/options/OptionsWidget_connection.cpp:58
 msgid ""
 "This option will cause KVIrc to keep queries open after an unexpected "
 "disconnect."
-msgstr ""
+msgstr "Questa opzione permette a KVIrc di lasciare aperte le finestre delle query dopo una disconnessione inaspettata."
 
 #: src/modules/options/OptionsWidget_connection.cpp:60
 msgid "Rejoin channels after reconnect"
@@ -677,7 +678,7 @@ msgstr "Rientra nei canali dopo la riconnessione"
 msgid ""
 "This option will cause KVIrc to rejoin channels after a successful reconnect"
 " attempt."
-msgstr ""
+msgstr "Questa opzione farà sì che KVIrc rientri nei canali dopo una riconnessione effettuata con successo."
 
 #: src/modules/options/OptionsWidget_connection.cpp:63
 msgid "Reopen queries after reconnect"
@@ -687,7 +688,7 @@ msgstr "Riapri query dopo la riconnessione"
 msgid ""
 "This option will cause KVIrc to reopen query windows after a successful "
 "reconnect attempt."
-msgstr ""
+msgstr "Questa opzione farà sì che KVIrc riapra le query dopo una riconnessione effettuata con successo."
 
 #: src/modules/options/OptionsWidget_connection.cpp:66
 msgid "Automatically reconnect"
@@ -707,11 +708,11 @@ msgid ""
 " an alias that sends the bouncer \"detach\" command immediately before the "
 "\"quit\" command.<br><tt>alias(bncdetach){ raw bouncer detach; quit; "
 "}</tt></p>"
-msgstr ""
+msgstr "Questa opzione attiva l'auto-riconnessione dopo una disconnessione inaspettata. Una disconessione inaspettata è la <b>terminazione</b> di una <b>sessione IRC connessa</b> che <b>non è stata richiesta dall'utente</b> tramite un messaggio di QUIT.<p><b>ATTENZIONE:</b> se usi /RAW per inviare al server il messaggio di QUIT, questa opzione si comporterà in modo non corretto, perché non rileva il messaggio QUIT e tenterà di riconnettersi dopo che il server ha chiuso la connessione. Per questa ragione, usa sempre il comando /QUIT per chiudere le tue connessioni. Questa opzione può inoltre comportarsi in modo sbagliato con i bouncer che supportano il detaching: in questo caso una soluzione può essere creare un alias che invii al bouncer il comando \"detach\" prima del comando \"quit\".<br><tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:80
 msgid "Maximum attempts (0 = unlimited):"
-msgstr ""
+msgstr "Numero massimo tentativi (0 = infiniti):"
 
 #: src/modules/options/OptionsWidget_connection.cpp:84
 msgid "Delay between attempts:"
@@ -719,7 +720,7 @@ msgstr "Distanza tra i tentativi:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:89
 msgid "Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b>"
-msgstr ""
+msgstr "Valore minimo:<b>0 sec</b><br>Valore massimo: <b>86400 sec</b>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:109
 msgid "Certificate"
@@ -793,7 +794,7 @@ msgstr " usec"
 #: src/modules/options/OptionsWidget_connection.cpp:162
 msgid ""
 "Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</b>"
-msgstr ""
+msgstr "Valore minimo: <b>10000 usec</b><br>Valore massimo: <b>10000000 usec</b>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:165
 msgid "Network Interfaces"
@@ -809,7 +810,7 @@ msgstr "Bind connessione IPv6 a:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:176
 msgid "Pick random IP address for round-robin servers"
-msgstr ""
+msgstr "Scegli un IP casuale per i server round-robin"
 
 #: src/modules/options/OptionsWidget_connection.cpp:177
 msgid ""
@@ -819,33 +820,33 @@ msgid ""
 "properly rotate the records as the authoritative ones would do. On the other"
 " hand, you might want to disable it if you want to rely on the DNS server to"
 " provide the best choice."
-msgstr ""
+msgstr "Questa opzione farà si che KVIrc utilizzi un record a caso quando più indirizzi IP vengono trovati per lo stesso server durante una ricerca DNS. Non è pericoloso e può evitare alcuni problemi relativi alla cache dei server DNS che non ruotano giustamente i record come farebbero i DNS autoritativi. D'altro canto, potresti voler disabilitare questa opzione se vuoi usare la scelta migliore fornita dal server DNS."
 
 #: src/modules/options/OptionsWidget_connection.cpp:185
 msgid "Drop connection on SASL authentication failure"
-msgstr ""
+msgstr "Annulla connessione su fallimento autenticazione SASL"
 
 #: src/modules/options/OptionsWidget_connection.cpp:186
 msgid ""
 "This option will close the socket if no SASL authentication or any SASL "
 "fallback had succeeded."
-msgstr ""
+msgstr "Questa opzione chiuderà il socket se nessuna autenticazione SASL ha avuto successo."
 
 #: src/modules/options/OptionsWidget_connection.cpp:201
 msgid "Enable Ident service"
-msgstr ""
+msgstr "Abilita servizio Ident"
 
 #: src/modules/options/OptionsWidget_connection.cpp:203
 msgid "Enable Ident service (bad practice on UNIX!)"
-msgstr ""
+msgstr "Attiva servizio Ident (sconsigliato su UNIX!)"
 
 #: src/modules/options/OptionsWidget_connection.cpp:207
 msgid "Output Verbosity"
-msgstr ""
+msgstr "Messaggi da visualizzare"
 
 #: src/modules/options/OptionsWidget_connection.cpp:210
 msgid "Output Ident service messages to:"
-msgstr ""
+msgstr "Scrivi i messaggi Identd su:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:212
 msgid "Active window"
@@ -857,7 +858,7 @@ msgstr "Console"
 
 #: src/modules/options/OptionsWidget_connection.cpp:214
 msgid "Do not show any Ident service messages"
-msgstr ""
+msgstr "Non mostrare i messaggi del servizio Ident"
 
 #: src/modules/options/OptionsWidget_connection.cpp:233
 #: src/modules/options/OptionsWidget_lag.cpp:42
@@ -868,7 +869,7 @@ msgstr "Configurazione"
 
 #: src/modules/options/OptionsWidget_connection.cpp:235
 msgid "Enable Ident service only while connecting to server"
-msgstr ""
+msgstr "Abilita il servizio Ident solo mentre connetti al server"
 
 #: src/modules/options/OptionsWidget_connection.cpp:238
 msgid "Ident username:"
@@ -895,7 +896,7 @@ msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> Ident daemon "
 "that implements only a limited subset of the Identification Protocol "
 "specifications. If it is possible, install a real Ident daemon.</p>"
-msgstr ""
+msgstr "<p><b>Attenzione:</b><br> questo è un demone Ident <b>non conforme RFC1413/913</b> che implementa solo un sottoinsieme limitato delle specifiche del protocollo di Identificazione. Se è possibile, installa un vero demone Ident.</p>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:267
 msgid ""
@@ -905,10 +906,10 @@ msgid ""
 " auth port (113).<br>It is <b>highly recommended</b> that a <b>real</b> "
 "system-wide Ident daemon be used instead, or none at all if Ident is not "
 "required.</p>"
-msgstr ""
+msgstr "<p><b>Attenzione:</b><br>questo è un demone ident <b>non conforme RFC1413</b> che implementa solo un sottoinsieme limitato delle specifiche del <b>Protocollo di Identificazione</b>.<br>Su UNIX inoltre c'è bisogno dei privilegi di root per bindare la porta auth (113).<br>E' <b>vivamente consigliato</b> usare un <b>vero</b> demone Ident di sistema, oppure niente se ldent non è indispensabile.</p>"
 
 #: src/modules/options/OptionsWidget_connection.h:33
-#: src/modules/options/OptionsWidget_servers.cpp:816
+#: src/modules/options/OptionsWidget_servers.cpp:817
 msgid "Connection"
 msgstr "Connessione"
 
@@ -929,7 +930,7 @@ msgid ""
 "<p><b>Client-to-client protocol</b> (CTCP) is used to transmit special "
 "control messages over an IRC connection. These messages can request "
 "information from clients or negotiate file transfers.</p>"
-msgstr ""
+msgstr "<p><b>Impostazioni CTCP.</b>Il Client-To-Client-Protocol (CTCP) è usato per trasmettere degli speciali messaggi di controllo su una connessione IRC. Questi messaggi possono richiedere informazioni dai client o negoziare lo scambio di file.</p>"
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:42
 msgid "CTCP Replies"
@@ -943,7 +944,7 @@ msgstr "Aggiungi alla risposta VERSION:"
 msgid ""
 "This text will be appended to the CTCP VERSION reply.<br>For example, you "
 "can place a script name here."
-msgstr ""
+msgstr "Questo testo verrà aggiunto alla risposta CTCP VERSION.<br>Per esempio, puoi inserire il nome di uno script."
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:49
 msgid "Append to SOURCE reply:"
@@ -953,7 +954,7 @@ msgstr "Aggiungi alla risposta SOURCE:"
 msgid ""
 "This text will be appended to the CTCP SOURCE reply.<br>For example, you can"
 " place the source URL for a script here."
-msgstr ""
+msgstr "Questo testo verrà aggiunto alla risposta CTCP SOURCE.<br>Per esempio, puoi inserire l'URL da dove scaricare uno script."
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:55
 msgid "PAGE reply:"
@@ -963,7 +964,7 @@ msgstr "Risposta PAGE:"
 msgid ""
 "This is the CTCP PAGE reply.<br>It should contain some sort of "
 "acknowledgment for CTCP PAGE messages."
-msgstr ""
+msgstr "Questa è la risposta CTCP PAGE<br>Dovrebbe contenere una specie di conferma di ricevimento dei messaggi CTCP PAGE."
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:61
 msgid "Show the CTCP replies in the active window"
@@ -975,7 +976,7 @@ msgstr "Mostra finestra per le richieste CTCP page"
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:64
 msgid "Show dialog for channel CTCP page requests"
-msgstr ""
+msgstr "Mostra finestra per le richieste CTCP page"
 
 #: src/modules/options/OptionsWidget_ctcp.h:30
 msgid "CTCP"
@@ -989,7 +990,7 @@ msgstr "Usa protezione flood per le richieste CTCP (raccomandato)"
 msgid ""
 "This option makes KVIrc only respond to a limited number of CTCP requests "
 "within a specified time interval, to prevent \"flooding\" CTCP messages."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc risponda solo ad un numero limitato di richieste CTCP entro uno specifico intervallo di tempo, per prevenire un \"flood\" di messaggi CTCP."
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:84
 msgid "Allow up to:"
@@ -1002,7 +1003,7 @@ msgstr " richieste"
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:86
 msgid ""
 "Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 requests</b>"
-msgstr ""
+msgstr "Valore minimo: <b>0 richieste</b><br>Valore massimo: <b>10000 richieste</b>"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:89
 msgid "within:"
@@ -1010,11 +1011,11 @@ msgstr "in:"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:91
 msgid "Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b>"
-msgstr ""
+msgstr "Valore minimo:<b>1 sec</b><br>Valore massimo: <b>3600 sec</b>"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:94
 msgid "Ignored CTCP Requests"
-msgstr ""
+msgstr "Richieste CTCP ignorate"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:95
 msgid "PING"
@@ -1069,7 +1070,7 @@ msgid ""
 "Enable this option if you can't accept incoming connections.<br>KVIrc will "
 "try to use different methods to send and receive files.<br>Please note that "
 "these methods may NOT work when communicating with a non-KVIrc client."
-msgstr ""
+msgstr "Abilita questa opzione se non puoi accettare connessioni in entrata<br>KVIrc proverà ad usare delle tecniche differenti per inviare e ricevere i file.<br>Attenzione queste tecniche potrebbero NON funzionare con altri client."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:69
 msgid "Network Properties"
@@ -1085,7 +1086,7 @@ msgid ""
 "of the available IP addresses to be used for outgoing DCCs.<br>This is "
 "especially useful when you use IPv6 and IPv4 addresses. You can force KVIrc "
 "to always choose the IPv4 interface."
-msgstr ""
+msgstr "Abilita questa opzione se sei su una macchina con più IP e vuoi forzare l'uso di uno degli indirizzi per le DCC in uscita.<br>Questo è particolarmente utile quando usi indirizzi IPv6 e IPv4. Puoi forzare KVIrc a scegliere sempre l'interfaccia IPv4."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:76
 msgid "Listen on address/interface:"
@@ -1097,7 +1098,7 @@ msgid ""
 "outgoing DCC transfers.<br>On UNIX systems that support it, you can also "
 "specify IPv4 interface names (such as <b>ppp0</b>).<br>If you set it to "
 "<b>0.0.0.0</b>, KVIrc will try to use the first available IPv4 interface."
-msgstr ""
+msgstr "Questo è l'indirizzo o il nome dell'interfaccia usata di default per i trasferimenti in uscita delle DCC.<br>Sui sistemi UNIX che lo supportano, puoi usare il nome dell'interfaccia IPv4 (come <b>ppp0</b>).<br>Se lo setti come <b>0.0.0.0</b>, KVIrc tenterà di trovare la prima interfaccia IPv4 disponibile."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:84
 msgid "Use user-defined port range"
@@ -1105,7 +1106,7 @@ msgstr "Usa il range di porte locali definite dall'utente"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:85
 msgid "Enable this option if you want specify a local port range for DCC."
-msgstr ""
+msgstr "Abilita questa opzione se vuoi definire un range di porte locali per le DCC."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:90
 msgid "Lowest port:"
@@ -1125,7 +1126,7 @@ msgid ""
 "requests.<br>This might be useful if you're behind a router with a static "
 "address that does network address translation (NAT) and forwards all or a "
 "range of ports."
-msgstr ""
+msgstr "Abilita questa opzione se vuoi che venga sempre inviato un indirizzo IP falso nelle tue richieste di DCC. <br>Questo può essere utile se sei dietro un router con indirizzo statico che effettua la traduzione degli indirizzi di rete (NAT) e inoltra tutte o un intervallo di porte."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:103
 msgid "Send address/interface:"
@@ -1135,7 +1136,7 @@ msgstr "Invia indirizzo/interfaccia:"
 msgid ""
 "This is the fixed address that will be sent with all DCC requests if you "
 "enable the option above."
-msgstr ""
+msgstr "Abilitando l'opzione sopra verrà inviato questo indirizzo fisso per tutte le richieste DCC."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:108
 msgid "Guess address from IRC server if unroutable"
@@ -1149,7 +1150,7 @@ msgid ""
 "to.<br>This method is an exclusive alternative to the \"fixed address\" "
 "above.<br>It might guess the correct address automatically if certain "
 "conditions are met (e.g. the IRC server doesn't mask hostnames)."
-msgstr ""
+msgstr "Puoi abilitare questa opzione se sei dietro un router che inoltra tutte o un intervallo di porte.<br>KVIrc proverà a ottenere l'indirizzo IP da usare per le DCC controllando come viene visto l'hostname locale dal server IRC al quale sei connesso.<br>Questo metodo è un'alternativa all'uso dell'opzione precedente \"indirizzo fisso\".<br>Potrebbe ottenere l'indirizzo corretto se alcune condizioni vengono garantite (per esempio, il server IRC non maschera il nome dell'host)."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:118
 msgid "Use \"broken bouncer hack\" to detect address"
@@ -1161,7 +1162,7 @@ msgid ""
 "bouncer, you can use a bug in the bouncer to force KVIrc to bind the DCC "
 "connections to the dialup router's address.<br>It's an ugly hack - use it "
 "only if nothing else works."
-msgstr ""
+msgstr "<center>Quando sei connesso dietro un router dialup oppure attraverso un tunnel con un bouncer psyBNC, puoi sfruttare una bug del bouncer per forzare KVIrc a fare il bind della connessione DCC all'indirizzo del router.<br>E' un brutto hack - usalo solo nel caso in cui niente altro funzioni</center>"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:126
 msgid "Notify failed DCC handshakes to the remote end"
@@ -1174,18 +1175,18 @@ msgid ""
 "it is a good idea to leave it on unless for some reason you have deactivated"
 " the anti-flood system: in this case turning off this option might help if "
 "you often get attacked by CTCP floods."
-msgstr ""
+msgstr "Abilitando questa opzione, quando una richiesta DCC da un utente remoto non può essere soddisfatta KVIrc informerà l'utente con un CTCP ERRMSG. E' una cosa utile ed è quindi una buona idea abilitarla a meno che per qualche ragione tu abbia disattivato il sistema antiflood: in questo caso disabilitare questa opzione potrebbe aiutarti se sei spesso attaccato con flood CTCP."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:133
 msgid "Maximum number of DCC sessions:"
-msgstr ""
+msgstr "Numero massimo di sessioni DCC:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:134
 msgid ""
 "This is the maximum number of concurrent DCC sessions and it includes all "
 "the DCC types (send, chat, recv.). KVIrc will refuse the requests when this "
 "limit is reached."
-msgstr ""
+msgstr "Questo è il numero massimo di sessioni DCC e include tutti i tipi di DCC (send, chat, recv...). KVIrc rifiuterà le richieste quando viene raggiunto il limite."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:138
 msgid "DCC socket timeout:"
@@ -1196,7 +1197,7 @@ msgid ""
 "This is the amount of time that KVIrc will wait for a response before "
 "assuming that a DCC has failed because the remote client was unable to "
 "connect to our listening socket."
-msgstr ""
+msgstr "Questo è il tempo che KVIrc aspetterà prima di decidere che la DCC è fallita perché il client remoto non è in grado di connettersi al tuo socket in ascolto."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:171
 msgid "On Incoming File"
@@ -1210,7 +1211,7 @@ msgstr "Accetta Automaticamente"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:173
 msgid "Open auto-accepted transfer window without focus"
-msgstr ""
+msgstr "Apri finestre trasferimenti auto-accettate senza dare focus"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:175
 #: src/modules/options/OptionsWidget_dcc.cpp:198
@@ -1218,7 +1219,7 @@ msgid ""
 "This option prevents the transfer window from opening and diverting "
 "application focus.<br>Enable this if you don't like the transfer window "
 "popping up while you're typing something in a channel."
-msgstr ""
+msgstr "Questa opzione previene che le nuove finestre dei trasferimenti rubino il focus dell'applicazione.<br>Abilitala se non vuoi che le finestre dei trasferimenti si aprano mentre stai scrivendo qualcosa in un canale."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:180
 msgid "Automatically resume when auto-accepted"
@@ -1260,11 +1261,11 @@ msgstr "Pulisci i trasferimenti automaticamente"
 msgid ""
 "This option will cause successfully terminated transfers to be automatically"
 " removed from the transfer window."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc rimuova automaticamente i trasferimenti completati dalla finestra di trasferimento."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:197
 msgid "Open transfer window without focus"
-msgstr ""
+msgstr "Apri finestre trasferimenti senza dare focus"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:222
 msgid "Bug Compatibility"
@@ -1280,7 +1281,7 @@ msgid ""
 "DCC transfer with some buggy IRC clients.<br>Use it only if your DCC "
 "transfers stall just after establishing a connection without sending any "
 "data."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc invii una conferma di 0 byte per forzare l'inizio del trasferimento DCC con alcuni client IRC buggati.<br>Usa questa opzione solo se i trasferimenti DCC vanno in stallo appena stabilita una connessione, senza inviare nessun dato."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:229
 msgid "Accept RESUME requests with broken filename (mIRC file.ext)"
@@ -1291,7 +1292,7 @@ msgid ""
 "This option causes KVIrc to accept RESUME requests with invalid "
 "filenames.<br>Use it if KVIrc fails to accept RESUME requests from other "
 "clients (e.g. some versions of mIRC)."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc accetti una richiesta di RESUME con un nome di file non valido.<br>Usala nel caso KVIrc non riuscisse ad accettare le richieste di RESUME da un altro client (per esempio alcune versioni di mIRC)."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:233
 msgid "Accept RESUME requests with mismatched ports"
@@ -1304,7 +1305,7 @@ msgid ""
 "remaps the ports in DCC SEND but not in DCC RESUME requests.<br>Please note "
 "that this option may misbehave in certain usage patterns since KVIrc must "
 "differentiate between transfers only by looking at the filename. Be careful."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc accetti le richieste di RESUME con porte non combacianti.<br>Usalo se hai un router tra te e l'utente remoto che rimappa le porte in DCC SEND ma non in DCC RESUME.<br>Nota che questa opzione può dare problemi dal momento che KVIrc deve identificare i trasferimenti guardando solamente il nome del file. Fai attenzione."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:239
 msgid "Replace spaces with underscores in outgoing filenames"
@@ -1315,18 +1316,18 @@ msgid ""
 "This option causes KVIrc to replace spaces with underscores in filenames for"
 " all the outgoing file transfers. This will fix filename handling with some "
 "buggy clients (e.g. some versions of mIRC)."
-msgstr ""
+msgstr "Questa opzione costringe KVIrc a rimpiazzare gli spazi con trattini bassi nei nomi dei file dei trasferimenti in uscita. Questo risolverà la gestione dei nomi dei file su alcuni client problematici (per esempio alcune versioni di mIRC)."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:243
 msgid "Send 64-bit ACKs for files larger than 4GiB"
-msgstr ""
+msgstr "Invia ACK a 64-bit per file più grandi di 4GiB"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:244
 msgid ""
 "This option causes KVIrc to send ACKs as 64-bit integers instead of 32-bit "
 "integers.<br>Use this to fix DCC RECEIVE transfers where the other client is"
 " using the mIRC ACK standard."
-msgstr ""
+msgstr "Questa opzione costringe KVIrc a inviare gli ACK come numeri interi di 64 bit invece che 32 bit.<br>Usa questa opzione per correggere i trasferimenti DCC RECEIVE quando gli altri client usano l'ACK standard di mIRC."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:247
 msgid "Limits"
@@ -1347,13 +1348,13 @@ msgstr "Limita la banda in download a:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:262
 msgid "Maximum number of DCC transfers:"
-msgstr ""
+msgstr "Numero massimo di trasferimenti DCC:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:263
 msgid ""
 "This is the maximum number of concurrent DCC transfers. KVIrc will refuse "
 "the requests when this limit is reached."
-msgstr ""
+msgstr "Questo è il numero massimo di trasferimenti DCC. KVIrc rifiuterà le richieste quando viene raggiunto il limite."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:266
 msgid "Tweaks"
@@ -1369,11 +1370,11 @@ msgid ""
 " of the rules of the original DCC SEND protocol specification.<br>Most "
 "clients can handle this kind of optimisation so disable it only if you have "
 "problems."
-msgstr ""
+msgstr "Il metodo DCC \"send ahead\" ti permette di inviare dati più velocemente, non rispettando delle regole del protocollo originale DCC SEND.<br>Molti client supportano questo tipo di ottimizzazione, quindi disabilitalo solo se incontri dei problemi."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:275
 msgid "Force idle step:"
-msgstr ""
+msgstr "Forza piccole interruzioni:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:276
 msgid ""
@@ -1381,7 +1382,7 @@ msgid ""
 "by consuming too much CPU time. When this option is enabled the idle "
 "interval below will be forcibly inserted between each sent/received data "
 "packet."
-msgstr ""
+msgstr "Abilita questa opzione quando i trasferimenti attraverso DCC tendono a rallentare eccessivamente il computer a causa dell'alto consumo di CPU. Quando questa opzione è abilitata l'intervallo di inattività scelto sarà inserito tra ogni pacchetto inviato/ricevuto."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:285
 msgid ""
@@ -1389,7 +1390,7 @@ msgid ""
 "received.<br>A smaller interval will cause you to send data faster but will "
 "also add load to your CPU, disk and network interface.<br>Reasonable values "
 "are from 5 to 50 milliseconds."
-msgstr ""
+msgstr "Questo parametro controlla il ritardo medio tra due pacchetti inviati o ricevuti.<br>Un intervallo breve ti permetterà di inviare dati più velocemente ma caricherà di lavoro la tua CPU, il disco e l'interfaccia di rete.<br>Valori ragionevoli sono tra 5 e 50 millisecondi."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:290
 msgid "Packet size:"
@@ -1401,7 +1402,7 @@ msgid ""
 "packets you will be probably send data faster, but you will also saturate "
 "your bandwidth and in some cases cause more disk activity.<br>Reasonable "
 "values are from 512 to 4096 bytes."
-msgstr ""
+msgstr "Questo parametro permette di controllare la dimensione dei pacchetti usati nelle DCC SEND.<br>Con dei pacchetti più grandi probabilmente invierai i dati più velocemente, ma questo saturerà la tua connessione e in alcuni casi aumenterà l'attività del disco.<br>I valori ragionevoli sono tra 512 e 4096 byte."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:314
 msgid "On Chat Request"
@@ -1409,57 +1410,57 @@ msgstr "Su Richiesta di Chat"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:317
 msgid "Open auto-accepted DCC chat windows without focus"
-msgstr ""
+msgstr "Apri finestre DCC chat auto-accettate senza dare focus"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:319
 msgid ""
 "This option prevents incoming auto-accepted DCC chat windows from diverting "
 "application focus.<br>Enable this if you don't like DCC chat windows popping"
 " up while you're typing something in a channel."
-msgstr ""
+msgstr "Questa opzione previene che le nuove finestre DCC chat auto-accettate rubino il focus dell'applicazione.<br>Abilitala se non vuoi che le finestre DCC Chat si aprano mentre stai scrivendo qualcosa in un canale."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:324
 msgid "Open DCC chat windows without focus"
-msgstr ""
+msgstr "Apri finestre DCC chat senza dare focus"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:325
 msgid ""
 "This option prevents incoming DCC chat windows from diverting application "
 "focus.<br>Enable this if you don't like DCC chat windows popping up while "
 "you're typing something in a channel."
-msgstr ""
+msgstr "Questa opzione previene che le nuove finestre DCC chat rubino il focus dell'applicazione.<br>Abilitala se non vuoi che le finestre DCC Chat si aprano mentre stai scrivendo qualcosa in un canale."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:333
 msgid "Flash system taskbar on new DCC chat message"
-msgstr ""
+msgstr "Fai lampeggiare la barra delle applicazioni del sistema quando c'è un nuovo messaggio in DCC chat"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:334
 msgid ""
 "This option causes the system taskbar entry for KVIrc to flash when a new "
 "DCC chat message is received and the KVIrc window is not the active."
-msgstr ""
+msgstr "Questa opzione fa sì che la barra delle applicazioni del sistema lampeggi quando viene ricevuto un nuovo messaggio in DCC chat e la finestra di KVIrc non è attiva."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:337
 msgid "Popup notifier on new DCC chat message"
-msgstr ""
+msgstr "Mostra la finestra di notifica quando c'è un nuovo messaggio in DCC chat"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:338
 msgid ""
 "This option causes a small notifier window to pop up in the low right corner"
 " of the screen when a new message is received and the KVIrc window is not "
 "active."
-msgstr ""
+msgstr "Questa opzione fa sì che una piccola finestra di notifica venga mostrata nell'angolo in basso a destra dello schermo quando viene ricevuto un nuovo messaggio e la finestra di KVIrc non è attiva."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:357
 msgid "Open DCC voice windows without focus"
-msgstr ""
+msgstr "Apri finestre DCC voice senza dare focus"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:358
 msgid ""
 "This option prevents all incoming DCC voice windows from diverting "
 "application focus.<br>Enable this if you don't like DCC voice windows "
 "popping up while you're typing something in a channel."
-msgstr ""
+msgstr "Questa opzione previene che le nuove finestre DCC voice rubino il focus dell'applicazione.<br>Abilitala se non vuoi che le finestre DCC Chat si aprano mentre stai scrivendo qualcosa in un canale."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:363
 msgid "On Voice Request"
@@ -1467,14 +1468,14 @@ msgstr "Su Richiesta Voice"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:365
 msgid "Open auto-accepted DCC voice windows without focus"
-msgstr ""
+msgstr "Apri finestre DCC voice auto-accettate senza dare focus"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:367
 msgid ""
 "This option prevents incoming auto-accepted DCC voice windows from diverting"
 " application focus.<br>Enable this if you don't like DCC voice windows "
 "popping up while you're typing something in a channel."
-msgstr ""
+msgstr "Questa opzione previene che le nuove finestre DCC voice auto-accettate rubino il focus dell'applicazione.<br>Abilitala se non vuoi che le finestre DCC Chat si aprano mentre stai scrivendo qualcosa in un canale."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:374
 msgid "Force half-duplex mode on sound device"
@@ -1520,67 +1521,64 @@ msgstr "Questa sezione contiene le opzioni generali <p>quali<b> suoni, multimedi
 
 #: src/modules/options/OptionsWidget_general.h:30
 msgid "General Options"
-msgstr ""
+msgstr "Opzioni generali"
 
-#: src/modules/options/OptionsWidget_identity.cpp:61
+#: src/modules/options/OptionsWidget_identity.cpp:62
 msgid "Nickname Alternatives - KVIrc"
-msgstr ""
+msgstr "Nickname alternativi - KVirc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:64
+#: src/modules/options/OptionsWidget_identity.cpp:65
 msgid ""
 "Here you can choose up to three nickname alternatives to the primary one. "
 "KVIrc will use the alternatives if the primary nick is already used by "
 "someone else on a particular IRC network."
-msgstr ""
+msgstr "Qui puoi scegliere fino a tre nickname alternativi al primo. KVIrc usa i nickname alternativi se il primo è già usato da qualcun altro sulla rete IRC."
 
-#: src/modules/options/OptionsWidget_identity.cpp:74
+#: src/modules/options/OptionsWidget_identity.cpp:75
 msgid "Alt. nickname 1:"
-msgstr ""
+msgstr "Nickname alt. 1:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:81
+#: src/modules/options/OptionsWidget_identity.cpp:82
 msgid "Alt. nickname 2:"
-msgstr ""
+msgstr "Nickname alt. 2:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:88
+#: src/modules/options/OptionsWidget_identity.cpp:89
 msgid "Alt. nickname 3:"
-msgstr ""
+msgstr "Nickname alt. 3:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:100
-#: src/modules/options/OptionsWidget_identity.cpp:869
-#: src/modules/options/OptionsWidget_identity.cpp:972
+#: src/modules/options/OptionsWidget_identity.cpp:101
+#: src/modules/options/OptionsWidget_identity.cpp:971
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
-#: src/modules/options/OptionsWidget_nickserv.cpp:148
-#: src/modules/options/OptionsWidget_servers.cpp:1005
-#: src/modules/options/OptionsWidget_textEncoding.cpp:225
+#: src/modules/options/OptionsWidget_servers.cpp:1006
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/options/OptionsWidget_identity.cpp:120
+#: src/modules/options/OptionsWidget_identity.cpp:121
 msgid "Avatar Download - KVIrc"
 msgstr "Scarica Avatar - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:126
+#: src/modules/options/OptionsWidget_identity.cpp:127
 msgid "Please wait while the avatar is being downloaded"
-msgstr ""
+msgstr "Attendi mentre l'avatar viene scaricato"
 
-#: src/modules/options/OptionsWidget_identity.cpp:129
+#: src/modules/options/OptionsWidget_identity.cpp:130
 msgid "Abort"
 msgstr "Annulla"
 
-#: src/modules/options/OptionsWidget_identity.cpp:160
+#: src/modules/options/OptionsWidget_identity.cpp:161
 msgid "Failed to start the download"
 msgstr "Impossibile iniziare lo scaricamento"
 
-#: src/modules/options/OptionsWidget_identity.cpp:167
-#: src/modules/options/OptionsWidget_identity.cpp:174
+#: src/modules/options/OptionsWidget_identity.cpp:168
+#: src/modules/options/OptionsWidget_identity.cpp:175
 msgid "Download aborted by user"
 msgstr "Scaricamento annullato dall'utente"
 
-#: src/modules/options/OptionsWidget_identity.cpp:203
+#: src/modules/options/OptionsWidget_identity.cpp:204
 msgid "Choose Avatar - KVIrc"
 msgstr "Scegli un Avatar - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:207
+#: src/modules/options/OptionsWidget_identity.cpp:208
 msgid ""
 "Please select an avatar image.\n"
 "\n"
@@ -1588,145 +1586,145 @@ msgid ""
 "If you wish to use a local image file, click the \"Browse\" button to select the desired file.\n"
 "\n"
 "The full URL for an image (including http:// or https://) can also be entered manually."
-msgstr ""
+msgstr "Per favore seleziona un'immagine avatar.\n\nPuoi usare il percorso completo di un file locale o di un immagine presente sul Web.\nSe vuoi usare un'immagine locale clicca sul pulsante \"Sfoglia\" per cercare il file.\n\nL'URL completo per un'immagine può essere inserito manualmente (ricordati di includere <b>http://</b> o <b>https://</b>)."
 
-#: src/modules/options/OptionsWidget_identity.cpp:228
+#: src/modules/options/OptionsWidget_identity.cpp:229
 msgid "&Browse..."
 msgstr "&Sfoglia..."
 
-#: src/modules/options/OptionsWidget_identity.cpp:268
+#: src/modules/options/OptionsWidget_identity.cpp:269
 #: src/modules/options/OptionsWidget_message.cpp:644
 #: src/modules/options/OptionsWidget_textIcons.cpp:190
 msgid "Select a File - KVIrc"
-msgstr ""
+msgstr "Scegli un file - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:298
+#: src/modules/options/OptionsWidget_identity.cpp:299
 msgid "Basic Properties"
 msgstr "Proprietà"
 
-#: src/modules/options/OptionsWidget_identity.cpp:301
-#: src/modules/options/OptionsWidget_identity.cpp:936
-#: src/modules/options/OptionsWidget_servers.cpp:164
-#: src/modules/options/OptionsWidget_servers.cpp:581
+#: src/modules/options/OptionsWidget_identity.cpp:302
+#: src/modules/options/OptionsWidget_identity.cpp:935
+#: src/modules/options/OptionsWidget_servers.cpp:165
+#: src/modules/options/OptionsWidget_servers.cpp:582
 msgid "Nickname:"
 msgstr "Nickname:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:303
+#: src/modules/options/OptionsWidget_identity.cpp:304
 msgid ""
 "Your <b>nickname</b> is your primary form of identification on IRC.<br>Since"
 " servers cannot accept multiple users sharing the same nickname (case "
 "insensitive), you can provide alternative nicknames to be used in case the "
 "server refuses to accept the default one."
-msgstr ""
+msgstr "Il tuo <b>nickname</b> è la forma primaria di identificazione in IRC.<br>Visto che i server non accettano connessioni multiple da utenti con lo stesso nickname (non sensibile alle maiuscole), puoi fornire dei nickname alternativi che verranno usati nel caso in cui il server rifiutasse quello predefinito."
 
-#: src/modules/options/OptionsWidget_identity.cpp:312
+#: src/modules/options/OptionsWidget_identity.cpp:313
 msgid "Alternatives..."
 msgstr "Alternative..."
 
-#: src/modules/options/OptionsWidget_identity.cpp:315
-#: src/modules/options/OptionsWidget_identity.cpp:950
+#: src/modules/options/OptionsWidget_identity.cpp:316
+#: src/modules/options/OptionsWidget_identity.cpp:949
 #: src/modules/options/OptionsWidget_proxy.cpp:122
-#: src/modules/options/OptionsWidget_servers.cpp:144
-#: src/modules/options/OptionsWidget_servers.cpp:560
+#: src/modules/options/OptionsWidget_servers.cpp:145
+#: src/modules/options/OptionsWidget_servers.cpp:561
 msgid "Username:"
 msgstr "Nome utente:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:317
+#: src/modules/options/OptionsWidget_identity.cpp:318
 msgid ""
 "This is the <b>username</b> that you will use to connect to the "
 "server.<br>In the past, it was used as a form of authentication, but it "
 "normally has no special use now.<br>In addition to your nickname, you are "
 "identified on IRC by your <b>username@hostname</b>.<br>Basically, you can "
 "enter any word you like here."
-msgstr ""
+msgstr "Questo è il <b>nome dell'utente</b> che verrà utilizzato per connettersi al server. <br>In passato, era usato come forma di autenticazione, ma ora non ha nessun utilizzo particolare.<br>Oltre al nickname, vieni identificato su IRC dal tuo <b>nomeutente@nomehost</b>.</br>In definitiva puoi inserire qualsiasi parola di tuo gradimento."
 
-#: src/modules/options/OptionsWidget_identity.cpp:323
-#: src/modules/options/OptionsWidget_identity.cpp:957
-#: src/modules/options/OptionsWidget_servers.cpp:188
-#: src/modules/options/OptionsWidget_servers.cpp:607
+#: src/modules/options/OptionsWidget_identity.cpp:324
+#: src/modules/options/OptionsWidget_identity.cpp:956
+#: src/modules/options/OptionsWidget_servers.cpp:189
+#: src/modules/options/OptionsWidget_servers.cpp:608
 msgid "Real name:"
 msgstr "Nome vero:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:326
+#: src/modules/options/OptionsWidget_identity.cpp:327
 msgid ""
 "This text will appear when someone does a /WHOIS on you.<br>It is intended "
 "to be your real name, but people tend to put random quotes and phrases here "
 "too."
-msgstr ""
+msgstr "Questo testo appare quando qualcuno richiede un /WHOIS su di te. <br>Dovrebbe essere un vero nome, ma le persone hanno l'abitudine di mettere delle citazioni casuali o delle frasi."
 
-#: src/modules/options/OptionsWidget_identity.cpp:330
+#: src/modules/options/OptionsWidget_identity.cpp:331
 msgid ""
 "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr "Questo campo è opzionale e apparirà come parte della risposta di un CTCP USERINFO"
 
-#: src/modules/options/OptionsWidget_identity.cpp:333
+#: src/modules/options/OptionsWidget_identity.cpp:334
 msgid "Profile"
 msgstr "Profilo"
 
-#: src/modules/options/OptionsWidget_identity.cpp:337
+#: src/modules/options/OptionsWidget_identity.cpp:338
 msgid "Age:"
 msgstr "Età"
 
-#: src/modules/options/OptionsWidget_identity.cpp:341
+#: src/modules/options/OptionsWidget_identity.cpp:342
 msgid "Here you can specify your age."
 msgstr "Qui puoi specificare la tua età"
 
-#: src/modules/options/OptionsWidget_identity.cpp:344
-#: src/modules/options/OptionsWidget_identity.cpp:372
+#: src/modules/options/OptionsWidget_identity.cpp:345
+#: src/modules/options/OptionsWidget_identity.cpp:373
 msgid "Unspecified"
 msgstr "Non specificato"
 
-#: src/modules/options/OptionsWidget_identity.cpp:365
+#: src/modules/options/OptionsWidget_identity.cpp:366
 msgid "Gender:"
 msgstr "Sesso"
 
-#: src/modules/options/OptionsWidget_identity.cpp:369
+#: src/modules/options/OptionsWidget_identity.cpp:370
 msgid "Here you can specify your gender."
 msgstr "Qui puoi specificare il tuo sesso"
 
-#: src/modules/options/OptionsWidget_identity.cpp:373
+#: src/modules/options/OptionsWidget_identity.cpp:374
 msgid "Female"
 msgstr "Femmina"
 
-#: src/modules/options/OptionsWidget_identity.cpp:374
+#: src/modules/options/OptionsWidget_identity.cpp:375
 msgid "Male"
 msgstr "Maschio"
 
-#: src/modules/options/OptionsWidget_identity.cpp:385
+#: src/modules/options/OptionsWidget_identity.cpp:386
 msgid "Location:"
 msgstr "Provenienza:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:387
+#: src/modules/options/OptionsWidget_identity.cpp:388
 msgid ""
 "You can describe here your approximate physical location. Something like "
 "\"Region, Country\" will be OK. Please note that this information will be "
 "viewable by anyone so putting more data (like the exact address), generally,"
 " <b>is not a good idea</b>."
-msgstr ""
+msgstr "Qui puoi specificate la tua provenienza. Qualcosa come \"Regione, Nazione\" andrà bene. Nota che queste informazioni saranno visibili agli altri, mettere troppe informazioni (come per esempio il tuo indirizzo esatto), normalmente <b>non è una buona idea</b>."
 
-#: src/modules/options/OptionsWidget_identity.cpp:393
+#: src/modules/options/OptionsWidget_identity.cpp:394
 msgid "Languages:"
 msgstr "Lingue:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:395
+#: src/modules/options/OptionsWidget_identity.cpp:396
 msgid ""
 "You can put here the short names of the languages you can speak. An example "
 "might be \"EN, IT\" that would mean that you speak both Italian and English."
-msgstr ""
+msgstr "Qui puoi inserire il nome delle lingue che conosci. Per esempio \"EN,IT\" che significa che parli sia Italiano che Inglese."
 
-#: src/modules/options/OptionsWidget_identity.cpp:400
+#: src/modules/options/OptionsWidget_identity.cpp:401
 msgid "Other:"
 msgstr "Altro:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:402
+#: src/modules/options/OptionsWidget_identity.cpp:403
 msgid ""
 "You can put here some additional personal data. It might be a funny quote or"
 " your homepage URL... Please note that this information will be viewable by "
 "anyone so <b>don't put any sensible data</b> (passwords, telephone or credit"
 " card numbers)."
-msgstr ""
+msgstr "Qui puoi inserire altre informazioni personali. Per esempio una frase simpatica o l'URL della tua homepage... Nota che queste informazioni saranno visibili a chiunque quindi <b>non inserire dati sensibili</b> (password, numeri di telefono o di carte di credito)."
 
-#: src/modules/options/OptionsWidget_identity.cpp:474
+#: src/modules/options/OptionsWidget_identity.cpp:475
 msgid ""
 "Here you can choose your avatar image.<br>It will be visible by other people"
 " that request it.<br>Choose a nice image of yourself, possibly avoiding "
@@ -1734,27 +1732,27 @@ msgid ""
 "small file of around 150 Kb max, because most clients have a limit on the "
 "size of avatars being downloaded.<br>The image also should be smaller than "
 "800x600 pixels since it will have to be viewable in everyone's monitor."
-msgstr ""
+msgstr "Qui puoi scegliere l'immagine del tuo avatar.<br>Sarà visibile dalle alle persone che lo richiedono.<br>Scegli una tua immagine carina, possibilmente evitando oscenità e immagini offensive.<br>E' una buona idea scegliere un file relativamente piccolo di massimo 150 circa, perchémolti client hanno un limite sulla dimensione degli avatar da scaricare.<br>L'immagine inoltre dev'essere più piccola di 800x600 pixel in modo da essere vista sul monitor di tutti."
 
-#: src/modules/options/OptionsWidget_identity.cpp:482
+#: src/modules/options/OptionsWidget_identity.cpp:483
 msgid "Use avatar:"
-msgstr ""
+msgstr "Usa avatar:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:504
+#: src/modules/options/OptionsWidget_identity.cpp:505
 msgid "Choose..."
 msgstr "Scegli..."
 
-#: src/modules/options/OptionsWidget_identity.cpp:564
+#: src/modules/options/OptionsWidget_identity.cpp:565
 #: src/modules/options/OptionsWidget_identity.cpp:614
 msgid "Failed to Load Avatar - KVIrc"
 msgstr "Impossibile Caricare l'Avatar - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:565
+#: src/modules/options/OptionsWidget_identity.cpp:566
 #: src/modules/options/OptionsWidget_identity.cpp:615
 msgid ""
 "Failed to load the avatar image.<br>It may be an inaccessible file or an "
 "unsupported image format."
-msgstr ""
+msgstr "Impossibile caricare l'immagine avatar.<br>Potrebbe essere un file non accessibile o un formato immagine non supportato. "
 
 #: src/modules/options/OptionsWidget_identity.cpp:575
 msgid "Failed to download the avatar image.<br><b>%1</b>"
@@ -1764,11 +1762,11 @@ msgstr "Impossibile scaricare l'avatar.<br><b>%1</b>"
 msgid "Avatar Download Failed - KVIrc"
 msgstr "Impossibile Scaricare l'Avatar - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:630
+#: src/modules/options/OptionsWidget_identity.cpp:629
 msgid "File Dimensions - KVIrc"
-msgstr ""
+msgstr "Dimensioni file - KVirc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:632
+#: src/modules/options/OptionsWidget_identity.cpp:631
 msgid ""
 "The avatar you have chosen is bigger than 1024x768 pixels.<br>Such a big "
 "image will not be seen on all the user monitors<br>and will probably be "
@@ -1777,168 +1775,168 @@ msgid ""
 " or choose a different image."
 msgstr "L'avatar scelto è più grande di 1024x768 pixel.<br>Un'immagine così grossa potrebbe non essere vista sui monitor di tutti<br>e probabilmente verrà scalata dal client remoto con una bassa qualità<br>per migliorare le prestazioni. *Dovresti* scalarla manualmente<br>a una grandezza decente (tipo 800x600) o scegliere un'altra immagine."
 
-#: src/modules/options/OptionsWidget_identity.cpp:646
+#: src/modules/options/OptionsWidget_identity.cpp:645
 msgid "File Size - KVIrc"
-msgstr ""
+msgstr "Peso file - KVirc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:648
+#: src/modules/options/OptionsWidget_identity.cpp:647
 msgid ""
 "The avatar you have chosen is bigger than 500 KiB<br>and most clients will "
 "refuse to download it.<br>You *should* either scale it, use a different "
 "storage<br>format or choose a different image."
 msgstr "L'avatar che hai scelto è più grande di 500 KiB<br>e molti client non lo scaricheranno.<br>*Dovresti* scalarlo, o usare un'immagine diversa."
 
-#: src/modules/options/OptionsWidget_identity.cpp:676
-#: src/modules/options/OptionsWidget_servers.cpp:619
+#: src/modules/options/OptionsWidget_identity.cpp:675
+#: src/modules/options/OptionsWidget_servers.cpp:620
 msgid "User Mode"
 msgstr "Modi Utente"
 
-#: src/modules/options/OptionsWidget_identity.cpp:677
-#: src/modules/options/OptionsWidget_servers.cpp:631
+#: src/modules/options/OptionsWidget_identity.cpp:676
+#: src/modules/options/OptionsWidget_servers.cpp:632
 msgid "Invisible (+i)"
 msgstr "Invisibile (+i)"
 
-#: src/modules/options/OptionsWidget_identity.cpp:678
-#: src/modules/options/OptionsWidget_servers.cpp:635
+#: src/modules/options/OptionsWidget_identity.cpp:677
+#: src/modules/options/OptionsWidget_servers.cpp:636
 msgid "Server notices (+s)"
 msgstr "Notice del server (+s)"
 
-#: src/modules/options/OptionsWidget_identity.cpp:679
-#: src/modules/options/OptionsWidget_servers.cpp:639
+#: src/modules/options/OptionsWidget_identity.cpp:678
+#: src/modules/options/OptionsWidget_servers.cpp:640
 msgid "WALLOPS (+w)"
-msgstr ""
+msgstr "WALLOPS (+w)"
 
-#: src/modules/options/OptionsWidget_identity.cpp:681
+#: src/modules/options/OptionsWidget_identity.cpp:680
 msgid "Default Messages"
 msgstr "Messaggi Predefiniti"
 
-#: src/modules/options/OptionsWidget_identity.cpp:683
+#: src/modules/options/OptionsWidget_identity.cpp:682
 msgid "Part message:"
 msgstr "Messaggio di uscita da un canale:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:686
+#: src/modules/options/OptionsWidget_identity.cpp:685
 msgid ""
 "This is the default part message that will be used when you leave a channel "
 "by closing a channel window."
-msgstr ""
+msgstr "Questo è il messaggio predefinito che verrà usato quando esci da un canale chiudendo la finestra di quel canale."
 
-#: src/modules/options/OptionsWidget_identity.cpp:690
+#: src/modules/options/OptionsWidget_identity.cpp:689
 msgid "Quit message:"
 msgstr "Messaggio di quit:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:692
+#: src/modules/options/OptionsWidget_identity.cpp:691
 msgid ""
 "This is the default quit message that will be used when you quit your IRC "
 "session by closing the console window or disconnecting by pressing the "
 "disconnect button."
-msgstr ""
+msgstr "Questo è il messaggio di disconnessione predefinito che verrà usato quando uscirai dalla tua sessione IRC chiudendo la finestra della console o disconnettendoti premendo il pulsante di disconnessione."
+
+#: src/modules/options/OptionsWidget_identity.cpp:727
+msgid "Enable network profiles"
+msgstr "Abilita profili di rete"
 
 #: src/modules/options/OptionsWidget_identity.cpp:728
-msgid "Enable network profiles"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_identity.cpp:729
 msgid "This check enables the use of network profiles"
 msgstr "Questo checkbox abilita l'uso dei profili di rete"
 
-#: src/modules/options/OptionsWidget_identity.cpp:740
+#: src/modules/options/OptionsWidget_identity.cpp:739
 msgid "Name"
 msgstr "Nome"
 
-#: src/modules/options/OptionsWidget_identity.cpp:741
+#: src/modules/options/OptionsWidget_identity.cpp:740
 msgid "Network"
 msgstr "Rete"
 
-#: src/modules/options/OptionsWidget_identity.cpp:742
-#: src/modules/options/OptionsWidget_nickserv.cpp:238
-#: src/modules/options/OptionsWidget_servers.cpp:317
+#: src/modules/options/OptionsWidget_identity.cpp:741
+#: src/modules/options/OptionsWidget_nickserv.cpp:237
+#: src/modules/options/OptionsWidget_servers.cpp:318
 msgid "Nickname"
 msgstr "Nickname"
 
-#: src/modules/options/OptionsWidget_identity.cpp:743
+#: src/modules/options/OptionsWidget_identity.cpp:742
 msgid "Alt. Nickname"
-msgstr ""
+msgstr "Nickname alt."
 
-#: src/modules/options/OptionsWidget_identity.cpp:744
+#: src/modules/options/OptionsWidget_identity.cpp:743
 msgid "Username"
 msgstr "Nome utente"
 
-#: src/modules/options/OptionsWidget_identity.cpp:745
+#: src/modules/options/OptionsWidget_identity.cpp:744
 msgid "Real Name"
-msgstr ""
+msgstr "Nome vero"
 
-#: src/modules/options/OptionsWidget_identity.cpp:754
+#: src/modules/options/OptionsWidget_identity.cpp:753
 msgid ""
 "This is a set of rules to use profiles.<br>KVIrc will use them to handle the"
 " user connection data before the data is sent to the IRC server.<br>This is "
 "useful if a user wants to use different data on different networks without "
 "changing them at every connection attempt."
-msgstr ""
+msgstr "Questo è un set di regole per usare i profili.<br>KVIrc le userà per gestire i dati di connessione dell'utente prima che vengano inviati al server IRC.<br>Questo è utile se un utente vuole usare dati diversi su network diversi senza cambiarli ad ogni tentativo di connessione."
 
-#: src/modules/options/OptionsWidget_identity.cpp:768
+#: src/modules/options/OptionsWidget_identity.cpp:767
 msgid "Add Profile"
 msgstr "Aggiungi Profilo"
 
-#: src/modules/options/OptionsWidget_identity.cpp:771
+#: src/modules/options/OptionsWidget_identity.cpp:770
 msgid "Edit Profile"
 msgstr "Modifica Profilo"
 
-#: src/modules/options/OptionsWidget_identity.cpp:774
+#: src/modules/options/OptionsWidget_identity.cpp:773
 msgid "Delete Profile"
 msgstr "Elimina Profilo"
 
-#: src/modules/options/OptionsWidget_identity.cpp:869
+#: src/modules/options/OptionsWidget_identity.cpp:868
 msgid "Invalid Profile Rule - KVIrc"
-msgstr ""
+msgstr "Regola profilo non valida - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:869
+#: src/modules/options/OptionsWidget_identity.cpp:868
 msgid "There is already a profile with that name"
 msgstr "C'è già un profilo con quel nome"
 
-#: src/modules/options/OptionsWidget_identity.cpp:917
+#: src/modules/options/OptionsWidget_identity.cpp:916
 msgid "Profile Editor - KVIrc"
 msgstr "Editor Profilo - KVIrc"
 
-#: src/modules/options/OptionsWidget_identity.cpp:921
+#: src/modules/options/OptionsWidget_identity.cpp:920
 msgid "Profile name:"
-msgstr ""
+msgstr "Nome profilo:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:925
+#: src/modules/options/OptionsWidget_identity.cpp:924
 msgid "Put here the name of the profile"
 msgstr "Inserisci il nome del profilo"
 
-#: src/modules/options/OptionsWidget_identity.cpp:929
+#: src/modules/options/OptionsWidget_identity.cpp:928
 msgid "Network name:"
-msgstr ""
+msgstr "Nome rete:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:933
+#: src/modules/options/OptionsWidget_identity.cpp:932
 msgid "Put here the name of the network"
 msgstr "Inserisci il nome della rete"
 
-#: src/modules/options/OptionsWidget_identity.cpp:940
+#: src/modules/options/OptionsWidget_identity.cpp:939
 msgid "Put here the nickname you want to use"
 msgstr "Inserisci il nick che vuoi usare"
 
-#: src/modules/options/OptionsWidget_identity.cpp:943
-#: src/modules/options/OptionsWidget_servers.cpp:176
-#: src/modules/options/OptionsWidget_servers.cpp:595
+#: src/modules/options/OptionsWidget_identity.cpp:942
+#: src/modules/options/OptionsWidget_servers.cpp:177
+#: src/modules/options/OptionsWidget_servers.cpp:596
 msgid "Alt. nickname:"
-msgstr ""
+msgstr "Nickname alt.:"
 
-#: src/modules/options/OptionsWidget_identity.cpp:947
+#: src/modules/options/OptionsWidget_identity.cpp:946
 msgid "Put here the alternative nickname you want to use"
 msgstr "Inserisci il nick alternativo che vuoi usare"
 
-#: src/modules/options/OptionsWidget_identity.cpp:954
+#: src/modules/options/OptionsWidget_identity.cpp:953
 msgid "Put here the username you want to use"
 msgstr "Inserisci il nome utente che vuoi usare"
 
-#: src/modules/options/OptionsWidget_identity.cpp:961
+#: src/modules/options/OptionsWidget_identity.cpp:960
 msgid "Put here the real name you want to use"
-msgstr ""
+msgstr "Inserisci il nome vero che vuoi usare"
 
 #: src/modules/options/OptionsWidget_identity.h:131
-#: src/modules/options/OptionsWidget_servers.cpp:648
+#: src/modules/options/OptionsWidget_servers.cpp:649
 msgid "Identity"
 msgstr "Identità"
 
@@ -1952,15 +1950,15 @@ msgstr "Profili"
 
 #: src/modules/options/OptionsWidget_ignore.cpp:39
 msgid "Enable Ignore for"
-msgstr ""
+msgstr "Abilita ignore per"
 
 #: src/modules/options/OptionsWidget_ignore.cpp:40
 msgid "Private/Channel messages"
-msgstr ""
+msgstr "Messaggi privati/canale"
 
 #: src/modules/options/OptionsWidget_ignore.cpp:41
 msgid "Private/Channel notices"
-msgstr ""
+msgstr "Avvisi privati/canale"
 
 #: src/modules/options/OptionsWidget_ignore.cpp:45
 msgid "Use verbose ignore (show messages in console)"
@@ -1996,23 +1994,23 @@ msgstr "Colore sfondo:"
 #: src/modules/options/OptionsWidget_notifier.cpp:41
 #: src/modules/options/OptionsWidget_topicLabel.cpp:36
 msgid "Foreground color:"
-msgstr ""
+msgstr "Colore primo piano:"
 
 #: src/modules/options/OptionsWidget_input.cpp:41
 msgid "Selection background color:"
-msgstr ""
+msgstr "Colore di sfondo selezione:"
 
 #: src/modules/options/OptionsWidget_input.cpp:42
 msgid "Selection foreground color:"
-msgstr ""
+msgstr "Colore di primo piano selezione:"
 
 #: src/modules/options/OptionsWidget_input.cpp:43
 msgid "Control char color:"
-msgstr ""
+msgstr "Colore del carattere di controllo:"
 
 #: src/modules/options/OptionsWidget_input.cpp:44
 msgid "Cursor color:"
-msgstr ""
+msgstr "Colore del cursore:"
 
 #: src/modules/options/OptionsWidget_input.cpp:46
 #: src/modules/options/OptionsWidget_ircView.cpp:50
@@ -2106,11 +2104,11 @@ msgstr "Abilita il logging della cronologia dell'input"
 
 #: src/modules/options/OptionsWidget_input.cpp:144
 msgid "Hide input tool buttons by default"
-msgstr ""
+msgstr "Nascondi di default i pulsanti degli strumenti di input"
 
 #: src/modules/options/OptionsWidget_input.cpp:145
 msgid "Show warning about pasting multiple lines"
-msgstr ""
+msgstr "Mostra avviso quando incolli più righe"
 
 #: src/modules/options/OptionsWidget_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
@@ -2118,15 +2116,15 @@ msgstr "Linea di comando in modalità user-friendly di default"
 
 #: src/modules/options/OptionsWidget_input.cpp:147
 msgid "Expand tabulations in input using:"
-msgstr ""
+msgstr "Espandi le tabulazioni dell'input usando:"
 
 #: src/modules/options/OptionsWidget_input.cpp:148
 msgid " spaces"
-msgstr ""
+msgstr "spazi"
 
 #: src/modules/options/OptionsWidget_input.cpp:150
 msgid "Nick Completion"
-msgstr ""
+msgstr "Completamento nick"
 
 #: src/modules/options/OptionsWidget_input.cpp:152
 msgid "Use bash-like nick completion"
@@ -2138,11 +2136,11 @@ msgstr "Usa il completamento dei nick in stile zsh"
 
 #: src/modules/options/OptionsWidget_input.cpp:154
 msgid "Prioritize nick completion by last action time"
-msgstr ""
+msgstr "Completa i nick dando priorità all'ora dell'ultima azione"
 
 #: src/modules/options/OptionsWidget_input.cpp:160
 msgid "Nick completion postfix string:"
-msgstr ""
+msgstr "Caratteri aggiunti dopo il nick al completamento:"
 
 #: src/modules/options/OptionsWidget_input.cpp:161
 msgid "Use the completion postfix string for the first word only"
@@ -2150,15 +2148,15 @@ msgstr "Aggiungi i caratteri dopo il completamento solo per la prima parola"
 
 #: src/modules/options/OptionsWidget_input.cpp:163
 msgid "Ignore special characters in nick completion"
-msgstr ""
+msgstr "Ignora caratteri speciali nel completamento nick"
 
 #: src/modules/options/OptionsWidget_input.cpp:165
 msgid "Use a custom cursor width"
-msgstr ""
+msgstr "Usa larghezza cursore personalizzata"
 
 #: src/modules/options/OptionsWidget_input.cpp:166
 msgid "Custom cursor width:"
-msgstr ""
+msgstr "Larghezza cursore personalizzata:"
 
 #: src/modules/options/OptionsWidget_input.h:32
 #: src/modules/options/OptionsWidget_input.h:51
@@ -2172,7 +2170,7 @@ msgstr "tema,colori,testo"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:43
 msgid "Minimize application on startup"
-msgstr ""
+msgstr "Minimizza applicazione all'avvio"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:44
 msgid "Confirm quit with active connections"
@@ -2188,19 +2186,19 @@ msgstr "Abilita effetti grafici"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:47
 msgid "Hide channel window tool buttons by default"
-msgstr ""
+msgstr "Nascondi di default i pulsanti degli strumenti della finestra"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:49
 msgid "Require ⌘ to be held down to copy text"
-msgstr ""
+msgstr "Richiedi che venga mantenuto premuto ⌘ per copiare il testo"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:51
 msgid "Require Ctrl to be held down to copy text"
-msgstr ""
+msgstr "Richiedi che venga mantenuto premuto Ctrl per copiare il testo"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:54
 msgid "Show taskbar button (change requires restart)"
-msgstr ""
+msgstr "Mostra pulsanti taskbar (la modifica richiede un riavvio)"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.h:32
 msgid "Interface"
@@ -2216,7 +2214,7 @@ msgid ""
 "list entry instead of the server name. This is nice to keep on unless your "
 "servers are not organized in networks or you often connect to two servers of"
 " the same network."
-msgstr ""
+msgstr "Quest'opzione farà in modo che KVIrc mostri il nome della rete invece del nome del server sulla finestra della console. Questo utile quando i tuoi server non sono organizzati in reti o se connetti più server della stessa rete."
 
 #: src/modules/options/OptionsWidget_irc.cpp:65
 msgid "Force immediate quit"
@@ -2228,25 +2226,25 @@ msgid ""
 "the QUIT message. When this option is disabled, KVIrc will wait for the "
 "server to close the connection.<br>Note that if you use this, your QUIT "
 "message may be not displayed."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc chiuda la connessione immediatamente dopo aver spedito il messaggio di QUIT.Quando questa opzione è disabilitata, KVIrc aspetterà che il server chiuda la connessione.<br>Attenzione, se usi questa opzione il tuo messaggio di QUIT potrebbe non essere visualizzato."
 
 #: src/modules/options/OptionsWidget_irc.cpp:72
 msgid "Prepend gender info to real name"
-msgstr ""
+msgstr "Inserisci informazioni sul sesso nel nome vero"
 
 #: src/modules/options/OptionsWidget_irc.cpp:73
 msgid "Prepend avatar info to real name"
-msgstr ""
+msgstr "Inserisci informazioni avatar nel nome vero"
 
 #: src/modules/options/OptionsWidget_irc.cpp:74
 msgid "Prepend smart nick color info to real name"
-msgstr ""
+msgstr "Inserisci informazioni sul colore smart del nick al nome vero"
 
 #: src/modules/options/OptionsWidget_irc.cpp:75
 msgid ""
 "This feature will not work if you have chosen your nick background color to "
 "be transparent."
-msgstr ""
+msgstr "Questa funzionalità non funzionerà se hai scelto trasparente come colore di sfondo per il tuo nick."
 
 #: src/modules/options/OptionsWidget_irc.h:30
 msgid "IRC"
@@ -2278,7 +2276,7 @@ msgstr "Paranoico"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:58
 msgid "DateTime format:"
-msgstr ""
+msgstr "Formato data e ora:"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:62
 msgid "Classic format"
@@ -2294,7 +2292,7 @@ msgstr "Formato locale del sistema"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:69
 msgid "Show in Active Window"
-msgstr ""
+msgstr "Mostra nella finestra attiva"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:70
 msgid "External messages"
@@ -2306,11 +2304,11 @@ msgstr "Risposte CTCP Esterne"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:72
 msgid "WHOIS replies"
-msgstr ""
+msgstr "Risposte WHOIS"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:73
 msgid "WHO replies"
-msgstr ""
+msgstr "Risposte WHO"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:74
 msgid "ChanServ and NickServ notices"
@@ -2342,14 +2340,14 @@ msgstr "Mostra i ping del server"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:85
 msgid "Show own part messages"
-msgstr ""
+msgstr "Mostra i messaggi delle proprie uscite"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:86
 msgid ""
 "When enabled, the current user's part messages will be shown in the "
 "console.<br>When <b>Keep Channel Open</b> is enabled on part, this message "
 "will be shown in the dead channel instead."
-msgstr ""
+msgstr "Quando abilitato, i messaggi di uscita dell'utente corrente verranno mostrati nella console.<br>Quando <b>Mantieni canali aperti</b> è abilitato in uscita, questo messaggio verrà mostrato direttamente nel canale morto."
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:89
 msgid "Show compact mode changes"
@@ -2357,7 +2355,7 @@ msgstr "Mostra modifiche dei modi in modalità  compatta"
 
 #: src/modules/options/OptionsWidget_ircOutput.h:32
 msgid "Verbosity and Output"
-msgstr ""
+msgstr "Verbosità dei messaggi"
 
 #: src/modules/options/OptionsWidget_ircOutput.h:34
 msgid "debug"
@@ -2389,11 +2387,11 @@ msgstr "Abilita smile animati"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:154
 msgid "Enable Tooltips for"
-msgstr ""
+msgstr "Attiva tooltip per"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:155
 msgid "URL links"
-msgstr ""
+msgstr "Collegamenti URL"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:156
 msgid "Host links"
@@ -2487,7 +2485,7 @@ msgstr "Attiva misuratore lag"
 msgid ""
 "This enables the lag meter engine, which checks at regular intervals how "
 "much latency the server has."
-msgstr ""
+msgstr "Questa opzione abilita il misuratore di lag, che controlla ad intervalli regolari quanto lag (latenza) ha il server."
 
 #: src/modules/options/OptionsWidget_lag.cpp:43
 msgid "Lag meter heartbeat:"
@@ -2500,7 +2498,7 @@ msgid ""
 " also higher CPU usage and data traffic to the server.<br>Please note that "
 "this is NOT the interval between pings sent to the server: the pings (if "
 "any) will be sent really less often. 5000 is a reasonable value."
-msgstr ""
+msgstr "Questa opzione ti permette di impostare l'intervallo di misurazione del lag.<br>Più l'intervallo sarà basso più la misurazione del lag sarà accurata ma sarà maggiore anche l'utilizzo della cpu e dei dati verso il server. <br>Da notare che questo NON è l'intervallo tra ping inviati al server: i ping (se necessari) verranno inviati molto meno frequentemente. 5000 è un valore ragionevole."
 
 #: src/modules/options/OptionsWidget_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
@@ -2512,7 +2510,7 @@ msgid ""
 "OnLagAlarmTimeDown events. When the lag goes above the threshold "
 "OnLagAlarmTimeUp will be triggered and when the lag falls back below the "
 "threshold then OnLagAlarmTimeDown will be triggered"
-msgstr ""
+msgstr "Questa opzione controlla il limite di sogli degli eventi OnLagAlarmTimeUp e OnLagAlarmTimeDown. Quando il lag sale oltre il limite verrà invocato OnLagAlarmTimeUp e quando il lag scende sotto il limite sarà invocato OnLagAlarmTimeDown"
 
 #: src/modules/options/OptionsWidget_lag.cpp:65
 msgid "Show lag in IRC context display"
@@ -2522,7 +2520,7 @@ msgstr "Mostra lag nell'applet del IRC context"
 msgid ""
 "This makes the IRC context display applet show the current lag after the "
 "user's nickname (in seconds)"
-msgstr ""
+msgstr "Questa opzione fa sì che l'applet dell'IRC context visualizzi il lag corrente dopo il nickname dell'utente (in secondi)"
 
 #: src/modules/options/OptionsWidget_lag.h:31
 msgid "Lag"
@@ -2546,7 +2544,7 @@ msgstr "Finestre di Canale"
 
 #: src/modules/options/OptionsWidget_logging.cpp:42
 msgid "DCC chat windows"
-msgstr ""
+msgstr "Finestre DCC chat"
 
 #: src/modules/options/OptionsWidget_logging.cpp:43
 msgid "Console windows"
@@ -2560,7 +2558,7 @@ msgstr "Salva i log nella cartella:"
 msgid ""
 "This is the base log directory:<br>all the log files will be saved inside "
 "this directory"
-msgstr ""
+msgstr "Questa è la cartella di salvataggio dei log:<br>tutti i file di log saranno salvati qui"
 
 #: src/modules/options/OptionsWidget_logging.cpp:50
 msgid "Dynamic subfolder:"
@@ -2570,7 +2568,7 @@ msgstr "Sottocartella dinamica:"
 msgid ""
 "You can specify a subdirectory where log files will be saved: use KVS code "
 "to create dynamic subfolders."
-msgstr ""
+msgstr "Puoi specificare una sottocartella dove verranno salvati i file di log: usa il codice KVS per creare sottocartelle dinamicamente."
 
 #: src/modules/options/OptionsWidget_logging.cpp:54
 msgid "Strip message type numbers in logs"
@@ -2582,7 +2580,7 @@ msgstr "Elimina i colori nei log"
 
 #: src/modules/options/OptionsWidget_logging.cpp:56
 msgid "Auto flush logs every:"
-msgstr ""
+msgstr "Salva i log automaticamente ogni:"
 
 #: src/modules/options/OptionsWidget_logging.cpp:57
 msgid " min"
@@ -2591,11 +2589,11 @@ msgstr " min"
 #: src/modules/options/OptionsWidget_logging.cpp:59
 msgid ""
 "Save logs with the current interval.<br>Set to 0 to disable this feature"
-msgstr ""
+msgstr "Salva i log a intervalli regolari<br>Setta questo parametro a 0 per disabilitare questa funzione"
 
 #: src/modules/options/OptionsWidget_logging.cpp:63
 msgid "Compress logs"
-msgstr ""
+msgstr "Comprimi i log"
 
 #: src/modules/options/OptionsWidget_logging.h:30
 msgid "Logging"
@@ -2614,13 +2612,13 @@ msgid "MIME Type"
 msgstr "MIME Type"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:78
-#: src/modules/options/OptionsWidget_servers.cpp:1327
+#: src/modules/options/OptionsWidget_servers.cpp:1328
 msgid "Description"
 msgstr "Descrizione"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:89
-#: src/modules/options/OptionsWidget_servers.cpp:124
-#: src/modules/options/OptionsWidget_servers.cpp:539
+#: src/modules/options/OptionsWidget_servers.cpp:125
+#: src/modules/options/OptionsWidget_servers.cpp:540
 msgid "Description:"
 msgstr "Descrizione:"
 
@@ -2648,7 +2646,7 @@ msgstr "Apri con:"
 msgid ""
 "This field contains the command to execute to open a local "
 "file.<br><tt>$0</tt> is used in place of the filename"
-msgstr ""
+msgstr "Questo campo contiene il comando da eseguire per aprire il file.<br><tt>$0</tt> è usato al posto del nome del file"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:122
 msgid "Remote open command:"
@@ -2658,11 +2656,11 @@ msgstr "Apri automaticamente con:"
 msgid ""
 "This field contains the command to execute when automatically opening a "
 "received file.<br><tt>$0</tt> is used in place of the filename"
-msgstr ""
+msgstr "Questo campo contiene il comando da eseguire quando il file ricevuto viene aperto automaticamente.<br><tt>$0</tt> è usato al posto del nome del file"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:130
 msgid "Icon:"
-msgstr ""
+msgstr "Icona:"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:139
 msgid "&New"
@@ -2678,7 +2676,7 @@ msgstr "[Tipo di File Sconosciuto]"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:234
 msgid "New media type"
-msgstr ""
+msgstr "Nuovo tipo di file"
 
 #: src/modules/options/OptionsWidget_mediaTypes.h:49
 msgid "Media Types"
@@ -2706,15 +2704,15 @@ msgstr "Nickname"
 
 #: src/modules/options/OptionsWidget_message.cpp:74
 msgid "Smart nickname colors"
-msgstr ""
+msgstr "Colorazione smart dei nickname"
 
 #: src/modules/options/OptionsWidget_message.cpp:78
 msgid "Use a background color for smart nickname colors"
-msgstr ""
+msgstr "Usa un colore di sfondo per i colori smart dei nickname"
 
 #: src/modules/options/OptionsWidget_message.cpp:82
 msgid "Use specified smart colors for own nick:"
-msgstr ""
+msgstr "Usa colori smart specifici per il proprio nick:"
 
 #: src/modules/options/OptionsWidget_message.cpp:92
 msgid "Use same colors as in the userlist"
@@ -2758,7 +2756,7 @@ msgstr "Stampa orario UTC"
 
 #: src/modules/options/OptionsWidget_message.cpp:146
 msgid "Use special color for timestamps:"
-msgstr ""
+msgstr "Usa colore speciale per i timestamp:"
 
 #: src/modules/options/OptionsWidget_message.cpp:152
 msgid "Timestamp format:"
@@ -2798,7 +2796,7 @@ msgstr "Logga questo:"
 
 #: src/modules/options/OptionsWidget_message.cpp:439
 msgid "Load from..."
-msgstr ""
+msgstr "Carica da..."
 
 #: src/modules/options/OptionsWidget_message.cpp:441
 msgid "Save As..."
@@ -2806,7 +2804,7 @@ msgstr "Salva Come.."
 
 #: src/modules/options/OptionsWidget_message.cpp:592
 msgid "Enter a Filename - KVIrc"
-msgstr ""
+msgstr "Inserisci un nome per il file - KVIrc"
 
 #: src/modules/options/OptionsWidget_message.h:39
 msgid "Text"
@@ -2830,11 +2828,11 @@ msgstr "tema,orario"
 
 #: src/modules/options/OptionsWidget_message.h:98
 msgid "Message Decorations"
-msgstr ""
+msgstr "Decorazioni messaggi"
 
 #: src/modules/options/OptionsWidget_message.h:99
 msgid "theme,icons,colors,messages,output"
-msgstr ""
+msgstr "tema,icone,colori,messaggi,output"
 
 #: src/modules/options/OptionsWidget_message.h:197
 msgid "Color Set"
@@ -2846,19 +2844,19 @@ msgstr "tema,colori,messaggi,uscita"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:46
 msgid "NickServ Authentication Rule - KVIrc"
-msgstr ""
+msgstr "Regola autenticazione NickServ - KVIrc"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:50
 msgid "Registered nickname:"
-msgstr ""
+msgstr "Nickname registrato:"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:54
 msgid "Put here the nickname that you have registered with NickServ"
-msgstr "Metti qui il nickname che hai registrato con NickServ"
+msgstr "Inserisci qui il nickname che hai registrato con NickServ"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:58
 msgid "NickServ mask:"
-msgstr ""
+msgstr "Maschera NickServ:"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:63
 #, no-c-format
@@ -2869,11 +2867,11 @@ msgid ""
 "field, but generally it is a security flaw. If you're 100% sure that NO user"
 " on the network can use the nickname \"NickServ\", the mask "
 "<b>NickServ!*@*</b> may be safe to use in this field."
-msgstr ""
+msgstr "Questa è la maschera che NickServ deve avere per essere correttamente identificato come il servizio NickServ. La maschera è solitamente <b>NickServ!service@services.dalnet</b>.<br>Puoi usare i caratteri jolly in questo campo, ma normalmente è un rischio di sicurezza. Se sei sicuro al 100%% che NESSUN utente sulla rete possa usare il nickname \"NickServ\" allora la maschera <b>NickServ!*@*</b> può essere usata tranquillamente."
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:72
 msgid "Message regexp:"
-msgstr ""
+msgstr "Regexp per il messaggio:"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:79
 msgid ""
@@ -2886,7 +2884,7 @@ msgstr "Questa è la regular expression a cui il messaggio di richiesta di auten
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:84
 msgid "Identify command:"
-msgstr ""
+msgstr "Comando di Identificazione:"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:88
 msgid ""
@@ -2900,7 +2898,7 @@ msgstr "Questo è il comando che verrà eseguito quando il NickServ richiederà 
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:100
 msgid "Server mask:"
-msgstr ""
+msgstr "Maschera del server:"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:104
 msgid ""
@@ -2915,58 +2913,58 @@ msgstr "Consiglio: Sposta il cursore sopra i campi per ottenere un aiuto"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:147
 msgid "Invalid NickServ Rule - KVIrc"
-msgstr ""
+msgstr "Regola di NickServ non valida - KVIrc"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:152
+#: src/modules/options/OptionsWidget_nickserv.cpp:151
 msgid "The nickname field can't be empty!"
-msgstr ""
+msgstr "Il campo nickname non può essere vuoto!"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:158
+#: src/modules/options/OptionsWidget_nickserv.cpp:157
 msgid "The nickname field can't contain spaces!"
-msgstr ""
+msgstr "Il campo nickname non può contenere spazi!"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:166
+#: src/modules/options/OptionsWidget_nickserv.cpp:165
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
 msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:174
+#: src/modules/options/OptionsWidget_nickserv.cpp:173
 msgid "The message regexp can't be empty!<br>You must put at least * there."
-msgstr ""
+msgstr "L'espressione regolare non può essere vuota!<br>Ci devi inserire almeno *."
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:182
+#: src/modules/options/OptionsWidget_nickserv.cpp:181
 msgid "The IDENTIFY command can't be empty!"
-msgstr ""
+msgstr "Il comando di identificazione non può essere vuoto!"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:227
-#: src/modules/options/OptionsWidget_servers.cpp:306
+#: src/modules/options/OptionsWidget_nickserv.cpp:226
+#: src/modules/options/OptionsWidget_servers.cpp:307
 msgid "Enable NickServ identification"
-msgstr ""
+msgstr "Attiva identificazione NickServ"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:230
-#: src/modules/options/OptionsWidget_servers.cpp:309
+#: src/modules/options/OptionsWidget_nickserv.cpp:229
+#: src/modules/options/OptionsWidget_servers.cpp:310
 msgid "This check enables the automatic identification with NickServ"
 msgstr "Abilita l'identificazione automatica con il NickServ"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:239
+#: src/modules/options/OptionsWidget_nickserv.cpp:238
 msgid "Server Mask"
-msgstr ""
+msgstr "Maschera del server"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:240
-#: src/modules/options/OptionsWidget_servers.cpp:318
+#: src/modules/options/OptionsWidget_nickserv.cpp:239
+#: src/modules/options/OptionsWidget_servers.cpp:319
 msgid "NickServ Mask"
 msgstr "Maschera NickServ"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:241
-#: src/modules/options/OptionsWidget_servers.cpp:319
+#: src/modules/options/OptionsWidget_nickserv.cpp:240
+#: src/modules/options/OptionsWidget_servers.cpp:320
 msgid "NickServ Request Mask"
 msgstr "Maschera della Richiesta del NickServ"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:242
-#: src/modules/options/OptionsWidget_servers.cpp:320
+#: src/modules/options/OptionsWidget_nickserv.cpp:241
+#: src/modules/options/OptionsWidget_servers.cpp:321
 msgid "Identify Command"
 msgstr "Comando di Identificazione"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:253
+#: src/modules/options/OptionsWidget_nickserv.cpp:252
 msgid ""
 "This is a list of NickServ identification rules. KVIrc will use them to "
 "model its automatic interaction with NickServ on all the networks.<br>Please"
@@ -2977,26 +2975,26 @@ msgid ""
 " TEXT</b>.<br>KVIrc supports also per-network NickServ authentication rules "
 "that can be created in the \"Advanced...\" network options (accessible from "
 "the servers dialog)."
-msgstr ""
+msgstr "Questa è una lista di regole per l'identificazione al NickServ. KVIrc le userà per l'interazione automatica con il NickServ di tutte le reti.<br>Attenzione, questa opzione può causare il furto delle tue password per il NickServ se usata impropriamente. Assicurati di aver capito il protocollo di autenticazione del NickServ.<br>In altre parole, sii sicuro di ciò che stai facendo.<br>Ricorda inoltre che le password sono memorizzare come <b>TESTO SEMPLICE</b>.<br>KVIrc supporta anche regole di autenticazione relative ad una certa rete, queste regole possono essere create nelle opzioni \"Avanzate...\" della rete (accessibili dalla finestra dei server)."
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:262
-#: src/modules/options/OptionsWidget_servers.cpp:336
+#: src/modules/options/OptionsWidget_nickserv.cpp:261
+#: src/modules/options/OptionsWidget_servers.cpp:337
 msgid "Add Rule"
 msgstr "Aggiungi Regola"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:266
-#: src/modules/options/OptionsWidget_servers.cpp:340
+#: src/modules/options/OptionsWidget_nickserv.cpp:265
+#: src/modules/options/OptionsWidget_servers.cpp:341
 msgid "Edit Rule"
 msgstr "Modifica Regola"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:270
-#: src/modules/options/OptionsWidget_servers.cpp:344
+#: src/modules/options/OptionsWidget_nickserv.cpp:269
+#: src/modules/options/OptionsWidget_servers.cpp:345
 msgid "Delete Rule"
 msgstr "Elimina Regola"
 
 #: src/modules/options/OptionsWidget_nickserv.h:39
-#: src/modules/options/OptionsWidget_servers.cpp:367
-#: src/modules/options/OptionsWidget_servers.cpp:1003
+#: src/modules/options/OptionsWidget_servers.cpp:368
+#: src/modules/options/OptionsWidget_servers.cpp:1004
 msgid "NickServ"
 msgstr "NickServ"
 
@@ -3006,11 +3004,11 @@ msgstr "autenticazione,identificazione"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:42
 msgid "Title font:"
-msgstr ""
+msgstr "Font del titolo:"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:43
 msgid "Title foreground color:"
-msgstr ""
+msgstr "Colore primo piano del titolo:"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:142
 msgid "Enable the notifier"
@@ -3035,11 +3033,11 @@ msgid ""
 "builtin.<br>This is cool if you want to better integrate KVIrc inside "
 "KDE.<br>Note that KDE's notifier isn't as flexible or \"tabbed\" like "
 "KVIrc's"
-msgstr ""
+msgstr "Questa opzione usa il sistema di notifica di KDE al posto di quello di KVIrc.<br>E' carino se vuoi integrare meglio KVIrc in KDE. Nota che il notificatore di KDE non è flessibile e \"tabulare\" come quello di KVIrc."
 
 #: src/modules/options/OptionsWidget_notifier.cpp:171
 msgid "Use the D-Bus-based notifiers"
-msgstr ""
+msgstr "Usa i notificatori basati su D-Bus"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:172
 msgid ""
@@ -3047,7 +3045,7 @@ msgid ""
 "builtin.<br>This is cool if you want to better integrate KVIrc inside your "
 "desktop environment.<br>Note that this notifier isn't as flexible or "
 "\"tabbed\" like KVIrc's is."
-msgstr ""
+msgstr "Questa opzione usa i notificatori basati su D-Bus al posto di quello di KVIrc.<br>E' carino se vuoi integrare meglio KVIrc nel tuo desktop environment. Nota che questo notificatore non è flessibile e \"tabulare\" come quello di KVIrc."
 
 #: src/modules/options/OptionsWidget_notifier.cpp:193
 msgid "Don't show notifier when there is an active fullscreen window"
@@ -3072,19 +3070,19 @@ msgstr "Abilita l'effetto fading della finestra di notifica"
 #: src/modules/options/OptionsWidget_notifier.cpp:221
 #: src/modules/options/OptionsWidget_notify.cpp:58
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Configurazione avanzata"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:224
 msgid "Default auto hiding time for messages (0 to disable):"
-msgstr ""
+msgstr "Tempo predefinito per il nascondimento automatico dei messaggi (0 per disabilitare):"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:229
 msgid "Notifier window opacity while active (mouseover):"
-msgstr ""
+msgstr "Opacità della finestra di notifica mentre è attiva (passaggio del mouse):"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:234
 msgid "Notifier window opacity while inactive:"
-msgstr ""
+msgstr "Opacità della finestra di notifica mentre è inattiva:"
 
 #: src/modules/options/OptionsWidget_notifier.h:32
 #: src/modules/options/OptionsWidget_notifier.h:51
@@ -3097,7 +3095,7 @@ msgstr "popup"
 
 #: src/modules/options/OptionsWidget_notify.cpp:43
 msgid "Use online notify list"
-msgstr "Usa lista notifiche utenti online"
+msgstr "Usa notify list utenti online"
 
 #: src/modules/options/OptionsWidget_notify.cpp:49
 msgid "Show notifications in active window"
@@ -3117,7 +3115,7 @@ msgstr "Controlla USERHOST per gli utenti online"
 
 #: src/modules/options/OptionsWidget_notify.cpp:64
 msgid "Use smart notify list manager"
-msgstr ""
+msgstr "Usa il gestore \"intelligente\" della notify list"
 
 #: src/modules/options/OptionsWidget_notify.cpp:67
 msgid "Use the WATCH method if available"
@@ -3125,29 +3123,29 @@ msgstr "Usa il metodo WATCH se disponibile"
 
 #: src/modules/options/OptionsWidget_notify.cpp:70
 msgid "Check interval:"
-msgstr ""
+msgstr "Intervallo di controllo:"
 
 #: src/modules/options/OptionsWidget_notify.cpp:74
 msgid "ISON delay:"
-msgstr ""
+msgstr "Ritardo ISON:"
 
 #: src/modules/options/OptionsWidget_notify.cpp:78
 msgid "USERHOST delay:"
-msgstr ""
+msgstr "Ritardo USERHOST:"
 
 #: src/modules/options/OptionsWidget_notify.cpp:82
 msgid ""
 "<p><b>Note:</b><br>The notify list is managed using the \"Registered Users\""
 " settings.</p>"
-msgstr "<p><b>Nota:</b><br>La lista notifiche è gestita usando le impostazioni degli \"Utenti Registrati\"</p>"
+msgstr "<p><b>Nota:</b><br>La notify list è gestita usando le impostazioni degli \"Utenti Registrati\"</p>"
 
 #: src/modules/options/OptionsWidget_notify.h:30
 msgid "Notifications"
-msgstr ""
+msgstr "Notifiche"
 
 #: src/modules/options/OptionsWidget_notify.h:32
 msgid "notify,notifications,buddy,buddies,friend,friends"
-msgstr ""
+msgstr "notifica,notifiche,amico,amici"
 
 #: src/modules/options/OptionsWidget_protection.h:32
 msgid "Protection"
@@ -3159,14 +3157,14 @@ msgstr "ctcp,flood"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:70
 msgid "Use proxy for all connections"
-msgstr ""
+msgstr "Usa proxy per tutte le connessioni"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:71
 msgid ""
 "When enabled, the selected proxy will be used as the default for all "
 "connections. An alternative option to define a specific per-server proxy, is"
 " also located in the advanced server dialog in the connection tab."
-msgstr ""
+msgstr "Quando abilitato, il proxy selezionato verrà usato come predefinito per tutte le connessioni. Un'alternativa è impostare un proxy specifico per server nella sezione \"Avanzate\" del server nella finestra di connessione."
 
 #: src/modules/options/OptionsWidget_proxy.cpp:79
 msgid "Proxy"
@@ -3176,33 +3174,33 @@ msgstr "Proxy"
 msgid ""
 "This is the list of available proxy servers.<br>Right-click on the list to "
 "add or remove proxies."
-msgstr ""
+msgstr "Questa è la lista dei server proxy disponibili.<br>Click con il tasto destro sulla lista per aggiungere o rimuovere i proxy."
 
 #: src/modules/options/OptionsWidget_proxy.cpp:103
 msgid "New proxy"
-msgstr ""
+msgstr "Nuovo proxy"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:109
 msgid "Remove proxy"
-msgstr ""
+msgstr "Rimuovi proxy"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:116
 msgid "Proxy:"
 msgstr "Proxy:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:118
-#: src/modules/options/OptionsWidget_servers.cpp:655
+#: src/modules/options/OptionsWidget_servers.cpp:656
 msgid "Port:"
 msgstr "Porta:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:120
-#: src/modules/options/OptionsWidget_servers.cpp:668
+#: src/modules/options/OptionsWidget_servers.cpp:669
 msgid "IP address:"
 msgstr "Indirizzo IP:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:124
-#: src/modules/options/OptionsWidget_servers.cpp:155
-#: src/modules/options/OptionsWidget_servers.cpp:572
+#: src/modules/options/OptionsWidget_servers.cpp:156
+#: src/modules/options/OptionsWidget_servers.cpp:573
 msgid "Password:"
 msgstr "Password:"
 
@@ -3211,7 +3209,7 @@ msgid "Protocol:"
 msgstr "Protocollo:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:133
-#: src/modules/options/OptionsWidget_servers.cpp:717
+#: src/modules/options/OptionsWidget_servers.cpp:718
 msgid "Use IPv6 protocol"
 msgstr "Usa protocollo IPv6"
 
@@ -3233,32 +3231,32 @@ msgstr "connessione,server"
 
 #: src/modules/options/OptionsWidget_query.cpp:42
 msgid "Open Query for"
-msgstr ""
+msgstr "Apri query per"
 
 #: src/modules/options/OptionsWidget_query.cpp:44
 msgid ""
 "This option enables query window creation when a private message (PRIVMSG) "
 "is received. If you disable this, private messages will be shown in the "
 "active window or a common channel."
-msgstr ""
+msgstr "Questa opzione abilita la creazione di finestre di query quando un messaggio privato (PRIVMSG) viene ricevuto. Se la disabiliti, i messaggi privati verranno mostrati nella finestra attiva."
 
 #: src/modules/options/OptionsWidget_query.cpp:50
 msgid ""
 "This option enables query window creation when a private notice (NOTICE) is "
 "received. If you disable this, private notices will be shown in the active "
 "window or a common channel."
-msgstr ""
+msgstr "Questa opzione abilita la creazione di finestre di query quando viene ricevuto un avviso privato (NOTICE). Se lo disabiliti, gli avvisi verranno mostrati nella finestra attiva."
 
 #: src/modules/options/OptionsWidget_query.cpp:55
 msgid "Open incoming query windows without focus"
-msgstr ""
+msgstr "Apri finestre query ricevute senza dare focus"
 
 #: src/modules/options/OptionsWidget_query.cpp:56
 msgid ""
 "This option prevents incoming query windows from diverting application "
 "focus.<br>Enable this if you don't like query windows popping up while "
 "you're typing something in a channel."
-msgstr ""
+msgstr "Questa opzione previene che le nuove finestre query ricevute rubino il focus dell'applicazione.<br>Abilitala se non vuoi che le finestre dei trasferimenti si aprano mentre stai scrivendo qualcosa in un canale."
 
 #: src/modules/options/OptionsWidget_query.cpp:61
 msgid "Enable target user tracking"
@@ -3268,7 +3266,7 @@ msgstr "Abilita tracciamento dell'utente"
 msgid ""
 "This option will enable target user tracking. Some actions of the target "
 "user (e.g. joins and parts) will be displayed in the window."
-msgstr ""
+msgstr "Questa opzione abilita il tracciamento dell'utente. Alcune azioni dell'utente (per esempio entrate o uscite dai canali) verranno mostrate nella finestra."
 
 #: src/modules/options/OptionsWidget_query.cpp:67
 msgid "Flash system taskbar on new query message"
@@ -3278,7 +3276,7 @@ msgstr "Fai lampeggiare la barra delle applicazioni del sistema quando c'è un n
 msgid ""
 "This option causes the system taskbar entry for KVIrc to flash when a new "
 "query message is received and the KVIrc window is not the active."
-msgstr ""
+msgstr "Questa opzione fa sì che la barra delle applicazioni del sistema lampeggi quando viene ricevuto un nuovo messaggio in query e la finestra di KVIrc non è attiva."
 
 #: src/modules/options/OptionsWidget_query.cpp:71
 msgid "Popup notifier on new query message"
@@ -3289,7 +3287,7 @@ msgid ""
 "This option causes a small notifier window to pop up in the lower right "
 "corner of the screen when a new message is received and the KVIrc window is "
 "not active."
-msgstr ""
+msgstr "Questa opzione fa sì che una piccola finestra di notifica venga mostrata nell'angolo in basso a destra dello schermo quando viene ricevuto un nuovo messaggio e la finestra di KVIrc non è attiva."
 
 #: src/modules/options/OptionsWidget_query.cpp:76
 msgid "Popup notifier on new notice"
@@ -3300,7 +3298,7 @@ msgid ""
 "This option causes a small notifier window to pop up in the lower right "
 "corner of the screen when a new notice is received and the KVIrc window is "
 "not active."
-msgstr ""
+msgstr "Questa opzione fa sì che una piccola finestra di notifica venga mostrata nell'angolo in basso a destra dello schermo quando viene ricevuto un nuovo messaggio di avviso e la finestra di KVIrc non è attiva."
 
 #: src/modules/options/OptionsWidget_query.cpp:81
 msgid "Show information about query target at the top of the query"
@@ -3311,7 +3309,7 @@ msgid ""
 "This option enables query window information label. It can show you known "
 "information about query target at the top of the window. Uncheck this "
 "option, if you think,that it wastes your query space."
-msgstr ""
+msgstr "Questa opzione abilita le informazioni sulle query. Può mostrarti le informazioni sul destinatario della query in alto nella finestra. Deselezionala se credi che occupi solo spazio nella finestra."
 
 #: src/modules/options/OptionsWidget_query.cpp:86
 msgid "Paste last query log"
@@ -3325,141 +3323,141 @@ msgstr "Query"
 msgid "chat"
 msgstr "chat"
 
-#: src/modules/options/OptionsWidget_servers.cpp:110
+#: src/modules/options/OptionsWidget_servers.cpp:111
 msgid "Network Details and Configuration - KVIrc"
-msgstr ""
+msgstr "Dettagli e configurazione rete - KVIrc"
 
-#: src/modules/options/OptionsWidget_servers.cpp:130
+#: src/modules/options/OptionsWidget_servers.cpp:131
 msgid "Put here a brief description of the network."
-msgstr ""
+msgstr "Inserisci qui una breve descrizione della rete."
 
-#: src/modules/options/OptionsWidget_servers.cpp:138
-#: src/modules/options/OptionsWidget_servers.cpp:554
+#: src/modules/options/OptionsWidget_servers.cpp:139
+#: src/modules/options/OptionsWidget_servers.cpp:555
 msgid "Properties"
 msgstr "Proprietà"
 
-#: src/modules/options/OptionsWidget_servers.cpp:151
+#: src/modules/options/OptionsWidget_servers.cpp:152
 msgid ""
 "This is the <b>username</b> that KVIrc will use to login to servers on this network.\n"
 "If this field is left empty (most common case), KVIrc will use the default username specified in the \"Identity\" options tab."
-msgstr ""
+msgstr "Questo è lo<b>username</b> che KVirc userà per fare l'accesso sui server di questa rete.\nSe lasci questo campo vuoto (caso più comune), verrà usato lo username specificato nella scheda \"Identità\" delle opzioni."
 
-#: src/modules/options/OptionsWidget_servers.cpp:162
+#: src/modules/options/OptionsWidget_servers.cpp:163
 msgid ""
 "If this network requires a password, put it in this field, otherwise leave "
 "it empty."
-msgstr ""
+msgstr "Se questa rete richiede una password, inseriscila in questo campo, altrimenti lascialo vuoto."
 
-#: src/modules/options/OptionsWidget_servers.cpp:173
+#: src/modules/options/OptionsWidget_servers.cpp:174
 msgid ""
 "You can specify a special nickname that will be used to login to the servers"
 " on this network.<br>If this field is left empty (most common case), the "
 "default nickname (specified in the \"Identity\" settings) will be used."
-msgstr ""
+msgstr "Qui puoi specificare un nickname speciale che verrà utilizzato per connettersi ai server di questa rete.<br>Se lasci questo campo vuoto (nella maggior parte dei casi), verrà usato il nickname di default (specificato nella sezione \"Identità\" delle impostazioni)."
 
-#: src/modules/options/OptionsWidget_servers.cpp:185
+#: src/modules/options/OptionsWidget_servers.cpp:186
 msgid ""
 "This nickname will be tried if the primary nickname for this network is "
 "already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead."
-msgstr ""
+msgstr "Questo nick sarà provato se il nick primario per questa rete è già in uso.<br>Se lasci questo campo vuoto verrà usato il nick predefinito specificato nelle opzioni dell'identità."
 
-#: src/modules/options/OptionsWidget_servers.cpp:195
+#: src/modules/options/OptionsWidget_servers.cpp:196
 msgid ""
 "You can specify a special <b>real name</b> that will be used to login with "
 "the servers on this network.If you leave this field empty (most common "
 "case), the default \"real name\" (specified in the \"Identity\" settings) "
 "will be used."
-msgstr ""
+msgstr "Puoi specificare un <b>nome reale</b> speciale da usare per l'accesso sui server di questa rete.Se lasci questo campo vuoto (caso più comune), verrà usato il \"nome reale\" predefinito (specificato nella scheda \"Identità\"delle impostazioni)."
 
-#: src/modules/options/OptionsWidget_servers.cpp:198
+#: src/modules/options/OptionsWidget_servers.cpp:199
 msgid "Server encoding:"
-msgstr ""
+msgstr "Codifica del server:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:203
+#: src/modules/options/OptionsWidget_servers.cpp:204
 msgid ""
 "This box allows you to choose the preferred encoding for the servers in this"
 " network. This encoding will be used for server specific needs, like "
 "referencing nicknames and channel names.<br>If you choose \"Use System "
 "Encoding\" then the encoding will be set to the system-wide value that you "
 "choose in the \"Encoding\" page of the options dialog."
-msgstr ""
+msgstr "Questo box ti permette di scegliere la codifica preferita per i server di questa rete. Questa codifica verrà utilizzata per le necessità specifiche del server, come i nomi utenti e dei canali.<br>Se scegli \"Usa Encoding del sistema\" la codifica utilizzata sarà quella dell'intero sistema che hai scelto nella scheda \"Encoding\" nella finestra delle opzioni."
 
-#: src/modules/options/OptionsWidget_servers.cpp:208
-#: src/modules/options/OptionsWidget_servers.cpp:755
+#: src/modules/options/OptionsWidget_servers.cpp:209
+#: src/modules/options/OptionsWidget_servers.cpp:756
 msgid "Text encoding:"
-msgstr ""
+msgstr "Codifica del testo:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:213
+#: src/modules/options/OptionsWidget_servers.cpp:214
 msgid ""
 "This box allows you to choose the preferred encoding for the servers in this"
 " network. This encoding will be used as the default for text messages.<br>If"
 " you choose \"Use System Encoding\" then the encoding will be set to the "
 "system-wide value that you choose in the \"Encoding\" page of the options "
 "dialog."
-msgstr ""
+msgstr "Questo box ti permette di scegliere la codifica preferita per i server di questa rete. Questa codifica verrà utilizzata come predefinita per i messaggi di testo. <br> Se scegli \"Usa Encoding del sistema\" la codifica utilizzata sarà quello dell'intero sistema che hai scelto nella scheda \"Encoding\" della finestra delle opzioni."
 
-#: src/modules/options/OptionsWidget_servers.cpp:221
 #: src/modules/options/OptionsWidget_servers.cpp:222
+#: src/modules/options/OptionsWidget_servers.cpp:223
 msgid "Use System Encoding"
 msgstr "Usa Codifica di Sistema"
 
-#: src/modules/options/OptionsWidget_servers.cpp:240
+#: src/modules/options/OptionsWidget_servers.cpp:241
 msgid "Connect to this network at startup"
 msgstr "Connetti a questa rete all'avvio"
 
-#: src/modules/options/OptionsWidget_servers.cpp:244
+#: src/modules/options/OptionsWidget_servers.cpp:245
 msgid ""
 "This option will cause KVIrc to automatically connect to this network at "
 "startup"
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc si connetta a questa rete all'avvio"
 
-#: src/modules/options/OptionsWidget_servers.cpp:260
-#: src/modules/options/OptionsWidget_servers.cpp:824
+#: src/modules/options/OptionsWidget_servers.cpp:261
+#: src/modules/options/OptionsWidget_servers.cpp:825
 msgid "Channels to Join Automatically upon Connect"
-msgstr ""
+msgstr "Canali in cui entrare automaticamente una volta connesso"
 
-#: src/modules/options/OptionsWidget_servers.cpp:262
+#: src/modules/options/OptionsWidget_servers.cpp:263
 msgid ""
 "Here you can set a list of channels to be joined automatically after a "
 "connection to a server in this network has been established. To add a "
 "channel, type its name in the text input below and click \"<b>Add</b>\"."
-msgstr ""
+msgstr "Qui puoi impostare una lista di canali in cui entrare automaticamente dopo che la connessione ad un server di questa rete viene stabilita. Per aggiungere un canale scrivi il suo nome nel box sottostante e fai click su \"<b>Aggiungi</b>\"."
 
-#: src/modules/options/OptionsWidget_servers.cpp:268
-#: src/modules/options/OptionsWidget_servers.cpp:831
+#: src/modules/options/OptionsWidget_servers.cpp:269
+#: src/modules/options/OptionsWidget_servers.cpp:832
 msgid "Join Channels"
 msgstr "Entra in un Canale"
 
-#: src/modules/options/OptionsWidget_servers.cpp:278
+#: src/modules/options/OptionsWidget_servers.cpp:279
 msgid ""
 "The following commands will be executed after a connection to a server in "
 "this network has been established.<br><b>Important:</b> Enter commands "
 "<b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> instead of"
 " <tt>/quote pass secret</tt>).<br>KVIrc will first send the USER command, "
 "then eventually PASS and NICK and then execute this command sequence."
-msgstr ""
+msgstr "I seguenti comandi verranno eseguiti dopo che la connessione ad un server di questa rete è stata stabilita.<br><b>Importante:</b> Inserisci i comandi <b>senza</b> lo slash che li precede (per esempio <tt>quote pass segreta</tt> invece di <tt>/quote pass segreta</tt>).<br>KVIrc invierà per primo il comando USER, poi eventualmente PASS e NICK e poi eseguirà questa sequenza di comandi."
 
-#: src/modules/options/OptionsWidget_servers.cpp:283
-#: src/modules/options/OptionsWidget_servers.cpp:845
+#: src/modules/options/OptionsWidget_servers.cpp:284
+#: src/modules/options/OptionsWidget_servers.cpp:846
 msgid "On Connect"
 msgstr "Alla Connessione"
 
-#: src/modules/options/OptionsWidget_servers.cpp:294
+#: src/modules/options/OptionsWidget_servers.cpp:295
 msgid ""
 "The following commands will be executed after a successful login to a server"
 " in this network.<br><b>Important:</b> Enter commands <b>without</b> a "
 "preceding slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote "
 "privatelog</tt>).<br>This is useful for automatically opening queries, "
 "setting variables, etc."
-msgstr ""
+msgstr "I seguenti comandi verranno eseguiti dopo che la connessione ad un server di questa rete è stata stabilita.<br><b>Importante: </b>Inserisci i comandi <b>senza</b> lo slash che li precede (per esempio <tt>quote privatelog</tt> invece di <tt>/quote privatelog</tt>).<br>Questo è particolarmente utile per aprire automaticamente query, settare delle variabili, etc."
 
-#: src/modules/options/OptionsWidget_servers.cpp:298
-#: src/modules/options/OptionsWidget_servers.cpp:860
+#: src/modules/options/OptionsWidget_servers.cpp:299
+#: src/modules/options/OptionsWidget_servers.cpp:861
 msgid "On Login"
 msgstr "Al Login"
 
-#: src/modules/options/OptionsWidget_servers.cpp:329
+#: src/modules/options/OptionsWidget_servers.cpp:330
 msgid ""
 "This is a list of NickServ identification rules. KVIrc will use them to "
 "model its automatic interaction with NickServ on this network.<br>Please be "
@@ -3468,86 +3466,86 @@ msgid ""
 "authentication protocol.<br>In other words, be sure to know what you're "
 "doing.<br>Also note that the password that you provide is stored as <b>PLAIN"
 " TEXT</b>."
-msgstr ""
+msgstr "Questa è una lista di regole per l'identificazione al NickServ. KVIrc le userà come modello per l'interazione automatica con il NickServ di questa rete.<br>Attenzione, questa opzione può causare il furto delle tue password per il NickServ se usata impropriamente. Assicurati di aver capito il protocollo di autenticazione del NickServ.<br>In altre parole, sii sicuro di ciò che stai facendo.<br>Ricorda inoltre che le password sono memorizzare come <b>TESTO SEMPLICE</b>."
 
-#: src/modules/options/OptionsWidget_servers.cpp:530
+#: src/modules/options/OptionsWidget_servers.cpp:531
 msgid "Server Details and Configuration - KVIrc"
-msgstr ""
+msgstr "Dettagli e configurazione server - KVIrc"
 
-#: src/modules/options/OptionsWidget_servers.cpp:545
+#: src/modules/options/OptionsWidget_servers.cpp:546
 msgid ""
 "This is a brief description of this server. This field has no restrictions "
 "but many server lists use it to describe the server's physical location"
-msgstr ""
+msgstr "Questa è una breve descrizione del server. Questo campo non ha restrizioni ma molte liste dei server lo usano per descrivere la posizione fisica del server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:567
+#: src/modules/options/OptionsWidget_servers.cpp:568
 msgid ""
 "This is the <b>username</b> that KVIrc will use to login to this server.\n"
 "If this field is left empty (most common case), KVIrc will first look if a username is specified for the network that this server belongs to, and if that is empty then KVIrc will use the default username specified in the \"Identity\" options tab."
-msgstr ""
+msgstr "Questo è lo <b>username</b> che KVirc userà per fare l'accesso a questo server.\nSe lasci questo campo vuoto (caso più comune), KVIrc guarderà prima se uno username è stato specificato per la rete a cui questo server appartiene, e se non c'è poi KVIrc userà lo username predefinito specificato nella scheda \"Identità\" delle opzioni."
 
-#: src/modules/options/OptionsWidget_servers.cpp:579
+#: src/modules/options/OptionsWidget_servers.cpp:580
 msgid ""
 "If this server requires a password, put it in this field, otherwise leave it"
 " empty."
-msgstr ""
+msgstr "Se questo server richiede una password, inseriscila in questo campo, altrimenti lascialo vuoto."
 
-#: src/modules/options/OptionsWidget_servers.cpp:590
+#: src/modules/options/OptionsWidget_servers.cpp:591
 msgid ""
 "You can specify a special <b>nickname</b> that will be used to login to this"
 " server.<br>If this field is left empty (most common case), KVIrc will first"
 " look if a nickname is specified for the network that this server belongs "
 "to, and if that is empty then the default nickname (specified in the "
 "\"Identity\" settings) will be used."
-msgstr ""
+msgstr "Qui puoi specificare un <b>nickname</b> speciale che verrà usato per l'accesso a questo server.<br>Se lasci questo campo vuoto (caso più comune), KVIrc guarderà prima se un nickname è stato specificato per la rete a cui appartiene questo server, e se non c'è userà il nickname predefinito (specificato nella scheda \"Identità\" delle impostazioni)."
 
-#: src/modules/options/OptionsWidget_servers.cpp:604
+#: src/modules/options/OptionsWidget_servers.cpp:605
 msgid ""
 "This nickname will be tried if the primary nickname for this server is "
 "already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead."
-msgstr ""
+msgstr "Questo nickname sarà provato se il nickname primario per questo server è già in uso.<br>Se lasci questo campo vuoto verrà usato il nickname predefinito specificato nelle opzioni dell'identità."
 
-#: src/modules/options/OptionsWidget_servers.cpp:614
+#: src/modules/options/OptionsWidget_servers.cpp:615
 msgid ""
 "You can specify a special <b>real name</b> that will be used to login with "
 "this server.<br>If you leave this field empty (most common case), KVIrc will"
 " first look if a real name is specified for the network that this server "
 "belongs to, and if that is empty the default \"real name\" (specified in the"
 " \"Identity\" settings) will be used."
-msgstr ""
+msgstr "Qui puoi specificare un <b>nome reale</b> speciale da usare per fare l'accesso su questo server.<br>Se lasci questo campo vuoto (caso più comune), KVIrc guarderà prima se un nome reale è stato specificato per la rete a cui appartiene questo server, e se non c'è userà il \"nome reale\" predefinito (specificato nella scheda \"Identità\" delle impostazioni)."
 
-#: src/modules/options/OptionsWidget_servers.cpp:622
+#: src/modules/options/OptionsWidget_servers.cpp:623
 msgid "Use default user mode"
 msgstr "Usa i modi utente predefiniti"
 
-#: src/modules/options/OptionsWidget_servers.cpp:623
+#: src/modules/options/OptionsWidget_servers.cpp:624
 msgid ""
 "If this is enabled, the global initial <b>user mode</b> (configured from the"
 " identity dialog) will be used. If disabled, you can configure an initial "
 "user mode for this server"
-msgstr ""
+msgstr "Se questo è abilitato, verranno inizialmente usati i <b>modi utente</b> globali (configurati nella finestra identità); se disabilitato, puoi configurare i modi utenti iniziali per questo server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:663
+#: src/modules/options/OptionsWidget_servers.cpp:664
 msgid ""
 "This is the default <b>port</b> that this server will be contacted "
 "on.<br>Usually <b>6667</b> is OK."
-msgstr ""
+msgstr "Questa è la <b>porta</b> di default su cui il server verrà contattato. <br>Di solito la <b>6667</b> è OK."
 
-#: src/modules/options/OptionsWidget_servers.cpp:672
+#: src/modules/options/OptionsWidget_servers.cpp:673
 msgid ""
 "This is the <b>IP address</b> of this server, it is here for caching "
 "purposes.<br>If you leave this field empty, KVIrc will fill it in the first "
 "time it connects to the server. If you enable the \"cache IP address\" "
 "option below, KVIrc will use it as a \"cached result\" and avoid looking it "
 "up again."
-msgstr ""
+msgstr "Questo è l'<b>indirizzo IP</b> del server, è qui solo per l'utilizzo in cache. <br>Se lasci questo campo vuoto, KVIrc lo riempirà la prima volta che si connetterà al server. Se abiliti l'opzione \"Memorizza indirizzo IP\" qui sotto, KVIrc lo userà come \"risultato messo in cache\" e eviterà di risolverlo di nuovo."
 
-#: src/modules/options/OptionsWidget_servers.cpp:696
+#: src/modules/options/OptionsWidget_servers.cpp:697
 msgid "Cache IP address"
 msgstr "Memorizza indirizzo IP"
 
-#: src/modules/options/OptionsWidget_servers.cpp:699
+#: src/modules/options/OptionsWidget_servers.cpp:700
 msgid ""
 "This check will enable <b>IP address caching</b> for this server:<br>DNS "
 "lookups can be time-consuming and might be blocking on some platforms; this "
@@ -3555,66 +3553,66 @@ msgid ""
 "Advanced: you can also use this option to force a certain server name to "
 "resolve to a fixed IP address when either the DNS for that server is "
 "temporarily unreachable or you want to avoid the round-robin lookups."
-msgstr ""
+msgstr "Questo abilita la <b>memorizzazione dell'indirizzo IP</b> per questo server: <br> le richieste DNS possono consumare tempo e potrebbero essere bloccanti su alcune piattaforme; questa opzione fa sì che KVIrc risolva il nome del server solo una volta.<br><br> Avanzate: puoi usare questa opzione per forzare la risoluzione del nome di un server ad uno specifico indirizzo IP quando il DNS per quel server è temporaneamente non raggiungibile o quando vuoi evitare la risoluzione round-robin."
 
-#: src/modules/options/OptionsWidget_servers.cpp:710
+#: src/modules/options/OptionsWidget_servers.cpp:711
 msgid "Connect to this server at startup"
 msgstr "Connetti a questo server all'avvio"
 
-#: src/modules/options/OptionsWidget_servers.cpp:715
+#: src/modules/options/OptionsWidget_servers.cpp:716
 msgid ""
 "This option will cause KVIrc to connect to the IRC server when it is "
 "started."
-msgstr ""
+msgstr "Questa opzione fa sì che KVIrc si connetta al server IRC appena avviato."
 
-#: src/modules/options/OptionsWidget_servers.cpp:727
+#: src/modules/options/OptionsWidget_servers.cpp:728
 msgid ""
 "This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use"
 " the IPv6 protocol (thus your OS <b>must</b> have a working IPv6 stack and "
 "you <b>must</b> have an IPv6 connection)."
-msgstr ""
+msgstr "Questo controllo identifica i server IPV6.<br>Se attivato, KVirc proverà ad usare il protocollo IPv6 (il tuo sistema operativo <b>deve avere</b> uno stack IPv6 funzionante e tu <b>devi avere</b> una connessione IPV6)."
 
-#: src/modules/options/OptionsWidget_servers.cpp:730
+#: src/modules/options/OptionsWidget_servers.cpp:731
 msgid "Use SSL protocol"
 msgstr "Usa protocollo SSL"
 
-#: src/modules/options/OptionsWidget_servers.cpp:733
+#: src/modules/options/OptionsWidget_servers.cpp:734
 msgid ""
 "This check will cause the connection to use the <b>Secure Socket Layer</b> "
 "encryption support. Obviously, this server must have support for this, too. "
 ":)"
-msgstr ""
+msgstr "Questo controllo fa sì che la connessione usi il supporto crittografico <b>Secure Socket Layer</b>. Ovviamente anche il server deve supportarlo. :)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:744
+#: src/modules/options/OptionsWidget_servers.cpp:745
 msgid "Protocol encoding:"
-msgstr ""
+msgstr "Codifica del protocollo:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:749
+#: src/modules/options/OptionsWidget_servers.cpp:750
 msgid ""
 "This box allows you to choose the preferred encoding for this server. This "
 "encoding will be used for server specific needs, like referencing nicknames "
 "and channel names.<br>If you choose \"Use Network Encoding\" then the "
 "encoding will be inherited from the network that this server belongs to."
-msgstr ""
+msgstr "Questo box ti permetterà di scegliere la codifica per questo server. Questa codifica verrà utilizzata per le necessità specifiche del server, come i nomi utenti e dei canali.<br>Se scegli \"Usa Encoding della rete\" la codifica verrà ereditata dalla rete a cui il server appartiene."
 
-#: src/modules/options/OptionsWidget_servers.cpp:760
+#: src/modules/options/OptionsWidget_servers.cpp:761
 msgid ""
 "This box allows you to choose the preferred encoding for this server. This "
 "will be used as the default encoding for all text messages.<br>If you choose"
 " \"Use Network Encoding\" then the encoding will be inherited from the "
 "network that this server belongs to."
-msgstr ""
+msgstr "Questo box ti permette di scegliere la codifica preferita per questo server. Questa codifica verrà utilizzata come predefinita per i messaggi di testo. <br> Se scegli \"Usa Encoding della rete\" la codifica verrà ereditata dalla rete a cui il server appartiene."
 
-#: src/modules/options/OptionsWidget_servers.cpp:768
 #: src/modules/options/OptionsWidget_servers.cpp:769
+#: src/modules/options/OptionsWidget_servers.cpp:770
 msgid "Use Network Encoding"
 msgstr "Usa Encoding della Rete"
 
-#: src/modules/options/OptionsWidget_servers.cpp:789
+#: src/modules/options/OptionsWidget_servers.cpp:790
 msgid "Proxy server:"
 msgstr "Server Proxy:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:793
+#: src/modules/options/OptionsWidget_servers.cpp:794
 msgid ""
 "Defines the connection type that KVIrc should use to connect to this "
 "server.<br>When it's set to *Default* KVIrc will use the global proxy "
@@ -3622,24 +3620,24 @@ msgid ""
 "without using a proxy, or select a desired proxy you have previously "
 "added<br>You can define or edit new proxy servers in *General Preferences* /"
 " *Connection* tab' \"Proxy hosts\" dialog."
-msgstr ""
+msgstr "Definisce il tipo della connessione che KVIrc dovrebbe usare per connettersi a questo server.<br>Quando impostato a \"Predefinito\" KVIrc userà le impostazioni globali del proxy, quando impostato a \"Connessione diretta\" KVIrc si connetterà direttamente senza usare un proxy, oppure seleziona il proxy desiderato che hai già aggiunto<br>Puoi definire o modificare i server proxy nella finestra \"Host Proxy\" in *Impostazioni generali* / linguetta *Connessione*."
 
-#: src/modules/options/OptionsWidget_servers.cpp:798
+#: src/modules/options/OptionsWidget_servers.cpp:799
 msgid "Default"
 msgstr "Predefinito"
 
-#: src/modules/options/OptionsWidget_servers.cpp:799
+#: src/modules/options/OptionsWidget_servers.cpp:800
 msgid "Direct Connection"
-msgstr ""
+msgstr "Connessione diretta"
 
-#: src/modules/options/OptionsWidget_servers.cpp:825
+#: src/modules/options/OptionsWidget_servers.cpp:826
 msgid ""
 "Here you can set a list of channels to be joined automatically after a "
 "connection to this server has been established. To add a channel, type its "
 "name in the text input below and click \"<b>Add</b>\"."
-msgstr ""
+msgstr "Qui puoi impostare una lista di canali in cui entrare automaticamente dopo che la connessione a questo server è stata stabilita. Per aggiungere un canale scrivi il suo nome nel box sottostante e clicca su \"<b>Aggiungi</b>\"."
 
-#: src/modules/options/OptionsWidget_servers.cpp:840
+#: src/modules/options/OptionsWidget_servers.cpp:841
 msgid ""
 "The following commands will be executed after a connection has been "
 "established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -3647,305 +3645,297 @@ msgid ""
 "secret</tt>).<br>KVIrc will first send the USER command, then eventually "
 "PASS and NICK and then execute this command sequence.<br>This is "
 "particularly useful for IRC bouncers that require login commands."
-msgstr ""
+msgstr "I seguenti comandi verranno eseguiti dopo che la connessione è stata stabilita.<br><b>Importante:</b> Inserisci i comandi <b>senza</b> lo slash che li precede (per esempio <tt>quote pass segreta</tt> invece di <tt>/quote pass segreta</tt>).<br> KVIrc invierà per primo il comando USER, poi eventualmente PASS e NICK e poi eseguirà questa sequenza di comandi. <br>Questo è particolarmente utile con i bouncer che richiedono comandi di login."
 
-#: src/modules/options/OptionsWidget_servers.cpp:856
+#: src/modules/options/OptionsWidget_servers.cpp:857
 msgid ""
 "The following commands will be executed after a successful login to this "
 "server.<br><b>Important:</b> Enter commands <b>without</b> a preceding slash"
 " (e.g. <tt>quote privatelog</tt> instead of <tt>/quote "
 "privatelog</tt>).<br>This is useful for automatically opening queries, "
 "setting variables, etc."
-msgstr ""
+msgstr "I seguenti comandi verranno eseguiti dopo il login su questo server.<br><b>Importante:</b> Inserisci i comandi <b>senza</b> lo slash che li precede (per esempio <tt>quote privatelog</tt> invece di <tt>/quote privatelog</tt>).<br> Questo è particolarmente utile per aprire automaticamente query, settare delle variabili, etc."
 
-#: src/modules/options/OptionsWidget_servers.cpp:867
+#: src/modules/options/OptionsWidget_servers.cpp:868
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
 msgstr "Cambia a SSL/TLS usando l'estensione STARTTLS"
 
-#: src/modules/options/OptionsWidget_servers.cpp:869
+#: src/modules/options/OptionsWidget_servers.cpp:870
 msgid ""
 "This check enables the use of the <b>Transport Layer Security</b> protocol. "
 "If you enable the Extended Capabilities below then the TLS protocol support "
 "will be detected by using a CAP LS command. Without \"Extended "
 "Capabilities\" the STARTTLS command will be forcibly sent at the beginning "
 "of the connection."
-msgstr ""
+msgstr "Questo checkbox attiva il supporto al protocollo <b>Transport Layer Security</b>.Se abiliti l'opzione Extended Capabilities il supporto al protocollo TLS verrà riconosciuto mediante un comando CAP LS. Senza le \"Extended Capabilities\" il comando STARTTLS verrà sempre inviato all'inizio di ciascuna connessione."
 
-#: src/modules/options/OptionsWidget_servers.cpp:880
+#: src/modules/options/OptionsWidget_servers.cpp:881
 msgid "Extended Capabilities"
 msgstr "Estensioni"
 
-#: src/modules/options/OptionsWidget_servers.cpp:886
+#: src/modules/options/OptionsWidget_servers.cpp:887
 msgid "Query extended capabilities on connect"
 msgstr "Richiedi le estensioni alla connessione"
 
-#: src/modules/options/OptionsWidget_servers.cpp:889
+#: src/modules/options/OptionsWidget_servers.cpp:890
 msgid ""
 "This check will cause the connection to use the <b>Extended Capability</b> "
 "support."
-msgstr ""
+msgstr "Questo controllo fa sì che la connessioni usi il supporto alle <b>Extended Capability</b>."
 
-#: src/modules/options/OptionsWidget_servers.cpp:892
+#: src/modules/options/OptionsWidget_servers.cpp:893
 msgid "SASL Authentication"
 msgstr "Autenticazione SASL"
 
-#: src/modules/options/OptionsWidget_servers.cpp:897
+#: src/modules/options/OptionsWidget_servers.cpp:898
 msgid "Authenticate via SASL extension"
 msgstr "Autentica via estensione SASL"
 
-#: src/modules/options/OptionsWidget_servers.cpp:899
+#: src/modules/options/OptionsWidget_servers.cpp:900
 msgid ""
 "This check enables the use of the <b>SASL</b> authentication protocol If you"
 " enable the proper global option in the Connection/SSL tab and fill the SASL"
 " nickname and SASL password fields in this page, the SASL protocol will be "
 "used for this server if available."
-msgstr ""
+msgstr "Questo checkbox attiva il supporto al protocollo di autenticazione <b>SASL</b>. Se abiliti l'opzione globale nella scheda Connessione/SSL e riempi i campi Nickname SASL e Password SASL, il protocollo SASL verrà usato per questo server se disponibile."
 
-#: src/modules/options/OptionsWidget_servers.cpp:905
+#: src/modules/options/OptionsWidget_servers.cpp:906
 msgid "SASL method:"
-msgstr ""
+msgstr "Metodo SASL:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:911
+#: src/modules/options/OptionsWidget_servers.cpp:912
 msgid ""
 "Select which SASL method you want to use to authenticate "
 "with.<br><br>EXTERNAL will fallback to PLAIN if a non-SSL connection is used"
 " or no .pem file is loaded."
-msgstr ""
+msgstr "Seleziona quale metodo SAL usare per l'autenticazione. <br><br>EXTERNAL ripiegherà su PLAIN se viene utilizzata una connessione non-SSL o se non è stato caricato un file .pem."
 
-#: src/modules/options/OptionsWidget_servers.cpp:919
+#: src/modules/options/OptionsWidget_servers.cpp:920
 msgid "SASL nickname:"
-msgstr ""
+msgstr "Nickname SASL:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:923
+#: src/modules/options/OptionsWidget_servers.cpp:924
 msgid ""
 "If you want to enable SASL authentication, insert your nickname here. (Not "
 "required for EXTERNAL)"
-msgstr ""
+msgstr "Se vuoi attivare l'autenticazione SASL, inserisci qui il tuo nickname. (Non richiesto per EXTERNAL)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:926
+#: src/modules/options/OptionsWidget_servers.cpp:927
 msgid "SASL password:"
-msgstr ""
+msgstr "Password SASL:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:930
+#: src/modules/options/OptionsWidget_servers.cpp:931
 msgid ""
 "If you want to enable SASL authentication, insert your password here. (Not "
 "required for EXTERNAL)"
-msgstr ""
+msgstr "Se vuoi attivare l'autenticazione SASL, inserisci qui la tua password. (Non richiesta per EXTERNAL)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:938
+#: src/modules/options/OptionsWidget_servers.cpp:939
 msgid "Link filter:"
 msgstr "Filtro Collegamenti:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:972
+#: src/modules/options/OptionsWidget_servers.cpp:973
 msgid ""
 "This field specifies the name of a module that exports a link filter for "
 "this type of server.<br>For plain IRC connections, you don't need any link "
 "filters; this is used for incompatible protocols."
-msgstr ""
+msgstr "In questo campo viene specificato il nome di un modulo che esporta il filtro per il collegamento per questo tipo di server.<br>Per una normale connessione IRC, non hai bisogno di filtri per il collegamento, viene usato solo nel caso di protocolli incompatibili."
 
-#: src/modules/options/OptionsWidget_servers.cpp:977
+#: src/modules/options/OptionsWidget_servers.cpp:978
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:985
+#: src/modules/options/OptionsWidget_servers.cpp:986
 msgid ""
 "This field allows you to specify a really unique ID for this server. You "
 "will then be able to use /server -x &lt;this_id&gt; to make the connection. "
 "This is especially useful when you have multiple server entries with the "
 "same hostname and port in different networks (bouncers?)"
-msgstr ""
+msgstr "Questo campo permette di specificare un ID univoco per questo server. Potrai poi usare /server -x &lt;questo_id&gt; per connetterti. Ciò risulta particolarmente utile quando hai molti server con lo stesso nome e porta su reti differenti (bouncer?)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:997
+#: src/modules/options/OptionsWidget_servers.cpp:998
 msgid ""
 "NickServ settings are available only for the whole IRC network, not for specific servers.\n"
 "To open network settings choose a network (with a globe) in list of networks and servers and click Advanced."
 msgstr "Le preferenze del NickServ sono disponibili solo per tutta la rete IRC, non per server specifici.\nPer aprire le preferenze di rete scegli una rete (con un globo) nella lista delle reti e server e clicca Avanzate."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1306
+#: src/modules/options/OptionsWidget_servers.cpp:1307
 msgid "Filter:"
 msgstr "Filtro:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1311
+#: src/modules/options/OptionsWidget_servers.cpp:1312
 msgid ""
 "If you are searching for a specific server or network, you can insert its "
 "name to filter the servers in the list"
-msgstr ""
+msgstr "Se stai cercando uno specifico server o rete, puoi inserire il suo nome per filtrare i server nella lista"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1318
+#: src/modules/options/OptionsWidget_servers.cpp:1319
 msgid ""
 "If this option is enabled, only servers you have favorited will be displayed"
-msgstr ""
+msgstr "Se questa opzione è abilitata verranno mostrati solo i tuoi server preferiti"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1326
+#: src/modules/options/OptionsWidget_servers.cpp:1327
 msgid "Server"
 msgstr "Server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1342
+#: src/modules/options/OptionsWidget_servers.cpp:1343
 msgid ""
 "This is the list of available IRC servers.<br>Right-click on the list to add"
 " or remove servers and perform other actions.<br>Double-click on a item for "
 "advanced options."
-msgstr ""
+msgstr "Questa è la lista dei server IRC disponibili.<br>Clicca con il tasto destro sulla lista per aggiungere o rimuovere i server e svolgere altre operazioni.<br>Doppio click su un elemento per le opzioni avanzate."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1357
+#: src/modules/options/OptionsWidget_servers.cpp:1358
 msgid "New network"
-msgstr ""
+msgstr "Nuova rete"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1366
+#: src/modules/options/OptionsWidget_servers.cpp:1367
 msgid "New server"
-msgstr ""
+msgstr "Nuovo server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1372
+#: src/modules/options/OptionsWidget_servers.cpp:1373
 msgid "Favorite / Unfavorite server"
-msgstr ""
+msgstr "Server preferito/non preferito"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1379
+#: src/modules/options/OptionsWidget_servers.cpp:1380
 msgid "Remove network / server"
-msgstr ""
+msgstr "Rimuovi rete / server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1386
+#: src/modules/options/OptionsWidget_servers.cpp:1387
 msgid "Copy server"
-msgstr ""
+msgstr "Copia server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1393
+#: src/modules/options/OptionsWidget_servers.cpp:1394
 msgid "Paste server"
-msgstr ""
+msgstr "Incolla server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1404
+#: src/modules/options/OptionsWidget_servers.cpp:1405
 msgid "Import server list"
-msgstr ""
+msgstr "Importa lista server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1409
+#: src/modules/options/OptionsWidget_servers.cpp:1410
 msgid "Active Configuration"
 msgstr "Configurazione Attuale"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1410
-#: src/modules/options/OptionsWidget_servers.cpp:1711
+#: src/modules/options/OptionsWidget_servers.cpp:1411
+#: src/modules/options/OptionsWidget_servers.cpp:1712
 msgid "Server:"
 msgstr "Server:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1414
+#: src/modules/options/OptionsWidget_servers.cpp:1415
 msgid "This is the name of the currently selected server or network"
-msgstr ""
+msgstr "Questo è il nome del server o della rete selezionato."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1416
+#: src/modules/options/OptionsWidget_servers.cpp:1417
 msgid "Advanced..."
 msgstr "Avanzate..."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1418
+#: src/modules/options/OptionsWidget_servers.cpp:1419
 msgid "Click here to edit advanced options for this entry"
-msgstr ""
+msgstr "Clicca qui per modificare le opzioni avanzate per questo elemento"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1430
+#: src/modules/options/OptionsWidget_servers.cpp:1431
 msgid ""
 "This button shows a list of recently used servers.<br>It allows you to "
 "quickly find them in the list."
-msgstr ""
+msgstr "Questo pulsante mostra la lista dei server usati di recente. Ti permette di trovarli rapidamente nella lista."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1437
+#: src/modules/options/OptionsWidget_servers.cpp:1438
 msgid "Connect &Now"
 msgstr "&Connetti Ora"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1479
+#: src/modules/options/OptionsWidget_servers.cpp:1480
 msgid "Hit this button to connect to the currently selected server."
-msgstr ""
+msgstr "Premi questo pulsante per connetterti al server selezionato."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1485
+#: src/modules/options/OptionsWidget_servers.cpp:1486
 msgid "Show this dialog at startup"
 msgstr "Mostra questa finestra all'avvio"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1490
+#: src/modules/options/OptionsWidget_servers.cpp:1491
 msgid ""
 "If this option is enabled, the servers dialog will appear every time you "
 "start KVIrc"
-msgstr ""
+msgstr "Se questa opzioni è abilitata, la finestra server comparirà ogni volta che avvii KVIrc"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1716
+#: src/modules/options/OptionsWidget_servers.cpp:1717
 msgid "Network:"
 msgstr "Rete:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1731
+#: src/modules/options/OptionsWidget_servers.cpp:1732
 msgid "No selection"
 msgstr "Nessuna selezione"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1766
+#: src/modules/options/OptionsWidget_servers.cpp:1767
 msgid "UnknownNet"
 msgstr "Rete sconosciuta"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1845
-#: src/modules/options/OptionsWidget_servers.cpp:1983
+#: src/modules/options/OptionsWidget_servers.cpp:1846
+#: src/modules/options/OptionsWidget_servers.cpp:1984
 msgid "New Network"
 msgstr "Nuova Rete"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1846
+#: src/modules/options/OptionsWidget_servers.cpp:1847
 msgid "Remove Network"
 msgstr "Rimuovi Rete"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1851
+#: src/modules/options/OptionsWidget_servers.cpp:1852
 msgid "&New Server"
 msgstr "&Nuovo Server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1853
+#: src/modules/options/OptionsWidget_servers.cpp:1854
 msgid "Unfavorite Server"
-msgstr ""
+msgstr "Togli server dai preferiti"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1855
+#: src/modules/options/OptionsWidget_servers.cpp:1856
 msgid "Re&move Server"
 msgstr "Ri&muovi server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1857
+#: src/modules/options/OptionsWidget_servers.cpp:1858
 msgid "&Copy Server"
 msgstr "&Copia Server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1859
+#: src/modules/options/OptionsWidget_servers.cpp:1860
 msgid "&Paste Server"
 msgstr "&Incolla Server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1864
-msgid "Import Server List"
-msgstr ""
-
 #: src/modules/options/OptionsWidget_servers.cpp:1865
-msgid "Clear Server List"
-msgstr ""
+msgid "Import Server List"
+msgstr "Importa lista server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1903
+#: src/modules/options/OptionsWidget_servers.cpp:1866
+msgid "Clear Server List"
+msgstr "Pulisci lista server"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1904
 msgid ""
 "Oops! Something weird happened:<br>Can't find any module capable of "
 "importing servers."
-msgstr ""
+msgstr "Oops! È accaduto qualcosa di strano: <br>Impossibile trovare un modulo capace di importare i server."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1923
+#: src/modules/options/OptionsWidget_servers.cpp:1924
 msgid ""
 "Oops! Something weird happened:<br>Can't find the module that was capable of"
 " this import action. :("
-msgstr ""
+msgstr "Oops! È accaduto qualcosa di strano: <br>Impossibile trovare il modulo capace di questa azione di importazione. :("
 
-#: src/modules/options/OptionsWidget_servers.cpp:2007
+#: src/modules/options/OptionsWidget_servers.cpp:2008
 msgid "irc.unknown.net"
 msgstr "irc.unknown.net"
 
-#: src/modules/options/OptionsWidget_servers.cpp:2160
+#: src/modules/options/OptionsWidget_servers.cpp:2161
 msgid ""
 "If you click <b>Yes</b>, all of your saved networks, servers, settings, and "
 "passwords will be lost.<br>Would you like to continue?"
-msgstr ""
+msgstr "Se clicchi <b>Sì</b>, tutte le tue reti, server, impostazioni e password verranno perse.<br>Sei sicuro di voler proseguire?"
 
-#: src/modules/options/OptionsWidget_servers.cpp:2163
+#: src/modules/options/OptionsWidget_servers.cpp:2164
 msgid "Confirm Clearing Server List - KVIrc"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_servers.cpp:2164
-msgid "Yes"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_servers.cpp:2164
-msgid "No"
-msgstr ""
+msgstr "Conferma pulizia lista dei server - KVIrc "
 
 #: src/modules/options/OptionsWidget_servers.h:173
 msgid "Servers and Configuration"
-msgstr ""
+msgstr "Server e configurazione  - KVIrc"
 
 #: src/modules/options/OptionsWidget_servers.h:174
 msgid "connection"
@@ -3982,7 +3972,7 @@ msgstr "Questo ti permette di selezionare il lettore multimediale che deve esser
 
 #: src/modules/options/OptionsWidget_sound.cpp:90
 msgid "ID3 Tags Encoding"
-msgstr ""
+msgstr "Codifica tag ID3"
 
 #: src/modules/options/OptionsWidget_sound.cpp:92
 msgid "This allows you to select encoding of mp3 tags."
@@ -3997,7 +3987,7 @@ msgstr "Usa Codifica Linguaggio"
 
 #: src/modules/options/OptionsWidget_sound.cpp:114
 msgid "Winamp messages encoding"
-msgstr ""
+msgstr "Codifica messaggi di Winamp"
 
 #: src/modules/options/OptionsWidget_sound.cpp:116
 msgid "This allows you to select encoding of winamp messages."
@@ -4005,19 +3995,19 @@ msgstr "Questo ti permette di scegliere la codifica per i messaggi di winamp."
 
 #: src/modules/options/OptionsWidget_sound.cpp:324
 msgid "New query opened:"
-msgstr ""
+msgstr "Nuova query aperta:"
 
 #: src/modules/options/OptionsWidget_sound.cpp:327
 msgid "New message in inactive query:"
-msgstr ""
+msgstr "Nuovo messaggio su una query inattiva:"
 
 #: src/modules/options/OptionsWidget_sound.cpp:330
 msgid "Highlighted message in inactive window:"
-msgstr ""
+msgstr "Messaggio evidenziato su una finestra inattiva:"
 
 #: src/modules/options/OptionsWidget_sound.cpp:333
 msgid "When I am kicked:"
-msgstr ""
+msgstr "Quando vengo kickato:"
 
 #: src/modules/options/OptionsWidget_sound.h:33
 msgid "Sound"
@@ -4058,7 +4048,7 @@ msgstr "Forza lingua:"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:97
 msgid "<b>Note:</b> You must restart KVIrc to apply any language changes"
-msgstr ""
+msgstr "<b>Nota:</b> La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:99
 msgid "Automatic detection"
@@ -4070,11 +4060,11 @@ msgstr "en"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:138
 msgid "Spell Checker Dictionaries"
-msgstr ""
+msgstr "Dizionari del correttore ortografico"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:156
 msgid "Language Code"
-msgstr ""
+msgstr "Codice lingua"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:157
 msgid "Provided by"
@@ -4092,7 +4082,7 @@ msgstr "lingua,codifica,caratteri"
 msgid ""
 "This table contains the text icon associations.<br>KVIrc will use them to "
 "display the Alt+E escape sequences and eventually the emoticons."
-msgstr ""
+msgstr "Questa tabella contiene le associazioni tra icone e testo.<br>KVirc le userà per mostrare le sequenze Alt+E o eventualmente le emoticons."
 
 #: src/modules/options/OptionsWidget_textIcons.cpp:95
 msgid "Add"
@@ -4112,7 +4102,7 @@ msgstr "senza nome"
 
 #: src/modules/options/OptionsWidget_textIcons.h:37
 msgid "Text Icons"
-msgstr ""
+msgstr "Emoticons"
 
 #: src/modules/options/OptionsWidget_textIcons.h:39
 msgid "smileys,emoticons"
@@ -4138,7 +4128,7 @@ msgstr "Carattere generale per l'applicazione:"
 
 #: src/modules/options/OptionsWidget_theme.cpp:59
 msgid "Global window opacity:"
-msgstr ""
+msgstr "Opacità globale della finestra:"
 
 #: src/modules/options/OptionsWidget_theme.cpp:62
 msgid "Enable transparency"
@@ -4149,20 +4139,20 @@ msgid ""
 "This option makes all KVIrc windows look transparent.<br>You must choose a "
 "blending background image below or check the \"Use compositing for real "
 "transparency\" option."
-msgstr ""
+msgstr "Questa opzione rende tutte le finestre di KVIrc trasparenti.<br>Devi scegliere un immagine di sfondo o attivare l'opzione \"Usa il composite per la vera trasparenza\"."
 
 #: src/modules/options/OptionsWidget_theme.cpp:72
 msgid ""
 "This option makes all KVIrc windows look transparent.<br>You must choose a "
 "blending background image below or check the \"Use desktop background for "
 "transparency\" option."
-msgstr ""
+msgstr "Questa opzione rende tutte le finestre di KVIrc trasparenti.<br>Devi scegliere un immagine di sfondo o attivare l'opzione \"Usa lo sfondo del desktop per la trasparenza\"."
 
 #: src/modules/options/OptionsWidget_theme.cpp:79
 msgid ""
 "This option makes all KVIrc windows look like transparent.<br>You must "
 "choose a blending background image below."
-msgstr ""
+msgstr "Questa opzione rende tutte le finestre di KVIrc trasparenti.<br>Devi scegliere un immagine di sfondo."
 
 #: src/modules/options/OptionsWidget_theme.cpp:85
 msgid "Child window opacity:"
@@ -4192,11 +4182,11 @@ msgstr "Usa lo sfondo del desktop per la trasparenza"
 
 #: src/modules/options/OptionsWidget_theme.cpp:165
 msgid "Border color:"
-msgstr ""
+msgstr "Colore del bordo:"
 
 #: src/modules/options/OptionsWidget_theme.cpp:166
 msgid "Font color:"
-msgstr ""
+msgstr "Colore del font:"
 
 #: src/modules/options/OptionsWidget_theme.h:33
 #: src/modules/options/OptionsWidget_windowList.h:34
@@ -4218,7 +4208,7 @@ msgstr "tema,sfondo"
 
 #: src/modules/options/OptionsWidget_theme.h:71
 msgid "Toolbar Applets"
-msgstr ""
+msgstr "Applet sulla toolbar"
 
 #: src/modules/options/OptionsWidget_theme.h:72
 msgid "theme,toolbar"
@@ -4227,7 +4217,7 @@ msgstr "tema,toolbar"
 #: src/modules/options/OptionsWidget_tools.cpp:39
 msgid ""
 "This section contains IRC tools like <b>away, lag and logging system</b>. "
-msgstr ""
+msgstr "Questa sezione contiene gli strumenti per IRC quali<b> away, controllo lag e sistema di logging</b>."
 
 #: src/modules/options/OptionsWidget_tools.h:32
 msgid "Tools"
@@ -4270,19 +4260,19 @@ msgstr "Abilita la notifica del messaggio basato sui livelli (non sul tipo di me
 
 #: src/modules/options/OptionsWidget_tray.cpp:57
 msgid "Select Message Levels to Notify"
-msgstr ""
+msgstr "Seleziona i livelli di messaggio da notificare"
 
 #: src/modules/options/OptionsWidget_tray.cpp:59
 msgid "Minimum level for low-priority messages:"
-msgstr ""
+msgstr "Livello minimo per i messaggi a bassa priorità:"
 
 #: src/modules/options/OptionsWidget_tray.cpp:61
 msgid "Minimum level for high-priority message:"
-msgstr ""
+msgstr "Livello minimo per i messaggi ad alta priorità:"
 
 #: src/modules/options/OptionsWidget_tray.h:32
 msgid "Tray Icon"
-msgstr ""
+msgstr "Icona nella Tray"
 
 #: src/modules/options/OptionsWidget_tray.h:34
 msgid "tray,TRAYICON"
@@ -4322,18 +4312,18 @@ msgid ""
 "debug window. This makes tracking of scripts that might be running in "
 "several windows far easier. The messages in the debug window also contain a "
 "deeper call stack which will help you to identify the scripting problems."
-msgstr ""
+msgstr "Questa opzione mostrerà tutti gli errori ed avvertimenti degli script nella finestra speciale di debug. Questo faciliterà di molto il tracciamento degli script che potrebbero girare in diverse finestre. I messaggi nella finestra di debug conterranno anche lo stack della chiamata che ti aiuterà ad identificare i problemi nello script."
 
 #: src/modules/options/OptionsWidget_uparser.cpp:60
 msgid "Create debug window without focus"
-msgstr ""
+msgstr "Apri finestra di debug senza dare focus"
 
 #: src/modules/options/OptionsWidget_uparser.cpp:61
 msgid ""
 "This option prevents the debug window from opening and diverting application"
 " focus.<br>Enable this if you don't like the debug window popping up while "
 "you're typing something in a channel."
-msgstr ""
+msgstr "Questa opzione previene che la finestra di debug rubi il focus dell'applicazione.<br>Abilitala se non vuoi che la finestra di debug si apra mentre stai scrivendo qualcosa in un canale."
 
 #: src/modules/options/OptionsWidget_uparser.h:30
 msgid "Scripting Engine"
@@ -4345,23 +4335,23 @@ msgstr "script,kvs,debug"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:48
 msgid "Mouse Handler"
-msgstr ""
+msgstr "Gestore mouse"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:50
 msgid "How many clicks to open links?"
-msgstr ""
+msgstr "Quanti click per aprire i link?"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:52
 msgid "Single-click"
-msgstr ""
+msgstr "Click singolo"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:53
 msgid "Double-click"
-msgstr ""
+msgstr "Doppio click"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:65
 msgid "Protocol Handler"
-msgstr ""
+msgstr "Gestore protocollo"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:68
 msgid "Use system URL handlers"
@@ -4393,11 +4383,11 @@ msgstr "Comando gestore del protocollo sconosciuto:"
 
 #: src/modules/options/OptionsWidget_urlHandlers.h:32
 msgid "URL Handlers"
-msgstr ""
+msgstr "Gestori URL"
 
 #: src/modules/options/OptionsWidget_urlHandlers.h:35
 msgid "URL,programs"
-msgstr ""
+msgstr "URL,programmi"
 
 #: src/modules/options/OptionsWidget_userList.cpp:49
 msgid "Nickname Colors"
@@ -4448,7 +4438,7 @@ msgstr "User-op:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:62
 msgid "Away (blend color):"
-msgstr ""
+msgstr "Away (colore di fusione):"
 
 #: src/modules/options/OptionsWidget_userList.cpp:73
 msgid "Use different color for own nick:"
@@ -4489,11 +4479,11 @@ msgstr "Colore sfondo"
 
 #: src/modules/options/OptionsWidget_userList.cpp:133
 msgid "Horizontal alignment:"
-msgstr ""
+msgstr "Allineamento orizzontale:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:137
 msgid "Vertical alignment:"
-msgstr ""
+msgstr "Allineamento verticale:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:226
 #: src/modules/options/OptionsWidget_windowList.cpp:264
@@ -4509,7 +4499,7 @@ msgid ""
 "Window List and select Save Window Properties As Default.<br><b>Please "
 "note</b> dragging method may not be as reliable and values set may be lost "
 "randomly, However values will never be less than the width you specified."
-msgstr ""
+msgstr "Qui puoi inserire la larghezza minima della lista utenti quando visibile. I valori consigliati sono tra i 120 e i 170 pixel. Il valore qui impostato vale per tutti i canali in tutte le reti. Per avere una larghezza diversa su specifici canali, allarga la lista con il mouse e poi fai click desto sul canale nella Lista finestre e scegli Salva proprietà finestra come default.\n<br><b>Attenzione</b> il metodo di trascinare può non essere affidabile e i valori potrebbero corrompersi. Comunque i valori non saranno mai minori della larghezza qui specificata."
 
 #: src/modules/options/OptionsWidget_userList.cpp:236
 msgid "Show gender icons"
@@ -4517,7 +4507,7 @@ msgstr "Mostra icone del sesso"
 
 #: src/modules/options/OptionsWidget_userList.cpp:237
 msgid "Show user rank channel icons"
-msgstr ""
+msgstr "Mostra icone livello utente nei canali"
 
 #: src/modules/options/OptionsWidget_userList.cpp:238
 msgid "Show user channel activity indicator"
@@ -4529,7 +4519,7 @@ msgstr "Mostra le etichette di stato della lista utenti"
 
 #: src/modules/options/OptionsWidget_userList.cpp:240
 msgid "Enable user tooltip"
-msgstr ""
+msgstr "Attiva tooltip utente"
 
 #: src/modules/options/OptionsWidget_userList.cpp:241
 msgid "Show avatars in userlist"
@@ -4542,7 +4532,7 @@ msgstr "Abilita avatar animati"
 #: src/modules/options/OptionsWidget_userList.cpp:243
 msgid ""
 "Place nicks starting with non-alpha characters (such as _COOL_BOY_) last"
-msgstr ""
+msgstr "Ordina i nick che iniziano con caratteri non alfanumerici (es.: _COOL_BOY_) per ultimi"
 
 #: src/modules/options/OptionsWidget_userList.cpp:244
 msgid ""
@@ -4550,7 +4540,7 @@ msgid ""
 " be sorted last in userlist after all regular nicknames.<br>Select this "
 "option if you prefer to see regular nicknames sorted topmost on "
 "userlist.<br><br><b>Note:</b> Changes to this option requires KVIrc restart."
-msgstr ""
+msgstr "Tutti i nickname che contengono caratteri come [ ] ^ _ &lt; &gt; | etc. verranno ordinati per ultimi nella lista utenti, dopo i nickname normali.<br>Scegli questa opzione se preferisci vedere per primi i nickname normali nella lista utenti.<br><br><b>Nota:</b> le modifiche a questa opzione richiedono un riavvio di KVIrc."
 
 #: src/modules/options/OptionsWidget_userList.h:32
 msgid "Userlist"
@@ -4580,7 +4570,7 @@ msgstr "tema,lista utenti,canale,colori"
 
 #: src/modules/options/OptionsWidget_userList.h:83
 msgid "Userlist Grid"
-msgstr ""
+msgstr "Griglia della lista utenti"
 
 #: src/modules/options/OptionsWidget_userList.h:84
 msgid "theme,userlist,channel,grid"
@@ -4588,19 +4578,19 @@ msgstr "tema,lista utenti,canale,griglia"
 
 #: src/modules/options/OptionsWidget_userList.h:105
 msgid "userlist,channel,width"
-msgstr ""
+msgstr "lista utenti,canale,larghezza"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:42
 msgid "Window list type:"
-msgstr ""
+msgstr "Tipo lista finestre:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:44
 msgid "Tree"
-msgstr ""
+msgstr "Ad albero"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:45
 msgid "Classic"
-msgstr ""
+msgstr "Classica"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:49
 msgid "Sort windows by name"
@@ -4624,7 +4614,7 @@ msgid ""
 "it is generated by automated entities (such as bots or IRC servers). "
 "\"Human\" activity causes the indicator to be shaded red while automated "
 "activity causes the indicator to be shaded blue."
-msgstr ""
+msgstr "Questa opzione abilita l'uso del misuratore di attività per la lista dei canali. Ogni finestra avrà il proprio indicatore che segnalerà l'attività presente in quella finestra. L'indicatore è un piccolo quadrato che cambia colore: più scuro se l'attività è bassa, più chiaro se l'attività è alta. KVIrc usa l'euristica per determinare se l'attività può essere considerata \"umana\" o se è generata da entità automatiche (come i bot o i server IRC). Un attività \"umana\" fa sì che l'indicatore si colori di rosso, mentre quella automatica lo colorerà di blu."
 
 #: src/modules/options/OptionsWidget_windowList.cpp:60
 msgid "Show IRC context indicator in window list"
@@ -4636,7 +4626,7 @@ msgstr "Attiva suggerimenti della finestra"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:62
 msgid "Allow the window list to be moved"
-msgstr ""
+msgstr "Permetti di spostare la lista finestre"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:63
 msgid "Show user flag for channels"
@@ -4644,7 +4634,7 @@ msgstr "Mostra flag utenti per canali"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:92
 msgid "The following events trigger this alert level:"
-msgstr ""
+msgstr "I seguenti eventi scatenano questo livello di allerta:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:143
 #: src/modules/options/OptionsWidget_windowList.cpp:283
@@ -4683,7 +4673,7 @@ msgstr "Usa pulsanti piatti"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:295
 msgid "Show close button on window list items"
-msgstr ""
+msgstr "Mostra pulsante di chiusura sugli elementi della lista finestre"
 
 #: src/modules/options/OptionsWidget_windowList.h:32
 msgid "Window List"
@@ -4699,7 +4689,7 @@ msgstr "Lista finestre classica"
 
 #: src/modules/options/libkvioptions.cpp:104
 msgid "No such options_group %Q"
-msgstr ""
+msgstr "Options_group non esistente %Q"
 
 #: src/modules/options/libkvioptions.cpp:214
 msgid "No such options page class name %Q"

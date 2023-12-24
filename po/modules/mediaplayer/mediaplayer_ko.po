@@ -3,17 +3,18 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# MarongHappy <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
 # ks k, 2020
-# MarongHappy <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-30 13:26+0200\n"
-"PO-Revision-Date: 2020-06-23 17:44+0000\n"
-"Last-Translator: ks k\n"
-"Language-Team: Korean (http://www.transifex.com/kvirc/KVIrc/language/ko/)\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 09:11+0000\n"
+"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
+"Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,50 +32,37 @@ msgstr "AMIP 플러그인에 대한 인터페이스입니다.\n당신은 http://
 msgid "Function not implemented"
 msgstr "구현되지 않은 함수"
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:339
+#: src/modules/mediaplayer/MpMprisInterface.cpp:279
 msgid ""
 "An interface for the Audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
 msgstr "Audtous 미디어 플레이어용 인터페이스입니다.\nhttp://audacious-media-player.org 에서 다운로드하십시오\n"
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:473
-msgid ""
-"An interface for BMPx.\n"
-"Download it from http://sourceforge.net/projects/beepmp\n"
-msgstr "BMPx용 인터페이스.\nhttp://sourceforge.net/projects/beepmp 에서 다운로드하십시오\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:494
+#: src/modules/mediaplayer/MpMprisInterface.cpp:294
 msgid ""
 "An interface for Amarok2.\n"
 "Download it from http://amarok.kde.org\n"
 msgstr "Amarok2용 인터페이스.\nhttp://amarok.kde.org 에서 다운로드하십시오\n"
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:509
+#: src/modules/mediaplayer/MpMprisInterface.cpp:309
 msgid ""
 "An interface for Qmmp.\n"
 "Download it from http://qmmp.ylsoftware.com\n"
 msgstr "Qmmp용 인터페이스.\nhttp://qmmp.ylsoftware.com 에서 다운로드하십시오\n"
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:524
+#: src/modules/mediaplayer/MpMprisInterface.cpp:324
 msgid ""
 "An interface for the XMMS2 media player.\n"
 "Download it from http://xmms2.org\n"
 msgstr "XMMS2 미디어 플레이어용 인터페이스.\nhttp://xmms2.org 에서 다운로드하십시오\n"
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:539
-msgid ""
-"An interface for the Mozilla Songbird media player.\n"
-"Download it from http://www.getsongbird.com.\n"
-"To use it you have to install also the MPRIS addon available at http://addons.songbirdnest.com/addon/1626.\n"
-msgstr "Mozilla Songbird 미디어 플레이어용 인터페이스.\nhttp://www.getsongbird.com 에서 다운로드하십시오\n이것을 사용하려면 http://addons.songbirdnest.com/addon/1626 에 있는 MPRIS 애드온도 설치해야 합니다.\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:561
+#: src/modules/mediaplayer/MpMprisInterface.cpp:339
 msgid ""
 "An interface for Totem.\n"
 "Download it from http://projects.gnome.org/totem/\n"
 msgstr "Totem을 위한 인터페이스.\nhttp://projects.gnome.org/totem/ 에서 다운로드하십시오\n"
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:576
+#: src/modules/mediaplayer/MpMprisInterface.cpp:354
 msgid ""
 "An interface for VLC.\n"
 "Download it from http://www.videolan.org/\n"
@@ -82,11 +70,21 @@ msgid ""
 "interface in the VLC preferences\n"
 msgstr "VLC용 인터페이스입니다.\nhttp://www.videolan.org/ 에서 내려받으십시오\nD-Bus 컨트롤을 수동으로 사용 되도록 설정이 필요합니다\nVLC 기본 설정의 인터페이스\n"
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:593
+#: src/modules/mediaplayer/MpMprisInterface.cpp:371
 msgid ""
 "An interface for Clementine.\n"
 "Download it from http://www.clementine-player.org/\n"
 msgstr "Clementine용 인터페이스.\nhttp://www.clementine-player.org/ 에서 다운로드하십시오\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:386
+msgid ""
+"An interface for Strawberry.\n"
+"Download it from https://www.strawberrymusicplayer.org/\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:401
+msgid "An generic interface for MPRIS 2 media players."
+msgstr ""
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:181
 msgid "Can't find a running Winamp window"

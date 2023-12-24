@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-30 13:26+0200\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
 "PO-Revision-Date: 2015-08-01 09:12+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
@@ -196,7 +196,7 @@ msgstr "16진수 문자열이 올바르지 않습니다!"
 #: src/modules/objects/KvsObject_groupBox.cpp:297
 #: src/modules/objects/KvsObject_hBox.cpp:194
 #: src/modules/objects/KvsObject_label.cpp:263
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:860
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:868
 #: src/modules/objects/KvsObject_painter.cpp:1335
 msgid "Unknown alignment '%Q'"
 msgstr "알 수 없는 정렬 '%Q' 입니다"
@@ -223,7 +223,7 @@ msgstr "'%Q' 는 올바른 파일 경로가 아닙니다"
 #: src/modules/objects/KvsObject_label.cpp:317
 #: src/modules/objects/KvsObject_listWidget.cpp:332
 #: src/modules/objects/KvsObject_painter.cpp:788
-#: src/modules/objects/KvsObject_widget.cpp:1882
+#: src/modules/objects/KvsObject_widget.cpp:1878
 msgid "Unknown style '%Q'"
 msgstr "알 수 없는 꼴 '%Q' 입니다"
 
@@ -260,11 +260,11 @@ msgstr "알 수 없는 모드 '%Q' 입니다."
 msgid "Unknown segment style '%Q'"
 msgstr "알 수 없는 세그먼트 꼴 '%Q' 입니다"
 
-#: src/modules/objects/KvsObject_lineEdit.cpp:402
+#: src/modules/objects/KvsObject_lineEdit.cpp:403
 msgid "Unknown echo mode '%Q'"
 msgstr "알 수 없는 메아리 모드 '%Q' 입니다"
 
-#: src/modules/objects/KvsObject_lineEdit.cpp:484
+#: src/modules/objects/KvsObject_lineEdit.cpp:485
 msgid "Unknown '%Q' completion mode, switching to default PopupCompletion"
 msgstr "알 수 없는 '%Q' 완료 모드입니다. 기본 팝업 완료 모드로 전환됩니다"
 
@@ -301,9 +301,9 @@ msgstr "위젯이 아닌 객체를 삽입할 수 없습니다"
 #: src/modules/objects/KvsObject_mainWindow.cpp:83
 #: src/modules/objects/KvsObject_toolButton.cpp:263
 #: src/modules/objects/KvsObject_trayIcon.cpp:196
-#: src/modules/objects/KvsObject_webView.cpp:1141
-#: src/modules/objects/KvsObject_widget.cpp:1901
-#: src/modules/objects/KvsObject_widget.cpp:2146
+#: src/modules/objects/KvsObject_webView.cpp:560
+#: src/modules/objects/KvsObject_widget.cpp:1897
+#: src/modules/objects/KvsObject_widget.cpp:2142
 #: src/modules/objects/object_macros.h:106
 msgid "Widget parameter is not an object"
 msgstr "위젯 매개 변수가 객체가 아닙니다"
@@ -311,14 +311,14 @@ msgstr "위젯 매개 변수가 객체가 아닙니다"
 #: src/modules/objects/KvsObject_mainWindow.cpp:88
 #: src/modules/objects/KvsObject_toolButton.cpp:268
 #: src/modules/objects/KvsObject_trayIcon.cpp:201
-#: src/modules/objects/KvsObject_webView.cpp:1146
-#: src/modules/objects/KvsObject_widget.cpp:1906
+#: src/modules/objects/KvsObject_webView.cpp:565
+#: src/modules/objects/KvsObject_widget.cpp:1902
 #: src/modules/objects/object_macros.h:111
 msgid "Widget parameter is not a valid object"
 msgstr "위젯 매개 변수가 올바른 객체가 아닙니다"
 
 #: src/modules/objects/KvsObject_mainWindow.cpp:93
-#: src/modules/objects/KvsObject_widget.cpp:2152
+#: src/modules/objects/KvsObject_widget.cpp:2148
 #: src/modules/objects/KvsObject_wizard.cpp:186
 #: src/modules/objects/KvsObject_wizard.cpp:205
 #: src/modules/objects/KvsObject_wizard.cpp:226
@@ -349,89 +349,89 @@ msgstr "'%d' 이라는 줄이 없습니다"
 msgid "Unknown word wrap '%Q'"
 msgstr "번역확인--> 알 수 없는 단어가 '%Q' 로 표시(or줄바꿈) 됩니다"
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:649
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:653
 #: src/modules/objects/KvsObject_painter.cpp:716
 #: src/modules/objects/KvsObject_tableWidget.cpp:310
-#: src/modules/objects/KvsObject_widget.cpp:1263
-#: src/modules/objects/KvsObject_widget.cpp:1346
+#: src/modules/objects/KvsObject_widget.cpp:1259
+#: src/modules/objects/KvsObject_widget.cpp:1342
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr "매개 변수로 전달된 배열에는 3개 이상의 요소가 포함되어야 합니다"
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:658
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:662
 #: src/modules/objects/KvsObject_tableWidget.cpp:319
-#: src/modules/objects/KvsObject_widget.cpp:1272
-#: src/modules/objects/KvsObject_widget.cpp:1355
+#: src/modules/objects/KvsObject_widget.cpp:1268
+#: src/modules/objects/KvsObject_widget.cpp:1351
 msgid "One of the colors array parameters is empty"
 msgstr "색상 배열 매개 변수 중 하나가 비어 있습니다"
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:663
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:667
 #: src/modules/objects/KvsObject_tableWidget.cpp:325
-#: src/modules/objects/KvsObject_widget.cpp:1278
-#: src/modules/objects/KvsObject_widget.cpp:1361
+#: src/modules/objects/KvsObject_widget.cpp:1274
+#: src/modules/objects/KvsObject_widget.cpp:1357
 msgid "One of the colors array parameters didn't evaluate to an integer"
 msgstr "색상 배열 매개 변수 중 하나가 정수로 계산되지 않았습니다"
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:676
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:680
 msgid "A string of 6 hex digits is required"
 msgstr "6개의 16진수 문자열이 필요합니다"
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:687
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:691
 msgid "Not an hex digit"
 msgstr "16진수가 아닙니다"
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:696
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:700
 msgid ""
 "$setColor requires either an array as first parameter or three integers"
 msgstr "$ setColor에는 첫 번째 매개 변수 또는 세 개의 정수로 배열이 필요합니다"
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:701
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:705
 #: src/modules/objects/KvsObject_painter.cpp:670
 #: src/modules/objects/KvsObject_painter.cpp:706
 #: src/modules/objects/KvsObject_painter.cpp:752
 #: src/modules/objects/KvsObject_tableWidget.cpp:367
-#: src/modules/objects/KvsObject_widget.cpp:1198
-#: src/modules/objects/KvsObject_widget.cpp:1321
-#: src/modules/objects/KvsObject_widget.cpp:1404
-#: src/modules/objects/KvsObject_widget.cpp:1733
-#: src/modules/objects/KvsObject_widget.cpp:1792
+#: src/modules/objects/KvsObject_widget.cpp:1194
+#: src/modules/objects/KvsObject_widget.cpp:1317
+#: src/modules/objects/KvsObject_widget.cpp:1400
+#: src/modules/objects/KvsObject_widget.cpp:1729
+#: src/modules/objects/KvsObject_widget.cpp:1788
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr "첫 번째 매개 변수는 배열이나 정수로 계산되지 않았습니다"
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:774
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:778
 msgid "Unknown text format '%Q'"
 msgstr "알 수 없는 글자 형식 '%Q' 입니다"
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:787
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:791
 #: src/modules/objects/KvsObject_pixmap.cpp:516
 #: src/modules/objects/KvsObject_pixmap.cpp:557
 #: src/modules/objects/KvsObject_textBrowser.cpp:102
 msgid "I can't find the specified file '%Q'."
 msgstr "나는 지정한 파일 '%Q' 를 찾을 수 없습니다."
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:794
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:798
 msgid "I can't read the file '%Q'."
 msgstr "나는 '%Q' 파일을 읽을 수 없습니다."
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:809
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:813
 msgid "Unknown text document format '%Q'"
 msgstr "알 수 없는 글자 문서 형식 '%Q'입니다"
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:829
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:837
 msgid "Unknown text document format '%Q'. Writing the document as plain text."
 msgstr "알 수 없는 텍스트 문서 형식 '%Q' 입니다. 문서를 일반 텍스트로 쓰고 있습니다."
 
 #: src/modules/objects/KvsObject_painter.cpp:642
-#: src/modules/objects/KvsObject_widget.cpp:1163
+#: src/modules/objects/KvsObject_widget.cpp:1159
 msgid "The array passed as parameter must contain at least 4 elements"
 msgstr "매개 변수로 전달된 배열에는 4개 이상의 요소가 포함되어야 합니다"
 
 #: src/modules/objects/KvsObject_painter.cpp:651
-#: src/modules/objects/KvsObject_widget.cpp:1176
+#: src/modules/objects/KvsObject_widget.cpp:1172
 msgid "One of the geometry array parameters is empty"
 msgstr "기하 배열 매개 변수 중 하나가 비어 있습니다"
 
 #: src/modules/objects/KvsObject_painter.cpp:656
-#: src/modules/objects/KvsObject_widget.cpp:1181
+#: src/modules/objects/KvsObject_widget.cpp:1177
 msgid "One of the geometry array parameters didn't evaluate to an integer"
 msgstr "기하 배열 매개 변수 중 하나가 정수로 계산되지 않았습니다"
 
@@ -440,8 +440,8 @@ msgid " requires either an array as first parameter or four integers"
 msgstr " 배열은 첫 번째 매개 변수 또는 네 개의 정수가 필요합니다"
 
 #: src/modules/objects/KvsObject_painter.cpp:680
-#: src/modules/objects/KvsObject_widget.cpp:1707
-#: src/modules/objects/KvsObject_widget.cpp:1766
+#: src/modules/objects/KvsObject_widget.cpp:1703
+#: src/modules/objects/KvsObject_widget.cpp:1762
 msgid "The array passed as parameter must contain at least 2 elements"
 msgstr "매개 변수로 전달된 배열에는 가장 적은 2개 이상의 요소가 포함되어야 합니다"
 
@@ -503,14 +503,14 @@ msgstr "위젯 또는 픽스맵 필요함 "
 #: src/modules/objects/KvsObject_painter.cpp:1372
 #: src/modules/objects/KvsObject_painter.cpp:1425
 #: src/modules/objects/KvsObject_painter.cpp:1536
-#: src/modules/objects/KvsObject_widget.cpp:2010
+#: src/modules/objects/KvsObject_widget.cpp:2006
 msgid "Pixmap parameter is not an object"
 msgstr "픽스맵 매개 변수가 객체가 아닙니다"
 
 #: src/modules/objects/KvsObject_painter.cpp:1377
 #: src/modules/objects/KvsObject_painter.cpp:1430
 #: src/modules/objects/KvsObject_painter.cpp:1541
-#: src/modules/objects/KvsObject_widget.cpp:2015
+#: src/modules/objects/KvsObject_widget.cpp:2011
 msgid "Pixmap object required"
 msgstr "픽스맵 객체가 필요합니다"
 
@@ -560,7 +560,7 @@ msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
 msgstr "알 수 없는 가로 세로 비율 %Q - 종횡비를 유지(KeepAspectRatio) 비율로 전환"
 
 #: src/modules/objects/KvsObject_popupMenu.cpp:243
-#: src/modules/objects/KvsObject_webView.cpp:1175
+#: src/modules/objects/KvsObject_webView.cpp:594
 msgid "Icon '%Q' doesn't exist"
 msgstr "'%Q' 아이콘이 없습니다"
 
@@ -644,15 +644,15 @@ msgstr "알수 없는 위치 '%Q'"
 
 #: src/modules/objects/KvsObject_tableWidget.cpp:346
 #: src/modules/objects/KvsObject_tableWidget.cpp:353
-#: src/modules/objects/KvsObject_widget.cpp:1299
-#: src/modules/objects/KvsObject_widget.cpp:1306
-#: src/modules/objects/KvsObject_widget.cpp:1382
-#: src/modules/objects/KvsObject_widget.cpp:1389
+#: src/modules/objects/KvsObject_widget.cpp:1295
+#: src/modules/objects/KvsObject_widget.cpp:1302
+#: src/modules/objects/KvsObject_widget.cpp:1378
+#: src/modules/objects/KvsObject_widget.cpp:1385
 msgid "Not a valid color!"
 msgstr "올바른 색상이 아닙니다!"
 
 #: src/modules/objects/KvsObject_tableWidget.cpp:362
-#: src/modules/objects/KvsObject_widget.cpp:1316
+#: src/modules/objects/KvsObject_widget.cpp:1312
 msgid ""
 "$setForegroundColor requires either an array as first parameter, one hex "
 "string or color name, or three integers"
@@ -670,7 +670,7 @@ msgstr "픽스맵 객체 또는 이미지 ID가 필요합니다"
 
 #: src/modules/objects/KvsObject_toolButton.cpp:273
 #: src/modules/objects/KvsObject_trayIcon.cpp:206
-#: src/modules/objects/KvsObject_webView.cpp:1151
+#: src/modules/objects/KvsObject_webView.cpp:570
 msgid "Can't add a non-popupmenu object"
 msgstr "팝업차림표가 아닌 (non-popupmenu) 객체를 추가 할 수 없습니다"
 
@@ -704,122 +704,75 @@ msgstr "목록보기항목(listviewitem)의 상위는 다른 목록보기항목(
 msgid "The widget must be a child of this vbox"
 msgstr "위젯은 이 vbox의 하위 항목이어야 합니다"
 
-#: src/modules/objects/KvsObject_webView.cpp:470
+#: src/modules/objects/KvsObject_webView.cpp:426
 msgid "Unknown delegation policy '%Q'- Switch do default dontDelegateLinks"
 msgstr "알 수 없는 위임 정책 '%Q'- 스위치가 기본 링크를위임하지않음(dontDelegateLinks)를 수행합니다"
 
-#: src/modules/objects/KvsObject_webView.cpp:540
-#: src/modules/objects/KvsObject_webView.cpp:597
-#: src/modules/objects/KvsObject_webView.cpp:620
-#: src/modules/objects/KvsObject_webView.cpp:638
-#: src/modules/objects/KvsObject_webView.cpp:656
-#: src/modules/objects/KvsObject_webView.cpp:672
-#: src/modules/objects/KvsObject_webView.cpp:708
-#: src/modules/objects/KvsObject_webView.cpp:728
-#: src/modules/objects/KvsObject_webView.cpp:747
-#: src/modules/objects/KvsObject_webView.cpp:765
-#: src/modules/objects/KvsObject_webView.cpp:838
-#: src/modules/objects/KvsObject_webView.cpp:864
-#: src/modules/objects/KvsObject_webView.cpp:881
-#: src/modules/objects/KvsObject_webView.cpp:900
-#: src/modules/objects/KvsObject_webView.cpp:918
-#: src/modules/objects/KvsObject_webView.cpp:935
-#: src/modules/objects/KvsObject_webView.cpp:959
-#: src/modules/objects/KvsObject_webView.cpp:983
-#: src/modules/objects/KvsObject_webView.cpp:1011
-#: src/modules/objects/KvsObject_webView.cpp:1044
-#, c-format
-msgid "Document element with ID %d doesn't exist"
-msgstr "ID가 %d인 문서 요소가 없습니다"
-
-#: src/modules/objects/KvsObject_webView.cpp:572
-msgid "Document element is null: you must call getDocumentElement first"
-msgstr "문서 요소가 널입니다. 먼저 문서요소가져오기(getDocumentElement)를 호출해야합니다"
-
-#: src/modules/objects/KvsObject_webView.cpp:582
-msgid "Unsupported datatype"
-msgstr "지원되지 않는 자료형입니다"
-
-#: src/modules/objects/KvsObject_webView.cpp:793
+#: src/modules/objects/KvsObject_webView.cpp:512
 msgid "Unknown web setting '%Q'"
 msgstr "알 수 없는 웹 설정 '%Q'입니다"
 
-#: src/modules/objects/KvsObject_webView.cpp:821
+#: src/modules/objects/KvsObject_webView.cpp:540
 msgid "Unknown findflag  '%Q'"
 msgstr "알 수 없는 찾기깃발 '%Q' 입니다"
 
-#: src/modules/objects/KvsObject_webView.cpp:1025
-msgid ""
-"Unknown styleResolveStrategy: '%Q' - Switching to default CascadedStyle "
-"strategy"
-msgstr "알 수 없는 스타일해결전략(styleResolveStrategy): '%Q' - 기본 계단식스타일(CascadedStyle) 전략으로 바뀝니다"
-
-#: src/modules/objects/KvsObject_webView.cpp:1065
-#: src/modules/objects/KvsObject_webView.cpp:1088
-msgid "Unknown frame '%Q'"
-msgstr "알 수 없는 프레임 '%Q' 입니다"
-
-#: src/modules/objects/KvsObject_webView.cpp:1165
+#: src/modules/objects/KvsObject_webView.cpp:584
 msgid "Unknown action '%Q':"
 msgstr "알 수 없는 동작 '%Q':"
 
-#: src/modules/objects/KvsObject_webView.cpp:1320
-msgid "Invalid file path '%Q'"
-msgstr "'%Q' 파일 경로가 잘못되었습니다"
-
-#: src/modules/objects/KvsObject_widget.cpp:1193
+#: src/modules/objects/KvsObject_widget.cpp:1189
 msgid ""
 "$setGeometry() requires either an array as first parameter or four integers"
 msgstr "$setGeometry()형상설정 을 사용하려면 배열이 첫 번째 매개 변수로 사용하거나 네 개의 정수로 필요합니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1399
+#: src/modules/objects/KvsObject_widget.cpp:1395
 msgid ""
 "$setBackgroundColor requires either an array as first parameter, one hex "
 "string or color name, or three integers"
 msgstr "$setBackgroundColor에는 첫 번째 매개 변수나 하나의 16 진 문자열 또는 색상 이름 또는 세 개의 정수로서 배열이 필요합니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1669
-#: src/modules/objects/KvsObject_widget.cpp:1687
+#: src/modules/objects/KvsObject_widget.cpp:1665
+#: src/modules/objects/KvsObject_widget.cpp:1683
 msgid "Unknown policy '%Q'"
 msgstr "알 수 없는 정책 '%Q' 입니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1714
+#: src/modules/objects/KvsObject_widget.cpp:1710
 msgid "One of the move array parameters is empty"
 msgstr "이동 배열 매개 변수 중 하나가 비어 있습니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1719
+#: src/modules/objects/KvsObject_widget.cpp:1715
 msgid "One of the move array parameters didn't evaluate to an integer"
 msgstr "이동 배열 매개 변수 중 하나가 정수로 계산되지 않았습니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1728
+#: src/modules/objects/KvsObject_widget.cpp:1724
 msgid "$move() requires either an array as first parameter or two integers"
 msgstr "$move() 에는 첫 번째 매개 변수 또는 두 개의 정수로 배열이 필요합니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1773
+#: src/modules/objects/KvsObject_widget.cpp:1769
 msgid "One of the resize array parameters is empty"
 msgstr "배열 크기 조정 매개 변수 중 하나가 비어 있습니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1778
+#: src/modules/objects/KvsObject_widget.cpp:1774
 msgid "One of the resize array parameters didn't evaluate to an integer"
 msgstr "크기 조정 배열 매개 변수 중 하나가 정수로 계산되지 않았습니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1787
+#: src/modules/objects/KvsObject_widget.cpp:1783
 msgid "$resize() requires either an array as first parameter or two integers"
 msgstr "$resize()에는 첫 번째 매개 변수 또는 두 개의 정수로 배열이 필요합니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1817
+#: src/modules/objects/KvsObject_widget.cpp:1813
 msgid "Invalid parameters"
 msgstr "매개 변수가 잘못되었습니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1843
+#: src/modules/objects/KvsObject_widget.cpp:1839
 msgid "Unknown widget flag '%Q'"
 msgstr "알 수 없는 위젯 깃발 '%Q' 입니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1912
+#: src/modules/objects/KvsObject_widget.cpp:1908
 msgid "No Layout associated to the widget "
 msgstr "위젯과 연결된 레이아웃이 없습니다 "
 
-#: src/modules/objects/KvsObject_widget.cpp:1917
+#: src/modules/objects/KvsObject_widget.cpp:1913
 #: src/modules/objects/KvsObject_window.cpp:159
 #: src/modules/objects/KvsObject_window.cpp:164
 #: src/modules/objects/KvsObject_wizard.cpp:144
@@ -827,27 +780,27 @@ msgstr "위젯과 연결된 레이아웃이 없습니다 "
 msgid "Can't add a non-widget object"
 msgstr "위젯이 아닌 객체를 추가 할 수 없습니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1943
+#: src/modules/objects/KvsObject_widget.cpp:1939
 msgid "Parent must be a widget object"
 msgstr "상위 객체는 위젯 객체여야 합니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:1979
+#: src/modules/objects/KvsObject_widget.cpp:1975
 msgid "The pixmap is not valid"
 msgstr "픽스맵이 잘못되었습니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:2021
+#: src/modules/objects/KvsObject_widget.cpp:2017
 msgid "Null mask"
 msgstr "널 마스크"
 
-#: src/modules/objects/KvsObject_widget.cpp:2048
+#: src/modules/objects/KvsObject_widget.cpp:2044
 msgid "Unknown widget attribute '%Q'"
 msgstr "알 수 없는 위젯 특성 '%Q' 입니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:2072
+#: src/modules/objects/KvsObject_widget.cpp:2068
 msgid "Unknown Color Role '%Q'"
 msgstr "알 수 없는 색상 역할 '%Q' 입니다"
 
-#: src/modules/objects/KvsObject_widget.cpp:2084
+#: src/modules/objects/KvsObject_widget.cpp:2080
 msgid "Unknown Color Group '%Q'"
 msgstr "알 수 없는 색상 묶음 '%Q' 입니다"
 

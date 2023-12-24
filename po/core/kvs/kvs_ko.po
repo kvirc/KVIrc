@@ -3,18 +3,19 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# MarongHappy <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
 # ks k, 2020
 # ks k, 2020
-# MarongHappy <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-30 13:26+0200\n"
-"PO-Revision-Date: 2020-06-23 17:43+0000\n"
-"Last-Translator: ks k\n"
-"Language-Team: Korean (http://www.transifex.com/kvirc/KVIrc/language/ko/)\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 08:53+0000\n"
+"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
+"Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,102 +42,102 @@ msgstr "호스트 이름: %Q"
 msgid "IP address %d: %Q"
 msgstr "아이피 주소 %d: %Q"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:242
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:241
 msgid "Missing alias name"
 msgstr "별칭 이름이 없습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:253
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:252
 msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace"
 " separators"
 msgstr "별칭 이름은 문자, 숫자, 밑줄, 네임스페이스 구분 기호인 '::' 만 포함 할 수 있습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:262
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:261
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name>?"
 msgstr "별칭 이름에 ':' 문자를 입력하십시오: <namespace>::<name>... 를 의미 한것입니까?"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:268
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:267
 msgid "Found an empty namespace in alias name"
 msgstr "별칭 이름에서 빈 네임스페이스를 찾았습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:279
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:278
 msgid "The namespace '%Q' does not exist"
 msgstr "'%Q' 네임스페이스이 존재하지 않습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:287
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:286
 msgid "The alias '%Q' does not exist"
 msgstr "'%Q' 별칭이 존재하지 않습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:296
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:295
 msgid "Found an empty alias name within a namespace"
 msgstr "네임스페이스 내에서 빈 별칭 이름을 찾았습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:456
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:455
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:443
 msgid "The specified window has no button containers"
 msgstr "지정한 창에 단추 컨테이너가 없습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:470
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:469
 msgid "Window button '%Q' not found"
 msgstr "'%Q' 창 버튼을 찾을 수 없습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:500
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:499
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:482
 msgid "Can't find the icon '%Q'"
 msgstr "'%Q' 아이콘을 찾을 수 없습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:559
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:570
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:698
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:706
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:558
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:569
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:697
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:705
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1481
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1492
 msgid "No such event (%Q)"
 msgstr "(%Q) 사건이 없습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:582
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:581
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1504
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1520
 msgid "No handler '%Q' for RAW numeric event '%d'"
 msgstr "RAW 숫자 사건 '%d' 에 대한 처리기 '%Q' 가 없습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:590
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:589
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1510
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1526
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1554
 msgid "No handler '%Q' for event '%Q'"
 msgstr "어순처리안됨-> 처리기 '%Q'가 없습니다. 사건 '%Q'에 대한"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:975
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:974
 msgid "The specified ping time is invalid: assuming zero (no ping)"
 msgstr "지정한 핑 시간이 잘못되었음: 0을 가정합니다 (핑 없음)"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:985
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:984
 msgid "The specified maximum run time is invalid: assuming zero (infinite)"
 msgstr "지정한 가장 큰 실행 시간이 잘못되었음: 0으로 가정합니다 (무한)"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1005
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1004
 msgid "Failed to start the process"
 msgstr "처리의 시작에 실패했습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1048
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1047
 msgid "The specified object does not exist"
 msgstr "지정한 개체가 없습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1165
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1164
 msgid "Missing timer name"
 msgstr "타이머 이름이 없습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1174
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1173
 msgid "Missing timeout delay"
 msgstr "시간 초과 지연이 누락되었습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1181
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1180
 msgid "The timeout delay didn't evaluate to an integer"
 msgstr "시간 초과 지연이 정수로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1207
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1206
 msgid "Unable to add the timer: insufficient system resources"
 msgstr "타이머를 추가할 수 없음: 시스템 자원이 부족합니다"
 
@@ -171,11 +172,11 @@ msgstr "이 창은 IRC 맥락과 연결되어 있지 않습니다"
 msgid "Couldn't construct QDateTime object."
 msgstr "QDateTime 객체를 생성할 수 없습니다."
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:303
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:302
 msgid "Lag meter was not enabled"
 msgstr "시간 지연 측정기를 사용 되도록 설정되지 않았음"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:712
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:711
 msgid "No such event handler (%Q) for event %Q"
 msgstr "어순문제->이러한 이벤트 처리기 (%Q)가 없습니다, 이벤트 %Q에 대한"
 
@@ -358,12 +359,12 @@ msgstr "모듈 사용자쪽 명령 호출 실패: 'snd' 모듈이 'play' 라는 
 msgid "Empty target specified"
 msgstr "지정된 대상이 비었습니다"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1250
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1257
 #: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:95
 msgid "[RAW]: %Q"
 msgstr "[원시자료]: %Q"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1306
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1313
 msgid "Window with ID %Q not found: no rebinding performed"
 msgstr "ID가 %Q 인 창을 찾을 수 없음: 리바인딩이 수행되지 않았습니다"
 
@@ -545,7 +546,7 @@ msgstr "매개 변수가 빠져있습니다"
 msgid "Timer '%Q' has a broken callback handler: killing the timer"
 msgstr "'%Q' 타이머에 콜백 처리기가 고장나서 타이머를 죽이고 있습니다"
 
-#: src/kvirc/kvs/event/KviKvsEventManager.cpp:478
+#: src/kvirc/kvs/event/KviKvsEventManager.cpp:477
 msgid "Event handler %Q is broken: disabling"
 msgstr "%Q 사건 처리기가 고장나서 사용하지 않도록 설정하고 있습니다"
 
@@ -1317,10 +1318,10 @@ msgstr "오른쪽 피연산자가 숫자로 계산되지 않았습니다"
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:510
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:532
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:544
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:320
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:334
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:406
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:420
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:319
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:333
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:405
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:419
 msgid "Division by zero"
 msgstr "0으로 나뉩니다"
 
@@ -1341,12 +1342,14 @@ msgid "Hash key evaluated to empty string: fix the script"
 msgstr "해시 키가 빈 문자열로 계산되었습니다: 스크립트를 수정하십시오"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:91
+#, c++-format
 msgid ""
 "The argument of the {} subscript didn't evaluate to a hash: automatic "
 "conversion from type '%Q' supplied"
 msgstr "{} 첨자의 인수가 해시로 계산되지 않았습니다. '%Q' 유형의 자동 변환이 제공되었습니다"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:138
+#, c++-format
 msgid ""
 "The argument of the {} subscript didn't evaluate to a hash: automatic "
 "conversion from %Q supplied"
@@ -1389,92 +1392,92 @@ msgid ""
 "'%Q'"
 msgstr "모듈 사용자쪽 명령 호출 실패했습니다: '%Q' 모듈이 '%Q' 라는 사용자쪽 명령을 내보내지 않습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:149
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:198
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:148
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:197
 msgid "The target variable didn't evaluate to an integer or real value"
 msgstr "대상 변수가 정수 또는 실제 값으로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:239
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:238
 msgid "The right side of operator '&=' didn't evaluate to an integer"
 msgstr "연산자 '&=' 의 오른쪽이 정수로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:251
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:250
 msgid "The left side of operator '&=' didn't evaluate to an integer"
 msgstr "연산자 '&=' 의 왼쪽이 정수로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:298
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:297
 msgid "The right side of operator '/=' didn't evaluate to a number"
 msgstr "연산자 '/=' 의 오른쪽이 숫자로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:310
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:309
 msgid "The left side of operator '/=' didn't evaluate to a number"
 msgstr "연산자 '/=' 의 왼쪽이 숫자로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:384
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:383
 msgid "The right side of operator '%=' didn't evaluate to a number"
 msgstr "연산자 '%=' 의 오른쪽이 숫자로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:396
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:395
 msgid "The left side of operator '%=' didn't evaluate to a number"
 msgstr "연산자 '%=' 의 왼쪽이 숫자로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:468
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:467
 msgid "The right side of operator '*=' didn't evaluate to a number"
 msgstr "연산자 '*=' 의 오른쪽이 숫자로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:480
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:479
 msgid "The left side of operator '*=' didn't evaluate to a number"
 msgstr "연산자 '*=' 의 왼쪽이 숫자로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:537
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:536
 msgid "The right side of operator '|=' didn't evaluate to an integer"
 msgstr "연산자 '|=' 의 오른쪽이 정수로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:549
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:548
 msgid "The left side of operator '|=' didn't evaluate to an integer"
 msgstr "연산자 '|=' 의 왼쪽이 정수로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:596
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:595
 msgid "The right side of operator '<<=' didn't evaluate to an integer"
 msgstr "연산자 '<<=' 의 오른쪽이 정수로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:608
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:607
 msgid "The left side of operator '<<=' didn't evaluate to an integer"
 msgstr "연산자 '<<=' 의 왼쪽이 정수로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:655
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:654
 msgid "The right side of operator '>>=' didn't evaluate to an integer"
 msgstr "연산자 '>>=' 의 오른쪽이 정수로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:667
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:666
 msgid "The left side of operator '>>=' didn't evaluate to an integer"
 msgstr "연산자 '>>=' 의 왼쪽이 정수로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:713
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:712
 msgid "The right side of operator '-=' didn't evaluate to a number"
 msgstr "연산자 '-=' 의 오른쪽이 숫자로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:725
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:724
 msgid "The left side of operator '-=' didn't evaluate to a number"
 msgstr "연산자 '-=' 의 왼쪽이 숫자로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:786
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:785
 msgid "The right side of operator '+=' didn't evaluate to a number"
 msgstr "연산자 '+=' 의 오른쪽이 숫자로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:798
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:797
 msgid "The left side of operator '+=' didn't evaluate to a number"
 msgstr "연산자 '+=' 의 왼쪽이 숫자로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:859
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:858
 msgid "The right side of operator '^=' didn't evaluate to an integer"
 msgstr "연산자 '^=' 의 오른쪽이 정수로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:871
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:870
 msgid "The left side of operator '^=' didn't evaluate to an integer"
 msgstr "연산자 '^=' 의 왼쪽이 정수로 계산되지 않았습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:1246
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:1243
 msgid ""
 "The regular expression matched a zero-length substring: this is not valid in"
 " the s/// operator, skipping"
@@ -1508,32 +1511,32 @@ msgid ""
 " (object doesn't exist)"
 msgstr "범위 연산자의 왼쪽이 잘못된 개체 참조로 계산되었습니다 (객체가 존재하지 않습니다)"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:97
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:117
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:98
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:118
 msgid "Missing class name"
 msgstr "클래스 이름이 없습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:109
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:110
 msgid ""
 "Class names can contain only letters, digits, underscores and '::' namespace"
 " separators"
 msgstr "클래스 이름에는 문자, 숫자, 밑줄 및 '::' 네임스페이스 구분자만 포함될 수 있습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:127
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:128
 msgid "A class can't be a subclass of itself"
 msgstr "클래스는 자체의 하위 클래스가 될 수 없습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:134
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:135
 msgid "Couln't find base class named '%Q'"
 msgstr "'%Q' 라는 기본 클래스를 찾을 수 없습니다"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:144
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:145
 msgid ""
 "Detected a loop in the inheritance tree of the base class '%Q': redefine "
 "that class first"
 msgstr "기본 클래스 '%Q' 의 물려받은 트리에서 루프를 감지 했습니다: 먼저 해당 클래스를 재정의하십시오"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:153
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:154
 msgid "Can't override the builtin class '%Q'"
 msgstr "기본 제공 내장 클래스 '%Q' 는 재정의할 수 없습니다"
 
