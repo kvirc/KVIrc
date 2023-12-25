@@ -224,9 +224,9 @@ void NotifierWindow::stopAutoHideTimer()
 // FIXME: The code for detecting fullscreen window does NOT take into account multi-screen setups.
 //        We also lack the code for MacOSX and Qt-only-X11 compilation.
 
-#if COMPILE_KDE_SUPPORT
-#include <kwindowsystem.h>
-#include <kx11extras.h>
+#ifdef COMPILE_KDE_SUPPORT
+#include <KWindowInfo>
+#include <KX11Extras>
 
 static bool active_window_is_full_screen()
 {

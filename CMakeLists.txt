@@ -538,22 +538,29 @@ if(WANT_KDE)
 	find_package(ECM 1.0.0 QUIET NO_MODULE)
 	if(DEFINED ECM_VERSION_MAJOR)
 		set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_MODULE_PATH})
+		set(KDE_COMPONENTS
+			CoreAddons      # KAboutData
+			I18n            # KLocalizedString
+			XmlGui          # KMainWindow
+			WindowSystem    # KWindowSystem
+			Notifications   # KNotification
+			Service         # KService, KApplicationTrader
+			KIO             # KTerminalLauncherJob, KIO/ApplicationLauncherJob
+			Parts           # KParts
+		)
+		if(${QT_VERSION_MAJOR} EQUAL 6)
+			list(APPEND KDE_COMPONENTS StatusNotifierItem)
+		endif()
 
-		find_package(KF${QT_VERSION_MAJOR} "5.2.0" COMPONENTS
-				CoreAddons      # KAboutData
-				I18n            # KLocalizedString
-				XmlGui          # KMainWindow
-				WindowSystem    # KWindowSystem
-				Notifications   # KNotification
-				Service         # KService, KApplicationTrader
-				KIO             # KTerminalLauncherJob, KIO/ApplicationLauncherJob
-				Parts           # KParts
-			)
+		find_package(KF${QT_VERSION_MAJOR} "5.2.0" COMPONENTS ${KDE_COMPONENTS})
 
 		if(KF${QT_VERSION_MAJOR}_FOUND)
 			set(CMAKE_RESULT_USING_KDE true)
 			set(COMPILE_KDE_SUPPORT 1)
 			list(APPEND LIBS KF${QT_VERSION_MAJOR}::CoreAddons KF${QT_VERSION_MAJOR}::I18n KF${QT_VERSION_MAJOR}::XmlGui KF${QT_VERSION_MAJOR}::WindowSystem KF${QT_VERSION_MAJOR}::Notifications KF${QT_VERSION_MAJOR}::Service KF${QT_VERSION_MAJOR}::KIOCore KF${QT_VERSION_MAJOR}::KIOGui KF${QT_VERSION_MAJOR}::KIOWidgets KF${QT_VERSION_MAJOR}::Parts)
+			if(${QT_VERSION_MAJOR} EQUAL 6)
+				list(APPEND LIBS KF${QT_VERSION_MAJOR}::StatusNotifierItem)
+			endif()
 			set(CMAKE_STATUS_KDE_SUPPORT "Yes")
 			if(DEFINED KF${QT_VERSION_MAJOR}_VERSION)
 				set(CMAKE_STATUS_KDE_VERSION ${KF${QT_VERSION_MAJOR}_VERSION})
