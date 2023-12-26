@@ -126,6 +126,10 @@
 #ifdef COMPILE_KDE_SUPPORT
 #include <QStandardPaths>
 #include <KNotification>
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+#include <KStartupInfo>
+#include <KWindowSystem>
+#endif
 #endif
 
 #ifdef COMPILE_QX11INFO_SUPPORT
@@ -811,18 +815,38 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 #else
 		KNotificationAction *action = nullptr;
 
+		auto activate = [this, pNotify] () {
+			if (!g_pMainWindow)
+				return;
+
+			QString szToken = pNotify->xdgActivationToken();
+			if(szToken.isEmpty())
+				return showParentFrame();
+
+			QWindow * pWindow = g_pMainWindow->windowHandle();
+			if(KWindowSystem::isPlatformX11())
+			{
+				KStartupInfo::setNewStartupId(pWindow, szToken.toUtf8());
+			}
+			else if(KWindowSystem::isPlatformWayland())
+			{
+				KWindowSystem::setCurrentXdgActivationToken(szToken);
+			}
+			KWindowSystem::activateWindow(pWindow);
+		};
+
 		action = pNotify->addDefaultAction(__tr2qs("View"));
-		connect(action, SIGNAL(activated()), this, SLOT(showParentFrame()));
+		connect(action, &KNotificationAction::activated, this, activate);
 
 		action = pNotify->addAction(__tr2qs("View"));
-		connect(action, SIGNAL(activated()), this, SLOT(showParentFrame()));
+		connect(action, &KNotificationAction::activated, this, activate);
 
 		action = pNotify->addAction(__tr2qs("Ignore"));
 		connect(action, SIGNAL(activated()), pNotify, SLOT(close()));
 
 		pNotify->setFlags(KNotification::CloseWhenWindowActivated|KNotification::Persistent);
 		pNotify->setWindow(g_pMainWindow->windowHandle());
-#endif
+#endif // QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 
 		connect(pNotify, SIGNAL(ignored()), pNotify, SLOT(close()));
 
