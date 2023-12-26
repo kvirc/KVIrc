@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-#
+# 
 # Translators:
 # Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010
 # Valerius <valeragir@mail.ru>, 2004
@@ -10,70 +10,68 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
-"PO-Revision-Date: 2017-09-22 12:41+0000\n"
-"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/kvirc/KVIrc/language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 09:12+0000\n"
+"Last-Translator: Igor \"BugSlayer\" Govorov <govorov.igor at gmail.com>, 2010\n"
+"Language-Team: Russian (http://app.transifex.com/kvirc/KVIrc/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
-
-#: src/modules/notifier/NotifierWindow.cpp:937
-msgid "1 Hour"
-msgstr "1 Час"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: src/modules/notifier/NotifierWindow.cpp:933
-msgid "1 Minute"
-msgstr "1 Минута"
-
-#: src/modules/notifier/NotifierWindow.cpp:935
-msgid "15 Minutes"
-msgstr "15 Минут"
-
-#: src/modules/notifier/NotifierWindow.cpp:936
-msgid "30 Minutes"
-msgstr "30 Минут"
-
-#: src/modules/notifier/NotifierWindow.cpp:934
-msgid "5 Minutes"
-msgstr "5 Минут"
-
-#: src/modules/notifier/NotifierWindow.cpp:942
-msgid "Disable"
-msgstr "Выключить"
-
-#: src/modules/notifier/NotifierWindow.cpp:930
-msgid "Hide"
-msgstr "Скрыть"
-
-#: src/modules/notifier/NotifierWindow.cpp:940
-msgid "Permanently (Until Explicitly Enabled)"
-msgstr "Навсегда (До явного включения)"
-
-#: src/modules/notifier/NotifierWindow.cpp:929
 msgid "Show/Hide input line"
 msgstr "Показать/Скрыть поле ввода"
 
-#: src/modules/notifier/libkvinotifier.cpp:154
-msgid "The -t switch expects a timeout in seconds"
-msgstr "Используйте ключ -t чтобы задать таймаут в секундах"
+#: src/modules/notifier/NotifierWindow.cpp:934
+msgid "Hide"
+msgstr "Скрыть"
 
-#: src/modules/notifier/libkvinotifier.cpp:149
-msgid "The specified timeout is not valid, assuming 0"
-msgstr "Заданный таймаут недействителен, принимается 0"
+#: src/modules/notifier/NotifierWindow.cpp:937
+msgid "1 Minute"
+msgstr "1 Минута"
+
+#: src/modules/notifier/NotifierWindow.cpp:938
+msgid "5 Minutes"
+msgstr "5 Минут"
+
+#: src/modules/notifier/NotifierWindow.cpp:939
+msgid "15 Minutes"
+msgstr "15 Минут"
+
+#: src/modules/notifier/NotifierWindow.cpp:940
+msgid "30 Minutes"
+msgstr "30 Минут"
+
+#: src/modules/notifier/NotifierWindow.cpp:941
+msgid "1 Hour"
+msgstr "1 Час"
+
+#: src/modules/notifier/NotifierWindow.cpp:943
+msgid "Until KVIrc is Restarted"
+msgstr "Пока KVIrc не будет перезапущен"
+
+#: src/modules/notifier/NotifierWindow.cpp:944
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr "Навсегда (До явного включения)"
+
+#: src/modules/notifier/NotifierWindow.cpp:946
+msgid "Disable"
+msgstr "Выключить"
+
+#: src/modules/notifier/NotifierWindow.cpp:1020
+msgid "Write text or commands to window"
+msgstr "Напишите текст или команду в окне"
 
 #: src/modules/notifier/libkvinotifier.cpp:135
 msgid "The specified window does not exist"
 msgstr "Заданное окно не существует"
 
-#: src/modules/notifier/NotifierWindow.cpp:939
-msgid "Until KVIrc is Restarted"
-msgstr "Пока KVIrc не будет перезапущен"
+#: src/modules/notifier/libkvinotifier.cpp:149
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "Заданный таймаут недействителен, принимается 0"
 
-#: src/modules/notifier/NotifierWindow.cpp:1016
-msgid "Write text or commands to window"
-msgstr "Напишите текст или команду в окне"
+#: src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr "Используйте ключ -t чтобы задать таймаут в секундах"

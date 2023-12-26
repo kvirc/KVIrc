@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-#
+# 
 # Translators:
 # SpeedyGhost <SpeedyGhost@gmail.com>, 2008
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
-"PO-Revision-Date: 2017-09-22 12:41+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
-"Language-Team: Croatian (http://www.transifex.com/kvirc/KVIrc/language/hr/)\n"
-"Language: hr\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 09:15+0000\n"
+"Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>, 2008\n"
+"Language-Team: Croatian (http://app.transifex.com/kvirc/KVIrc/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
@@ -25,29 +24,30 @@ msgid ""
 "Download it from http://www.ktorrent.org\n"
 msgstr ""
 
-#: src/modules/torrent/libkvitorrent.cpp:73
-msgid "Choosing torrent client interface \"%Q\""
-msgstr "Odabiranje sučelja za torrent klijent \"%Q\""
-
-#: src/modules/torrent/libkvitorrent.cpp:709
-msgid "Invalid client interface \"%Q\"!"
-msgstr "Neispravno klijent sučelje \"%Q\"!"
-
-#: src/modules/torrent/libkvitorrent.cpp:100
-msgid "Last interface error: "
-msgstr "Posljednja greška sučelja. "
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:60
+msgid "Torrent Client"
+msgstr ""
 
 #: src/modules/torrent/StatusBarApplet.cpp:93
 msgid "No client selected!"
 msgstr "Nema odabranog klijenta!"
 
-#: src/modules/torrent/libkvitorrent.cpp:89
-msgid "No torrent client interface selected. Try /torrent.detect"
-msgstr "Nema odabranih torrent klijent sučelja. Pokušajte /torrent.detect"
+#: src/modules/torrent/libkvitorrent.cpp:61
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr "Pokušavam torrent sučelje za klijenta \"%Q\": score %d "
+
+#: src/modules/torrent/libkvitorrent.cpp:73
+msgid "Choosing torrent client interface \"%Q\""
+msgstr "Odabiranje sučelja za torrent klijent \"%Q\""
 
 #: src/modules/torrent/libkvitorrent.cpp:80
 msgid "Seems that there is no usable torrent client on this machine"
 msgstr "Čini se da nema korisnih torrent klijenata na ovom računalu"
+
+#: src/modules/torrent/libkvitorrent.cpp:89
+msgid "No torrent client interface selected. Try /torrent.detect"
+msgstr "Nema odabranih torrent klijent sučelja. Pokušajte /torrent.detect"
 
 #: src/modules/torrent/libkvitorrent.cpp:99
 msgid ""
@@ -55,15 +55,14 @@ msgid ""
 "function"
 msgstr "Odabrani torrent klijent nije uspio izvršiti zatraženu funkciju"
 
-#: src/modules/torrent/StatusBarApplet.cpp:44
-#: src/modules/torrent/StatusBarApplet.cpp:60
-msgid "Torrent Client"
-msgstr ""
-
-#: src/modules/torrent/libkvitorrent.cpp:61
-msgid "Trying torrent client interface \"%Q\": score %d"
-msgstr "Pokušavam torrent sučelje za klijenta \"%Q\": score %d "
+#: src/modules/torrent/libkvitorrent.cpp:100
+msgid "Last interface error: "
+msgstr "Posljednja greška sučelja. "
 
 #: src/modules/torrent/libkvitorrent.cpp:701
 msgid "Using client interface \"%Q\"."
 msgstr "Koristim klijent sućelje \"%Q\"."
+
+#: src/modules/torrent/libkvitorrent.cpp:709
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Neispravno klijent sučelje \"%Q\"!"

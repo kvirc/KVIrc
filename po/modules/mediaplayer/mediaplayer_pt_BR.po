@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-#
+# 
 # Translators:
 # Daniel Neves, 2015
 # Zé <mmodem00@gmail.com>, 2010
@@ -9,195 +9,140 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
-"PO-Revision-Date: 2017-09-22 12:41+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/kvirc/KVIrc/"
-"language/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 09:11+0000\n"
+"Last-Translator: Daniel Neves, 2015\n"
+"Language-Team: Portuguese (Brazil) (http://app.transifex.com/kvirc/KVIrc/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:494
-msgid ""
-"An interface for Amarok2.\n"
-"Download it from http://amarok.kde.org\n"
-msgstr ""
-"Uma interface para Amarok2.\n"
-"Baixe-o em http://amarok.kde.org\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:473
-msgid ""
-"An interface for BMPx.\n"
-"Download it from http://sourceforge.net/projects/beepmp\n"
-msgstr ""
-"Uma interface para BMPx.\n"
-"Baixe-o em http://sourceforge.net/projects/beepmp\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:593
-msgid ""
-"An interface for Clementine.\n"
-"Download it from http://www.clementine-player.org/\n"
-msgstr ""
-"Uma interface para Clementine.\n"
-"Baixe-o em http://www.clementine-player.org/\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:509
-msgid ""
-"An interface for Qmmp.\n"
-"Download it from http://qmmp.ylsoftware.com\n"
-msgstr ""
-"Uma interface para Qmmp.\n"
-"Baixe-o em http://qmmp.ylsoftware.com\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:561
-msgid ""
-"An interface for Totem.\n"
-"Download it from http://projects.gnome.org/totem/\n"
-msgstr ""
-"Uma interface para Totem.\n"
-"Baixe-o em http://projects.gnome.org/totem/\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:576
-msgid ""
-"An interface for VLC.\n"
-"Download it from http://www.videolan.org/\n"
-"You need to manually enable the D-Bus control\n"
-"interface in the VLC preferences\n"
-msgstr ""
-"Uma interface para VLC.\n"
-"Baixe-o em http://www.videolan.org/\n"
-"Você precisa habilitar manualmente o controle D-Bus\n"
-"nas preferências do VLC\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: src/modules/mediaplayer/MpAmipInterface.cpp:109
 msgid ""
 "An interface for the AMIP plugin.\n"
 "You can download it from http://amip.tools-for.net\n"
 "To use this interface you must install AMIP plugin for your player."
-msgstr ""
-"Uma interface para o plugin AMIP.\n"
-"Você pode baixá-lo em http://amip.tools-for.net\n"
-"Para usar esta interface você deve instalar o plugin AMIP no seu player."
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:339
-msgid ""
-"An interface for the Audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-"Uma interface para o Audacious media player.\n"
-"Baixe-o em http://audacious-media-player.org\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:539
-msgid ""
-"An interface for the Mozilla Songbird media player.\n"
-"Download it from http://www.getsongbird.com.\n"
-"To use it you have to install also the MPRIS addon available at http://"
-"addons.songbirdnest.com/addon/1626.\n"
-msgstr ""
-"Uma interface para Mozilla Songbird media player.\n"
-"Baixe-o em http://www.getsongbird.com.\n"
-"Para usá-lo, você tem instalar também o addon MPRIS disponível em http://"
-"addons.songbirdnest.com/addon/1626.\n"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:46
-msgid ""
-"An interface for the UNIX Audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-"Uma interface para UNIX Audacious media player.\n"
-"Baixe-o em  http://audacious-media-player.org\n"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
-msgid ""
-"An interface for the UNIX XMMS media player.\n"
-"Download it from http://legacy.xmms2.org\n"
-msgstr ""
-"Uma interface para UNIX XMMS media player.\n"
-"Baixe-o em http://legacy.xmms2.org\n"
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:191
-msgid ""
-"An interface for the Winamp media player.\n"
-"You can download it from http://www.winamp.com.\n"
-"To use all the features of this interface you must copy the gen_kvirc.dll "
-"plugin found in the KVIrc distribution directory to the Winamp plugins "
-"folder and restart winamp."
-msgstr ""
-"Uma interface para o Winamp media player.\n"
-"Baixe-o em http://www.winamp.com.\n"
-"Para usar todos os recursos dessa interface, você deve copiar o plugin "
-"gen_kvirc.dll encontrado no diretório da distribuição do KVIrc para o pasta "
-"de plugins do Winamp e reiniciar o winamp."
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:524
-msgid ""
-"An interface for the XMMS2 media player.\n"
-"Download it from http://xmms2.org\n"
-msgstr ""
-"Uma interface para o XMMS2 media player.\n"
-"Baixe-o em http://xmms2.org\n"
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:182
-msgid "Can't find a running Winamp window"
-msgstr "Não foi possível encontrar uma janela do Winamp em execução"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:133
-msgid "Can't find symbol %1 in %2"
-msgstr "Não pôde encontrar símbolo %1 em %2"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:125
-msgid "Can't load the player library (%1)"
-msgstr "Não foi possível carregar a biblioteca do player (%1)"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
-msgid "Choosing media player interface \"%Q\""
-msgstr "A escolher interface de reprodutor de Mídia \"%Q\""
+msgstr "Uma interface para o plugin AMIP.\nVocê pode baixá-lo em http://amip.tools-for.net\nPara usar esta interface você deve instalar o plugin AMIP no seu player."
 
 #: src/modules/mediaplayer/MpInterface.cpp:43
 msgid "Function not implemented"
 msgstr "Função não implementada"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:134
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:575
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:598
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:639
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:678
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1187
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1321
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1365
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1559
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1601
-msgid "Last interface error: "
-msgstr "Erro do último interface: "
+#: src/modules/mediaplayer/MpMprisInterface.cpp:279
+msgid ""
+"An interface for the Audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr "Uma interface para o Audacious media player.\nBaixe-o em http://audacious-media-player.org\n"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
-msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+#: src/modules/mediaplayer/MpMprisInterface.cpp:294
+msgid ""
+"An interface for Amarok2.\n"
+"Download it from http://amarok.kde.org\n"
+msgstr "Uma interface para Amarok2.\nBaixe-o em http://amarok.kde.org\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:309
+msgid ""
+"An interface for Qmmp.\n"
+"Download it from http://qmmp.ylsoftware.com\n"
+msgstr "Uma interface para Qmmp.\nBaixe-o em http://qmmp.ylsoftware.com\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:324
+msgid ""
+"An interface for the XMMS2 media player.\n"
+"Download it from http://xmms2.org\n"
+msgstr "Uma interface para o XMMS2 media player.\nBaixe-o em http://xmms2.org\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:339
+msgid ""
+"An interface for Totem.\n"
+"Download it from http://projects.gnome.org/totem/\n"
+msgstr "Uma interface para Totem.\nBaixe-o em http://projects.gnome.org/totem/\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:354
+msgid ""
+"An interface for VLC.\n"
+"Download it from http://www.videolan.org/\n"
+"You need to manually enable the D-Bus control\n"
+"interface in the VLC preferences\n"
+msgstr "Uma interface para VLC.\nBaixe-o em http://www.videolan.org/\nVocê precisa habilitar manualmente o controle D-Bus\nnas preferências do VLC\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:371
+msgid ""
+"An interface for Clementine.\n"
+"Download it from http://www.clementine-player.org/\n"
+msgstr "Uma interface para Clementine.\nBaixe-o em http://www.clementine-player.org/\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:386
+msgid ""
+"An interface for Strawberry.\n"
+"Download it from https://www.strawberrymusicplayer.org/\n"
 msgstr ""
-"Nenhum interface de reprodutor de Mídia seleccionado. Tente /midiaplayer."
-"detect"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:401
+msgid "An generic interface for MPRIS 2 media players."
+msgstr ""
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:181
+msgid "Can't find a running Winamp window"
+msgstr "Não foi possível encontrar uma janela do Winamp em execução"
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:190
+msgid ""
+"An interface for the Winamp media player.\n"
+"You can download it from http://www.winamp.com.\n"
+"To use all the features of this interface you must copy the gen_kvirc.dll plugin found in the KVIrc distribution directory to the Winamp plugins folder and restart winamp."
+msgstr "Uma interface para o Winamp media player.\nBaixe-o em http://www.winamp.com.\nPara usar todos os recursos dessa interface, você deve copiar o plugin gen_kvirc.dll encontrado no diretório da distribuição do KVIrc para o pasta de plugins do Winamp e reiniciar o winamp."
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:314
+#: src/modules/mediaplayer/MpWinampInterface.cpp:350
+msgid ""
+"The Winamp plugin has not been installed properly. Check /help "
+"mediaplayer.nowplaying"
+msgstr "O plugin do Winamp não foi instalado corretamente. Cheque /help mediaplayer.nowplaying"
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
+msgid ""
+"An interface for the UNIX XMMS media player.\n"
+"Download it from http://legacy.xmms2.org\n"
+msgstr "Uma interface para UNIX XMMS media player.\nBaixe-o em http://legacy.xmms2.org\n"
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:46
+msgid ""
+"An interface for the UNIX Audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr "Uma interface para UNIX Audacious media player.\nBaixe-o em  http://audacious-media-player.org\n"
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:125
+msgid "Can't load the player library (%1)"
+msgstr "Não foi possível carregar a biblioteca do player (%1)"
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:133
+msgid "Can't find symbol %1 in %2"
+msgstr "Não pôde encontrar símbolo %1 em %2"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
+msgid "Trying media player interface \"%1\": score %2"
+msgstr "Tentando media interface do player \"%1\": avaliação %2"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:73
 msgid ""
 "Not sure about the results, trying a second, more aggressive detection pass"
-msgstr ""
-"Resultados inconclusivos, tentando um segundo, passo de detecção mais "
-"agressivo"
+msgstr "Resultados inconclusivos, tentando um segundo, passo de detecção mais agressivo"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
+msgid "Choosing media player interface \"%Q\""
+msgstr "A escolher interface de reprodutor de Mídia \"%Q\""
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:106
 msgid "Seems that there is no usable media player on this machine"
 msgstr "Parece que não existe um reprodutor de Mídia utilizável nesta máquina"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:315
-#: src/modules/mediaplayer/MpWinampInterface.cpp:351
-msgid ""
-"The Winamp plugin has not been installed properly. Check /help mediaplayer."
-"nowplaying"
-msgstr ""
-"O plugin do Winamp não foi instalado corretamente. Cheque /help mediaplayer."
-"nowplaying"
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr "Nenhum interface de reprodutor de Mídia seleccionado. Tente /midiaplayer.detect"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:133
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:574
@@ -211,11 +156,17 @@ msgstr ""
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1600
 msgid ""
 "The selected media player interface failed to execute the requested function"
-msgstr ""
-"O interface de reprodução da Mídia seleccionada falhou ao executar a função "
-"pedida"
+msgstr "O interface de reprodução da Mídia seleccionada falhou ao executar a função pedida"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
-msgid "Trying media player interface \"%1\": score %2"
-msgstr "Tentando media interface do player \"%1\": avaliação %2"
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:134
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:575
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:598
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:639
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:678
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1187
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1321
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1365
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1559
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1601
+msgid "Last interface error: "
+msgstr "Erro do último interface: "

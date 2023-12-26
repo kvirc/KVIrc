@@ -9,10 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 14:46+0200\n"
-"PO-Revision-Date: 2018-04-09 20:33+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
-"Language-Team: Ukrainian (http://www.transifex.com/kvirc/KVIrc/language/uk/)\n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 08:58+0000\n"
+"Last-Translator: igorko <mansonigor@gmail.com>, 2012\n"
+"Language-Team: Ukrainian (http://app.transifex.com/kvirc/KVIrc/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -145,7 +145,7 @@ msgstr "Спроба пасивного з'єднання DCC CANVAS"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:83
 #: src/modules/dcc/DccChatWindow.cpp:183
-#: src/modules/dcc/DccVideoWindow.cpp:629
+#: src/modules/dcc/DccVideoWindow.cpp:628
 #: src/modules/dcc/DccVoiceWindow.cpp:807
 msgid "Listening on interface %Q port %Q"
 msgstr "Прослуховування на інтерфейсі %Q порту %Q"
@@ -165,7 +165,7 @@ msgstr "Спроба активного з'єднання DCC CANVAS"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:114
 #: src/modules/dcc/DccChatWindow.cpp:179
-#: src/modules/dcc/DccVideoWindow.cpp:624
+#: src/modules/dcc/DccVideoWindow.cpp:623
 #: src/modules/dcc/DccVoiceWindow.cpp:802
 msgid "Contacting host %Q on port %Q"
 msgstr "Під'єднання до хосту %Q на порт %Q"
@@ -177,14 +177,14 @@ msgstr ""
 
 #: src/modules/dcc/DccCanvasWindow.cpp:290
 #: src/modules/dcc/DccChatWindow.cpp:584
-#: src/modules/dcc/DccVideoWindow.cpp:959
+#: src/modules/dcc/DccVideoWindow.cpp:958
 #: src/modules/dcc/DccVoiceWindow.cpp:961
 msgid "Connected to %Q:%Q"
 msgstr "Підключення до %Q:%Q"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:292
 #: src/modules/dcc/DccChatWindow.cpp:586
-#: src/modules/dcc/DccVideoWindow.cpp:961
+#: src/modules/dcc/DccVideoWindow.cpp:960
 #: src/modules/dcc/DccVoiceWindow.cpp:963
 msgid "Local end is %Q:%Q"
 msgstr "Локальне закінчення %Q:%Q"
@@ -205,14 +205,14 @@ msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "Локальна IP адреса є приватною, визначаю з IRC сервера: %s"
 
 #: src/modules/dcc/DccChatWindow.cpp:211
-#: src/modules/dcc/DccFileTransfer.cpp:2074
+#: src/modules/dcc/DccFileTransfer.cpp:2067
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr "Локальна IP адреса є приватною але її неможливо визначити на IRC сервері"
 
 #: src/modules/dcc/DccChatWindow.cpp:216
-#: src/modules/dcc/DccFileTransfer.cpp:2079
+#: src/modules/dcc/DccFileTransfer.cpp:2072
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr "Локальна IP адреса є приватною але немає IRC сервера для її визначення"
@@ -226,12 +226,12 @@ msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "DCC %Q запит не відісланий, очікую ручного з'єднання"
 
 #: src/modules/dcc/DccChatWindow.cpp:252
-#: src/modules/dcc/DccFileTransfer.cpp:2149
+#: src/modules/dcc/DccFileTransfer.cpp:2142
 msgid "Low-level transport connection established"
 msgstr "Встановлене з'єднання по низькорівневому транспорті"
 
 #: src/modules/dcc/DccChatWindow.cpp:253
-#: src/modules/dcc/DccFileTransfer.cpp:2150
+#: src/modules/dcc/DccFileTransfer.cpp:2143
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Запуск з'єднання через SSL"
 
@@ -241,26 +241,26 @@ msgid "[SSL ERROR]: %s"
 msgstr "[ПОМИЛКА SSL]: %s"
 
 #: src/modules/dcc/DccChatWindow.cpp:303 src/modules/dcc/DccChatWindow.cpp:414
-#: src/modules/dcc/DccVideoWindow.cpp:688
-#: src/modules/dcc/DccVideoWindow.cpp:799
+#: src/modules/dcc/DccVideoWindow.cpp:687
+#: src/modules/dcc/DccVideoWindow.cpp:798
 msgid "Can't send data: no active connection"
 msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:350
-#: src/modules/dcc/DccVideoWindow.cpp:735
+#: src/modules/dcc/DccVideoWindow.cpp:734
 msgid ""
 "The encryption engine was not able to encrypt the current message (%Q): %Q, "
 "no data was sent to the remote end"
 msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:429
-#: src/modules/dcc/DccVideoWindow.cpp:813
+#: src/modules/dcc/DccVideoWindow.cpp:812
 #: src/modules/dcc/DccVoiceWindow.cpp:870
 msgid "ERROR: %Q"
 msgstr "ПОМИЛКА: %Q"
 
 #: src/modules/dcc/DccChatWindow.cpp:493
-#: src/modules/dcc/DccVideoWindow.cpp:876
+#: src/modules/dcc/DccVideoWindow.cpp:875
 msgid ""
 "The following message appears to be encrypted, but the encryption engine "
 "failed to decode it: %Q"
@@ -302,7 +302,7 @@ msgstr "Пе&реписати"
 msgid "Re&sume"
 msgstr "П&оновити"
 
-#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2493
+#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2480
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -334,179 +334,179 @@ msgstr "Передача даних завершилася 30 сек. тому, 
 msgid "WARNING: received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1197
+#: src/modules/dcc/DccFileTransfer.cpp:1190
 msgid "TRANSFER %1"
 msgstr "ПЕРЕДАЧА %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1225
+#: src/modules/dcc/DccFileTransfer.cpp:1218
 msgid "Setting up the connection"
 msgstr "Встановлення з'єднання"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1288
+#: src/modules/dcc/DccFileTransfer.cpp:1281
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Спроба пасивного DCC %1 з'єднання"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1294
+#: src/modules/dcc/DccFileTransfer.cpp:1287
 msgid "Attempting an active DCC %1 connection"
 msgstr "Спроба активного DCC %1 з'єднання"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1321
+#: src/modules/dcc/DccFileTransfer.cpp:1314
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "Відісланий DCC RESUME запит до %1, очікую ACCEPT"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1406
-#: src/modules/dcc/DccFileTransfer.cpp:1420
+#: src/modules/dcc/DccFileTransfer.cpp:1399
+#: src/modules/dcc/DccFileTransfer.cpp:1413
 msgid "Aborted"
 msgstr "Перервано"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1419
-#: src/modules/dcc/DccFileTransfer.cpp:2175
-#: src/modules/dcc/DccFileTransfer.cpp:2250
+#: src/modules/dcc/DccFileTransfer.cpp:1412
+#: src/modules/dcc/DccFileTransfer.cpp:2168
+#: src/modules/dcc/DccFileTransfer.cpp:2243
 msgid "Transfer failed: "
 msgstr "Помилка передачі: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1430
+#: src/modules/dcc/DccFileTransfer.cpp:1423
 msgid "Configure Bandwidth..."
 msgstr "Зміна пропускної здатності..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:1432
+#: src/modules/dcc/DccFileTransfer.cpp:1425
 msgid "Resend DCC"
 msgstr "Повторне відправлення DCC"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1433
+#: src/modules/dcc/DccFileTransfer.cpp:1426
 msgid "Resend TDCC"
 msgstr "Повторне відправлення TDCC"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1434
+#: src/modules/dcc/DccFileTransfer.cpp:1427
 msgid "Resend RevDCC"
 msgstr "Повторне відправлення RevDCC"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1435
+#: src/modules/dcc/DccFileTransfer.cpp:1428
 msgid "Abort"
 msgstr "Перервати"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1683
+#: src/modules/dcc/DccFileTransfer.cpp:1676
 msgid "From: "
 msgstr "Від: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1684
+#: src/modules/dcc/DccFileTransfer.cpp:1677
 msgid "To: "
 msgstr "Кому: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1786
-#: src/modules/dcc/DccFileTransfer.cpp:1795
+#: src/modules/dcc/DccFileTransfer.cpp:1779
+#: src/modules/dcc/DccFileTransfer.cpp:1788
 msgid "%1 of %2 (%3%)"
 msgstr "%1 з %2 (%3%)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1800
+#: src/modules/dcc/DccFileTransfer.cpp:1793
 msgid "%1"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1813
+#: src/modules/dcc/DccFileTransfer.cpp:1806
 msgid "Speed:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1826
+#: src/modules/dcc/DccFileTransfer.cpp:1819
 msgid "Average:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1895
+#: src/modules/dcc/DccFileTransfer.cpp:1888
 msgid "Transfer Log"
 msgstr "Журнал передачі"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2038
+#: src/modules/dcc/DccFileTransfer.cpp:2031
 msgid "Contacting host %1 on port %2"
 msgstr "Підключення до хосту %1 на порт %2"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2045
+#: src/modules/dcc/DccFileTransfer.cpp:2038
 msgid "Listening on interface %1 port %2"
 msgstr "Прослуховування інтерфейсу %1 на порту %2"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2070
+#: src/modules/dcc/DccFileTransfer.cpp:2063
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "Локальна IP адреса є приватною, визначаю з IRC сервера: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2134
+#: src/modules/dcc/DccFileTransfer.cpp:2127
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr "Відісланий DCC %1 запит до %2, очікую з'єднання від віддаленого клієнта..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:2138
+#: src/modules/dcc/DccFileTransfer.cpp:2131
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 запит не відісланий, очікую ручного з'єднання"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2157
+#: src/modules/dcc/DccFileTransfer.cpp:2150
 msgid "[SSL ERROR]: %1"
 msgstr "[ПОМИЛКА SSL]: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2202
+#: src/modules/dcc/DccFileTransfer.cpp:2195
 msgid ""
 "DCC %s transfer with %Q@%Q:%Q completed: \r"
 "![!dbl]%Q\r"
 "%Q\r"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2211
+#: src/modules/dcc/DccFileTransfer.cpp:2204
 msgid "Transfer completed"
 msgstr "Передача завершена"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2259
+#: src/modules/dcc/DccFileTransfer.cpp:2252
 msgid "Connected to %1:%2"
 msgstr "Під'єднання до %1:%2"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2260
+#: src/modules/dcc/DccFileTransfer.cpp:2253
 msgid "Local end is %1:%2"
 msgstr "Локальне закінчення %1:%2"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2325
+#: src/modules/dcc/DccFileTransfer.cpp:2318
 msgid "Transferring data"
 msgstr "Передача даних"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2350
+#: src/modules/dcc/DccFileTransfer.cpp:2343
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME прийнятий, передача починається з позиції %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2382
+#: src/modules/dcc/DccFileTransfer.cpp:2375
 msgid "Processing RESUME request with mismatched port (%1)"
 msgstr "Обробляю запит RESUME з невідповідним портом (%1)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2400
+#: src/modules/dcc/DccFileTransfer.cpp:2387
 msgid ""
 "Invalid RESUME request: invalid file name (got '%1' but should be '%2')"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2407
+#: src/modules/dcc/DccFileTransfer.cpp:2394
 msgid "Processing RESUME request with broken filename (%1)"
 msgstr "Обробляю запит RESUME зі зламаним іменем файлу (%1)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2416
+#: src/modules/dcc/DccFileTransfer.cpp:2403
 msgid "Internal error in RESUME request"
 msgstr "Внутрішня помилка в запиті RESUME"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2422
+#: src/modules/dcc/DccFileTransfer.cpp:2409
 msgid "Invalid RESUME request: position %1 is larger than file size"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2426
+#: src/modules/dcc/DccFileTransfer.cpp:2413
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "Запит RESUME прийнятий, передача почнеться з позиції %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2464
+#: src/modules/dcc/DccFileTransfer.cpp:2451
 msgid "Configure Bandwidth for DCC Transfer %1"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2467
+#: src/modules/dcc/DccFileTransfer.cpp:2454
 msgid "Limit upload bandwidth to:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2467
+#: src/modules/dcc/DccFileTransfer.cpp:2454
 msgid "Limit download bandwidth to:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2484
+#: src/modules/dcc/DccFileTransfer.cpp:2471
 msgid "bytes/sec"
 msgstr "байт/сек"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2488
+#: src/modules/dcc/DccFileTransfer.cpp:2475
 msgid "OK"
 msgstr "Гаразд"
 
@@ -521,41 +521,41 @@ msgid ""
 "disabling the option (so the next DCC will work)"
 msgstr ""
 
-#: src/modules/dcc/DccVideoWindow.cpp:456
+#: src/modules/dcc/DccVideoWindow.cpp:455
 msgid "Video device:"
 msgstr "Відеопристрій:"
 
-#: src/modules/dcc/DccVideoWindow.cpp:463
+#: src/modules/dcc/DccVideoWindow.cpp:462
 msgid "Input:"
 msgstr "Вхід:"
 
-#: src/modules/dcc/DccVideoWindow.cpp:470
+#: src/modules/dcc/DccVideoWindow.cpp:469
 msgid "Standard:"
 msgstr "Стандарт:"
 
-#: src/modules/dcc/DccVideoWindow.cpp:605
+#: src/modules/dcc/DccVideoWindow.cpp:604
 msgid "Attempting a passive DCC VIDEO connection"
 msgstr "Спроба пасивного з'єднання DCC VIDEO"
 
-#: src/modules/dcc/DccVideoWindow.cpp:613
+#: src/modules/dcc/DccVideoWindow.cpp:612
 msgid "Attempting an active DCC VIDEO connection"
 msgstr "Спроба активного з'єднання DCC VIDEO"
 
-#: src/modules/dcc/DccVideoWindow.cpp:647
+#: src/modules/dcc/DccVideoWindow.cpp:646
 msgid ""
 "Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr "Відісланий DCC VIDEO (%s) запит %Q, очікую з'єднання віддаленого клієнта..."
 
-#: src/modules/dcc/DccVideoWindow.cpp:651
+#: src/modules/dcc/DccVideoWindow.cpp:650
 msgid "DCC VIDEO request not sent: awaiting manual connection"
 msgstr "Запит DCC VIDEO не відісланий: очікується ручне з'єднання"
 
-#: src/modules/dcc/DccVideoWindow.cpp:954
+#: src/modules/dcc/DccVideoWindow.cpp:953
 msgid "DCC Failed: %Q"
 msgstr "Помилка DCC: %Q"
 
-#: src/modules/dcc/DccVideoWindow.cpp:975
+#: src/modules/dcc/DccVideoWindow.cpp:974
 #: src/modules/dcc/DccVoiceWindow.cpp:980
 #, c-format
 msgid "Actual codec used is '%s'"

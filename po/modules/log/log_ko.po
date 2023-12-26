@@ -1,0 +1,207 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+# Junghee Lee <daemul72@gmail.com>, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
+# ks k, 2020
+# ks k, 2020
+# Junghee Lee <daemul72@gmail.com>, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"PO-Revision-Date: 2015-08-01 09:11+0000\n"
+"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
+"Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:213
+msgid "Window '%1' not found"
+msgstr "'%1' 창을 찾을 수 없습니다"
+
+#: src/modules/log/libkvilog.cpp:109 src/modules/log/libkvilog.cpp:167
+#: src/modules/log/libkvilog.cpp:219
+msgid "Missing window ID after the 'w' switch"
+msgstr "'w' 스위치 뒤에 창 ID가 누락되었습니다"
+
+#: src/modules/log/libkvilog.cpp:120
+msgid "Can't log to file '%1'"
+msgstr "'%1' 파일에 기록할 수 없습니다"
+
+#: src/modules/log/libkvilog.cpp:124
+msgid "This window has no logging capabilities"
+msgstr "이 창에는 기록 기능이 없습니다"
+
+#: src/modules/log/libkvilog.cpp:273
+msgid "Window with ID '%1' not found, returning empty string"
+msgstr "ID가 '%1'인 창을 찾을 수 없어서 빈 문자열이 반환됩니다"
+
+#: src/modules/log/libkvilog.cpp:321
+msgid "Failed to load logview module, aborting"
+msgstr "기록 보기 도구 모듈을 불러오지 못했습니다"
+
+#: src/modules/log/libkvilog.cpp:331
+msgid "Failed to export the log '%1'"
+msgstr "'%1' 기록을 내보내지 못했습니다"
+
+#: src/modules/logview/LogFile.cpp:283
+msgid "Channel %1 on %2"
+msgstr "번역확인:어순->대화방 %1 on %2"
+
+#: src/modules/logview/LogFile.cpp:286
+msgid "Console on %1"
+msgstr "%1의 콘솔"
+
+#: src/modules/logview/LogFile.cpp:289
+msgid "Query with: %1 on %2"
+msgstr "번역확인:어순->다음을 사용하여 질의: %1 / %2"
+
+#: src/modules/logview/LogFile.cpp:292
+msgid "DCC Chat with: %1"
+msgstr "DCC 대화: %1"
+
+#: src/modules/logview/LogFile.cpp:295
+msgid "Something on: %1"
+msgstr "뭔가: %1"
+
+#: src/modules/logview/LogViewWidget.cpp:73
+msgid "Channel"
+msgstr "대화방"
+
+#: src/modules/logview/LogViewWidget.cpp:77
+msgid "Query"
+msgstr "질의"
+
+#: src/modules/logview/LogViewWidget.cpp:81
+msgid "DCC Chat"
+msgstr "DCC 대화"
+
+#: src/modules/logview/LogViewWidget.cpp:85
+msgid "Console"
+msgstr "콘솔"
+
+#: src/modules/logview/LogViewWidget.cpp:89
+msgid "Other"
+msgstr "그 외"
+
+#: src/modules/logview/LogViewWindow.cpp:74
+msgid "Log File"
+msgstr "기록 파일"
+
+#: src/modules/logview/LogViewWindow.cpp:108
+msgid "Cancel"
+msgstr "취소"
+
+#: src/modules/logview/LogViewWindow.cpp:113
+msgid "Index"
+msgstr "찾아보기"
+
+#: src/modules/logview/LogViewWindow.cpp:121
+msgid "Filter"
+msgstr "거르개"
+
+#: src/modules/logview/LogViewWindow.cpp:125
+msgid "Show channel logs"
+msgstr "대화방 기록 표시"
+
+#: src/modules/logview/LogViewWindow.cpp:129
+msgid "Show query logs"
+msgstr "질의 기록 표시"
+
+#: src/modules/logview/LogViewWindow.cpp:133
+msgid "Show console logs"
+msgstr "콘솔 기록 표시"
+
+#: src/modules/logview/LogViewWindow.cpp:137
+msgid "Show DCC chat logs"
+msgstr "DCC 대화 기록 표시"
+
+#: src/modules/logview/LogViewWindow.cpp:141
+msgid "Show other logs"
+msgstr "그 외 기록 표시"
+
+#: src/modules/logview/LogViewWindow.cpp:146
+msgid "Contents Filter"
+msgstr "내용 거르개"
+
+#: src/modules/logview/LogViewWindow.cpp:149
+msgid "Log name mask:"
+msgstr "기록 이름 마스크:"
+
+#: src/modules/logview/LogViewWindow.cpp:155
+msgid "Log contents mask:"
+msgstr "기록 내용에 따른 마스크:"
+
+#: src/modules/logview/LogViewWindow.cpp:161
+msgid "Only older than:"
+msgstr "다음보다 오래된 것만:"
+
+#: src/modules/logview/LogViewWindow.cpp:169
+msgid "Only newer than:"
+msgstr "다음보다 새로운 것만:"
+
+#: src/modules/logview/LogViewWindow.cpp:177
+msgid "Apply Filter"
+msgstr "거르개 적용"
+
+#: src/modules/logview/LogViewWindow.cpp:196
+msgid "Plain Text File"
+msgstr "일반 텍스트 파일"
+
+#: src/modules/logview/LogViewWindow.cpp:198
+msgid "HTML Archive"
+msgstr "HTML 아카이브"
+
+#: src/modules/logview/LogViewWindow.cpp:246
+msgid "Log Viewer"
+msgstr "기록 보는 도구"
+
+#: src/modules/logview/LogViewWindow.cpp:371
+msgid "%1 on %2"
+msgstr "번역확인:어순->%1 on %2"
+
+#: src/modules/logview/LogViewWindow.cpp:459
+msgid "Export All Log Files to"
+msgstr "모든 기록 파일을 다음으로 내보내기"
+
+#: src/modules/logview/LogViewWindow.cpp:460
+msgid "Remove All Log Files Within This Folder"
+msgstr "이 폴더 내의 모든 기록 파일 제거"
+
+#: src/modules/logview/LogViewWindow.cpp:464
+msgid "Export Log File to"
+msgstr "기록 파일을 내보내기"
+
+#: src/modules/logview/LogViewWindow.cpp:465
+msgid "Remove Log File"
+msgstr "기록 파일 삭제"
+
+#: src/modules/logview/LogViewWindow.cpp:483
+msgid "Confirm Current User Log Deletion"
+msgstr "현재 사용자 기록 삭제 확인"
+
+#: src/modules/logview/LogViewWindow.cpp:484
+msgid "Do you really wish to delete this log?"
+msgstr "이 기록을 정말로 삭제 하시겠습니까?"
+
+#: src/modules/logview/LogViewWindow.cpp:500
+msgid "Confirm Current User Logs Deletion"
+msgstr "현재 사용자 기록 삭제 확인"
+
+#: src/modules/logview/LogViewWindow.cpp:501
+msgid "Do you really wish to delete all these logs?"
+msgstr "이 모든 기록을 정말로 삭제 하시겠습니까?"
+
+#: src/modules/logview/LogViewWindow.cpp:565
+#: src/modules/logview/LogViewWindow.cpp:613
+#: src/modules/logview/libkvilogview.cpp:131
+msgid "Export Log - KVIrc"
+msgstr "기록 내보내기 - KVIrc"
