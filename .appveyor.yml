@@ -66,16 +66,16 @@ install:
         if (Test-Path "c:/spellcheck-dicts/zip/ru.zip") { # LGPL
             echo "using ru dict from cache"
         } else {
-            Invoke-WebRequest https://extensions.libreoffice.org/assets/downloads/z/dict-ru-ru-aot-0-4-3.oxt -OutFile c:\spellcheck-dicts\zip\ru.zip
+            Invoke-WebRequest https://extensions.libreoffice.org/assets/downloads/48/dict_pack_ru-aot-0.4.5.oxt -OutFile c:\spellcheck-dicts\zip\ru.zip
             c:\cygwin64\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/ru; 7z x -y ../zip/ru.zip"
         }
     - ps: |
         if (Test-Path "c:/spellcheck-dicts/zip/en_US.zip") {
             echo "using en dict from cache"
         } else {
-            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2019.10.06/hunspell-en_US-2019.10.06.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
-            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2019.10.06/hunspell-en_GB-ize-2019.10.06.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
-            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2019.10.06/hunspell-en_GB-ise-2019.10.06.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2020.12.07/hunspell-en_US-2020.12.07.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2020.12.07/hunspell-en_GB-ize-2020.12.07.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2020.12.07/hunspell-en_GB-ise-2020.12.07.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
             c:\cygwin64\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/unzip; 7z x -y ../zip/en_US.zip; 7z x -y ../zip/en_GB-ize.zip; 7z x -y ../zip/en_GB-ise.zip"
         }
     - ps: |
