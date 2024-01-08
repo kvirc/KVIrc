@@ -33,14 +33,21 @@ QString KviRegExp::getCompletePattern() const
 {
 	if(m_ePs == PatternSyntax::Wildcard)
 	{
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-		// Qt5 always add anchors to the converted regexp, strip them
-		QString tmp = QRegularExpression::wildcardToRegularExpression(m_szPattern);
-		tmp.remove(0, 5);	// "\\A(?:"
-		tmp.chop(3);		// ")\\z"
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+		return QRegularExpression::wildcardToRegularExpression(m_szPattern, QRegularExpression::UnanchoredWildcardConversion | QRegularExpression::NonPathWildcardConversion);
+#elif QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+		QString tmp = QRegularExpression::wildcardToRegularExpression(m_szPattern, QRegularExpression::UnanchoredWildcardConversion);
+		// fix #2589 - permit slash chars in matched string
+		tmp.replace("[^/]*", "[\\d\\D]*");
 		return tmp;
 #else
-		return QRegularExpression::wildcardToRegularExpression(m_szPattern, QRegularExpression::UnanchoredWildcardConversion | QRegularExpression::NonPathWildcardConversion);
+		QString tmp = QRegularExpression::wildcardToRegularExpression(m_szPattern);
+		// Qt5 always add anchors to the converted regexp, strip them
+		tmp.remove(0, 5);	// "\\A(?:"
+		tmp.chop(3);		// ")\\z"
+		// fix #2589 - permit slash chars in matched string
+		tmp.replace("[^/]*", "[\\d\\D]*");
+		return tmp;
 #endif
 	}
 	return m_szPattern;
