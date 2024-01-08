@@ -40,7 +40,7 @@ QString KviRegExp::getCompletePattern() const
 		tmp.chop(3);		// ")\\z"
 		return tmp;
 #else
-		return QRegularExpression::wildcardToRegularExpression(m_szPattern, QRegularExpression::UnanchoredWildcardConversion);
+		return QRegularExpression::wildcardToRegularExpression(m_szPattern, QRegularExpression::UnanchoredWildcardConversion | QRegularExpression::NonPathWildcardConversion);
 #endif
 	}
 	return m_szPattern;
