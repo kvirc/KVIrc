@@ -4,7 +4,7 @@
 # 
 # Translators:
 # administrator <administrator@azzurra.srl>, 2010
-# ctrlaltca <ctrlaltca@gmail.com>, 2023
+# ctrlaltca <ctrlaltca@gmail.com>, 2023-2024
 # Elvio Basello <hell at hellvis69 dot netsons dot org>, 2010-2011
 # Elvio Basello <hellvis69 at netsons dot org>, 2009
 # ctrlaltca <ctrlaltca@gmail.com>, 2015
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-06 22:34+0100\n"
 "PO-Revision-Date: 2015-08-01 09:10+0000\n"
-"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>, 2023\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>, 2023-2024\n"
 "Language-Team: Italian (http://app.transifex.com/kvirc/KVIrc/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -209,15 +209,15 @@ msgstr "Azione"
 
 #: src/modules/actioneditor/ActionEditor.cpp:644
 msgid "New Action"
-msgstr "Nuova Azione"
+msgstr "Nuova azione"
 
 #: src/modules/actioneditor/ActionEditor.cpp:647
 msgid "Delete Actions"
-msgstr "Cancella le Azioni"
+msgstr "Cancella le azioni"
 
 #: src/modules/actioneditor/ActionEditor.cpp:650
 msgid "Export Actions..."
-msgstr "Esporta Azioni..."
+msgstr "Esporta azioni..."
 
 #: src/modules/actioneditor/ActionEditor.cpp:714
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:866
@@ -287,7 +287,7 @@ msgstr "Alias"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1083
 #: src/modules/raweditor/RawEditorWindow.cpp:95
 msgid "&Export All to..."
-msgstr "&Esporta Tutto su..."
+msgstr "&Esporta tutto su..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:147
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:539
@@ -371,7 +371,7 @@ msgstr "Aggiungi Namespace"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:596
 #: src/modules/classeditor/ClassEditorWindow.cpp:900
 msgid "Remove Selected"
-msgstr "Rimuovi Selezionato"
+msgstr "Rimuovi selezionato"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:604
 #: src/modules/classeditor/ClassEditorWindow.cpp:908
@@ -385,7 +385,7 @@ msgstr "Esporta la selezione in file singoli..."
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:616
 #: src/modules/classeditor/ClassEditorWindow.cpp:921
 msgid "Export All..."
-msgstr "Esporta Tutto..."
+msgstr "Esporta tutto..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:624
 msgid "Find in Aliases..."
@@ -599,7 +599,7 @@ msgstr "eredita dalla classe "
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:793
 msgid "Member Function"
-msgstr "Funzione Membro"
+msgstr "Funzione membro"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:804
 msgid "Reminder text."
@@ -611,7 +611,7 @@ msgstr "Aggiungi Classe"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:886
 msgid "Add Member Function"
-msgstr "Aggiungi Funzione Membro"
+msgstr "Aggiungi funzione membro"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:914
 msgid "Export Selected in Single Files..."
@@ -619,11 +619,11 @@ msgstr "Esporta la selezione in singoli file..."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:929
 msgid "Find in Classes..."
-msgstr "Cerca nelle Classi..."
+msgstr "Cerca nelle classi..."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:935
 msgid "Collapse All Items"
-msgstr "Collassa Tutte le Voci"
+msgstr "Collassa tutte le voci"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:981
 msgid "Find In Classes"
@@ -847,7 +847,7 @@ msgstr "&Salva con nome..."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:743
 msgid "&Configure Editor..."
-msgstr "&Configura Editor..."
+msgstr "&Configura editor..."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:756
 msgid "&Find"
@@ -901,27 +901,27 @@ msgstr "Evento"
 #: src/modules/eventeditor/EventEditorWindow.cpp:247
 #: src/modules/raweditor/RawEditorWindow.cpp:151
 msgid "&Enable Handler"
-msgstr "Abilita Gestore"
+msgstr "Abilita gestore"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:251
 #: src/modules/raweditor/RawEditorWindow.cpp:154
 msgid "&Disable Handler"
-msgstr "&Disabilita Gestore"
+msgstr "&Disabilita gestore"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:255
 #: src/modules/raweditor/RawEditorWindow.cpp:157
 msgid "Re&move Handler"
-msgstr "Rimuovi Gestore"
+msgstr "Rimuovi gestore"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:259
 #: src/modules/raweditor/RawEditorWindow.cpp:160
 msgid "&Export Handler to..."
-msgstr "&Esporta Gestore su..."
+msgstr "&Esporta gestore su..."
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:266
 #: src/modules/raweditor/RawEditorWindow.cpp:165
 msgid "&New Handler"
-msgstr "&Nuovo Gestore"
+msgstr "&Nuovo gestore"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:280
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1376
@@ -1172,15 +1172,15 @@ msgstr "Uno script esterno ha cambiato il popup che stavi modificando. Vuoi acce
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1181
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1198
 msgid "&New Popup"
-msgstr "&Nuovo Popup"
+msgstr "&Nuovo popup"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1184
 msgid "Re&move Popup"
-msgstr "Rimuovi Popup"
+msgstr "Rimuovi popup"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1188
 msgid "&Export Popup to..."
-msgstr "&Esporta Popup su..."
+msgstr "&Esporta popup su..."
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1227
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1277
@@ -1201,11 +1201,11 @@ msgstr "Modifica il nome del gestore dell'evento RAW."
 
 #: src/modules/raweditor/RawEditorWindow.cpp:172
 msgid "&Add RAW Event..."
-msgstr "&Aggiungi Evento RAW..."
+msgstr "&Aggiungi evento RAW..."
 
 #: src/modules/raweditor/RawEditorWindow.cpp:211
 msgid "New RAW Event"
-msgstr "Nuovo Evento RAW"
+msgstr "Nuovo evento RAW"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:211
 msgid "Enter the numeric code of the message (0-999)"
@@ -1234,7 +1234,7 @@ msgstr "Lascia andare qui le icone dalle toolbar per rimuoverle"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:140
 msgid "Toolbar Properties - KVIrc"
-msgstr "Proprietà Toolbar - KVIrc"
+msgstr "Proprietà toolbar - KVIrc"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:157
 msgid "Icon"
@@ -1259,7 +1259,7 @@ msgstr "Etichetta toolbar non valida - KVIrc"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:254
 msgid "The toolbar label can't be empty!"
-msgstr "L'etichetta della Toolbar non può essere vuota!"
+msgstr "L'etichetta della toolbar non può essere vuota!"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:268
 msgid "Duplicate Toolbar ID - KVIrc"
@@ -1270,7 +1270,7 @@ msgid ""
 "The specified toolbar ID already exists.<br>Would you like KVIrc to assign "
 "it automatically (so it doesn't collide with any other toolbar) or you "
 "prefer to do it manually?"
-msgstr "L'ID della Toolbar specificata esiste già.<br>Vuoi che KVIrc ne assegni uno automaticamente (così non colliderà con nessun'altra toolbar) o preferisci farlo manualmente?"
+msgstr "L'ID della toolbar specificata esiste già.<br>Vuoi che KVIrc ne assegni uno automaticamente (così non colliderà con nessun'altra toolbar) o preferisci farlo manualmente?"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:273
 msgid "Manually"
@@ -1290,19 +1290,19 @@ msgstr "Personalizza le toolbar - KVIrc"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:318
 msgid "New Toolbar"
-msgstr "Nuova Toolbar"
+msgstr "Nuova toolbar"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:322
 msgid "Delete Toolbar"
-msgstr "Cancella Toolbar"
+msgstr "Cancella toolbar"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:326
 msgid "Edit Toolbar"
-msgstr "Modifica Toolbar"
+msgstr "Modifica toolbar"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:334
 msgid "Export Toolbar"
-msgstr "Esporta Toolbar"
+msgstr "Esporta toolbar"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:338
 msgid "Import Toolbar"
@@ -1334,11 +1334,11 @@ msgstr "Impossibile scrivere sul file della toolbar."
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:499
 msgid "Please specify the properties for the toolbar \"%1\""
-msgstr "Specifica le proprietà per la ToolBar \"%1\""
+msgstr "Specifica le proprietà per la toolbar \"%1\""
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:526
 msgid "Please specify the properties for the new toolbar"
-msgstr "Specifica le proprietà per la nuova ToolBar"
+msgstr "Specifica le proprietà per la nuova toolbar"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:527
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:528
