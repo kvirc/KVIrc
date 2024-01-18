@@ -396,7 +396,6 @@ DccVideoWindow::DccVideoWindow(DccDescriptor * dcc, const char * name)
 {
 	m_pDescriptor = dcc;
 	m_pSlaveThread = nullptr;
-	m_pszTarget = nullptr;
 
 	m_pButtonBox = new KviTalHBox(this);
 
@@ -557,12 +556,6 @@ DccVideoWindow::~DccVideoWindow()
 	}
 
 	KviThreadManager::killPendingEvents(this);
-
-	if(m_pszTarget)
-	{
-		delete m_pszTarget;
-		m_pszTarget = nullptr;
-	}
 }
 
 void DccVideoWindow::resizeEvent(QResizeEvent *)
@@ -654,11 +647,8 @@ void DccVideoWindow::connectionInProgress()
 const QString & DccVideoWindow::target()
 {
 	// This may change on the fly...
-	if(!m_pszTarget)
-		m_pszTarget = new QString();
-
-	m_pszTarget = QString::asprintf("%s@%s:%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
-	return *m_pszTarget;
+	m_szTarget = QString::asprintf("%s@%s:%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
+	return m_szTarget;
 }
 
 void DccVideoWindow::getBaseLogFileName(QString & buffer)
