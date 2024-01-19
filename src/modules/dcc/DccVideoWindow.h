@@ -129,7 +129,7 @@ protected:
 	QGridLayout * m_pLayout;
 	QTimer m_Timer;
 	QLabel * m_pVideoLabel[3];
-	QString * m_pszTarget;
+	QString m_szTarget;
 	DccVideoThread * m_pSlaveThread;
 	QByteArray m_tmpTextDataOut;
 	QString m_szLocalNick;
