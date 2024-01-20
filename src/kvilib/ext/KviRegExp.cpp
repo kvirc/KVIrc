@@ -33,7 +33,7 @@ QString KviRegExp::getCompletePattern() const
 {
 	if(m_ePs == PatternSyntax::Wildcard)
 	{
-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 1)
 		return QRegularExpression::wildcardToRegularExpression(m_szPattern, QRegularExpression::UnanchoredWildcardConversion | QRegularExpression::NonPathWildcardConversion);
 #elif QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 		QString tmp = QRegularExpression::wildcardToRegularExpression(m_szPattern, QRegularExpression::UnanchoredWildcardConversion);
