@@ -389,7 +389,9 @@ endif()
 ############################################################################
 
 # first check if Qt6 or Qt5 has to be used
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
+if(NOT DEFINED QT_VERSION_MAJOR)
+	find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
+endif()
 # second, detect available modules for the specific Qt version
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 if(Qt${QT_VERSION_MAJOR}Widgets_FOUND)
