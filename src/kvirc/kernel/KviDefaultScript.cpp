@@ -41,7 +41,6 @@
 #include <QMessageBox>
 
 KviDefaultScriptManager * KviDefaultScriptManager::m_pSelf = nullptr;
-unsigned int KviDefaultScriptManager::m_uCount = 0;
 
 KviDefaultScriptManager::KviDefaultScriptManager()
     : QObject()
@@ -72,18 +71,18 @@ KviDefaultScriptManager::~KviDefaultScriptManager()
 
 void KviDefaultScriptManager::init()
 {
-	if((!m_pSelf) && (m_pSelf->count() == 0))
+	if(!m_pSelf)
 	{
 		m_pSelf = new KviDefaultScriptManager();
-		m_uCount++;
 	}
 }
 
 void KviDefaultScriptManager::done()
 {
-	m_uCount--;
-	if(m_pSelf->count() == 0)
+	if(m_pSelf) {
 		delete m_pSelf;
+		m_pSelf = nullptr;
+	}
 }
 
 bool KviDefaultScriptManager::isDefscriptUpToDate()

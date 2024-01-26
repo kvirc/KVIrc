@@ -33,32 +33,21 @@
 #include <QString>
 
 KviInputHistory * KviInputHistory::m_pSelf = nullptr;
-unsigned int KviInputHistory::m_uCount = 0;
 
 void KviInputHistory::init()
 {
-	if((!m_pSelf) && (m_pSelf->count() == 0))
+	if(!m_pSelf)
 	{
 		m_pSelf = new KviInputHistory();
-		addRef();
 	}
 }
 
 void KviInputHistory::done()
 {
-	delRef();
-	if(m_pSelf->count() == 0)
+	if(m_pSelf) {
 		delete m_pSelf;
-}
-
-void KviInputHistory::addRef()
-{
-	m_uCount++;
-}
-
-void KviInputHistory::delRef()
-{
-	m_uCount--;
+		m_pSelf = nullptr;
+	}
 }
 
 void KviInputHistory::add(const QString & szString)
