@@ -27,7 +27,6 @@
 #include <QAbstractItemView>
 #include <QAbstractTextDocumentLayout>
 #include <QApplication>
-#include <QListWidget>
 #include <QPainter>
 
 #define LVI_AFTER_ICON (LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING)
@@ -102,15 +101,15 @@ QSize KviTalIconAndRichTextItemDelegate::sizeHint(const QStyleOptionViewItem & o
 	QTextDocument doc;
 	doc.setHtml(szText);
 	doc.setDefaultFont(option.font);
-	doc.setTextWidth(((QListWidget *)parent())->viewport()->width() - LVI_AFTER_ICON - LVI_BORDER);
+	doc.setTextWidth(((QAbstractItemView *)parent())->viewport()->width() - LVI_AFTER_ICON - LVI_BORDER);
 	int iHeight = doc.documentLayout()->documentSize().toSize().height();
 
-	//qDebug("Size hint (%d,%d)",((QListWidget *)parent())->minimumWidth(), iHeight + (2 * LVI_BORDER));
+	//qDebug("Size hint (%d,%d)",((QAbstractItemView *)parent())->minimumWidth(), iHeight + (2 * LVI_BORDER));
 
 	int iIconWidth = m_oIconSize.width() + (2 * LVI_BORDER);
 	int iIconHeight = m_oIconSize.height() + (2 * LVI_BORDER);
 
-	int w = ((QListWidget *)parent())->minimumWidth();
+	int w = ((QAbstractItemView *)parent())->minimumWidth();
 	if(w < iIconWidth)
 		w = iIconWidth;
 	if(w < m_oMinimumSize.width())
