@@ -137,6 +137,11 @@ ScriptEditorWidget::~ScriptEditorWidget()
 	if(m_pCompleter)
 		delete m_pCompleter;
 	disableSyntaxHighlighter();
+	if(m_pStartTimer) {
+		m_pStartTimer->stop();
+		m_pStartTimer->deleteLater();
+		m_pStartTimer = nullptr;
+	}
 }
 
 void ScriptEditorWidget::checkReadyCompleter()
