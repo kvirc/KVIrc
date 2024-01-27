@@ -34,6 +34,7 @@
 #include "KviConsoleWindow.h"
 #include "KviWindow.h"
 #include "KviIrcUserDataBase.h"
+#include "KviMaskEditor.h"
 #include "KviPixmap.h"
 #include "KviUserListView.h"
 #include "KviTimeUtils.h"
@@ -55,13 +56,6 @@ class KviModeEditor;
 class KviTalHBox;
 class KviThemedLabel;
 class KviTopicWidget;
-
-#ifdef COMPILE_ON_WINDOWS
-// windows compiler wants this instead of the forward decl
-#include "KviMaskEditor.h"
-#else
-struct KviMaskEntry; // KviMaskEditor.h
-#endif
 
 /**
 * \def KVI_CHANNEL_AVERAGE_USERS The average channel users of a channel
