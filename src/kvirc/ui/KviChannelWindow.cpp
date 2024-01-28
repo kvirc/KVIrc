@@ -38,7 +38,6 @@
 #include "KviWindowListBase.h"
 #include "KviMainWindow.h"
 #include "KviConfigurationFile.h"
-#include "KviMaskEditor.h"
 #include "KviControlCodes.h"
 #include "KviModeEditor.h"
 #include "KviApplication.h"
