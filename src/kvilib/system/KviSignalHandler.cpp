@@ -64,7 +64,7 @@ KviSignalHandler::KviSignalHandler(QObject *parent)
 
 bool kvi_signalHandlerSetup()
 {
-	new KviSignalHandler();
+	new KviSignalHandler(qApp);
 
 	struct sigaction sa;
 	::memset(&sa,0,sizeof(sa));
