@@ -216,6 +216,7 @@ KviInputEditor::~KviInputEditor()
 	if(m_iCursorTimer)
 		killTimer(m_iCursorTimer);
 	killDragTimer();
+	clearUndoStack();
 
 	qDeleteAll(m_p->lTextBlocks);
 	delete m_p;
@@ -2602,7 +2603,7 @@ void KviInputEditor::undo()
 	if(m_UndoStack.empty())
 		return; // this should be ensured by isUndoAvailable() but well...
 
-	EditCommand * pCommand = m_UndoStack.back();
+	std::unique_ptr<EditCommand> pCommand = std::move(m_RedoStack.back());
 	m_UndoStack.pop_back();
 
 	Q_ASSERT(pCommand); // should be true: we delete the empty undo stack
@@ -2624,12 +2625,10 @@ void KviInputEditor::undo()
 			break;
 		default:
 			Q_ASSERT_X(false, "KviInputEditor::undo", "Unexpected EditCommand type");
-			delete pCommand; // argh
 			return;
-			break;
 	}
 
-	m_RedoStack.push_back(pCommand);
+	m_RedoStack.push_back(std::move(pCommand));
 	if(m_RedoStack.size() > KVI_INPUT_MAX_UNDO_SIZE)
 		m_RedoStack.erase(m_RedoStack.begin()); // will delete it
 }
@@ -2642,7 +2641,7 @@ void KviInputEditor::redo()
 	if(m_RedoStack.empty())
 		return; // this should be ensured by isUndoAvailable() but well...
 
-	EditCommand * pCommand = m_RedoStack.back();
+	std::unique_ptr<EditCommand> pCommand = std::move(m_RedoStack.back());
 	m_RedoStack.pop_back();
 
 	Q_ASSERT(pCommand); // should be true: we delete the empty redo stack
@@ -2664,19 +2663,17 @@ void KviInputEditor::redo()
 			break;
 		default:
 			Q_ASSERT_X(false, "KviInputEditor::redo", "Unexpected EditCommand type");
-			delete pCommand; // argh
 			return;
-			break;
 	}
 
-	m_UndoStack.push_back(pCommand);
+	m_UndoStack.push_back(std::move(pCommand));
 	if(m_UndoStack.size() > KVI_INPUT_MAX_UNDO_SIZE)
 		m_UndoStack.erase(m_UndoStack.begin()); // will delete it
 }
 
 void KviInputEditor::addUndo(EditCommand * pCommand)
 {
-	m_UndoStack.push_back(pCommand);
+	m_UndoStack.push_back(std::unique_ptr<EditCommand>(pCommand));
 
 	if(m_UndoStack.size() > KVI_INPUT_MAX_UNDO_SIZE)
 		m_UndoStack.erase(m_UndoStack.begin()); // will delete it

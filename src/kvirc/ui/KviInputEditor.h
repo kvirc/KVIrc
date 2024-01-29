@@ -253,7 +253,7 @@ protected:
 	* Contains owned pointers and has autodelete set to true. The most recent command
 	* is at the end. Null when no undo is available.
 	*/
-	std::vector<EditCommand *> m_UndoStack;
+	std::vector<std::unique_ptr<EditCommand>> m_UndoStack;
 
 	/**
 	* \var m_RedoStack
@@ -262,7 +262,7 @@ protected:
 	* Contains owned pointers and has autodelete set to true. The most recently undone
 	* command is at the end. Null when no redo is available.
 	*/
-	std::vector<EditCommand *> m_RedoStack;
+	std::vector<std::unique_ptr<EditCommand>> m_RedoStack;
 
 	KviInputEditorPrivate * m_p;
 
