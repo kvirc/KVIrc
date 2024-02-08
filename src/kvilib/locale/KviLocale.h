@@ -97,7 +97,6 @@ protected:
 
 private:
 	static KviLocale * m_pSelf;
-	static unsigned int m_uCount;
 
 public:
 	/**
@@ -121,12 +120,6 @@ public:
 	* \return KviLocale *
 	*/
 	static inline KviLocale * instance() { return m_pSelf; }
-
-	/**
-	* \brief Returns the number of instances of the class
-	* \return unsigned int
-	*/
-	unsigned int count() { return m_uCount; }
 
 	/**
 	* \brief Returns the description of the encoding used

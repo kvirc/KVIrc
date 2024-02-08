@@ -130,7 +130,7 @@ int kvi_getFirstBiggerPrime(int iNumber)
 KviMessageCatalogue::KviMessageCatalogue()
 {
 	//m_uEncoding = 0;
-	m_pTextCodec = QTextCodec::codecForLocale();
+	m_pTextCodec = QTextCodec::codecForName("UTF-8");
 
 	//m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(1123,true,false); // dictSize, case sensitive, don't copy keys
 	m_pMessages = new KviPointerHashTable<const char *, KviTranslationEntry>(32, true, false); // dictSize, case sensitive, don't copy keys
@@ -280,36 +280,6 @@ bool KviMessageCatalogue::load(const QString & szName)
 
 	KviMemory::free(pcBuffer);
 	f.close();
-
-	m_pTextCodec = nullptr;
-
-	// find out the text encoding, if possible
-	if(szHeader.hasData())
-	{
-		// find "charset=*\n"
-		int iIdx = szHeader.findFirstIdx("charset=");
-		if(iIdx != -1)
-		{
-			szHeader.cutLeft(iIdx + 8);
-			szHeader.cutFromFirst('\n');
-			szHeader.trim();
-			m_pTextCodec = KviLocale::instance()->codecForName(szHeader.ptr());
-			if(!m_pTextCodec)
-			{
-				qDebug("Can't find the codec for charset=%s", szHeader.ptr());
-				qDebug("Falling back to codecForLocale()");
-				m_pTextCodec = QTextCodec::codecForLocale();
-			}
-		}
-	}
-
-	if(!m_pTextCodec)
-	{
-		qDebug("The message catalogue does not have a \"charset\" header");
-		qDebug("Assuming UTF-8"); // FIXME: or codecForLocale() ?
-		m_pTextCodec = QTextCodec::codecForName("UTF-8");
-	}
-
 	return true;
 }
 

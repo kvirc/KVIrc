@@ -466,7 +466,6 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 };
 
 KviLocale * KviLocale::m_pSelf = nullptr;
-unsigned int KviLocale::m_uCount = 0;
 QString KviLocale::g_szLang = "";
 
 KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QString & szForceLocaleDir)
@@ -559,18 +558,18 @@ KviLocale::~KviLocale()
 
 void KviLocale::init(QApplication * pApp, const QString & szLocaleDir, const QString & szForceLocaleDir)
 {
-	if((!m_pSelf) && (m_pSelf->count() == 0))
+	if(!m_pSelf)
 	{
 		m_pSelf = new KviLocale(pApp, szLocaleDir, szForceLocaleDir);
-		m_uCount++;
 	}
 }
 
 void KviLocale::done()
 {
-	m_uCount--;
-	if(m_pSelf->count() == 0)
+	if(m_pSelf) {
 		delete m_pSelf;
+		m_pSelf = nullptr;
+	}
 }
 
 QTextCodec * KviLocale::codecForName(const char * pcName)

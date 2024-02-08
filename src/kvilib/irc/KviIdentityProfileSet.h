@@ -66,7 +66,6 @@ public:
 
 private:
 	static KviIdentityProfileSet * m_pSelf;
-	static unsigned int m_uCount;
 
 protected:
 	KviPointerList<KviIdentityProfile> * m_pProfiles;
@@ -90,12 +89,6 @@ public:
 	* \return KviIdentityProfileSet *
 	*/
 	static inline KviIdentityProfileSet * instance() { return m_pSelf; };
-
-	/**
-	* \brief Returns the number of instances of the class
-	* \return unsigned int
-	*/
-	unsigned int count() { return m_uCount; };
 
 	/**
 	* \brief Returns the profiles set

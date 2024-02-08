@@ -61,7 +61,6 @@ public:
 
 private:
 	static KviDefaultScriptManager * m_pSelf;
-	static unsigned int m_uCount;
 	bool m_bNoNeedToRestore = false;
 	bool m_bConfigFileMissing = false;
 	KviDefaultScriptDialog * m_pDialog = nullptr;
@@ -94,12 +93,6 @@ public:
 	* \return KviDefaultScriptManager *
 	*/
 	static inline KviDefaultScriptManager * instance() { return m_pSelf; }
-
-	/**
-	* \brief Returns the number of instances of the class
-	* \return unsigned int
-	*/
-	unsigned int count() const { return m_uCount; }
 
 	/**
 	* \brief Checks if the local defscript is up to date

@@ -26,7 +26,6 @@
 #include "KviConfigurationFile.h"
 
 KviIdentityProfileSet * KviIdentityProfileSet::m_pSelf = nullptr;
-unsigned int KviIdentityProfileSet::m_uCount = 0;
 
 KviIdentityProfileSet::KviIdentityProfileSet()
     : KviHeapObject()
@@ -49,18 +48,18 @@ KviIdentityProfileSet::~KviIdentityProfileSet()
 
 void KviIdentityProfileSet::init()
 {
-	if((!m_pSelf) && (m_pSelf->count() == 0))
+	if(!m_pSelf)
 	{
 		m_pSelf = new KviIdentityProfileSet();
-		m_uCount++;
 	}
 }
 
 void KviIdentityProfileSet::done()
 {
-	m_uCount--;
-	if(m_pSelf->count() == 0)
+	if(m_pSelf) {
 		delete m_pSelf;
+		m_pSelf = nullptr;
+	}
 }
 
 void KviIdentityProfileSet::clear()

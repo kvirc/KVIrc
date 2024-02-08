@@ -54,7 +54,6 @@ class KVIRC_API KviInputHistory
 {
 private:
 	static KviInputHistory * m_pSelf;
-	static unsigned int m_uCount;
 
 protected:
 	std::vector<QString> m_StringList;
@@ -77,24 +76,6 @@ public:
 	* \return KviInputHistory *
 	*/
 	static inline KviInputHistory * instance() { return m_pSelf; };
-
-	/**
-	* \brief Returns the number of instances of the class
-	* \return unsigned int
-	*/
-	unsigned int count() { return m_uCount; };
-
-	/**
-	* \brief Adds a reference to the class
-	* \return void
-	*/
-	static void addRef();
-
-	/**
-	* \brief Removes a reference to the class
-	* \return void
-	*/
-	static void delRef();
 
 	/**
 	* \brief Adds a string to the history
