@@ -200,8 +200,10 @@ protected:
 	void cleanupEsd();
 #endif //COMPILE_ESD_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 	bool playQt(const QString & szFileName);
 	void cleanupQt();
+#endif
 	bool playNull(const QString & szFileName);
 	void cleanupNull();
 };
