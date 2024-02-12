@@ -482,6 +482,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Multimedia)
 if(Qt${QT_VERSION_MAJOR}Multimedia_FOUND)
 	include_directories(${Qt${QT_VERSION_MAJOR}Multimedia_INCLUDE_DIRS})
 	list(APPEND qt_kvirc_modules Qt::Multimedia)
+	set(COMPILE_QTMULTIMEDIA_SUPPORT 1)
 endif()
 
 # Qt Concurrent

@@ -34,10 +34,12 @@
 #include "KviLocale.h"
 #include "KviQString.h"
 
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QSound>
 #else
 #include <QSoundEffect>
+#endif
 #endif
 
 #ifdef COMPILE_PHONON_SUPPORT
@@ -120,7 +122,9 @@ KviSoundPlayer::KviSoundPlayer()
 
 #endif //!COMPILE_ON_WINDOWS
 
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 	m_pSoundSystemDict->insert("qt", new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playQt), KVI_PTR2MEMBER(KviSoundPlayer::cleanupQt)));
+#endif
 	m_pSoundSystemDict->insert("null", new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playNull), KVI_PTR2MEMBER(KviSoundPlayer::cleanupNull)));
 }
 
@@ -234,7 +238,9 @@ void KviSoundPlayer::detectSoundSystem()
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "oss";
 #endif
 
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "qt";
+#endif
 	return;
 #endif
 }
@@ -347,6 +353,7 @@ void KviSoundPlayer::cleanupEsd()
 #endif //COMPILE_ESD_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 bool KviSoundPlayer::playQt(const QString & szFileName)
 {
 	if(isMuted())
@@ -366,6 +373,7 @@ void KviSoundPlayer::cleanupQt()
 	// how to stop Qt sounds ?
 	// using the play/stop slots instead of the static ::play (TODO)
 }
+#endif
 
 bool KviSoundPlayer::playNull(const QString &)
 {
