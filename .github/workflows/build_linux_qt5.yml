@@ -13,7 +13,7 @@ on:
       - '**.md'
 
 jobs:
-  build-linux:
+  build-linux-qt5:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,7 +22,7 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2
         with:
-          key: build-linux-release
+          key: build-linux-qt5-release
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
