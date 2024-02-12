@@ -224,7 +224,11 @@ KviIpcSentinel::KviIpcSentinel() : QWidget(nullptr)
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 bool KviIpcSentinel::winEvent(MSG * msg, long * result)
+#else
+bool KviIpcSentinel::winEvent(MSG * msg, qintptr * result)
+#endif
 {
 	if(msg->message == WM_COPYDATA)
 	{
