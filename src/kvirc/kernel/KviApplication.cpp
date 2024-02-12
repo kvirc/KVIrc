@@ -1628,9 +1628,9 @@ void KviApplication::createFrame()
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(KVI_OPTION_BOOL(KviOption_boolShowTaskBarButton))
-		new KviMainWindow(0);
+		new KviMainWindow(nullptr);
 	else
-		new KviMainWindow(new QWidget(0, 0));
+		new KviMainWindow(new QWidget(nullptr, Qt::Widget));
 #else
 	new KviMainWindow(nullptr);
 #endif
