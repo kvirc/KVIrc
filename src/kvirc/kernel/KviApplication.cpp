@@ -115,7 +115,9 @@
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <QPluginLoader>
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 #include <QtWin>
+#endif
 #include <QScreen>
 #endif
 
@@ -1318,7 +1320,11 @@ void KviApplication::updatePseudoTransparency()
 			SelectObject(bitmap_dc, null_bitmap);
 			DeleteDC(bitmap_dc);
 			ReleaseDC(0, displayDc);
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+			QPixmap pix = QPixmap::fromImage(QImage::fromHBITMAP(bitmap));
+#else
 			QPixmap pix = QtWin::fromHBITMAP(bitmap);
+#endif
 
 			DeleteObject(bitmap);
 

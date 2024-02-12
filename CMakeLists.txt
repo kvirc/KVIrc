@@ -522,7 +522,7 @@ if(WANT_QTSVG)
 	endif()
 endif()
 
-if(WIN32)
+if(WIN32 AND ${QT_VERSION_MAJOR} EQUAL 5)
 	find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WinExtras)
 	if(Qt${QT_VERSION_MAJOR}WinExtras_FOUND)
 		list(APPEND qt_kvirc_modules Qt::WinExtras)
