@@ -10,7 +10,7 @@ environment:
           arch: x64
           target_arch: x86_64
           vc_arch: amd64
-          qt_ver: 5.15\msvc2019_64
+          qt_ver: 6.5\msvc2019_64
           MSYSTEM: MINGW64
           mingw_fourple: mingw64/mingw-w64-x86_64
           mingw_root: c:/msys64/mingw64
@@ -21,7 +21,7 @@ environment:
           arch: x86
           target_arch: x86
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
-          qt_ver: 5.15\msvc2019
+          qt_ver: 6.5\msvc2019
           MSYSTEM: MINGW32
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
@@ -32,7 +32,7 @@ environment:
 #          arch: x64
 #          target_arch: x86_64
 #          vc_arch: amd64
-#          qt_ver: 5.15\msvc2019_64
+#          qt_ver: 6.5\msvc2019_64
 #          MSYSTEM: MINGW64
 #          mingw_fourple: mingw64/mingw-w64-x86_64
 #          mingw_root: c:/msys64/mingw64
@@ -43,7 +43,7 @@ environment:
 #          arch: x86
 #          target_arch: x86
 #          vc_arch: amd64_x86  # cross-compile from amd64 to x86
-#          qt_ver: 5.15\msvc2019_64
+#          qt_ver: 6.5\msvc2019_64
 #          MSYSTEM: MINGW32
 #          mingw_fourple: mingw32/mingw-w64-i686
 #          mingw_root: c:/msys64/mingw32
