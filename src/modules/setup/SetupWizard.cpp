@@ -962,7 +962,7 @@ void SetupWizard::accept()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		else
 		{ //portable
-			szDir = g_pApp->applicationDirPath() + KVI_PATH_SEPARATOR_CHAR + "Settings";
+			szDir = QString("%1%2%3").arg(g_pApp->applicationDirPath()).arg(KVI_PATH_SEPARATOR_CHAR).arg("Settings");
 		}
 #endif
 
@@ -990,7 +990,7 @@ void SetupWizard::accept()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		else
 		{ //portable
-			szDir = g_pApp->applicationDirPath() + KVI_PATH_SEPARATOR_CHAR + "Downloads";
+			szDir = QString("%1%2%3").arg(g_pApp->applicationDirPath()).arg(KVI_PATH_SEPARATOR_CHAR).arg("Downloads");
 		}
 #endif
 
@@ -1109,7 +1109,7 @@ void SetupWizard::accept()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(m_pDirMakePortable->isChecked())
 	{
-		KviFileUtils::writeFile(g_pApp->applicationDirPath() + KVI_PATH_SEPARATOR_CHAR + "portable", QString("true"));
+		KviFileUtils::writeFile(QString("%1%2%3").arg(g_pApp->applicationDirPath()).arg(KVI_PATH_SEPARATOR_CHAR).arg("portable"), QString("true"));
 		g_pApp->m_bPortable = true;
 	}
 	else

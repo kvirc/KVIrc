@@ -300,7 +300,7 @@ bool KviApplication::findLocalKvircDirectory()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(m_bPortable)
 	{
-		m_szLocalKvircDir = g_pApp->applicationDirPath() + KVI_PATH_SEPARATOR_CHAR + "Settings";
+		m_szLocalKvircDir = QString("%1%2%3").arg(g_pApp->applicationDirPath()).arg(KVI_PATH_SEPARATOR_CHAR).arg("Settings");
 		if(checkLocalKvircDirectory())
 			return true;
 	}
