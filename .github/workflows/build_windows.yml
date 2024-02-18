@@ -72,13 +72,13 @@ jobs:
         run: |
           c:\msys64\usr\bin\pacman -S --noconfirm patch
           cd c:\enchant-headers
-          c:\msys64\usr\bin\patch -p2 -i ${{github.workspace}}\.appveyor.ench
+          c:\msys64\usr\bin\patch -p2 -i ${{github.workspace}}\dist\windows\patches\enchant.patch
 
       - name: Patch Perl for MSVC support
         run: |
           # Strawberry perl doesn't support MSVC, but we force the support.
           cd '${{github.workspace}}'
-          type .appveyor.perl >> c:\Strawberry\perl\lib\core\config.h
+          type dist\windows\patches\perl.txt >> c:\Strawberry\perl\lib\core\config.h
 
       # To debug add -DCMAKE_VERBOSE_MAKEFILE=1 `
       - name: Configure CMake
