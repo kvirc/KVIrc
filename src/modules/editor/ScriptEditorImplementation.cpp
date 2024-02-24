@@ -94,6 +94,7 @@ static bool bCompleterReady = false;
 ScriptEditorWidget::ScriptEditorWidget(QWidget * pParent)
     : QTextEdit(pParent)
 {
+	m_pStartTimer = nullptr;
 	m_pSyntaxHighlighter = nullptr;
 	setTabStopDistance(48);
 	setAcceptRichText(false);
@@ -148,17 +149,17 @@ void ScriptEditorWidget::checkReadyCompleter()
 {
 	if(bCompleterReady)
 	{
-		m_pStartTimer->stop();
-		delete m_pStartTimer;
-		m_pStartTimer = nullptr;
+		if(m_pStartTimer) {
+			m_pStartTimer->stop();
+			m_pStartTimer->deleteLater();
+			m_pStartTimer = nullptr;
+		}
 		loadCompleterFromFile();
 	}
 }
 
 void ScriptEditorWidget::asyncCompleterCreation()
 {
-	//static int iIndex = 0;
-	//static int iModulesCount = 0;
 	if(!iIndex)
 	{
 		m_pListCompletition = new QStringList();
@@ -178,9 +179,6 @@ void ScriptEditorWidget::asyncCompleterCreation()
 		m_pListModulesNames = new QStringList(d.entryList(QDir::Files | QDir::Readable));
 		iModulesCount = m_pListModulesNames->count();
 	}
-
-	if (iIndex <= m_pListModulesNames->size())
-		return;
 
 	QString szModuleName = m_pListModulesNames->at(iIndex);
 	iIndex++;
@@ -204,9 +202,11 @@ void ScriptEditorWidget::asyncCompleterCreation()
 
 	if(iIndex == iModulesCount)
 	{
-		m_pStartTimer->stop();
-		m_pStartTimer->deleteLater();
-		m_pStartTimer = nullptr;
+		if(m_pStartTimer) {
+			m_pStartTimer->stop();
+			m_pStartTimer->deleteLater();
+			m_pStartTimer = nullptr;
+		}
 		QString szTmp("kvscompleter.idx");
 		QString szPath;
 		g_pApp->getLocalKvircDirectory(szPath, KviApplication::ConfigPlugins, szTmp);
@@ -457,8 +457,9 @@ bool ScriptEditorWidget::contextSensitiveHelp() const
 	QTextCursor cur = cursorForPosition(QPoint(r.x(), r.y()));
 	cur.select(QTextCursor::WordUnderCursor);
 	QString szText = cur.selectedText();
-	QString szTmp = szText;
-
+	KviQString::escapeKvs(&szText);
+	QString szParse = QString("timer -s (help,0){ help.open %1; }").arg(szText);
+	KviKvsScript::run(szParse,(KviWindow*)g_pApp->activeConsole());
 	return true;
 }
 
