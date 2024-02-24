@@ -46,14 +46,9 @@ void KviHeapObject::operator delete[](void * pData)
 	KviMemory::free(pData);
 }
 
-// these are the debug versions...
-void * KviHeapObject::operator new(size_t uSize, const char *, int)
+// placement new operator - needed by QMetaType
+void * KviHeapObject::operator new(size_t, std::align_val_t, void * pWhere)
 {
-	return KviMemory::allocate(uSize);
-}
-
-void KviHeapObject::operator delete(void * pData, const char *, int)
-{
-	KviMemory::free(pData);
+	return pWhere;
 }
 #endif

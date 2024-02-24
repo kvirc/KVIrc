@@ -19,9 +19,11 @@ Name "@NICENAME@"
 !define PUBLISHER 'Szymon Stefanek and The KVIrc Development Team'
 
 ; Git release, e.g. KVIrc-4.3.2-dev-git-5465-ge352609.exe
-OutFile KVIrc-${KVIRC_BUILD_REVISION}.exe
+;OutFile KVIrc-${KVIRC_BUILD_REVISION}.exe
 ; Stable version, e.g. KVIrc-4.2.0-Equilibrium.exe
 ;OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
+; Github CI
+OutFile KVIrc.exe
 
 Unicode true
 SetCompressor /SOLID lzma

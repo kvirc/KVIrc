@@ -105,20 +105,14 @@ public:
 	void operator delete[](void * pData);
 
 	/**
-		* \brief Overloading of the new operator (debug version)
+		* \brief Overloading of the new placement operator
 		*
 		* \param size_t size in bytes of the memory that has to be allocated
+		* \param std::align_val_t alignment
+		* \param void * pointer to the already-allocated memory
 		* \return void *
 		*/
-	void * operator new(size_t uSize, const char *, int);
-
-	/**
-		* \brief Overloading of the delete operator (debug version)
-		*
-		* \param pData pointer to the objet that needs to be freed
-		* \return void
-		*/
-	void operator delete(void * pData, const char *, int);
+	void * operator new(size_t uSize, std::align_val_t, void * pWhere);
 };
 #else  //COMPILE_ON_WINDOWS
 class KVILIB_API KviHeapObject

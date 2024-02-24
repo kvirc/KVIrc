@@ -115,7 +115,9 @@
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <QPluginLoader>
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 #include <QtWin>
+#endif
 #include <QScreen>
 #endif
 
@@ -226,7 +228,7 @@ KviApplication::KviApplication(int & argc, char ** argv)
 	// don't let qt quit the application by itself
 	setQuitOnLastWindowClosed(false);
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	m_bPortable = KviFileUtils::fileExists(g_pApp->applicationDirPath() + KVI_PATH_SEPARATOR_CHAR + "portable");
+	m_bPortable = KviFileUtils::fileExists(QString("%1%2%3").arg(g_pApp->applicationDirPath().arg(KVI_PATH_SEPARATOR_CHAR).arg("portable")));
 #endif
 
 //note: the early qApp->style() call leads to a crash on osx
@@ -1318,7 +1320,11 @@ void KviApplication::updatePseudoTransparency()
 			SelectObject(bitmap_dc, null_bitmap);
 			DeleteDC(bitmap_dc);
 			ReleaseDC(0, displayDc);
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+			QPixmap pix = QPixmap::fromImage(QImage::fromHBITMAP(bitmap));
+#else
 			QPixmap pix = QtWin::fromHBITMAP(bitmap);
+#endif
 
 			DeleteObject(bitmap);
 
@@ -1622,9 +1628,9 @@ void KviApplication::createFrame()
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(KVI_OPTION_BOOL(KviOption_boolShowTaskBarButton))
-		new KviMainWindow(0);
+		new KviMainWindow(nullptr);
 	else
-		new KviMainWindow(new QWidget(0, 0));
+		new KviMainWindow(new QWidget(nullptr, Qt::Widget));
 #else
 	new KviMainWindow(nullptr);
 #endif
