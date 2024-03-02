@@ -304,39 +304,3 @@ install(TARGETS ${KVIRC_BINARYNAME} RUNTIME DESTINATION "${KVIRC_BIN_PATH}")
 if(MSVC)
 	install(FILES $<TARGET_PDB_FILE:${KVIRC_BINARYNAME}> DESTINATION ${KVIRC_BIN_PATH} OPTIONAL)
 endif()
-
-if(APPLE)
-	set(plugin_dest_dir ${CMAKE_INSTALL_PREFIX}/Contents/Plugins)
-	set(qtconf_dest_dir ${CMAKE_INSTALL_PREFIX}/Contents/Resources)
-	#fixme dirty hack
-	set(QT_PLUGINS_DIR "${Qt5Widgets_DIR}/../../../plugins")
-	set(QT_LIBRARY_DIR "${Qt5Widgets_DIR}/../../")
-	get_filename_component(QT_LIBRARY_DIR ${QT_LIBRARY_DIR} PATH)
-	get_filename_component(QT_LIBRARY_DIR "${QT_LIBRARY_DIR}/.." ABSOLUTE)
-
-    # qt5: audio, iconengines, imageformats, mediaservice, platforms, sqldrivers
-    install(DIRECTORY "${QT_PLUGINS_DIR}/" DESTINATION ${plugin_dest_dir} COMPONENT Runtime
-        FILES_MATCHING
-        PATTERN "*.dSYM" EXCLUDE
-        PATTERN "*_debug.dylib" EXCLUDE
-        PATTERN "audio/*.dylib"
-        PATTERN "iconengines/*.dylib"
-        PATTERN "imageformats/*.dylib"
-        PATTERN "mediaservice/*.dylib"
-        PATTERN "platforms/*.dylib"
-        PATTERN "sqldrivers/*.dylib"
-    )
-
-	install(CODE "
-	    file(WRITE \"${qtconf_dest_dir}/qt.conf\" \"[Paths]
-Plugins = Plugins\")
-	    " COMPONENT Runtime)
-
-	install(CODE "
-	    file(GLOB_RECURSE QTPLUGINS
-	      \"${plugin_dest_dir}/*.dylib\")
-	    set(BU_CHMOD_BUNDLE_ITEMS ON)
-	    include(BundleUtilities)
-	    fixup_bundle(\"${CMAKE_INSTALL_PREFIX}\" \"\${QTPLUGINS}\" \"${QT_LIBRARY_DIR}\" IGNORE_ITEM \"Python;libqsqlodbc.dylib;libqsqlpsql.dylib\")
-	    " COMPONENT Runtime)
-endif()

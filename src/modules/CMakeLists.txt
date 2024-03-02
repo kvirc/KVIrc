@@ -55,8 +55,3 @@ endif()
 if(COMPILE_ENCHANT_SUPPORT)
 	subdirs(spellchecker)
 endif()
-
-if(APPLE)
-	# This is a dirty trick ensure we get some code executed after the last module gets installed
-	subdirs(zzz_afterlastmodule)
-endif()
