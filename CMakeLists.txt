@@ -324,6 +324,7 @@ endif()
 if(UNIX)
 	if(APPLE)
 		set(CMAKE_KVIRC_RESOURCES_DIR "${CMAKE_INSTALL_PREFIX}/Contents/Resources/")
+		set(CMAKE_KVIRC_MODULES_DIR "${CMAKE_INSTALL_PREFIX}/Contents/Frameworks/modules/")
 	else()
 		# Assume GNU/Linux
 		set(CMAKE_KVIRC_RESOURCES_DIR "${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/")
@@ -1310,7 +1311,7 @@ endif()
 # KviLib path
 if(UNIX)
 	if(APPLE)
-		set(KVIRC_LIB_PATH ${CMAKE_INSTALL_PREFIX}/Contents/MacOS/)
+		set(KVIRC_LIB_PATH ${CMAKE_INSTALL_PREFIX}/Contents/Frameworks/)
 	else()
 		# Assume Linux
 		set(KVIRC_LIB_PATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/)
@@ -1322,7 +1323,7 @@ endif()
 # Modules path
 if(UNIX)
 	if(APPLE)
-		set(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/Contents/Resources/modules/)
+		set(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/Contents/Frameworks/modules/)
 	else()
 		# Assume GNU/Linux
 		set(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/kvirc/${VERSION_BRANCH}/modules/)

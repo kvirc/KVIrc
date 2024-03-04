@@ -57,7 +57,7 @@ jobs:
       - name: Deployt Qt
         run: |
           cd '${{github.workspace}}'
-          macdeployqt "build/KVIrc.app" -libpath=build/KVIrc.app/Contents/MacOS
+          macdeployqt "build/KVIrc.app"
 
       - name: Detect version
         shell: bash
