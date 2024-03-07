@@ -30,6 +30,9 @@ jobs:
           version: 6.6.2
           modules: qt5compat qtmultimedia
 
+      - name: Install Python
+        uses: actions/setup-python@v5
+
       - name: Install other prerequisites
         run: |
           brew update
