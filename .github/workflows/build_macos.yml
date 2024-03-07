@@ -30,11 +30,6 @@ jobs:
           version: 6.6.2
           modules: qt5compat qtmultimedia
 
-      - name: Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
       - name: Install other prerequisites
         run: |
           brew update
@@ -45,7 +40,11 @@ jobs:
           cd '${{github.workspace}}'
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER_LAUNCHER=ccache ..
+          cmake \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -DWANT_PYTHON=OFF \
+            ..
 
       - name: Build
         run: |
