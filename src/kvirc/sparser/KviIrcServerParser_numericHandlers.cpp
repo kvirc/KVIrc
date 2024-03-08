@@ -1544,10 +1544,7 @@ void KviIrcServerParser::parseNumericWhoisAway(KviIrcMessage * msg)
 
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = static_cast<KviWindow *>(msg->connection()->findQuery(szNk));
-
-		if(!pOut)
-			pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_WHOISUSER, __tr2qs("%c\r!n\r%Q\r%c is away: %Q"),
 		    KviControlCodes::Bold, &szNk, KviControlCodes::Bold, &szWText);
 	}
