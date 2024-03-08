@@ -26,6 +26,9 @@ jobs:
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
+        with:
+          version: 6.6.2
+          modules: qt5compat qtmultimedia
 
       - name: Install other prerequisites
         run: |
@@ -37,7 +40,11 @@ jobs:
           cd '${{github.workspace}}'
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER_LAUNCHER=ccache ..
+          cmake \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -DWANT_PYTHON=OFF \
+            ..
 
       - name: Build
         run: |
@@ -50,6 +57,11 @@ jobs:
           cd '${{github.workspace}}'
           cd build
           cmake --install .
+
+      - name: Deployt Qt
+        run: |
+          cd '${{github.workspace}}'
+          macdeployqt "build/KVIrc.app" -appstore-compliant
 
       - name: Detect version
         shell: bash
