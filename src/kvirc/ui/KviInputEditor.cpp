@@ -2603,7 +2603,7 @@ void KviInputEditor::undo()
 	if(m_UndoStack.empty())
 		return; // this should be ensured by isUndoAvailable() but well...
 
-	std::unique_ptr<EditCommand> pCommand = std::move(m_RedoStack.back());
+	std::unique_ptr<EditCommand> pCommand = std::move(m_UndoStack.back());
 	m_UndoStack.pop_back();
 
 	Q_ASSERT(pCommand); // should be true: we delete the empty undo stack
