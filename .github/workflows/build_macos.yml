@@ -33,7 +33,7 @@ jobs:
       - name: Install other prerequisites
         run: |
           brew update
-          brew install enchant openssl create-dmg --force-bottle
+          brew install enchant openssl create-dmg --force-bottle || true
 
       - name: Configure CMake
         run: |
