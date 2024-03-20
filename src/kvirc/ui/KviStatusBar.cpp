@@ -129,7 +129,13 @@ void KviStatusBar::dragMoveEvent(QDragMoveEvent * de)
 		// move!
 		while(pApplet)
 		{
-			if(de->pos().x() < (pApplet->x() + pApplet->width() - m_pClickedApplet->width()))
+			if(
+#if(QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+				de->pos().x()
+#else
+				de->position().x()
+#endif
+				 < (pApplet->x() + pApplet->width() - m_pClickedApplet->width()))
 			{
 				pApplet = m_pAppletList->prev();
 			}

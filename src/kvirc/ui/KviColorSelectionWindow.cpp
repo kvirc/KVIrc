@@ -88,19 +88,24 @@ void KviColorWindow::keyPressEvent(QKeyEvent * e)
 void KviColorWindow::mousePressEvent(QMouseEvent * e)
 {
 	QString szStr;
+#if(QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+	QPoint pos = e->pos();
+#else
+	QPointF pos = e->position();
+#endif
 	if(!(
-	       (e->pos().x() < 0) || (e->pos().x() > width()) || (e->pos().y() < 0) || (e->pos().y() > height())))
+	       (pos.x() < 0) || (pos.x() > width()) || (pos.y() < 0) || (pos.y() > height())))
 	{
-		int iKey = e->x() / 18;
-		if(e->x() < 36 && e->y() > 18)
+		int iKey = pos.x() / 18;
+		if(pos.x() < 36 && pos.y() > 18)
 			iKey += 8;
-		if(e->x() > 36 && e->y() > 18)
+		if(pos.x() > 36 && pos.y() > 18)
 			iKey -= 2;
 
 		// FIXME: is this right? maybe it should be szStr.setNum(iAscii);
 		szStr.setNum(iKey);
 
-		if(e->x() > 36 && e->y() > 18)
+		if(pos.x() > 36 && pos.y() > 18)
 		{
 			if(m_pOwner)
 				g_pApp->sendEvent(m_pOwner, new QKeyEvent(QEvent::KeyPress, Qt::Key_1, Qt::NoModifier, "1"));

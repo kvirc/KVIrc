@@ -225,7 +225,11 @@ void KviCustomToolBar::dragMoveEvent(QDragMoveEvent * e)
 	if(!g_pDraggedAction)
 		return;
 
+#if(QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 	QAction * pActionToMove = actionAt(e->pos());
+#else
+	QAction * pActionToMove = actionAt(e->position().toPoint());
+#endif
 	if(pActionToMove == g_pDraggedAction)
 		return; // hmmm
 
