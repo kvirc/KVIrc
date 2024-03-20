@@ -1490,7 +1490,7 @@ KVSO_CLASS_FUNCTION(widget, windowTitle)
 KVSO_CLASS_FUNCTION(widget, isTopLevel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(widget()->isTopLevel());
+	c->returnValue()->setBoolean(widget()->isWindow());
 	return true;
 }
 
