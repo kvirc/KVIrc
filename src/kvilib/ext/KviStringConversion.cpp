@@ -219,7 +219,11 @@ namespace KviStringConversion
 
 	bool fromString(const QString & szValue, QColor & buffer)
 	{
+#if (QT_VERSION < QT_VERSION_CHECK(6, 4, 0))
 		buffer.setNamedColor(szValue);
+#else
+		buffer = QColor::fromString(szValue);
+#endif
 		return true;
 	}
 
