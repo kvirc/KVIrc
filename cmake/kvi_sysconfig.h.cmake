@@ -71,6 +71,7 @@
 #define KVIRC_VERSION_RELEASE "${CMAKE_KVIRC_VERSION_RELEASE}"
 #define KVIRC_VERSION_BRANCH "${CMAKE_KVIRC_VERSION_BRANCH}"
 #define KVIRC_VERSION_CODENAME "${CMAKE_KVIRC_VERSION_CODENAME}"
+#define KVIRC_VERSION_MAJOR "${CMAKE_KVIRC_VERSION_MAJOR}"
 
 // KVIrc detects the modules directory on macs/win32 by itself
 // this seems to be used on linux only
