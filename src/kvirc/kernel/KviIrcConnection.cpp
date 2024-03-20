@@ -1699,7 +1699,7 @@ void KviIrcConnection::joinChannels(const std::vector<std::pair<QString, QString
 		[](const std::pair<QString, QString> & left,
 		   const std::pair<QString, QString> & right)
 	{
-		return left.second.count() > right.second.count();
+		return left.second.size() > right.second.size();
 	});
 
 	// We send the channel list in chunks to avoid overflowing the 510 character limit on the message.
