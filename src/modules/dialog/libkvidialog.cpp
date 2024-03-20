@@ -67,32 +67,29 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	setText(szText);
 	setIcon(QMessageBox::NoIcon);
 	setModal(modal);
-	QMessageBox::StandardButtons buttons;
-	bool btn = false;
+
+	yesButton    = nullptr;
+	noButton     = nullptr;
+	cancelButton = nullptr;
 	if(!szButton0.isEmpty())
 	{
-		btn = true;
-		buttons = QMessageBox::Yes;
+		yesButton = addButton(szButton0, QMessageBox::YesRole);
 	}
 	if(!szButton1.isEmpty())
 	{
-		btn = true;
-		buttons |= QMessageBox::No;
+		noButton = addButton(szButton1, QMessageBox::NoRole);
+		setEscapeButton(noButton);
 	}
 	if(!szButton2.isEmpty())
 	{
-		btn = true;
-		buttons |= QMessageBox::Cancel;
+		cancelButton = addButton(szButton2, QMessageBox::RejectRole);
+		setEscapeButton(cancelButton);
 	}
 
-	if(!btn)
-		buttons = QMessageBox::Ok;
-	setStandardButtons(buttons);
-	setDefaultButton(QMessageBox::Yes);
-	if(szButton2.isEmpty())
-		setEscapeButton(QMessageBox::No);
-	else
-		setEscapeButton(QMessageBox::Cancel);
+	if(yesButton == nullptr && noButton == nullptr && cancelButton == nullptr)
+	{
+		yesButton = addButton("Ok", QMessageBox::YesRole);
+	}
 
 	g_pDialogModuleDialogList->append(this);
 
@@ -109,12 +106,6 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 		else if(KviQString::equalCI(szIcon, "critical"))
 			setIcon(QMessageBox::Critical);
 	}
-	if(!szButton0.isEmpty())
-		setButtonText(QMessageBox::Yes, szButton0);
-	if(!szButton1.isEmpty())
-		setButtonText(QMessageBox::No, szButton1);
-	if(!szButton2.isEmpty())
-		setButtonText(QMessageBox::Cancel, szButton2);
 }
 
 KviKvsCallbackMessageBox::~KviKvsCallbackMessageBox()
@@ -128,21 +119,25 @@ void KviKvsCallbackMessageBox::done(int code)
 
 	kvs_int_t iVal = 0;
 
-	switch(code)
+	if(clickedButton() == yesButton)
 	{
-		case QMessageBox::No:
-			iVal = 1;
-			break;
-		case QMessageBox::Cancel:
+		iVal = 0;
+	}
+	else if(clickedButton() == noButton)
+	{
+		iVal = 1;
+	}
+	else if(clickedButton() == cancelButton)
+	{
+		iVal = 2;
+	}
+	else
+	{
+		// user closed the dialog, fake an "escape button" press
+		if(cancelButton != nullptr)
 			iVal = 2;
-			break;
-		case 0:
-			// user closed the dialog, fake an "escape button" press
-			if(standardButtons() & QMessageBox::Cancel)
-				iVal = 2;
-			else
-				iVal = 1;
-			break;
+		else
+			iVal = 1;
 	}
 
 	KviKvsVariantList params;

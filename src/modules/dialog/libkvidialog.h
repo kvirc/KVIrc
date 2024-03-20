@@ -31,6 +31,7 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include <QPushButton>
 #include <QString>
 
 class KviKvsCallbackMessageBox : public QMessageBox, public KviKvsCallbackObject
@@ -48,6 +49,11 @@ public:
 	    KviKvsVariantList * pMagicParams,
 	    KviWindow * pWindow, bool modal = false);
 	~KviKvsCallbackMessageBox();
+
+protected:
+	QPushButton * yesButton;
+	QPushButton * noButton;
+	QPushButton * cancelButton;
 protected slots:
 	void done(int code) override;
 };

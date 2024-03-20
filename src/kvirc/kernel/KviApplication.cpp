@@ -980,26 +980,35 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 	// first: check if the user configuration has ever been updated to the current version
 	if(!KviDefaultScriptManager::instance()->isDefscriptUpToDate())
 	{
-		switch(
-		    QMessageBox::question(nullptr, __tr2qs("Update Default Scripts - KVIrc"),
-		        __tr2qs("<b>Your KVirc installation has been updated successfully.</b><br><br>"
-		                "KVIrc's default scripts should also be updated. "
-		                "<b>Do you want to restore the default scripts?</b><br><br>"
-		                "Hint: If you choose \"No\" you can always restore the "
-		                "default scripts by selecting the appropriate entry from the \"Scripting\" menu later."),
-		        __tr2qs("No and Don't Ask Me Again"), __tr2qs("No"), __tr2qs("Yes"), 1, 1))
+		QMessageBox msg(nullptr);
+		msg.setIcon(QMessageBox::Question);
+		msg.setWindowTitle(__tr2qs("Update Default Scripts - KVIrc"));
+		msg.setText(__tr2qs("<b>Your KVirc installation has been updated successfully.</b><br><br>"
+		                    "KVIrc's default scripts should also be updated. "
+		                    "<b>Do you want to restore the default scripts?</b><br><br>"
+		                    "Hint: If you choose \"No\" you can always restore the "
+		                    "default scripts by selecting the appropriate entry from the \"Scripting\" menu later."));
+		QPushButton * neverButton = msg.addButton(__tr2qs("No and Don't Ask Me Again"), QMessageBox::NoRole);
+		QPushButton * noButton    = msg.addButton(__tr2qs("No"), QMessageBox::NoRole);
+		QPushButton * yesButton   = msg.addButton(__tr2qs("Yes"), QMessageBox::YesRole);
+		msg.setDefaultButton(noButton);
+		msg.setEscapeButton(noButton);
+		msg.exec();
+
+		if(msg.clickedButton() == neverButton)
 		{
-			case 0:
-				KVI_OPTION_BOOL(KviOption_boolDoNotSuggestRestoreDefaultScript) = true;
-				return;
-				break;
-			case 1:
-				// we want to execute the next checks, don't return now
-				break;
-			default:
-				restoreDefaultScript();
-				// we want to execute the next checks after the attempted restore, don't return now
-				break;
+			KVI_OPTION_BOOL(KviOption_boolDoNotSuggestRestoreDefaultScript) = true;
+			return;
+		}
+		else if(msg.clickedButton() == yesButton)
+		{
+			restoreDefaultScript();
+			// we want to execute the next checks after the attempted restore, don't return now
+		}
+		else
+		{
+			// "no button" or no button cliecked
+			// we want to execute the next checks, don't return now
 		}
 	}
 
@@ -1044,25 +1053,33 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 
 	bSuggestedOnce = true;
 
-	switch(
-	    QMessageBox::question(nullptr, __tr2qs("Detected Installation Issues - KVIrc"),
-	        __tr2qs("<b>Your KVIrc installation is incomplete.</b><br><br>"
-	                "You seem to be missing some of the features that the KVIrc default scripts provide. "
-	                "<b>Do you want to restore the default scripts?</b><br><br>"
-	                "Hint: If you choose \"No\" you can always restore the "
-	                "default scripts by selecting the appropriate entry from the \"Scripting\" menu later."),
-	        __tr2qs("No and Don't Ask Me Again"), __tr2qs("No"), __tr2qs("Yes"), 1, 1))
+	QMessageBox msg(nullptr);
+	msg.setIcon(QMessageBox::Question);
+	msg.setWindowTitle(__tr2qs("Detected Installation Issues - KVIrc"));
+	msg.setText(__tr2qs("<b>Your KVIrc installation is incomplete.</b><br><br>"
+	                    "You seem to be missing some of the features that the KVIrc default scripts provide. "
+	                    "<b>Do you want to restore the default scripts?</b><br><br>"
+	                    "Hint: If you choose \"No\" you can always restore the "
+	                    "default scripts by selecting the appropriate entry from the \"Scripting\" menu later."));
+	QPushButton * neverButton = msg.addButton(__tr2qs("No and Don't Ask Me Again"), QMessageBox::NoRole);
+	QPushButton * noButton    = msg.addButton(__tr2qs("No"), QMessageBox::NoRole);
+	QPushButton * yesButton   = msg.addButton(__tr2qs("Yes"), QMessageBox::YesRole);
+	msg.setDefaultButton(noButton);
+	msg.setEscapeButton(noButton);
+	msg.exec();
+
+	if(msg.clickedButton() == neverButton)
 	{
-		case 0:
-			KVI_OPTION_BOOL(KviOption_boolDoNotSuggestRestoreDefaultScript) = true;
-			return;
-			break;
-		case 1:
-			return;
-			break;
-		default:
-			restoreDefaultScript();
-			break;
+		KVI_OPTION_BOOL(KviOption_boolDoNotSuggestRestoreDefaultScript) = true;
+		return;
+	}
+	else if(msg.clickedButton() == yesButton)
+	{
+		restoreDefaultScript();
+	}
+	else
+	{
+		// "no button" or no button cliecked
 	}
 }
 
