@@ -1298,12 +1298,12 @@ void KviIrcView::appendText(int iMsgType, const kvi_wchar_t * data_ptr, int iFla
 		// Looks like the user wants to keep the control codes in the log file: we just dump everything inside (including newlines...)
 		if(m_pLogFile && KVI_OPTION_MSGTYPE(iMsgType).logEnabled())
 		{
-			add2Log(QString::fromUtf16(data_ptr), datetime, iMsgType, true);
+			add2Log(QString::fromUtf16((char16_t *)data_ptr), datetime, iMsgType, true);
 		}
 		else if(m_pMasterView)
 		{
 			if(m_pMasterView->m_pLogFile && KVI_OPTION_MSGTYPE(iMsgType).logEnabled())
-				m_pMasterView->add2Log(QString::fromUtf16(data_ptr), datetime, iMsgType, true);
+				m_pMasterView->add2Log(QString::fromUtf16((char16_t *)data_ptr), datetime, iMsgType, true);
 		}
 	}
 
