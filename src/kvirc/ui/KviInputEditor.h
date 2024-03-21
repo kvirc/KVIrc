@@ -39,7 +39,6 @@
 * \def KVI_INPUT_DRAG_TIMEOUT Drag scroll speed...(smaller values = faster)
 * \def KVI_INPUT_DEF_BACK Default background color
 * \def KVI_INPUT_DEF_FORE Default foreground color
-* \def ACCEL_KEY Accelerator key
 */
 
 #include "kvi_settings.h"
@@ -64,10 +63,6 @@ class QFontMetrics;
 #define KVI_INPUT_DRAG_TIMEOUT 30
 #define KVI_INPUT_DEF_BACK 100
 #define KVI_INPUT_DEF_FORE 101
-
-#ifndef ACCEL_KEY
-#define ACCEL_KEY(k) "\t" + QKeySequence(Qt::ControlModifier + Qt::Key_##k).toString()
-#endif
 
 class KviInputEditorSpellCheckerBlock
 {
