@@ -106,7 +106,7 @@ KviMainWindow::KviMainWindow(QWidget * pParent)
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)));
 #endif
 	// set name of the app desktop file; used by wayland to load the window icon
-	QGuiApplication::setDesktopFileName("kvirc");
+	QGuiApplication::setDesktopFileName("net.kvirc.KVIrc" KVIRC_VERSION_MAJOR);
 	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 
 	m_pSplitter = new QSplitter(Qt::Horizontal, this);
