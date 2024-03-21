@@ -274,7 +274,11 @@ void KviMainWindow::installAccelerators()
 	m_pAccellerators.push_back(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_TAB, this, SLOT(switchToPrevWindow()), nullptr, Qt::ApplicationShortcut));
 	m_pAccellerators.push_back(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_TAB, this, SLOT(switchToNextWindow()), nullptr, Qt::ApplicationShortcut));
 
+#if(QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 	static int accel_table[] = {
+#else
+	static QKeyCombination accel_table[] = {
+#endif
 		Qt::Key_1 | Qt::ControlModifier, // script accels...
 		Qt::Key_2 | Qt::ControlModifier,
 		Qt::Key_3 | Qt::ControlModifier,
