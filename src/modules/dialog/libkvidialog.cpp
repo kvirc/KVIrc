@@ -68,27 +68,27 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	setIcon(QMessageBox::NoIcon);
 	setModal(modal);
 
-	yesButton    = nullptr;
-	noButton     = nullptr;
-	cancelButton = nullptr;
+	m_pYesButton    = nullptr;
+	m_pNoButton     = nullptr;
+	m_pCancelButton = nullptr;
 	if(!szButton0.isEmpty())
 	{
-		yesButton = addButton(szButton0, QMessageBox::YesRole);
+		m_pYesButton = addButton(szButton0, QMessageBox::YesRole);
 	}
 	if(!szButton1.isEmpty())
 	{
-		noButton = addButton(szButton1, QMessageBox::NoRole);
-		setEscapeButton(noButton);
+		m_pNoButton = addButton(szButton1, QMessageBox::NoRole);
+		setEscapeButton(m_pNoButton);
 	}
 	if(!szButton2.isEmpty())
 	{
-		cancelButton = addButton(szButton2, QMessageBox::RejectRole);
-		setEscapeButton(cancelButton);
+		m_pCancelButton = addButton(szButton2, QMessageBox::RejectRole);
+		setEscapeButton(m_pCancelButton);
 	}
 
-	if(yesButton == nullptr && noButton == nullptr && cancelButton == nullptr)
+	if(m_pYesButton == nullptr && m_pNoButton == nullptr && m_pCancelButton == nullptr)
 	{
-		yesButton = addButton("Ok", QMessageBox::YesRole);
+		m_pYesButton = addButton("Ok", QMessageBox::YesRole);
 	}
 
 	g_pDialogModuleDialogList->append(this);
@@ -119,22 +119,22 @@ void KviKvsCallbackMessageBox::done(int code)
 
 	kvs_int_t iVal = 0;
 
-	if(clickedButton() == yesButton)
+	if(clickedButton() == m_pYesButton)
 	{
 		iVal = 0;
 	}
-	else if(clickedButton() == noButton)
+	else if(clickedButton() == m_pNoButton)
 	{
 		iVal = 1;
 	}
-	else if(clickedButton() == cancelButton)
+	else if(clickedButton() == m_pCancelButton)
 	{
 		iVal = 2;
 	}
 	else
 	{
 		// user closed the dialog, fake an "escape button" press
-		if(cancelButton != nullptr)
+		if(m_pCancelButton != nullptr)
 			iVal = 2;
 		else
 			iVal = 1;

@@ -51,9 +51,9 @@ public:
 	~KviKvsCallbackMessageBox();
 
 protected:
-	QPushButton * yesButton;
-	QPushButton * noButton;
-	QPushButton * cancelButton;
+	QPushButton * m_pYesButton;
+	QPushButton * m_pNoButton;
+	QPushButton * m_pCancelButton;
 protected slots:
 	void done(int code) override;
 };
