@@ -212,9 +212,13 @@ KVSO_CLASS_FUNCTION(sql, queryLastInsertId)
 {
 	CHECK_QUERY_IS_INIT
 	QVariant value = m_pCurrentSQlQuery->lastInsertId();
-	if(value.type() == QVariant::LongLong)
+#if(QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+	uint vType = value.type();
+#else
+	uint vType = value.typeId();
+#endif
+	if(vType == QMetaType::LongLong)
 		c->returnValue()->setInteger((kvs_int_t)value.toLongLong());
-	qDebug("type %i", value.type());
 	return true;
 }
 KVSO_CLASS_FUNCTION(sql, features)
@@ -467,11 +471,16 @@ KVSO_CLASS_FUNCTION(sql, queryRecord)
 	{
 		KviKvsVariant * pValue = nullptr;
 		QVariant value = record.value(i);
-		if(value.type() == QVariant::LongLong)
+#if(QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+		uint vType = value.type();
+#else
+		uint vType = value.typeId();
+#endif
+		if(vType == QMetaType::LongLong)
 			pValue = new KviKvsVariant((kvs_int_t)value.toLongLong());
-		else if(value.type() == QVariant::String)
+		else if(vType == QMetaType::QString)
 			pValue = new KviKvsVariant(value.toString());
-		else if(value.type() == QVariant::ByteArray)
+		else if(vType == QMetaType::QByteArray)
 		{
 			KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("memoryBuffer");
 			KviKvsVariantList params(new KviKvsVariant(QString()));

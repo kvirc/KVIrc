@@ -273,8 +273,13 @@ void ScriptEditorWidget::insertCompletion(const QString & szCompletion)
 void ScriptEditorWidget::contextMenuEvent(QContextMenuEvent * e)
 {
 	QMenu * pMenu = createStandardContextMenu();
+#if (QT_VERSION < QT_VERSION_CHECK(6, 3, 0))
 	pMenu->addAction(__tr2qs_ctx("Context Sensitive Help", "editor"), this, SLOT(slotHelp()), Qt::CTRL | Qt::Key_H);
 	pMenu->addAction(__tr2qs_ctx("&Replace", "editor"), this, SLOT(slotReplace()), Qt::CTRL | Qt::Key_R);
+#else
+	pMenu->addAction(__tr2qs_ctx("Context Sensitive Help", "editor"), Qt::CTRL | Qt::Key_H, this, SLOT(slotHelp()));
+	pMenu->addAction(__tr2qs_ctx("&Replace", "editor"), Qt::CTRL | Qt::Key_R, this, SLOT(slotReplace()));
+#endif
 	pMenu->exec(e->globalPos());
 	delete pMenu;
 }

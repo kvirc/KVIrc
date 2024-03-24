@@ -464,7 +464,7 @@ void KviIrcContextDisplayAction::activeContextChanged()
 {
 	for(auto & pAction : m_pActionList)
 	{
-		QToolBar * t = (QToolBar *)pAction->parentWidget();
+		QToolBar * t = qobject_cast<QToolBar *>(pAction->parent());
 		if(t)
 		{
 			KviIrcContextDisplay * w = (KviIrcContextDisplay *)t->widgetForAction(pAction);
@@ -478,7 +478,7 @@ void KviIrcContextDisplayAction::activeContextStateChanged()
 {
 	for(auto & pAction : m_pActionList)
 	{
-		QToolBar * t = (QToolBar *)pAction->parentWidget();
+		QToolBar * t = qobject_cast<QToolBar *>(pAction->parent());
 		if(t)
 		{
 			KviIrcContextDisplay * w = (KviIrcContextDisplay *)t->widgetForAction(pAction);

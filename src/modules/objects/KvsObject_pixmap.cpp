@@ -150,7 +150,11 @@ KVSO_CLASS_FUNCTION(pixmap, fill)
 				return true;
 			}
 		}
+#if (QT_VERSION < QT_VERSION_CHECK(6, 4, 0))
 		col.setNamedColor(szColor);
+#else
+		col = QColor::fromString(szColor);
+#endif
 		col.setAlpha(iOpacity);
 	}
 	else
@@ -265,7 +269,11 @@ KVSO_CLASS_FUNCTION(pixmap, setPixel)
 				return true;
 			}
 		}
+#if (QT_VERSION < QT_VERSION_CHECK(6, 4, 0))
 		col.setNamedColor(szColor);
+#else
+		col = QColor::fromString(szColor);
+#endif
 		col.setAlpha(iOpacity);
 	}
 	else

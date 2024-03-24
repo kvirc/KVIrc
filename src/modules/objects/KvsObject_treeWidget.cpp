@@ -621,7 +621,11 @@ void KviKvsTreeWidget::dropEvent(QDropEvent * e)
 				QUrl url = *it;
 				QString path = url.toLocalFile();
 				qDebug("path %s", path.toUtf8().data());
+#if(QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 				QTreeWidgetItem * i = itemAt(e->pos());
+#else
+				QTreeWidgetItem * i = itemAt(e->position().toPoint());
+#endif
 				m_pParentScript->fileDropped(path, i);
 			}
 		}

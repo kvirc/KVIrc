@@ -81,6 +81,7 @@
 #include <QStringList>
 #include <QCloseEvent>
 #include <QMenu>
+#include <QPushButton>
 
 #include "kvi_debug.h"
 
@@ -524,25 +525,31 @@ void KviConsoleWindow::closeEvent(QCloseEvent * e)
 		{
 			if(!KVI_OPTION_BOOL(KviOption_boolAlwaysDisconnectClosingConnectedConsole))
 			{
-				switch(QMessageBox::warning(this,
-				    __tr2qs("Confirm Close - KVIrc"),
-				    __tr2qs("You have just attempted to close a console window with an active connection inside.\n"
-				            "Are you sure you wish to terminate the connection?"),
-				    __tr2qs("&Yes"),
-				    __tr2qs("&Always"),
-				    __tr2qs("&No"),
-				    2, 2))
+				QMessageBox msg(this);
+				msg.setIcon(QMessageBox::Warning);
+				msg.setWindowTitle(__tr2qs("Confirm Close - KVIrc"));
+				msg.setText(__tr2qs("You have just attempted to close a console window with an active connection inside.\n"
+				                    "Are you sure you wish to terminate the connection?"));
+				QPushButton * yesButton    = msg.addButton(__tr2qs("&Yes"), QMessageBox::YesRole);
+				QPushButton * alwaysButton = msg.addButton(__tr2qs("&Always"), QMessageBox::YesRole);
+				QPushButton * noButton     = msg.addButton(__tr2qs("&No"), QMessageBox::NoRole);
+				msg.setDefaultButton(noButton);
+				msg.setEscapeButton(noButton);
+				msg.exec();
+
+				if(msg.clickedButton() == yesButton)
 				{
-					case 0:
-						// nothing here
-						break;
-					case 1:
-						KVI_OPTION_BOOL(KviOption_boolAlwaysDisconnectClosingConnectedConsole) = true;
-						break;
-					default: // 2 = no
-						e->ignore();
-						return;
-						break;
+					// nothing here
+				}
+				else if(msg.clickedButton() == alwaysButton)
+				{
+					KVI_OPTION_BOOL(KviOption_boolAlwaysDisconnectClosingConnectedConsole) = true;
+				}
+				else
+				{
+					// "no" button or no button clicked
+					e->ignore();
+					return;
 				}
 			}
 			// ask the context to terminate the connection gracefully
@@ -559,24 +566,30 @@ void KviConsoleWindow::closeEvent(QCloseEvent * e)
 	// this is the only console... ask if the user really wants to quit KVirc
 	if(!KVI_OPTION_BOOL(KviOption_boolAlwaysQuitKVIrcClosingLastConsole))
 	{
-		switch(QMessageBox::warning(this,
-		    __tr2qs("Confirm Close - KVIrc"),
-		    __tr2qs("You have just attempted to close the last console window.\nAre you sure you wish to quit KVIrc?"),
-		    __tr2qs("&Always"),
-		    __tr2qs("&Yes"),
-		    __tr2qs("&No"),
-		    2, 2))
+		QMessageBox msg(this);
+		msg.setIcon(QMessageBox::Warning);
+		msg.setWindowTitle(__tr2qs("Confirm Close - KVIrc"));
+		msg.setText(__tr2qs("You have just attempted to close the last console window.\nAre you sure you wish to quit KVIrc?"));
+		QPushButton * yesButton    = msg.addButton(__tr2qs("&Yes"), QMessageBox::YesRole);
+		QPushButton * alwaysButton = msg.addButton(__tr2qs("&Always"), QMessageBox::YesRole);
+		QPushButton * noButton     = msg.addButton(__tr2qs("&No"), QMessageBox::NoRole);
+		msg.setDefaultButton(noButton);
+		msg.setEscapeButton(noButton);
+		msg.exec();
+
+		if(msg.clickedButton() == yesButton)
 		{
-			case 0:
-				KVI_OPTION_BOOL(KviOption_boolAlwaysQuitKVIrcClosingLastConsole) = true;
-				break;
-			case 1:
-				// nothing here
-				break;
-			default: // 2 = no
-				e->ignore();
-				return;
-				break;
+			// nothing here
+		}
+		else if(msg.clickedButton() == alwaysButton)
+		{
+			KVI_OPTION_BOOL(KviOption_boolAlwaysQuitKVIrcClosingLastConsole) = true;
+		}
+		else
+		{
+			// "no" button or no button clicked
+			e->ignore();
+			return;
 		}
 	}
 

@@ -95,6 +95,10 @@ int KviInputEditor::g_iCachedHeight = 0;
 
 #define KVI_INPUT_MAX_UNDO_SIZE 256
 
+#ifndef ACCEL_KEY
+#define ACCEL_KEY(k) "\t" + QKeySequence(Qt::ControlModifier | Qt::Key_##k).toString()
+#endif
+
 class KviInputEditorTextBlock
 {
 public:

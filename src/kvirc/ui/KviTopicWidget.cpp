@@ -602,8 +602,13 @@ bool KviTopicWidget::eventFilter(QObject * object, QEvent * e)
 			case QEvent::MouseButtonRelease:
 				if(m_pCompletionBox->rect().contains(((QMouseEvent *)e)->pos()))
 				{
+#if(QT_VERSION < QT_VERSION_CHECK(6, 4, 0))
 					QMouseEvent tmp(QEvent::MouseButtonDblClick,
 					    ((QMouseEvent *)e)->pos(), ((QMouseEvent *)e)->button(), ((QMouseEvent *)e)->buttons(), ((QMouseEvent *)e)->modifiers());
+#else
+					QMouseEvent tmp(QEvent::MouseButtonDblClick,
+					    ((QMouseEvent *)e)->position(), ((QMouseEvent *)e)->globalPosition(), ((QMouseEvent *)e)->button(), ((QMouseEvent *)e)->buttons(), ((QMouseEvent *)e)->modifiers());
+#endif
 					// will hide popup
 					QApplication::sendEvent(object, &tmp);
 					return true;

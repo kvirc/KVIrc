@@ -125,7 +125,11 @@ KVSO_CLASS_FUNCTION(colorDialog, setCurrentColor)
 				return true;
 			}
 		}
+#if (QT_VERSION < QT_VERSION_CHECK(6, 4, 0))
 		col.setNamedColor(szColor);
+#else
+		col = QColor::fromString(szColor);
+#endif
 		col.setAlpha(iOpacity);
 	}
 	else

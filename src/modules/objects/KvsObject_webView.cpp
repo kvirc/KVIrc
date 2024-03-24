@@ -746,8 +746,13 @@ void KviKvsWebView::mouseMoveEvent(QMouseEvent * ev)
 {
 	KviKvsVariant vRetValue;
 	KviKvsVariantList lParams;
+#if(QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 	lParams.append(new KviKvsVariant((kvs_int_t)ev->x()));
 	lParams.append(new KviKvsVariant((kvs_int_t)ev->y()));
+#else
+	lParams.append(new KviKvsVariant((kvs_int_t)ev->position().x()));
+	lParams.append(new KviKvsVariant((kvs_int_t)ev->position().y()));
+#endif
 	if(!m_pParentScript->callFunction(m_pParentScript, "mouseMoveEvent", &vRetValue, &lParams))
 		QWebEngineView::mouseMoveEvent(ev); // ignore results of a broken event handler
 	else

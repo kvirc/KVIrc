@@ -35,6 +35,7 @@
 #include <QString>
 #include <QStringList>
 #include <cstdio>
+#include <array>
 
 QString g_szGlobalDir;
 QString g_szLocalDir;
@@ -219,7 +220,11 @@ namespace KviStringConversion
 
 	bool fromString(const QString & szValue, QColor & buffer)
 	{
+#if (QT_VERSION < QT_VERSION_CHECK(6, 4, 0))
 		buffer.setNamedColor(szValue);
+#else
+		buffer = QColor::fromString(szValue);
+#endif
 		return true;
 	}
 
@@ -238,15 +243,37 @@ namespace KviStringConversion
 		if(font.fixedPitch())
 			szOptions.append('f');
 
-		szBuffer = QString::asprintf("%s,%d,%d,%d,%s,%s", szFamily.toUtf8().data(), font.pointSize(), font.styleHint(),
-#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
-			font.weight(),
-#else
-			font.legacyWeight(),
-#endif
-			szOptions.toUtf8().data(),
-			font.styleName().toUtf8().data()
-		);
+		szBuffer = QString::asprintf("%s,%d,%d,%d,%s,%s", szFamily.toUtf8().data(), font.pointSize(), font.styleHint(), font.weight(), szOptions.toUtf8().data(), font.styleName().toUtf8().data());
+	}
+
+	/* Helper function to convert Qt < 6.0 font weight to OpenType font weight */
+	static int fromLegacyWeight(int weight)
+	{
+		static constexpr std::array<int, 2> weightMap[] = {
+			{ 0, QFont::Thin },
+			{ 12, QFont::ExtraLight },
+			{ 25, QFont::Light },
+			{ 50, QFont::Normal },
+			{ 57, QFont::Medium },
+			{ 63, QFont::DemiBold },
+			{ 75, QFont::Bold },
+			{ 81, QFont::ExtraBold },
+			{ 87, QFont::Black },
+		};
+
+		int closestDist = INT_MAX;
+		int result = -1;
+		for (auto item: weightMap) {
+			const int dist = qAbs(item[0] - weight);
+			if (dist < closestDist) {
+				result = item[1];
+				closestDist = dist;
+			} else {
+				break;
+			}
+		}
+
+		return result;
 	}
 
 	bool fromString(const QString & szValue, QFont & buffer)
@@ -269,12 +296,21 @@ namespace KviStringConversion
 		if(bOk && (i >= 0))
 			buffer.setStyleHint((QFont::StyleHint)i);
 		i = weight.toInt(&bOk);
-		if(bOk && (i >= 0))
+		if(bOk && (i >= 0)) {
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 			buffer.setWeight(i);
 #else
-			buffer.setLegacyWeight(i);
+			/*
+			 * KVIrc <= 5.2.2 used Qt5 font weights (0 = thinner, 99 = bolder)
+			 * Qt6 introduced opentype (css) font weight (100 = thinner, 900 = bolder)
+			 * if the config is using an old weight, convert it
+			 */
+			if(i < 100) {
+				i = KviStringConversion::fromLegacyWeight(i);
+			}
+			buffer.setWeight(QFont::Weight(i));
 #endif
+		}
 		buffer.setBold(options.contains("b"));
 		buffer.setItalic(options.contains("i"));
 		buffer.setUnderline(options.contains("u"));

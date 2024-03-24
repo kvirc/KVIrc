@@ -1285,11 +1285,19 @@ KVSO_CLASS_FUNCTION(widget, setForegroundColor)
 				QString szColor;
 				pColArray->asString(szColor);
 				// maybe a color name?
+#if (QT_VERSION < QT_VERSION_CHECK(6, 4, 0))
 				color.setNamedColor(szColor);
+#else
+				color = QColor::fromString(szColor);
+#endif
 				if(!color.isValid())
 				{
-					// itsn't a color name: let try with an hex triplette
+					// isn't a color name: lets try with an hex triplet
+#if (QT_VERSION < QT_VERSION_CHECK(6, 4, 0))
 					color.setNamedColor("#" + szColor);
+#else
+					color = QColor::fromString("#" + szColor);
+#endif
 					if(!color.isValid())
 					{
 						c->warning(__tr2qs_ctx("Not a valid color!", "objects"));
@@ -1368,11 +1376,19 @@ KVSO_CLASS_FUNCTION(widget, setBackgroundColor)
 				QString szColor;
 				pColArray->asString(szColor);
 				// maybe a color name?
+#if (QT_VERSION < QT_VERSION_CHECK(6, 4, 0))
 				color.setNamedColor(szColor);
+#else
+				color = QColor::fromString(szColor);
+#endif
 				if(!color.isValid())
 				{
-					// itsn't a color name: let try with an hex triplette
+					// isn't a color name: lets try with an hex triplet
+#if (QT_VERSION < QT_VERSION_CHECK(6, 4, 0))
 					color.setNamedColor("#" + szColor);
+#else
+					color = QColor::fromString("#" + szColor);
+#endif
 					if(!color.isValid())
 					{
 						c->warning(__tr2qs_ctx("Not a valid color!", "objects"));
@@ -1474,7 +1490,7 @@ KVSO_CLASS_FUNCTION(widget, windowTitle)
 KVSO_CLASS_FUNCTION(widget, isTopLevel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(widget()->isTopLevel());
+	c->returnValue()->setBoolean(widget()->isWindow());
 	return true;
 }
 
