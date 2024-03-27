@@ -170,9 +170,9 @@ inline unsigned int kvi_hash_hash(const KviCString & szKey, bool bCaseSensitive)
 /**
 * \brief Hash key compare function for the KviCString data type
 */
-inline bool kvi_hash_key_equal(const KviCString & szKey1, const KviCString & szKey2)
+inline bool kvi_hash_key_equal(const KviCString & szKey1, const KviCString & szKey2, bool bCaseSensitive)
 {
-	return kvi_hash_key_equal(szKey1.ptr(), szKey2.ptr());
+	return kvi_hash_key_equal(szKey1.ptr(), szKey2.ptr(), bCaseSensitive);
 }
 
 /**
