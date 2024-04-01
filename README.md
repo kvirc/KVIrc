@@ -2,7 +2,7 @@
 
 [![Linux build](https://github.com/kvirc/KVIrc/actions/workflows/build_linux_qt6.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_linux_qt6.yml)
 [![macOS build](https://github.com/kvirc/KVIrc/actions/workflows/build_macos.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_macos.yml)
-[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/j6tjel0eaeyixcbn/branch/master?svg=true)](https://ci.appveyor.com/project/DarthGandalf/kvirc/branch/master)
+[![Windows build](https://github.com/kvirc/KVIrc/actions/workflows/build_windows.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_windows.yml)
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/6841/badge.svg)](https://scan.coverity.com/projects/kvirc-coverity)
 
 <!--![KVIrc logo](../master/data/icons/128x128/kvirc.png "KVIrc - The visual IRC client for the masses!") -->
