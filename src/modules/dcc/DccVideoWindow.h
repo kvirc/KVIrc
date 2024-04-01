@@ -44,8 +44,13 @@
 #include <QComboBox>
 #include <QGridLayout>
 
+#include <QAudioInput>
 #include <QCamera>
-#include <QCameraViewfinder>
+#include <QMediaCaptureSession>
+#include <QMediaDevices>
+#include <QMediaMetaData>
+#include <QScopedPointer>
+class QVideoWidget;
 
 #ifdef COMPILE_CRYPT_SUPPORT
 class KviCryptSessionInfo;
@@ -119,21 +124,22 @@ public:
 protected:
 	KviThemedLabel * m_pLabel;
 	QWidget * m_pContainerWidget;
-	QImage * m_pCameraImage;
-	QCameraViewfinder * m_pCameraView;
-	QCamera * m_pCamera;
-	QLabel * m_pInVideoLabel;
 	QComboBox * m_pCDevices;
-	QComboBox * m_pCInputs;
-	QComboBox * m_pCStandards;
 	QGridLayout * m_pLayout;
 	QTimer m_Timer;
-	QLabel * m_pVideoLabel[3];
+	QLabel * m_pVideoLabel;
 	QString m_szTarget;
 	DccVideoThread * m_pSlaveThread;
 	QByteArray m_tmpTextDataOut;
 	QString m_szLocalNick;
 
+	//camera
+	QVideoWidget * m_pLocalCamera;
+	QVideoWidget * m_pRemoteCamera;
+    QMediaDevices m_devices;
+    QMediaCaptureSession m_captureSession;
+    QScopedPointer<QCamera> m_camera;
+    QScopedPointer<QAudioInput> m_audioInput;
 protected:
 	void triggerCreationEvents() override;
 	void triggerDestructionEvents() override;
@@ -157,7 +163,22 @@ protected slots:
 	void connectionInProgress();
 	void slotUpdateImage();
 	void textViewRightClicked();
-	void videoInputChanged(int);
+
+	//camera
+    void initializeLocalCamera();
+
+    void setCamera(const QCameraDevice &cameraDevice);
+
+    void startCamera();
+    void stopCamera();
+
+    void setMuted(bool);
+
+    void displayCameraError();
+
+    void updateCameraDevice(int idx);
+    void updateCameraActive(bool active);
+    void updateCameras();
 };
 
 #endif //_VIDEO_H_
