@@ -45,6 +45,8 @@ namespace KviUserInput
 		if(!c->unicode())
 			return true; // empty
 
+		// check if it's a KVS command. Skip any initial space
+		while(c->isSpace()) c++;
 		if(c->unicode() == '\\')
 		{
 			c++;
@@ -68,6 +70,9 @@ namespace KviUserInput
 				}
 			}
 		}
+
+		// the text is not a command. Reset to original value
+		c = b;
 
 		if(KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnTextInput, pWindow, szData))
 			return true; // halted
