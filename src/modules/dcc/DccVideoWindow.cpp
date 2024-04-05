@@ -46,6 +46,10 @@
 #include <QToolTip>
 #include <QByteArray>
 #include <QBuffer>
+#include <QMessageBox>
+#include <QVideoFrame>
+#include <QVideoSink>
+#include <QVideoWidget>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptController.h"
@@ -158,8 +162,8 @@ bool DccVideoThread::videoStep()
 	{
 		if(m_videoInSignalBuffer.size() > 0)
 		{
-			QImage img(m_videoInSignalBuffer.data(), 320, 240, 1280, QImage::Format_ARGB32);
 			//qDebug("IMG data %p size %d", m_videoInSignalBuffer.data(), m_videoInSignalBuffer.size());
+			QImage img(m_videoInSignalBuffer.data(), 320, 240, QImage::Format_ARGB32);
 			if(!img.isNull())
 				m_inImage = img;
 		}
@@ -168,11 +172,13 @@ bool DccVideoThread::videoStep()
 	// Are we recording ?
 	if(m_bRecording)
 	{
-		QImage * pImage = ((DccVideoWindow *)parent())->m_pCameraImage;
-		if(pImage)
+		QVideoWidget * pVideoWidget = ((DccVideoWindow*)parent())->m_pLocalCamera;
+		if(pVideoWidget)
 		{
 			// grab the frame
-			m_videoOutSignalBuffer.append((const unsigned char *)pImage->bits(), pImage->byteCount());
+			QVideoFrame frame = pVideoWidget->videoSink()->videoFrame();
+			QImage pImage = frame.toImage().convertedTo(QImage::Format_ARGB32).scaled(320, 240);
+			m_videoOutSignalBuffer.append((const unsigned char *)pImage.bits(), pImage.sizeInBytes());
 			m_pOpt->pCodec->encodeVideo(&m_videoOutSignalBuffer, &m_outFrameBuffer);
 
 			// tell our parent to prepare a new frame
@@ -423,56 +429,31 @@ DccVideoWindow::DccVideoWindow(DccDescriptor * dcc, const char * name)
 	m_pInput = new KviInput(this);
 
 	//remote video
-	m_pInVideoLabel = new QLabel();
-	m_pInVideoLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	m_pInVideoLabel->setMinimumSize(320, 240);
-	m_pInVideoLabel->setFrameShape(QFrame::Box);
-	m_pInVideoLabel->setScaledContents(true);
-	m_pInVideoLabel->setAlignment(Qt::AlignCenter);
-	m_pLayout->addWidget(m_pInVideoLabel, 1, 0, 6, 1);
+	m_pRemoteCamera = new QVideoWidget();
+	m_pRemoteCamera->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+	m_pRemoteCamera->setMinimumSize(320, 240);
+	m_pRemoteCamera->setAspectRatioMode(Qt::KeepAspectRatio);
+	m_pRemoteCamera->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+	m_pLayout->addWidget(m_pRemoteCamera, 1, 0, 1, 1);
 
 	//local video
-	QByteArray cameraDevice;
-	if(cameraDevice.isEmpty())
-		m_pCamera = new QCamera;
-	else
-		m_pCamera = new QCamera(cameraDevice);
-
-	m_pCameraView = new QCameraViewfinder();
-	m_pCameraView->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	m_pCameraView->setMinimumSize(320, 240);
-	m_pCameraView->setMaximumSize(320, 240);
-	m_pCameraView->setAspectRatioMode(Qt::KeepAspectRatio);
-	m_pLayout->addWidget(m_pCameraView, 1, 1, 6, 1);
-
-	m_pCamera->setViewfinder(m_pCameraView);
-
-	m_pCameraImage = new QImage(320, 240, QImage::Format_ARGB32);
+	m_pLocalCamera = new QVideoWidget();
+	m_pLocalCamera->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+	m_pLocalCamera->setMinimumSize(320, 240);
+	m_pLocalCamera->setAspectRatioMode(Qt::KeepAspectRatio);
+	m_pLocalCamera->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+	m_pLayout->addWidget(m_pLocalCamera, 1, 1, 1, 1);
 
 	//local video input: config
-	m_pVideoLabel[0] = new QLabel();
-	m_pVideoLabel[0]->setText(__tr2qs_ctx("Video device:", "dcc"));
-	m_pLayout->addWidget(m_pVideoLabel[0], 1, 2, 1, 1);
+	m_pVideoLabel = new QLabel();
+	m_pVideoLabel->setText(__tr2qs_ctx("Video device:", "dcc"));
+	m_pLayout->addWidget(m_pVideoLabel, 2, 0, 1, 1);
 
 	m_pCDevices = new QComboBox();
-	m_pLayout->addWidget(m_pCDevices, 2, 2, 1, 1);
+	m_pLayout->addWidget(m_pCDevices, 2, 1, 1, 1);
 
-	m_pVideoLabel[1] = new QLabel();
-	m_pVideoLabel[1]->setText(__tr2qs_ctx("Input:", "dcc"));
-	m_pLayout->addWidget(m_pVideoLabel[1], 3, 2, 1, 1);
-
-	m_pCInputs = new QComboBox();
-	m_pLayout->addWidget(m_pCInputs, 4, 2, 1, 1);
-
-	m_pVideoLabel[2] = new QLabel();
-	m_pVideoLabel[2]->setText(__tr2qs_ctx("Standard:", "dcc"));
-	m_pLayout->addWidget(m_pVideoLabel[2], 5, 2, 1, 1);
-
-	m_pCStandards = new QComboBox();
-	m_pLayout->addWidget(m_pCStandards, 6, 2, 1, 1);
-
-	m_pLayout->addWidget(m_pIrcView, 7, 0, 1, 3);
-	m_pLayout->setRowStretch(7, 1);
+	m_pLayout->addWidget(m_pIrcView, 3, 0, 1, 2);
+	m_pLayout->setRowStretch(3, 1);
 
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogDccChat))
 		m_pIrcView->startLogging();
@@ -486,59 +467,33 @@ DccVideoWindow::DccVideoWindow(DccDescriptor * dcc, const char * name)
 	connect(m_pMarshal, SIGNAL(connected()), this, SLOT(connected()));
 	connect(m_pMarshal, SIGNAL(inProgress()), this, SLOT(connectionInProgress()));
 
-	connect(m_pCDevices, SIGNAL(currentIndexChanged(int)), this, SLOT(videoInputChanged(int)));
-	connect(m_pCInputs, SIGNAL(currentIndexChanged(int)), this, SLOT(videoInputChanged(int)));
-	connect(m_pCStandards, SIGNAL(currentIndexChanged(int)), this, SLOT(videoInputChanged(int)));
+	updateCameraActive(false);
+	initializeLocalCamera();
 
 	startConnection();
-	m_pCamera->start();
 }
 
 DccVideoWindow::~DccVideoWindow()
 {
-	if(m_pInVideoLabel)
+	if(m_pRemoteCamera)
 	{
-		delete m_pInVideoLabel;
-		m_pInVideoLabel = nullptr;
+		delete m_pRemoteCamera;
+		m_pRemoteCamera = nullptr;
 	}
-	if(m_pCameraView)
+	if(m_pLocalCamera)
 	{
-		delete m_pCameraView;
-		m_pCameraView = nullptr;
-	}
-	if(m_pCameraImage)
-	{
-		delete m_pCameraImage;
-		m_pCameraImage = nullptr;
-	}
-	if(m_pCamera)
-	{
-		delete m_pCamera;
-		m_pCamera = nullptr;
+		delete m_pLocalCamera;
+		m_pLocalCamera = nullptr;
 	}
 	if(m_pCDevices)
 	{
 		delete m_pCDevices;
 		m_pCDevices = nullptr;
 	}
-	if(m_pCInputs)
+	if(m_pVideoLabel)
 	{
-		delete m_pCInputs;
-		m_pCInputs = nullptr;
-	}
-	if(m_pCStandards)
-	{
-		delete m_pCStandards;
-		m_pCStandards = nullptr;
-	}
-	if(m_pVideoLabel[0])
-	{
-		delete m_pVideoLabel[2];
-		delete m_pVideoLabel[1];
-		delete m_pVideoLabel[0];
-		m_pVideoLabel[2] = nullptr;
-		m_pVideoLabel[1] = nullptr;
-		m_pVideoLabel[0] = nullptr;
+		delete m_pVideoLabel;
+		m_pVideoLabel = nullptr;
 	}
 	if(m_pLayout)
 	{
@@ -921,7 +876,6 @@ bool DccVideoWindow::event(QEvent * e)
 					case KVI_DCC_VIDEO_THREAD_ACTION_STOP_PLAYING:
 						break;
 					case KVI_DCC_VIDEO_THREAD_ACTION_GRAB_FRAME:
-						m_pCameraView->render(m_pCameraImage);
 						break;
 				}
 				delete act;
@@ -994,13 +948,84 @@ void DccVideoWindow::slotUpdateImage()
 {
 	if(m_pSlaveThread && isVisible())
 	{
-		m_pInVideoLabel->setPixmap(QPixmap::fromImage(m_pSlaveThread->m_inImage));
+		QImage img = m_pSlaveThread->m_inImage;
+		QVideoFrame frame(QVideoFrameFormat(img.size(), QVideoFrameFormat::pixelFormatFromImageFormat(img.format())));
+		frame.map(QVideoFrame::ReadWrite);
+		memcpy(frame.bits(0), img.bits(), img.sizeInBytes());
+		frame.unmap();
+		m_pRemoteCamera->videoSink()->setVideoFrame(frame);
 	}
 }
 
-void DccVideoWindow::videoInputChanged(int)
+void DccVideoWindow::initializeLocalCamera()
 {
-	//	FIXME this currently leads to a segfault
-	// 	if(m_pSlaveThread)
-	// 		m_pSlaveThread->restartRecording(m_pCDevices->currentIndex(), m_pCInputs->currentIndex(), m_pCStandards->currentIndex());
+	m_audioInput.reset(new QAudioInput);
+	m_captureSession.setAudioInput(m_audioInput.get());
+
+	updateCameras();
+	connect(&m_devices, &QMediaDevices::videoInputsChanged, this, &DccVideoWindow::updateCameras);
+	connect(m_pCDevices, &QComboBox::currentIndexChanged, this, &DccVideoWindow::updateCameraDevice);
+
+	setCamera(QMediaDevices::defaultVideoInput());
+}
+
+void DccVideoWindow::setCamera(const QCameraDevice &cameraDevice)
+{
+	m_camera.reset(new QCamera(cameraDevice));
+	m_captureSession.setCamera(m_camera.data());
+
+	connect(m_camera.data(), &QCamera::activeChanged, this, &DccVideoWindow::updateCameraActive);
+	connect(m_camera.data(), &QCamera::errorOccurred, this, &DccVideoWindow::displayCameraError);
+
+	m_captureSession.setVideoOutput(m_pLocalCamera);
+
+	updateCameraActive(m_camera->isActive());
+	m_camera->start();
+}
+
+void DccVideoWindow::setMuted(bool muted)
+{
+	m_captureSession.audioInput()->setMuted(muted);
+}
+
+void DccVideoWindow::startCamera()
+{
+	m_camera->start();
+}
+
+void DccVideoWindow::stopCamera()
+{
+	m_camera->stop();
+}
+
+void DccVideoWindow::updateCameraActive(bool active)
+{
+	if (active) {
+	} else {
+	}
+}
+
+void DccVideoWindow::displayCameraError()
+{
+	if (m_camera->error() != QCamera::NoError)
+		QMessageBox::warning(this, tr("Camera Error"), m_camera->errorString());
+}
+
+void DccVideoWindow::updateCameraDevice(int)
+{
+
+	setCamera(qvariant_cast<QCameraDevice>(m_pCDevices->currentData()));
+}
+
+void DccVideoWindow::updateCameras()
+{
+	m_pCDevices->clear();
+	const QList<QCameraDevice> availableCameras = QMediaDevices::videoInputs();
+	int idx = 0;
+	for (const QCameraDevice &cameraDevice : availableCameras) {
+		m_pCDevices->addItem(cameraDevice.description(), QVariant::fromValue(cameraDevice));
+		if (cameraDevice == QMediaDevices::defaultVideoInput())
+			m_pCDevices->setCurrentIndex(idx);
+		idx++;
+	}
 }
