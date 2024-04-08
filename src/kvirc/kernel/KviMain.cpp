@@ -31,9 +31,7 @@
 #include "KviMessageBox.h"
 #include "KviBuildInfo.h"
 #ifdef COMPILE_DBUS_SUPPORT
-#ifndef COMPILE_KDE_SUPPORT // 'cause kde adds an interface itself
 #include "KviDbusAdaptor.h"
-#endif
 #endif
 #ifndef COMPILE_NO_IPC
 extern bool kvi_sendIpcMessage(const char * message); // KviIpcSentinel.cpp
@@ -382,10 +380,9 @@ int main(int argc, char ** argv)
 #endif
 
 #ifdef COMPILE_DBUS_SUPPORT
-#ifndef COMPILE_KDE_SUPPORT
-	new KviDbusAdaptor(pTheApp); // FIXME: shouldn't this be deleted by someone ?
-	QDBusConnection::sessionBus().registerObject("/MainApplication", pTheApp);
-#endif
+	// deleted automatically when pTheApp gets destroyed
+	KviDbusAdaptor * pDbusAdaptor = new KviDbusAdaptor(pTheApp);
+	pDbusAdaptor->registerToSessionBus();
 #endif
 
 	QString szRemoteCommand = a.szExecCommand;
