@@ -1,6 +1,8 @@
+#ifndef _KVI_DBUSADAPTOR_H_
+#define _KVI_DBUSADAPTOR_H_
 //=============================================================================
 //
-//   File : KviDbusAdaptor.cpp
+//   File : KviDbusAdaptor.h
 //   Creation date : Thu May 08 2008 21:41:45 by Voker57
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -22,13 +24,26 @@
 //
 //=============================================================================
 
-#include "KviDbusAdaptor.h"
+#include "kvi_settings.h"
 
 #ifdef COMPILE_DBUS_SUPPORT
+#include <QDBusAbstractAdaptor>
+#include <QDBusInterface>
+#include <QObject>
 
-KviDbusAdaptor::KviDbusAdaptor(QObject * pObj)
-    : QDBusAbstractAdaptor(pObj)
+#define KVI_DBUS_SERVICENAME "net.kvirc.KVIrc"
+
+class KVILIB_API KviDbusAdaptor : public QDBusAbstractAdaptor
 {
-}
+	Q_OBJECT
+	Q_CLASSINFO("D-Bus Interface", KVI_DBUS_SERVICENAME)
+	// don't change "D-Bus Interface", it needs to be exactly that string
 
-#endif
+public:
+	KviDbusAdaptor(QObject * pObj);
+	virtual ~KviDbusAdaptor() = default;
+	void registerToSessionBus();
+};
+#endif // COMPILE_DBUS_SUPPORT
+
+#endif // _KVI_DBUSADAPTOR_H_
