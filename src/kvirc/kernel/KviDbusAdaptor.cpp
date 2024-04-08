@@ -28,7 +28,7 @@
 
 #ifdef COMPILE_DBUS_SUPPORT
 
-#include <QtGlobal> //for qWarning()
+#include <QtDebug> //for qWarning()
 #include <QDBusConnection>
 
 KviDbusAdaptor::KviDbusAdaptor(QObject * pObj)
