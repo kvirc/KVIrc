@@ -39,7 +39,7 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
-#include <kmainwindow.h>
+#include <KMainWindow>
 
 class KVILIB_API KviTalMainWindow : public KMainWindow
 
@@ -66,6 +66,11 @@ public:
 	* \return KviTalMainWindow
 	*/
 	~KviTalMainWindow();
+
+#ifdef COMPILE_KDE_SUPPORT
+protected:
+    bool event(QEvent *event) override;
+#endif
 };
 
 #endif // _KVI_TAL_MAINWINDOW_H_
