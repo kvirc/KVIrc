@@ -28,6 +28,8 @@
 
 #ifdef COMPILE_DBUS_SUPPORT
 
+#include <QDBusConnection>
+
 KviDbusAdaptor::KviDbusAdaptor(QObject * pObj)
     : QDBusAbstractAdaptor(pObj)
 {
@@ -36,12 +38,22 @@ KviDbusAdaptor::KviDbusAdaptor(QObject * pObj)
 
 void KviDbusAdaptor::registerToSessionBus() {
     auto connection = QDBusConnection::sessionBus();
-    if(!connection.registerService(KVI_DBUS_SERVICENAME)) {
+    if(!connection.registerService(KVI_DBUS_INTERFACENAME)) {
         qWarning() << "D-Bus service registration failed:" << connection.lastError().message();
     }
-    if(!connection.registerObject("/", g_pApp)) {
+    if(!connection.registerObject(KVI_DBUS_PATH, this, QDBusConnection::ExportAllSlots)) {
         qWarning() << "D-Bus object registration failed:" << connection.lastError().message();
     }
 }
+
+#ifndef COMPILE_NO_IPC
+void KviDbusAdaptor::ipcMessage(const QString &message)
+{
+    if(!g_pApp)
+        return;
+
+    g_pApp->ipcMessage(message.toUtf8().data());
+}
+#endif
 
 #endif

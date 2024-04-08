@@ -32,6 +32,8 @@
 #include <QObject>
 
 #define KVI_DBUS_SERVICENAME "net.kvirc.KVIrc"
+#define KVI_DBUS_INTERFACENAME "net.kvirc.KVIrc"
+#define KVI_DBUS_PATH "/kvirc"
 
 class KVILIB_API KviDbusAdaptor : public QDBusAbstractAdaptor
 {
@@ -43,6 +45,11 @@ public:
 	KviDbusAdaptor(QObject * pObj);
 	virtual ~KviDbusAdaptor() = default;
 	void registerToSessionBus();
+
+public slots:
+#ifndef COMPILE_NO_IPC
+	void ipcMessage(const QString &message);
+#endif
 };
 #endif // COMPILE_DBUS_SUPPORT
 

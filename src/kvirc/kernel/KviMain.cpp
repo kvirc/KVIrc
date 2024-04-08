@@ -379,12 +379,6 @@ int main(int argc, char ** argv)
 	delete pAboutData;
 #endif
 
-#ifdef COMPILE_DBUS_SUPPORT
-	// deleted automatically when pTheApp gets destroyed
-	KviDbusAdaptor * pDbusAdaptor = new KviDbusAdaptor(pTheApp);
-	pDbusAdaptor->registerToSessionBus();
-#endif
-
 	QString szRemoteCommand = a.szExecCommand;
 	if(!a.szExecRemoteCommand.isEmpty())
 	{
@@ -445,6 +439,15 @@ int main(int argc, char ** argv)
 			return 0;
 		}
 	}
+#endif
+
+#ifdef COMPILE_DBUS_SUPPORT
+	/*
+	 * D-Bus initialization must happen after IPC session handling
+	 * The object itsef is deleted automatically when pTheApp gets destroyed
+	 */
+	KviDbusAdaptor * pDbusAdaptor = new KviDbusAdaptor(pTheApp);
+	pDbusAdaptor->registerToSessionBus();
 #endif
 
 	pTheApp->m_bCreateConfig = a.createFile;
