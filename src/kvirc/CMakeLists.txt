@@ -210,6 +210,7 @@ set(kvirc_SRCS
 	kernel/KviCoreActions.cpp
 	kernel/KviCustomToolBarDescriptor.cpp
 	kernel/KviCustomToolBarManager.cpp
+	kernel/KviDbusAdaptor.cpp
 	kernel/KviDefaultScript.cpp
 	kernel/KviFileTransfer.cpp
 	kernel/KviHtmlGenerator.cpp

@@ -1,8 +1,6 @@
-#ifndef _KVI_DBUSADAPTOR_H_
-#define _KVI_DBUSADAPTOR_H_
 //=============================================================================
 //
-//   File : KviDbusAdaptor.h
+//   File : KviDbusAdaptor.cpp
 //   Creation date : Thu May 08 2008 21:41:45 by Voker57
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -24,21 +22,39 @@
 //
 //=============================================================================
 
-#include "kvi_settings.h"
+#include "KviDbusAdaptor.h"
+
+#include "KviApplication.h"
 
 #ifdef COMPILE_DBUS_SUPPORT
-#include <QDBusAbstractAdaptor>
-#include <QDBusInterface>
-#include <QObject>
 
-class KVILIB_API KviDbusAdaptor : public QDBusAbstractAdaptor
+#include <QtDebug> //for qWarning()
+#include <QDBusConnection>
+
+KviDbusAdaptor::KviDbusAdaptor(QObject * pObj)
+    : QDBusAbstractAdaptor(pObj)
 {
-	Q_OBJECT
-	Q_CLASSINFO("KVIrc D-Bus Interface", "org.kvirc.KVIrc")
+    setAutoRelaySignals(false);
+}
 
-public:
-	KviDbusAdaptor(QObject * pObj);
-};
-#endif // COMPILE_DBUS_SUPPORT
+void KviDbusAdaptor::registerToSessionBus() {
+    auto connection = QDBusConnection::sessionBus();
+    if(!connection.registerService(KVI_DBUS_INTERFACENAME)) {
+        qWarning() << "D-Bus service registration failed:" << connection.lastError().message();
+    }
+    if(!connection.registerObject(KVI_DBUS_PATH, this, QDBusConnection::ExportAllSlots)) {
+        qWarning() << "D-Bus object registration failed:" << connection.lastError().message();
+    }
+}
 
-#endif // _KVI_DBUSADAPTOR_H_
+#ifndef COMPILE_NO_IPC
+void KviDbusAdaptor::ipcMessage(const QString &message)
+{
+    if(!g_pApp)
+        return;
+
+    g_pApp->ipcMessage(message.toUtf8().data());
+}
+#endif
+
+#endif

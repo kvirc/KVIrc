@@ -26,6 +26,8 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
+#include <QEvent>
+
 KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
     : KMainWindow(pParent)
 {
@@ -44,3 +46,18 @@ KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
 
 KviTalMainWindow::~KviTalMainWindow()
     = default;
+
+#ifdef COMPILE_KDE_SUPPORT
+bool KviTalMainWindow::event(QEvent *ev)
+{
+    /**
+     * KMainWindow uses this event to ensure the object as an objectname and
+     * also register the mainwindow as an exported object on d-bus.
+     * We already ensure an object name is set and want to avoid the dbus registration
+     */
+	if(ev->type() == QEvent::Polish)
+		return QMainWindow::event(ev);
+
+	return KMainWindow::event(ev);
+}
+#endif

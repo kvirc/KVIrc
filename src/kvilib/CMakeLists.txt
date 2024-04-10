@@ -26,7 +26,6 @@ set(kvilib_SRCS
 	ext/KviCryptEngine.cpp
 	ext/KviCryptEngineManager.cpp
 	ext/KviDataBuffer.cpp
-	ext/KviDbusAdaptor.cpp
 	ext/KviDebugContext.cpp
 	ext/KviMediaManager.cpp
 	ext/KviMiscUtils.cpp
