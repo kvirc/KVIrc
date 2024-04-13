@@ -105,7 +105,7 @@ private:
 
 	// Font related stuff (needs precalculation!)
 	int m_iFontLineSpacing;
-	int m_iFontLineWidth;
+	int m_iFontLineVMargin;
 	int m_iFontDescent;
 	float m_iFontCharacterWidth[256];
 	bool m_bUseRealBold;
