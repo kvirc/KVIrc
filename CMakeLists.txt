@@ -410,6 +410,8 @@ endif()
 # first check if Qt6 or Qt5 has to be used
 if(NOT DEFINED QT_VERSION_MAJOR)
 	find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
+else()
+	find_package(QT NAMES Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 endif()
 # second, detect available modules for the specific Qt version
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
@@ -770,27 +772,26 @@ else()
 endif()
 
 # Check for Perl support
-# (note: needed for user documentation generation)
 option(WANT_PERL "Compile Perl support" ON)
+option(WANT_PERL_DOCS "Use Perl to build documentation" ON)
+if(WANT_PERL OR WANT_PERL_DOCS)
+	find_package(Perl)
+endif()
 
-# Perl is needed for documentation, too
-find_package(Perl)
-
-if(WANT_PERL)
-	if(PERL_FOUND)
+if(PERL_FOUND)
+	if(WANT_PERL)
 		set(COMPILE_PERL_SUPPORT 1)
-		set(CMAKE_STATUS_PERL_SUPPORT "Yes, used for scripting+doc")
-
 		# Perl compilation / linking flags are handled inside perlcore module
-	else()
-		set(CMAKE_STATUS_PERL_SUPPORT "No")
+		set(CMAKE_STATUS_PERL_SUPPORT "Yes, used for scripting")
+	endif()
+	if(WANT_PERL_DOCS)
+		set(CMAKE_STATUS_PERL_SUPPORT "Used for doc, but scripting disabled by user")
+	endif()
+	if(WANT_PERL AND WANT_PERL_DOCS)
+		set(CMAKE_STATUS_PERL_SUPPORT "Yes, used for scripting+doc")
 	endif()
 else()
-	if(PERL_FOUND)
-		set(CMAKE_STATUS_PERL_SUPPORT "Used for doc, but scripting disabled by user")
-	else()
-		set(CMAKE_STATUS_PERL_SUPPORT "No")
-	endif()
+	set(CMAKE_STATUS_PERL_SUPPORT "No")
 endif()
 
 # Check for Python support

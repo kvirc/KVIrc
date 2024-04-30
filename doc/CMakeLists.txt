@@ -10,7 +10,7 @@ if(WIN32)
 endif()
 
 # User documentation
-if(PERL_FOUND)
+if(WANT_PERL_DOCS AND PERL_FOUND)
 
 	# The userdocs target is in the normal build process and rebuilds the documentation
 	# only when the revision number changes. This is useful for Git users and package users.
