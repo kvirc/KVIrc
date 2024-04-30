@@ -260,7 +260,7 @@ KviIrcView::KviIrcView(QWidget * parent, KviWindow * pWnd)
 	m_pFm = nullptr; // will be updated in the first paint event
 	m_iFontDescent = 0;
 	m_iFontLineSpacing = 0;
-	m_iFontLineWidth = 0;
+	m_iFontLineVMargin = 0;
 
 	m_pToolTip = new KviIrcViewToolTip(this);
 
@@ -1006,7 +1006,7 @@ void KviIrcView::fastScroll(int lines)
 			if(maxLineWidth != l->iMaxLineWidth)
 				calculateLineWraps(l, maxLineWidth);
 			heightToPaint += l->uLineWraps * m_iFontLineSpacing;
-			heightToPaint += (m_iFontLineSpacing + m_iFontDescent);
+			heightToPaint += (m_iFontLineSpacing + m_iFontLineVMargin);
 			lines--;
 			l = l->pPrev;
 		}
@@ -1172,7 +1172,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 		if((curBottomCoord - m_iFontLineSpacing) > rectBottom)
 		{
 			// not in update rect... skip
-			curBottomCoord -= (m_iFontLineSpacing + m_iFontDescent);
+			curBottomCoord -= (m_iFontLineSpacing + m_iFontLineVMargin);
 			pCurTextLine = pCurTextLine->pPrev;
 			continue;
 		}
@@ -1202,7 +1202,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 		char curFore = defaultFore;
 		char curBack = defaultBack;
 		float curLeftCoord = defLeftCoord;
-		curBottomCoord -= m_iFontDescent; //rise up the text...
+		curBottomCoord -= m_iFontLineVMargin; //rise up the text...
 
 		//
 		// Single text line loop (paint all text blocks)
@@ -1591,7 +1591,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 				}
 
 				pa.setPen(pen);
-				pa.drawLine(0, curBottomCoord, widgetWidth, curBottomCoord);
+				pa.drawLine(0, curBottomCoord + m_iFontDescent, widgetWidth, curBottomCoord + m_iFontDescent);
 				//pa.setRasterOp(CopyROP);
 			}       // else was partially visible only
 		}
@@ -1622,7 +1622,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 			// the line wraps for the visible lines MUST have been already calculated
 			// for this view width
 			lineWrapsHeight = (pCurTextLine->uLineWraps) * m_iFontLineSpacing;
-			curBottomCoord -= lineWrapsHeight + m_iFontLineSpacing + m_iFontDescent;
+			curBottomCoord -= lineWrapsHeight + m_iFontLineSpacing + m_iFontLineVMargin;
 			pCurTextLine = pCurTextLine->pPrev;
 		}
 
@@ -2197,7 +2197,17 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 		m_iFontLineSpacing = KVI_IRCVIEW_PIXMAP_SIZE;
 
 	m_iFontDescent = m_pFm->descent();
-	m_iFontLineWidth = m_pFm->lineWidth();
+
+	switch(KVI_OPTION_UINT(KviOption_uintIrcViewLineVMarginType))
+	{
+		case 0:
+			m_iFontLineVMargin = 0;
+			break;
+		case 1:
+		default:
+			m_iFontLineVMargin = m_iFontDescent;
+			break;
+	}
 
 	// cache the first 256 characters
 	for(unsigned short i = 0; i < 256; i++)
@@ -2223,9 +2233,6 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 
 	// fix for #489 (horizontal tabulations)
 	m_iFontCharacterWidth[9] = m_pFm->horizontalAdvance("\t");
-
-	if(m_iFontLineWidth < 1)
-		m_iFontLineWidth = 1;
 
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp))
 	{
@@ -2486,13 +2493,13 @@ void KviIrcView::ensureLineVisible(KviIrcViewLine * pLineToShow)
 		{
 			if(pCurLine->iMaxLineWidth != maxLineWidth)
 				calculateLineWraps(pCurLine, maxLineWidth);
-			curBottomCoord += ((pCurLine->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
+			curBottomCoord += ((pCurLine->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontLineVMargin;
 			pCurLine = pCurLine->pPrev;
 			sc--;
 		}
 		if(pLine == pLineToShow)
 			break;
-		curBottomCoord -= m_iFontDescent;
+		curBottomCoord -= m_iFontLineVMargin;
 		pLine = pLine->pPrev;
 	}
 
@@ -2639,13 +2646,13 @@ KviIrcViewLine * KviIrcView::getVisibleLineAt(int yPos)
 {
 	KviIrcViewLine * l = m_pCurLine;
 	int toolWidgetHeight = (m_pToolWidget && m_pToolWidget->isVisible()) ? m_pToolWidget->sizeHint().height() : 0;
-	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER - toolWidgetHeight;
+	int iTop = height() + m_iFontLineVMargin - KVI_IRCVIEW_VERTICAL_BORDER - toolWidgetHeight;
 
 	while(iTop > yPos)
 	{
 		if(l)
 		{
-			iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
+			iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontLineVMargin;
 			if(iTop <= yPos)
 				return l;
 			l = l->pPrev;
@@ -2668,7 +2675,7 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 
 	KviIrcViewLine * l = m_pCurLine;
 	int toolWidgetHeight = (m_pToolWidget && m_pToolWidget->isVisible()) ? m_pToolWidget->sizeHint().height() : 0;
-	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER - toolWidgetHeight;
+	int iTop = height() + m_iFontLineVMargin - KVI_IRCVIEW_VERTICAL_BORDER - toolWidgetHeight;
 
 	// our current line begins after the mouse position... go on
 	while(iTop > yPos)
@@ -2678,7 +2685,7 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 			return -1;
 
 		// subtract from iTop the height of the current line (aka go to the end of the previous / start of the current point)
-		iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
+		iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontLineVMargin;
 
 		// we're still below the mouse position.. go on
 		if(iTop > yPos)
@@ -2802,7 +2809,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 
 	KviIrcViewLine * l = m_pCurLine;
 	int toolWidgetHeight = (m_pToolWidget && m_pToolWidget->isVisible()) ? m_pToolWidget->sizeHint().height() : 0;
-	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER - toolWidgetHeight;
+	int iTop = height() + m_iFontLineVMargin - KVI_IRCVIEW_VERTICAL_BORDER - toolWidgetHeight;
 
 	// our current line begins after the mouse position... go on
 	while(iTop > yPos)
@@ -2812,7 +2819,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 			return nullptr;
 
 		// subtract from iTop the height of the current line (aka go to the end of the previous / start of the current point)
-		iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
+		iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontLineVMargin;
 
 		// we're still below the mouse position.. go on
 		if(iTop > yPos)
@@ -2973,7 +2980,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 								*pRect = QRect(iLeftBorder,
 								    bHadWordWraps ? iLastEscapeBlockTop : iTop,
 								    iRightBorder,
-								    ((uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent);
+								    ((uLineWraps + 1) * m_iFontLineSpacing) + m_iFontLineVMargin);
 							}
 							if(linkCmd)
 							{
@@ -3045,7 +3052,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 								*pRect = QRect(iLastLeft,
 								    bHadWordWraps ? firstRowTop : iTop,
 								    iBlockWidth,
-								    ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent);
+								    ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontLineVMargin);
 							}
 							if(linkCmd)
 							{

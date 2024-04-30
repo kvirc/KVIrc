@@ -141,17 +141,28 @@ OptionsWidget_ircViewFeatures::OptionsWidget_ircViewFeatures(QWidget * parent)
 	setObjectName("ircviewfeatures_options_widget");
 	createLayout();
 
-	addBoolSelector(0, 7, 0, 7, __tr2qs_ctx("Enable URL highlighting", "options"), KviOption_boolIrcViewUrlHighlighting);
-	addBoolSelector(0, 8, 0, 8, __tr2qs_ctx("Use line wrap margin", "options"), KviOption_boolIrcViewWrapMargin);
-	KviUIntSelector * s = addUIntSelector(0, 9, 0, 9, __tr2qs_ctx("Maximum buffer size:", "options"), KviOption_uintIrcViewMaxBufferSize, 32, 32767, 2048);
-	s->setSuffix(__tr2qs_ctx(" lines", "options"));
-	s = addUIntSelector(0, 10, 0, 10, __tr2qs_ctx("Link tooltip show delay:", "options"), KviOption_uintIrcViewToolTipTimeoutInMsec, 256, 10000, 1800);
-	s->setSuffix(__tr2qs_ctx(" msec", "options"));
-	s = addUIntSelector(0, 11, 0, 11, __tr2qs_ctx("Link tooltip hide delay:", "options"), KviOption_uintIrcViewToolTipHideTimeoutInMsec, 256, 10000, 12000);
-	s->setSuffix(__tr2qs_ctx(" msec", "options"));
-	addBoolSelector(0, 12, 0, 12, __tr2qs_ctx("Enable animated smiles", "options"), KviOption_boolEnableAnimatedSmiles);
+	addBoolSelector(0, 7, 1, 7, __tr2qs_ctx("Enable URL highlighting", "options"), KviOption_boolIrcViewUrlHighlighting);
+	addBoolSelector(0, 8, 1, 8, __tr2qs_ctx("Use line wrap margin", "options"), KviOption_boolIrcViewWrapMargin);
 
-	KviTalGroupBox * pGroup = addGroupBox(0, 13, 0, 13, Qt::Horizontal, __tr2qs_ctx("Enable Tooltips for", "options"));
+	addLabel(0, 9, 0, 9, __tr2qs_ctx("Vertical line margin:", "options"));
+	m_pVMarginStyle = new QComboBox(this);
+	addWidgetToLayout(m_pVMarginStyle, 1, 9, 1, 9);
+
+	m_pVMarginStyle->addItem(__tr2qs_ctx("No margin", "options"));
+	m_pVMarginStyle->addItem(__tr2qs_ctx("Normal margin", "options"));
+
+	unsigned int uStyle = KVI_OPTION_UINT(KviOption_uintIrcViewLineVMarginType);
+	m_pVMarginStyle->setCurrentIndex(uStyle < 2 ? uStyle : 0);
+
+	KviUIntSelector * s = addUIntSelector(0, 10, 1, 10, __tr2qs_ctx("Maximum buffer size:", "options"), KviOption_uintIrcViewMaxBufferSize, 32, 32767, 2048);
+	s->setSuffix(__tr2qs_ctx(" lines", "options"));
+	s = addUIntSelector(0, 11, 1, 11, __tr2qs_ctx("Link tooltip show delay:", "options"), KviOption_uintIrcViewToolTipTimeoutInMsec, 256, 10000, 1800);
+	s->setSuffix(__tr2qs_ctx(" msec", "options"));
+	s = addUIntSelector(0, 12, 1, 12, __tr2qs_ctx("Link tooltip hide delay:", "options"), KviOption_uintIrcViewToolTipHideTimeoutInMsec, 256, 10000, 12000);
+	s->setSuffix(__tr2qs_ctx(" msec", "options"));
+	addBoolSelector(0, 13, 1, 13, __tr2qs_ctx("Enable animated smiles", "options"), KviOption_boolEnableAnimatedSmiles);
+
+	KviTalGroupBox * pGroup = addGroupBox(0, 14, 1, 14, Qt::Horizontal, __tr2qs_ctx("Enable Tooltips for", "options"));
 	addBoolSelector(pGroup, __tr2qs_ctx("URL links", "options"), KviOption_boolEnableUrlLinkToolTip);
 	addBoolSelector(pGroup, __tr2qs_ctx("Host links", "options"), KviOption_boolEnableHostLinkToolTip);
 	addBoolSelector(pGroup, __tr2qs_ctx("Server links", "options"), KviOption_boolEnableServerLinkToolTip);
@@ -160,11 +171,14 @@ OptionsWidget_ircViewFeatures::OptionsWidget_ircViewFeatures(QWidget * parent)
 	addBoolSelector(pGroup, __tr2qs_ctx("Channel links", "options"), KviOption_boolEnableChannelLinkToolTip);
 	addBoolSelector(pGroup, __tr2qs_ctx("Escape sequences", "options"), KviOption_boolEnableEscapeLinkToolTip);
 
-	addRowSpacer(0, 14, 0, 14);
+	addRowSpacer(0, 15, 1, 15);
 }
 
 OptionsWidget_ircViewFeatures::~OptionsWidget_ircViewFeatures()
-    = default;
+{
+	KVI_OPTION_UINT(KviOption_uintIrcViewLineVMarginType) = m_pVMarginStyle->currentIndex();
+	KviOptionsWidget::commit();
+}
 
 OptionsWidget_ircViewMarker::OptionsWidget_ircViewMarker(QWidget * parent)
     : KviOptionsWidget(parent)

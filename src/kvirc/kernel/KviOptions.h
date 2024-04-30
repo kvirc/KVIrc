@@ -597,8 +597,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_uintMaximumBlowFishKeySize 80
 #define KviOption_uintCustomCursorWidth 81                                    /* Interface */
 #define KviOption_uintUserListMinimumWidth 82
+#define KviOption_uintIrcViewLineVMarginType 83                               /* interface::features::components::ircview */
 
-#define KVI_NUM_UINT_OPTIONS 83
+#define KVI_NUM_UINT_OPTIONS 84
 
 namespace KviIdentdOutputMode
 {

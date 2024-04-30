@@ -77,6 +77,8 @@ class OptionsWidget_ircViewFeatures : public KviOptionsWidget
 public:
 	OptionsWidget_ircViewFeatures(QWidget * parent);
 	~OptionsWidget_ircViewFeatures();
+private:
+	QComboBox * m_pVMarginStyle;
 };
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewMarker KviIconManager::HideDoubleView
