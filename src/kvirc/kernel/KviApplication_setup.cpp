@@ -63,10 +63,10 @@ static QLibrary * g_pSetupLibrary = nullptr;
 
 bool KviApplication::checkGlobalKvircDirectory(const QString szDir)
 {
-	//First check if the help subdir exists
-	QString szHelpDir = szDir;
-	szHelpDir += KVI_PATH_SEPARATOR "help";
-	if(!KviFileUtils::directoryExists(szHelpDir))
+	//First check if the config subdir exists
+	QString szConfigDir = szDir;
+	szConfigDir += KVI_PATH_SEPARATOR "config";
+	if(!KviFileUtils::directoryExists(szConfigDir))
 		return false;
 	//Then check if the pics subdir exists
 	QString szPicsDir = szDir;
