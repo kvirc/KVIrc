@@ -25,11 +25,10 @@
 #include "KviModule.h"
 #include "KviOptions.h"
 
-#include <enchant.h>
-#include <enchant-provider.h>
+#include <enchant++.h>
 
-static EnchantBroker * g_pEnchantBroker = nullptr;
-static KviPointerList<EnchantDict> * g_pEnchantDicts = nullptr;
+static enchant::Broker * g_pEnchantBroker = nullptr;
+static KviPointerList<enchant::Dict> * g_pEnchantDicts = nullptr;
 
 /*
 	@doc: spellchecker.available_dictionaries
@@ -62,7 +61,7 @@ static bool spellchecker_kvs_available_dictionaries(KviKvsModuleFunctionCall * c
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETERS_END(c)
 	KviKvsHash * pHash = new KviKvsHash;
-	enchant_broker_list_dicts(g_pEnchantBroker, spellchecker_enumerate_dicts, pHash);
+	g_pEnchantBroker->list_dicts(spellchecker_enumerate_dicts, pHash);
 	c->returnValue()->setHash(pHash);
 	return true;
 }
@@ -87,11 +86,11 @@ static bool spellchecker_kvs_check(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
 	KVSM_PARAMETERS_END(c)
-	QByteArray utf8 = szWord.toUtf8();
+
 	bool bResult = g_pEnchantDicts->isEmpty();
-	KviPointerListIterator<EnchantDict> it(*g_pEnchantDicts);
+	KviPointerListIterator<enchant::Dict> it(*g_pEnchantDicts);
 	for(bool b = it.moveFirst(); b; b = it.moveNext())
-		bResult |= enchant_dict_check(*it, utf8.data(), utf8.size()) == 0;
+		bResult |= (*it)->check(szWord.toStdString());
 
 	c->returnValue()->setBoolean(bResult);
 	return true;
@@ -124,18 +123,14 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall * c)
 
 	if(!g_pEnchantDicts->isEmpty())
 	{
-		QByteArray utf8 = szWord.toUtf8();
+		std::vector<std::string> suggestions;
 
-		KviPointerListIterator<EnchantDict> it(*g_pEnchantDicts);
+		KviPointerListIterator<enchant::Dict> it(*g_pEnchantDicts);
 		for(bool b = it.moveFirst(); b; b = it.moveNext())
 		{
-			size_t iCount = 0;
-			char ** suggestions = enchant_dict_suggest(*it, utf8.data(), utf8.size(), &iCount);
-			if(suggestions)
-			{
-				for(size_t i = 0; i < iCount; i++)
-					hAllSuggestions.insert(QString::fromUtf8(suggestions[i]), 1);
-				enchant_dict_free_string_list(*it, suggestions);
+			(*it)->suggest(szWord.toStdString(), suggestions);
+			for (auto & suggestion : suggestions) {
+				hAllSuggestions.insert(QString::fromStdString(suggestion), 1);
 			}
 		}
 	}
@@ -152,7 +147,7 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall * c)
 static void spellchecker_reload_dicts()
 {
 	while(!g_pEnchantDicts->isEmpty())
-		enchant_broker_free_dict(g_pEnchantBroker, g_pEnchantDicts->takeFirst());
+		delete g_pEnchantDicts->takeFirst();
 
 	const QStringList & wantedDictionaries = KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries);
 	foreach(QString szLang, wantedDictionaries)
@@ -160,14 +155,14 @@ static void spellchecker_reload_dicts()
 		if(szLang.isEmpty())
 			continue;
 
-		EnchantDict * pDict = enchant_broker_request_dict(g_pEnchantBroker, szLang.toUtf8().data());
-		if(pDict)
-		{
-			g_pEnchantDicts->append(pDict);
-		}
-		else
-		{
-			qDebug("Can't load spellchecker dictionary %s: %s", szLang.toUtf8().data(), enchant_broker_get_error(g_pEnchantBroker));
+		try {
+			enchant::Dict * pDict = g_pEnchantBroker->request_dict(szLang.toUtf8().data());
+			if(pDict)
+			{
+				g_pEnchantDicts->append(pDict);
+			}
+		} catch (enchant::Exception e) {
+			qDebug("Can't load spellchecker dictionary %s: %s", szLang.toUtf8().data(), e.what());
 		}
 	}
 }
@@ -196,8 +191,8 @@ static bool spellchecker_kvs_reload_dictionaries(KviKvsModuleCommandCall * c)
 
 static bool spellchecker_module_init(KviModule * m)
 {
-	g_pEnchantBroker = enchant_broker_init();
-	g_pEnchantDicts = new KviPointerList<EnchantDict>(/* bAutoDelete = */ false);
+	g_pEnchantBroker = new enchant::Broker();
+	g_pEnchantDicts = new KviPointerList<enchant::Dict>(/* bAutoDelete = */ false);
 
 	spellchecker_reload_dicts();
 
@@ -211,11 +206,11 @@ static bool spellchecker_module_init(KviModule * m)
 static bool spellchecker_module_cleanup(KviModule *)
 {
 	while(!g_pEnchantDicts->isEmpty())
-		enchant_broker_free_dict(g_pEnchantBroker, g_pEnchantDicts->takeFirst());
+		delete g_pEnchantDicts->takeFirst();
 
 	delete g_pEnchantDicts;
 	g_pEnchantDicts = nullptr;
-	enchant_broker_free(g_pEnchantBroker);
+	delete g_pEnchantBroker;
 	g_pEnchantBroker = nullptr;
 	return true;
 }
