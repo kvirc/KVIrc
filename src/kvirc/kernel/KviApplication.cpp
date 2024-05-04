@@ -227,9 +227,6 @@ KviApplication::KviApplication(int & argc, char ** argv)
 	kvi_socket_flushTrafficCounters();
 	// don't let qt quit the application by itself
 	setQuitOnLastWindowClosed(false);
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	m_bPortable = KviFileUtils::fileExists(QString("%1%2%3").arg(g_pApp->applicationDirPath().arg(KVI_PATH_SEPARATOR_CHAR).arg("portable")));
-#endif
 
 //note: the early qApp->style() call leads to a crash on osx
 #if !defined(COMPILE_ENABLE_GTKSTYLE) && !defined(COMPILE_ON_MAC)

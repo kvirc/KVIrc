@@ -298,6 +298,8 @@ bool KviApplication::findLocalKvircDirectory()
 #endif //COMPILE_KDE_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	const auto portable_file = QString("%1%2%3").arg(g_pApp->applicationDirPath()).arg(KVI_PATH_SEPARATOR_CHAR).arg("portable");
+	m_bPortable = KviFileUtils::fileExists(portable_file);
 	if(m_bPortable)
 	{
 		m_szLocalKvircDir = QString("%1%2%3").arg(g_pApp->applicationDirPath()).arg(KVI_PATH_SEPARATOR_CHAR).arg("Settings");
