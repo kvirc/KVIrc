@@ -209,8 +209,8 @@ else()
 			# CMAKE_CXX_FLAGS_DEBUG before finalizing. This results in the
 			# default DEBUG flag of '-g' being appended, and therefore
 			# overriding what you specify here
-			set(CMAKE_CXX_FLAGS_DEBUG "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
-			set(CMAKE_C_FLAGS_DEBUG "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			set(CMAKE_CXX_FLAGS_DEBUG "-ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			set(CMAKE_C_FLAGS_DEBUG "-ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
 			include(CheckCXXCompilerFlag)
 			CHECK_CXX_COMPILER_FLAG("-fvisibility=hidden" CXX_HAS_VH_FLAG)
 			CHECK_CXX_COMPILER_FLAG("-fvisibility-inlines-hidden" CXX_HAS_VIH_FLAG)
