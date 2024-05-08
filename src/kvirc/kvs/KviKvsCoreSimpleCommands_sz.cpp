@@ -596,7 +596,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Requests the stats information from the specified server or the current server if no [target server] is specified.[br]
 			The query parameter is usually a letter indicating the type of the query requested: some query letters
-			are defined by [doc]RFC2812[/doc] and some others are server implementation dependent.[br]
+			are defined by [anchorlink:https://tools.ietf.org/html/rfc2812]RFC2812[/anchorlink] and some others are server implementation dependent.[br]
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
@@ -1095,7 +1095,7 @@ namespace KviKvsCoreSimpleCommands
 			Requests user information
 		@description:
 			Requests information about an IRC user specified by <nickname>.[br]
-			WHOWAS requests [i]history[/i] records. See [doc:rfc2812]RFC2812[/doc] for more info.[br]
+			WHOWAS requests [i]history[/i] records. See [anchorlink:https://tools.ietf.org/html/rfc2812]RFC2812[/anchorlink] for more info.[br]
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
