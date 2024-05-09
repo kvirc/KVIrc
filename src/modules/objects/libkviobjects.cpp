@@ -247,7 +247,7 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 			<target_object>'s slot <slot_name>.
 			When one of the two objects is destroyed, the signal/slot
 			connection is automatically removed.[br]
-			WARNING: this command name collides with the [doc:RFC2812]RFC2812[/doc]
+			WARNING: this command name collides with the [anchorlink:https://tools.ietf.org/html/rfc2812]RFC2812[/anchorlink]
 			CONNECT IRC Op command: this IRC command is available to operators only
 			and is rather rarely used: you can use it by the means of [doc:raw]raw[/doc].
 		@seealso:
