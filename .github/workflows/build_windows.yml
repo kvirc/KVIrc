@@ -14,8 +14,8 @@ on:
 
 jobs:
   build-windows:
-    runs-on: windows-latest
-    # https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
+    runs-on: windows-2019
+    # https://github.com/actions/runner-images/blob/main/images/windows/Windows2019-Readme.md
 
     steps:
       - name: Checkout
