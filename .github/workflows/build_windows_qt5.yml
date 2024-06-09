@@ -1,0 +1,184 @@
+name: Build Windows Qt5
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+    tags:
+      - '*'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build-windows-qt5:
+    runs-on: windows-2019
+    # https://github.com/actions/runner-images/blob/main/images/windows/Windows2019-Readme.md
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup devcmd
+        uses: ilammy/msvc-dev-cmd@v1
+
+      # https://learn.microsoft.com/en-us/vcpkg/users/binarycaching#gha
+      - name: Set variables for vcpkg
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', (process.env.ACTIONS_CACHE_URL || ''));
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', (process.env.ACTIONS_RUNTIME_TOKEN || ''));
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: 5.15.2
+          cache: true
+
+      - name: Install dependencies with vcpkg
+        run: |
+          # create our own triplet
+          New-Item `
+            -Force `
+            -ItemType File `
+            -Path "${{ env.vcpkg_path }}/triplets_overlay/x64-windows-release.cmake"
+          Add-Content `
+            -Path "${{ env.vcpkg_path }}/triplets_overlay/x64-windows-release.cmake" `
+            -Value @("set(VCPKG_TARGET_ARCHITECTURE x64)",
+              "set(VCPKG_LIBRARY_LINKAGE dynamic)",
+              "set(VCPKG_CRT_LINKAGE dynamic)",
+              "set(VCPKG_BUILD_TYPE release)")
+          c:/vcpkg/vcpkg.exe install `
+            --binarysource="clear;x-gha,readwrite" `
+            --clean-after-build `
+            --overlay-triplets="${{ env.vcpkg_path }}/triplets_overlay" `
+            gettext:x64-windows-release `
+            openssl:x64-windows-release `
+            zlib:x64-windows-release
+
+      - name: Install enchant
+        run: |
+          c:\msys64\usr\bin\pacman -Q
+          c:\msys64\usr\bin\pacman -S --noconfirm mingw64/mingw-w64-x86_64-enchant
+          mkdir c:\enchant-headers
+          copy c:\msys64\mingw64\lib\glib-2.0\include\glibconfig.h c:\enchant-headers
+          copy c:\msys64\mingw64\include\enchant-2\enchant.h c:\enchant-headers
+
+      - name: Patch Enchant for MSVC support
+        run: |
+          c:\msys64\usr\bin\pacman -S --noconfirm patch
+          cd c:\enchant-headers
+          c:\msys64\usr\bin\patch -p2 -i ${{github.workspace}}\dist\windows\patches\enchant.patch
+
+      - name: Patch Perl for MSVC support
+        run: |
+          # Strawberry perl doesn't support MSVC, but we force the support.
+          cd '${{github.workspace}}'
+          type dist\windows\patches\perl.txt >> c:\Strawberry\perl\lib\core\config.h
+
+      # To debug add -DCMAKE_VERBOSE_MAKEFILE=1 `
+      - name: Configure CMake
+        run: |
+          cd '${{github.workspace}}'
+          mkdir build
+          cd build
+          cmake .. `
+            -G "NMake Makefiles" `
+            -DCMAKE_TOOLCHAIN_FILE="c:/vcpkg/scripts/buildsystems/vcpkg.cmake" `
+            -DVCPKG_TARGET_TRIPLET=x64-windows-release `
+            -DCMAKE_BUILD_TYPE=Release `
+            -DWANT_KDE=NO `
+            -DWANT_OPENSSL=YES `
+            -DWANT_PERL=YES `
+            -DWANT_PHONON=NO `
+            -DWANT_PYTHON=YES `
+            -DWANT_QTWEBENGINE=NO `
+            -DEnchant_FOUND=1 `
+            -DEnchant_INCLUDE_DIRS="c:/enchant-headers;c:/msys64/mingw64/include/enchant-2;c:/msys64/mingw64/include/glib-2.0" `
+            -DEnchant_LDFLAGS="c:/msys64/mingw64/lib/libenchant-2.dll.a"
+
+      - name: Build
+        run: |
+          cd '${{github.workspace}}\build'
+          cmake --build .
+
+      - name: Install
+        run: |
+          cd '${{github.workspace}}\build'
+          cmake --install .
+
+      - name: Deployt Qt
+        run: |
+          cd '${{github.workspace}}\build'
+          windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"; if (!$?) { exit 1 }
+
+      - name: Deploy 3rd party dlls
+        run: |
+          cd '${{github.workspace}}\build'
+          copy c:\vcpkg\installed\x64-windows-release\bin\zlib1.dll release; if (!$?) { exit 1 }
+          copy c:\vcpkg\installed\x64-windows-release\bin\libcrypto*.dll release; if (!$?) { exit 1 }
+          copy c:\vcpkg\installed\x64-windows-release\bin\libssl*.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libenchant-2.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libpcre2-*.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libglib-2.0-0.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libgmodule-2.0-0.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libintl-8.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libwinpthread-1.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libiconv-2.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libgcc_s_seh-1.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libstdc++-6.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libhunspell-1.7-0.dll release; if (!$?) { exit 1 }
+          mkdir release\lib
+          mkdir release\share
+          mkdir release\lib\enchant-2
+          mkdir release\share\enchant-2
+          mkdir release\share\hunspell
+          touch release\share\locale; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\share\enchant-2\enchant.ordering release\share\enchant-2; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\lib\enchant-2\enchant_hunspell.dll release\lib\enchant-2; if (!$?) { exit 1 }
+
+      - name: Deploy dictionaries
+        run: |
+          cd '${{github.workspace}}\build\release\share\hunspell'
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/en/en_GB.aff
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/en/en_GB.dic
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/en/en_US.aff
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/en/en_US.dic
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/es/es_ES.aff
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/es/es_ES.dic
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/fr_FR/fr.aff
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/fr_FR/fr.dic
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/it_IT/it_IT.aff
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/it_IT/it_IT.dic
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/ru_RU/ru_RU.aff
+          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/ru_RU/ru_RU.dic
+
+      - name: Detect version
+        shell: bash
+        run: |
+          cd '${{github.workspace}}'
+          kvi_version=$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')
+          git_desc=$(git describe --always)
+          echo "exe_name=KVIrc-$kvi_version-dev-$(date +%F)-git-$git_desc" >> "$GITHUB_ENV"
+
+
+      - name: Add StdUtils plugin to NSIS
+        run: |
+          (New-Object Net.WebClient).DownloadFile('https://github.com/lordmulder/stdutils/releases/download/1.14/StdUtils.2018-10-27.zip', 'c:\StdUtils.2018-10-27.zip')
+          7z e -o"C:\Program Files (x86)\NSIS\Plugins\x86-unicode" c:\StdUtils.2018-10-27.zip Plugins\Unicode\*.dll
+          7z e -o"C:\Program Files (x86)\NSIS\Include" c:\StdUtils.2018-10-27.zip Include\*.nsh
+
+      - name: Create setup package
+        run: |
+          cd '${{github.workspace}}\build'
+          c:\"Program Files (x86)"\NSIS\makensis.exe KVIrc.nsi
+          move KVIrc.exe ${{ env.exe_name }}.exe
+
+      - name: Publish artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.exe_name }}.exe
+          path: build/${{ env.exe_name }}.exe
