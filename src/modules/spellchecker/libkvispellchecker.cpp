@@ -215,13 +215,18 @@ static bool spellchecker_module_cleanup(KviModule *)
 	return true;
 }
 
+static bool spellchecker_module_can_unload(KviModule *)
+{
+	return false;
+}
+
 KVIRC_MODULE(
     "SpellChecker",                                                  // module name
     "4.0.0",                                                         // module version
     "Copyright (C) 2014 Alexey Sokolov (sokolov at google dot com)", // author & (C)
     "Spell checker",
     spellchecker_module_init,
-    0,
+    spellchecker_module_can_unload,
     0,
     spellchecker_module_cleanup,
     0)
