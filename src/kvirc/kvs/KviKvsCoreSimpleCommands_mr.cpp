@@ -348,8 +348,8 @@ namespace KviKvsCoreSimpleCommands
 				openurl file://home/pragma/pippo.txt
 				openurl irc://irc.eu.dal.net:6667
 				openurl irc6://irc.ircd.it/#kvirc
-				openurl ircs://crypto.azzurra.org:9999
-				openurl ircs6://ngnet.azzurra.org:9999
+				openurl ircs://irc.azzurra.chat:9999
+				openurl ircs6://irc.azzurra.chat:9999
 				openurl ftp://ftp.localhost.net/pub/kvirc/
 				openurl mailto:users@domain.extension
 			[/example]
