@@ -140,6 +140,9 @@ KviWindow::KviWindow(Type eType, const QString & szName, KviConsoleWindow * lpCo
 	setFocusPolicy(Qt::StrongFocus);
 	connect(g_pApp, SIGNAL(reloadImages()), this, SLOT(reloadImages()));
 
+	// set name of the app desktop file; used by wayland to load the window icon
+	QGuiApplication::setDesktopFileName("net.kvirc.KVIrc" KVIRC_VERSION_MAJOR);
+
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 }
 
