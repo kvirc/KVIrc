@@ -142,6 +142,9 @@ SetupWizard::SetupWizard()
 	QString szImagePath;
 	g_pApp->getGlobalKvircDirectory(szImagePath, KviApplication::Pics, "kvi_setup_label.png");
 
+	// set name of the app desktop file; used by wayland to load the window icon
+	QGuiApplication::setDesktopFileName("net.kvirc.KVIrc" KVIRC_VERSION_MAJOR);
+
 	m_pLabelPixmap = new QPixmap(szImagePath);
 	if(m_pLabelPixmap->isNull())
 	{

@@ -29,6 +29,9 @@ KviTalApplication::KviTalApplication(int & iArgc, char ** ppcArgv)
 {
 	// Session management has been broken by source incompatible changes.
 	QObject::connect(this, SIGNAL(commitDataRequest(QSessionManager &)), this, SLOT(commitData(QSessionManager &)));
+
+	// set name of the app desktop file; used by wayland to load the window icon
+	QGuiApplication::setDesktopFileName("net.kvirc.KVIrc" KVIRC_VERSION_MAJOR);
 }
 
 KviTalApplication::~KviTalApplication()
