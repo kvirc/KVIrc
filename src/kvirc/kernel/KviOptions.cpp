@@ -412,7 +412,8 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS] = {
 	STRING_OPTION("DefaultSrvEncoding", "", KviOption_sectFlagFrame),
 	STRING_OPTION("LogsPath", "", KviOption_sectFlagUser | KviOption_encodePath),
 	STRING_OPTION("LogsDynamicPath", "", KviOption_sectFlagUser | KviOption_encodePath),
-	STRING_OPTION("LogsExportPath", "", KviOption_sectFlagUser | KviOption_encodePath)
+	STRING_OPTION("LogsExportPath", "", KviOption_sectFlagUser | KviOption_encodePath),
+	STRING_OPTION("QtStyle", "", KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetReloadImages)
 };
 
 #define STRINGLIST_OPTION(_txt, _flags) \

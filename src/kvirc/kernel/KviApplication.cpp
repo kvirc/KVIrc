@@ -228,16 +228,6 @@ KviApplication::KviApplication(int & argc, char ** argv)
 	// don't let qt quit the application by itself
 	setQuitOnLastWindowClosed(false);
 
-//note: the early qApp->style() call leads to a crash on osx
-#if !defined(COMPILE_ENABLE_GTKSTYLE) && !defined(COMPILE_ON_MAC)
-	// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, #1009, ..)
-	if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className()) == 0)
-	{
-		setStyle(QStyleFactory::create("Fusion"));
-		setPalette(style()->standardPalette());
-	}
-#endif
-
 	// Restore Qt5-like rounding to fix HiDPI support on QWebEngine
 	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::Round);
 }
@@ -342,6 +332,16 @@ void KviApplication::setup()
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	updatePseudoTransparency();
 #endif
+
+	{
+		// set global Qt style if needed
+		QString requestedQtStyle = KVI_OPTION_STRING(KviOption_stringQtStyle);
+
+		if(!requestedQtStyle.isEmpty() && QStyleFactory::keys().contains(requestedQtStyle)) {
+			setStyle(QStyleFactory::create(requestedQtStyle));
+			setPalette(style()->standardPalette());
+		}
+	}
 
 	// enforce our "icon in popups" option - this is done also in each updateGui() call
 	setAttribute(Qt::AA_DontShowIconsInMenus, !KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus));
