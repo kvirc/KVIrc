@@ -89,8 +89,10 @@ const QStringList feature_list{
 #ifdef COMPILE_ENCHANT_SUPPORT
 	"Enchant",
 #endif
-	"GTK",
 	"Qt5",
+#if(QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	"Qt6",
+#endif
 	"KVS"
 };
 
