@@ -31,7 +31,9 @@
 #include "KviTalToolTip.h"
 
 #include <QLayout>
+#include <QStyleFactory>
 
+#define DEFAULT_QT_STYLE "Default"
 OptionsWidget_theme::OptionsWidget_theme(QWidget * parent)
     : KviOptionsWidget(parent)
 {
@@ -44,11 +46,37 @@ OptionsWidget_theme::OptionsWidget_theme(QWidget * parent)
 	    KVI_OPTION_BOOL(KviOption_boolUseGlobalApplicationFont));
 	connect(b, SIGNAL(toggled(bool)), f, SLOT(setEnabled(bool)));
 
-	addRowSpacer(0, 3, 1, 3);
+	addLabel(0, 3, 0, 3, __tr2qs_ctx("Qt Style:", "options"));
+	m_pQtStyle = new QComboBox(this);
+	addWidgetToLayout(m_pQtStyle, 1, 3, 1, 3);
+	m_pQtStyle->addItem(DEFAULT_QT_STYLE);
+	for (const QString& key : QStyleFactory::keys()) {
+		m_pQtStyle->addItem(key);
+	}
+	if(KVI_OPTION_STRING(KviOption_stringQtStyle).isEmpty()) {
+		m_pQtStyle->setCurrentText(DEFAULT_QT_STYLE);
+	} else {
+		m_pQtStyle->setCurrentText(KVI_OPTION_STRING(KviOption_stringQtStyle));
+	}
+
+	addRowSpacer(0, 4, 1, 4);
 }
 
 OptionsWidget_theme::~OptionsWidget_theme()
     = default;
+
+void OptionsWidget_theme::commit()
+{
+	KviOptionsWidget::commit();
+
+	if(m_pQtStyle->currentText() == DEFAULT_QT_STYLE) {
+		KVI_OPTION_STRING(KviOption_stringQtStyle) = "";
+	} else {
+		KVI_OPTION_STRING(KviOption_stringQtStyle) = m_pQtStyle->currentText();
+		QApplication::setStyle(QStyleFactory::create(KVI_OPTION_STRING(KviOption_stringQtStyle)));
+		QApplication::setPalette(style()->standardPalette());
+	}
+}
 
 OptionsWidget_themeTransparency::OptionsWidget_themeTransparency(QWidget * parent)
     : KviOptionsWidget(parent)

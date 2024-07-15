@@ -28,6 +28,8 @@
 #include "KviOptionsWidget.h"
 #include "KviSelectors.h"
 
+#include <QComboBox>
+
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_theme KviIconManager::Gui
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_theme __tr2qs_no_lookup("General")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_theme __tr2qs_no_lookup("theme")
@@ -39,6 +41,12 @@ class OptionsWidget_theme : public KviOptionsWidget
 public:
 	OptionsWidget_theme(QWidget * parent);
 	~OptionsWidget_theme();
+
+protected:
+	void commit() override;
+
+private:
+	QComboBox * m_pQtStyle;
 };
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeTransparency KviIconManager::Transparent
