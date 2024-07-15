@@ -1056,19 +1056,6 @@ if(WANT_BEER)
 	message(STATUS "Opening the beer... -  done")
 endif()
 
-############################################################################
-# By default we disable QGtkStyle since it messes up with our theming
-# Some users want it anyway, and we sometimes need to check it
-############################################################################
-
-option(WANT_GTKSTYLE "Enable QGtkStyle" OFF)
-if(WANT_GTKSTYLE)
-	set(COMPILE_ENABLE_GTKSTYLE 1)
-	set(CMAKE_STATUS_GTK_SUPPORT "Yes")
-else()
-	set(CMAKE_STATUS_GTK_SUPPORT "No")
-endif()
-
 ###############################################################################
 # Translation (gettext) checks
 ###############################################################################
@@ -1371,7 +1358,6 @@ message(STATUS "   KDE support                 : ${CMAKE_STATUS_KDE_SUPPORT}")
 if(CMAKE_RESULT_USING_KDE)
 	message(STATUS "   KDE version                 : ${CMAKE_STATUS_KDE_VERSION}")
 endif()
-message(STATUS "   GTK support                 : ${CMAKE_STATUS_GTK_SUPPORT}")
 message(STATUS "   IPv6 support                : ${CMAKE_STATUS_IPV6_SUPPORT}")
 message(STATUS "   Pseudo-transparency support : ${CMAKE_STATUS_TRANSPARENCY_SUPPORT}")
 message(STATUS "   Spell-checker support       : ${CMAKE_STATUS_SPELLCHECKER_SUPPORT}")
