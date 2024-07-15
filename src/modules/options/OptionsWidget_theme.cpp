@@ -50,7 +50,7 @@ OptionsWidget_theme::OptionsWidget_theme(QWidget * parent)
 	m_pQtStyle = new QComboBox(this);
 	addWidgetToLayout(m_pQtStyle, 1, 3, 1, 3);
 	m_pQtStyle->addItem(DEFAULT_QT_STYLE);
-	foreach(QString key, QStyleFactory::keys()) {
+	for (const QString& key : QStyleFactory::keys()) {
 		m_pQtStyle->addItem(key);
 	}
 	if(KVI_OPTION_STRING(KviOption_stringQtStyle).isEmpty()) {
