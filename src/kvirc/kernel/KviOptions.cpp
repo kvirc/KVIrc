@@ -413,7 +413,11 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS] = {
 	STRING_OPTION("LogsPath", "", KviOption_sectFlagUser | KviOption_encodePath),
 	STRING_OPTION("LogsDynamicPath", "", KviOption_sectFlagUser | KviOption_encodePath),
 	STRING_OPTION("LogsExportPath", "", KviOption_sectFlagUser | KviOption_encodePath),
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	STRING_OPTION("QtStyle", "Fusion", KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetReloadImages)
+#else
 	STRING_OPTION("QtStyle", "", KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetReloadImages)
+#endif
 };
 
 #define STRINGLIST_OPTION(_txt, _flags) \
