@@ -105,6 +105,9 @@ KviMainWindow::KviMainWindow(QWidget * pParent)
 	// We try to avois this as much as possible, since it forces the use of the low-res 16x16 icon
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)));
 #endif
+	// set name of the app desktop file; used by wayland to load the window icon
+	QGuiApplication::setDesktopFileName("net.kvirc.KVIrc" KVIRC_VERSION_MAJOR);
+
 	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 
 	m_pSplitter = new QSplitter(Qt::Horizontal, this);
