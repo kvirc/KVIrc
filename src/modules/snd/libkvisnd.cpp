@@ -216,33 +216,36 @@ bool KviSoundPlayer::event(QEvent * e)
 	return QObject::event(e);
 }
 
-void KviSoundPlayer::detectSoundSystem()
+bool KviSoundPlayer::detectSoundSystem(QString & szSoundSystem)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "winmm";
-#else
+	szSoundSystem = "winmm";
+	return true;
+#endif
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
+	szSoundSystem = "qt";
+	return true;
+#endif
 #ifdef COMPILE_ESD_SUPPORT
 	esd_format_t format = ESD_BITS16 | ESD_STREAM | ESD_PLAY | ESD_MONO;
 	int esd_fd = esd_play_stream(format, 8012, nullptr, "kvirc");
 	if(esd_fd >= 0)
 	{
-		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "esd";
-		return;
+		szSoundSystem = "esd";
+		return true;
 	}
 #endif
 #ifdef COMPILE_OSS_SUPPORT
 #ifdef COMPILE_AUDIOFILE_SUPPORT
-	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "oss+audiofile";
-	return;
+	szSoundSystem = "oss+audiofile";
+	return true;
 #endif
-	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "oss";
+	szSoundSystem = "oss";
+	return true;
 #endif
 
-#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
-	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "qt";
-#endif
-	return;
-#endif
+	szSoundSystem = "null";
+	return false;
 }
 
 #ifdef COMPILE_PHONON_SUPPORT
@@ -395,7 +398,9 @@ bool KviSoundPlayer::play(const QString & szFileName)
 	if(!e)
 	{
 		if(
-		    (!KVI_OPTION_STRING(KviOption_stringSoundSystem).isEmpty()) && (!KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem), "unknown")))
+		    (!KVI_OPTION_STRING(KviOption_stringSoundSystem).isEmpty()) &&
+		    (!KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem), "unknown")) &&
+		    (!KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem), "null")))
 		{
 			qDebug(
 			    "Sound system '%s' is not valid, you may want to re-configure it in the options dialog...",
@@ -403,8 +408,9 @@ bool KviSoundPlayer::play(const QString & szFileName)
 			return false; // detection already attempted (and failed?)
 		}
 
-		detectSoundSystem();
-		e = m_pSoundSystemDict->find(KVI_OPTION_STRING(KviOption_stringSoundSystem));
+		QString szSoundSystem;
+		detectSoundSystem(szSoundSystem);
+		e = m_pSoundSystemDict->find(szSoundSystem);
 		if(!e)
 			return false;
 	}
@@ -718,14 +724,16 @@ static bool snd_kvs_cmd_play(KviKvsModuleCommandCall * c)
 
 static bool snd_kvs_cmd_autodetect(KviKvsModuleCommandCall * c)
 {
-	g_pSoundPlayer->detectSoundSystem();
-	if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem), "null"))
+	QString szSoundSystem;
+	g_pSoundPlayer->detectSoundSystem(szSoundSystem);
+	if(KviQString::equalCI(szSoundSystem, "null"))
 	{
 		c->window()->outputNoFmt(KVI_OUT_SYSTEMERROR, __tr2qs("Sorry, I can't find a sound system to use on this machine"));
 	}
 	else
 	{
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Sound system detected to: %s"), KVI_OPTION_STRING(KviOption_stringSoundSystem).toUtf8().data());
+		KVI_OPTION_STRING(KviOption_stringSoundSystem) = szSoundSystem;
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Sound system detected to: %s"), szSoundSystem.toUtf8().data());
 	}
 	return true;
 }
@@ -831,8 +839,10 @@ static bool snd_module_ctrl(KviModule *, const char * operation, void * param)
 	}
 	if(kvi_strEqualCI(operation, "detectSoundSystem"))
 	{
-		g_pSoundPlayer->detectSoundSystem();
-		return true;
+		QString * pszSoundSystem = (QString *)param;
+		if(pszSoundSystem)
+			return g_pSoundPlayer->detectSoundSystem(*pszSoundSystem);
+		return false;
 	}
 	if(kvi_strEqualCI(operation, "play"))
 	{

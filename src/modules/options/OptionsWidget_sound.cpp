@@ -195,8 +195,15 @@ void OptionsWidget_soundGeneral::soundAutoDetect()
 
 	g_pApp->setOverrideCursor(Qt::WaitCursor);
 
-	m->ctrl("detectSoundSystem", nullptr);
 	soundFillBox();
+	QString szSoundSystem;
+	if(m->ctrl("detectSoundSystem", &szSoundSystem) && !KviQString::equalCI(szSoundSystem, "null"))
+	{
+		int idx = m_pSoundSystemBox->findText(szSoundSystem);
+		if(idx > -1) {
+			m_pSoundSystemBox->setCurrentIndex(idx);
+		}
+	}
 
 	g_pApp->restoreOverrideCursor();
 }

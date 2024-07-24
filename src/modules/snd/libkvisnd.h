@@ -147,7 +147,7 @@ public:
 
 public:
 	bool play(const QString & szFileName);
-	void detectSoundSystem();
+	bool detectSoundSystem(QString & szSoundSystem);
 	bool havePlayingSounds();
 	void getAvailableSoundSystems(QStringList * l);
 	bool isMuted()
