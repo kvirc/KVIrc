@@ -397,22 +397,26 @@ bool KviSoundPlayer::play(const QString & szFileName)
 
 	if(!e)
 	{
-		if(
-		    (!KVI_OPTION_STRING(KviOption_stringSoundSystem).isEmpty()) &&
-		    (!KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem), "unknown")) &&
-		    (!KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem), "null")))
-		{
-			qDebug(
-			    "Sound system '%s' is not valid, you may want to re-configure it in the options dialog...",
-			    KVI_OPTION_STRING(KviOption_stringSoundSystem).toUtf8().data());
-			return false; // detection already attempted (and failed?)
-		}
+		qDebug(
+		   "Sound system '%s' is not valid, attempting autodetect...",
+		    KVI_OPTION_STRING(KviOption_stringSoundSystem).toUtf8().data());
 
 		QString szSoundSystem;
 		detectSoundSystem(szSoundSystem);
+		if(KviQString::equalCI(szSoundSystem, "null"))
+		{
+			qDebug("Sorry, I can't find a sound system to use on this machine");
+			return false;
+		}
+
 		e = m_pSoundSystemDict->find(szSoundSystem);
 		if(!e)
 			return false;
+
+		KVI_OPTION_STRING(KviOption_stringSoundSystem) = szSoundSystem;
+		qDebug(
+			"Autodetected sound system '%s'",
+	    	KVI_OPTION_STRING(KviOption_stringSoundSystem).toUtf8().data());
 	}
 
 	if(e != m_pLastUsedSoundPlayerEntry)
