@@ -56,9 +56,6 @@ const QStringList feature_list{
 #ifdef COMPILE_OSS_SUPPORT
 	"OSS",
 #endif
-#ifdef COMPILE_ESD_SUPPORT
-	"ESD",
-#endif
 #ifdef COMPILE_AUDIOFILE_SUPPORT
 	"Audiofile",
 #endif

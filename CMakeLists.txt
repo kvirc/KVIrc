@@ -653,17 +653,6 @@ if(Qt${QT_VERSION_MAJOR}Multimedia_FOUND)
 	list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Qt${QT_VERSION_MAJOR}Multimedia")
 endif()
 
-# ESD
-option(WANT_ESD "Whether to compile ESD support" ON)
-if(WANT_ESD)
-	find_package(ESD)
-	if(ESD_FOUND)
-		set(COMPILE_ESD_SUPPORT 1)
-		list(APPEND LIBS ${ESD_LIBRARY})
-		list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Esd")
-	endif()
-endif()
-
 # oss + audiofile
 option(WANT_OSS "Whether to compile OSS support" ON)
 option(WANT_AUDIOFILE "Whether to compile audiofile support" ON)

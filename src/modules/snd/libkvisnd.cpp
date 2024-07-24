@@ -53,10 +53,6 @@
 #include <unistd.h>
 #include <cerrno>
 
-#ifdef COMPILE_ESD_SUPPORT
-#include <esd.h>
-#endif //COMPILE_ESD_SUPPORT
-
 #ifdef COMPILE_OSS_SUPPORT
 #include <fcntl.h>
 #include <sys/ioctl.h>
@@ -115,10 +111,6 @@ KviSoundPlayer::KviSoundPlayer()
 #endif //COMPILE_AUDIOFILE_SUPPORT
 	m_pSoundSystemDict->insert("oss", new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playOss), KVI_PTR2MEMBER(KviSoundPlayer::cleanupOss)));
 #endif //COMPILE_OSS_SUPPORT
-
-#ifdef COMPILE_ESD_SUPPORT
-	m_pSoundSystemDict->insert("esd", new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playEsd), KVI_PTR2MEMBER(KviSoundPlayer::cleanupEsd)));
-#endif //COMPILE_ESD_SUPPORT
 
 #endif //!COMPILE_ON_WINDOWS
 
@@ -235,15 +227,6 @@ bool KviSoundPlayer::detectSoundSystem(QString & szSoundSystem)
 	szSoundSystem = "qt";
 	return true;
 #endif
-#ifdef COMPILE_ESD_SUPPORT
-	esd_format_t format = ESD_BITS16 | ESD_STREAM | ESD_PLAY | ESD_MONO;
-	int esd_fd = esd_play_stream(format, 8012, nullptr, "kvirc");
-	if(esd_fd >= 0)
-	{
-		szSoundSystem = "esd";
-		return true;
-	}
-#endif
 #ifdef COMPILE_OSS_SUPPORT
 #ifdef COMPILE_AUDIOFILE_SUPPORT
 	szSoundSystem = "oss+audiofile";
@@ -345,24 +328,6 @@ void KviSoundPlayer::cleanupOss()
 {
 }
 #endif //COMPILE_OSS_SUPPORT
-#ifdef COMPILE_ESD_SUPPORT
-bool KviSoundPlayer::playEsd(const QString & szFileName)
-{
-	if(isMuted())
-		return true;
-	KviEsdSoundThread * t = new KviEsdSoundThread(szFileName);
-	if(!t->start())
-	{
-		delete t;
-		return false;
-	}
-	return true;
-}
-
-void KviSoundPlayer::cleanupEsd()
-{
-}
-#endif //COMPILE_ESD_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
@@ -669,26 +634,6 @@ exit_thread:
 }
 
 #endif //COMPILE_OSS_SUPPORT
-
-#ifdef COMPILE_ESD_SUPPORT
-
-KviEsdSoundThread::KviEsdSoundThread(const QString & szFileName)
-    : KviSoundThread(szFileName)
-{
-}
-
-KviEsdSoundThread::~KviEsdSoundThread()
-{
-}
-
-void KviEsdSoundThread::play()
-{
-	// ESD has a really nice API
-	if(!esd_play_file(nullptr, m_szFileName.toUtf8().data(), 1)) // this is sync.. FIXME: it can't be stopped!
-		qDebug("Could not play sound %s! [ESD]", m_szFileName.toUtf8().data());
-}
-
-#endif //COMPILE_ESD_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
 /*

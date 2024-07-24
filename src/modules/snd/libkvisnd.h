@@ -78,30 +78,6 @@ protected:
 };
 #endif //COMPILE_AUDIOFILE_SUPPORT
 #endif //COMPILE_OSS_SUPPORT
-
-#ifdef COMPILE_ESD_SUPPORT
-class KviEsdSoundThread : public KviSoundThread
-{
-public:
-	KviEsdSoundThread(const QString & szFileName);
-	virtual ~KviEsdSoundThread();
-
-protected:
-	virtual void play();
-};
-#endif //COMPILE_ESD_SUPPORT
-
-#ifdef COMPILE_ARTS_SUPPORT
-class KviArtsSoundThread : public KviSoundThread
-{
-public:
-	KviArtsSoundThread(const QString & szFileName);
-	virtual ~KviArtsSoundThread();
-
-protected:
-	virtual void play();
-};
-#endif //COMPILE_ARTS_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
 #ifdef COMPILE_PHONON_SUPPORT
@@ -198,14 +174,6 @@ protected:
 	void cleanupOssAudiofile();
 #endif //COMPILE_AUDIOFILE_SUPPORT
 #endif //COMPILE_OSS_SUPPORT
-#ifdef COMPILE_ARTS_SUPPORT
-	bool playArts(const QString & szFileName);
-	void cleanupArts();
-#endif //COMPILE_ARTS_SUPPORT
-#ifdef COMPILE_ESD_SUPPORT
-	bool playEsd(const QString & szFileName);
-	void cleanupEsd();
-#endif //COMPILE_ESD_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 	bool playQt(const QString & szFileName);
