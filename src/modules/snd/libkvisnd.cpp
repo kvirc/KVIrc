@@ -227,6 +227,10 @@ bool KviSoundPlayer::detectSoundSystem(QString & szSoundSystem)
 	szSoundSystem = "winmm";
 	return true;
 #endif
+#ifdef COMPILE_PHONON_SUPPORT
+	szSoundSystem = "phonon";
+	return true;
+#endif //!COMPILE_PHONON_SUPPORT
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 	szSoundSystem = "qt";
 	return true;
