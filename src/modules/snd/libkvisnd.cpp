@@ -35,12 +35,8 @@
 #include "KviQString.h"
 
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <QSound>
-#else
 #include <QSoundEffect>
-#endif
-#endif
+#endif //!COMPILE_QTMULTIMEDIA_SUPPORT
 
 #ifdef COMPILE_PHONON_SUPPORT
 #include <phonon/mediaobject.h>
@@ -96,6 +92,10 @@ KviSoundPlayer::KviSoundPlayer()
 	m_pPhononPlayer = nullptr;
 #endif //!COMPILE_PHONON_SUPPORT
 
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
+	m_pSoundEffect = nullptr;
+#endif //COMPILE_QTMULTIMEDIA_SUPPORT
+
 	m_pLastUsedSoundPlayerEntry = nullptr;
 
 	m_pSoundSystemDict = new KviPointerHashTable<QString, KviSoundPlayerEntry>(17, false);
@@ -144,6 +144,11 @@ KviSoundPlayer::~KviSoundPlayer()
 	if(m_pPhononPlayer)
 		delete m_pPhononPlayer;
 #endif //COMPILE_PHONON_SUPPORT
+
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
+	if(m_pSoundEffect)
+		delete m_pSoundEffect;
+#endif //!COMPILE_QTMULTIMEDIA_SUPPORT
 
 	g_pSoundPlayer = nullptr;
 }
@@ -361,20 +366,22 @@ bool KviSoundPlayer::playQt(const QString & szFileName)
 {
 	if(isMuted())
 		return true;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-	QSound::play(szFileName);
-#else
-	QSoundEffect effect;
-	effect.setSource(QUrl::fromLocalFile(szFileName));
-	effect.play();
-#endif
+
+	if(!m_pSoundEffect)
+		m_pSoundEffect = new QSoundEffect;
+	m_pSoundEffect->setSource(QUrl::fromLocalFile(szFileName));
+	m_pSoundEffect->play();
 	return true;
 }
 
 void KviSoundPlayer::cleanupQt()
 {
-	// how to stop Qt sounds ?
-	// using the play/stop slots instead of the static ::play (TODO)
+	if(!m_pSoundEffect)
+		return;
+
+	m_pSoundEffect->stop();
+	delete m_pSoundEffect;
+	m_pSoundEffect = nullptr;
 }
 #endif
 

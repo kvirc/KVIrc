@@ -111,6 +111,10 @@ namespace Phonon
 }
 #endif //!COMPILE_PHONON_SUPPORT
 
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
+	class QSoundEffect;
+#endif
+
 typedef bool (KviSoundPlayer::*SoundSystemPlayRoutine)(const QString & szFileName);
 typedef void (KviSoundPlayer::*SoundSystemCleanupRoutine)();
 
@@ -165,6 +169,9 @@ protected:
 #ifdef COMPILE_PHONON_SUPPORT
 	Phonon::MediaObject * m_pPhononPlayer;
 #endif //!COMPILE_PHONON_SUPPORT
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
+	QSoundEffect * m_pSoundEffect;
+#endif //!COMPILE_QTMULTIMEDIA_SUPPORT
 	KviSoundPlayerEntry * m_pLastUsedSoundPlayerEntry;
 
 protected:
