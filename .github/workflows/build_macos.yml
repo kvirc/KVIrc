@@ -71,6 +71,13 @@ jobs:
           git_desc=$(git describe --always)
           echo "dmg_name=KVIrc-$kvi_version-dev-$(date +%F)-git-$git_desc" >> "$GITHUB_ENV"
 
+      - name: Work around macOS being awful
+        shell: bash
+        run: |
+          # BUG: https://github.com/actions/runner-images/issues/7522
+          echo Killing XProtect...; sudo pkill -9 XProtect >/dev/null || true;
+          echo Waiting for XProtect process...; while pgrep XProtect; do sleep 3; done;
+
       - name: Create DMG
         shell: bash
         run: |
