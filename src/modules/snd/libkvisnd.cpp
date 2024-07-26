@@ -35,7 +35,10 @@
 #include "KviQString.h"
 
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
-#include <QSoundEffect>
+#include <QMediaPlayer>
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+#include <QAudioOutput>
+#endif
 #endif //!COMPILE_QTMULTIMEDIA_SUPPORT
 
 #ifdef COMPILE_PHONON_SUPPORT
@@ -89,7 +92,10 @@ KviSoundPlayer::KviSoundPlayer()
 #endif //!COMPILE_PHONON_SUPPORT
 
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
-	m_pSoundEffect = nullptr;
+	m_pMediaPlayer = nullptr;
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	m_pAudioOutput = nullptr;
+#endif
 #endif //COMPILE_QTMULTIMEDIA_SUPPORT
 
 	m_pLastUsedSoundPlayerEntry = nullptr;
@@ -138,8 +144,12 @@ KviSoundPlayer::~KviSoundPlayer()
 #endif //COMPILE_PHONON_SUPPORT
 
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
-	if(m_pSoundEffect)
-		delete m_pSoundEffect;
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	if(m_pAudioOutput)
+		delete m_pAudioOutput;
+#endif
+	if(m_pMediaPlayer)
+		delete m_pMediaPlayer;
 #endif //!COMPILE_QTMULTIMEDIA_SUPPORT
 
 	g_pSoundPlayer = nullptr;
@@ -182,6 +192,17 @@ bool KviSoundPlayer::havePlayingSounds()
 	if(m_pThreadList)
 		if(m_pThreadList->count() > 0)
 			return true;
+
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
+	if(m_pMediaPlayer)
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+		if(m_pMediaPlayer->state() == QMediaPlayer::PlayingState)
+#else
+		if(m_pMediaPlayer->isPlaying())
+#endif
+			return true;
+#endif
+
 #ifdef COMPILE_PHONON_SUPPORT
 	if(m_pPhononPlayer)
 		if(m_pPhononPlayer->state() == Phonon::PlayingState)
@@ -219,14 +240,14 @@ bool KviSoundPlayer::detectSoundSystem(QString & szSoundSystem)
 	szSoundSystem = "winmm";
 	return true;
 #endif
-#ifdef COMPILE_PHONON_SUPPORT
-	szSoundSystem = "phonon";
-	return true;
-#endif //!COMPILE_PHONON_SUPPORT
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 	szSoundSystem = "qt";
 	return true;
 #endif
+#ifdef COMPILE_PHONON_SUPPORT
+	szSoundSystem = "phonon";
+	return true;
+#endif //!COMPILE_PHONON_SUPPORT
 #ifdef COMPILE_OSS_SUPPORT
 #ifdef COMPILE_AUDIOFILE_SUPPORT
 	szSoundSystem = "oss+audiofile";
@@ -336,21 +357,27 @@ bool KviSoundPlayer::playQt(const QString & szFileName)
 	if(isMuted())
 		return true;
 
-	if(!m_pSoundEffect)
-		m_pSoundEffect = new QSoundEffect;
-	m_pSoundEffect->setSource(QUrl::fromLocalFile(szFileName));
-	m_pSoundEffect->play();
+	if(!m_pMediaPlayer)
+		m_pMediaPlayer = new QMediaPlayer;
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	m_pAudioOutput = new QAudioOutput;
+	m_pMediaPlayer->setAudioOutput(m_pAudioOutput);
+	m_pMediaPlayer->setSource(QUrl::fromLocalFile(szFileName));
+#else
+	m_pMediaPlayer->setMedia(QUrl::fromLocalFile(szFileName));
+#endif
+	m_pMediaPlayer->play();
 	return true;
 }
 
 void KviSoundPlayer::cleanupQt()
 {
-	if(!m_pSoundEffect)
+	if(!m_pMediaPlayer)
 		return;
 
-	m_pSoundEffect->stop();
-	delete m_pSoundEffect;
-	m_pSoundEffect = nullptr;
+	m_pMediaPlayer->stop();
+	delete m_pMediaPlayer;
+	m_pMediaPlayer = nullptr;
 }
 #endif
 
