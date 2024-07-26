@@ -314,6 +314,11 @@ SectionEnd
 
 Function un.onInit
   !insertmacro MUI_UNGETLANGUAGE
+
+  ${If} ${RunningX64}
+    SetRegView 64
+  ${EndIf}
+
   Call un.CloseKVIrcInstances
 FunctionEnd
 
