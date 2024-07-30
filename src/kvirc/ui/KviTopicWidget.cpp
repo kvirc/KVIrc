@@ -234,6 +234,7 @@ static bool isKviControlCode(unsigned short c)
 	case KviControlCodes::Bold:
 	case KviControlCodes::Italic:
 	case KviControlCodes::Underline:
+	case KviControlCodes::Monospace:
 	case KviControlCodes::Reverse:
 	case KviControlCodes::Reset:
 	case KviControlCodes::Icon:
@@ -249,6 +250,7 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 	bool curBold = false;
 	bool curItalic = false;
 	bool curUnderline = false;
+	bool curMonospace = false;
 	unsigned char curFore = KVI_LABEL_DEF_FORE; //default fore
 	unsigned char curBack = KVI_LABEL_DEF_BACK; //default back
 	int baseline = rect.top() + rect.height() - fm.descent() - 1;
@@ -340,6 +342,10 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 				break;
 			case KviControlCodes::Underline:
 				curUnderline = !curUnderline;
+				++idx;
+				break;
+			case KviControlCodes::Monospace:
+				curMonospace = !curMonospace;
 				++idx;
 				break;
 			case KviControlCodes::Reverse:
@@ -743,6 +749,9 @@ QChar KviTopicWidget::getSubstituteChar(unsigned short control_code)
 			break;
 		case KviControlCodes::Italic:
 			return QChar('I');
+			break;
+		case KviControlCodes::Monospace:
+			return QChar('M');
 			break;
 		case KviControlCodes::Reset:
 			return QChar('O');

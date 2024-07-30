@@ -447,6 +447,7 @@ void KviIrcView::addControlCharacter(KviIrcViewLineChunk * pC, QString & szSelec
 		case KviControlCodes::Bold:
 		case KviControlCodes::Italic:
 		case KviControlCodes::Underline:
+		case KviControlCodes::Monospace:
 		case KviControlCodes::Reverse:
 		case KviControlCodes::Reset:
 			szSelectionText.append(QChar(pC->type));

@@ -66,11 +66,11 @@
 // 008 BS  Backspace                  (Should not be assigned: terminal control)
 // 009 HT  Horizontal tabulation      (Should not be assigned: terminal control)
 // 010 LF  Line feed                  (Should not be assigned: terminal control)
-// 011 VT  Vertical tabulation        (Should not be assigned: terminal control)
+// 011 VT  Vertical tabulation        ( Monospace text )
 // 012 FF  Form feed                  (Should not be assigned: terminal control)
 // 013 CR  Carriage return            (Should not be assigned: terminal control)
 // 014 SO  Shift out                  (Should not be assigned: terminal control)
-// 015 SI  Shift in                   ( Resets Bold,Color,Underline and Reverse ) (Conflicting with terminal control)
+// 015 SI  Shift in                   ( Resets Bold,Color,Underline,Monospace and Reverse ) (Conflicting with terminal control)
 // 016 DLE Data link escape           (Decent, can be assigned)
 // 017 DC1 Device control 1           (Good to be assigned)
 // 018 DC2 Device control 2           (Good to be assigned)
@@ -157,6 +157,7 @@ namespace KviControlCodes
 		UnIcon = 0x06,      /**< Unicon, totally artificial and internal to KviIrcView */
 		ArbitraryBreak = UnIcon, /**< Arbitrary block break, totally artificial and internal to KviIrcView */
 		Reset = 0x0f,       /**< Reset */
+		Monospace = 0x11,   /**< Monospace */
 		Reverse = 0x16,     /**< Reverse */
 		Icon = 0x1c,        /**< Icon, KVIrc control code */
 		Italic = 0x1d,      /**< Italic */

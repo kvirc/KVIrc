@@ -37,6 +37,7 @@ namespace KviHtmlGenerator
 		bool bCurBold = false;
 		bool bCurItalic = false;
 		bool bCurUnderline = false;
+		bool bCurMonospace = false;
 		bool bIgnoreIcons = false;
 		bool bShowIcons = KVI_OPTION_BOOL(KviOption_boolDrawEmoticons);
 		unsigned char uCurFore = Foreground;
@@ -51,7 +52,7 @@ namespace KviHtmlGenerator
 			unsigned int uStart = uIdx;
 
 			while(
-			    (c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Italic) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Icon) && ((c != ':') || bIgnoreIcons) && ((c != ';') || bIgnoreIcons) && ((c != '=') || bIgnoreIcons))
+			    (c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Italic) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Icon) && (c != KviControlCodes::Monospace) && ((c != ':') || bIgnoreIcons) && ((c != ';') || bIgnoreIcons) && ((c != '=') || bIgnoreIcons))
 			{
 				bIgnoreIcons = false;
 				if(c == '&')
@@ -158,6 +159,19 @@ namespace KviHtmlGenerator
 					}
 				}
 
+				if(bCurMonospace)
+				{
+					if(!bOpened)
+					{
+						szResult.append("<span style=\"font-family:monospace");
+						bOpened = true;
+					}
+					else
+					{
+						szResult.append(";font-family:monospace");
+					}
+				}
+
 				if(bOpened)
 					szResult.append(";\">");
 
@@ -190,6 +204,12 @@ namespace KviHtmlGenerator
 				case KviControlCodes::Reverse:
 				{
 					std::swap(uCurFore, uCurBack);
+					++uIdx;
+					break;
+				}
+				case KviControlCodes::Monospace:
+				{
+					bCurMonospace = !bCurMonospace;
 					++uIdx;
 					break;
 				}
