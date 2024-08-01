@@ -87,17 +87,6 @@ KviSoundPlayer::KviSoundPlayer()
 	m_pThreadList = new KviPointerList<KviSoundThread>;
 	m_pThreadList->setAutoDelete(true);
 
-#ifdef COMPILE_PHONON_SUPPORT
-	m_pPhononPlayer = nullptr;
-#endif //!COMPILE_PHONON_SUPPORT
-
-#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
-	m_pMediaPlayer = nullptr;
-#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
-	m_pAudioOutput = nullptr;
-#endif
-#endif //COMPILE_QTMULTIMEDIA_SUPPORT
-
 	m_pLastUsedSoundPlayerEntry = nullptr;
 
 	m_pSoundSystemDict = new KviPointerHashTable<QString, KviSoundPlayerEntry>(17, false);
@@ -137,20 +126,6 @@ KviSoundPlayer::~KviSoundPlayer()
 	KviThreadManager::killPendingEvents(this);
 
 	delete m_pSoundSystemDict;
-
-#ifdef COMPILE_PHONON_SUPPORT
-	if(m_pPhononPlayer)
-		delete m_pPhononPlayer;
-#endif //COMPILE_PHONON_SUPPORT
-
-#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
-#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
-	if(m_pAudioOutput)
-		delete m_pAudioOutput;
-#endif
-	if(m_pMediaPlayer)
-		delete m_pMediaPlayer;
-#endif //!COMPILE_QTMULTIMEDIA_SUPPORT
 
 	g_pSoundPlayer = nullptr;
 }
@@ -270,7 +245,7 @@ bool KviSoundPlayer::playPhonon(const QString & szFileName)
 	Phonon::MediaSource media(QUrl::fromLocalFile(szFileName));
 
 	if(!m_pPhononPlayer)
-		m_pPhononPlayer = Phonon::createPlayer(Phonon::MusicCategory, media);
+		m_pPhononPlayer	= std::unique_ptr<Phonon::MediaObject>(Phonon::createPlayer(Phonon::MusicCategory, media));
 	else
 		m_pPhononPlayer->setCurrentSource(media);
 
@@ -296,8 +271,8 @@ void KviSoundPlayer::cleanupPhonon()
 {
 	if(!m_pPhononPlayer)
 		return;
-	delete m_pPhononPlayer; // must be stopped
-	m_pPhononPlayer = nullptr;
+	m_pPhononPlayer->stop();
+	m_pPhononPlayer.reset();
 }
 #endif //!COMPILE_PHONON_SUPPORT
 
@@ -358,10 +333,10 @@ bool KviSoundPlayer::playQt(const QString & szFileName)
 		return true;
 
 	if(!m_pMediaPlayer)
-		m_pMediaPlayer = new QMediaPlayer;
+		m_pMediaPlayer = std::make_unique<QMediaPlayer>();
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
-	m_pAudioOutput = new QAudioOutput;
-	m_pMediaPlayer->setAudioOutput(m_pAudioOutput);
+	m_pAudioOutput = std::make_unique<QAudioOutput>();
+	m_pMediaPlayer->setAudioOutput(m_pAudioOutput.get());
 	m_pMediaPlayer->setSource(QUrl::fromLocalFile(szFileName));
 #else
 	m_pMediaPlayer->setMedia(QUrl::fromLocalFile(szFileName));
@@ -376,8 +351,7 @@ void KviSoundPlayer::cleanupQt()
 		return;
 
 	m_pMediaPlayer->stop();
-	delete m_pMediaPlayer;
-	m_pMediaPlayer = nullptr;
+	m_pMediaPlayer.reset();
 }
 #endif
 

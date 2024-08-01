@@ -146,12 +146,12 @@ protected:
 	KviPointerList<KviSoundThread> * m_pThreadList;
 	KviPointerHashTable<QString, KviSoundPlayerEntry> * m_pSoundSystemDict;
 #ifdef COMPILE_PHONON_SUPPORT
-	Phonon::MediaObject * m_pPhononPlayer;
+	std::unique_ptr<Phonon::MediaObject> m_pPhononPlayer;
 #endif //!COMPILE_PHONON_SUPPORT
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
-	QMediaPlayer * m_pMediaPlayer;
+	std::unique_ptr<QMediaPlayer> m_pMediaPlayer;
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
-	QAudioOutput * m_pAudioOutput;
+	std::unique_ptr<QAudioOutput> m_pAudioOutput;
 #endif
 #endif //!COMPILE_QTMULTIMEDIA_SUPPORT
 	KviSoundPlayerEntry * m_pLastUsedSoundPlayerEntry;
