@@ -363,7 +363,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,&&found_tab                  ,&&found_end_of_line          ,nullptr                      ,
 		nullptr                      ,&&found_command_escape       ,nullptr                      ,&&found_mirc_escape          ,
-		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,&&found_mirc_escape          ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,&&found_mirc_escape          ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		&&found_icon_escape          ,&&found_mirc_escape          ,nullptr                      ,&&found_mirc_escape          , // 000-031
@@ -749,6 +749,7 @@ found_icon_escape:
 		case KviControlCodes::Bold:
 		case KviControlCodes::Italic:
 		case KviControlCodes::Underline:
+		case KviControlCodes::Monospace:
 		case KviControlCodes::Reverse:
 		case KviControlCodes::Reset:
 #ifdef COMPILE_USE_DYNAMIC_LABELS

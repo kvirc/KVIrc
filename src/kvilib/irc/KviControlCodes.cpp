@@ -45,6 +45,7 @@ namespace KviControlCodes
 				case KviControlCodes::Underline:
 				case KviControlCodes::Bold:
 				case KviControlCodes::Italic:
+				case KviControlCodes::Monospace:
 				case KviControlCodes::Reset:
 				case KviControlCodes::Reverse:
 				case KviControlCodes::CryptEscape:

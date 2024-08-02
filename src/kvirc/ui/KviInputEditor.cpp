@@ -109,7 +109,8 @@ public:
 		IsItalic = 4,
 		IsUnderline = 8,
 		IsSpellingMistake = 16,
-		IsSelected = 32
+		IsSelected = 32,
+		IsMonospace = 64
 	};
 
 public:
@@ -536,7 +537,7 @@ void KviInputEditor::rebuildTextBlocks()
 
 #define NOT_CONTROL_CHAR() \
 	(                      \
-	    (c > 32) || ((c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Italic) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::CryptEscape) && (c != KviControlCodes::Icon)))
+	    (c > 32) || ((c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Italic) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Monospace) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::CryptEscape) && (c != KviControlCodes::Icon)))
 
 	// FIXME: get rid of getLastFontMetrics() ?
 	QFontMetrics * fm = getLastFontMetrics(font());
@@ -604,6 +605,12 @@ void KviInputEditor::rebuildTextBlocks()
 						uFlags &= ~KviInputEditorTextBlock::IsUnderline;
 					else
 						uFlags |= KviInputEditorTextBlock::IsUnderline;
+					break;
+				case KviControlCodes::Monospace:
+					if(uFlags & KviInputEditorTextBlock::IsMonospace)
+						uFlags &= ~KviInputEditorTextBlock::IsMonospace;
+					else
+						uFlags |= KviInputEditorTextBlock::IsMonospace;
 					break;
 				case KviControlCodes::Reset:
 					uCurFore = KVI_INPUT_DEF_FORE;
@@ -975,6 +982,9 @@ QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
 			break;
 		case KviControlCodes::Italic:
 			return QChar('I');
+			break;
+		case KviControlCodes::Monospace:
+			return QChar('M');
 			break;
 		case KviControlCodes::Reset:
 			return QChar('O');

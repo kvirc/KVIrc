@@ -1196,6 +1196,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 		bool curBold = false;
 		bool curItalic = false;
 		bool curUnderline = false;
+		bool curMonospace = false;
 		char foreBeforeEscape = KviControlCodes::Black;
 		bool curLink = false;
 		bool bacWasTransp = false;
@@ -1256,10 +1257,14 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 					case KviControlCodes::Underline:
 						curUnderline = !curUnderline;
 						break;
+					case KviControlCodes::Monospace:
+						curMonospace = !curMonospace;
+						break;
 					case KviControlCodes::Reset:
 						curBold = false;
 						curItalic = false;
 						curUnderline = false;
+						curMonospace = false;
 						bacWasTransp = false;
 						curFore = defaultFore;
 						curBack = defaultBack;
@@ -3004,6 +3009,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 												case KviControlCodes::Bold:
 												case KviControlCodes::Italic:
 												case KviControlCodes::Underline:
+												case KviControlCodes::Monospace:
 												case KviControlCodes::Reverse:
 												case KviControlCodes::Reset:
 													szLink.append(QChar(l->pBlocks[iEndOfLInk].pChunk->type));
