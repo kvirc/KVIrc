@@ -78,30 +78,6 @@ protected:
 };
 #endif //COMPILE_AUDIOFILE_SUPPORT
 #endif //COMPILE_OSS_SUPPORT
-
-#ifdef COMPILE_ESD_SUPPORT
-class KviEsdSoundThread : public KviSoundThread
-{
-public:
-	KviEsdSoundThread(const QString & szFileName);
-	virtual ~KviEsdSoundThread();
-
-protected:
-	virtual void play();
-};
-#endif //COMPILE_ESD_SUPPORT
-
-#ifdef COMPILE_ARTS_SUPPORT
-class KviArtsSoundThread : public KviSoundThread
-{
-public:
-	KviArtsSoundThread(const QString & szFileName);
-	virtual ~KviArtsSoundThread();
-
-protected:
-	virtual void play();
-};
-#endif //COMPILE_ARTS_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
 #ifdef COMPILE_PHONON_SUPPORT
@@ -110,6 +86,13 @@ namespace Phonon
 	class MediaObject;
 }
 #endif //!COMPILE_PHONON_SUPPORT
+
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
+	class QMediaPlayer;
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	class QAudioOutput;
+#endif
+#endif
 
 typedef bool (KviSoundPlayer::*SoundSystemPlayRoutine)(const QString & szFileName);
 typedef void (KviSoundPlayer::*SoundSystemCleanupRoutine)();
@@ -147,7 +130,7 @@ public:
 
 public:
 	bool play(const QString & szFileName);
-	void detectSoundSystem();
+	bool detectSoundSystem(QString & szSoundSystem);
 	bool havePlayingSounds();
 	void getAvailableSoundSystems(QStringList * l);
 	bool isMuted()
@@ -163,8 +146,14 @@ protected:
 	KviPointerList<KviSoundThread> * m_pThreadList;
 	KviPointerHashTable<QString, KviSoundPlayerEntry> * m_pSoundSystemDict;
 #ifdef COMPILE_PHONON_SUPPORT
-	Phonon::MediaObject * m_pPhononPlayer;
+	std::unique_ptr<Phonon::MediaObject> m_pPhononPlayer;
 #endif //!COMPILE_PHONON_SUPPORT
+#ifdef COMPILE_QTMULTIMEDIA_SUPPORT
+	std::unique_ptr<QMediaPlayer> m_pMediaPlayer;
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	std::unique_ptr<QAudioOutput> m_pAudioOutput;
+#endif
+#endif //!COMPILE_QTMULTIMEDIA_SUPPORT
 	KviSoundPlayerEntry * m_pLastUsedSoundPlayerEntry;
 
 protected:
@@ -191,14 +180,6 @@ protected:
 	void cleanupOssAudiofile();
 #endif //COMPILE_AUDIOFILE_SUPPORT
 #endif //COMPILE_OSS_SUPPORT
-#ifdef COMPILE_ARTS_SUPPORT
-	bool playArts(const QString & szFileName);
-	void cleanupArts();
-#endif //COMPILE_ARTS_SUPPORT
-#ifdef COMPILE_ESD_SUPPORT
-	bool playEsd(const QString & szFileName);
-	void cleanupEsd();
-#endif //COMPILE_ESD_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 	bool playQt(const QString & szFileName);

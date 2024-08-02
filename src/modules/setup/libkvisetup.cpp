@@ -123,8 +123,14 @@ KVIMODULEEXPORTFUNC void setup_finish()
 
 		// detect the most appropriate sound system
 		KviModule * m = g_pModuleManager->getModule("snd");
-		if(m)
-			m->ctrl("detectSoundSystem", nullptr);
+		if(m) {
+			QString szSoundSystem;
+			if (m->ctrl("detectSoundSystem", &szSoundSystem) &&
+				!KviQString::equalCI(szSoundSystem, "null"))
+			{
+				KVI_OPTION_STRING(KviOption_stringSoundSystem) = szSoundSystem;
+			}
+		}
 	}
 }
 

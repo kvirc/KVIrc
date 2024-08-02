@@ -195,8 +195,15 @@ void OptionsWidget_soundGeneral::soundAutoDetect()
 
 	g_pApp->setOverrideCursor(Qt::WaitCursor);
 
-	m->ctrl("detectSoundSystem", nullptr);
 	soundFillBox();
+	QString szSoundSystem;
+	if(m->ctrl("detectSoundSystem", &szSoundSystem) && !KviQString::equalCI(szSoundSystem, "null"))
+	{
+		int idx = m_pSoundSystemBox->findText(szSoundSystem);
+		if(idx > -1) {
+			m_pSoundSystemBox->setCurrentIndex(idx);
+		}
+	}
 
 	g_pApp->restoreOverrideCursor();
 }
@@ -222,30 +229,28 @@ void OptionsWidget_soundGeneral::soundFillBox()
 	KviModule * m = g_pModuleManager->getModule("snd");
 
 	if(!m || !m->ctrl("getAvailableSoundSystems", &l))
-		goto disable;
-
-	m_pSoundSystemBox->clear();
-
-	for(const auto& it : l)
-		m_pSoundSystemBox->addItem(it);
-
-	cnt = m_pSoundSystemBox->count();
-	for(i = 0; i < cnt; i++)
 	{
-		QString t = m_pSoundSystemBox->itemText(i);
-		if(KviQString::equalCI(t, KVI_OPTION_STRING(KviOption_stringSoundSystem)))
-		{
-			m_pSoundSystemBox->setCurrentIndex(i);
-			break;
-		}
+		m_pSoundSystemBox->clear();
+		m_pSoundSystemBox->setEnabled(false);
+		m_pSoundTestButton->setEnabled(false);
+		m_pSoundAutoDetectButton->setEnabled(false);
+		return;
 	}
 
-	return;
-disable:
 	m_pSoundSystemBox->clear();
-	m_pSoundSystemBox->setEnabled(false);
-	m_pSoundTestButton->setEnabled(false);
-	m_pSoundAutoDetectButton->setEnabled(false);
+	m_pSoundSystemBox->addItems(l);
+
+	int idx = m_pSoundSystemBox->findText(KVI_OPTION_STRING(KviOption_stringSoundSystem));
+	if(idx == -1) {
+		// the previously used sound system doesn't exist anymore, force an autodetect
+		g_pApp->setOverrideCursor(Qt::WaitCursor);
+		QString szSoundSystem;
+		m->ctrl("detectSoundSystem", &szSoundSystem);
+		g_pApp->restoreOverrideCursor();
+		idx = m_pSoundSystemBox->findText(szSoundSystem);
+	}
+
+	m_pSoundSystemBox->setCurrentIndex(idx);
 }
 
 void OptionsWidget_soundGeneral::mediaFillBox()
