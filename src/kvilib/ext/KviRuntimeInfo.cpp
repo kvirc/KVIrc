@@ -280,14 +280,32 @@ static QString queryWinInfo(QueryInfo info)
 			// Test for the specific product.
 			if(osvi.dwMajorVersion == 10 && osvi.dwMinorVersion == 0)
 			{
-				if(osvi.wProductType == VER_NT_WORKSTATION)
+				if(osvi.wProductType == VER_NT_WORKSTATION && osvi.dwBuildNumber < 19536)
 					szVersion += "Windows 10 ";
+						if(osvi.dwBuildNumber == 17763)
+							szVersion += "1809 ";
+						else if(osvi.dwBuildNumber == 19044)
+							szVersion += "21H2 ";
+						else if(osvi.dwBuildNumber == 19045)
+							szVersion += "22H2 ";
 				else if(osvi.wProductType == VER_NT_SERVER || osvi.wProductType == VER_NT_DOMAIN_CONTROLLER )
 					szVersion += "Windows Server ";
-						if(osvi.dwBuildNumber <= 14393)
+						if(osvi.dwBuildNumber == 14393)
 							szVersion += "2016 ";
-						else if(osvi.dwBuildNumber <= 17763)
-							szVersion += "2019 ";
+				if(osvi.dwBuildNumber > 22000)
+					szVersion += "Windows ";
+						if(osvi.dwBuildNumber == 22000)
+							szVersion += "11 21H2 ";
+						else if(osvi.dwBuildNumber == 22621)
+							szVersion += "11 22H2 ";
+						else if(osvi.dwBuildNumber == 22631)
+							szVersion += "11 23H2 ";
+						else if(osvi.dwBuildNumber == 26100)
+							szVersion += "11 24H2 ";
+						else if(osvi.dwBuildNumber == 17763)
+							szVersion += "Server 2019 ";
+						else if(osvi.dwBuildNumber == 20348)
+							szVersion += "Server 2022 ";
 						else
 							szVersion += "vNext ";
 			}
@@ -319,7 +337,7 @@ static QString queryWinInfo(QueryInfo info)
 			PGETPRODUCTINFO pGetProductInfo;
 			pGetProductInfo = (PGETPRODUCTINFO)GetProcAddress(
 			    GetModuleHandle(TEXT("kernel32.dll")), "GetProductInfo");
-			// from MSDN, Document Date 01/27/2022
+			// from MSDN, Document Date 02/02/2023
 			// https://docs.microsoft.com/en-us/windows/desktop/api/sysinfoapi/nf-sysinfoapi-getproductinfo
 			// the entire PRODUCT_CORE group has the base Windows version in the
 			// returned value. rip out "Windows" of all PRODUCT values as well
@@ -491,6 +509,12 @@ static QString queryWinInfo(QueryInfo info)
 							case PRODUCT_MULTIPOINT_STANDARD_SERVER:
 								szVersion += "MultiPoint Server Standard (full installation)";
 								break;
+							case PRODUCT_PPI_PRO:
+								szVersion += "Team";
+								break;
+							case PRODUCT_PRO_FOR_EDUCATION:
+								szVersion += "Pro Education";
+								break;
 							case PRODUCT_PRO_WORKSTATION:
 								szVersion += "Pro for Workstations";
 								break;
@@ -530,6 +554,9 @@ static QString queryWinInfo(QueryInfo info)
 							case PRODUCT_SERVER_FOUNDATION:
 								szVersion += "Server Foundation";
 								break;
+							case PRODUCT_SERVERRDSH:
+								szVersion += "Enterprise for Virtual Desktops";
+								break;
 							case PRODUCT_SMALLBUSINESS_SERVER:
 								szVersion += "Small Business Server";
 								break;
@@ -551,11 +578,11 @@ static QString queryWinInfo(QueryInfo info)
 							case PRODUCT_STANDARD_SERVER_CORE:
 								szVersion += "Server Standard (core installation)";
 								break;
-							case PRODUCT_STANDARD_SERVER_V:
-								szVersion += "Server Standard without Hyper-V";
-								break;
 							case PRODUCT_STANDARD_SERVER_CORE_V:
 								szVersion += "Server Standard without Hyper-V (core installation)";
+								break;
+							case PRODUCT_STANDARD_SERVER_V:
+								szVersion += "Server Standard without Hyper-V";
 								break;
 							case PRODUCT_STANDARD_SERVER_SOLUTIONS:
 								szVersion += "Server Solutions Premium";
