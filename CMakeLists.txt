@@ -996,8 +996,14 @@ endif()
 ############################################################################
 
 if(WIN32)
-	# 0x0601 = Windows 7
-	add_definitions(-D_WIN32_WINNT=0x0601 -DWINVER=0x0601 -DWIN32_LEAN_AND_MEAN)
+	if(${QT_VERSION_MAJOR} EQUAL 6)
+		# 0x0A00 = Windows 10
+		add_definitions(-D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00)
+	else()
+		# 0x0601 = Windows 7
+		add_definitions(-D_WIN32_WINNT=0x0601 -DWINVER=0x0601)
+	endif()
+	add_definitions(-DWIN32_LEAN_AND_MEAN)
 endif()
 
 if(MINGW)
@@ -1011,8 +1017,6 @@ endif()
 if(MSVC)
 	add_definitions(-D_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES -DNOMINMAX)
 	add_definitions(-DMSVC)
-	# Support from Windows XP
-	SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
 endif()
 
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "SunPro")
