@@ -55,7 +55,7 @@ jobs:
             --binarysource="clear;x-gha,readwrite" `
             --clean-after-build `
             --overlay-triplets="${{ env.vcpkg_path }}/triplets_overlay" `
-            gettext:x64-windows-release `
+            gettext[core,tools]:x64-windows-release `
             openssl:x64-windows-release `
             zlib:x64-windows-release
 
