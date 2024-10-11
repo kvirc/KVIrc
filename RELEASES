@@ -8,6 +8,8 @@ Windows users will be delighted to see that KVIrc correctly follows the
 operating system's dark mode theme when enabled.
 Please note that we have added an additional Windows binary based on Qt5 that
 still supports Windows 7.
+Updated sound effects to use newer Qt library, cleaned up older audio backends
+(ESD, aRts), made Qt be preferred over Phonon, which is also becoming outdated.
 
 For every need, or even just for some small talking, come and say hi at
 #kvirc@Libera.chat
