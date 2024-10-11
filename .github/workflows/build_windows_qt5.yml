@@ -162,7 +162,7 @@ jobs:
           cd '${{github.workspace}}'
           kvi_version=$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')
           git_desc=$(git describe --always)
-          echo "exe_name=KVIrc-$kvi_version-dev-$(date +%F)-git-$git_desc" >> "$GITHUB_ENV"
+          echo "exe_name=KVIrc-$kvi_version-qt5-dev-$(date +%F)-git-$git_desc" >> "$GITHUB_ENV"
 
 
       - name: Add StdUtils plugin to NSIS
