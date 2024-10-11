@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
 "PO-Revision-Date: 2015-08-01 09:10+0000\n"
 "Last-Translator: xyzzy <bravehearterkan@hotmail.com>, 2010\n"
 "Language-Team: Turkish (http://app.transifex.com/kvirc/KVIrc/language/tr/)\n"
@@ -217,7 +217,7 @@ msgstr ""
 #: src/modules/actioneditor/ActionEditor.cpp:714
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:866
 #: src/modules/classeditor/ClassEditorWindow.cpp:1229
-#: src/modules/editor/ScriptEditorImplementation.cpp:870
+#: src/modules/editor/ScriptEditorImplementation.cpp:881
 #: src/modules/raweditor/RawEditorWindow.cpp:418
 #: src/modules/raweditor/RawEditorWindow.cpp:458
 msgid "Choose a Filename - KVIrc"
@@ -225,7 +225,7 @@ msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:747
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:883
-#: src/modules/editor/ScriptEditorImplementation.cpp:880
+#: src/modules/editor/ScriptEditorImplementation.cpp:891
 #: src/modules/eventeditor/EventEditorWindow.cpp:518
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1227
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1277
@@ -252,7 +252,7 @@ msgid "Action Editor"
 msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:895
-#: src/modules/editor/ScriptEditorImplementation.cpp:489
+#: src/modules/editor/ScriptEditorImplementation.cpp:500
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:188
 msgid "OK"
 msgstr "Tamam"
@@ -263,7 +263,7 @@ msgstr "Uygula"
 
 #: src/modules/actioneditor/ActionEditor.cpp:905
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1268
-#: src/modules/editor/ScriptEditorImplementation.cpp:493
+#: src/modules/editor/ScriptEditorImplementation.cpp:504
 #: src/modules/eventeditor/EventEditorWindow.cpp:581
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1423
 #: src/modules/raweditor/RawEditorWindow.cpp:487
@@ -720,7 +720,7 @@ msgstr ""
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2021
 #: src/modules/classeditor/ClassEditorWindow.cpp:2122
-#: src/modules/editor/ScriptEditorImplementation.cpp:1036
+#: src/modules/editor/ScriptEditorImplementation.cpp:1047
 msgid "&Cancel"
 msgstr "İpta&l Et"
 
@@ -766,118 +766,120 @@ msgstr ""
 msgid "Script Tester"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:271
+#: src/modules/editor/ScriptEditorImplementation.cpp:277
+#: src/modules/editor/ScriptEditorImplementation.cpp:280
 msgid "Context Sensitive Help"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:272
-#: src/modules/editor/ScriptEditorImplementation.cpp:1041
+#: src/modules/editor/ScriptEditorImplementation.cpp:278
+#: src/modules/editor/ScriptEditorImplementation.cpp:281
+#: src/modules/editor/ScriptEditorImplementation.cpp:1052
 msgid "&Replace"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:285
+#: src/modules/editor/ScriptEditorImplementation.cpp:295
 msgid "Find & Replace"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:463
+#: src/modules/editor/ScriptEditorImplementation.cpp:474
 msgid "Editor Configuration - KVIrc"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:472
+#: src/modules/editor/ScriptEditorImplementation.cpp:483
 msgid "Font:"
 msgstr "Yazı Tipi:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:474
+#: src/modules/editor/ScriptEditorImplementation.cpp:485
 msgid "Colors"
 msgstr "Renkler"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:477
+#: src/modules/editor/ScriptEditorImplementation.cpp:488
 msgid "Background:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:478
+#: src/modules/editor/ScriptEditorImplementation.cpp:489
 msgid "Normal text:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:479
+#: src/modules/editor/ScriptEditorImplementation.cpp:490
 msgid "Brackets:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:480
+#: src/modules/editor/ScriptEditorImplementation.cpp:491
 msgid "Comments:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:481
+#: src/modules/editor/ScriptEditorImplementation.cpp:492
 msgid "Functions:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:482
+#: src/modules/editor/ScriptEditorImplementation.cpp:493
 msgid "Keywords:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:483
+#: src/modules/editor/ScriptEditorImplementation.cpp:494
 msgid "Variables:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:484
+#: src/modules/editor/ScriptEditorImplementation.cpp:495
 msgid "Punctuation:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:485
-#: src/modules/editor/ScriptEditorImplementation.cpp:752
+#: src/modules/editor/ScriptEditorImplementation.cpp:496
+#: src/modules/editor/ScriptEditorImplementation.cpp:763
 msgid "Find:"
 msgstr "Bul:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:735
+#: src/modules/editor/ScriptEditorImplementation.cpp:746
 msgid "Options"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:740
+#: src/modules/editor/ScriptEditorImplementation.cpp:751
 msgid "&Open..."
 msgstr "&Aç..."
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:741
+#: src/modules/editor/ScriptEditorImplementation.cpp:752
 msgid "&Save As..."
 msgstr "&Olarak kaydet..."
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:743
+#: src/modules/editor/ScriptEditorImplementation.cpp:754
 msgid "&Configure Editor..."
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:756
+#: src/modules/editor/ScriptEditorImplementation.cpp:767
 msgid "&Find"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:759
-#: src/modules/editor/ScriptEditorImplementation.cpp:938
+#: src/modules/editor/ScriptEditorImplementation.cpp:770
+#: src/modules/editor/ScriptEditorImplementation.cpp:949
 msgid "Line: %1 Col: %2"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:881
+#: src/modules/editor/ScriptEditorImplementation.cpp:892
 msgid "Can't open file %1 for writing."
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:955
+#: src/modules/editor/ScriptEditorImplementation.cpp:966
 msgid "Select a File - KVIrc"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:968
+#: src/modules/editor/ScriptEditorImplementation.cpp:979
 msgid "Opening File Failed - KVIrc"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:969
+#: src/modules/editor/ScriptEditorImplementation.cpp:980
 msgid "Can't open file %1 for reading."
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1011
+#: src/modules/editor/ScriptEditorImplementation.cpp:1022
 msgid "Word to find:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1020
+#: src/modules/editor/ScriptEditorImplementation.cpp:1031
 msgid "Replace with:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1031
+#: src/modules/editor/ScriptEditorImplementation.cpp:1042
 msgid "&Replace in all editor's items"
 msgstr ""
 

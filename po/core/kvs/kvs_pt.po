@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
 "PO-Revision-Date: 2015-08-01 08:53+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>, 2010-2011\n"
 "Language-Team: Portuguese (http://app.transifex.com/kvirc/KVIrc/language/pt/)\n"
@@ -480,7 +480,7 @@ msgstr "Prólogo falhado na menu que aparece '%Q': a ignorar"
 msgid "Broken epilogue in popup menu '%Q': ignoring"
 msgstr "Epilogo falhado no menu que aparece '%Q': a ignorar"
 
-#: src/kvirc/kvs/KviKvsProcessManager.cpp:231
+#: src/kvirc/kvs/KviKvsProcessManager.cpp:223
 msgid "Error triggered from process callback handler: killing process"
 msgstr "Erro accionado pelo manipulador de chamada de retorno do processo: a desligar o processo"
 
@@ -576,24 +576,24 @@ msgid "%d properties listed"
 msgstr "%d propriedades listadas"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1174
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1433
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1446
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "O objecto chamado '%Q' da classe '%Q' não tem propriedades Qt"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1181
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1442
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1455
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr "Nenhuma propriedade Qt chamada '%Q' para o objecto chamado '%Q' da classe '%Q'"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1189
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1450
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1463
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed but it doesn't really exist"
 msgstr "Incapaz de encontrar o proprietário chamado '%Q' para o objecto '%Q' da classe '%Q': o proprietário está indexado mas realmente não existe"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1196
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1458
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1471
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed and defined but the returned variant is not valid"
@@ -604,39 +604,40 @@ msgid ""
 "Value '%Q' for property '%Q' of object named '%Q' of class '%Q' is not valid"
 msgstr ""
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1217
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1218
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1224
 #, c-format
 msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
 "that type (expecting '%s')"
 msgstr "A propriedade é do tipo %s mas o argumento dado não pode ser convertido para aquele tipo (a esperar '%s')"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1381
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1394
 msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
 msgstr "É requerido para esta propriedade um objecto 'pixmap', um id de imagem ou o caminho de um ficheiro de imagem"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1405
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1418
 msgid "Can't find the requested image"
 msgstr "Não é possível encontrar a imagem pedida"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1412
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1556
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1425
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1573
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
 "type"
 msgstr "A propriedade '%Q' para o objecto chamado '%Q' da classe '%Q' tem um tipo de dados não suportado"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1754
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1771
 msgid "Can't find object function $%Q for object named '%Q' of class '%Q'"
 msgstr ""
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1756
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1773
 msgid "Can't find object function $%Q::%Q for object named '%Q' of class '%Q'"
 msgstr ""
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1764
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1781
 msgid ""
 "Can't call internal object function $%Q (for object named '%Q' of class "
 "'%Q') from this context"

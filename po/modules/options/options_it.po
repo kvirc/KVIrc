@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
 "PO-Revision-Date: 2015-08-01 09:12+0000\n"
 "Last-Translator: ctrlaltca <ctrlaltca@gmail.com>, 2023-2024\n"
 "Language-Team: Italian (http://app.transifex.com/kvirc/KVIrc/language/it/)\n"
@@ -305,7 +305,7 @@ msgstr "Larghezza dell'immagine:"
 #: src/modules/options/OptionsWidget_avatar.cpp:62
 #: src/modules/options/OptionsWidget_avatar.cpp:65
 #: src/modules/options/OptionsWidget_input.cpp:167
-#: src/modules/options/OptionsWidget_ircView.cpp:179
+#: src/modules/options/OptionsWidget_ircView.cpp:193
 #: src/modules/options/OptionsWidget_userList.cpp:227
 #: src/modules/options/OptionsWidget_windowList.cpp:265
 #: src/modules/options/OptionsWidget_windowList.cpp:290
@@ -570,7 +570,7 @@ msgid "Paste up to:"
 msgstr "Mostra fino a:"
 
 #: src/modules/options/OptionsWidget_channel.cpp:140
-#: src/modules/options/OptionsWidget_ircView.cpp:147
+#: src/modules/options/OptionsWidget_ircView.cpp:158
 #: src/modules/options/OptionsWidget_query.cpp:95
 msgid " lines"
 msgstr " linee"
@@ -618,7 +618,7 @@ msgstr "Canale"
 #: src/modules/options/OptionsWidget_irc.h:43
 #: src/modules/options/OptionsWidget_message.cpp:66
 #: src/modules/options/OptionsWidget_servers.cpp:253
-#: src/modules/options/OptionsWidget_theme.h:32
+#: src/modules/options/OptionsWidget_theme.h:34
 msgid "General"
 msgstr "Generale"
 
@@ -772,8 +772,8 @@ msgstr "Tempo svuotamento coda dati in uscita:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:157
 #: src/modules/options/OptionsWidget_dcc.cpp:283
-#: src/modules/options/OptionsWidget_ircView.cpp:149
-#: src/modules/options/OptionsWidget_ircView.cpp:151
+#: src/modules/options/OptionsWidget_ircView.cpp:160
+#: src/modules/options/OptionsWidget_ircView.cpp:162
 #: src/modules/options/OptionsWidget_lag.cpp:45
 #: src/modules/options/OptionsWidget_lag.cpp:57
 msgid " msec"
@@ -1985,7 +1985,7 @@ msgstr "Carattere:"
 #: src/modules/options/OptionsWidget_input.cpp:39
 #: src/modules/options/OptionsWidget_ircView.cpp:48
 #: src/modules/options/OptionsWidget_notifier.cpp:40
-#: src/modules/options/OptionsWidget_theme.cpp:164
+#: src/modules/options/OptionsWidget_theme.cpp:192
 #: src/modules/options/OptionsWidget_topicLabel.cpp:37
 msgid "Background color:"
 msgstr "Colore sfondo:"
@@ -2015,7 +2015,7 @@ msgstr "Colore del cursore:"
 #: src/modules/options/OptionsWidget_input.cpp:46
 #: src/modules/options/OptionsWidget_ircView.cpp:50
 #: src/modules/options/OptionsWidget_notifier.cpp:45
-#: src/modules/options/OptionsWidget_theme.cpp:168
+#: src/modules/options/OptionsWidget_theme.cpp:196
 #: src/modules/options/OptionsWidget_topicLabel.cpp:38
 #: src/modules/options/OptionsWidget_userList.cpp:131
 #: src/modules/options/OptionsWidget_windowList.cpp:167
@@ -2369,87 +2369,99 @@ msgstr "Abilita evidenziazione URL"
 msgid "Use line wrap margin"
 msgstr "Usa margine nel testo"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:146
+#: src/modules/options/OptionsWidget_ircView.cpp:147
+msgid "Vertical line margin:"
+msgstr "Margine verticale linee:"
+
+#: src/modules/options/OptionsWidget_ircView.cpp:151
+msgid "No margin"
+msgstr "Nessun margine"
+
+#: src/modules/options/OptionsWidget_ircView.cpp:152
+msgid "Normal margin"
+msgstr "Margine normale"
+
+#: src/modules/options/OptionsWidget_ircView.cpp:157
 msgid "Maximum buffer size:"
 msgstr "Dimensione massima del buffer:"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:148
+#: src/modules/options/OptionsWidget_ircView.cpp:159
 msgid "Link tooltip show delay:"
 msgstr "Ritardo di visualizzazione dei suggerimenti:"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:150
+#: src/modules/options/OptionsWidget_ircView.cpp:161
 msgid "Link tooltip hide delay:"
 msgstr "Ritardo di nascondimento dei suggerimenti"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:152
+#: src/modules/options/OptionsWidget_ircView.cpp:163
 msgid "Enable animated smiles"
 msgstr "Abilita smile animati"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:154
+#: src/modules/options/OptionsWidget_ircView.cpp:165
 msgid "Enable Tooltips for"
 msgstr "Attiva tooltip per"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:155
+#: src/modules/options/OptionsWidget_ircView.cpp:166
 msgid "URL links"
 msgstr "Collegamenti URL"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:156
+#: src/modules/options/OptionsWidget_ircView.cpp:167
 msgid "Host links"
 msgstr "Link host"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:157
+#: src/modules/options/OptionsWidget_ircView.cpp:168
 msgid "Server links"
 msgstr "Link server"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:158
+#: src/modules/options/OptionsWidget_ircView.cpp:169
 msgid "Mode links"
 msgstr "Link modi"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:159
+#: src/modules/options/OptionsWidget_ircView.cpp:170
 msgid "Nick links"
 msgstr "Link nick"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:160
+#: src/modules/options/OptionsWidget_ircView.cpp:171
 msgid "Channel links"
 msgstr "Link canale"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:161
+#: src/modules/options/OptionsWidget_ircView.cpp:172
 msgid "Escape sequences"
 msgstr "Sequenze di escape"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:175
+#: src/modules/options/OptionsWidget_ircView.cpp:189
 msgid "Track last read text line"
 msgstr "Traccia l'ultima riga letta"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:176
+#: src/modules/options/OptionsWidget_ircView.cpp:190
 msgid "Marker color:"
 msgstr "Colore linea:"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:178
+#: src/modules/options/OptionsWidget_ircView.cpp:192
 msgid "Marker size:"
 msgstr "Dimensione linea:"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:181
+#: src/modules/options/OptionsWidget_ircView.cpp:195
 msgid "Marker style:"
 msgstr "Stile linea:"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:187
+#: src/modules/options/OptionsWidget_ircView.cpp:201
 msgid "DotLine"
 msgstr "Linea puntinata"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:188
+#: src/modules/options/OptionsWidget_ircView.cpp:202
 msgid "DashLine"
 msgstr "Linea tratteggiata"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:189
+#: src/modules/options/OptionsWidget_ircView.cpp:203
 msgid "SolidLine"
 msgstr "Linea continua"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:190
+#: src/modules/options/OptionsWidget_ircView.cpp:204
 msgid "DashDotLine"
 msgstr "Linea tratteggiata e puntinata"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:191
+#: src/modules/options/OptionsWidget_ircView.cpp:205
 msgid "DashDotDotLine"
 msgstr "Linea tratteggiata e puntinata doppia"
 
@@ -2473,7 +2485,7 @@ msgstr "Aspetto"
 msgid "Features"
 msgstr "Caratteristiche"
 
-#: src/modules/options/OptionsWidget_ircView.h:83
+#: src/modules/options/OptionsWidget_ircView.h:85
 msgid "Marker"
 msgstr "Marcatore"
 
@@ -3993,19 +4005,19 @@ msgstr "Codifica messaggi di Winamp"
 msgid "This allows you to select encoding of winamp messages."
 msgstr "Questo ti permette di scegliere la codifica per i messaggi di winamp."
 
-#: src/modules/options/OptionsWidget_sound.cpp:324
+#: src/modules/options/OptionsWidget_sound.cpp:329
 msgid "New query opened:"
 msgstr "Nuova query aperta:"
 
-#: src/modules/options/OptionsWidget_sound.cpp:327
+#: src/modules/options/OptionsWidget_sound.cpp:332
 msgid "New message in inactive query:"
 msgstr "Nuovo messaggio su una query inattiva:"
 
-#: src/modules/options/OptionsWidget_sound.cpp:330
+#: src/modules/options/OptionsWidget_sound.cpp:335
 msgid "Highlighted message in inactive window:"
 msgstr "Messaggio evidenziato su una finestra inattiva:"
 
-#: src/modules/options/OptionsWidget_sound.cpp:333
+#: src/modules/options/OptionsWidget_sound.cpp:338
 msgid "When I am kicked:"
 msgstr "Quando vengo kickato:"
 
@@ -4108,87 +4120,91 @@ msgstr "Emoticons"
 msgid "smileys,emoticons"
 msgstr "smile,emoticons"
 
-#: src/modules/options/OptionsWidget_theme.cpp:40
+#: src/modules/options/OptionsWidget_theme.cpp:42
 msgid "Use global application font"
 msgstr "Usa un carattere generale per l'applicazione"
 
-#: src/modules/options/OptionsWidget_theme.cpp:41
+#: src/modules/options/OptionsWidget_theme.cpp:43
 msgid ""
 "This option will force a static font for every widget that has no specific "
 "font setting"
 msgstr "Questa opzione forzerà un font statico per ogni widget che non ha un'opzione specifica per il font"
 
-#: src/modules/options/OptionsWidget_theme.cpp:42
+#: src/modules/options/OptionsWidget_theme.cpp:44
 msgid "Show icons in popup menus"
 msgstr "Mostra le Icone nei Menu Popup"
 
-#: src/modules/options/OptionsWidget_theme.cpp:43
+#: src/modules/options/OptionsWidget_theme.cpp:45
 msgid "Global application font:"
 msgstr "Carattere generale per l'applicazione:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:59
+#: src/modules/options/OptionsWidget_theme.cpp:49
+msgid "Qt Style:"
+msgstr "Stile Qt:"
+
+#: src/modules/options/OptionsWidget_theme.cpp:87
 msgid "Global window opacity:"
 msgstr "Opacità globale della finestra:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:62
+#: src/modules/options/OptionsWidget_theme.cpp:90
 msgid "Enable transparency"
 msgstr "Abilita trasparenza"
 
-#: src/modules/options/OptionsWidget_theme.cpp:65
+#: src/modules/options/OptionsWidget_theme.cpp:93
 msgid ""
 "This option makes all KVIrc windows look transparent.<br>You must choose a "
 "blending background image below or check the \"Use compositing for real "
 "transparency\" option."
 msgstr "Questa opzione rende tutte le finestre di KVIrc trasparenti.<br>Devi scegliere un immagine di sfondo o attivare l'opzione \"Usa il composite per la vera trasparenza\"."
 
-#: src/modules/options/OptionsWidget_theme.cpp:72
+#: src/modules/options/OptionsWidget_theme.cpp:100
 msgid ""
 "This option makes all KVIrc windows look transparent.<br>You must choose a "
 "blending background image below or check the \"Use desktop background for "
 "transparency\" option."
 msgstr "Questa opzione rende tutte le finestre di KVIrc trasparenti.<br>Devi scegliere un immagine di sfondo o attivare l'opzione \"Usa lo sfondo del desktop per la trasparenza\"."
 
-#: src/modules/options/OptionsWidget_theme.cpp:79
+#: src/modules/options/OptionsWidget_theme.cpp:107
 msgid ""
 "This option makes all KVIrc windows look like transparent.<br>You must "
 "choose a blending background image below."
 msgstr "Questa opzione rende tutte le finestre di KVIrc trasparenti.<br>Devi scegliere un immagine di sfondo."
 
-#: src/modules/options/OptionsWidget_theme.cpp:85
+#: src/modules/options/OptionsWidget_theme.cpp:113
 msgid "Child window opacity:"
 msgstr "Opacità finestre:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:90
+#: src/modules/options/OptionsWidget_theme.cpp:118
 msgid "Parent window opacity:"
 msgstr "Opacità finestra di sfondo:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:95
+#: src/modules/options/OptionsWidget_theme.cpp:123
 msgid "Blend color:"
 msgstr "Colore sfumatura:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:100
+#: src/modules/options/OptionsWidget_theme.cpp:128
 msgid "Use compositing for real transparency"
 msgstr "Usa il composite per la vera trasparenza"
 
-#: src/modules/options/OptionsWidget_theme.cpp:103
-#: src/modules/options/OptionsWidget_theme.cpp:123
-#: src/modules/options/OptionsWidget_theme.cpp:130
+#: src/modules/options/OptionsWidget_theme.cpp:131
+#: src/modules/options/OptionsWidget_theme.cpp:151
+#: src/modules/options/OptionsWidget_theme.cpp:158
 msgid "Transparency blend image:"
 msgstr "Immagine da sfumare:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:120
+#: src/modules/options/OptionsWidget_theme.cpp:148
 msgid "Use desktop background for transparency"
 msgstr "Usa lo sfondo del desktop per la trasparenza"
 
-#: src/modules/options/OptionsWidget_theme.cpp:165
+#: src/modules/options/OptionsWidget_theme.cpp:193
 msgid "Border color:"
 msgstr "Colore del bordo:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:166
+#: src/modules/options/OptionsWidget_theme.cpp:194
 msgid "Font color:"
 msgstr "Colore del font:"
 
-#: src/modules/options/OptionsWidget_theme.h:33
+#: src/modules/options/OptionsWidget_theme.h:35
 #: src/modules/options/OptionsWidget_windowList.h:34
 #: src/modules/options/OptionsWidget_windowList.h:54
 #: src/modules/options/OptionsWidget_windowList.h:69
@@ -4198,19 +4214,19 @@ msgstr "Colore del font:"
 msgid "theme"
 msgstr "tema"
 
-#: src/modules/options/OptionsWidget_theme.h:45
+#: src/modules/options/OptionsWidget_theme.h:53
 msgid "Transparency"
 msgstr "Trasparenza"
 
-#: src/modules/options/OptionsWidget_theme.h:46
+#: src/modules/options/OptionsWidget_theme.h:54
 msgid "theme,background"
 msgstr "tema,sfondo"
 
-#: src/modules/options/OptionsWidget_theme.h:71
+#: src/modules/options/OptionsWidget_theme.h:79
 msgid "Toolbar Applets"
 msgstr "Applet sulla toolbar"
 
-#: src/modules/options/OptionsWidget_theme.h:72
+#: src/modules/options/OptionsWidget_theme.h:80
 msgid "theme,toolbar"
 msgstr "tema,toolbar"
 

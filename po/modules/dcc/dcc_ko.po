@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
 "PO-Revision-Date: 2015-08-01 08:58+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
@@ -148,7 +148,7 @@ msgstr "수동 DCC 캔버스 연결을 시도하고 있습니다"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:83
 #: src/modules/dcc/DccChatWindow.cpp:183
-#: src/modules/dcc/DccVideoWindow.cpp:628
+#: src/modules/dcc/DccVideoWindow.cpp:576
 #: src/modules/dcc/DccVoiceWindow.cpp:807
 msgid "Listening on interface %Q port %Q"
 msgstr "%Q 인터페이스 %Q 포트에서 받기를 기다리고 있습니다"
@@ -168,7 +168,7 @@ msgstr "활성 DCC 캔버스 연결을 시도 하고있습니다"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:114
 #: src/modules/dcc/DccChatWindow.cpp:179
-#: src/modules/dcc/DccVideoWindow.cpp:623
+#: src/modules/dcc/DccVideoWindow.cpp:571
 #: src/modules/dcc/DccVoiceWindow.cpp:802
 msgid "Contacting host %Q on port %Q"
 msgstr "%Q 포트에서 %Q 호스트에 연결하고 있습니다"
@@ -180,14 +180,14 @@ msgstr "DCC 실패함: %Q"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:290
 #: src/modules/dcc/DccChatWindow.cpp:584
-#: src/modules/dcc/DccVideoWindow.cpp:958
+#: src/modules/dcc/DccVideoWindow.cpp:902
 #: src/modules/dcc/DccVoiceWindow.cpp:961
 msgid "Connected to %Q:%Q"
 msgstr "%Q:%Q 에 연결되었습니다"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:292
 #: src/modules/dcc/DccChatWindow.cpp:586
-#: src/modules/dcc/DccVideoWindow.cpp:960
+#: src/modules/dcc/DccVideoWindow.cpp:904
 #: src/modules/dcc/DccVoiceWindow.cpp:963
 msgid "Local end is %Q:%Q"
 msgstr "로컬 끝은 %Q:%Q 입니다"
@@ -244,26 +244,26 @@ msgid "[SSL ERROR]: %s"
 msgstr "[SSL 오류]: %s"
 
 #: src/modules/dcc/DccChatWindow.cpp:303 src/modules/dcc/DccChatWindow.cpp:414
-#: src/modules/dcc/DccVideoWindow.cpp:687
-#: src/modules/dcc/DccVideoWindow.cpp:798
+#: src/modules/dcc/DccVideoWindow.cpp:632
+#: src/modules/dcc/DccVideoWindow.cpp:743
 msgid "Can't send data: no active connection"
 msgstr "자료를 보낼 수 없습니다: 활성 연결이 없습니다"
 
 #: src/modules/dcc/DccChatWindow.cpp:350
-#: src/modules/dcc/DccVideoWindow.cpp:734
+#: src/modules/dcc/DccVideoWindow.cpp:679
 msgid ""
 "The encryption engine was not able to encrypt the current message (%Q): %Q, "
 "no data was sent to the remote end"
 msgstr "암호화 엔진이 현재 메시지 (%Q): %Q 를 암호화 할 수 없습니다, 원격으로 자료가 전송되지 않았습니다"
 
 #: src/modules/dcc/DccChatWindow.cpp:429
-#: src/modules/dcc/DccVideoWindow.cpp:812
+#: src/modules/dcc/DccVideoWindow.cpp:757
 #: src/modules/dcc/DccVoiceWindow.cpp:870
 msgid "ERROR: %Q"
 msgstr "오류: %Q"
 
 #: src/modules/dcc/DccChatWindow.cpp:493
-#: src/modules/dcc/DccVideoWindow.cpp:875
+#: src/modules/dcc/DccVideoWindow.cpp:820
 msgid ""
 "The following message appears to be encrypted, but the encryption engine "
 "failed to decode it: %Q"
@@ -524,41 +524,33 @@ msgid ""
 "disabling the option (so the next DCC will work)"
 msgstr "'%s' 기본 인터페이스에서 받기를 기다릴 수 없음: 선택사항 대화 상자에서 수정하여 선택사항을 사용하지 않도록 고치십시오 (그러므로 다음 DCC가 작동합니다)"
 
-#: src/modules/dcc/DccVideoWindow.cpp:455
+#: src/modules/dcc/DccVideoWindow.cpp:449
 msgid "Video device:"
 msgstr "화상 장치:"
 
-#: src/modules/dcc/DccVideoWindow.cpp:462
-msgid "Input:"
-msgstr "입력:"
-
-#: src/modules/dcc/DccVideoWindow.cpp:469
-msgid "Standard:"
-msgstr "표준:"
-
-#: src/modules/dcc/DccVideoWindow.cpp:604
+#: src/modules/dcc/DccVideoWindow.cpp:552
 msgid "Attempting a passive DCC VIDEO connection"
 msgstr "수동 DCC 비디오 연결을 시도하고 있습니다"
 
-#: src/modules/dcc/DccVideoWindow.cpp:612
+#: src/modules/dcc/DccVideoWindow.cpp:560
 msgid "Attempting an active DCC VIDEO connection"
 msgstr "활성 DCC 비디오 연결을 시도하고 있습니다"
 
-#: src/modules/dcc/DccVideoWindow.cpp:646
+#: src/modules/dcc/DccVideoWindow.cpp:594
 msgid ""
 "Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr "원격 클라이언트의 연결을 기다리는 동안 %Q 에 DCC 비디오 (%s) 요청을 보냈습니다..."
 
-#: src/modules/dcc/DccVideoWindow.cpp:650
+#: src/modules/dcc/DccVideoWindow.cpp:598
 msgid "DCC VIDEO request not sent: awaiting manual connection"
 msgstr "DCC 비디오 요청이 전송되지 않았음: 수동 연결을 기다리고 있습니다"
 
-#: src/modules/dcc/DccVideoWindow.cpp:953
+#: src/modules/dcc/DccVideoWindow.cpp:897
 msgid "DCC Failed: %Q"
 msgstr "DCC 실패함: %Q"
 
-#: src/modules/dcc/DccVideoWindow.cpp:974
+#: src/modules/dcc/DccVideoWindow.cpp:918
 #: src/modules/dcc/DccVoiceWindow.cpp:980
 #, c-format
 msgid "Actual codec used is '%s'"
