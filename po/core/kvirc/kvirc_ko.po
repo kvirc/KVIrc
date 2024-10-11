@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
 "PO-Revision-Date: 2015-08-01 08:52+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
@@ -554,11 +554,11 @@ msgstr "옥텟 스트림(알 수 없음)"
 msgid "Default"
 msgstr "번역확인-> 기본설정 or 기본값 or 표준"
 
-#: src/kvilib/ext/KviRuntimeInfo.cpp:654
+#: src/kvilib/ext/KviRuntimeInfo.cpp:681
 msgid "Unknown "
 msgstr "알 수 없음 "
 
-#: src/kvilib/ext/KviRuntimeInfo.cpp:756
+#: src/kvilib/ext/KviRuntimeInfo.cpp:783
 msgid "Overridden with a stylesheet"
 msgstr "스타일 시트로 다시 정의"
 
@@ -568,7 +568,7 @@ msgstr "조작을 취소했습니다"
 
 #: src/kvilib/file/KviPackageIOEngine.cpp:137
 #: src/kvilib/tal/KviTalWizard.cpp:189 src/kvirc/kernel/KviCoreActions.cpp:833
-#: src/kvirc/kernel/KviDefaultScript.cpp:472
+#: src/kvirc/kernel/KviDefaultScript.cpp:471
 #: src/kvirc/ui/KviImageDialog.cpp:153 src/kvirc/ui/KviMaskEditor.cpp:92
 #: src/modules/avatar/libkviavatar.cpp:107
 #: src/modules/setup/SetupWizard.cpp:86
@@ -848,7 +848,7 @@ msgstr "%1일 %2시 %3분 %4초"
 msgid "%1 d %2%3 h %4%5 m %6%7 s"
 msgstr "%1일 %2%3시 %4%5분 %6%7초"
 
-#: src/kvilib/tal/KviTalWizard.cpp:200 src/kvirc/kernel/KviOptions.cpp:831
+#: src/kvilib/tal/KviTalWizard.cpp:200 src/kvirc/kernel/KviOptions.cpp:837
 msgid "Help"
 msgstr "도움말"
 
@@ -923,29 +923,32 @@ msgstr "도구"
 msgid "Actions that will appear in the \"Tools\" menu"
 msgstr "\"도구\"차림표에 나타날 동작"
 
-#: src/kvirc/kernel/KviApplication.cpp:681
+#: src/kvirc/kernel/KviApplication.cpp:684
 msgid "KVIrc Messaging"
 msgstr "KVIrc 메시징"
 
-#: src/kvirc/kernel/KviApplication.cpp:682
+#: src/kvirc/kernel/KviApplication.cpp:685
 msgid ""
 "Message from %1:\n"
 "\n"
 msgstr "%1의 메시지:\n\n"
 
-#: src/kvirc/kernel/KviApplication.cpp:722
+#: src/kvirc/kernel/KviApplication.cpp:804
+#: src/kvirc/kernel/KviApplication.cpp:837
+#: src/kvirc/kernel/KviApplication.cpp:840
 msgid "View"
 msgstr "보기"
 
-#: src/kvirc/kernel/KviApplication.cpp:723
+#: src/kvirc/kernel/KviApplication.cpp:805
+#: src/kvirc/kernel/KviApplication.cpp:843
 msgid "Ignore"
 msgstr "무시"
 
-#: src/kvirc/kernel/KviApplication.cpp:938
+#: src/kvirc/kernel/KviApplication.cpp:982
 msgid "Update Default Scripts - KVIrc"
 msgstr "기본 스크립트 판올림 - KVIrc"
 
-#: src/kvirc/kernel/KviApplication.cpp:939
+#: src/kvirc/kernel/KviApplication.cpp:983
 msgid ""
 "<b>Your KVirc installation has been updated successfully.</b><br><br>KVIrc's"
 " default scripts should also be updated. <b>Do you want to restore the "
@@ -954,30 +957,30 @@ msgid ""
 "\"Scripting\" menu later."
 msgstr "<b>KVirc 판올림 설치가 올바르게 완료되었습니다.</b><br><br>KVIrc의 기본 스크립트도 판올림해야합니다. <b>기본 스크립트를 복원 하시겠습니까?</b><br><br>힌트: \"아니요\"를 선택하면 나중에 \"스크립트\"메뉴에서 적절한 항목을 선택하여 기본 스크립트를 항상 복원할 수 있습니다."
 
-#: src/kvirc/kernel/KviApplication.cpp:944
-#: src/kvirc/kernel/KviApplication.cpp:1008
+#: src/kvirc/kernel/KviApplication.cpp:988
+#: src/kvirc/kernel/KviApplication.cpp:1061
 msgid "No and Don't Ask Me Again"
 msgstr "아니요, 다시 묻지 않습니다"
 
-#: src/kvirc/kernel/KviApplication.cpp:944
-#: src/kvirc/kernel/KviApplication.cpp:1008
+#: src/kvirc/kernel/KviApplication.cpp:989
+#: src/kvirc/kernel/KviApplication.cpp:1062
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:985
-#: src/kvirc/ui/KviInput.cpp:260 src/kvirc/ui/KviStatusBar.cpp:566
+#: src/kvirc/ui/KviInput.cpp:260 src/kvirc/ui/KviStatusBar.cpp:572
 msgid "No"
 msgstr "아니오"
 
-#: src/kvirc/kernel/KviApplication.cpp:944
-#: src/kvirc/kernel/KviApplication.cpp:1008
+#: src/kvirc/kernel/KviApplication.cpp:990
+#: src/kvirc/kernel/KviApplication.cpp:1063
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:985
-#: src/kvirc/ui/KviInput.cpp:259 src/kvirc/ui/KviStatusBar.cpp:564
+#: src/kvirc/ui/KviInput.cpp:259 src/kvirc/ui/KviStatusBar.cpp:570
 msgid "Yes"
 msgstr "예"
 
-#: src/kvirc/kernel/KviApplication.cpp:1002
+#: src/kvirc/kernel/KviApplication.cpp:1055
 msgid "Detected Installation Issues - KVIrc"
 msgstr "감지된 설치 문제 - KVIrc"
 
-#: src/kvirc/kernel/KviApplication.cpp:1003
+#: src/kvirc/kernel/KviApplication.cpp:1056
 msgid ""
 "<b>Your KVIrc installation is incomplete.</b><br><br>You seem to be missing "
 "some of the features that the KVIrc default scripts provide. <b>Do you want "
@@ -986,28 +989,28 @@ msgid ""
 "from the \"Scripting\" menu later."
 msgstr "<b>KVIrc 설치가 완료되지 않았습니다.</b><br><br>KVIrc 기본 스크립트가 제공하는 일부 기능이 누락된 것 같습니다. <b>기본 스크립트를 복원 하시겠습니까?</b><br><br>힌트: \"아니요\"를 선택하면 나중에 \"스크립트\"메뉴에서 적절한 항목을 선택하여 기본 스크립트를 항상 복원할 수 있습니다."
 
-#: src/kvirc/kernel/KviApplication.cpp:1055
+#: src/kvirc/kernel/KviApplication.cpp:1115
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "원격 사용자쪽 명령을 받았습니다 (%s ...)"
 
-#: src/kvirc/kernel/KviApplication.cpp:1149
+#: src/kvirc/kernel/KviApplication.cpp:1209
 msgid "File download failed"
 msgstr "파일을 다운로드 하지 못했습니다"
 
-#: src/kvirc/kernel/KviApplication.cpp:1151
+#: src/kvirc/kernel/KviApplication.cpp:1211
 msgid "File download from %1 failed"
 msgstr "%1 에서 파일을 다운로드 하지 못했습니다"
 
-#: src/kvirc/kernel/KviApplication.cpp:1162
+#: src/kvirc/kernel/KviApplication.cpp:1222
 msgid "File download successfully complete"
 msgstr "파일을 다운로드 했습니다"
 
-#: src/kvirc/kernel/KviApplication.cpp:1164
+#: src/kvirc/kernel/KviApplication.cpp:1224
 msgid "File download from %1 successfully complete"
 msgstr "%1에서 파일 다운로드가 완료되었습니다"
 
-#: src/kvirc/kernel/KviApplication.cpp:1190
+#: src/kvirc/kernel/KviApplication.cpp:1250
 msgid "Avatar download failed for %Q!%Q@%Q and URL %Q: %Q"
 msgstr "%Q!%Q@%Q 및 URL %Q: %Q에 대한 아바타 다운로드에 실패했습니다"
 
@@ -1043,7 +1046,7 @@ msgstr "KVIrc 부가 기능 꾸러미"
 msgid "Install Package"
 msgstr "꾸러미 설치"
 
-#: src/kvirc/kernel/KviApplication_setup.cpp:399
+#: src/kvirc/kernel/KviApplication_setup.cpp:401
 #, c-format
 msgid ""
 "Oops! It looks like I can't load modules on this system.\n"
@@ -1052,14 +1055,14 @@ msgid ""
 "Aborting."
 msgstr "죄송합니다! 이 시스템에 모듈을 불러올 수 없는 것 같습니다.\n%s 라이브러리를 찾고 있지만,\n다음과 같은 오류로 인해 로드 할 수 없습니다: \"%s\"\n중단하고 있습니다."
 
-#: src/kvirc/kernel/KviApplication_setup.cpp:415
+#: src/kvirc/kernel/KviApplication_setup.cpp:417
 msgid ""
 "Oops! It looks like you have a broken distribution.\n"
 "The setup module does not export the \"setup_begin\" function.\n"
 "Aborting!"
 msgstr "죄송합니다! 배포판이 깨진 것 같습니다.\n설정 모듈은 \"setup_begin\"기능을 내보내지 않습니다.\n중단 하고 있습니다!"
 
-#: src/kvirc/kernel/KviApplication_setup.cpp:453
+#: src/kvirc/kernel/KviApplication_setup.cpp:455
 msgid ""
 "Oops! It looks like you have a broken distribution.\n"
 "The setup module does not export the \"setup_finish\" function.\n"
@@ -1458,25 +1461,25 @@ msgstr "IRC 동작"
 msgid "Shows a popup menu with some IRC actions"
 msgstr "일부 IRC 동작이 있는 팝업 메뉴 표시"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:121
-#: src/kvirc/kernel/KviDefaultScript.cpp:127
-#: src/kvirc/kernel/KviDefaultScript.cpp:393
+#: src/kvirc/kernel/KviDefaultScript.cpp:120
+#: src/kvirc/kernel/KviDefaultScript.cpp:126
+#: src/kvirc/kernel/KviDefaultScript.cpp:392
 msgid "Restore Default - KVIrc"
 msgstr "기본값 복원 - KVIrc"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:212
+#: src/kvirc/kernel/KviDefaultScript.cpp:211
 msgid ""
 "There's something wrong in your personal data: my '%1' is %2, while yours is"
 " %3"
 msgstr "개인 자료에 문제가 있음: 내 '%1'은(는) %2이고, 당신은 %3입니다"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:232
+#: src/kvirc/kernel/KviDefaultScript.cpp:231
 msgid ""
 "Your default script is up to date.\n"
 "Do you want to restore it anyway?"
 msgstr "기본 스크립트가 최신입니다.\n어쨌든 복원 하시겠습니까?"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:400
+#: src/kvirc/kernel/KviDefaultScript.cpp:399
 msgid ""
 "You are about to restore the default script.\n"
 "Any script changes you have made will be erased if\n"
@@ -1485,56 +1488,56 @@ msgid ""
 "Do you wish to proceed?\n"
 msgstr "기본 스크립트를 복원하려고합니다.\n변경 한 스크립트는 모두 지워집니다\n\"모두\"또는 \"맞춤 스크립트 지우기\"가 선택되었습니다.\n\n계속 하시겠습니까?\n"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:404
+#: src/kvirc/kernel/KviDefaultScript.cpp:403
 msgid "Select the Items to Restore"
 msgstr "복원할 항목을 선택하십시오"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:411
+#: src/kvirc/kernel/KviDefaultScript.cpp:410
 msgid "All"
 msgstr "모두"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:416
+#: src/kvirc/kernel/KviDefaultScript.cpp:415
 msgid "Clear custom scripts"
 msgstr "명확한 맞춤 스크립트"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:424
+#: src/kvirc/kernel/KviDefaultScript.cpp:423
 msgid "Actions"
 msgstr "동작"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:429
+#: src/kvirc/kernel/KviDefaultScript.cpp:428
 msgid "Addons"
 msgstr "부가기능"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:434
+#: src/kvirc/kernel/KviDefaultScript.cpp:433
 msgid "Aliases"
 msgstr "가명"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:439
+#: src/kvirc/kernel/KviDefaultScript.cpp:438
 msgid "Classes"
 msgstr "클래스"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:444
+#: src/kvirc/kernel/KviDefaultScript.cpp:443
 msgid "Events"
 msgstr "사건"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:449
+#: src/kvirc/kernel/KviDefaultScript.cpp:448
 msgid "Popups"
 msgstr "팝업"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:454
+#: src/kvirc/kernel/KviDefaultScript.cpp:453
 msgid "RAW events"
 msgstr "RAW 사건"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:459 src/kvirc/ui/KviMenuBar.cpp:166
+#: src/kvirc/kernel/KviDefaultScript.cpp:458 src/kvirc/ui/KviMenuBar.cpp:166
 #: src/kvirc/ui/KviToolBar.cpp:108
 msgid "Toolbars"
 msgstr "도구 막대"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:467
+#: src/kvirc/kernel/KviDefaultScript.cpp:466
 msgid "Advanced..."
 msgstr "고급..."
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:478
+#: src/kvirc/kernel/KviDefaultScript.cpp:477
 msgid "Restore"
 msgstr "복원"
 
@@ -3035,7 +3038,7 @@ msgstr "판올림된 DNS 항목으로 인해 문제가 발생할 수 있습니�
 msgid "Try reconnecting with caching disabled"
 msgstr "캐싱을 비활성화 한 상태에서 다시 연결하십시오"
 
-#: src/kvirc/kernel/KviIrcContext.cpp:626 src/kvirc/kernel/KviIrcLink.cpp:392
+#: src/kvirc/kernel/KviIrcContext.cpp:626 src/kvirc/kernel/KviIrcLink.cpp:387
 msgid "%Q established [%s (%s:%u)]"
 msgstr "%Q 확립됨 [%s (%s:%u)]"
 
@@ -3080,56 +3083,56 @@ msgstr "링크 필터 \"%Q\"을(를) 설정하지 못했습니다. 일반 IRC로
 msgid "Failed to start the connection: %Q"
 msgstr "연결을 시작하지 못했습니다: %Q"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:378
+#: src/kvirc/kernel/KviIrcLink.cpp:373
 msgid "Contacting %Q %s (%s) on port %u"
 msgstr "◎ %Q 에 접속하고 있음 - ☆ 주소:%s, ☆ IP주소:(%s), ☆ 포트: %u"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:379
+#: src/kvirc/kernel/KviIrcLink.cpp:374
 msgid "proxy host"
 msgstr "프록시 호스트"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:379
+#: src/kvirc/kernel/KviIrcLink.cpp:374
 msgid "IRC server"
 msgstr "IRC 서버"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:385
+#: src/kvirc/kernel/KviIrcLink.cpp:380
 #, c-format
 msgid "Low-level transport connection established [%s (%s:%u)]"
 msgstr "낮은 수준 전송 연결 설정 [%s (%s:%u)]"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:389
+#: src/kvirc/kernel/KviIrcLink.cpp:384
 msgid "Starting Secure Socket Layer handshake"
 msgstr "안전 소켓 계층(SSL) 핸드 셰이크 시작"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:393
+#: src/kvirc/kernel/KviIrcLink.cpp:388
 msgid "Secure proxy connection"
 msgstr "안전 프록시 연결"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:393
+#: src/kvirc/kernel/KviIrcLink.cpp:388
 msgid "Proxy connection"
 msgstr "프록시 연결"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:397
+#: src/kvirc/kernel/KviIrcLink.cpp:392
 msgid "Negotiating relay information"
 msgstr "협상 중계 정보"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:400
+#: src/kvirc/kernel/KviIrcLink.cpp:395
 msgid "Sent connection request, waiting for acknowledgement"
 msgstr "전송 대기 요청, 승인 대기 중"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:403
+#: src/kvirc/kernel/KviIrcLink.cpp:398
 msgid "Sent target host data, waiting for acknowledgement"
 msgstr "확인을 기다리는 대상 호스트 자료를 보냈습니다"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:406
+#: src/kvirc/kernel/KviIrcLink.cpp:401
 msgid "Sent auth method request, waiting for acknowledgement"
 msgstr "승인을 기다리는 인증 방법 요청을 보냈습니다"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:409
+#: src/kvirc/kernel/KviIrcLink.cpp:404
 msgid "Sent username and password, waiting for acknowledgement"
 msgstr "승인을 기다리는 사용자 이름과 암호를 보냈습니다"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:412
+#: src/kvirc/kernel/KviIrcLink.cpp:407
 msgid "Sent connection request, waiting for \"HTTP 200\" acknowledgement"
 msgstr "\"HTTP 200\"승인을 기다리는 연결 요청 전송"
 
@@ -3445,666 +3448,666 @@ msgstr "알림 목록:\r!n\r%Q\r 이 오프라인입니다 (관심)"
 msgid "unmatched watch list entry"
 msgstr "관심 목록 항목이 일치 하지 않습니다"
 
-#: src/kvirc/kernel/KviOptions.cpp:697
+#: src/kvirc/kernel/KviOptions.cpp:703
 msgid "Normal text"
 msgstr "일반 텍스트"
 
-#: src/kvirc/kernel/KviOptions.cpp:698
+#: src/kvirc/kernel/KviOptions.cpp:704
 msgid "Selection"
 msgstr "선택"
 
-#: src/kvirc/kernel/KviOptions.cpp:699
+#: src/kvirc/kernel/KviOptions.cpp:705
 msgid "Highlighted text"
 msgstr "강조 표시된 텍스트"
 
-#: src/kvirc/kernel/KviOptions.cpp:700
+#: src/kvirc/kernel/KviOptions.cpp:706
 msgid "URL foreground"
 msgstr "URL 전경"
 
-#: src/kvirc/kernel/KviOptions.cpp:701
+#: src/kvirc/kernel/KviOptions.cpp:707
 msgid "Link mouse hover foreground"
 msgstr "마우스로 가리 키기 링크 전경"
 
-#: src/kvirc/kernel/KviOptions.cpp:702
+#: src/kvirc/kernel/KviOptions.cpp:708
 msgid "Parser error"
 msgstr "파서 오류"
 
-#: src/kvirc/kernel/KviOptions.cpp:703
+#: src/kvirc/kernel/KviOptions.cpp:709
 msgid "Parser warning"
 msgstr "파서 경고"
 
-#: src/kvirc/kernel/KviOptions.cpp:704
+#: src/kvirc/kernel/KviOptions.cpp:710
 msgid "Host lookup result"
 msgstr "호스트 조회 결과"
 
-#: src/kvirc/kernel/KviOptions.cpp:705
+#: src/kvirc/kernel/KviOptions.cpp:711
 msgid "Socket message"
 msgstr "소켓 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:706
+#: src/kvirc/kernel/KviOptions.cpp:712
 msgid "Socket warning"
 msgstr "소켓 경고"
 
-#: src/kvirc/kernel/KviOptions.cpp:707
+#: src/kvirc/kernel/KviOptions.cpp:713
 msgid "Socket error"
 msgstr "소켓 오류"
 
-#: src/kvirc/kernel/KviOptions.cpp:708
+#: src/kvirc/kernel/KviOptions.cpp:714
 msgid "System error"
 msgstr "시스템 오류"
 
-#: src/kvirc/kernel/KviOptions.cpp:709
+#: src/kvirc/kernel/KviOptions.cpp:715
 msgid "RAW data to server"
 msgstr "서버로 RAW 데이터"
 
-#: src/kvirc/kernel/KviOptions.cpp:710
+#: src/kvirc/kernel/KviOptions.cpp:716
 msgid "Connection status"
 msgstr "연결 상태"
 
-#: src/kvirc/kernel/KviOptions.cpp:711
+#: src/kvirc/kernel/KviOptions.cpp:717
 msgid "System warning"
 msgstr "시스템 경고"
 
-#: src/kvirc/kernel/KviOptions.cpp:712
+#: src/kvirc/kernel/KviOptions.cpp:718
 msgid "System message"
 msgstr "시스템 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:713
+#: src/kvirc/kernel/KviOptions.cpp:719
 msgid "Unhandled server reply"
 msgstr "처리되지 않은 서버 응답"
 
-#: src/kvirc/kernel/KviOptions.cpp:714
+#: src/kvirc/kernel/KviOptions.cpp:720
 msgid "Server information"
 msgstr "서버 정보"
 
-#: src/kvirc/kernel/KviOptions.cpp:715
+#: src/kvirc/kernel/KviOptions.cpp:721
 msgid "Server message of the day"
 msgstr "오늘의 서버 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:716
+#: src/kvirc/kernel/KviOptions.cpp:722
 msgid "Server ping"
 msgstr "서버 핑"
 
-#: src/kvirc/kernel/KviOptions.cpp:717
+#: src/kvirc/kernel/KviOptions.cpp:723
 msgid "Join message"
 msgstr "입장 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:718
+#: src/kvirc/kernel/KviOptions.cpp:724
 msgid "Part message"
 msgstr "퇴장 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:719
+#: src/kvirc/kernel/KviOptions.cpp:725
 msgid "Unrecognized/broken message"
 msgstr "인식할 수 없는/깨진 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:720
+#: src/kvirc/kernel/KviOptions.cpp:726
 msgid "Topic message"
 msgstr "주제 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:721
+#: src/kvirc/kernel/KviOptions.cpp:727
 msgid "Own private message"
 msgstr "비공개 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:722
+#: src/kvirc/kernel/KviOptions.cpp:728
 msgid "Channel private message"
 msgstr "대화방 비공개 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:723
+#: src/kvirc/kernel/KviOptions.cpp:729
 msgid "Query private message"
 msgstr "질의 비공개 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:724
+#: src/kvirc/kernel/KviOptions.cpp:730
 msgid "CTCP reply"
 msgstr "CTCP 응답"
 
-#: src/kvirc/kernel/KviOptions.cpp:725
+#: src/kvirc/kernel/KviOptions.cpp:731
 msgid "CTCP request replied"
 msgstr "CTCP 요청에 응답했습니다"
 
-#: src/kvirc/kernel/KviOptions.cpp:726
+#: src/kvirc/kernel/KviOptions.cpp:732
 msgid "CTCP request ignored"
 msgstr "CTCP 요청이 무시되었습니다"
 
-#: src/kvirc/kernel/KviOptions.cpp:727
+#: src/kvirc/kernel/KviOptions.cpp:733
 msgid "CTCP request flood warning"
 msgstr "CTCP 요청 플러드 경고"
 
-#: src/kvirc/kernel/KviOptions.cpp:728
+#: src/kvirc/kernel/KviOptions.cpp:734
 msgid "CTCP request unknown"
 msgstr "CTCP 요청을 알 수 없음"
 
-#: src/kvirc/kernel/KviOptions.cpp:729
+#: src/kvirc/kernel/KviOptions.cpp:735
 msgid "User action"
 msgstr "사용자 동작"
 
-#: src/kvirc/kernel/KviOptions.cpp:730
+#: src/kvirc/kernel/KviOptions.cpp:736
 msgid "Avatar change"
 msgstr "아바타 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:731
+#: src/kvirc/kernel/KviOptions.cpp:737
 msgid "Quit message"
 msgstr "종료할때 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:732
+#: src/kvirc/kernel/KviOptions.cpp:738
 msgid "Split message"
 msgstr "메시지 분할"
 
-#: src/kvirc/kernel/KviOptions.cpp:733
+#: src/kvirc/kernel/KviOptions.cpp:739
 msgid "Quit on netsplit message"
 msgstr "네트워크 분할 메시지에서 종료"
 
-#: src/kvirc/kernel/KviOptions.cpp:734
+#: src/kvirc/kernel/KviOptions.cpp:740
 msgid "Nick changes"
 msgstr "대화명 변경"
 
-#: src/kvirc/kernel/KviOptions.cpp:735
+#: src/kvirc/kernel/KviOptions.cpp:741
 msgid "+o mode change"
 msgstr "+o 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:736
+#: src/kvirc/kernel/KviOptions.cpp:742
 msgid "-o mode change"
 msgstr "-o 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:737
+#: src/kvirc/kernel/KviOptions.cpp:743
 msgid "+v mode change"
 msgstr "+v 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:738
+#: src/kvirc/kernel/KviOptions.cpp:744
 msgid "-v mode change"
 msgstr "-v 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:739
+#: src/kvirc/kernel/KviOptions.cpp:745
 msgid "Multiple user mode change"
 msgstr "여러 사용자 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:740
+#: src/kvirc/kernel/KviOptions.cpp:746
 msgid "Channel key change"
 msgstr "대화방 키 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:741
+#: src/kvirc/kernel/KviOptions.cpp:747
 msgid "Channel limit change"
 msgstr "대화방 제한 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:742
+#: src/kvirc/kernel/KviOptions.cpp:748
 msgid "+b mode change"
 msgstr "+b 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:743
+#: src/kvirc/kernel/KviOptions.cpp:749
 msgid "-b mode change"
 msgstr "-b 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:744
+#: src/kvirc/kernel/KviOptions.cpp:750
 msgid "+e mode change"
 msgstr "+e 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:745
+#: src/kvirc/kernel/KviOptions.cpp:751
 msgid "-e mode change"
 msgstr "-e 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:746
+#: src/kvirc/kernel/KviOptions.cpp:752
 msgid "+I mode change"
 msgstr "+I 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:747
+#: src/kvirc/kernel/KviOptions.cpp:753
 msgid "-I mode change"
 msgstr "-I 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:748
+#: src/kvirc/kernel/KviOptions.cpp:754
 msgid "Multiple channel mode change"
 msgstr "여러 대화방 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:749
+#: src/kvirc/kernel/KviOptions.cpp:755
 msgid "Who reply"
 msgstr "Who 응답"
 
-#: src/kvirc/kernel/KviOptions.cpp:750
+#: src/kvirc/kernel/KviOptions.cpp:756
 msgid "DCC request"
 msgstr "DCC 요청"
 
-#: src/kvirc/kernel/KviOptions.cpp:751
+#: src/kvirc/kernel/KviOptions.cpp:757
 msgid "DCC message"
 msgstr "DCC 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:752
+#: src/kvirc/kernel/KviOptions.cpp:758
 msgid "DCC error"
 msgstr "DCC 오류"
 
-#: src/kvirc/kernel/KviOptions.cpp:753
+#: src/kvirc/kernel/KviOptions.cpp:759
 msgid "Nickname problem"
 msgstr "대화명 문제"
 
-#: src/kvirc/kernel/KviOptions.cpp:754
+#: src/kvirc/kernel/KviOptions.cpp:760
 msgid "WHOIS user reply"
 msgstr "WHOIS 사용자 응답"
 
-#: src/kvirc/kernel/KviOptions.cpp:755
+#: src/kvirc/kernel/KviOptions.cpp:761
 msgid "WHOIS channels reply"
 msgstr "WHOIS 대화방 응답"
 
-#: src/kvirc/kernel/KviOptions.cpp:756
+#: src/kvirc/kernel/KviOptions.cpp:762
 msgid "WHOIS idle reply"
 msgstr "WHOIS 유휴 응답"
 
-#: src/kvirc/kernel/KviOptions.cpp:757
+#: src/kvirc/kernel/KviOptions.cpp:763
 msgid "WHOIS server reply"
 msgstr "WHOIS 서버 응답"
 
-#: src/kvirc/kernel/KviOptions.cpp:758
+#: src/kvirc/kernel/KviOptions.cpp:764
 msgid "WHOIS other reply"
 msgstr "WHOIS 다른 응답"
 
-#: src/kvirc/kernel/KviOptions.cpp:759
+#: src/kvirc/kernel/KviOptions.cpp:765
 msgid "Channel creation time reply"
 msgstr "대화방 생성 시간 응답"
 
-#: src/kvirc/kernel/KviOptions.cpp:760
+#: src/kvirc/kernel/KviOptions.cpp:766
 msgid "Notify list joins"
 msgstr "목록 입장 알림"
 
-#: src/kvirc/kernel/KviOptions.cpp:761
+#: src/kvirc/kernel/KviOptions.cpp:767
 msgid "Notify list leaves"
 msgstr "나가기 알림 목록"
 
-#: src/kvirc/kernel/KviOptions.cpp:762
+#: src/kvirc/kernel/KviOptions.cpp:768
 msgid "Own encrypted private message"
 msgstr "자체 암호화된 비공개 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:763
+#: src/kvirc/kernel/KviOptions.cpp:769
 msgid "Channel encrypted private message"
 msgstr "대화방 암호화 비공개 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:764
+#: src/kvirc/kernel/KviOptions.cpp:770
 msgid "Query encrypted private message"
 msgstr "암호화된 비공개 메시지 질의"
 
-#: src/kvirc/kernel/KviOptions.cpp:765
+#: src/kvirc/kernel/KviOptions.cpp:771
 msgid "DCC chat message"
 msgstr "DCC 대화 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:766
+#: src/kvirc/kernel/KviOptions.cpp:772
 msgid "Encrypted DCC chat message"
 msgstr "암호화된 DCC 대화 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:767
+#: src/kvirc/kernel/KviOptions.cpp:773
 msgid "Login operations completed"
 msgstr "로그인 조작을 완료했습니다"
 
-#: src/kvirc/kernel/KviOptions.cpp:768
+#: src/kvirc/kernel/KviOptions.cpp:774
 msgid "Kick action"
 msgstr "강제퇴장 동작"
 
-#: src/kvirc/kernel/KviOptions.cpp:769
+#: src/kvirc/kernel/KviOptions.cpp:775
 msgid "Links reply"
 msgstr "링크 응답"
 
-#: src/kvirc/kernel/KviOptions.cpp:770
+#: src/kvirc/kernel/KviOptions.cpp:776
 msgid "Spam report"
 msgstr "스팸 신고"
 
-#: src/kvirc/kernel/KviOptions.cpp:771
+#: src/kvirc/kernel/KviOptions.cpp:777
 msgid "ICQ message"
 msgstr "ICQ 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:772
+#: src/kvirc/kernel/KviOptions.cpp:778
 msgid "ICQ user-message"
 msgstr "ICQ 사용자 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:773
+#: src/kvirc/kernel/KviOptions.cpp:779
 msgid "Outgoing ICQ user-message"
 msgstr "송신 ICQ 사용자 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:774
+#: src/kvirc/kernel/KviOptions.cpp:780
 msgid "Channel notice"
 msgstr "대화방 알림"
 
-#: src/kvirc/kernel/KviOptions.cpp:775
+#: src/kvirc/kernel/KviOptions.cpp:781
 msgid "Encrypted channel notice"
 msgstr "암호화된 대화방 알림"
 
-#: src/kvirc/kernel/KviOptions.cpp:776
+#: src/kvirc/kernel/KviOptions.cpp:782
 msgid "Query notice"
 msgstr "질의 알림"
 
-#: src/kvirc/kernel/KviOptions.cpp:777
+#: src/kvirc/kernel/KviOptions.cpp:783
 msgid "Encrypted query notice"
 msgstr "암호화된 질의 알림"
 
-#: src/kvirc/kernel/KviOptions.cpp:778
+#: src/kvirc/kernel/KviOptions.cpp:784
 msgid "Server notice"
 msgstr "서버 알림"
 
-#: src/kvirc/kernel/KviOptions.cpp:779
+#: src/kvirc/kernel/KviOptions.cpp:785
 msgid "Halfop mode change"
 msgstr "Halfop 모드 바꾸기"
 
-#: src/kvirc/kernel/KviOptions.cpp:780
+#: src/kvirc/kernel/KviOptions.cpp:786
 msgid "Unknown CTCP reply"
 msgstr "알 수 없는 CTCP 응답"
 
-#: src/kvirc/kernel/KviOptions.cpp:781
+#: src/kvirc/kernel/KviOptions.cpp:787
 msgid "NickServ message"
 msgstr "NickServ의 or 대화명 서버 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:782
+#: src/kvirc/kernel/KviOptions.cpp:788
 msgid "ChanServ message"
 msgstr "ChanServ의 or 대화방 서버 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:783
+#: src/kvirc/kernel/KviOptions.cpp:789
 msgid "Away message"
 msgstr "자리 비움 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:784
+#: src/kvirc/kernel/KviOptions.cpp:790
 msgid "Ident message"
 msgstr "인증 or 식별 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:785
+#: src/kvirc/kernel/KviOptions.cpp:791
 msgid "Channel list message"
 msgstr "대화방 목록 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:786
+#: src/kvirc/kernel/KviOptions.cpp:792
 msgid "Half-deop mode change"
 msgstr "Half-deop 모드 변경"
 
-#: src/kvirc/kernel/KviOptions.cpp:787
+#: src/kvirc/kernel/KviOptions.cpp:793
 msgid "Invite message"
 msgstr "초대 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:788
+#: src/kvirc/kernel/KviOptions.cpp:794
 msgid "Multimedia message"
 msgstr "멀티미디어 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:789
+#: src/kvirc/kernel/KviOptions.cpp:795
 msgid "Query trace message"
 msgstr "질의 추적 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:790
+#: src/kvirc/kernel/KviOptions.cpp:796
 msgid "Wallops message"
 msgstr "Wallops 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:791
+#: src/kvirc/kernel/KviOptions.cpp:797
 msgid "Join error message"
 msgstr "입장 오류 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:792
+#: src/kvirc/kernel/KviOptions.cpp:798
 msgid "Broadcast private message"
 msgstr "방송 비공개 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:793
+#: src/kvirc/kernel/KviOptions.cpp:799
 msgid "Broadcast notice"
 msgstr "방송 알림"
 
-#: src/kvirc/kernel/KviOptions.cpp:794
+#: src/kvirc/kernel/KviOptions.cpp:800
 msgid "Am kicked"
 msgstr "Am kicked"
 
-#: src/kvirc/kernel/KviOptions.cpp:795
+#: src/kvirc/kernel/KviOptions.cpp:801
 msgid "Am op'd"
 msgstr "Am op'd"
 
-#: src/kvirc/kernel/KviOptions.cpp:796
+#: src/kvirc/kernel/KviOptions.cpp:802
 msgid "Am voiced"
 msgstr "Am voiced"
 
-#: src/kvirc/kernel/KviOptions.cpp:797
+#: src/kvirc/kernel/KviOptions.cpp:803
 msgid "Am deop'd"
 msgstr "Am deop'd"
 
-#: src/kvirc/kernel/KviOptions.cpp:798
+#: src/kvirc/kernel/KviOptions.cpp:804
 msgid "Am devoiced"
 msgstr "Am devoiced"
 
-#: src/kvirc/kernel/KviOptions.cpp:799
+#: src/kvirc/kernel/KviOptions.cpp:805
 msgid "Am halfop'd"
 msgstr "Am halfop'd"
 
-#: src/kvirc/kernel/KviOptions.cpp:800
+#: src/kvirc/kernel/KviOptions.cpp:806
 msgid "Am de-halfop'd"
 msgstr "Am de-halfop'd"
 
-#: src/kvirc/kernel/KviOptions.cpp:801
+#: src/kvirc/kernel/KviOptions.cpp:807
 msgid "Ban matching my mask"
 msgstr "내 마스크와 일치하는 입장금지"
 
-#: src/kvirc/kernel/KviOptions.cpp:802
+#: src/kvirc/kernel/KviOptions.cpp:808
 msgid "Unban matching my mask"
 msgstr "내 마스크 일치 입장금지"
 
-#: src/kvirc/kernel/KviOptions.cpp:803
+#: src/kvirc/kernel/KviOptions.cpp:809
 msgid "Ban exception matching my mask"
 msgstr "마스크와 일치하는 예외 입장금지"
 
-#: src/kvirc/kernel/KviOptions.cpp:804
+#: src/kvirc/kernel/KviOptions.cpp:810
 msgid "Ban unexception matching my mask"
 msgstr "내 가면과 일치하는 예외 입장금지"
 
-#: src/kvirc/kernel/KviOptions.cpp:805
+#: src/kvirc/kernel/KviOptions.cpp:811
 msgid "Invite exception matching my mask"
 msgstr "마스크와 일치하는 예외 초대"
 
-#: src/kvirc/kernel/KviOptions.cpp:806
+#: src/kvirc/kernel/KviOptions.cpp:812
 msgid "Invite unexception matching my mask"
 msgstr "내 마스크와 일치하는 예외를 초대하십시오"
 
-#: src/kvirc/kernel/KviOptions.cpp:807
+#: src/kvirc/kernel/KviOptions.cpp:813
 msgid "Ignored user message"
 msgstr "사용자 메시지를 무시했습니다"
 
-#: src/kvirc/kernel/KviOptions.cpp:808
+#: src/kvirc/kernel/KviOptions.cpp:814
 msgid "Server statistics"
 msgstr "서버 통계"
 
-#: src/kvirc/kernel/KviOptions.cpp:809
+#: src/kvirc/kernel/KviOptions.cpp:815
 msgid "SSL message"
 msgstr "SSL 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:810 src/modules/help/HelpWindow.cpp:89
+#: src/kvirc/kernel/KviOptions.cpp:816 src/modules/help/HelpWindow.cpp:89
 msgid "Search"
 msgstr "검색"
 
-#: src/kvirc/kernel/KviOptions.cpp:811
+#: src/kvirc/kernel/KviOptions.cpp:817
 msgid "Generic success"
 msgstr "일반적인 성공"
 
-#: src/kvirc/kernel/KviOptions.cpp:812
+#: src/kvirc/kernel/KviOptions.cpp:818
 msgid "Generic status"
 msgstr "일반 상태"
 
-#: src/kvirc/kernel/KviOptions.cpp:813
+#: src/kvirc/kernel/KviOptions.cpp:819
 msgid "Generic verbose message"
 msgstr "일반 상세 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:814
+#: src/kvirc/kernel/KviOptions.cpp:820
 msgid "Generic warning"
 msgstr "일반 경고"
 
-#: src/kvirc/kernel/KviOptions.cpp:815
+#: src/kvirc/kernel/KviOptions.cpp:821
 msgid "Generic error"
 msgstr "일반적인 오류"
 
-#: src/kvirc/kernel/KviOptions.cpp:816
+#: src/kvirc/kernel/KviOptions.cpp:822
 msgid "Generic critical error"
 msgstr "일반적인 치명적 오류"
 
-#: src/kvirc/kernel/KviOptions.cpp:817
+#: src/kvirc/kernel/KviOptions.cpp:823
 msgid "Chan admin status set"
 msgstr "대화방 관리자 상태 설정"
 
-#: src/kvirc/kernel/KviOptions.cpp:818
+#: src/kvirc/kernel/KviOptions.cpp:824
 msgid "Chan admin status unset"
 msgstr "대화방 관리자 상태 설정 해제"
 
-#: src/kvirc/kernel/KviOptions.cpp:819
+#: src/kvirc/kernel/KviOptions.cpp:825
 msgid "Own chan admin status set"
 msgstr "자체 찬 관리자 상태 설정"
 
-#: src/kvirc/kernel/KviOptions.cpp:820
+#: src/kvirc/kernel/KviOptions.cpp:826
 msgid "Own chan admin status unset"
 msgstr "자체 chan 관리자 상태 설정 해제"
 
-#: src/kvirc/kernel/KviOptions.cpp:821
+#: src/kvirc/kernel/KviOptions.cpp:827
 msgid "Userop mode change"
 msgstr "사용자 모드 변경"
 
-#: src/kvirc/kernel/KviOptions.cpp:822
+#: src/kvirc/kernel/KviOptions.cpp:828
 msgid "User-deop mode change"
 msgstr "사용자 중심 모드 변경"
 
-#: src/kvirc/kernel/KviOptions.cpp:823
+#: src/kvirc/kernel/KviOptions.cpp:829
 msgid "Am userop'd"
 msgstr "사용자입니다"
 
-#: src/kvirc/kernel/KviOptions.cpp:824
+#: src/kvirc/kernel/KviOptions.cpp:830
 msgid "Am de-userop'd"
 msgstr "는 de-userop'd 입니다"
 
-#: src/kvirc/kernel/KviOptions.cpp:825
+#: src/kvirc/kernel/KviOptions.cpp:831
 msgid "Verbose/Debug"
 msgstr "상세/디버그"
 
-#: src/kvirc/kernel/KviOptions.cpp:826
+#: src/kvirc/kernel/KviOptions.cpp:832
 msgid "Chan owner status set"
 msgstr "대화방 소유자 상태 설정"
 
-#: src/kvirc/kernel/KviOptions.cpp:827
+#: src/kvirc/kernel/KviOptions.cpp:833
 msgid "Chan owner status unset"
 msgstr "대화방 소유자 상태 설정 해제"
 
-#: src/kvirc/kernel/KviOptions.cpp:828
+#: src/kvirc/kernel/KviOptions.cpp:834
 msgid "Own chan owner status set"
 msgstr "우리 대화방 소유자 상태 설정"
 
-#: src/kvirc/kernel/KviOptions.cpp:829
+#: src/kvirc/kernel/KviOptions.cpp:835
 msgid "Own chan owner status unset"
 msgstr "우리 대화방 소유자 상태 설정 해제"
 
-#: src/kvirc/kernel/KviOptions.cpp:830
+#: src/kvirc/kernel/KviOptions.cpp:836
 msgid "Server error"
 msgstr "서버 오류"
 
-#: src/kvirc/kernel/KviOptions.cpp:832
+#: src/kvirc/kernel/KviOptions.cpp:838
 msgid "Text encoding server message"
 msgstr "텍스트 인코딩 서버 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:833
+#: src/kvirc/kernel/KviOptions.cpp:839
 msgid "BitTorrent message"
 msgstr "비트토렌트 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:834
+#: src/kvirc/kernel/KviOptions.cpp:840
 msgid "IRC Op status set"
 msgstr "IRC 운영자가 상태 설정"
 
-#: src/kvirc/kernel/KviOptions.cpp:835
+#: src/kvirc/kernel/KviOptions.cpp:841
 msgid "IRC Op status unset"
 msgstr "IRC 운영자 상태 설정 해제"
 
-#: src/kvirc/kernel/KviOptions.cpp:836
+#: src/kvirc/kernel/KviOptions.cpp:842
 msgid "Own IRC Op status set"
 msgstr "자체 IRC 운영자 상태 설정"
 
-#: src/kvirc/kernel/KviOptions.cpp:837
+#: src/kvirc/kernel/KviOptions.cpp:843
 msgid "Own IRC Op status unset"
 msgstr "자체 IRC 운영자 상태 설정 해제"
 
-#: src/kvirc/kernel/KviOptions.cpp:838
+#: src/kvirc/kernel/KviOptions.cpp:844
 msgid "Extended capability message"
 msgstr "확장된 기능 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:839
+#: src/kvirc/kernel/KviOptions.cpp:845
 msgid "Channel URL"
 msgstr "대화방 URL"
 
-#: src/kvirc/kernel/KviOptions.cpp:840
+#: src/kvirc/kernel/KviOptions.cpp:846
 msgid "MemoServ message"
 msgstr "MemoServ 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:841
+#: src/kvirc/kernel/KviOptions.cpp:847
 msgid "Log message"
 msgstr "기록 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:842
+#: src/kvirc/kernel/KviOptions.cpp:848
 msgid "Encrypted user action"
 msgstr "암호화된 사용자 동작"
 
-#: src/kvirc/kernel/KviOptions.cpp:843
+#: src/kvirc/kernel/KviOptions.cpp:849
 msgid "Own action"
 msgstr "자체 동작"
 
-#: src/kvirc/kernel/KviOptions.cpp:844
+#: src/kvirc/kernel/KviOptions.cpp:850
 msgid "Own encrypted action"
 msgstr "자체 암호화 동작"
 
-#: src/kvirc/kernel/KviOptions.cpp:845
+#: src/kvirc/kernel/KviOptions.cpp:851
 msgid "Encrypted topic message"
 msgstr "암호화된 주제 메시지"
 
-#: src/kvirc/kernel/KviOptions.cpp:970
+#: src/kvirc/kernel/KviOptions.cpp:976
 msgid "Warning While Writing Configuration - KVIrc"
 msgstr "구성을 작성하는 동안 경고 - KVIrc"
 
-#: src/kvirc/kernel/KviOptions.cpp:971
+#: src/kvirc/kernel/KviOptions.cpp:977
 msgid ""
 "I can't write to the main configuration file:\n"
 "\t%1\n"
 "Please ensure the directory exists and that you have the proper permissions before continuing, or else any custom configuration will be lost."
 msgstr "기본 설정 파일에 쓸 수 없습니다.\n%1\n계속하기 전에 디렉토리가 존재하고 적절한 권한이 있는지 확인하십시오. 그렇지 않으면 맞춤 구성이 손실됩니다."
 
-#: src/kvirc/kernel/KviOptions.cpp:998
+#: src/kvirc/kernel/KviOptions.cpp:1004
 msgid "Missing absolute directory for the theme information"
 msgstr "테마 정보에 대한 절대 디렉토리가 누락되었습니다"
 
-#: src/kvirc/kernel/KviOptions.cpp:1006
+#: src/kvirc/kernel/KviOptions.cpp:1012
 msgid "Failed to create the theme directory"
 msgstr "테마 디렉토리를 만들지 못했습니다"
 
-#: src/kvirc/kernel/KviOptions.cpp:1087 src/kvirc/kernel/KviOptions.cpp:1116
+#: src/kvirc/kernel/KviOptions.cpp:1093 src/kvirc/kernel/KviOptions.cpp:1122
 msgid "Failed to save one of the theme images"
 msgstr "테마 그림 중 하나를 저장하지 못했습니다"
 
-#: src/kvirc/kernel/KviOptions.cpp:1095
+#: src/kvirc/kernel/KviOptions.cpp:1101
 msgid "Failed to create the theme subdirectory"
 msgstr "테마 하위 디렉토리를 만들지 못했습니다"
 
-#: src/kvirc/kernel/KviOptions.cpp:1238
+#: src/kvirc/kernel/KviOptions.cpp:1244
 msgid "Boolean options (1/0)"
 msgstr "부울 선택사항 (1/0)"
 
-#: src/kvirc/kernel/KviOptions.cpp:1239
+#: src/kvirc/kernel/KviOptions.cpp:1245
 msgid "Rectangle options (x,y,width,height)"
 msgstr "사각형 선택사항 (x, y, 너비, 높이)"
 
-#: src/kvirc/kernel/KviOptions.cpp:1240
+#: src/kvirc/kernel/KviOptions.cpp:1246
 msgid "String options (string value)"
 msgstr "문자열 선택사항 (문자열 값)"
 
-#: src/kvirc/kernel/KviOptions.cpp:1241
+#: src/kvirc/kernel/KviOptions.cpp:1247
 msgid "Color options (#RRGGBB)"
 msgstr "색상 선택사항 (#RRGGBB)"
 
-#: src/kvirc/kernel/KviOptions.cpp:1242
+#: src/kvirc/kernel/KviOptions.cpp:1248
 msgid "Mirccolor options (#RRGGBB)"
 msgstr "Mirccolor 선택사항 (#RRGGBB)"
 
-#: src/kvirc/kernel/KviOptions.cpp:1243
+#: src/kvirc/kernel/KviOptions.cpp:1249
 msgid "IRC context color options (#RRGGBB)"
 msgstr "IRC 맥락 색상 선택사항 (#RRGGBB)"
 
-#: src/kvirc/kernel/KviOptions.cpp:1244
+#: src/kvirc/kernel/KviOptions.cpp:1250
 msgid "Pixmap options (image path)"
 msgstr "Pixmap 선택사항 (그림 경로)"
 
-#: src/kvirc/kernel/KviOptions.cpp:1245
+#: src/kvirc/kernel/KviOptions.cpp:1251
 msgid "Unsigned integer options (unsigned integer constant)"
 msgstr "부호없는 정수 선택사항 (부호없는 정수 상수)"
 
-#: src/kvirc/kernel/KviOptions.cpp:1246
+#: src/kvirc/kernel/KviOptions.cpp:1252
 msgid "Font options (family,pointsize,style,charset,weight,flags (biusf))"
 msgstr "글꼴 선택사항 (패밀리, 포인트 크기, 스타일, 문자 설정, 무게, 깃발(biusf))"
 
-#: src/kvirc/kernel/KviOptions.cpp:1247
+#: src/kvirc/kernel/KviOptions.cpp:1253
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
 msgstr "메시지 색상 선택사항 (image_id,foreground,background,logFlag (0/1))"
 
-#: src/kvirc/kernel/KviOptions.cpp:1248
+#: src/kvirc/kernel/KviOptions.cpp:1254
 msgid "String list options (comma separated list of strings)"
 msgstr "문자열 목록 선택사항 (쉼표로 구분된 문자열 목록)"
 
@@ -4263,16 +4266,16 @@ msgstr "선택사항이 잘못되었습니다"
 msgid "Failed to save the screenshot image"
 msgstr "갈무리 그림을 저장하지 못했습니다"
 
-#: src/kvirc/kernel/KviUserInput.cpp:86
+#: src/kvirc/kernel/KviUserInput.cpp:91
 msgid "commandline::userfriendly"
 msgstr "명령줄::사용자 친화적"
 
-#: src/kvirc/kernel/KviUserInput.cpp:96
+#: src/kvirc/kernel/KviUserInput.cpp:101
 msgid "commandline::kvs"
 msgstr "명령줄::kvs"
 
-#: src/kvirc/kernel/KviUserInput.cpp:137
-#: src/kvirc/ui/KviIrcView_events.cpp:1133
+#: src/kvirc/kernel/KviUserInput.cpp:142
+#: src/kvirc/ui/KviIrcView_events.cpp:1134
 #: src/modules/links/LinksWindow.cpp:450
 msgid "You're not connected to a server"
 msgstr "서버에 연결되지 않았습니다"
@@ -4298,34 +4301,34 @@ msgid "Can't load certificate from public key file %s"
 msgstr "공개 키 파일 %s에서 인증서를 불러올 수 없습니다"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:131
-#: src/modules/trayicon/libkvitrayicon.cpp:270
-#: src/modules/trayicon/libkvitrayicon.cpp:292
+#: src/modules/trayicon/libkvitrayicon.cpp:285
+#: src/modules/trayicon/libkvitrayicon.cpp:307
 msgid "Away from keyboard."
 msgstr "키보드에서 자리를 비웠습니다."
 
-#: src/kvirc/module/KviModuleManager.cpp:189
+#: src/kvirc/module/KviModuleManager.cpp:187
 msgid "No %1 symbol exported: not a KVIrc module?"
 msgstr "%1 기호를 내보내지 않았습니다. KVIrc 모듈이 아닙니까?"
 
-#: src/kvirc/module/KviModuleManager.cpp:196
+#: src/kvirc/module/KviModuleManager.cpp:194
 msgid "This module has no version information: refusing to load it"
 msgstr "이 모듈에는 버전 정보가 없습니다: 불러오기 거부"
 
-#: src/kvirc/module/KviModuleManager.cpp:205
+#: src/kvirc/module/KviModuleManager.cpp:203
 msgid ""
 "This module was compiled for a different KVIrc version and can't be loaded"
 msgstr "이 모듈은 다른 KVIrc 버전 용으로 컴파일되었으며 불러올 수 없습니다"
 
-#: src/kvirc/module/KviModuleManager.cpp:238
+#: src/kvirc/module/KviModuleManager.cpp:236
 msgid "Failed to execute the init routine"
 msgstr "초기화 루틴을 실행하지 못했습니다"
 
-#: src/kvirc/module/KviModuleManager.cpp:271
+#: src/kvirc/module/KviModuleManager.cpp:269
 #, c-format
 msgid "Loaded module '%s' (%s)"
 msgstr "불러온 모듈 '%s' (%s)"
 
-#: src/kvirc/module/KviModuleManager.cpp:314
+#: src/kvirc/module/KviModuleManager.cpp:312
 #, c-format
 msgid "Unloaded module '%s'"
 msgstr "불러올수 없는 모듈 '%s'"
@@ -5260,17 +5263,17 @@ msgstr "\r!n\r%Q\r 의 사용자 모드는 %s 입니다"
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:784
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:797
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:867
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3091
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3118
-#: src/kvirc/ui/KviChannelWindow.cpp:1943
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3088
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3115
+#: src/kvirc/ui/KviChannelWindow.cpp:1942
 #: src/modules/links/LinksWindow.cpp:326
 msgid "(Unknown)"
 msgstr "(알 수 없음)"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:807
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:878
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3101
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3128
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3098
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3125
 msgid ""
 "%Q for \r"
 "!c\r"
@@ -5437,7 +5440,7 @@ msgstr "%Q는 SSL에 입장해야합니다"
 msgid "End of help about %Q"
 msgstr "%Q 에 대한 도움말 끝"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1551
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1548
 msgid ""
 "%c\r"
 "!n\r"
@@ -5445,7 +5448,7 @@ msgid ""
 "%c is away: %Q"
 msgstr "%c\r!n\r%Q\r%c 님이 자리를 비웠습니다: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1608
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1605
 msgid ""
 "%c\r"
 "!n\r"
@@ -5459,7 +5462,7 @@ msgid ""
 "%c"
 msgstr "%c\r!n\r%Q\r%c 는 %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c 입니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1613
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1610
 msgid ""
 "%c\r"
 "!n\r"
@@ -5467,7 +5470,7 @@ msgid ""
 "%c's real name: %Q"
 msgstr "%c\r!n\r%Q\r%c 님의 진짜 이름: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1634
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1631
 msgid ""
 "%c\r"
 "!n\r"
@@ -5481,7 +5484,7 @@ msgid ""
 "%c"
 msgstr "%c\r!n\r%Q\r%c 는 %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c 였습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1638
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1635
 msgid ""
 "%c\r"
 "!n\r"
@@ -5489,7 +5492,7 @@ msgid ""
 "%c's real name was: %Q"
 msgstr "%c\r!n\r%Q\r%c 님의 진짜 이름은: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1707
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1704
 msgid ""
 "%c\r"
 "!n\r"
@@ -5497,11 +5500,11 @@ msgid ""
 "%c's channels: %Q"
 msgstr "%c\r!n\r%Q\r%c 님의 대화방: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1744
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1741
 msgid "Received a broken RPL_WHOISIDLE, can't evaluate the idle time"
 msgstr "깨진 RPL_WHOISIDLE을 받았으며 유휴 시간을 계산할 수 없습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1754
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1751
 msgid ""
 "%c\r"
 "!n\r"
@@ -5509,7 +5512,7 @@ msgid ""
 "%c's idle time: %ud %uh %um %us"
 msgstr "%c\r!n\r%Q\r%c 님의 유휴 시간: %ud %uh %um %us"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1780
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1777
 msgid ""
 "%c\r"
 "!n\r"
@@ -5517,7 +5520,7 @@ msgid ""
 "%c's signon time: %Q"
 msgstr "%c\r!n\r%Q\r%c 님의 로그인 시간: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1820
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1817
 msgid ""
 "%c\r"
 "!n\r"
@@ -5528,7 +5531,7 @@ msgid ""
 " - %Q"
 msgstr "%c\r!n\r%Q\r%c 님의 서버: \r!s\r%Q\r - %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1846
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1843
 msgid ""
 "%c\r"
 "!n\r"
@@ -5536,7 +5539,7 @@ msgid ""
 "%c is authenticated as %Q"
 msgstr "%c\r!n\r%Q\r%c 는 %Q 로 인증되었습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1864
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1861
 msgid ""
 "%c\r"
 "!n\r"
@@ -5544,7 +5547,7 @@ msgid ""
 "%c is a registered nickname"
 msgstr "%c\r!n\r%Q\r%c 님은 등록된 대화명입니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1900
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1897
 msgid ""
 "%c\r"
 "!n\r"
@@ -5552,7 +5555,7 @@ msgid ""
 "%c's actual user@host: %Q, actual IP: %Q"
 msgstr "%c\r!n\r%Q\r%c 님의 실제 사용자@호스트: %Q, 실제 IP: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1906
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1903
 msgid ""
 "%c\r"
 "!n\r"
@@ -5560,7 +5563,7 @@ msgid ""
 "%c's actual host: %Q"
 msgstr "%c\r!n\r%Q\r%c's actual host: %Q%c\r!n\r%Q\r%c 님의 실제 호스트: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1939
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1936
 msgid ""
 "%c\r"
 "!n\r"
@@ -5568,7 +5571,7 @@ msgid ""
 "%c's info: %Q"
 msgstr "%c\r!n\r%Q\r%c 의 정보: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1988
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1985
 msgid ""
 "%c\r"
 "!n\r"
@@ -5578,7 +5581,7 @@ msgid ""
 "%Q\r"
 msgstr "%c\r!n\r%Q\r%c 의 WHOIS 정보는 다음에서 \r!s\r%Q\r"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2006
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2003
 msgid ""
 "%c\r"
 "!n\r"
@@ -5588,11 +5591,11 @@ msgid ""
 "%Q\r"
 msgstr "%c\r!n\r%Q\r%c 의 WHOWAS 정보는 \r!s\r%Q\r 에서"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2070
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2067
 msgid "This channel's website is: %Q"
 msgstr "이 대화방 누리집은 %Q 입니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2076
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2073
 msgid ""
 "The website for \r"
 "!c\r"
@@ -5600,15 +5603,15 @@ msgid ""
 " is: %Q"
 msgstr "\r!c\r%Q\r의 누리집은 %Q 입니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2092
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2089
 msgid "Can't evaluate creation time"
 msgstr "생성 시간을 계산할 수 없습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2116
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2113
 msgid "Channel was created at %Q"
 msgstr "대화방은 %Q 에 만들어졌습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2122
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2119
 msgid ""
 "Channel \r"
 "!c\r"
@@ -5616,51 +5619,51 @@ msgid ""
 " was created at %Q"
 msgstr "대화방 \r!c\r%Q\r 은(는) %Q 로 만들어졌습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2162
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2159
 msgid "USERHOST info: %Q"
 msgstr "사용자호스트 정보: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2186
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2183
 msgid "Channel list begin: channel, users, topic"
 msgstr "대화방 목록 시작: 대화방, 사용자, 주제"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2216
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2213
 msgid "List: %Q"
 msgstr "목록: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2233
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2230
 msgid "End of list"
 msgstr "목록의 끝"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2258
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2255
 msgid "Link: %Q"
 msgstr "링크: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2275
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2272
 msgid "End of links"
 msgstr "링크 끝"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2303
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2300
 msgid "[Leaving away status after %ud %uh %um %us]: %Q"
 msgstr "[%u일 %u시 %u분 %u초 뒤에 자리 비움 상태를 끝냅니다]: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2309
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2306
 msgid "[Leaving away status]: %Q"
 msgstr "[자리 비움 상태를 나가기]: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2316
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2313
 msgid "Restoring pre-away nickname (%Q)"
 msgstr "자리 비움 이전의 대화명으로 복원하고 있음 (%Q)"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2335
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2332
 msgid "[Entering away status]: %Q"
 msgstr "[자리 비움 상태로 들어가고 있음]: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2357
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2354
 msgid "Setting away nickname (%Q)"
 msgstr "자리 비움 대화명을 설정하고 있음 (%Q)"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2443
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2440
 #, c-format
 msgid ""
 "%c\r"
@@ -5669,7 +5672,7 @@ msgid ""
 "%c's server info: %s"
 msgstr "%c\r!s\r%s\r%c의 서버 정보: %s"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2454
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2451
 #, c-format
 msgid ""
 "%c\r"
@@ -5678,7 +5681,7 @@ msgid ""
 "%c's administrator is %s"
 msgstr "%c\r!s\r%s\r%c의 관리자는 %s 입니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2465
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2462
 #, c-format
 msgid ""
 "%c\r"
@@ -5687,14 +5690,14 @@ msgid ""
 "%c's contact address is %s"
 msgstr "%c\r!s\r%s\r%c 의 연락처 주소는 %s입니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2480
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2477
 msgid "Unable to use command %Q. %Q"
 msgstr "%Q 사용자쪽 명령을 사용할 수 없습니다. %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2506
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2511
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2527
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2532
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2503
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2508
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2524
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2529
 msgid ""
 "\r"
 "!n\r"
@@ -5702,14 +5705,14 @@ msgid ""
 " invited %Q into channel %Q"
 msgstr "\r!n\r%Q\r 님이 %Q 를 대화방 %Q 로 초대했습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2617
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2623
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2614
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2620
 msgid ""
 "Can't set mode %Q on %Q due to it having an active MLOCK policy, including "
 "modes %Q."
 msgstr "%Q 모드를 포함하여 활성 MLOCK 정책이 있으므로 %Q에서 %Q 모드를 설정할 수 없습니다."
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2645
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2642
 #, c-format
 msgid ""
 "%c\r"
@@ -5718,7 +5721,7 @@ msgid ""
 "%c's information:"
 msgstr "%c\r!s\r%s\r%c 의 정보:"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2655
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2652
 #, c-format
 msgid ""
 "End of %c\r"
@@ -5727,7 +5730,7 @@ msgid ""
 "%c's information"
 msgstr "%c\r!s\r%s\r%c's 정보의 끝"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2666
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2663
 msgid ""
 "%c\r"
 "!s\r"
@@ -5735,36 +5738,36 @@ msgid ""
 "%c's time is %Q"
 msgstr "c\r!s\r%s\r%c 의 시간은 %Q입니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2715
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2712
 msgid "%Q: no such server"
 msgstr "%Q: 이런 서버는 없습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2726
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2723
 msgid "%Q: no such channel"
 msgstr "%Q: 이런 대화방은 없습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2740
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2737
 msgid "Can't send to channel: %Q"
 msgstr "대화방으로 보낼 수 없습니다: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2745
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2742
 msgid "Can't send text to channel %Q: %Q"
 msgstr "%Q 대화방에 텍스트를 보낼 수 없습니다: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2760
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2757
 msgid "Can't send to channel"
 msgstr "대화방으로 보낼 수 없습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2765
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2762
 msgid "Can't send text to channel %Q"
 msgstr "%Q 대화방으로 텍스트를 보낼 수 없습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2781
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2791
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2778
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2788
 msgid "Your encoding is now %Q"
 msgstr "이제 인코딩은  %Q입니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2822
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2819
 msgid ""
 "%c\r"
 "!n\r"
@@ -5772,54 +5775,54 @@ msgid ""
 "%c's codepage is %Q: %Q"
 msgstr "%c\r!n\r%Q\r%c 의 코드 페이지는 %Q: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2847
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2844
 #, c-format
 msgid "Your user mode is %s"
 msgstr "당신의 사용자 모드는 %s 입니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2883
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2880
 msgid "%Q requires more parameters"
 msgstr "%Q requires more parameters"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2942
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2939
 msgid "STARTTLS reply received but SSL support is not compiled in: ignoring"
 msgstr "STARTTLS 응답이 수신되었지만 SSL 지원이 컴파일되지 않았습니다. 무시하고 있습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2997
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2994
 msgid "Authenticated as %Q"
 msgstr "%Q로 인증했습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3019
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3016
 msgid "SASL authentication successful"
 msgstr "SASL 인증에 성공했습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3044
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3041
 msgid "SASL authentication error: %Q"
 msgstr "SASL 인증 오류: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3056
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3053
 msgid "Attempting fallback due to SASL failure."
 msgstr "SASL 오류로 인해 폴백을 시도하고 있습니다."
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3066
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3063
 msgid "SASL auth failed. Dropping the connection."
 msgstr "SASL 인증에 실패했습니다. 연결을 끊고 있습니다."
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3102
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3129
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3099
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3126
 msgid "mode listing"
 msgstr "모드가 나열되고 있습니다"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3150
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3170
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3147
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3167
 msgid ""
 "End of channel \"%c\" %Q for \r"
 "!c\r"
 "%Q\r"
 msgstr "\r!c\r%Q\r에 대한 대화방 \"%c\" %Q 의 끝"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3150
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3170
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3147
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3167
 msgid "mode list"
 msgstr "모드 목록"
 
@@ -5827,384 +5830,384 @@ msgstr "모드 목록"
 msgid "Script"
 msgstr "스크립트"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:108 src/kvirc/ui/KviModeEditor.cpp:72
+#: src/kvirc/ui/KviChannelWindow.cpp:107 src/kvirc/ui/KviModeEditor.cpp:72
 msgid "Channel modes"
 msgstr "대화방 모드"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:136
+#: src/kvirc/ui/KviChannelWindow.cpp:135
 msgid "Split view"
 msgstr "분할보기"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:140 src/kvirc/ui/KviChannelWindow.cpp:231
+#: src/kvirc/ui/KviChannelWindow.cpp:139 src/kvirc/ui/KviChannelWindow.cpp:230
 msgid "User list"
 msgstr "사용자 목록"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:155 src/kvirc/ui/KviChannelWindow.cpp:174
+#: src/kvirc/ui/KviChannelWindow.cpp:154 src/kvirc/ui/KviChannelWindow.cpp:173
 #: src/kvirc/ui/KviMaskEditor.cpp:141
 msgid "Mode \"%1\" masks"
 msgstr "모드 \"%1\" 마스크"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:211
+#: src/kvirc/ui/KviChannelWindow.cpp:210
 msgid "Mode editor"
 msgstr "모드 편집기"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:829
+#: src/kvirc/ui/KviChannelWindow.cpp:828
 msgid "said something recently"
 msgstr "최근에 뭔가를 말했다"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:829
+#: src/kvirc/ui/KviChannelWindow.cpp:828
 msgid "is talking"
 msgstr "은 말하고 있습니다"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:836 src/kvirc/ui/KviChannelWindow.cpp:853
+#: src/kvirc/ui/KviChannelWindow.cpp:835 src/kvirc/ui/KviChannelWindow.cpp:852
 msgid "and"
 msgstr "및"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:841 src/kvirc/ui/KviChannelWindow.cpp:866
+#: src/kvirc/ui/KviChannelWindow.cpp:840 src/kvirc/ui/KviChannelWindow.cpp:865
 msgid "were talking recently"
 msgstr "최근에 이야기하고 있었습니다"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:841 src/kvirc/ui/KviChannelWindow.cpp:866
+#: src/kvirc/ui/KviChannelWindow.cpp:840 src/kvirc/ui/KviChannelWindow.cpp:865
 msgid "are talking"
 msgstr "말하고 있습니다"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:863
+#: src/kvirc/ui/KviChannelWindow.cpp:862
 msgid "and another %1 users"
 msgstr "및 다른 %1 명의 사용자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:891
+#: src/kvirc/ui/KviChannelWindow.cpp:890
 msgid "Dead channel"
 msgstr "죽은 대화방"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:905
+#: src/kvirc/ui/KviChannelWindow.cpp:904
 msgid "operator"
 msgstr "운영자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:906
+#: src/kvirc/ui/KviChannelWindow.cpp:905
 msgid "operators"
 msgstr "운영자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:918
+#: src/kvirc/ui/KviChannelWindow.cpp:917
 msgid "active user"
 msgstr "활성 사용자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:918
+#: src/kvirc/ui/KviChannelWindow.cpp:917
 msgid "active users"
 msgstr "활성 사용자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:940
+#: src/kvirc/ui/KviChannelWindow.cpp:939
 msgid "hot user"
 msgstr "뜨거운 사용자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:940
+#: src/kvirc/ui/KviChannelWindow.cpp:939
 msgid "hot users"
 msgstr "뜨거운 사용자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:965
+#: src/kvirc/ui/KviChannelWindow.cpp:964
 msgid "IRC operator"
 msgstr "IRC 운영자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:965
+#: src/kvirc/ui/KviChannelWindow.cpp:964
 msgid "IRC operators"
 msgstr "IRC 운영자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:976
+#: src/kvirc/ui/KviChannelWindow.cpp:975
 msgid "channel owner"
 msgstr "대화방 소유자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:976
+#: src/kvirc/ui/KviChannelWindow.cpp:975
 msgid "channel owners"
 msgstr "대화방 소유자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:987
+#: src/kvirc/ui/KviChannelWindow.cpp:986
 msgid "channel administrator"
 msgstr "대화방 관리자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:987
+#: src/kvirc/ui/KviChannelWindow.cpp:986
 msgid "channel administrators"
 msgstr "대화방 관리자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1009
+#: src/kvirc/ui/KviChannelWindow.cpp:1008
 msgid "half-operator"
 msgstr "절반운영자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1009
+#: src/kvirc/ui/KviChannelWindow.cpp:1008
 msgid "half-operators"
 msgstr "절반운영자들"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1020
+#: src/kvirc/ui/KviChannelWindow.cpp:1019
 msgid "voiced user"
 msgstr "발언권 사용자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1020
+#: src/kvirc/ui/KviChannelWindow.cpp:1019
 msgid "voiced users"
 msgstr "발언권 사용자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1031
+#: src/kvirc/ui/KviChannelWindow.cpp:1030
 msgid "user-operator"
 msgstr "사용자-운영도구"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1031
+#: src/kvirc/ui/KviChannelWindow.cpp:1030
 msgid "user-operators"
 msgstr "사용자-운영도구"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1040
+#: src/kvirc/ui/KviChannelWindow.cpp:1039
 msgid "user total"
 msgstr "총 사용자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1040
+#: src/kvirc/ui/KviChannelWindow.cpp:1039
 msgid "users total"
 msgstr "총 사용자"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1076
+#: src/kvirc/ui/KviChannelWindow.cpp:1075
 msgid "No activity"
 msgstr "활동 없음"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1078
+#: src/kvirc/ui/KviChannelWindow.cpp:1077
 msgid "Minimal activity"
 msgstr "가장 적은한의 활동"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1080
+#: src/kvirc/ui/KviChannelWindow.cpp:1079
 msgid "Very low activity"
 msgstr "느긋하고 매우 낮은 활동"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1082
+#: src/kvirc/ui/KviChannelWindow.cpp:1081
 msgid "Might be low activity"
 msgstr "활동이 적을 수 있음"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1082
+#: src/kvirc/ui/KviChannelWindow.cpp:1081
 msgid "Low activity"
 msgstr "낮은 활동"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1084
+#: src/kvirc/ui/KviChannelWindow.cpp:1083
 msgid "Might be medium activity"
 msgstr "중간 정도의 활동 일 수 있음"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1084
+#: src/kvirc/ui/KviChannelWindow.cpp:1083
 msgid "Medium activity"
 msgstr "중간 정도의 활동"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1086
+#: src/kvirc/ui/KviChannelWindow.cpp:1085
 msgid "Might be high activity"
 msgstr "활동이 많을 수 있음"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1086
+#: src/kvirc/ui/KviChannelWindow.cpp:1085
 msgid "High activity"
 msgstr "활발하고 높은 활동"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1088
+#: src/kvirc/ui/KviChannelWindow.cpp:1087
 msgid "Might be very high activity"
 msgstr "매우 높은 활동 일 수 있음"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1088
+#: src/kvirc/ui/KviChannelWindow.cpp:1087
 msgid "Very high activity"
 msgstr "매우 높은 활동"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1090
+#: src/kvirc/ui/KviChannelWindow.cpp:1089
 msgid "Might be flooded with messages"
 msgstr "메시지가 넘칠 수 있습니다"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1090
+#: src/kvirc/ui/KviChannelWindow.cpp:1089
 msgid "Flooded with messages"
 msgstr "메시지가 넘침"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1097
+#: src/kvirc/ui/KviChannelWindow.cpp:1096
 msgid "human"
 msgstr "인간"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1110
+#: src/kvirc/ui/KviChannelWindow.cpp:1109
 msgid "[Dead channel]"
 msgstr "[죽은 대화방]"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1146
-#: src/kvirc/ui/KviConsoleWindow.cpp:1184 src/kvirc/ui/KviQueryWindow.cpp:387
-#: src/kvirc/ui/KviStatusBar.cpp:697
+#: src/kvirc/ui/KviChannelWindow.cpp:1145
+#: src/kvirc/ui/KviConsoleWindow.cpp:1197 src/kvirc/ui/KviQueryWindow.cpp:387
+#: src/kvirc/ui/KviStatusBar.cpp:703
 msgid " on "
 msgstr " 의 위에 "
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1217
-#: src/kvirc/ui/KviChannelWindow.cpp:1404 src/kvirc/ui/KviQueryWindow.cpp:773
+#: src/kvirc/ui/KviChannelWindow.cpp:1216
+#: src/kvirc/ui/KviChannelWindow.cpp:1403 src/kvirc/ui/KviQueryWindow.cpp:773
 msgid ""
 "The encryption engine was unable to encrypt the current message (%Q): %Q, no"
 " data sent to the server"
 msgstr "암호화 엔진이 현재 메시지(%Q)를 암호화할 수 없습니다: %Q, 서버로 전송된 데이터가 없습니다"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1824 src/kvirc/ui/KviQueryWindow.cpp:591
+#: src/kvirc/ui/KviChannelWindow.cpp:1823 src/kvirc/ui/KviQueryWindow.cpp:591
 msgid ""
 "The encryption engine was unable to encrypt the current message (%Q): %s, no"
 " data sent to the server"
 msgstr "암호화 엔진이 현재 메시지(%Q)를 암호화하지 못했습니다: %s, 서버로 전송된 데이터가 없습니다"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1882
+#: src/kvirc/ui/KviChannelWindow.cpp:1881
 msgid "Sent part request, waiting for reply..."
 msgstr "퇴장 요청을 보냈으며 응답을 기다리고 있습니다..."
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1985
+#: src/kvirc/ui/KviChannelWindow.cpp:1984
 msgid "Channel Modes"
 msgstr "대화방 모드"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:2008 src/kvirc/ui/KviTopicWidget.cpp:480
+#: src/kvirc/ui/KviChannelWindow.cpp:2007 src/kvirc/ui/KviTopicWidget.cpp:486
 msgid "Double-click to edit..."
 msgstr "편집하려면 두 번 클릭하십시오..."
 
-#: src/kvirc/ui/KviChannelWindow.cpp:2063
+#: src/kvirc/ui/KviChannelWindow.cpp:2062
 #, c-format
 msgid "Channel synchronized in %d.%d seconds"
 msgstr "대화방이 %d.%d 초 만에 동기화 되었습니다"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:90
+#: src/kvirc/ui/KviConsoleWindow.cpp:91
 msgid "CONSOLE"
 msgstr "콘솔"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:103
+#: src/kvirc/ui/KviConsoleWindow.cpp:104
 msgid "Address:"
 msgstr "주소:"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:114
+#: src/kvirc/ui/KviConsoleWindow.cpp:115
 msgid "Current IRC URI"
 msgstr "현재 IRC URI"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:130 src/kvirc/ui/KviConsoleWindow.cpp:133
+#: src/kvirc/ui/KviConsoleWindow.cpp:131 src/kvirc/ui/KviConsoleWindow.cpp:134
 msgid "Notify list"
 msgstr "알림 목록"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:273
+#: src/kvirc/ui/KviConsoleWindow.cpp:274
 msgid "Comment"
 msgstr "의견"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:288
+#: src/kvirc/ui/KviConsoleWindow.cpp:289
 msgid "Real name"
 msgstr "진짜 이름"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:297
+#: src/kvirc/ui/KviConsoleWindow.cpp:298
 msgid "Gender"
 msgstr "성별"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:299 src/modules/setup/SetupWizard.cpp:381
+#: src/kvirc/ui/KviConsoleWindow.cpp:300 src/modules/setup/SetupWizard.cpp:384
 msgid "Male"
 msgstr "남성"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:299 src/modules/setup/SetupWizard.cpp:380
+#: src/kvirc/ui/KviConsoleWindow.cpp:300 src/modules/setup/SetupWizard.cpp:383
 msgid "Female"
 msgstr "여성"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:308
+#: src/kvirc/ui/KviConsoleWindow.cpp:309
 msgid "Registered as"
 msgstr "등록됨:"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:316
+#: src/kvirc/ui/KviConsoleWindow.cpp:317
 msgid "Matched by"
 msgstr "일치됨:"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:328
+#: src/kvirc/ui/KviConsoleWindow.cpp:329
 msgid "On"
 msgstr "의 위에"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:338
+#: src/kvirc/ui/KviConsoleWindow.cpp:339
 msgid "Using server: <b>%1</b>"
 msgstr "사용중인 서버: <b>%1</b>"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:343
+#: src/kvirc/ui/KviConsoleWindow.cpp:344
 msgid "Hops: <b>%1</b>"
 msgstr "반옵: <b>%1</b>"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:356
+#: src/kvirc/ui/KviConsoleWindow.cpp:357
 msgid "Identified to account: <b>%1</b>"
 msgstr "계정으로 식별됨: <b>%1</b>"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:363
+#: src/kvirc/ui/KviConsoleWindow.cpp:364
 msgid "Probably away"
 msgstr "아마도 자리 비움"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:446
+#: src/kvirc/ui/KviConsoleWindow.cpp:447
 msgid ""
 "KVIrc can only recognize irc://, irc6://, ircs:// or ircs6:// URL's\n"
 "The URL you provided is invalid. Check spelling and try again"
 msgstr "KVIrc는 irc://, irc6://, ircs:// or ircs6:// URL만 인식할 수 있습니다\n입력하신 URL이 유효하지 않습니다. 철자를 확인하고 재시도하십시오"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:528 src/kvirc/ui/KviConsoleWindow.cpp:563
-#: src/kvirc/ui/KviMainWindow.cpp:830
+#: src/kvirc/ui/KviConsoleWindow.cpp:530 src/kvirc/ui/KviConsoleWindow.cpp:571
+#: src/kvirc/ui/KviMainWindow.cpp:836
 msgid "Confirm Close - KVIrc"
 msgstr "닫기 확인 - KVIrc"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:529
+#: src/kvirc/ui/KviConsoleWindow.cpp:531
 msgid ""
 "You have just attempted to close a console window with an active connection inside.\n"
 "Are you sure you wish to terminate the connection?"
 msgstr "내부에 활성 연결이 있는 콘솔 창을 닫으려고 했습니다.\n연결을 종료 하시겠습니까?"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:531 src/kvirc/ui/KviConsoleWindow.cpp:566
-#: src/kvirc/ui/KviMainWindow.cpp:833
+#: src/kvirc/ui/KviConsoleWindow.cpp:533 src/kvirc/ui/KviConsoleWindow.cpp:573
+#: src/kvirc/ui/KviMainWindow.cpp:839
 msgid "&Yes"
 msgstr "예(&Y)"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:532 src/kvirc/ui/KviConsoleWindow.cpp:565
-#: src/kvirc/ui/KviMainWindow.cpp:834
+#: src/kvirc/ui/KviConsoleWindow.cpp:534 src/kvirc/ui/KviConsoleWindow.cpp:574
+#: src/kvirc/ui/KviMainWindow.cpp:840
 msgid "&Always"
 msgstr "항상(&A)"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:533 src/kvirc/ui/KviConsoleWindow.cpp:567
-#: src/kvirc/ui/KviMainWindow.cpp:835
+#: src/kvirc/ui/KviConsoleWindow.cpp:535 src/kvirc/ui/KviConsoleWindow.cpp:575
+#: src/kvirc/ui/KviMainWindow.cpp:841
 msgid "&No"
 msgstr "아니오(&N)"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:564
+#: src/kvirc/ui/KviConsoleWindow.cpp:572
 msgid ""
 "You have just attempted to close the last console window.\n"
 "Are you sure you wish to quit KVIrc?"
 msgstr "마지막 콘솔 창을 닫으려고 했습니다.\nKVIrc를 종료 하시겠습니까?"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1033
+#: src/kvirc/ui/KviConsoleWindow.cpp:1046
 msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
 msgstr "이름이 \"%Q\"이고 로컬 경로가 \"%Q\"인 아바타를로드하지 못했습니다."
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1149
+#: src/kvirc/ui/KviConsoleWindow.cpp:1162
 msgid "No connection"
 msgstr "연결이 되지 않습니다"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1152
+#: src/kvirc/ui/KviConsoleWindow.cpp:1165
 msgid "Waiting to reconnect..."
 msgstr "재연결 기다리는 중..."
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1155 src/kvirc/ui/KviIrcToolBar.cpp:252
-#: src/kvirc/ui/KviIrcToolBar.cpp:388 src/kvirc/ui/KviStatusBar.cpp:703
+#: src/kvirc/ui/KviConsoleWindow.cpp:1168 src/kvirc/ui/KviIrcToolBar.cpp:252
+#: src/kvirc/ui/KviIrcToolBar.cpp:388 src/kvirc/ui/KviStatusBar.cpp:709
 msgid "Connection in progress..."
 msgstr "연결을 진행하고 있습니다..."
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1158 src/kvirc/ui/KviStatusBar.cpp:710
+#: src/kvirc/ui/KviConsoleWindow.cpp:1171 src/kvirc/ui/KviStatusBar.cpp:716
 msgid "Login in progress..."
 msgstr "로그인을 진행하고 있습니다..."
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1170
-#: src/kvirc/ui/KviConsoleWindow.cpp:1179
+#: src/kvirc/ui/KviConsoleWindow.cpp:1183
+#: src/kvirc/ui/KviConsoleWindow.cpp:1192
 msgid "away"
 msgstr "자리 비움"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1209
+#: src/kvirc/ui/KviConsoleWindow.cpp:1222
 msgid "channel"
 msgstr "대화방"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1210
+#: src/kvirc/ui/KviConsoleWindow.cpp:1223
 msgid "channels"
 msgstr "대화방"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1211
+#: src/kvirc/ui/KviConsoleWindow.cpp:1224
 msgid "query"
 msgstr "질의"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1212
+#: src/kvirc/ui/KviConsoleWindow.cpp:1225
 msgid "queries"
 msgstr "질의"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1291
+#: src/kvirc/ui/KviConsoleWindow.cpp:1304
 msgid "Connected since"
 msgstr "이후 연결"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1302
+#: src/kvirc/ui/KviConsoleWindow.cpp:1315
 msgid "Online for"
 msgstr "온라인"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1314
+#: src/kvirc/ui/KviConsoleWindow.cpp:1327
 msgid "Server idle for"
 msgstr "유휴 서버"
 
@@ -6369,95 +6372,95 @@ msgstr "항상"
 msgid "Ctrl+Return; submits contents, Alt+Return; hides this editor"
 msgstr "Ctrl+Return; 내용 보내기, Alt+Return 이 편집기 숨기기"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1074
+#: src/kvirc/ui/KviInputEditor.cpp:1089
 msgid "Clipboard"
 msgstr "클립보드"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1086
+#: src/kvirc/ui/KviInputEditor.cpp:1101
 msgid "line break"
 msgstr "줄 바꿈"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1086
+#: src/kvirc/ui/KviInputEditor.cpp:1101
 msgid "line breaks"
 msgstr "줄 바꿈"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1102
+#: src/kvirc/ui/KviInputEditor.cpp:1117
 msgid "&Undo"
 msgstr "되돌리기(&U)"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1104
+#: src/kvirc/ui/KviInputEditor.cpp:1119
 msgid "&Redo"
 msgstr "다시실행(&R)"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1109
+#: src/kvirc/ui/KviInputEditor.cpp:1124
 msgid "Cu&t"
 msgstr "잘라내기(&T)"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1111
+#: src/kvirc/ui/KviInputEditor.cpp:1126
 msgid "&Copy"
 msgstr "복사하기(&C)"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1113
+#: src/kvirc/ui/KviInputEditor.cpp:1128
 msgid "&Paste"
 msgstr "붙여넣기(&P)"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1115
+#: src/kvirc/ui/KviInputEditor.cpp:1130
 msgid "Paste Slowly"
 msgstr "천천히 붙여넣기"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1120
+#: src/kvirc/ui/KviInputEditor.cpp:1135
 msgid "Paste &File"
 msgstr "파일 붙여넣기(&F)"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1126
+#: src/kvirc/ui/KviInputEditor.cpp:1141
 msgid "Stop Paste"
 msgstr "붙여넣기 중지"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1130
+#: src/kvirc/ui/KviInputEditor.cpp:1145
 msgid "Clear"
 msgstr "지우기"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1135
+#: src/kvirc/ui/KviInputEditor.cpp:1150
 msgid "Select All"
 msgstr "모두 선택"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1140
+#: src/kvirc/ui/KviInputEditor.cpp:1155
 msgid "Insert Icon"
 msgstr "아이콘 삽입"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1157
+#: src/kvirc/ui/KviInputEditor.cpp:1172
 msgid "Correct Spelling of '%1'"
 msgstr "%1'의 올바른 철자"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1163
+#: src/kvirc/ui/KviInputEditor.cpp:1178
 msgid "Correct Spelling"
 msgstr "올바른 철자"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1235
+#: src/kvirc/ui/KviInputEditor.cpp:1250
 msgid "Spell Checker"
 msgstr "맞춤법 검사기"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1236
+#: src/kvirc/ui/KviInputEditor.cpp:1251
 msgid "No Suggestions Available"
 msgstr "제안 사항 없음"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1241
+#: src/kvirc/ui/KviInputEditor.cpp:1256
 msgid "Spelling Suggestions for '%1'"
 msgstr "'%1' 에 대한 철자 제안"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1273
+#: src/kvirc/ui/KviInputEditor.cpp:1288
 msgid "Spelling Checker"
 msgstr "맞춤법 검사기"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1275
+#: src/kvirc/ui/KviInputEditor.cpp:1290
 msgid "Not Supported"
 msgstr "미지원"
 
-#: src/kvirc/ui/KviInputEditor.cpp:2332
+#: src/kvirc/ui/KviInputEditor.cpp:2347
 msgid "%d matches: %Q"
 msgstr "%d 개가 같음: %Q"
 
-#: src/kvirc/ui/KviInputEditor.cpp:2339
+#: src/kvirc/ui/KviInputEditor.cpp:2354
 msgid "No matches"
 msgstr "같은게 없음"
 
@@ -6466,7 +6469,7 @@ msgid "IRC context"
 msgstr "IRC 상황"
 
 #: src/kvirc/ui/KviIrcToolBar.cpp:244 src/kvirc/ui/KviIrcToolBar.cpp:344
-#: src/kvirc/ui/KviStatusBar.cpp:714 src/kvirc/ui/KviStatusBarApplet.cpp:244
+#: src/kvirc/ui/KviStatusBar.cpp:720 src/kvirc/ui/KviStatusBarApplet.cpp:244
 #: src/kvirc/ui/KviStatusBarApplet.cpp:317
 #: src/modules/objects/qtftp/qftp.cpp:727
 msgid "Not connected"
@@ -6498,7 +6501,7 @@ msgstr "마지막 확인: <b>%d 분 전 %d 초 전에</b>"
 msgid "Lag: <b>?.??</b>"
 msgstr "시간 지연: <b>?.??</b>"
 
-#: src/kvirc/ui/KviIrcToolBar.cpp:319 src/kvirc/ui/KviStatusBar.cpp:721
+#: src/kvirc/ui/KviIrcToolBar.cpp:319 src/kvirc/ui/KviStatusBar.cpp:727
 msgid "No IRC context"
 msgstr "IRC 맥락이 없음"
 
@@ -6515,59 +6518,59 @@ msgstr "시간 지연: ?.??"
 msgid "Output view tools"
 msgstr "출력보기 도구"
 
-#: src/kvirc/ui/KviIrcView.cpp:2294
+#: src/kvirc/ui/KviIrcView.cpp:2306
 msgid "Toggle Search"
 msgstr "검색 토글"
 
-#: src/kvirc/ui/KviIrcView.cpp:2298
+#: src/kvirc/ui/KviIrcView.cpp:2310
 msgid "Zoom In"
 msgstr "확대"
 
-#: src/kvirc/ui/KviIrcView.cpp:2299
+#: src/kvirc/ui/KviIrcView.cpp:2311
 msgid "Zoom Out"
 msgstr "축소"
 
-#: src/kvirc/ui/KviIrcView.cpp:2303
+#: src/kvirc/ui/KviIrcView.cpp:2315
 msgid "Choose Temporary Font..."
 msgstr "임시 글꼴 선택..."
 
-#: src/kvirc/ui/KviIrcView.cpp:2304
+#: src/kvirc/ui/KviIrcView.cpp:2316
 msgid "Choose Temporary Background..."
 msgstr "임시 배경 선택..."
 
-#: src/kvirc/ui/KviIrcView.cpp:2306
+#: src/kvirc/ui/KviIrcView.cpp:2318
 msgid "Reset Font"
 msgstr "글꼴 다시 설정"
 
-#: src/kvirc/ui/KviIrcView.cpp:2307
+#: src/kvirc/ui/KviIrcView.cpp:2319
 msgid "Reset Background"
 msgstr "배경 다시 설정"
 
-#: src/kvirc/ui/KviIrcView.cpp:2311
+#: src/kvirc/ui/KviIrcView.cpp:2323
 msgid "Clear Buffer"
 msgstr "내용 지우기"
 
-#: src/kvirc/ui/KviIrcView.cpp:2346 src/kvirc/ui/KviIrcView.cpp:2348
+#: src/kvirc/ui/KviIrcView.cpp:2358 src/kvirc/ui/KviIrcView.cpp:2360
 msgid "Choose Font"
 msgstr "글꼴을 선택하십시오"
 
-#: src/kvirc/ui/KviIrcView.cpp:2361
+#: src/kvirc/ui/KviIrcView.cpp:2373
 msgid "Choose the background image..."
 msgstr "배경 그림 선택.."
 
-#: src/kvirc/ui/KviIrcView.cpp:2375
+#: src/kvirc/ui/KviIrcView.cpp:2387
 msgid "Invalid Image - KVIrc"
 msgstr "잘못된 그림 - KVIrc"
 
-#: src/kvirc/ui/KviIrcView.cpp:2375 src/modules/window/libkviwindow.cpp:1373
+#: src/kvirc/ui/KviIrcView.cpp:2387 src/modules/window/libkviwindow.cpp:1373
 msgid "Failed to load the selected image!"
 msgstr "선택한 그림을 불러오지 못했습니다!"
 
-#: src/kvirc/ui/KviIrcView.cpp:2558 src/kvirc/ui/KviIrcView.cpp:2617
+#: src/kvirc/ui/KviIrcView.cpp:2570 src/kvirc/ui/KviIrcView.cpp:2629
 msgid "Pos %1"
 msgstr "%1의 게시물"
 
-#: src/kvirc/ui/KviIrcView.cpp:2575 src/kvirc/ui/KviIrcView.cpp:2635
+#: src/kvirc/ui/KviIrcView.cpp:2587 src/kvirc/ui/KviIrcView.cpp:2647
 msgid "Not found"
 msgstr "찾을 수 없습니다"
 
@@ -6575,113 +6578,113 @@ msgstr "찾을 수 없습니다"
 msgid "Looking up host %Q..."
 msgstr "호스트 %Q 를 찾는 중..."
 
-#: src/kvirc/ui/KviIrcView_events.cpp:869
+#: src/kvirc/ui/KviIrcView_events.cpp:870
 msgid "Scroll up to read from the last read line"
 msgstr "마지막 읽기 행에서 읽으려면 위로 스크롤"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:909
-#: src/kvirc/ui/KviIrcView_events.cpp:916 src/modules/url/libkviurl.cpp:139
+#: src/kvirc/ui/KviIrcView_events.cpp:910
+#: src/kvirc/ui/KviIrcView_events.cpp:917 src/modules/url/libkviurl.cpp:139
 msgid "URL"
 msgstr "URL"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:924
+#: src/kvirc/ui/KviIrcView_events.cpp:925
 msgid "Click to open this link"
 msgstr "이 고리를 열려면 클릭하십시오"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:927
+#: src/kvirc/ui/KviIrcView_events.cpp:928
 msgid "Double-click to open this link"
 msgstr "이 고리를 열려면 두 번 클릭하십시오"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:929
-#: src/kvirc/ui/KviIrcView_events.cpp:975
-#: src/kvirc/ui/KviIrcView_events.cpp:1023
-#: src/kvirc/ui/KviIrcView_events.cpp:1113
-#: src/kvirc/ui/KviIrcView_events.cpp:1126
+#: src/kvirc/ui/KviIrcView_events.cpp:930
+#: src/kvirc/ui/KviIrcView_events.cpp:976
+#: src/kvirc/ui/KviIrcView_events.cpp:1024
+#: src/kvirc/ui/KviIrcView_events.cpp:1114
+#: src/kvirc/ui/KviIrcView_events.cpp:1127
 msgid "Right-click to view other options"
 msgstr "다른 선택사항을 보려면 마우스 오른쪽 버튼을 클릭하십시오"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:945
-#: src/kvirc/ui/KviIrcView_events.cpp:952 src/kvirc/ui/KviStatusBar.cpp:584
+#: src/kvirc/ui/KviIrcView_events.cpp:946
+#: src/kvirc/ui/KviIrcView_events.cpp:953 src/kvirc/ui/KviStatusBar.cpp:590
 msgid "Hostname"
 msgstr "호스트 이름"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:964
+#: src/kvirc/ui/KviIrcView_events.cpp:965
 msgid "Unable to look up hostname: hostname appears to be masked"
 msgstr "호스트 이름을 찾을 수 없습니다: 호스트 이름이 마스킹된 것으로 나타남"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:966
+#: src/kvirc/ui/KviIrcView_events.cpp:967
 msgid "Unable to look up hostname: unknown host"
 msgstr "호스트 이름을 찾을 수 없습니다: 알 수 없는 호스트"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:973
+#: src/kvirc/ui/KviIrcView_events.cpp:974
 msgid "Double-click to look up this hostname"
 msgstr "이 호스트 이름을 찾으려면 두 번 클릭하십시오"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:994
-#: src/kvirc/ui/KviIrcView_events.cpp:1001
+#: src/kvirc/ui/KviIrcView_events.cpp:995
+#: src/kvirc/ui/KviIrcView_events.cpp:1002
 msgid "Server URL"
 msgstr "서버 URL"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1013
+#: src/kvirc/ui/KviIrcView_events.cpp:1014
 msgid "Server appears to be a network hub"
 msgstr "서버가 네트워크 허브 인 것 같습니다"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1015
+#: src/kvirc/ui/KviIrcView_events.cpp:1016
 msgid "Unknown server"
 msgstr "알 수 없는 서버"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1021
+#: src/kvirc/ui/KviIrcView_events.cpp:1022
 msgid "Double-click to read the MOTD"
 msgstr "MOTD 를 읽으려면 두 번 클릭하십시오"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1042
+#: src/kvirc/ui/KviIrcView_events.cpp:1043
 msgid "You're not an operator: you may not change channel modes"
 msgstr "운영자가 아닙니다: 대화방 모드를 바꿀 수 없습니다"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1063 src/kvirc/ui/KviQueryWindow.cpp:158
+#: src/kvirc/ui/KviIrcView_events.cpp:1064 src/kvirc/ui/KviQueryWindow.cpp:158
 msgid "Nothing is known about %1"
 msgstr "%1에 대해 알려진 것이 없습니다"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1066
+#: src/kvirc/ui/KviIrcView_events.cpp:1067
 msgid "Nothing is known about %1 (no connection)"
 msgstr "%1에 대해 알려진 것이 없습니다(연결 없음)"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1099
-#: src/kvirc/ui/KviIrcView_events.cpp:1105 src/kvirc/ui/KviTopicWidget.cpp:202
-#: src/kvirc/ui/KviTopicWidget.cpp:460 src/kvirc/ui/KviTopicWidget.cpp:486
+#: src/kvirc/ui/KviIrcView_events.cpp:1100
+#: src/kvirc/ui/KviIrcView_events.cpp:1106 src/kvirc/ui/KviTopicWidget.cpp:202
+#: src/kvirc/ui/KviTopicWidget.cpp:466 src/kvirc/ui/KviTopicWidget.cpp:492
 msgid "Channel Topic"
 msgstr "대화방 주제"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1106 src/kvirc/ui/KviTopicWidget.cpp:204
+#: src/kvirc/ui/KviIrcView_events.cpp:1107 src/kvirc/ui/KviTopicWidget.cpp:204
 msgid "No topic message has been received from the server yet"
 msgstr "아직 서버에서 주제 메시지를 받지 못했습니다"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1109
+#: src/kvirc/ui/KviIrcView_events.cpp:1110
 msgid "Channel modes: <b>+%1</b>"
 msgstr "대화방 모드: <b>+%1</b>"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1110
+#: src/kvirc/ui/KviIrcView_events.cpp:1111
 msgid "Total users: <b>%1</b>"
 msgstr "총 사용자: <b>%1</b>"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1111
-#: src/kvirc/ui/KviIrcView_events.cpp:1121
+#: src/kvirc/ui/KviIrcView_events.cpp:1112
+#: src/kvirc/ui/KviIrcView_events.cpp:1122
 msgid "IRC URI"
 msgstr "IRC URI"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1125
+#: src/kvirc/ui/KviIrcView_events.cpp:1126
 msgid "Double-click to join <b>%1</b>"
 msgstr "<b>%1</b>에 입장하려면 두 번 클릭하십시오"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1152
+#: src/kvirc/ui/KviIrcView_events.cpp:1153
 msgid "Double-click: %Q"
 msgstr "두 번 클릭하십시오: %Q"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1158
+#: src/kvirc/ui/KviIrcView_events.cpp:1159
 msgid "Middle-click: %Q"
 msgstr "가운데 클릭하십시오: %Q"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1164
+#: src/kvirc/ui/KviIrcView_events.cpp:1165
 msgid "Right-click: %Q"
 msgstr "오른쪽 클릭하십시오: %Q"
 
@@ -6774,29 +6777,29 @@ msgstr "필터 파일 %Q 을(를) 쓰지 못했습니다(IO 오류)."
 msgid "Can't open the filter file %Q for writing"
 msgstr "쓰기 위해 필터 파일 %Q 을(를) 열 수 없습니다"
 
-#: src/kvirc/ui/KviMainWindow.cpp:831
+#: src/kvirc/ui/KviMainWindow.cpp:837
 msgid "There are active connections, are you sure you wish to quit KVIrc?"
 msgstr "활성화된 연결이 있습니다. KVIrc를 종료 하시겠습니까?"
 
-#: src/kvirc/ui/KviMainWindow.cpp:973
+#: src/kvirc/ui/KviMainWindow.cpp:979
 msgid "Do not show this message again"
 msgstr "이 메시지를 재표시하지 마십시오"
 
-#: src/kvirc/ui/KviMainWindow.cpp:974
+#: src/kvirc/ui/KviMainWindow.cpp:980
 msgid ""
 "This will hide the menu bar completely. You can show it again by pressing "
 "%1."
 msgstr "메뉴 막대가 완전히 숨겨집니다. %1을 눌러 재표시할 수 있습니다."
 
-#: src/kvirc/ui/KviMainWindow.cpp:976
+#: src/kvirc/ui/KviMainWindow.cpp:982
 msgid "Hide Menu Bar - KVIrc"
 msgstr "메뉴 바 숨기기 - KVIrc"
 
-#: src/kvirc/ui/KviMainWindow.cpp:1025 src/kvirc/ui/KviMainWindow.cpp:1047
+#: src/kvirc/ui/KviMainWindow.cpp:1031 src/kvirc/ui/KviMainWindow.cpp:1053
 msgid "Show %1"
 msgstr "%1 표시"
 
-#: src/kvirc/ui/KviMainWindow.cpp:1075
+#: src/kvirc/ui/KviMainWindow.cpp:1081
 msgid "Customize..."
 msgstr "맞춤 설정..."
 
@@ -6820,7 +6823,7 @@ msgstr "두 번 클릭하여 항목 편집"
 msgid "Mask"
 msgstr "마스크"
 
-#: src/kvirc/ui/KviMaskEditor.cpp:198 src/kvirc/ui/KviTopicWidget.cpp:468
+#: src/kvirc/ui/KviMaskEditor.cpp:198 src/kvirc/ui/KviTopicWidget.cpp:474
 msgid "Set by"
 msgstr "에 의해 설정"
 
@@ -7024,8 +7027,8 @@ msgstr "암호 공개"
 #: src/modules/avatar/libkviavatar.cpp:93
 #: src/modules/options/OptionsWidget_textIcons.cpp:181
 #: src/modules/options/OptionsWidget_textIcons.cpp:257
-#: src/modules/setup/SetupWizard.cpp:239 src/modules/setup/SetupWizard.cpp:253
-#: src/modules/setup/SetupWizard.cpp:278
+#: src/modules/setup/SetupWizard.cpp:242 src/modules/setup/SetupWizard.cpp:256
+#: src/modules/setup/SetupWizard.cpp:281
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:222
 msgid "&Browse..."
 msgstr "둘러보기(&B)..."
@@ -7092,66 +7095,66 @@ msgstr "이름"
 msgid "Password"
 msgstr "암호"
 
-#: src/kvirc/ui/KviStatusBar.cpp:326
+#: src/kvirc/ui/KviStatusBar.cpp:332
 msgid "<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around"
 msgstr "애플릿을 이동하려면 <b>Shift + 드래그</b>또는 <b>Ctrl + 드래그</b>"
 
-#: src/kvirc/ui/KviStatusBar.cpp:328
+#: src/kvirc/ui/KviStatusBar.cpp:334
 msgid "Right-click to see the other options"
 msgstr "다른 선택사항을 보려면 오른쪽 버튼을 클릭하십시오"
 
-#: src/kvirc/ui/KviStatusBar.cpp:339
+#: src/kvirc/ui/KviStatusBar.cpp:345
 msgid "Double-click to get network information"
 msgstr "네트워크 정보를 얻으려면 두 번 클릭 하십시오"
 
-#: src/kvirc/ui/KviStatusBar.cpp:344
+#: src/kvirc/ui/KviStatusBar.cpp:350
 msgid "Right-click to add / remove applets"
 msgstr "애플릿을 추가/제거하려면  오른쪽 클릭"
 
-#: src/kvirc/ui/KviStatusBar.cpp:385
+#: src/kvirc/ui/KviStatusBar.cpp:391
 msgid "Remove %1"
 msgstr "%1 제거"
 
-#: src/kvirc/ui/KviStatusBar.cpp:397
+#: src/kvirc/ui/KviStatusBar.cpp:403
 msgid "Add Applet"
 msgstr "애플릿 추가"
 
-#: src/kvirc/ui/KviStatusBar.cpp:445
+#: src/kvirc/ui/KviStatusBar.cpp:451
 msgid ""
 "Drag the applet while holding the Shift or Ctrl key to move it to the "
 "desired position"
 msgstr "Shift 또는 Ctrl 키를 누른 상태에서 애플릿을 드래그하여 원하는 위치로 이동"
 
-#: src/kvirc/ui/KviStatusBar.cpp:544
+#: src/kvirc/ui/KviStatusBar.cpp:550
 msgid "Network Information - KVIrc"
 msgstr "네트워크 정보 - KVIrc"
 
-#: src/kvirc/ui/KviStatusBar.cpp:568
+#: src/kvirc/ui/KviStatusBar.cpp:574
 msgid "Network"
 msgstr "네트워크"
 
-#: src/kvirc/ui/KviStatusBar.cpp:572
+#: src/kvirc/ui/KviStatusBar.cpp:578
 msgid "Server"
 msgstr "서버"
 
-#: src/kvirc/ui/KviStatusBar.cpp:576
+#: src/kvirc/ui/KviStatusBar.cpp:582
 msgid "Nickname"
 msgstr "대화명"
 
-#: src/kvirc/ui/KviStatusBar.cpp:580
+#: src/kvirc/ui/KviStatusBar.cpp:586
 msgid "Username"
 msgstr "사용자 이름"
 
-#: src/kvirc/ui/KviStatusBar.cpp:588
+#: src/kvirc/ui/KviStatusBar.cpp:594
 msgid "Local IP"
 msgstr "로컬 IP"
 
-#: src/kvirc/ui/KviStatusBar.cpp:592
+#: src/kvirc/ui/KviStatusBar.cpp:598
 msgid "User modes"
 msgstr "사용자 모드"
 
-#: src/kvirc/ui/KviStatusBar.cpp:596
-#: src/modules/trayicon/libkvitrayicon.cpp:101
+#: src/kvirc/ui/KviStatusBar.cpp:602
+#: src/modules/trayicon/libkvitrayicon.cpp:103
 msgid "Away"
 msgstr "자리 비움"
 
@@ -7297,19 +7300,19 @@ msgstr "변경 사항을 취소"
 msgid "Unknown channel topic"
 msgstr "알 수 없는 대화방 주제"
 
-#: src/kvirc/ui/KviTopicWidget.cpp:474
+#: src/kvirc/ui/KviTopicWidget.cpp:480
 msgid "Set on"
 msgstr "에 설정"
 
-#: src/kvirc/ui/KviTopicWidget.cpp:488
+#: src/kvirc/ui/KviTopicWidget.cpp:494
 msgid "No topic is set"
 msgstr "주제를 설정하지 않았습니다"
 
-#: src/kvirc/ui/KviTopicWidget.cpp:490
+#: src/kvirc/ui/KviTopicWidget.cpp:496
 msgid "Double-click to set..."
 msgstr "설정하려면 두 번 클릭하십시오..."
 
-#: src/kvirc/ui/KviTopicWidget.cpp:574
+#: src/kvirc/ui/KviTopicWidget.cpp:580
 msgid "Copy Topic to Clipboard"
 msgstr "주제를 클립 보드에 복사"
 
@@ -7369,48 +7372,48 @@ msgstr "다운로드 중: %p %"
 msgid "Download failed: %1"
 msgstr "다운로드 실패: %1"
 
-#: src/kvirc/ui/KviWindow.cpp:375
+#: src/kvirc/ui/KviWindow.cpp:378
 msgid "Encryption"
 msgstr "암호화"
 
-#: src/kvirc/ui/KviWindow.cpp:384
+#: src/kvirc/ui/KviWindow.cpp:387
 msgid "Text encoding"
 msgstr "텍스트 인코딩"
 
-#: src/kvirc/ui/KviWindow.cpp:479
+#: src/kvirc/ui/KviWindow.cpp:482
 msgid "Oops! I've accidentally lost the encryption engine."
 msgstr "죄송합니다! 실수로 암호화 엔진을 잃어 버렸습니다."
 
-#: src/kvirc/ui/KviWindow.cpp:493
+#: src/kvirc/ui/KviWindow.cpp:496
 msgid "List of window types available in this release of KVIrc:"
 msgstr "이 KVIrc 릴리스에서 사용 가능한 창 유형 목록:"
 
-#: src/kvirc/ui/KviWindow.cpp:673 src/kvirc/ui/KviWindow.cpp:753
+#: src/kvirc/ui/KviWindow.cpp:676 src/kvirc/ui/KviWindow.cpp:756
 msgid "Use Default Encoding"
 msgstr "기본 인코딩 사용"
 
-#: src/kvirc/ui/KviWindow.cpp:691 src/kvirc/ui/KviWindow.cpp:733
-#: src/kvirc/ui/KviWindow.cpp:782
+#: src/kvirc/ui/KviWindow.cpp:694 src/kvirc/ui/KviWindow.cpp:736
+#: src/kvirc/ui/KviWindow.cpp:785
 msgid "Current: "
 msgstr "흐름: "
 
-#: src/kvirc/ui/KviWindow.cpp:698
+#: src/kvirc/ui/KviWindow.cpp:701
 msgid "Standard"
 msgstr "표준"
 
-#: src/kvirc/ui/KviWindow.cpp:700
+#: src/kvirc/ui/KviWindow.cpp:703
 msgid "Smart (Send Local)"
 msgstr "스마트 (로컬 전송)"
 
-#: src/kvirc/ui/KviWindow.cpp:702
+#: src/kvirc/ui/KviWindow.cpp:705
 msgid "Smart (Send UTF-8)"
 msgstr "스마트 (UTF-8 전송)"
 
-#: src/kvirc/ui/KviWindow.cpp:1440
+#: src/kvirc/ui/KviWindow.cpp:1443
 msgid "Starting last log"
 msgstr "마지막 기록 시작"
 
-#: src/kvirc/ui/KviWindow.cpp:1507
+#: src/kvirc/ui/KviWindow.cpp:1510
 msgid "End of log"
 msgstr "기록의 끝"
 
@@ -7654,7 +7657,11 @@ msgstr "SSL 정보를 가져올 수 없음: 사용 가능한 피어 인증서가
 msgid "Unable to get SSL information: query not recognized"
 msgstr "SSL 정보를 가져올 수 없습니다: 질의가 인식되지 않습니다"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:997
+#: src/modules/dcc/DccVideoWindow.cpp:1011
+msgid "Camera Error"
+msgstr ""
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:1008
 msgid "Find and Replace - KVIrc"
 msgstr "찾기 및 바꾸기 - KVIrc"
 
@@ -8434,7 +8441,7 @@ msgstr "다음 (&N) >"
 msgid "Setup Wizard - KVIrc"
 msgstr "설정 마법사 - KVIrc"
 
-#: src/modules/setup/SetupWizard.cpp:159
+#: src/modules/setup/SetupWizard.cpp:162
 msgid ""
 "<p><h2>Welcome :)</h2>This is your first time running this version of "
 "KVIrc.<br>This wizard will guide you through the few steps required to "
@@ -8443,11 +8450,11 @@ msgid ""
 "configuration.</p><p>Click \"<b>Next</b>\" to proceed.</p>"
 msgstr "<p><h2>환영합니다:)</h2>이 버전의 KVIrc를 처음 실행하는 것입니다. <br>이 마법사는 설정을 완료하는 데 필요한 몇 가지 단계를 안내합니다. <br><br>이전 버전의 KVIrc가 설치되었으므로 걱정할 필요가 없습니다. 이전 구성을 보존할 수 있습니다.</p><p>계속하려면 \"<b>다음</b>\"을 클릭하십시오.</p>"
 
-#: src/modules/setup/SetupWizard.cpp:171
+#: src/modules/setup/SetupWizard.cpp:174
 msgid "Welcome to KVIrc"
 msgstr "KVIrc에 오신 것을 환영합니다"
 
-#: src/modules/setup/SetupWizard.cpp:183
+#: src/modules/setup/SetupWizard.cpp:186
 msgid ""
 "<p>All of the files in this distribution are covered by the GPL. In human "
 "terms this can be read as follows:<br><ul><li><b>KVIrc is free</b>, use it, "
@@ -8457,18 +8464,18 @@ msgid ""
 " the box below.</p>"
 msgstr "<p>이 배포판의 모든 파일은 GPL에 의해 보호됩니다. 인간의 관점에서 이것은 다음과 같이 읽을 수 있습니다. <b>:)</b></li><li>당신의 프로젝트에서 KVIrc의 <b>일부</b>를 사용하는 경우 <b>반드시</b> 같은 허가서로 해당 프로젝트를 배포해야 합니다.</li></ul></p><p>허가서의 \"합법적\" 버전이 아래 상자에 표시됩니다.</p>"
 
-#: src/modules/setup/SetupWizard.cpp:199
+#: src/modules/setup/SetupWizard.cpp:202
 msgid ""
 "Oops! Can't find the license file.\n"
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr "죄송합니다! 라이센스 파일을 찾을 수 없습니다.\n배포판에 포함되어야 합니다...\n<pragma at kvirc dot net> 에게 보고하십시오"
 
-#: src/modules/setup/SetupWizard.cpp:207
+#: src/modules/setup/SetupWizard.cpp:210
 msgid "Dreaded License Agreement"
 msgstr "무서운 라이센스 계약"
 
-#: src/modules/setup/SetupWizard.cpp:219
+#: src/modules/setup/SetupWizard.cpp:222
 msgid ""
 "<p>Please choose a folder for KVIrc to store its settings and other data, "
 "and another for downloaded files. Make sure that you have permission to "
@@ -8479,35 +8486,35 @@ msgid ""
 "configuration will be preserved.</p>"
 msgstr "<p>KVIrc에서 설정 및 그 외 데이터를 저장할 폴더와 다운로드 한 파일을 저장할 폴더를 선택하십시오. 두 폴더 모두에 쓸 수 있는 권한이 있는지 확인하십시오. <br><br>대부분의 경우 제안된 위치가 좋습니다. 이 내용에 대해 잘 모르는 경우 \"<b>다음</b>\"을 클릭하십시오. <br><br>이전 버전의 KVIrc가 설치되어있는 경우 설정에 대한 기존 디렉토리를 선택할 수 있습니다. 구성이 유지됩니다.</p>"
 
-#: src/modules/setup/SetupWizard.cpp:231
+#: src/modules/setup/SetupWizard.cpp:234
 msgid "Store configuration in folder"
 msgstr "폴더에 설정 저장"
 
-#: src/modules/setup/SetupWizard.cpp:232
+#: src/modules/setup/SetupWizard.cpp:235
 msgid "Use settings folder from previous installation"
 msgstr "이전 설치의 설정 폴더를 사용"
 
-#: src/modules/setup/SetupWizard.cpp:244
+#: src/modules/setup/SetupWizard.cpp:247
 msgid "Use new settings folder"
 msgstr "새로운 설정 폴더를 사용"
 
-#: src/modules/setup/SetupWizard.cpp:248
+#: src/modules/setup/SetupWizard.cpp:251
 msgid "Settings folder:"
 msgstr "설정 폴더:"
 
-#: src/modules/setup/SetupWizard.cpp:272
+#: src/modules/setup/SetupWizard.cpp:275
 msgid "Download files to folder:"
 msgstr "폴더로 파일을 다운로드:"
 
-#: src/modules/setup/SetupWizard.cpp:293
+#: src/modules/setup/SetupWizard.cpp:296
 msgid "All settings in shared program folder (portable)"
 msgstr "공유 프로그램 폴더의 모든 설정(휴대용)"
 
-#: src/modules/setup/SetupWizard.cpp:304
+#: src/modules/setup/SetupWizard.cpp:307
 msgid "Application Folders"
 msgstr "응용 프로그램 폴더"
 
-#: src/modules/setup/SetupWizard.cpp:316
+#: src/modules/setup/SetupWizard.cpp:319
 msgid ""
 "Please choose a nickname.<br><br>Your nickname is the name that other IRC "
 "users will know you by. It can't contain spaces or punctuation. Some IRC "
@@ -8517,48 +8524,48 @@ msgid ""
 "/NICK command."
 msgstr "대화명을 선택하십시오. <br><br>대화명은 다른 IRC 사용자가 알고있는 이름입니다. 공백이나 문장 부호를 포함할 수 없습니다. 일부 IRC 네트워크는 길이가 32 자 이상인 경우 대화명을 줄입니다. <br><br>의심할 경우 첫 번째 대화명을 입력하십시오. 나중에 ID 속성 또는 /NICK 사용자쪽 명령을 사용하여 바꿀 수 있습니다."
 
-#: src/modules/setup/SetupWizard.cpp:325
+#: src/modules/setup/SetupWizard.cpp:328
 msgid "Nickname:"
 msgstr "대화명:"
 
-#: src/modules/setup/SetupWizard.cpp:333
+#: src/modules/setup/SetupWizard.cpp:336
 msgid ""
 "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr "이 입력란은 선택사항이며 CTCP USERINFO 응답의 일부로 나타납니다."
 
-#: src/modules/setup/SetupWizard.cpp:336
+#: src/modules/setup/SetupWizard.cpp:339
 msgid "Profile"
 msgstr "프로필"
 
-#: src/modules/setup/SetupWizard.cpp:338
+#: src/modules/setup/SetupWizard.cpp:341
 msgid "Real name:"
 msgstr "진짜 이름:"
 
-#: src/modules/setup/SetupWizard.cpp:346
+#: src/modules/setup/SetupWizard.cpp:349
 msgid "Age:"
 msgstr "나이:"
 
-#: src/modules/setup/SetupWizard.cpp:351 src/modules/setup/SetupWizard.cpp:379
+#: src/modules/setup/SetupWizard.cpp:354 src/modules/setup/SetupWizard.cpp:382
 msgid "Unspecified"
 msgstr "불특정or 미지정"
 
-#: src/modules/setup/SetupWizard.cpp:374
+#: src/modules/setup/SetupWizard.cpp:377
 msgid "Gender:"
 msgstr "성별:"
 
-#: src/modules/setup/SetupWizard.cpp:392
+#: src/modules/setup/SetupWizard.cpp:395
 msgid "Location:"
 msgstr "위치:"
 
-#: src/modules/setup/SetupWizard.cpp:396
+#: src/modules/setup/SetupWizard.cpp:399
 msgid "Languages:"
 msgstr "언어:"
 
-#: src/modules/setup/SetupWizard.cpp:400
+#: src/modules/setup/SetupWizard.cpp:403
 msgid "Identity"
 msgstr "ID"
 
-#: src/modules/setup/SetupWizard.cpp:410
+#: src/modules/setup/SetupWizard.cpp:413
 msgid ""
 "<p>Here you can choose the default appearance of KVIrc.<br><br>The Fancy "
 "theme uses icons, a transparent background and a lot of colors. The "
@@ -8569,85 +8576,85 @@ msgid ""
 "don't know what to choose, just use the default.</p>"
 msgstr "<p>여기서 KVIrc의 기본 모양을 선택할 수 있습니다. <br><br>팬시 테마는 아이콘, 투명한 배경 및 많은 색상을 사용합니다. 미니멀리스트 테마는 저색 디스플레이 또는 \"콘솔\"극단 주의자를 위해 설계되었습니다. 검정색 배경의 흰색 텍스트입니다. <br><br>이전 버전의 KVIrc가 설치된 경우 현재 시각 설정을 유지하기 위해 테마를 적용하지 않도록 선택할 수 있습니다. <br><br>무엇을 선택해야할지 모른다면 기본값을 사용하십시오.</p>"
 
-#: src/modules/setup/SetupWizard.cpp:441
+#: src/modules/setup/SetupWizard.cpp:444
 msgid "&Fancy Theme"
 msgstr "멋진 테마(&F)"
 
-#: src/modules/setup/SetupWizard.cpp:460
+#: src/modules/setup/SetupWizard.cpp:463
 msgid "&Minimalist Theme"
 msgstr "미니멀리스트 테마(&M)"
 
-#: src/modules/setup/SetupWizard.cpp:462
+#: src/modules/setup/SetupWizard.cpp:465
 msgid "&Don't apply any theme"
 msgstr "테마 적용안함(&D)"
 
-#: src/modules/setup/SetupWizard.cpp:467
+#: src/modules/setup/SetupWizard.cpp:470
 msgid "Default Theme"
 msgstr "기본 테마"
 
-#: src/modules/setup/SetupWizard.cpp:478
+#: src/modules/setup/SetupWizard.cpp:481
 msgid ""
 "<p>Here you can choose how much KVIrc will integrate with your "
 "system.<br><br>The default settings are fine for most users so if you're in "
 "doubt just click \"<b>Finish</b>\" to continue.</p>"
 msgstr "<p>여기서 KVIrc가 시스템과 얼마나 통합할 것인지 선택할 수 있습니다. <br><br>기본 설정은 대부분의 사용자에게 적합하므로 확실하지 않은 경우 \"<b>마침</b>\"을 클릭하십시오. 계속하십시오.</p>"
 
-#: src/modules/setup/SetupWizard.cpp:488
+#: src/modules/setup/SetupWizard.cpp:491
 msgid "Desktop Integration"
 msgstr "데스크탑 통합"
 
-#: src/modules/setup/SetupWizard.cpp:491
+#: src/modules/setup/SetupWizard.cpp:494
 msgid "Make KVIrc the default IRC client"
 msgstr "KVIrc를 기본 IRC 클라이언트로 설정"
 
-#: src/modules/setup/SetupWizard.cpp:495
+#: src/modules/setup/SetupWizard.cpp:498
 msgid "Create desktop shortcut"
 msgstr "바탕 화면에 바로 가기 만들기"
 
-#: src/modules/setup/SetupWizard.cpp:500
+#: src/modules/setup/SetupWizard.cpp:503
 msgid "Import server list from mIRC"
 msgstr "mIRC에서 서버 목록을 가져오기"
 
-#: src/modules/setup/SetupWizard.cpp:721
+#: src/modules/setup/SetupWizard.cpp:724
 msgid "Choose an Existing Configuration Folder - KVIrc Setup"
 msgstr "기존 설정 폴더 선택 - KVIrc 설정"
 
-#: src/modules/setup/SetupWizard.cpp:735
+#: src/modules/setup/SetupWizard.cpp:738
 msgid "Confirm Setting Configuration Folder - KVIrc Setup"
 msgstr "구성 폴더 설정 확인 - KVIrc 설정"
 
-#: src/modules/setup/SetupWizard.cpp:736
+#: src/modules/setup/SetupWizard.cpp:739
 msgid ""
 "The folder %1 doesn't seem to be a valid KVIrc settings folder. Do you want "
 "to use it anyway?"
 msgstr "%1 폴더가 유효한 KVIrc 설정 폴더가 아닌 것 같습니다. 어쨌든 사용 하시겠습니까?"
 
-#: src/modules/setup/SetupWizard.cpp:751
+#: src/modules/setup/SetupWizard.cpp:754
 msgid "Choose a Configuration Folder - KVIrc Setup"
 msgstr "구성 폴더 선택 - KVIrc 설정"
 
-#: src/modules/setup/SetupWizard.cpp:765
+#: src/modules/setup/SetupWizard.cpp:768
 msgid "Choose a Download Folder - KVIrc Setup"
 msgstr "다운로드 폴더 선택 - KVIrc 설정"
 
-#: src/modules/setup/SetupWizard.cpp:938
+#: src/modules/setup/SetupWizard.cpp:941
 msgid "Confirm Setup Abort - KVIrc Setup"
 msgstr "설정 중단 확인 - KVIrc 설정"
 
-#: src/modules/setup/SetupWizard.cpp:939
+#: src/modules/setup/SetupWizard.cpp:942
 msgid ""
 "You have chosen to abort the setup.<br>KVIrc can't run until you complete "
 "this procedure.<br><br>Do you really wish to abort?"
 msgstr "설정을 중단하기로 선택했습니다. <br>이 절차를 완료할 때까지 KVIrc를 실행할 수 없습니다. <br><br>정말 중단 하시겠습니까?"
 
-#: src/modules/setup/SetupWizard.cpp:975
+#: src/modules/setup/SetupWizard.cpp:978
 #, c-format
 msgid ""
 "Can't create directory %s.\n"
 "You may not have write permission for that path. Please go back and choose another directory."
 msgstr "디렉토리 %s을(를) 만들 수 없습니다.\n해당 경로에 대한 쓰기 권한이 없을 수 있습니다. 돌아가서 다른 디렉토리를 선택하십시오."
 
-#: src/modules/setup/SetupWizard.cpp:1002
+#: src/modules/setup/SetupWizard.cpp:1005
 #, c-format
 msgid ""
 "Can't create directory %s.\n"
@@ -8655,19 +8662,19 @@ msgid ""
 "Please go back and choose another directory."
 msgstr "디렉토리 %s을(를) 만들 수 없습니다.\n해당 경로에 대한 쓰기 권한이 없을 수 있습니다.\n돌아가서 다른 디렉토리를 선택하십시오."
 
-#: src/modules/snd/libkvisnd.cpp:698
+#: src/modules/snd/libkvisnd.cpp:673
 msgid "Sound file '%Q' not found"
 msgstr "'%Q'소리 파일을 찾을 수 없습니다"
 
-#: src/modules/snd/libkvisnd.cpp:705
+#: src/modules/snd/libkvisnd.cpp:680
 msgid "Unable to play sound '%Q'"
 msgstr "'%Q' 소리를 재생할 수 없습니다"
 
-#: src/modules/snd/libkvisnd.cpp:716
+#: src/modules/snd/libkvisnd.cpp:692
 msgid "Sorry, I can't find a sound system to use on this machine"
 msgstr "죄송합니다. 이 기기에서 사용할 소리 시스템을 찾을 수 없습니다"
 
-#: src/modules/snd/libkvisnd.cpp:720
+#: src/modules/snd/libkvisnd.cpp:697
 #, c-format
 msgid "Sound system detected to: %s"
 msgstr "감지된 소리 시스템: %s"
@@ -8859,26 +8866,26 @@ msgstr "지원되지 않는 D-버스 매개 변수 유형 %s"
 msgid "The D-Bus call returned an error \"%s\": %s"
 msgstr "D-Bus 호출에서 오류 \"%s\"을(를) 반환했습니다. %s"
 
-#: src/modules/system/libkvisystem.cpp:611
+#: src/modules/system/libkvisystem.cpp:615
 #, c-format
 msgid "Unsupported D-Bus call return type %s"
 msgstr "지원되지 않는 D-버스 통화 반환 유형 %s"
 
-#: src/modules/system/libkvisystem.cpp:617
+#: src/modules/system/libkvisystem.cpp:621
 msgid "D-Bus calls are available only under UNIX"
 msgstr "D-Bus 통화는 UNIX에서만 사용할 수 있습니다"
 
-#: src/modules/system/libkvisystem.cpp:738
+#: src/modules/system/libkvisystem.cpp:742
 msgid "No command specified"
 msgstr "지정된 사용자쪽 명령이 없습니다"
 
-#: src/modules/system/libkvisystem.cpp:755
-#: src/modules/system/libkvisystem.cpp:788
+#: src/modules/system/libkvisystem.cpp:759
+#: src/modules/system/libkvisystem.cpp:792
 msgid "Failed to start the terminal program"
 msgstr "터미널 프로그램을 시작하지 못했습니다"
 
-#: src/modules/system/libkvisystem.cpp:840
-#: src/modules/system/libkvisystem.cpp:896
+#: src/modules/system/libkvisystem.cpp:844
+#: src/modules/system/libkvisystem.cpp:900
 msgid "Bad bytecount specification: 1, 2, 4 and 8 are allowed"
 msgstr "잘못된 바이트 수 규격: 1, 2, 4 및 8이 허용됩니다"
 
@@ -8952,127 +8959,127 @@ msgstr "도구 막대에 지정된 항목이 없습니다"
 msgid "The action \"%Q\" doesn't exist"
 msgstr "\"%Q\" 동작이 없습니다"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:90
+#: src/modules/trayicon/libkvitrayicon.cpp:92
 msgid "<b><center>KVIrc Tray Options</center></b>"
 msgstr "<b><center>KVIrc 트레이 선택사항</center></b>"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:98
+#: src/modules/trayicon/libkvitrayicon.cpp:100
 msgid "Context"
 msgstr "맥락"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:103
+#: src/modules/trayicon/libkvitrayicon.cpp:105
 msgid "&Configure KVIrc..."
 msgstr "KVIrc 구성...(&C)"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:106
+#: src/modules/trayicon/libkvitrayicon.cpp:108
 msgid "&About KVIrc"
 msgstr "KVIrc 소개(&A)"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:110
+#: src/modules/trayicon/libkvitrayicon.cpp:112
 msgid "Hide / Show"
 msgstr "숨기기/표시"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:114
+#: src/modules/trayicon/libkvitrayicon.cpp:116
 msgid "&Hide Tray Icon"
 msgstr "트레이 아이콘 숨기기(&H)"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:116
+#: src/modules/trayicon/libkvitrayicon.cpp:118
 msgid "&Quit"
 msgstr "종료(&Q)"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:167
+#: src/modules/trayicon/libkvitrayicon.cpp:186
 msgid "Nothing is happening..."
 msgstr "아무것도 일어나지 않습니다..."
 
-#: src/modules/trayicon/libkvitrayicon.cpp:168
+#: src/modules/trayicon/libkvitrayicon.cpp:187
 msgid "Just idling..."
 msgstr "유휴 상태..."
 
-#: src/modules/trayicon/libkvitrayicon.cpp:169
+#: src/modules/trayicon/libkvitrayicon.cpp:188
 msgid "Dum de dum de dum..."
 msgstr "바보 바보 바보..."
 
-#: src/modules/trayicon/libkvitrayicon.cpp:170
+#: src/modules/trayicon/libkvitrayicon.cpp:189
 msgid "Hey man... Do something!"
 msgstr "이봐 요... 뭔가 해봐요!"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:171
+#: src/modules/trayicon/libkvitrayicon.cpp:190
 msgid "Umpf!"
 msgstr "음!"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:172
+#: src/modules/trayicon/libkvitrayicon.cpp:191
 msgid "Silence speaking"
 msgstr "침묵 말하기"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:173
+#: src/modules/trayicon/libkvitrayicon.cpp:192
 msgid "Are ya here?"
 msgstr "나중에 있습니까?"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:174
+#: src/modules/trayicon/libkvitrayicon.cpp:193
 msgid "The world has stopped?"
 msgstr "세상은 멈 췄어?"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:175
+#: src/modules/trayicon/libkvitrayicon.cpp:194
 msgid "Everything is all right"
 msgstr "모든 것이 괜찮아"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:176
+#: src/modules/trayicon/libkvitrayicon.cpp:195
 msgid "idle()"
 msgstr "게으른()"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:177
+#: src/modules/trayicon/libkvitrayicon.cpp:196
 msgid "It's so cold here..."
 msgstr "여기 너무 추워요..."
 
-#: src/modules/trayicon/libkvitrayicon.cpp:178
+#: src/modules/trayicon/libkvitrayicon.cpp:197
 msgid "Do not disturb... Watching TV"
 msgstr "방해하지 마세요... TV 시청"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:179
+#: src/modules/trayicon/libkvitrayicon.cpp:198
 msgid "Just vegetating"
 msgstr "그냥 식물"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:180
+#: src/modules/trayicon/libkvitrayicon.cpp:199
 msgid "Hey... Are ya sure that your network is up?"
 msgstr "이봐... 네 네트워크가 제대로 작동 했어?"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:181
+#: src/modules/trayicon/libkvitrayicon.cpp:200
 msgid "Seems like the world has stopped spinning"
 msgstr "세상이 회전을 멈춘 것 같습니다"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:182
+#: src/modules/trayicon/libkvitrayicon.cpp:201
 msgid "This silence is freaking me out!"
 msgstr "이 침묵은 나를 놀라게한다!"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:183
+#: src/modules/trayicon/libkvitrayicon.cpp:202
 msgid "Mieeeeeowww!"
 msgstr "Mieeeeeowww!"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:184
+#: src/modules/trayicon/libkvitrayicon.cpp:203
 msgid "idle idle idle idle!"
 msgstr "유휴 유휴 유휴!"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:303
+#: src/modules/trayicon/libkvitrayicon.cpp:318
 msgid "Hide Window"
 msgstr "창 숨기기"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:303
+#: src/modules/trayicon/libkvitrayicon.cpp:318
 msgid "Show Window"
 msgstr "창 표시"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:309
+#: src/modules/trayicon/libkvitrayicon.cpp:324
 msgid "Away on All"
 msgstr "모두 자리 비움"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:312
+#: src/modules/trayicon/libkvitrayicon.cpp:327
 msgid "Back on All"
 msgstr "모두 다시"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:328
+#: src/modules/trayicon/libkvitrayicon.cpp:343
 msgid "Back on %1"
 msgstr "%1로 돌아 가기"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:334
+#: src/modules/trayicon/libkvitrayicon.cpp:349
 msgid "Away on %1"
 msgstr "%1에 자리 비움"
 

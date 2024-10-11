@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
 "PO-Revision-Date: 2015-08-01 09:10+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
@@ -221,7 +221,7 @@ msgstr "동작 내보내기..."
 #: src/modules/actioneditor/ActionEditor.cpp:714
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:866
 #: src/modules/classeditor/ClassEditorWindow.cpp:1229
-#: src/modules/editor/ScriptEditorImplementation.cpp:870
+#: src/modules/editor/ScriptEditorImplementation.cpp:881
 #: src/modules/raweditor/RawEditorWindow.cpp:418
 #: src/modules/raweditor/RawEditorWindow.cpp:458
 msgid "Choose a Filename - KVIrc"
@@ -229,7 +229,7 @@ msgstr "파일 이름 선택 - KVIrc"
 
 #: src/modules/actioneditor/ActionEditor.cpp:747
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:883
-#: src/modules/editor/ScriptEditorImplementation.cpp:880
+#: src/modules/editor/ScriptEditorImplementation.cpp:891
 #: src/modules/eventeditor/EventEditorWindow.cpp:518
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1227
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1277
@@ -256,7 +256,7 @@ msgid "Action Editor"
 msgstr "동작 편집"
 
 #: src/modules/actioneditor/ActionEditor.cpp:895
-#: src/modules/editor/ScriptEditorImplementation.cpp:489
+#: src/modules/editor/ScriptEditorImplementation.cpp:500
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:188
 msgid "OK"
 msgstr "확인"
@@ -267,7 +267,7 @@ msgstr "적용"
 
 #: src/modules/actioneditor/ActionEditor.cpp:905
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1268
-#: src/modules/editor/ScriptEditorImplementation.cpp:493
+#: src/modules/editor/ScriptEditorImplementation.cpp:504
 #: src/modules/eventeditor/EventEditorWindow.cpp:581
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1423
 #: src/modules/raweditor/RawEditorWindow.cpp:487
@@ -724,7 +724,7 @@ msgstr "클래스 만들기(&C)"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2021
 #: src/modules/classeditor/ClassEditorWindow.cpp:2122
-#: src/modules/editor/ScriptEditorImplementation.cpp:1036
+#: src/modules/editor/ScriptEditorImplementation.cpp:1047
 msgid "&Cancel"
 msgstr "취소(&C)"
 
@@ -770,118 +770,120 @@ msgstr "여기서 코드에서 사용할 수 있는 매개 변수의 세미콜�
 msgid "Script Tester"
 msgstr "스크립트 검사기"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:271
+#: src/modules/editor/ScriptEditorImplementation.cpp:277
+#: src/modules/editor/ScriptEditorImplementation.cpp:280
 msgid "Context Sensitive Help"
 msgstr "상황에 맞는 도움말"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:272
-#: src/modules/editor/ScriptEditorImplementation.cpp:1041
+#: src/modules/editor/ScriptEditorImplementation.cpp:278
+#: src/modules/editor/ScriptEditorImplementation.cpp:281
+#: src/modules/editor/ScriptEditorImplementation.cpp:1052
 msgid "&Replace"
 msgstr "바꾸기(&R)"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:285
+#: src/modules/editor/ScriptEditorImplementation.cpp:295
 msgid "Find & Replace"
 msgstr "찾기 및 바꾸기"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:463
+#: src/modules/editor/ScriptEditorImplementation.cpp:474
 msgid "Editor Configuration - KVIrc"
 msgstr "편집기 구성 - KVIrc"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:472
+#: src/modules/editor/ScriptEditorImplementation.cpp:483
 msgid "Font:"
 msgstr "글꼴:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:474
+#: src/modules/editor/ScriptEditorImplementation.cpp:485
 msgid "Colors"
 msgstr "색상"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:477
+#: src/modules/editor/ScriptEditorImplementation.cpp:488
 msgid "Background:"
 msgstr "배경:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:478
+#: src/modules/editor/ScriptEditorImplementation.cpp:489
 msgid "Normal text:"
 msgstr "일반 글자:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:479
+#: src/modules/editor/ScriptEditorImplementation.cpp:490
 msgid "Brackets:"
 msgstr "대괄호:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:480
+#: src/modules/editor/ScriptEditorImplementation.cpp:491
 msgid "Comments:"
 msgstr "의견:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:481
+#: src/modules/editor/ScriptEditorImplementation.cpp:492
 msgid "Functions:"
 msgstr "함수:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:482
+#: src/modules/editor/ScriptEditorImplementation.cpp:493
 msgid "Keywords:"
 msgstr "중요단어:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:483
+#: src/modules/editor/ScriptEditorImplementation.cpp:494
 msgid "Variables:"
 msgstr "변수:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:484
+#: src/modules/editor/ScriptEditorImplementation.cpp:495
 msgid "Punctuation:"
 msgstr "구두점:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:485
-#: src/modules/editor/ScriptEditorImplementation.cpp:752
+#: src/modules/editor/ScriptEditorImplementation.cpp:496
+#: src/modules/editor/ScriptEditorImplementation.cpp:763
 msgid "Find:"
 msgstr "찾기:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:735
+#: src/modules/editor/ScriptEditorImplementation.cpp:746
 msgid "Options"
 msgstr "선택사항"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:740
+#: src/modules/editor/ScriptEditorImplementation.cpp:751
 msgid "&Open..."
 msgstr "열기...(&O)"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:741
+#: src/modules/editor/ScriptEditorImplementation.cpp:752
 msgid "&Save As..."
 msgstr "다른 이름으로 저장...(&S)"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:743
+#: src/modules/editor/ScriptEditorImplementation.cpp:754
 msgid "&Configure Editor..."
 msgstr "편집기 설정...(&C)"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:756
+#: src/modules/editor/ScriptEditorImplementation.cpp:767
 msgid "&Find"
 msgstr "찾기(&F)"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:759
-#: src/modules/editor/ScriptEditorImplementation.cpp:938
+#: src/modules/editor/ScriptEditorImplementation.cpp:770
+#: src/modules/editor/ScriptEditorImplementation.cpp:949
 msgid "Line: %1 Col: %2"
 msgstr "줄: %1 칸: %2"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:881
+#: src/modules/editor/ScriptEditorImplementation.cpp:892
 msgid "Can't open file %1 for writing."
 msgstr "%1 파일을 쓰기 위해 열 수 없습니다."
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:955
+#: src/modules/editor/ScriptEditorImplementation.cpp:966
 msgid "Select a File - KVIrc"
 msgstr "파일 선택하십시오 - KVIrc"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:968
+#: src/modules/editor/ScriptEditorImplementation.cpp:979
 msgid "Opening File Failed - KVIrc"
 msgstr "파일을 열지 못했습니다 - KVIrc"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:969
+#: src/modules/editor/ScriptEditorImplementation.cpp:980
 msgid "Can't open file %1 for reading."
 msgstr "%1 파일을 읽기 위해 열 수 없습니다."
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1011
+#: src/modules/editor/ScriptEditorImplementation.cpp:1022
 msgid "Word to find:"
 msgstr "찾을 단어:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1020
+#: src/modules/editor/ScriptEditorImplementation.cpp:1031
 msgid "Replace with:"
 msgstr "다음으로 바꿈:"
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1031
+#: src/modules/editor/ScriptEditorImplementation.cpp:1042
 msgid "&Replace in all editor's items"
 msgstr "모든 편집기의 항목으로 바꾸기(&R)"
 

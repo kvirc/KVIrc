@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
 "PO-Revision-Date: 2015-08-01 09:12+0000\n"
 "Last-Translator: FIRST AUTHOR <poenikatu@fastmail.co.uk>, 2012\n"
 "Language-Team: Esperanto (http://app.transifex.com/kvirc/KVIrc/language/eo/)\n"
@@ -299,7 +299,7 @@ msgstr "Bilda largeco:"
 #: src/modules/options/OptionsWidget_avatar.cpp:62
 #: src/modules/options/OptionsWidget_avatar.cpp:65
 #: src/modules/options/OptionsWidget_input.cpp:167
-#: src/modules/options/OptionsWidget_ircView.cpp:179
+#: src/modules/options/OptionsWidget_ircView.cpp:193
 #: src/modules/options/OptionsWidget_userList.cpp:227
 #: src/modules/options/OptionsWidget_windowList.cpp:265
 #: src/modules/options/OptionsWidget_windowList.cpp:290
@@ -564,7 +564,7 @@ msgid "Paste up to:"
 msgstr "Alglui ĝis:"
 
 #: src/modules/options/OptionsWidget_channel.cpp:140
-#: src/modules/options/OptionsWidget_ircView.cpp:147
+#: src/modules/options/OptionsWidget_ircView.cpp:158
 #: src/modules/options/OptionsWidget_query.cpp:95
 msgid " lines"
 msgstr " linioj"
@@ -612,7 +612,7 @@ msgstr "Kanalo"
 #: src/modules/options/OptionsWidget_irc.h:43
 #: src/modules/options/OptionsWidget_message.cpp:66
 #: src/modules/options/OptionsWidget_servers.cpp:253
-#: src/modules/options/OptionsWidget_theme.h:32
+#: src/modules/options/OptionsWidget_theme.h:34
 msgid "General"
 msgstr "Ĝenerala"
 
@@ -766,8 +766,8 @@ msgstr "Eliranta datuma atendovica malpleniga tempolimo:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:157
 #: src/modules/options/OptionsWidget_dcc.cpp:283
-#: src/modules/options/OptionsWidget_ircView.cpp:149
-#: src/modules/options/OptionsWidget_ircView.cpp:151
+#: src/modules/options/OptionsWidget_ircView.cpp:160
+#: src/modules/options/OptionsWidget_ircView.cpp:162
 #: src/modules/options/OptionsWidget_lag.cpp:45
 #: src/modules/options/OptionsWidget_lag.cpp:57
 msgid " msec"
@@ -1979,7 +1979,7 @@ msgstr "Tiparo:"
 #: src/modules/options/OptionsWidget_input.cpp:39
 #: src/modules/options/OptionsWidget_ircView.cpp:48
 #: src/modules/options/OptionsWidget_notifier.cpp:40
-#: src/modules/options/OptionsWidget_theme.cpp:164
+#: src/modules/options/OptionsWidget_theme.cpp:192
 #: src/modules/options/OptionsWidget_topicLabel.cpp:37
 msgid "Background color:"
 msgstr "Fona koloro:"
@@ -2009,7 +2009,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_input.cpp:46
 #: src/modules/options/OptionsWidget_ircView.cpp:50
 #: src/modules/options/OptionsWidget_notifier.cpp:45
-#: src/modules/options/OptionsWidget_theme.cpp:168
+#: src/modules/options/OptionsWidget_theme.cpp:196
 #: src/modules/options/OptionsWidget_topicLabel.cpp:38
 #: src/modules/options/OptionsWidget_userList.cpp:131
 #: src/modules/options/OptionsWidget_windowList.cpp:167
@@ -2363,87 +2363,99 @@ msgstr "Ebligi URL markadon"
 msgid "Use line wrap margin"
 msgstr "Uzi linifaldan marĝenon"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:146
+#: src/modules/options/OptionsWidget_ircView.cpp:147
+msgid "Vertical line margin:"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_ircView.cpp:151
+msgid "No margin"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_ircView.cpp:152
+msgid "Normal margin"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_ircView.cpp:157
 msgid "Maximum buffer size:"
 msgstr "Maksimuma bufra grandeco:"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:148
+#: src/modules/options/OptionsWidget_ircView.cpp:159
 msgid "Link tooltip show delay:"
 msgstr "Ligila ŝpruchelpila montrada prokrasto:"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:150
+#: src/modules/options/OptionsWidget_ircView.cpp:161
 msgid "Link tooltip hide delay:"
 msgstr "Ligila ŝpruchelpila kaŝa prokrasto:"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:152
+#: src/modules/options/OptionsWidget_ircView.cpp:163
 msgid "Enable animated smiles"
 msgstr "Ebligi animitajn ridetojn"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:154
+#: src/modules/options/OptionsWidget_ircView.cpp:165
 msgid "Enable Tooltips for"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ircView.cpp:155
+#: src/modules/options/OptionsWidget_ircView.cpp:166
 msgid "URL links"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ircView.cpp:156
+#: src/modules/options/OptionsWidget_ircView.cpp:167
 msgid "Host links"
 msgstr "Retnodaj ligiloj"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:157
+#: src/modules/options/OptionsWidget_ircView.cpp:168
 msgid "Server links"
 msgstr "Servilaj ligiloj"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:158
+#: src/modules/options/OptionsWidget_ircView.cpp:169
 msgid "Mode links"
 msgstr "Reĝimaj ligiloj"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:159
+#: src/modules/options/OptionsWidget_ircView.cpp:170
 msgid "Nick links"
 msgstr "Kromnomaj ligiloj"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:160
+#: src/modules/options/OptionsWidget_ircView.cpp:171
 msgid "Channel links"
 msgstr "Kanalaj ligiloj"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:161
+#: src/modules/options/OptionsWidget_ircView.cpp:172
 msgid "Escape sequences"
 msgstr "Eskapaj sekvencoj"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:175
+#: src/modules/options/OptionsWidget_ircView.cpp:189
 msgid "Track last read text line"
 msgstr "Sekvi laste legitan tekstan linion"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:176
+#: src/modules/options/OptionsWidget_ircView.cpp:190
 msgid "Marker color:"
 msgstr "Markila koloro:"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:178
+#: src/modules/options/OptionsWidget_ircView.cpp:192
 msgid "Marker size:"
 msgstr "Markila grandeco:"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:181
+#: src/modules/options/OptionsWidget_ircView.cpp:195
 msgid "Marker style:"
 msgstr "Markila stilo:"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:187
+#: src/modules/options/OptionsWidget_ircView.cpp:201
 msgid "DotLine"
 msgstr "PunktLinio"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:188
+#: src/modules/options/OptionsWidget_ircView.cpp:202
 msgid "DashLine"
 msgstr "StreketLinio"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:189
+#: src/modules/options/OptionsWidget_ircView.cpp:203
 msgid "SolidLine"
 msgstr "SolidLinio"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:190
+#: src/modules/options/OptionsWidget_ircView.cpp:204
 msgid "DashDotLine"
 msgstr "StreketPunktLinio"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:191
+#: src/modules/options/OptionsWidget_ircView.cpp:205
 msgid "DashDotDotLine"
 msgstr "StreketPunktPunktLinio"
 
@@ -2467,7 +2479,7 @@ msgstr "Rigardi"
 msgid "Features"
 msgstr "Trajtoj"
 
-#: src/modules/options/OptionsWidget_ircView.h:83
+#: src/modules/options/OptionsWidget_ircView.h:85
 msgid "Marker"
 msgstr "Markilo"
 
@@ -3987,19 +3999,19 @@ msgstr ""
 msgid "This allows you to select encoding of winamp messages."
 msgstr "Ĉi tio permesas vin elekti kodoprezenton de winamp mesaĝoj."
 
-#: src/modules/options/OptionsWidget_sound.cpp:324
+#: src/modules/options/OptionsWidget_sound.cpp:329
 msgid "New query opened:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_sound.cpp:327
+#: src/modules/options/OptionsWidget_sound.cpp:332
 msgid "New message in inactive query:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_sound.cpp:330
+#: src/modules/options/OptionsWidget_sound.cpp:335
 msgid "Highlighted message in inactive window:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_sound.cpp:333
+#: src/modules/options/OptionsWidget_sound.cpp:338
 msgid "When I am kicked:"
 msgstr ""
 
@@ -4102,87 +4114,91 @@ msgstr ""
 msgid "smileys,emoticons"
 msgstr "ridetoj,miensimboloj"
 
-#: src/modules/options/OptionsWidget_theme.cpp:40
+#: src/modules/options/OptionsWidget_theme.cpp:42
 msgid "Use global application font"
 msgstr "Uzi mallokan aplikaĵan tiparon"
 
-#: src/modules/options/OptionsWidget_theme.cpp:41
+#: src/modules/options/OptionsWidget_theme.cpp:43
 msgid ""
 "This option will force a static font for every widget that has no specific "
 "font setting"
 msgstr "Ĉi tiu opcio devigos statikan tiparon por ĉiun fenestraĵon kiu ne havas specifan tiparan agordon"
 
-#: src/modules/options/OptionsWidget_theme.cpp:42
+#: src/modules/options/OptionsWidget_theme.cpp:44
 msgid "Show icons in popup menus"
 msgstr "Montri piktogramojn en ŝprucmenuoj"
 
-#: src/modules/options/OptionsWidget_theme.cpp:43
+#: src/modules/options/OptionsWidget_theme.cpp:45
 msgid "Global application font:"
 msgstr "Malloka aplikaĵa tiparo:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:59
+#: src/modules/options/OptionsWidget_theme.cpp:49
+msgid "Qt Style:"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_theme.cpp:87
 msgid "Global window opacity:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_theme.cpp:62
+#: src/modules/options/OptionsWidget_theme.cpp:90
 msgid "Enable transparency"
 msgstr "Ebligi travideblecon"
 
-#: src/modules/options/OptionsWidget_theme.cpp:65
+#: src/modules/options/OptionsWidget_theme.cpp:93
 msgid ""
 "This option makes all KVIrc windows look transparent.<br>You must choose a "
 "blending background image below or check the \"Use compositing for real "
 "transparency\" option."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_theme.cpp:72
+#: src/modules/options/OptionsWidget_theme.cpp:100
 msgid ""
 "This option makes all KVIrc windows look transparent.<br>You must choose a "
 "blending background image below or check the \"Use desktop background for "
 "transparency\" option."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_theme.cpp:79
+#: src/modules/options/OptionsWidget_theme.cpp:107
 msgid ""
 "This option makes all KVIrc windows look like transparent.<br>You must "
 "choose a blending background image below."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_theme.cpp:85
+#: src/modules/options/OptionsWidget_theme.cpp:113
 msgid "Child window opacity:"
 msgstr "Ida fenestra opakeco:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:90
+#: src/modules/options/OptionsWidget_theme.cpp:118
 msgid "Parent window opacity:"
 msgstr "Gepatra fenestra opakeco:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:95
+#: src/modules/options/OptionsWidget_theme.cpp:123
 msgid "Blend color:"
 msgstr "Miksa koloro:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:100
+#: src/modules/options/OptionsWidget_theme.cpp:128
 msgid "Use compositing for real transparency"
 msgstr "Uzi bildokunfandadon por vera travidebleco"
 
-#: src/modules/options/OptionsWidget_theme.cpp:103
-#: src/modules/options/OptionsWidget_theme.cpp:123
-#: src/modules/options/OptionsWidget_theme.cpp:130
+#: src/modules/options/OptionsWidget_theme.cpp:131
+#: src/modules/options/OptionsWidget_theme.cpp:151
+#: src/modules/options/OptionsWidget_theme.cpp:158
 msgid "Transparency blend image:"
 msgstr "Travidebleca miksa bildo:"
 
-#: src/modules/options/OptionsWidget_theme.cpp:120
+#: src/modules/options/OptionsWidget_theme.cpp:148
 msgid "Use desktop background for transparency"
 msgstr "Uzi labortablan fonon por travidebleco"
 
-#: src/modules/options/OptionsWidget_theme.cpp:165
+#: src/modules/options/OptionsWidget_theme.cpp:193
 msgid "Border color:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_theme.cpp:166
+#: src/modules/options/OptionsWidget_theme.cpp:194
 msgid "Font color:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_theme.h:33
+#: src/modules/options/OptionsWidget_theme.h:35
 #: src/modules/options/OptionsWidget_windowList.h:34
 #: src/modules/options/OptionsWidget_windowList.h:54
 #: src/modules/options/OptionsWidget_windowList.h:69
@@ -4192,19 +4208,19 @@ msgstr ""
 msgid "theme"
 msgstr "etoso"
 
-#: src/modules/options/OptionsWidget_theme.h:45
+#: src/modules/options/OptionsWidget_theme.h:53
 msgid "Transparency"
 msgstr "Travidebleco"
 
-#: src/modules/options/OptionsWidget_theme.h:46
+#: src/modules/options/OptionsWidget_theme.h:54
 msgid "theme,background"
 msgstr "etoso,fono"
 
-#: src/modules/options/OptionsWidget_theme.h:71
+#: src/modules/options/OptionsWidget_theme.h:79
 msgid "Toolbar Applets"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_theme.h:72
+#: src/modules/options/OptionsWidget_theme.h:80
 msgid "theme,toolbar"
 msgstr "etoso,ilbreto"
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
 "PO-Revision-Date: 2015-08-01 08:53+0000\n"
 "Last-Translator: ctrlaltca <ctrlaltca@gmail.com>, 2023\n"
 "Language-Team: Italian (http://app.transifex.com/kvirc/KVIrc/language/it/)\n"
@@ -484,7 +484,7 @@ msgstr "Prologo rotto nel popup '%Q': ignoro"
 msgid "Broken epilogue in popup menu '%Q': ignoring"
 msgstr "Epilogo rotto nel popup '%Q': ignoro"
 
-#: src/kvirc/kvs/KviKvsProcessManager.cpp:231
+#: src/kvirc/kvs/KviKvsProcessManager.cpp:223
 msgid "Error triggered from process callback handler: killing process"
 msgstr "Errore generato dal gestore della callback del processo: uccido il processo"
 
@@ -580,24 +580,24 @@ msgid "%d properties listed"
 msgstr "%d proprietà listate"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1174
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1433
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1446
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "L'oggetto '%Q' della classe '%Q' non ha proprietà Qt"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1181
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1442
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1455
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr "Nessuna proprietà Qt '%Q' per l'oggetto '%Q' della classe '%Q'"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1189
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1450
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1463
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed but it doesn't really exist"
 msgstr "Non trovo la proprietà '%Q' dell'oggetto '%Q' della classe '%Q': la proprietà è indicizzata ma non esiste"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1196
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1458
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1471
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed and defined but the returned variant is not valid"
@@ -608,39 +608,40 @@ msgid ""
 "Value '%Q' for property '%Q' of object named '%Q' of class '%Q' is not valid"
 msgstr "Il valore '%Q' per la proprietà '%Q' dell'oggetto chiamato '%Q' della classe '%Q' non è valido"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1217
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1218
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1224
 #, c-format
 msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
 "that type (expecting '%s')"
 msgstr "La proprietà è di tipo %s ma l'argomento fornito non può essere convertito a quel tipo (mi aspetto '%s')"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1381
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1394
 msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
 msgstr "Questa proprietà richiede un oggetto pixmap, un id immagine o un percorso a un file immagine"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1405
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1418
 msgid "Can't find the requested image"
 msgstr "Non trovo l'immagine richiesta"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1412
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1556
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1425
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1573
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
 "type"
 msgstr "Proprietà '%Q' per l'oggetto '%Q' della classe '%Q' ha un tipo di dato non supportato"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1754
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1771
 msgid "Can't find object function $%Q for object named '%Q' of class '%Q'"
 msgstr "Non trovo la funzione $%Q per l'oggetto '%Q' della classe '%Q'"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1756
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1773
 msgid "Can't find object function $%Q::%Q for object named '%Q' of class '%Q'"
 msgstr "Non trovo la funzione $%Q::%Q per l'oggetto '%Q' della classe '%Q'"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1764
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1781
 msgid ""
 "Can't call internal object function $%Q (for object named '%Q' of class "
 "'%Q') from this context"

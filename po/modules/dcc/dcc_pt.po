@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
+# Peter J. Mello <admin@petermello.net>, 2024
 # Zé <mmodem00@gmail.com>, 2010
 # Zé <mmodem00@gmal.com>, 2010
 # Zé <ze@mandriva.org>, 2010-2012
@@ -10,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-06 22:34+0100\n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
 "PO-Revision-Date: 2015-08-01 08:58+0000\n"
-"Last-Translator: Zé <ze@mandriva.org>, 2010-2012\n"
+"Last-Translator: Peter J. Mello <admin@petermello.net>, 2024\n"
 "Language-Team: Portuguese (http://app.transifex.com/kvirc/KVIrc/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -108,7 +109,7 @@ msgid ""
 "save path will probably work. You can instruct KVIrc to accept incoming "
 "avatars automatically by setting the option "
 "<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
-msgstr ""
+msgstr "<b>Nota:</b>O ficheiro parece ser um avatar que você pediu. Você não deve mudar o nome do ficheiro. Grave-o em um local onde o KVIrc pode encontrar, tal como as pastas 'avatars', 'incoming', ou 'pics', sua pasta pessoal, ou a pasta de gravação para o tipo de ficheiro de entrada. O caminho padrão para armazenar provavelmente funcionará. Pode configurar o KVIrc para aceitar automaticamente os avatares que chegam, definindo a opção <tt>boolAutoAcceptIncomingAvatars</tt> para verdadeiro.<br>"
 
 #: src/modules/dcc/DccBroker.cpp:659
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
@@ -120,7 +121,7 @@ msgstr "Escolher Ficheiros para Gravar - KVIrc"
 
 #: src/modules/dcc/DccBroker.cpp:758
 msgid "Auto-saving DCC %Q file %Q as %Q"
-msgstr ""
+msgstr "A gravar automaticamente o ficheiro %Q DCC %Q como %Q"
 
 #: src/modules/dcc/DccBroker.cpp:793
 msgid ""
@@ -134,7 +135,7 @@ msgid ""
 "The file '<b>%1</b>' already exists and is larger than the offered "
 "one.<br>Do you wish to<br><b>auto-rename</b> the new file, "
 "or<br><b>overwrite</b> the existing file?"
-msgstr ""
+msgstr "O ficheiro '<b>%1</b>' já existe e é maior do que o ficheiro oferecido.<br>Você deseja<br><b>renomear automaticamente</b> o novo ficheiro ou<br><b>sobrescrever</b> o ficheiro existente?"
 
 #: src/modules/dcc/DccBroker.cpp:891
 msgid "File %s exists, auto-renaming to %Q"
@@ -146,7 +147,7 @@ msgstr "A tentar uma conexão DCC CANVAS passiva"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:83
 #: src/modules/dcc/DccChatWindow.cpp:183
-#: src/modules/dcc/DccVideoWindow.cpp:628
+#: src/modules/dcc/DccVideoWindow.cpp:576
 #: src/modules/dcc/DccVoiceWindow.cpp:807
 msgid "Listening on interface %Q port %Q"
 msgstr "A escutar no interface %Q na porta %Q"
@@ -166,7 +167,7 @@ msgstr "A tentar uma conexão DCC CANVAS activa"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:114
 #: src/modules/dcc/DccChatWindow.cpp:179
-#: src/modules/dcc/DccVideoWindow.cpp:623
+#: src/modules/dcc/DccVideoWindow.cpp:571
 #: src/modules/dcc/DccVoiceWindow.cpp:802
 msgid "Contacting host %Q on port %Q"
 msgstr "A contactar a máquina %Q na porta %Q"
@@ -178,14 +179,14 @@ msgstr ""
 
 #: src/modules/dcc/DccCanvasWindow.cpp:290
 #: src/modules/dcc/DccChatWindow.cpp:584
-#: src/modules/dcc/DccVideoWindow.cpp:958
+#: src/modules/dcc/DccVideoWindow.cpp:902
 #: src/modules/dcc/DccVoiceWindow.cpp:961
 msgid "Connected to %Q:%Q"
 msgstr "Ligado a %Q:%Q"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:292
 #: src/modules/dcc/DccChatWindow.cpp:586
-#: src/modules/dcc/DccVideoWindow.cpp:960
+#: src/modules/dcc/DccVideoWindow.cpp:904
 #: src/modules/dcc/DccVoiceWindow.cpp:963
 msgid "Local end is %Q:%Q"
 msgstr "O fim local é %Q:%Q"
@@ -242,26 +243,26 @@ msgid "[SSL ERROR]: %s"
 msgstr "[ERRO SSL]: %s"
 
 #: src/modules/dcc/DccChatWindow.cpp:303 src/modules/dcc/DccChatWindow.cpp:414
-#: src/modules/dcc/DccVideoWindow.cpp:687
-#: src/modules/dcc/DccVideoWindow.cpp:798
+#: src/modules/dcc/DccVideoWindow.cpp:632
+#: src/modules/dcc/DccVideoWindow.cpp:743
 msgid "Can't send data: no active connection"
 msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:350
-#: src/modules/dcc/DccVideoWindow.cpp:734
+#: src/modules/dcc/DccVideoWindow.cpp:679
 msgid ""
 "The encryption engine was not able to encrypt the current message (%Q): %Q, "
 "no data was sent to the remote end"
 msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:429
-#: src/modules/dcc/DccVideoWindow.cpp:812
+#: src/modules/dcc/DccVideoWindow.cpp:757
 #: src/modules/dcc/DccVoiceWindow.cpp:870
 msgid "ERROR: %Q"
 msgstr "ERRO: %Q"
 
 #: src/modules/dcc/DccChatWindow.cpp:493
-#: src/modules/dcc/DccVideoWindow.cpp:875
+#: src/modules/dcc/DccVideoWindow.cpp:820
 msgid ""
 "The following message appears to be encrypted, but the encryption engine "
 "failed to decode it: %Q"
@@ -522,41 +523,33 @@ msgid ""
 "disabling the option (so the next DCC will work)"
 msgstr ""
 
-#: src/modules/dcc/DccVideoWindow.cpp:455
+#: src/modules/dcc/DccVideoWindow.cpp:449
 msgid "Video device:"
 msgstr "Dispositivo de vídeo:"
 
-#: src/modules/dcc/DccVideoWindow.cpp:462
-msgid "Input:"
-msgstr "Entrada:"
-
-#: src/modules/dcc/DccVideoWindow.cpp:469
-msgid "Standard:"
-msgstr "Padrão:"
-
-#: src/modules/dcc/DccVideoWindow.cpp:604
+#: src/modules/dcc/DccVideoWindow.cpp:552
 msgid "Attempting a passive DCC VIDEO connection"
 msgstr "A tentar uma conexão DCC VIDEO passiva"
 
-#: src/modules/dcc/DccVideoWindow.cpp:612
+#: src/modules/dcc/DccVideoWindow.cpp:560
 msgid "Attempting an active DCC VIDEO connection"
 msgstr "A tentar uma conexão DCC VIDEO activa"
 
-#: src/modules/dcc/DccVideoWindow.cpp:646
+#: src/modules/dcc/DccVideoWindow.cpp:594
 msgid ""
 "Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr "Pedido DCC VIDEO (%s) enviado para %Q. A aguardar que o cliente remoto se ligue..."
 
-#: src/modules/dcc/DccVideoWindow.cpp:650
+#: src/modules/dcc/DccVideoWindow.cpp:598
 msgid "DCC VIDEO request not sent: awaiting manual connection"
 msgstr "Pedido DCC VIDEO não enviado: a aguardar conexão manual"
 
-#: src/modules/dcc/DccVideoWindow.cpp:953
+#: src/modules/dcc/DccVideoWindow.cpp:897
 msgid "DCC Failed: %Q"
 msgstr "DCC Falhado: %Q"
 
-#: src/modules/dcc/DccVideoWindow.cpp:974
+#: src/modules/dcc/DccVideoWindow.cpp:918
 #: src/modules/dcc/DccVoiceWindow.cpp:980
 #, c-format
 msgid "Actual codec used is '%s'"
