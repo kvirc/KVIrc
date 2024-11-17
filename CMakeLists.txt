@@ -1090,19 +1090,19 @@ if(WANT_GETTEXT)
 		if(APPLE)
 			foreach(curFile ${FILES_TO_TIDY})
 				add_custom_command(TARGET messages-tidy
+				POST_BUILD
 				COMMENT "Tidying ${curFile}..."
 				COMMAND ${SED_EXECUTABLE} -i "" -e "s|${CMAKE_SOURCE_DIR}/||g" "${curFile}"
 				VERBATIM
-				DEPENDS ${curFile}
 				)
 			endforeach()
 		else()
 			foreach(curFile ${FILES_TO_TIDY})
 				add_custom_command(TARGET messages-tidy
+				POST_BUILD
 				COMMENT "Tidying ${curFile}..."
 				COMMAND ${SED_EXECUTABLE} -i -e "s|${CMAKE_SOURCE_DIR}/||g" "${curFile}"
 				VERBATIM
-				DEPENDS ${curFile}
 				)
 			endforeach()
 		endif()
@@ -1141,10 +1141,11 @@ if(WANT_DOXYGEN)
 		)
 
 		add_custom_command(
+			TARGET devdocs
+			POST_BUILD
 			COMMENT "generate the API documentation"
 			COMMAND mkdir -p ${CMAKE_BINARY_DIR}/doc/api
 			COMMAND cd ${CMAKE_BINARY_DIR}/admin && ${DOXYGEN_EXECUTABLE} Doxyfile
-			TARGET devdocs
 		)
 	else()
 		set(CMAKE_STATUS_DOXYGEN_SUPPORT "No")
@@ -1190,7 +1191,7 @@ if(UNIX)
 	)
 	add_custom_command(
 		TARGET  distclean POST_BUILD
-		DEPENDS clean
+		POST_BUILD
 		COMMENT "distribution clean"
 		COMMAND rm
 		ARGS    -Rf CMakeTmp CMakeFiles doc/api ${DISTCLEANED}
