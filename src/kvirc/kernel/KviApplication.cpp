@@ -623,20 +623,7 @@ int KviApplication::getGloballyUniqueId()
 
 bool KviApplication::supportsCompositing()
 {
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	//we need >= win2000
 	return true;
-#endif
-
-#ifdef COMPILE_QX11INFO_SUPPORT
-	// Qt5 does not support QX11Info::isCompositingManagerRunning()
-	// Well...assume we're compositing capable, should be true on all recent Linux distros
-	return true;
-#endif // COMPILE_QX11INFO_SUPPORT
-#ifdef COMPILE_ON_MAC
-	return true;
-#endif
-	return false;
 };
 
 void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QString & szMsg, unsigned int uMessageLifetime)
