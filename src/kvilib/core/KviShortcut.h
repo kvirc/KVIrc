@@ -48,6 +48,7 @@ public:
 #else
 	static QShortcut * create(const char * key, QObject * parent, const char * member = nullptr, const char * ambiguousMember = nullptr, Qt::ShortcutContext context = Qt::WindowShortcut);
 	static QShortcut * create(const QKeySequence & key, QObject * parent, const char * member = nullptr, const char * ambiguousMember = nullptr, Qt::ShortcutContext context = Qt::WindowShortcut);
+	static QShortcut * create(const QKeySequence::StandardKey & key, QObject * parent, const char * member = nullptr, const char * ambiguousMember = nullptr, Qt::ShortcutContext context = Qt::WindowShortcut);
 	static QShortcut * create(Qt::KeyboardModifier mod, Qt::Key key, QObject * parent, const char * member = nullptr, const char * ambiguousMember = nullptr, Qt::ShortcutContext context = Qt::WindowShortcut);
 #endif
 };

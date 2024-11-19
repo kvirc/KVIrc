@@ -46,6 +46,14 @@ QShortcut * KviShortcut::create(const QKeySequence & key, QObject * parent, cons
 	return new QShortcut(key, parent, member, ambiguousMember, context);
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+QShortcut * KviShortcut::create(const QKeySequence::StandardKey & key, QObject * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext context)
+{
+	//qDebug("New StdKey Shortcut %s\n", key.toString().toUtf8().data());
+	return new QShortcut(key, parent, member, ambiguousMember, context);
+}
+#endif
+
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 QShortcut * KviShortcut::create(Qt::KeyboardModifier mod, Qt::Key key, QWidget * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext context)
 #else
