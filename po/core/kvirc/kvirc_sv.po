@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KVIrc 5.2.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-11 12:42+0200\n"
-"PO-Revision-Date: 2025-01-01 18:44+0100\n"
+"PO-Revision-Date: 2025-01-01 19:43+0100\n"
 "Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -730,11 +730,11 @@ msgstr ""
 
 #: src/kvilib/net/KviHttpRequest.cpp:272
 msgid "Connected to %1:%2: sending request"
-msgstr ""
+msgstr "Ansluten till %1:%2: skickar begäran"
 
 #: src/kvilib/net/KviHttpRequest.cpp:326
 msgid "Socket write error"
-msgstr ""
+msgstr "Skrivfel för uttag"
 
 #: src/kvilib/net/KviHttpRequest.cpp:398
 msgid "Contacting host %1 on port %2"
@@ -746,7 +746,7 @@ msgstr ""
 
 #: src/kvilib/net/KviHttpRequest.cpp:524
 msgid "Can't open file \"%1\" for writing"
-msgstr ""
+msgstr "Kan inte öppna filen \"%1\" för skrivning"
 
 #: src/kvilib/net/KviHttpRequest.cpp:577
 msgid "Invalid HTTP response: %1"
@@ -758,7 +758,7 @@ msgstr ""
 
 #: src/kvilib/net/KviHttpRequest.cpp:715
 msgid "Too many redirects"
-msgstr ""
+msgstr "För många omdirigeringar"
 
 #: src/kvilib/net/KviHttpRequest.cpp:725
 msgid "Bad redirect"
@@ -766,11 +766,11 @@ msgstr "Felaktig omdirigering"
 
 #: src/kvilib/net/KviHttpRequest.cpp:747
 msgid "Redirect loop"
-msgstr ""
+msgstr "Omdirigeringsloop"
 
 #: src/kvilib/net/KviHttpRequest.cpp:754
 msgid "Following Redirect to %1"
-msgstr ""
+msgstr "Följer omdirigering till %1"
 
 #: src/kvilib/net/KviHttpRequest.cpp:782
 msgid "The amount of received data exceeds the maximum length"
@@ -872,7 +872,7 @@ msgstr "Allmänt"
 
 #: src/kvirc/kernel/KviActionManager.cpp:63
 msgid "Generic actions"
-msgstr ""
+msgstr "Allmänna åtgärder"
 
 #: src/kvirc/kernel/KviActionManager.cpp:64
 msgid "Settings"
@@ -911,7 +911,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviActionManager.cpp:68
 msgid "Tools"
-msgstr ""
+msgstr "Verktyg"
 
 #: src/kvirc/kernel/KviActionManager.cpp:68
 msgid "Actions that will appear in the \"Tools\" menu"
@@ -992,7 +992,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviApplication.cpp:1209
 msgid "File download failed"
-msgstr ""
+msgstr "Filhämtning misslyckades"
 
 #: src/kvirc/kernel/KviApplication.cpp:1211
 msgid "File download from %1 failed"
@@ -1123,11 +1123,11 @@ msgstr ""
 
 #: src/kvirc/kernel/KviCoreActions.cpp:170
 msgid "Configure KVIrc..."
-msgstr ""
+msgstr "Konfigurera KVIrc..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:171
 msgid "Shows the general options dialog"
-msgstr ""
+msgstr "Visar en dialogruta för allmänna alternativ"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:181
 msgid "Configure Theme..."
@@ -1135,7 +1135,7 @@ msgstr "Konfigurera tema..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:182
 msgid "Shows the theme options dialog"
-msgstr ""
+msgstr "Visar en dialogruta för temaalternativ"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:192
 msgid "Manage Themes..."
@@ -1143,7 +1143,7 @@ msgstr "Hantera teman..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:193
 msgid "Allows you to manage the themes"
-msgstr ""
+msgstr "Låter dig hantera teman"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:203
 msgid "Customize Toolbars..."
@@ -1151,7 +1151,7 @@ msgstr "Anpassa verktygsrader..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:204
 msgid "Shows a window that allows editing script toolbars"
-msgstr ""
+msgstr "Visar ett fönster som tillåter redigering av skriptverktygsrader"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:214
 msgid "Join Channels..."
@@ -1159,7 +1159,7 @@ msgstr "Gå in i kanaler..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:215
 msgid "Shows a dialog that allows you join channels"
-msgstr ""
+msgstr "Visar en dialogruta som låter dig gå in i kanaler"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:225
 msgid "Edit Actions..."
@@ -1167,7 +1167,7 @@ msgstr "Redigera åtgärder..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:226
 msgid "Shows a window that allows editing actions"
-msgstr ""
+msgstr "Visar ett fönster som låter dig redigera åtgärder"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:236
 msgid "Edit Aliases..."
@@ -1175,7 +1175,7 @@ msgstr "Redigera alias..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:237
 msgid "Shows a window that allows editing aliases"
-msgstr ""
+msgstr "Visar ett fönster som låter dig redigera alias"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:247
 msgid "Edit Classes..."
@@ -1183,7 +1183,7 @@ msgstr "Redigera klasser..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:248
 msgid "Shows a window that allows editing classes"
-msgstr ""
+msgstr "Visar ett fönster som låter dig redigera klasser"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:258
 msgid "Edit Events..."
@@ -1191,7 +1191,7 @@ msgstr "Redigera händelser..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:259
 msgid "Shows a window that allows editing script events"
-msgstr ""
+msgstr "Visar ett fönster som låter dig redigera skripthändelser"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:269
 msgid "Edit Popups..."
@@ -1199,15 +1199,15 @@ msgstr "Redigera popuprutor..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:270
 msgid "Shows a window that allows editing popup menus"
-msgstr ""
+msgstr "Visar ett fönster som låter dig redigera popupmenyer"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:280
 msgid "Edit RAW Events..."
-msgstr ""
+msgstr "Redigera RAW-händelser..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:281
 msgid "Shows a window that allows editing RAW scripting events"
-msgstr ""
+msgstr "Visar ett fönster som tillåter redigering av RAW-skripthändelser"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:291
 msgid "Script Tester"
@@ -1215,7 +1215,7 @@ msgstr "Skripttestare"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:292
 msgid "Creates an embedded editor for long scripts"
-msgstr ""
+msgstr "Skapar en inbläddad redigerare för långa skript"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:302
 msgid "Execute Script..."
@@ -1223,7 +1223,7 @@ msgstr "Kör skript..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:303
 msgid "Allows executing a KVS script from file"
-msgstr ""
+msgstr "Tillåter körning av ett KVS-skript från fil"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:313 src/modules/help/HelpWindow.cpp:73
 msgid "Help Index"
@@ -1231,15 +1231,15 @@ msgstr "Hjälpindex"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:314
 msgid "Shows the documentation index"
-msgstr ""
+msgstr "Visar dokumentationsindexet"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:324
 msgid "KVIrc WWW"
-msgstr ""
+msgstr "KVIrcs webb"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:325
 msgid "Opens the KVIrc homepage"
-msgstr ""
+msgstr "Öppnar KVIrcs webbsida"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:335
 msgid "Acquire Screenshot"
@@ -1247,7 +1247,7 @@ msgstr "Ta skärmbild"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:336
 msgid "Acquires a screenshot of the KVIrc main window"
-msgstr ""
+msgstr "Tar en skärmbild av KVIrcs huvudfönster"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:346
 msgid "Manage File &Transfers"
@@ -1255,15 +1255,15 @@ msgstr "Hantera filö&verföringar"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:347
 msgid "Shows a window that lists file transfers"
-msgstr ""
+msgstr "Visar ett fönster som listar filöverföringar"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:357
 msgid "Show I/O &Traffic Graph"
-msgstr ""
+msgstr "Visa in/ut-trafikgraf"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:358
 msgid "Shows a graph representing I/O bandwidth traffic"
-msgstr ""
+msgstr "Visar en graf som representerar in/ut-bandbredd för trafik"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:368
 msgid "Browse Log Files"
@@ -1271,7 +1271,7 @@ msgstr "Bläddra loggfiler"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:369
 msgid "Shows a window that lists and filter log files"
-msgstr ""
+msgstr "Visar ett fönster som listar och filtrerar loggfiler"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:379
 msgid "Manage S&hared Files"
@@ -1279,23 +1279,23 @@ msgstr "Hantera &delade filer"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:380
 msgid "Shows a window that list shared files"
-msgstr ""
+msgstr "Visar ett fönster som listar delade filer"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:390
 msgid "View URL List"
-msgstr ""
+msgstr "Visa URL-lista"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:391
 msgid "Shows a window that lists caught URLs"
-msgstr ""
+msgstr "Visar ett fönster som listar fångade URLer"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:402
 msgid "New IRC Context"
-msgstr ""
+msgstr "Ny IRC-kontext"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:403
 msgid "Creates a new IRC context console"
-msgstr ""
+msgstr "Skapar en ny IRC-kontextkonsoll"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:414
 msgid "&Quit KVIrc"
@@ -1303,15 +1303,15 @@ msgstr "A&vsluta KVIrc"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:415
 msgid "Quits KVIrc closing all the current connections"
-msgstr ""
+msgstr "Avslutar KVIrc och stänger alla aktuella anslutningar"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:426
 msgid "IRC Context Display"
-msgstr ""
+msgstr "IRC-kontextvisning"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:427
 msgid "Shows a small display with IRC context information"
-msgstr ""
+msgstr "Visar en liten skärm med IRC-kontextinformation"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:499
 #: src/kvirc/ui/KviStatusBarApplet.cpp:601
@@ -1320,7 +1320,7 @@ msgstr "Avgränsare"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:500
 msgid "Acts as a separator for other items: performs no action"
-msgstr ""
+msgstr "Fungerar som en avgränsare för andra objekt: genomför ingen åtgärd"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:531
 msgid "Connect/Disconnect"
@@ -1350,7 +1350,7 @@ msgstr "Gå in i kanal"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:780
 msgid "Shows a popup menu that allows quickly selecting a channel to join"
-msgstr ""
+msgstr "Visar en popupmeny som låter dig snabbt välja en kanal att gå in i"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:797
 #: src/kvirc/kernel/KviCoreActions.cpp:812
@@ -1359,12 +1359,12 @@ msgstr ""
 #: src/kvirc/kernel/KviCoreActions.cpp:903
 #: src/kvirc/kernel/KviCoreActions.cpp:917
 msgid "Other..."
-msgstr ""
+msgstr "Annat..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:799
 #: src/kvirc/kernel/KviCoreActions.cpp:816
 msgid "Clear Recent Channels List"
-msgstr ""
+msgstr "Töm lista över tidigare kanaler"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:833
 #: src/kvirc/kernel/KviCoreActions.cpp:834
@@ -1383,12 +1383,12 @@ msgstr "Ok"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:835
 msgid "Shows a popup menu that allows quickly changing the nickname"
-msgstr ""
+msgstr "Visar en popupmeny som låter dig snabbt ändra smeknamnet"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:855
 #: src/kvirc/kernel/KviCoreActions.cpp:872
 msgid "Clear Recent Nicks List"
-msgstr ""
+msgstr "Töm lista över tidigare smeknamn"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:890
 msgid "Connect to"
@@ -1403,7 +1403,7 @@ msgstr "Visar en popupmeny som låter dig snabbt ansluta till en server"
 #: src/modules/options/OptionsWidget_servers.cpp:1541
 #: src/modules/options/OptionsWidget_servers.cpp:1558
 msgid "Clear Recent Servers List"
-msgstr ""
+msgstr "Töm lista över tidigare servrar"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:942
 msgid "User Mode"
@@ -1428,7 +1428,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviCoreActions.cpp:1035
 msgid "Away/Back"
-msgstr ""
+msgstr "Borta/Tillbaka"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:1036
 msgid "Allows entering and leaving away state"
@@ -1523,7 +1523,7 @@ msgstr "Popuprutor"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:453
 msgid "RAW events"
-msgstr ""
+msgstr "RAW-händelser"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:458 src/kvirc/ui/KviMenuBar.cpp:166
 #: src/kvirc/ui/KviToolBar.cpp:108
@@ -1596,7 +1596,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:975
 msgid "Local host address is %Q"
-msgstr ""
+msgstr "Lokal värdadress är %Q"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1038
 msgid ""
@@ -1747,7 +1747,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1776
 msgid "Login operations complete, happy ircing!"
-msgstr ""
+msgstr "Inloggningsåtgärder färdiga, ha det så kul på IRC!"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1785
 msgid "Executing scheduled network specific \"on login\" commands"
@@ -2933,12 +2933,12 @@ msgstr ""
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:370
 #, c-format
 msgid "Server has %d IP addresses, picking a random one"
-msgstr ""
+msgstr "Servern har %d IP-adresser, väljer en slumpmässigt"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:380
 #, c-format
 msgid "Server has %d IP addresses, using the first one"
-msgstr ""
+msgstr "Servern har %d IP-adresser, använder den första"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:392
 msgid "Server hostname resolved to %Q"
@@ -2987,6 +2987,8 @@ msgid ""
 "This is the first connection in this IRC context: using the global server "
 "setting"
 msgstr ""
+"Detta är första anslutningen i denna IRC-kontext: använder globala "
+"serverinställningen"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:439
 msgid ""
@@ -3000,7 +3002,7 @@ msgstr ""
 #: src/kvirc/kernel/KviIrcContext.cpp:538
 #, c-format
 msgid "Connection attempt failed [%s]"
-msgstr ""
+msgstr "Anslutningsförsök misslyckades[%s]"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:554
 msgid "Will attempt to reconnect in %1 seconds"
@@ -3093,7 +3095,7 @@ msgstr "IRC-server"
 #: src/kvirc/kernel/KviIrcLink.cpp:380
 #, c-format
 msgid "Low-level transport connection established [%s (%s:%u)]"
-msgstr ""
+msgstr "Transportanslutning på lågnivå etablerad [%s (%s:%u)]"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:384
 msgid "Starting Secure Socket Layer handshake"
@@ -3109,7 +3111,7 @@ msgstr "Proxyanslutning"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:392
 msgid "Negotiating relay information"
-msgstr ""
+msgstr "Förhandlar reläinformation"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:395
 msgid "Sent connection request, waiting for acknowledgement"
@@ -3705,7 +3707,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviOptions.cpp:773
 msgid "Login operations completed"
-msgstr ""
+msgstr "Inloggningsåtgärder färdiga"
 
 #: src/kvirc/kernel/KviOptions.cpp:774
 msgid "Kick action"
@@ -3721,7 +3723,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviOptions.cpp:777
 msgid "ICQ message"
-msgstr ""
+msgstr "ICQ-meddelande"
 
 #: src/kvirc/kernel/KviOptions.cpp:778
 msgid "ICQ user-message"
@@ -6258,10 +6260,11 @@ msgstr ""
 #: src/kvirc/ui/KviMainWindow.cpp:837
 msgid "There are active connections, are you sure you wish to quit KVIrc?"
 msgstr ""
+"Det finns aktiva anslutningar. Är du säker på att du vill avsluta KVIrc?"
 
 #: src/kvirc/ui/KviMainWindow.cpp:979
 msgid "Do not show this message again"
-msgstr ""
+msgstr "Visa inte detta meddelande igen"
 
 #: src/kvirc/ui/KviMainWindow.cpp:980
 msgid ""
@@ -6367,11 +6370,11 @@ msgstr "Visa statusrad"
 
 #: src/kvirc/ui/KviMenuBar.cpp:180
 msgid "Show Tree Window List"
-msgstr ""
+msgstr "Visa trädfönsterlista"
 
 #: src/kvirc/ui/KviMenuBar.cpp:215
 msgid "Restore &Default Script..."
-msgstr ""
+msgstr "Återställ stan&dardskript..."
 
 #: src/kvirc/ui/KviMenuBar.cpp:231
 msgid "New &Connection to"
@@ -6461,11 +6464,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviQueryWindow.cpp:360
 msgid "Common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
+msgstr "Vanliga kanaler för \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:365
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
-msgstr ""
+msgstr "Inga vanliga kanaler för \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:528
 msgid "This query has no active targets, no message sent"
@@ -6569,7 +6572,7 @@ msgstr "Ta bort %1"
 
 #: src/kvirc/ui/KviStatusBar.cpp:403
 msgid "Add Applet"
-msgstr ""
+msgstr "Lägg till applet"
 
 #: src/kvirc/ui/KviStatusBar.cpp:451
 msgid ""
@@ -6579,7 +6582,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBar.cpp:550
 msgid "Network Information - KVIrc"
-msgstr ""
+msgstr "Nätverksinformation - KVIrc"
 
 #: src/kvirc/ui/KviStatusBar.cpp:574
 msgid "Network"
@@ -6612,11 +6615,11 @@ msgstr "Borta"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:166
 msgid "Apply to all IRC contexts"
-msgstr ""
+msgstr "Tillämpa på alla IRC-kontexter"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:194
 msgid "Away Indicator"
-msgstr ""
+msgstr "Frånvaroindikator"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:229
 msgid "Away since"
@@ -6649,7 +6652,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:311
 msgid "Double-click to enable it"
-msgstr ""
+msgstr "Dubbelklicka för att aktivera den"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:334
 msgid "Lag: %1 ms"
@@ -6661,7 +6664,7 @@ msgstr "Lagg: ???"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:361
 msgid "Lag Indicator"
-msgstr ""
+msgstr "Laggindikator"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:437
 msgid "Format"
@@ -6673,11 +6676,11 @@ msgstr "Enkel klocka"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:550
 msgid "Show total connection time"
-msgstr ""
+msgstr "Visa total anslutningstid"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:577
 msgid "Connection Timer"
-msgstr ""
+msgstr "Anslutningstimer"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:647
 msgid "Check on startup"
@@ -6685,11 +6688,11 @@ msgstr "Leta vid uppstart"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:651
 msgid "Check Git revisions"
-msgstr ""
+msgstr "Kontrollera Git-revisioner"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:685
 msgid "Update Indicator"
-msgstr ""
+msgstr "Uppdateringsindikator"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:811
 msgid "Update missing"
@@ -6697,7 +6700,7 @@ msgstr "Uppdatering saknas"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:813
 msgid "You haven't check yet. Should I check for updates?"
-msgstr ""
+msgstr "Du har inte kontrollerat än. Ska jag leta efter uppdateringar?"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:815
 msgid "Double-click to check now"
