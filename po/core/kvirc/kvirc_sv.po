@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KVIrc 5.2.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-11 12:42+0200\n"
-"PO-Revision-Date: 2025-01-01 17:58+0100\n"
+"PO-Revision-Date: 2025-01-01 18:44+0100\n"
 "Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -101,7 +101,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:69
 msgid "Unexpected character"
-msgstr ""
+msgstr "Oväntat tecken"
 
 #: src/kvilib/core/KviError.cpp:70
 msgid "Unknown operator"
@@ -109,7 +109,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:71
 msgid "No host to resolve"
-msgstr ""
+msgstr "Ingen värd att slå upp"
 
 #: src/kvilib/core/KviError.cpp:72
 msgid "(DNS internal) Unsupported address family"
@@ -117,7 +117,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:73
 msgid "Valid name but the host has no IP address"
-msgstr ""
+msgstr "Giltigt namn men värden har ingen IP-adress"
 
 #: src/kvilib/core/KviError.cpp:74
 msgid "Unrecoverable nameserver error (crashed?)"
@@ -157,7 +157,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:83
 msgid "Host not found"
-msgstr ""
+msgstr "Värden hittades inte"
 
 #: src/kvilib/core/KviError.cpp:84
 msgid "(DNS internal) IPC failure (slave data corrupted)"
@@ -169,7 +169,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:86
 msgid "Invalid IP address"
-msgstr ""
+msgstr "Ogiltig IP-adress"
 
 #: src/kvilib/core/KviError.cpp:87
 msgid "Socket creation failed"
@@ -738,7 +738,7 @@ msgstr ""
 
 #: src/kvilib/net/KviHttpRequest.cpp:398
 msgid "Contacting host %1 on port %2"
-msgstr ""
+msgstr "Kontaktar värden %1 på port %2"
 
 #: src/kvilib/net/KviHttpRequest.cpp:506
 msgid "Failed to rename the existing file, please rename manually and retry"
@@ -5500,7 +5500,7 @@ msgstr "[Död kanal]"
 #: src/kvirc/ui/KviConsoleWindow.cpp:1197 src/kvirc/ui/KviQueryWindow.cpp:387
 #: src/kvirc/ui/KviStatusBar.cpp:703
 msgid " on "
-msgstr ""
+msgstr " på "
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1216
 #: src/kvirc/ui/KviChannelWindow.cpp:1403 src/kvirc/ui/KviQueryWindow.cpp:773
@@ -5530,7 +5530,7 @@ msgstr "Dubbelklicka för att redigera..."
 #: src/kvirc/ui/KviChannelWindow.cpp:2062
 #, c-format
 msgid "Channel synchronized in %d.%d seconds"
-msgstr ""
+msgstr "Kanal synkroniserad på %d.%d sekunder"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:91
 msgid "CONSOLE"
@@ -5554,7 +5554,7 @@ msgstr "Kommentar"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:289
 msgid "Real name"
-msgstr ""
+msgstr "Riktigt namn"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:298
 msgid "Gender"
@@ -5605,7 +5605,7 @@ msgstr ""
 #: src/kvirc/ui/KviConsoleWindow.cpp:530 src/kvirc/ui/KviConsoleWindow.cpp:571
 #: src/kvirc/ui/KviMainWindow.cpp:836
 msgid "Confirm Close - KVIrc"
-msgstr ""
+msgstr "Bekräfta stängning - KVIrc"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:531
 msgid ""
@@ -5671,11 +5671,11 @@ msgstr "kanaler"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1224
 msgid "query"
-msgstr ""
+msgstr "fråga"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1225
 msgid "queries"
-msgstr ""
+msgstr "frågor"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1304
 msgid "Connected since"
@@ -5699,7 +5699,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviCryptController.cpp:109
 msgid "Enable encryption"
-msgstr ""
+msgstr "Aktivera kryptering"
 
 #: src/kvirc/ui/KviCryptController.cpp:112
 msgid "Encrypt key:"
@@ -5708,7 +5708,7 @@ msgstr "Krypteringsnyckel:"
 #: src/kvirc/ui/KviCryptController.cpp:118
 #: src/kvirc/ui/KviCryptController.cpp:130
 msgid "Hex"
-msgstr ""
+msgstr "Hex"
 
 #: src/kvirc/ui/KviCryptController.cpp:121
 msgid "Enable decryption"
@@ -5754,7 +5754,7 @@ msgstr ""
 #: src/modules/theme/ThemeManagementDialog.cpp:210
 #: src/modules/tip/libkvitip.cpp:87
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: src/kvirc/ui/KviCtcpPageDialog.cpp:103
 msgid "You have been paged by"
@@ -5852,7 +5852,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviInputEditor.cpp:1089
 msgid "Clipboard"
-msgstr ""
+msgstr "Urklipp"
 
 #: src/kvirc/ui/KviInputEditor.cpp:1101
 msgid "line break"
@@ -5912,7 +5912,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviInputEditor.cpp:1178
 msgid "Correct Spelling"
-msgstr ""
+msgstr "Korrekt stavning"
 
 #: src/kvirc/ui/KviInputEditor.cpp:1250
 msgid "Spell Checker"
@@ -5928,11 +5928,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviInputEditor.cpp:1288
 msgid "Spelling Checker"
-msgstr ""
+msgstr "Stavningskontroll"
 
 #: src/kvirc/ui/KviInputEditor.cpp:1290
 msgid "Not Supported"
-msgstr ""
+msgstr "Stöds inte"
 
 #: src/kvirc/ui/KviInputEditor.cpp:2347
 msgid "%d matches: %Q"
@@ -6046,7 +6046,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviIrcView.cpp:2570 src/kvirc/ui/KviIrcView.cpp:2629
 msgid "Pos %1"
-msgstr ""
+msgstr "Pos %1"
 
 #: src/kvirc/ui/KviIrcView.cpp:2587 src/kvirc/ui/KviIrcView.cpp:2647
 msgid "Not found"
@@ -6063,7 +6063,7 @@ msgstr ""
 #: src/kvirc/ui/KviIrcView_events.cpp:910
 #: src/kvirc/ui/KviIrcView_events.cpp:917 src/modules/url/libkviurl.cpp:139
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:925
 msgid "Click to open this link"
@@ -6101,7 +6101,7 @@ msgstr ""
 #: src/kvirc/ui/KviIrcView_events.cpp:995
 #: src/kvirc/ui/KviIrcView_events.cpp:1002
 msgid "Server URL"
-msgstr ""
+msgstr "Server-URL"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1014
 msgid "Server appears to be a network hub"
@@ -6383,7 +6383,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviMenuBar.cpp:348
 msgid "Show &Icon Table"
-msgstr ""
+msgstr "Visa &ikontabell"
 
 #: src/kvirc/ui/KviMenuBar.cpp:350
 msgid "Open &Terminal"
@@ -6669,7 +6669,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:495
 msgid "Simple Clock"
-msgstr ""
+msgstr "Enkel klocka"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:550
 msgid "Show total connection time"
@@ -8518,19 +8518,19 @@ msgstr "Visa fönster"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:324
 msgid "Away on All"
-msgstr ""
+msgstr "Borta på alla"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:327
 msgid "Back on All"
-msgstr ""
+msgstr "Tillbaka på alla"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:343
 msgid "Back on %1"
-msgstr ""
+msgstr "Tillbaka på %1"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:349
 msgid "Away on %1"
-msgstr ""
+msgstr "Borta på %1"
 
 #: src/modules/url/libkviurl.cpp:139
 msgid "Window"
