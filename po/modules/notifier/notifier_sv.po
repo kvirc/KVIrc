@@ -1,0 +1,75 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc 5.2.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
+"PO-Revision-Date: 2025-01-01 12:35+0100\n"
+"Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: src/modules/notifier/NotifierWindow.cpp:933
+msgid "Show/Hide input line"
+msgstr "Visa/dölj inmatningsrad"
+
+#: src/modules/notifier/NotifierWindow.cpp:934
+msgid "Hide"
+msgstr "Dölj"
+
+#: src/modules/notifier/NotifierWindow.cpp:937
+msgid "1 Minute"
+msgstr "1 minut"
+
+#: src/modules/notifier/NotifierWindow.cpp:938
+msgid "5 Minutes"
+msgstr "5 minuter"
+
+#: src/modules/notifier/NotifierWindow.cpp:939
+msgid "15 Minutes"
+msgstr "15 minuter"
+
+#: src/modules/notifier/NotifierWindow.cpp:940
+msgid "30 Minutes"
+msgstr "30 minuter"
+
+#: src/modules/notifier/NotifierWindow.cpp:941
+msgid "1 Hour"
+msgstr "1 timme"
+
+#: src/modules/notifier/NotifierWindow.cpp:943
+msgid "Until KVIrc is Restarted"
+msgstr "Tills KVIrc startas om"
+
+#: src/modules/notifier/NotifierWindow.cpp:944
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr "Permanent (tills uttryckligen aktiverat)"
+
+#: src/modules/notifier/NotifierWindow.cpp:946
+msgid "Disable"
+msgstr "Inaktivera"
+
+#: src/modules/notifier/NotifierWindow.cpp:1020
+msgid "Write text or commands to window"
+msgstr "Skriv text eller kommandon till fönster"
+
+#: src/modules/notifier/libkvinotifier.cpp:135
+msgid "The specified window does not exist"
+msgstr "Angivet fönster finns inte"
+
+#: src/modules/notifier/libkvinotifier.cpp:149
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "Angiven tidsgräns är inte giltig, antar 0"
+
+#: src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr "Växeln -t förväntar en tidsgräns i sekunder"
