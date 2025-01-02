@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KVIrc 5.2.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-11 12:42+0200\n"
-"PO-Revision-Date: 2025-01-01 12:59+0100\n"
+"PO-Revision-Date: 2025-01-02 11:03+0100\n"
 "Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -248,7 +248,7 @@ msgstr ""
 #: data/defscript/popups.kvs:330 data/defscript/popups.kvs:631
 #: data/defscript/popups.kvs:1228
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
@@ -256,15 +256,15 @@ msgstr ""
 
 #: data/defscript/aliases.kvs:111 data/defscript/aliases.kvs:165
 msgid "Usage"
-msgstr ""
+msgstr "Användning"
 
 #: data/defscript/aliases.kvs:111
 msgid "channel"
-msgstr ""
+msgstr "kanal"
 
 #: data/defscript/aliases.kvs:111 data/defscript/aliases.kvs:165
 msgid "message"
-msgstr ""
+msgstr "meddelande"
 
 #: data/defscript/aliases.kvs:112
 msgid "-m: send a message instead of a notice"
@@ -312,15 +312,15 @@ msgstr ""
 #: data/defscript/aliases.kvs:425 data/defscript/aliases.kvs:506
 #: data/defscript/aliases.kvs:574 data/defscript/aliases.kvs:643
 msgid "Usage:"
-msgstr ""
+msgstr "Användning:"
 
 #: data/defscript/aliases.kvs:281
 msgid "reason"
-msgstr ""
+msgstr "anledning"
 
 #: data/defscript/aliases.kvs:287 data/defscript/aliases.kvs:512
 msgid "This is not a channel window"
-msgstr ""
+msgstr "Detta är inte ett kanalfönster"
 
 #: data/defscript/aliases.kvs:494
 msgid "Unsupported type:"
@@ -328,15 +328,15 @@ msgstr ""
 
 #: data/defscript/aliases.kvs:518
 msgid "Channel Owner"
-msgstr ""
+msgstr "Kanalägare"
 
 #: data/defscript/aliases.kvs:522
 msgid "Channel Administrator"
-msgstr ""
+msgstr "Kanaladministratör"
 
 #: data/defscript/aliases.kvs:526
 msgid "Channel Operator"
-msgstr ""
+msgstr "Kanaloperatör"
 
 #: data/defscript/aliases.kvs:530
 msgid "Half Operator"
@@ -352,19 +352,19 @@ msgstr ""
 
 #: data/defscript/aliases.kvs:542
 msgid "Normal User"
-msgstr ""
+msgstr "Normal användare"
 
 #: data/defscript/aliases.kvs:562
 msgid "You must use DNS in an IRC context"
-msgstr ""
+msgstr "Du måste använda DNS i en IRC-kontext"
 
 #: data/defscript/aliases.kvs:568
 msgid "You must be connected to a server"
-msgstr ""
+msgstr "Du måste vara ansluten till en server"
 
 #: data/defscript/aliases.kvs:585
 msgid "No such user:"
-msgstr ""
+msgstr "Ingen sådan användare:"
 
 #: data/defscript/classes.kvs:18
 msgid ""
@@ -398,7 +398,7 @@ msgstr ""
 #: data/defscript/events.kvs:87 data/defscript/events.kvs:100
 #: data/defscript/events.kvs:134 data/defscript/popups.kvs:657
 msgid "Logging"
-msgstr ""
+msgstr "Loggning"
 
 #: data/defscript/events.kvs:92 data/defscript/events.kvs:105
 msgid "Global option controllers"
@@ -448,7 +448,7 @@ msgstr ""
 #: data/defscript/popups.kvs:791 data/defscript/popups.kvs:867
 #: data/defscript/popups.kvs:1210
 msgid "You're not connected to a server"
-msgstr ""
+msgstr "Du är inte ansluten till en server"
 
 #: data/defscript/popups.kvs:145 data/defscript/popups.kvs:319
 #: data/defscript/popups.kvs:619 data/defscript/popups.kvs:1212
@@ -498,7 +498,7 @@ msgstr "&Ignorera"
 #: data/defscript/popups.kvs:207 data/defscript/popups.kvs:846
 #: data/defscript/popups.kvs:1828
 msgid "&Registration"
-msgstr ""
+msgstr "&Registrering"
 
 #: data/defscript/popups.kvs:226 data/defscript/popups.kvs:638
 #: data/defscript/popups.kvs:1235
@@ -513,11 +513,11 @@ msgstr ""
 #: data/defscript/popups.kvs:237 data/defscript/popups.kvs:649
 #: data/defscript/popups.kvs:1246
 msgid "&Join"
-msgstr ""
+msgstr "&Gå in i"
 
 #: data/defscript/popups.kvs:256
 msgid "Copy Channel Address"
-msgstr ""
+msgstr "Kopiera kanaladress"
 
 #: data/defscript/popups.kvs:302
 msgid "Enter the message text"
@@ -538,7 +538,7 @@ msgstr "Standardkanaler"
 
 #: data/defscript/popups.kvs:337 data/defscript/popups.kvs:1221
 msgid "&Join Channels..."
-msgstr ""
+msgstr "&Gå in i kanaler..."
 
 #: data/defscript/popups.kvs:361 data/defscript/popups.kvs:460
 msgid "d (Debug/DNS?)"
@@ -667,7 +667,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:869
 msgid "Look Up"
-msgstr ""
+msgstr "Slå upp"
 
 #: data/defscript/popups.kvs:876
 msgid "Open"
@@ -779,7 +779,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1162
 msgid "With..."
-msgstr ""
+msgstr "Med..."
 
 #: data/defscript/popups.kvs:1164
 msgid "Kick Reason"
@@ -825,7 +825,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1332
 msgid "Logging to"
-msgstr ""
+msgstr "Loggning till"
 
 #: data/defscript/popups.kvs:1334
 msgid "Flush Log File"
@@ -833,7 +833,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1341
 msgid "Stop Logging"
-msgstr ""
+msgstr "Stoppa loggning"
 
 #: data/defscript/popups.kvs:1346
 msgid "Not Logging"
@@ -849,7 +849,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1358 data/defscript/popups.kvs:1366
 msgid "Log to..."
-msgstr ""
+msgstr "Logga till..."
 
 #: data/defscript/popups.kvs:1360 data/defscript/popups.kvs:1368
 msgid "Choose Log Filename"
@@ -910,7 +910,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1681
 msgid "Register..."
-msgstr ""
+msgstr "Registrera..."
 
 #: data/defscript/popups.kvs:1686
 msgid "Quick Registration"
@@ -920,7 +920,7 @@ msgstr ""
 #: data/defscript/popups.kvs:1698 data/defscript/popups.kvs:1703
 #: data/defscript/popups.kvs:1708 data/defscript/popups.kvs:1713
 msgid "Register As"
-msgstr ""
+msgstr "Registrera som"
 
 #: data/defscript/popups.kvs:1719
 msgid "Edit Registration..."
@@ -928,7 +928,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1725
 msgid "Unregister"
-msgstr ""
+msgstr "Avregistrera"
 
 #: data/defscript/popups.kvs:1732
 msgid "Add to Notify"
@@ -940,7 +940,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1742
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 #: data/defscript/popups.kvs:1744
 msgid "Choose..."
@@ -964,7 +964,7 @@ msgstr ""
 
 #: data/defscript/toolbars.kvs:3
 msgid "IRC Context"
-msgstr ""
+msgstr "IRC-kontext"
 
 #: data/defscript/toolbars.kvs:18
 msgid "Options"
