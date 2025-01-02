@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KVIrc 5.2.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-11 12:42+0200\n"
-"PO-Revision-Date: 2025-01-01 19:43+0100\n"
+"PO-Revision-Date: 2025-01-02 09:31+0100\n"
 "Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -5115,7 +5115,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2067
 msgid "This channel's website is: %Q"
-msgstr ""
+msgstr "Denna kanals webbsida är: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2073
 msgid "The website for \r!c\r%Q\r is: %Q"
@@ -5127,7 +5127,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2113
 msgid "Channel was created at %Q"
-msgstr ""
+msgstr "Kanalen skapades %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2119
 msgid "Channel \r!c\r%Q\r was created at %Q"
@@ -5180,7 +5180,7 @@ msgstr ""
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2440
 #, c-format
 msgid "%c\r!s\r%s\r%c's server info: %s"
-msgstr ""
+msgstr "%c\r!s\r%s\r%c's serverinfo: %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2451
 #, c-format
@@ -5272,15 +5272,15 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2994
 msgid "Authenticated as %Q"
-msgstr ""
+msgstr "Autentiserad som %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3016
 msgid "SASL authentication successful"
-msgstr ""
+msgstr "SASL-autentisering lyckades"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3041
 msgid "SASL authentication error: %Q"
-msgstr ""
+msgstr "SASL-autentiseringsfel: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3053
 msgid "Attempting fallback due to SASL failure."
@@ -5288,12 +5288,12 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3063
 msgid "SASL auth failed. Dropping the connection."
-msgstr ""
+msgstr "SASL-autentisering misslyckades. Släpper anslutningen."
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3099
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3126
 msgid "mode listing"
-msgstr ""
+msgstr "lägeslistning"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3147
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3167
@@ -5303,7 +5303,7 @@ msgstr ""
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3147
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3167
 msgid "mode list"
-msgstr ""
+msgstr "lägeslista"
 
 #: src/kvirc/ui/KviActionDrawer.cpp:156
 msgid "Script"
@@ -5315,11 +5315,11 @@ msgstr "Kanallägen"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:135
 msgid "Split view"
-msgstr ""
+msgstr "Delad vy"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:139 src/kvirc/ui/KviChannelWindow.cpp:230
 msgid "User list"
-msgstr ""
+msgstr "Användarlista"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:154 src/kvirc/ui/KviChannelWindow.cpp:173
 #: src/kvirc/ui/KviMaskEditor.cpp:141
@@ -5592,7 +5592,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:357
 msgid "Identified to account: <b>%1</b>"
-msgstr ""
+msgstr "Identifierad till konto: <b>%1</b>"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:364
 msgid "Probably away"
@@ -5685,7 +5685,7 @@ msgstr "Ansluten sedan"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1315
 msgid "Online for"
-msgstr ""
+msgstr "Ansluten i"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1327
 msgid "Server idle for"
@@ -5697,7 +5697,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviCryptController.cpp:91
 msgid "Use the encryption engine"
-msgstr ""
+msgstr "Använd krypteringsmotorn"
 
 #: src/kvirc/ui/KviCryptController.cpp:109
 msgid "Enable encryption"
@@ -5922,11 +5922,11 @@ msgstr "Stavningskontroll"
 
 #: src/kvirc/ui/KviInputEditor.cpp:1251
 msgid "No Suggestions Available"
-msgstr ""
+msgstr "Inga förslag tillgängliga"
 
 #: src/kvirc/ui/KviInputEditor.cpp:1256
 msgid "Spelling Suggestions for '%1'"
-msgstr ""
+msgstr "Stavningsförslag för '%1'"
 
 #: src/kvirc/ui/KviInputEditor.cpp:1288
 msgid "Spelling Checker"
@@ -5983,12 +5983,12 @@ msgstr "Lagg: <b>?.??</b>"
 
 #: src/kvirc/ui/KviIrcToolBar.cpp:319 src/kvirc/ui/KviStatusBar.cpp:727
 msgid "No IRC context"
-msgstr ""
+msgstr "Ingen IRC-kontext"
 
 #: src/kvirc/ui/KviIrcToolBar.cpp:378
 #, c-format
 msgid "Lag: %d.%d%d secs"
-msgstr ""
+msgstr "Lagg: %d.%d%d s"
 
 #: src/kvirc/ui/KviIrcToolBar.cpp:382
 msgid "Lag: ?.??"
@@ -6000,7 +6000,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviIrcView.cpp:2306
 msgid "Toggle Search"
-msgstr ""
+msgstr "Växla sökning"
 
 #: src/kvirc/ui/KviIrcView.cpp:2310
 msgid "Zoom In"
@@ -6020,11 +6020,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviIrcView.cpp:2318
 msgid "Reset Font"
-msgstr ""
+msgstr "Nollställ typsnitt"
 
 #: src/kvirc/ui/KviIrcView.cpp:2319
 msgid "Reset Background"
-msgstr ""
+msgstr "Nollställ bakgrund"
 
 #: src/kvirc/ui/KviIrcView.cpp:2323
 msgid "Clear Buffer"
@@ -6036,7 +6036,7 @@ msgstr "Välj typsnitt"
 
 #: src/kvirc/ui/KviIrcView.cpp:2373
 msgid "Choose the background image..."
-msgstr ""
+msgstr "Välj bakgrundsbild..."
 
 #: src/kvirc/ui/KviIrcView.cpp:2387
 msgid "Invalid Image - KVIrc"
@@ -6406,7 +6406,7 @@ msgstr "&Tillämpa"
 
 #: src/kvirc/ui/KviOptionsWidget.cpp:52
 msgid "This option is also available as"
-msgstr ""
+msgstr "Detta alternativ är också tillgängligt som"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:88
 msgid "Show user list"
@@ -6757,15 +6757,15 @@ msgstr "Okänt kanalämne"
 
 #: src/kvirc/ui/KviTopicWidget.cpp:480
 msgid "Set on"
-msgstr ""
+msgstr "Inställt"
 
 #: src/kvirc/ui/KviTopicWidget.cpp:494
 msgid "No topic is set"
-msgstr ""
+msgstr "Inget ämne inställt"
 
 #: src/kvirc/ui/KviTopicWidget.cpp:496
 msgid "Double-click to set..."
-msgstr ""
+msgstr "Dubbelklicka för att ställa in..."
 
 #: src/kvirc/ui/KviTopicWidget.cpp:580
 msgid "Copy Topic to Clipboard"
@@ -6781,7 +6781,7 @@ msgstr "Omvänd sortering"
 
 #: src/kvirc/ui/KviUserListView.cpp:1701
 msgid "Joined on: <b>%1</b>"
-msgstr ""
+msgstr "Gick in den: <b>%1</b>"
 
 #: src/kvirc/ui/KviUserListView.cpp:1713
 msgid "Quiet for: <b>%1h %2m %3s</b>"
@@ -6981,7 +6981,7 @@ msgstr ""
 
 #: src/modules/chan/libkvichan.cpp:50
 msgid "The current window is not a channel"
-msgstr ""
+msgstr "Aktuella fönstret är inte en kanal"
 
 #: src/modules/chan/libkvichan.cpp:58
 msgid "Can't find the window with ID '%Q'"
