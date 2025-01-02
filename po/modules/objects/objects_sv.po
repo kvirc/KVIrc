@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KVIrc 5.2.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-11 12:42+0200\n"
-"PO-Revision-Date: 2025-01-01 13:05+0100\n"
+"PO-Revision-Date: 2025-01-02 08:22+0100\n"
 "Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -25,7 +25,7 @@ msgstr "Bildparameter saknas"
 #: src/modules/objects/KvsObject_button.cpp:133
 #: src/modules/objects/KvsObject_painter.cpp:952
 msgid "Pixmap parameter is not an object!"
-msgstr ""
+msgstr "Pixmap-parameter är inte ett objekt!"
 
 #: src/modules/objects/KvsObject_button.cpp:139
 msgid "Object pixmap required!"
@@ -135,12 +135,12 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_file.cpp:340
 msgid "Write error occurred!"
-msgstr ""
+msgstr "Skrivfel inträffade!"
 
 #: src/modules/objects/KvsObject_file.cpp:350
 #: src/modules/objects/KvsObject_file.cpp:362
 msgid "Read error occurred!"
-msgstr ""
+msgstr "Läsfel inträffade!"
 
 #: src/modules/objects/KvsObject_file.cpp:377
 msgid "Argument too long, using only the first char"
@@ -210,11 +210,11 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_http.cpp:228
 msgid "Host '%Q' is not a valid URL"
-msgstr ""
+msgstr "Värden \"%Q\" är inte en giltig URL"
 
 #: src/modules/objects/KvsObject_http.cpp:303
 msgid "'%Q' is not a valid file path"
-msgstr ""
+msgstr "\"%Q\" är inte en giltig filsökväg"
 
 #: src/modules/objects/KvsObject_label.cpp:317
 #: src/modules/objects/KvsObject_listWidget.cpp:332
@@ -326,7 +326,7 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_memoryBuffer.cpp:112
 msgid "The file '%Q' doesn't exist"
-msgstr ""
+msgstr "Filen \"%Q\" finns inte"
 
 #: src/modules/objects/KvsObject_memoryBuffer.cpp:131
 msgid "Index '%I' out of the buffer size"
@@ -394,18 +394,18 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:778
 msgid "Unknown text format '%Q'"
-msgstr ""
+msgstr "Okänt textformat '%Q'"
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:791
 #: src/modules/objects/KvsObject_pixmap.cpp:524
 #: src/modules/objects/KvsObject_pixmap.cpp:565
 #: src/modules/objects/KvsObject_textBrowser.cpp:102
 msgid "I can't find the specified file '%Q'."
-msgstr ""
+msgstr "Jag kan inte hitta angiven fil '%Q'."
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:798
 msgid "I can't read the file '%Q'."
-msgstr ""
+msgstr "Jag kan inte läsa filen '%Q'."
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:813
 msgid "Unknown text document format '%Q'"
@@ -480,7 +480,7 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_painter.cpp:1185
 msgid "Missing filename"
-msgstr ""
+msgstr "Saknar filnamn"
 
 #: src/modules/objects/KvsObject_painter.cpp:1211
 #: src/modules/objects/KvsObject_painter.cpp:1238
@@ -635,7 +635,7 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_tabWidget.cpp:449
 msgid "Unknown position '%Q'"
-msgstr ""
+msgstr "Okänd position '%Q'"
 
 #: src/modules/objects/KvsObject_tableWidget.cpp:354
 #: src/modules/objects/KvsObject_tableWidget.cpp:361
