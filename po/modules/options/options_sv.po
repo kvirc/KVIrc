@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KVIrc 5.2.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-11 12:42+0200\n"
-"PO-Revision-Date: 2025-01-01 13:11+0100\n"
+"PO-Revision-Date: 2025-01-02 09:14+0100\n"
 "Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -37,12 +37,18 @@ msgid ""
 "is a small search engine. It will highlight the pages that contain options "
 "related to the search term you have entered."
 msgstr ""
+"Denna dialogruta innehåller en uppsättning KVIrc-inställningar.<br> Använd "
+"ikonerna till vänster för att navigera genom alternativsidorna. Textrutan "
+"nederst till vänster är en liten sökmotor. Den kommer att framhäva sidorna "
+"som innehåller alternativen som relaterar till sökvillkoret som du angivit."
 
 #: src/modules/options/OptionsDialog.cpp:130
 msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
 msgstr ""
+"Många inställningar har verktygstips som kan visas genom att hålla "
+"muspekaren över deras etiketter för några sekunder."
 
 #: src/modules/options/OptionsDialog.cpp:134
 msgid ""
@@ -50,6 +56,10 @@ msgid ""
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
 "your changes without closing the window."
 msgstr ""
+"När du är färdig så kan du klicka på \"<b>Ok</b>\" för att acceptera dina "
+"ändringar eller \"<b>Avbryt</b>\" för att förkasta dem. Klickar du på "
+"\"<b>Tillämpa</b>\" så verkställs dina ändringar direkt utan att stänga "
+"fönstret."
 
 #: src/modules/options/OptionsDialog.cpp:202
 msgid ""
@@ -59,6 +69,11 @@ msgid ""
 "search term will be highlighted and you will be able to quickly find them.</"
 "p><p>Try \"nickname\" for example.</p>"
 msgstr ""
+"<p>Detta är sökverktyget för denna alternativdialog.</p><p>Du kan ange ett "
+"sökvillkor antingen i ditt egna språk eller på engelska och trycka på "
+"knappen till höger. Sidorna som innehåller några alternativ som relaterar "
+"till sökvillkoret kommer att framhävas och du kan snabbt hitta rätt.</"
+"p><p>Prova \"smeknamn\" till exempel.</p>"
 
 #: src/modules/options/OptionsDialog.cpp:234
 #: src/modules/options/OptionsWidgetContainer.cpp:105
@@ -70,7 +85,7 @@ msgstr "&Ok"
 #: src/modules/options/OptionsDialog.cpp:236
 #: src/modules/options/OptionsWidgetContainer.cpp:106
 msgid "Close this dialog, accepting all changes."
-msgstr ""
+msgstr "Stäng denna dialog och acceptera alla ändringar."
 
 #: src/modules/options/OptionsDialog.cpp:242
 msgid "&Apply"
@@ -78,7 +93,7 @@ msgstr "&Tillämpa"
 
 #: src/modules/options/OptionsDialog.cpp:244
 msgid "Commit all changes immediately."
-msgstr ""
+msgstr "Verkställ alla ändringar direkt."
 
 #: src/modules/options/OptionsDialog.cpp:249
 #: src/modules/options/OptionsWidgetContainer.cpp:113
@@ -94,19 +109,19 @@ msgstr "Avbryt"
 #: src/modules/options/OptionsDialog.cpp:251
 #: src/modules/options/OptionsWidgetContainer.cpp:114
 msgid "Close this dialog, discarding all changes."
-msgstr ""
+msgstr "Stäng denna dialog och förkasta alla ändringar."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:52
 msgid "Enable word highlighting"
-msgstr ""
+msgstr "Aktivera framhävning av ord"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:53
 msgid "Words to Highlight"
-msgstr ""
+msgstr "Ord att framhäva"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:59
 msgid "Highlight messages containing my nickname"
-msgstr ""
+msgstr "Framhäv meddelanden som innehåller mitt smeknamn"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:60
 msgid ""
@@ -126,7 +141,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:65
 msgid "Highlighting Method"
-msgstr ""
+msgstr "Framhävningsmetod"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:72
 msgid "Highlight every occurrence of a word inside text"
@@ -237,7 +252,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.h:46
 msgid "Highlight"
-msgstr ""
+msgstr "Framhäv"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.h:66
 msgid "Window List Alert"
@@ -250,7 +265,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_antiSpam.cpp:40
 #: src/modules/options/OptionsWidget_query.cpp:43
 msgid "Private messages"
-msgstr ""
+msgstr "Privata meddelanden"
 
 #: src/modules/options/OptionsWidget_antiSpam.cpp:42
 #: src/modules/options/OptionsWidget_query.cpp:49
@@ -304,7 +319,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_windowList.cpp:290
 #: src/modules/options/OptionsWidget_windowList.cpp:293
 msgid " pixels"
-msgstr "bildpunkter"
+msgstr " bildpunkter"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:54
 #: src/modules/options/OptionsWidget_avatar.cpp:64
@@ -321,7 +336,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_avatar.cpp:68
 msgid "Request CTCP"
-msgstr ""
+msgstr "Begär CTCP"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:69
 msgid "Request missing avatars"
@@ -408,7 +423,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_avatar.h:30
 msgid "Avatars"
-msgstr ""
+msgstr "Avatarer"
 
 #: src/modules/options/OptionsWidget_away.cpp:39
 msgid "Enable default away message"
@@ -460,7 +475,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_channel.cpp:60
 #: src/modules/options/OptionsWidget_channel.cpp:68
 msgid "Keep channel open"
-msgstr ""
+msgstr "Håll kanalen öppen"
 
 #: src/modules/options/OptionsWidget_channel.cpp:61
 msgid ""
@@ -565,7 +580,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_ircView.cpp:158
 #: src/modules/options/OptionsWidget_query.cpp:95
 msgid " lines"
-msgstr ""
+msgstr " rader"
 
 #: src/modules/options/OptionsWidget_channel.cpp:141
 #: src/modules/options/OptionsWidget_query.cpp:96
@@ -708,7 +723,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_connection.cpp:84
 msgid "Delay between attempts:"
-msgstr ""
+msgstr "Fördröjning mellan försök:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:89
 msgid "Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b>"
@@ -720,15 +735,15 @@ msgstr "Certifikat"
 
 #: src/modules/options/OptionsWidget_connection.cpp:111
 msgid "Use SSL certificate (PEM format only)"
-msgstr ""
+msgstr "Använd SSL-certifikat (endast PEM-format)"
 
 #: src/modules/options/OptionsWidget_connection.cpp:114
 msgid "Certificate location:"
-msgstr ""
+msgstr "Plats för certifikat:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:118
 msgid "Certificate password:"
-msgstr ""
+msgstr "Lösenord för certifikat:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:122
 msgid "Private Key"
@@ -736,7 +751,7 @@ msgstr "Privat nyckel"
 
 #: src/modules/options/OptionsWidget_connection.cpp:124
 msgid "Use SSL private key"
-msgstr ""
+msgstr "Använd privat SSL-nyckel"
 
 #: src/modules/options/OptionsWidget_connection.cpp:125
 msgid "Private key location:"
@@ -752,11 +767,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_connection.cpp:153
 msgid "Timeout Values"
-msgstr ""
+msgstr "Tidsgränsvärden"
 
 #: src/modules/options/OptionsWidget_connection.cpp:154
 msgid "Connect timeout:"
-msgstr ""
+msgstr "Tidsgräns för anslutning:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:156
 msgid "Outgoing data queue flush timeout:"
@@ -789,15 +804,15 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_connection.cpp:165
 msgid "Network Interfaces"
-msgstr ""
+msgstr "Nätverksgränssnitt"
 
 #: src/modules/options/OptionsWidget_connection.cpp:167
 msgid "Bind IPv4 connections to:"
-msgstr ""
+msgstr "Bind IPv4-anslutningar till:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:171
 msgid "Bind IPv6 connections to:"
-msgstr ""
+msgstr "Bind IPv6-anslutningar till:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:176
 msgid "Pick random IP address for round-robin servers"
@@ -845,7 +860,7 @@ msgstr "Aktivt fönster"
 
 #: src/modules/options/OptionsWidget_connection.cpp:213
 msgid "Console"
-msgstr ""
+msgstr "Konsoll"
 
 #: src/modules/options/OptionsWidget_connection.cpp:214
 msgid "Do not show any Ident service messages"
@@ -876,7 +891,7 @@ msgstr "IPv6-inställningar"
 
 #: src/modules/options/OptionsWidget_connection.cpp:247
 msgid "Enable service for IPv6"
-msgstr ""
+msgstr "Aktivera tjänst för IPv6"
 
 #: src/modules/options/OptionsWidget_connection.cpp:255
 msgid "IP stack treats IPv4 as part of IPv6 namespace"
@@ -925,7 +940,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:42
 msgid "CTCP Replies"
-msgstr ""
+msgstr "CTCP-svar"
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:43
 msgid "Append to VERSION reply:"
@@ -985,7 +1000,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:84
 msgid "Allow up to:"
-msgstr ""
+msgstr "Tillåt upp till:"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:85
 msgid " requests"
@@ -1101,15 +1116,15 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:90
 msgid "Lowest port:"
-msgstr ""
+msgstr "Lägsta port:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:94
 msgid "Highest port:"
-msgstr ""
+msgstr "Högsta port:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:98
 msgid "Send a fixed address in requests"
-msgstr ""
+msgstr "Skicka en fast adress i begäran"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:99
 msgid ""
@@ -1222,7 +1237,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:185
 msgid "Download folder:"
-msgstr ""
+msgstr "Hämtningsmapp:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:186
 msgid "Sort saved files by nicknames (create subfolders)"
@@ -1322,7 +1337,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:247
 msgid "Limits"
-msgstr ""
+msgstr "Gränser"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:251
 msgid "Limit upload bandwidth to:"
@@ -1331,7 +1346,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_dcc.cpp:253
 #: src/modules/options/OptionsWidget_dcc.cpp:259
 msgid "bytes/sec"
-msgstr ""
+msgstr "byte/s"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:257
 msgid "Limit download bandwidth to:"
@@ -1385,7 +1400,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:290
 msgid "Packet size:"
-msgstr ""
+msgstr "Paketstorlek:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:292
 msgid ""
@@ -1494,7 +1509,7 @@ msgstr "DCC"
 
 #: src/modules/options/OptionsWidget_dcc.h:70
 msgid "File Transfer"
-msgstr ""
+msgstr "Filöverföring"
 
 #: src/modules/options/OptionsWidget_dcc.h:107
 msgid "Chat"
@@ -1509,6 +1524,8 @@ msgid ""
 "This section contains the general client options like <b>sound, mediafiles, "
 "URL handlers</b> etc... "
 msgstr ""
+"Denna sektion innehåller allmänna klientalternativ såsom <b>ljud, "
+"mediafiler, URL-hanterare</b> etc... "
 
 #: src/modules/options/OptionsWidget_general.h:30
 msgid "General Options"
@@ -1516,7 +1533,7 @@ msgstr "Allmänna alternativ"
 
 #: src/modules/options/OptionsWidget_identity.cpp:62
 msgid "Nickname Alternatives - KVIrc"
-msgstr ""
+msgstr "Smeknamnsalternativ - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:65
 msgid ""
@@ -1524,18 +1541,21 @@ msgid ""
 "KVIrc will use the alternatives if the primary nick is already used by "
 "someone else on a particular IRC network."
 msgstr ""
+"Här kan du välja upp till tre smeknamnsalternativ till det primära "
+"smeknamnet. KVIrc kommer att använda alternativen om det primära smeknamnet "
+"redan användas av någon annan på det specifika IRC-nätverket."
 
 #: src/modules/options/OptionsWidget_identity.cpp:75
 msgid "Alt. nickname 1:"
-msgstr ""
+msgstr "Smeknamnsalternativ 1:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:82
 msgid "Alt. nickname 2:"
-msgstr ""
+msgstr "Smeknamnsalternativ 2:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:89
 msgid "Alt. nickname 3:"
-msgstr ""
+msgstr "Smeknamnsalternativ 3:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:101
 #: src/modules/options/OptionsWidget_identity.cpp:971
@@ -1546,11 +1566,11 @@ msgstr "Ok"
 
 #: src/modules/options/OptionsWidget_identity.cpp:121
 msgid "Avatar Download - KVIrc"
-msgstr ""
+msgstr "Avatarhämtning - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:127
 msgid "Please wait while the avatar is being downloaded"
-msgstr ""
+msgstr "Vänta under tiden avataren hämtas ner"
 
 #: src/modules/options/OptionsWidget_identity.cpp:130
 msgid "Abort"
@@ -1558,16 +1578,16 @@ msgstr "Avbryt"
 
 #: src/modules/options/OptionsWidget_identity.cpp:161
 msgid "Failed to start the download"
-msgstr ""
+msgstr "Misslyckades med att starta hämtningen"
 
 #: src/modules/options/OptionsWidget_identity.cpp:168
 #: src/modules/options/OptionsWidget_identity.cpp:175
 msgid "Download aborted by user"
-msgstr ""
+msgstr "Hämtning avbröts av användaren"
 
 #: src/modules/options/OptionsWidget_identity.cpp:204
 msgid "Choose Avatar - KVIrc"
-msgstr ""
+msgstr "Välj avatar - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:208
 msgid ""
@@ -1580,6 +1600,14 @@ msgid ""
 "The full URL for an image (including http:// or https://) can also be "
 "entered manually."
 msgstr ""
+"Välj en avatarbild.\n"
+"\n"
+"Fullständig sökväg till en lokal fil eller en bild på webben kan användas.\n"
+"Om du vill använda en lokal bildfil, klicka på \"Bläddra\"-knappen för att "
+"välja önskad fil.\n"
+"\n"
+"Fullständig URL för en bild (inklusive http:// eller https://) kan också "
+"ange manuellt."
 
 #: src/modules/options/OptionsWidget_identity.cpp:229
 msgid "&Browse..."
@@ -1589,11 +1617,11 @@ msgstr "&Bläddra..."
 #: src/modules/options/OptionsWidget_message.cpp:644
 #: src/modules/options/OptionsWidget_textIcons.cpp:190
 msgid "Select a File - KVIrc"
-msgstr ""
+msgstr "Välj en fil - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:299
 msgid "Basic Properties"
-msgstr ""
+msgstr "Grundläggande egenskaper"
 
 #: src/modules/options/OptionsWidget_identity.cpp:302
 #: src/modules/options/OptionsWidget_identity.cpp:935
@@ -1609,10 +1637,14 @@ msgid ""
 "insensitive), you can provide alternative nicknames to be used in case the "
 "server refuses to accept the default one."
 msgstr ""
+"Ditt <b>smeknamn</b> är din primära form av identifiering på IRC."
+"<br>Eftersom servrar inte kan acceptera att flera användare delar samma "
+"smeknamn (inte skiftlägeskänslig) kan du tillhandahålla alternativa smeknamn "
+"att användas i de fall som servern vägrar acceptera ditt primära smeknamn."
 
 #: src/modules/options/OptionsWidget_identity.cpp:313
 msgid "Alternatives..."
-msgstr ""
+msgstr "Alternativ..."
 
 #: src/modules/options/OptionsWidget_identity.cpp:316
 #: src/modules/options/OptionsWidget_identity.cpp:949
@@ -1630,6 +1662,11 @@ msgid ""
 "on IRC by your <b>username@hostname</b>.<br>Basically, you can enter any "
 "word you like here."
 msgstr ""
+"Detta är ditt <b>användarnamn</b> som du kommer att använda för att ansluta "
+"till servern.<br>Tidigare så användes det som en form av autentisering men "
+"numera har det ingen speciell användning.<br>I tillägg till ditt "
+"användarnamn så identifieras du på IRC av ditt <b>användarnamn@värdnamn</b>."
+"<br>Du kan helt enkelt ange vad du vill här."
 
 #: src/modules/options/OptionsWidget_identity.cpp:324
 #: src/modules/options/OptionsWidget_identity.cpp:956
@@ -1644,11 +1681,16 @@ msgid ""
 "to be your real name, but people tend to put random quotes and phrases here "
 "too."
 msgstr ""
+"Denna text kommer att visas när någon gör en /WHOIS på dig.<br>Det är tänkt "
+"att vara ditt riktiga namn men folk väljer att lägga in slumpmässiga citat "
+"och fraser här också."
 
 #: src/modules/options/OptionsWidget_identity.cpp:331
 msgid ""
 "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
+"Detta fält är valfritt och kommer att visas som en del av CTCP USERINFO-"
+"svaret."
 
 #: src/modules/options/OptionsWidget_identity.cpp:334
 msgid "Profile"
@@ -1660,12 +1702,12 @@ msgstr "Ålder:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:342
 msgid "Here you can specify your age."
-msgstr ""
+msgstr "Här kan du ange din ålder."
 
 #: src/modules/options/OptionsWidget_identity.cpp:345
 #: src/modules/options/OptionsWidget_identity.cpp:373
 msgid "Unspecified"
-msgstr ""
+msgstr "Inte angiven"
 
 #: src/modules/options/OptionsWidget_identity.cpp:366
 msgid "Gender:"
@@ -1673,7 +1715,7 @@ msgstr "Kön:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:370
 msgid "Here you can specify your gender."
-msgstr ""
+msgstr "Här kan du ange ditt kön."
 
 #: src/modules/options/OptionsWidget_identity.cpp:374
 msgid "Female"
@@ -1694,6 +1736,10 @@ msgid ""
 "viewable by anyone so putting more data (like the exact address), generally, "
 "<b>is not a good idea</b>."
 msgstr ""
+"Här kan du beskriva din ungefärliga geografiska plats. Någonting liknande "
+"\"Region, Land\" är helt ok. Observera att denna information kommer att vara "
+"synlig av alla så tänk på att lägga in data här (som till exempel din exakta "
+"adress) oftast <b>inte är en bra idé</b>."
 
 #: src/modules/options/OptionsWidget_identity.cpp:394
 msgid "Languages:"
@@ -1704,6 +1750,8 @@ msgid ""
 "You can put here the short names of the languages you can speak. An example "
 "might be \"EN, IT\" that would mean that you speak both Italian and English."
 msgstr ""
+"Här kan du lägga in korta namn på de språk som du pratar. Till exempel kan "
+"\"EN, SV\" vara lämpligt om du pratar både engelska och svenska."
 
 #: src/modules/options/OptionsWidget_identity.cpp:401
 msgid "Other:"
@@ -1716,6 +1764,10 @@ msgid ""
 "anyone so <b>don't put any sensible data</b> (passwords, telephone or credit "
 "card numbers)."
 msgstr ""
+"Här kan du lägga in ytterligare personlig information. Det kan vara ett "
+"roligt citat eller adressen till din webbsida... Observera att denna "
+"information kommer vara synlig av alla så <b>lägg inte in känslig "
+"information</b> (lösenord, telefonnummer eller kreditkortsnummer)."
 
 #: src/modules/options/OptionsWidget_identity.cpp:475
 msgid ""
@@ -1726,10 +1778,16 @@ msgid ""
 "size of avatars being downloaded.<br>The image also should be smaller than "
 "800x600 pixels since it will have to be viewable in everyone's monitor."
 msgstr ""
+"Här kan du välja din avatarbild.<br>Den är synlig för andra folk som begär "
+"den.<br>Välj en fin bild av dig själv, undvik gärna obscena och förolämpande "
+"bilder.<br>En bra idé är att välja en relativt liten fil på runt 150 Kb max, "
+"därför att de flesta klienter har en gräns på storleken för avatarar som "
+"hämtas.<br>Bilden bör helst vara mindre än 800x600 bildpunkter eftersom den "
+"måste vara synlig på användarens skärm."
 
 #: src/modules/options/OptionsWidget_identity.cpp:483
 msgid "Use avatar:"
-msgstr ""
+msgstr "Använd avatar:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:505
 msgid "Choose..."
@@ -1738,7 +1796,7 @@ msgstr "Välj..."
 #: src/modules/options/OptionsWidget_identity.cpp:565
 #: src/modules/options/OptionsWidget_identity.cpp:614
 msgid "Failed to Load Avatar - KVIrc"
-msgstr ""
+msgstr "Misslyckades med att läsa in avatar - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:566
 #: src/modules/options/OptionsWidget_identity.cpp:615
@@ -1746,18 +1804,20 @@ msgid ""
 "Failed to load the avatar image.<br>It may be an inaccessible file or an "
 "unsupported image format."
 msgstr ""
+"Misslyckades med att läsa in avatarbilden.<br>Den kan vara en fil som inte "
+"är nåbar eller använder ett bildformat som inte stöds."
 
 #: src/modules/options/OptionsWidget_identity.cpp:575
 msgid "Failed to download the avatar image.<br><b>%1</b>"
-msgstr ""
+msgstr "Misslyckades med att hämta avatarbilden.<br><b>%1</b>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:579
 msgid "Avatar Download Failed - KVIrc"
-msgstr ""
+msgstr "Hämtning av avatar misslyckades - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:629
 msgid "File Dimensions - KVIrc"
-msgstr ""
+msgstr "Fildimensioner - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:631
 msgid ""
@@ -1767,10 +1827,15 @@ msgid ""
 "performance. You *should* scale it manually<br>to a sane size (like 800x600) "
 "or choose a different image."
 msgstr ""
+"Avataren som du har valt är större än 1024x768 bildpunkter.<br>Så stor bild "
+"kommer inte att kunnas ses på allas skärmar<br>och kommer antagligen skalas "
+"av fjärrklienter med algoritmer<br>av dålig kvalitet för att förbättra "
+"prestandan. Du \"bör\" skala den manuellt<br>till en lämplig storlek (till "
+"exempel 800x600) eller välja en annan bild."
 
 #: src/modules/options/OptionsWidget_identity.cpp:645
 msgid "File Size - KVIrc"
-msgstr ""
+msgstr "Filstorlek - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:647
 msgid ""
@@ -1778,6 +1843,9 @@ msgid ""
 "refuse to download it.<br>You *should* either scale it, use a different "
 "storage<br>format or choose a different image."
 msgstr ""
+"Avataren som du har valt är större än 500 KiB<br>och de flesta klienter "
+"komma att vägra hämta den.<br>Du \"bör\" antingen skala ner den eller "
+"använda ett annat <br>lagringsformat eller välja en annan bild."
 
 #: src/modules/options/OptionsWidget_identity.cpp:675
 #: src/modules/options/OptionsWidget_servers.cpp:620
@@ -1787,7 +1855,7 @@ msgstr "Användarläge"
 #: src/modules/options/OptionsWidget_identity.cpp:676
 #: src/modules/options/OptionsWidget_servers.cpp:632
 msgid "Invisible (+i)"
-msgstr ""
+msgstr "Osynlig (+i)"
 
 #: src/modules/options/OptionsWidget_identity.cpp:677
 #: src/modules/options/OptionsWidget_servers.cpp:636
@@ -1801,7 +1869,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:680
 msgid "Default Messages"
-msgstr ""
+msgstr "Standardmeddelanden"
 
 #: src/modules/options/OptionsWidget_identity.cpp:682
 msgid "Part message:"
@@ -1826,7 +1894,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:727
 msgid "Enable network profiles"
-msgstr ""
+msgstr "Aktivera nätverksprofiler"
 
 #: src/modules/options/OptionsWidget_identity.cpp:728
 msgid "This check enables the use of network profiles"
@@ -1848,7 +1916,7 @@ msgstr "Smeknamn"
 
 #: src/modules/options/OptionsWidget_identity.cpp:742
 msgid "Alt. Nickname"
-msgstr ""
+msgstr "Alternativt smeknamn"
 
 #: src/modules/options/OptionsWidget_identity.cpp:743
 msgid "Username"
@@ -1900,7 +1968,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:928
 msgid "Network name:"
-msgstr ""
+msgstr "Nätverksnamn:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:932
 msgid "Put here the name of the network"
@@ -1914,7 +1982,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_servers.cpp:177
 #: src/modules/options/OptionsWidget_servers.cpp:596
 msgid "Alt. nickname:"
-msgstr ""
+msgstr "Alternativt smeknamn:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:946
 msgid "Put here the alternative nickname you want to use"
@@ -1935,7 +2003,7 @@ msgstr "Identitet"
 
 #: src/modules/options/OptionsWidget_identity.h:168
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 #: src/modules/options/OptionsWidget_identity.h:218
 msgid "Profiles"
@@ -1973,7 +2041,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_windowList.cpp:141
 #: src/modules/options/OptionsWidget_windowList.cpp:282
 msgid "Font:"
-msgstr ""
+msgstr "Typsnitt:"
 
 #: src/modules/options/OptionsWidget_input.cpp:39
 #: src/modules/options/OptionsWidget_ircView.cpp:48
@@ -1981,13 +2049,13 @@ msgstr ""
 #: src/modules/options/OptionsWidget_theme.cpp:192
 #: src/modules/options/OptionsWidget_topicLabel.cpp:37
 msgid "Background color:"
-msgstr ""
+msgstr "Bakgrundsfärg:"
 
 #: src/modules/options/OptionsWidget_input.cpp:40
 #: src/modules/options/OptionsWidget_notifier.cpp:41
 #: src/modules/options/OptionsWidget_topicLabel.cpp:36
 msgid "Foreground color:"
-msgstr ""
+msgstr "Förgrundsfärg:"
 
 #: src/modules/options/OptionsWidget_input.cpp:41
 msgid "Selection background color:"
@@ -2013,21 +2081,21 @@ msgstr ""
 #: src/modules/options/OptionsWidget_userList.cpp:131
 #: src/modules/options/OptionsWidget_windowList.cpp:167
 msgid "Background image:"
-msgstr ""
+msgstr "Bakgrundsbild:"
 
 #: src/modules/options/OptionsWidget_input.cpp:48
 #: src/modules/options/OptionsWidget_ircView.cpp:52
 #: src/modules/options/OptionsWidget_notifier.cpp:47
 #: src/modules/options/OptionsWidget_windowList.cpp:169
 msgid "Horizontal align:"
-msgstr ""
+msgstr "Horisontell justering:"
 
 #: src/modules/options/OptionsWidget_input.cpp:52
 #: src/modules/options/OptionsWidget_ircView.cpp:56
 #: src/modules/options/OptionsWidget_notifier.cpp:51
 #: src/modules/options/OptionsWidget_windowList.cpp:173
 msgid "Vertical align:"
-msgstr ""
+msgstr "Vertikal justering:"
 
 #: src/modules/options/OptionsWidget_input.cpp:56
 #: src/modules/options/OptionsWidget_input.cpp:61
@@ -2117,7 +2185,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_input.cpp:150
 msgid "Nick Completion"
-msgstr ""
+msgstr "Smeknamnskomplettering"
 
 #: src/modules/options/OptionsWidget_input.cpp:152
 msgid "Use bash-like nick completion"
@@ -2154,7 +2222,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_input.h:32
 #: src/modules/options/OptionsWidget_input.h:51
 msgid "Input"
-msgstr "Inmatning "
+msgstr "Inmatning"
 
 #: src/modules/options/OptionsWidget_input.h:33
 #: src/modules/options/OptionsWidget_notifier.h:33
@@ -2167,11 +2235,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:44
 msgid "Confirm quit with active connections"
-msgstr ""
+msgstr "Bekräfta avslut med aktiva anslutningar"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:45
 msgid "Remember window properties"
-msgstr ""
+msgstr "Kom ihåg fönsteregenskaper"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:46
 msgid "Enable visual effects"
@@ -2211,7 +2279,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_irc.cpp:65
 msgid "Force immediate quit"
-msgstr ""
+msgstr "Tvinga omedelbar avslutning"
 
 #: src/modules/options/OptionsWidget_irc.cpp:66
 msgid ""
@@ -2249,7 +2317,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:47
 msgid "Mute"
-msgstr ""
+msgstr "Tyst"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:48
 msgid "Quiet"
@@ -2285,11 +2353,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:69
 msgid "Show in Active Window"
-msgstr ""
+msgstr "Visa i aktivt fönster"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:70
 msgid "External messages"
-msgstr ""
+msgstr "Externa meddelanden"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:71
 msgid "External CTCP replies"
@@ -2297,11 +2365,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:72
 msgid "WHOIS replies"
-msgstr ""
+msgstr "WHOIS-svar"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:73
 msgid "WHO replies"
-msgstr ""
+msgstr "WHO-svar"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:74
 msgid "ChanServ and NickServ notices"
@@ -2309,11 +2377,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:75
 msgid "Invite messages"
-msgstr ""
+msgstr "Inbjudningsmeddelanden"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:76
 msgid "Server replies"
-msgstr ""
+msgstr "Serversvar"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:77
 msgid "Server notices"
@@ -2329,7 +2397,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:83
 msgid "Show server pings"
-msgstr ""
+msgstr "Visa serverpingar"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:85
 msgid "Show own part messages"
@@ -2352,7 +2420,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ircOutput.h:34
 msgid "debug"
-msgstr ""
+msgstr "felsök"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:144
 msgid "Enable URL highlighting"
@@ -2368,11 +2436,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ircView.cpp:151
 msgid "No margin"
-msgstr ""
+msgstr "Ingen marginal"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:152
 msgid "Normal margin"
-msgstr ""
+msgstr "Normal marginal"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:157
 msgid "Maximum buffer size:"
@@ -2396,31 +2464,31 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ircView.cpp:166
 msgid "URL links"
-msgstr ""
+msgstr "URL-länkar"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:167
 msgid "Host links"
-msgstr ""
+msgstr "Värdlänkar"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:168
 msgid "Server links"
-msgstr ""
+msgstr "Serverlänkar"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:169
 msgid "Mode links"
-msgstr ""
+msgstr "Lägeslänkar"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:170
 msgid "Nick links"
-msgstr ""
+msgstr "Smeknamnslänkar"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:171
 msgid "Channel links"
-msgstr ""
+msgstr "Kanallänkar"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:172
 msgid "Escape sequences"
-msgstr ""
+msgstr "Escape-sekvenser"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:189
 msgid "Track last read text line"
@@ -2460,31 +2528,31 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ircView.h:33
 msgid "Output"
-msgstr ""
+msgstr "Utdata"
 
 #: src/modules/options/OptionsWidget_ircView.h:34
 #: src/modules/options/OptionsWidget_ircView.h:48
 #: src/modules/options/OptionsWidget_message.h:40
 msgid "theme,colors,output"
-msgstr ""
+msgstr "tema,färger,utdata"
 
 #: src/modules/options/OptionsWidget_ircView.h:47
 msgid "Look"
-msgstr ""
+msgstr "Utseende"
 
 #: src/modules/options/OptionsWidget_ircView.h:69
 #: src/modules/options/OptionsWidget_userList.h:104
 #: src/modules/options/OptionsWidget_windowList.h:101
 msgid "Features"
-msgstr ""
+msgstr "Funktioner"
 
 #: src/modules/options/OptionsWidget_ircView.h:85
 msgid "Marker"
-msgstr ""
+msgstr "Markör"
 
 #: src/modules/options/OptionsWidget_lag.cpp:40
 msgid "Enable lag meter"
-msgstr ""
+msgstr "Aktivera laggmätare"
 
 #: src/modules/options/OptionsWidget_lag.cpp:41
 msgid ""
@@ -2529,11 +2597,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_lag.h:31
 msgid "Lag"
-msgstr ""
+msgstr "Lagg"
 
 #: src/modules/options/OptionsWidget_lag.h:33
 msgid "time,ping"
-msgstr ""
+msgstr "tid,ping"
 
 #: src/modules/options/OptionsWidget_logging.cpp:39
 msgid "Automatically Log"
@@ -2541,23 +2609,23 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_logging.cpp:40
 msgid "Query windows"
-msgstr ""
+msgstr "Frågefönster"
 
 #: src/modules/options/OptionsWidget_logging.cpp:41
 msgid "Channel windows"
-msgstr ""
+msgstr "Kanalfönster"
 
 #: src/modules/options/OptionsWidget_logging.cpp:42
 msgid "DCC chat windows"
-msgstr ""
+msgstr "DCC-chattfönster"
 
 #: src/modules/options/OptionsWidget_logging.cpp:43
 msgid "Console windows"
-msgstr ""
+msgstr "Konsollfönster"
 
 #: src/modules/options/OptionsWidget_logging.cpp:45
 msgid "Save logs to folder:"
-msgstr ""
+msgstr "Spara loggar till mapp:"
 
 #: src/modules/options/OptionsWidget_logging.cpp:47
 msgid ""
@@ -2567,7 +2635,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_logging.cpp:50
 msgid "Dynamic subfolder:"
-msgstr ""
+msgstr "Dynamisk undermapp:"
 
 #: src/modules/options/OptionsWidget_logging.cpp:51
 msgid ""
@@ -2598,7 +2666,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_logging.cpp:63
 msgid "Compress logs"
-msgstr ""
+msgstr "Komprimera loggar"
 
 #: src/modules/options/OptionsWidget_logging.h:30
 msgid "Logging"
@@ -2610,11 +2678,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:76
 msgid "Pattern"
-msgstr ""
+msgstr "Mönster"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:77
 msgid "MIME Type"
-msgstr ""
+msgstr "MIME-typ"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:78
 #: src/modules/options/OptionsWidget_servers.cpp:1328
@@ -2629,11 +2697,11 @@ msgstr "Beskrivning:"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:94
 msgid "MIME type:"
-msgstr ""
+msgstr "MIME-typ:"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:99
 msgid "File pattern:"
-msgstr ""
+msgstr "Filmönster:"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:104
 msgid "Magic bytes:"
@@ -2665,7 +2733,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:130
 msgid "Icon:"
-msgstr ""
+msgstr "Ikon:"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:139
 msgid "&New"
@@ -2673,27 +2741,27 @@ msgstr "&Ny"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:143
 msgid "Re&move"
-msgstr ""
+msgstr "&Ta bort"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:187
 msgid "[Unknown Media Type]"
-msgstr ""
+msgstr "[Okänd mediatyp]"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:234
 msgid "New media type"
-msgstr ""
+msgstr "Ny mediatyp"
 
 #: src/modules/options/OptionsWidget_mediaTypes.h:49
 msgid "Media Types"
-msgstr ""
+msgstr "Mediatyper"
 
 #: src/modules/options/OptionsWidget_mediaTypes.h:51
 msgid "file,audio,video,programs"
-msgstr ""
+msgstr "fil,ljud,video,program"
 
 #: src/modules/options/OptionsWidget_message.cpp:68
 msgid "Show message icons"
-msgstr ""
+msgstr "Visa meddelandeikoner"
 
 #: src/modules/options/OptionsWidget_message.cpp:69
 msgid "Draw some emoticons (smileys) as pictures"
@@ -2705,7 +2773,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_message.cpp:72
 msgid "Nicknames"
-msgstr ""
+msgstr "Smeknamn"
 
 #: src/modules/options/OptionsWidget_message.cpp:74
 msgid "Smart nickname colors"
@@ -2721,15 +2789,15 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_message.cpp:92
 msgid "Use same colors as in the userlist"
-msgstr ""
+msgstr "Använd samma färger som i användarlistan"
 
 #: src/modules/options/OptionsWidget_message.cpp:95
 msgid "Show nicknames in bold"
-msgstr ""
+msgstr "Visa smeknamn i fet stil"
 
 #: src/modules/options/OptionsWidget_message.cpp:96
 msgid "Show user and host"
-msgstr ""
+msgstr "Visa användare och värd"
 
 #: src/modules/options/OptionsWidget_message.cpp:97
 msgid "Show channel mode prefix"
@@ -2753,7 +2821,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_message.cpp:136
 msgid "Show timestamp"
-msgstr ""
+msgstr "Visa tidsstämpel"
 
 #: src/modules/options/OptionsWidget_message.cpp:139
 msgid "Use UTC time for timestamp"
@@ -2761,11 +2829,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_message.cpp:146
 msgid "Use special color for timestamps:"
-msgstr ""
+msgstr "Använd speciell färg för tidsstämplar:"
 
 #: src/modules/options/OptionsWidget_message.cpp:152
 msgid "Timestamp format:"
-msgstr ""
+msgstr "Format för tidsstämpel:"
 
 #: src/modules/options/OptionsWidget_message.cpp:177
 msgid ""
@@ -2777,19 +2845,19 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_message.cpp:188
 msgid "Reset to Default"
-msgstr ""
+msgstr "Återställ till standard"
 
 #: src/modules/options/OptionsWidget_message.cpp:317
 msgid "Transparent"
-msgstr ""
+msgstr "Transparent"
 
 #: src/modules/options/OptionsWidget_message.cpp:387
 msgid "Background:"
-msgstr ""
+msgstr "Bakgrund:"
 
 #: src/modules/options/OptionsWidget_message.cpp:400
 msgid "Foreground:"
-msgstr ""
+msgstr "Förgrund:"
 
 #: src/modules/options/OptionsWidget_message.cpp:412
 msgid "Alert level:"
@@ -2797,27 +2865,27 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_message.cpp:435
 msgid "Log this"
-msgstr ""
+msgstr "Logga detta"
 
 #: src/modules/options/OptionsWidget_message.cpp:439
 msgid "Load from..."
-msgstr ""
+msgstr "Läs in från..."
 
 #: src/modules/options/OptionsWidget_message.cpp:441
 msgid "Save As..."
-msgstr ""
+msgstr "Spara som..."
 
 #: src/modules/options/OptionsWidget_message.cpp:592
 msgid "Enter a Filename - KVIrc"
-msgstr ""
+msgstr "Ange ett filnamn - KVIrc"
 
 #: src/modules/options/OptionsWidget_message.h:39
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: src/modules/options/OptionsWidget_message.h:53
 msgid "Message Style"
-msgstr ""
+msgstr "Meddelandestil"
 
 #: src/modules/options/OptionsWidget_message.h:57
 msgid "theme,privmsg,output,format"
@@ -2825,7 +2893,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_message.h:76
 msgid "Timestamp"
-msgstr ""
+msgstr "Tidsstämpel"
 
 #: src/modules/options/OptionsWidget_message.h:80
 msgid "time,timestamp"
@@ -2833,7 +2901,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_message.h:98
 msgid "Message Decorations"
-msgstr ""
+msgstr "Meddelandedekorationer"
 
 #: src/modules/options/OptionsWidget_message.h:99
 msgid "theme,icons,colors,messages,output"
@@ -2841,7 +2909,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_message.h:197
 msgid "Color Set"
-msgstr ""
+msgstr "Färguppsättning"
 
 #: src/modules/options/OptionsWidget_message.h:198
 msgid "theme,colors,messages,output"
@@ -2853,7 +2921,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:50
 msgid "Registered nickname:"
-msgstr ""
+msgstr "Registrerat smeknamn:"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:54
 msgid "Put here the nickname that you have registered with NickServ"
@@ -2985,17 +3053,17 @@ msgstr ""
 #: src/modules/options/OptionsWidget_nickserv.cpp:261
 #: src/modules/options/OptionsWidget_servers.cpp:337
 msgid "Add Rule"
-msgstr ""
+msgstr "Lägg till regel"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:265
 #: src/modules/options/OptionsWidget_servers.cpp:341
 msgid "Edit Rule"
-msgstr ""
+msgstr "Redigera regel"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:269
 #: src/modules/options/OptionsWidget_servers.cpp:345
 msgid "Delete Rule"
-msgstr ""
+msgstr "Ta bort regel"
 
 #: src/modules/options/OptionsWidget_nickserv.h:39
 #: src/modules/options/OptionsWidget_servers.cpp:368
@@ -3074,7 +3142,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_notifier.cpp:221
 #: src/modules/options/OptionsWidget_notify.cpp:58
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Avancerad konfiguration"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:224
 msgid "Default auto hiding time for messages (0 to disable):"
@@ -3091,7 +3159,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_notifier.h:32
 #: src/modules/options/OptionsWidget_notifier.h:51
 msgid "Notifier"
-msgstr ""
+msgstr "Notifierare"
 
 #: src/modules/options/OptionsWidget_notifier.h:52
 msgid "popup"
@@ -3103,7 +3171,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_notify.cpp:49
 msgid "Show notifications in active window"
-msgstr ""
+msgstr "Visa notifieringar i aktivt fönster"
 
 #: src/modules/options/OptionsWidget_notify.cpp:52
 msgid "Flash window when users are going online"
@@ -3127,7 +3195,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_notify.cpp:70
 msgid "Check interval:"
-msgstr ""
+msgstr "Kontrollintervall:"
 
 #: src/modules/options/OptionsWidget_notify.cpp:74
 msgid "ISON delay:"
@@ -3145,7 +3213,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_notify.h:30
 msgid "Notifications"
-msgstr ""
+msgstr "Notifieringar"
 
 #: src/modules/options/OptionsWidget_notify.h:32
 msgid "notify,notifications,buddy,buddies,friend,friends"
@@ -3161,7 +3229,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_proxy.cpp:70
 msgid "Use proxy for all connections"
-msgstr ""
+msgstr "Använd Proxy för alla anslutningar"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:71
 msgid ""
@@ -3172,7 +3240,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_proxy.cpp:79
 msgid "Proxy"
-msgstr ""
+msgstr "Proxy"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:90
 msgid ""
@@ -3182,52 +3250,52 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_proxy.cpp:103
 msgid "New proxy"
-msgstr ""
+msgstr "Ny proxy"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:109
 msgid "Remove proxy"
-msgstr ""
+msgstr "Ta bort proxy"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:116
 msgid "Proxy:"
-msgstr ""
+msgstr "Proxy:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:118
 #: src/modules/options/OptionsWidget_servers.cpp:656
 msgid "Port:"
-msgstr ""
+msgstr "Port:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:120
 #: src/modules/options/OptionsWidget_servers.cpp:669
 msgid "IP address:"
-msgstr ""
+msgstr "IP-adress:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:124
 #: src/modules/options/OptionsWidget_servers.cpp:156
 #: src/modules/options/OptionsWidget_servers.cpp:573
 msgid "Password:"
-msgstr ""
+msgstr "Lösenord:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:126
 msgid "Protocol:"
-msgstr ""
+msgstr "Protokoll:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:133
 #: src/modules/options/OptionsWidget_servers.cpp:718
 msgid "Use IPv6 protocol"
-msgstr ""
+msgstr "Använd IPv6-protokollet"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:332
 msgid "&New Proxy"
-msgstr ""
+msgstr "&Ny proxy"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:333
 msgid "Re&move Proxy"
-msgstr ""
+msgstr "Ta &bort proxy"
 
 #: src/modules/options/OptionsWidget_proxy.h:55
 msgid "Proxy Hosts"
-msgstr ""
+msgstr "Proxyvärdar"
 
 #: src/modules/options/OptionsWidget_proxy.h:57
 msgid "connection,servers"
@@ -3338,7 +3406,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_servers.cpp:139
 #: src/modules/options/OptionsWidget_servers.cpp:555
 msgid "Properties"
-msgstr ""
+msgstr "Egenskaper"
 
 #: src/modules/options/OptionsWidget_servers.cpp:152
 msgid ""
@@ -3347,12 +3415,18 @@ msgid ""
 "If this field is left empty (most common case), KVIrc will use the default "
 "username specified in the \"Identity\" options tab."
 msgstr ""
+"Detta är <b>användarnamnet</b> som KVIrc kommer att använda för att logga in "
+"på servrarna på detta nätverk.\n"
+"Om detta fält är tomt (oftast så) kommer KVIrc som standard att använda "
+"användarnamnet som angetts i alternativet \"Identitet\"."
 
 #: src/modules/options/OptionsWidget_servers.cpp:163
 msgid ""
 "If this network requires a password, put it in this field, otherwise leave "
 "it empty."
 msgstr ""
+"Om detta nätverk kräver ett lösenord så kan du ange det i detta fält, annars "
+"lämna det tomt."
 
 #: src/modules/options/OptionsWidget_servers.cpp:174
 msgid ""
@@ -3360,6 +3434,10 @@ msgid ""
 "on this network.<br>If this field is left empty (most common case), the "
 "default nickname (specified in the \"Identity\" settings) will be used."
 msgstr ""
+"Du kan ange ett speciellt smeknamn som kommer att användas för att logga in "
+"på servrarna på detta nätverk.<br>Om detta fält är tomt (oftast så) kommer "
+"som standard smeknamnet (angivet under \"Identitet\"-inställningarna) att "
+"användas."
 
 #: src/modules/options/OptionsWidget_servers.cpp:186
 msgid ""
@@ -3367,6 +3445,9 @@ msgid ""
 "already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead."
 msgstr ""
+"Detta smeknamn kommer att provas om det primära smeknamnet för detta nätverk "
+"redan används.<br>Om du lämnar detta fält tomt kommer som standard de "
+"smeknamn som angivets i identitetsalternativen att provas istället."
 
 #: src/modules/options/OptionsWidget_servers.cpp:196
 msgid ""
@@ -3375,10 +3456,14 @@ msgid ""
 "case), the default \"real name\" (specified in the \"Identity\" settings) "
 "will be used."
 msgstr ""
+"Du kan ange ett speciellt <b>riktigt namn</b> som kommer att användas för "
+"att logga in på servrarna på detta nätverk. Om du lämnar detta fält tomt "
+"(oftast så) så kommer som standard \"riktigt namn\" (angivet i \"Identitet\"-"
+"inställningarna) att användas."
 
 #: src/modules/options/OptionsWidget_servers.cpp:199
 msgid "Server encoding:"
-msgstr ""
+msgstr "Serverkodning:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:204
 msgid ""
@@ -3392,7 +3477,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_servers.cpp:209
 #: src/modules/options/OptionsWidget_servers.cpp:756
 msgid "Text encoding:"
-msgstr ""
+msgstr "Textkodning:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:214
 msgid ""
@@ -3406,11 +3491,11 @@ msgstr ""
 #: src/modules/options/OptionsWidget_servers.cpp:222
 #: src/modules/options/OptionsWidget_servers.cpp:223
 msgid "Use System Encoding"
-msgstr ""
+msgstr "Använd systemkodning"
 
 #: src/modules/options/OptionsWidget_servers.cpp:241
 msgid "Connect to this network at startup"
-msgstr ""
+msgstr "Anslut till detta nätverk vid uppstart"
 
 #: src/modules/options/OptionsWidget_servers.cpp:245
 msgid ""
@@ -3433,7 +3518,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_servers.cpp:269
 #: src/modules/options/OptionsWidget_servers.cpp:832
 msgid "Join Channels"
-msgstr ""
+msgstr "Gå in i kanaler"
 
 #: src/modules/options/OptionsWidget_servers.cpp:279
 msgid ""
@@ -3447,7 +3532,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_servers.cpp:284
 #: src/modules/options/OptionsWidget_servers.cpp:846
 msgid "On Connect"
-msgstr ""
+msgstr "Vid anslutning"
 
 #: src/modules/options/OptionsWidget_servers.cpp:295
 msgid ""
@@ -3461,7 +3546,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_servers.cpp:299
 #: src/modules/options/OptionsWidget_servers.cpp:861
 msgid "On Login"
-msgstr ""
+msgstr "Vid inloggning"
 
 #: src/modules/options/OptionsWidget_servers.cpp:330
 msgid ""
@@ -3476,7 +3561,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:531
 msgid "Server Details and Configuration - KVIrc"
-msgstr ""
+msgstr "Serverdetaljer och konfiguration - KVIrc"
 
 #: src/modules/options/OptionsWidget_servers.cpp:546
 msgid ""
@@ -3582,7 +3667,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:731
 msgid "Use SSL protocol"
-msgstr ""
+msgstr "Använd SSL-protokollet"
 
 #: src/modules/options/OptionsWidget_servers.cpp:734
 msgid ""
@@ -3593,7 +3678,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:745
 msgid "Protocol encoding:"
-msgstr ""
+msgstr "Protokollkodning:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:750
 msgid ""
@@ -3614,11 +3699,11 @@ msgstr ""
 #: src/modules/options/OptionsWidget_servers.cpp:769
 #: src/modules/options/OptionsWidget_servers.cpp:770
 msgid "Use Network Encoding"
-msgstr ""
+msgstr "Använd nätverkskodning"
 
 #: src/modules/options/OptionsWidget_servers.cpp:790
 msgid "Proxy server:"
-msgstr ""
+msgstr "Proxyserver:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:794
 msgid ""
@@ -3632,11 +3717,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:799
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #: src/modules/options/OptionsWidget_servers.cpp:800
 msgid "Direct Connection"
-msgstr ""
+msgstr "Direktanslutning"
 
 #: src/modules/options/OptionsWidget_servers.cpp:826
 msgid ""
@@ -3678,7 +3763,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:881
 msgid "Extended Capabilities"
-msgstr ""
+msgstr "Utökade förmågor"
 
 #: src/modules/options/OptionsWidget_servers.cpp:887
 msgid "Query extended capabilities on connect"
@@ -3692,7 +3777,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:893
 msgid "SASL Authentication"
-msgstr ""
+msgstr "SASL-autentisering"
 
 #: src/modules/options/OptionsWidget_servers.cpp:898
 msgid "Authenticate via SASL extension"
@@ -3708,7 +3793,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:906
 msgid "SASL method:"
-msgstr ""
+msgstr "SASL-metod:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:912
 msgid ""
@@ -3719,7 +3804,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:920
 msgid "SASL nickname:"
-msgstr ""
+msgstr "SASL-smeknamn:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:924
 msgid ""
@@ -3729,7 +3814,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:927
 msgid "SASL password:"
-msgstr ""
+msgstr "SASL-lösenord:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:931
 msgid ""
@@ -3739,7 +3824,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:939
 msgid "Link filter:"
-msgstr ""
+msgstr "Länkfilter:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:973
 msgid ""
@@ -3750,7 +3835,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:978
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:986
 msgid ""
@@ -3770,7 +3855,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1307
 msgid "Filter:"
-msgstr ""
+msgstr "Filter:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1312
 msgid ""
@@ -3785,7 +3870,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1327
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1343
 msgid ""
@@ -3796,40 +3881,40 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1358
 msgid "New network"
-msgstr ""
+msgstr "Nytt nätverk"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1367
 msgid "New server"
-msgstr ""
+msgstr "Ny server"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1373
 msgid "Favorite / Unfavorite server"
-msgstr ""
+msgstr "Växla favoritserver"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1380
 msgid "Remove network / server"
-msgstr ""
+msgstr "Ta bort nätverk / server"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1387
 msgid "Copy server"
-msgstr ""
+msgstr "Kopiera server"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1394
 msgid "Paste server"
-msgstr ""
+msgstr "Klistra in server"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1405
 msgid "Import server list"
-msgstr ""
+msgstr "Importera serverlista"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1410
 msgid "Active Configuration"
-msgstr ""
+msgstr "Aktiv konfiguration"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1411
 #: src/modules/options/OptionsWidget_servers.cpp:1712
 msgid "Server:"
-msgstr ""
+msgstr "Server:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1415
 msgid "This is the name of the currently selected server or network"
@@ -3837,7 +3922,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1417
 msgid "Advanced..."
-msgstr ""
+msgstr "Avancerat..."
 
 #: src/modules/options/OptionsWidget_servers.cpp:1419
 msgid "Click here to edit advanced options for this entry"
@@ -3851,7 +3936,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1438
 msgid "Connect &Now"
-msgstr ""
+msgstr "Anslut &nu"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1480
 msgid "Hit this button to connect to the currently selected server."
@@ -3859,7 +3944,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1486
 msgid "Show this dialog at startup"
-msgstr ""
+msgstr "Visa denna dialogruta vid uppstart"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1491
 msgid ""
@@ -3869,11 +3954,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1717
 msgid "Network:"
-msgstr ""
+msgstr "Nätverk:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1732
 msgid "No selection"
-msgstr ""
+msgstr "Inget val"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1767
 msgid "UnknownNet"
@@ -3882,15 +3967,15 @@ msgstr ""
 #: src/modules/options/OptionsWidget_servers.cpp:1846
 #: src/modules/options/OptionsWidget_servers.cpp:1984
 msgid "New Network"
-msgstr ""
+msgstr "Nytt nätverk"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1847
 msgid "Remove Network"
-msgstr ""
+msgstr "Ta bort nätverk"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1852
 msgid "&New Server"
-msgstr ""
+msgstr "&Ny server"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1854
 msgid "Unfavorite Server"
@@ -3898,23 +3983,23 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1856
 msgid "Re&move Server"
-msgstr ""
+msgstr "&Ta bort server"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1858
 msgid "&Copy Server"
-msgstr ""
+msgstr "&Kopiera server"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1860
 msgid "&Paste Server"
-msgstr ""
+msgstr "Klistra &in server"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1865
 msgid "Import Server List"
-msgstr ""
+msgstr "Importera serverlista"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1866
 msgid "Clear Server List"
-msgstr ""
+msgstr "Töm serverlista"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1904
 msgid ""
@@ -3930,7 +4015,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:2008
 msgid "irc.unknown.net"
-msgstr ""
+msgstr "irc.unknown.net"
 
 #: src/modules/options/OptionsWidget_servers.cpp:2161
 msgid ""
@@ -3944,16 +4029,16 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.h:173
 msgid "Servers and Configuration"
-msgstr ""
+msgstr "Servrar och konfiguration"
 
 #: src/modules/options/OptionsWidget_servers.h:174
 msgid "connection"
-msgstr ""
+msgstr "anslutning"
 
 #: src/modules/options/OptionsWidget_sound.cpp:58
 #: src/modules/options/OptionsWidget_sound.h:46
 msgid "Sound System"
-msgstr ""
+msgstr "Ljudsystem"
 
 #: src/modules/options/OptionsWidget_sound.cpp:60
 msgid "This allows you to select the sound system to be used with KVIrc."
@@ -3967,11 +4052,11 @@ msgstr ""
 #: src/modules/options/OptionsWidget_sound.cpp:69
 #: src/modules/options/OptionsWidget_sound.cpp:85
 msgid "Test"
-msgstr ""
+msgstr "Testa"
 
 #: src/modules/options/OptionsWidget_sound.cpp:72
 msgid "Media Player"
-msgstr ""
+msgstr "Mediaspelare"
 
 #: src/modules/options/OptionsWidget_sound.cpp:74
 msgid ""
@@ -3992,7 +4077,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_textEncoding.cpp:57
 #: src/modules/options/OptionsWidget_textEncoding.cpp:65
 msgid "Use Language Encoding"
-msgstr ""
+msgstr "Använd språkkodning"
 
 #: src/modules/options/OptionsWidget_sound.cpp:114
 msgid "Winamp messages encoding"
@@ -4016,11 +4101,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_sound.cpp:338
 msgid "When I am kicked:"
-msgstr ""
+msgstr "När jag blir utsparkad:"
 
 #: src/modules/options/OptionsWidget_sound.h:33
 msgid "Sound"
-msgstr ""
+msgstr "Ljud"
 
 #: src/modules/options/OptionsWidget_sound.h:48
 msgid "sound,xmms,audio,play,amarok"
@@ -4028,15 +4113,15 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_sound.h:85
 msgid "Sounds"
-msgstr ""
+msgstr "Ljud"
 
 #: src/modules/options/OptionsWidget_sound.h:87
 msgid "sound,events"
-msgstr ""
+msgstr "ljud,händelser"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:47
 msgid "Encoding"
-msgstr ""
+msgstr "Kodning"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:52
 msgid "Default server encoding:"
@@ -4049,11 +4134,11 @@ msgstr ""
 #: src/modules/options/OptionsWidget_textEncoding.cpp:87
 #: src/modules/options/OptionsWidget_textEncoding.h:33
 msgid "Language"
-msgstr ""
+msgstr "Språk"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:91
 msgid "Force language:"
-msgstr ""
+msgstr "Tvinga språk:"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:97
 msgid "<b>Note:</b> You must restart KVIrc to apply any language changes"
@@ -4065,7 +4150,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:100
 msgid "en"
-msgstr ""
+msgstr "sv"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:138
 msgid "Spell Checker Dictionaries"
@@ -4073,15 +4158,15 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:156
 msgid "Language Code"
-msgstr ""
+msgstr "Språkkod"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:157
 msgid "Provided by"
-msgstr ""
+msgstr "Tillhandahålls av"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:225
 msgid "Unable to write language information to"
-msgstr ""
+msgstr "Kunde inte skriva språkinformation till"
 
 #: src/modules/options/OptionsWidget_textEncoding.h:36
 msgid "language,encoding,charset,codepage"
@@ -4095,23 +4180,23 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_textIcons.cpp:95
 msgid "Add"
-msgstr ""
+msgstr "Lägg till"
 
 #: src/modules/options/OptionsWidget_textIcons.cpp:99
 msgid "Delete"
-msgstr ""
+msgstr "Ta bort"
 
 #: src/modules/options/OptionsWidget_textIcons.cpp:103
 msgid "Restore"
-msgstr ""
+msgstr "Återställ"
 
 #: src/modules/options/OptionsWidget_textIcons.cpp:267
 msgid "unnamed"
-msgstr ""
+msgstr "namnlös"
 
 #: src/modules/options/OptionsWidget_textIcons.h:37
 msgid "Text Icons"
-msgstr ""
+msgstr "Textikoner"
 
 #: src/modules/options/OptionsWidget_textIcons.h:39
 msgid "smileys,emoticons"
@@ -4137,7 +4222,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_theme.cpp:49
 msgid "Qt Style:"
-msgstr ""
+msgstr "Qt-stil:"
 
 #: src/modules/options/OptionsWidget_theme.cpp:87
 msgid "Global window opacity:"
@@ -4145,7 +4230,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_theme.cpp:90
 msgid "Enable transparency"
-msgstr ""
+msgstr "Aktivera transparens"
 
 #: src/modules/options/OptionsWidget_theme.cpp:93
 msgid ""
@@ -4191,7 +4276,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_theme.cpp:148
 msgid "Use desktop background for transparency"
-msgstr ""
+msgstr "Använd skrivbordsbakgrund för transparens"
 
 #: src/modules/options/OptionsWidget_theme.cpp:193
 msgid "Border color:"
@@ -4199,7 +4284,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_theme.cpp:194
 msgid "Font color:"
-msgstr ""
+msgstr "Typsnittsfärg:"
 
 #: src/modules/options/OptionsWidget_theme.h:35
 #: src/modules/options/OptionsWidget_windowList.h:34
@@ -4209,11 +4294,11 @@ msgstr ""
 #: src/modules/options/OptionsWidget_windowList.h:103
 #: src/modules/options/OptionsWidget_windowList.h:118
 msgid "theme"
-msgstr ""
+msgstr "tema"
 
 #: src/modules/options/OptionsWidget_theme.h:53
 msgid "Transparency"
-msgstr ""
+msgstr "Transparens"
 
 #: src/modules/options/OptionsWidget_theme.h:54
 msgid "theme,background"
@@ -4221,7 +4306,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_theme.h:79
 msgid "Toolbar Applets"
-msgstr ""
+msgstr "Verktygsradsapplets"
 
 #: src/modules/options/OptionsWidget_theme.h:80
 msgid "theme,toolbar"
@@ -4234,11 +4319,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_tools.h:32
 msgid "Tools"
-msgstr ""
+msgstr "Verktyg"
 
 #: src/modules/options/OptionsWidget_topicLabel.h:31
 msgid "Labels"
-msgstr ""
+msgstr "Etiketter"
 
 #: src/modules/options/OptionsWidget_topicLabel.h:32
 msgid "theme,topic"
@@ -4340,7 +4425,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_uparser.h:30
 msgid "Scripting Engine"
-msgstr ""
+msgstr "Skriptmotor"
 
 #: src/modules/options/OptionsWidget_uparser.h:31
 msgid "scripting,kvs,debug"
@@ -4352,15 +4437,15 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:50
 msgid "How many clicks to open links?"
-msgstr ""
+msgstr "Hur många klick för att öppna länkar?"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:52
 msgid "Single-click"
-msgstr ""
+msgstr "Ett klick"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:53
 msgid "Double-click"
-msgstr ""
+msgstr "Dubbelklick"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:65
 msgid "Protocol Handler"
@@ -4404,7 +4489,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.cpp:49
 msgid "Nickname Colors"
-msgstr ""
+msgstr "Smeknamnsfärger"
 
 #: src/modules/options/OptionsWidget_userList.cpp:50
 #: src/modules/options/OptionsWidget_userList.cpp:128
@@ -4427,11 +4512,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.cpp:53
 msgid "Channel owner:"
-msgstr ""
+msgstr "Kanalägare:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:54
 msgid "Channel admin:"
-msgstr ""
+msgstr "Kanaladmin:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:55
 msgid "Op:"
@@ -4463,11 +4548,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.cpp:89
 msgid "Grid color:"
-msgstr ""
+msgstr "Rutnätsfärg:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:96
 msgid "Grid type:"
-msgstr ""
+msgstr "Rutnätstyp:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:100
 msgid "3D Grid"
@@ -4488,20 +4573,20 @@ msgstr ""
 #: src/modules/options/OptionsWidget_userList.cpp:127
 #: src/modules/options/OptionsWidget_windowList.cpp:163
 msgid "Background Colors"
-msgstr ""
+msgstr "Bakgrundsfärger"
 
 #: src/modules/options/OptionsWidget_userList.cpp:133
 msgid "Horizontal alignment:"
-msgstr ""
+msgstr "Horisontell justering:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:137
 msgid "Vertical alignment:"
-msgstr ""
+msgstr "Vertikal justering:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:226
 #: src/modules/options/OptionsWidget_windowList.cpp:264
 msgid "Minimum width:"
-msgstr ""
+msgstr "Minsta bredd:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:228
 msgid ""
@@ -4516,7 +4601,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.cpp:236
 msgid "Show gender icons"
-msgstr ""
+msgstr "Visa könsikoner"
 
 #: src/modules/options/OptionsWidget_userList.cpp:237
 msgid "Show user rank channel icons"
@@ -4536,11 +4621,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.cpp:241
 msgid "Show avatars in userlist"
-msgstr ""
+msgstr "Visa avatarer i användarlista"
 
 #: src/modules/options/OptionsWidget_userList.cpp:242
 msgid "Enable animated avatars"
-msgstr ""
+msgstr "Aktivera animerade avatarer"
 
 #: src/modules/options/OptionsWidget_userList.cpp:243
 msgid ""
@@ -4557,7 +4642,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.h:32
 msgid "Userlist"
-msgstr ""
+msgstr "Användarlista"
 
 #: src/modules/options/OptionsWidget_userList.h:33
 msgid "theme,userlist,channel"
@@ -4566,7 +4651,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_userList.h:46
 #: src/modules/options/OptionsWidget_windowList.h:81
 msgid "Background"
-msgstr ""
+msgstr "Bakgrund"
 
 #: src/modules/options/OptionsWidget_userList.h:47
 msgid "theme,userlist,channel,background"
@@ -4575,7 +4660,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_userList.h:68
 #: src/modules/options/OptionsWidget_windowList.h:67
 msgid "Foreground"
-msgstr ""
+msgstr "Förgrund"
 
 #: src/modules/options/OptionsWidget_userList.h:69
 msgid "theme,userlist,channel,colors"
@@ -4583,7 +4668,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.h:83
 msgid "Userlist Grid"
-msgstr ""
+msgstr "Rutnät för användarlista"
 
 #: src/modules/options/OptionsWidget_userList.h:84
 msgid "theme,userlist,channel,grid"
@@ -4595,19 +4680,19 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_windowList.cpp:42
 msgid "Window list type:"
-msgstr ""
+msgstr "Typ av fönsterlista:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:44
 msgid "Tree"
-msgstr ""
+msgstr "Träd"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:45
 msgid "Classic"
-msgstr ""
+msgstr "Klassisk"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:49
 msgid "Sort windows by name"
-msgstr ""
+msgstr "Sortera fönster efter namn"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:50
 msgid "Show window icons in window list"
@@ -4639,11 +4724,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_windowList.cpp:62
 msgid "Allow the window list to be moved"
-msgstr ""
+msgstr "Tillåt att fönsterlistan flyttas"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:63
 msgid "Show user flag for channels"
-msgstr ""
+msgstr "Visa användarflagga för kanaler"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:92
 msgid "The following events trigger this alert level:"
@@ -4657,7 +4742,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_windowList.cpp:149
 #: src/modules/options/OptionsWidget_windowList.cpp:288
 msgid "Progress bar color:"
-msgstr ""
+msgstr "Färg för förloppsmätare:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:266
 msgid ""
@@ -4666,7 +4751,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_windowList.cpp:285
 msgid "Minimized:"
-msgstr ""
+msgstr "Minimerad:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:289
 msgid "Minimum width of buttons:"
@@ -4682,7 +4767,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_windowList.cpp:294
 msgid "Use flat buttons"
-msgstr ""
+msgstr "Använd platta knappar"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:295
 msgid "Show close button on window list items"
@@ -4690,15 +4775,15 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_windowList.h:32
 msgid "Window List"
-msgstr ""
+msgstr "Fönsterlista"
 
 #: src/modules/options/OptionsWidget_windowList.h:52
 msgid "Tree Window List"
-msgstr ""
+msgstr "Trädfönsterlista"
 
 #: src/modules/options/OptionsWidget_windowList.h:115
 msgid "Classic Window List"
-msgstr ""
+msgstr "Klassisk fönsterlista"
 
 #: src/modules/options/libkvioptions.cpp:104
 msgid "No such options_group %Q"
