@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: KVIrc 5.2.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-11 12:42+0200\n"
-"PO-Revision-Date: 2025-01-01 12:57+0100\n"
+"PO-Revision-Date: 2025-01-02 10:43+0100\n"
 "Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -28,7 +28,7 @@ msgstr ""
 
 #: src/modules/dcc/DccBroker.cpp:221 src/modules/dcc/DccBroker.cpp:969
 msgid "Can't open file %Q for reading"
-msgstr ""
+msgstr "Kan inte öppna filen %Q för läsning"
 
 #: src/modules/dcc/DccBroker.cpp:293
 msgid ""
@@ -50,7 +50,7 @@ msgstr ""
 
 #: src/modules/dcc/DccBroker.cpp:315 src/modules/dcc/DccBroker.cpp:644
 msgid "DCC %1 Request - KVIrc"
-msgstr ""
+msgstr "DCC %1-begäran - KVIrc"
 
 #: src/modules/dcc/DccBroker.cpp:366
 msgid ""
@@ -61,7 +61,7 @@ msgstr ""
 
 #: src/modules/dcc/DccBroker.cpp:372
 msgid "DCC VOICE request"
-msgstr ""
+msgstr "DCC VOICE-begäran"
 
 #: src/modules/dcc/DccBroker.cpp:433
 msgid ""
@@ -72,7 +72,7 @@ msgstr ""
 
 #: src/modules/dcc/DccBroker.cpp:439
 msgid "DCC VIDEO request"
-msgstr ""
+msgstr "DCC VIDEO-begäran"
 
 #: src/modules/dcc/DccBroker.cpp:509
 msgid ""
@@ -83,7 +83,7 @@ msgstr ""
 
 #: src/modules/dcc/DccBroker.cpp:515
 msgid "DCC CANVAS request"
-msgstr ""
+msgstr "DCC CANVAS-begäran"
 
 #: src/modules/dcc/DccBroker.cpp:603
 msgid ""
@@ -176,7 +176,7 @@ msgstr ""
 #: src/modules/dcc/DccChatWindow.cpp:584 src/modules/dcc/DccVideoWindow.cpp:902
 #: src/modules/dcc/DccVoiceWindow.cpp:961
 msgid "Connected to %Q:%Q"
-msgstr ""
+msgstr "Ansluten till %Q:%Q"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:292
 #: src/modules/dcc/DccChatWindow.cpp:586 src/modules/dcc/DccVideoWindow.cpp:904
@@ -250,7 +250,7 @@ msgstr ""
 #: src/modules/dcc/DccChatWindow.cpp:429 src/modules/dcc/DccVideoWindow.cpp:757
 #: src/modules/dcc/DccVoiceWindow.cpp:870
 msgid "ERROR: %Q"
-msgstr ""
+msgstr "FEL: %Q"
 
 #: src/modules/dcc/DccChatWindow.cpp:493 src/modules/dcc/DccVideoWindow.cpp:820
 msgid ""
@@ -280,19 +280,19 @@ msgstr "&Acceptera"
 
 #: src/modules/dcc/DccDialog.cpp:82
 msgid "&Reject"
-msgstr ""
+msgstr "&Neka"
 
 #: src/modules/dcc/DccDialog.cpp:148
 msgid "&Rename"
-msgstr ""
+msgstr "&Byt namn"
 
 #: src/modules/dcc/DccDialog.cpp:152
 msgid "Over&write"
-msgstr ""
+msgstr "S&kriv över"
 
 #: src/modules/dcc/DccDialog.cpp:156
 msgid "Re&sume"
-msgstr ""
+msgstr "Åt&eruppta"
 
 #: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2480
 msgid "Cancel"
@@ -328,7 +328,7 @@ msgstr ""
 
 #: src/modules/dcc/DccFileTransfer.cpp:1190
 msgid "TRANSFER %1"
-msgstr ""
+msgstr "ÖVERFÖR %1"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1218
 msgid "Setting up the connection"
@@ -349,7 +349,7 @@ msgstr ""
 #: src/modules/dcc/DccFileTransfer.cpp:1399
 #: src/modules/dcc/DccFileTransfer.cpp:1413
 msgid "Aborted"
-msgstr ""
+msgstr "Avbruten"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1412
 #: src/modules/dcc/DccFileTransfer.cpp:2168
@@ -359,7 +359,7 @@ msgstr ""
 
 #: src/modules/dcc/DccFileTransfer.cpp:1423
 msgid "Configure Bandwidth..."
-msgstr ""
+msgstr "Konfigurera bandbredd..."
 
 #: src/modules/dcc/DccFileTransfer.cpp:1425
 msgid "Resend DCC"
@@ -388,7 +388,7 @@ msgstr "Till: "
 #: src/modules/dcc/DccFileTransfer.cpp:1779
 #: src/modules/dcc/DccFileTransfer.cpp:1788
 msgid "%1 of %2 (%3%)"
-msgstr ""
+msgstr "%1 av %2 (%3%)"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1793
 msgid "%1"
@@ -440,7 +440,7 @@ msgstr ""
 
 #: src/modules/dcc/DccFileTransfer.cpp:2252
 msgid "Connected to %1:%2"
-msgstr ""
+msgstr "Ansluten till %1:%2"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2253
 msgid "Local end is %1:%2"
@@ -448,7 +448,7 @@ msgstr ""
 
 #: src/modules/dcc/DccFileTransfer.cpp:2318
 msgid "Transferring data"
-msgstr ""
+msgstr "Överför data"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2343
 msgid "RESUME accepted, transfer will begin at position %1"
@@ -492,11 +492,11 @@ msgstr ""
 
 #: src/modules/dcc/DccFileTransfer.cpp:2471
 msgid "bytes/sec"
-msgstr ""
+msgstr "byte/s"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2475
 msgid "OK"
-msgstr ""
+msgstr "Ok"
 
 #: src/modules/dcc/DccUtils.cpp:125
 msgid "Can't retrieve a suitable local IPv4 address"
@@ -511,7 +511,7 @@ msgstr ""
 
 #: src/modules/dcc/DccVideoWindow.cpp:449
 msgid "Video device:"
-msgstr ""
+msgstr "Videoenhet:"
 
 #: src/modules/dcc/DccVideoWindow.cpp:552
 msgid "Attempting a passive DCC VIDEO connection"
@@ -603,7 +603,7 @@ msgstr ""
 
 #: src/modules/dcc/DccVoiceWindow.cpp:1064
 msgid "Volume: %1"
-msgstr ""
+msgstr "Volym: %1"
 
 #: src/modules/dcc/canvaswidget.cpp:1502
 msgid "&Line"
@@ -778,7 +778,7 @@ msgstr ""
 
 #: src/modules/dcc/requests.cpp:84
 msgid "Ignoring"
-msgstr ""
+msgstr "Ignorerar"
 
 #: src/modules/dcc/requests.cpp:101
 msgid "Concurrent transfer limit reached (%1 of %2 transfers running)"
@@ -958,4 +958,4 @@ msgstr ""
 
 #: src/modules/dcc/requests.cpp:1238
 msgid "Unknown DCC type '%1'"
-msgstr ""
+msgstr "Okänd DCC-typ '%1'"
