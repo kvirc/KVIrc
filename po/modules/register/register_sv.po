@@ -1,0 +1,568 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc 5.2.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
+"PO-Revision-Date: 2025-01-03 09:29+0100\n"
+"Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: src/modules/regchan/libkviregchan.cpp:126
+#: src/modules/regchan/libkviregchan.cpp:190
+msgid "No such channel/netmask entry in the database"
+msgstr "Ingen sådan post för kanal/nätmask i databasen"
+
+#: src/modules/regchan/libkviregchan.cpp:210
+msgid "Registered channel list:"
+msgstr "Registrerad kanallista:"
+
+#: src/modules/regchan/libkviregchan.cpp:225
+msgid "Channel: %1%2@%3"
+msgstr "Kanal: %1%2@%3"
+
+#: src/modules/regchan/libkviregchan.cpp:234
+msgid "    Property: %1=%2"
+msgstr "    Egenskap: %1=%2"
+
+#: src/modules/regchan/libkviregchan.cpp:241
+#, c-format
+msgid "Total %d channels"
+msgstr "Totalt %d kanaler"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:75
+msgid "Property Editor - KVIrc"
+msgstr "Egenskapsredigerare - KVIrc"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:88
+msgid "Property"
+msgstr "Egenskap"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:89
+msgid "Value"
+msgstr "Värde"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:99
+msgid "&New"
+msgstr "&Nytt"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:103
+msgid "&Remove"
+msgstr "&Ta bort"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:111
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:255
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:470
+#: src/modules/reguser/RegisteredUsersDialog.cpp:303
+msgid "&OK"
+msgstr "&Ok"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:115
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:259
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
+#: src/modules/reguser/RegisteredUsersDialog.cpp:308
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:209
+msgid "Mask Editor - KVIrc"
+msgstr "Maskredigerare - KVIrc"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:213
+msgid ""
+"Insert a mask for this user.<br>It can contain the wildcard characters '*' "
+"and '?'."
+msgstr ""
+"Infoga en mask för denna användare.<br>Den kan innehålla jokertecknen '*' "
+"och '?'."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:223
+msgid ""
+"This is the <b>nickname</b> that will match this user, default value is the "
+"registered name."
+msgstr ""
+"Detta är <b>smeknamnet</b> som matchar denna användare, standardvärdet är "
+"det registrerade namnet."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:232
+msgid ""
+"This is the <b>username</b> that will match this user. <b>*</b> will match "
+"any username."
+msgstr ""
+"Detta är <b>användarnamnet</b> som matchar denna användare. <b>*</b> kommer "
+"att matcha alla användarnamn."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:241
+msgid ""
+"This is the <b>hostname</b> that will match this user. <b>*</b> will match "
+"any hostname."
+msgstr ""
+"Detta är <b>värdnamnet</b> som matchar denna användare. <b>*</b> kommer att "
+"matcha alla värdnamn."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:318
+msgid "Registered User Entry - KVIrc"
+msgstr "Post för registrerad användare - KVIrc"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:324
+msgid "Name:"
+msgstr "Namn:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:330
+#: src/modules/reguser/RegisteredUsersDialog.cpp:141
+msgid "Comment:"
+msgstr "Kommentar:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:340
+msgid "Masks:"
+msgstr "Masker:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:353
+#: src/modules/reguser/RegisteredUsersDialog.cpp:256
+msgid "&Add..."
+msgstr "&Lägg till..."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:357
+#: src/modules/reguser/RegisteredUsersDialog.cpp:266
+msgid "Re&move"
+msgstr "&Ta bort"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:362
+msgid "&Edit"
+msgstr "R&edigera"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:370
+msgid "Identity"
+msgstr "Identitet"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:376
+msgid "Notify when user is online"
+msgstr "Notifiera när användaren ansluter"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:379
+msgid "Notify nicknames:"
+msgstr "Notifiera för dessa smeknamn:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:382
+msgid "You can enter a space separated list of nicknames."
+msgstr "Du kan ange en blankstegsseparerad lista över smeknamn."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:406
+msgid "Avatar:"
+msgstr "Avatar:"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:413
+msgid "Use custom color in userlist"
+msgstr "Använd anpassad färg i användarlista"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:421
+msgid "All Properties..."
+msgstr "Alla egenskaper..."
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:428
+msgid "Properties"
+msgstr "Egenskaper"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:434
+msgid "Enable ignore for this user"
+msgstr "Aktivera ignorera för denna användare"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:436
+msgid "Ignore Features"
+msgstr "Ignorera funktioner"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:443
+msgid "Ignore query messages"
+msgstr "Ignorera frågemeddelanden"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:446
+msgid "Ignore channel messages"
+msgstr "Ignorera kanalmeddelanden"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:449
+msgid "Ignore notice messages"
+msgstr "Ignorera notice-meddelanden"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:452
+msgid "Ignore CTCP messages"
+msgstr "Ignorera CTCP-meddelanden"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:455
+msgid "Ignore invites"
+msgstr "Ignorera inbjudningar"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:458
+msgid "Ignore DCCs"
+msgstr "Ignorera DCCer"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:461
+msgid "Ignore highlights"
+msgstr "Ignorera framhävningar"
+
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:467
+msgid "Ignore"
+msgstr "Ignorera"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:84
+msgid "Name"
+msgstr "Namn"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:84
+msgid "Flags"
+msgstr "Flaggor"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:96
+msgid ""
+"This is the list of registered users. KVIrc can automatically recognize and "
+"associate properties to them.<br>Use the buttons on the right to add, edit "
+"and remove entries. The \"notify\" column allows you to quickly add users to "
+"the notify list. Notify list fine-tuning can be performed by editing the "
+"entry properties."
+msgstr ""
+"Detta är listan för registrerade användare. KVIrc kan automatiskt känna igen "
+"och associera egenskaper till dem.<br>Använd knapparna till höger för att "
+"lägga till, redigera och ta bort poster. \"Notifiera\"-kolumnen låter dig "
+"snabbt lägga till användare till notifieringslistan. Finjustering av "
+"notifieringslistan kan genomföras genom att redigera posternas egenskaper."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:124
+msgid "Notify disabled"
+msgstr "Notifiering inaktiverat"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:128
+msgid "Notify as:"
+msgstr "Notifiera som:"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:137
+msgid "No comment set"
+msgstr "Ingen kommentar inställd"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:235
+msgid "Registered Users and Configuration - KVIrc"
+msgstr "Registrerade användare och konfiguration - KVIrc"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:251
+msgid "Add Wizard..."
+msgstr "Registreringsguide..."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:253
+msgid "Add a registered user by means of a user-friendly wizard."
+msgstr "Lägg till en registrerad användare genom en användarvänlig guide."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:258
+msgid "Open the edit dialog to create a new user entry."
+msgstr "Öppna redigeringsdialogen för att skapa en ny användarpost."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:261
+msgid "&Add Group..."
+msgstr "&Lägg till grupp..."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:263
+msgid "Adds a new group"
+msgstr "Lägger till en ny grupp"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:269
+msgid "Remove the currently selected entries."
+msgstr "Ta bort markerade poster."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:272
+msgid "&Edit..."
+msgstr "R&edigera..."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:275
+msgid "Edit the first selected entry."
+msgstr "Redigera första markerade posten."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:281
+msgid "Select All"
+msgstr "Markera allt"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:283
+msgid "Select all the entries"
+msgstr "Markera alla posterna"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:286
+msgid "Export to..."
+msgstr "Exportera till..."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:289
+msgid ""
+"Export the selected entries to a file.<br>All the data associated with the "
+"selected registered users will be exported.<br>You (or anyone else) can "
+"later import the entries by using the \"Import\" button."
+msgstr ""
+"Exportera markerade poster till en fil.<br>Allt data associerat med de "
+"markerade registrerade användarna kommer att exporteras.<br>Du (eller någon "
+"annan) kan senare importera posterna genom att använda \"Importera\"-knappen."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:292
+msgid "Import from..."
+msgstr "Importera från..."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:294
+msgid ""
+"Import entries from a file exported earlier by the \"export\" function of "
+"this dialog."
+msgstr ""
+"Importera poster från en fil exporterad tidigare med \"export\"-funktionen i "
+"denna dialogruta."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:429
+#: src/modules/reguser/RegisteredUsersDialog.cpp:443
+msgid "Group name:"
+msgstr "Gruppnamn:"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:497
+msgid "Move to Group"
+msgstr "Flytta till grupp"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:537
+#: src/modules/reguser/RegisteredUsersDialog.cpp:542
+#: src/modules/reguser/RegisteredUsersDialog.cpp:544
+#: src/modules/reguser/RegisteredUsersDialog.cpp:548
+#: src/modules/reguser/RegisteredUsersDialog.cpp:550
+msgid "Default"
+msgstr "Standard"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:722
+msgid "No entries selected."
+msgstr "Inga poster markerade."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:728
+msgid "Enter a Filename - KVIrc"
+msgstr "Ange ett filnamn - KVIrc"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:737
+msgid "Can't open file %Q for writing."
+msgstr "Kan inte öppna filen %Q för skrivning."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:838
+msgid "Can't export the registered users database: write error."
+msgstr "Kan inte exportera databas för registrerade användare: skrivfel."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:857
+msgid "Select a File - KVIrc"
+msgstr "Välj en fil - KVIrc"
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:866
+msgid "Can't open file %Q for reading."
+msgstr "Kan inte öppna filen %Q för läsning."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:878
+msgid "The file %Q doesn't appear to be a valid registered users database."
+msgstr ""
+"Filen %Q verkar inte vara en giltig databas för registrerade användare."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:885
+msgid "The file %Q contains an invalid registered users database version."
+msgstr ""
+"Filen &Q innehåller en ogiltig databasversion för registrerade användare."
+
+#: src/modules/reguser/RegisteredUsersDialog.cpp:964
+msgid "Can't import the registered users database: read error."
+msgstr "Kan inte importera databas för registrerade användare: läsfel."
+
+#: src/modules/reguser/RegistrationWizard.cpp:75
+msgid "User Registration Wizard - KVIrc"
+msgstr "Registreringsguide för användare - KVIrc"
+
+#: src/modules/reguser/RegistrationWizard.cpp:86
+msgid ""
+"<p>Welcome to the user registration wizard.<br>This process allows you to "
+"add an IRC user to the database and set properties for that user. KVIrc will "
+"be (hopefully) able to recognize the user, add him to the notify list, and "
+"display the associated avatar.<br><br>First of all, you must insert an "
+"<b>entry name or real name</b> for the user you're going to register. The "
+"name will be used to identify the database entry and has no specific "
+"requirements, it can be a given name, nickname, or just some text to remind "
+"you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n"
+"</p>"
+msgstr ""
+"<p>Välkommen till guiden för användarregistrering.<br>Denna process låter "
+"dig lägga till en IRC-användare till databasen och ställa in egenskaper för "
+"den användaren. KVIrc kommer (antagligen) lägga till användaren till "
+"notifieringslistan och visa den associerade avataren.<br><br>Först av allt "
+"måste du infoga ett <b>objektnamn eller riktigt namn</b> för användaren som "
+"du vill registrera. Namnet kommer att användas för att identifiera "
+"databasobjektet och har inga specifika krav, det kan vara ett förnamn, "
+"smeknamn eller bara någon text som påminner dig om en den riktiga personen."
+"<br>Exempel: \"Leif GW Persson\", \"Dubya\".\n"
+"</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:97
+msgid "Entry name:"
+msgstr "Objektnamn:"
+
+#: src/modules/reguser/RegistrationWizard.cpp:101
+msgid "Step 1: Entry Name"
+msgstr "Steg 1: Objektnamn"
+
+#: src/modules/reguser/RegistrationWizard.cpp:116
+msgid ""
+"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
+"mask must be in the following form:<br><b>nickname!username@hostname</"
+"b><br>and can contain wildcard characters '*' and '?'. Be careful in "
+"choosing the masks, as they are the only way to verify the identity of a "
+"registered user.<br><br>You can enter at most two masks here, if you wish to "
+"add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
+"dialog. You must enter at least one mask.</p>"
+msgstr ""
+"<p>En registrerad användare identifieras av en eller flera <b>IRC-masker</b>."
+"<br>En mask måste ha följande format:<br><b>smeknamn!användarnamn@värdnamn</"
+"b><br>och kan innehålla jokertecken '*' och '?'. Var försiktig med att välja "
+"masker eftersom de är det enda sättet att identifiera en registrerad "
+"användare.<br><br>Du kan ange som mest två masker här, om du önskar att "
+"lägga till fler masker, använd \"<b>Redigera</b>\"-knappen i Registrerade "
+"användare-dialogen. Du måste ange minst en mask.</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:179
+msgid "Step 2: Mask Selection"
+msgstr "Steg 2: Val av mask"
+
+#: src/modules/reguser/RegistrationWizard.cpp:189
+msgid ""
+"<p>If you want to store an avatar image for this user, you can set it here. "
+"KVIrc will show the avatar in the userlist next to the user's nickname."
+"<br>An avatar can be in any supported image format (PNG is recommended). "
+"Keep in mind that KVIrc stores avatars in memory and has to resize them to "
+"fit in the userlist, thus it's better to use small, low-resolution images.</"
+"p>"
+msgstr ""
+"<p>Om du vill lagra en avatarbild för denna användare så kan du ställa in "
+"den här. KVIrc kommer att visa avataren i användarlistan bredvid användarens "
+"smeknamn.<br>En avatar kan vara i valfritt bildformat som stöds (PNG "
+"rekommenderas). Kom ihåg att KVIrc lagrar avatarer i minnet och måste "
+"storleksändra dem för att passa i användarlistan, därför är det bättre att "
+"använda små, lågupplösta bilder.</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:198
+msgid "Store an avatar for this user:"
+msgstr "Lagra en avatar för denna användare:"
+
+#: src/modules/reguser/RegistrationWizard.cpp:202
+msgid "Step 3: Avatar Selection"
+msgstr "Steg 3: Välj avatar"
+
+#: src/modules/reguser/RegistrationWizard.cpp:212
+msgid ""
+"<p>If you want to be notified when this user is online or goes offline, you "
+"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
+"enter at most two nicknames here, if you wish to add more nicknames, use the "
+"\"<b>Edit</b>\" button in the  \"Registered Users\" dialog.</p>"
+msgstr ""
+"<p>Om du vill bli notifierad när denna användare ansluter eller kopplar från "
+"så måste du ange listan över smeknamn som KVIrc ska leta efter.<br><br>Du "
+"kan ange som mest två smeknamn här, om du vill lägga till fler smeknamn "
+"\"<b>Redigera</b>\"-knappen i dialogrutan  \"Registrerade användare\".</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:217
+msgid "Add this user to the notify list"
+msgstr "Lägg till denna användare till notifieringslistan"
+
+#: src/modules/reguser/RegistrationWizard.cpp:223
+msgid "Nickname:"
+msgstr "Smeknamn:"
+
+#: src/modules/reguser/RegistrationWizard.cpp:227
+msgid "Nickname 2:"
+msgstr "Smeknamn 2:"
+
+#: src/modules/reguser/RegistrationWizard.cpp:241
+msgid "Step 4: Notify List"
+msgstr "Steg 4: Notifieringslista"
+
+#: src/modules/reguser/RegistrationWizard.cpp:251
+msgid ""
+"<p>That's it. The user registration has been completed.<br><br>Click "
+"\"<b>Finish</b>\" to close this dialog.</p>"
+msgstr ""
+"<p>Det var allt. Användarregistreringen har genomförts.<br><br>Klicka på "
+"\"<b>Färdig</b>\" för att stänga denna dialogruta.</p>"
+
+#: src/modules/reguser/RegistrationWizard.cpp:256
+msgid "Registration Complete"
+msgstr "Registreringen är färdig"
+
+#: src/modules/reguser/libkvireguser.cpp:192
+#: src/modules/reguser/libkvireguser.cpp:277
+#: src/modules/reguser/libkvireguser.cpp:343
+#: src/modules/reguser/libkvireguser.cpp:466
+#: src/modules/reguser/libkvireguser.cpp:536
+#: src/modules/reguser/libkvireguser.cpp:717
+msgid "No name specified"
+msgstr "Inget namn angivet"
+
+#: src/modules/reguser/libkvireguser.cpp:210
+msgid "User already registered: found exact name match"
+msgstr "Användaren redan registrerad: hittade exakt samma namn"
+
+#: src/modules/reguser/libkvireguser.cpp:229
+msgid "Mask %Q is already used to identify user %s"
+msgstr "Masken %Q används redan för att identifiera användaren %s"
+
+#: src/modules/reguser/libkvireguser.cpp:283
+msgid "User not found (%Q)"
+msgstr "Användaren hittades inte (%Q)"
+
+#: src/modules/reguser/libkvireguser.cpp:349
+#: src/modules/reguser/libkvireguser.cpp:416
+msgid "No mask specified"
+msgstr "Ingen mask angiven"
+
+#: src/modules/reguser/libkvireguser.cpp:356
+#: src/modules/reguser/libkvireguser.cpp:474
+#: src/modules/reguser/libkvireguser.cpp:544
+#: src/modules/reguser/libkvireguser.cpp:732
+msgid "User %Q not found"
+msgstr "Användaren %Q hittades inte"
+
+#: src/modules/reguser/libkvireguser.cpp:368
+msgid "Mask %Q already used to identify user %Q"
+msgstr "Masken %Q används redan för att identifiera användaren %Q"
+
+#: src/modules/reguser/libkvireguser.cpp:423
+msgid "Mask %Q not found"
+msgstr "Masken %Q hittades inte"
+
+#: src/modules/reguser/libkvireguser.cpp:724
+msgid "No property specified"
+msgstr "Ingen egenskap angiven"
+
+#: src/modules/reguser/libkvireguser.cpp:834
+msgid "Registered users database dump:"
+msgstr "Databasdump för registrerade användare:"
+
+#: src/modules/reguser/libkvireguser.cpp:845
+msgid "User: %c%Q"
+msgstr "Användare: %c%Q"
+
+#: src/modules/reguser/libkvireguser.cpp:849
+msgid "Warning: this user has no registration masks"
+msgstr "Varning: denna användare har inga registreringsmasker"
+
+#: src/modules/reguser/libkvireguser.cpp:855
+msgid "Mask: %Q!%Q@%Q"
+msgstr "Mask: %Q!%Q@%Q"
+
+#: src/modules/reguser/libkvireguser.cpp:866
+msgid "Property: %Q=%Q"
+msgstr "Egenskap: %Q=%Q"
+
+#: src/modules/reguser/libkvireguser.cpp:871
+msgid "No properties"
+msgstr "Inga egenskaper"
+
+#: src/modules/reguser/libkvireguser.cpp:877
+#, c-format
+msgid "Total: %d matching users (of %d in the database)"
+msgstr "Totalt: %d matchande användare (av %d i databasen)"

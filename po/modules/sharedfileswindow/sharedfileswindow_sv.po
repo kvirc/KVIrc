@@ -1,0 +1,159 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc 5.2.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
+"PO-Revision-Date: 2025-01-01 18:09+0100\n"
+"Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:83
+msgid "The file '%Q' is not readable"
+msgstr "Filen '%Q' är inte läsbar"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:100
+msgid "Invalid timeout, ignoring"
+msgstr "Ogiltig tidsgräns, ignorerar"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:114
+msgid "Invalid visible name: using default"
+msgstr "Ogiltigt synligt namn: använder standard"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:122
+msgid "Oops! Failed to add the sharedfile..."
+msgstr "Hoppsan! Misslyckades med att lägga till sharedfile..."
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:159
+msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
+msgstr "Ingen sharedfile med synligt namn '%Q' och användarmask '%Q'"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:218
+#, c-format
+msgid "File: %s (%u bytes)"
+msgstr "Fil: %s (%u byte)"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:220
+#, c-format
+msgid "Mask: %s"
+msgstr "Mask: %s"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:229
+#, c-format
+msgid "Expires in %d hours %d minutes %d seconds"
+msgstr "Går ut om %d timmar %d minuter %d sekunder"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:240
+msgid "No active file sharedfile"
+msgstr "Ingen aktiv fil sharedfile"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:242
+#, c-format
+msgid "Total: %d sharedfile"
+msgstr "Totalt: %d sharedfile"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:59
+msgid "Shared File Configuration - KVIrc"
+msgstr "Konfiguration för delad fil - KVIrc"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:61
+msgid "Share name:"
+msgstr "Delningsnamn:"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:67
+msgid "File path:"
+msgstr "Filsökväg:"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:73
+msgid "&Browse..."
+msgstr "&Bläddra..."
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:77
+msgid "User mask:"
+msgstr "Användarmask:"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:83
+msgid "Expire at:"
+msgstr "Går ut:"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:93
+msgid "&OK"
+msgstr "&Ok"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:97
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:155
+msgid "Invalid Expiry Time - KVIrc"
+msgstr "Ogiltig utgångstid - KVIrc"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:156
+msgid ""
+"The expiry date/time is in the past: please either remove the \"Expires "
+"at\"check mark or specify a expiry date/time in the future"
+msgstr ""
+"Utgångsdatum/tid är i det förgångna: ta antingen bort kryssrutan för "
+"\"Går ut\" eller ange ett utgångsdatum/tid i framtiden"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:164
+msgid "Invalid Share Name - KVIrc"
+msgstr "Ogiltigt delningsnamn - KVIrc"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:165
+msgid "The share name can't be empty, please correct it"
+msgstr "Delningsnamnet kan inte vara tomt, korrigera det"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:172
+msgid "Error Opening File - KVIrc"
+msgstr "Fel vid öppning av fil - KVIrc"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:173
+msgid "The file doesn't exist or it is not readable, please check the path"
+msgstr "Filen finns inte eller är inte läsbar, kontrollera dess sökväg"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:194
+msgid "Never"
+msgstr "Aldrig"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:215
+msgid "Name"
+msgstr "Namn"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:216
+msgid "Filename"
+msgstr "Filnamn"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:217
+msgid "Mask"
+msgstr "Mask"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:219
+msgid "Expires"
+msgstr "Går ut"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:235
+msgid "&Add..."
+msgstr "&Lägg till..."
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:237
+msgid "Re&move"
+msgstr "&Ta bort"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:239
+msgid "&Edit"
+msgstr "R&edigera"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:357
+msgid "Shared Files"
+msgstr "Delade filer"

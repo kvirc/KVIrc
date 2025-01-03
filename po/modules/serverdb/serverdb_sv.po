@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc 5.2.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-11 12:42+0200\n"
+"PO-Revision-Date: 2025-01-01 18:09+0100\n"
+"Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: src/modules/proxydb/libkviproxydb.cpp:65
+#: src/modules/proxydb/libkviproxydb.cpp:120
+#: src/modules/proxydb/libkviproxydb.cpp:393
+#: src/modules/proxydb/libkviproxydb.cpp:466
+#: src/modules/proxydb/libkviproxydb.cpp:538
+#: src/modules/proxydb/libkviproxydb.cpp:595
+#: src/modules/proxydb/libkviproxydb.cpp:644
+msgid "You must provide the proxy hostname as parameter"
+msgstr "Du måste ange proxyns värdnamn som parameter"
+
+#: src/modules/proxydb/libkviproxydb.cpp:75
+#: src/modules/proxydb/libkviproxydb.cpp:130
+#: src/modules/proxydb/libkviproxydb.cpp:411
+#: src/modules/proxydb/libkviproxydb.cpp:484
+#: src/modules/proxydb/libkviproxydb.cpp:550
+#: src/modules/proxydb/libkviproxydb.cpp:613
+#: src/modules/proxydb/libkviproxydb.cpp:662
+msgid "The specified proxy doesn't exist"
+msgstr "Angiven proxy finns inte"
+
+#: src/modules/proxydb/libkviproxydb.cpp:299
+msgid "You must provide the proxy name as parameter"
+msgstr "Du måste ange proxynamnet som parameter"
+
+#: src/modules/proxydb/libkviproxydb.cpp:312
+msgid "The specified proxy already exists"
+msgstr "Angiven proxy finns redan"
+
+#: src/modules/proxydb/libkviproxydb.cpp:346
+#: src/modules/proxydb/libkviproxydb.cpp:625
+msgid "The specified protocol doesn't exist"
+msgstr "Angivet protokoll finns inte"
+
+#: src/modules/proxydb/libkviproxydb.cpp:399
+msgid "You must provide the port number as parameter"
+msgstr "Du måste ange portnumret som parameter"
+
+#: src/modules/proxydb/libkviproxydb.cpp:472
+msgid "You must provide the IP as parameter"
+msgstr "Du måste ange IP som parameter"
+
+#: src/modules/proxydb/libkviproxydb.cpp:493
+msgid "The specified IP is not valid"
+msgstr "Angivet IP är inte giltigt"
+
+#: src/modules/proxydb/libkviproxydb.cpp:601
+msgid "You must provide the protocol as parameter"
+msgstr "Du måste ange protokollet som parameter"
+
+#: src/modules/proxydb/libkviproxydb.cpp:650
+msgid "You must provide the value as parameter"
+msgstr "Du måste ange värdet som parameter"
+
+#: src/modules/serverdb/libkviserverdb.cpp:127
+#: src/modules/serverdb/libkviserverdb.cpp:231
+#: src/modules/serverdb/libkviserverdb.cpp:265
+#: src/modules/serverdb/libkviserverdb.cpp:868
+#: src/modules/serverdb/libkviserverdb.cpp:945
+#: src/modules/serverdb/libkviserverdb.cpp:1018
+#: src/modules/serverdb/libkviserverdb.cpp:1049
+msgid "You must provide the network name as parameter"
+msgstr "Du måste ange nätverksnamnet som parameter"
+
+#: src/modules/serverdb/libkviserverdb.cpp:171
+#: src/modules/serverdb/libkviserverdb.cpp:271
+#: src/modules/serverdb/libkviserverdb.cpp:951
+#: src/modules/serverdb/libkviserverdb.cpp:1055
+msgid "You must provide the server name as parameter"
+msgstr "Du måste ange servernamnet som parameter"
+
+#: src/modules/serverdb/libkviserverdb.cpp:238
+#: src/modules/serverdb/libkviserverdb.cpp:278
+#: src/modules/serverdb/libkviserverdb.cpp:959
+#: src/modules/serverdb/libkviserverdb.cpp:1027
+#: src/modules/serverdb/libkviserverdb.cpp:1064
+msgid "The specified network doesn't exist"
+msgstr "Angivet nätverk finns inte"
+
+#: src/modules/serverdb/libkviserverdb.cpp:285
+#: src/modules/serverdb/libkviserverdb.cpp:1073
+msgid "The specified server doesn't exist"
+msgstr "Angiven server finns inte"
+
+#: src/modules/serverdb/libkviserverdb.cpp:877
+msgid "The network specified already exists"
+msgstr "Angivet nätverk finns redan"
+
+#: src/modules/serverdb/libkviserverdb.cpp:972
+msgid "The specified server already exists"
+msgstr "Angiven server finns redan"
