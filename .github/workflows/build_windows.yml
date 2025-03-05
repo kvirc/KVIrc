@@ -179,7 +179,7 @@ jobs:
           move KVIrc.exe ${{ env.exe_name }}.exe
 
       - name: Publish artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.exe_name }}.exe
           path: build/${{ env.exe_name }}.exe

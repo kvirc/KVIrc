@@ -91,7 +91,7 @@ jobs:
             --app-drop-link 600 185 "${{ env.dmg_name }}.dmg" "build/KVIrc.app"
 
       - name: Publish artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.dmg_name }}.dmg
           path: ${{ env.dmg_name }}.dmg
