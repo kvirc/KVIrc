@@ -124,6 +124,7 @@ KviTrayIconWidget::KviTrayIconWidget()
 	setToolTipTitle("KVIrc");
 	setIconByPixmap(*g_pDock1);
 	setStandardActionsEnabled(false);
+	connect(this, SIGNAL(activateRequested(bool, QPoint)), this, SLOT(activatedSlot(bool)));
 #else
 	setIcon(*g_pDock1);
 	connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(activatedSlot(QSystemTrayIcon::ActivationReason)));
@@ -481,10 +482,12 @@ void KviTrayIconWidget::refresh()
 #endif
 }
 
-#ifndef COMPILE_KDE_SUPPORT
-// Under Kde do nothing, KWin will restore/hide our window
-// See ctor doc: KStatusNotifierItem::KStatusNotifierItem ( QObject *  parent = nullptr )
-
+#ifdef COMPILE_KDE_SUPPORT
+void KviTrayIconWidget::activatedSlot(bool)
+{
+	toggleParentFrame();
+}
+# else
 void KviTrayIconWidget::activatedSlot(QSystemTrayIcon::ActivationReason reason)
 {
 	switch(reason)
