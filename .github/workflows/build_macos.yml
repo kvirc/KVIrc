@@ -17,7 +17,7 @@ jobs:
     runs-on: macos-13
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2
@@ -25,9 +25,9 @@ jobs:
           key: build-macos-release
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
-          version: 6.6.2
+          version: 6.8.2
           modules: qt5compat qtmultimedia
 
       - name: Install other prerequisites
@@ -91,7 +91,7 @@ jobs:
             --app-drop-link 600 185 "${{ env.dmg_name }}.dmg" "build/KVIrc.app"
 
       - name: Publish artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.dmg_name }}.dmg
           path: ${{ env.dmg_name }}.dmg

@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup devcmd
         uses: ilammy/msvc-dev-cmd@v1
@@ -33,7 +33,7 @@ jobs:
             core.exportVariable('ACTIONS_RUNTIME_TOKEN', (process.env.ACTIONS_RUNTIME_TOKEN || ''));
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: 5.15.2
           cache: true
@@ -178,7 +178,7 @@ jobs:
           move KVIrc.exe ${{ env.exe_name }}.exe
 
       - name: Publish artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.exe_name }}.exe
           path: build/${{ env.exe_name }}.exe
