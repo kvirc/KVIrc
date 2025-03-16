@@ -501,7 +501,7 @@ void KviIrcConnection::handleAuthenticate(KviCString & szAuth)
 	KviCString szOut;
 	bool bSendString = false;
 	if(m_pStateData->sentSaslMethod() == QStringLiteral("EXTERNAL"))
-		bSendString = KviSASL::externalMethod(szAuth, szOut);
+		bSendString = KviSASL::externalMethod(szAuth, szOut, szNick);
 	else // Assume PLAIN
 		bSendString = KviSASL::plainMethod(szAuth, szOut, szNick, szPass);
 
