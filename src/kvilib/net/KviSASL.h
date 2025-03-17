@@ -59,9 +59,10 @@ namespace KviSASL
 	* \brief Create the auth message for EXTERNAL authentication
 	* \param szIn The server-provided token
 	* \param szOut A KviCString that will be filled with the authentication message
+	* \param baNick The username, may be empty
 	* \return bool
 	*/
-	extern KVILIB_API bool externalMethod(const KviCString & szIn, KviCString & szOut);
+	extern KVILIB_API bool externalMethod(const KviCString & szIn, KviCString & szOut, const QByteArray & baNick);
 };
 
 #endif //_KVI_SASL_H_
