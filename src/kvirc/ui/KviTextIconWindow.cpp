@@ -182,7 +182,7 @@ void KviTextIconWindow::autoSelectBestMatchBasedOnOwnerText()
 		return;
 
 	QString szText = pOwner->textBeforeCursor();
-	int idx = szText.lastIndexOf(QChar(KviControlCodes::Icon));
+	int idx = szText.lastIndexOf(QChar((char)KviControlCodes::Icon));
 	if(idx < 0)
 		return;
 

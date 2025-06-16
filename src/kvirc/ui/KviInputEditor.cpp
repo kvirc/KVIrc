@@ -1500,7 +1500,7 @@ void KviInputEditor::insertText(const QString & szTxt)
 			if(iIdx != -1)
 			{
 				szBlock = szText.left(iIdx);
-				//else szBlock = QChar(KviControlCodes::Reset);
+				//else szBlock = QChar((char)KviControlCodes::Reset);
 				szText.remove(0, iIdx + 1);
 			}
 			else

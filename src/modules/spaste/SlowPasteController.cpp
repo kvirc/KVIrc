@@ -111,7 +111,7 @@ void SlowPasteController::pasteFile()
 	{
 		line = data;
 		if(line.isEmpty())
-			line = QChar(KviControlCodes::Reset);
+			line = QChar((char)KviControlCodes::Reset);
 
 		line.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' ')); //expand tabs to spaces
 

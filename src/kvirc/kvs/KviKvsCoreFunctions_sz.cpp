@@ -772,7 +772,7 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(u)
 	{
-		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Underline)));
+		KVSCF_pRetBuffer->setString(QString(QChar((char)KviControlCodes::Underline)));
 		return true;
 	}
 

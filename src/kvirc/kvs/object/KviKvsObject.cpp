@@ -1120,7 +1120,7 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 				szOut = QString("%1, %2").arg(szName, szType);
 			else
 			{
-				szOut = QString(__tr2qs_ctx("Property: %1%2%3, type %4", "kvs")).arg(QChar(KviControlCodes::Bold)).arg(szName).arg(QChar(KviControlCodes::Bold)).arg(szType);
+				szOut = QString(__tr2qs_ctx("Property: %1%2%3, type %4", "kvs")).arg(QChar((char)KviControlCodes::Bold)).arg(szName).arg(QChar((char)KviControlCodes::Bold)).arg(szType);
 				szOut.prepend(" ");
 			}
 
