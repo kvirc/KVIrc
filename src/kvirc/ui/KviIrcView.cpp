@@ -3015,7 +3015,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 													szLink.append(QChar(l->pBlocks[iEndOfLInk].pChunk->type));
 													break;
 												case KviControlCodes::Color:
-													szLink.append(QChar(KviControlCodes::Color));
+													szLink.append(QChar((char)KviControlCodes::Color));
 													if(l->pBlocks[iEndOfLInk].pChunk->colors.fore != KviControlCodes::NoChange)
 													{
 														szLink.append(QString("%1").arg((int)(l->pBlocks[iEndOfLInk].pChunk->colors.fore)));

@@ -378,7 +378,7 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(o)
 	{
-		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Reset)));
+		KVSCF_pRetBuffer->setString(QString(QChar((char)KviControlCodes::Reset)));
 		return true;
 	}
 
@@ -504,7 +504,7 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(r)
 	{
-		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Reverse)));
+		KVSCF_pRetBuffer->setString(QString(QChar((char)KviControlCodes::Reverse)));
 		return true;
 	}
 

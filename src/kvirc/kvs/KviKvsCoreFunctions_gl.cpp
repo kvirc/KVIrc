@@ -362,7 +362,7 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(i)
 	{
-		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Italic)));
+		KVSCF_pRetBuffer->setString(QString(QChar((char)KviControlCodes::Italic)));
 		return true;
 	}
 
@@ -869,7 +869,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("background", KVS_PT_UINT, KVS_PF_OPTIONAL, iBack)
 		KVSCF_PARAMETERS_END
 
-		QString szRet = QChar(KviControlCodes::Color);
+		QString szRet = QChar((char)KviControlCodes::Color);
 		if(KVSCF_pParams->count() > 0)
 		{
 			KviQString::appendFormatted(szRet, "%u", iFore);

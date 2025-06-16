@@ -349,7 +349,7 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(b)
 	{
-		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Bold)));
+		KVSCF_pRetBuffer->setString(QString(QChar((char)KviControlCodes::Bold)));
 		return true;
 	}
 
