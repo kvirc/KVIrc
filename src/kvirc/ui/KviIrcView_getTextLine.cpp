@@ -38,8 +38,9 @@
 #include "KviTextIconManager.h"
 #include "KviWindow.h"
 
-#include <QDateTime>
 #include <QChar>
+#include <QDateTime>
+#include <QTimeZone>
 
 #define WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR 1
 
@@ -196,7 +197,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		QDateTime datetime = datetime_param;
 		if(!datetime.isValid())
 			datetime = QDateTime::currentDateTime();
-		datetime = datetime.toTimeSpec(KVI_OPTION_BOOL(KviOption_boolIrcViewTimestampUTC) ? Qt::UTC : Qt::LocalTime);
+		datetime = datetime.toTimeZone(KVI_OPTION_BOOL(KviOption_boolIrcViewTimestampUTC) ? QTimeZone::UTC : QTimeZone::LocalTime);
 		szTimestamp = datetime.toString(KVI_OPTION_STRING(KviOption_stringIrcViewTimestampFormat));
 		szTimestamp.append(' ');
 		int iTimeStampLength = szTimestamp.length();

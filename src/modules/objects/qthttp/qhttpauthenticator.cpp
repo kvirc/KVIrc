@@ -50,6 +50,7 @@
 #include <qendian.h>
 #include <qstring.h>
 #include <qdatetime.h>
+#include <QTimeZone>
 #include <QRandomGenerator>
 
 //#define NTLMV1_CLIENT
@@ -1309,7 +1310,7 @@ static QByteArray qEncodeNtlmv2Response(const QHttpAuthenticatorPrivate * ctx,
 	else
 	{
 		QDateTime currentTime(QDate::currentDate(),
-		    QTime::currentTime(), Qt::UTC);
+		    QTime::currentTime(), QTimeZone::UTC);
 
 		// number of seconds between 1601 and epoc(1970)
 		// 369 years, 89 leap years
