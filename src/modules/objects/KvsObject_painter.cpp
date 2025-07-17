@@ -1554,7 +1554,18 @@ KVSO_CLASS_FUNCTION(painter, drawPixmapMirrored)
 		sourceWH.setWidth(iW);
 		sourceWH.setHeight(iH);
 	}
+#if (QT_VERSION < QT_VERSION_CHECK(6, 9, 0))
 	QImage mirrored = pImage->mirrored(bHorizontal, bVertical);
+#else
+	Qt::Orientations orient = Qt::Orientations();
+	if(bHorizontal) {
+		orient |= Qt::Horizontal;
+	}
+	if(bVertical) {
+		orient |= Qt::Vertical;
+	}
+	QImage mirrored = pImage->flipped(orient);
+#endif
 	m_pPainter->drawImage(rX, rY, mirrored, sourceXY.x(), sourceXY.y(), sourceWH.width(), sourceWH.height());
 	return true;
 }

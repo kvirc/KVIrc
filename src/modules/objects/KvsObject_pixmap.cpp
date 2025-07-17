@@ -463,7 +463,20 @@ KVSO_CLASS_FUNCTION(pixmap, mirrored)
 		return false;
 	}
 	m_currentType = Image;
+
+#if (QT_VERSION < QT_VERSION_CHECK(6, 9, 0))
 	*m_pImage = m_pImage->mirrored(bHorizontal, bVertical);
+#else
+	Qt::Orientations orient = Qt::Orientations();
+	if(bHorizontal) {
+		orient |= Qt::Horizontal;
+	}
+	if(bVertical) {
+		orient |= Qt::Vertical;
+	}
+	*m_pImage = m_pImage->flipped(orient);
+#endif
+
 	return true;
 }
 

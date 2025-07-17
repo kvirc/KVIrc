@@ -242,7 +242,15 @@ namespace UPnP
 
 		// Parse the XML
 		QString errorMessage;
+#if (QT_VERSION < QT_VERSION_CHECK(6, 9, 0))
 		bool error = !xml.setContent(response, false, &errorMessage);
+#else
+		auto result = xml.setContent(response, QDomDocument::ParseOption::Default);
+		bool error = !(bool)result;
+		if(error) {
+			errorMessage = result.errorMessage;
+		}
+#endif
 
 		if(!error)
 		{
