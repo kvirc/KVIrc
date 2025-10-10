@@ -587,7 +587,7 @@ void KvsObject_socket::makeConnections()
 	connect(m_pSocket, SIGNAL(connected()), this, SLOT(slotConnected()));
 	connect(m_pSocket, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
 	connect(m_pSocket, SIGNAL(disconnected()), this, SLOT(slotDisconnected()));
-	connect(m_pSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(slotError(QAbstractSocket::SocketError)));
+	connect(m_pSocket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)), this, SLOT(slotError(QAbstractSocket::SocketError)));
 	connect(m_pSocket, SIGNAL(hostFound()), this, SLOT(slotHostFound()));
 	connect(m_pSocket, SIGNAL(stateChanged(QAbstractSocket::SocketState)), this, SLOT(slotStateChanged(QAbstractSocket::SocketState)));
 	//proxyAuthenticationRequired ( const QNetworkProxy & proxy, QAuthenticator * authenticator )
