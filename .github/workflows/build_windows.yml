@@ -179,7 +179,7 @@ jobs:
       - name: Create setup package
         run: |
           cd '${{github.workspace}}\build'
-          c:\"Program Files (x86)"\NSIS\makensis.exe KVIrc.nsi
+          c:\"Program Files (x86)"\NSIS\Bin\makensis.exe KVIrc.nsi
           move KVIrc.exe ${{ env.exe_name }}.exe
 
       - name: Publish artifact
