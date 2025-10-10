@@ -852,7 +852,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 			// org.freedesktop.Notifications.Notify
 			QVariantList args;
 			args << QString("KVIrc");                          // application name
-			args << QVariant(0);                               // notification id
+			args << QVariant(0u);                              // notification id
 			args << szIcon;                                    // application icon
 			args << szTitle;                                   // summary text
 			args << szText;                                    // detailed text
