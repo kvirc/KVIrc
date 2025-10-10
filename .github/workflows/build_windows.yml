@@ -15,7 +15,7 @@ on:
 jobs:
   build-windows:
     runs-on: windows-latest
-    # https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
+    # https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md
 
     steps:
       - name: Checkout
@@ -35,7 +35,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: 6.9.1
+          version: 6.10.0
           modules: qt5compat qtmultimedia
           cache: true
 
@@ -165,6 +165,10 @@ jobs:
           git_desc=$(git describe --always)
           echo "exe_name=KVIrc-$kvi_version-dev-$(date +%F)-git-$git_desc" >> "$GITHUB_ENV"
 
+      - name: Install NSIS
+        uses: repolevedavaj/install-nsis@v1.0.1
+        with:
+          nsis-version: '3.11'
 
       - name: Add StdUtils plugin to NSIS
         run: |
