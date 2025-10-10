@@ -3314,7 +3314,7 @@ void QHttpPrivate::setSock(QTcpSocket * sock)
 	QObject::connect(socket, SIGNAL(connected()), q, SLOT(_q_slotConnected()));
 	QObject::connect(socket, SIGNAL(disconnected()), q, SLOT(_q_slotClosed()));
 	QObject::connect(socket, SIGNAL(readyRead()), q, SLOT(_q_slotReadyRead()));
-	QObject::connect(socket, SIGNAL(error(QAbstractSocket::SocketError)), q, SLOT(_q_slotError(QAbstractSocket::SocketError)));
+	QObject::connect(socket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)), q, SLOT(_q_slotError(QAbstractSocket::SocketError)));
 	QObject::connect(socket, SIGNAL(bytesWritten(qint64)),
 	    q, SLOT(_q_slotBytesWritten(qint64)));
 #ifndef QT_NO_NETWORKPROXY

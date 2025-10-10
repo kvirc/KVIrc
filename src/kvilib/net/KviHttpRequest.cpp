@@ -213,7 +213,7 @@ void KviHttpRequest::closeSocket()
 
 	QObject::disconnect(m_p->pSocket, SIGNAL(connected()), this, SLOT(slotSocketConnected()));
 	QObject::disconnect(m_p->pSocket, SIGNAL(disconnected()), this, SLOT(slotSocketDisconnected()));
-	QObject::disconnect(m_p->pSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(slotSocketError(QAbstractSocket::SocketError)));
+	QObject::disconnect(m_p->pSocket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)), this, SLOT(slotSocketError(QAbstractSocket::SocketError)));
 
 	m_p->pSocket->abort();
 	m_p->pSocket->close();
@@ -413,7 +413,7 @@ bool KviHttpRequest::doConnect()
 #endif
 	QObject::connect(m_p->pSocket, SIGNAL(connected()), this, SLOT(slotSocketConnected()));
 	QObject::connect(m_p->pSocket, SIGNAL(disconnected()), this, SLOT(slotSocketDisconnected()));
-	QObject::connect(m_p->pSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(slotSocketError(QAbstractSocket::SocketError)));
+	QObject::connect(m_p->pSocket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)), this, SLOT(slotSocketError(QAbstractSocket::SocketError)));
 	QObject::connect(m_p->pSocket, SIGNAL(readyRead()), this, SLOT(slotSocketReadDataReady()));
 	QObject::connect(m_p->pSocket, SIGNAL(hostFound()), this, SLOT(slotSocketHostResolved()));
 
