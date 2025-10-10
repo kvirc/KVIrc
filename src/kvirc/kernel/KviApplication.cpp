@@ -792,7 +792,8 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 		actions << __tr2qs("Ignore");
 
 		pNotify->setActions(actions);
-		pNotify->setFlags(KNotification::CloseWhenWidgetActivated|KNotification::Persistent);
+		pNotify->setFlags(KNotification::CloseWhenWidgetActivated |
+			(uMessageLifetime == 0 ? KNotification::Persistent : KNotification::CloseOnTimeout));
 		pNotify->setWidget(g_pMainWindow);
 
 		connect(pNotify, SIGNAL(activated()), this, SLOT(showParentFrame()));
@@ -830,7 +831,8 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 		action = pNotify->addAction(__tr2qs("Ignore"));
 		connect(action, SIGNAL(activated()), pNotify, SLOT(close()));
 
-		pNotify->setFlags(KNotification::CloseWhenWindowActivated|KNotification::Persistent);
+		pNotify->setFlags(KNotification::CloseWhenWindowActivated |
+			(uMessageLifetime == 0 ? KNotification::Persistent : KNotification::CloseOnTimeout));
 		pNotify->setWindow(g_pMainWindow->windowHandle());
 #endif // QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 
