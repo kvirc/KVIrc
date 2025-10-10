@@ -166,7 +166,7 @@ jobs:
           echo "exe_name=KVIrc-$kvi_version-dev-$(date +%F)-git-$git_desc" >> "$GITHUB_ENV"
 
       - name: Install NSIS
-        uses: repolevedavaj/install-nsis@v1.0.1
+        uses: repolevedavaj/install-nsis@v1.1.0
         with:
           nsis-version: '3.11'
 
@@ -179,7 +179,7 @@ jobs:
       - name: Create setup package
         run: |
           cd '${{github.workspace}}\build'
-          c:\"Program Files (x86)"\NSIS\Bin\makensis.exe KVIrc.nsi
+          makensis.exe KVIrc.nsi
           move KVIrc.exe ${{ env.exe_name }}.exe
 
       - name: Publish artifact
