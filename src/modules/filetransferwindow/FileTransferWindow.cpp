@@ -237,7 +237,7 @@ void FileTransferItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & 
 	p->setPen(transfer->active() ? QColor(180, 180, 180) : QColor(200, 200, 200));
 
 	p->drawRect(option.rect.left() + 1, option.rect.top() + 1, option.rect.width() - 2, option.rect.height() - 2);
-	p->fillRect(option.rect.left() + 2, option.rect.top() + 2, option.rect.width() - 4, option.rect.height() - 4, transfer->active() ? QColor(240, 240, 240) : QColor(225, 225, 225));
+	p->fillRect(option.rect.left() + 2, option.rect.top() + 2, option.rect.width() - 4, option.rect.height() - 4, transfer->active() ? option.palette.alternateBase().color() : option.palette.base().color());
 
 	transfer->displayPaint(p, index.column(), option.rect);
 }
