@@ -65,6 +65,7 @@
 #include <QPushButton>
 #include <QEvent>
 #include <QCloseEvent>
+#include <QPalette>
 #include <QTimer>
 #include <QtEndian>
 
@@ -1638,6 +1639,7 @@ void DccFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 	int width = rect.width(), height = rect.height();
 	QString txt;
 	bool bIsTerminated = ((m_eGeneralStatus == Success) || (m_eGeneralStatus == Failure));
+	auto palette = QApplication::palette();
 
 	switch(column)
 	{
@@ -1684,7 +1686,7 @@ void DccFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 
 			int iY = rect.top() + 4;
 
-			p->setPen(Qt::black);
+			p->setPen(palette.color(QPalette::Active, QPalette::Text));
 
 			KviCString szRemote(KviCString::Format, "dcc://%s@%s:%s/%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(),
 			    m_pDescriptor->szFileName.toUtf8().data());
@@ -1697,7 +1699,8 @@ void DccFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 			    m_pDescriptor->bRecvFile ? m_pDescriptor->szLocalFileName.toUtf8().data() : szRemote.ptr());
 			iY += iLineSpacing;
 
-			p->setPen(Qt::darkGray);
+			// lighter color, usually dark grey
+			p->setPen(palette.color(QPalette::Disabled, QPalette::Text));
 
 			p->drawText(rect.left() + 4, rect.top() + 4, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szFrom);
 			p->drawText(rect.left() + 4, rect.top() + 4 + iLineSpacing, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szTo);
@@ -1793,7 +1796,7 @@ void DccFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 				txt = QString(__tr2qs_ctx("%1", "dcc")).arg(KviQString::makeSizeReadable(uTransferred));
 			}
 
-			p->setPen(Qt::black);
+			p->setPen(palette.color(QPalette::Active, QPalette::Text));
 
 			p->drawText(rect.left() + 4, rect.top() + 19, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, txt);
 
