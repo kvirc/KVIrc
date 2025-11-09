@@ -69,6 +69,15 @@ NServers=2
 1_Port=6697
 1_SSL=true
 NServers=2
+[BRASnet]
+0_Hostname=irc.brasnet.chat
+0_Description=BRASnet:%20server
+1_Hostname=irc.brasnet.chat
+1_Description=BRASnet:%20server%20SSL
+1_Port=6697
+1_SSL=true
+NServers=2
+Description=Brazilian%20Network
 [Chatcafe]
 0_Hostname=irc.chatcafe.net
 0_Description=Chatcafe:%20Random%20server
