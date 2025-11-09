@@ -28,28 +28,32 @@
 
 // FIXME: #warning "LOCALIZE THIS!"
 
-#define JOIN_CHANNEL_ON_NETWORK(_szChan, _szNet)                         \
+#define JOIN_CHANNEL_ON_NETWORK(_szChan, _szNet, _szServer)              \
 	"foreach(%ctx,$context.list)"                                        \
 	"{"                                                                  \
-	"	if("                                                               \
+	"	if("                                                             \
 	"			$str.contains($my.server(%ctx),\"" _szNet "\",false) ||" \
 	"			$str.contains($my.network(%ctx),\"" _szNet "\",false)"   \
-	"		)"                                                                \
-	"	{"                                                                 \
-	"		foreach(%chan,$window.list(channel,%ctx))"                        \
-	"		{"                                                                \
+	"		)"                                                           \
+	"	{"                                                               \
+	"		foreach(%chan,$window.list(channel,%ctx))"                   \
+	"		{"                                                           \
 	"			if($target(%chan) == \"" _szChan "\")"                   \
-	"			{"                                                               \
-	"				window.activate %chan;"                                         \
-	"				return;"                                                        \
-	"			}"                                                               \
-	"		}"                                                                \
-	"		rebind $console(%ctx);"                                           \
+	"			{"                                                       \
+	"				window.activate %chan;"                              \
+	"				return;"                                             \
+	"			}"                                                       \
+	"		}"                                                           \
+	"		rebind $console(%ctx);"                                      \
 	"		join \"" _szChan "\";"                                       \
-	"		return;"                                                          \
-	"	}"                                                                 \
+	"		return;"                                                     \
+	"	}"                                                               \
 	"}"                                                                  \
-	"server -u -c=\"join " _szChan "\" net:" _szNet ""
+	"if($serverdb.networkexists(" _szNet ")) {"                          \
+	"	server -u -c=\"join " _szChan "\" net:" _szNet ";"               \
+	"} else {"                                                           \
+	"	server -u -c=\"join " _szChan "\" " _szServer ";"                \
+	"}"
 
 static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS] = {
 	"echo Internal command error: index out of range",
@@ -80,7 +84,7 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS] = {
 	"dialog.file(open,$tr(\"Select a File - KVIrc\")){ if(!$str.isEmpty($0))parse $0; }",
 	"actioneditor.open",
 	"quit",
-	JOIN_CHANNEL_ON_NETWORK("#KVIrc", "LiberaChat")
+	JOIN_CHANNEL_ON_NETWORK("#KVIrc", "LiberaChat", "irc.libera.chat")
 };
 
 const char * kvi_getInternalCommandBuffer(int idx)
