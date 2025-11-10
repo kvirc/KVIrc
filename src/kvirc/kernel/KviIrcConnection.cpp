@@ -401,7 +401,7 @@ void KviIrcConnection::enableStartTlsSupport(bool bEnable)
 }
 #endif // COMPILE_SSL_SUPPORT
 
-const QStringList ourSupportedCaps {
+const static QStringList ourSupportedCaps {
 	// "sasl", // checked dynamically
 	"znc.in/server-time-iso",
 	"server-time",
