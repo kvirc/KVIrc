@@ -267,17 +267,17 @@ const char * const brushstyles_tbl[] = {
 		!fn: $drawRoundRect(<start_angle:integer>,<angle_length:integer>,<width:unsigned integer>,<height:unsigned integer>,<xr:integer>,<y:integer>)
 		Draws a rectangle with rounded corners at (x, y), with width w and height h.[rb]
 		The xCor and yCor arguments specify how rounded the corners should be (range is 0->99).
-		!fn: $drawPie(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>,<angle:integer>,<alen:integer>)
+		!fn: $drawPie(<angle:integer>,<alen:integer>,<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>)
 		Draws a pie defined by the rectangle (x, y, w, h), the start angle a and the arc length alen.[br]
 		The angles <angle> and <alen> are 1/16th of a degree, i.e. a full circle equals 5760 (16*360).
-		!fn: $drawArc(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>,<angle:integer>,<alen:integer>)
+		!fn: $drawArc(<angle:integer>,<alen:integer>,<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>)
 		Draws an arc defined by the rectangle (x, y, w, h), the start angle a and the arc length alen.[br]
 		The angles <angle> and <alen> are 1/16th of a degree, i.e. a full circle equals 5760 (16*360).
 		!fn: $drawPoint(<x:integer>,<y:integer>)
 		Draws a point at x and y coordinates.
 		!fn: $drawEllipse(<x:integer>,<y:integer>,<sizew:unsigned integer>,<sizeh:unsigned integer>)
 		Draws an ellipse with center at (x + w/2, y + h/2) and size (w, h).
-		!fn: $drawChord(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>,<angle:integer>,<alen:integer>)
+		!fn: $drawChord(<angle:integer>,<alen:integer>,<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>)
 		Draws a chord defined by the rectangle (x, y, w, h), the start angle a and the arc length alen.[br]
 		The angles <angle> and <alen> are 1/16th of a degree, i.e. a full circle equals 5760 (16*360).
 		!fn: $drawText(<x:integer>,<y:integer>,<width:unsigned integer>,<height:unsigned integer>,<text:string>[,<flag:string>[,<flag:string>[,...]]])
@@ -361,138 +361,125 @@ const char * const brushstyles_tbl[] = {
 					$$->%string=$0
 					$$->%waitfor=1;
 					$$->%nextanim=0
-				[comment]#zoom and rotation anim[/comment]
-				$$->%Zoomindex=11
-				$$->%degree=0
-				$$->%Noanim=0
-				$$->%scrollright=-450
-
-				[comment]#anim effect init[/comment]
-				$$->%xoffset=4
-				$$->%yoffset=3
-				$$->%xstart=270
-				$$->%ystart=200
-				$$->%b=0
-				$$->%yoffs=400
-
-				[comment]#parallax parameter[/comment]
-				$$->%Off=400
-				$$->%roll=1
-			}
-			timerevent()
-			{
-				$$->%b = $(($$->%b + 1) & 15);
-				if ($$->%nextanim == 1)  $$->$repaint(1);
-				$$->$repaint(0);
-			}
-			drawAnim()
-			{
-				%P->$setFont(32,"times",bold);
-				%w=$(%P->$fontMetricsWidth($$->%string[$$->%index]) + 20);
-				%h=$(%P->$fontMetricsHeight * 2);
-				%pmx = $(($$->$width/2) -%w/2);
-				%pmy = $(($$->$height()/2) - %h/2);
-				%x = 10;
-				%y= $((%h/2) + $$->$fontDescent());
-				%i=0
-				while ( $str.mid("Grifisx/Noldor",%i,1) != "")
+					#zoom and rotation anim
+					$$->%Zoomindex=11
+					$$->%degree=0
+					$$->%Noanim=0
+					$$->%scrollright=-450
+					#anim effect init
+					$$->%xoffset=4
+					$$->%yoffset=3
+					$$->%xstart=270
+					$$->%ystart=200
+					$$->%b=0
+					$$->%yoffs=400
+					#parallax parameter
+					$$->%Off=400
+					$$->%roll=1
+				}
+				timerevent()
 				{
-					%i16 = $(($$->%b+%i) & 15);
-					%char=$str.mid("Grifisx/Noldor",%i,1)
-					%P->$setPen($((15-%i16)*16),$((15-%i16)*16),$((15-%i16)*16) );
-					%P->$drawText( $(%x+$$->%xstart),$($$->%ystart+%y-$$->%sintbl[%i16]*%h/800),%char,1,Auto);
-					%x += %P->$fontMetricsWidth(%char);
-					%i++;
+					$$->%b = $(($$->%b + 1) & 15);
+					if ($$->%nextanim == 1) $$->$repaint(1);
+					$$->$repaint(0);
+				}
+				drawAnim()
+				{
+					%P->$setFont("times",32,bold);
+					%w=$(%P->$fontMetricsWidth($$->%string[$$->%index]) + 20);
+					%h=$(%P->$fontMetricsHeight * 2);
+					%pmx = $(($$->$width/2) -%w/2);
+					%pmy = $(($$->$height()/2) - %h/2);
+					%x = 10;
+					%y= $((%h/2) + $$->$fontDescent());
+					%i=0
+					%text = "Grifisx/Noldor";
+					while ( $str.mid(%text,%i,1) != "")
+					{
+						%i16 = $(($$->%b+%i) & 15);
+						%char=$str.mid(%text,%i,1)
+						%P->$setPen($((15-%i16)*16),$((15-%i16)*16),$((15-%i16)*16) );
+						%P->$drawText( $(%x+$$->%xstart),$($$->%ystart+%y-$$->%sintbl[%i16]*%h/800),%P->$fontMetricsWidth(%char),%P->$fontMetricsHeight(%char),%char);
+						%x += %P->$fontMetricsWidth(%char);
+						%i++;
+					}
+				}
+				matrixeffect()
+				{
+					if (($$->%Zoomindex == 99) && ($$->%degree==360)) return %P->$drawPixmap($(400-32),$(300-32),"kvirc.png",0,0,-1,-1)
+					%P->$scale(0.$$->%Zoomindex,0.$$->%Zoomindex)
+					if ($$->%Zoomindex != 99) $$->%Zoomindex++;
+					%P->$rotate($$->%degree)
+					%P->$translate(400,300)
+					%pixmap=$new(pixmap)
+					%pixmap->$load($file.globaldir(pics/kvi_bigicon_kvs.png))
+					%P->$drawPixmap(-32,-32,%pixmap,0,0,-1,-1)
+					delete %pixmap
+					%P->$setFont("times",28,bold);
+					%P->$reset()
+					if ($$->%scrollright >= 550) return
+					%P->$scale(0.$$->%Zoomindex,0.$$->%Zoomindex)
+					%P->$translate(400,350)
+					%text = "Another cool class brought to you by..."
+					%P->$drawText($$->%scrollright,10,%P->$fontMetricsWidth(%text),%P->$fontMetricsHeight(%text),"Another cool class brought to you by...")
+					$$->%scrollright += 3;
+					%P->$reset()
+				}
+				nextanim()
+				{
+					%p=$new(painter)
+					%p->$setBackgroundMode(Opaque)
+					%p->$setBrush($rand(255),$rand(255),$rand(255))
+					%p->$begin($$)
+					%rand=$rand(5)
+					%p->$drawrect($rand(800),$rand(400),120,200)
+					%p->$drawArc(20,$(16*20),$rand(800),$rand(400),120,200)
+					%p->$drawPie(20,$(16*20),$rand(800),$rand(400),120,200)
+					%p->$drawChord(20,$(16*20),$rand(800),$rand(400),120,200)
+					%p->$drawEllipse($rand(800),$rand(400),100,30)
+					%p->$end()
+					delete %p
+				}
+				paintEvent()
+				{
+					if ($$->%nextanim ==1) return $$->$nextanim()
+					# painter creation
+					%P=$new(painter);
+					%P->$begin($$);
+					$$->$drawanim
+					$$->$matrixeffect
+					%i=0
+					while (%i != 100)
+					{
+						%i16 = $(($$->%b+%i) & 15);
+						%P->$setPen($((15-%i16)*16),$((15-%i16)*16),$((15-%i16)*16) );
+						%P->$drawpoint($rand(800),$rand(600))
+						%i++
+					}
+					# sets the animations order to manage the parallax effect
+					%P->$end
+					delete %P
+					if (%Pauseflag == 1) return
+					# manage the animations parameters
+					if (($$->%Off<=60) && ($$->%roll<182)) $$->%roll += 2;
+					if ($$->%roll>182) $$->%waitfor=0
+					if ($$->%Noanim != 1) $$->%degree += 16;
+					if ($$->%degree >= 360)
+					{
+						$$->%degree=0;
+						if ($$->%Zoomindex == 99) $$->%Noanim=1
+					}
+					if ($$->%Noanim != 1) return
 				}
 			}
-			matrixeffect()
-			{
-				if (($$->%Zoomindex == 99) && ($$->%degree==360)) return %P->$drawPixmap($(400-32),$(300-32),"kvirc.png",0,0,-1,-1)
-				%P->$scale(0.$$->%Zoomindex,0.$$->%Zoomindex)
-				if ($$->%Zoomindex != 99) $$->%Zoomindex++;
-				%P->$rotate($$->%degree)
-				%P->$translate(400,300)
-				%P->$drawPixmap(-32,-32,"kvirc.png",0,0,-1,-1)
-				%P->$setFont(28,"times",bold);
-				%P->$reset()
-				if ($$->%scrollright >= 550) return
-				%P->$scale(0.$$->%Zoomindex,0.$$->%Zoomindex)
-				%P->$translate(400,350)
-				%P->$drawText($$->%scrollright,10,"Another cool class brought to you by...",-1,Auto)
-				$$->%scrollright += 3;
-				%P->$reset()
-			}
-			nextanim()
-			{
-				%p=$new(painter)
-				%p->$setBackgroundMode(Opaque)
-				%p->$setBrush($rand(255),$rand(255),$rand(255))
-				%p->$begin($$)
-				%rand=$rand(5)
-				%p->$drawrect($rand(800),$rand(400),120,200)
-				%p->$drawArc($rand(800),$rand(400),120,200,20,$(16*20))
-				%p->$drawPie($rand(800),$rand(400),120,200,20,$(16*20))
-				%p->$drawChord($rand(800),$rand(400),120,200,20,$(16*20))
-				%p->$drawEllipse($rand(800),$rand(400),100,30)
-				%p->$end()
-				delete %p
-			}
-			paintEvent()
-			{
-				if ($$->%nextanim ==1) return $$->$nextanim()
-				[comment]# pixmap creation: every effect will be painted on it then copied on widget[/comment]
-				%pixmap=$new(pixmap)
-				%pixmap->$resize($$->$width(),$$->$height())
-
-				[comment]# painter creation[/comment]
-				%P=$new(painter);
-				%P->$begin(%pixmap);
-				$$->$drawanim
-				$$->$matrixeffect
-				%i=0
-				while (%i != 100)
-				{
-					%i16 = $(($$->%b+%i) & 15);
-					%P->$setPen($((15-%i16)*16),$((15-%i16)*16),$((15-%i16)*16) );
-					%P->$drawpoint($rand(800),$rand(600))
-					%i++
-				}
-
-				[comment]# sets the animations order to manage the parallax effect[/comment]
-				%P->$end
-				objects.bitBlt $$ 0 0 %pixmap
-				delete %pixmap
-				delete %P
-				if (%Pauseflag == 1) return
-				[comment]# manage the animations parameters[/comment]
-				if (($$->%Off<=60) && ($$->%roll<182)) $$->%roll += 2;
-				if ($$->%roll>182) $$->%waitfor=0
-				if ($$->%Noanim != 1) $$->%degree += 16;
-				if ($$->%degree >= 360)
-				{
-					$$->%degree=0;
-					if ($$->%Zoomindex == 99) $$->%Noanim=1
-				}
-				if ($$->%Noanim != 1) return
-				[comment]#sinusoid animation[/comment]
-				if (($$->%xstart <1) && ($$->%xoffset == -4)) $$->%xoffset=4;
-				if (($$->%xstart >$($$->$width()-%P->$fontMetricsWidth("Grifisx/Noldor"))) && ($$->%xoffset == 4)) $$->%xoffset=-4;
-				if (($$->%ystart <1) && ($$->%yoffset == -3)) $$->%yoffset=3;
-				if (($$->%ystart >$($$->$height()-60)) && ($$->%yoffset == 3))   $$->%yoffset=-3;
-				$$->%xstart += $$->%xoffset;
-				$$->%ystart += $$->%yoffset;
-			}
-		}
-
 			%Hello=$new(hello)
 			%Hello->$setWindowTitle("Painter effects" );
-			%Hello->$setFont(28,"times",bold);
+			%Hello->$setFont("times",28,bold);
 			%Btn=$new(button,%Hello)
 			%Btn->$setmaximumwidth(80)
 			%Btn->$setmaximumheight(30)
-			%Btn->$setFont(8,"times",bold);
+			%Btn->$setFont("times",8,bold);
 			%Btn->$settext(Next)
-
 			privateimpl(%Btn,mousepressevent)
 			{
 				if ($$->$parent->%nextanim==0)
@@ -506,7 +493,6 @@ const char * const brushstyles_tbl[] = {
 					$$->$settext(Next)
 				}
 			}
-
 			%lay=$new(layout,%Hello)
 			%lay->$addwidget(%Btn,4,0)
 			%Hello->$setBackgroundColor("000000");
@@ -761,8 +747,8 @@ KVSO_CLASS_FUNCTION(painter, setFont)
 	QStringList szListStyle;
 	kvs_int_t iSize;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("size", KVS_PT_INTEGER, 0, iSize)
 	KVSO_PARAMETER("family", KVS_PT_STRING, 0, szFamily)
+	KVSO_PARAMETER("size", KVS_PT_INTEGER, 0, iSize)
 	KVSO_PARAMETER("style", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, szListStyle)
 	KVSO_PARAMETERS_END(c)
 	QFont font = m_pPainter->font();
