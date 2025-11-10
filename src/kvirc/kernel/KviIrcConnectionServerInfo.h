@@ -387,6 +387,7 @@ protected:
 	void setSupportsWatchList(bool bSupportsWatchList) { m_bSupportsWatchList = bSupportsWatchList; }
 	void setSupportsCodePages(bool bSupportsCodePages) { m_bSupportsCodePages = bSupportsCodePages; }
 	void addSupportedCaps(const QString & szCapList);
+	void removeSupportedCaps(const QString & szCapList);
 	void setMaxTopicLen(int iTopLen) { m_iMaxTopicLen = iTopLen; }
 	void setMaxModeChanges(int iModes) { m_iMaxModeChanges = iModes; }
 	void setSupportsWhox(bool bSupportsWhox) { m_bSupportsWhox = bSupportsWhox; }

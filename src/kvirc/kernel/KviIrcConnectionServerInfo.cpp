@@ -83,6 +83,21 @@ void KviIrcConnectionServerInfo::addSupportedCaps(const QString & szCapList)
 	}
 }
 
+void KviIrcConnectionServerInfo::removeSupportedCaps(const QString & szCapList)
+{
+	QStringList lTmp = szCapList.split(' ', Qt::SkipEmptyParts);
+	foreach(QString szCap, lTmp)
+	{
+		if(szCap.length() < 1)
+			continue; // shouldn't happen
+
+		szCap = szCap.toLower();
+
+		if(m_lSupportedCaps.contains(szCap))
+			m_lSupportedCaps.removeAll(szCap);
+	}
+}
+
 void KviIrcConnectionServerInfo::setSupportedChannelModes(const QString & szSupportedChannelModes)
 {
 	QStringList szAllModes = szSupportedChannelModes.split(',', Qt::KeepEmptyParts);
