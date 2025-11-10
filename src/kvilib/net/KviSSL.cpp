@@ -536,7 +536,15 @@ KviSSL::Result KviSSL::connect()
 {
 	if(!m_pSSL)
 		return NotInitialized;
+#if !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+		// ignore SIGPIPE
+		signal(SIGPIPE, SIG_IGN);
+		int ret = SSL_connect(m_pSSL);
+		//restore normal SIGPIPE behaviour.
+		signal(SIGPIPE, SIG_DFL);
+#else
 	int ret = SSL_connect(m_pSSL);
+#endif
 	return connectOrAcceptError(ret);
 }
 
