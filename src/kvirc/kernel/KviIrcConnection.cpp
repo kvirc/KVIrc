@@ -401,6 +401,20 @@ void KviIrcConnection::enableStartTlsSupport(bool bEnable)
 }
 #endif // COMPILE_SSL_SUPPORT
 
+const static QStringList ourSupportedCaps {
+	// "sasl", // checked dynamically
+	"znc.in/server-time-iso",
+	"server-time",
+	"multi-prefix",
+	"away-notify",
+	"account-notify",
+	"extended-join",
+	"userhost-in-names",
+	"chghost",
+	"znc.in/self-message",
+	"cap-notify"
+};
+
 void KviIrcConnection::handleInitialCapLs()
 {
 	if(!m_pStateData->isInsideInitialCapLs())
@@ -418,28 +432,19 @@ void KviIrcConnection::handleInitialCapLs()
 	}
 #endif
 
-	QString szRequests;
+	QStringList szRequests;
 
-	auto cap_add = [&](const char * c) {
+	if(target()->server()->enabledSASL() && serverInfo()->supportedCaps().contains("sasl", Qt::CaseInsensitive)) {
+		szRequests.append("sasl");
+	}
+
+	for(const QString &c : ourSupportedCaps)
+	{
 		if(serverInfo()->supportedCaps().contains(c, Qt::CaseInsensitive))
 		{
 			szRequests.append(c);
-			szRequests.append(" ");
 		}
-	};
-
-	if(target()->server()->enabledSASL())
-		cap_add("sasl");
-
-	cap_add("znc.in/server-time-iso");
-	cap_add("server-time");
-	cap_add("multi-prefix");
-	cap_add("away-notify");
-	cap_add("account-notify");
-	cap_add("extended-join");
-	cap_add("userhost-in-names");
-	cap_add("chghost");
-	cap_add("znc.in/self-message");
+	}
 
 	if(szRequests.isEmpty())
 	{
@@ -447,8 +452,27 @@ void KviIrcConnection::handleInitialCapLs()
 	}
 	else
 	{
-		sendFmtData("CAP REQ :%s", szRequests.trimmed().toUtf8().data());
+		sendFmtData("CAP REQ :%s", szRequests.join(' ').toUtf8().data());
 		m_pStateData->setInsideInitialCapReq(true);
+	}
+}
+
+void KviIrcConnection::handleCapNew(const QString & szCapList)
+{
+	QStringList szRequests;
+
+	for(auto szCap : szCapList.split(' ', Qt::SkipEmptyParts))
+	{
+		szCap = szCap.toLower();
+		if(ourSupportedCaps.contains(szCap))
+		{
+			szRequests.append(szCap);
+		}
+	}
+
+	if(!szRequests.isEmpty())
+	{
+		sendFmtData("CAP REQ :%s", szRequests.join(' ').toUtf8().data());
 	}
 }
 

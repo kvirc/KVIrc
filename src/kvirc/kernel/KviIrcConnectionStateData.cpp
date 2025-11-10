@@ -69,3 +69,16 @@ void KviIrcConnectionStateData::changeEnabledCapList(const QString & szCapList)
 			m_lEnabledCaps.append(szCap);
 	}
 }
+
+void KviIrcConnectionStateData::removeEnabledCapList(const QString & szCapList)
+{
+	for(auto szCap : szCapList.split(' ', Qt::SkipEmptyParts))
+	{
+		szCap = szCap.toLower();
+
+		if(szCap == "identify-msg")
+			m_bIdentifyMsgCapabilityEnabled = false;
+
+		m_lEnabledCaps.removeAll(szCap);
+	}
+}
