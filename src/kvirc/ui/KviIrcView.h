@@ -107,7 +107,7 @@ private:
 	int m_iFontLineSpacing;
 	int m_iFontLineVMargin;
 	int m_iFontDescent;
-	float m_iFontCharacterWidth[256];
+	int m_iFontCharacterWidth[256]; //1024 bytes fixed
 	bool m_bUseRealBold;
 
 	int m_iWrapMargin;
@@ -138,7 +138,7 @@ private:
 	bool m_bPostedPaintEventPending;
 	std::vector<KviIrcViewLine *> m_pMessagesStoppedWhileSelecting;
 	KviIrcView * m_pMasterView;
-	QFontMetricsF * m_pFm; // assume this valid only inside a paint event (may be 0 in other circumstances)
+	QFontMetrics * m_pFm; // assume this valid only inside a paint event (may be 0 in other circumstances)
 
 	QMouseEvent * m_pLastEvent;
 	qint64 m_iLastMouseClickTime;
