@@ -372,6 +372,9 @@ int main(int argc, char ** argv)
 	qputenv("QT_BEARER_POLL_TIMEOUT", QByteArray::number(-1));
 #endif
 
+	// Restore Qt5-like rounding to fix HiDPI support on QWebEngine
+	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::Round);
+
 	KviApplication * pTheApp = new KviApplication(argc, argv);
 
 #ifdef COMPILE_KDE_SUPPORT
