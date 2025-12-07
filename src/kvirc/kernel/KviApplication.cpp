@@ -227,9 +227,6 @@ KviApplication::KviApplication(int & argc, char ** argv)
 	kvi_socket_flushTrafficCounters();
 	// don't let qt quit the application by itself
 	setQuitOnLastWindowClosed(false);
-
-	// Restore Qt5-like rounding to fix HiDPI support on QWebEngine
-	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::Round);
 }
 
 void KviApplication::setup()
