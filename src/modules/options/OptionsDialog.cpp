@@ -429,7 +429,7 @@ bool OptionsDialog::recursiveSearch(OptionsDialogTreeWidgetItem * pItem, const Q
 	}
 	else
 	{
-		pItem->setForeground(0, Qt::black);
+		pItem->setForeground(0, palette().color(QPalette::Normal, QPalette::WindowText));
 		pItem->setBackground(0, Qt::transparent);
 	}
 
