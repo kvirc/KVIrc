@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Daniel Nylander <po@danielnylander.se>, 2025
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 5.2.4\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 12:42+0200\n"
-"PO-Revision-Date: 2025-01-01 13:03+0100\n"
-"Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
-"Language-Team: \n"
-"Language: sv\n"
+"POT-Creation-Date: 2025-12-01 17:30+0100\n"
+"PO-Revision-Date: 2015-08-01 09:10+0000\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>, 2025\n"
+"Language-Team: Swedish (http://app.transifex.com/kvirc/KVIrc/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/actioneditor/ActionEditor.cpp:101
 msgid "Name:"
@@ -24,7 +24,7 @@ msgstr "Namn:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:105
 msgid "Internal unique name for the action"
-msgstr ""
+msgstr "Internt unikt namn för åtgärden"
 
 #: src/modules/actioneditor/ActionEditor.cpp:107
 msgid "Label:"
@@ -38,23 +38,23 @@ msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:122
 msgid "Action code"
-msgstr ""
+msgstr "Åtgärdskod"
 
 #: src/modules/actioneditor/ActionEditor.cpp:124
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 #: src/modules/actioneditor/ActionEditor.cpp:130
 msgid "Category:"
-msgstr ""
+msgstr "Kategori:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:134
 msgid "Choose the category that best fits for this action"
-msgstr ""
+msgstr "Välj den kategori som passar bäst för den här åtgärden"
 
 #: src/modules/actioneditor/ActionEditor.cpp:136
 msgid "Description:"
-msgstr ""
+msgstr "Beskrivning:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:140
 msgid ""
@@ -64,7 +64,7 @@ msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:142
 msgid "Small icon:"
-msgstr ""
+msgstr "Liten ikon:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:150
 msgid ""
@@ -74,7 +74,7 @@ msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:157
 msgid "Big icon:"
-msgstr ""
+msgstr "Stor ikon:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:166
 msgid ""
@@ -84,7 +84,7 @@ msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:173
 msgid "Key sequence:"
-msgstr ""
+msgstr "Tangentsekvens:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:177
 msgid ""
@@ -93,15 +93,15 @@ msgid ""
 "eventually combined with the modifiers \"Ctrl\", \"Shift\", \"Alt\" and "
 "\"Meta\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", "
 "\"Ctrl+X,Ctrl+C\"."
-msgstr ""
+msgstr "Valfri tangentsekvens som aktiverar denna åtgärd. <br>Sekvensen måste anges som en sträng med upp till fyra tangentkoder separerade med kommatecken, eventuellt i kombination med modifierarna ”Ctrl”, ”Shift”, ”Alt” och ”Meta”. <br>Exempel på sådana sekvenser är ”Ctrl+X”, ”Ctrl+Alt+Z”, ”Ctrl+X,Ctrl+C”."
 
 #: src/modules/actioneditor/ActionEditor.cpp:187
 msgid "Properties"
-msgstr ""
+msgstr "Egenskaper"
 
 #: src/modules/actioneditor/ActionEditor.cpp:193
 msgid "Needs IRC context"
-msgstr ""
+msgstr "Behöver IRC-kontext"
 
 #: src/modules/actioneditor/ActionEditor.cpp:195
 msgid ""
@@ -111,7 +111,7 @@ msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:204
 msgid "Needs IRC connection"
-msgstr ""
+msgstr "Behöver IRC-anslutning"
 
 #: src/modules/actioneditor/ActionEditor.cpp:206
 msgid ""
@@ -121,17 +121,18 @@ msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:215
 msgid "Enable at login"
-msgstr ""
+msgstr "Aktivera vid inloggning"
 
 #: src/modules/actioneditor/ActionEditor.cpp:216
 msgid ""
 "Check this option if this action should be enabled also during the login "
-"operations. i.e. when the logical IRC connection hasn't been established yet."
+"operations. i.e. when the logical IRC connection hasn't been established "
+"yet."
 msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:221
 msgid "Enable only in specified windows"
-msgstr ""
+msgstr "Aktivera endast i angivna fönster"
 
 #: src/modules/actioneditor/ActionEditor.cpp:223
 msgid ""
@@ -141,7 +142,7 @@ msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:228
 msgid "Enable in console windows"
-msgstr ""
+msgstr "Aktivera i konsollfönster"
 
 #: src/modules/actioneditor/ActionEditor.cpp:229
 msgid ""
@@ -165,7 +166,7 @@ msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:241
 msgid "Enable in channel windows"
-msgstr ""
+msgstr "Aktivera i kanalfönster"
 
 #: src/modules/actioneditor/ActionEditor.cpp:242
 msgid ""
@@ -175,7 +176,7 @@ msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:254
 msgid "Enable in query windows"
-msgstr ""
+msgstr "Aktivera i frågefönster"
 
 #: src/modules/actioneditor/ActionEditor.cpp:255
 msgid ""
@@ -185,7 +186,7 @@ msgstr ""
 
 #: src/modules/actioneditor/ActionEditor.cpp:267
 msgid "Enable in DCC chat windows"
-msgstr ""
+msgstr "Aktivera i DCC-chattfönster"
 
 #: src/modules/actioneditor/ActionEditor.cpp:268
 msgid ""
@@ -203,15 +204,15 @@ msgstr "Åtgärd"
 
 #: src/modules/actioneditor/ActionEditor.cpp:644
 msgid "New Action"
-msgstr ""
+msgstr "Ny åtgärd"
 
 #: src/modules/actioneditor/ActionEditor.cpp:647
 msgid "Delete Actions"
-msgstr ""
+msgstr "Ta bort åtgärder"
 
 #: src/modules/actioneditor/ActionEditor.cpp:650
 msgid "Export Actions..."
-msgstr ""
+msgstr "Exportera åtgärder..."
 
 #: src/modules/actioneditor/ActionEditor.cpp:714
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:866
@@ -220,7 +221,7 @@ msgstr ""
 #: src/modules/raweditor/RawEditorWindow.cpp:418
 #: src/modules/raweditor/RawEditorWindow.cpp:458
 msgid "Choose a Filename - KVIrc"
-msgstr ""
+msgstr "Välj ett filnamn - KVIrc"
 
 #: src/modules/actioneditor/ActionEditor.cpp:747
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:883
@@ -231,7 +232,7 @@ msgstr ""
 #: src/modules/raweditor/RawEditorWindow.cpp:426
 #: src/modules/raweditor/RawEditorWindow.cpp:463
 msgid "Writing to File Failed - KVIrc"
-msgstr ""
+msgstr "Skrivning till fil misslyckades - KVIrc"
 
 #: src/modules/actioneditor/ActionEditor.cpp:747
 msgid "Unable to write to the actions file."
@@ -240,7 +241,7 @@ msgstr ""
 #: src/modules/actioneditor/ActionEditor.cpp:795
 #: src/modules/actioneditor/ActionEditor.cpp:796
 msgid "My Action"
-msgstr ""
+msgstr "Min åtgärd"
 
 #: src/modules/actioneditor/ActionEditor.cpp:797
 msgid "Put here a short description of your action"
@@ -281,7 +282,7 @@ msgstr "Alias"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1083
 #: src/modules/raweditor/RawEditorWindow.cpp:95
 msgid "&Export All to..."
-msgstr ""
+msgstr "&Exportera alla till..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:147
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:539
@@ -293,7 +294,7 @@ msgstr ""
 #: src/modules/eventeditor/EventEditorWindow.cpp:423
 #: src/modules/eventeditor/EventEditorWindow.cpp:447
 msgid "No item selected"
-msgstr ""
+msgstr "Inget objekt valt"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:148
 #: src/modules/classeditor/ClassEditorWindow.cpp:194
@@ -320,18 +321,18 @@ msgstr ""
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:549
 #: src/modules/classeditor/ClassEditorWindow.cpp:768
 msgid "Namespace"
-msgstr ""
+msgstr "Namnrymd"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:450
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:452
 #: src/modules/classeditor/ClassEditorWindow.cpp:654
 msgid "Enter a New Name - KVIrc"
-msgstr ""
+msgstr "Ange ett nytt namn - KVIrc"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:450
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1189
 msgid "Please enter the new name for the alias."
-msgstr ""
+msgstr "Ange det nya namnet för aliaset."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:452
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1197
@@ -346,21 +347,21 @@ msgstr ""
 #: src/modules/classeditor/ClassEditorWindow.cpp:665
 #: src/modules/classeditor/ClassEditorWindow.cpp:671
 msgid "Name Already Exists - KVIrc"
-msgstr ""
+msgstr "Namnet finns redan - KVIrc"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:467
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:480
 msgid "This name is already in use. Please choose another one."
-msgstr ""
+msgstr "Detta namn används redan. Välj ett annat."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:581
 msgid "Add Alias"
-msgstr ""
+msgstr "Lägg till alias"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:586
 #: src/modules/classeditor/ClassEditorWindow.cpp:868
 msgid "Add Namespace"
-msgstr ""
+msgstr "Lägg till namnrymd"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:596
 #: src/modules/classeditor/ClassEditorWindow.cpp:900
@@ -370,11 +371,11 @@ msgstr ""
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:604
 #: src/modules/classeditor/ClassEditorWindow.cpp:908
 msgid "Export Selected..."
-msgstr ""
+msgstr "Exportera markerade..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:610
 msgid "Export Selected into Single Files..."
-msgstr ""
+msgstr "Exportera markerade till enstaka filer..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:616
 #: src/modules/classeditor/ClassEditorWindow.cpp:921
@@ -383,7 +384,7 @@ msgstr "Exportera allt..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:624
 msgid "Find in Aliases..."
-msgstr ""
+msgstr "Hitta i alias..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:630
 msgid "Collapse All Namespaces"
@@ -391,7 +392,7 @@ msgstr ""
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:662
 msgid "Find in Aliases"
-msgstr ""
+msgstr "Hitta i alias"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:663
 msgid ""
@@ -404,7 +405,7 @@ msgstr ""
 #: src/modules/classeditor/ClassEditorWindow.cpp:1092
 #: src/modules/classeditor/ClassEditorWindow.cpp:1205
 msgid "Warning While Exporting - KVIrc"
-msgstr ""
+msgstr "Varning vid export - KVIrc"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:749
 #: src/modules/classeditor/ClassEditorWindow.cpp:1092
@@ -414,17 +415,17 @@ msgstr ""
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:757
 #: src/modules/classeditor/ClassEditorWindow.cpp:1100
 msgid "Choose a Directory - KVIrc"
-msgstr ""
+msgstr "Välj en katalog - KVIrc"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:784
 #: src/modules/classeditor/ClassEditorWindow.cpp:1125
 msgid "Confirm Replacing File - KVIrc"
-msgstr ""
+msgstr "Bekräfta ersättning av fil - KVIrc"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:785
 #: src/modules/classeditor/ClassEditorWindow.cpp:1126
 msgid "The file \"%1\" exists. Do you want to replace it?"
-msgstr ""
+msgstr "Filen \"%1\" finns redan. Vill du ersätta den?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:787
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1000
@@ -457,21 +458,21 @@ msgstr ""
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:987
 msgid "Do you really want to remove the alias \"%1\"?"
-msgstr ""
+msgstr "Vill du verkligen ta bort aliaset \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:990
 #: src/modules/classeditor/ClassEditorWindow.cpp:1370
 msgid "Do you really want to remove the namespace \"%1\"?"
-msgstr ""
+msgstr "Vill du verkligen ta bort namnrymden \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:992
 msgid "Please note that all the child items will be deleted too."
-msgstr ""
+msgstr "Observera att alla underordnade objekt också kommer att tas bort."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:997
 #: src/modules/classeditor/ClassEditorWindow.cpp:1381
 msgid "Confirm Removing Item - KVIrc"
-msgstr ""
+msgstr "Bekräfta borttagning av objekt - KVIrc"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1060
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1125
@@ -481,7 +482,7 @@ msgstr ""
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1061
 msgid "You must specify a valid name for the alias."
-msgstr ""
+msgstr "Du måste ange ett giltigt namn för aliaset."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1072
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1085
@@ -493,7 +494,7 @@ msgstr ""
 #: src/modules/classeditor/ClassEditorWindow.cpp:1547
 #: src/modules/classeditor/ClassEditorWindow.cpp:1557
 msgid "Invalid Name - KVIrc"
-msgstr ""
+msgstr "Ogiltigt namn - KVIrc"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1073
 msgid ""
@@ -502,7 +503,8 @@ msgid ""
 msgstr ""
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1086
-msgid "Stray ':' character in alias name: did you mean ...<namespace>::<name>?"
+msgid ""
+"Stray ':' character in alias name: did you mean ...<namespace>::<name>?"
 msgstr ""
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1096
@@ -512,7 +514,7 @@ msgstr ""
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1126
 #: src/modules/classeditor/ClassEditorWindow.cpp:1523
 msgid "You must specify a valid name for the namespace."
-msgstr ""
+msgstr "Du måste ange ett giltigt namn för namnrymden."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1138
 #: src/modules/classeditor/ClassEditorWindow.cpp:1535
@@ -540,11 +542,11 @@ msgstr ""
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1272
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:423
 msgid "Enter a Filename - KVIrc"
-msgstr ""
+msgstr "Ange ett filnamn - KVIrc"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1251
 msgid "Alias Editor"
-msgstr ""
+msgstr "Aliasredigerare"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1258
 #: src/modules/eventeditor/EventEditorWindow.cpp:571
@@ -588,11 +590,11 @@ msgstr ""
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:787
 msgid "inherits from class "
-msgstr ""
+msgstr "ärver från klassen "
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:793
 msgid "Member Function"
-msgstr ""
+msgstr "Medlemsfunktion"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:804
 msgid "Reminder text."
@@ -604,23 +606,23 @@ msgstr "Lägg till klass"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:886
 msgid "Add Member Function"
-msgstr ""
+msgstr "Lägg till medlemsfunktion"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:914
 msgid "Export Selected in Single Files..."
-msgstr ""
+msgstr "Exportera markerade till enstaka filer..."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:929
 msgid "Find in Classes..."
-msgstr ""
+msgstr "Sök i klasser..."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:935
 msgid "Collapse All Items"
-msgstr ""
+msgstr "Fäll in alla objekt"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:981
 msgid "Find In Classes"
-msgstr ""
+msgstr "Sök i klasser"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:982
 msgid ""
@@ -642,7 +644,7 @@ msgstr ""
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1366
 msgid "Do you really want to remove the class \"%1\"?"
-msgstr ""
+msgstr "Vill du verkligen ta bort klassen \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1372
 msgid "Please note that all the child classes/functions will also be deleted."
@@ -650,7 +652,7 @@ msgstr ""
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1376
 msgid "Do you really want to remove the function \"%1\"?"
-msgstr ""
+msgstr "Vill du verkligen ta bort funktionen \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1548
 msgid ""
@@ -663,7 +665,7 @@ msgstr ""
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1705
 msgid "Unable to compile class: "
-msgstr ""
+msgstr "Det går inte att kompilera klassen: "
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1712
 msgid "These inherited classes will be not compiled too:"
@@ -671,11 +673,11 @@ msgstr ""
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1721
 msgid "Compilation Error - KVIrc"
-msgstr ""
+msgstr "Kompileringsfel - KVIrc"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1854
 msgid "Class Editor"
-msgstr ""
+msgstr "Klassredigerare"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1861
 msgid "&Build"
@@ -692,7 +694,7 @@ msgstr "Stäng"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1935
 msgid "Please enter the name for the class:"
-msgstr ""
+msgstr "Ange namnet på klassen:"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1946
 msgid "Class names can contain only letters, digits and underscores"
@@ -706,15 +708,15 @@ msgstr ""
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1965
 msgid "Inherits class:"
-msgstr ""
+msgstr "Ärver klass:"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2011
 msgid "&Rename Class"
-msgstr ""
+msgstr "&Byt namn på klass"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2014
 msgid "&Create Class"
-msgstr ""
+msgstr "S&kapa klass"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2021
 #: src/modules/classeditor/ClassEditorWindow.cpp:2122
@@ -724,7 +726,7 @@ msgstr "&Avbryt"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2058
 msgid "Please enter the name for the member function:"
-msgstr ""
+msgstr "Ange namnet på medlemsfunktionen:"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2067
 msgid "Function names can contain only letters, digits and underscores"
@@ -740,15 +742,15 @@ msgstr ""
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2112
 msgid "&Add"
-msgstr ""
+msgstr "&Lägg till"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2114
 msgid "&Rename"
-msgstr ""
+msgstr "&Byt namn"
 
 #: src/modules/codetester/CodeTesterWindow.cpp:64
 msgid "&Execute"
-msgstr ""
+msgstr "&Kör"
 
 #: src/modules/codetester/CodeTesterWindow.cpp:68
 msgid "Params:"
@@ -762,7 +764,7 @@ msgstr ""
 
 #: src/modules/codetester/CodeTesterWindow.cpp:109
 msgid "Script Tester"
-msgstr ""
+msgstr "Skripttestare"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:277
 #: src/modules/editor/ScriptEditorImplementation.cpp:280
@@ -777,11 +779,11 @@ msgstr "&Ersätt"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:295
 msgid "Find & Replace"
-msgstr ""
+msgstr "Sök och ersätt"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:474
 msgid "Editor Configuration - KVIrc"
-msgstr ""
+msgstr "Redigerarkonfiguration - KVIrc"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:483
 msgid "Font:"
@@ -793,11 +795,11 @@ msgstr "Färger"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:488
 msgid "Background:"
-msgstr ""
+msgstr "Bakgrund:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:489
 msgid "Normal text:"
-msgstr ""
+msgstr "Normal text:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:490
 msgid "Brackets:"
@@ -805,11 +807,11 @@ msgstr ""
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:491
 msgid "Comments:"
-msgstr ""
+msgstr "Kommentarer:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:492
 msgid "Functions:"
-msgstr ""
+msgstr "Funktioner:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:493
 msgid "Keywords:"
@@ -817,7 +819,7 @@ msgstr "Nyckelord:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:494
 msgid "Variables:"
-msgstr ""
+msgstr "Variabler:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:495
 msgid "Punctuation:"
@@ -851,15 +853,15 @@ msgstr "Sö&k"
 #: src/modules/editor/ScriptEditorImplementation.cpp:770
 #: src/modules/editor/ScriptEditorImplementation.cpp:949
 msgid "Line: %1 Col: %2"
-msgstr ""
+msgstr "Rad: %1 Kol: %2"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:892
 msgid "Can't open file %1 for writing."
-msgstr ""
+msgstr "Kan inte öppna filen %1 för skrivning."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:966
 msgid "Select a File - KVIrc"
-msgstr ""
+msgstr "Välj en fil - KVIrc"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:979
 msgid "Opening File Failed - KVIrc"
@@ -867,15 +869,15 @@ msgstr ""
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:980
 msgid "Can't open file %1 for reading."
-msgstr ""
+msgstr "Kan inte öppna filen %1 för läsning."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1022
 msgid "Word to find:"
-msgstr ""
+msgstr "Ord att hitta:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1031
 msgid "Replace with:"
-msgstr ""
+msgstr "Ersätt med:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1042
 msgid "&Replace in all editor's items"
@@ -883,7 +885,7 @@ msgstr ""
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:123
 msgid "E&nabled"
-msgstr ""
+msgstr "A&ktiverad"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:129
 msgid "Edit the event handler name."
@@ -955,7 +957,7 @@ msgstr ""
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:619
 msgid "Event Editor"
-msgstr ""
+msgstr "Händelseredigerare"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:74
 #: src/modules/popupeditor/PopupEditorWindow.cpp:203
@@ -964,11 +966,11 @@ msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:77
 msgid "Submenu"
-msgstr ""
+msgstr "Undermeny"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:80
 msgid "External Menu"
-msgstr ""
+msgstr "Extern meny"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:84
 msgid "Separator"
@@ -977,23 +979,23 @@ msgstr "Avgränsare"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:87
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:149
 msgid "Label"
-msgstr ""
+msgstr "Etikett"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:90
 msgid "### Epilogue ###"
-msgstr ""
+msgstr "### Epilog ###"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:91
 msgid "Epilogue"
-msgstr ""
+msgstr "Epilog"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:94
 msgid "### Prologue ###"
-msgstr ""
+msgstr "### Prolog ###"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:95
 msgid "Prologue"
-msgstr ""
+msgstr "Prolog"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:189
 msgid "Popup name"
@@ -1001,7 +1003,7 @@ msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:193
 msgid "Test"
-msgstr ""
+msgstr "Testa"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:203
 msgid "Type"
@@ -1014,23 +1016,24 @@ msgstr "Text:"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:226
 msgid ""
 "<b>Visible text</b><br>May contain identifiers that will be evaluated at "
-"popup call time.<br>For labels, this text can contain also limited HTML tags."
+"popup call time.<br>For labels, this text can contain also limited HTML "
+"tags."
 msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:229
 msgid "Condition:"
-msgstr ""
+msgstr "Villkor:"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:235
 msgid ""
-"<b>Boolean condition</b><br>Will be evaluated at popup call time in order to "
-"decide if this entry has to be shown.<br>An empty condition evaluates to "
+"<b>Boolean condition</b><br>Will be evaluated at popup call time in order to"
+" decide if this entry has to be shown.<br>An empty condition evaluates to "
 "true."
 msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:238
 msgid "Icon:"
-msgstr ""
+msgstr "Ikon:"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:244
 msgid ""
@@ -1040,7 +1043,7 @@ msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:247
 msgid "External menu:"
-msgstr ""
+msgstr "Extern meny:"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:253
 msgid ""
@@ -1083,15 +1086,15 @@ msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:410
 msgid "New Item Below"
-msgstr ""
+msgstr "Nytt objekt nedanför"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:411
 msgid "New Item Above"
-msgstr ""
+msgstr "Nytt objekt ovanför"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:413
 msgid "New Item Inside"
-msgstr ""
+msgstr "Nytt objekt inuti"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:418
 msgid "New Menu Below"
@@ -1119,27 +1122,27 @@ msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:435
 msgid "Cu&t"
-msgstr ""
+msgstr "Klipp &ut"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:438
 msgid "&Copy"
-msgstr ""
+msgstr "&Kopiera"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:441
 msgid "Re&move"
-msgstr ""
+msgstr "&Ta bort"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:444
 msgid "&Paste Below"
-msgstr ""
+msgstr "K&listra in nedan"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:447
 msgid "Paste Above"
-msgstr ""
+msgstr "Klistra in ovan"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:450
 msgid "Paste Inside"
-msgstr ""
+msgstr "Klistra in"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:455
 msgid "New Menu Prologue"
@@ -1220,7 +1223,7 @@ msgstr ""
 
 #: src/modules/raweditor/RawEditorWindow.cpp:525
 msgid "RAW Editor"
-msgstr ""
+msgstr "RAW-redigerare"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:66
 msgid "Drop here the icons from the toolbars to remove them"
@@ -1228,7 +1231,7 @@ msgstr ""
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:140
 msgid "Toolbar Properties - KVIrc"
-msgstr ""
+msgstr "Egenskaper för verktygsfält - KVIrc"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:157
 msgid "Icon"
@@ -1236,7 +1239,7 @@ msgstr "Ikon"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:173
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:198
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:296
@@ -1245,7 +1248,7 @@ msgstr "Avancerat..."
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:230
 msgid "Choose a Toolbar Icon - KVIrc"
-msgstr ""
+msgstr "Välj en ikon för verktygsfältet - KVIrc"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:254
 msgid "Invalid Toolbar Label - KVIrc"
@@ -1276,11 +1279,11 @@ msgstr "Automatiskt"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:301
 msgid "Hide Advanced"
-msgstr ""
+msgstr "Dölj avancerat"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:309
 msgid "Customize Toolbars - KVIrc"
-msgstr ""
+msgstr "Anpassa verktygsfält - KVIrc"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:318
 msgid "New Toolbar"
@@ -1288,15 +1291,15 @@ msgstr "Ny verktygsrad"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:322
 msgid "Delete Toolbar"
-msgstr ""
+msgstr "Ta bort verktygsrad"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:326
 msgid "Edit Toolbar"
-msgstr ""
+msgstr "Redigera verktygsrad"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:334
 msgid "Export Toolbar"
-msgstr ""
+msgstr "Exportera verktygsrad"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:338
 msgid "Import Toolbar"
@@ -1308,7 +1311,7 @@ msgstr ""
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:401
 msgid "Do you really want to delete toolbar \"%1\"?"
-msgstr ""
+msgstr "Vill du verkligen ta bort verktygsfältet \"%1\"?"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:429
 msgid "Confirm Toolbar Export - KVIrc"
@@ -1316,7 +1319,7 @@ msgstr ""
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:430
 msgid "Do you want the associated actions to be exported with the toolbar?"
-msgstr ""
+msgstr "Vill du att de associerade åtgärderna ska exporteras med verktygsfältet?"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:483
 msgid "Write to Toolbar File Failed - KVIrc"
@@ -1332,7 +1335,7 @@ msgstr ""
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:526
 msgid "Please specify the properties for the new toolbar"
-msgstr ""
+msgstr "Ange egenskaperna för det nya verktygsfältet"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:527
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:528

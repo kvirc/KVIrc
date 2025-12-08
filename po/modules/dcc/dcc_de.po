@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 12:42+0200\n"
+"POT-Creation-Date: 2025-12-01 17:30+0100\n"
 "PO-Revision-Date: 2015-08-01 08:58+0000\n"
 "Last-Translator: Markus Rennings <markus@rennings.net>, 2007,2009-2012\n"
 "Language-Team: German (http://app.transifex.com/kvirc/KVIrc/language/de/)\n"
@@ -206,14 +206,14 @@ msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "Die lokale IP-Adresse ist privat, vom IRC-Server ermittelt: %s"
 
 #: src/modules/dcc/DccChatWindow.cpp:211
-#: src/modules/dcc/DccFileTransfer.cpp:2067
+#: src/modules/dcc/DccFileTransfer.cpp:2070
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr "Die lokale IP-Adresse ist privat, sie kann aber nicht vom IRC-Server ermittelt werden"
 
 #: src/modules/dcc/DccChatWindow.cpp:216
-#: src/modules/dcc/DccFileTransfer.cpp:2072
+#: src/modules/dcc/DccFileTransfer.cpp:2075
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr "Die lokale IP-Adresse ist privat, es ist jedoch kein IRC-Server verfügbar, von dem die IP-Adresse ermittelt werden kann"
@@ -227,12 +227,12 @@ msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "DCC %Q-Anfrage nicht gesendet, erwarte manuelle Verbindung"
 
 #: src/modules/dcc/DccChatWindow.cpp:252
-#: src/modules/dcc/DccFileTransfer.cpp:2142
+#: src/modules/dcc/DccFileTransfer.cpp:2145
 msgid "Low-level transport connection established"
 msgstr "Verbindung auf niedriger Ebene hergestellt"
 
 #: src/modules/dcc/DccChatWindow.cpp:253
-#: src/modules/dcc/DccFileTransfer.cpp:2143
+#: src/modules/dcc/DccFileTransfer.cpp:2146
 msgid "Starting Secure Socket Layer handshake"
 msgstr "SSL-Handshake wird gestartet"
 
@@ -303,7 +303,7 @@ msgstr "Über&schreiben"
 msgid "Re&sume"
 msgstr "&Wiederaufnehmen"
 
-#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2480
+#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2483
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -311,203 +311,203 @@ msgstr "Abbrechen"
 msgid "File Already Exists - KVIrc"
 msgstr "Datei existiert bereits - KVIrc"
 
-#: src/modules/dcc/DccFileTransfer.cpp:376
+#: src/modules/dcc/DccFileTransfer.cpp:377
 msgid "WARNING: the peer is sending garbage data past the end of the file"
 msgstr "WARNUNG: Die Gegenstelle sendet Mülldaten nach dem Ende der Datei"
 
-#: src/modules/dcc/DccFileTransfer.cpp:377
+#: src/modules/dcc/DccFileTransfer.cpp:378
 msgid ""
 "WARNING: ignoring data past the declared end of file and closing the "
 "connection"
 msgstr "WARNUNG: Daten hinter dem erklärten Dateiende werden ignoriert und die Verbindung geschlossen"
 
-#: src/modules/dcc/DccFileTransfer.cpp:541
+#: src/modules/dcc/DccFileTransfer.cpp:542
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
 msgstr "Datenübertragung beendet, warte 30 Sekunden auf das Netzwerk zum Schließen der Verbindung ..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:550
+#: src/modules/dcc/DccFileTransfer.cpp:551
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Datenübertragung wurde vor 30 Sekunden beendet, schließe die Verbindung"
 
-#: src/modules/dcc/DccFileTransfer.cpp:964
+#: src/modules/dcc/DccFileTransfer.cpp:965
 msgid "WARNING: received data in a DCC TSEND, there should be no acknowledges"
 msgstr "WARNUNG: Empfangende Daten in DCC TSEND, es sollte keine Bestätigungen geben"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1190
+#: src/modules/dcc/DccFileTransfer.cpp:1191
 msgid "TRANSFER %1"
 msgstr "ÜBERTRAGUNG %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1218
+#: src/modules/dcc/DccFileTransfer.cpp:1219
 msgid "Setting up the connection"
 msgstr "Verbindungsaufbau"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1281
+#: src/modules/dcc/DccFileTransfer.cpp:1282
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Versuch einer passiven DCC %1-Verbindung"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1287
+#: src/modules/dcc/DccFileTransfer.cpp:1288
 msgid "Attempting an active DCC %1 connection"
 msgstr "Versuch einer aktiven DCC %1-Verbindung"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1314
+#: src/modules/dcc/DccFileTransfer.cpp:1315
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "DCC-RESUME-Anfrage wird an %1 gesendet... es wird auf ACCEPT gewartet"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1399
-#: src/modules/dcc/DccFileTransfer.cpp:1413
+#: src/modules/dcc/DccFileTransfer.cpp:1400
+#: src/modules/dcc/DccFileTransfer.cpp:1414
 msgid "Aborted"
 msgstr "Abgebrochen"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1412
-#: src/modules/dcc/DccFileTransfer.cpp:2168
-#: src/modules/dcc/DccFileTransfer.cpp:2243
+#: src/modules/dcc/DccFileTransfer.cpp:1413
+#: src/modules/dcc/DccFileTransfer.cpp:2171
+#: src/modules/dcc/DccFileTransfer.cpp:2246
 msgid "Transfer failed: "
 msgstr "Übertragung fehlgeschlagen: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1423
+#: src/modules/dcc/DccFileTransfer.cpp:1424
 msgid "Configure Bandwidth..."
 msgstr "Bandbreite konfigurieren..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:1425
+#: src/modules/dcc/DccFileTransfer.cpp:1426
 msgid "Resend DCC"
 msgstr "Sende DCC erneut"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1426
+#: src/modules/dcc/DccFileTransfer.cpp:1427
 msgid "Resend TDCC"
 msgstr "Sende TDCC erneut"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1427
+#: src/modules/dcc/DccFileTransfer.cpp:1428
 msgid "Resend RevDCC"
 msgstr "Sende RevDCC erneut"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1428
+#: src/modules/dcc/DccFileTransfer.cpp:1429
 msgid "Abort"
 msgstr "Abbrechen"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1676
+#: src/modules/dcc/DccFileTransfer.cpp:1678
 msgid "From: "
 msgstr "Von: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1677
+#: src/modules/dcc/DccFileTransfer.cpp:1679
 msgid "To: "
 msgstr "An: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1779
-#: src/modules/dcc/DccFileTransfer.cpp:1788
+#: src/modules/dcc/DccFileTransfer.cpp:1782
+#: src/modules/dcc/DccFileTransfer.cpp:1791
 msgid "%1 of %2 (%3%)"
 msgstr "%1 von %2 (%3%)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1793
+#: src/modules/dcc/DccFileTransfer.cpp:1796
 msgid "%1"
 msgstr "%1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1806
+#: src/modules/dcc/DccFileTransfer.cpp:1809
 msgid "Speed:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1819
+#: src/modules/dcc/DccFileTransfer.cpp:1822
 msgid "Average:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1888
+#: src/modules/dcc/DccFileTransfer.cpp:1891
 msgid "Transfer Log"
 msgstr "Übertragungslog"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2031
+#: src/modules/dcc/DccFileTransfer.cpp:2034
 msgid "Contacting host %1 on port %2"
 msgstr "Host %1 wird an Port %2 kontaktiert"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2038
+#: src/modules/dcc/DccFileTransfer.cpp:2041
 msgid "Listening on interface %1 port %2"
 msgstr "Es wird an Schnittstelle %1 Port %2 auf eine Verbindung gewartet"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2063
+#: src/modules/dcc/DccFileTransfer.cpp:2066
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "Die lokale IP-Adresse ist privat, vom IRC-Server ermittelt: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2127
+#: src/modules/dcc/DccFileTransfer.cpp:2130
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr "DCC %1-Anfrage wird an %2 gesendet... Darauf warten, dass sich der Client auf der anderen Seite verbindet ..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:2131
+#: src/modules/dcc/DccFileTransfer.cpp:2134
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1-Anfrage nicht gesendet, erwarte manuelle Verbindung"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2150
+#: src/modules/dcc/DccFileTransfer.cpp:2153
 msgid "[SSL ERROR]: %1"
 msgstr "[SSL-FEHLER]: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2195
+#: src/modules/dcc/DccFileTransfer.cpp:2198
 msgid ""
 "DCC %s transfer with %Q@%Q:%Q completed: \r"
 "![!dbl]%Q\r"
 "%Q\r"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2204
+#: src/modules/dcc/DccFileTransfer.cpp:2207
 msgid "Transfer completed"
 msgstr "Übertragung abgeschlossen"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2252
+#: src/modules/dcc/DccFileTransfer.cpp:2255
 msgid "Connected to %1:%2"
 msgstr "Verbunden zu %1:%2"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2253
+#: src/modules/dcc/DccFileTransfer.cpp:2256
 msgid "Local end is %1:%2"
 msgstr "Lokales Ende ist %1:%2"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2318
+#: src/modules/dcc/DccFileTransfer.cpp:2321
 msgid "Transferring data"
 msgstr "Daten werden übertragen"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2343
+#: src/modules/dcc/DccFileTransfer.cpp:2346
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME akzeptiert: Die Übertragung wird an Position %1 beginnen"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2375
+#: src/modules/dcc/DccFileTransfer.cpp:2378
 msgid "Processing RESUME request with mismatched port (%1)"
 msgstr "»RESUME«-Anfrage mit nicht angepasstem Port (%1) wird verarbeitet"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2387
+#: src/modules/dcc/DccFileTransfer.cpp:2390
 msgid ""
 "Invalid RESUME request: invalid file name (got '%1' but should be '%2')"
 msgstr "Ungültige RESUME-Anfrage: Ungültiger Dateiname (got ›%1‹, aber sollte ›%2‹ sein)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2394
+#: src/modules/dcc/DccFileTransfer.cpp:2397
 msgid "Processing RESUME request with broken filename (%1)"
 msgstr "»RESUME«-Anfrage mit fehlerhaftem Dateinamen (%1) wird verarbeitet"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2403
+#: src/modules/dcc/DccFileTransfer.cpp:2406
 msgid "Internal error in RESUME request"
 msgstr "Interner Fehler in der RESUME-Anfrage"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2409
+#: src/modules/dcc/DccFileTransfer.cpp:2412
 msgid "Invalid RESUME request: position %1 is larger than file size"
 msgstr "Ungültige RESUME-Anfrage: Position %1 ist größer als die Dateigröße"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2413
+#: src/modules/dcc/DccFileTransfer.cpp:2416
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "RESUME-Anfrage wird akzeptiert: Übertragung wird an Position %1 beginnen"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2451
+#: src/modules/dcc/DccFileTransfer.cpp:2454
 msgid "Configure Bandwidth for DCC Transfer %1"
 msgstr "Konfiguriere Bandbreite für DCC-Transfer %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2454
+#: src/modules/dcc/DccFileTransfer.cpp:2457
 msgid "Limit upload bandwidth to:"
 msgstr "Beschränke Upload-Bandbreite auf:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2454
+#: src/modules/dcc/DccFileTransfer.cpp:2457
 msgid "Limit download bandwidth to:"
 msgstr "Beschränke Download-Bandbreite auf:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2471
+#: src/modules/dcc/DccFileTransfer.cpp:2474
 msgid "bytes/sec"
 msgstr "Byte/Sek"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2475
+#: src/modules/dcc/DccFileTransfer.cpp:2478
 msgid "OK"
 msgstr "OK"
 
