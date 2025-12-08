@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 12:42+0200\n"
+"POT-Creation-Date: 2025-12-01 17:30+0100\n"
 "PO-Revision-Date: 2015-08-01 08:58+0000\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>, 2006-2007,2010\n"
 "Language-Team: Hungarian (http://app.transifex.com/kvirc/KVIrc/language/hu/)\n"
@@ -204,14 +204,14 @@ msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "A helyi IP magáncím, meghatározás az IRC-szerver által: %s"
 
 #: src/modules/dcc/DccChatWindow.cpp:211
-#: src/modules/dcc/DccFileTransfer.cpp:2067
+#: src/modules/dcc/DccFileTransfer.cpp:2070
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr "A helyi IP privát cím, de az IRC szerver által nem lehet meghatározni"
 
 #: src/modules/dcc/DccChatWindow.cpp:216
-#: src/modules/dcc/DccFileTransfer.cpp:2072
+#: src/modules/dcc/DccFileTransfer.cpp:2075
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr "A helyi IP cím privát, de nincs IRC szerver, ami meghatározná"
@@ -225,12 +225,12 @@ msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "DCC %Q kérés küldése sikertelen, manuális kapcsolat szükséges"
 
 #: src/modules/dcc/DccChatWindow.cpp:252
-#: src/modules/dcc/DccFileTransfer.cpp:2142
+#: src/modules/dcc/DccFileTransfer.cpp:2145
 msgid "Low-level transport connection established"
 msgstr "Alacsony szintű adatátviteli kapcsolat létrejött"
 
 #: src/modules/dcc/DccChatWindow.cpp:253
-#: src/modules/dcc/DccFileTransfer.cpp:2143
+#: src/modules/dcc/DccFileTransfer.cpp:2146
 msgid "Starting Secure Socket Layer handshake"
 msgstr "SSL kézfogás megkezdése"
 
@@ -301,7 +301,7 @@ msgstr "Felülírás"
 msgid "Re&sume"
 msgstr "&Folytatás"
 
-#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2480
+#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2483
 msgid "Cancel"
 msgstr "Mégsem"
 
@@ -309,203 +309,203 @@ msgstr "Mégsem"
 msgid "File Already Exists - KVIrc"
 msgstr "Fájl Már Létezik - KVirc"
 
-#: src/modules/dcc/DccFileTransfer.cpp:376
+#: src/modules/dcc/DccFileTransfer.cpp:377
 msgid "WARNING: the peer is sending garbage data past the end of the file"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:377
+#: src/modules/dcc/DccFileTransfer.cpp:378
 msgid ""
 "WARNING: ignoring data past the declared end of file and closing the "
 "connection"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:541
+#: src/modules/dcc/DccFileTransfer.cpp:542
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
 msgstr "Adatátvitel megszakítva, 30 másodperc várkozás a peerre, hogy zárja a kapcsolatot..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:550
+#: src/modules/dcc/DccFileTransfer.cpp:551
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Adatátvitel megszakítva 30 másodperce, kapcsolat zárása"
 
-#: src/modules/dcc/DccFileTransfer.cpp:964
+#: src/modules/dcc/DccFileTransfer.cpp:965
 msgid "WARNING: received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1190
+#: src/modules/dcc/DccFileTransfer.cpp:1191
 msgid "TRANSFER %1"
 msgstr "ADATÁTVITEL: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1218
+#: src/modules/dcc/DccFileTransfer.cpp:1219
 msgid "Setting up the connection"
 msgstr "Kapcsolat beállítása"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1281
+#: src/modules/dcc/DccFileTransfer.cpp:1282
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Passzív DCC %1 kapcsolat létrehozása"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1287
+#: src/modules/dcc/DccFileTransfer.cpp:1288
 msgid "Attempting an active DCC %1 connection"
 msgstr "Próbálkozás aktív DCC %1 kapcsolat létrehozása"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1314
+#: src/modules/dcc/DccFileTransfer.cpp:1315
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "DCC RESUME elküldve, kérés %1 felé, várakozás Elfogadásra"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1399
-#: src/modules/dcc/DccFileTransfer.cpp:1413
+#: src/modules/dcc/DccFileTransfer.cpp:1400
+#: src/modules/dcc/DccFileTransfer.cpp:1414
 msgid "Aborted"
 msgstr "Megszakítva"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1412
-#: src/modules/dcc/DccFileTransfer.cpp:2168
-#: src/modules/dcc/DccFileTransfer.cpp:2243
+#: src/modules/dcc/DccFileTransfer.cpp:1413
+#: src/modules/dcc/DccFileTransfer.cpp:2171
+#: src/modules/dcc/DccFileTransfer.cpp:2246
 msgid "Transfer failed: "
 msgstr "Adatátvitel megszakadt: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1423
+#: src/modules/dcc/DccFileTransfer.cpp:1424
 msgid "Configure Bandwidth..."
 msgstr "Sávszélesség beállítása..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:1425
+#: src/modules/dcc/DccFileTransfer.cpp:1426
 msgid "Resend DCC"
 msgstr "DCC újraküldés"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1426
+#: src/modules/dcc/DccFileTransfer.cpp:1427
 msgid "Resend TDCC"
 msgstr "TDCC újraküldés"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1427
+#: src/modules/dcc/DccFileTransfer.cpp:1428
 msgid "Resend RevDCC"
 msgstr "RevDCC újraküldés"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1428
+#: src/modules/dcc/DccFileTransfer.cpp:1429
 msgid "Abort"
 msgstr "Megszakítás"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1676
+#: src/modules/dcc/DccFileTransfer.cpp:1678
 msgid "From: "
 msgstr "Feladó: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1677
+#: src/modules/dcc/DccFileTransfer.cpp:1679
 msgid "To: "
 msgstr "Címzett:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1779
-#: src/modules/dcc/DccFileTransfer.cpp:1788
+#: src/modules/dcc/DccFileTransfer.cpp:1782
+#: src/modules/dcc/DccFileTransfer.cpp:1791
 msgid "%1 of %2 (%3%)"
 msgstr "%1 van hátra %2 bájtból (%3%)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1793
+#: src/modules/dcc/DccFileTransfer.cpp:1796
 msgid "%1"
 msgstr "%1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1806
+#: src/modules/dcc/DccFileTransfer.cpp:1809
 msgid "Speed:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1819
+#: src/modules/dcc/DccFileTransfer.cpp:1822
 msgid "Average:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1888
+#: src/modules/dcc/DccFileTransfer.cpp:1891
 msgid "Transfer Log"
 msgstr "Adatátviteli napló"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2031
+#: src/modules/dcc/DccFileTransfer.cpp:2034
 msgid "Contacting host %1 on port %2"
 msgstr "Kapcsolódás a %1 hosthoz %2 porton keresztül"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2038
+#: src/modules/dcc/DccFileTransfer.cpp:2041
 msgid "Listening on interface %1 port %2"
 msgstr "Hallgatózás %1 eszközön %2 porton keresztül"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2063
+#: src/modules/dcc/DccFileTransfer.cpp:2066
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "A helyi IP magáncím, meghatárizás az IRC szerverrel: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2127
+#: src/modules/dcc/DccFileTransfer.cpp:2130
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr "DCC %1 kérés küldése %2 felé, várakozás a távoli kliens kapcsolódására..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:2131
+#: src/modules/dcc/DccFileTransfer.cpp:2134
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 kérés nem lett elküldve, manuális kapcsolódás szükséges"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2150
+#: src/modules/dcc/DccFileTransfer.cpp:2153
 msgid "[SSL ERROR]: %1"
 msgstr "[SSL HIBA]: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2195
+#: src/modules/dcc/DccFileTransfer.cpp:2198
 msgid ""
 "DCC %s transfer with %Q@%Q:%Q completed: \r"
 "![!dbl]%Q\r"
 "%Q\r"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2204
+#: src/modules/dcc/DccFileTransfer.cpp:2207
 msgid "Transfer completed"
 msgstr "Adatátvitel kész"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2252
+#: src/modules/dcc/DccFileTransfer.cpp:2255
 msgid "Connected to %1:%2"
 msgstr "Kapcsolódva %1:%2"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2253
+#: src/modules/dcc/DccFileTransfer.cpp:2256
 msgid "Local end is %1:%2"
 msgstr "Helyi végpont: %1:%2"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2318
+#: src/modules/dcc/DccFileTransfer.cpp:2321
 msgid "Transferring data"
 msgstr "Adatátvitel"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2343
+#: src/modules/dcc/DccFileTransfer.cpp:2346
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME(folytatás) elfogadva, az átvitel %1 pozíciótól kezdődik"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2375
+#: src/modules/dcc/DccFileTransfer.cpp:2378
 msgid "Processing RESUME request with mismatched port (%1)"
 msgstr "RESUME kérés feldolgozása nem egyező porttal (%1)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2387
+#: src/modules/dcc/DccFileTransfer.cpp:2390
 msgid ""
 "Invalid RESUME request: invalid file name (got '%1' but should be '%2')"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2394
+#: src/modules/dcc/DccFileTransfer.cpp:2397
 msgid "Processing RESUME request with broken filename (%1)"
 msgstr "RESUME kérés feldolgozása hibás fájlnévvel (%1)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2403
+#: src/modules/dcc/DccFileTransfer.cpp:2406
 msgid "Internal error in RESUME request"
 msgstr "Belső hiba RESUME (folytatás) kérésnél"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2409
+#: src/modules/dcc/DccFileTransfer.cpp:2412
 msgid "Invalid RESUME request: position %1 is larger than file size"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2413
+#: src/modules/dcc/DccFileTransfer.cpp:2416
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "Elfogadott RESUME (folytatás), adatátvitel %1 pozíciótól kezdődik"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2451
+#: src/modules/dcc/DccFileTransfer.cpp:2454
 msgid "Configure Bandwidth for DCC Transfer %1"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2454
+#: src/modules/dcc/DccFileTransfer.cpp:2457
 msgid "Limit upload bandwidth to:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2454
+#: src/modules/dcc/DccFileTransfer.cpp:2457
 msgid "Limit download bandwidth to:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2471
+#: src/modules/dcc/DccFileTransfer.cpp:2474
 msgid "bytes/sec"
 msgstr "bájt/másodperc "
 
-#: src/modules/dcc/DccFileTransfer.cpp:2475
+#: src/modules/dcc/DccFileTransfer.cpp:2478
 msgid "OK"
 msgstr "OK"
 

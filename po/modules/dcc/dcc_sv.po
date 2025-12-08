@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Daniel Nylander <po@danielnylander.se>, 2025
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 5.2.4\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 12:42+0200\n"
-"PO-Revision-Date: 2025-01-02 10:43+0100\n"
-"Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
-"Language-Team: \n"
-"Language: sv\n"
+"POT-Creation-Date: 2025-12-01 17:30+0100\n"
+"PO-Revision-Date: 2015-08-01 08:58+0000\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>, 2025\n"
+"Language-Team: Swedish (http://app.transifex.com/kvirc/KVIrc/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/dcc/DccBroker.cpp:174 src/modules/dcc/DccBroker.cpp:924
 msgid "Choose Files to Send - KVIrc"
@@ -24,7 +24,7 @@ msgstr "Välj filer att skicka - KVIrc"
 
 #: src/modules/dcc/DccBroker.cpp:211
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
-msgstr ""
+msgstr "Kan inte skicka DCC %Q-begäran till %Q: IRC-anslutningen har avslutats"
 
 #: src/modules/dcc/DccBroker.cpp:221 src/modules/dcc/DccBroker.cpp:969
 msgid "Can't open file %Q for reading"
@@ -34,19 +34,19 @@ msgstr "Kan inte öppna filen %Q för läsning"
 msgid ""
 "<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
 "mode.<br>"
-msgstr ""
+msgstr "<b>%1 [%2@%3]</b> begär en <b>direkt klientanslutning (DCC)</b> i läget <b>%4</b>.<br>"
 
 #: src/modules/dcc/DccBroker.cpp:300
 msgid "The connection will be secured using SSL.<br>"
-msgstr ""
+msgstr "Anslutningen kommer att säkras med hjälp av SSL.<br>"
 
 #: src/modules/dcc/DccBroker.cpp:306
 msgid "You will be the passive side of the connection.<br>"
-msgstr ""
+msgstr "Du kommer att vara den passiva sidan av anslutningen.<br>"
 
 #: src/modules/dcc/DccBroker.cpp:311
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
-msgstr ""
+msgstr "Anslutningsmålet kommer att vara värden <b>%1</b> på port <b>%2</b><br>"
 
 #: src/modules/dcc/DccBroker.cpp:315 src/modules/dcc/DccBroker.cpp:644
 msgid "DCC %1 Request - KVIrc"
@@ -54,10 +54,10 @@ msgstr "DCC %1-begäran - KVIrc"
 
 #: src/modules/dcc/DccBroker.cpp:366
 msgid ""
-"<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VOICE</"
-"b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
-"b><br>"
-msgstr ""
+"<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
+"<b>VOICE</b> mode.<br>The connection target will be host <b>%4</b> on port "
+"<b>%5</b><br>"
+msgstr "<b>%1 [%2@%3]</b> begär en<br><b>direkt klientanslutning (DCC)</b> i <b>VOICE-läge</b>.<br>Anslutningsmålet kommer att vara värden <b>%4</b> på port <b>%5</b><br>"
 
 #: src/modules/dcc/DccBroker.cpp:372
 msgid "DCC VOICE request"
@@ -65,10 +65,10 @@ msgstr "DCC VOICE-begäran"
 
 #: src/modules/dcc/DccBroker.cpp:433
 msgid ""
-"<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VIDEO</"
-"b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
-"b><br>"
-msgstr ""
+"<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
+"<b>VIDEO</b> mode.<br>The connection target will be host <b>%4</b> on port "
+"<b>%5</b><br>"
+msgstr "<b>%1 [%2@%3]</b> begär en<br><b>direkt klientanslutning (DCC)</b> i <b>VIDEO-läge</b>.<br>Anslutningsmålet kommer att vara värden <b>%4</b> på port <b>%5</b><br>"
 
 #: src/modules/dcc/DccBroker.cpp:439
 msgid "DCC VIDEO request"
@@ -79,7 +79,7 @@ msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
 "<b>%5</b><br>"
-msgstr ""
+msgstr "<b>%1 [%2@%3]</b> begär en<br><b>direkt klientanslutning (DCC)</b> i <b>CANVAS-läge</b>.<br>Anslutningsmålet kommer att vara värden <b>%4</b> på port <b>%5</b><br>"
 
 #: src/modules/dcc/DccBroker.cpp:515
 msgid "DCC CANVAS request"
@@ -87,15 +87,15 @@ msgstr "DCC CANVAS-begäran"
 
 #: src/modules/dcc/DccBroker.cpp:603
 msgid ""
-"<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
-"<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
-msgstr ""
+"<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> "
+"large.<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
+msgstr "<b>%1 [%2@%3]</b> vill skicka dig filen \"<b>%4</b>\", <b>%5</b> stor.<br>Anslutningsmålet kommer att vara värden <b>%6</b> på port <b>%7</b><br>"
 
 #: src/modules/dcc/DccBroker.cpp:617
 msgid ""
-"<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
-"<br>You will be the passive side of the connection.<br>"
-msgstr ""
+"<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> "
+"large.<br>You will be the passive side of the connection.<br>"
+msgstr "<b>%1 [%2@%3]</b> vill skicka dig filen \"<b>%4</b>\", <b>%5</b> stor.<br>Du kommer att vara den passiva sidan av anslutningen.<br>"
 
 #: src/modules/dcc/DccBroker.cpp:630
 msgid ""
@@ -106,11 +106,11 @@ msgid ""
 "save path will probably work. You can instruct KVIrc to accept incoming "
 "avatars automatically by setting the option "
 "<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
-msgstr ""
+msgstr "<b>Observera:</b>Filen ser ut att vara en avatar som du har begärt. Du bör inte ändra dess filnamn. Spara den på en plats där KVIrc kan hitta den, t.ex. i katalogerna \"avatars\", \"incoming\" eller \"pics\", i din hemkatalog eller i lagringskatalogen för inkommande filtyp. Den förinställda sökvägen för sparande fungerar förmodligen. Du kan instruera KVIrc att acceptera inkommande avatarer automatiskt genom att ställa in alternativet <tt>boolAutoAcceptIncomingAvatars</tt> till true.<br>"
 
 #: src/modules/dcc/DccBroker.cpp:659
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
-msgstr ""
+msgstr "Accepterar automatiskt DCC %Q-begäran från %Q!%Q@%Q för filen %Q"
 
 #: src/modules/dcc/DccBroker.cpp:733
 msgid "Choose Files to Save - KVIrc"
@@ -118,20 +118,20 @@ msgstr "Välj filer att spara - KVIrc"
 
 #: src/modules/dcc/DccBroker.cpp:758
 msgid "Auto-saving DCC %Q file %Q as %Q"
-msgstr ""
+msgstr "Automatisk sparning av DCC %Q-fil %Q som %Q"
 
 #: src/modules/dcc/DccBroker.cpp:793
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>auto-rename</b> the new file,<br><b>overwrite</b> the existing "
 "file, or<br> <b>resume</b> an incomplete download?"
-msgstr ""
+msgstr "Filen '<b>%1</b>' finns redan och är <b>%2</b> stor.<br>Vill du<br><b>automatiskt byta namn</b> på nya filen,<br><b>skriva över</b> den befintliga filen, eller<br> <b>återuppta</b> en ofärdig hämtning?"
 
 #: src/modules/dcc/DccBroker.cpp:808
 msgid ""
-"The file '<b>%1</b>' already exists and is larger than the offered one."
-"<br>Do you wish to<br><b>auto-rename</b> the new file, or<br><b>overwrite</"
-"b> the existing file?"
+"The file '<b>%1</b>' already exists and is larger than the offered "
+"one.<br>Do you wish to<br><b>auto-rename</b> the new file, "
+"or<br><b>overwrite</b> the existing file?"
 msgstr ""
 
 #: src/modules/dcc/DccBroker.cpp:891
@@ -140,13 +140,14 @@ msgstr ""
 
 #: src/modules/dcc/DccCanvasWindow.cpp:76
 msgid "Attempting a passive DCC CANVAS connection"
-msgstr ""
+msgstr "Försöker med en passiv DCC CANVAS-anslutning"
 
-#: src/modules/dcc/DccCanvasWindow.cpp:83 src/modules/dcc/DccChatWindow.cpp:183
+#: src/modules/dcc/DccCanvasWindow.cpp:83
+#: src/modules/dcc/DccChatWindow.cpp:183
 #: src/modules/dcc/DccVideoWindow.cpp:576
 #: src/modules/dcc/DccVoiceWindow.cpp:807
 msgid "Listening on interface %Q port %Q"
-msgstr ""
+msgstr "Lyssnar på gränssnitt %Q port %Q"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:99
 msgid ""
@@ -159,27 +160,30 @@ msgstr ""
 
 #: src/modules/dcc/DccCanvasWindow.cpp:109
 msgid "Attempting an active DCC CANVAS connection"
-msgstr ""
+msgstr "Försöker med en aktiv DCC CANVAS-anslutning"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:114
-#: src/modules/dcc/DccChatWindow.cpp:179 src/modules/dcc/DccVideoWindow.cpp:571
+#: src/modules/dcc/DccChatWindow.cpp:179
+#: src/modules/dcc/DccVideoWindow.cpp:571
 #: src/modules/dcc/DccVoiceWindow.cpp:802
 msgid "Contacting host %Q on port %Q"
-msgstr ""
+msgstr "Kontaktar värden %Q på port %Q"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:285
 #: src/modules/dcc/DccVoiceWindow.cpp:952
 msgid "DCC failed: %Q"
-msgstr ""
+msgstr "DCC misslyckades: %Q"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:290
-#: src/modules/dcc/DccChatWindow.cpp:584 src/modules/dcc/DccVideoWindow.cpp:902
+#: src/modules/dcc/DccChatWindow.cpp:584
+#: src/modules/dcc/DccVideoWindow.cpp:902
 #: src/modules/dcc/DccVoiceWindow.cpp:961
 msgid "Connected to %Q:%Q"
 msgstr "Ansluten till %Q:%Q"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:292
-#: src/modules/dcc/DccChatWindow.cpp:586 src/modules/dcc/DccVideoWindow.cpp:904
+#: src/modules/dcc/DccChatWindow.cpp:586
+#: src/modules/dcc/DccVideoWindow.cpp:904
 #: src/modules/dcc/DccVoiceWindow.cpp:963
 msgid "Local end is %Q:%Q"
 msgstr ""
@@ -187,30 +191,30 @@ msgstr ""
 #: src/modules/dcc/DccChatWindow.cpp:152
 #, c-format
 msgid "Attempting a passive DCC %s connection"
-msgstr ""
+msgstr "Försöker med en passiv DCC %s-anslutning"
 
 #: src/modules/dcc/DccChatWindow.cpp:164
 #, c-format
 msgid "Attempting an active DCC %s connection"
-msgstr ""
+msgstr "Försöker med en aktiv DCC %s-anslutning"
 
 #: src/modules/dcc/DccChatWindow.cpp:207
 #, c-format
 msgid "The local IP address is private, determining from IRC server: %s"
-msgstr ""
+msgstr "Den lokala IP-adressen är privat och bestäms från IRC-servern: %s"
 
 #: src/modules/dcc/DccChatWindow.cpp:211
-#: src/modules/dcc/DccFileTransfer.cpp:2067
+#: src/modules/dcc/DccFileTransfer.cpp:2070
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
-msgstr ""
+msgstr "Den lokala IP-adressen är privat, men det går inte att fastställa den från IRC-servern"
 
 #: src/modules/dcc/DccChatWindow.cpp:216
-#: src/modules/dcc/DccFileTransfer.cpp:2072
+#: src/modules/dcc/DccFileTransfer.cpp:2075
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
-msgstr ""
+msgstr "Den lokala IP-adressen är privat, men har ingen IRC-server att bestämma den från"
 
 #: src/modules/dcc/DccChatWindow.cpp:239
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
@@ -218,41 +222,44 @@ msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:244
 msgid "DCC %Q request not sent, awaiting manual connection"
-msgstr ""
+msgstr "DCC %Q-begäran inte skickad, inväntar manuell anslutning"
 
 #: src/modules/dcc/DccChatWindow.cpp:252
-#: src/modules/dcc/DccFileTransfer.cpp:2142
+#: src/modules/dcc/DccFileTransfer.cpp:2145
 msgid "Low-level transport connection established"
 msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:253
-#: src/modules/dcc/DccFileTransfer.cpp:2143
+#: src/modules/dcc/DccFileTransfer.cpp:2146
 msgid "Starting Secure Socket Layer handshake"
 msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:261
 #, c-format
 msgid "[SSL ERROR]: %s"
-msgstr ""
+msgstr "[SSL-FEL]: %s"
 
 #: src/modules/dcc/DccChatWindow.cpp:303 src/modules/dcc/DccChatWindow.cpp:414
 #: src/modules/dcc/DccVideoWindow.cpp:632
 #: src/modules/dcc/DccVideoWindow.cpp:743
 msgid "Can't send data: no active connection"
-msgstr ""
+msgstr "Kan inte skicka data: ingen aktiv anslutning"
 
-#: src/modules/dcc/DccChatWindow.cpp:350 src/modules/dcc/DccVideoWindow.cpp:679
+#: src/modules/dcc/DccChatWindow.cpp:350
+#: src/modules/dcc/DccVideoWindow.cpp:679
 msgid ""
 "The encryption engine was not able to encrypt the current message (%Q): %Q, "
 "no data was sent to the remote end"
 msgstr ""
 
-#: src/modules/dcc/DccChatWindow.cpp:429 src/modules/dcc/DccVideoWindow.cpp:757
+#: src/modules/dcc/DccChatWindow.cpp:429
+#: src/modules/dcc/DccVideoWindow.cpp:757
 #: src/modules/dcc/DccVoiceWindow.cpp:870
 msgid "ERROR: %Q"
 msgstr "FEL: %Q"
 
-#: src/modules/dcc/DccChatWindow.cpp:493 src/modules/dcc/DccVideoWindow.cpp:820
+#: src/modules/dcc/DccChatWindow.cpp:493
+#: src/modules/dcc/DccVideoWindow.cpp:820
 msgid ""
 "The following message appears to be encrypted, but the encryption engine "
 "failed to decode it: %Q"
@@ -260,7 +267,7 @@ msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:555
 msgid "DCC %Q failed: %Q"
-msgstr ""
+msgstr "DCC %Q misslyckades: %Q"
 
 #: src/modules/dcc/DccDescriptor.cpp:65 src/modules/dcc/DccMarshal.cpp:501
 #: src/modules/dcc/DccMarshal.cpp:537 src/modules/dcc/DccMarshal.cpp:544
@@ -294,213 +301,217 @@ msgstr "S&kriv över"
 msgid "Re&sume"
 msgstr "Åt&eruppta"
 
-#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2480
+#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2483
 msgid "Cancel"
 msgstr "Avbryt"
 
 #: src/modules/dcc/DccDialog.cpp:169
 msgid "File Already Exists - KVIrc"
-msgstr ""
+msgstr "Filen finns redan - KVIrc"
 
-#: src/modules/dcc/DccFileTransfer.cpp:376
+#: src/modules/dcc/DccFileTransfer.cpp:377
 msgid "WARNING: the peer is sending garbage data past the end of the file"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:377
+#: src/modules/dcc/DccFileTransfer.cpp:378
 msgid ""
 "WARNING: ignoring data past the declared end of file and closing the "
 "connection"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:541
+#: src/modules/dcc/DccFileTransfer.cpp:542
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
-msgstr ""
+msgstr "Dataöverföring avslutad, väntar 30 sekunder på att motparten ska stänga anslutningen..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:550
+#: src/modules/dcc/DccFileTransfer.cpp:551
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
-msgstr ""
+msgstr "Dataöverföringen avslutades för 30 sekunder sedan och anslutningen stängdes"
 
-#: src/modules/dcc/DccFileTransfer.cpp:964
+#: src/modules/dcc/DccFileTransfer.cpp:965
 msgid "WARNING: received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1190
+#: src/modules/dcc/DccFileTransfer.cpp:1191
 msgid "TRANSFER %1"
 msgstr "ÖVERFÖR %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1218
+#: src/modules/dcc/DccFileTransfer.cpp:1219
 msgid "Setting up the connection"
-msgstr ""
+msgstr "Sätter upp anslutningen"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1281
+#: src/modules/dcc/DccFileTransfer.cpp:1282
 msgid "Attempting a passive DCC %1 connection"
-msgstr ""
+msgstr "Försöker med en passiv DCC %1-anslutning"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1287
+#: src/modules/dcc/DccFileTransfer.cpp:1288
 msgid "Attempting an active DCC %1 connection"
-msgstr ""
+msgstr "Försöker med en aktiv DCC %1-anslutning"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1314
+#: src/modules/dcc/DccFileTransfer.cpp:1315
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1399
-#: src/modules/dcc/DccFileTransfer.cpp:1413
+#: src/modules/dcc/DccFileTransfer.cpp:1400
+#: src/modules/dcc/DccFileTransfer.cpp:1414
 msgid "Aborted"
 msgstr "Avbruten"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1412
-#: src/modules/dcc/DccFileTransfer.cpp:2168
-#: src/modules/dcc/DccFileTransfer.cpp:2243
+#: src/modules/dcc/DccFileTransfer.cpp:1413
+#: src/modules/dcc/DccFileTransfer.cpp:2171
+#: src/modules/dcc/DccFileTransfer.cpp:2246
 msgid "Transfer failed: "
-msgstr ""
+msgstr "Överföringen misslyckades: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1423
+#: src/modules/dcc/DccFileTransfer.cpp:1424
 msgid "Configure Bandwidth..."
 msgstr "Konfigurera bandbredd..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:1425
-msgid "Resend DCC"
-msgstr ""
-
 #: src/modules/dcc/DccFileTransfer.cpp:1426
-msgid "Resend TDCC"
-msgstr ""
+msgid "Resend DCC"
+msgstr "Skicka DCC på nytt"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1427
-msgid "Resend RevDCC"
-msgstr ""
+msgid "Resend TDCC"
+msgstr "Skicka TDCC igen"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1428
+msgid "Resend RevDCC"
+msgstr "Skicka RevDCC igen"
+
+#: src/modules/dcc/DccFileTransfer.cpp:1429
 msgid "Abort"
 msgstr "Avbryt"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1676
+#: src/modules/dcc/DccFileTransfer.cpp:1678
 msgid "From: "
 msgstr "Från: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1677
+#: src/modules/dcc/DccFileTransfer.cpp:1679
 msgid "To: "
 msgstr "Till: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1779
-#: src/modules/dcc/DccFileTransfer.cpp:1788
+#: src/modules/dcc/DccFileTransfer.cpp:1782
+#: src/modules/dcc/DccFileTransfer.cpp:1791
 msgid "%1 of %2 (%3%)"
 msgstr "%1 av %2 (%3%)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1793
+#: src/modules/dcc/DccFileTransfer.cpp:1796
 msgid "%1"
 msgstr "%1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1806
+#: src/modules/dcc/DccFileTransfer.cpp:1809
 msgid "Speed:"
 msgstr "Hastighet:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1819
+#: src/modules/dcc/DccFileTransfer.cpp:1822
 msgid "Average:"
-msgstr ""
+msgstr "Genomsnitt:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1888
+#: src/modules/dcc/DccFileTransfer.cpp:1891
 msgid "Transfer Log"
-msgstr ""
+msgstr "Överföringslogg"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2031
+#: src/modules/dcc/DccFileTransfer.cpp:2034
 msgid "Contacting host %1 on port %2"
-msgstr ""
+msgstr "Kontaktar värden %1 på port %2"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2038
+#: src/modules/dcc/DccFileTransfer.cpp:2041
 msgid "Listening on interface %1 port %2"
-msgstr ""
+msgstr "Lyssnar på gränssnitt %1 port %2"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2063
+#: src/modules/dcc/DccFileTransfer.cpp:2066
 msgid "The local IP address is private, determining from IRC server: %1"
-msgstr ""
+msgstr "Den lokala IP-adressen är privat och bestäms från IRC-servern: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2127
+#: src/modules/dcc/DccFileTransfer.cpp:2130
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2131
+#: src/modules/dcc/DccFileTransfer.cpp:2134
 msgid "DCC %1 request not sent, awaiting manual connection"
-msgstr ""
+msgstr "DCC %1-begäran inte skickad, väntar på manuell anslutning"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2150
+#: src/modules/dcc/DccFileTransfer.cpp:2153
 msgid "[SSL ERROR]: %1"
-msgstr ""
+msgstr "[SSL-FEL]: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2195
-msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]%Q\r%Q\r"
-msgstr ""
+#: src/modules/dcc/DccFileTransfer.cpp:2198
+msgid ""
+"DCC %s transfer with %Q@%Q:%Q completed: \r"
+"![!dbl]%Q\r"
+"%Q\r"
+msgstr "DCC %s överföring med %Q@%Q:%Q slutförd: \r![!dbl]%Q\r%Q\r"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2204
+#: src/modules/dcc/DccFileTransfer.cpp:2207
 msgid "Transfer completed"
-msgstr ""
+msgstr "Överföring slutförd"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2252
+#: src/modules/dcc/DccFileTransfer.cpp:2255
 msgid "Connected to %1:%2"
 msgstr "Ansluten till %1:%2"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2253
+#: src/modules/dcc/DccFileTransfer.cpp:2256
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2318
+#: src/modules/dcc/DccFileTransfer.cpp:2321
 msgid "Transferring data"
 msgstr "Överför data"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2343
+#: src/modules/dcc/DccFileTransfer.cpp:2346
 msgid "RESUME accepted, transfer will begin at position %1"
-msgstr ""
+msgstr "RESUME accepterades, överföringen kommer att börja på position %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2375
+#: src/modules/dcc/DccFileTransfer.cpp:2378
 msgid "Processing RESUME request with mismatched port (%1)"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2387
-msgid "Invalid RESUME request: invalid file name (got '%1' but should be '%2')"
+#: src/modules/dcc/DccFileTransfer.cpp:2390
+msgid ""
+"Invalid RESUME request: invalid file name (got '%1' but should be '%2')"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2394
+#: src/modules/dcc/DccFileTransfer.cpp:2397
 msgid "Processing RESUME request with broken filename (%1)"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2403
+#: src/modules/dcc/DccFileTransfer.cpp:2406
 msgid "Internal error in RESUME request"
-msgstr ""
+msgstr "Internt fel i RESUME-begäran"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2409
+#: src/modules/dcc/DccFileTransfer.cpp:2412
 msgid "Invalid RESUME request: position %1 is larger than file size"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2413
+#: src/modules/dcc/DccFileTransfer.cpp:2416
 msgid "Accepting RESUME request, transfer will begin at position %1"
-msgstr ""
+msgstr "Accepterar RESUME-begäran, överföringen kommer att börja vid position %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2451
+#: src/modules/dcc/DccFileTransfer.cpp:2454
 msgid "Configure Bandwidth for DCC Transfer %1"
-msgstr ""
+msgstr "Konfigurera bandbredd för DCC-överföring %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2454
+#: src/modules/dcc/DccFileTransfer.cpp:2457
 msgid "Limit upload bandwidth to:"
-msgstr ""
+msgstr "Begränsa bandbredden för sändning till:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2454
+#: src/modules/dcc/DccFileTransfer.cpp:2457
 msgid "Limit download bandwidth to:"
-msgstr ""
+msgstr "Begränsa bandbredden för hämtning till:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2471
+#: src/modules/dcc/DccFileTransfer.cpp:2474
 msgid "bytes/sec"
 msgstr "byte/s"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2475
+#: src/modules/dcc/DccFileTransfer.cpp:2478
 msgid "OK"
 msgstr "Ok"
 
 #: src/modules/dcc/DccUtils.cpp:125
 msgid "Can't retrieve a suitable local IPv4 address"
-msgstr ""
+msgstr "Kan inte få en lämplig lokal IPv4-adress"
 
 #: src/modules/dcc/DccUtils.cpp:148
 #, c-format
@@ -515,11 +526,11 @@ msgstr "Videoenhet:"
 
 #: src/modules/dcc/DccVideoWindow.cpp:552
 msgid "Attempting a passive DCC VIDEO connection"
-msgstr ""
+msgstr "Försöker med en passiv DCC VIDEO-anslutning"
 
 #: src/modules/dcc/DccVideoWindow.cpp:560
 msgid "Attempting an active DCC VIDEO connection"
-msgstr ""
+msgstr "Försöker med en aktiv DCC VIDEO-anslutning"
 
 #: src/modules/dcc/DccVideoWindow.cpp:594
 msgid ""
@@ -533,13 +544,13 @@ msgstr ""
 
 #: src/modules/dcc/DccVideoWindow.cpp:897
 msgid "DCC Failed: %Q"
-msgstr ""
+msgstr "DCC misslyckades: %Q"
 
 #: src/modules/dcc/DccVideoWindow.cpp:918
 #: src/modules/dcc/DccVoiceWindow.cpp:980
 #, c-format
 msgid "Actual codec used is '%s'"
-msgstr ""
+msgstr "Faktisk kodek som används är '%s'"
 
 #: src/modules/dcc/DccVoiceWindow.cpp:163
 msgid ""
@@ -567,19 +578,19 @@ msgstr ""
 
 #: src/modules/dcc/DccVoiceWindow.cpp:705
 msgid "Input buffer"
-msgstr ""
+msgstr "Inmatningsbuffert"
 
 #: src/modules/dcc/DccVoiceWindow.cpp:707
 msgid "Output buffer"
-msgstr ""
+msgstr "Utdatabuffert"
 
 #: src/modules/dcc/DccVoiceWindow.cpp:783
 msgid "Attempting a passive DCC VOICE connection"
-msgstr ""
+msgstr "Försöker med en passiv DCC VOICE-anslutning"
 
 #: src/modules/dcc/DccVoiceWindow.cpp:791
 msgid "Attempting an active DCC VOICE connection"
-msgstr ""
+msgstr "Försöker med en aktiv DCC VOICE-anslutning"
 
 #: src/modules/dcc/DccVoiceWindow.cpp:825
 msgid ""
@@ -594,12 +605,12 @@ msgstr ""
 #: src/modules/dcc/DccVoiceWindow.cpp:927
 #, c-format
 msgid "Input buffer: %d bytes"
-msgstr ""
+msgstr "Inmatningsbuffert: %d byte"
 
 #: src/modules/dcc/DccVoiceWindow.cpp:929
 #, c-format
 msgid "Output buffer: %d bytes"
-msgstr ""
+msgstr "Utdatabuffert: %d byte"
 
 #: src/modules/dcc/DccVoiceWindow.cpp:1064
 msgid "Volume: %1"
@@ -611,15 +622,15 @@ msgstr ""
 
 #: src/modules/dcc/canvaswidget.cpp:1503 src/modules/dcc/canvaswidget.cpp:1511
 msgid "&Rectangle"
-msgstr ""
+msgstr "&Rektangel"
 
 #: src/modules/dcc/canvaswidget.cpp:1504
 msgid "&Ellipse"
-msgstr ""
+msgstr "&Ellips"
 
 #: src/modules/dcc/canvaswidget.cpp:1505
 msgid "&Pie"
-msgstr ""
+msgstr "&Paj"
 
 #: src/modules/dcc/canvaswidget.cpp:1506
 msgid "&Chord"
@@ -627,19 +638,19 @@ msgstr ""
 
 #: src/modules/dcc/canvaswidget.cpp:1508
 msgid "&Rich text (html)"
-msgstr ""
+msgstr "&Rik text (html)"
 
 #: src/modules/dcc/canvaswidget.cpp:1510
 msgid "&Triangle"
-msgstr ""
+msgstr "&Triangel"
 
 #: src/modules/dcc/canvaswidget.cpp:1512
 msgid "&Pentagon"
-msgstr ""
+msgstr "&Pentagon"
 
 #: src/modules/dcc/canvaswidget.cpp:1513
 msgid "&Hexagon"
-msgstr ""
+msgstr "&Hexagon"
 
 #: src/modules/dcc/canvaswidget.cpp:1515
 msgid "&Shape"
@@ -647,57 +658,57 @@ msgstr ""
 
 #: src/modules/dcc/canvaswidget.cpp:1516
 msgid "&Item"
-msgstr ""
+msgstr "&Objekt"
 
 #: src/modules/dcc/canvaswidget.cpp:1517
 msgid "&Polygons"
-msgstr ""
+msgstr "&Polygoner"
 
 #: src/modules/dcc/canvaswidget.cpp:1519
 msgid "&Insert"
-msgstr ""
+msgstr "&Infoga"
 
 #: src/modules/dcc/libkvidcc.cpp:93
 msgid ""
-"This window has no associated IRC context (an IRC context is required unless "
-"-c or -n are passed)"
+"This window has no associated IRC context (an IRC context is required unless"
+" -c or -n are passed)"
 msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:108
 msgid ""
-"You're not connected to a server (an active connection is required unless -c "
-"or -n are passed)"
-msgstr ""
+"You're not connected to a server (an active connection is required unless -c"
+" or -n are passed)"
+msgstr "Du är inte ansluten till en server (en aktiv anslutning krävs om inte -c eller -n anges)"
 
 #: src/modules/dcc/libkvidcc.cpp:137
 msgid "Unable to get address of interface %Q"
-msgstr ""
+msgstr "Kunde inte få adressen för gränssnittet %Q"
 
 #: src/modules/dcc/libkvidcc.cpp:149
 msgid "No suitable interfaces to listen on, use -i"
-msgstr ""
+msgstr "Inga lämpliga gränssnitt att lyssna på, använd -i"
 
 #: src/modules/dcc/libkvidcc.cpp:186
 msgid "This executable was built without SSL support, -s switch ignored"
-msgstr ""
+msgstr "Den här körbara filen byggdes utan SSL-stöd, -s ignoreras"
 
 #: src/modules/dcc/libkvidcc.cpp:438 src/modules/dcc/libkvidcc.cpp:652
 #: src/modules/dcc/libkvidcc.cpp:1146 src/modules/dcc/libkvidcc.cpp:1217
 msgid "-c requires -i and -p"
-msgstr ""
+msgstr "-c kräver -i och -p"
 
 #: src/modules/dcc/libkvidcc.cpp:626 src/modules/dcc/requests.cpp:467
 #: src/modules/dcc/requests.cpp:769
 msgid "<unknown size>"
-msgstr ""
+msgstr "<okänd storlek>"
 
 #: src/modules/dcc/libkvidcc.cpp:883
 msgid "This executable has been built without SSL support, -s switch ignored"
-msgstr ""
+msgstr "Den här körbara filen har byggts utan SSL-stöd, -s ignoreras"
 
 #: src/modules/dcc/libkvidcc.cpp:953
 msgid "This executable has no SSL support, -s switch ignored"
-msgstr ""
+msgstr "Den här körbara filen har inget SSL-stöd, -s ignoreras"
 
 #: src/modules/dcc/libkvidcc.cpp:1098
 msgid "DCC VOICE support not enabled at compilation time"
@@ -709,7 +720,7 @@ msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:1135
 msgid "Invalid codec specified, defaulting to 'ADPCM'"
-msgstr ""
+msgstr "Ogiltig kodek angiven, faller tillbaka på 'ADPCM'"
 
 #: src/modules/dcc/libkvidcc.cpp:1180
 msgid "DCC VIDEO support not enabled at compilation time"
@@ -717,20 +728,20 @@ msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:1202
 msgid "Invalid codec specified"
-msgstr ""
+msgstr "Ogiltig kodek angiven"
 
 #: src/modules/dcc/libkvidcc.cpp:1620 src/modules/dcc/libkvidcc.cpp:2646
 #: src/modules/dcc/libkvidcc.cpp:2668
 msgid "The current window has no associated DCC session"
-msgstr ""
+msgstr "Det aktuella fönstret har ingen associerad DCC-session"
 
 #: src/modules/dcc/libkvidcc.cpp:1625
 msgid "The specified parameter is not a valid DCC identifier"
-msgstr ""
+msgstr "Den angivna parametern är inte en giltig DCC-identifierare"
 
 #: src/modules/dcc/libkvidcc.cpp:1708
 msgid "This DCC session is not a DCC transfer session"
-msgstr ""
+msgstr "Denna DCC-session är inte en DCC-överföringssession"
 
 #: src/modules/dcc/libkvidcc.cpp:2423
 msgid "The IRC context that originated the DCC doesn't exist anymore."
@@ -738,11 +749,11 @@ msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:2659
 msgid "The specified window identifier is not valid"
-msgstr ""
+msgstr "Den angivna fönsteridentifieraren är inte giltig"
 
 #: src/modules/dcc/libkvidcc.cpp:2817
 msgid "This executable was built without SSL support"
-msgstr ""
+msgstr "Denna körbara fil byggdes utan SSL-stöd"
 
 #: src/modules/dcc/libkvidcc.cpp:2830
 msgid "You specified a bad string for the parameter \"type\""
@@ -770,7 +781,7 @@ msgstr ""
 
 #: src/modules/dcc/requests.cpp:82
 msgid "Unable to process the above request: %Q, %Q"
-msgstr ""
+msgstr "Det går inte att behandla ovanstående begäran: %Q, %Q"
 
 #: src/modules/dcc/requests.cpp:84
 msgid "Ignoring and notifying failure"
@@ -790,19 +801,19 @@ msgstr ""
 
 #: src/modules/dcc/requests.cpp:124
 msgid "Too many pending connections"
-msgstr ""
+msgstr "För många väntande anslutningar"
 
 #: src/modules/dcc/requests.cpp:163
 msgid "Invalid port number %1"
-msgstr ""
+msgstr "Ogiltigt portnummer %1"
 
 #: src/modules/dcc/requests.cpp:179
 msgid "Invalid IP address in old format %1"
-msgstr ""
+msgstr "Ogiltig IP-adress i gammalt format %1"
 
 #: src/modules/dcc/requests.cpp:201
 msgid "Invalid IP address %1"
-msgstr ""
+msgstr "Ogiltig IP-adress %1"
 
 #: src/modules/dcc/requests.cpp:269
 #, c-format
@@ -819,8 +830,8 @@ msgstr ""
 
 #: src/modules/dcc/requests.cpp:336
 msgid ""
-"The above request is broken: it looks like a zero port tag acknowledge but I "
-"have either never seen this tag or it was sent more than 120 seconds ago"
+"The above request is broken: it looks like a zero port tag acknowledge but I"
+" have either never seen this tag or it was sent more than 120 seconds ago"
 msgstr ""
 
 #: src/modules/dcc/requests.cpp:337
@@ -879,7 +890,7 @@ msgstr ""
 
 #: src/modules/dcc/requests.cpp:718
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
-msgstr ""
+msgstr "%Q [%Q@%Q] är redo att ta emot filen \"%s\""
 
 #: src/modules/dcc/requests.cpp:724
 #, c-format
@@ -888,9 +899,11 @@ msgstr ""
 
 #: src/modules/dcc/requests.cpp:733
 msgid ""
-"Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
-"to send the file (or double-click on the socket)"
-msgstr ""
+"Use %c\r"
+"![!dbl]dcc.send %s -i=%s -p=%s %Q\r"
+"/dcc.send %s -i=%s -p=%s %Q\r"
+"%c to send the file (or double-click on the socket)"
+msgstr "Använd %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c för att skicka filen (eller dubbelklicka på uttaget)"
 
 #: src/modules/dcc/requests.cpp:791
 msgid ""
@@ -900,7 +913,7 @@ msgstr ""
 
 #: src/modules/dcc/requests.cpp:802 src/modules/dcc/requests.cpp:971
 msgid "(unknown)"
-msgstr ""
+msgstr "(okänt)"
 
 #: src/modules/dcc/requests.cpp:808 src/modules/dcc/requests.cpp:955
 msgid "No suitable interface to listen on, trying to continue anyway..."
@@ -918,19 +931,19 @@ msgstr ""
 
 #: src/modules/dcc/requests.cpp:887
 msgid "\"any\""
-msgstr ""
+msgstr "\"alla\""
 
 #: src/modules/dcc/requests.cpp:927
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %s since we can't accept incoming connections (user option)"
-msgstr ""
+msgstr "Accepterar filbegäran från %Q [%Q@%Q] för '%s' (verklig fil: %Q), erbjuder DCC %s eftersom vi inte kan acceptera inkommande anslutningar (användaralternativ)"
 
 #: src/modules/dcc/requests.cpp:987
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %Q"
-msgstr ""
+msgstr "Accepterar filbegäran från %Q [%Q@%Q] för '%s' (verklig fil: %Q), erbjuder DCC %Q"
 
 #: src/modules/dcc/requests.cpp:1023
 msgid ""
@@ -946,8 +959,8 @@ msgstr ""
 #: src/modules/dcc/requests.cpp:1046
 #, c-format
 msgid ""
-"The above request appears to be broken: invalid sample-rate '%s', defaulting "
-"to 8000"
+"The above request appears to be broken: invalid sample-rate '%s', defaulting"
+" to 8000"
 msgstr ""
 
 #: src/modules/dcc/requests.cpp:1096

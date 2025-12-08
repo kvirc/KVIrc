@@ -3,18 +3,18 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# Junghee Lee <daemul72@gmail.com>, 2020
-# Junghee Lee <daemul72@gmail.com>, 2020
+# JungHee Lee <daemul72@gmail.com>, 2020
+# JungHee Lee <daemul72@gmail.com>, 2020
 # ks k, 2020
 # ks k, 2020
-# Junghee Lee <daemul72@gmail.com>, 2020
+# JungHee Lee <daemul72@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 12:42+0200\n"
+"POT-Creation-Date: 2025-12-08 22:57+0100\n"
 "PO-Revision-Date: 2015-08-01 08:52+0000\n"
-"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
+"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -810,8 +810,8 @@ msgstr "%1 호스트 조회"
 msgid "Host %1 resolved to %2"
 msgstr "%1 호스트가 %2로 확인됨"
 
-#: src/kvilib/net/KviSSL.cpp:881 src/kvilib/net/KviSSL.cpp:897
-#: src/kvilib/net/KviSSL.cpp:941 src/kvirc/kernel/KviTheme.cpp:148
+#: src/kvilib/net/KviSSL.cpp:889 src/kvilib/net/KviSSL.cpp:905
+#: src/kvilib/net/KviSSL.cpp:949 src/kvirc/kernel/KviTheme.cpp:148
 #: src/modules/upnp/RootService.cpp:69
 msgid "Unknown"
 msgstr "알 수 없음"
@@ -923,32 +923,32 @@ msgstr "도구"
 msgid "Actions that will appear in the \"Tools\" menu"
 msgstr "\"도구\"차림표에 나타날 동작"
 
-#: src/kvirc/kernel/KviApplication.cpp:684
+#: src/kvirc/kernel/KviApplication.cpp:668
 msgid "KVIrc Messaging"
 msgstr "KVIrc 메시징"
 
-#: src/kvirc/kernel/KviApplication.cpp:685
+#: src/kvirc/kernel/KviApplication.cpp:669
 msgid ""
 "Message from %1:\n"
 "\n"
 msgstr "%1의 메시지:\n\n"
 
-#: src/kvirc/kernel/KviApplication.cpp:804
-#: src/kvirc/kernel/KviApplication.cpp:837
-#: src/kvirc/kernel/KviApplication.cpp:840
+#: src/kvirc/kernel/KviApplication.cpp:788
+#: src/kvirc/kernel/KviApplication.cpp:822
+#: src/kvirc/kernel/KviApplication.cpp:825
 msgid "View"
 msgstr "보기"
 
-#: src/kvirc/kernel/KviApplication.cpp:805
-#: src/kvirc/kernel/KviApplication.cpp:843
+#: src/kvirc/kernel/KviApplication.cpp:789
+#: src/kvirc/kernel/KviApplication.cpp:828
 msgid "Ignore"
 msgstr "무시"
 
-#: src/kvirc/kernel/KviApplication.cpp:982
+#: src/kvirc/kernel/KviApplication.cpp:968
 msgid "Update Default Scripts - KVIrc"
 msgstr "기본 스크립트 판올림 - KVIrc"
 
-#: src/kvirc/kernel/KviApplication.cpp:983
+#: src/kvirc/kernel/KviApplication.cpp:969
 msgid ""
 "<b>Your KVirc installation has been updated successfully.</b><br><br>KVIrc's"
 " default scripts should also be updated. <b>Do you want to restore the "
@@ -957,30 +957,30 @@ msgid ""
 "\"Scripting\" menu later."
 msgstr "<b>KVirc 판올림 설치가 올바르게 완료되었습니다.</b><br><br>KVIrc의 기본 스크립트도 판올림해야합니다. <b>기본 스크립트를 복원 하시겠습니까?</b><br><br>힌트: \"아니요\"를 선택하면 나중에 \"스크립트\"메뉴에서 적절한 항목을 선택하여 기본 스크립트를 항상 복원할 수 있습니다."
 
-#: src/kvirc/kernel/KviApplication.cpp:988
-#: src/kvirc/kernel/KviApplication.cpp:1061
+#: src/kvirc/kernel/KviApplication.cpp:974
+#: src/kvirc/kernel/KviApplication.cpp:1047
 msgid "No and Don't Ask Me Again"
 msgstr "아니요, 다시 묻지 않습니다"
 
-#: src/kvirc/kernel/KviApplication.cpp:989
-#: src/kvirc/kernel/KviApplication.cpp:1062
+#: src/kvirc/kernel/KviApplication.cpp:975
+#: src/kvirc/kernel/KviApplication.cpp:1048
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:985
 #: src/kvirc/ui/KviInput.cpp:260 src/kvirc/ui/KviStatusBar.cpp:572
 msgid "No"
 msgstr "아니오"
 
-#: src/kvirc/kernel/KviApplication.cpp:990
-#: src/kvirc/kernel/KviApplication.cpp:1063
+#: src/kvirc/kernel/KviApplication.cpp:976
+#: src/kvirc/kernel/KviApplication.cpp:1049
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:985
 #: src/kvirc/ui/KviInput.cpp:259 src/kvirc/ui/KviStatusBar.cpp:570
 msgid "Yes"
 msgstr "예"
 
-#: src/kvirc/kernel/KviApplication.cpp:1055
+#: src/kvirc/kernel/KviApplication.cpp:1041
 msgid "Detected Installation Issues - KVIrc"
 msgstr "감지된 설치 문제 - KVIrc"
 
-#: src/kvirc/kernel/KviApplication.cpp:1056
+#: src/kvirc/kernel/KviApplication.cpp:1042
 msgid ""
 "<b>Your KVIrc installation is incomplete.</b><br><br>You seem to be missing "
 "some of the features that the KVIrc default scripts provide. <b>Do you want "
@@ -989,28 +989,28 @@ msgid ""
 "from the \"Scripting\" menu later."
 msgstr "<b>KVIrc 설치가 완료되지 않았습니다.</b><br><br>KVIrc 기본 스크립트가 제공하는 일부 기능이 누락된 것 같습니다. <b>기본 스크립트를 복원 하시겠습니까?</b><br><br>힌트: \"아니요\"를 선택하면 나중에 \"스크립트\"메뉴에서 적절한 항목을 선택하여 기본 스크립트를 항상 복원할 수 있습니다."
 
-#: src/kvirc/kernel/KviApplication.cpp:1115
+#: src/kvirc/kernel/KviApplication.cpp:1101
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "원격 사용자쪽 명령을 받았습니다 (%s ...)"
 
-#: src/kvirc/kernel/KviApplication.cpp:1209
+#: src/kvirc/kernel/KviApplication.cpp:1195
 msgid "File download failed"
 msgstr "파일을 다운로드 하지 못했습니다"
 
-#: src/kvirc/kernel/KviApplication.cpp:1211
+#: src/kvirc/kernel/KviApplication.cpp:1197
 msgid "File download from %1 failed"
 msgstr "%1 에서 파일을 다운로드 하지 못했습니다"
 
-#: src/kvirc/kernel/KviApplication.cpp:1222
+#: src/kvirc/kernel/KviApplication.cpp:1208
 msgid "File download successfully complete"
 msgstr "파일을 다운로드 했습니다"
 
-#: src/kvirc/kernel/KviApplication.cpp:1224
+#: src/kvirc/kernel/KviApplication.cpp:1210
 msgid "File download from %1 successfully complete"
 msgstr "%1에서 파일 다운로드가 완료되었습니다"
 
-#: src/kvirc/kernel/KviApplication.cpp:1250
+#: src/kvirc/kernel/KviApplication.cpp:1236
 msgid "Avatar download failed for %Q!%Q@%Q and URL %Q: %Q"
 msgstr "%Q!%Q@%Q 및 URL %Q: %Q에 대한 아바타 다운로드에 실패했습니다"
 
@@ -1425,7 +1425,7 @@ msgid "s: Server Notices"
 msgstr "s: 서버 알림"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:974
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:313
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:328
 msgid "i: Invisible"
 msgstr "i: 보이지 않음"
 
@@ -1566,1302 +1566,1315 @@ msgid ""
 "encrypted"
 msgstr "서버는 STARTTLS 사용자쪽 명령을 지원하지 않습니다. 연결이 암호화되지 않습니다"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:528
+#: src/kvirc/kernel/KviIrcConnection.cpp:552
 msgid "Extended Capabilities don't seem to be supported by the server"
 msgstr "서버에서 확장 기능이 지원되지 않는 것 같습니다"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:741
-#: src/kvirc/kernel/KviIrcConnection.cpp:751
+#: src/kvirc/kernel/KviIrcConnection.cpp:765
+#: src/kvirc/kernel/KviIrcConnection.cpp:775
 msgid "Connection to server lost"
 msgstr "서버와의 연결 끊김"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:760
+#: src/kvirc/kernel/KviIrcConnection.cpp:784
 msgid "Connection to server established"
 msgstr "서버에 연결했습니다"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:803
-#: src/kvirc/kernel/KviIrcConnection.cpp:832
+#: src/kvirc/kernel/KviIrcConnection.cpp:827
+#: src/kvirc/kernel/KviIrcConnection.cpp:856
 msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 msgstr "[링크 경고]: 소켓 메시지가 512 바이트로 잘 렸습니다."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:907
+#: src/kvirc/kernel/KviIrcConnection.cpp:931
 msgid ""
 "The server seems to support the WATCH notify list method, will try to use it"
 msgstr "서버가 WATCH 알림 목록 방법을 지원하는 것 같습니다"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:959
+#: src/kvirc/kernel/KviIrcConnection.cpp:983
 msgid "Can't resolve local host address, using user supplied one (%Q)"
 msgstr "사용자 제공 주소(%Q)를 사용하여 로컬 호스트 주소를 확인할 수 없습니다"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:967
+#: src/kvirc/kernel/KviIrcConnection.cpp:991
 msgid "Can't resolve local host address, using default 127.0.0.1"
 msgstr "로컬 호스트 주소를 확인할 수 없으므로, 기본값 127.0.0.1 을 사용"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:975
+#: src/kvirc/kernel/KviIrcConnection.cpp:999
 msgid "Local host address is %Q"
 msgstr "로컬 호스트 주소: %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1038
+#: src/kvirc/kernel/KviIrcConnection.cpp:1062
 msgid ""
 "The server reports a hostname differing from what KVIrc set for the local "
 "hostname."
 msgstr "서버는 KVIrc가 로컬 호스트 이름에 설정 한 것과 다른 호스트 이름을 보고합니다."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1039
+#: src/kvirc/kernel/KviIrcConnection.cpp:1063
 msgid ""
 "This can happen if you use a broken bouncer, the IRC server masks your "
 "IP/Hostname or something weird is happening on the IRC server."
 msgstr "깨진 바운서를 사용하거나 IRC 서버가 IP/호스트 이름을 숨기거나 IRC 서버에서 이상한 일이 발생하면 이런 일이 발생할 수 있습니다."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1061
+#: src/kvirc/kernel/KviIrcConnection.cpp:1085
 msgid ""
 "Here goes your \"broken bouncer hack\": The server has changed the hostname "
 "but I'll ignore the IP address change"
 msgstr "여기에 \"깨진 바운서 해킹\"으로 이동합니다: 서버가 호스트 이름을 변경했지만 IP 주소 변경은 무시합니다"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1076
-#: src/kvirc/kernel/KviIrcConnection.cpp:1087
+#: src/kvirc/kernel/KviIrcConnection.cpp:1100
+#: src/kvirc/kernel/KviIrcConnection.cpp:1111
 msgid "The local IP address as seen by the IRC server is %Q"
 msgstr "IRC 서버에서 볼 수 있는 로컬 IP 주소는 %Q 입니다"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1102
+#: src/kvirc/kernel/KviIrcConnection.cpp:1126
 msgid "Can't start the DNS slave thread"
 msgstr "DNS 슬레이브 스레드를 시작할 수 없습니다"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1103
-#: src/kvirc/kernel/KviIrcConnection.cpp:1132
+#: src/kvirc/kernel/KviIrcConnection.cpp:1127
+#: src/kvirc/kernel/KviIrcConnection.cpp:1156
 msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
 msgstr "IRC 서버에서 볼 수 있는 로컬 호스트 이름을 확인할 수 없습니다: %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1111
+#: src/kvirc/kernel/KviIrcConnection.cpp:1135
 msgid "Looking up the local hostname as seen by the IRC server (%Q)"
 msgstr "IRC 서버에 표시된 로컬 호스트 이름 조회(%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1129
+#: src/kvirc/kernel/KviIrcConnection.cpp:1153
 msgid ""
 "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
 "previously resolved %Q"
 msgstr "이전에 확인된 %Q를 사용하여 IRC 서버에 표시된대로 로컬 호스트 이름을 확인할 수 없습니다: %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1138
+#: src/kvirc/kernel/KviIrcConnection.cpp:1162
 msgid "Local hostname as seen by the IRC server resolved to %Q"
 msgstr "IRC 서버에서 볼 수 있는 로컬 호스트 이름이 확인되었습니다: %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1199
+#: src/kvirc/kernel/KviIrcConnection.cpp:1223
 msgid "profile specific option"
 msgstr "프로필 특정 선택사항"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1222
+#: src/kvirc/kernel/KviIrcConnection.cpp:1246
 msgid "profile specific alternative option"
 msgstr "프로필 특정 대체 선택사항"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1240
+#: src/kvirc/kernel/KviIrcConnection.cpp:1264
 msgid "server specific"
 msgstr "서버 특정"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1254
+#: src/kvirc/kernel/KviIrcConnection.cpp:1278
 msgid "server specific alternative option"
 msgstr "서버 특정 대체 선택사항"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1270
+#: src/kvirc/kernel/KviIrcConnection.cpp:1294
 msgid "network specific option"
 msgstr "네트워크 특정 선택사항"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1284
+#: src/kvirc/kernel/KviIrcConnection.cpp:1308
 msgid "network specific alternative option"
 msgstr "네트워크 특정 대체 선택사항"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1302
+#: src/kvirc/kernel/KviIrcConnection.cpp:1326
 msgid "primary nickname specified in options"
 msgstr "선택사항에 지정된 기본 대화명"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1313
+#: src/kvirc/kernel/KviIrcConnection.cpp:1337
 msgid "alternative nickname specified in options"
 msgstr "선택사항에 지정된 대체 대화명"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1324
+#: src/kvirc/kernel/KviIrcConnection.cpp:1348
 msgid "second alternative nickname specified in options"
 msgstr "선택사항에 지정된 두 번째 대체 대화명"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1335
+#: src/kvirc/kernel/KviIrcConnection.cpp:1359
 msgid "third alternative nickname specified in options"
 msgstr "선택사항에 지정된 세 번째 대체 대화명"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1369
+#: src/kvirc/kernel/KviIrcConnection.cpp:1393
 msgid "random nickname"
 msgstr "임의의 대화명"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1402
+#: src/kvirc/kernel/KviIrcConnection.cpp:1426
 msgid "Using server specific username (%Q)"
 msgstr "서버에서 지정한 사용자 이름을 사용합니다: %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1410
+#: src/kvirc/kernel/KviIrcConnection.cpp:1434
 msgid "Using network specific username (%Q)"
 msgstr "네트워크에서 지정한 사용자 이름을 사용합니다 (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1433
+#: src/kvirc/kernel/KviIrcConnection.cpp:1457
 msgid "connection specific"
 msgstr "연결 특정"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1443
+#: src/kvirc/kernel/KviIrcConnection.cpp:1467
 msgid "Using %1 as nickname"
 msgstr "대화명은 다음과같이 사용함: %1"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1457
+#: src/kvirc/kernel/KviIrcConnection.cpp:1481
 msgid "Using server specific real name (%Q)"
 msgstr "서버에서 지정한 진짜 이름 사용하고 있습니다  or 사용합니다 (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1465
+#: src/kvirc/kernel/KviIrcConnection.cpp:1489
 msgid "Using network specific real name (%Q)"
 msgstr "네트워크에서 지정한 진짜 이름 사용하고 있습니다 or 사용합니다 (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1484
+#: src/kvirc/kernel/KviIrcConnection.cpp:1508
 msgid "Using connection specific password (%Q)"
 msgstr "연결에서 지정한 암호를 사용합니다 (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1495
+#: src/kvirc/kernel/KviIrcConnection.cpp:1519
 msgid "Using server specific password (%Q)"
 msgstr "서버에서 지정한 암호를 사용합니다 (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1506
+#: src/kvirc/kernel/KviIrcConnection.cpp:1530
 msgid "Using network specific password (%Q)"
 msgstr "네트워크에서 지정한 암호를 사용합니다 (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1530
+#: src/kvirc/kernel/KviIrcConnection.cpp:1554
 msgid "Logging in as %Q!%Q :%Q"
 msgstr "%Q!%Q :%Q 로 로그인하고 있습니다"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1622
+#: src/kvirc/kernel/KviIrcConnection.cpp:1646
 msgid "Executing scheduled network specific \"on connect\" commands"
 msgstr "예약된 네트워크 특정 \"연결시\" 사용자쪽 명령 실행"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1630
+#: src/kvirc/kernel/KviIrcConnection.cpp:1654
 msgid "Executing scheduled server specific \"on connect\" commands"
 msgstr "예약된 서버 특정 \"연결시\" 사용자쪽 명령 실행"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1638
+#: src/kvirc/kernel/KviIrcConnection.cpp:1662
 msgid "Executing scheduled identity specific \"on connect\" commands"
 msgstr "예약된 특정 ID \"연결 시\" 사용자쪽 명령 실행"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1768
+#: src/kvirc/kernel/KviIrcConnection.cpp:1792
 #, c-format
 msgid ""
 "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr "서버가 제안한 대화명 (%s) 을 거부하고 대신 이름을 %s 로 지정했습니다"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1776
+#: src/kvirc/kernel/KviIrcConnection.cpp:1800
 msgid "Login operations complete, happy ircing!"
 msgstr "로그인 조작이 완료되었습니다, 즐거운 IRC 하십시오!"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1785
+#: src/kvirc/kernel/KviIrcConnection.cpp:1809
 msgid "Executing scheduled network specific \"on login\" commands"
 msgstr "예약된 특정 네트워크 \"로그인 시\" 사용자쪽 명령 실행"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1793
+#: src/kvirc/kernel/KviIrcConnection.cpp:1817
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr "예약된 서버 특정 \"로그인 시\" 사용자쪽 명령 실행"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1801
+#: src/kvirc/kernel/KviIrcConnection.cpp:1825
 msgid "Executing scheduled identity specific \"on login\" commands"
 msgstr "예약된 특정 ID \"로그인 시\" 사용자쪽 명령 실행"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1814
+#: src/kvirc/kernel/KviIrcConnection.cpp:1838
 msgid "Setting configured user mode"
 msgstr "구성된 사용자 모드 설정"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1888
+#: src/kvirc/kernel/KviIrcConnection.cpp:1912
 msgid "Auto-joining network specific channels"
 msgstr "네트워크 특정 대화방 자동 입장"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1906
+#: src/kvirc/kernel/KviIrcConnection.cpp:1930
 msgid "Auto-joining server specific channels"
 msgstr "서버 특정 대화방 자동 입장"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1985
+#: src/kvirc/kernel/KviIrcConnection.cpp:2009
 msgid "Updating away state for channel %Q"
 msgstr "대화방 %Q에 대한 자리 비움 상태 판올림하고 있음"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:298
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:313
 msgid "O: Local IRC Operator (locop)"
 msgstr "O: 로컬 IRC 운영자 (locop)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:301
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:369
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:425
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:524
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:625
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:316
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:384
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:440
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:556
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:657
 msgid "a: Server administrator"
 msgstr "a: 서버 관리자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:304
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:319
 msgid "c: Recipient for cconn messages"
 msgstr "c: cconn 메시지의 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:307
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:322
 msgid "d: Recipient for server debug notices"
 msgstr "d: 서버 디버그 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:310
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:325
 msgid "f: Recipient for full server notices"
 msgstr "f: 전체 서버 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:316
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:331
 msgid "k: Recipient for server KILL messages"
 msgstr "k: 서버 KILL 메시지의 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:319
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:334
 msgid "n: Recipient for nick changes"
 msgstr "n: 대화명 변경 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:322
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:337
 msgid "o: IRC Operator (oper)"
 msgstr "o: IRC 운영자(운영자)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:325
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:340
 msgid ""
 "r: User with restricted connection (or recipient for messages about rejected"
 " bots)"
 msgstr "r: 연결이 제한된 사용자(또는 거부된 봇에 대한 메시지 수신인)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:328
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:343
 msgid "s: Recipient for server notices"
 msgstr "s: 서버 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:331
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:346
 msgid "w: Recipient for WALLOPS messages"
 msgstr "w: WALLOPS 메시지 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:334
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:349
 msgid "y: Recipient for spy notices"
 msgstr "y: 스파이 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:337
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:352
 msgid "z: Recipient for oper WALLOP messages"
 msgstr "z: 운영자 WALLOP 메시지 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:348
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:419
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:363
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:434
 msgid "D: Deaf"
 msgstr "D: 귀머거리"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:351
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:736
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:366
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:768
 msgid "F: Recipient for far connect/quit notices"
 msgstr "F: 원거리 연결/종료 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:354
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:369
 msgid "G: Only accept private messages from users in common channels"
 msgstr "G: 공통 대화방의 사용자가 보낸 비공개 메시지만 수락"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:357
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:610
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:651
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1041
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:372
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:642
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:683
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1073
 msgid "H: Hide oper status"
 msgstr "H: 운영자 상태 숨기기"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:360
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:463
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:590
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:619
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:660
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:804
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1050
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:375
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:478
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:622
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:651
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:692
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:836
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1082
 msgid "R: Only receive private messages from registered nicks"
 msgstr "R: 등록된 대화명으로 부터 비공개 메시지만 수신"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:363
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:807
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:378
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:839
 msgid "S: Connected over SSL"
 msgstr "S: SSL을 통해 연결됨"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:366
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:381
 msgid "W: Connected over WEBIRC"
 msgstr "W: WEBIRC를 통해 연결됨"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:372
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:428
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:387
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:443
 msgid "b: Recipient for bot/join flood warnings"
 msgstr "b: 봇/입장 flood 경고에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:375
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:390
 msgid "e: Recipient for server introduction and split notices"
 msgstr "e: 서버 소개 및 분할 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:378
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:431
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:943
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:393
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:446
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:975
 msgid "f: Recipient for full I-Line notices"
 msgstr "f: 전체 I-Line 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:381
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:434
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:396
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:449
 msgid "g: Only allow accepted clients to message you"
 msgstr "g: 허용된 클라이언트만 메시지 보내기 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:384
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:831
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:399
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:863
 msgid "j: Recipient for rejected client notices"
 msgstr "j: 거부된 클라이언트 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:387
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:437
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:402
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:452
 msgid "l: Recipient for LOCOPS"
 msgstr "l: LOCOPS에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:390
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:687
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:405
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:719
 msgid "p: Channels hidden from WHOIS"
 msgstr "p: WHOIS에서 숨겨진 대화방"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:393
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:408
 msgid "q: Idle time hidden from WHOIS"
 msgstr "q: WHOIS에서 숨겨진 유휴 시간"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:396
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:573
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:693
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:775
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:840
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1029
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:411
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:605
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:725
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:807
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:872
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1061
 msgid "r: Registered"
 msgstr "r: 등록"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:399
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:414
 msgid "u: Recipient for unauthorized client notices"
 msgstr "u: 승인되지 않은 클라이언트 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:402
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:478
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:576
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:702
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:778
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1032
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:417
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:493
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:608
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:734
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:810
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1064
 msgid "x: Host hidden"
 msgstr "x: 호스트 숨김"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:405
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:420
 msgid "y: Can see stats/links/admin requests"
 msgstr "y: 통계/링크/관리자 요청 확인 가능"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:416
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:503
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:866
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:431
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:535
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:898
 msgid "C: Prevent CTCPs"
 msgstr "C: CTCP 방지"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:422
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:437
 msgid "Z: Recipient for oper spy notices"
 msgstr "Z: 운영자 spy 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:440
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:455
 msgid "r: Recipient for rejected client notices"
 msgstr "r: 거부된 클라이언트 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:443
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:458
 msgid "u: Recipient for unauthorised client notices"
 msgstr "u: 승인되지 않은 클라이언트 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:446
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:461
 msgid "x: Recipient for remote server connection and split notices"
 msgstr "x: 원격 서버 연결 및 분할 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:449
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:976
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:464
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1008
 msgid "z: Recipient for OPERWALL messages"
 msgstr "z: OPERWALL 메시지 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:460
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:902
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:475
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:934
 msgid "Q: Prevents you from being affected by channel forwarding"
 msgstr "Q: 대화방 포워딩의 영향을 받지 않도록 방지"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:466
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:663
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:742
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:481
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:695
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:774
 msgid "S: Network service"
 msgstr "S: 네트워크 서비스"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:469
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:484
 msgid "Z: Connected over SSL"
 msgstr "Z: SSL을 통해 연결"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:472
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:487
 msgid "h: Host hidden"
 msgstr "h: 호스트 숨김"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:475
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:490
 msgid "p: Enable oper overrides"
 msgstr "p: 오퍼레이터 대체를 사용 되도록 설정"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:489
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:504
 msgid "O: IRC Help Operator"
 msgstr "O: IRC 도움말 운영자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:492
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:507
 msgid "h: Marks you as a helper in /stats p"
 msgstr "h: /stats p에서 도우미로 표시"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:506
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:613
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:657
-msgid "N: Network administrator"
-msgstr "N: 네트워크 관리자"
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:509
-msgid "U: Network service"
-msgstr "에서: 네트워크 서비스"
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:512
-msgid "X: Recipient for new server introduction and split messages"
-msgstr "X: 새 서버 도입 및 분할 메시지에 대한 수신인"
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:515
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:544
-msgid "w: Recipient for server WALLOPS"
-msgstr "w: 서버 WALLOPS에 대한 수신인"
-
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:518
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:547
-msgid "z: Recipient for oper WALLOPS"
-msgstr "z: WALLOPS 운영자에 대한 수신인"
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:521
-msgid "y: Recipient for notices on WHOIS"
-msgstr "y: WHOIS에 대한 공지사항에 대한 수신인"
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:527
-msgid "q: Services administrator, can use SQUIT"
-msgstr "q: 서비스 관리자, SQUIT 사용 가능"
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:538
-msgid "C: Recipient for far connect/quit notices"
-msgstr "C: 원거리 연결/종료 공지사항에 대한 수신인"
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:541
-msgid "P: Network service"
-msgstr "P: 네트워크 서비스"
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:558
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:590
 msgid "I: Idle time hidden"
 msgstr "I: 유휴 시간 숨김"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:561
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:678
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1017
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:521
+msgid "M: Bypass g mode (oper only)"
+msgstr ""
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:524
+msgid "u: Receive filtered messages"
+msgstr ""
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:538
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:645
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:689
+msgid "N: Network administrator"
+msgstr "N: 네트워크 관리자"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:541
+msgid "U: Network service"
+msgstr "에서: 네트워크 서비스"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:544
+msgid "X: Recipient for new server introduction and split messages"
+msgstr "X: 새 서버 도입 및 분할 메시지에 대한 수신인"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:547
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:576
+msgid "w: Recipient for server WALLOPS"
+msgstr "w: 서버 WALLOPS에 대한 수신인"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:550
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:579
+msgid "z: Recipient for oper WALLOPS"
+msgstr "z: WALLOPS 운영자에 대한 수신인"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:553
+msgid "y: Recipient for notices on WHOIS"
+msgstr "y: WHOIS에 대한 공지사항에 대한 수신인"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:559
+msgid "q: Services administrator, can use SQUIT"
+msgstr "q: 서비스 관리자, SQUIT 사용 가능"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:570
+msgid "C: Recipient for far connect/quit notices"
+msgstr "C: 원거리 연결/종료 공지사항에 대한 수신인"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:573
+msgid "P: Network service"
+msgstr "P: 네트워크 서비스"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:593
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:710
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1049
 msgid "d: Deaf"
 msgstr "d: 귀머거리"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:564
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:596
 msgid "g: Recipient for server debug notices"
 msgstr "g: 서버 디버그 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:567
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1026
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:599
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1058
 msgid "k: Network service"
 msgstr "k: 네트워크 서비스"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:570
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:602
 msgid "n: Channels hidden from WHOIS"
 msgstr "n: WHOIS에서 숨겨진 대화방"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:587
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:616
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:619
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:648
 msgid "P: Recipient for notices on WHOIS"
 msgstr "P: WHOIS에 대한 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:593
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:622
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:625
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:654
 msgid "X: Special powers"
 msgstr "X: 특별한 힘"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:596
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:628
 msgid "h: Host changed"
 msgstr "h: 호스트 변경"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:607
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:639
 msgid "F: Disable fake lag"
 msgstr "F: 가짜 시간 지연 사용안함"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:636
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:789
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:668
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:821
 msgid "A: Server administrator"
 msgstr "A: 서버 관리자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:639
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1035
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:671
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1067
 msgid "B: Marks as being a bot"
 msgstr "B: 봇으로 표시"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:642
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:674
 msgid "C: Co-Admin"
 msgstr "C: 공동 관리"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:645
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:677
 msgid "F: Override filter settings"
 msgstr "F: 필터 환경설정 재정의"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:648
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:680
 msgid "G: Filter out bad words"
 msgstr "G: 불량 단어를 걸러내기"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:654
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:686
 msgid "I: Idle time hidden from WHOIS"
 msgstr "I: WHOIS에서 숨겨진 유휴 시간"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:666
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:698
 msgid "T: Prevent CTCPs"
 msgstr "T: CTCP 방지"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:669
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:701
 msgid "V: Connected over WebTV"
 msgstr "V: WebTV를 통해 연결"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:672
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:745
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1056
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:704
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:777
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1088
 msgid "W: Recipient for notices on WHOIS"
 msgstr "W: WHOIS에 대한 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:675
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:813
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:707
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:845
 msgid "a: Services administrator"
 msgstr "a: 서비스 관리자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:681
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:713
 msgid "g: Can send & read LOCOPS and GLOBOPS"
 msgstr "g: LOCOPS 및 GLOBOPS를 보내고 읽을 수 있습니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:684
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:763
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:828
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1023
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:716
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:795
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:860
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1055
 msgid "h: Available for help (helpop)"
 msgstr "h: 도움말을받을 수 있음(헬팝)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:690
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:722
 msgid "q: Immune to kicks (except U-Line)"
 msgstr "q: 차기 면역(U-Line 제외)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:696
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:728
 msgid "t: Using a vhost"
 msgstr "t: 가상 호스트 사용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:699
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:731
 msgid "v: Recipient for infected DCC SEND rejection notices"
 msgstr "v: 감염된 DCC SEND 거부 공지사항의 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:705
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:737
 msgid "z: Connected over SSL"
 msgstr "z: SSL을 통해 연결"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:716
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:748
 msgid "D: Only receive private messages from opers, servers, or services"
 msgstr "D: 운영자, 서버 또는 서비스로부터 비공개 메시지만 수신"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:719
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:751
 msgid "Z: Only receive private messages from users with SSL"
 msgstr "Z: SSL을 사용하는 사용자로부터 비공개 메시지만 수신"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:730
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:762
 msgid "C: Can see CHATOPS notices"
 msgstr "C: CHATOPS 공지사항 확인 가능"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:733
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:765
 msgid "D: Has seen DCCALLOW warning message"
 msgstr "D: DCCALLOW 경고 메시지가 표시됨"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:739
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:771
 msgid "P: Services administrator"
 msgstr "P: 서비스 관리자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:748
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:780
 msgid "Z: Services root administrator"
 msgstr "Z: 서비스 루트 관리자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:751
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:783
 msgid "a: Services operator"
 msgstr "a: 서비스 운영자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:754
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:819
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:786
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:851
 msgid "e: Recipient for blocked DCC notices"
 msgstr "e: 차단된 DCC 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:757
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:789
 msgid "f: Recipient for excess flood notices"
 msgstr "f: 과도한 flood 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:760
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:825
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:792
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:857
 msgid "g: Recipient for GLOBOPS notices"
 msgstr "g: GLOBOPS 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:766
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:798
 msgid "m: Recipient for spam warning notices"
 msgstr "m: 스팸 경고 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:769
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:801
 msgid "n: Recipient for NETINFO and routing notices"
 msgstr "n: NETINFO 및 라우팅 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:772
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:804
 msgid "p: Protected IRC operator"
 msgstr "p: 보호된 IRC 운영자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:792
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:824
 msgid "C: Only accept private messages from users in common channels"
 msgstr "C: 공통 대화방의 사용자가 보낸 비공개 메시지만 수락"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:795
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:827
 msgid "F: Can bypass the IRCd's recvq throttling"
 msgstr "F: IRCd의 recvq 제한 우회 가능"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:798
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:830
 msgid "I: Hide oper status"
 msgstr "I: 운영자 상태 숨기기"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:801
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:833
 msgid "K: Can see U:lined kill messages"
 msgstr "K: 'U:정렬된 kill 메시지' 확인 가능"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:810
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:842
 msgid "X: Squelch without notice"
 msgstr "X: 공지사항이 없는 Squelch"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:816
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:848
 msgid "b: Can see CHATOPS notices"
 msgstr "b: CHATOPS 공지사항 확인 가능"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:822
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:854
 msgid "f: Recipient for flood warnings"
 msgstr "f: flood 경고에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:834
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:866
 msgid "m: Recipient for spambot notices"
 msgstr "m: 스팸봇 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:837
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:869
 msgid "n: Recipient for routing notices"
 msgstr "n: 라우팅 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:843
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:875
 msgid "s: Recipient for server KILL messages"
 msgstr "s: 서버 KILL 메시지의 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:846
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:878
 msgid "x: Squelch with notice"
 msgstr "x: 알림이 있는 Squelch"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:849
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:881
 msgid "y: Can see certain information requests (e.g. /stats)"
 msgstr "y: 특정 정보 요청 확인 가능(예: /stats)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:860
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:892
 msgid "A: Can see all servers and IP addresses"
 msgstr "A: 모든 서버 및 IP 주소 주소 확인 가능"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:863
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:895
 msgid ""
 "B: Allows the use of SETHOST, SETNAME, and SETIDENT commands on other people"
 msgstr "B: 다른 사람에게 SETHOST 및 SETNAME, SETIDENT 사용자쪽 명령 사용 허용합니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:869
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:901
 msgid "D: Allows the use of DIE and RESTART"
 msgstr "D: DIE 및 RESTART 사용 허용합니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:872
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:904
 msgid "E: Only receive private messages from registered nicks"
 msgstr "E: 등록된 대화명으로 부터 비공개 메시지만 수신"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:875
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:907
 msgid "F: Immune to flood protection"
 msgstr "F: flood 보호에 대한 면책"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:878
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:910
 msgid "G: Allows the use of KILL for users on remote servers"
 msgstr "G: 원격 서버 사용자에 대한 KILL 사용 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:881
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:913
 msgid "H: Allows the use of REHASH"
 msgstr "H: REHASH 사용 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:884
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:916
 msgid "I: Prevents you from receiving INVITEs"
 msgstr "I: 당신이 INVITE 받는 것으로 부터 방지"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:887
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:919
 msgid "K: Allows the use of KLINE"
 msgstr "K: KLINE 사용 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:890
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:922
 msgid "L: Allows the use of 4-argument LUSERS to force a recount"
 msgstr "L: 4번째 인수 LUSERS를 사용하여 강제로 다시 계산을 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:893
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:925
 msgid "M: Allows the use of NOTICE based on mask"
 msgstr "M: 마스크를 기준으로 NOTICE 사용 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:896
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:928
 msgid "N: Can override Q-Lines"
 msgstr "N: Q-Lines 재정의 가능"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:899
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:931
 msgid "P: Allows the use of SETHOST, SETIDENT and SETNAME"
 msgstr "P: SETHOST, SETIDENT 및 SETNAME 사용 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:905
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:937
 msgid "R: Allows the use of CONNECT, SQUIT, and HTM"
 msgstr "R: CONNECT, SQUIT 및 HTM 사용 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:908
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:940
 msgid "S: Allows the use of remotely running server commands"
 msgstr "S: 원격으로 실행된 서버 사용자쪽 명령 사용을 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:911
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:943
 msgid "T: Allows you to appear in /stats p"
 msgstr "T: /stats p에 표시 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:914
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:946
 msgid "U: Allows the use of UNKLINE"
 msgstr "U: UNKLINE 사용 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:917
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:949
 msgid ""
 "V: Allows the use of MAP, LINKS, as well as receiving connection information"
 msgstr "V: MAP, LINKS 사용 및 연결 정보 수신 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:919
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:951
 msgid "W: Allows the ability to send WALLOPS"
 msgstr "W: WALLOPS 정송 기능 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:922
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:954
 msgid "X: Grants access to experimental features"
 msgstr "X: 실험 기능에 대한 접근 권한 부여"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:925
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:957
 msgid "Y: Displays extra information during netjoins"
 msgstr "Y: netjoins 중에 추가 정보 표시"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:928
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:960
 msgid "Z: Allows the ability to send OPERWALL messages"
 msgstr "Z: OPERWALL 메시지 전송 기능 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:931
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:963
 msgid "a: Can see all users and channels"
 msgstr "a: 모든 사용자와 대화방 확인 가능"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:934
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:966
 msgid "b: Recipient for spam warning notices"
 msgstr "b: 스팸 경고 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:937
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:969
 msgid "c: Recipient for connect and netjoin notices"
 msgstr "c: 연결 및 netjoin 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:940
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:972
 msgid "e: Registered"
 msgstr "e: 등록"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:946
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:978
 msgid "h: Sets user in high priority mode"
 msgstr "h: 사용자를 높은 우선순위 모드로 설정"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:949
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:981
 msgid "j: Allows the use of auto D-Lines"
 msgstr "j: 자동 D-Lines 사용 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:952
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:984
 msgid "l: Recipient for new channel creation notices"
 msgstr "l: 새 대화방 생성 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:955
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:987
 msgid "m: Can't be KICKed, DEOPed, or D-Lined"
 msgstr "m: KICKed, DEOPed, D-Lined 할 수 없음"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:958
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:990
 msgid "p: Allows implicit access in all channels, regardless of status"
 msgstr "p: 상태에 관계없이 모든 대화방에서 암묵적 접근 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:961
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:993
 msgid ""
 "r: Recipient for notices on users attempting to use invalid nicks, Q-Lined "
 "or X-Lined nicks"
 msgstr "r: 유효하지 않은 대화명, Q-Lined 또는 X-Lined 대화명을 사용하려는 사용자에 대한 공지사항에 대한 수신인"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:964
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:996
 msgid "t: Allows the use of channel logging"
 msgstr "t: 대화방 기록 사용 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:967
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:999
 msgid ""
 "u: Allows the ability to join more channels than the default IRCd limit"
 msgstr "u: 기본 IRCd 제한보다 많은 대화방에 입장할 수 있는 기능 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:970
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1002
 msgid "v: Allows the ability to view oper privileges via WHOIS"
 msgstr "v: WHOIS를 통해 운영자 권한을 볼 수 있는 기능 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:973
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1005
 msgid "x: Allows the ability to see netjoins"
 msgstr "x: netjoins을 볼 수 있는 기능 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:979
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1011
 msgid "0: Allows the ability to view oper information"
 msgstr "0: 운영자 정보를 볼 수 있는 기능 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:982
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1014
 msgid "1: Allows the ability to view I-Lines and Y-Lines"
 msgstr "1: I-Line 및 Y-Line을 볼 수 있는 기능 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:985
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1017
 msgid "2: Allows the ability to view D-Lines and K-Lines"
 msgstr "2: D-Line 및 K-Line을 볼 수 있는 기능 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:988
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1020
 msgid "3: Allows the ability to view Q-Lines and X-Lines"
 msgstr "3: Q 라인 및 X 라인을 볼 수 있는 기능 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:991
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1023
 msgid "4: Allows the ability to use STATS T"
 msgstr "4: STATS T를 사용할 수 있는 기능 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:994
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1026
 msgid "5: Allows the ability to use STATS ?"
 msgstr "5: STATS를 사용할 수 있는 기능을 허용하시겠습니까?"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:997
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1029
 msgid "9: Allows the use of TESTLINE"
 msgstr "9: TESTLINE의 사용 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1000
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1032
 msgid "*: Allows the user to grant umodes they have access to to other people"
 msgstr "*: 사용자가 다른 사람에게 접근 권한이있는 umode를 부여할 수 있습니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1003
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1035
 msgid ""
 "@: allows the user to change their host to anything with the SETHOST command"
 msgstr "@: 사용자가 SETHOST 사용자쪽 명령을 사용하여 호스트를 다른 것으로 바꿀 수 있습니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1014
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1046
 msgid "c: Prevent CTCPs"
 msgstr "c: CTCP 방지"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1020
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1052
 msgid "g: Server side ignore"
 msgstr "g: 서버 측 무시"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1038
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1070
 msgid "G: Censor bad words"
 msgstr "G: 불량 단어 삭제하기"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1044
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1076
 msgid "I: Channels hidden from WHOIS"
 msgstr "I: WHOIS에서 숨겨진 대화방"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1047
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1079
 msgid "Q: Marks an IRC operator as invisible from user lists"
 msgstr "Q: IRC 운영자를 사용자 목록에서 보이지 않음 으로 표시"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1053
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1085
 msgid "S: Strip colors out of private messages"
 msgstr "S: 비공개 메시지에서 색상 제거"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1566
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1598
 msgid "Invite exceptions"
 msgstr "초대 예외"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1569
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1601
 msgid "Ban masks"
 msgstr "입장금지 마스크"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1572
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1604
 msgid "Ban exceptions"
 msgstr "입장금지 예외"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1575
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1607
 msgid "Invite only"
 msgstr "초대 만"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1578
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1610
 msgid "Key"
 msgstr "키"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1581
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1613
 msgid "Limited number of users"
 msgstr "제한된 수의 사용자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1584
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1616
 msgid "Moderated"
 msgstr "검토 됨"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1587
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1619
 msgid "No external messages"
 msgstr "외부 메시지가 없습니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1590
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1622
 msgid "Channel operators"
 msgstr "대화방 운영자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1593
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1625
 msgid "Private"
 msgstr "비공개"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1596
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1628
 msgid "Secret"
 msgstr "비밀"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1599
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1631
 msgid "Topic change restricted"
 msgstr "주제 바꿈이 제한되었습니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1602
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1634
 msgid "Voiced users"
 msgstr "발언권 사용자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1613
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1762
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1849
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2062
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1645
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1797
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1884
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2097
 msgid "Forbid channel CTCPs"
 msgstr "입장금지된 대화방 CTCP"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1616
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1794
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1814
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1923
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1648
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1829
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1849
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1958
 msgid "Moderate non auth users"
 msgstr "비인증 사용자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1619
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1867
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1975
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2007
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2089
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1651
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1902
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2010
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2042
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2124
 msgid "IRC-Op only channel"
 msgstr "IRC-Op 전용 대화방"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1622
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1649
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1678
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1780
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1873
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1978
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2010
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2021
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2098
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1654
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1681
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1737
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1815
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1908
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2013
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2045
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2056
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2133
 msgid "Only registered nicks can join"
 msgstr "등록된 대화명만 입장할 수 있습니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1625
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1826
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1900
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1981
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2030
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2149
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1657
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1861
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1935
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2016
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2065
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2184
 msgid "Need SSL connection to join"
 msgstr "입장하려면 SSL 연결이 필요합니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1628
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1684
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1722
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1797
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1929
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2104
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1660
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1716
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1757
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1832
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1964
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2139
 msgid "Forbid channel NOTICEs"
 msgstr "대화방 공지사항 금지"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1631
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1774
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1879
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1984
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2013
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2116
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1663
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1809
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1914
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2019
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2048
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2151
 msgid "No control codes (colors, bold, ..)"
 msgstr "제어 코드가 없습니다(컬러, 굵게, ..)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1634
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1829
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1885
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2039
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2128
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1666
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1864
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1920
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2074
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2163
 msgid "Half-operators"
 msgstr "절반-운영자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1637
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1894
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2042
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2137
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1669
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1929
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2077
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2172
 msgid "Registered"
 msgstr "등록됨"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1660
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1692
 msgid "Server administrator only channel"
 msgstr "서버 관리자 전용 대화방"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1663
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1695
 msgid "Allow anyone to forward users to this channel"
 msgstr "누구나 이 대화방으로 사용자를 전달할 수 있도록 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1666
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1698
 msgid "Large ban/exempt/invex lists (staff only)"
 msgstr "대규모 입장금지/면제/invex 목록(스탭만 해당)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1669
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1701
 msgid "Disallow kicking opers (staff only)"
 msgstr "발로 차기 입장금지(직원 만)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1672
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1734
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1783
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1949
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2092
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1704
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1769
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1818
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1984
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2127
 msgid "Persistent (staff only)"
 msgstr "지속적(직원 만)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1675
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1707
 msgid "Block forwarded users"
 msgstr "전달된 사용자 차단"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1681
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1710
+msgid "Block messages from unregistered users"
+msgstr ""
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1713
 msgid "SSL Only"
 msgstr "SSL 만"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1687
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1820
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1719
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1855
 msgid "Strip color codes"
 msgstr "스트립 색상 코드"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1690
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1722
 msgid "Forward to another channel on uninvited"
 msgstr "초대받지 않은 다른 대화방으로 전달"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1693
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2056
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1725
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2091
 msgid "Allow anybody to invite"
 msgstr "누구나 초대할 수 있도록 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1696
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1888
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2026
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2131
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1728
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1923
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2061
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2166
 msgid "Join throttling (<num>:<secs>)"
 msgstr "입장 제한(<num>: <secs>)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1699
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1731
 msgid "Paranoid (disable KNOCK)"
 msgstr "편집증 (KNOCK 사용안함)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1702
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1745
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1832
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1734
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1780
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1867
 msgid "Quiet"
 msgstr "조용한"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1705
-msgid "Need auth to join channel"
-msgstr "대화방에 입장하려면 인증이 필요합니다"
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1740
+msgid "Unfiltered"
+msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1708
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1748
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1743
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1783
 msgid "Reduced moderation for ops"
 msgstr "운영에 대한 조정 감소"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1719
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1754
 msgid "Bandwidth Saver"
 msgstr "대역폭 절약"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1725
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1876
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2113
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1760
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1911
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2148
 msgid "Protected/administrator nicks"
 msgstr "보호/관리자 대화명"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1728
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1763
 msgid "Paranoia"
 msgstr "편집병"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1731
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1891
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2134
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1766
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1926
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2169
 msgid "Channel owners"
 msgstr "대화방 소유자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1759
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1794
 msgid "Admin password"
 msgstr "관리자 암호"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1765
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1946
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2065
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1800
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1981
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2100
 msgid "Delay users join to first message"
 msgstr "사용자가 첫 번째 메시지에 입장하는 것을 지연"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1768
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1803
 msgid "Registered (staff only)"
 msgstr "등록(직원 만)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1771
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1806
 msgid "User password"
 msgstr "사용자 암호"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1777
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1952
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1812
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1987
 msgid "Contains hidden users (previously +D)"
 msgstr "숨겨진 사용자를 포함합니다(이전 + D)."
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1800
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1911
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1835
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1946
 msgid "No multi-target messages"
 msgstr "다중 대상 메시지가 없습니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1803
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2045
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1838
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2080
 msgid "Hide QUIT and PART messages"
 msgstr "종료 및 퇴장 메시지 숨기기"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1817
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1852
 msgid "Block channel notices"
 msgstr "대화방 공지사항 차단"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1823
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1858
 msgid "No multi-targets"
 msgstr "여러 대상 없음"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1835
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1870
 msgid "Squelch parts/quits"
 msgstr "퇴장/종료를 진압"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1846
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1963
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1881
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1998
 msgid "Server/Network/Tech admin only channel"
 msgstr "서버/네트워크/기술 관리자 전용 대화방"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1852
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2071
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1887
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2106
 msgid "Censor bad words"
 msgstr "불량 단어 삭제하기"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1855
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1966
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2077
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1890
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2001
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2112
 msgid "Forbid /KNOCK"
 msgstr "입장금지/KNOCK"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1858
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2080
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1893
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2115
 msgid "Redirect on channel full (mode +l)"
 msgstr "대화방 가득 참으로 리디렉션(모드 + l)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1861
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1969
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1896
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2004
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2083
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2039
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2118
 msgid "Need auth to speak and change nick"
 msgstr "말하고 대화명을 바꾸려면 인증이 필요합니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1864
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1899
 msgid "Forbid nick change"
 msgstr "대화명 변경 입장금지"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1870
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2095
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1905
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2130
 msgid "Disallow KICK (unless U-Line)"
 msgstr "킥 입장금지(U-Line이 아닌 경우)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1882
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1917
 msgid "Flood protection (<num><type>:<secs>)"
 msgstr "Flood 방지(<num><type>: <secs>)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1897
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2140
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1932
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2175
 msgid "Auditorium: /NAMES and /WHO show only ops"
 msgstr "강당: /NAMES 및/WHO는 ops만 표시"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1914
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1949
 msgid "Forbid ACTIONs from non-ops"
 msgstr "ops 이외의 동작 입장금지 or 비 운영자"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1917
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1952
 msgid "Trusted filter (staff only)"
 msgstr "신뢰할 수 있는 필터(직원만 해당)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1920
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1955
 msgid "Help operator and above only channel (staff only)"
 msgstr "운영자 이상 대화방 도움말(직원만 해당)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1926
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2101
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1961
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2136
 msgid "Strip colors"
 msgstr "색을 제거"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1932
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1972
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1967
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2007
 msgid "No invites"
 msgstr "초대 안함"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1935
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1970
 msgid "All clients are using SSL (server only)"
 msgstr "모든 클라이언트가 SSL을 사용하고 있습니다(서버만 해당)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1987
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2022
 msgid "Flood limit"
 msgstr "Flood 한도"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1990
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2025
 msgid "Registered channel"
 msgstr "등록된 대화방"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2001
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2036
 msgid "Channel visible in LIST"
 msgstr "LIST에서 대화방 표시"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2033
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2068
 msgid "Permit foreign users without auth to JOIN"
 msgstr "입장 권한이없는 외국 사용자 허용"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2036
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2071
 msgid "Need op/voice to change nick"
 msgstr "대화명을 바꾸려면 op/voice가 필요합니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2059
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2094
 msgid "Block messages with too many CAPS"
 msgstr "CAPS가 너무 많은 메시지 차단"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2068
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2103
 msgid "Limit nick changes (<num>:<secs>)"
 msgstr "대화명 변경 제한(<num>: <secs>)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2074
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2109
 msgid "Disable join after kick (<secs>)"
 msgstr "추방 뒤에 입장 사용안함(<secs>)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2086
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2121
 msgid "Need auth to change nick"
 msgstr "대화명을 바꾸려면 인증이 필요합니다"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2107
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2142
 msgid "Channel exemptions"
 msgstr "대화방 면제"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2110
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2146
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2145
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2181
 msgid "Channel IRC op"
 msgstr "대화방 IRC 켜기"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2119
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2154
 msgid "Delay first message after join by n seconds"
 msgstr "입장 뒤에 첫 번째 메시지를 n 초 지연"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2122
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2157
 msgid "Kick/[*]ban on message flood ([*]<num>:<secs>)"
 msgstr "킥/[*] 메시지 플러드 입장금지([*] <num>: <secs>)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2125
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2160
 msgid "Spam filter"
 msgstr "스팸 필터"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2143
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2178
 msgid "Channel access"
 msgstr "대화방 접근"
 
@@ -4301,8 +4314,8 @@ msgid "Can't load certificate from public key file %s"
 msgstr "공개 키 파일 %s에서 인증서를 불러올 수 없습니다"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:131
-#: src/modules/trayicon/libkvitrayicon.cpp:285
-#: src/modules/trayicon/libkvitrayicon.cpp:307
+#: src/modules/trayicon/libkvitrayicon.cpp:286
+#: src/modules/trayicon/libkvitrayicon.cpp:308
 msgid "Away from keyboard."
 msgstr "키보드에서 자리를 비웠습니다."
 
@@ -5107,7 +5120,15 @@ msgstr "기능 바꿈 거부: %Q"
 msgid "Currently enabled capabilities: %Q"
 msgstr "현재 사용 되도록 설정된 기능: %Q"
 
-#: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2637
+#: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2644
+msgid "Received new capability message: %Q"
+msgstr ""
+
+#: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2653
+msgid "Received deleted capability message: %Q"
+msgstr ""
+
+#: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2656
 msgid "Received unknown extended capability message: %Q %Q"
 msgstr "알 수 없는 확장 기능 메시지 수신: %Q %Q"
 
@@ -6046,7 +6067,7 @@ msgstr "퇴장 요청을 보냈으며 응답을 기다리고 있습니다..."
 msgid "Channel Modes"
 msgstr "대화방 모드"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:2007 src/kvirc/ui/KviTopicWidget.cpp:486
+#: src/kvirc/ui/KviChannelWindow.cpp:2007 src/kvirc/ui/KviTopicWidget.cpp:488
 msgid "Double-click to edit..."
 msgstr "편집하려면 두 번 클릭하십시오..."
 
@@ -6126,7 +6147,7 @@ msgid ""
 msgstr "KVIrc는 irc://, irc6://, ircs:// or ircs6:// URL만 인식할 수 있습니다\n입력하신 URL이 유효하지 않습니다. 철자를 확인하고 재시도하십시오"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:530 src/kvirc/ui/KviConsoleWindow.cpp:571
-#: src/kvirc/ui/KviMainWindow.cpp:836
+#: src/kvirc/ui/KviMainWindow.cpp:838
 msgid "Confirm Close - KVIrc"
 msgstr "닫기 확인 - KVIrc"
 
@@ -6137,17 +6158,17 @@ msgid ""
 msgstr "내부에 활성 연결이 있는 콘솔 창을 닫으려고 했습니다.\n연결을 종료 하시겠습니까?"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:533 src/kvirc/ui/KviConsoleWindow.cpp:573
-#: src/kvirc/ui/KviMainWindow.cpp:839
+#: src/kvirc/ui/KviMainWindow.cpp:841
 msgid "&Yes"
 msgstr "예(&Y)"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:534 src/kvirc/ui/KviConsoleWindow.cpp:574
-#: src/kvirc/ui/KviMainWindow.cpp:840
+#: src/kvirc/ui/KviMainWindow.cpp:842
 msgid "&Always"
 msgstr "항상(&A)"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:535 src/kvirc/ui/KviConsoleWindow.cpp:575
-#: src/kvirc/ui/KviMainWindow.cpp:841
+#: src/kvirc/ui/KviMainWindow.cpp:843
 msgid "&No"
 msgstr "아니오(&N)"
 
@@ -6651,7 +6672,7 @@ msgstr "%1에 대해 알려진 것이 없습니다(연결 없음)"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1100
 #: src/kvirc/ui/KviIrcView_events.cpp:1106 src/kvirc/ui/KviTopicWidget.cpp:202
-#: src/kvirc/ui/KviTopicWidget.cpp:466 src/kvirc/ui/KviTopicWidget.cpp:492
+#: src/kvirc/ui/KviTopicWidget.cpp:468 src/kvirc/ui/KviTopicWidget.cpp:494
 msgid "Channel Topic"
 msgstr "대화방 주제"
 
@@ -6777,29 +6798,29 @@ msgstr "필터 파일 %Q 을(를) 쓰지 못했습니다(IO 오류)."
 msgid "Can't open the filter file %Q for writing"
 msgstr "쓰기 위해 필터 파일 %Q 을(를) 열 수 없습니다"
 
-#: src/kvirc/ui/KviMainWindow.cpp:837
+#: src/kvirc/ui/KviMainWindow.cpp:839
 msgid "There are active connections, are you sure you wish to quit KVIrc?"
 msgstr "활성화된 연결이 있습니다. KVIrc를 종료 하시겠습니까?"
 
-#: src/kvirc/ui/KviMainWindow.cpp:979
+#: src/kvirc/ui/KviMainWindow.cpp:981
 msgid "Do not show this message again"
 msgstr "이 메시지를 재표시하지 마십시오"
 
-#: src/kvirc/ui/KviMainWindow.cpp:980
+#: src/kvirc/ui/KviMainWindow.cpp:982
 msgid ""
 "This will hide the menu bar completely. You can show it again by pressing "
 "%1."
 msgstr "메뉴 막대가 완전히 숨겨집니다. %1을 눌러 재표시할 수 있습니다."
 
-#: src/kvirc/ui/KviMainWindow.cpp:982
+#: src/kvirc/ui/KviMainWindow.cpp:984
 msgid "Hide Menu Bar - KVIrc"
 msgstr "메뉴 바 숨기기 - KVIrc"
 
-#: src/kvirc/ui/KviMainWindow.cpp:1031 src/kvirc/ui/KviMainWindow.cpp:1053
+#: src/kvirc/ui/KviMainWindow.cpp:1033 src/kvirc/ui/KviMainWindow.cpp:1055
 msgid "Show %1"
 msgstr "%1 표시"
 
-#: src/kvirc/ui/KviMainWindow.cpp:1081
+#: src/kvirc/ui/KviMainWindow.cpp:1083
 msgid "Customize..."
 msgstr "맞춤 설정..."
 
@@ -6823,7 +6844,7 @@ msgstr "두 번 클릭하여 항목 편집"
 msgid "Mask"
 msgstr "마스크"
 
-#: src/kvirc/ui/KviMaskEditor.cpp:198 src/kvirc/ui/KviTopicWidget.cpp:474
+#: src/kvirc/ui/KviMaskEditor.cpp:198 src/kvirc/ui/KviTopicWidget.cpp:476
 msgid "Set by"
 msgstr "에 의해 설정"
 
@@ -7300,19 +7321,19 @@ msgstr "변경 사항을 취소"
 msgid "Unknown channel topic"
 msgstr "알 수 없는 대화방 주제"
 
-#: src/kvirc/ui/KviTopicWidget.cpp:480
+#: src/kvirc/ui/KviTopicWidget.cpp:482
 msgid "Set on"
 msgstr "에 설정"
 
-#: src/kvirc/ui/KviTopicWidget.cpp:494
+#: src/kvirc/ui/KviTopicWidget.cpp:496
 msgid "No topic is set"
 msgstr "주제를 설정하지 않았습니다"
 
-#: src/kvirc/ui/KviTopicWidget.cpp:496
+#: src/kvirc/ui/KviTopicWidget.cpp:498
 msgid "Double-click to set..."
 msgstr "설정하려면 두 번 클릭하십시오..."
 
-#: src/kvirc/ui/KviTopicWidget.cpp:580
+#: src/kvirc/ui/KviTopicWidget.cpp:582
 msgid "Copy Topic to Clipboard"
 msgstr "주제를 클립 보드에 복사"
 
@@ -8987,99 +9008,99 @@ msgstr "트레이 아이콘 숨기기(&H)"
 msgid "&Quit"
 msgstr "종료(&Q)"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:186
+#: src/modules/trayicon/libkvitrayicon.cpp:187
 msgid "Nothing is happening..."
 msgstr "아무것도 일어나지 않습니다..."
 
-#: src/modules/trayicon/libkvitrayicon.cpp:187
+#: src/modules/trayicon/libkvitrayicon.cpp:188
 msgid "Just idling..."
 msgstr "유휴 상태..."
 
-#: src/modules/trayicon/libkvitrayicon.cpp:188
+#: src/modules/trayicon/libkvitrayicon.cpp:189
 msgid "Dum de dum de dum..."
 msgstr "바보 바보 바보..."
 
-#: src/modules/trayicon/libkvitrayicon.cpp:189
+#: src/modules/trayicon/libkvitrayicon.cpp:190
 msgid "Hey man... Do something!"
 msgstr "이봐 요... 뭔가 해봐요!"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:190
+#: src/modules/trayicon/libkvitrayicon.cpp:191
 msgid "Umpf!"
 msgstr "음!"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:191
+#: src/modules/trayicon/libkvitrayicon.cpp:192
 msgid "Silence speaking"
 msgstr "침묵 말하기"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:192
+#: src/modules/trayicon/libkvitrayicon.cpp:193
 msgid "Are ya here?"
 msgstr "나중에 있습니까?"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:193
+#: src/modules/trayicon/libkvitrayicon.cpp:194
 msgid "The world has stopped?"
 msgstr "세상은 멈 췄어?"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:194
+#: src/modules/trayicon/libkvitrayicon.cpp:195
 msgid "Everything is all right"
 msgstr "모든 것이 괜찮아"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:195
+#: src/modules/trayicon/libkvitrayicon.cpp:196
 msgid "idle()"
 msgstr "게으른()"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:196
+#: src/modules/trayicon/libkvitrayicon.cpp:197
 msgid "It's so cold here..."
 msgstr "여기 너무 추워요..."
 
-#: src/modules/trayicon/libkvitrayicon.cpp:197
+#: src/modules/trayicon/libkvitrayicon.cpp:198
 msgid "Do not disturb... Watching TV"
 msgstr "방해하지 마세요... TV 시청"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:198
+#: src/modules/trayicon/libkvitrayicon.cpp:199
 msgid "Just vegetating"
 msgstr "그냥 식물"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:199
+#: src/modules/trayicon/libkvitrayicon.cpp:200
 msgid "Hey... Are ya sure that your network is up?"
 msgstr "이봐... 네 네트워크가 제대로 작동 했어?"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:200
+#: src/modules/trayicon/libkvitrayicon.cpp:201
 msgid "Seems like the world has stopped spinning"
 msgstr "세상이 회전을 멈춘 것 같습니다"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:201
+#: src/modules/trayicon/libkvitrayicon.cpp:202
 msgid "This silence is freaking me out!"
 msgstr "이 침묵은 나를 놀라게한다!"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:202
+#: src/modules/trayicon/libkvitrayicon.cpp:203
 msgid "Mieeeeeowww!"
 msgstr "Mieeeeeowww!"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:203
+#: src/modules/trayicon/libkvitrayicon.cpp:204
 msgid "idle idle idle idle!"
 msgstr "유휴 유휴 유휴!"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:318
+#: src/modules/trayicon/libkvitrayicon.cpp:319
 msgid "Hide Window"
 msgstr "창 숨기기"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:318
+#: src/modules/trayicon/libkvitrayicon.cpp:319
 msgid "Show Window"
 msgstr "창 표시"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:324
+#: src/modules/trayicon/libkvitrayicon.cpp:325
 msgid "Away on All"
 msgstr "모두 자리 비움"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:327
+#: src/modules/trayicon/libkvitrayicon.cpp:328
 msgid "Back on All"
 msgstr "모두 다시"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:343
+#: src/modules/trayicon/libkvitrayicon.cpp:344
 msgid "Back on %1"
 msgstr "%1로 돌아 가기"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:349
+#: src/modules/trayicon/libkvitrayicon.cpp:350
 msgid "Away on %1"
 msgstr "%1에 자리 비움"
 

@@ -1,200 +1,200 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Daniel Nylander <po@danielnylander.se>, 2025
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 5.2.4\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 12:42+0200\n"
-"PO-Revision-Date: 2025-01-02 11:03+0100\n"
-"Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
-"Language-Team: \n"
-"Language: sv\n"
+"POT-Creation-Date: 2025-12-01 17:30+0100\n"
+"PO-Revision-Date: 2015-08-01 08:53+0000\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>, 2025\n"
+"Language-Team: Swedish (http://app.transifex.com/kvirc/KVIrc/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/defscript/actions.kvs:5
 msgid "Global Option Controllers"
-msgstr ""
+msgstr "Kontroller för globala alternativ"
 
 #: data/defscript/actions.kvs:5
 msgid ""
 "Opens a global control dialog for easy CTCP ignore and joins/parts/quits "
 "management."
-msgstr ""
+msgstr "Öppnar en global kontrollruta för enkel hantering av CTCP-ignorering och anslutningar/avslutningar/utloggningar."
 
 #: data/defscript/actions.kvs:41
 msgid "Global Option Controllers - KVIrc"
-msgstr ""
+msgstr "Kontroller för globala alternativ - KVIrc"
 
 #: data/defscript/actions.kvs:53
 msgid "CTCP Ignore Controllers"
-msgstr ""
+msgstr "Kontroller för CTCP Ignore"
 
 #: data/defscript/actions.kvs:63
 msgid "Enable ignore for CTCP PING"
-msgstr ""
+msgstr "Aktivera ignorera för CTCP PING"
 
 #: data/defscript/actions.kvs:64
 msgid "When checked, all CTCP PING requests are ignored."
-msgstr ""
+msgstr "När markerad kommer alla CTCP PING-begäran att ignoreras."
 
 #: data/defscript/actions.kvs:73
 msgid "Disabled ignore for CTCP PING"
-msgstr ""
+msgstr "Inaktiverade ignorera för CTCP PING"
 
 #: data/defscript/actions.kvs:78
 msgid "Enabled ignore for CTCP PING"
-msgstr ""
+msgstr "Aktiverade ignorera för CTCP PING"
 
 #: data/defscript/actions.kvs:85
 msgid "Enable ignore for CTCP FINGER"
-msgstr ""
+msgstr "Aktivera ignorera för CTCP FINGER"
 
 #: data/defscript/actions.kvs:86
 msgid "When checked, all CTCP FINGER requests are ignored."
-msgstr ""
+msgstr "När markerad kommer alla CTCP FINGER-begäran att ignoreras."
 
 #: data/defscript/actions.kvs:95
 msgid "Disabled ignore for CTCP FINGER"
-msgstr ""
+msgstr "Inaktiverade ignorera för CTCP FINGER"
 
 #: data/defscript/actions.kvs:100
 msgid "Enabled ignore for CTCP FINGER"
-msgstr ""
+msgstr "Aktiverade ignorera för CTCP FINGER"
 
 #: data/defscript/actions.kvs:107
 msgid "Enable ignore for CTCP VERSION"
-msgstr ""
+msgstr "Aktivera ignorera för CTCP VERSION"
 
 #: data/defscript/actions.kvs:108
 msgid "When checked, all CTCP VERSION requests are ignored."
-msgstr ""
+msgstr "När markerad kommer alla CTCP VERSION-begäran att ignoreras."
 
 #: data/defscript/actions.kvs:117
 msgid "Disabled ignore for CTCP VERSION"
-msgstr ""
+msgstr "Inaktiverade ignorera för CTCP VERSION"
 
 #: data/defscript/actions.kvs:122
 msgid "Enabled ignore for CTCP VERSION"
-msgstr ""
+msgstr "Aktiverade ignorera för CTCP VERSION"
 
 #: data/defscript/actions.kvs:129
 msgid "Enable ignore for CTCP USERINFO"
-msgstr ""
+msgstr "Aktivera ignorera för CTCP USERINFO"
 
 #: data/defscript/actions.kvs:130
 msgid "When checked, all CTCP USERINFO requests are ignored."
-msgstr ""
+msgstr "När markerad kommer alla CTCP USERINFO-begäran att ignoreras."
 
 #: data/defscript/actions.kvs:139
 msgid "Disabled ignore for CTCP USERINFO"
-msgstr ""
+msgstr "Inaktiverade ignorera för CTCP USERINFO"
 
 #: data/defscript/actions.kvs:144
 msgid "Enabled ignore for CTCP USERINFO"
-msgstr ""
+msgstr "Aktiverade ignorera för CTCP USERINFO"
 
 #: data/defscript/actions.kvs:151
 msgid "Enable ignore for CTCP CLIENTINFO"
-msgstr ""
+msgstr "Aktivera ignorera för CTCP CLIENTINFO"
 
 #: data/defscript/actions.kvs:152
 msgid "When checked, all CTCP CLIENTINFO requests are ignored."
-msgstr ""
+msgstr "När markerad kommer alla CTCP CLIENTINFO-begäran att ignoreras."
 
 #: data/defscript/actions.kvs:161
 msgid "Disabled ignore for CTCP CLIENTINFO"
-msgstr ""
+msgstr "Inaktiverade ignorera för CTCP CLIENTINFO"
 
 #: data/defscript/actions.kvs:166
 msgid "Enabled ignore for CTCP CLIENTINFO"
-msgstr ""
+msgstr "Aktiverade ignorera för CTCP CLIENTINFO"
 
 #: data/defscript/actions.kvs:173
 msgid "Enable ignore for CTCP SOURCE"
-msgstr ""
+msgstr "Aktivera ignorera för CTCP SOURCE"
 
 #: data/defscript/actions.kvs:174
 msgid "When checked, all CTCP SOURCE requests are ignored."
-msgstr ""
+msgstr "När markerad kommer alla CTCP SOURCE-begäran att ignoreras."
 
 #: data/defscript/actions.kvs:183
 msgid "Disabled ignore for CTCP SOURCE"
-msgstr ""
+msgstr "Inaktiverade ignorera för CTCP SOURCE"
 
 #: data/defscript/actions.kvs:188
 msgid "Enabled ignore for CTCP SOURCE"
-msgstr ""
+msgstr "Aktiverade ignorera för CTCP SOURCE"
 
 #: data/defscript/actions.kvs:195
 msgid "Enable ignore for CTCP TIME"
-msgstr ""
+msgstr "Aktivera ignorera för CTCP TIME"
 
 #: data/defscript/actions.kvs:196
 msgid "When checked, all CTCP TIME requests are ignored."
-msgstr ""
+msgstr "När markerad kommer alla CTCP TIME-begäran att ignoreras."
 
 #: data/defscript/actions.kvs:205
 msgid "Disabled ignore for CTCP TIME"
-msgstr ""
+msgstr "Inaktiverade ignorera för CTCP TIME"
 
 #: data/defscript/actions.kvs:210
 msgid "Enabled ignore for CTCP TIME"
-msgstr ""
+msgstr "Aktiverade ignorera för CTCP TIME"
 
 #: data/defscript/actions.kvs:217
 msgid "Enable ignore for CTCP PAGE"
-msgstr ""
+msgstr "Aktivera ignorera för CTCP PAGE"
 
 #: data/defscript/actions.kvs:218
 msgid "When checked, all CTCP PAGE requests are ignored."
-msgstr ""
+msgstr "När markerad kommer alla CTCP PAGE-begäran att ignoreras."
 
 #: data/defscript/actions.kvs:227
 msgid "Disabled ignore for CTCP PAGE"
-msgstr ""
+msgstr "Inaktiverade ignorera för CTCP PAGE"
 
 #: data/defscript/actions.kvs:232
 msgid "Enabled ignore for CTCP PAGE"
-msgstr ""
+msgstr "Aktiverade ignorera för CTCP PAGE"
 
 #: data/defscript/actions.kvs:239
 msgid "Enable ignore for CTCP AVATAR"
-msgstr ""
+msgstr "Aktivera ignorera för CTCP AVATAR"
 
 #: data/defscript/actions.kvs:240
 msgid "When checked, all CTCP AVATAR requests are ignored."
-msgstr ""
+msgstr "När markerad kommer alla CTCP AVATAR-begäran att ignoreras."
 
 #: data/defscript/actions.kvs:249
 msgid "Disabled ignore for CTCP AVATAR"
-msgstr ""
+msgstr "Inaktiverade ignorera för CTCP AVATAR"
 
 #: data/defscript/actions.kvs:254
 msgid "Enabled ignore for CTCP AVATAR"
-msgstr ""
+msgstr "Aktiverade ignorera för CTCP AVATAR"
 
 #: data/defscript/actions.kvs:261
 msgid "Enable ignore for CTCP DCC"
-msgstr ""
+msgstr "Aktivera ignorera för CTCP DCC"
 
 #: data/defscript/actions.kvs:262
 msgid "When checked, all CTCP DCC requests are ignored."
-msgstr ""
+msgstr "När markerad kommer alla CTCP DCC-begäran att ignoreras."
 
 #: data/defscript/actions.kvs:271
 msgid "Disabled ignore for CTCP DCC"
-msgstr ""
+msgstr "Inaktiverade ignorera för CTCP DCC"
 
 #: data/defscript/actions.kvs:276
 msgid "Enabled ignore for CTCP DCC"
-msgstr ""
+msgstr "Aktiverade ignorera för CTCP DCC"
 
 #: data/defscript/actions.kvs:284
 msgid "Message Suppression Controllers"
@@ -292,7 +292,7 @@ msgstr ""
 
 #: data/defscript/aliases.kvs:118
 msgid "-q: quiet mode"
-msgstr ""
+msgstr "-q: tyst läge"
 
 #: data/defscript/aliases.kvs:126
 msgid "Parameter message missing"
@@ -300,11 +300,11 @@ msgstr ""
 
 #: data/defscript/aliases.kvs:127
 msgid "Type /gnotice for help"
-msgstr ""
+msgstr "Skriv /gnotice för hjälp"
 
 #: data/defscript/aliases.kvs:170
 msgid "Sending wallop to"
-msgstr ""
+msgstr "Skickar wallop till"
 
 #: data/defscript/aliases.kvs:217 data/defscript/aliases.kvs:231
 #: data/defscript/aliases.kvs:245 data/defscript/aliases.kvs:262
@@ -324,7 +324,7 @@ msgstr "Detta är inte ett kanalfönster"
 
 #: data/defscript/aliases.kvs:494
 msgid "Unsupported type:"
-msgstr ""
+msgstr "Typen stöds inte:"
 
 #: data/defscript/aliases.kvs:518
 msgid "Channel Owner"
@@ -368,7 +368,8 @@ msgstr "Ingen sådan användare:"
 
 #: data/defscript/classes.kvs:18
 msgid ""
-"[Installer] Error: the first argument of copyFiles must be a source directory"
+"[Installer] Error: the first argument of copyFiles must be a source "
+"directory"
 msgstr ""
 
 #: data/defscript/classes.kvs:24
@@ -389,11 +390,11 @@ msgstr ""
 
 #: data/defscript/default.kvs:36
 msgid "To connect to a server, type /server <server name>"
-msgstr ""
+msgstr "För att ansluta till en server, skriv /server <server name>"
 
 #: data/defscript/default.kvs:38
 msgid "Happy ircing :)"
-msgstr ""
+msgstr "Glad ircning :)"
 
 #: data/defscript/events.kvs:87 data/defscript/events.kvs:100
 #: data/defscript/events.kvs:134 data/defscript/popups.kvs:657
@@ -402,7 +403,7 @@ msgstr "Loggning"
 
 #: data/defscript/events.kvs:92 data/defscript/events.kvs:105
 msgid "Global option controllers"
-msgstr ""
+msgstr "Kontroller för globala alternativ"
 
 #: data/defscript/popups.kvs:22 data/defscript/popups.kvs:1385
 msgid "Stop Highlighting (Local)"
@@ -429,7 +430,7 @@ msgstr ""
 #: data/defscript/popups.kvs:97 data/defscript/popups.kvs:138
 #: data/defscript/popups.kvs:786 data/defscript/popups.kvs:1069
 msgid "Multiple Users"
-msgstr ""
+msgstr "Flera användare"
 
 #: data/defscript/popups.kvs:110 data/defscript/popups.kvs:209
 #: data/defscript/popups.kvs:1267 data/defscript/popups.kvs:1834
@@ -441,7 +442,7 @@ msgstr ""
 #: data/defscript/popups.kvs:859 data/defscript/popups.kvs:919
 #: data/defscript/popups.kvs:1283
 msgid "Clear Buffer"
-msgstr ""
+msgstr "Töm buffert"
 
 #: data/defscript/popups.kvs:143 data/defscript/popups.kvs:224
 #: data/defscript/popups.kvs:317 data/defscript/popups.kvs:555
@@ -453,7 +454,7 @@ msgstr "Du är inte ansluten till en server"
 #: data/defscript/popups.kvs:145 data/defscript/popups.kvs:319
 #: data/defscript/popups.kvs:619 data/defscript/popups.kvs:1212
 msgid "Dock"
-msgstr ""
+msgstr "Docka"
 
 #: data/defscript/popups.kvs:152 data/defscript/popups.kvs:793
 #: data/defscript/popups.kvs:1772
@@ -464,32 +465,32 @@ msgstr ""
 #: data/defscript/popups.kvs:441 data/defscript/popups.kvs:800
 #: data/defscript/popups.kvs:1780
 msgid "&Information"
-msgstr ""
+msgstr "&Information"
 
 #: data/defscript/popups.kvs:168 data/defscript/popups.kvs:802
 #: data/defscript/popups.kvs:1782
 msgid "/WHOIS ?s"
-msgstr ""
+msgstr "/WHOIS ?s"
 
 #: data/defscript/popups.kvs:173 data/defscript/popups.kvs:807
 #: data/defscript/popups.kvs:1787
 msgid "/WHOWAS ?s"
-msgstr ""
+msgstr "/WHOWAS ?s"
 
 #: data/defscript/popups.kvs:178 data/defscript/popups.kvs:812
 #: data/defscript/popups.kvs:1792
 msgid "/WHO ?s"
-msgstr ""
+msgstr "/WHO ?s"
 
 #: data/defscript/popups.kvs:185 data/defscript/popups.kvs:819
 #: data/defscript/popups.kvs:1799
 msgid "DNS for"
-msgstr ""
+msgstr "DNS för"
 
 #: data/defscript/popups.kvs:191 data/defscript/popups.kvs:825
 #: data/defscript/popups.kvs:1805
 msgid "Mask for"
-msgstr ""
+msgstr "Mask för"
 
 #: data/defscript/popups.kvs:205
 msgid "&Ignore"
@@ -525,7 +526,7 @@ msgstr "Ange meddelandetexten"
 
 #: data/defscript/popups.kvs:302
 msgid "&Page"
-msgstr ""
+msgstr "&Sida"
 
 #: data/defscript/popups.kvs:302 data/defscript/popups.kvs:1164
 #: data/defscript/popups.kvs:1191
@@ -542,15 +543,15 @@ msgstr "&Gå in i kanaler..."
 
 #: data/defscript/popups.kvs:361 data/defscript/popups.kvs:460
 msgid "d (Debug/DNS?)"
-msgstr ""
+msgstr "d (Felsök/DNS?)"
 
 #: data/defscript/popups.kvs:366 data/defscript/popups.kvs:465
 msgid "l (Connections)"
-msgstr ""
+msgstr "l (Anslutningar)"
 
 #: data/defscript/popups.kvs:371 data/defscript/popups.kvs:470
 msgid "m (Command Usage)"
-msgstr ""
+msgstr "m (Kommandoanvändning)"
 
 #: data/defscript/popups.kvs:376 data/defscript/popups.kvs:475
 msgid "o (Operators)"
@@ -562,7 +563,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:386 data/defscript/popups.kvs:485
 msgid "u (Uptime)"
-msgstr ""
+msgstr "u (Upptid)"
 
 #: data/defscript/popups.kvs:391 data/defscript/popups.kvs:490
 msgid "y (Y-Lines)"
@@ -574,35 +575,35 @@ msgstr ""
 
 #: data/defscript/popups.kvs:433
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "Kopiera till urklipp"
 
 #: data/defscript/popups.kvs:524 data/defscript/popups.kvs:888
 msgid "Traceroute to"
-msgstr ""
+msgstr "Traceroute till"
 
 #: data/defscript/popups.kvs:532 data/defscript/popups.kvs:896
 msgid "Traceroute6 to"
-msgstr ""
+msgstr "Traceroute6 till"
 
 #: data/defscript/popups.kvs:624
 msgid "Undock"
-msgstr ""
+msgstr "Avdocka"
 
 #: data/defscript/popups.kvs:659
 msgid "Set Window Properties As Default"
-msgstr ""
+msgstr "Ställ in fönsteregenskaper som standard"
 
 #: data/defscript/popups.kvs:666
 msgid "Automatically Join Channel"
-msgstr ""
+msgstr "Gå automatiskt in i kanal"
 
 #: data/defscript/popups.kvs:668
 msgid "When Connecting to Server '?s'"
-msgstr ""
+msgstr "Vid anslutning till servern '?s'"
 
 #: data/defscript/popups.kvs:675
 msgid "When Connecting to Network '?s'"
-msgstr ""
+msgstr "Vid anslutning till nätverket '?s'"
 
 #: data/defscript/popups.kvs:683
 msgid "Stop Auto-joining Channel on Server '?s'"
@@ -618,23 +619,23 @@ msgstr ""
 
 #: data/defscript/popups.kvs:718
 msgid "Close All Queries"
-msgstr ""
+msgstr "Stäng alla begäran"
 
 #: data/defscript/popups.kvs:724
 msgid "Rejoin All Dead Channels"
-msgstr ""
+msgstr "Gå in igen i alla döda kanaler"
 
 #: data/defscript/popups.kvs:731
 msgid "Close All Dead Channels"
-msgstr ""
+msgstr "Stäng alla döda kanaler"
 
 #: data/defscript/popups.kvs:737
 msgid "Close All Dead Queries"
-msgstr ""
+msgstr "Stäng alla döda begäran"
 
 #: data/defscript/popups.kvs:745
 msgid "Global &Option Controllers"
-msgstr ""
+msgstr "Kontroller för &globala alternativ"
 
 #: data/defscript/popups.kvs:752
 msgid "Unhighlight All Windows"
@@ -687,7 +688,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:951
 msgid "Secure Chat with"
-msgstr ""
+msgstr "Säker chatt med"
 
 #: data/defscript/popups.kvs:958
 msgid "Send to"
@@ -695,7 +696,7 @@ msgstr "Skicka till"
 
 #: data/defscript/popups.kvs:963
 msgid "Secure Send to"
-msgstr ""
+msgstr "Säker sändning till"
 
 #: data/defscript/popups.kvs:968
 msgid "Reverse Send to"
@@ -723,15 +724,15 @@ msgstr "Standard"
 
 #: data/defscript/popups.kvs:1065
 msgid "Ban"
-msgstr ""
+msgstr "Bannlys"
 
 #: data/defscript/popups.kvs:1078 data/defscript/popups.kvs:1174
 msgid "&Ban"
-msgstr ""
+msgstr "&Bannlys"
 
 #: data/defscript/popups.kvs:1104
 msgid "O&wner"
-msgstr ""
+msgstr "Ä&gare"
 
 #: data/defscript/popups.kvs:1109
 msgid "&Deowner"
@@ -771,11 +772,11 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1156 data/defscript/popups.kvs:1164
 msgid "&Kick"
-msgstr ""
+msgstr "Sparka &ut"
 
 #: data/defscript/popups.kvs:1162
 msgid "K&ick"
-msgstr ""
+msgstr "Spar&ka ut"
 
 #: data/defscript/popups.kvs:1162
 msgid "With..."
@@ -783,15 +784,15 @@ msgstr "Med..."
 
 #: data/defscript/popups.kvs:1164
 msgid "Kick Reason"
-msgstr ""
+msgstr "Utsparksanledning"
 
 #: data/defscript/popups.kvs:1164
 msgid "Enter a kick reason"
-msgstr ""
+msgstr "Ange en orsak för utsparkning"
 
 #: data/defscript/popups.kvs:1184 data/defscript/popups.kvs:1189
 msgid "Kick/Ban"
-msgstr ""
+msgstr "Sparka ut/Bannlys"
 
 #: data/defscript/popups.kvs:1189
 msgid "with..."
@@ -799,15 +800,15 @@ msgstr "med..."
 
 #: data/defscript/popups.kvs:1191
 msgid "Kick/Ban Reason"
-msgstr ""
+msgstr "Anledning till utspark/bannlys"
 
 #: data/defscript/popups.kvs:1191
 msgid "Enter a kick/ban reason"
-msgstr ""
+msgstr "Ange en orsak till utsparkning/bannlysning"
 
 #: data/defscript/popups.kvs:1191
 msgid "&Kick/Ban"
-msgstr ""
+msgstr "Sparka &ut/Bannlys"
 
 #: data/defscript/popups.kvs:1202
 msgid "Configure Ban Mask..."
@@ -821,7 +822,7 @@ msgstr ""
 #: data/defscript/popups.kvs:1301 data/defscript/popups.kvs:1306
 #: data/defscript/popups.kvs:1311 data/defscript/popups.kvs:1316
 msgid "Join"
-msgstr ""
+msgstr "Gå in i"
 
 #: data/defscript/popups.kvs:1332
 msgid "Logging to"
@@ -829,7 +830,7 @@ msgstr "Loggning till"
 
 #: data/defscript/popups.kvs:1334
 msgid "Flush Log File"
-msgstr ""
+msgstr "Töm loggfilen"
 
 #: data/defscript/popups.kvs:1341
 msgid "Stop Logging"
@@ -837,15 +838,15 @@ msgstr "Stoppa loggning"
 
 #: data/defscript/popups.kvs:1346
 msgid "Not Logging"
-msgstr ""
+msgstr "Loggar inte"
 
 #: data/defscript/popups.kvs:1348 data/defscript/popups.kvs:1353
 msgid "Log to Default File"
-msgstr ""
+msgstr "Logga till standardfilen"
 
 #: data/defscript/popups.kvs:1353 data/defscript/popups.kvs:1366
 msgid "Include Existing Buffer"
-msgstr ""
+msgstr "Inkludera befintlig buffert"
 
 #: data/defscript/popups.kvs:1358 data/defscript/popups.kvs:1366
 msgid "Log to..."
@@ -853,19 +854,19 @@ msgstr "Logga till..."
 
 #: data/defscript/popups.kvs:1360 data/defscript/popups.kvs:1368
 msgid "Choose Log Filename"
-msgstr ""
+msgstr "Välj loggens filnamn"
 
 #: data/defscript/popups.kvs:1407
 msgid "is being ignored"
-msgstr ""
+msgstr "ignoreras"
 
 #: data/defscript/popups.kvs:1409 data/defscript/popups.kvs:1415
 msgid "is not being ignored"
-msgstr ""
+msgstr "ignoreras inte"
 
 #: data/defscript/popups.kvs:1421
 msgid "Ignore As..."
-msgstr ""
+msgstr "Ignorera som..."
 
 #: data/defscript/popups.kvs:1423 data/defscript/popups.kvs:1431
 #: data/defscript/popups.kvs:1439 data/defscript/popups.kvs:1447
@@ -882,19 +883,19 @@ msgstr ""
 #: data/defscript/popups.kvs:1615 data/defscript/popups.kvs:1623
 #: data/defscript/popups.kvs:1631
 msgid "Ignore As"
-msgstr ""
+msgstr "Ignorera som"
 
 #: data/defscript/popups.kvs:1640
 msgid "Enable Ignore"
-msgstr ""
+msgstr "Aktivera ignorera"
 
 #: data/defscript/popups.kvs:1645
 msgid "Disable Ignore"
-msgstr ""
+msgstr "Inaktivera ignorera"
 
 #: data/defscript/popups.kvs:1662
 msgid "is registered as"
-msgstr ""
+msgstr "är registrerad som"
 
 #: data/defscript/popups.kvs:1666
 msgid "is in the notify list"
@@ -902,11 +903,11 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1670
 msgid "has a default avatar"
-msgstr ""
+msgstr "har en standardavatar"
 
 #: data/defscript/popups.kvs:1675
 msgid "is not registered"
-msgstr ""
+msgstr "är inte registrerad"
 
 #: data/defscript/popups.kvs:1681
 msgid "Register..."
@@ -914,7 +915,7 @@ msgstr "Registrera..."
 
 #: data/defscript/popups.kvs:1686
 msgid "Quick Registration"
-msgstr ""
+msgstr "Snabbregistrering"
 
 #: data/defscript/popups.kvs:1688 data/defscript/popups.kvs:1693
 #: data/defscript/popups.kvs:1698 data/defscript/popups.kvs:1703
@@ -924,7 +925,7 @@ msgstr "Registrera som"
 
 #: data/defscript/popups.kvs:1719
 msgid "Edit Registration..."
-msgstr ""
+msgstr "Redigera registrering..."
 
 #: data/defscript/popups.kvs:1725
 msgid "Unregister"
@@ -948,7 +949,7 @@ msgstr "Välj..."
 
 #: data/defscript/popups.kvs:1746
 msgid "Choose Avatar Image File"
-msgstr ""
+msgstr "Välj bildfil för avatar"
 
 #: data/defscript/popups.kvs:1755
 msgid "Set As Default"
@@ -956,11 +957,11 @@ msgstr "Ställ in som standard"
 
 #: data/defscript/popups.kvs:1760
 msgid "Clear Default"
-msgstr ""
+msgstr "Töm standard"
 
 #: data/defscript/popups.kvs:1811
 msgid "&User Control"
-msgstr ""
+msgstr "&Användarkontroll"
 
 #: data/defscript/toolbars.kvs:3
 msgid "IRC Context"

@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Daniel Nylander <po@danielnylander.se>, 2025
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 5.2.4\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 12:42+0200\n"
-"PO-Revision-Date: 2025-01-03 09:51+0100\n"
-"Last-Translator: Daniel Nylander <github@danielnylander.se>\n"
-"Language-Team: \n"
-"Language: sv\n"
+"POT-Creation-Date: 2025-12-08 22:57+0100\n"
+"PO-Revision-Date: 2015-08-01 08:52+0000\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>, 2025\n"
+"Language-Team: Swedish (http://app.transifex.com/kvirc/KVIrc/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/kvilib/core/KviError.cpp:49 src/kvilib/net/KviHttpRequest.cpp:258
 msgid "Success"
@@ -37,11 +37,11 @@ msgstr "Okänt kommando"
 
 #: src/kvilib/core/KviError.cpp:53
 msgid "Missing closing brace"
-msgstr ""
+msgstr "Saknar stängande klammer"
 
 #: src/kvilib/core/KviError.cpp:54
 msgid "Unexpected end of command in string"
-msgstr ""
+msgstr "Oväntat slut på kommando i sträng"
 
 #: src/kvilib/core/KviError.cpp:55
 msgid "Unexpected end of command in dictionary key"
@@ -105,7 +105,7 @@ msgstr "Oväntat tecken"
 
 #: src/kvilib/core/KviError.cpp:70
 msgid "Unknown operator"
-msgstr ""
+msgstr "Okänd operator"
 
 #: src/kvilib/core/KviError.cpp:71
 msgid "No host to resolve"
@@ -149,7 +149,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:81
 msgid "DNS query failed"
-msgstr ""
+msgstr "DNS-frågan misslyckades"
 
 #: src/kvilib/core/KviError.cpp:82
 msgid "This KVIrc executable has no IPv6 support"
@@ -173,7 +173,7 @@ msgstr "Ogiltig IP-adress"
 
 #: src/kvilib/core/KviError.cpp:87
 msgid "Socket creation failed"
-msgstr ""
+msgstr "Skapande av socket misslyckades"
 
 #: src/kvilib/core/KviError.cpp:88
 msgid "Failed to put the socket in non blocking mode"
@@ -181,11 +181,11 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:89
 msgid "Bad file descriptor"
-msgstr ""
+msgstr "Felaktig filbeskrivare"
 
 #: src/kvilib/core/KviError.cpp:90
 msgid "Out of address space"
-msgstr ""
+msgstr "Slut på adressutrymme"
 
 #: src/kvilib/core/KviError.cpp:91
 msgid "Connection refused"
@@ -205,7 +205,7 @@ msgstr "Nätverket är inte nåbart"
 
 #: src/kvilib/core/KviError.cpp:95
 msgid "Broken pipe"
-msgstr ""
+msgstr "Trasigt rör"
 
 #: src/kvilib/core/KviError.cpp:96
 msgid "Invalid proxy address"
@@ -241,11 +241,11 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:104
 msgid "Missing object class name"
-msgstr ""
+msgstr "Saknar namn på objektklass"
 
 #: src/kvilib/core/KviError.cpp:105
 msgid "No such object class"
-msgstr ""
+msgstr "Ingen sådan objektklass"
 
 #: src/kvilib/core/KviError.cpp:106
 msgid "No such object"
@@ -253,7 +253,7 @@ msgstr "Inget sådant objekt"
 
 #: src/kvilib/core/KviError.cpp:107
 msgid "No such object function"
-msgstr ""
+msgstr "Ingen sådan objektfunktion"
 
 #: src/kvilib/core/KviError.cpp:108
 msgid "Invalid left operand"
@@ -261,7 +261,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:109
 msgid "Not enough parameters"
-msgstr ""
+msgstr "Inte tillräckligt med parametrar"
 
 #: src/kvilib/core/KviError.cpp:110
 msgid "Integer parameter expected"
@@ -381,7 +381,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:139 src/kvilib/file/KviPackageWriter.cpp:384
 msgid "Can't open file for writing"
-msgstr ""
+msgstr "Kan inte öppna filen för skrivning"
 
 #: src/kvilib/core/KviError.cpp:140
 msgid "File I/O error"
@@ -406,11 +406,11 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:145
 msgid "'item', 'popup', 'label' or 'separator' keyword expected"
-msgstr ""
+msgstr "Nyckelord som 'item', 'popup', 'label' eller 'separator' förväntades"
 
 #: src/kvilib/core/KviError.cpp:146
 msgid "Self modification not allowed"
-msgstr ""
+msgstr "Självmodifiering inte tillåten"
 
 #: src/kvilib/core/KviError.cpp:147
 msgid "Feature not available"
@@ -466,7 +466,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:160
 msgid "listen() call failed"
-msgstr ""
+msgstr "listen()-anrop misslyckades"
 
 #: src/kvilib/core/KviError.cpp:161
 msgid "This executable has been compiled without SSL support"
@@ -474,11 +474,11 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:162
 msgid "Secure Socket Layer error"
-msgstr ""
+msgstr "Fel i Secure Socket Layer"
 
 #: src/kvilib/core/KviError.cpp:163
 msgid "Slash (/) character expected"
-msgstr ""
+msgstr "Snedstreckstecken (/) förväntas"
 
 #: src/kvilib/core/KviError.cpp:164
 msgid "Unknown string manipulation operation"
@@ -494,7 +494,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:167
 msgid "Scope object already defined (unexpected @)"
-msgstr ""
+msgstr "Scope-objektet är redan definierat (oväntat @)"
 
 #: src/kvilib/core/KviError.cpp:168
 msgid "There is no $this pointer in this scope (unexpected @)"
@@ -566,7 +566,8 @@ msgstr "Åtgärden avbröts"
 #: src/kvilib/tal/KviTalWizard.cpp:189 src/kvirc/kernel/KviCoreActions.cpp:833
 #: src/kvirc/kernel/KviDefaultScript.cpp:471
 #: src/kvirc/ui/KviImageDialog.cpp:153 src/kvirc/ui/KviMaskEditor.cpp:92
-#: src/modules/avatar/libkviavatar.cpp:107 src/modules/setup/SetupWizard.cpp:86
+#: src/modules/avatar/libkviavatar.cpp:107
+#: src/modules/setup/SetupWizard.cpp:86
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -580,13 +581,13 @@ msgstr "Filläsningsfel"
 
 #: src/kvilib/file/KviPackageReader.cpp:60
 msgid "The file specified is not a valid KVIrc package"
-msgstr ""
+msgstr "Den angivna filen är inte ett giltigt KVIrc-paket"
 
 #: src/kvilib/file/KviPackageReader.cpp:70
 msgid ""
 "The package has an invalid version number, it might have been created by a "
 "newer KVIrc"
-msgstr ""
+msgstr "Paketet har ett ogiltigt versionsnummer, det kan ha skapats av en nyare version av KVIrc"
 
 #: src/kvilib/file/KviPackageReader.cpp:120
 msgid "Invalid info field: the package is probably corrupt"
@@ -660,15 +661,15 @@ msgstr "Skapar paket..."
 
 #: src/kvilib/file/KviPackageWriter.cpp:369
 msgid "Writing package header"
-msgstr ""
+msgstr "Skriver pakethuvud"
 
 #: src/kvilib/file/KviPackageWriter.cpp:415
 msgid "Writing informational fields"
-msgstr ""
+msgstr "Skriver informationsfält"
 
 #: src/kvilib/file/KviPackageWriter.cpp:447
 msgid "Writing package data"
-msgstr ""
+msgstr "Skriver paketdata"
 
 #: src/kvilib/irc/KviIrcServerDataBase.cpp:113
 msgid "The specified network has no server entries"
@@ -678,13 +679,13 @@ msgstr ""
 msgid ""
 "The server specification seems to be in the net:<string> but the network "
 "couldn't be found in the database"
-msgstr ""
+msgstr "Serverspecifikationen verkar finnas i net:<string> men nätverket kunde inte hittas i databasen"
 
 #: src/kvilib/irc/KviIrcServerDataBase.cpp:185
 msgid ""
 "The server specification seems to be in the id:<string> form but the "
 "identifier couldn't be found in the database"
-msgstr ""
+msgstr "Serverspecifikationen verkar vara i formen id:<string> men identifieraren kunde inte hittas i databasen"
 
 #: src/kvilib/irc/KviIrcServerDataBase.cpp:287
 #: src/kvilib/irc/KviIrcServerDataBase.cpp:290
@@ -694,7 +695,7 @@ msgstr "Fristående servrar"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:73
 msgid "DNS resolver busy"
-msgstr ""
+msgstr "DNS-resolvern upptagen"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:86
 msgid "Failed to start the host lookup"
@@ -722,11 +723,11 @@ msgstr ""
 
 #: src/kvilib/net/KviHttpRequest.cpp:193
 msgid "Invalid URL: missing hostname"
-msgstr ""
+msgstr "Ogiltig URL: saknar värdnamn"
 
 #: src/kvilib/net/KviHttpRequest.cpp:202
 msgid "Unsupported protocol %1"
-msgstr ""
+msgstr "Protokollet %1 stöds inte"
 
 #: src/kvilib/net/KviHttpRequest.cpp:272
 msgid "Connected to %1:%2: sending request"
@@ -780,7 +781,8 @@ msgstr ""
 msgid "Header too long: exceeded 4096 bytes"
 msgstr ""
 
-#: src/kvilib/net/KviHttpRequest.cpp:867 src/kvilib/net/KviHttpRequest.cpp:1024
+#: src/kvilib/net/KviHttpRequest.cpp:867
+#: src/kvilib/net/KviHttpRequest.cpp:1024
 msgid "The amount of received data exceeds expected length"
 msgstr ""
 
@@ -804,8 +806,8 @@ msgstr "Slår upp värden %1"
 msgid "Host %1 resolved to %2"
 msgstr "Värden %1 slogs upp till %2"
 
-#: src/kvilib/net/KviSSL.cpp:881 src/kvilib/net/KviSSL.cpp:897
-#: src/kvilib/net/KviSSL.cpp:941 src/kvirc/kernel/KviTheme.cpp:148
+#: src/kvilib/net/KviSSL.cpp:889 src/kvilib/net/KviSSL.cpp:905
+#: src/kvilib/net/KviSSL.cpp:949 src/kvirc/kernel/KviTheme.cpp:148
 #: src/modules/upnp/RootService.cpp:69
 msgid "Unknown"
 msgstr "Okänd"
@@ -864,7 +866,7 @@ msgstr "IRC"
 
 #: src/kvirc/kernel/KviActionManager.cpp:62
 msgid "IRC context related actions"
-msgstr ""
+msgstr "Åtgärder relaterade till IRC-kontext"
 
 #: src/kvirc/kernel/KviActionManager.cpp:63
 msgid "Generic"
@@ -888,7 +890,7 @@ msgstr "Skriptning"
 
 #: src/kvirc/kernel/KviActionManager.cpp:65
 msgid "Scripting related actions"
-msgstr ""
+msgstr "Skriptrelaterade åtgärder"
 
 #: src/kvirc/kernel/KviActionManager.cpp:66
 msgid "GUI"
@@ -915,108 +917,96 @@ msgstr "Verktyg"
 
 #: src/kvirc/kernel/KviActionManager.cpp:68
 msgid "Actions that will appear in the \"Tools\" menu"
-msgstr ""
+msgstr "Åtgärder som visas i \"Verktyg\"-menyn"
 
-#: src/kvirc/kernel/KviApplication.cpp:684
+#: src/kvirc/kernel/KviApplication.cpp:668
 msgid "KVIrc Messaging"
-msgstr ""
+msgstr "KVIrc Meddelanden"
 
-#: src/kvirc/kernel/KviApplication.cpp:685
+#: src/kvirc/kernel/KviApplication.cpp:669
 msgid ""
 "Message from %1:\n"
 "\n"
-msgstr ""
-"Meddelande från %1:\n"
-"\n"
+msgstr "Meddelande från %1:\n\n"
 
-#: src/kvirc/kernel/KviApplication.cpp:804
-#: src/kvirc/kernel/KviApplication.cpp:837
-#: src/kvirc/kernel/KviApplication.cpp:840
+#: src/kvirc/kernel/KviApplication.cpp:788
+#: src/kvirc/kernel/KviApplication.cpp:822
+#: src/kvirc/kernel/KviApplication.cpp:825
 msgid "View"
 msgstr "Visa"
 
-#: src/kvirc/kernel/KviApplication.cpp:805
-#: src/kvirc/kernel/KviApplication.cpp:843
+#: src/kvirc/kernel/KviApplication.cpp:789
+#: src/kvirc/kernel/KviApplication.cpp:828
 msgid "Ignore"
 msgstr "Ignorera"
 
-#: src/kvirc/kernel/KviApplication.cpp:982
+#: src/kvirc/kernel/KviApplication.cpp:968
 msgid "Update Default Scripts - KVIrc"
 msgstr "Uppdatera standardskript - KVIrc"
 
-#: src/kvirc/kernel/KviApplication.cpp:983
+#: src/kvirc/kernel/KviApplication.cpp:969
 msgid ""
-"<b>Your KVirc installation has been updated successfully.</b><br><br>KVIrc's "
-"default scripts should also be updated. <b>Do you want to restore the "
+"<b>Your KVirc installation has been updated successfully.</b><br><br>KVIrc's"
+" default scripts should also be updated. <b>Do you want to restore the "
 "default scripts?</b><br><br>Hint: If you choose \"No\" you can always "
 "restore the default scripts by selecting the appropriate entry from the "
 "\"Scripting\" menu later."
-msgstr ""
-"<b>Din KVirc-installation har nu uppdaterats.</b><br><br>KVIrcs "
-"standardskript bör också uppdateras. <b>Vill du återställa standardskripten?"
-"</b><br><br>Tips: Om du väljer \"Nej\" så kan du alltid återställa "
-"standardskripten genom att välja lämplig funktion från \"Skriptning\"-menyn "
-"senare."
+msgstr "<b>Din KVirc-installation har nu uppdaterats.</b><br><br>KVIrcs standardskript bör också uppdateras. <b>Vill du återställa standardskripten?</b><br><br>Tips: Om du väljer \"Nej\" så kan du alltid återställa standardskripten genom att välja lämplig funktion från \"Skriptning\"-menyn senare."
 
-#: src/kvirc/kernel/KviApplication.cpp:988
-#: src/kvirc/kernel/KviApplication.cpp:1061
+#: src/kvirc/kernel/KviApplication.cpp:974
+#: src/kvirc/kernel/KviApplication.cpp:1047
 msgid "No and Don't Ask Me Again"
 msgstr "Nej och fråga mig inte igen"
 
-#: src/kvirc/kernel/KviApplication.cpp:989
-#: src/kvirc/kernel/KviApplication.cpp:1062
+#: src/kvirc/kernel/KviApplication.cpp:975
+#: src/kvirc/kernel/KviApplication.cpp:1048
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:985
 #: src/kvirc/ui/KviInput.cpp:260 src/kvirc/ui/KviStatusBar.cpp:572
 msgid "No"
 msgstr "Nej"
 
-#: src/kvirc/kernel/KviApplication.cpp:990
-#: src/kvirc/kernel/KviApplication.cpp:1063
+#: src/kvirc/kernel/KviApplication.cpp:976
+#: src/kvirc/kernel/KviApplication.cpp:1049
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:985
 #: src/kvirc/ui/KviInput.cpp:259 src/kvirc/ui/KviStatusBar.cpp:570
 msgid "Yes"
 msgstr "Ja"
 
-#: src/kvirc/kernel/KviApplication.cpp:1055
+#: src/kvirc/kernel/KviApplication.cpp:1041
 msgid "Detected Installation Issues - KVIrc"
 msgstr "Upptäckte installationsproblem - KVIrc"
 
-#: src/kvirc/kernel/KviApplication.cpp:1056
+#: src/kvirc/kernel/KviApplication.cpp:1042
 msgid ""
 "<b>Your KVIrc installation is incomplete.</b><br><br>You seem to be missing "
 "some of the features that the KVIrc default scripts provide. <b>Do you want "
 "to restore the default scripts?</b><br><br>Hint: If you choose \"No\" you "
 "can always restore the default scripts by selecting the appropriate entry "
 "from the \"Scripting\" menu later."
-msgstr ""
-"<b>Din KVIrc-installation är inte komplett.</b><br><br>Du verkar sakna några "
-"av de funktioner som KVIrcs standardskript tillhandahåller. <b>Vill du "
-"återställa standardskripten?</b><br><br>Tips: Om du väljer \"Nej\" så kan du "
-"alltid återställa standardskripten genom att välja lämplig funktion från "
-"\"Skriptning\"-menyn senare."
+msgstr "<b>Din KVIrc-installation är inte komplett.</b><br><br>Du verkar sakna några av de funktioner som KVIrcs standardskript tillhandahåller. <b>Vill du återställa standardskripten?</b><br><br>Tips: Om du väljer \"Nej\" så kan du alltid återställa standardskripten genom att välja lämplig funktion från \"Skriptning\"-menyn senare."
 
-#: src/kvirc/kernel/KviApplication.cpp:1115
+#: src/kvirc/kernel/KviApplication.cpp:1101
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "Fjärrkommando togs emot (%s ...)"
 
-#: src/kvirc/kernel/KviApplication.cpp:1209
+#: src/kvirc/kernel/KviApplication.cpp:1195
 msgid "File download failed"
 msgstr "Filhämtning misslyckades"
 
-#: src/kvirc/kernel/KviApplication.cpp:1211
+#: src/kvirc/kernel/KviApplication.cpp:1197
 msgid "File download from %1 failed"
 msgstr "Filhämtning från %1 misslyckades"
 
-#: src/kvirc/kernel/KviApplication.cpp:1222
+#: src/kvirc/kernel/KviApplication.cpp:1208
 msgid "File download successfully complete"
 msgstr "Filhämtningen lyckades"
 
-#: src/kvirc/kernel/KviApplication.cpp:1224
+#: src/kvirc/kernel/KviApplication.cpp:1210
 msgid "File download from %1 successfully complete"
 msgstr "Filhämtningen från %1 lyckades"
 
-#: src/kvirc/kernel/KviApplication.cpp:1250
+#: src/kvirc/kernel/KviApplication.cpp:1236
 msgid "Avatar download failed for %Q!%Q@%Q and URL %Q: %Q"
 msgstr "Avatarhämtning misslyckades för %Q!%Q@%Q och URL %Q: %Q"
 
@@ -1073,7 +1063,7 @@ msgid ""
 "Oops! It looks like you have a broken distribution.\n"
 "The setup module does not export the \"setup_finish\" function.\n"
 "Trying to continue anyway..."
-msgstr ""
+msgstr "Hoppsan! Det verkar som om din distribution är trasig.\nInstallationsmodulen exporterar inte funktionen ”setup_finish”.\nFörsöker fortsätta ändå..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:93
 msgid "Configure Servers..."
@@ -1081,7 +1071,7 @@ msgstr "Konfigurera servrar..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:94
 msgid "Allows you to configure the servers and eventually to connect to them"
-msgstr ""
+msgstr "Låter dig konfigurera servrarna och slutligen ansluta till dem"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:104
 msgid "Manage Addons..."
@@ -1089,7 +1079,7 @@ msgstr "Hantera tillägg..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:105
 msgid "Allows you to manage the script-based addons"
-msgstr ""
+msgstr "Låter dig hantera skriptbaserade tillägg"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:115
 msgid "Configure Registered Users..."
@@ -1097,7 +1087,7 @@ msgstr "Konfigurera registrerade användare..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:116
 msgid "Shows a dialog that allows editing the registered user entries"
-msgstr ""
+msgstr "Visar en dialogruta där du kan redigera registrerade användaruppgifter"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:126
 msgid "Configure Identity..."
@@ -1105,7 +1095,7 @@ msgstr "Konfigurera identitet..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:127
 msgid "Allows you to configure nickname, username, avatar etc..."
-msgstr ""
+msgstr "Låter dig konfigurera smeknamn, användarnamn, avatar etc..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:137
 msgid "Show Socket Spy"
@@ -1113,7 +1103,7 @@ msgstr "Visa Socket Spy"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:138
 msgid "Shows a window that allows monitoring the socket traffic"
-msgstr ""
+msgstr "Visar ett fönster som gör det möjligt att övervaka uttagstrafiken"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:148
 msgid "Get Network Links"
@@ -1121,7 +1111,7 @@ msgstr "Få nätverkslänkar"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:149
 msgid "Shows a window that allows viewing the network links"
-msgstr ""
+msgstr "Visar ett fönster där du kan se nätverksanslutningarna"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:159
 msgid "Get Channel List"
@@ -1129,7 +1119,7 @@ msgstr "Få kanallista"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:160
 msgid "Shows a window that allows listing the network channels"
-msgstr ""
+msgstr "Visar ett fönster där du kan lista nätverkskanalerna"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:170
 msgid "Configure KVIrc..."
@@ -1339,8 +1329,7 @@ msgstr "Anslut/Koppla från"
 #: src/kvirc/kernel/KviCoreActions.cpp:532
 msgid ""
 "Allows you to connect to a server or to terminate the current connection"
-msgstr ""
-"Låter dig ansluta till en server eller att terminera aktuell anslutning"
+msgstr "Låter dig ansluta till en server eller att terminera aktuell anslutning"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:615
 msgid "Connect"
@@ -1421,7 +1410,7 @@ msgstr "Användarläge"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:943
 msgid "Shows a popup menu that allows quickly changing user modes"
-msgstr ""
+msgstr "Visar en popup-meny som gör det möjligt att snabbt ändra användarlägen"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:961
 msgid "w: WALLOPS"
@@ -1432,9 +1421,9 @@ msgid "s: Server Notices"
 msgstr ""
 
 #: src/kvirc/kernel/KviCoreActions.cpp:974
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:313
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:328
 msgid "i: Invisible"
-msgstr ""
+msgstr "i: Osynlig"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:1035
 msgid "Away/Back"
@@ -1442,7 +1431,7 @@ msgstr "Borta/Tillbaka"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:1036
 msgid "Allows entering and leaving away state"
-msgstr ""
+msgstr "Tillåter att man går in och lämnar bortatillstånd"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:1119
 msgid "Enter Away Mode"
@@ -1458,7 +1447,7 @@ msgstr "IRC-verktyg"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:1192
 msgid "Shows a popup menu with some IRC tools"
-msgstr ""
+msgstr "Visar ett popup-meny med några IRC-verktyg"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:1227
 msgid "IRC Actions"
@@ -1466,7 +1455,7 @@ msgstr "IRC-åtgärder"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:1228
 msgid "Shows a popup menu with some IRC actions"
-msgstr ""
+msgstr "Visar ett popup-meny med några IRC-åtgärder"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:120
 #: src/kvirc/kernel/KviDefaultScript.cpp:126
@@ -1476,15 +1465,15 @@ msgstr "Återställ standard - KVIrc"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:211
 msgid ""
-"There's something wrong in your personal data: my '%1' is %2, while yours is "
-"%3"
+"There's something wrong in your personal data: my '%1' is %2, while yours is"
+" %3"
 msgstr ""
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:231
 msgid ""
 "Your default script is up to date.\n"
 "Do you want to restore it anyway?"
-msgstr ""
+msgstr "Ditt standardskript är uppdaterat.\nVill du återställa det ändå?"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:399
 msgid ""
@@ -1497,7 +1486,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:403
 msgid "Select the Items to Restore"
-msgstr ""
+msgstr "Välj poster att återställa"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:410
 msgid "All"
@@ -1565,1308 +1554,1323 @@ msgstr "Ändrade textkoding till %Q"
 msgid ""
 "Impossible to send STARTTLS command to the IRC server. Your connection will "
 "NOT be encrypted"
-msgstr ""
+msgstr "Det går inte att skicka kommandot STARTTLS till IRC-servern. Din anslutning kommer INTE att krypteras"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:399
 msgid ""
 "The server does not support STARTTLS command. Your connection will NOT be "
 "encrypted"
-msgstr ""
+msgstr "Servern har inte stöd för kommandot STARTTLS. Din anslutning kommer INTE att krypteras"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:528
+#: src/kvirc/kernel/KviIrcConnection.cpp:552
 msgid "Extended Capabilities don't seem to be supported by the server"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:741
-#: src/kvirc/kernel/KviIrcConnection.cpp:751
+#: src/kvirc/kernel/KviIrcConnection.cpp:765
+#: src/kvirc/kernel/KviIrcConnection.cpp:775
 msgid "Connection to server lost"
 msgstr "Anslutningen till servern förlorades"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:760
+#: src/kvirc/kernel/KviIrcConnection.cpp:784
 msgid "Connection to server established"
 msgstr "Anslutning till servern etablerad"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:803
-#: src/kvirc/kernel/KviIrcConnection.cpp:832
+#: src/kvirc/kernel/KviIrcConnection.cpp:827
+#: src/kvirc/kernel/KviIrcConnection.cpp:856
 msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:907
+#: src/kvirc/kernel/KviIrcConnection.cpp:931
 msgid ""
 "The server seems to support the WATCH notify list method, will try to use it"
-msgstr ""
+msgstr "Servern verkar ha stöd för WATCH notify list-metoden, ska försöka använda den"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:959
+#: src/kvirc/kernel/KviIrcConnection.cpp:983
 msgid "Can't resolve local host address, using user supplied one (%Q)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:967
+#: src/kvirc/kernel/KviIrcConnection.cpp:991
 msgid "Can't resolve local host address, using default 127.0.0.1"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:975
+#: src/kvirc/kernel/KviIrcConnection.cpp:999
 msgid "Local host address is %Q"
 msgstr "Lokal värdadress är %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1038
+#: src/kvirc/kernel/KviIrcConnection.cpp:1062
 msgid ""
 "The server reports a hostname differing from what KVIrc set for the local "
 "hostname."
-msgstr ""
+msgstr "Servern rapporterar ett värdnamn som skiljer sig från det som KVIrc angav för det lokala värdnamnet."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1039
+#: src/kvirc/kernel/KviIrcConnection.cpp:1063
 msgid ""
-"This can happen if you use a broken bouncer, the IRC server masks your IP/"
-"Hostname or something weird is happening on the IRC server."
+"This can happen if you use a broken bouncer, the IRC server masks your "
+"IP/Hostname or something weird is happening on the IRC server."
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1061
+#: src/kvirc/kernel/KviIrcConnection.cpp:1085
 msgid ""
 "Here goes your \"broken bouncer hack\": The server has changed the hostname "
 "but I'll ignore the IP address change"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1076
-#: src/kvirc/kernel/KviIrcConnection.cpp:1087
+#: src/kvirc/kernel/KviIrcConnection.cpp:1100
+#: src/kvirc/kernel/KviIrcConnection.cpp:1111
 msgid "The local IP address as seen by the IRC server is %Q"
-msgstr ""
+msgstr "Den lokala IP-adressen som IRC-servern ser är %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1102
+#: src/kvirc/kernel/KviIrcConnection.cpp:1126
 msgid "Can't start the DNS slave thread"
 msgstr "Kan inte starta DNS-slavtråden"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1103
-#: src/kvirc/kernel/KviIrcConnection.cpp:1132
+#: src/kvirc/kernel/KviIrcConnection.cpp:1127
+#: src/kvirc/kernel/KviIrcConnection.cpp:1156
 msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
-msgstr ""
+msgstr "Det går inte att slå upp det lokala värdnamnet som det visas av IRC-servern: %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1111
+#: src/kvirc/kernel/KviIrcConnection.cpp:1135
 msgid "Looking up the local hostname as seen by the IRC server (%Q)"
-msgstr ""
+msgstr "Slår upp det lokala värdnamnet som det visas av IRC-servern (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1129
+#: src/kvirc/kernel/KviIrcConnection.cpp:1153
 msgid ""
 "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
 "previously resolved %Q"
-msgstr ""
+msgstr "Det går inte att slå upp det lokala värdnamnet som det visas av IRC-servern: %Q, använder tidigare uppslagna %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1138
+#: src/kvirc/kernel/KviIrcConnection.cpp:1162
 msgid "Local hostname as seen by the IRC server resolved to %Q"
-msgstr ""
+msgstr "Lokalt värdnamn som det visas av IRC-servern har slagits upp till %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1199
+#: src/kvirc/kernel/KviIrcConnection.cpp:1223
 msgid "profile specific option"
-msgstr ""
+msgstr "profilspecifikt alternativ"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1222
+#: src/kvirc/kernel/KviIrcConnection.cpp:1246
 msgid "profile specific alternative option"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1240
+#: src/kvirc/kernel/KviIrcConnection.cpp:1264
 msgid "server specific"
 msgstr "serverspecifik"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1254
+#: src/kvirc/kernel/KviIrcConnection.cpp:1278
 msgid "server specific alternative option"
-msgstr ""
+msgstr "serverspecifikt alternativ"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1270
+#: src/kvirc/kernel/KviIrcConnection.cpp:1294
 msgid "network specific option"
-msgstr ""
+msgstr "nätverksspecifikt alternativ"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1284
+#: src/kvirc/kernel/KviIrcConnection.cpp:1308
 msgid "network specific alternative option"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1302
+#: src/kvirc/kernel/KviIrcConnection.cpp:1326
 msgid "primary nickname specified in options"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1313
+#: src/kvirc/kernel/KviIrcConnection.cpp:1337
 msgid "alternative nickname specified in options"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1324
+#: src/kvirc/kernel/KviIrcConnection.cpp:1348
 msgid "second alternative nickname specified in options"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1335
+#: src/kvirc/kernel/KviIrcConnection.cpp:1359
 msgid "third alternative nickname specified in options"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1369
+#: src/kvirc/kernel/KviIrcConnection.cpp:1393
 msgid "random nickname"
 msgstr "slumpmässigt smeknamn"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1402
+#: src/kvirc/kernel/KviIrcConnection.cpp:1426
 msgid "Using server specific username (%Q)"
-msgstr ""
+msgstr "Använder serverspecifikt användarnamn (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1410
+#: src/kvirc/kernel/KviIrcConnection.cpp:1434
 msgid "Using network specific username (%Q)"
-msgstr ""
+msgstr "Använder nätverksspecifikt användarnamn (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1433
+#: src/kvirc/kernel/KviIrcConnection.cpp:1457
 msgid "connection specific"
 msgstr "anslutningsspecifik"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1443
+#: src/kvirc/kernel/KviIrcConnection.cpp:1467
 msgid "Using %1 as nickname"
 msgstr "Använder %1 som smeknamn"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1457
+#: src/kvirc/kernel/KviIrcConnection.cpp:1481
 msgid "Using server specific real name (%Q)"
-msgstr ""
+msgstr "Använder serverspecifikt riktigt namn (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1465
+#: src/kvirc/kernel/KviIrcConnection.cpp:1489
 msgid "Using network specific real name (%Q)"
-msgstr ""
+msgstr "Använder nätverksspecifikt riktigt namn (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1484
+#: src/kvirc/kernel/KviIrcConnection.cpp:1508
 msgid "Using connection specific password (%Q)"
-msgstr ""
+msgstr "Använder anslutningsspecifikt lösenord (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1495
+#: src/kvirc/kernel/KviIrcConnection.cpp:1519
 msgid "Using server specific password (%Q)"
-msgstr ""
-
-#: src/kvirc/kernel/KviIrcConnection.cpp:1506
-msgid "Using network specific password (%Q)"
-msgstr ""
+msgstr "Använder serverspecifikt lösenord (%Q)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1530
+msgid "Using network specific password (%Q)"
+msgstr "Använder nätverksspecifikt lösenord (%Q)"
+
+#: src/kvirc/kernel/KviIrcConnection.cpp:1554
 msgid "Logging in as %Q!%Q :%Q"
 msgstr "Loggar in som %Q!%Q :%Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1622
+#: src/kvirc/kernel/KviIrcConnection.cpp:1646
 msgid "Executing scheduled network specific \"on connect\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1630
+#: src/kvirc/kernel/KviIrcConnection.cpp:1654
 msgid "Executing scheduled server specific \"on connect\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1638
+#: src/kvirc/kernel/KviIrcConnection.cpp:1662
 msgid "Executing scheduled identity specific \"on connect\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1768
+#: src/kvirc/kernel/KviIrcConnection.cpp:1792
 #, c-format
-msgid "The server refused the suggested nickname (%s) and named you %s instead"
-msgstr ""
+msgid ""
+"The server refused the suggested nickname (%s) and named you %s instead"
+msgstr "Servern nekade det föreslagna smeknamnet (%s) och gav dig namnet %s istället"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1776
+#: src/kvirc/kernel/KviIrcConnection.cpp:1800
 msgid "Login operations complete, happy ircing!"
 msgstr "Inloggningsåtgärder färdiga, ha det så kul på IRC!"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1785
+#: src/kvirc/kernel/KviIrcConnection.cpp:1809
 msgid "Executing scheduled network specific \"on login\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1793
+#: src/kvirc/kernel/KviIrcConnection.cpp:1817
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1801
+#: src/kvirc/kernel/KviIrcConnection.cpp:1825
 msgid "Executing scheduled identity specific \"on login\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1814
+#: src/kvirc/kernel/KviIrcConnection.cpp:1838
 msgid "Setting configured user mode"
-msgstr ""
+msgstr "Ställer in konfigurerat användarläge"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1888
+#: src/kvirc/kernel/KviIrcConnection.cpp:1912
 msgid "Auto-joining network specific channels"
-msgstr ""
+msgstr "Går automatiskt in i nätverksspecifika kanaler"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1906
+#: src/kvirc/kernel/KviIrcConnection.cpp:1930
 msgid "Auto-joining server specific channels"
-msgstr ""
+msgstr "Går automatiskt in i serverspecifika kanaler"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1985
+#: src/kvirc/kernel/KviIrcConnection.cpp:2009
 msgid "Updating away state for channel %Q"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:298
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:313
 msgid "O: Local IRC Operator (locop)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:301
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:369
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:425
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:524
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:625
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:316
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:384
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:440
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:556
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:657
 msgid "a: Server administrator"
 msgstr "a: Serveradministratör"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:304
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:319
 msgid "c: Recipient for cconn messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:307
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:322
 msgid "d: Recipient for server debug notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:310
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:325
 msgid "f: Recipient for full server notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:316
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:331
 msgid "k: Recipient for server KILL messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:319
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:334
 msgid "n: Recipient for nick changes"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:322
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:337
 msgid "o: IRC Operator (oper)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:325
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:340
 msgid ""
-"r: User with restricted connection (or recipient for messages about rejected "
-"bots)"
+"r: User with restricted connection (or recipient for messages about rejected"
+" bots)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:328
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:343
 msgid "s: Recipient for server notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:331
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:346
 msgid "w: Recipient for WALLOPS messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:334
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:349
 msgid "y: Recipient for spy notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:337
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:352
 msgid "z: Recipient for oper WALLOP messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:348
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:419
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:363
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:434
 msgid "D: Deaf"
 msgstr "D: Döv"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:351
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:736
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:366
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:768
 msgid "F: Recipient for far connect/quit notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:354
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:369
 msgid "G: Only accept private messages from users in common channels"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:357
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:610
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:651
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1041
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:372
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:642
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:683
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1073
 msgid "H: Hide oper status"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:360
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:463
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:590
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:619
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:660
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:804
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1050
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:375
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:478
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:622
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:651
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:692
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:836
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1082
 msgid "R: Only receive private messages from registered nicks"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:363
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:807
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:378
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:839
 msgid "S: Connected over SSL"
 msgstr "S: Ansluten över SSL"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:366
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:381
 msgid "W: Connected over WEBIRC"
 msgstr "W: Ansluten över WEBIRC"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:372
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:428
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:387
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:443
 msgid "b: Recipient for bot/join flood warnings"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:375
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:390
 msgid "e: Recipient for server introduction and split notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:378
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:431
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:943
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:393
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:446
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:975
 msgid "f: Recipient for full I-Line notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:381
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:434
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:396
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:449
 msgid "g: Only allow accepted clients to message you"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:384
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:831
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:399
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:863
 msgid "j: Recipient for rejected client notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:387
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:437
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:402
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:452
 msgid "l: Recipient for LOCOPS"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:390
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:687
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:405
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:719
 msgid "p: Channels hidden from WHOIS"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:393
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:408
 msgid "q: Idle time hidden from WHOIS"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:396
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:573
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:693
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:775
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:840
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1029
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:411
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:605
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:725
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:807
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:872
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1061
 msgid "r: Registered"
 msgstr "r: Registrerad"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:399
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:414
 msgid "u: Recipient for unauthorized client notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:402
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:478
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:576
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:702
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:778
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1032
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:417
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:493
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:608
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:734
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:810
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1064
 msgid "x: Host hidden"
-msgstr ""
+msgstr "x: Värden är dold"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:405
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:420
 msgid "y: Can see stats/links/admin requests"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:416
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:503
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:866
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:431
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:535
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:898
 msgid "C: Prevent CTCPs"
-msgstr ""
+msgstr "C: Förhindra CTCP"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:422
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:437
 msgid "Z: Recipient for oper spy notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:440
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:455
 msgid "r: Recipient for rejected client notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:443
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:458
 msgid "u: Recipient for unauthorised client notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:446
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:461
 msgid "x: Recipient for remote server connection and split notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:449
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:976
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:464
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1008
 msgid "z: Recipient for OPERWALL messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:460
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:902
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:475
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:934
 msgid "Q: Prevents you from being affected by channel forwarding"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:466
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:663
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:742
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:481
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:695
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:774
 msgid "S: Network service"
 msgstr "S: Nätverkstjänst"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:469
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:484
 msgid "Z: Connected over SSL"
 msgstr "Z: Ansluten över SSL"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:472
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:487
 msgid "h: Host hidden"
-msgstr ""
+msgstr "h: Värden är dold"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:475
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:490
 msgid "p: Enable oper overrides"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:489
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:504
 msgid "O: IRC Help Operator"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:492
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:507
 msgid "h: Marks you as a helper in /stats p"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:506
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:613
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:657
-msgid "N: Network administrator"
-msgstr "N: Nätverksadministratör"
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:509
-msgid "U: Network service"
-msgstr ""
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:512
-msgid "X: Recipient for new server introduction and split messages"
-msgstr ""
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:515
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:544
-msgid "w: Recipient for server WALLOPS"
-msgstr ""
-
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:518
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:547
-msgid "z: Recipient for oper WALLOPS"
-msgstr ""
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:521
-msgid "y: Recipient for notices on WHOIS"
-msgstr ""
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:527
-msgid "q: Services administrator, can use SQUIT"
-msgstr ""
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:538
-msgid "C: Recipient for far connect/quit notices"
-msgstr ""
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:541
-msgid "P: Network service"
-msgstr ""
-
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:558
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:590
 msgid "I: Idle time hidden"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:561
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:678
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1017
-msgid "d: Deaf"
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:521
+msgid "M: Bypass g mode (oper only)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:564
-msgid "g: Recipient for server debug notices"
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:524
+msgid "u: Receive filtered messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:567
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1026
-msgid "k: Network service"
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:538
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:645
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:689
+msgid "N: Network administrator"
+msgstr "N: Nätverksadministratör"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:541
+msgid "U: Network service"
+msgstr "U: Nätverkstjänst"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:544
+msgid "X: Recipient for new server introduction and split messages"
+msgstr ""
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:547
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:576
+msgid "w: Recipient for server WALLOPS"
+msgstr ""
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:550
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:579
+msgid "z: Recipient for oper WALLOPS"
+msgstr ""
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:553
+msgid "y: Recipient for notices on WHOIS"
+msgstr ""
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:559
+msgid "q: Services administrator, can use SQUIT"
 msgstr ""
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:570
+msgid "C: Recipient for far connect/quit notices"
+msgstr ""
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:573
+msgid "P: Network service"
+msgstr "P: Nätverkstjänst"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:593
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:710
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1049
+msgid "d: Deaf"
+msgstr "d: Döv"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:596
+msgid "g: Recipient for server debug notices"
+msgstr ""
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:599
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1058
+msgid "k: Network service"
+msgstr "k: Nätverkstjänst"
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:602
 msgid "n: Channels hidden from WHOIS"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:587
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:616
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:619
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:648
 msgid "P: Recipient for notices on WHOIS"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:593
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:622
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:625
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:654
 msgid "X: Special powers"
-msgstr ""
+msgstr "X: Speciella krafter"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:596
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:628
 msgid "h: Host changed"
-msgstr ""
+msgstr "h: Värden ändrades"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:607
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:639
 msgid "F: Disable fake lag"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:636
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:789
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:668
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:821
 msgid "A: Server administrator"
-msgstr ""
+msgstr "A: Serveradministratör"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:639
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1035
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:671
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1067
 msgid "B: Marks as being a bot"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:642
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:674
 msgid "C: Co-Admin"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:645
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:677
 msgid "F: Override filter settings"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:648
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:680
 msgid "G: Filter out bad words"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:654
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:686
 msgid "I: Idle time hidden from WHOIS"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:666
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:698
 msgid "T: Prevent CTCPs"
-msgstr ""
+msgstr "T: Förhindra CTCP"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:669
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:701
 msgid "V: Connected over WebTV"
-msgstr ""
+msgstr "V: Ansluten över WebTV"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:672
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:745
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1056
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:704
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:777
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1088
 msgid "W: Recipient for notices on WHOIS"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:675
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:813
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:707
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:845
 msgid "a: Services administrator"
-msgstr ""
+msgstr "a: Tjänsteadministratör"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:681
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:713
 msgid "g: Can send & read LOCOPS and GLOBOPS"
-msgstr ""
+msgstr "g: Kan skicka och läsa LOCOPS och GLOBOPS"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:684
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:763
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:828
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1023
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:716
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:795
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:860
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1055
 msgid "h: Available for help (helpop)"
-msgstr ""
+msgstr "h: Tillgänglig för hjälp (helpop)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:690
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:722
 msgid "q: Immune to kicks (except U-Line)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:696
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:728
 msgid "t: Using a vhost"
 msgstr "t: Använder en vhost"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:699
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:731
 msgid "v: Recipient for infected DCC SEND rejection notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:705
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:737
 msgid "z: Connected over SSL"
 msgstr "z: Ansluten över SSL"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:716
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:748
 msgid "D: Only receive private messages from opers, servers, or services"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:719
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:751
 msgid "Z: Only receive private messages from users with SSL"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:730
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:762
 msgid "C: Can see CHATOPS notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:733
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:765
 msgid "D: Has seen DCCALLOW warning message"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:739
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:771
 msgid "P: Services administrator"
-msgstr ""
+msgstr "P: Tjänsteadministratör"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:748
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:780
 msgid "Z: Services root administrator"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:751
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:783
 msgid "a: Services operator"
-msgstr ""
+msgstr "a: Tjänsteoperatör"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:754
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:819
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:786
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:851
 msgid "e: Recipient for blocked DCC notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:757
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:789
 msgid "f: Recipient for excess flood notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:760
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:825
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:792
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:857
 msgid "g: Recipient for GLOBOPS notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:766
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:798
 msgid "m: Recipient for spam warning notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:769
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:801
 msgid "n: Recipient for NETINFO and routing notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:772
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:804
 msgid "p: Protected IRC operator"
-msgstr ""
+msgstr "p: Skyddad IRC-operatör"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:792
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:824
 msgid "C: Only accept private messages from users in common channels"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:795
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:827
 msgid "F: Can bypass the IRCd's recvq throttling"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:798
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:830
 msgid "I: Hide oper status"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:801
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:833
 msgid "K: Can see U:lined kill messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:810
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:842
 msgid "X: Squelch without notice"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:816
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:848
 msgid "b: Can see CHATOPS notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:822
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:854
 msgid "f: Recipient for flood warnings"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:834
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:866
 msgid "m: Recipient for spambot notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:837
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:869
 msgid "n: Recipient for routing notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:843
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:875
 msgid "s: Recipient for server KILL messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:846
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:878
 msgid "x: Squelch with notice"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:849
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:881
 msgid "y: Can see certain information requests (e.g. /stats)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:860
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:892
 msgid "A: Can see all servers and IP addresses"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:863
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:895
 msgid ""
 "B: Allows the use of SETHOST, SETNAME, and SETIDENT commands on other people"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:869
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:901
 msgid "D: Allows the use of DIE and RESTART"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:872
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:904
 msgid "E: Only receive private messages from registered nicks"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:875
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:907
 msgid "F: Immune to flood protection"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:878
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:910
 msgid "G: Allows the use of KILL for users on remote servers"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:881
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:913
 msgid "H: Allows the use of REHASH"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:884
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:916
 msgid "I: Prevents you from receiving INVITEs"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:887
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:919
 msgid "K: Allows the use of KLINE"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:890
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:922
 msgid "L: Allows the use of 4-argument LUSERS to force a recount"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:893
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:925
 msgid "M: Allows the use of NOTICE based on mask"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:896
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:928
 msgid "N: Can override Q-Lines"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:899
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:931
 msgid "P: Allows the use of SETHOST, SETIDENT and SETNAME"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:905
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:937
 msgid "R: Allows the use of CONNECT, SQUIT, and HTM"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:908
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:940
 msgid "S: Allows the use of remotely running server commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:911
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:943
 msgid "T: Allows you to appear in /stats p"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:914
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:946
 msgid "U: Allows the use of UNKLINE"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:917
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:949
 msgid ""
 "V: Allows the use of MAP, LINKS, as well as receiving connection information"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:919
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:951
 msgid "W: Allows the ability to send WALLOPS"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:922
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:954
 msgid "X: Grants access to experimental features"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:925
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:957
 msgid "Y: Displays extra information during netjoins"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:928
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:960
 msgid "Z: Allows the ability to send OPERWALL messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:931
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:963
 msgid "a: Can see all users and channels"
-msgstr ""
+msgstr "a: Kan se alla användare och kanaler"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:934
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:966
 msgid "b: Recipient for spam warning notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:937
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:969
 msgid "c: Recipient for connect and netjoin notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:940
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:972
 msgid "e: Registered"
-msgstr ""
+msgstr "e: Registrerad"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:946
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:978
 msgid "h: Sets user in high priority mode"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:949
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:981
 msgid "j: Allows the use of auto D-Lines"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:952
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:984
 msgid "l: Recipient for new channel creation notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:955
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:987
 msgid "m: Can't be KICKed, DEOPed, or D-Lined"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:958
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:990
 msgid "p: Allows implicit access in all channels, regardless of status"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:961
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:993
 msgid ""
 "r: Recipient for notices on users attempting to use invalid nicks, Q-Lined "
 "or X-Lined nicks"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:964
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:996
 msgid "t: Allows the use of channel logging"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:967
-msgid "u: Allows the ability to join more channels than the default IRCd limit"
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:999
+msgid ""
+"u: Allows the ability to join more channels than the default IRCd limit"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:970
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1002
 msgid "v: Allows the ability to view oper privileges via WHOIS"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:973
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1005
 msgid "x: Allows the ability to see netjoins"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:979
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1011
 msgid "0: Allows the ability to view oper information"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:982
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1014
 msgid "1: Allows the ability to view I-Lines and Y-Lines"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:985
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1017
 msgid "2: Allows the ability to view D-Lines and K-Lines"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:988
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1020
 msgid "3: Allows the ability to view Q-Lines and X-Lines"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:991
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1023
 msgid "4: Allows the ability to use STATS T"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:994
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1026
 msgid "5: Allows the ability to use STATS ?"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:997
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1029
 msgid "9: Allows the use of TESTLINE"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1000
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1032
 msgid "*: Allows the user to grant umodes they have access to to other people"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1003
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1035
 msgid ""
 "@: allows the user to change their host to anything with the SETHOST command"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1014
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1046
 msgid "c: Prevent CTCPs"
-msgstr ""
+msgstr "c: Förhindra CTCP"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1020
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1052
 msgid "g: Server side ignore"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1038
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1070
 msgid "G: Censor bad words"
-msgstr ""
+msgstr "G: Censurera fula ord"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1044
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1076
 msgid "I: Channels hidden from WHOIS"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1047
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1079
 msgid "Q: Marks an IRC operator as invisible from user lists"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1053
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1085
 msgid "S: Strip colors out of private messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1566
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1598
 msgid "Invite exceptions"
 msgstr "Inbjudningsundantag"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1569
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1601
 msgid "Ban masks"
 msgstr "Bannlysningsmasker"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1572
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1604
 msgid "Ban exceptions"
 msgstr "Bannlysningsundantag"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1575
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1607
 msgid "Invite only"
 msgstr "Endast inbjudning"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1578
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1610
 msgid "Key"
 msgstr "Nyckel"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1581
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1613
 msgid "Limited number of users"
 msgstr "Begränsat antal användare"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1584
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1616
 msgid "Moderated"
 msgstr "Modererad"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1587
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1619
 msgid "No external messages"
 msgstr "Inga externa meddelanden"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1590
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1622
 msgid "Channel operators"
 msgstr "Kanaloperatörer"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1593
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1625
 msgid "Private"
 msgstr "Privat"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1596
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1628
 msgid "Secret"
 msgstr "Hemlig"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1599
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1631
 msgid "Topic change restricted"
 msgstr "Ämnesändring begränsat"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1602
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1634
 msgid "Voiced users"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1613
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1762
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1849
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2062
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1645
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1797
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1884
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2097
 msgid "Forbid channel CTCPs"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1616
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1794
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1814
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1923
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1648
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1829
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1849
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1958
 msgid "Moderate non auth users"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1619
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1867
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1975
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2007
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2089
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1651
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1902
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2010
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2042
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2124
 msgid "IRC-Op only channel"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1622
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1649
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1678
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1780
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1873
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1978
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2010
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2021
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2098
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1654
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1681
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1737
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1815
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1908
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2013
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2045
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2056
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2133
 msgid "Only registered nicks can join"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1625
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1826
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1900
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1981
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2030
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2149
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1657
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1861
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1935
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2016
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2065
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2184
 msgid "Need SSL connection to join"
 msgstr "Behöver SSL-anslutning för att gå med i"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1628
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1684
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1722
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1797
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1929
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2104
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1660
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1716
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1757
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1832
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1964
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2139
 msgid "Forbid channel NOTICEs"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1631
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1774
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1879
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1984
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2013
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2116
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1663
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1809
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1914
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2019
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2048
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2151
 msgid "No control codes (colors, bold, ..)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1634
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1829
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1885
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2039
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2128
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1666
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1864
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1920
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2074
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2163
 msgid "Half-operators"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1637
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1894
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2042
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2137
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1669
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1929
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2077
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2172
 msgid "Registered"
 msgstr "Registrerad"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1660
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1692
 msgid "Server administrator only channel"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1663
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1695
 msgid "Allow anyone to forward users to this channel"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1666
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1698
 msgid "Large ban/exempt/invex lists (staff only)"
-msgstr ""
+msgstr "Stora listor över bannlys/undantag/invex (endast för personal)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1669
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1701
 msgid "Disallow kicking opers (staff only)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1672
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1734
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1783
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1949
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2092
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1704
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1769
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1818
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1984
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2127
 msgid "Persistent (staff only)"
 msgstr "Bestående (endast personal)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1675
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1707
 msgid "Block forwarded users"
 msgstr "Blockera vidarebefordrade användare"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1681
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1710
+msgid "Block messages from unregistered users"
+msgstr ""
+
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1713
 msgid "SSL Only"
 msgstr "Endast SSL"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1687
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1820
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1719
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1855
 msgid "Strip color codes"
 msgstr "Ta bort färgkoder"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1690
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1722
 msgid "Forward to another channel on uninvited"
 msgstr "Vidarebefordra till annan kanal vid oinbjuden"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1693
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2056
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1725
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2091
 msgid "Allow anybody to invite"
 msgstr "Tillåt vem som helst att bjuda in"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1696
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1888
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2026
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2131
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1728
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1923
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2061
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2166
 msgid "Join throttling (<num>:<secs>)"
-msgstr ""
+msgstr "Strypning av anslutningar (<num>:<secs>)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1699
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1731
 msgid "Paranoid (disable KNOCK)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1702
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1745
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1832
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1734
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1780
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1867
 msgid "Quiet"
 msgstr "Tyst"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1705
-msgid "Need auth to join channel"
-msgstr "Behöver autentisering för att gå med i kanal"
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1740
+msgid "Unfiltered"
+msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1708
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1748
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1743
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1783
 msgid "Reduced moderation for ops"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1719
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1754
 msgid "Bandwidth Saver"
-msgstr ""
+msgstr "Bandbreddssparare"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1725
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1876
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2113
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1760
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1911
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2148
 msgid "Protected/administrator nicks"
-msgstr ""
+msgstr "Skyddad/administratör smeknamn"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1728
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1763
 msgid "Paranoia"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1731
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1891
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2134
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1766
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1926
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2169
 msgid "Channel owners"
 msgstr "Kanalägare"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1759
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1794
 msgid "Admin password"
 msgstr "Adminlösenord"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1765
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1946
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2065
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1800
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1981
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2100
 msgid "Delay users join to first message"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1768
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1803
 msgid "Registered (staff only)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1771
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1806
 msgid "User password"
 msgstr "Användarlösenord"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1777
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1952
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1812
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1987
 msgid "Contains hidden users (previously +D)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1800
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1911
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1835
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1946
 msgid "No multi-target messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1803
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2045
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1838
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2080
 msgid "Hide QUIT and PART messages"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1817
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1852
 msgid "Block channel notices"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1823
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1858
 msgid "No multi-targets"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1835
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1870
 msgid "Squelch parts/quits"
-msgstr ""
+msgstr "Squelch delar/avslutar"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1846
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1963
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1881
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1998
 msgid "Server/Network/Tech admin only channel"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1852
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2071
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1887
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2106
 msgid "Censor bad words"
 msgstr "Censurera fula ord"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1855
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1966
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2077
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1890
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2001
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2112
 msgid "Forbid /KNOCK"
 msgstr "Förbjud /KNOCK"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1858
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2080
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1893
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2115
 msgid "Redirect on channel full (mode +l)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1861
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1969
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1896
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2004
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2083
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2039
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2118
 msgid "Need auth to speak and change nick"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1864
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1899
 msgid "Forbid nick change"
 msgstr "Förbjud smeknamnsändring"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1870
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2095
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1905
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2130
 msgid "Disallow KICK (unless U-Line)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1882
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1917
 msgid "Flood protection (<num><type>:<secs>)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1897
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2140
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1932
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2175
 msgid "Auditorium: /NAMES and /WHO show only ops"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1914
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1949
 msgid "Forbid ACTIONs from non-ops"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1917
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1952
 msgid "Trusted filter (staff only)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1920
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1955
 msgid "Help operator and above only channel (staff only)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1926
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2101
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1961
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2136
 msgid "Strip colors"
 msgstr "Ta bort färger"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1932
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1972
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1967
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2007
 msgid "No invites"
 msgstr "Inga inbjudningar"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1935
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1970
 msgid "All clients are using SSL (server only)"
 msgstr "Alla klienter använder SSL (endast server)"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1987
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2022
 msgid "Flood limit"
 msgstr "Flood-gräns"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1990
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2025
 msgid "Registered channel"
 msgstr "Registrerad kanal"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2001
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2036
 msgid "Channel visible in LIST"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2033
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2068
 msgid "Permit foreign users without auth to JOIN"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2036
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2071
 msgid "Need op/voice to change nick"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2059
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2094
 msgid "Block messages with too many CAPS"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2068
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2103
 msgid "Limit nick changes (<num>:<secs>)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2074
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2109
 msgid "Disable join after kick (<secs>)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2086
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2121
 msgid "Need auth to change nick"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2107
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2142
 msgid "Channel exemptions"
 msgstr "Kanalundantag"
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2110
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2146
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2145
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2181
 msgid "Channel IRC op"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2119
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2154
 msgid "Delay first message after join by n seconds"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2122
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2157
 msgid "Kick/[*]ban on message flood ([*]<num>:<secs>)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2125
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2160
 msgid "Spam filter"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2143
+#: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:2178
 msgid "Channel access"
 msgstr "Kanalåtkomst"
 
@@ -2976,8 +2980,8 @@ msgstr ""
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:497
 #, c-format
 msgid ""
-"The system-wide IPv6 bind address (%s) is not valid (the interface it refers "
-"to might be down)"
+"The system-wide IPv6 bind address (%s) is not valid (the interface it refers"
+" to might be down)"
 msgstr ""
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:523
@@ -2988,17 +2992,15 @@ msgstr ""
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:532
 #, c-format
 msgid ""
-"The system-wide IPv4 bind address (%s) is not valid (the interface it refers "
-"to might be down)"
+"The system-wide IPv4 bind address (%s) is not valid (the interface it refers"
+" to might be down)"
 msgstr ""
 
 #: src/kvirc/kernel/KviIrcContext.cpp:400
 msgid ""
 "This is the first connection in this IRC context: using the global server "
 "setting"
-msgstr ""
-"Detta är första anslutningen i denna IRC-kontext: använder globala "
-"serverinställningen"
+msgstr "Detta är första anslutningen i denna IRC-kontext: använder globala serverinställningen"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:439
 msgid ""
@@ -3068,7 +3070,7 @@ msgstr "Anslutningen terminerades oväntat. Försöker att återansluta..."
 
 #: src/kvirc/kernel/KviIrcContext.cpp:807
 msgid "Sent QUIT, waiting for the server to close the connection..."
-msgstr ""
+msgstr "Skickade QUIT, väntar på att servern ska stänga anslutningen..."
 
 #: src/kvirc/kernel/KviIrcContext.cpp:834
 msgid "Reconnect attempt aborted"
@@ -3199,9 +3201,7 @@ msgstr "Vi kan acceptera autentiseringsmetod 0 (ingen autentisering)"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:823
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
-msgstr ""
-"Vi kan acceptera autentiseringsmetod 0 (ingen autentisering) eller 2 "
-"(användare/lösenord)"
+msgstr "Vi kan acceptera autentiseringsmetod 0 (ingen autentisering) eller 2 (användare/lösenord)"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:1022
 msgid "Proxy response: auth OK: access granted"
@@ -3236,7 +3236,8 @@ msgstr "Serverns X509-certifikat"
 msgid "The server didn't provide a certificate"
 msgstr "Servern tillhandahöll inte ett certifikat"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1315 src/kvirc/kernel/KviSSLMaster.cpp:107
+#: src/kvirc/kernel/KviIrcSocket.cpp:1315
+#: src/kvirc/kernel/KviSSLMaster.cpp:107
 msgid "Current transmission cipher"
 msgstr ""
 
@@ -3319,9 +3320,13 @@ msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:671
 msgid ""
-"Notify list: \r!n\r%Q\r appears to be online, but the mask [%Q@\r!h\r%Q\r] "
-"does not match (registration mask does not match, or nickname is being used "
-"by someone else)"
+"Notify list: \r"
+"!n\r"
+"%Q\r"
+" appears to be online, but the mask [%Q@\r"
+"!h\r"
+"%Q\r"
+"] does not match (registration mask does not match, or nickname is being used by someone else)"
 msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:678
@@ -3332,8 +3337,10 @@ msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:687
 msgid ""
-"Notify list: Unexpected inconsistency, expected \r!n\r%Q\r in the registered "
-"user DB"
+"Notify list: Unexpected inconsistency, expected \r"
+"!n\r"
+"%Q\r"
+" in the registered user DB"
 msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:701
@@ -3364,8 +3371,10 @@ msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:863
 msgid ""
-"Notify list: \r!n\r%Q\r appears to have gone offline before USERHOST reply "
-"was received, will recheck in the next loop"
+"Notify list: \r"
+"!n\r"
+"%Q\r"
+" appears to have gone offline before USERHOST reply was received, will recheck in the next loop"
 msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:934
@@ -3402,9 +3411,13 @@ msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1188
 msgid ""
-"Notify list: \r!n\r%Q\r appears to be online, but the mask [%Q@\r!h\r%Q\r] "
-"does not match (watch: registration mask does not match, or nickname is "
-"being used by someone else)"
+"Notify list: \r"
+"!n\r"
+"%Q\r"
+" appears to be online, but the mask [%Q@\r"
+"!h\r"
+"%Q\r"
+"] does not match (watch: registration mask does not match, or nickname is being used by someone else)"
 msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1197
@@ -3422,7 +3435,10 @@ msgid "removed from watch list"
 msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1252
-msgid "Notify list: Stopped watching for \r!n\r%Q\r"
+msgid ""
+"Notify list: Stopped watching for \r"
+"!n\r"
+"%Q\r"
 msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1263
@@ -3430,7 +3446,11 @@ msgid "watch"
 msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1271
-msgid "Notify list: \r!n\r%Q\r is offline (watch)"
+msgid ""
+"Notify list: \r"
+"!n\r"
+"%Q\r"
+" is offline (watch)"
 msgstr "Notifieringslista: \r!n\r%Q\r är frånkopplad (watch)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1276
@@ -3463,7 +3483,7 @@ msgstr "Tolkningsfel"
 
 #: src/kvirc/kernel/KviOptions.cpp:709
 msgid "Parser warning"
-msgstr ""
+msgstr "Tolkningsvarning"
 
 #: src/kvirc/kernel/KviOptions.cpp:710
 msgid "Host lookup result"
@@ -3515,7 +3535,7 @@ msgstr "Serverns meddelande för dagen"
 
 #: src/kvirc/kernel/KviOptions.cpp:722
 msgid "Server ping"
-msgstr ""
+msgstr "Serverping"
 
 #: src/kvirc/kernel/KviOptions.cpp:723
 msgid "Join message"
@@ -3651,15 +3671,15 @@ msgstr ""
 
 #: src/kvirc/kernel/KviOptions.cpp:756
 msgid "DCC request"
-msgstr ""
+msgstr "DCC-begäran"
 
 #: src/kvirc/kernel/KviOptions.cpp:757
 msgid "DCC message"
-msgstr ""
+msgstr "DCC-meddelande"
 
 #: src/kvirc/kernel/KviOptions.cpp:758
 msgid "DCC error"
-msgstr ""
+msgstr "DCC-fel"
 
 #: src/kvirc/kernel/KviOptions.cpp:759
 msgid "Nickname problem"
@@ -3731,7 +3751,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviOptions.cpp:776
 msgid "Spam report"
-msgstr ""
+msgstr "Spam-rapport"
 
 #: src/kvirc/kernel/KviOptions.cpp:777
 msgid "ICQ message"
@@ -3899,7 +3919,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviOptions.cpp:818
 msgid "Generic status"
-msgstr ""
+msgstr "Allmän status"
 
 #: src/kvirc/kernel/KviOptions.cpp:819
 msgid "Generic verbose message"
@@ -3951,7 +3971,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviOptions.cpp:831
 msgid "Verbose/Debug"
-msgstr ""
+msgstr "Utförligt/Felsök"
 
 #: src/kvirc/kernel/KviOptions.cpp:832
 msgid "Chan owner status set"
@@ -4037,13 +4057,12 @@ msgstr ""
 msgid ""
 "I can't write to the main configuration file:\n"
 "\t%1\n"
-"Please ensure the directory exists and that you have the proper permissions "
-"before continuing, or else any custom configuration will be lost."
-msgstr ""
+"Please ensure the directory exists and that you have the proper permissions before continuing, or else any custom configuration will be lost."
+msgstr "Jag kan inte skriva till huvudkonfigurationsfilen:\n\t%1\nKontrollera att katalogen finns och att du har behörighet innan du fortsätter, annars går alla anpassade inställningar förlorade."
 
 #: src/kvirc/kernel/KviOptions.cpp:1004
 msgid "Missing absolute directory for the theme information"
-msgstr ""
+msgstr "Saknar absolut katalog för temainformation"
 
 #: src/kvirc/kernel/KviOptions.cpp:1012
 msgid "Failed to create the theme directory"
@@ -4067,11 +4086,11 @@ msgstr ""
 
 #: src/kvirc/kernel/KviOptions.cpp:1246
 msgid "String options (string value)"
-msgstr ""
+msgstr "String-alternativ (strängvärde)"
 
 #: src/kvirc/kernel/KviOptions.cpp:1247
 msgid "Color options (#RRGGBB)"
-msgstr ""
+msgstr "Färgalternativ (#RRGGBB)"
 
 #: src/kvirc/kernel/KviOptions.cpp:1248
 msgid "Mirccolor options (#RRGGBB)"
@@ -4119,7 +4138,7 @@ msgstr "[SSL]:  Version: %c%s"
 #: src/kvirc/kernel/KviSSLMaster.cpp:59
 #, c-format
 msgid "[SSL]:  Bits: %c%d (%d used)"
-msgstr ""
+msgstr "[SSL]:  Bitar: %c%d (%d används)"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:66
 #, c-format
@@ -4204,7 +4223,8 @@ msgstr "[%s]: [SSL]: Använder certifikatfilen %s"
 #: src/kvirc/kernel/KviSSLMaster.cpp:139
 #, c-format
 msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
+"[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file "
+"%s"
 msgstr ""
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:147 src/kvirc/kernel/KviSSLMaster.cpp:173
@@ -4220,7 +4240,8 @@ msgstr "[%s]: [SSL]: Använder privata nyckelfilen %s"
 #: src/kvirc/kernel/KviSSLMaster.cpp:165
 #, c-format
 msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
+"[%s]: [SSL ERROR]: File I/O error while trying to use the private key file "
+"%s"
 msgstr ""
 
 #: src/kvirc/kernel/KviTheme.cpp:113
@@ -4289,8 +4310,8 @@ msgid "Can't load certificate from public key file %s"
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:131
-#: src/modules/trayicon/libkvitrayicon.cpp:285
-#: src/modules/trayicon/libkvitrayicon.cpp:307
+#: src/modules/trayicon/libkvitrayicon.cpp:286
+#: src/modules/trayicon/libkvitrayicon.cpp:308
 msgid "Away from keyboard."
 msgstr "Borta från tangentbordet."
 
@@ -4305,7 +4326,7 @@ msgstr ""
 #: src/kvirc/module/KviModuleManager.cpp:203
 msgid ""
 "This module was compiled for a different KVIrc version and can't be loaded"
-msgstr ""
+msgstr "Denna modul har kompilerats för en annan version av KVIrc och kan inte läsas in"
 
 #: src/kvirc/module/KviModuleManager.cpp:236
 msgid "Failed to execute the init routine"
@@ -4337,12 +4358,26 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:830
 #, c-format
-msgid "Ignoring DCC from \r!nc\r%s\r [%s@\r!h\r%s\r]"
+msgid ""
+"Ignoring DCC from \r"
+"!nc\r"
+"%s\r"
+" [%s@\r"
+"!h\r"
+"%s\r"
+"]"
 msgstr "Ignorerar DCC från \r!nc\r%s\r [%s@\r!h\r%s\r]"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:850
 #, c-format
-msgid "Ignoring CTCP from \r!nc\r%s\r [%s@\r!h\r%s\r]"
+msgid ""
+"Ignoring CTCP from \r"
+"!nc\r"
+"%s\r"
+" [%s@\r"
+"!h\r"
+"%s\r"
+"]"
 msgstr "Ignorerar CTCP från \r!nc\r%s\r [%s@\r!h\r%s\r]"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:997
@@ -4356,7 +4391,14 @@ msgid "Channel CTCP"
 msgstr "Kanal-CTCP"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1009
-msgid "%Q %Q reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgid ""
+"%Q %Q reply from \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q"
 msgstr "%Q %Q svar från \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1039
@@ -4365,11 +4407,14 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1055
 msgid ""
-"%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignored (flood limit "
-"exceeded)"
-msgstr ""
-"%Q %Q%c begäran från \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignorerad (flood-gräns "
-"överstigen)"
+"%Q %Q%c request from \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] (%Q), ignored (flood limit exceeded)"
+msgstr "%Q %Q%c begäran från \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignorerad (flood-gräns överstigen)"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1061
 msgid "ignored (unrecognized)"
@@ -4384,7 +4429,14 @@ msgid "replied"
 msgstr "svarade"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1064
-msgid "%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"
+msgid ""
+"%Q %Q%c request from \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] (%Q), %Q"
 msgstr "%Q %Q%c begäran från \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1102
@@ -4399,7 +4451,14 @@ msgid ""
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1158
-msgid "%Q PING reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %u sec %u msec"
+msgid ""
+"%Q PING reply from \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %u sec %u msec"
 msgstr "%Q PING-svar från \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %u s %u ms"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1450
@@ -4413,7 +4472,14 @@ msgid "The following CTCP ACTION has unrecognized target %Q"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1635
-msgid "CTCP ACTION from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgid ""
+"CTCP ACTION from \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q"
 msgstr "CTCP ACTION från \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1682
@@ -4446,13 +4512,14 @@ msgstr "%1 ändrar avatar till %2"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1815
 #, c-format
-msgid ": No valid local copy of avatar available, requesting one (HTTP GET %s)"
+msgid ""
+": No valid local copy of avatar available, requesting one (HTTP GET %s)"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1824
 msgid ""
-": No valid local copy of avatar available; failed to start an HTTP transfer, "
-"ignoring"
+": No valid local copy of avatar available; failed to start an HTTP transfer,"
+" ignoring"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1834
@@ -4474,11 +4541,25 @@ msgid ": No such nickname in the user database, ignoring the change"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1900
-msgid "Ignoring DCC %S request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"
+msgid ""
+"Ignoring DCC %S request from \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] (%Q %S)"
 msgstr "Ignorerar DCC %S begäran från \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1924
-msgid "Processing DCC %Q request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%s %s)"
+msgid ""
+"Processing DCC %Q request from \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] (%s %s)"
 msgstr "Behandlar DCC %Q begäran från \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%s %s)"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1935
@@ -4490,12 +4571,20 @@ msgid "Unable to process the above request: DCC module may be broken"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:95
-msgid "Received ping from \r!s\r%Q\r (PING %Q), replied pong"
+msgid ""
+"Received ping from \r"
+"!s\r"
+"%Q\r"
+" (PING %Q), replied pong"
 msgstr "Tog emot ping från \r!s\r%Q\r (PING %Q), svarade pong"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:121
 #, c-format
-msgid "Received pong from \r!s\r%s\r (PONG %s)"
+msgid ""
+"Received pong from \r"
+"!s\r"
+"%s\r"
+" (PONG %s)"
 msgstr "Tog emot pong från \r!s\r%s\r (PONG %s)"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:144
@@ -4504,42 +4593,98 @@ msgstr "Server FEL: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:212
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:234
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has user %Q"
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] now has user %Q"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] nu har användare %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:217
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:239
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has host \r!h\r%Q\r"
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] now has host \r"
+"!h\r"
+"%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] nu har värd \r!h\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:222
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:244
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has user@host %Q@\r!h\r%Q\r"
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] now has user@host %Q@\r"
+"!h\r"
+"%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] nu har användare@värd %Q@\r!h\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:280
 msgid "Missing channel parameter in join message"
-msgstr ""
+msgstr "Saknar kanalparameter i join-meddelande"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:318
 msgid "Received a join message for an unknown channel, possible desync"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:352
-msgid "Requesting modes and ban list for \r!c\r%Q\r..."
+msgid ""
+"Requesting modes and ban list for \r"
+"!c\r"
+"%Q\r"
+"..."
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:399
 msgid ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
-msgstr ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] has joined \r"
+"!c\r"
+"%Q\r"
+" [implicit +%c umode change]"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] har gått med i \r!c\r%Q\r [underförstått +%c umode-ändring]"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:405
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r"
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] has joined \r"
+"!c\r"
+"%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] har gått in i \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:418
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] has just joined \r"
+"!c\r"
+"%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] har nyss gått in i \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:449
@@ -4547,27 +4692,72 @@ msgid "Received a part message for an unknown channel, possible desync"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:480
-msgid "You have left channel \r!c\r%Q\r"
+msgid ""
+"You have left channel \r"
+"!c\r"
+"%Q\r"
 msgstr "Du har lämnat kanalen \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:482
-msgid "You have left channel \r!c\r%Q\r: %Q"
+msgid ""
+"You have left channel \r"
+"!c\r"
+"%Q\r"
+": %Q"
 msgstr "Du har lämnat kanalen \r!c\r%Q\r: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:498
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r: %Q"
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] has left \r"
+"!c\r"
+"%Q\r"
+": %Q"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] har lämnat \r!c\r%Q\r: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:502
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r"
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] has left \r"
+"!c\r"
+"%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] har lämnat \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:515
-msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
+msgid ""
+"\r"
+"!nc\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] has just left \r"
+"!c\r"
+"%Q\r"
+": %Q"
 msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] har precis lämnat \r!c\r%Q\r: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:519
-msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r"
+msgid ""
+"\r"
+"!nc\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] has just left \r"
+"!c\r"
+"%Q\r"
 msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] har precis lämnat \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:587
@@ -4577,7 +4767,14 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:647
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:663
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has quit IRC: %Q"
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] has quit IRC: %Q"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] har avslutat IRC: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:689
@@ -4586,58 +4783,120 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:719
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:731
-msgid "You have been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
-"Du har blivit utsparkad från \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgid ""
+"You have been kicked from \r"
+"!c\r"
+"%Q\r"
+" by \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q"
+msgstr "Du har blivit utsparkad från \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:738
-msgid "Attempting to rejoin \r!c\r%Q\r..."
+msgid ""
+"Attempting to rejoin \r"
+"!c\r"
+"%Q\r"
+"..."
 msgstr "Försöker att gå in i \r!c\r%Q\r igen..."
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:780
 msgid ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] has been kicked from \r!c\r%Q\r by \r!n\r%Q\r "
-"[%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] har blivit utsparkad från \r!c\r%Q\r by \r!"
-"n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] has been kicked from \r"
+"!c\r"
+"%Q\r"
+" by \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] har blivit utsparkad från \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:792
 msgid ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!"
-"n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] har blivit utsparkad från \r!c\r%Q\r by \r!"
-"n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] has just been kicked from \r"
+"!c\r"
+"%Q\r"
+" by \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] har blivit utsparkad från \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:822
 msgid ""
 "The following message appears to be encrypted, but the encryption engine "
 "failed to decode it: %Q"
-msgstr ""
-"Följande meddelande verkar vara krypterat men krypteringsmotorn misslyckades "
-"med att avkoda det: %Q"
+msgstr "Följande meddelande verkar vara krypterat men krypteringsmotorn misslyckades med att avkoda det: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:945
-msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgid ""
+"Ignoring query-PRIVMSG from \r"
+"!nc\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1017
 msgid ""
-"Spam PRIVMSG from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
-msgstr ""
+"Spam PRIVMSG from \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q (matching spamword \"%s\")"
+msgstr "Spam PRIVMSG från !n %Q [%Q@ !h %Q ]: %Q (matchar spamordet \"%s\")"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1177
-msgid "Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgid ""
+"Ignoring channel-PRIVMSG from \r"
+"!nc\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q"
 msgstr "Ignorerar kanal-PRIVMSG från \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1293
-msgid "Ignoring NOTICE from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgid ""
+"Ignoring NOTICE from \r"
+"!nc\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q"
 msgstr "Ignorerar NOTICE från \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1347
 msgid "NickServ requests authentication, executing scheduled command"
-msgstr ""
+msgstr "NickServ begär autentisering, kör schemalagt kommando"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1350
 msgid ""
@@ -4647,21 +4906,43 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1461
 msgid ""
-"Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
-msgstr ""
+"Spam notice from \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q (matching spamword \"%Q\")"
+msgstr "Spam-meddelande från !n %Q [%Q@ !h %Q ]: %Q (matchar spamordet \"%Q\")"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1701
 msgid "Received a topic message for an unknown channel, possible desync"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1742
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] has changed topic to \"%Q%c\""
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] har ändrat ämnet till \"%Q%c\""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1782
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1838
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1861
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] is now known as \r"
+"!n\r"
+"%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] är nu känd som \r!n\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1797
@@ -4671,22 +4952,41 @@ msgstr "Du har ändrat ditt smeknamn till %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1822
 msgid ""
-"The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!"
-"h\r%Q\r] changed their nickname to \r!n\r%Q\r"
+"The target of this query was lost and has been found when \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] changed their nickname to \r"
+"!n\r"
+"%Q\r"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1832
 msgid ""
-"The recent nickname change from \r!n\r%Q\r to \r!n\r%Q\r caused a query "
-"collision: merging output"
+"The recent nickname change from \r"
+"!n\r"
+"%Q\r"
+" to \r"
+"!n\r"
+"%Q\r"
+" caused a query collision: merging output"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1841
 msgid "End of merged output"
-msgstr ""
+msgstr "Slut på sammanslagna utdata"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1897
-msgid "Ignoring invite from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
+msgid ""
+"Ignoring invite from \r"
+"!nc\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]"
 msgstr "Ignorerar inbjudan från \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1911
@@ -4698,7 +4998,17 @@ msgid "double-click the channel name to join"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1912
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] invites you to channel \r!c\r%Q\r (%Q)"
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] invites you to channel \r"
+"!c\r"
+"%Q\r"
+" (%Q)"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] bjuder in dig till kanalen \r!c\r%Q\r (%Q)"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1921
@@ -4706,8 +5016,15 @@ msgid "Received an invite message directed to another nick, possible desync"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1940
-msgid "WALLOPS from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
+msgid ""
+"WALLOPS from \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q"
+msgstr "WALLOPS från \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2001
 #, c-format
@@ -4719,7 +5036,11 @@ msgid "Received a mode change for an unknown channel, possible desync"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2131
-msgid "%Q [%Q@%Q] has set channel key to \"\r!m-k %Q\r%Q\r\""
+msgid ""
+"%Q [%Q@%Q] has set channel key to \"\r"
+"!m-k %Q\r"
+"%Q\r"
+"\""
 msgstr "%Q [%Q@%Q] har ställt in kanalnyckel till \"\r!m-k %Q\r%Q\r\""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2135
@@ -4727,7 +5048,10 @@ msgid "%Q [%Q@%Q] has unset the channel key"
 msgstr "%Q [%Q@%Q] har tagit bort kanalnyckeln"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2164
-msgid "%Q [%Q@%Q] has set channel \r!m-l\rlimit to %Q\r"
+msgid ""
+"%Q [%Q@%Q] has set channel \r"
+"!m-l\r"
+"limit to %Q\r"
 msgstr "%Q [%Q@%Q] har ställt in kanal \r!m-l\rgräns till %Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2168
@@ -4737,7 +5061,10 @@ msgstr "%Q [%Q@%Q] har tagit bort kanalgränsen"
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2196
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2287
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2312
-msgid "%Q [%Q@%Q] has set mode %c%c \r!n\r%Q\r"
+msgid ""
+"%Q [%Q@%Q] has set mode %c%c \r"
+"!n\r"
+"%Q\r"
 msgstr "%Q [%Q@%Q] har ställt in läget %c%c \r!n\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2208
@@ -4747,7 +5074,10 @@ msgstr "%Q [%Q@%Q] har ställt in läget %c%c \r!n\r%Q\r"
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2452
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2481
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2510
-msgid "%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"
+msgid ""
+"%Q [%Q@%Q] has set channel \r"
+"!m%c%c\r"
+"mode %c%c\r"
 msgstr "%Q [%Q@%Q] har ställt in kanal \r!m%c%c\rläget %c%c\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2259
@@ -4756,7 +5086,10 @@ msgstr "%Q [%Q@%Q] har ställt in kanal \r!m%c%c\rläget %c%c\r"
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2430
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2459
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2488
-msgid "%Q [%Q@%Q] has set mode %c%c \r!m%c%c %Q\r%Q\r"
+msgid ""
+"%Q [%Q@%Q] has set mode %c%c \r"
+"!m%c%c %Q\r"
+"%Q\r"
 msgstr "%Q [%Q@%Q] har ställt in läget %c%c \r!m%c%c %Q\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2540
@@ -4783,7 +5116,15 @@ msgstr ""
 msgid "Currently enabled capabilities: %Q"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2637
+#: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2644
+msgid "Received new capability message: %Q"
+msgstr ""
+
+#: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2653
+msgid "Received deleted capability message: %Q"
+msgstr ""
+
+#: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2656
 msgid "Received unknown extended capability message: %Q %Q"
 msgstr ""
 
@@ -4791,12 +5132,11 @@ msgstr ""
 #, c-format
 msgid ""
 "One or more standard mode flags are missing in the server available modes.\n"
-"This is caused either by a non RFC1459-compliant IRC daemon or a broken "
-"server reply.\n"
+"This is caused either by a non RFC1459-compliant IRC daemon or a broken server reply.\n"
 "Server umodes seem to be '%s' and channel modes seem to be '%s'.\n"
 "Ignoring this reply and assuming that the basic set of modes is available.\n"
 "If you have strange problems, try changing the server."
-msgstr ""
+msgstr "En eller flera standardlägesflaggor saknas i de tillgängliga lägena på servern.\nDetta orsakas antingen av en IRC-daemon som inte är kompatibel med RFC1459 eller av ett felaktigt svar från servern.\nServerns umodes verkar vara '%s' och kanalernas lägen verkar vara '%s'.\nIgnorerar detta svar och antar att de grundläggande lägena är tillgängliga.\nOm du har konstiga problem, prova att byta server."
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:167
 msgid "Available user modes:"
@@ -4816,7 +5156,7 @@ msgstr ": Okänt kanalläge"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:215
 msgid "Server %Q version %S supporting user modes '%S' and channel modes '%S'"
-msgstr ""
+msgstr "Server %Q version %S med stöd för användarlägena \"%S\" och kanallägena \"%S"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:305
 msgid "This server supports the WATCH notify list method, it will be used"
@@ -4838,7 +5178,7 @@ msgstr ""
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:396
 #, c-format
 msgid "This server supports: %s"
-msgstr ""
+msgstr "Denna server stöder: %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:416
 #, c-format
@@ -4850,18 +5190,25 @@ msgid "%Q is your unique ID"
 msgstr "%Q är ditt unika ID"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:467
-msgid "End of NAMES for \r!c\r%Q\r"
-msgstr ""
+msgid ""
+"End of NAMES for \r"
+"!c\r"
+"%Q\r"
+msgstr "Slut på NAMES för \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:564
-msgid "NAMES for \r!c\r%Q\r: %Q"
-msgstr ""
+msgid ""
+"NAMES for \r"
+"!c\r"
+"%Q\r"
+": %Q"
+msgstr "NAMES för \r!c\r%Q\r: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:589
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
-msgstr ""
+msgstr "Följande meddelande verkar vara krypterat, men krypteringsmotorn kunde inte avkoda det: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:625
 msgid "(unknown)"
@@ -4872,7 +5219,11 @@ msgid "Channel topic is: %Q"
 msgstr "Kanalämnet är: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:634
-msgid "Topic for \r!c\r%Q\r is: %Q"
+msgid ""
+"Topic for \r"
+"!c\r"
+"%Q\r"
+" is: %Q"
 msgstr "Ämnet för \r!c\r%Q\r är: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:649
@@ -4880,7 +5231,10 @@ msgid "No channel topic is set"
 msgstr "Inget kanalämne är inställt"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:654
-msgid "No topic is set for channel \r!c\r%Q\r"
+msgid ""
+"No topic is set for channel \r"
+"!c\r"
+"%Q\r"
 msgstr "Inget ämne är inställt för kanalen \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:710
@@ -4892,19 +5246,35 @@ msgid "Topic was set by %Q"
 msgstr "Ämnet ställdes in av %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:721
-msgid "Topic for \r!c\r%Q\r was set by %Q on %Q"
+msgid ""
+"Topic for \r"
+"!c\r"
+"%Q\r"
+" was set by %Q on %Q"
 msgstr "Ämnet för \r!c\r%Q\r ställdes in av %Q den %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:726
-msgid "Topic for \r!c\r%Q\r was set by %Q"
+msgid ""
+"Topic for \r"
+"!c\r"
+"%Q\r"
+" was set by %Q"
 msgstr "Ämnet för \r!c\r%Q\r ställdes in av %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:747
-msgid "Channel mode for \r!c\r%Q\r is %s"
+msgid ""
+"Channel mode for \r"
+"!c\r"
+"%Q\r"
+" is %s"
 msgstr "Kanalläge för \r!c\r%Q\r är %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:752
-msgid "User mode for \r!n\r%Q\r is %s"
+msgid ""
+"User mode for \r"
+"!n\r"
+"%Q\r"
+" is %s"
 msgstr "Användarläget för \r!n\r%Q\r är %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:784
@@ -4912,7 +5282,8 @@ msgstr "Användarläget för \r!n\r%Q\r är %s"
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:867
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3088
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3115
-#: src/kvirc/ui/KviChannelWindow.cpp:1942 src/modules/links/LinksWindow.cpp:326
+#: src/kvirc/ui/KviChannelWindow.cpp:1942
+#: src/modules/links/LinksWindow.cpp:326
 msgid "(Unknown)"
 msgstr "(Okänt)"
 
@@ -4920,7 +5291,14 @@ msgstr "(Okänt)"
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:878
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3098
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3125
-msgid "%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"
+msgid ""
+"%Q for \r"
+"!c\r"
+"%Q\r"
+": \r"
+"!m-%c\r"
+"%Q\r"
+" (set by %Q on %Q)"
 msgstr "%Q för \r!c\r%Q\r: \r!m-%c\r%Q\r (inställt av %Q den %Q)"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:808
@@ -4929,8 +5307,11 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:824
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:844
-msgid "End of channel %Q for \r!c\r%Q\r"
-msgstr ""
+msgid ""
+"End of channel %Q for \r"
+"!c\r"
+"%Q\r"
+msgstr "Slut på kanal %Q för \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:824
 msgid "ban list"
@@ -4950,7 +5331,7 @@ msgstr "ägarlista"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:852
 msgid "protected/admin list"
-msgstr ""
+msgstr "skyddad/admin lista"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:853
 msgid "reop list"
@@ -5002,24 +5383,38 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:988
 msgid ""
-"WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, "
-"%cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
-"name%c: %Q"
+"WHO entry for %c\r"
+"!n\r"
+"%Q\r"
+"%c [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %cChannel%c: \r"
+"!c\r"
+"%Q\r"
+", %cServer%c: \r"
+"!s\r"
+"%Q\r"
+", %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name%c: %Q"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1146
 msgid "End of WHO list for %Q"
-msgstr ""
+msgstr "Slutet på WHO-listan för %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1164
 msgid ""
-"The server is refusing all the login nicknames: giving up, you must send the "
-"nickname manually"
-msgstr ""
+"The server is refusing all the login nicknames: giving up, you must send the"
+" nickname manually"
+msgstr "Servern vägrar alla inloggningssmeknamn: ger upp, du måste skicka smeknamnet manuellt"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1177
-msgid "No way to login as \r!n\r%1\r: the server said '%2: %3'"
-msgstr ""
+msgid ""
+"No way to login as \r"
+"!n\r"
+"%1\r"
+": the server said '%2: %3'"
+msgstr "Det går inte att logga in som \r!n\r%1\r: servern sa '%2: %3'"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1182
 msgid "Trying to use %1 as nickname"
@@ -5027,7 +5422,7 @@ msgstr "Försöker att använda %1 som smeknamn"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1201
 msgid "%Q is an unknown server command"
-msgstr ""
+msgstr "%Q är ett okänt serverkommando"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1263
 msgid "%Q is already in %Q"
@@ -5046,7 +5441,11 @@ msgid "Tip: %Q"
 msgstr "Tips: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1458
-msgid "Tip for \r!c\r%Q\r: %Q"
+msgid ""
+"Tip for \r"
+"!c\r"
+"%Q\r"
+": %Q"
 msgstr "Tips för \r!c\r%Q\r: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1473
@@ -5056,30 +5455,66 @@ msgstr "%Q kräver SSL för att gå med"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1493
 msgid "End of help about %Q"
-msgstr ""
+msgstr "Slut på hjälp om %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1548
-msgid "%c\r!n\r%Q\r%c is away: %Q"
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c is away: %Q"
 msgstr "%c\r!n\r%Q\r%c är borta: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1605
-msgid "%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c is %c\r"
+"!n\r"
+"%Q\r"
+"!%Q@\r"
+"!h\r"
+"%Q\r"
+"%c"
 msgstr "%c\r!n\r%Q\r%c är %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1610
-msgid "%c\r!n\r%Q\r%c's real name: %Q"
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c's real name: %Q"
 msgstr "%c\r!n\r%Q\r%c's riktiga namn: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1631
-msgid "%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c was %c\r"
+"!n\r"
+"%Q\r"
+"!%Q@\r"
+"!h\r"
+"%Q\r"
+"%c"
 msgstr "%c\r!n\r%Q\r%c var %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1635
-msgid "%c\r!n\r%Q\r%c's real name was: %Q"
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c's real name was: %Q"
 msgstr "%c\r!n\r%Q\r%c's riktiga namn var: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1704
-msgid "%c\r!n\r%Q\r%c's channels: %Q"
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c's channels: %Q"
 msgstr "%c\r!n\r%Q\r%c's kanaler: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1741
@@ -5087,51 +5522,102 @@ msgid "Received a broken RPL_WHOISIDLE, can't evaluate the idle time"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1751
-msgid "%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"
-msgstr ""
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c's idle time: %ud %uh %um %us"
+msgstr "%c\r!n\r%Q\r%cs inaktivitetstid: %ud %uh %um %us"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1777
-msgid "%c\r!n\r%Q\r%c's signon time: %Q"
-msgstr ""
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c's signon time: %Q"
+msgstr "%c\r!n\r%Q\r%cs inloggningstid: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1817
-msgid "%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c's server: \r"
+"!s\r"
+"%Q\r"
+" - %Q"
 msgstr "%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1843
-msgid "%c\r!n\r%Q\r%c is authenticated as %Q"
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c is authenticated as %Q"
 msgstr "%c\r!n\r%Q\r%c är autentiserad som %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1861
-msgid "%c\r!n\r%Q\r%c is a registered nickname"
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c is a registered nickname"
 msgstr "%c\r!n\r%Q\r%c är ett registrerat smeknamn"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1897
-msgid "%c\r!n\r%Q\r%c's actual user@host: %Q, actual IP: %Q"
-msgstr ""
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c's actual user@host: %Q, actual IP: %Q"
+msgstr "%c\r!n\r%Q\r%cs faktiska användare@värd: %Q, faktiskt IP: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1903
-msgid "%c\r!n\r%Q\r%c's actual host: %Q"
-msgstr ""
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c's actual host: %Q"
+msgstr "%c\r!n\r%Q\r%cs faktiska värd: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1936
-msgid "%c\r!n\r%Q\r%c's info: %Q"
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c's info: %Q"
 msgstr "%c\r!n\r%Q\r%c's info: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1985
-msgid "%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"
-msgstr ""
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c WHOIS info from \r"
+"!s\r"
+"%Q\r"
+msgstr "%c\r!n\r%Q\r%c WHOIS-info från \r!s\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2003
-msgid "%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"
-msgstr ""
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c WHOWAS info from \r"
+"!s\r"
+"%Q\r"
+msgstr "%c\r!n\r%Q\r%c WHOWAS-info från \r!s\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2067
 msgid "This channel's website is: %Q"
 msgstr "Denna kanals webbsida är: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2073
-msgid "The website for \r!c\r%Q\r is: %Q"
+msgid ""
+"The website for \r"
+"!c\r"
+"%Q\r"
+" is: %Q"
 msgstr "Webbsidan för \r!c\r%Q\r är: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2089
@@ -5143,7 +5629,11 @@ msgid "Channel was created at %Q"
 msgstr "Kanalen skapades %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2119
-msgid "Channel \r!c\r%Q\r was created at %Q"
+msgid ""
+"Channel \r"
+"!c\r"
+"%Q\r"
+" was created at %Q"
 msgstr "Kanalen \r!c\r%Q\r skapades den %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2159
@@ -5192,17 +5682,29 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2440
 #, c-format
-msgid "%c\r!s\r%s\r%c's server info: %s"
+msgid ""
+"%c\r"
+"!s\r"
+"%s\r"
+"%c's server info: %s"
 msgstr "%c\r!s\r%s\r%c's serverinfo: %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2451
 #, c-format
-msgid "%c\r!s\r%s\r%c's administrator is %s"
+msgid ""
+"%c\r"
+"!s\r"
+"%s\r"
+"%c's administrator is %s"
 msgstr "%c\r!s\r%s\r%c's administratör är %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2462
 #, c-format
-msgid "%c\r!s\r%s\r%c's contact address is %s"
+msgid ""
+"%c\r"
+"!s\r"
+"%s\r"
+"%c's contact address is %s"
 msgstr "%c\r!s\r%s\r%c's kontaktadress är %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2477
@@ -5213,7 +5715,11 @@ msgstr "Kunde inte använda kommandot %Q. %Q"
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2508
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2524
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2529
-msgid "\r!n\r%Q\r invited %Q into channel %Q"
+msgid ""
+"\r"
+"!n\r"
+"%Q\r"
+" invited %Q into channel %Q"
 msgstr "\r!n\r%Q\r bjöd in %Q till kanalen %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2614
@@ -5225,16 +5731,28 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2642
 #, c-format
-msgid "%c\r!s\r%s\r%c's information:"
+msgid ""
+"%c\r"
+"!s\r"
+"%s\r"
+"%c's information:"
 msgstr "%c\r!s\r%s\r%c's information:"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2652
 #, c-format
-msgid "End of %c\r!s\r%s\r%c's information"
+msgid ""
+"End of %c\r"
+"!s\r"
+"%s\r"
+"%c's information"
 msgstr "Slut på %c\r!s\r%s\r%c's information"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2663
-msgid "%c\r!s\r%s\r%c's time is %Q"
+msgid ""
+"%c\r"
+"!s\r"
+"%s\r"
+"%c's time is %Q"
 msgstr "%c\r!s\r%s\r%c's tid är %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2712
@@ -5267,7 +5785,11 @@ msgid "Your encoding is now %Q"
 msgstr "Din kodning är nu %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2819
-msgid "%c\r!n\r%Q\r%c's codepage is %Q: %Q"
+msgid ""
+"%c\r"
+"!n\r"
+"%Q\r"
+"%c's codepage is %Q: %Q"
 msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2844
@@ -5281,7 +5803,7 @@ msgstr "%Q kräver fler parametrar"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2939
 msgid "STARTTLS reply received but SSL support is not compiled in: ignoring"
-msgstr ""
+msgstr "STARTTLS-svar mottaget men SSL-stöd är inte inkompilerat: ignorerar"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2994
 msgid "Authenticated as %Q"
@@ -5310,8 +5832,11 @@ msgstr "lägeslistning"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3147
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3167
-msgid "End of channel \"%c\" %Q for \r!c\r%Q\r"
-msgstr ""
+msgid ""
+"End of channel \"%c\" %Q for \r"
+"!c\r"
+"%Q\r"
+msgstr "Slut på kanal \"%c\" %Q för \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3147
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:3167
@@ -5345,7 +5870,7 @@ msgstr "Lägesredigerare"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:828
 msgid "said something recently"
-msgstr ""
+msgstr "sa något nyligen"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:828
 msgid "is talking"
@@ -5465,7 +5990,7 @@ msgstr "Mycket låg aktivitet"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1081
 msgid "Might be low activity"
-msgstr ""
+msgstr "Kan vara låg aktivitet"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1081
 msgid "Low activity"
@@ -5473,15 +5998,15 @@ msgstr "Låg aktivitet"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1083
 msgid "Might be medium activity"
-msgstr ""
+msgstr "Kan vara medelhög aktivitet"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1083
 msgid "Medium activity"
-msgstr ""
+msgstr "Medelhög aktivitet"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1085
 msgid "Might be high activity"
-msgstr ""
+msgstr "Kan vara hög aktivitet"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1085
 msgid "High activity"
@@ -5489,7 +6014,7 @@ msgstr "Hög aktivitet"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1087
 msgid "Might be very high activity"
-msgstr ""
+msgstr "Kan vara mycket hög aktivitet"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1087
 msgid "Very high activity"
@@ -5497,11 +6022,11 @@ msgstr "Mycket hög aktivitet"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1089
 msgid "Might be flooded with messages"
-msgstr ""
+msgstr "Kan vara översvämmad av meddelanden"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1089
 msgid "Flooded with messages"
-msgstr ""
+msgstr "Översvämmad av meddelanden"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1096
 msgid "human"
@@ -5520,25 +6045,25 @@ msgstr " på "
 #: src/kvirc/ui/KviChannelWindow.cpp:1216
 #: src/kvirc/ui/KviChannelWindow.cpp:1403 src/kvirc/ui/KviQueryWindow.cpp:773
 msgid ""
-"The encryption engine was unable to encrypt the current message (%Q): %Q, no "
-"data sent to the server"
+"The encryption engine was unable to encrypt the current message (%Q): %Q, no"
+" data sent to the server"
 msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1823 src/kvirc/ui/KviQueryWindow.cpp:591
 msgid ""
-"The encryption engine was unable to encrypt the current message (%Q): %s, no "
-"data sent to the server"
+"The encryption engine was unable to encrypt the current message (%Q): %s, no"
+" data sent to the server"
 msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1881
 msgid "Sent part request, waiting for reply..."
-msgstr ""
+msgstr "Skickade part-begäran, väntar på svar..."
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1984
 msgid "Channel Modes"
 msgstr "Kanallägen"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:2007 src/kvirc/ui/KviTopicWidget.cpp:486
+#: src/kvirc/ui/KviChannelWindow.cpp:2007 src/kvirc/ui/KviTopicWidget.cpp:488
 msgid "Double-click to edit..."
 msgstr "Dubbelklicka för att redigera..."
 
@@ -5615,32 +6140,31 @@ msgstr "Antagligen borta"
 msgid ""
 "KVIrc can only recognize irc://, irc6://, ircs:// or ircs6:// URL's\n"
 "The URL you provided is invalid. Check spelling and try again"
-msgstr ""
+msgstr "KVIrc kan endast känna igen irc://, irc6://, ircs:// eller ircs6:// URL:er\nDen URL du angav är ogiltig. Kontrollera stavningen och försök igen"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:530 src/kvirc/ui/KviConsoleWindow.cpp:571
-#: src/kvirc/ui/KviMainWindow.cpp:836
+#: src/kvirc/ui/KviMainWindow.cpp:838
 msgid "Confirm Close - KVIrc"
 msgstr "Bekräfta stängning - KVIrc"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:531
 msgid ""
-"You have just attempted to close a console window with an active connection "
-"inside.\n"
+"You have just attempted to close a console window with an active connection inside.\n"
 "Are you sure you wish to terminate the connection?"
-msgstr ""
+msgstr "Du har just försökt stänga ett konsolfönster med en aktiv anslutning.\nÄr du säker på att du vill avsluta anslutningen?"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:533 src/kvirc/ui/KviConsoleWindow.cpp:573
-#: src/kvirc/ui/KviMainWindow.cpp:839
+#: src/kvirc/ui/KviMainWindow.cpp:841
 msgid "&Yes"
 msgstr "&Ja"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:534 src/kvirc/ui/KviConsoleWindow.cpp:574
-#: src/kvirc/ui/KviMainWindow.cpp:840
+#: src/kvirc/ui/KviMainWindow.cpp:842
 msgid "&Always"
 msgstr "A&lltid"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:535 src/kvirc/ui/KviConsoleWindow.cpp:575
-#: src/kvirc/ui/KviMainWindow.cpp:841
+#: src/kvirc/ui/KviMainWindow.cpp:843
 msgid "&No"
 msgstr "&Nej"
 
@@ -5648,7 +6172,7 @@ msgstr "&Nej"
 msgid ""
 "You have just attempted to close the last console window.\n"
 "Are you sure you wish to quit KVIrc?"
-msgstr ""
+msgstr "Du har just försökt stänga det sista konsolfönstret.\nÄr du säker på att du vill avsluta KVIrc?"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1046
 msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
@@ -5702,7 +6226,7 @@ msgstr "Ansluten i"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1327
 msgid "Server idle for"
-msgstr ""
+msgstr "Server inaktiv i"
 
 #: src/kvirc/ui/KviCryptController.cpp:82
 msgid "Cryptography/text transformation"
@@ -5845,13 +6369,13 @@ msgstr ""
 
 #: src/kvirc/ui/KviInput.cpp:249
 msgid ""
-"You're about to send a message with %1 lines of text.<br><br>This warning is "
-"here to prevent you from accidentally pasting and sending a really large, "
+"You're about to send a message with %1 lines of text.<br><br>This warning is"
+" here to prevent you from accidentally pasting and sending a really large, "
 "potentially unedited message from your clipboard.<br><br>Some IRC servers "
 "may also consider %1 lines of text a flood, in which case you will be "
 "disconnected from said server.<br><br>Do you still want the message to be "
 "sent?"
-msgstr ""
+msgstr "Du är på väg att skicka ett meddelande med %1 rader text. <br><br>Denna varning visas för att förhindra att du av misstag klistrar in och skickar ett mycket stort, eventuellt oredigerat meddelande från urklipp. <br><br>Vissa IRC-servrar kan också betrakta %1 rader text som en översvämning, vilket innebär att du kommer att kopplas bort från servern. <br><br>Vill du fortfarande skicka meddelandet?"
 
 #: src/kvirc/ui/KviInput.cpp:256
 msgid "Confirm Sending a Large Message - KVIrc"
@@ -5863,7 +6387,7 @@ msgstr "Alltid"
 
 #: src/kvirc/ui/KviInput.cpp:328
 msgid "Ctrl+Return; submits contents, Alt+Return; hides this editor"
-msgstr ""
+msgstr "Ctrl+Return; skickar innehållet, Alt+Return; döljer denna redigerare"
 
 #: src/kvirc/ui/KviInputEditor.cpp:1089
 msgid "Clipboard"
@@ -5955,11 +6479,11 @@ msgstr "%d matchar: %Q"
 
 #: src/kvirc/ui/KviInputEditor.cpp:2354
 msgid "No matches"
-msgstr ""
+msgstr "Inga matchningar"
 
 #: src/kvirc/ui/KviIrcToolBar.cpp:237
 msgid "IRC context"
-msgstr ""
+msgstr "IRC-kontext"
 
 #: src/kvirc/ui/KviIrcToolBar.cpp:244 src/kvirc/ui/KviIrcToolBar.cpp:344
 #: src/kvirc/ui/KviStatusBar.cpp:720 src/kvirc/ui/KviStatusBarApplet.cpp:244
@@ -5988,7 +6512,7 @@ msgstr "Lagg: <b>%d.%d%d s</b>"
 #: src/kvirc/ui/KviIrcToolBar.cpp:305 src/kvirc/ui/KviStatusBarApplet.cpp:297
 #, c-format
 msgid "Last checked: <b>%d mins %d secs ago</b>"
-msgstr ""
+msgstr "Senast kontrollerad: <b>%d min %d sekunder sedan</b>"
 
 #: src/kvirc/ui/KviIrcToolBar.cpp:309
 msgid "Lag: <b>?.??</b>"
@@ -6120,7 +6644,7 @@ msgstr "Server-URL"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1014
 msgid "Server appears to be a network hub"
-msgstr ""
+msgstr "Servern verkar vara en nätverkshubb"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1016
 msgid "Unknown server"
@@ -6132,19 +6656,19 @@ msgstr ""
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1043
 msgid "You're not an operator: you may not change channel modes"
-msgstr ""
+msgstr "Du är inte en operator: du kan inte ändra kanallägen"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1064 src/kvirc/ui/KviQueryWindow.cpp:158
 msgid "Nothing is known about %1"
-msgstr ""
+msgstr "Ingenting är känt om %1"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1067
 msgid "Nothing is known about %1 (no connection)"
-msgstr ""
+msgstr "Ingenting är känt om %1 (ingen anslutning)"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1100
 #: src/kvirc/ui/KviIrcView_events.cpp:1106 src/kvirc/ui/KviTopicWidget.cpp:202
-#: src/kvirc/ui/KviTopicWidget.cpp:466 src/kvirc/ui/KviTopicWidget.cpp:492
+#: src/kvirc/ui/KviTopicWidget.cpp:468 src/kvirc/ui/KviTopicWidget.cpp:494
 msgid "Channel Topic"
 msgstr "Kanalämne"
 
@@ -6183,11 +6707,11 @@ msgstr "Högerklick: %Q"
 
 #: src/kvirc/ui/KviIrcView_loghandling.cpp:52
 msgid "### Log session terminated ###"
-msgstr ""
+msgstr "### Loggsession avslutad ###"
 
 #: src/kvirc/ui/KviIrcView_loghandling.cpp:225
 msgid "### Log session started ###"
-msgstr ""
+msgstr "### Loggsession startad ###"
 
 #: src/kvirc/ui/KviIrcView_loghandling.cpp:229
 msgid "### Existing data buffer:"
@@ -6215,11 +6739,11 @@ msgstr "Meddelandetyper"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:130
 msgid "Set &All"
-msgstr ""
+msgstr "Ställ in &alla"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:134
 msgid "Set &None"
-msgstr ""
+msgstr "Ställ in &ingen"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:138
 msgid "&Load from..."
@@ -6243,7 +6767,7 @@ msgstr "Jokertecken"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:151
 msgid "RegExp"
-msgstr ""
+msgstr "RegExp"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:154
 msgid "Match:"
@@ -6270,39 +6794,39 @@ msgstr ""
 msgid "Can't open the filter file %Q for writing"
 msgstr ""
 
-#: src/kvirc/ui/KviMainWindow.cpp:837
+#: src/kvirc/ui/KviMainWindow.cpp:839
 msgid "There are active connections, are you sure you wish to quit KVIrc?"
-msgstr ""
-"Det finns aktiva anslutningar. Är du säker på att du vill avsluta KVIrc?"
+msgstr "Det finns aktiva anslutningar. Är du säker på att du vill avsluta KVIrc?"
 
-#: src/kvirc/ui/KviMainWindow.cpp:979
+#: src/kvirc/ui/KviMainWindow.cpp:981
 msgid "Do not show this message again"
 msgstr "Visa inte detta meddelande igen"
 
-#: src/kvirc/ui/KviMainWindow.cpp:980
+#: src/kvirc/ui/KviMainWindow.cpp:982
 msgid ""
-"This will hide the menu bar completely. You can show it again by pressing %1."
+"This will hide the menu bar completely. You can show it again by pressing "
+"%1."
 msgstr ""
 
-#: src/kvirc/ui/KviMainWindow.cpp:982
+#: src/kvirc/ui/KviMainWindow.cpp:984
 msgid "Hide Menu Bar - KVIrc"
 msgstr ""
 
-#: src/kvirc/ui/KviMainWindow.cpp:1031 src/kvirc/ui/KviMainWindow.cpp:1053
+#: src/kvirc/ui/KviMainWindow.cpp:1033 src/kvirc/ui/KviMainWindow.cpp:1055
 msgid "Show %1"
 msgstr "Visa %1"
 
-#: src/kvirc/ui/KviMainWindow.cpp:1081
+#: src/kvirc/ui/KviMainWindow.cpp:1083
 msgid "Customize..."
 msgstr "Anpassa..."
 
 #: src/kvirc/ui/KviMaskEditor.cpp:77
 msgid "Mask Editor - KVIrc"
-msgstr ""
+msgstr "Maskredigerare - KVIrc"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:81
 msgid "Insert a nickname or a mask matching *!*@*"
-msgstr ""
+msgstr "Infoga ett smeknamn eller en mask som matchar *!*@*"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:180
 msgid "Filter:"
@@ -6316,7 +6840,7 @@ msgstr "Använd dubbelklick för att redigera dem"
 msgid "Mask"
 msgstr ""
 
-#: src/kvirc/ui/KviMaskEditor.cpp:198 src/kvirc/ui/KviTopicWidget.cpp:474
+#: src/kvirc/ui/KviMaskEditor.cpp:198 src/kvirc/ui/KviTopicWidget.cpp:476
 msgid "Set by"
 msgstr "Inställt av"
 
@@ -6431,7 +6955,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviQueryWindow.cpp:146
 msgid "Dead query"
-msgstr ""
+msgstr "Död begäran"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:185
 msgid "Query with: %1!%2 (%3)"
@@ -6471,16 +6995,41 @@ msgstr ""
 
 #: src/kvirc/ui/KviQueryWindow.cpp:286
 msgid ""
-"The target of this query has changed from \r!n\r%Q\r [%Q@\r!h\r%Q\r] to \r!"
-"n\r%Q\r [%Q@\r!h\r%Q\r]"
+"The target of this query has changed from \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"] to \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]"
 msgstr ""
 
 #: src/kvirc/ui/KviQueryWindow.cpp:360
-msgid "Common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgid ""
+"Common channels for \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]: %Q"
 msgstr "Vanliga kanaler för \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:365
-msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
+msgid ""
+"No common channels for \r"
+"!n\r"
+"%Q\r"
+" [%Q@\r"
+"!h\r"
+"%Q\r"
+"]"
 msgstr "Inga vanliga kanaler för \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:528
@@ -6577,7 +7126,7 @@ msgstr "Dubbelklicka för att få nätverksinformation"
 
 #: src/kvirc/ui/KviStatusBar.cpp:350
 msgid "Right-click to add / remove applets"
-msgstr ""
+msgstr "Högerklicka för att lägga till / ta bort applets"
 
 #: src/kvirc/ui/KviStatusBar.cpp:391
 msgid "Remove %1"
@@ -6717,7 +7266,7 @@ msgstr "Du har inte kontrollerat än. Ska jag leta efter uppdateringar?"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:815
 msgid "Double-click to check now"
-msgstr ""
+msgstr "Dubbelklicka för att kontrollera nu"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:819
 msgid "Update failed"
@@ -6768,19 +7317,19 @@ msgstr "Förkasta ändringar"
 msgid "Unknown channel topic"
 msgstr "Okänt kanalämne"
 
-#: src/kvirc/ui/KviTopicWidget.cpp:480
+#: src/kvirc/ui/KviTopicWidget.cpp:482
 msgid "Set on"
 msgstr "Inställt"
 
-#: src/kvirc/ui/KviTopicWidget.cpp:494
+#: src/kvirc/ui/KviTopicWidget.cpp:496
 msgid "No topic is set"
 msgstr "Inget ämne inställt"
 
-#: src/kvirc/ui/KviTopicWidget.cpp:496
+#: src/kvirc/ui/KviTopicWidget.cpp:498
 msgid "Double-click to set..."
 msgstr "Dubbelklicka för att ställa in..."
 
-#: src/kvirc/ui/KviTopicWidget.cpp:580
+#: src/kvirc/ui/KviTopicWidget.cpp:582
 msgid "Copy Topic to Clipboard"
 msgstr "Kopiera ämne till urklipp"
 
@@ -6814,7 +7363,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviWebPackageManagementDialog.cpp:150
 msgid "Download selected item"
-msgstr ""
+msgstr "Hämta valt objekt"
 
 #: src/kvirc/ui/KviWebPackageManagementDialog.cpp:212
 msgid "Error"
@@ -6871,15 +7420,15 @@ msgstr "Standard"
 
 #: src/kvirc/ui/KviWindow.cpp:703
 msgid "Smart (Send Local)"
-msgstr ""
+msgstr "Smart (skicka lokalt)"
 
 #: src/kvirc/ui/KviWindow.cpp:705
 msgid "Smart (Send UTF-8)"
-msgstr ""
+msgstr "Smart (Skicka UTF-8)"
 
 #: src/kvirc/ui/KviWindow.cpp:1443
 msgid "Starting last log"
-msgstr ""
+msgstr "Början av last-loggen"
 
 #: src/kvirc/ui/KviWindow.cpp:1510
 msgid "End of log"
@@ -6915,14 +7464,14 @@ msgstr "Beskrivning: %Q"
 
 #: src/modules/action/libkviaction.cpp:113
 msgid "The action \"%1\" is disabled"
-msgstr ""
+msgstr "Åtgärden \"%1\" är inaktiverad"
 
 #: src/modules/action/libkviaction.cpp:118
 #: src/modules/action/libkviaction.cpp:167
 #: src/modules/action/libkviaction.cpp:218
 #: src/modules/action/libkviaction.cpp:272
 msgid "The action \"%1\" doesn't exist"
-msgstr ""
+msgstr "Åtgärden \"%1\" finns inte"
 
 #: src/modules/action/libkviaction.cpp:266
 msgid "The action \"%1\" is a core action and can't be destroyed"
@@ -6956,7 +7505,7 @@ msgid ""
 "\"<b>Browse</b>\" button to select the desired file.<br>The full URL for an "
 "image (including <b>http://</b> or <b>https://</b>) can also be entered "
 "manually."
-msgstr ""
+msgstr "Välj en avatarbild. Du kan ange den fullständiga sökvägen till en lokal fil eller en bild på webben. <br>Om du vill använda en lokal bildfil klickar du på knappen ”<b>Bläddra</b>” för att välja önskad fil. <br>Du kan också ange den fullständiga webbadressen till en bild (inklusive <b>http://</b> eller <b>https://</b>) manuellt."
 
 #: src/modules/avatar/libkviavatar.cpp:102 src/modules/url/libkviurl.cpp:353
 msgid "&OK"
@@ -6969,7 +7518,8 @@ msgid "Internal error: am I not in the user database?"
 msgstr ""
 
 #: src/modules/avatar/libkviavatar.cpp:268
-msgid "Can't set the current avatar to '%Q': failed to start the http transfer"
+msgid ""
+"Can't set the current avatar to '%Q': failed to start the http transfer"
 msgstr ""
 
 #: src/modules/avatar/libkviavatar.cpp:274
@@ -7071,7 +7621,8 @@ msgstr ""
 
 #: src/modules/config/libkviconfig.cpp:570
 #: src/modules/config/libkviconfig.cpp:619
-msgid "An error has occurred while trying to save the config file with ID '%Q'"
+msgid ""
+"An error has occurred while trying to save the config file with ID '%Q'"
 msgstr ""
 
 #: src/modules/config/libkviconfig.cpp:617
@@ -7096,7 +7647,7 @@ msgstr ""
 
 #: src/modules/context/libkvicontext.cpp:709
 msgid "The current context is disconnected"
-msgstr ""
+msgstr "Det aktuella kontexten är frånkopplat"
 
 #: src/modules/context/libkvicontext.cpp:718
 msgid "The specified context's socket is disconnected"
@@ -7137,7 +7688,7 @@ msgstr ""
 
 #: src/modules/file/libkvifile.cpp:118
 msgid "Failed to copy from '%Q' to '%Q'"
-msgstr ""
+msgstr "Misslyckades med att kopiera från '%Q' till '%Q'"
 
 #: src/modules/file/libkvifile.cpp:119
 msgid "Either the source doesn't exist or the destination can not be created"
@@ -7154,7 +7705,7 @@ msgstr ""
 
 #: src/modules/file/libkvifile.cpp:300
 msgid "Can't open file '%1' for writing"
-msgstr ""
+msgstr "Kan inte öppna filen '%1' för skrivning"
 
 #: src/modules/file/libkvifile.cpp:325
 msgid "Error writing bytes to file '%1'"
@@ -7166,19 +7717,19 @@ msgstr ""
 
 #: src/modules/file/libkvifile.cpp:369
 msgid "Failed to rename '%Q' to '%Q'"
-msgstr ""
+msgstr "Misslyckades med att byta namn på '%Q' till '%Q'"
 
 #: src/modules/file/libkvifile.cpp:410
 msgid "Failed to make the directory '%Q'"
-msgstr ""
+msgstr "Misslyckades med att skapa katalogen '%Q'"
 
 #: src/modules/file/libkvifile.cpp:450
 msgid "Failed to remove the file '%Q'"
-msgstr ""
+msgstr "Misslyckades med att ta bort filen '%Q'"
 
 #: src/modules/file/libkvifile.cpp:491
 msgid "Failed to remove the directory '%Q'"
-msgstr ""
+msgstr "Misslyckades med att ta bort katalogen '%Q'"
 
 #: src/modules/file/libkvifile.cpp:621 src/modules/file/libkvifile.cpp:764
 msgid "The specified directory doesn't exist '%Q'"
@@ -7187,7 +7738,7 @@ msgstr ""
 #: src/modules/file/libkvifile.cpp:880 src/modules/file/libkvifile.cpp:969
 #: src/modules/file/libkvifile.cpp:1071 src/modules/file/libkvifile.cpp:1554
 msgid "Can't open the file '%Q' for reading"
-msgstr ""
+msgstr "Kan inte öppna filen '%Q' för läsning"
 
 #: src/modules/file/libkvifile.cpp:897 src/modules/file/libkvifile.cpp:986
 msgid ""
@@ -7201,7 +7752,7 @@ msgstr ""
 
 #: src/modules/file/libkvifile.cpp:1189
 msgid "Can't open the file '%Q' for writing"
-msgstr ""
+msgstr "Kan inte öppna filen '%Q' för skrivning"
 
 #: src/modules/file/libkvifile.cpp:1500 src/modules/file/libkvifile.cpp:1510
 msgid "An error occurred retrieving the amount of free space in '%Q'"
@@ -7209,7 +7760,7 @@ msgstr ""
 
 #: src/modules/file/libkvifile.cpp:1561
 msgid "Can't read data from file"
-msgstr ""
+msgstr "Kan inte läsa data från filen"
 
 #: src/modules/file/libkvifile.cpp:1579
 msgid "'%Q' algorithm is not supported"
@@ -7219,7 +7770,7 @@ msgstr ""
 msgid ""
 "KVIrc is compiled without Crypto++ or SSL support. $file.digest supports "
 "only MD4, MD5 and SHA1."
-msgstr ""
+msgstr "KVIrc är kompilerat utan stöd för Crypto++ eller SSL. $file.digest stöder endast MD4, MD5 och SHA1."
 
 #: src/modules/file/libkvifile.cpp:1684
 msgid "Unknown option '%1', defaulting to 'm'"
@@ -7228,11 +7779,11 @@ msgstr ""
 #: src/modules/fish/libkvifish.cpp:115 src/modules/fish/libkvifish.cpp:146
 #: src/modules/fish/libkvifish.cpp:244
 msgid "FiSH has been compiled without SSL support, unable to proceed"
-msgstr ""
+msgstr "FiSH har kompilerats utan SSL-stöd och kan inte fortsätta"
 
 #: src/modules/fish/libkvifish.cpp:154
 msgid "FiSH: received DH1080 public key from %1, sending mine..."
-msgstr ""
+msgstr "FiSH: mottog DH1080 publik nyckel från %1, skickar min..."
 
 #: src/modules/fish/libkvifish.cpp:215
 msgid "Query not found: %Q"
@@ -7256,7 +7807,7 @@ msgstr ""
 
 #: src/modules/fish/libkvifish.cpp:297
 msgid "FiSH: sent my DH1080 public key to %1, waiting for reply..."
-msgstr ""
+msgstr "FiSH: skickade min DH1080 publika nyckel till %1, väntar på svar..."
 
 #: src/modules/help/HelpIndex.cpp:416
 msgid "Untitled"
@@ -7276,7 +7827,7 @@ msgstr "Uppdatera index"
 
 #: src/modules/help/HelpWindow.cpp:218 src/modules/help/HelpWindow.cpp:229
 msgid "Full Text Search - KVIrc"
-msgstr ""
+msgstr "Fulltextsökning - KVIrc"
 
 #: src/modules/help/HelpWindow.cpp:219
 msgid "Using a wildcard within phrases is not allowed."
@@ -7353,12 +7904,13 @@ msgstr ""
 
 #: src/modules/ident/libkviident.cpp:283
 msgid ""
-"Can't set the IPv6 Ident service protection level to unrestricted: the Ident "
-"service won't be exposed to the internet"
+"Can't set the IPv6 Ident service protection level to unrestricted: the Ident"
+" service won't be exposed to the internet"
 msgstr ""
 
 #: src/modules/ident/libkviident.cpp:288
-msgid "Can't enable the Ident service on IPv6 : can't setup the listen address"
+msgid ""
+"Can't enable the Ident service on IPv6 : can't setup the listen address"
 msgstr ""
 
 #: src/modules/ident/libkviident.cpp:296
@@ -7371,19 +7923,19 @@ msgstr ""
 
 #: src/modules/ident/libkviident.cpp:320
 msgid "Starting Ident service (IPv4/v6 on separate namespaces)"
-msgstr ""
+msgstr "Startar Ident-tjänst (IPv4/v6 på separata namnrymder)"
 
 #: src/modules/ident/libkviident.cpp:325
 msgid "Starting Ident service (IPv4/v6 in IPv6 namespace)"
-msgstr ""
+msgstr "Startar Ident-tjänst (IPv4/v6 i IPv6-namnrymd)"
 
 #: src/modules/ident/libkviident.cpp:331
 msgid "Starting Ident service (IPv4)"
-msgstr ""
+msgstr "Startar Ident-tjänst (IPv4)"
 
 #: src/modules/ident/libkviident.cpp:335
 msgid "Service startup (IPv4)"
-msgstr ""
+msgstr "Start av tjänst (IPv4)"
 
 #: src/modules/ident/libkviident.cpp:406 src/modules/ident/libkviident.cpp:427
 msgid "Ident service accepting connection"
@@ -7435,15 +7987,15 @@ msgstr ""
 
 #: src/modules/links/LinksWindow.cpp:67
 msgid "Request links"
-msgstr ""
+msgstr "Begär länkar"
 
 #: src/modules/links/LinksWindow.cpp:98
 msgid "(None)"
-msgstr ""
+msgstr "(Ingen)"
 
 #: src/modules/links/LinksWindow.cpp:118
 msgid "Sent links request, waiting for reply..."
-msgstr ""
+msgstr "Skickade links-begäran, väntar på svar..."
 
 #: src/modules/links/LinksWindow.cpp:123
 msgid "Can't request links: no active connection"
@@ -7455,11 +8007,11 @@ msgstr "Ansluten till %1 (%2)"
 
 #: src/modules/links/LinksWindow.cpp:138
 msgid "Links can't be requested: not connected to a server"
-msgstr ""
+msgstr "Länkar kan inte begäras: inte ansluten till en server"
 
 #: src/modules/links/LinksWindow.cpp:163
 msgid "Links for %1 [IRC Context %2]"
-msgstr ""
+msgstr "Länkar för %1 [IRC-kontext %2]"
 
 #: src/modules/links/LinksWindow.cpp:192
 msgid "Received end of links."
@@ -7476,12 +8028,13 @@ msgid "%1: Parent link %2"
 msgstr ""
 
 #: src/modules/links/LinksWindow.cpp:265
-msgid "Warning: no root link was sent by the server, the stats may be invalid."
+msgid ""
+"Warning: no root link was sent by the server, the stats may be invalid."
 msgstr ""
 
 #: src/modules/links/LinksWindow.cpp:308
 msgid "%c%cLinks for %Q"
-msgstr ""
+msgstr "%c%cLänkar för %Q"
 
 #: src/modules/links/LinksWindow.cpp:310
 msgid "Total hosts listed"
@@ -7498,7 +8051,7 @@ msgstr ""
 
 #: src/modules/links/LinksWindow.cpp:314
 msgid "Direct links: %d (~%d.%d %)"
-msgstr ""
+msgstr "Direktlänkar: %d (~%d.%d %)"
 
 #: src/modules/links/LinksWindow.cpp:315
 msgid "Close links (1 <= hops <= 3): %d (~%d.%d %)"
@@ -7525,7 +8078,7 @@ msgstr ""
 #: src/modules/links/LinksWindow.cpp:320
 #, c-format
 msgid "Total links: %d"
-msgstr ""
+msgstr "Totalt antal länkar: %d"
 
 #: src/modules/links/LinksWindow.cpp:321
 #, c-format
@@ -7543,7 +8096,7 @@ msgstr ""
 
 #: src/modules/links/LinksWindow.cpp:457 src/modules/list/ListWindow.cpp:463
 msgid "Reset"
-msgstr ""
+msgstr "Återställ"
 
 #: src/modules/links/LinksWindow.cpp:463
 #, c-format
@@ -7584,16 +8137,16 @@ msgstr "Begär lista"
 
 #: src/modules/list/ListWindow.cpp:219
 msgid "Stop list download"
-msgstr ""
+msgstr "Stoppa listhämtning"
 
 #: src/modules/list/ListWindow.cpp:224
 msgid ""
 "<b>/LIST command parameters:</b><br>Many servers accept special parameters "
 "that allow you to filter the returned entries.<br>Commonly, masked channel "
-"names (*kvirc*) are accepted as parameters, as well as strings like <b>c&lt;"
-"n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or maximum of users on "
-"the channel."
-msgstr ""
+"names (*kvirc*) are accepted as parameters, as well as strings like "
+"<b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or maximum of "
+"users on the channel."
+msgstr "<b>/LIST-kommandoparametrar: </b><br>Många servrar accepterar specialparametrar som gör att du kan filtrera de returnerade posterna.<br> Vanligtvis accepteras maskerade kanalnamn (*kvirc*) som parametrar, liksom strängar som <b>c&lt;n eller <b>c&gt;n, där <b>n</b> är det minsta eller största antalet användare på kanalen."
 
 #: src/modules/list/ListWindow.cpp:239
 msgid "Users"
@@ -7605,15 +8158,15 @@ msgstr "Ämne"
 
 #: src/modules/list/ListWindow.cpp:295
 msgid "Sent list request: waiting for reply..."
-msgstr ""
+msgstr "Skickade list-begäran: väntar på svar..."
 
 #: src/modules/list/ListWindow.cpp:300
 msgid "Can't request list: no active connection"
-msgstr ""
+msgstr "Kan inte begära lista: ingen aktiv anslutning"
 
 #: src/modules/list/ListWindow.cpp:309
 msgid "Stopping the list download..."
-msgstr ""
+msgstr "Stoppar hämtning av listan..."
 
 #: src/modules/list/ListWindow.cpp:313
 msgid "Can't stop list download: no active connection."
@@ -7625,19 +8178,19 @@ msgstr ""
 
 #: src/modules/list/ListWindow.cpp:353
 msgid "Channel List [IRC Context %1]"
-msgstr ""
+msgstr "Kanallista [IRC-kontext %1]"
 
 #: src/modules/list/ListWindow.cpp:365
 msgid "Warning While Exporting - KVIrc"
-msgstr ""
+msgstr "Varning vid export - KVIrc"
 
 #: src/modules/list/ListWindow.cpp:365
 msgid "You can't export an empty list!"
-msgstr ""
+msgstr "Du kan inte exportera en tom lista!"
 
 #: src/modules/list/ListWindow.cpp:389
 msgid "Channel list for %1 - %2"
-msgstr ""
+msgstr "Kanallista för %1 - %2"
 
 #: src/modules/list/ListWindow.cpp:393
 msgid "Channel list"
@@ -7678,13 +8231,13 @@ msgid ""
 "<center><b>Welcome!</b></center><br>This wizard will guide you in the "
 "process of downloading a list of IRC servers. Please click \"<b>Next</b>\" "
 "to begin the operation."
-msgstr ""
+msgstr "<center><b>Välkommen! </b></center><br>Denna guide hjälper dig att hämta en lista över IRC-servrar. Klicka på ”<b>Nästa</b>” för att börja."
 
 #: src/modules/mircimport/libkvimircimport.cpp:166
 msgid ""
 "Here you can modify the URL that the list will be downloaded from. In most "
 "cases the default URL is acceptable."
-msgstr ""
+msgstr "Här kan du ändra den URL som listan hämtas från. I de flesta fall är standard-URL:en acceptabel."
 
 #: src/modules/mircimport/libkvimircimport.cpp:173
 msgid "URL Selection"
@@ -7692,7 +8245,7 @@ msgstr ""
 
 #: src/modules/mircimport/libkvimircimport.cpp:177
 msgid "Please wait while the list is being downloaded"
-msgstr ""
+msgstr "Vänta under tiden listan hämtas"
 
 #: src/modules/mircimport/libkvimircimport.cpp:183
 #: src/modules/mircimport/libkvimircimport.cpp:200
@@ -7705,7 +8258,7 @@ msgstr ""
 
 #: src/modules/mircimport/libkvimircimport.cpp:252
 msgid "File downloaded: processing..."
-msgstr ""
+msgstr "Filen hämtad: behandlar..."
 
 #: src/modules/mircimport/libkvimircimport.cpp:259
 msgid "%1 servers imported successfully"
@@ -7713,15 +8266,15 @@ msgstr ""
 
 #: src/modules/mircimport/libkvimircimport.cpp:261
 msgid "No servers imported"
-msgstr ""
+msgstr "Inga servrar importerade"
 
 #: src/modules/mircimport/libkvimircimport.cpp:334
 msgid "Import from servers.ini"
-msgstr ""
+msgstr "Importera från servers.ini"
 
 #: src/modules/mircimport/libkvimircimport.cpp:342
 msgid "Import from http://www.mirc.co.uk/servers.ini"
-msgstr ""
+msgstr "Importera från http://www.mirc.co.uk/servers.ini"
 
 #: src/modules/my/libkvimy.cpp:49
 msgid "This window has no associated IRC context"
@@ -7730,7 +8283,7 @@ msgstr ""
 #: src/modules/my/libkvimy.cpp:55
 #, c-format
 msgid "No such IRC context (%d)"
-msgstr ""
+msgstr "Ingen sådan IRC-kontext (%d)"
 
 #: src/modules/my/libkvimy.cpp:155
 msgid "Global idle timer must be started before using $my.globalIdle function"
@@ -7742,7 +8295,7 @@ msgstr "Värden %1 hittades inte"
 
 #: src/modules/objects/qtftp/qftp.cpp:802
 msgid "Connection refused to host %1"
-msgstr ""
+msgstr "Anslutningen nekades till värden %1"
 
 #: src/modules/objects/qtftp/qftp.cpp:808
 msgid "Connection timed out to host %1"
@@ -7754,7 +8307,7 @@ msgstr "Ansluten till värden %1"
 
 #: src/modules/objects/qtftp/qftp.cpp:1179
 msgid "Connection refused for data connection"
-msgstr ""
+msgstr "Anslutning nekades för dataanslutning"
 
 #: src/modules/objects/qthttp/qhttp.cpp:1942
 msgid "Request aborted"
@@ -7774,16 +8327,16 @@ msgstr "&Välj..."
 
 #: src/modules/options/OptionsWidget_userList.cpp:63
 msgid ""
-"The color selected, will be blended with the user rank foreground color."
-"<br>You should also consider your theme's style, color and the userlist "
-"background selected color for optimum visibility.<br>If no color is selected "
-"respective user rank color specified will be used instead."
+"The color selected, will be blended with the user rank foreground "
+"color.<br>You should also consider your theme's style, color and the "
+"userlist background selected color for optimum visibility.<br>If no color is"
+" selected respective user rank color specified will be used instead."
 msgstr ""
 
 #: src/modules/rijndael/libkvirijndael.cpp:119
 #: src/modules/rijndael/libkvirijndael.cpp:474
 msgid "Missing both encryption and decryption key: at least one is needed"
-msgstr ""
+msgstr "Saknar både krypterings- och dekrypteringsnyckel: minst en behövs"
 
 #: src/modules/rijndael/libkvirijndael.cpp:204
 msgid "Error 0: success?"
@@ -7815,7 +8368,7 @@ msgstr ""
 
 #: src/modules/rijndael/libkvirijndael.cpp:225
 msgid "Corrupted message data or invalid decryption key"
-msgstr ""
+msgstr "Skadade meddelandedata eller ogiltig dekrypteringsnyckel"
 
 #: src/modules/rijndael/libkvirijndael.cpp:237
 msgid "Oops! Encryption cipher not initialized"
@@ -7847,15 +8400,15 @@ msgstr ""
 msgid ""
 "Cryptographic engine based on the Advanced Encryption Standard (AES) "
 "algorithm called Rijndael. <br/>The text is first encrypted with Rijndael "
-"and then converted to %1 notation. The keys used are %2 bit long and will be "
-"padded with zeros if you provide shorter ones. If only one key is provided, "
-"this engine will use it for both encrypting and decrypting. See the Rijndael "
-"module documentation for more info on the algorithm used. <br/>This engine "
-"works in CBC mode by default: other modes are considered INSECURE and should "
-"be avoided. The old pseudo-CBC mode used in KVIrc &lt; 4.2 is still "
-"available prefixing your key(s) with \"old:\"; if you want to use ECB mode "
-"you must prefix your key(s) with \"ecb:\"."
-msgstr ""
+"and then converted to %1 notation. The keys used are %2 bit long and will be"
+" padded with zeros if you provide shorter ones. If only one key is provided,"
+" this engine will use it for both encrypting and decrypting. See the "
+"Rijndael module documentation for more info on the algorithm used. <br/>This"
+" engine works in CBC mode by default: other modes are considered INSECURE "
+"and should be avoided. The old pseudo-CBC mode used in KVIrc &lt; 4.2 is "
+"still available prefixing your key(s) with \"old:\"; if you want to use ECB "
+"mode you must prefix your key(s) with \"ecb:\"."
+msgstr "Kryptografisk motor baserad på algoritmen Advanced Encryption Standard (AES) kallad Rijndael. <br/>Texten krypteras först med Rijndael och konverteras sedan till %1-notation. Nycklarna som används är %2 bit långa och kommer att fyllas med nollor om du anger kortare. Om endast en nyckel anges kommer denna motor att använda den för både kryptering och dekryptering. Se dokumentationen för Rijndael-modulen för mer information om den algoritm som används. <br/>Denna motor fungerar som standard i CBC-läge: andra lägen anses osäkra och bör undvikas. Det gamla pseudo-CBC-läget som användes i KVIrc < 4.2 är fortfarande tillgängligt genom att prefixera dina nycklar med ”old:”; om du vill använda ECB-läge måste du prefixera dina nycklar med ”ecb:”."
 
 #: src/modules/rijndael/libkvirijndael.cpp:704
 #: src/modules/rijndael/libkvirijndael.cpp:713
@@ -7871,8 +8424,8 @@ msgstr "base64"
 
 #: src/modules/rijndael/libkvirijndael.cpp:758
 msgid ""
-"Popular cryptographic engine based on the Blowfish encryption algorithm. <br/"
-">The text is first encrypted with Blowfish and then converted to base64 "
+"Popular cryptographic engine based on the Blowfish encryption algorithm. "
+"<br/>The text is first encrypted with Blowfish and then converted to base64 "
 "notation. The keys used have variable length and are specified as character "
 "strings. You can specify keys with length up to 56 bytes (448 bits) by "
 "default or change this with /option uintMaximumBlowFishKeySize UINT. "
@@ -7883,15 +8436,15 @@ msgid ""
 "decrypting. <br/>This engine works in CBC mode by default: if you want to "
 "use the old and INSECURE ECB mode you must prefix your key(s) with \"ecb:\" "
 "or \"old:\"."
-msgstr ""
+msgstr "Populär kryptografisk motor baserad på Blowfish-krypteringsalgoritmen. <br/>Texten krypteras först med Blowfish och konverteras sedan till base64-notation. Nycklarna som används har varierande längd och anges som teckensträngar. Du kan ange nycklar med en längd på upp till 56 byte (448 bitar) som standard eller ändra detta med /option uintMaximumBlowFishKeySize UINT. Blowfish tillåter upp till 72 byte för nycklar, men av säkerhetsskäl rekommenderas inte att använda mer än 56 byte. Öka endast detta värde om du behöver kompatibilitet med en annan klients Blowfish-implementering. Om endast en nyckel anges kommer denna motor att använda den för både kryptering och dekryptering. <br/>Denna motor fungerar i CBC-läge som standard: om du vill använda det gamla och OSÄKRA ECB-läget måste du lägga till prefixet ”ecb:” eller ”old:” framför dina nycklar."
 
 #: src/modules/rot13/libkvirot13.cpp:119
 msgid ""
 "The simple Caesar-cypher encryption that replaces each letter with the one "
-"13 places forward or back along the alphabet; it is used to enclose the text "
-"in a sealed wrapper that the reader must choose to open - e.g. for posting "
+"13 places forward or back along the alphabet; it is used to enclose the text"
+" in a sealed wrapper that the reader must choose to open - e.g. for posting "
 "things that might offend some readers, or spoilers."
-msgstr ""
+msgstr "Den enkla Caesar-cypher-krypteringen som ersätter varje bokstav med den som ligger 13 platser framåt eller bakåt i alfabetet. Den används för att omsluta texten i ett förseglat omslag som läsaren måste välja att öppna – t.ex. för att skicka saker som kan vara stötande för vissa läsare eller spoilers."
 
 #: src/modules/setup/SetupWizard.cpp:83
 msgid "< &Back"
@@ -7907,12 +8460,12 @@ msgstr "Konfigurationsguide - KVIrc"
 
 #: src/modules/setup/SetupWizard.cpp:162
 msgid ""
-"<p><h2>Welcome :)</h2>This is your first time running this version of KVIrc."
-"<br>This wizard will guide you through the few steps required to complete "
-"the setup.<br><br>If you had a previous version of KVIrc installed, no "
-"worries. You will have a chance to preserve the old configuration.</"
-"p><p>Click \"<b>Next</b>\" to proceed.</p>"
-msgstr ""
+"<p><h2>Welcome :)</h2>This is your first time running this version of "
+"KVIrc.<br>This wizard will guide you through the few steps required to "
+"complete the setup.<br><br>If you had a previous version of KVIrc installed,"
+" no worries. You will have a chance to preserve the old "
+"configuration.</p><p>Click \"<b>Next</b>\" to proceed.</p>"
+msgstr "<p><h2>Välkommen :) </h2>Det här är första gången du kör den här versionen av KVIrc. <br>Den här guiden hjälper dig genom de få steg som krävs för att slutföra installationen. <br><br>Om du har en tidigare version av KVIrc installerad behöver du inte oroa dig. Du kommer att få möjlighet att behålla den gamla konfigurationen. </p><p>Klicka på ”<b>Nästa</b>” för att fortsätta.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:174
 msgid "Welcome to KVIrc"
@@ -7923,44 +8476,44 @@ msgid ""
 "<p>All of the files in this distribution are covered by the GPL. In human "
 "terms this can be read as follows:<br><ul><li><b>KVIrc is free</b>, use it, "
 "have fun! <b>:)</b></li><li>If you use <b>any</b> part of KVIrc in your own "
-"project, you <b>must</b> release that project under the same license.</li></"
-"ul></p><p>The \"legalese\" version of the license is shown in the box below."
-"</p>"
-msgstr ""
+"project, you <b>must</b> release that project under the same "
+"license.</li></ul></p><p>The \"legalese\" version of the license is shown in"
+" the box below.</p>"
+msgstr "<p>Alla filer i denna distribution omfattas av GPL. I mänskliga termer kan detta läsas som följer: <br><ul><li><b>KVIrc är fritt</b>, använd det, ha kul! <b>:)</b></li><li> Om du använder <b>någon</b> del av KVIrc i ditt eget projekt <b>måste</b> du släppa det projektet under samma licens. </li></ul></p><p>Den juridiska versionen av licensen visas i rutan nedan.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:202
 msgid ""
 "Oops! Can't find the license file.\n"
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
-msgstr ""
+msgstr "Hoppsan! Licensfilen hittas inte.\nDen MÅSTE finnas med i distributionen...\nRapportera till <pragma at kvirc dot net>"
 
 #: src/modules/setup/SetupWizard.cpp:210
 msgid "Dreaded License Agreement"
-msgstr ""
+msgstr "Det fruktade licensavtalet"
 
 #: src/modules/setup/SetupWizard.cpp:222
 msgid ""
 "<p>Please choose a folder for KVIrc to store its settings and other data, "
 "and another for downloaded files. Make sure that you have permission to "
 "write to both folders.<br><br>The suggested locations are fine in most "
-"cases. If you don't know what this is about, just click \"<b>Next</b>\"."
-"<br><br>If you had a previous version of KVIrc installed, you can choose the "
-"existing directory for the settings, and your configuration will be "
-"preserved.</p>"
-msgstr ""
+"cases. If you don't know what this is about, just click "
+"\"<b>Next</b>\".<br><br>If you had a previous version of KVIrc installed, "
+"you can choose the existing directory for the settings, and your "
+"configuration will be preserved.</p>"
+msgstr "<p>Välj en mapp där KVIrc ska lagra sina inställningar och annan data, och en annan för hämtningar. Se till att du har behörighet att skriva till båda mapparna. <br><br>De föreslagna platserna är bra i de flesta fall. Om du inte vet vad detta handlar om, klicka bara på ”<b>Nästa</b>”. <br><br>Om du hade en tidigare version av KVIrc installerad kan du välja den befintliga katalogen för inställningarna, så kommer din konfiguration att bevaras.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:234
 msgid "Store configuration in folder"
-msgstr ""
+msgstr "Lagra konfigurationen i mapp"
 
 #: src/modules/setup/SetupWizard.cpp:235
 msgid "Use settings folder from previous installation"
-msgstr ""
+msgstr "Använd inställningsmapp från tidigare installation"
 
 #: src/modules/setup/SetupWizard.cpp:247
 msgid "Use new settings folder"
-msgstr ""
+msgstr "Använd ny inställningsmapp"
 
 #: src/modules/setup/SetupWizard.cpp:251
 msgid "Settings folder:"
@@ -7968,11 +8521,11 @@ msgstr "Inställningsmapp:"
 
 #: src/modules/setup/SetupWizard.cpp:275
 msgid "Download files to folder:"
-msgstr ""
+msgstr "Hämta filer till mappen:"
 
 #: src/modules/setup/SetupWizard.cpp:296
 msgid "All settings in shared program folder (portable)"
-msgstr ""
+msgstr "Alla inställningar i delad programmapp (portabel)"
 
 #: src/modules/setup/SetupWizard.cpp:307
 msgid "Application Folders"
@@ -7982,11 +8535,11 @@ msgstr "Programmappar"
 msgid ""
 "Please choose a nickname.<br><br>Your nickname is the name that other IRC "
 "users will know you by. It can't contain spaces or punctuation. Some IRC "
-"networks will shorten your nickname if it is more than 32 characters long."
-"<br><br>If in doubt, just enter the first nick that comes to mind. You will "
-"be able to change it later in the Identity properties, or with the /NICK "
-"command."
-msgstr ""
+"networks will shorten your nickname if it is more than 32 characters "
+"long.<br><br>If in doubt, just enter the first nick that comes to mind. You "
+"will be able to change it later in the Identity properties, or with the "
+"/NICK command."
+msgstr "Välj ett smeknamn. <br><br>Ditt smeknamn är det namn som andra IRC-användare kommer att känna dig under. Det får inte innehålla mellanslag eller skiljetecken. Vissa IRC-nätverk förkortar ditt smeknamn om det är längre än 32 tecken. <br><br>Om du är osäker, ange det första smeknamn som du kommer att tänka på. Du kan ändra det senare i identitetsinställningarna eller med kommandot /NICK."
 
 #: src/modules/setup/SetupWizard.cpp:328
 msgid "Nickname:"
@@ -8011,7 +8564,7 @@ msgstr "Ålder:"
 
 #: src/modules/setup/SetupWizard.cpp:354 src/modules/setup/SetupWizard.cpp:382
 msgid "Unspecified"
-msgstr ""
+msgstr "Ospecificerat"
 
 #: src/modules/setup/SetupWizard.cpp:377
 msgid "Gender:"
@@ -8038,19 +8591,19 @@ msgid ""
 "you had a previous version of KVIrc installed, you can choose to not apply "
 "any theme in order to preserve your current visual settings.<br><br>If you "
 "don't know what to choose, just use the default.</p>"
-msgstr ""
+msgstr "<p>Här kan du välja standardutseendet för KVIrc. <br><br>Temat Snyggt använder ikoner, en transparent bakgrund och många färger. Temat Minimalist är utformat för skärmar med få färger eller för ”konsol”-extremister; det är mer eller mindre vit text på svart bakgrund. <br><br>Om du hade en tidigare version av KVIrc installerad kan du välja att inte använda något tema för att behålla dina aktuella visuella inställningar. <br><br>Om du inte vet vad du ska välja, använd bara standardinställningen.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:444
 msgid "&Fancy Theme"
-msgstr ""
+msgstr "&Snyggt tema"
 
 #: src/modules/setup/SetupWizard.cpp:463
 msgid "&Minimalist Theme"
-msgstr ""
+msgstr "&Minimalist-temat"
 
 #: src/modules/setup/SetupWizard.cpp:465
 msgid "&Don't apply any theme"
-msgstr ""
+msgstr "Tillämpa &inget tema"
 
 #: src/modules/setup/SetupWizard.cpp:470
 msgid "Default Theme"
@@ -8058,10 +8611,10 @@ msgstr "Standardtema"
 
 #: src/modules/setup/SetupWizard.cpp:481
 msgid ""
-"<p>Here you can choose how much KVIrc will integrate with your system."
-"<br><br>The default settings are fine for most users so if you're in doubt "
-"just click \"<b>Finish</b>\" to continue.</p>"
-msgstr ""
+"<p>Here you can choose how much KVIrc will integrate with your "
+"system.<br><br>The default settings are fine for most users so if you're in "
+"doubt just click \"<b>Finish</b>\" to continue.</p>"
+msgstr "<p>Här kan du välja hur mycket KVIrc ska integreras med ditt system. <br><br>Standardinställningarna är bra för de flesta användare, så om du är osäker klickar du bara på ”<b>Färdig</b>” för att fortsätta.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:491
 msgid "Desktop Integration"
@@ -8091,7 +8644,7 @@ msgstr ""
 msgid ""
 "The folder %1 doesn't seem to be a valid KVIrc settings folder. Do you want "
 "to use it anyway?"
-msgstr ""
+msgstr "Mappen %1 verkar inte vara en giltig KVIrc-inställningsmapp. Vill du använda den ändå?"
 
 #: src/modules/setup/SetupWizard.cpp:754
 msgid "Choose a Configuration Folder - KVIrc Setup"
@@ -8109,15 +8662,14 @@ msgstr ""
 msgid ""
 "You have chosen to abort the setup.<br>KVIrc can't run until you complete "
 "this procedure.<br><br>Do you really wish to abort?"
-msgstr ""
+msgstr "Du har valt att avbryta installationen. <br>KVIrc kan inte köras förrän du har slutfört denna procedur. <br><br> Vill du verkligen avbryta?"
 
 #: src/modules/setup/SetupWizard.cpp:978
 #, c-format
 msgid ""
 "Can't create directory %s.\n"
-"You may not have write permission for that path. Please go back and choose "
-"another directory."
-msgstr ""
+"You may not have write permission for that path. Please go back and choose another directory."
+msgstr "Kan inte skapa katalogen %s.\nDu har kanske inte behörighet att skriva i den sökvägen. Gå tillbaka och välj en annan katalog."
 
 #: src/modules/setup/SetupWizard.cpp:1005
 #, c-format
@@ -8125,7 +8677,7 @@ msgid ""
 "Can't create directory %s.\n"
 "You may not have write permission for that path.\n"
 "Please go back and choose another directory."
-msgstr ""
+msgstr "Kan inte skapa katalogen %s.\nDu har kanske inte behörighet att skriva i den sökvägen.\nGå tillbaka och välj en annan katalog."
 
 #: src/modules/snd/libkvisnd.cpp:673
 msgid "Sound file '%Q' not found"
@@ -8137,16 +8689,16 @@ msgstr "Kunde inte spela upp ljudet '%Q'"
 
 #: src/modules/snd/libkvisnd.cpp:692
 msgid "Sorry, I can't find a sound system to use on this machine"
-msgstr ""
+msgstr "Tyvärr, jag hittar inget ljudsystem som fungerar på den här datorn"
 
 #: src/modules/snd/libkvisnd.cpp:697
 #, c-format
 msgid "Sound system detected to: %s"
-msgstr ""
+msgstr "Ljudsystem upptäckt: %s"
 
 #: src/modules/socketspy/SocketSpyWindow.cpp:82
 msgid "Socket Spy [IRC Context %1]"
-msgstr ""
+msgstr "Socket Spy [IRC-kontext %1]"
 
 #: src/modules/socketspy/SocketSpyWindow.cpp:99
 msgid "Socket open"
@@ -8166,7 +8718,7 @@ msgstr ""
 
 #: src/modules/spaste/libkvispaste.cpp:112
 msgid "File not found or empty"
-msgstr ""
+msgstr "Filen hittades inte eller är tom"
 
 #: src/modules/spaste/libkvispaste.cpp:119
 msgid "I can't open that file"
@@ -8174,7 +8726,7 @@ msgstr "Jag kan inte öppna den filen"
 
 #: src/modules/spaste/libkvispaste.cpp:129
 msgid "Could not paste file"
-msgstr ""
+msgstr "Det gick inte att klistra in filen"
 
 #: src/modules/spaste/libkvispaste.cpp:230
 msgid "The specified window (%Q) is not a Channel/Query/DCC"
@@ -8190,9 +8742,9 @@ msgstr ""
 
 #: src/modules/str/libkvistr.cpp:1439
 msgid ""
-"KVIrc is compiled without Crypto++ or SSL support. $str.digest supports only "
-"MD4, MD5 and SHA1."
-msgstr ""
+"KVIrc is compiled without Crypto++ or SSL support. $str.digest supports only"
+" MD4, MD5 and SHA1."
+msgstr "KVIrc är kompilerat utan stöd för Crypto++ eller SSL. $str.digest stöder endast MD4, MD5 och SHA1."
 
 #: src/modules/str/libkvistr.cpp:1963
 msgid "Invalid argument for ?d escape sequence, 0 assumed"
@@ -8200,7 +8752,7 @@ msgstr ""
 
 #: src/modules/str/libkvistr.cpp:1969
 msgid "Missing argument for ?d escape sequence, 0 assumed"
-msgstr ""
+msgstr "Saknas argument för ?d escape-sekvens, 0 antas"
 
 #: src/modules/str/libkvistr.cpp:2007
 msgid "Invalid argument for ?u escape sequence, 0 assumed"
@@ -8208,7 +8760,7 @@ msgstr ""
 
 #: src/modules/str/libkvistr.cpp:2013
 msgid "Missing argument for ?u escape sequence, 0 assumed"
-msgstr ""
+msgstr "Saknar argument för ?u escape-sekvens, 0 antas"
 
 #: src/modules/str/libkvistr.cpp:2045
 msgid "Invalid argument for ?x escape sequence, 0 assumed"
@@ -8216,7 +8768,7 @@ msgstr ""
 
 #: src/modules/str/libkvistr.cpp:2051
 msgid "Missing argument for ?x escape sequence, 0 assumed"
-msgstr ""
+msgstr "Saknar argument för ?x escape-sekvens, 0 antas"
 
 #: src/modules/str/libkvistr.cpp:2083
 msgid "Invalid argument for ?X escape sequence, 0 assumed"
@@ -8224,7 +8776,7 @@ msgstr ""
 
 #: src/modules/str/libkvistr.cpp:2089
 msgid "Missing argument for ?X escape sequence, 0 assumed"
-msgstr ""
+msgstr "Saknar argument för ?X escape-sekvens, 0 antas"
 
 #: src/modules/str/libkvistr.cpp:2156
 msgid "Invalid argument for a floating point escape sequence, 0.0 assumed"
@@ -8232,13 +8784,13 @@ msgstr ""
 
 #: src/modules/str/libkvistr.cpp:2162
 msgid "Missing argument for a floating point escape sequence, 0.0 assumed"
-msgstr ""
+msgstr "Saknar argument för en escape-sekvens med flyttal, 0.0 antas"
 
 #: src/modules/str/libkvistr.cpp:2294
 msgid ""
 "No certificate specified and no private key certificate defined in KVIrc "
 "options."
-msgstr ""
+msgstr "Inget certifikat angivet och inget privat nyckelcertifikat definierat i KVIrc-alternativen."
 
 #: src/modules/str/libkvistr.cpp:2302
 #, c-format
@@ -8260,32 +8812,32 @@ msgstr ""
 
 #: src/modules/str/libkvistr.cpp:2351
 msgid "An error occurred while signing the message."
-msgstr ""
+msgstr "Ett fel uppstod vid signeringen av meddelandet."
 
 #: src/modules/str/libkvistr.cpp:2356 src/modules/str/libkvistr.cpp:2511
 msgid "KVIrc is compiled without OpenSSL support."
-msgstr ""
+msgstr "KVIrc är kompilerat utan stöd för OpenSSL."
 
 #: src/modules/str/libkvistr.cpp:2434
 msgid ""
 "No certificate specified and no public key certificate defined in KVIrc "
 "options."
-msgstr ""
+msgstr "Inget certifikat angivet och inget certifikat för publik nyckel definierat i KVIrc-alternativen."
 
 #: src/modules/str/libkvistr.cpp:2460
 #, c-format
 msgid ""
-"Can't read public key while trying to use the default public key certificate "
-"%s"
+"Can't read public key while trying to use the default public key certificate"
+" %s"
 msgstr ""
 
 #: src/modules/str/libkvistr.cpp:2485
 msgid "Can't read public key from the provided certificate."
-msgstr ""
+msgstr "Kan inte läsa den publika nyckeln från det angivna certifikatet."
 
 #: src/modules/str/libkvistr.cpp:2506
 msgid "An error occurred during signature verification."
-msgstr ""
+msgstr "Ett fel uppstod under verifieringen av signaturen."
 
 #: src/modules/system/Plugin.cpp:238
 msgid "Plugin not found. Please check the plugin-name and path."
@@ -8302,7 +8854,7 @@ msgstr ""
 #: src/modules/system/Plugin.cpp:327
 msgid ""
 "The plugin has no function to free memory. This can result in memory leaks!"
-msgstr ""
+msgstr "Tillägget har ingen funktion för att frigöra minne. Detta kan leda till minnesläckor!"
 
 #: src/modules/system/libkvisystem.cpp:474
 msgid "No DBus type specified"
@@ -8338,16 +8890,16 @@ msgstr ""
 
 #: src/modules/system/libkvisystem.cpp:621
 msgid "D-Bus calls are available only under UNIX"
-msgstr ""
+msgstr "D-Bus-anrop är endast tillgängliga under UNIX"
 
 #: src/modules/system/libkvisystem.cpp:742
 msgid "No command specified"
-msgstr ""
+msgstr "Inget kommando angavs"
 
 #: src/modules/system/libkvisystem.cpp:759
 #: src/modules/system/libkvisystem.cpp:792
 msgid "Failed to start the terminal program"
-msgstr ""
+msgstr "Det gick inte att starta terminalprogrammet"
 
 #: src/modules/system/libkvisystem.cpp:844
 #: src/modules/system/libkvisystem.cpp:900
@@ -8356,7 +8908,7 @@ msgstr ""
 
 #: src/modules/term/TermWidget.cpp:63
 msgid "Terminal Emulator"
-msgstr ""
+msgstr "Terminalemulator"
 
 #: src/modules/term/TermWidget.cpp:96
 msgid "Can't create the terminal emulation part"
@@ -8418,11 +8970,11 @@ msgstr ""
 #: src/modules/toolbar/libkvitoolbar.cpp:440
 #: src/modules/toolbar/libkvitoolbar.cpp:451
 msgid "The toolbar doesn't contain the specified item"
-msgstr ""
+msgstr "Verktygsraden innehåller inte det angivna objektet"
 
 #: src/modules/toolbar/libkvitoolbar.cpp:510
 msgid "The action \"%Q\" doesn't exist"
-msgstr ""
+msgstr "Åtgärden \"%Q\" finns inte"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:92
 msgid "<b><center>KVIrc Tray Options</center></b>"
@@ -8430,7 +8982,7 @@ msgstr ""
 
 #: src/modules/trayicon/libkvitrayicon.cpp:100
 msgid "Context"
-msgstr ""
+msgstr "Kontext"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:105
 msgid "&Configure KVIrc..."
@@ -8452,99 +9004,99 @@ msgstr ""
 msgid "&Quit"
 msgstr "A&vsluta"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:186
+#: src/modules/trayicon/libkvitrayicon.cpp:187
 msgid "Nothing is happening..."
 msgstr "Ingenting händer..."
 
-#: src/modules/trayicon/libkvitrayicon.cpp:187
+#: src/modules/trayicon/libkvitrayicon.cpp:188
 msgid "Just idling..."
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:188
+#: src/modules/trayicon/libkvitrayicon.cpp:189
 msgid "Dum de dum de dum..."
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:189
-msgid "Hey man... Do something!"
-msgstr ""
-
 #: src/modules/trayicon/libkvitrayicon.cpp:190
+msgid "Hey man... Do something!"
+msgstr "Hallå... Gör något!"
+
+#: src/modules/trayicon/libkvitrayicon.cpp:191
 msgid "Umpf!"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:191
-msgid "Silence speaking"
-msgstr ""
-
 #: src/modules/trayicon/libkvitrayicon.cpp:192
-msgid "Are ya here?"
-msgstr ""
+msgid "Silence speaking"
+msgstr "Tystnaden talar"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:193
-msgid "The world has stopped?"
-msgstr ""
+msgid "Are ya here?"
+msgstr "Är du här?"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:194
-msgid "Everything is all right"
-msgstr ""
+msgid "The world has stopped?"
+msgstr "Har världen stannat?"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:195
+msgid "Everything is all right"
+msgstr "Allting är helt ok"
+
+#: src/modules/trayicon/libkvitrayicon.cpp:196
 msgid "idle()"
 msgstr "idle()"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:196
+#: src/modules/trayicon/libkvitrayicon.cpp:197
 msgid "It's so cold here..."
 msgstr "Det är så kallt här..."
 
-#: src/modules/trayicon/libkvitrayicon.cpp:197
-msgid "Do not disturb... Watching TV"
-msgstr ""
-
 #: src/modules/trayicon/libkvitrayicon.cpp:198
+msgid "Do not disturb... Watching TV"
+msgstr "Stör inte.. kollar på tv"
+
+#: src/modules/trayicon/libkvitrayicon.cpp:199
 msgid "Just vegetating"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:199
+#: src/modules/trayicon/libkvitrayicon.cpp:200
 msgid "Hey... Are ya sure that your network is up?"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:200
+#: src/modules/trayicon/libkvitrayicon.cpp:201
 msgid "Seems like the world has stopped spinning"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:201
+#: src/modules/trayicon/libkvitrayicon.cpp:202
 msgid "This silence is freaking me out!"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:202
-msgid "Mieeeeeowww!"
-msgstr ""
-
 #: src/modules/trayicon/libkvitrayicon.cpp:203
+msgid "Mieeeeeowww!"
+msgstr "Mjjjjaaaauuuu!"
+
+#: src/modules/trayicon/libkvitrayicon.cpp:204
 msgid "idle idle idle idle!"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:318
+#: src/modules/trayicon/libkvitrayicon.cpp:319
 msgid "Hide Window"
 msgstr "Dölj fönster"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:318
+#: src/modules/trayicon/libkvitrayicon.cpp:319
 msgid "Show Window"
 msgstr "Visa fönster"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:324
+#: src/modules/trayicon/libkvitrayicon.cpp:325
 msgid "Away on All"
 msgstr "Borta på alla"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:327
+#: src/modules/trayicon/libkvitrayicon.cpp:328
 msgid "Back on All"
 msgstr "Tillbaka på alla"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:343
+#: src/modules/trayicon/libkvitrayicon.cpp:344
 msgid "Back on %1"
 msgstr "Tillbaka på %1"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:349
+#: src/modules/trayicon/libkvitrayicon.cpp:350
 msgid "Away on %1"
 msgstr "Borta på %1"
 
@@ -8578,7 +9130,7 @@ msgstr "&Ta bort"
 
 #: src/modules/url/libkviurl.cpp:248
 msgid "&Say to Window"
-msgstr ""
+msgstr "&Säg till fönster"
 
 #: src/modules/url/libkviurl.cpp:254
 msgid "Configure"
@@ -8586,11 +9138,11 @@ msgstr "Konfigurera"
 
 #: src/modules/url/libkviurl.cpp:273
 msgid "Window Not Found - KVIrc"
-msgstr ""
+msgstr "Fönstret hittades inte - KVIrc"
 
 #: src/modules/url/libkviurl.cpp:273
 msgid "Window not found."
-msgstr ""
+msgstr "Fönstret hittades inte."
 
 #: src/modules/url/libkviurl.cpp:324
 msgid "URL Module Configuration - KVIrc"
@@ -8598,11 +9150,11 @@ msgstr ""
 
 #: src/modules/url/libkviurl.cpp:331
 msgid "Save URL list on module unload"
-msgstr ""
+msgstr "Spara URL-listan vid avlastning av modulen"
 
 #: src/modules/url/libkviurl.cpp:335
 msgid "Save columns width on URL list close"
-msgstr ""
+msgstr "Spara kolumnbredd vid stängning av URL-listan"
 
 #: src/modules/url/libkviurl.cpp:347
 msgid "&Cancel"
@@ -8614,11 +9166,11 @@ msgstr ""
 
 #: src/modules/url/libkviurl.cpp:422
 msgid "&Add Ban"
-msgstr ""
+msgstr "&Lägg till bannlysning"
 
 #: src/modules/url/libkviurl.cpp:428
 msgid "&Remove Selected"
-msgstr ""
+msgstr "&Ta bort markerad"
 
 #: src/modules/url/libkviurl.cpp:445
 msgid "URL Ban List - KVIrc"
@@ -8626,7 +9178,7 @@ msgstr ""
 
 #: src/modules/url/libkviurl.cpp:445
 msgid "Enter a URL to ban."
-msgstr ""
+msgstr "Ange en URL att bannlysa."
 
 #: src/modules/url/libkviurl.cpp:461
 msgid "Must select a ban entry from the list to remove it."
@@ -8678,11 +9230,11 @@ msgstr ""
 
 #: src/modules/window/libkviwindow.cpp:1430
 msgid "The encryption key wasn't a valid hexadecimal string"
-msgstr ""
+msgstr "Krypteringsnyckeln var inte en giltig hexadecimal sträng"
 
 #: src/modules/window/libkviwindow.cpp:1445
 msgid "The decryption key wasn't a valid hexadecimal string"
-msgstr ""
+msgstr "Dekrypteringsnyckeln var inte en giltig hexadecimal sträng"
 
 #: src/modules/window/libkviwindow.cpp:1526
 msgid "Both -n and -m switches specified, -n takes precedence"
@@ -8706,4 +9258,4 @@ msgstr "Krypteringsmotorn \"%Q\" finns inte"
 
 #: src/modules/window/libkviwindow.cpp:1577
 msgid "This executable has been compiled without crypt support"
-msgstr ""
+msgstr "Denna körbara fil har kompilerats utan crypt-stöd"

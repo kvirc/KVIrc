@@ -3,18 +3,18 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# Junghee Lee <daemul72@gmail.com>, 2020
-# Junghee Lee <daemul72@gmail.com>, 2020
+# JungHee Lee <daemul72@gmail.com>, 2020
+# JungHee Lee <daemul72@gmail.com>, 2020
 # ks k, 2020
 # ks k, 2020
-# Junghee Lee <daemul72@gmail.com>, 2020
+# JungHee Lee <daemul72@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 12:42+0200\n"
+"POT-Creation-Date: 2025-12-01 17:30+0100\n"
 "PO-Revision-Date: 2015-08-01 08:58+0000\n"
-"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2020\n"
+"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (http://app.transifex.com/kvirc/KVIrc/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -208,14 +208,14 @@ msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "로컬 IP 주소는 비공개이며 IRC 서버에서 결정됩니다: %s"
 
 #: src/modules/dcc/DccChatWindow.cpp:211
-#: src/modules/dcc/DccFileTransfer.cpp:2067
+#: src/modules/dcc/DccFileTransfer.cpp:2070
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr "로컬 IP 주소는 비공개이지만 IRC 서버에서 확인할 수 없습니다"
 
 #: src/modules/dcc/DccChatWindow.cpp:216
-#: src/modules/dcc/DccFileTransfer.cpp:2072
+#: src/modules/dcc/DccFileTransfer.cpp:2075
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr "로컬 IP 주소는 비공개이지만 이를 확인할 IRC 서버가 없습니다"
@@ -229,12 +229,12 @@ msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "DCC %Q 요청이 전송되지 않아 수동 연결을 기다리고 있습니다"
 
 #: src/modules/dcc/DccChatWindow.cpp:252
-#: src/modules/dcc/DccFileTransfer.cpp:2142
+#: src/modules/dcc/DccFileTransfer.cpp:2145
 msgid "Low-level transport connection established"
 msgstr "낮은 수준 전송 연결이 설정되었습니다"
 
 #: src/modules/dcc/DccChatWindow.cpp:253
-#: src/modules/dcc/DccFileTransfer.cpp:2143
+#: src/modules/dcc/DccFileTransfer.cpp:2146
 msgid "Starting Secure Socket Layer handshake"
 msgstr "보안 소켓 레이어 (SSL) 핸드셰이크를 시작하고 있습니다"
 
@@ -305,7 +305,7 @@ msgstr "덮어쓰기(&W)"
 msgid "Re&sume"
 msgstr "재시작(&S)"
 
-#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2480
+#: src/modules/dcc/DccDialog.cpp:162 src/modules/dcc/DccFileTransfer.cpp:2483
 msgid "Cancel"
 msgstr "취소"
 
@@ -313,203 +313,203 @@ msgstr "취소"
 msgid "File Already Exists - KVIrc"
 msgstr "파일이 이미 있습니다 - KVIrc"
 
-#: src/modules/dcc/DccFileTransfer.cpp:376
+#: src/modules/dcc/DccFileTransfer.cpp:377
 msgid "WARNING: the peer is sending garbage data past the end of the file"
 msgstr "경고: 피어가 파일 끝을 지나버려서 쓰레기 자료를 보내고 있습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:377
+#: src/modules/dcc/DccFileTransfer.cpp:378
 msgid ""
 "WARNING: ignoring data past the declared end of file and closing the "
 "connection"
 msgstr "경고: 선언된 파일 끝을 지나버려서 자료를 무시하고 연결을 닫습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:541
+#: src/modules/dcc/DccFileTransfer.cpp:542
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
 msgstr "자료 전송이 종료되었습니다. 피어가 연결을 닫을 때까지 30초 동안 기다립니다..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:550
+#: src/modules/dcc/DccFileTransfer.cpp:551
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "자료 전송이 30초 전에 종료되어 연결이 닫혔습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:964
+#: src/modules/dcc/DccFileTransfer.cpp:965
 msgid "WARNING: received data in a DCC TSEND, there should be no acknowledges"
 msgstr "경고: DCC TSEND에서 자료를 수신했습니다. 승인이 없어야합니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1190
+#: src/modules/dcc/DccFileTransfer.cpp:1191
 msgid "TRANSFER %1"
 msgstr "전송 %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1218
+#: src/modules/dcc/DccFileTransfer.cpp:1219
 msgid "Setting up the connection"
 msgstr "연결을 설정하고 있습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1281
+#: src/modules/dcc/DccFileTransfer.cpp:1282
 msgid "Attempting a passive DCC %1 connection"
 msgstr "수동 DCC %1 연결을 시도하고 있습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1287
+#: src/modules/dcc/DccFileTransfer.cpp:1288
 msgid "Attempting an active DCC %1 connection"
 msgstr "활성 DCC %1 연결을 시도하고 있습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1314
+#: src/modules/dcc/DccFileTransfer.cpp:1315
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "수락을 기다리는 동안 %1 에 DCC 재개 요청을 보냈습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1399
-#: src/modules/dcc/DccFileTransfer.cpp:1413
+#: src/modules/dcc/DccFileTransfer.cpp:1400
+#: src/modules/dcc/DccFileTransfer.cpp:1414
 msgid "Aborted"
 msgstr "중단되었습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1412
-#: src/modules/dcc/DccFileTransfer.cpp:2168
-#: src/modules/dcc/DccFileTransfer.cpp:2243
+#: src/modules/dcc/DccFileTransfer.cpp:1413
+#: src/modules/dcc/DccFileTransfer.cpp:2171
+#: src/modules/dcc/DccFileTransfer.cpp:2246
 msgid "Transfer failed: "
 msgstr "전송 실패: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1423
+#: src/modules/dcc/DccFileTransfer.cpp:1424
 msgid "Configure Bandwidth..."
 msgstr "대역폭 구성..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:1425
+#: src/modules/dcc/DccFileTransfer.cpp:1426
 msgid "Resend DCC"
 msgstr "DCC 다시전송"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1426
+#: src/modules/dcc/DccFileTransfer.cpp:1427
 msgid "Resend TDCC"
 msgstr "TDCC 다시전송"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1427
+#: src/modules/dcc/DccFileTransfer.cpp:1428
 msgid "Resend RevDCC"
 msgstr "RevDCC 다시전송"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1428
+#: src/modules/dcc/DccFileTransfer.cpp:1429
 msgid "Abort"
 msgstr "중단"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1676
+#: src/modules/dcc/DccFileTransfer.cpp:1678
 msgid "From: "
 msgstr "처음: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1677
+#: src/modules/dcc/DccFileTransfer.cpp:1679
 msgid "To: "
 msgstr "끝: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1779
-#: src/modules/dcc/DccFileTransfer.cpp:1788
+#: src/modules/dcc/DccFileTransfer.cpp:1782
+#: src/modules/dcc/DccFileTransfer.cpp:1791
 msgid "%1 of %2 (%3%)"
 msgstr "번역확인:어순->%1 / %2(%3%)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1793
+#: src/modules/dcc/DccFileTransfer.cpp:1796
 msgid "%1"
 msgstr "%1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1806
+#: src/modules/dcc/DccFileTransfer.cpp:1809
 msgid "Speed:"
 msgstr "속도:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1819
+#: src/modules/dcc/DccFileTransfer.cpp:1822
 msgid "Average:"
 msgstr "평균:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1888
+#: src/modules/dcc/DccFileTransfer.cpp:1891
 msgid "Transfer Log"
 msgstr "전송 기록"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2031
+#: src/modules/dcc/DccFileTransfer.cpp:2034
 msgid "Contacting host %1 on port %2"
 msgstr "번역확인:어순->%1 호스트의 %2 포트에서 연결하고 있습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2038
+#: src/modules/dcc/DccFileTransfer.cpp:2041
 msgid "Listening on interface %1 port %2"
 msgstr "번역확인:어순->%1 인터페이스의 %2 포트에서 받기를 기다리고 있습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2063
+#: src/modules/dcc/DccFileTransfer.cpp:2066
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "로컬 IP 주소는 비공개이며 IRC 서버에서 결정됩니다: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2127
+#: src/modules/dcc/DccFileTransfer.cpp:2130
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr "번역확인:어순-> DCC %1 요청을 %2 에 보냈습니다. 원격 클라이언트가 연결되기를 기다리고 있습니다..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:2131
+#: src/modules/dcc/DccFileTransfer.cpp:2134
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 요청이 전송되지 않아 수동 연결을 기다리고 있습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2150
+#: src/modules/dcc/DccFileTransfer.cpp:2153
 msgid "[SSL ERROR]: %1"
 msgstr "[SSL 오류]: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2195
+#: src/modules/dcc/DccFileTransfer.cpp:2198
 msgid ""
 "DCC %s transfer with %Q@%Q:%Q completed: \r"
 "![!dbl]%Q\r"
 "%Q\r"
 msgstr "%Q@%Q:%Q의 DCC %s 전송이 완료되었습니다: \r![!dbl]%Q\r%Q\r"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2204
+#: src/modules/dcc/DccFileTransfer.cpp:2207
 msgid "Transfer completed"
 msgstr "전송 완료"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2252
+#: src/modules/dcc/DccFileTransfer.cpp:2255
 msgid "Connected to %1:%2"
 msgstr "%1:%2에 연결되었습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2253
+#: src/modules/dcc/DccFileTransfer.cpp:2256
 msgid "Local end is %1:%2"
 msgstr "로컬 끝은 %1:%2입니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2318
+#: src/modules/dcc/DccFileTransfer.cpp:2321
 msgid "Transferring data"
 msgstr "자료를 전송하고 있습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2343
+#: src/modules/dcc/DccFileTransfer.cpp:2346
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "재개가 승인되었습니다. %1 위치에서 전송이 시작됩니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2375
+#: src/modules/dcc/DccFileTransfer.cpp:2378
 msgid "Processing RESUME request with mismatched port (%1)"
 msgstr "일치하지 않는 포트 (%1) 로 재개 요청을 처리하고 있습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2387
+#: src/modules/dcc/DccFileTransfer.cpp:2390
 msgid ""
 "Invalid RESUME request: invalid file name (got '%1' but should be '%2')"
 msgstr "잘못된 재개 요청: 잘못된 파일 이름 ('%1' 을 가져왔지만 '%2' 이어야 함)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2394
+#: src/modules/dcc/DccFileTransfer.cpp:2397
 msgid "Processing RESUME request with broken filename (%1)"
 msgstr "깨진 파일 이름 (%1)으로 재개 요청을 처리하고 있습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2403
+#: src/modules/dcc/DccFileTransfer.cpp:2406
 msgid "Internal error in RESUME request"
 msgstr "재개 요청의 내부 오류가 있습니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2409
+#: src/modules/dcc/DccFileTransfer.cpp:2412
 msgid "Invalid RESUME request: position %1 is larger than file size"
 msgstr "잘못된 재개 요청: %1 위치가 파일 크기보다 큽니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2413
+#: src/modules/dcc/DccFileTransfer.cpp:2416
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "재개 요청을 수락하면 %1 위치에서 전송이 시작됩니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2451
+#: src/modules/dcc/DccFileTransfer.cpp:2454
 msgid "Configure Bandwidth for DCC Transfer %1"
 msgstr "%1 DCC 전송에 대한 대역폭을 구성합니다"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2454
+#: src/modules/dcc/DccFileTransfer.cpp:2457
 msgid "Limit upload bandwidth to:"
 msgstr "업로드 대역폭을 다음으로 제한하십시오:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2454
+#: src/modules/dcc/DccFileTransfer.cpp:2457
 msgid "Limit download bandwidth to:"
 msgstr "다운로드 대역폭을 다음으로 제한하십시오:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2471
+#: src/modules/dcc/DccFileTransfer.cpp:2474
 msgid "bytes/sec"
 msgstr "바이트/초"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2475
+#: src/modules/dcc/DccFileTransfer.cpp:2478
 msgid "OK"
 msgstr "확인"
 
