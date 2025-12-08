@@ -216,6 +216,7 @@ void KviTopicWidget::applyOptions()
 {
 	//set the font
 	m_pLabel->applyOptions();
+	m_pInput->applyOptions(true);
 	QFont newFont(KVI_OPTION_FONT(KviOption_fontLabel));
 	newFont.setKerning(false);
 	newFont.setHintingPreference(QFont::PreferFullHinting);
@@ -225,6 +226,7 @@ void KviTopicWidget::applyOptions()
 
 	// reset topic html too (in case colors have been changed)
 	m_pLabel->setText(KviHtmlGenerator::convertToHtml(m_szTopic, true));
+	setFixedHeight(m_pInput->heightHint());
 }
 
 static bool isKviControlCode(unsigned short c)
