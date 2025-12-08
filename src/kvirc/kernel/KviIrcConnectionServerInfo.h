@@ -112,6 +112,7 @@ class KVIRC_API KviIrcdSolanumIrcServerInfo : public KviIrcdSevenIrcServerInfo
 public:
 	KviIrcdSolanumIrcServerInfo(KviIrcConnectionServerInfo * pParent = nullptr, const QString & version = KviQString::Empty)
 	    : KviIrcdSevenIrcServerInfo(pParent, version) {}
+	const QString & getUserModeDescription(QChar mode) const override;
 	const char * getSoftware() const override { return "Solanum"; }
 };
 
