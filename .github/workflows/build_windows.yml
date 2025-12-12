@@ -122,7 +122,7 @@ jobs:
           copy c:\vcpkg\installed\x64-windows-release\bin\zlib1.dll release; if (!$?) { exit 1 }
           copy c:\vcpkg\installed\x64-windows-release\bin\libcrypto*.dll release; if (!$?) { exit 1 }
           copy c:\vcpkg\installed\x64-windows-release\bin\libssl*.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libenchant-2.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libenchant-2*.dll release; if (!$?) { exit 1 }
           copy c:\msys64\mingw64\bin\libpcre2-*.dll release; if (!$?) { exit 1 }
           copy c:\msys64\mingw64\bin\libglib-2.0-0.dll release; if (!$?) { exit 1 }
           copy c:\msys64\mingw64\bin\libgmodule-2.0-0.dll release; if (!$?) { exit 1 }
