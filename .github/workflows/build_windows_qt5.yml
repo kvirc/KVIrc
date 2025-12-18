@@ -125,6 +125,7 @@ jobs:
           copy c:\msys64\mingw64\bin\libpcre2-*.dll release; if (!$?) { exit 1 }
           copy c:\msys64\mingw64\bin\libglib-2.0-0.dll release; if (!$?) { exit 1 }
           copy c:\msys64\mingw64\bin\libgmodule-2.0-0.dll release; if (!$?) { exit 1 }
+          copy c:\msys64\mingw64\bin\libgobject-2.0-0.dll release; if (!$?) { exit 1 }
           copy c:\msys64\mingw64\bin\libintl-8.dll release; if (!$?) { exit 1 }
           copy c:\msys64\mingw64\bin\libwinpthread-1.dll release; if (!$?) { exit 1 }
           copy c:\msys64\mingw64\bin\libiconv-2.dll release; if (!$?) { exit 1 }
