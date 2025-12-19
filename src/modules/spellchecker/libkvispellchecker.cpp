@@ -25,10 +25,20 @@
 #include "KviModule.h"
 #include "KviOptions.h"
 
+#ifdef COMPILE_ENCHANT_SUPPORT
 #include <enchant++.h>
 
 static enchant::Broker * g_pEnchantBroker = nullptr;
 static KviPointerList<enchant::Dict> * g_pEnchantDicts = nullptr;
+#endif
+
+#ifdef COMPILE_WINSPELLCHECKER_SUPPORT
+#include <spellcheck.h>
+#include <winerror.h>
+
+static ISpellCheckerFactory *g_pWinSpellFactory = nullptr;
+static KviPointerList<ISpellChecker> * g_pWinSpellDicts = nullptr;
+#endif
 
 /*
 	@doc: spellchecker.available_dictionaries
@@ -45,23 +55,46 @@ static KviPointerList<enchant::Dict> * g_pEnchantDicts = nullptr;
 		value is name of provider for that language (e.g. Aspell).
 */
 
+#ifdef COMPILE_ENCHANT_SUPPORT
 static void spellchecker_enumerate_dicts(
-    const char * szLang,
-    const char * /*szName*/,
-    const char * szDesc,
-    const char * /*szFile*/,
-    void * pData)
+	const char * szLang,
+	const char * /*szName*/,
+	const char * szDesc,
+	const char * /*szFile*/,
+	void * pData)
 {
 	KviKvsHash * pHash = reinterpret_cast<KviKvsHash *>(pData);
 	pHash->set(szLang, new KviKvsVariant(szDesc));
 }
+#endif
 
 static bool spellchecker_kvs_available_dictionaries(KviKvsModuleFunctionCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETERS_END(c)
 	KviKvsHash * pHash = new KviKvsHash;
+
+#ifdef COMPILE_ENCHANT_SUPPORT
 	g_pEnchantBroker->list_dicts(spellchecker_enumerate_dicts, pHash);
+#endif
+
+#ifdef COMPILE_WINSPELLCHECKER_SUPPORT
+	IEnumString *enumDicts;
+
+	if(SUCCEEDED(g_pWinSpellFactory->get_SupportedLanguages(&enumDicts))) {
+		HRESULT hr = S_OK;
+		while (S_OK == hr) {
+			LPOLESTR string = nullptr;
+			hr = enumDicts->Next(1, &string, nullptr);
+			if (S_OK == hr) {
+				pHash->set(QString::fromWCharArray(string), new KviKvsVariant(QStringLiteral("Windows Spellchecker")));
+				CoTaskMemFree(string);
+			}
+		}
+		enumDicts->Release();
+	}
+#endif
+
 	c->returnValue()->setHash(pHash);
 	return true;
 }
@@ -87,10 +120,34 @@ static bool spellchecker_kvs_check(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
 	KVSM_PARAMETERS_END(c)
 
-	bool bResult = g_pEnchantDicts->isEmpty();
+	bool bResult = false;
+
+#ifdef COMPILE_ENCHANT_SUPPORT
+	bResult = g_pEnchantDicts->isEmpty();
 	KviPointerListIterator<enchant::Dict> it(*g_pEnchantDicts);
 	for(bool b = it.moveFirst(); b; b = it.moveNext())
 		bResult |= (*it)->check(szWord.toStdString());
+#endif
+
+#ifdef COMPILE_WINSPELLCHECKER_SUPPORT
+	bResult = g_pWinSpellDicts->isEmpty();
+
+	IEnumSpellingError *errors = nullptr;
+	ISpellingError *error = nullptr;
+
+	KviPointerListIterator<ISpellChecker> it(*g_pWinSpellDicts);
+	for(bool b = it.moveFirst(); b; b = it.moveNext()) {
+		if(SUCCEEDED((*it)->Check(szWord.toStdWString().c_str(), &errors))) {
+			if (errors->Next(&error) == S_OK) {
+				error->Release();
+			} else {
+				// no error found for this dict
+				bResult = true;
+			}
+			errors->Release();
+		}
+	}
+#endif
 
 	c->returnValue()->setBoolean(bResult);
 	return true;
@@ -121,6 +178,7 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall * c)
 
 	QHash<QString, int> hAllSuggestions;
 
+#ifdef COMPILE_ENCHANT_SUPPORT
 	if(!g_pEnchantDicts->isEmpty())
 	{
 		std::vector<std::string> suggestions;
@@ -134,6 +192,31 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall * c)
 			}
 		}
 	}
+#endif
+
+#ifdef COMPILE_WINSPELLCHECKER_SUPPORT
+	if(!g_pWinSpellDicts->isEmpty())
+	{
+		IEnumString *suggestions;
+
+		KviPointerListIterator<ISpellChecker> it(*g_pWinSpellDicts);
+		for(bool b = it.moveFirst(); b; b = it.moveNext())
+		{
+			if(SUCCEEDED((*it)->Suggest(szWord.toStdWString().c_str(), &suggestions))) {
+				HRESULT hr = S_OK;
+				while (S_OK == hr) {
+					LPOLESTR suggestion = nullptr;
+					hr = suggestions->Next(1, &suggestion, nullptr);
+					if (S_OK == hr) {
+						hAllSuggestions.insert(QString::fromWCharArray(suggestion), 1);
+						CoTaskMemFree(suggestion);
+					}
+				}
+				suggestions->Release();
+			}
+		}
+	}
+#endif
 
 	KviKvsArray * pArray = new KviKvsArray();
 
@@ -146,8 +229,17 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall * c)
 
 static void spellchecker_reload_dicts()
 {
+#ifdef COMPILE_ENCHANT_SUPPORT
 	while(!g_pEnchantDicts->isEmpty())
 		delete g_pEnchantDicts->takeFirst();
+#endif
+#ifdef COMPILE_WINSPELLCHECKER_SUPPORT
+	while(!g_pWinSpellDicts->isEmpty()) {
+		auto pDict = g_pWinSpellDicts->takeFirst();
+		pDict->Release();
+		delete pDict;
+	}
+#endif
 
 	const QStringList & wantedDictionaries = KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries);
 	foreach(QString szLang, wantedDictionaries)
@@ -155,6 +247,7 @@ static void spellchecker_reload_dicts()
 		if(szLang.isEmpty())
 			continue;
 
+#ifdef COMPILE_ENCHANT_SUPPORT
 		try {
 			enchant::Dict * pDict = g_pEnchantBroker->request_dict(szLang.toUtf8().data());
 			if(pDict)
@@ -164,6 +257,15 @@ static void spellchecker_reload_dicts()
 		} catch (enchant::Exception e) {
 			qDebug("Can't load spellchecker dictionary %s: %s", szLang.toUtf8().data(), e.what());
 		}
+#endif
+#ifdef COMPILE_WINSPELLCHECKER_SUPPORT
+		ISpellChecker *pDict;
+		if(SUCCEEDED(g_pWinSpellFactory->CreateSpellChecker(szLang.toStdWString().c_str(), &pDict))) {
+			g_pWinSpellDicts->append(pDict);
+		} else {
+			qDebug("Can't load spellchecker dictionary %s", szLang.toUtf8().data());
+		}
+#endif
 	}
 }
 
@@ -191,8 +293,18 @@ static bool spellchecker_kvs_reload_dictionaries(KviKvsModuleCommandCall * c)
 
 static bool spellchecker_module_init(KviModule * m)
 {
+#ifdef COMPILE_ENCHANT_SUPPORT
 	g_pEnchantBroker = new enchant::Broker();
 	g_pEnchantDicts = new KviPointerList<enchant::Dict>(/* bAutoDelete = */ false);
+#endif
+
+#ifdef COMPILE_WINSPELLCHECKER_SUPPORT
+	if (FAILED(CoCreateInstance(__uuidof(SpellCheckerFactory), nullptr,
+			CLSCTX_INPROC_SERVER, IID_PPV_ARGS (&g_pWinSpellFactory)))) {
+		return false;
+	}
+	g_pWinSpellDicts = new KviPointerList<ISpellChecker>(/* bAutoDelete = */ false);
+#endif
 
 	spellchecker_reload_dicts();
 
@@ -205,6 +317,7 @@ static bool spellchecker_module_init(KviModule * m)
 
 static bool spellchecker_module_cleanup(KviModule *)
 {
+#ifdef COMPILE_ENCHANT_SUPPORT
 	while(!g_pEnchantDicts->isEmpty())
 		delete g_pEnchantDicts->takeFirst();
 
@@ -212,6 +325,20 @@ static bool spellchecker_module_cleanup(KviModule *)
 	g_pEnchantDicts = nullptr;
 	delete g_pEnchantBroker;
 	g_pEnchantBroker = nullptr;
+#endif
+
+#ifdef COMPILE_WINSPELLCHECKER_SUPPORT
+	while(!g_pWinSpellDicts->isEmpty()) {
+		auto pDict = g_pWinSpellDicts->takeFirst();
+		pDict->Release();
+		delete pDict;
+	}
+
+	g_pWinSpellFactory->Release();
+	delete g_pWinSpellFactory;
+	g_pWinSpellFactory = nullptr;
+#endif
+
 	return true;
 }
 
@@ -221,12 +348,12 @@ static bool spellchecker_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "SpellChecker",                                                  // module name
-    "4.0.0",                                                         // module version
-    "Copyright (C) 2014 Alexey Sokolov (sokolov at google dot com)", // author & (C)
-    "Spell checker",
-    spellchecker_module_init,
-    spellchecker_module_can_unload,
-    0,
-    spellchecker_module_cleanup,
-    0)
+	"SpellChecker",                                                  // module name
+	"4.0.0",                                                         // module version
+	"Copyright (C) 2014 Alexey Sokolov (sokolov at google dot com)", // author & (C)
+	"Spell checker",
+	spellchecker_module_init,
+	spellchecker_module_can_unload,
+	0,
+	spellchecker_module_cleanup,
+	0)

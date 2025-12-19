@@ -86,6 +86,9 @@ const QStringList feature_list{
 #ifdef COMPILE_ENCHANT_SUPPORT
 	"Enchant",
 #endif
+#ifdef COMPILE_WINSPELLCHECKER_SUPPORT
+	"Winspell",
+#endif
 	// This is not in "else" branch of below because some scripts may need it,
 	// eg. /echo $features(Qt5) to determine if some features only available when Qt5 are present
 	"Qt5",
