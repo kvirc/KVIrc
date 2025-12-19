@@ -803,7 +803,7 @@ endif()
 
 option(WANT_SPELLCHECKER "Compile spell-checker support" ON)
 if(WANT_SPELLCHECKER)
-	if(WIN32 AND ${CMAKE_SYSTEM_VERSION} GREATER_EQUAL 6.2) # Windows >= 8
+	if(WIN32 AND ${QT_VERSION_MAJOR} GREATER_EQUAL 6) # Assume Windows >= 8
 		set(CMAKE_STATUS_SPELLCHECKER_SUPPORT "Yes, using Windows native spellchecker")
 		set(COMPILE_WINSPELLCHECKER_SUPPORT 1)
 	else()
