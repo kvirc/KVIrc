@@ -81,7 +81,8 @@ jobs:
             -DWANT_PERL=YES `
             -DWANT_PHONON=NO `
             -DWANT_PYTHON=YES `
-            -DWANT_QTWEBENGINE=NO
+            -DWANT_QTWEBENGINE=NO `
+            -DWANT_SPELLCHECKER=NO
 
       - name: Build
         run: |
