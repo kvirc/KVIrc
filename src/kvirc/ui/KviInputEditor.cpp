@@ -335,7 +335,7 @@ int KviInputEditor::heightHint() const
 
 bool KviInputEditor::checkWordSpelling(const QString & szWord)
 {
-#ifdef COMPILE_ENCHANT_SUPPORT
+#if defined(COMPILE_ENCHANT_SUPPORT) || defined(COMPILE_WINSPELLCHECKER_SUPPORT)
 	if(szWord.isEmpty())
 		return true;
 
@@ -367,7 +367,7 @@ bool KviInputEditor::checkWordSpelling(const QString & szWord)
 
 void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, std::vector<KviInputEditorSpellCheckerBlock> & lBuffer)
 {
-#ifdef COMPILE_ENCHANT_SUPPORT
+#if defined(COMPILE_ENCHANT_SUPPORT) || defined(COMPILE_WINSPELLCHECKER_SUPPORT)
 	if(szText.isEmpty())
 		return;
 
@@ -524,7 +524,7 @@ void KviInputEditor::rebuildTextBlocks()
 
 	std::vector<KviInputEditorSpellCheckerBlock> lSpellCheckerBlocks;
 
-#ifdef COMPILE_ENCHANT_SUPPORT
+#if defined(COMPILE_ENCHANT_SUPPORT) || defined(COMPILE_WINSPELLCHECKER_SUPPORT)
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lSpellCheckerBlocks);
 #else
 	ADD_SPELLCHECKER_BLOCK(lSpellCheckerBlocks, m_szTextBuffer, 0, false, true);
@@ -1155,7 +1155,7 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 	pAction = g_pInputPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)), __tr2qs("Insert Icon"), this, SLOT(popupTextIconWindow()));
 	pAction->setEnabled(!m_bReadOnly);
 
-#ifdef COMPILE_ENCHANT_SUPPORT
+#if defined(COMPILE_ENCHANT_SUPPORT) || defined(COMPILE_WINSPELLCHECKER_SUPPORT)
 	// check if the cursor is in a spell-checkable block
 
 	std::vector<KviInputEditorSpellCheckerBlock> lBuffer;
@@ -1234,7 +1234,7 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 	pWidgetAction->setDefaultWidget(pLabel);
 	m_SpellCheckerPopup.addAction(pWidgetAction);
 
-#ifdef COMPILE_ENCHANT_SUPPORT
+#if defined(COMPILE_ENCHANT_SUPPORT) || defined(COMPILE_WINSPELLCHECKER_SUPPORT)
 	// check if the cursor is in a spellcheckable block
 
 	std::vector<KviInputEditorSpellCheckerBlock> lBuffer;

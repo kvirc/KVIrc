@@ -133,7 +133,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	else
 		m_pForcedLocaleCombo->setCurrentIndex(iMatch);
 
-#ifdef COMPILE_ENCHANT_SUPPORT
+#if defined(COMPILE_ENCHANT_SUPPORT) || defined(COMPILE_WINSPELLCHECKER_SUPPORT)
 	{
 		gbox = addGroupBox(0, 2, 0, 2, Qt::Horizontal, __tr2qs_ctx("Spell Checker Dictionaries", "options"));
 
@@ -226,7 +226,7 @@ void OptionsWidget_textEncoding::commit()
 		}
 	}
 
-#ifdef COMPILE_ENCHANT_SUPPORT
+#if defined(COMPILE_ENCHANT_SUPPORT) || defined(COMPILE_WINSPELLCHECKER_SUPPORT)
 	QStringList wantedDictionaries;
 	for(int i = 0; i < m_pSpellCheckerDictionaries->rowCount(); ++i)
 	{

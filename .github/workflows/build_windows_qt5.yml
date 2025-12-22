@@ -59,20 +59,6 @@ jobs:
             openssl:x64-windows-release `
             zlib:x64-windows-release
 
-      - name: Install enchant
-        run: |
-          c:\msys64\usr\bin\pacman -Q
-          c:\msys64\usr\bin\pacman -S --noconfirm mingw64/mingw-w64-x86_64-enchant
-          mkdir c:\enchant-headers
-          copy c:\msys64\mingw64\lib\glib-2.0\include\glibconfig.h c:\enchant-headers
-          copy c:\msys64\mingw64\include\enchant-2\enchant.h c:\enchant-headers
-
-      - name: Patch Enchant for MSVC support
-        run: |
-          c:\msys64\usr\bin\pacman -S --noconfirm patch
-          cd c:\enchant-headers
-          c:\msys64\usr\bin\patch -p2 -i ${{github.workspace}}\dist\windows\patches\enchant.patch
-
       - name: Patch Perl for MSVC support
         run: |
           # Strawberry perl doesn't support MSVC, but we force the support.
@@ -96,9 +82,7 @@ jobs:
             -DWANT_PHONON=NO `
             -DWANT_PYTHON=YES `
             -DWANT_QTWEBENGINE=NO `
-            -DEnchant_FOUND=1 `
-            -DEnchant_INCLUDE_DIRS="c:/enchant-headers;c:/msys64/mingw64/include/enchant-2;c:/msys64/mingw64/include/glib-2.0" `
-            -DEnchant_LDFLAGS="c:/msys64/mingw64/lib/libenchant-2.dll.a"
+            -DWANT_SPELLCHECKER=NO
 
       - name: Build
         run: |
@@ -121,42 +105,6 @@ jobs:
           copy c:\vcpkg\installed\x64-windows-release\bin\zlib1.dll release; if (!$?) { exit 1 }
           copy c:\vcpkg\installed\x64-windows-release\bin\libcrypto*.dll release; if (!$?) { exit 1 }
           copy c:\vcpkg\installed\x64-windows-release\bin\libssl*.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libenchant-2*.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libffi-8.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libpcre2-*.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libglib-2.0-0.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libgmodule-2.0-0.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libgobject-2.0-0.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libintl-8.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libwinpthread-1.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libiconv-2.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libgcc_s_seh-1.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libstdc++-6.dll release; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\bin\libhunspell-1.7-0.dll release; if (!$?) { exit 1 }
-          mkdir release\lib
-          mkdir release\share
-          mkdir release\lib\enchant-2
-          mkdir release\share\enchant-2
-          mkdir release\share\hunspell
-          touch release\share\locale; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\share\enchant-2\enchant.ordering release\share\enchant-2; if (!$?) { exit 1 }
-          copy c:\msys64\mingw64\lib\enchant-2\enchant_hunspell.dll release\lib\enchant-2; if (!$?) { exit 1 }
-
-      - name: Deploy dictionaries
-        run: |
-          cd '${{github.workspace}}\build\release\share\hunspell'
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/en/en_GB.aff
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/en/en_GB.dic
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/en/en_US.aff
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/en/en_US.dic
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/es/es_ES.aff
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/es/es_ES.dic
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/fr_FR/fr.aff
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/fr_FR/fr.dic
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/it_IT/it_IT.aff
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/it_IT/it_IT.dic
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/ru_RU/ru_RU.aff
-          c:\msys64\usr\bin\wget https://raw.githubusercontent.com/LibreOffice/dictionaries/master/ru_RU/ru_RU.dic
 
       - name: Detect version
         shell: bash
