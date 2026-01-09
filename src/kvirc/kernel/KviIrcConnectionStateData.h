@@ -99,6 +99,7 @@ protected:
 	QStringList m_lEnabledCaps;                 // the CAPs currently enabled
 	bool m_bIdentifyMsgCapabilityEnabled = false; // do we have the msg-identity CAP enabled ?
 	QString m_szSentSaslMethod;
+	QStringList m_lBatchReferenceTags;           // list of reference tags of currently active BATCH transactions
 public:
 	///
 	/// Sets the current login nickname state
@@ -151,6 +152,10 @@ public:
 
 	bool isInsideInitialCapReq() const { return m_bInsideInitialCapReq; }
 	void setInsideInitialCapReq(bool bInside) { m_bInsideInitialCapReq = bInside; }
+
+	const QStringList & batchReferenceTags() const { return m_lBatchReferenceTags; }
+	void addBatchReferenceTags(const QString &tag) { if(!m_lBatchReferenceTags.contains(tag)) m_lBatchReferenceTags.append(tag); }
+	void removeBatchReferenceTags(const QString &tag) { m_lBatchReferenceTags.removeAll(tag); }
 
 	bool sentQuit() const { return m_bSentQuit; }
 	void setSentQuit() { m_bSentQuit = true; }
