@@ -2689,3 +2689,47 @@ void KviIrcServerParser::parseLiteralAway(KviIrcMessage * msg)
 	if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnAway, console, szNick, szUser, szHost, awayMsg))
 		msg->setHaltOutput();
 }
+
+void KviIrcServerParser::parseLiteralBatch(KviIrcMessage * msg)
+{
+	// BATCH
+	// :prefix BATCH <+|-><reference_tag> [*]
+
+	// + means start of batch, - meand end of batch
+	// all batch messages will contain the message tag @batch=<reference_tag>
+	// multiple batches can be nested and / or interleaved
+
+	QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
+	QString szRefenceTag = msg->connection()->decodeText(msg->safeParam(0));
+	QChar szMode;
+	if(!szRefenceTag.isEmpty()) {
+		szMode = szRefenceTag.at(0);
+		szRefenceTag = szRefenceTag.remove(0, 1);
+	}
+
+	KviCString szParms;
+	for(int i = 1; i < msg->paramCount(); ++i)
+	{
+		if(szParms.hasData())
+			szParms.append(' ');
+		szParms.append(msg->params()[i]);
+	}
+	QString szParams = msg->connection()->decodeText(szParms);
+
+	if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnBatch, msg->console(), szPrefix, szMode, szRefenceTag, szParams))
+		msg->setHaltOutput();
+
+	if(szMode == QStringLiteral("+"))
+	{
+		msg->connection()->stateData()->addBatchReferenceTags(szRefenceTag);
+		if(!msg->haltOutput())
+			msg->console()->output(KVI_OUT_BATCH, __tr2qs("Received batch transation %Q begin: %Q"), &szRefenceTag, &szParams);
+	}
+
+	if(szMode == QStringLiteral("-"))
+	{
+		msg->connection()->stateData()->removeBatchReferenceTags(szRefenceTag);
+		if(!msg->haltOutput())
+			msg->console()->output(KVI_OUT_BATCH, __tr2qs("Received batch transation %Q end: %Q"), &szRefenceTag, &szParams);
+	}
+}
