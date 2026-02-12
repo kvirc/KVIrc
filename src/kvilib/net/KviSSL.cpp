@@ -392,6 +392,9 @@ bool KviSSL::initContext(Method m)
 #ifdef SSL_OP_SINGLE_ECDH_USE
 		|SSL_OP_SINGLE_ECDH_USE
 #endif
+#ifdef SSL_OP_IGNORE_UNEXPECTED_EOF
+		|SSL_OP_IGNORE_UNEXPECTED_EOF
+#endif
 	);
 	// we want all ciphers to be available here, except insecure ones, orderer by strength;
 	SSL_CTX_set_cipher_list(m_pSSLCtx, "ALL:!eNULL:!LOW:!EXP:!SSLv2:!SSLv3:!TLSv1:@STRENGTH");
