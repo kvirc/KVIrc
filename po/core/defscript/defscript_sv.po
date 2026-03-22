@@ -198,51 +198,51 @@ msgstr "Aktiverade ignorera för CTCP DCC"
 
 #: data/defscript/actions.kvs:284
 msgid "Message Suppression Controllers"
-msgstr ""
+msgstr "Styrenheter för undertryckande av meddelanden"
 
 #: data/defscript/actions.kvs:294
 msgid "Enable join message suppression"
-msgstr ""
+msgstr "Aktivera undertryckning av join-meddelande"
 
 #: data/defscript/actions.kvs:295
 msgid "When checked, all join messages are hidden."
-msgstr ""
+msgstr "När den är markerad är alla join-meddelanden dolda."
 
 #: data/defscript/actions.kvs:304
 msgid "Disabled join message suppression"
-msgstr ""
+msgstr "Avaktiverad undertryckning av join-meddelande"
 
 #: data/defscript/actions.kvs:309
 msgid "Enabled join message suppression"
-msgstr ""
+msgstr "Aktiverat undertryckande av join-meddelande"
 
 #: data/defscript/actions.kvs:317
 msgid "Enable part message suppression"
-msgstr ""
+msgstr "Aktivera undertryckning av delmeddelanden"
 
 #: data/defscript/actions.kvs:318 data/defscript/actions.kvs:339
 msgid "When checked, all part messages are hidden."
-msgstr ""
+msgstr "När den är markerad är alla delmeddelanden dolda."
 
 #: data/defscript/actions.kvs:326
 msgid "Disabled part message suppression"
-msgstr ""
+msgstr "Avaktiverad undertryckning av delmeddelanden"
 
 #: data/defscript/actions.kvs:331
 msgid "Enabled part message suppression"
-msgstr ""
+msgstr "Aktiverad undertryckning av delmeddelanden"
 
 #: data/defscript/actions.kvs:338
 msgid "Enable quit message suppression"
-msgstr ""
+msgstr "Aktivera undertryckning av avslutningsmeddelande"
 
 #: data/defscript/actions.kvs:348
 msgid "Disabled quit message suppression"
-msgstr ""
+msgstr "Avaktiverad undertryckning av avslutningsmeddelande"
 
 #: data/defscript/actions.kvs:353
 msgid "Enabled quit message suppression"
-msgstr ""
+msgstr "Aktiverat undertryckande av kvittensmeddelande"
 
 #: data/defscript/actions.kvs:365 data/defscript/popups.kvs:159
 #: data/defscript/popups.kvs:330 data/defscript/popups.kvs:631
@@ -252,7 +252,7 @@ msgstr "Stäng"
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
-msgstr ""
+msgstr "Mål saknas, inga åtgärder vidtagna"
 
 #: data/defscript/aliases.kvs:111 data/defscript/aliases.kvs:165
 msgid "Usage"
@@ -268,27 +268,27 @@ msgstr "meddelande"
 
 #: data/defscript/aliases.kvs:112
 msgid "-m: send a message instead of a notice"
-msgstr ""
+msgstr "-m: skicka ett meddelande istället för ett meddelande"
 
 #: data/defscript/aliases.kvs:113
 msgid "-w: send notice to all channel owners"
-msgstr ""
+msgstr "-w: skicka meddelande till alla kanalägare"
 
 #: data/defscript/aliases.kvs:114
 msgid "-a: send notice to all channel admins"
-msgstr ""
+msgstr "-a: skicka meddelande till alla kanaladministratörer"
 
 #: data/defscript/aliases.kvs:115
 msgid "-o: send notice to all channel ops"
-msgstr ""
+msgstr "-o: skicka meddelande till alla kanaloperatörer"
 
 #: data/defscript/aliases.kvs:116
 msgid "-h: send notice to all channel halfops"
-msgstr ""
+msgstr "-h: skicka meddelande till alla kanalansvariga"
 
 #: data/defscript/aliases.kvs:117
 msgid "-v: send notice to all channel voices"
-msgstr ""
+msgstr "-v: skicka meddelande till alla röster i kanalen"
 
 #: data/defscript/aliases.kvs:118
 msgid "-q: quiet mode"
@@ -296,7 +296,7 @@ msgstr "-q: tyst läge"
 
 #: data/defscript/aliases.kvs:126
 msgid "Parameter message missing"
-msgstr ""
+msgstr "Parametermeddelande saknas"
 
 #: data/defscript/aliases.kvs:127
 msgid "Type /gnotice for help"
@@ -340,15 +340,15 @@ msgstr "Kanaloperatör"
 
 #: data/defscript/aliases.kvs:530
 msgid "Half Operator"
-msgstr ""
+msgstr "Halv operatör"
 
 #: data/defscript/aliases.kvs:534
 msgid "Voice"
-msgstr ""
+msgstr "Röst"
 
 #: data/defscript/aliases.kvs:538
 msgid "User Operator"
-msgstr ""
+msgstr "Användare Operatör"
 
 #: data/defscript/aliases.kvs:542
 msgid "Normal User"
@@ -370,23 +370,23 @@ msgstr "Ingen sådan användare:"
 msgid ""
 "[Installer] Error: the first argument of copyFiles must be a source "
 "directory"
-msgstr ""
+msgstr "[Installer] Fel: det första argumentet i copyFiles måste vara en källkatalog"
 
 #: data/defscript/classes.kvs:24
 msgid ""
 "[Installer] Error: the second argument of copyFiles must be a file name or "
 "file regexp"
-msgstr ""
+msgstr "[Installer] Fel: det andra argumentet i copyFiles måste vara ett filnamn eller en filregexp"
 
 #: data/defscript/classes.kvs:30
 msgid ""
 "[Installer] Error: the third argument of copyFiles must be a destination "
 "directory"
-msgstr ""
+msgstr "[Installer] Fel: det tredje argumentet i copyFiles måste vara en destinationskatalog"
 
 #: data/defscript/default.kvs:35
 msgid "The default script has been successfully installed."
-msgstr ""
+msgstr "Standardskriptet har installerats på ett framgångsrikt sätt."
 
 #: data/defscript/default.kvs:36
 msgid "To connect to a server, type /server <server name>"
@@ -407,25 +407,25 @@ msgstr "Kontroller för globala alternativ"
 
 #: data/defscript/popups.kvs:22 data/defscript/popups.kvs:1385
 msgid "Stop Highlighting (Local)"
-msgstr ""
+msgstr "Sluta markera (lokalt)"
 
 #: data/defscript/popups.kvs:27 data/defscript/popups.kvs:1390
 msgid "Start Highlighting (Local)"
-msgstr ""
+msgstr "Börja markera (lokalt)"
 
 #: data/defscript/popups.kvs:32 data/defscript/popups.kvs:71
 msgid "Always Highlight"
-msgstr ""
+msgstr "Alltid höjdpunkt"
 
 #: data/defscript/popups.kvs:34 data/defscript/popups.kvs:40
 #: data/defscript/popups.kvs:46 data/defscript/popups.kvs:52
 #: data/defscript/popups.kvs:58 data/defscript/popups.kvs:64
 msgid "Highlight As"
-msgstr ""
+msgstr "Markera som"
 
 #: data/defscript/popups.kvs:76
 msgid "Stop Highlighting"
-msgstr ""
+msgstr "Sluta markera"
 
 #: data/defscript/popups.kvs:97 data/defscript/popups.kvs:138
 #: data/defscript/popups.kvs:786 data/defscript/popups.kvs:1069
@@ -435,7 +435,7 @@ msgstr "Flera användare"
 #: data/defscript/popups.kvs:110 data/defscript/popups.kvs:209
 #: data/defscript/popups.kvs:1267 data/defscript/popups.kvs:1834
 msgid "Notify Avatar"
-msgstr ""
+msgstr "Meddela Avatar"
 
 #: data/defscript/popups.kvs:117 data/defscript/popups.kvs:216
 #: data/defscript/popups.kvs:425 data/defscript/popups.kvs:557
@@ -459,7 +459,7 @@ msgstr "Docka"
 #: data/defscript/popups.kvs:152 data/defscript/popups.kvs:793
 #: data/defscript/popups.kvs:1772
 msgid "/WHOIS ?s (idle time)"
-msgstr ""
+msgstr "/WHOIS ?s (inaktiv tid)"
 
 #: data/defscript/popups.kvs:166 data/defscript/popups.kvs:342
 #: data/defscript/popups.kvs:441 data/defscript/popups.kvs:800
@@ -504,12 +504,12 @@ msgstr "&Registrering"
 #: data/defscript/popups.kvs:226 data/defscript/popups.kvs:638
 #: data/defscript/popups.kvs:1235
 msgid "&Hop"
-msgstr ""
+msgstr "&Hop"
 
 #: data/defscript/popups.kvs:231 data/defscript/popups.kvs:643
 #: data/defscript/popups.kvs:1240
 msgid "&Part"
-msgstr ""
+msgstr "&Part"
 
 #: data/defscript/popups.kvs:237 data/defscript/popups.kvs:649
 #: data/defscript/popups.kvs:1246
@@ -555,11 +555,11 @@ msgstr "m (Kommandoanvändning)"
 
 #: data/defscript/popups.kvs:376 data/defscript/popups.kvs:475
 msgid "o (Operators)"
-msgstr ""
+msgstr "o (Operatörer)"
 
 #: data/defscript/popups.kvs:381 data/defscript/popups.kvs:480
 msgid "t (Connection Stats?)"
-msgstr ""
+msgstr "t (Anslutningsstatistik?)"
 
 #: data/defscript/popups.kvs:386 data/defscript/popups.kvs:485
 msgid "u (Uptime)"
@@ -567,11 +567,11 @@ msgstr "u (Upptid)"
 
 #: data/defscript/popups.kvs:391 data/defscript/popups.kvs:490
 msgid "y (Y-Lines)"
-msgstr ""
+msgstr "y (Y-linjer)"
 
 #: data/defscript/popups.kvs:396 data/defscript/popups.kvs:495
 msgid "z (Debug Stats?)"
-msgstr ""
+msgstr "z (Felsökningsstatistik?)"
 
 #: data/defscript/popups.kvs:433
 msgid "Copy to Clipboard"
@@ -607,15 +607,15 @@ msgstr "Vid anslutning till nätverket '?s'"
 
 #: data/defscript/popups.kvs:683
 msgid "Stop Auto-joining Channel on Server '?s'"
-msgstr ""
+msgstr "Stoppa automatisk anslutning av kanal på server '?s'"
 
 #: data/defscript/popups.kvs:696
 msgid "Stop Auto-joining Channel on Network '?s'"
-msgstr ""
+msgstr "Stoppa automatisk sammanfogning av kanaler på nätverk '?s'"
 
 #: data/defscript/popups.kvs:711
 msgid "Part All Channels"
-msgstr ""
+msgstr "Dela alla kanaler"
 
 #: data/defscript/popups.kvs:718
 msgid "Close All Queries"
@@ -639,19 +639,19 @@ msgstr "Kontroller för &globala alternativ"
 
 #: data/defscript/popups.kvs:752
 msgid "Unhighlight All Windows"
-msgstr ""
+msgstr "Avmarkera alla fönster"
 
 #: data/defscript/popups.kvs:758
 msgid "Unhighlight All Channels"
-msgstr ""
+msgstr "Avmarkera alla kanaler"
 
 #: data/defscript/popups.kvs:764
 msgid "Unhighlight All Queries"
-msgstr ""
+msgstr "Avmarkera alla frågor"
 
 #: data/defscript/popups.kvs:833 data/defscript/popups.kvs:1815
 msgid "&Query"
-msgstr ""
+msgstr "&Query"
 
 #: data/defscript/popups.kvs:848 data/defscript/popups.kvs:1830
 msgid "Ig&nore"
@@ -660,11 +660,11 @@ msgstr "Ig&norera"
 #: data/defscript/popups.kvs:850 data/defscript/popups.kvs:1274
 #: data/defscript/popups.kvs:1832
 msgid "&Highlight"
-msgstr ""
+msgstr "&Highlight"
 
 #: data/defscript/popups.kvs:852
 msgid "Notify avatar"
-msgstr ""
+msgstr "Meddela avatar"
 
 #: data/defscript/popups.kvs:869
 msgid "Look Up"
@@ -684,7 +684,7 @@ msgstr "Chatta med"
 
 #: data/defscript/popups.kvs:946
 msgid "Reverse Chat with"
-msgstr ""
+msgstr "Omvänd chatt med"
 
 #: data/defscript/popups.kvs:951
 msgid "Secure Chat with"
@@ -700,23 +700,23 @@ msgstr "Säker sändning till"
 
 #: data/defscript/popups.kvs:968
 msgid "Reverse Send to"
-msgstr ""
+msgstr "Omvänd Skicka till"
 
 #: data/defscript/popups.kvs:973
 msgid "Secure Reverse Send to"
-msgstr ""
+msgstr "Secure Reverse Skicka till"
 
 #: data/defscript/popups.kvs:980
 msgid "TDCC Send to"
-msgstr ""
+msgstr "TDCC Skicka till"
 
 #: data/defscript/popups.kvs:985
 msgid "TDCC Reverse Send to"
-msgstr ""
+msgstr "TDCC Omvänd sändning till"
 
 #: data/defscript/popups.kvs:992
 msgid "Voice Chat"
-msgstr ""
+msgstr "Röstchatt"
 
 #: data/defscript/popups.kvs:994
 msgid "Default"
@@ -736,39 +736,39 @@ msgstr "Ä&gare"
 
 #: data/defscript/popups.kvs:1109
 msgid "&Deowner"
-msgstr ""
+msgstr "& Ägare"
 
 #: data/defscript/popups.kvs:1114
 msgid "&Administrator"
-msgstr ""
+msgstr "&Administratör"
 
 #: data/defscript/popups.kvs:1119
 msgid "&Deadministrator"
-msgstr ""
+msgstr "&Deadministratör"
 
 #: data/defscript/popups.kvs:1124
 msgid "&Op"
-msgstr ""
+msgstr "&Op"
 
 #: data/defscript/popups.kvs:1129
 msgid "&Deop"
-msgstr ""
+msgstr "&Deop"
 
 #: data/defscript/popups.kvs:1134
 msgid "&Halfop"
-msgstr ""
+msgstr "&Halfop"
 
 #: data/defscript/popups.kvs:1139
 msgid "&Dehalfop"
-msgstr ""
+msgstr "&Dehalfop"
 
 #: data/defscript/popups.kvs:1144
 msgid "&Voice"
-msgstr ""
+msgstr "&Voice"
 
 #: data/defscript/popups.kvs:1149
 msgid "D&evoice"
-msgstr ""
+msgstr "D&evoice"
 
 #: data/defscript/popups.kvs:1156 data/defscript/popups.kvs:1164
 msgid "&Kick"
@@ -812,11 +812,11 @@ msgstr "Sparka &ut/Bannlys"
 
 #: data/defscript/popups.kvs:1202
 msgid "Configure Ban Mask..."
-msgstr ""
+msgstr "Konfigurera Ban Mask..."
 
 #: data/defscript/popups.kvs:1276
 msgid "Copy Channel URL to Clipboard"
-msgstr ""
+msgstr "Kopiera kanalens URL till klippbordet"
 
 #: data/defscript/popups.kvs:1291 data/defscript/popups.kvs:1296
 #: data/defscript/popups.kvs:1301 data/defscript/popups.kvs:1306
@@ -899,7 +899,7 @@ msgstr "är registrerad som"
 
 #: data/defscript/popups.kvs:1666
 msgid "is in the notify list"
-msgstr ""
+msgstr "är i meddelandelistan"
 
 #: data/defscript/popups.kvs:1670
 msgid "has a default avatar"
@@ -933,11 +933,11 @@ msgstr "Avregistrera"
 
 #: data/defscript/popups.kvs:1732
 msgid "Add to Notify"
-msgstr ""
+msgstr "Lägg till för att meddela"
 
 #: data/defscript/popups.kvs:1737
 msgid "Remove from Notify"
-msgstr ""
+msgstr "Ta bort från Notify"
 
 #: data/defscript/popups.kvs:1742
 msgid "Avatar"

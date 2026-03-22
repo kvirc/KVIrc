@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# Daniel Neves, 2015-2016,2018,2020,2024-2025
+# Daniel Neves, 2015-2016,2018,2020,2024-2026
 # Zé <mmodem00@gmail.com>, 2006-2008,2010
 # Zé <mmodem00@netvisao.pt>, 2003-2005
 # Zé <ze@mandriva.org>, 2008,2010
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-08 22:57+0100\n"
 "PO-Revision-Date: 2015-08-01 08:52+0000\n"
-"Last-Translator: Daniel Neves, 2015-2016,2018,2020,2024-2025\n"
+"Last-Translator: Daniel Neves, 2015-2016,2018,2020,2024-2026\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/kvirc/KVIrc/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2008,11 +2008,11 @@ msgstr "I: Tempo ocioso escondido"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:521
 msgid "M: Bypass g mode (oper only)"
-msgstr ""
+msgstr "M: Ignora o modo g (só para ops)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:524
 msgid "u: Receive filtered messages"
-msgstr ""
+msgstr "u: Recebe mensagens filtradas"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:538
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:645
@@ -2633,7 +2633,7 @@ msgstr "Bloquear usuários redirecionados"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1710
 msgid "Block messages from unregistered users"
-msgstr ""
+msgstr "Bloquear mensagens de usuários não registrados"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1713
 msgid "SSL Only"
@@ -2672,7 +2672,7 @@ msgstr "Quieto"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1740
 msgid "Unfiltered"
-msgstr ""
+msgstr "Não filtrado"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1743
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:1783
@@ -5121,11 +5121,11 @@ msgstr "Capacidades atualmente Ativadas: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2644
 msgid "Received new capability message: %Q"
-msgstr ""
+msgstr "Nova mensagem de capacidade recebida: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2653
 msgid "Received deleted capability message: %Q"
-msgstr ""
+msgstr "Mensagem de capacidade excluída recebida: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2656
 msgid "Received unknown extended capability message: %Q %Q"

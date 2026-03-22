@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# Daniel Neves, 2015-2017
+# Daniel Neves, 2015-2017,2026
 # Zé <mmodem00@gmail.com>, 2010
 # Zé <ze@mandriva.org>, 2010
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-01 17:30+0100\n"
 "PO-Revision-Date: 2015-08-01 08:53+0000\n"
-"Last-Translator: Daniel Neves, 2015-2017\n"
+"Last-Translator: Daniel Neves, 2015-2017,2026\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/kvirc/KVIrc/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,7 +53,7 @@ msgstr "Os nomes das alias podem conter apenas letras, dígitos, sublinhados e s
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:261
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name>?"
-msgstr ""
+msgstr "Caractere ':' perdido no nome alternativo: você quis dizer ...<namespace>::<name>?"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:267
 msgid "Found an empty namespace in alias name"
@@ -98,7 +98,7 @@ msgstr "Nenhum evento (%Q)"
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1504
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1520
 msgid "No handler '%Q' for RAW numeric event '%d'"
-msgstr ""
+msgstr "Nenhum manipulador '%Q' para evento numérico RAW '%d'"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:589
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1510
@@ -231,12 +231,12 @@ msgstr "Não pode apagar objeto não existente"
 msgid ""
 "The argument of the -w switch did not evaluate to a valid window ID: using "
 "default"
-msgstr ""
+msgstr "O argumento da opção -w não foi avaliado como um ID de janela válido: usando o padrão"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1135
 msgid ""
 "The argument of the -i switch did not evaluate to a number: using default"
-msgstr ""
+msgstr "O argumento da opção -i não foi avaliado como um número: usando o padrão"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1248
 msgid "Window '%Q' not found, using current one"
@@ -788,7 +788,7 @@ msgstr "Erro de sintaxe: identificador de alias mal formado"
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:98
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:213
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>'?"
-msgstr ""
+msgstr "Caractere ':' perdido: você quis dizer '...<namespace>::<alias_name>'?"
 
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:99
 msgid "Syntax error: malformed (alias?) command identifier"
@@ -818,7 +818,7 @@ msgstr "Inesperado fim do script depois da chamada de função o prefixo '$'"
 
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:46
 msgid "Unexpected character %q (Unicode %x) after '$' function call prefix"
-msgstr ""
+msgstr "Caractere inesperado %q (Unicode %x) após o prefixo de chamada de função '$'"
 
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:47
 msgid ""
@@ -880,7 +880,7 @@ msgstr "Inesperado fim do script na expressão"
 msgid ""
 "Unexpected character %q (Unicode %h) in expression. If it meant to be a "
 "string use the quotes."
-msgstr ""
+msgstr "Caractere inesperado %q (Unicode %h) na expressão. Se for para ser um termo, use as aspas."
 
 #: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:466
 msgid "Unexpected empty expression operand"
@@ -1333,12 +1333,12 @@ msgstr "Não há variáveis ​​de espaço estendidas neste âmbito"
 msgid ""
 "The argument of the hash count '#' operator didn't evaluate to a hash: "
 "automatic conversion from type '%Q' supplied"
-msgstr ""
+msgstr "O argumento do operador de contagem de hash '#' não foi avaliado como um hash: conversão automática do tipo '%Q' fornecida"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:68
 #: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:119
 msgid "Hash key evaluated to empty string: fix the script"
-msgstr ""
+msgstr "Chave hash avaliada como termo vazio: corrija o script"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:91
 #, c++-format
