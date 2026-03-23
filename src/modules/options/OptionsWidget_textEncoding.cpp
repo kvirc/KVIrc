@@ -97,7 +97,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	grid->addWidget(addLabel(gbox, __tr2qs_ctx("<b>Note:</b> You must restart KVIrc to apply any language changes", "options")), 1, 0, 1, 2);
 
 	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("Automatic detection", "options"));
-	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("en", "options"));
+	m_pForcedLocaleCombo->addItem("en");
 
 	QString szLangFile;
 	g_pApp->getLocalKvircDirectory(szLangFile, KviApplication::None, KVI_FORCE_LOCALE_FILE_NAME);
