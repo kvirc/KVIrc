@@ -102,7 +102,7 @@ jobs:
       - name: Deploy 3rd party dlls
         run: |
           cd '${{github.workspace}}\build'
-          copy c:\vcpkg\installed\x64-windows-release\bin\zlib1.dll release; if (!$?) { exit 1 }
+          copy c:\vcpkg\installed\x64-windows-release\bin\z.dll release; if (!$?) { exit 1 }
           copy c:\vcpkg\installed\x64-windows-release\bin\libcrypto*.dll release; if (!$?) { exit 1 }
           copy c:\vcpkg\installed\x64-windows-release\bin\libssl*.dll release; if (!$?) { exit 1 }
 
