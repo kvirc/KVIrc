@@ -102,7 +102,7 @@ jobs:
       - name: Deploy 3rd party dlls
         run: |
           cd '${{github.workspace}}\build'
-          copy c:\vcpkg\installed\x64-windows-release\bin\zlib1.dll release; if (!$?) { exit 1 }
+          copy c:\vcpkg\installed\x64-windows-release\bin\z.dll release; if (!$?) { exit 1 }
           copy c:\vcpkg\installed\x64-windows-release\bin\libcrypto*.dll release; if (!$?) { exit 1 }
           copy c:\vcpkg\installed\x64-windows-release\bin\libssl*.dll release; if (!$?) { exit 1 }
 
@@ -115,7 +115,7 @@ jobs:
           echo "exe_name=KVIrc-$kvi_version-dev-$(date +%F)-git-$git_desc" >> "$GITHUB_ENV"
 
       - name: Install NSIS
-        uses: repolevedavaj/install-nsis@v1.1.0
+        uses: repolevedavaj/install-nsis@v1.2.0
         with:
           nsis-version: '3.11'
 
