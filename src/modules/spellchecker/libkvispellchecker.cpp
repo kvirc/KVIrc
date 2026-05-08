@@ -237,7 +237,6 @@ static void spellchecker_reload_dicts()
 	while(!g_pWinSpellDicts->isEmpty()) {
 		auto pDict = g_pWinSpellDicts->takeFirst();
 		pDict->Release();
-		delete pDict;
 	}
 #endif
 
@@ -331,11 +330,9 @@ static bool spellchecker_module_cleanup(KviModule *)
 	while(!g_pWinSpellDicts->isEmpty()) {
 		auto pDict = g_pWinSpellDicts->takeFirst();
 		pDict->Release();
-		delete pDict;
 	}
 
 	g_pWinSpellFactory->Release();
-	delete g_pWinSpellFactory;
 	g_pWinSpellFactory = nullptr;
 #endif
 
