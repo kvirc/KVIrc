@@ -953,12 +953,23 @@ void KviSSLCertificate::extractSignature()
 
 	m_szSignatureContents = "";
 
-	for(i = 0; i < sig->length; i++)
+#if OPENSSL_VERSION_NUMBER >= 0x10100005L
+	int length = ASN1_STRING_length(sig);
+#else
+	int length = sig->length;
+#endif
+	for(i = 0; i < length; i++)
 	{
 		if(m_szSignatureContents.hasData())
 			m_szSignatureContents.append(":");
+#if OPENSSL_VERSION_NUMBER >= 0x10100005L
+		const unsigned char *data = ASN1_STRING_get0_data(sig);
+		m_szSignatureContents.append(hexdigits[(data[i] & 0xf0) >> 4]);
+		m_szSignatureContents.append(hexdigits[(data[i] & 0x0f)]);
+#else
 		m_szSignatureContents.append(hexdigits[(sig->data[i] & 0xf0) >> 4]);
 		m_szSignatureContents.append(hexdigits[(sig->data[i] & 0x0f)]);
+#endif
 	}
 }
 
