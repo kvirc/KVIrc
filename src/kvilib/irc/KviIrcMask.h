@@ -312,7 +312,7 @@ public:
 	* \param user The username of the user
 	* \return bool
 	*/
-	bool operator==(const KviIrcMask & user);
+	bool operator==(const KviIrcMask & user) const;
 
 private:
 	/**

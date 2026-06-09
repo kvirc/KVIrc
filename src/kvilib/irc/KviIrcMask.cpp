@@ -489,7 +489,7 @@ bool KviIrcMask::hasMaskedIp() const
 	return ((pChar3 - pChar) > 4); // at the moment 4 should be enough : the largest top part is "name"
 }
 
-bool KviIrcMask::operator==(const KviIrcMask & user)
+bool KviIrcMask::operator==(const KviIrcMask & user) const
 {
 	if(KviQString::equalCI(m_szNick, user.m_szNick))
 	{
