@@ -4295,4 +4295,29 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	    "$0 = Server\n"
 	    "$1 = Command\n"
 	    "$2 = Protocols"),
+
+	/*
+		@doc: onbatch
+		@type:
+			event
+		@title:
+			OnBatch
+		@short:
+			Received a batch begin/end of transaction message from the IRCd
+		@parameters:
+			$0 = Server
+			$1 = Mode
+			$2 = Reference tag
+			$3 = Additional parameters
+		@window:
+			Console window
+		@description:
+			Triggered when a BATCH message was received from the server
+	*/
+
+	EVENT("OnBatch",
+	    "$0 = Server\n"
+	    "$1 = Mode\n"
+	    "$2 = Reference tag\n"
+	    "$3 = Additional parameters"),
 };

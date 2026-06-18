@@ -402,17 +402,20 @@ void KviIrcConnection::enableStartTlsSupport(bool bEnable)
 #endif // COMPILE_SSL_SUPPORT
 
 const static QStringList ourSupportedCaps {
-	// "sasl", // checked dynamically
-	"znc.in/server-time-iso",
-	"server-time",
-	"multi-prefix",
-	"away-notify",
 	"account-notify",
-	"extended-join",
-	"userhost-in-names",
+	"away-notify",
+	"batch",
+	"cap-notify",
 	"chghost",
+	"draft/chathistory",
+	"extended-join",
+	"message-tags",
+	"multi-prefix",
+	// "sasl", // checked dynamically
+	"server-time",
+	"userhost-in-names",
 	"znc.in/self-message",
-	"cap-notify"
+	"znc.in/server-time-iso",
 };
 
 void KviIrcConnection::handleInitialCapLs()

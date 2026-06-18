@@ -266,6 +266,7 @@ private:
 	void parseLiteralCap(KviIrcMessage * msg);
 	void parseLiteralAuthenticate(KviIrcMessage * msg);
 	void parseLiteralAway(KviIrcMessage * msg);
+	void parseLiteralBatch(KviIrcMessage * msg);
 
 	void parseCtcpRequest(KviCtcpMessage * msg);
 	void parseCtcpReply(KviCtcpMessage * msg);

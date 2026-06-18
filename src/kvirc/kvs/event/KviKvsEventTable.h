@@ -85,6 +85,7 @@
 #define KviEvent_OnInputBarPaste 146
 #define KviEvent_OnBroadcastNotice 148
 #define KviEvent_OnCap 157
+#define KviEvent_OnBatch 158
 
 // Connection
 /**
@@ -381,6 +382,6 @@
 #define KviEvent_OnQueryNickDefaultActionRequest 144
 
 /** \def KVI_KVS_NUM_APP_EVENTS Defines the number of events */
-#define KVI_KVS_NUM_APP_EVENTS 158
+#define KVI_KVS_NUM_APP_EVENTS 159
 
 #endif //_KVI_KVS_EVENTTABLE_H_
