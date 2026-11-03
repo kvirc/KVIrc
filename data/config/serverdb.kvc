@@ -92,9 +92,13 @@ NServers=1
 NServers=2
 Description=Spanish%20Network
 [Chatnet]
-0_Hostname=irc.chatnet.org
+0_Hostname=irc.chatnet.gg
 0_Description=Chatnet:%20Random%20server
-NServers=1
+1_Hostname=irc.chatnet.gg
+1_Description=Chatnet:%20Random%20server%20SSL
+1_Port=6697
+1_SSL=true
+NServers=2
 [Chatpinoy]
 0_Hostname=irc.chatpinoy.com
 0_Description=Chatpinoy:%20Random%20server
