@@ -1,4 +1,4 @@
-name: Build macOS
+name: Build macOS Intel
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
       - '**.md'
 
 jobs:
-  build-macos:
+  build-macos-intel:
     runs-on: macos-15-intel
     steps:
       - name: Checkout
