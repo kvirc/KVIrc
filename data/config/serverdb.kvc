@@ -700,6 +700,15 @@ Encoding=CP-1251
 0_Hostname=irc.worldirc.org
 0_Description=WorldIRC:%20Random%20server
 NServers=1
+[WuP]
+0_Hostname=irc.wup.nu
+0_Description=WuP:%20Random%20server
+1_Hostname=irc.wup.nu
+1_Description=WuP:%20Random%20server%20SSL
+1_Port=6697
+1_SSL=true
+NServers=2
+Description=Dutch/Belgian%20community%20network
 [Xevion.Net]
 0_Hostname=irc.xevion.net
 0_Description=Xevion.Net:%20Random%20server
@@ -721,3 +730,4 @@ NServers=2
 1_SSL=true
 NServers=2
 Description=Russian%20Network
+
