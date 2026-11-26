@@ -1155,18 +1155,6 @@ else()
 endif()
 
 ###############################################################################
-# The User documentation target (KVIrc internal help)
-###############################################################################
-
-#currently WIP
-#option(WANT_USERDOCS "Whether to generate user documentation (aka internal help)" ON)
-#if(WANT_USERDOCS)
-#	set(CMAKE_STATUS_GEN_USERDOC "Yes")
-#else()
-#	set(CMAKE_STATUS_GEN_USERDOC "User disabled")
-#endif()
-
-###############################################################################
 # We want the "distclean" target
 ###############################################################################
 
@@ -1246,8 +1234,6 @@ else()
 	configure_file(${kvirc_SOURCE_DIR}/cmake/kvirc-config.cmake ${CMAKE_CURRENT_BINARY_DIR}/scripts/config/kvirc-config @ONLY)
 endif()
 
-#configure_file(${kvirc_SOURCE_DIR}/cmake/FindKVIrc.cmake.in ${kvirc_BINARY_DIR}/FindKVIrc.cmake @ONLY)
-
 if(WANT_DOXYGEN)
 	if(DOXYGEN_FOUND)
 		configure_file(${CMAKE_SOURCE_DIR}/cmake/Doxyfile.cmake ${CMAKE_BINARY_DIR}/admin/Doxyfile @ONLY)
@@ -1263,7 +1249,6 @@ mark_as_advanced(FORCE QT_QMAKE_EXECUTABLE)
 mark_as_advanced(FORCE GETTEXT_MSGFMT_EXECUTABLE)
 mark_as_advanced(FORCE GETTEXT_MSGMERGE_EXECUTABLE)
 mark_as_advanced(FORCE LIBRARY_OUTPUT_PATH)
-mark_as_advanced(FORCE CMAKE_BACKWARDS_COMPATIBILITY)
 mark_as_advanced(FORCE EXECUTABLE_OUTPUT_PATH)
 
 ###############################################################################
@@ -1384,7 +1369,6 @@ message(STATUS "   Ogg/Theora support          : ${CMAKE_STATUS_OGG_THEORA_SUPPO
 message(STATUS "Documentation:")
 message(STATUS "   gettext support             : ${CMAKE_STATUS_GETTEXT_SUPPORT}${GETTEXT_EXTRA_STATUS}")
 message(STATUS "   gettext messages tidying    : ${CMAKE_STATUS_MESSAGE_TIDY}")
-#message(STATUS "   Generate int. help files    : ${CMAKE_STATUS_GEN_USERDOC}")
 message(STATUS "   Doxygen support             : ${CMAKE_STATUS_DOXYGEN_SUPPORT}")
 message(STATUS " ")
 message(STATUS "Build date                     : ${CMAKE_KVIRC_BUILD_DATE}")
