@@ -1,4 +1,5 @@
 # CMakeLists for src/
 
-# Find subdirs
-subdirs(kvilib kvirc modules)
+add_subdirectory(kvilib)
+add_subdirectory(kvirc)
+add_subdirectory(modules)

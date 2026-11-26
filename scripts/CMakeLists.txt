@@ -1,4 +1,3 @@
 # CMakeLists for scripts/
 
-# Find subdirs
-subdirs(config)
+add_subdirectory(config)

@@ -24,7 +24,7 @@ include_directories(
 	../kvirc/ui/
 )
 
-subdirs(
+foreach(subdir IN ITEMS
 	about action actioneditor addon aliaseditor avatar
 	chan channelsjoin classeditor codetester config context
 	dcc dialog
@@ -43,15 +43,17 @@ subdirs(
 	upnp url userlist
 	window
 )
+	add_subdirectory(${subdir})
+endforeach()
 
 if(COMPILE_PERL_SUPPORT)
-	subdirs(perl)
+	add_subdirectory(perl)
 endif()
 
 if(COMPILE_PYTHON_SUPPORT)
-	subdirs(python)
+	add_subdirectory(python)
 endif()
 
 if(COMPILE_ENCHANT_SUPPORT OR COMPILE_WINSPELLCHECKER_SUPPORT)
-	subdirs(spellchecker)
+	add_subdirectory(spellchecker)
 endif()

@@ -1,7 +1,7 @@
 # CMakeLists for src/modules/rijndael
 
 if(WANT_OPENSSL)
-	subdirs(caps)
+	add_subdirectory(caps)
 
 	set(kvirijndael_SRCS
 		libkvirijndael.cpp

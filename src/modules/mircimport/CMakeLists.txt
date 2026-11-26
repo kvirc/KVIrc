@@ -1,6 +1,7 @@
 # CMakeLists for src/modules/mircimport
 
-subdirs(caps pics)
+add_subdirectory(caps)
+add_subdirectory(pics)
 
 
 

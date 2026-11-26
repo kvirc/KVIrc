@@ -1,8 +1,5 @@
 # CMakeLists for po/core/
 
-# Find subdirs
-subdirs(
-	kvirc
-	kvs
-	defscript
-)
+add_subdirectory(kvirc)
+add_subdirectory(kvs)
+add_subdirectory(defscript)

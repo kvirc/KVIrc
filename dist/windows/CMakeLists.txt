@@ -1,6 +1,6 @@
 # CMakeLists for dist/windows
 
-subdirs(translations)
+add_subdirectory(translations)
 
 if(WIN32)
 	#attention: nsis scripts contains ${variables} that would be replaced by cmake

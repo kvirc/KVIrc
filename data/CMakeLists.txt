@@ -1,7 +1,14 @@
 # CMakeLists for data/
 
-# Find subdirs
-subdirs(applnk audio config defscript deftheme helppics man msgcolors pics)
+add_subdirectory(applnk)
+add_subdirectory(audio)
+add_subdirectory(config)
+add_subdirectory(defscript)
+add_subdirectory(deftheme)
+add_subdirectory(helppics)
+add_subdirectory(man)
+add_subdirectory(msgcolors)
+add_subdirectory(pics)
 
 if(APPLE)
 	# macOS

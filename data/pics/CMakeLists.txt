@@ -1,6 +1,6 @@
 # CMakeLists for data/pics
 
-subdirs(coresmall)
+add_subdirectory(coresmall)
 
 file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*.png")
 

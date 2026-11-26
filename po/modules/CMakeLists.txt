@@ -3,8 +3,7 @@
 # sed will cut paths at this directory
 set(TRANSLATION_BASEDIR "src")
 
-# Find subdirs
-subdirs(
+foreach(subdir IN ITEMS
 	about
 	addon
 	dcc
@@ -23,3 +22,5 @@ subdirs(
 	theme
 	torrent
 )
+	add_subdirectory(${subdir})
+endforeach()
