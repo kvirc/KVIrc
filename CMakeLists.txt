@@ -242,18 +242,11 @@ include(CheckIncludeFiles)
 CHECK_INCLUDE_FILES(sys/types.h SYSTEM_HAS_SYS_TYPES_H)
 CHECK_INCLUDE_FILES(strings.h SYSTEM_HAS_STRINGS_H)
 
-# "dynamic labels" compiler support
-try_run(TEST_DID_RUN_DYNLABELS TEST_DID_COMPILE_DYNLABELS "${CMAKE_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/dynlabels.cpp")
-if(TEST_DID_COMPILE_DYNLABELS)
-	string(COMPARE EQUAL "${TEST_DID_RUN_DYNLABELS}" "0" TEST_DID_RUN_DYNLABELS_SUCCESS)
-	if(TEST_DID_RUN_DYNLABELS_SUCCESS)
-		set(COMPILE_USE_DYNAMIC_LABELS 1)
-	else()
-		set(COMPILE_USE_DYNAMIC_LABELS 0)
-	endif()
-else()
-	set(COMPILE_USE_DYNAMIC_LABELS 0)
-endif()
+# Check for GNU labels as values using the target compiler.
+try_compile(COMPILE_USE_DYNAMIC_LABELS
+	"${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/dynlabels"
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/dynlabels.cpp"
+)
 
 ###############################################################################
 # Library and tool checks, in order. First the required ones
