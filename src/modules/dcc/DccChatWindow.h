@@ -57,7 +57,7 @@ protected:
 	bool tryFlushOutBuffers();
 	// This should handle the incoming data buffer
 	// must "eat" some data from data.buffer, memmove the remaining part
-	// to the beginning, kvi_realloc data.buffer and update data.iLen
+	// to the beginning, reallocate data.buffer and update data.iLen
 	// If bCritical is true, it should handle the whole data buffer
 	// since the thread is going to die
 	// It should return true if the handing was successful

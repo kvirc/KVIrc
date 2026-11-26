@@ -27,8 +27,9 @@
 #define _KVI_STRING_CPP_
 
 #include "KviCString.h"
-#include "KviMemory.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <QString>
 
 static char hexdigits[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
@@ -513,8 +514,8 @@ const char * kvi_extractToken(KviCString & str, const char * aux_ptr, char sep)
 	while(*p && (*p != sep))
 		p++;
 	str.m_len = p - aux_ptr;
-	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr, str.m_len + 1);
-	KviMemory::copy(str.m_ptr, aux_ptr, str.m_len);
+	str.m_ptr = (char *)std::realloc(str.m_ptr, str.m_len + 1);
+	std::memcpy(str.m_ptr, aux_ptr, str.m_len);
 	*(str.m_ptr + str.m_len) = '\0';
 	while(*p && (*p == sep))
 		p++;
@@ -528,8 +529,8 @@ const char * kvi_extractUpTo(KviCString & str, const char * aux_ptr, char sep)
 	while(*p && (*p != sep))
 		p++;
 	str.m_len = p - aux_ptr;
-	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr, str.m_len + 1);
-	KviMemory::copy(str.m_ptr, aux_ptr, str.m_len);
+	str.m_ptr = (char *)std::realloc(str.m_ptr, str.m_len + 1);
+	std::memcpy(str.m_ptr, aux_ptr, str.m_len);
 	*(str.m_ptr + str.m_len) = '\0';
 	return p;
 }
@@ -971,7 +972,7 @@ int kvi_strMatchRevCS(const char * str1, const char * str2, int index)
 
 KviCString::KviCString()
 {
-	m_ptr = (char *)KviMemory::allocate(1);
+	m_ptr = (char *)std::malloc(1);
 	*m_ptr = '\0';
 	m_len = 0;
 }
@@ -983,12 +984,12 @@ KviCString::KviCString(const char * str)
 	{
 		//Deep copy
 		m_len = (int)strlen(str);
-		m_ptr = (char *)KviMemory::allocate(m_len + 1);
-		KviMemory::copy(m_ptr, str, m_len + 1);
+		m_ptr = (char *)std::malloc(m_len + 1);
+		std::memcpy(m_ptr, str, m_len + 1);
 	}
 	else
 	{
-		m_ptr = (char *)KviMemory::allocate(1);
+		m_ptr = (char *)std::malloc(1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -1001,12 +1002,12 @@ KviCString::KviCString(const QByteArray & str)
 	{
 		//Deep copy
 		m_len = str.length();
-		m_ptr = (char *)KviMemory::allocate(m_len + 1);
-		KviMemory::copy(m_ptr, str, m_len + 1);
+		m_ptr = (char *)std::malloc(m_len + 1);
+		std::memcpy(m_ptr, str, m_len + 1);
 	}
 	else
 	{
-		m_ptr = (char *)KviMemory::allocate(1);
+		m_ptr = (char *)std::malloc(1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -1018,8 +1019,8 @@ KviCString::KviCString(const char * str, int len)
 	//KVI_ASSERT(len <= ((int)strlen(str))); <-- we trust the user here (and a strlen() call may run AFTER len if data is not null terminated)
 	KVI_ASSERT(len >= 0);
 	m_len = len;
-	m_ptr = (char *)KviMemory::allocate(m_len + 1);
-	KviMemory::copy(m_ptr, str, m_len);
+	m_ptr = (char *)std::malloc(m_len + 1);
+	std::memcpy(m_ptr, str, m_len);
 	*(m_ptr + m_len) = '\0';
 }
 
@@ -1029,14 +1030,14 @@ KviCString::KviCString(const char * bg, const char * end)
 	KVI_ASSERT(end);
 	KVI_ASSERT(bg <= end);
 	m_len = end - bg;
-	m_ptr = (char *)KviMemory::allocate(m_len + 1);
-	KviMemory::copy(m_ptr, bg, m_len);
+	m_ptr = (char *)std::malloc(m_len + 1);
+	std::memcpy(m_ptr, bg, m_len);
 	*(m_ptr + m_len) = '\0';
 }
 
 KviCString::KviCString(KviFormatConstructorTag, const char * fmt, ...)
 {
-	m_ptr = (char *)KviMemory::allocate(256);
+	m_ptr = (char *)std::malloc(256);
 	//First try
 	kvi_va_list list;
 	kvi_va_start(list, fmt);
@@ -1053,7 +1054,7 @@ KviCString::KviCString(KviFormatConstructorTag, const char * fmt, ...)
 		{ //we failed, so retry with 256 more chars
 			dummy += 256;
 			//realloc
-			m_ptr = (char *)KviMemory::reallocate(m_ptr, dummy);
+			m_ptr = (char *)std::realloc(m_ptr, dummy);
 			//print...
 			kvi_va_start(list, fmt);
 			m_len = kvi_vsnprintf(m_ptr, dummy, fmt, list);
@@ -1063,15 +1064,15 @@ KviCString::KviCString(KviFormatConstructorTag, const char * fmt, ...)
 	//done...
 	//now m_len is the length of the written string not including the terminator...
 	//perfect! :)
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 }
 
 KviCString::KviCString(const KviCString & str)
 {
 	KVI_ASSERT(str.m_ptr);
 	m_len = str.m_len;
-	m_ptr = (char *)KviMemory::allocate(m_len + 1);
-	KviMemory::copy(m_ptr, str.m_ptr, m_len + 1);
+	m_ptr = (char *)std::malloc(m_len + 1);
+	std::memcpy(m_ptr, str.m_ptr, m_len + 1);
 }
 
 KviCString::KviCString(const QString & str)
@@ -1080,12 +1081,12 @@ KviCString::KviCString(const QString & str)
 	if(sz.length() > 0)
 	{
 		m_len = sz.length();
-		m_ptr = (char *)KviMemory::allocate(m_len + 1);
-		KviMemory::copy(m_ptr, sz.data(), m_len + 1);
+		m_ptr = (char *)std::malloc(m_len + 1);
+		std::memcpy(m_ptr, sz.data(), m_len + 1);
 	}
 	else
 	{
-		m_ptr = (char *)KviMemory::allocate(1);
+		m_ptr = (char *)std::malloc(1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -1095,7 +1096,7 @@ KviCString::KviCString(char c, int fillLen)
 {
 	KVI_ASSERT(fillLen >= 0);
 	m_len = fillLen;
-	m_ptr = (char *)KviMemory::allocate(m_len + 1);
+	m_ptr = (char *)std::malloc(m_len + 1);
 	char * p = m_ptr;
 	while(fillLen--)
 		*p++ = c;
@@ -1107,13 +1108,13 @@ KviCString::KviCString(const kvi_wchar_t * unicode)
 	if(!unicode)
 	{
 		m_len = 0;
-		m_ptr = (char *)KviMemory::allocate(1);
+		m_ptr = (char *)std::malloc(1);
 		*m_ptr = 0;
 	}
 	else
 	{
 		m_len = kvi_wstrlen(unicode);
-		m_ptr = (char *)KviMemory::allocate(m_len + 1);
+		m_ptr = (char *)std::malloc(m_len + 1);
 		char * p = m_ptr;
 		while(*unicode)
 			*p++ = *unicode++;
@@ -1124,7 +1125,7 @@ KviCString::KviCString(const kvi_wchar_t * unicode)
 KviCString::KviCString(const kvi_wchar_t * unicode, int len)
 {
 	m_len = len;
-	m_ptr = (char *)KviMemory::allocate(m_len + 1);
+	m_ptr = (char *)std::malloc(m_len + 1);
 	char * p = m_ptr;
 	char * end = p + len;
 	while(p != end)
@@ -1136,7 +1137,7 @@ KviCString::KviCString(const kvi_wchar_t * unicode, int len)
 
 KviCString::~KviCString()
 {
-	KviMemory::free(m_ptr);
+	std::free(m_ptr);
 }
 
 KviCString & KviCString::operator=(const KviCString & str)
@@ -1144,17 +1145,17 @@ KviCString & KviCString::operator=(const KviCString & str)
 	KVI_ASSERT(str.m_ptr);
 	KVI_ASSERT(str.m_ptr != m_ptr);
 	m_len = str.m_len;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
-	KviMemory::copy(m_ptr, str.m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
+	std::memcpy(m_ptr, str.m_ptr, m_len + 1);
 	return (*this);
 }
 
 KviCString & KviCString::operator=(const QByteArray & str)
 {
 	m_len = str.length();
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 	if(str.data())
-		KviMemory::copy(m_ptr, str.data(), m_len + 1);
+		std::memcpy(m_ptr, str.data(), m_len + 1);
 	else
 		*m_ptr = 0;
 	return (*this);
@@ -1166,12 +1167,12 @@ KviCString & KviCString::operator=(const char * str)
 	if(str)
 	{
 		m_len = (int)strlen(str);
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
-		KviMemory::move(m_ptr, str, m_len + 1);
+		m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
+		std::memmove(m_ptr, str, m_len + 1);
 	}
 	else
 	{
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
+		m_ptr = (char *)std::realloc(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -1180,7 +1181,7 @@ KviCString & KviCString::operator=(const char * str)
 
 void KviCString::clear()
 {
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
+	m_ptr = (char *)std::realloc(m_ptr, 1);
 	*m_ptr = '\0';
 	m_len = 0;
 }
@@ -1201,7 +1202,7 @@ void KviCString::bufferToHex(const char * buffer, int len)
 {
 	KVI_ASSERT(buffer);
 	m_len = (len * 2);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 	char * aux = m_ptr;
 	while(len)
 	{
@@ -1234,7 +1235,7 @@ int KviCString::hexToBuffer(char ** buffer, bool bNullToNewlines)
 	int len = (m_len / 2);
 	if(len < 1)
 		return -1;
-	*buffer = (char *)KviMemory::allocate(len);
+	*buffer = (char *)std::malloc(len);
 
 	char * ptr = *buffer;
 	char * aux = m_ptr;
@@ -1244,7 +1245,7 @@ int KviCString::hexToBuffer(char ** buffer, bool bNullToNewlines)
 		char temp = get_decimal_from_hex_digit_char(*aux);
 		if(temp == -1)
 		{
-			KviMemory::free(*buffer);
+			std::free(*buffer);
 			*buffer = nullptr;
 			return -1;
 		}
@@ -1253,7 +1254,7 @@ int KviCString::hexToBuffer(char ** buffer, bool bNullToNewlines)
 		temp = get_decimal_from_hex_digit_char(*aux);
 		if(temp == -1)
 		{
-			KviMemory::free(*buffer);
+			std::free(*buffer);
 			*buffer = nullptr;
 			return -1;
 		}
@@ -1275,7 +1276,7 @@ void KviCString::bufferToBase64(const char * buffer, int len)
 	if(len % 3)
 		m_len += 4;
 
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 
 	unsigned char aux1, aux2, aux3;
 	char * aux_ptr = m_ptr;
@@ -1335,7 +1336,7 @@ int KviCString::base64ToBuffer(char ** buffer, bool)
 	if((m_len == 0) || (m_len & 3))
 		return -1; // this is an error
 	int len = (m_len >> 2) * 3;
-	*buffer = (char *)KviMemory::allocate(len);
+	*buffer = (char *)std::malloc(len);
 
 	char * auxBuf = *buffer;
 
@@ -1350,7 +1351,7 @@ int KviCString::base64ToBuffer(char ** buffer, bool)
 		{
 			// ops... there was a padding and we still have chars after it
 			// this is an error
-			KviMemory::free(*buffer);
+			std::free(*buffer);
 			*buffer = nullptr;
 			return -1;
 		}
@@ -1361,14 +1362,14 @@ int KviCString::base64ToBuffer(char ** buffer, bool)
 		if((aux3 > 64) || (aux4 > 64))
 		{
 			// error
-			KviMemory::free(*buffer);
+			std::free(*buffer);
 			*buffer = nullptr;
 			return -1;
 		}
 		if((aux1 | aux2) > 63)
 		{
 			// again error...impossible padding
-			KviMemory::free(*buffer);
+			std::free(*buffer);
 			*buffer = nullptr;
 			return -1;
 		}
@@ -1393,7 +1394,7 @@ int KviCString::base64ToBuffer(char ** buffer, bool)
 			if(aux3 == 64)
 			{
 				// error... impossible padding
-				KviMemory::free(*buffer);
+				std::free(*buffer);
 				*buffer = nullptr;
 				return -1;
 			}
@@ -1408,7 +1409,7 @@ int KviCString::base64ToBuffer(char ** buffer, bool)
 	}
 
 	if(newLen != len)
-		*buffer = (char *)KviMemory::reallocate(*buffer, newLen);
+		*buffer = (char *)std::realloc(*buffer, newLen);
 	return newLen;
 }
 
@@ -1424,8 +1425,8 @@ KviCString & KviCString::setStr(const char * str, int len)
 		m_len = alen;
 	else
 		m_len = len;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
-	KviMemory::move(m_ptr, str, m_len);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
+	std::memmove(m_ptr, str, m_len);
 	*(m_ptr + m_len) = '\0';
 	return (*this);
 }
@@ -1436,12 +1437,12 @@ KviCString & KviCString::operator=(const QString & str)
 	if(sz.length() > 0)
 	{
 		m_len = sz.length();
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
-		KviMemory::copy(m_ptr, sz.data(), m_len + 1);
+		m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
+		std::memcpy(m_ptr, sz.data(), m_len + 1);
 	}
 	else
 	{
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
+		m_ptr = (char *)std::realloc(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -1451,7 +1452,7 @@ KviCString & KviCString::operator=(const QString & str)
 KviCString & KviCString::operator=(char c)
 {
 	m_len = 1;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, 2);
+	m_ptr = (char *)std::realloc(m_ptr, 2);
 	*m_ptr = c;
 	*(m_ptr + 1) = '\0';
 	return (*this);
@@ -1459,7 +1460,7 @@ KviCString & KviCString::operator=(char c)
 
 void KviCString::append(char c)
 {
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 2);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 2);
 	*(m_ptr + m_len) = c;
 	m_len++;
 	*(m_ptr + m_len) = '\0';
@@ -1468,8 +1469,8 @@ void KviCString::append(char c)
 void KviCString::append(const KviCString & str)
 {
 	KVI_ASSERT(str.m_ptr);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + str.m_len + 1);
-	KviMemory::copy((m_ptr + m_len), str.m_ptr, str.m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + str.m_len + 1);
+	std::memcpy((m_ptr + m_len), str.m_ptr, str.m_len + 1);
 	m_len += str.m_len;
 }
 
@@ -1478,8 +1479,8 @@ void KviCString::append(const char * str)
 	if(!str)
 		return;
 	int len = (int)strlen(str);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + len + 1);
-	KviMemory::copy((m_ptr + m_len), str, len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + len + 1);
+	std::memcpy((m_ptr + m_len), str, len + 1);
 	m_len += len;
 }
 
@@ -1488,8 +1489,8 @@ void KviCString::append(const QString & str)
 	QByteArray sz = str.toUtf8();
 	if(sz.length() < 1)
 		return;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + sz.length() + 1);
-	KviMemory::copy((m_ptr + m_len), sz.data(), sz.length() + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + sz.length() + 1);
+	std::memcpy((m_ptr + m_len), sz.data(), sz.length() + 1);
 	m_len += sz.length();
 }
 
@@ -1498,8 +1499,8 @@ void KviCString::append(const char * str, int len)
 	KVI_ASSERT(str);
 	//	KVI_ASSERT(len <= ((int)strlen(str)));
 	KVI_ASSERT(len >= 0);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + len + 1);
-	KviMemory::copy((m_ptr + m_len), str, len);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + len + 1);
+	std::memcpy((m_ptr + m_len), str, len);
 	m_len += len;
 	*(m_ptr + m_len) = '\0';
 }
@@ -1507,7 +1508,7 @@ void KviCString::append(const char * str, int len)
 void KviCString::append(KviFormatConstructorTag, const char * fmt, ...)
 {
 	int auxLen;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 256);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 256);
 	//First try
 	kvi_va_list list;
 	kvi_va_start(list, fmt);
@@ -1524,7 +1525,7 @@ void KviCString::append(KviFormatConstructorTag, const char * fmt, ...)
 		{ //we failed, so retry with 256 more chars
 			dummy += 256;
 			//realloc
-			m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + dummy);
+			m_ptr = (char *)std::realloc(m_ptr, m_len + dummy);
 			//print...
 			kvi_va_start(list, fmt);
 			auxLen = kvi_vsnprintf(m_ptr + m_len, dummy, fmt, list);
@@ -1535,7 +1536,7 @@ void KviCString::append(KviFormatConstructorTag, const char * fmt, ...)
 	//done...
 	//now m_len is the length of the written string not including the terminator...
 	//perfect! :)
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 }
 
 void KviCString::extractFromString(const char * begin, const char * end)
@@ -1544,8 +1545,8 @@ void KviCString::extractFromString(const char * begin, const char * end)
 	KVI_ASSERT(end);
 	KVI_ASSERT(end >= begin);
 	m_len = end - begin;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
-	KviMemory::copy(m_ptr, begin, m_len);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
+	std::memcpy(m_ptr, begin, m_len);
 	*(m_ptr + m_len) = '\0';
 }
 
@@ -1553,9 +1554,9 @@ void KviCString::prepend(const KviCString & str)
 {
 	KVI_ASSERT(str.m_ptr);
 	KVI_ASSERT(str.m_ptr != m_ptr);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + str.m_len + 1);
-	KviMemory::move((m_ptr + str.m_len), m_ptr, m_len + 1); //move self
-	KviMemory::copy(m_ptr, str.m_ptr, str.m_len);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + str.m_len + 1);
+	std::memmove((m_ptr + str.m_len), m_ptr, m_len + 1); //move self
+	std::memcpy(m_ptr, str.m_ptr, str.m_len);
 	m_len += str.m_len;
 }
 
@@ -1564,9 +1565,9 @@ void KviCString::prepend(const char * str)
 	if(!str)
 		return;
 	int len = (int)strlen(str);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + len + 1);
-	KviMemory::move((m_ptr + len), m_ptr, m_len + 1); //move self
-	KviMemory::copy(m_ptr, str, len);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + len + 1);
+	std::memmove((m_ptr + len), m_ptr, m_len + 1); //move self
+	std::memcpy(m_ptr, str, len);
 	m_len += len;
 }
 
@@ -1575,9 +1576,9 @@ void KviCString::prepend(const char * str, int len)
 	KVI_ASSERT(str);
 	KVI_ASSERT(len <= ((int)strlen(str)));
 	KVI_ASSERT(len >= 0);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + len + 1);
-	KviMemory::move((m_ptr + len), m_ptr, m_len + 1); //move self
-	KviMemory::copy(m_ptr, str, len);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + len + 1);
+	std::memmove((m_ptr + len), m_ptr, m_len + 1); //move self
+	std::memcpy(m_ptr, str, len);
 	m_len += len;
 }
 
@@ -1771,13 +1772,13 @@ KviCString KviCString::middle(int idx, int maxLen) const
 
 KviCString ** KviCString::splitToArray(char sep, int max, int * realCount) const
 {
-	KviCString ** strings = (KviCString **)KviMemory::allocate(sizeof(KviCString *));
+	KviCString ** strings = (KviCString **)std::malloc(sizeof(KviCString *));
 	int number = 0;
 	char * ptr = m_ptr;
 	char * last = ptr;
 	while((max > 0) && *ptr)
 	{
-		strings = (KviCString **)KviMemory::reallocate((void *)strings, sizeof(KviCString *) * (number + 2));
+		strings = (KviCString **)std::realloc((void *)strings, sizeof(KviCString *) * (number + 2));
 		if(max > 1)
 		{
 			while(*ptr && (*ptr != sep))
@@ -1812,14 +1813,14 @@ void KviCString::freeArray(KviCString ** strings)
 		delete(*aux); // delete (KviCString *)
 		aux++;
 	}
-	KviMemory::free(strings);
+	std::free(strings);
 }
 
 void KviCString::freeBuffer(char * buffer)
 {
 	if(!buffer)
 		return;
-	KviMemory::free(buffer);
+	std::free(buffer);
 }
 
 void KviCString::joinFromArray(KviCString ** strings, const char * sep, bool bLastSep)
@@ -1851,9 +1852,9 @@ KviCString & KviCString::insert(int idx, const char * data)
 	if(idx <= m_len)
 	{
 		int len = (int)strlen(data);
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + len + 1);
-		KviMemory::move(m_ptr + idx + len, m_ptr + idx, (m_len - idx) + 1);
-		KviMemory::copy(m_ptr + idx, data, len);
+		m_ptr = (char *)std::realloc(m_ptr, m_len + len + 1);
+		std::memmove(m_ptr + idx + len, m_ptr + idx, (m_len - idx) + 1);
+		std::memcpy(m_ptr + idx, data, len);
 		m_len += len;
 	}
 	return (*this);
@@ -1863,8 +1864,8 @@ KviCString & KviCString::insert(int idx, char c)
 {
 	if(idx <= m_len)
 	{
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 2);
-		KviMemory::move(m_ptr + idx + 1, m_ptr + idx, (m_len - idx) + 1);
+		m_ptr = (char *)std::realloc(m_ptr, m_len + 2);
+		std::memmove(m_ptr + idx + 1, m_ptr + idx, (m_len - idx) + 1);
 		m_len++;
 		*(m_ptr + idx) = c;
 	}
@@ -1886,8 +1887,8 @@ KviCString & KviCString::hexEncodeWithTable(const unsigned char table[256])
 		if(table[*((unsigned char *)aux)] || (*aux == '%'))
 		{
 			int len = aux - begin;
-			n = (char *)KviMemory::reallocate(n, curSize + len + 3);
-			KviMemory::move(n + curSize, begin, len);
+			n = (char *)std::realloc(n, curSize + len + 3);
+			std::memmove(n + curSize, begin, len);
 			curSize += len;
 
 			n[curSize] = '%';
@@ -1905,13 +1906,13 @@ KviCString & KviCString::hexEncodeWithTable(const unsigned char table[256])
 	}
 
 	int len = aux - begin;
-	n = (char *)KviMemory::reallocate(n, curSize + len + 1);
-	KviMemory::move(n + curSize, begin, len);
+	n = (char *)std::realloc(n, curSize + len + 1);
+	std::memmove(n + curSize, begin, len);
 	curSize += len;
 
 	n[curSize] = '\0';
 
-	KviMemory::free((void *)m_ptr);
+	std::free((void *)m_ptr);
 	m_ptr = n;
 	m_len = curSize;
 
@@ -1991,8 +1992,8 @@ KviCString & KviCString::hexDecode(const char * pFrom)
 		{
 			// move last block
 			int len = aux - begin;
-			n = (char *)KviMemory::reallocate(n, curSize + len + 1);
-			KviMemory::move(n + curSize, begin, len);
+			n = (char *)std::realloc(n, curSize + len + 1);
+			std::memmove(n + curSize, begin, len);
 			curSize += len;
 
 			// get the hex code
@@ -2030,12 +2031,12 @@ KviCString & KviCString::hexDecode(const char * pFrom)
 	}
 
 	int len = aux - begin;
-	n = (char *)KviMemory::reallocate(n, curSize + len + 2);
-	KviMemory::move(n + curSize, begin, len);
+	n = (char *)std::realloc(n, curSize + len + 2);
+	std::memmove(n + curSize, begin, len);
 	curSize += len;
 	n[curSize] = '\0';
 
-	KviMemory::free((void *)m_ptr);
+	std::free((void *)m_ptr);
 	m_ptr = n;
 	m_len = curSize;
 
@@ -2057,8 +2058,8 @@ KviCString & KviCString::replaceAll(const char c, const char * str)
 	tmp.append(*this);
 	// Now copy
 	m_len = tmp.m_len;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
-	KviMemory::copy(m_ptr, tmp.m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
+	std::memcpy(m_ptr, tmp.m_ptr, m_len + 1);
 	return (*this);
 }
 
@@ -2078,8 +2079,8 @@ KviCString & KviCString::replaceAll(const char * toFind, const char * str, bool 
 	tmp.append(*this);
 	// Now copy
 	m_len = tmp.m_len;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
-	KviMemory::copy(m_ptr, tmp.m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
+	std::memcpy(m_ptr, tmp.m_ptr, m_len + 1);
 	return (*this);
 }
 
@@ -2272,13 +2273,13 @@ KviCString & KviCString::setNum(long num)
 	if(bNegative)
 	{
 		m_len++;
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 		p = m_ptr;
 		*p++ = '-';
 	}
 	else
 	{
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 		p = m_ptr;
 	}
 	do
@@ -2305,7 +2306,7 @@ KviCString & KviCString::setNum(unsigned long num)
 
 	//copy now....
 	m_len = pNumBuf - numberBuffer; //length of the number string
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 	p = m_ptr;
 	do
 	{
@@ -2480,12 +2481,12 @@ KviCString & KviCString::cutLeft(int len)
 	if(len <= m_len)
 	{
 		m_len -= len;
-		KviMemory::move(m_ptr, m_ptr + len, m_len + 1);
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		std::memmove(m_ptr, m_ptr + len, m_len + 1);
+		m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 	}
 	else
 	{
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
+		m_ptr = (char *)std::realloc(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -2498,12 +2499,12 @@ KviCString & KviCString::cutRight(int len)
 	if(len <= m_len)
 	{
 		m_len -= len;
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 		*(m_ptr + m_len) = '\0';
 	}
 	else
 	{
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
+		m_ptr = (char *)std::realloc(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -2525,9 +2526,9 @@ KviCString & KviCString::cut(int idx, int len)
 		if(len + idx > m_len)
 			len = m_len - idx;
 		char * p2 = p1 + len;
-		KviMemory::move(p1, p2, (m_len - (len + idx)) + 1);
+		std::memmove(p1, p2, (m_len - (len + idx)) + 1);
 		m_len -= len;
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 	}
 	return (*this);
 }
@@ -2618,7 +2619,7 @@ KviCString & KviCString::setLen(int iLen)
 {
 	KVI_ASSERT(iLen >= 0);
 	m_len = iLen;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 	*(m_ptr + m_len) = '\0';
 	return (*this);
 }
@@ -2626,10 +2627,10 @@ KviCString & KviCString::setLen(int iLen)
 KviCString & KviCString::padRight(int iLen, const char c)
 {
 	KVI_ASSERT(iLen >= 0);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, iLen + 1);
+	m_ptr = (char *)std::realloc(m_ptr, iLen + 1);
 	*(m_ptr + iLen) = '\0';
 	if(iLen > m_len)
-		KviMemory::set(m_ptr + m_len, c, iLen - m_len);
+		std::memset(m_ptr + m_len, c, iLen - m_len);
 	m_len = iLen;
 	return (*this);
 }
@@ -2640,8 +2641,8 @@ KviCString & KviCString::stripLeftWhiteSpace()
 	while(isspace(*p))
 		p++;
 	m_len -= (p - m_ptr);
-	KviMemory::move(m_ptr, p, m_len + 1);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	std::memmove(m_ptr, p, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 	return (*this);
 }
 
@@ -2652,8 +2653,8 @@ KviCString & KviCString::stripLeft(char c)
 	while(*p == c)
 		p++;
 	m_len -= (p - m_ptr);
-	KviMemory::move(m_ptr, p, m_len + 1);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	std::memmove(m_ptr, p, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 	return (*this);
 }
 
@@ -2669,8 +2670,8 @@ bool KviCString::getToken(KviCString & str, char sep, bool skipEmpty)
 	//abcd xyz
 	//^   ^
 	str.m_len = p - m_ptr;
-	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr, str.m_len + 1);
-	KviMemory::copy(str.m_ptr, m_ptr, str.m_len);
+	str.m_ptr = (char *)std::realloc(str.m_ptr, str.m_len + 1);
+	std::memcpy(str.m_ptr, m_ptr, str.m_len);
 	*(str.m_ptr + str.m_len) = '\0';
 	while(*p && (*p == sep))
 	{
@@ -2696,8 +2697,8 @@ bool KviCString::getLine(KviCString & str)
 	//abcd xyz
 	//^   ^
 	str.m_len = p - m_ptr;
-	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr, str.m_len + 1);
-	KviMemory::copy(str.m_ptr, m_ptr, str.m_len);
+	str.m_ptr = (char *)std::realloc(str.m_ptr, str.m_len + 1);
+	std::memcpy(str.m_ptr, m_ptr, str.m_len);
 	*(str.m_ptr + str.m_len) = '\0';
 	p++;
 	cutLeft(p - m_ptr);
@@ -2725,7 +2726,7 @@ KviCString & KviCString::vsprintf(const char * fmt, kvi_va_list list)
 	kvi_va_list save;
 	kvi_va_copy(save, list);
 
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, 256);
+	m_ptr = (char *)std::realloc(m_ptr, 256);
 	//First try
 	//print...with max 256 chars
 	m_len = kvi_vsnprintf(m_ptr, 256, fmt, list);
@@ -2739,7 +2740,7 @@ KviCString & KviCString::vsprintf(const char * fmt, kvi_va_list list)
 		{ //we failed, so retry with 256 more chars
 			dummy += 256;
 			//realloc
-			m_ptr = (char *)KviMemory::reallocate(m_ptr, dummy);
+			m_ptr = (char *)std::realloc(m_ptr, dummy);
 			//print...
 			kvi_va_copy(list, save);
 			m_len = kvi_vsnprintf(m_ptr, dummy, fmt, list);
@@ -2748,14 +2749,14 @@ KviCString & KviCString::vsprintf(const char * fmt, kvi_va_list list)
 	//done...
 	//now m_len is the length of the written string not including the terminator...
 	//perfect! :)
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 	kvi_va_end(save);
 	return (*this);
 }
 
 KviCString & KviCString::sprintf(const char * fmt, ...)
 {
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, 256);
+	m_ptr = (char *)std::realloc(m_ptr, 256);
 	//First try
 	kvi_va_list list;
 	kvi_va_start(list, fmt);
@@ -2772,7 +2773,7 @@ KviCString & KviCString::sprintf(const char * fmt, ...)
 		{ //we failed, so retry with 256 more chars
 			dummy += 256;
 			//realloc
-			m_ptr = (char *)KviMemory::reallocate(m_ptr, dummy);
+			m_ptr = (char *)std::realloc(m_ptr, dummy);
 			//print...
 			kvi_va_start(list, fmt);
 			m_len = kvi_vsnprintf(m_ptr, dummy, fmt, list);
@@ -2782,7 +2783,7 @@ KviCString & KviCString::sprintf(const char * fmt, ...)
 	//done...
 	//now m_len is the length of the written string not including the terminator...
 	//perfect! :)
-	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 	return (*this);
 }
 
@@ -3052,13 +3053,13 @@ KviCString & KviCString::trim()
 		//    ^  ^
 		// left   right
 		m_len = (right - left) + 1;
-		KviMemory::move(m_ptr, left, m_len);
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		std::memmove(m_ptr, left, m_len);
+		m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 		*(m_ptr + m_len) = '\0';
 	}
 	else
 	{
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
+		m_ptr = (char *)std::realloc(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -3077,7 +3078,7 @@ KviCString & KviCString::stripRightWhiteSpace()
 		if(right != start)
 		{
 			m_len = (right - m_ptr) + 1;
-			m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+			m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 			*(m_ptr + m_len) = '\0';
 		}
 	}
@@ -3095,7 +3096,7 @@ KviCString & KviCString::stripRight(char c)
 		if(right != start)
 		{
 			m_len = (right - m_ptr) + 1;
-			m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+			m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 			*(m_ptr + m_len) = '\0';
 		}
 	}
@@ -3123,13 +3124,13 @@ KviCString & KviCString::stripSpace()
 		//    ^  ^
 		// left   right
 		m_len = (right - left) + 1;
-		KviMemory::move(m_ptr, left, m_len);
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		std::memmove(m_ptr, left, m_len);
+		m_ptr = (char *)std::realloc(m_ptr, m_len + 1);
 		*(m_ptr + m_len) = '\0';
 	}
 	else
 	{
-		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
+		m_ptr = (char *)std::realloc(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}

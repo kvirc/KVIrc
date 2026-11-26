@@ -31,11 +31,12 @@
 #include "KviQString.h"
 #include "kvi_debug.h"
 #include "kvi_settings.h"
-#include "KviMemory.h"
 #include "KviKvsArrayCast.h"
 #include "KviOptions.h"
 #include "KviRegExp.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <QClipboard>
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -1885,7 +1886,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 	{
 		int reallen = 0;
 		int allocsize = MEMINCREMENT;
-		QChar * buffer = (QChar *)KviMemory::allocate(sizeof(QChar) * allocsize);
+		QChar * buffer = (QChar *)std::malloc(sizeof(QChar) * allocsize);
 
 		//9999999999999999999999999999999\0
 		char numberBuffer[1024];
@@ -1900,14 +1901,14 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 #define INCREMENT_MEM                                                               \
 	{                                                                               \
 		allocsize += MEMINCREMENT;                                                  \
-		buffer = (QChar *)KviMemory::reallocate(buffer, sizeof(QChar) * allocsize); \
+		buffer = (QChar *)std::realloc(buffer, sizeof(QChar) * allocsize); \
 		p = buffer + reallen;                                                       \
 	}
 
 #define INCREMENT_MEM_BY(numchars)                                                  \
 	{                                                                               \
 		allocsize += numchars + MEMINCREMENT;                                       \
-		buffer = (QChar *)KviMemory::reallocate(buffer, sizeof(QChar) * allocsize); \
+		buffer = (QChar *)std::realloc(buffer, sizeof(QChar) * allocsize); \
 		p = buffer + reallen;                                                       \
 	}
 
@@ -2213,7 +2214,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 		}
 
 		s.setUnicode(buffer, reallen);
-		KviMemory::free(buffer);
+		std::free(buffer);
 	}
 
 	c->returnValue()->setString(s);
@@ -2327,7 +2328,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 	}
 
 	len = EVP_PKEY_size(pKey);
-	sig = (unsigned char *)KviMemory::allocate(len * sizeof(char));
+	sig = (unsigned char *)std::malloc(len * sizeof(char));
 
 	md_ctx = EVP_MD_CTX_new();
 	EVP_SignInit(md_ctx, EVP_sha1());

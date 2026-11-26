@@ -31,13 +31,14 @@
 #include "KviIrcView.h"
 #include "KviIrcView_private.h"
 #include "KviKvsEventTriggers.h"
-#include "KviMemory.h"
 #include "KviControlCodes.h"
 #include "KviOptions.h"
 #include "kvi_out.h"
 #include "KviTextIconManager.h"
 #include "KviWindow.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <QChar>
 #include <QDateTime>
 #include <QTimeZone>
@@ -50,7 +51,7 @@ void kvi_appendWCharToQStringWithLength(QString * qstrptr, const kvi_wchar_t * p
 	kvi_wslen_t oldLen = qstrptr->length();
 	qstrptr->resize(oldLen + len);
 #ifdef WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
-	KviMemory::copy((void *)(qstrptr->unicode() + oldLen), ptr, sizeof(kvi_wchar_t) * len);
+	std::memcpy((void *)(qstrptr->unicode() + oldLen), ptr, sizeof(kvi_wchar_t) * len);
 #else  // !WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
 	QChar * c = (QChar *)(qstrptr->unicode() + oldLen);
 	while(*ptr)
@@ -182,7 +183,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 
 	//Alloc the first attribute
 	line_ptr->uChunkCount = 1;
-	line_ptr->pChunks = (KviIrcViewLineChunk *)KviMemory::allocate(sizeof(KviIrcViewLineChunk));
+	line_ptr->pChunks = (KviIrcViewLineChunk *)std::malloc(sizeof(KviIrcViewLineChunk));
 	//And fill it up
 	line_ptr->pChunks[0].type = KviControlCodes::Color;
 	line_ptr->pChunks[0].iTextStart = 0;
@@ -214,7 +215,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 			line_ptr->pChunks[0].iTextLen = 0;
 
 			line_ptr->uChunkCount = 3;
-			line_ptr->pChunks = (KviIrcViewLineChunk *)KviMemory::reallocate((void *)line_ptr->pChunks, 3 * sizeof(KviIrcViewLineChunk));
+			line_ptr->pChunks = (KviIrcViewLineChunk *)std::realloc((void *)line_ptr->pChunks, 3 * sizeof(KviIrcViewLineChunk));
 
 			line_ptr->pChunks[1].type = KviControlCodes::Color;
 			line_ptr->pChunks[1].iTextStart = 0;
@@ -295,7 +296,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 	
 	#define NEW_LINE_CHUNK(_chunk_type)                                                             \
 		line_ptr->uChunkCount++;                                                                    \
-		line_ptr->pChunks = (KviIrcViewLineChunk *)KviMemory::reallocate((void *)line_ptr->pChunks, \
+		line_ptr->pChunks = (KviIrcViewLineChunk *)std::realloc((void *)line_ptr->pChunks, \
 		    line_ptr->uChunkCount * sizeof(KviIrcViewLineChunk));                                   \
 		iCurChunk++;                                                                                \
 		line_ptr->pChunks[iCurChunk].type = _chunk_type;                                            \
@@ -637,8 +638,8 @@ found_command_escape:
 						p += 2; //point after \r!
 
 						blockLen = (next_cr - p);
-						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate(((next_cr - p) + 1) * sizeof(kvi_wchar_t));
-						KviMemory::copy((void *)(line_ptr->pChunks[iCurChunk].szPayload), p, blockLen * sizeof(kvi_wchar_t));
+						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)std::malloc(((next_cr - p) + 1) * sizeof(kvi_wchar_t));
+						std::memcpy((void *)(line_ptr->pChunks[iCurChunk].szPayload), p, blockLen * sizeof(kvi_wchar_t));
 
 						line_ptr->pChunks[iCurChunk].szPayload[blockLen] = 0;
 
@@ -720,8 +721,8 @@ found_icon_escape:
 					{
 						APPEND_LAST_TEXT_BLOCK(data_ptr, beginPtr - data_ptr)
 						NEW_LINE_CHUNK(KviControlCodes::Icon)
-						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((datalen + 1) * sizeof(kvi_wchar_t));
-						KviMemory::copy((void *)(line_ptr->pChunks[iCurChunk].szPayload), icon_name, datalen * sizeof(kvi_wchar_t));
+						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)std::malloc((datalen + 1) * sizeof(kvi_wchar_t));
+						std::memcpy((void *)(line_ptr->pChunks[iCurChunk].szPayload), icon_name, datalen * sizeof(kvi_wchar_t));
 						line_ptr->pChunks[iCurChunk].szPayload[datalen] = 0;
 						line_ptr->pChunks[iCurChunk].szSmileId = line_ptr->pChunks[iCurChunk].szPayload;
 
@@ -1072,7 +1073,7 @@ got_url:
 		//	int urlLen = KVI_OPTION_STRING(KviOption_stringUrlLinkCommand).len() + 1;
 
 		//write into null-terminated char* szPayload an 'u' that means that this chunk represents an URL
-		line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate(2 * sizeof(kvi_wchar_t));
+		line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)std::malloc(2 * sizeof(kvi_wchar_t));
 		line_ptr->pChunks[iCurChunk].szPayload[0] = 'u';
 		line_ptr->pChunks[iCurChunk].szPayload[1] = 0x0;
 		//set the color for this chunk
@@ -1206,12 +1207,12 @@ check_emoticon_char:
 								int emolen = p - begin;
 								int reallen = item2 ? 3 : 2;
 
-								line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((emolen + 1) * sizeof(kvi_wchar_t));
-								KviMemory::copy(line_ptr->pChunks[iCurChunk].szPayload, begin, emolen * sizeof(kvi_wchar_t));
+								line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)std::malloc((emolen + 1) * sizeof(kvi_wchar_t));
+								std::memcpy(line_ptr->pChunks[iCurChunk].szPayload, begin, emolen * sizeof(kvi_wchar_t));
 								line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
 
-								line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)KviMemory::allocate((reallen + 1) * sizeof(kvi_wchar_t));
-								KviMemory::copy(line_ptr->pChunks[iCurChunk].szSmileId, ng, reallen * sizeof(kvi_wchar_t));
+								line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)std::malloc((reallen + 1) * sizeof(kvi_wchar_t));
+								std::memcpy(line_ptr->pChunks[iCurChunk].szSmileId, ng, reallen * sizeof(kvi_wchar_t));
 								line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
 
 								APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(begin, emolen)
@@ -1221,12 +1222,12 @@ check_emoticon_char:
 								while(count > 0)
 								{
 									NEW_LINE_CHUNK(KviControlCodes::Icon)
-									line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((emolen + 1) * sizeof(kvi_wchar_t));
-									KviMemory::copy(line_ptr->pChunks[iCurChunk].szPayload, begin, emolen * sizeof(kvi_wchar_t));
+									line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)std::malloc((emolen + 1) * sizeof(kvi_wchar_t));
+									std::memcpy(line_ptr->pChunks[iCurChunk].szPayload, begin, emolen * sizeof(kvi_wchar_t));
 									line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
 
-									line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)KviMemory::allocate((reallen + 1) * sizeof(kvi_wchar_t));
-									KviMemory::copy(line_ptr->pChunks[iCurChunk].szSmileId, ng, reallen * sizeof(kvi_wchar_t));
+									line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)std::malloc((reallen + 1) * sizeof(kvi_wchar_t));
+									std::memcpy(line_ptr->pChunks[iCurChunk].szSmileId, ng, reallen * sizeof(kvi_wchar_t));
 									line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
 
 									APPEND_ZERO_LENGTH_BLOCK(data_ptr)

@@ -26,12 +26,12 @@
 #include "KviModule.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
-#include "KviMemory.h"
 #include "KviApplication.h"
 #include "KviOptions.h"
 #include "KviKvsArrayCast.h"
 #include "KviFile.h"
 
+#include <cstdlib>
 #include <QFileInfo>
 #include <QDir>
 #include <QTextStream>
@@ -872,7 +872,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 	if(c->params()->count() < 2)
 		uSize = 1024 * 1024; // 1 meg file default
 
-	char * pcBuf = (char *)KviMemory::allocate(sizeof(char) * (uSize + 1));
+	char * pcBuf = (char *)std::malloc(sizeof(char) * (uSize + 1));
 	unsigned int uReaded = 0;
 	unsigned int uRetries = 0;
 
@@ -881,7 +881,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 		if(uRetries > 1000)
 		{
 			// ops
-			KviMemory::free(pcBuf);
+			std::free(pcBuf);
 			c->warning(__tr2qs("Read error for file '%Q' (have been unable to read the requested size in 1000 retries)"), &szFileName);
 			return true;
 		}
@@ -890,7 +890,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 
 		if(iReadedNow < 0)
 		{
-			KviMemory::free(pcBuf);
+			std::free(pcBuf);
 			c->warning(__tr2qs("Read error for file '%Q'"), &szFileName);
 			return true;
 		}
@@ -906,7 +906,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 	else
 		c->returnValue()->setString(QString::fromLocal8Bit(pcBuf));
 
-	KviMemory::free(pcBuf);
+	std::free(pcBuf);
 
 	return true;
 }
@@ -961,7 +961,7 @@ static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
 	if(c->params()->count() < 2)
 		uSize = 1024 * 1024; // 1 meg file default
 
-	unsigned char * pcBuf = (unsigned char *)KviMemory::allocate(sizeof(char) * (uSize + 1));
+	unsigned char * pcBuf = (unsigned char *)std::malloc(sizeof(char) * (uSize + 1));
 	unsigned int uReaded = 0;
 	unsigned int uRetries = 0;
 
@@ -970,7 +970,7 @@ static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
 		if(uRetries > 1000)
 		{
 			// ops
-			KviMemory::free(pcBuf);
+			std::free(pcBuf);
 			c->warning(__tr2qs("Read error for file '%Q' (have been unable to read the requested size in 1000 retries)"), &szFileName);
 			return true;
 		}
@@ -979,7 +979,7 @@ static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
 
 		if(iReadedNow < 0)
 		{
-			KviMemory::free(pcBuf);
+			std::free(pcBuf);
 			c->warning(__tr2qs("Read error for file '%Q'"), &szFileName);
 			return true;
 		}
@@ -1001,7 +1001,7 @@ static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
 
 	c->returnValue()->setArray(pArray);
 
-	KviMemory::free(pcBuf);
+	std::free(pcBuf);
 
 	return true;
 }

@@ -25,7 +25,6 @@
 
 #include "kvi_debug.h"
 #include "kvi_defaults.h"
-#include "KviMemory.h"
 #include "KviByteOrder.h"
 
 #define _KVI_LOCALE_CPP_

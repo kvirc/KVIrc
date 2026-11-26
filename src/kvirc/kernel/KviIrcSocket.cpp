@@ -29,7 +29,6 @@
 #include "KviNetUtils.h"
 #include "kvi_settings.h"
 #include "KviLocale.h"
-#include "KviMemory.h"
 #include "kvi_debug.h"
 #include "KviCString.h"
 #include "KviOptions.h"
@@ -43,6 +42,8 @@
 #include "KviSSLMaster.h"
 #endif
 
+#include <cstdlib>
+#include <cstring>
 #include <QTimer>
 #include <QSocketNotifier>
 #include <memory>
@@ -735,7 +736,7 @@ void KviIrcSocket::proxyLoginV4()
 	pcBufToSend[1] = (unsigned char)1; //Connect
 
 	quint16 port = (quint16)htons(m_pIrcServer->port());
-	KviMemory::move((void *)(pcBufToSend + 2), (void *)&port, 2);
+	std::memmove((void *)(pcBufToSend + 2), (void *)&port, 2);
 
 	struct in_addr ircInAddr;
 
@@ -743,8 +744,8 @@ void KviIrcSocket::proxyLoginV4()
 		qDebug("SOCKET INTERNAL ERROR IN IPV4 (SOCKS4) ADDR CONVERSION");
 
 	quint32 host = (quint32)ircInAddr.s_addr;
-	KviMemory::move((void *)(pcBufToSend + 4), (void *)&host, 4);
-	KviMemory::move((void *)(pcBufToSend + 8), (void *)(szUserAndPass.ptr()), szUserAndPass.len());
+	std::memmove((void *)(pcBufToSend + 4), (void *)&host, 4);
+	std::memmove((void *)(pcBufToSend + 8), (void *)(szUserAndPass.ptr()), szUserAndPass.len());
 
 	pcBufToSend[iLen - 1] = '\0';
 
@@ -868,11 +869,11 @@ void KviIrcSocket::proxyAuthUserPassV5()
 	pcBufToSend[1] = (unsigned char)uUser;
 
 	//username
-	KviMemory::move((void *)(pcBufToSend + 2), (void *)m_pProxy->user().toUtf8().data(), uUser);
+	std::memmove((void *)(pcBufToSend + 2), (void *)m_pProxy->user().toUtf8().data(), uUser);
 
 	//length of the password
 	pcBufToSend[2 + uUser] = (unsigned char)uPass;
-	KviMemory::move((void *)(pcBufToSend + 3 + uUser), (void *)m_pProxy->pass().toUtf8().data(), uPass);
+	std::memmove((void *)(pcBufToSend + 3 + uUser), (void *)m_pProxy->pass().toUtf8().data(), uPass);
 
 	// spit out the buffer and wait
 	setState(ProxyUserPassV5);
@@ -946,7 +947,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 	    && m_pIrcServer->cacheIp());
 	int iBufLen = bRemoteDns ? 4 + 1 + m_pIrcServer->hostName().toUtf8().length() + 2
 	                         : (m_pIrcServer->isIPv6() ? 22 : 10);
-	char * pcBufToSend = (char *)KviMemory::allocate(sizeof(char) * iBufLen);
+	char * pcBufToSend = (char *)std::malloc(sizeof(char) * iBufLen);
 	pcBufToSend[0] = (unsigned char)5; //Proto 5
 	pcBufToSend[1] = (unsigned char)1; //CONNECT
 	pcBufToSend[2] = (unsigned char)0; //RSV
@@ -964,11 +965,11 @@ void KviIrcSocket::proxySendTargetDataV5()
 
 	if(bRemoteDns)
 	{
-		KviMemory::move((void *)(pcBufToSend + 5),
+		std::memmove((void *)(pcBufToSend + 5),
 		    (void *)(m_pIrcServer->hostName().toUtf8().data()),
 		    m_pIrcServer->hostName().toUtf8().length());
 		quint16 port = (quint16)htons(m_pIrcServer->port());
-		KviMemory::move((void *)(pcBufToSend + 4 + 1 + m_pIrcServer->hostName().toUtf8().length()), (void *)&port, 2);
+		std::memmove((void *)(pcBufToSend + 4 + 1 + m_pIrcServer->hostName().toUtf8().length()), (void *)&port, 2);
 	}
 	else if(m_pIrcServer->isIPv6())
 	{
@@ -977,9 +978,9 @@ void KviIrcSocket::proxySendTargetDataV5()
 
 		if(!KviNetUtils::stringIpToBinaryIp_V6(m_pIrcServer->ip(), &ircInAddr))
 			qDebug("SOCKET INTERNAL ERROR IN IPV6 ADDR CONVERSION");
-		KviMemory::move((void *)(pcBufToSend + 4), (void *)(&ircInAddr), 4);
+		std::memmove((void *)(pcBufToSend + 4), (void *)(&ircInAddr), 4);
 		quint16 port = (quint16)htons(m_pIrcServer->port());
-		KviMemory::move((void *)(pcBufToSend + 20), (void *)&port, 2);
+		std::memmove((void *)(pcBufToSend + 20), (void *)&port, 2);
 #endif
 	}
 	else
@@ -989,15 +990,15 @@ void KviIrcSocket::proxySendTargetDataV5()
 		if(!KviNetUtils::stringIpToBinaryIp(m_pIrcServer->ip(), &ircInAddr))
 			qDebug("SOCKET INTERNAL ERROR IN IPV4 ADDR CONVERSION");
 		quint32 host = (quint32)ircInAddr.s_addr;
-		KviMemory::move((void *)(pcBufToSend + 4), (void *)&host, 4);
+		std::memmove((void *)(pcBufToSend + 4), (void *)&host, 4);
 		quint16 port = (quint16)htons(m_pIrcServer->port());
-		KviMemory::move((void *)(pcBufToSend + 8), (void *)&port, 2);
+		std::memmove((void *)(pcBufToSend + 8), (void *)&port, 2);
 	}
 
 	// send it into hyperspace...
 	setState(ProxyFinalV5);
 	sendRawData(pcBufToSend, iBufLen);
-	KviMemory::free(pcBufToSend);
+	std::free(pcBufToSend);
 	// and wait for reply...
 }
 
@@ -1604,7 +1605,7 @@ void KviIrcSocket::free_msgEntry(KviIrcSocketMsgEntry * e)
 		delete e->pData;
 
 	e->pData = nullptr;
-	KviMemory::free(e);
+	std::free(e);
 }
 
 bool KviIrcSocket::queue_removeMessage()
@@ -1617,7 +1618,7 @@ bool KviIrcSocket::queue_removeMessage()
 
 	KviIrcSocketMsgEntry * pEntry = m_pSendQueueHead;
 	m_pSendQueueHead = pEntry->next_ptr;
-	KviMemory::free((void *)pEntry);
+	std::free((void *)pEntry);
 
 	if(m_pSendQueueHead == nullptr)
 	{
@@ -1873,7 +1874,7 @@ bool KviIrcSocket::sendFmtData(const char *fmt,...)
 {
 	if(m_state != Connected)return false;
 	//new buffer
-	KviIrcSocketMsgEntry *ptr = (KviIrcSocketMsgEntry *)KviMemory::allocate(sizeof(KviIrcSocketMsgEntry));
+	KviIrcSocketMsgEntry *ptr = (KviIrcSocketMsgEntry *)std::malloc(sizeof(KviIrcSocketMsgEntry));
 	ptr->pData = new KviDataBuffer(512);
 	kvi_va_list(list);
 	kvi_va_start(list,fmt);
@@ -1899,7 +1900,7 @@ bool KviIrcSocket::sendData(const char *buffer,int buflen)
 {
 	if(m_state != Connected)return false;
 	//new buffer
-	KviIrcSocketMsgEntry *ptr = (KviIrcSocketMsgEntry *)KviMemory::allocate(sizeof(KviIrcSocketMsgEntry));
+	KviIrcSocketMsgEntry *ptr = (KviIrcSocketMsgEntry *)std::malloc(sizeof(KviIrcSocketMsgEntry));
 	if(buflen < 0)buflen = strlen(buffer);
 	if(buflen > 510)
 	{
@@ -1908,7 +1909,7 @@ bool KviIrcSocket::sendData(const char *buffer,int buflen)
 			outputSocketWarning(__tr2qs("Socket message truncated to 512 bytes."));
 	}
 	ptr->pData = new KviDataBuffer(buflen + 2);
-	KviMemory::move(ptr->pData->data(),buffer,buflen);
+	std::memmove(ptr->pData->data(),buffer,buflen);
 	*(ptr->pData->data()+buflen)='\r';
 	*(ptr->pData->data()+buflen+1)='\n';
 
@@ -1924,10 +1925,10 @@ bool KviIrcSocket::sendRawData(const char * pcBuffer, int iBuflen)
 		return false;
 
 	//new buffer
-	KviIrcSocketMsgEntry * pEntry = (KviIrcSocketMsgEntry *)KviMemory::allocate(sizeof(KviIrcSocketMsgEntry));
+	KviIrcSocketMsgEntry * pEntry = (KviIrcSocketMsgEntry *)std::malloc(sizeof(KviIrcSocketMsgEntry));
 	pEntry->pData = new KviDataBuffer(iBuflen);
 
-	KviMemory::move(pEntry->pData->data(), pcBuffer, iBuflen);
+	std::memmove(pEntry->pData->data(), pcBuffer, iBuflen);
 	queue_insertMessage(pEntry);
 
 	if(!m_bInProcessData)
@@ -1945,7 +1946,7 @@ bool KviIrcSocket::sendPacket(KviDataBuffer * pData)
 		return false;
 	}
 
-	KviIrcSocketMsgEntry * pEntry = (KviIrcSocketMsgEntry *)KviMemory::allocate(sizeof(KviIrcSocketMsgEntry));
+	KviIrcSocketMsgEntry * pEntry = (KviIrcSocketMsgEntry *)std::malloc(sizeof(KviIrcSocketMsgEntry));
 	pEntry->pData = pData;
 	queue_insertMessage(pEntry);
 

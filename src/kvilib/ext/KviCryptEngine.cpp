@@ -26,10 +26,6 @@
 #include "KviCString.h"
 #include "KviLocale.h"
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-#include "KviMemory.h"
-#endif
-
 /*
 	@doc: crypt_engines
 	@type:

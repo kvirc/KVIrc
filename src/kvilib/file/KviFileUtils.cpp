@@ -27,7 +27,6 @@
 #include "KviFileUtils.h"
 #include "KviQString.h"
 #include "KviFile.h"
-#include "KviMemory.h"
 
 #include <QDir>
 #include <QFileInfo>

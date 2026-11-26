@@ -34,9 +34,10 @@
 #include "KviPointerList.h"
 #include "KviCString.h"
 #include "KviQString.h"
-#include "KviMemory.h"
 #include "kvi_debug.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <ctype.h>
 
 ///
@@ -113,8 +114,8 @@ inline void kvi_hash_key_copy(const char * const & szFrom, const char *& szTo, b
 #else
 		int len = kvi_strLen(szFrom);
 #endif
-		char * dst = (char *)KviMemory::allocate(len + 1);
-		KviMemory::copy(dst, szFrom, len + 1);
+		char * dst = (char *)std::malloc(len + 1);
+		std::memcpy(dst, szFrom, len + 1);
 		szTo = dst;
 	}
 	else
@@ -129,7 +130,7 @@ inline void kvi_hash_key_copy(const char * const & szFrom, const char *& szTo, b
 inline void kvi_hash_key_destroy(const char *& szKey, bool bDeepCopy)
 {
 	if(bDeepCopy)
-		KviMemory::free((char *)szKey);
+		std::free((char *)szKey);
 }
 
 /**

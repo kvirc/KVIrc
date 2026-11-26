@@ -36,7 +36,6 @@
 #include "KviInternalCommand.h"
 #include "KviMainWindow.h"
 #include "KviMexLinkFilter.h"
-#include "KviMemory.h"
 #include "kvi_debug.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionTarget.h"

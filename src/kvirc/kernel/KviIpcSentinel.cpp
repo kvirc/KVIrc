@@ -24,12 +24,13 @@
 
 // FIXME: This stuff is hopelessly complex... nearly pathetic.
 
+#include <cstdlib>
+#include <cstring>
 #include <qmetatype.h>
 #include "KviIpcSentinel.h"
 
 #ifndef COMPILE_NO_IPC
 
-#include "KviMemory.h"
 #include "KviApplication.h"
 #include "KviQString.h"
 

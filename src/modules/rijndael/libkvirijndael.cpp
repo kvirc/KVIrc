@@ -33,6 +33,9 @@
 #include "UglyBase64.h"
 #include "InitVectorEngine.h"
 
+#include <cstdlib>
+#include <cstring>
+
 //#warning "Other engines: mircStrip koi2win colorizer lamerizer etc.."
 
 /*
@@ -61,7 +64,6 @@
 */
 
 #if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
-#include "KviMemory.h"
 #include "KviPointerList.h"
 #include "KviCryptEngineDescription.h"
 
@@ -238,11 +240,11 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 		return KviCryptEngine::EncryptError;
 	}
 	int len = (int)kvi_strLen(plainText);
-	char * buf = (char *)KviMemory::allocate(len + 16); // needed for the eventual padding
+	char * buf = (char *)std::malloc(len + 16); // needed for the eventual padding
 	unsigned char * iv = nullptr;
 	if(m_bEncryptMode == CBC)
 	{
-		iv = (unsigned char *)KviMemory::allocate(MAX_IV_SIZE);
+		iv = (unsigned char *)std::malloc(MAX_IV_SIZE);
 		InitVectorEngine::fillRandomIV(iv, MAX_IV_SIZE);
 	}
 
@@ -250,8 +252,8 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 	if(retVal < 0)
 	{
 		if(m_bEncryptMode == CBC)
-			KviMemory::free(iv);
-		KviMemory::free(buf);
+			std::free(iv);
+		std::free(buf);
 		setLastErrorFromRijndaelErrorCode(retVal);
 		return KviCryptEngine::EncryptError;
 	}
@@ -259,19 +261,19 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 	if(m_bEncryptMode == CBC)
 	{
 		// prepend the iv to the cyphered text
-		buf = (char *)KviMemory::reallocate(buf, retVal + MAX_IV_SIZE);
-		KviMemory::move(buf + MAX_IV_SIZE, buf, retVal);
-		KviMemory::move(buf, iv, MAX_IV_SIZE);
-		KviMemory::free(iv);
+		buf = (char *)std::realloc(buf, retVal + MAX_IV_SIZE);
+		std::memmove(buf + MAX_IV_SIZE, buf, retVal);
+		std::memmove(buf, iv, MAX_IV_SIZE);
+		std::free(iv);
 		retVal += MAX_IV_SIZE;
 	}
 
 	if(!binaryToAscii(buf, retVal, outBuffer))
 	{
-		KviMemory::free(buf);
+		std::free(buf);
 		return KviCryptEngine::EncryptError;
 	}
-	KviMemory::free(buf);
+	std::free(buf);
 
 	if(outBuffer.len() > maxEncryptLen())
 	{
@@ -313,25 +315,25 @@ KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer, 
 	if(!asciiToBinary(inBuffer, &len, &binary))
 		return KviCryptEngine::DecryptError;
 
-	char * buf = (char *)KviMemory::allocate(len + 1);
+	char * buf = (char *)std::malloc(len + 1);
 	unsigned char * iv = nullptr;
 	if(m_bEncryptMode == CBC)
 	{
 		// extract the IV from the cyphered string
 		len -= MAX_IV_SIZE;
-		iv = (unsigned char *)KviMemory::allocate(MAX_IV_SIZE);
-		KviMemory::move(iv, binary, MAX_IV_SIZE);
-		KviMemory::move(binary, binary + MAX_IV_SIZE, len);
-		binary = (char *)KviMemory::reallocate(binary, len);
+		iv = (unsigned char *)std::malloc(MAX_IV_SIZE);
+		std::memmove(iv, binary, MAX_IV_SIZE);
+		std::memmove(binary, binary + MAX_IV_SIZE, len);
+		binary = (char *)std::realloc(binary, len);
 	}
 
 	int retVal = m_pDecryptCipher->padDecrypt((const unsigned char *)binary, len, (unsigned char *)buf, iv);
-	KviMemory::free(binary);
-	KviMemory::free(iv);
+	std::free(binary);
+	std::free(iv);
 
 	if(retVal < 0)
 	{
-		KviMemory::free(buf);
+		std::free(buf);
 		setLastErrorFromRijndaelErrorCode(retVal);
 		return KviCryptEngine::DecryptError;
 	}
@@ -340,7 +342,7 @@ KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer, 
 
 	plainText = buf;
 
-	KviMemory::free(buf);
+	std::free(buf);
 	return KviCryptEngine::DecryptOkWasEncrypted;
 }
 
@@ -364,8 +366,8 @@ bool KviRijndaelHexEngine::asciiToBinary(const char * inBuffer, int * len, char 
 	{
 		if(*len > 0)
 		{
-			*outBuffer = (char *)KviMemory::allocate(*len);
-			KviMemory::move(*outBuffer, tmpBuf, *len);
+			*outBuffer = (char *)std::malloc(*len);
+			std::memmove(*outBuffer, tmpBuf, *len);
 			KviCString::freeBuffer(tmpBuf);
 		}
 	}
@@ -392,8 +394,8 @@ bool KviRijndaelBase64Engine::asciiToBinary(const char * inBuffer, int * len, ch
 	{
 		if(*len > 0)
 		{
-			*outBuffer = (char *)KviMemory::allocate(*len);
-			KviMemory::move(*outBuffer, tmpBuf, *len);
+			*outBuffer = (char *)std::malloc(*len);
+			std::memmove(*outBuffer, tmpBuf, *len);
 			KviCString::freeBuffer(tmpBuf);
 		}
 	}
@@ -571,14 +573,14 @@ bool KviMircryptionEngine::doEncryptECB(KviCString & plain, KviCString & encoded
 			*padB++ = 0;
 	}
 
-	unsigned char * out = (unsigned char *)KviMemory::allocate(plain.len()); // we use this to avoid endiannes problems
+	unsigned char * out = (unsigned char *)std::malloc(plain.len()); // we use this to avoid endiannes problems
 
 	BlowFish bf((unsigned char *)m_szEncryptKey.ptr(), m_szEncryptKey.len());
 	bf.ResetChain();
 	bf.Encrypt((unsigned char *)plain.ptr(), out, plain.len(), BlowFish::ECB);
 
 	UglyBase64::encode(out, plain.len(), encoded);
-	KviMemory::free(out);
+	std::free(out);
 	return true;
 }
 
@@ -593,7 +595,7 @@ bool KviMircryptionEngine::doDecryptECB(KviCString & encoded, KviCString & plain
 	bf.ResetChain();
 	bf.Decrypt(buf, (unsigned char *)plain.ptr(), len, BlowFish::ECB);
 
-	KviMemory::free(buf);
+	std::free(buf);
 
 	return true;
 }
@@ -612,21 +614,21 @@ bool KviMircryptionEngine::doEncryptCBC(KviCString & plain, KviCString & encoded
 	}
 
 	int ll = plain.len() + 8;
-	unsigned char * in = (unsigned char *)KviMemory::allocate(ll);
+	unsigned char * in = (unsigned char *)std::malloc(ll);
 
 	InitVectorEngine::fillRandomIV(in, 8);
 
-	KviMemory::copy(in + 8, plain.ptr(), plain.len());
+	std::memcpy(in + 8, plain.ptr(), plain.len());
 
 	// encrypt
-	unsigned char * out = (unsigned char *)KviMemory::allocate(ll);
+	unsigned char * out = (unsigned char *)std::malloc(ll);
 	BlowFish bf((unsigned char *)m_szEncryptKey.ptr(), m_szEncryptKey.len());
 	bf.ResetChain();
 	bf.Encrypt(in, out, ll, BlowFish::CBC);
-	KviMemory::free(in);
+	std::free(in);
 
 	encoded.bufferToBase64((const char *)out, ll);
-	KviMemory::free(out);
+	std::free(out);
 
 	encoded.prepend('*'); // prepend the signature
 

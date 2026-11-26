@@ -43,7 +43,6 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
-#include "KviMemory.h"
 #include "KviPointerList.h"
 #include "KviCryptEngineDescription.h"
 

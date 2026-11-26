@@ -36,7 +36,6 @@
 #include "KviNetUtils.h"
 #include "KviOptions.h"
 #include "KviConsoleWindow.h"
-#include "KviMemory.h"
 #include "kvi_socket.h"
 #include "KviIrcConnection.h"
 #include "KviTalVBox.h"

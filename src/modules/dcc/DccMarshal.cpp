@@ -28,7 +28,6 @@
 #include "KviNetUtils.h"
 #include "KviOptions.h"
 #include "KviLocale.h"
-#include "KviMemory.h"
 #include "kvi_socket.h"
 #include "KviFileUtils.h"
 

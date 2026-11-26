@@ -23,8 +23,8 @@
 //=============================================================================
 
 #include "KviNickColors.h"
-#include "KviMemory.h"
 
+#include <cstdlib>
 #include <cstdio>
 #include <QString>
 
@@ -82,7 +82,7 @@ namespace KviNickColors
 	int getSmartColorIntByMircColor(unsigned char iFore, unsigned char iBack)
 	{
 		int iBestMatch = -1;
-		char * comb = (char *)KviMemory::allocate(6);
+		char * comb = (char *)std::malloc(6);
 		int numm = 0;
 // TODO handle KVI_TRANSPARENT and KVI_NOCHANGE (ticket #812)
 #if defined(COMPILE_ON_WINDOWS) && !(defined(MINGW))
@@ -108,7 +108,7 @@ namespace KviNickColors
 				{
 					//exact match
 					//qDebug("Exact match %s",g_nickColors[i]);
-					KviMemory::free(comb);
+					std::free(comb);
 					return i;
 				}
 				else
@@ -123,7 +123,7 @@ namespace KviNickColors
 				}
 			}
 		}
-		KviMemory::free(comb);
+		std::free(comb);
 		//no exact match
 		//qDebug("Best match %s",g_nickColors[iBestMatch]);
 		return iBestMatch;

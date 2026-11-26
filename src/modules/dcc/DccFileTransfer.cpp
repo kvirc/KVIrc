@@ -40,7 +40,6 @@
 #include "KviNetUtils.h"
 #include "KviConsoleWindow.h"
 #include "KviMainWindow.h"
-#include "KviMemory.h"
 #include "KviThread.h"
 #include "KviIrcSocket.h"
 #include "KviMediaManager.h"
@@ -56,6 +55,7 @@
 #include "DccDialog.h"
 #endif
 
+#include <cstdlib>
 #include <QFile>
 #include <QPainter>
 #include <QDateTime>
@@ -695,7 +695,7 @@ void DccSendThread::run()
 
 	if(m_pOpt->iPacketSize < 32)
 		m_pOpt->iPacketSize = 32;
-	char * buffer = (char *)KviMemory::allocate(m_pOpt->iPacketSize * sizeof(char));
+	char * buffer = (char *)std::malloc(m_pOpt->iPacketSize * sizeof(char));
 
 	QFile * pFile = new QFile(QString::fromUtf8(m_pOpt->szFileName.ptr()));
 
@@ -1153,7 +1153,7 @@ void DccSendThread::run()
 	}
 
 exit_dcc:
-	KviMemory::free(buffer);
+	std::free(buffer);
 	pFile->close();
 	delete pFile;
 	pFile = nullptr;

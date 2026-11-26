@@ -53,11 +53,11 @@
 #include "KviFile.h"
 #include "KviByteOrder.h"
 #include "KviCString.h"
-#include "KviMemory.h"
 #include "KviLocale.h"
 #include "KviPointerHashTable.h"
 #include "KviTranslationEntry.h"
 
+#include <cstdlib>
 #include <QString>
 #include <QTextCodec>
 
@@ -207,13 +207,13 @@ bool KviMessageCatalogue::load(const QString & szName)
 	f.seek(0);
 
 	unsigned int uSize = f.size();
-	char * pcBuffer = (char *)KviMemory::allocate(uSize);
+	char * pcBuffer = (char *)std::malloc(uSize);
 
 	// FIXME: maybe read it in blocks eh ?
 	if(f.read(pcBuffer, uSize) < (int)uSize)
 	{
 		qDebug("KviLocale: Error while reading the translation file %s", szCatalogueFile.toUtf8().data());
-		KviMemory::free(pcBuffer);
+		std::free(pcBuffer);
 		f.close();
 		return false;
 	}
@@ -222,7 +222,7 @@ bool KviMessageCatalogue::load(const QString & szName)
 	if(uSize < (24 + (sizeof(GnuMoStringDescriptor) * iStringsNum)))
 	{
 		qDebug("KviLocale: Broken translation file %s (too small for all descriptors)", szCatalogueFile.toUtf8().data());
-		KviMemory::free(pcBuffer);
+		std::free(pcBuffer);
 		f.close();
 		return false;
 	}
@@ -236,7 +236,7 @@ bool KviMessageCatalogue::load(const QString & szName)
 	if(uSize < (unsigned int)iExpectedFileSize)
 	{
 		qDebug("KviLocale: Broken translation file %s (too small for all the message strings)", szCatalogueFile.toUtf8().data());
-		KviMemory::free(pcBuffer);
+		std::free(pcBuffer);
 		f.close();
 		return false;
 	}
@@ -278,7 +278,7 @@ bool KviMessageCatalogue::load(const QString & szName)
 		m_pMessages->insert(e->m_szKey.ptr(), e);
 	}
 
-	KviMemory::free(pcBuffer);
+	std::free(pcBuffer);
 	f.close();
 	return true;
 }

@@ -37,13 +37,14 @@
 #include "KviInternalCommand.h"
 #include "KviMainWindow.h"
 #include "KviMexLinkFilter.h"
-#include "KviMemory.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionTarget.h"
 #include "KviIrcConnectionTargetResolver.h"
 #include "KviDataBuffer.h"
 #include "kvi_debug.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <QTimer>
 
 extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
@@ -64,7 +65,7 @@ KviIrcLink::~KviIrcLink()
 	destroySocket();
 
 	if(m_pReadBuffer)
-		KviMemory::free(m_pReadBuffer);
+		std::free(m_pReadBuffer);
 }
 
 //
@@ -206,7 +207,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 	char * p = buffer;
 	char * cBeginOfCurData = buffer;
 	int iBufLen = 0;
-	char * cMessageBuffer = (char *)KviMemory::allocate(1);
+	char * cMessageBuffer = (char *)std::malloc(1);
 
 	while(*p)
 	{
@@ -219,19 +220,19 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			if(m_uReadBufferLen > 0)
 			{
 				KVI_ASSERT(m_pReadBuffer);
-				cMessageBuffer = (char *)KviMemory::reallocate(cMessageBuffer, iBufLen + m_uReadBufferLen + 1);
-				KviMemory::move(cMessageBuffer, m_pReadBuffer, m_uReadBufferLen);
-				KviMemory::move((void *)(cMessageBuffer + m_uReadBufferLen), cBeginOfCurData, iBufLen);
+				cMessageBuffer = (char *)std::realloc(cMessageBuffer, iBufLen + m_uReadBufferLen + 1);
+				std::memmove(cMessageBuffer, m_pReadBuffer, m_uReadBufferLen);
+				std::memmove((void *)(cMessageBuffer + m_uReadBufferLen), cBeginOfCurData, iBufLen);
 				*(cMessageBuffer + iBufLen + m_uReadBufferLen) = '\0';
 				m_uReadBufferLen = 0;
-				KviMemory::free(m_pReadBuffer);
+				std::free(m_pReadBuffer);
 				m_pReadBuffer = nullptr;
 			}
 			else
 			{
 				KVI_ASSERT(!m_pReadBuffer);
-				cMessageBuffer = (char *)KviMemory::reallocate(cMessageBuffer, iBufLen + 1);
-				KviMemory::move(cMessageBuffer, cBeginOfCurData, iBufLen);
+				cMessageBuffer = (char *)std::realloc(cMessageBuffer, iBufLen + 1);
+				std::memmove(cMessageBuffer, cBeginOfCurData, iBufLen);
 				*(cMessageBuffer + iBufLen) = '\0';
 			}
 			m_uReadPackets++;
@@ -260,7 +261,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 				//
 				// We handle it by simply returning control to readData() which
 				// will return immediately (and safely) control to Qt
-				KviMemory::free(cMessageBuffer);
+				std::free(cMessageBuffer);
 				return;
 			}
 
@@ -284,8 +285,8 @@ void KviIrcLink::processData(char * buffer, int iLen)
 		{
 			//and there was more stuff saved... (really slow connection)
 			KVI_ASSERT(m_pReadBuffer);
-			m_pReadBuffer = (char *)KviMemory::reallocate(m_pReadBuffer, m_uReadBufferLen + iBufLen);
-			KviMemory::move((void *)(m_pReadBuffer + m_uReadBufferLen), cBeginOfCurData, iBufLen);
+			m_pReadBuffer = (char *)std::realloc(m_pReadBuffer, m_uReadBufferLen + iBufLen);
+			std::memmove((void *)(m_pReadBuffer + m_uReadBufferLen), cBeginOfCurData, iBufLen);
 			m_uReadBufferLen += iBufLen;
 		}
 		else
@@ -293,11 +294,11 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			//
 			KVI_ASSERT(!m_pReadBuffer);
 			m_uReadBufferLen = iBufLen;
-			m_pReadBuffer = (char *)KviMemory::allocate(m_uReadBufferLen);
-			KviMemory::move(m_pReadBuffer, cBeginOfCurData, m_uReadBufferLen);
+			m_pReadBuffer = (char *)std::malloc(m_uReadBufferLen);
+			std::memmove(m_pReadBuffer, cBeginOfCurData, m_uReadBufferLen);
 		}
 	}
-	KviMemory::free(cMessageBuffer);
+	std::free(cMessageBuffer);
 }
 
 //

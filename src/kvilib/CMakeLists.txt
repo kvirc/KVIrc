@@ -17,7 +17,6 @@ set(kvilib_SRCS
 	config/KviBuildInfo.cpp
 	core/KviError.cpp
 	core/KviHeapObject.cpp
-	core/KviMemory.cpp
 	core/KviQString.cpp
 	core/KviCString.cpp
 	core/KviShortcut.cpp

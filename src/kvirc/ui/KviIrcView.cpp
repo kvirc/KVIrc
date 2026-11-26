@@ -79,7 +79,6 @@
 #include "KviWindow.h"
 #include "KviLocale.h"
 #include "KviMainWindow.h"
-#include "KviMemory.h"
 #include "KviIconManager.h"
 #include "kvi_out.h"
 #include "KviConsoleWindow.h"
@@ -96,6 +95,7 @@
 #include "KviTrayIcon.h"
 #include "KviRegExp.h"
 
+#include <cstdlib>
 #include <QPainter>
 #include <QFontMetrics>
 #include <QMessageBox>
@@ -325,13 +325,13 @@ static inline void delete_text_line(KviIrcViewLine * line, QMultiHash<KviIrcView
 		if((line->pChunks[i].type == KviControlCodes::Escape) || (line->pChunks[i].type == KviControlCodes::Icon))
 		{
 			if((line->pChunks[i].type == KviControlCodes::Icon) && (line->pChunks[i].szPayload != line->pChunks[i].szSmileId))
-				KviMemory::free(line->pChunks[i].szSmileId);
-			KviMemory::free(line->pChunks[i].szPayload);
+				std::free(line->pChunks[i].szSmileId);
+			std::free(line->pChunks[i].szPayload);
 		}
 	}
-	KviMemory::free(line->pChunks); // free attributes data
+	std::free(line->pChunks); // free attributes data
 	if(line->iBlockCount)
-		KviMemory::free(line->pBlocks);
+		std::free(line->pBlocks);
 	delete line;
 }
 
@@ -1701,9 +1701,9 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 		return;
 
 	if(ptr->iBlockCount != 0)
-		KviMemory::free(ptr->pBlocks); // free any previous wrap blocks
+		std::free(ptr->pBlocks); // free any previous wrap blocks
 
-	ptr->pBlocks = (KviIrcViewWrappedBlock *)KviMemory::allocate(sizeof(KviIrcViewWrappedBlock)); // alloc one block
+	ptr->pBlocks = (KviIrcViewWrappedBlock *)std::malloc(sizeof(KviIrcViewWrappedBlock)); // alloc one block
 	ptr->iMaxLineWidth = maxWidth;                                                                // calculus for this width
 	ptr->iBlockCount = 0;                                                                         // it will be ++
 	ptr->uLineWraps = 0;                                                                          // no line wraps yet
@@ -1768,7 +1768,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 				return;
 
 			// Process the next block of data in the next loop
-			ptr->pBlocks = (KviIrcViewWrappedBlock *)KviMemory::reallocate(ptr->pBlocks, (ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
+			ptr->pBlocks = (KviIrcViewWrappedBlock *)std::realloc(ptr->pBlocks, (ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
 			ptr->pBlocks[ptr->iBlockCount].block_start = ptr->pChunks[curAttrBlock].iTextStart;
 			ptr->pBlocks[ptr->iBlockCount].block_len = 0;
 			ptr->pBlocks[ptr->iBlockCount].block_width = 0;
@@ -1822,7 +1822,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 				ptr->pBlocks[ptr->iBlockCount].pChunk = nullptr;
 				ptr->pBlocks[ptr->iBlockCount].block_width = 0;
 				ptr->iBlockCount++;
-				ptr->pBlocks = (KviIrcViewWrappedBlock *)KviMemory::reallocate(ptr->pBlocks, (ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
+				ptr->pBlocks = (KviIrcViewWrappedBlock *)std::realloc(ptr->pBlocks, (ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
 				ptr->pBlocks[ptr->iBlockCount].block_start = p - unicode;
 				ptr->pBlocks[ptr->iBlockCount].block_len = 0;
 				ptr->pBlocks[ptr->iBlockCount].block_width = 0;
@@ -1876,7 +1876,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 		ptr->pBlocks[ptr->iBlockCount].block_width = -1; // word wrap --> negative block_width
 		maxBlockLen -= curBlockLen;
 		ptr->iBlockCount++;
-		ptr->pBlocks = (KviIrcViewWrappedBlock *)KviMemory::reallocate(ptr->pBlocks, (ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
+		ptr->pBlocks = (KviIrcViewWrappedBlock *)std::realloc(ptr->pBlocks, (ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
 		ptr->pBlocks[ptr->iBlockCount].block_start = p - unicode;
 		ptr->pBlocks[ptr->iBlockCount].block_len = 0;
 		ptr->pBlocks[ptr->iBlockCount].block_width = 0;

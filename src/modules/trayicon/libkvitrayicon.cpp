@@ -29,7 +29,6 @@
 #include "KviApplication.h"
 #include "KviModule.h"
 #include "KviLocale.h"
-#include "KviMemory.h"
 #include "KviWindowListBase.h"
 #include "KviWindow.h"
 #include "KviIconManager.h"

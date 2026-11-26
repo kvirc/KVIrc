@@ -38,9 +38,9 @@
 #include "KviDnsResolver.h"
 #include "KviError.h"
 #include "kvi_socket.h"
-#include "KviMemory.h"
 #include "KviDataBuffer.h"
 
+#include <cstdlib>
 #include <QByteArray>
 #include <QTcpSocket>
 #include <QUdpSocket>
@@ -405,7 +405,7 @@ KVSO_CLASS_FUNCTION(socket, read)
 	if(iLen > 0)
 	{
 		// convert NULLS to char 255
-		char * buffer = (char *)KviMemory::allocate(iLen);
+		char * buffer = (char *)std::malloc(iLen);
 		m_pSocket->read(buffer, iLen);
 		for(int i{}; i < iLen; i++)
 		{
@@ -414,7 +414,7 @@ KVSO_CLASS_FUNCTION(socket, read)
 		}
 		QString tmpBuffer = QString::fromUtf8(buffer, iLen);
 		c->returnValue()->setString(tmpBuffer);
-		KviMemory::free(buffer);
+		std::free(buffer);
 	}
 	return true;
 }

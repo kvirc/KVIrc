@@ -23,27 +23,28 @@
 //=============================================================================
 
 #include "KviHeapObject.h"
-#include "KviMemory.h"
+
+#include <cstdlib>
 
 #ifdef COMPILE_ON_WINDOWS
 void * KviHeapObject::operator new(size_t uSize)
 {
-	return KviMemory::allocate(uSize);
+	return std::malloc(uSize);
 }
 
 void KviHeapObject::operator delete(void * pData)
 {
-	KviMemory::free(pData);
+	std::free(pData);
 }
 
 void * KviHeapObject::operator new[](size_t uSize)
 {
-	return KviMemory::allocate(uSize);
+	return std::malloc(uSize);
 }
 
 void KviHeapObject::operator delete[](void * pData)
 {
-	KviMemory::free(pData);
+	std::free(pData);
 }
 
 // placement new operator - needed by QMetaType
