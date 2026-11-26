@@ -261,12 +261,11 @@ if(MSVC)
 	list(APPEND kvirc_SRCS ${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.exe.manifest)
 endif()
 
-# Link libraries
-# don't mind the WIN32 flag, its needed to not show a console on non-debug windows builds and is ignored anywhere else.
-if(NOT WANT_DEBUG)
-	add_executable(${KVIRC_BINARYNAME} WIN32 ${kvirc_SRCS} ${kvirc_MOC_SRCS})
-else()
-	add_executable(${KVIRC_BINARYNAME} ${kvirc_SRCS} ${kvirc_MOC_SRCS})
+add_executable(${KVIRC_BINARYNAME} ${kvirc_SRCS} ${kvirc_MOC_SRCS})
+kvirc_apply_build_options(${KVIRC_BINARYNAME})
+if(WIN32)
+	# Show the console in configurations with KVIrc diagnostics.
+	set_target_properties(${KVIRC_BINARYNAME} PROPERTIES WIN32_EXECUTABLE "$<NOT:${KVIRC_DEBUG_CONFIG}>")
 endif()
 
 target_link_libraries(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS} ${qt_kvirc_modules})
@@ -304,14 +303,6 @@ set_target_properties(${KVIRC_BINARYNAME} PROPERTIES ENABLE_EXPORTS ON)
 if(WIN32)
 	# We need this defined when mingw will compile moc files
 	add_definitions(-D_WANT_KVIRC_)
-endif()
-
-if(WANT_STRIP)
-	add_custom_command(
-		TARGET ${KVIRC_BINARYNAME}
-		POST_BUILD
-		COMMAND ${STRIP_EXECUTABLE} $<TARGET_FILE:${KVIRC_BINARYNAME}>
-	)
 endif()
 
 # Installation directives
