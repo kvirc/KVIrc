@@ -1,4 +1,4 @@
 # CMakeLists for po/
 
-# Find subdirs
-subdirs(core modules)
+add_subdirectory(core)
+add_subdirectory(modules)

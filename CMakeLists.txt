@@ -1123,14 +1123,6 @@ else()
 	set(CMAKE_STATUS_GETTEXT_SUPPORT "No")
 endif()
 
-# Search for subdirectories; under macOS, data _MUST_ be before src (to get Info.plist installed before the main executable's fixup_bundle step)
-subdirs(data doc po scripts src)
-
-#install additional resources for win32
-if(WIN32)
-	add_subdirectory(dist/windows)
-endif()
-
 ###############################################################################
 # The API documentation target
 ###############################################################################
@@ -1328,6 +1320,17 @@ if(UNIX)
 else()
 		set(KVIRC_MAN_PATH "Not available")
 endif()
+
+if(WIN32)
+	add_subdirectory(dist/windows)
+endif()
+
+# Configure subdirectories after defining dependency targets and install paths.
+add_subdirectory(data)
+add_subdirectory(doc)
+add_subdirectory(po)
+add_subdirectory(scripts)
+add_subdirectory(src)
 
 message(STATUS " ")
 message(STATUS "OK, this is the configuration I've worked out:")

@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/lamerizer
 
-subdirs(caps)
+add_subdirectory(caps)
 
 
 

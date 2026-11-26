@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/rot13
 
-subdirs(caps)
+add_subdirectory(caps)
 
 
 
