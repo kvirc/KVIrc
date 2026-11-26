@@ -661,7 +661,12 @@ void KviFontSelector::setButtonFont(QFont * pOption)
 void KviFontSelector::changeClicked()
 {
 	bool bOk;
+#ifdef COMPILE_ON_MAC
+	QFont tmp = QFontDialog::getFont(&bOk, m_pButton->font(), nullptr, QString(), QFontDialog::DontUseNativeDialog);
+#else  //!COMPILE_ON_MAC
 	QFont tmp = QFontDialog::getFont(&bOk, m_pButton->font());
+#endif //!COMPILE_ON_MAC
+
 	if(bOk)
 		setButtonFont(&tmp);
 }
