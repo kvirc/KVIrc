@@ -34,10 +34,6 @@
 #include "DccVideoWindow.h"
 #endif
 
-#ifdef COMPILE_DCC_CANVAS
-#include "DccCanvasWindow.h"
-#endif
-
 #include "KviApplication.h"
 #include "KviMainWindow.h"
 #include "KviLocale.h"
@@ -494,82 +490,6 @@ void DccBroker::passiveVideoExecute(DccDescriptor *)
 {
 #endif
 }
-
-//
-// ACTIVE CANVAS
-//
-
-#ifdef COMPILE_DCC_CANVAS
-void DccBroker::activeCanvasManage(DccDescriptor * dcc)
-{
-	if(!dcc->bAutoAccept)
-	{
-		// need confirmation
-		QString tmp = __tr2qs_ctx(
-		                  "<b>%1 [%2@%3]</b> requests a<br>"
-		                  "<b>Direct Client Connection</b> in <b>CANVAS</b> mode.<br>"
-		                  "The connection target will be host <b>%4</b> on port <b>%5</b><br>",
-		                  "dcc")
-		                  .arg(dcc->szNick, dcc->szUser, dcc->szHost, dcc->szIp, dcc->szPort);
-
-		DccAcceptDialog * box = new DccAcceptDialog(this, dcc, tmp, __tr2qs_ctx("DCC CANVAS request", "dcc"));
-		m_pBoxList->append(box);
-		connect(box, SIGNAL(accepted(DccDialog *, DccDescriptor *)),
-		    this, SLOT(activeCanvasExecute(DccDialog *, DccDescriptor *)));
-		connect(box, SIGNAL(rejected(DccDialog *, DccDescriptor *)),
-		    this, SLOT(cancelDcc(DccDialog *, DccDescriptor *)));
-		box->show();
-	}
-	else
-	{
-		// auto accept
-		activeCanvasExecute(0, dcc);
-	}
-}
-#endif
-
-#ifdef COMPILE_DCC_CANVAS
-void DccBroker::activeCanvasExecute(DccDialog * box, DccDescriptor * dcc)
-{
-	if(box)
-		box->forgetDescriptor();
-
-	if(!g_pApp->windowExists(dcc->console()))
-	{
-		// rebind to the first available console....
-		dcc->setConsole(g_pApp->activeConsole());
-	}
-
-	KviCString tmp(KviCString::Format, "DCC: canvas %s@%s:%s", dcc->szNick.toUtf8().data(), dcc->szIp.toUtf8().data(), dcc->szPort.toUtf8().data());
-	DccCanvasWindow * cnv = new DccCanvasWindow(dcc, tmp.ptr());
-
-	//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
-	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : (KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat) || (dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChatWhenAutoAccepted)));
-
-	g_pMainWindow->addWindow(cnv, !bMinimized);
-
-	m_pDccWindowList->append(cnv);
-#else
-void DccBroker::activeCanvasExecute(DccDialog *, DccDescriptor *)
-{
-#endif
-}
-
-//
-// PASSIVE CANVAS
-//
-
-#ifdef COMPILE_DCC_CANVAS
-void DccBroker::passiveCanvasExecute(DccDescriptor * dcc)
-{
-	KviCString tmp(KviCString::Format, "DCC: canvas %s@%s:%s", dcc->szNick.toUtf8().data(), dcc->szIp.toUtf8().data(), dcc->szPort.toUtf8().data());
-	DccCanvasWindow * cnv = new DccCanvasWindow(dcc, tmp.ptr());
-	//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
-	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
-	g_pMainWindow->addWindow(cnv, !bMinimized);
-	m_pDccWindowList->append(cnv);
-}
-#endif
 
 //
 // SEND

@@ -173,7 +173,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolCantAcceptIncomingDccConnections 80                      /* dcc::general */
 #define KviOption_boolIgnoreCtcpAvatar 81                                      /* irc::ctcp::floodprotection */
 #define KviOption_boolCtcpRepliesToActiveWindow 82                             /* ctcp */
-#define KviOption_boolAutoAcceptDccCanvas 83
+#define KviOption_boolAutoAcceptDccCanvas 83                                   // UNUSED
 #define KviOption_boolNotifyDccSendSuccessInNotifier 84                        /* dcc::send */
 #define KviOption_boolKillBrokenTimers 85                                      /* ircengine::uparser */
 #define KviOption_boolDccVoiceVolumeSliderControlsPCM 86                       /* dcc::voice */
