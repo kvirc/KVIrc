@@ -15,6 +15,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
 
 if(WIN32)
 	add_library(gen_kvirc MODULE winamp.cpp)
+	kvirc_apply_build_options(gen_kvirc)
 	if(MINGW)
 		set_target_properties(gen_kvirc PROPERTIES PREFIX "" LINK_FLAGS -static-libgcc COMPILE_FLAGS -static-libgcc)
 	endif()

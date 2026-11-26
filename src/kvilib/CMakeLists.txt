@@ -128,28 +128,13 @@ if(MINGW)
 endif()
 
 add_library(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
+kvirc_apply_build_options(${KVILIB_BINARYNAME})
 target_link_libraries(${KVILIB_BINARYNAME} ${LIBS} ${qt_kvirc_modules})
 
 # Enable C++17
 target_compile_features(${KVILIB_BINARYNAME} PUBLIC cxx_std_17)
 
 set_target_properties(${KVILIB_BINARYNAME} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
-
-if(WANT_STRIP)
-	IF(APPLE)
-		add_custom_command(
-			TARGET ${KVILIB_BINARYNAME}
-			POST_BUILD
-			COMMAND ${STRIP_EXECUTABLE} -x $<TARGET_FILE:${KVILIB_BINARYNAME}>
-		)
-	ELSE()
-		add_custom_command(
-			TARGET ${KVILIB_BINARYNAME}
-			POST_BUILD
-			COMMAND ${STRIP_EXECUTABLE} -s $<TARGET_FILE:${KVILIB_BINARYNAME}>
-		)
-	ENDIF()
-endif()
 
 # Installation directives
 
