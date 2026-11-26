@@ -195,26 +195,14 @@ AboutDialog::AboutDialog()
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("OpenSSL version", "about");
 	infoString += ": ";
-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
-	infoString += SSLeay_version(SSLEAY_VERSION);
-#else
 	infoString += OpenSSL_version(OPENSSL_VERSION);
-#endif
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("OpenSSL compiler flags", "about");
 	infoString += ": ";
-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
-	infoString += SSLeay_version(SSLEAY_CFLAGS);
-#else
 	infoString += OpenSSL_version(OPENSSL_CFLAGS);
-#endif
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("OpenSSL ", "about");
-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
-	infoString += SSLeay_version(SSLEAY_BUILT_ON);
-#else
 	infoString += OpenSSL_version(OPENSSL_BUILT_ON);
-#endif
 	infoString += "<br>";
 #endif //COMPILE_SSL_SUPPORT
 

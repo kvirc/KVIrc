@@ -89,22 +89,13 @@ static bool fish_DH1080_gen(unsigned char ** szPubKey, int * iLen)
 			return false;
 
 		g_fish_dh = DH_new();
-#if OPENSSL_VERSION_NUMBER >= 0x10100005L
 		DH_set0_pqg(g_fish_dh, dhp, nullptr, dhg);
-#else
-		g_fish_dh->p = dhp;
-		g_fish_dh->g = dhg;
-#endif
 
 		DH_generate_key(g_fish_dh);
 	}
 
 	const BIGNUM* pub_key;
-#if OPENSSL_VERSION_NUMBER >= 0x10100005L
 	DH_get0_key(g_fish_dh, &pub_key, nullptr);
-#else
-	pub_key = g_fish_dh->pub_key;
-#endif
 
 	*iLen = BN_num_bytes(pub_key);
 	*szPubKey = (unsigned char *)KviMemory::allocate(*iLen);

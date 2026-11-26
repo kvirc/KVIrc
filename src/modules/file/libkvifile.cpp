@@ -49,19 +49,7 @@
 
 #if defined(COMPILE_SSL_SUPPORT)
 
-// Apple deprecated openSSL since OS X 10.7:
-
-#ifdef DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
-#undef DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
-#define DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
-#endif
-
 #include <openssl/evp.h>
-
-#if OPENSSL_VERSION_NUMBER < 0x10100005L
-#define EVP_MD_CTX_new EVP_MD_CTX_create
-#define EVP_MD_CTX_free EVP_MD_CTX_destroy
-#endif
 
 #else
 // The fallback we can always use, but with very limited set of
@@ -1571,7 +1559,6 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	unsigned char ucMDValue[EVP_MAX_MD_SIZE];
 	unsigned int uMDLen, u;
 	char cBuffer[3];
-	OpenSSL_add_all_digests();
 
 	pMD = EVP_get_digestbyname(szAlgo.toUtf8().data());
 	if(!pMD)

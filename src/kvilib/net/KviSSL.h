@@ -32,13 +32,6 @@
 #include "KviPointerHashTable.h"
 #include "kvi_sockettype.h"
 
-// Apple deprecated openssl since osx 10.7:
-
-#ifdef DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
-#undef DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
-#define DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
-#endif
-
 #include <openssl/ssl.h>
 
 class KVILIB_API KviSSLCertificate
@@ -115,11 +108,7 @@ public:
 class KVILIB_API KviSSLCipherInfo
 {
 public:
-#if OPENSSL_VERSION_NUMBER >= 0x10000000L
 	KviSSLCipherInfo(const SSL_CIPHER * c, const SSL * s);
-#else
-	KviSSLCipherInfo(SSL_CIPHER * c, SSL * s);
-#endif
 	~KviSSLCipherInfo();
 
 protected:
