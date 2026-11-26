@@ -414,14 +414,9 @@ if(NOT DEFINED QT_VERSION_MAJOR)
 else()
 	find_package(QT NAMES Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 endif()
-# second, detect available modules for the specific Qt version
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
-if(Qt${QT_VERSION_MAJOR}Widgets_FOUND)
-	set(CMAKE_STATUS_QT_VERSION "${QT_VERSION}")
-	set(qt_kvirc_modules)
-else()
-	message(FATAL_ERROR "No Qt5 or Qt6 found!")
-endif()
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Sql Xml Network PrintSupport Concurrent)
+set(CMAKE_STATUS_QT_VERSION "${Qt${QT_VERSION_MAJOR}_VERSION}")
+set(qt_kvirc_modules Qt::Widgets Qt::Sql Qt::Xml Qt::Network Qt::PrintSupport Qt::Concurrent)
 
 # automoc is used by qt
 set(CMAKE_AUTOMOC TRUE)
@@ -441,44 +436,10 @@ option(WANT_QTSVG "Whether to compile Qt SVG support" ON)
 # May be re-set below, if the proper libs are found.
 set(CMAKE_STATUS_QX11INFO_SUPPORT "Not available")
 
-include_directories(${Qt${QT_VERSION_MAJOR}Widgets_INCLUDE_DIRS})
-list(APPEND qt_kvirc_modules Qt::Widgets)
-
-# Qt6 Compat module for Qt5; Needed by QTextCodec
-if(${QT_VERSION_MAJOR} EQUAL 6)
+# QTextCodec is provided by Core5Compat on Qt 6.
+if(QT_VERSION_MAJOR EQUAL 6)
 	find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
-	if(Qt6Core5Compat_FOUND)
-		include_directories(${Qt6Core5Compat_INCLUDE_DIRS})
-		list(APPEND qt_kvirc_modules Qt::Core5Compat)
-	endif()
-endif()
-
-# Qt SQL
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Sql)
-if(Qt${QT_VERSION_MAJOR}Sql_FOUND)
-	include_directories(${Qt${QT_VERSION_MAJOR}Sql_INCLUDE_DIRS})
-	list(APPEND qt_kvirc_modules Qt::Sql)
-endif()
-
-# Qt XML
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Xml)
-if(Qt${QT_VERSION_MAJOR}Xml_FOUND)
-	include_directories(${Qt${QT_VERSION_MAJOR}Xml_INCLUDE_DIRS})
-	list(APPEND qt_kvirc_modules Qt::Xml)
-endif()
-
-# Qt Network
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Network)
-if(Qt${QT_VERSION_MAJOR}Network_FOUND)
-	include_directories(${Qt${QT_VERSION_MAJOR}Network_INCLUDE_DIRS})
-	list(APPEND qt_kvirc_modules Qt::Network)
-endif()
-
-# Qt PrintSupport
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS PrintSupport)
-if(Qt${QT_VERSION_MAJOR}PrintSupport_FOUND)
-	include_directories(${Qt${QT_VERSION_MAJOR}PrintSupport_INCLUDE_DIRS})
-	list(APPEND qt_kvirc_modules Qt::PrintSupport)
+	list(APPEND qt_kvirc_modules Qt::Core5Compat)
 endif()
 
 # Qt Multimedia
@@ -487,13 +448,6 @@ if(Qt${QT_VERSION_MAJOR}Multimedia_FOUND)
 	include_directories(${Qt${QT_VERSION_MAJOR}Multimedia_INCLUDE_DIRS})
 	list(APPEND qt_kvirc_modules Qt::Multimedia)
 	set(COMPILE_QTMULTIMEDIA_SUPPORT 1)
-endif()
-
-# Qt Concurrent
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Concurrent)
-if(Qt${QT_VERSION_MAJOR}Concurrent_FOUND)
-	include_directories(${Qt${QT_VERSION_MAJOR}Concurrent_INCLUDE_DIRS})
-	list(APPEND qt_kvirc_modules Qt::Concurrent)
 endif()
 
 # Qt D-Bus support
@@ -511,7 +465,6 @@ if(WANT_QTWEBENGINE OR WANT_QTWEBKIT)
 	find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WebEngineWidgets)
 	if(Qt${QT_VERSION_MAJOR}WebEngineWidgets_FOUND)
 		list(APPEND qt_kvirc_modules Qt${QT_VERSION_MAJOR}::WebEngineWidgets)
-		include_directories(${Qt${QT_VERSION_MAJOR}WebKitWidgets_INCLUDE_DIRS})
 		set(COMPILE_WEBENGINE_SUPPORT 1)
 	endif()
 endif()
