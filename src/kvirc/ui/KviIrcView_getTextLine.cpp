@@ -673,19 +673,8 @@ found_command_escape:
 						if(!bColorSet)
 							line_ptr->pChunks[iCurChunk].colors.fore = KviControlCodes::NoChange;
 
-#if 0
-						APPEND_LAST_TEXT_BLOCK(next_cr,term_cr - next_cr)
-						NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE)
-
-						p=term_cr;
-#else
 						pUnEscapeAt = term_cr;
-
-						//APPEND_LAST_TEXT_BLOCK(next_cr,term_cr - next_cr)
-						//NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE)
-
 						p = next_cr;
-#endif
 						data_ptr = p;
 					}
 				}

@@ -389,14 +389,6 @@ void PackThemeSaveWidget::initializePage()
 {
 	m_szPackagePath = field("packageSavePath").toString();
 }
-#if 0
-	if(!szScreenshotPath.isEmpty())
-	{
-		m_pImageSelector->setSelection(szScreenshotPath);
-		imageSelectionChanged(szScreenshotPath);
-	}
-}
-#endif
 
 PackThemeDialog::~PackThemeDialog()
     = default;
