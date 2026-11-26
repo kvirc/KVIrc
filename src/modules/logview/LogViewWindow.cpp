@@ -270,9 +270,15 @@ void LogViewWindow::recurseDirectory(const QString & szDir)
 			if((info.fileName() != "..") && (info.fileName() != "."))
 				recurseDirectory(info.filePath());
 		}
-		else if((info.suffix() == "gz") || (info.suffix() == "log"))
+		else
 		{
-			m_logList.emplace_back(new LogFile(info.filePath()));
+			const QString suffix = info.suffix();
+#ifdef COMPILE_ZLIB_SUPPORT
+			if(suffix == "gz" || suffix == "log")
+#else
+			if(suffix == "log")
+#endif
+				m_logList.emplace_back(new LogFile(info.filePath()));
 		}
 	}
 }
