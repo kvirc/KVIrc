@@ -100,21 +100,6 @@ protected:
 	*/
 	bool packAddon();
 
-#if 0
-	/**
-	* \brief Ensures the sources directory is complete
-	* \param pszError The buffer containing errors
-	* \return bool
-	*/
-	bool checkDirTree(QString * pszError);
-
-	/**
-	* \brief Creates the installer file
-	* \param pszError The buffer containing errors
-	* \return bool
-	*/
-	bool createInstaller(QString * pszError);
-#endif
 };
 
 /**

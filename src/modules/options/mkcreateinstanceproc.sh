@@ -355,19 +355,6 @@ KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntr
 	if(!pEntry)
 		return nullptr;
 
-#if 0
-	if(pEntry->pWidget)
-	{
-		if(pEntry->pWidget->parent() != pPar)
-		{
-			QWidget * pOldPar = (QWidget *)pEntry->pWidget->parent();
-			pEntry->pWidget->setParent(pPar);
-			pOldPar->deleteLater();
-			pEntry->pWidget = nullptr;
-		}
-	}
-#endif
-
 	if(!(pEntry->pWidget))
 	{
 		pEntry->pWidget = pEntry->createProc(pPar);
