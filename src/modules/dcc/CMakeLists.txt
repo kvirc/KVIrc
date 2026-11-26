@@ -3,8 +3,6 @@
 set(kvidcc_SRCS
 	DccVoiceAdpcmCodec.cpp
 	DccBroker.cpp
-	DccCanvasWindow.cpp
-	canvaswidget.cpp
 	DccChatWindow.cpp
 	DccVoiceCodec.cpp
 	DccDescriptor.cpp

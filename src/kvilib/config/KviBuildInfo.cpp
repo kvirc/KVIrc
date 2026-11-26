@@ -74,9 +74,6 @@ const QStringList feature_list{
 #ifndef COMPILE_DISABLE_DCC_VOICE
 	"DCCVoice",
 #endif
-#ifdef COMPILE_DCC_CANVAS
-	"DCCCanvas",
-#endif
 #ifdef COMPILE_PERL_SUPPORT
 	"Perl",
 #endif

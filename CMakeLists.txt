@@ -845,18 +845,6 @@ else()
 endif()
 
 ############################################################################
-# DCC canvas support
-############################################################################
-
-#option(WANT_DCC_CANVAS "Compile DCC Canvas Support" OFF)
-#if(WANT_DCC_CANVAS)
-#	set(CMAKE_STATUS_DCC_CANVAS_SUPPORT "Yes")
-#	set(COMPILE_DCC_CANVAS 1)
-#else()
-#	set(CMAKE_STATUS_DCC_CANVAS_SUPPORT "No")
-#endif()
-
-############################################################################
 # DCC voice support
 ############################################################################
 
@@ -1293,7 +1281,6 @@ message(STATUS "   Perl support                : ${CMAKE_STATUS_PERL_SUPPORT}")
 message(STATUS "   Python support              : ${CMAKE_STATUS_PYTHON_SUPPORT}")
 message(STATUS "DCC Features:")
 message(STATUS "   GSM support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
-#message(STATUS "   DCC Canvas Support          : ${CMAKE_STATUS_DCC_CANVAS_SUPPORT}")
 message(STATUS "   DCC voice support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
 message(STATUS "   DCC video support           : ${CMAKE_STATUS_DCC_VIDEO_SUPPORT}")
 message(STATUS "   Ogg/Theora support          : ${CMAKE_STATUS_OGG_THEORA_SUPPORT}")

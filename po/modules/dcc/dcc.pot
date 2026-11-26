@@ -76,17 +76,6 @@ msgstr ""
 msgid "DCC VIDEO request"
 msgstr ""
 
-#: src/modules/dcc/DccBroker.cpp:509
-msgid ""
-"<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
-"<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
-"<b>%5</b><br>"
-msgstr ""
-
-#: src/modules/dcc/DccBroker.cpp:515
-msgid "DCC CANVAS request"
-msgstr ""
-
 #: src/modules/dcc/DccBroker.cpp:603
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
@@ -140,50 +129,28 @@ msgstr ""
 msgid "File %s exists, auto-renaming to %Q"
 msgstr ""
 
-#: src/modules/dcc/DccCanvasWindow.cpp:76
-msgid "Attempting a passive DCC CANVAS connection"
-msgstr ""
-
-#: src/modules/dcc/DccCanvasWindow.cpp:83
 #: src/modules/dcc/DccChatWindow.cpp:183
 #: src/modules/dcc/DccVideoWindow.cpp:576
 #: src/modules/dcc/DccVoiceWindow.cpp:807
 msgid "Listening on interface %Q port %Q"
 msgstr ""
 
-#: src/modules/dcc/DccCanvasWindow.cpp:99
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
-msgstr ""
-
-#: src/modules/dcc/DccCanvasWindow.cpp:103
-msgid "DCC CANVAS request not sent: awaiting manual connections"
-msgstr ""
-
-#: src/modules/dcc/DccCanvasWindow.cpp:109
-msgid "Attempting an active DCC CANVAS connection"
-msgstr ""
-
-#: src/modules/dcc/DccCanvasWindow.cpp:114
 #: src/modules/dcc/DccChatWindow.cpp:179
 #: src/modules/dcc/DccVideoWindow.cpp:571
 #: src/modules/dcc/DccVoiceWindow.cpp:802
 msgid "Contacting host %Q on port %Q"
 msgstr ""
 
-#: src/modules/dcc/DccCanvasWindow.cpp:285
 #: src/modules/dcc/DccVoiceWindow.cpp:952
 msgid "DCC failed: %Q"
 msgstr ""
 
-#: src/modules/dcc/DccCanvasWindow.cpp:290
 #: src/modules/dcc/DccChatWindow.cpp:584
 #: src/modules/dcc/DccVideoWindow.cpp:902
 #: src/modules/dcc/DccVoiceWindow.cpp:961
 msgid "Connected to %Q:%Q"
 msgstr ""
 
-#: src/modules/dcc/DccCanvasWindow.cpp:292
 #: src/modules/dcc/DccChatWindow.cpp:586
 #: src/modules/dcc/DccVideoWindow.cpp:904
 #: src/modules/dcc/DccVoiceWindow.cpp:963
@@ -623,59 +590,6 @@ msgstr ""
 
 #: src/modules/dcc/DccVoiceWindow.cpp:1064
 msgid "Volume: %1"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1502
-msgid "&Line"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1503
-#: src/modules/dcc/canvaswidget.cpp:1511
-msgid "&Rectangle"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1504
-msgid "&Ellipse"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1505
-msgid "&Pie"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1506
-msgid "&Chord"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1508
-msgid "&Rich text (html)"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1510
-msgid "&Triangle"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1512
-msgid "&Pentagon"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1513
-msgid "&Hexagon"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1515
-msgid "&Shape"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1516
-msgid "&Item"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1517
-msgid "&Polygons"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1519
-msgid "&Insert"
 msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:93

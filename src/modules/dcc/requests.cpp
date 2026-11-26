@@ -1135,38 +1135,11 @@ static void dccModuleParseDccVideo(KviDccRequest * dcc)
 
 static void dccModuleParseDccCanvas(KviDccRequest * dcc)
 {
-	//
-	// We have received a DCC CANVAS request in the following form:
-	//
-	//     DCC CANVAS unused <ipaddress> <port>
-	//
-	// This means that we're requested to setup an ACTIVE canvas connection
-	// ... Easy task :)
-	//
+	// Validate legacy CANVAS requests as before, without opening a session.
 	if(!dcc_module_check_limits(dcc))
 		return;
 
-	if(!dcc_module_normalize_target_data(dcc, dcc->szParam2, dcc->szParam3))
-		return;
-
-#ifdef COMPILE_DCC_CANVAS
-	DccDescriptor * d = new DccDescriptor(dcc->pConsole);
-	d->szNick = dcc->ctcpMsg->pSource->nick();
-	d->szUser = dcc->ctcpMsg->pSource->username();
-	d->szHost = dcc->ctcpMsg->pSource->host();
-	dcc_fill_local_nick_user_host(d, dcc);
-
-	d->szIp = dcc->szParam2.ptr();
-	d->szPort = dcc->szParam3.ptr();
-	d->bActive = true; // we have to connect
-	d->bIsTdcc = false;
-	d->bNoAcks = false; // this has no meaning in canvas
-	d->bOverrideMinimize = false;
-	d->bAutoAccept = KVI_OPTION_BOOL(KviOption_boolAutoAcceptDccCanvas);
-	dcc_module_set_dcc_type(d, "CANVAS");
-	d->triggerCreationEvent();
-	g_pDccBroker->activeCanvasManage(d);
-#endif
+	dcc_module_normalize_target_data(dcc, dcc->szParam2, dcc->szParam3);
 }
 
 static void dccModuleParseDccList(KviDccRequest *)

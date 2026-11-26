@@ -40,8 +40,6 @@ class DccBroker;
 class KviWindow;
 class DccDialog;
 
-// #define COMPILE_DCC_CANVAS
-
 class KviDccZeroPortTag
 {
 public:
@@ -79,11 +77,6 @@ public:
 
 	void handleChatRequest(DccDescriptor * dcc);
 
-#ifdef COMPILE_DCC_CANVAS
-	void activeCanvasManage(DccDescriptor * dcc);
-	void passiveCanvasExecute(DccDescriptor * dcc);
-#endif
-
 	void activeVoiceManage(DccDescriptor * dcc);
 	void passiveVoiceExecute(DccDescriptor * dcc);
 
@@ -103,7 +96,6 @@ public slots:
 	//	void activeChatExecute(DccDialog * box,DccDescriptor * dcc);
 	void executeChat(DccDialog * box, DccDescriptor * dcc);
 
-	void activeCanvasExecute(DccDialog * box, DccDescriptor * dcc);
 	void activeVoiceExecute(DccDialog * box, DccDescriptor * dcc);
 	void activeVideoExecute(DccDialog * box, DccDescriptor * dcc);
 
