@@ -271,6 +271,20 @@ endif()
 
 target_link_libraries(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS} ${qt_kvirc_modules})
 
+if(MSVC AND COMPILE_SSL_SUPPORT)
+	# applink.c bridges the Windows runtimes when OpenSSL handles FILE pointers.
+	if(NOT OPENSSL_APPLINK_SOURCE)
+		# FindOpenSSL before CMake 3.18 does not locate this file.
+		find_file(OPENSSL_APPLINK_SOURCE applink.c
+			HINTS "${OPENSSL_INCLUDE_DIR}/openssl" "${OPENSSL_INCLUDE_DIR}/../ms"
+			NO_DEFAULT_PATH)
+	endif()
+	if(NOT OPENSSL_APPLINK_SOURCE)
+		message(FATAL_ERROR "OpenSSL applink.c was not found")
+	endif()
+	target_sources(${KVIRC_BINARYNAME} PRIVATE "${OPENSSL_APPLINK_SOURCE}")
+endif()
+
 if(MINGW)
 	# For some reason CMake doesn't do this itself...
 	# In case of MSVC, it does add /implib:kvirc.lib though

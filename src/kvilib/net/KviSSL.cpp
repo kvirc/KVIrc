@@ -43,7 +43,6 @@
 #include <csignal>
 #endif
 
-static bool g_bSSLInitialized = false;
 static KviMutex * g_pSSLMutex = nullptr;
 
 static inline void my_ssl_lock()
@@ -220,12 +219,7 @@ static DH * my_get_dh(int keylength)
 		DH_free(dh);
 		return nullptr;
 	}
-#if OPENSSL_VERSION_NUMBER >= 0x10100005L
 	DH_set0_pqg(dh, bp, nullptr, bg);
-#else
-	dh->p = bp;
-	dh->g = bg;
-#endif
 	return dh;
 }
 
@@ -259,35 +253,18 @@ void KviSSL::globalDestroy()
 	if(dh_4096)
 		DH_free(dh_4096);
 #endif
-	globalSSLDestroy();
 	delete g_pSSLMutex;
 	g_pSSLMutex = nullptr;
 }
 
 void KviSSL::globalSSLInit()
 {
-	my_ssl_lock();
-	if(!g_bSSLInitialized)
-	{
-		// FIXME: this should be done only if SSL is really needed
-		SSL_library_init();
-		SSL_load_error_strings();
-		//needed to support SHA2 in < OpenSSL 0.9.8o and 1.0.0a
-		OpenSSL_add_all_algorithms();
-		g_bSSLInitialized = true;
-	}
-	my_ssl_unlock();
+	OPENSSL_init_ssl(0, nullptr);
 }
 
 void KviSSL::globalSSLDestroy()
 {
-	my_ssl_lock();
-	if(g_bSSLInitialized)
-	{
-		EVP_cleanup();
-		g_bSSLInitialized = false;
-	}
-	my_ssl_unlock();
+	// Keep the exported entry point. OpenSSL manages cleanup at process exit.
 }
 
 KviSSL::KviSSL()
@@ -368,7 +345,7 @@ bool KviSSL::initContext(Method m)
 {
 	if(m_pSSL)
 		return false;
-	m_pSSLCtx = SSL_CTX_new(m == Client ? SSLv23_client_method() : SSLv23_server_method());
+	m_pSSLCtx = SSL_CTX_new(m == Client ? TLS_client_method() : TLS_server_method());
 	if(!m_pSSLCtx)
 		return false;
 
@@ -378,22 +355,10 @@ bool KviSSL::initContext(Method m)
 		SSL_CTX_set_verify(m_pSSLCtx, SSL_VERIFY_PEER, verify_clientCallback);
 	}
 
-	SSL_CTX_set_options (m_pSSLCtx,
-		// disable old, unsecure protocols
-		SSL_OP_NO_SSLv2|SSL_OP_NO_SSLv3
-		|SSL_OP_NO_TLSv1|SSL_OP_NO_TLSv1_1
-		// disable unsecure defaults on old openSSL versions
-#ifdef SSL_OP_NO_COMPRESSION
-		|SSL_OP_NO_COMPRESSION
-#endif
-#ifdef SSL_OP_SINGLE_DH_USE
-		|SSL_OP_SINGLE_DH_USE
-#endif
-#ifdef SSL_OP_SINGLE_ECDH_USE
-		|SSL_OP_SINGLE_ECDH_USE
-#endif
+	SSL_CTX_set_options(m_pSSLCtx,
+		SSL_OP_NO_SSLv3 | SSL_OP_NO_TLSv1 | SSL_OP_NO_TLSv1_1 | SSL_OP_NO_COMPRESSION
 #ifdef SSL_OP_IGNORE_UNEXPECTED_EOF
-		|SSL_OP_IGNORE_UNEXPECTED_EOF
+		| SSL_OP_IGNORE_UNEXPECTED_EOF
 #endif
 	);
 	// we want all ciphers to be available here, except insecure ones, orderer by strength;
@@ -667,11 +632,7 @@ KviSSLCipherInfo * KviSSL::getCurrentCipherInfo()
 {
 	if(!m_pSSL)
 		return nullptr;
-#if OPENSSL_VERSION_NUMBER >= 0x10000000L
 	const SSL_CIPHER * c = SSL_get_current_cipher(m_pSSL);
-#else
-	SSL_CIPHER * c = SSL_get_current_cipher(m_pSSL);
-#endif
 	if(!c)
 		return nullptr;
 	return new KviSSLCipherInfo(c, m_pSSL);
@@ -760,11 +721,7 @@ int KviSSLCertificate::fingerprintDigestId()
 		return -1;
 
 	const X509_ALGOR * alg;
-#if OPENSSL_VERSION_NUMBER >= 0x10100005L
 	X509_get0_signature(nullptr, &alg, m_pX509);
-#else
-	alg = m_pX509->sig_alg;
-#endif
 
 	int NID = OBJ_obj2nid(alg->algorithm);
 	if(NID == NID_undef)
@@ -898,15 +855,9 @@ void KviSSLCertificate::extractPubKeyInfo()
 	EVP_PKEY * p = X509_get_pubkey(m_pX509);
 	if(p)
 	{
-		int type;
-#if OPENSSL_VERSION_NUMBER >= 0x10100005L
-		type = EVP_PKEY_base_id(p);
-#else
-		type = EVP_PKEY_type(p->type);
-#endif
+		int type = EVP_PKEY_base_id(p);
 		m_iPubKeyBits = EVP_PKEY_bits(p);
 		m_szPubKeyType = (type == NID_undef) ? __tr("Unknown") : OBJ_nid2ln(type);
-		//		getPKeyType(p->type,m_szPubKeyType);
 	}
 	else
 	{
@@ -941,43 +892,29 @@ void KviSSLCertificate::extractSignature()
 
 	const ASN1_BIT_STRING * sig;
 	const X509_ALGOR * alg;
-#if OPENSSL_VERSION_NUMBER >= 0x10100005L
 	X509_get0_signature(&sig, &alg, m_pX509);
-#else
-	sig = m_pX509->signature;
-	alg = m_pX509->sig_alg;
-#endif
 
-	int i = OBJ_obj2nid(alg->algorithm);
-	m_szSignatureType = (i == NID_undef) ? __tr("Unknown") : OBJ_nid2ln(i);
+	int signatureType = OBJ_obj2nid(alg->algorithm);
+	m_szSignatureType = (signatureType == NID_undef) ? __tr("Unknown") : OBJ_nid2ln(signatureType);
 
 	m_szSignatureContents = "";
 
-#if OPENSSL_VERSION_NUMBER >= 0x10100005L
-	int length = ASN1_STRING_length(sig);
+#if OPENSSL_VERSION_NUMBER >= 0x40100000L
+	auto length = ASN1_STRING_get_length(sig);
 #else
-	int length = sig->length;
+	auto length = ASN1_STRING_length(sig);
 #endif
-	for(i = 0; i < length; i++)
+	const unsigned char * data = ASN1_STRING_get0_data(sig);
+	for(decltype(length) i = 0; i < length; i++)
 	{
 		if(m_szSignatureContents.hasData())
 			m_szSignatureContents.append(":");
-#if OPENSSL_VERSION_NUMBER >= 0x10100005L
-		const unsigned char *data = ASN1_STRING_get0_data(sig);
 		m_szSignatureContents.append(hexdigits[(data[i] & 0xf0) >> 4]);
 		m_szSignatureContents.append(hexdigits[(data[i] & 0x0f)]);
-#else
-		m_szSignatureContents.append(hexdigits[(sig->data[i] & 0xf0) >> 4]);
-		m_szSignatureContents.append(hexdigits[(sig->data[i] & 0x0f)]);
-#endif
 	}
 }
 
-#if OPENSSL_VERSION_NUMBER >= 0x10000000L
 KviSSLCipherInfo::KviSSLCipherInfo(const SSL_CIPHER * c, const SSL * s)
-#else
-KviSSLCipherInfo::KviSSLCipherInfo(SSL_CIPHER * c, SSL * s)
-#endif
 {
 	m_szVersion = SSL_get_version(s);
 	m_iNumBitsUsed = SSL_CIPHER_get_bits(c, &m_iNumBits);

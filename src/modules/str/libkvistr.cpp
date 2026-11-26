@@ -44,11 +44,6 @@
 #include <openssl/evp.h>
 #include <openssl/pem.h>
 
-#if OPENSSL_VERSION_NUMBER < 0x10100005L
-#define EVP_MD_CTX_new EVP_MD_CTX_create
-#define EVP_MD_CTX_free EVP_MD_CTX_destroy
-#endif
-
 #else
 // The fallback we can always use, but with very limited set of
 // functionality.
@@ -1394,7 +1389,6 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	unsigned char md_value[EVP_MAX_MD_SIZE];
 	unsigned int md_len, i;
 	char buff[3];
-	OpenSSL_add_all_digests();
 
 	md = EVP_get_digestbyname(szType.toUtf8().data());
 	if(!md)
