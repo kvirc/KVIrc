@@ -23,7 +23,6 @@
 //============================================================================
 
 #include "kvi_debug.h"
-#include "KviMemory.h"
 #include "KviLocale.h"
 #include "KvsObject_list.h"
 #include <cstdlib>

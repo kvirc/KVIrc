@@ -24,9 +24,9 @@
 
 #include "KviIrcConnectionServerInfo.h"
 
+#include <cstdlib>
 #include <utility>
 #include "KviLocale.h"
-#include "KviMemory.h"
 #include "KviIrcUserDataBase.h"
 
 KviIrcConnectionServerInfo::KviIrcConnectionServerInfo()
@@ -41,7 +41,7 @@ KviIrcConnectionServerInfo::~KviIrcConnectionServerInfo()
 	if(m_pServInfo)
 		delete m_pServInfo;
 	if(m_pModePrefixTable)
-		KviMemory::free(m_pModePrefixTable);
+		std::free(m_pModePrefixTable);
 }
 
 bool KviIrcConnectionServerInfo::isSupportedChannelType(QChar c) const
@@ -126,14 +126,14 @@ void KviIrcConnectionServerInfo::setSupportedModePrefixes(const QString & szSupp
 void KviIrcConnectionServerInfo::buildModePrefixTable()
 {
 	if(m_pModePrefixTable)
-		KviMemory::free(m_pModePrefixTable);
+		std::free(m_pModePrefixTable);
 	const QChar * cPrefix = m_szSupportedModePrefixes.constData();
 	const QChar * cFlag = m_szSupportedModeFlags.constData();
 	if(!cPrefix || !cFlag)
 		return; // eh ?
 
 	m_uPrefixes = qMin(m_szSupportedModePrefixes.length(), m_szSupportedModePrefixes.length());
-	m_pModePrefixTable = (kvi_u32_t *)KviMemory::allocate(sizeof(kvi_u32_t) * 3 * m_uPrefixes);
+	m_pModePrefixTable = (kvi_u32_t *)std::malloc(sizeof(kvi_u32_t) * 3 * m_uPrefixes);
 
 	unsigned short uPrefix, uFlag;
 

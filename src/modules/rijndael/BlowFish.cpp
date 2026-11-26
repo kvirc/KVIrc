@@ -23,8 +23,9 @@
 //=============================================================================
 
 #include "BlowFish.h"
-#include "KviMemory.h"
 #include "KviOptions.h"
+
+#include <cstring>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
@@ -344,12 +345,12 @@ BlowFish::BlowFish(unsigned char * ucKey, unsigned int keysize, const SBlock & r
 	unsigned char aucLocalKey[72];
 	unsigned int i, j;
 
-	KviMemory::copy(aucLocalKey, ucKey, keysize);
+	std::memcpy(aucLocalKey, ucKey, keysize);
 
 	//Reflexive Initialization of the Blowfish.
 	//Generating the Subkeys from the Key flood P and S boxes with PI
-	KviMemory::copy(m_auiP, scm_auiInitP, sizeof(m_auiP));
-	KviMemory::copy(m_auiS, scm_auiInitS, sizeof(m_auiS));
+	std::memcpy(m_auiP, scm_auiInitP, sizeof(m_auiP));
+	std::memcpy(m_auiS, scm_auiInitS, sizeof(m_auiS));
 	//Load P boxes with key bytes
 	const unsigned char * p = aucLocalKey;
 	unsigned int x = 0;

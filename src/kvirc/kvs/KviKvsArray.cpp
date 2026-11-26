@@ -23,7 +23,6 @@
 //=============================================================================
 
 #include "KviKvsArray.h"
-#include "KviMemory.h"
 
 #include <cstdlib>
 
@@ -44,7 +43,7 @@ KviKvsArray::KviKvsArray(const KviKvsArray & array)
 	m_uAllocSize = array.m_uAllocSize;
 	if(m_uAllocSize > 0)
 	{
-		m_pData = (KviKvsVariant **)KviMemory::allocate((sizeof(KviKvsVariant *)) * m_uAllocSize);
+		m_pData = (KviKvsVariant **)std::malloc((sizeof(KviKvsVariant *)) * m_uAllocSize);
 		kvs_uint_t u;
 		for(u = 0; u < m_uSize; u++)
 		{
@@ -69,7 +68,7 @@ KviKvsArray::~KviKvsArray()
 			if(m_pData[u])
 				delete m_pData[u];
 		}
-		KviMemory::free(m_pData);
+		std::free(m_pData);
 	}
 }
 
@@ -152,11 +151,11 @@ void KviKvsArray::findNewSize()
 		// m_pData is non-zero here since was m_uSize > 0 initially
 		if(m_uSize > 0)
 		{
-			m_pData = (KviKvsVariant **)KviMemory::reallocate(m_pData, (sizeof(KviKvsVariant *)) * m_uAllocSize);
+			m_pData = (KviKvsVariant **)std::realloc(m_pData, (sizeof(KviKvsVariant *)) * m_uAllocSize);
 		}
 		else
 		{
-			KviMemory::free(m_pData);
+			std::free(m_pData);
 			m_pData = nullptr;
 		}
 	}
@@ -172,9 +171,9 @@ void KviKvsArray::set(kvs_uint_t uIdx, KviKvsVariant * pVal)
 			m_uAllocSize = uIdx + 1;
 
 		if(m_pData)
-			m_pData = (KviKvsVariant **)KviMemory::reallocate(m_pData, (sizeof(KviKvsVariant *)) * m_uAllocSize);
+			m_pData = (KviKvsVariant **)std::realloc(m_pData, (sizeof(KviKvsVariant *)) * m_uAllocSize);
 		else
-			m_pData = (KviKvsVariant **)KviMemory::allocate((sizeof(KviKvsVariant *)) * m_uAllocSize);
+			m_pData = (KviKvsVariant **)std::malloc((sizeof(KviKvsVariant *)) * m_uAllocSize);
 
 		for(kvs_uint_t u = m_uSize; u < uIdx; u++)
 			m_pData[u] = nullptr;
@@ -204,9 +203,9 @@ KviKvsVariant * KviKvsArray::getAt(kvs_uint_t uIdx)
 			m_uAllocSize = uIdx + 1;
 
 		if(m_pData)
-			m_pData = (KviKvsVariant **)KviMemory::reallocate(m_pData, (sizeof(KviKvsVariant *)) * m_uAllocSize);
+			m_pData = (KviKvsVariant **)std::realloc(m_pData, (sizeof(KviKvsVariant *)) * m_uAllocSize);
 		else
-			m_pData = (KviKvsVariant **)KviMemory::allocate((sizeof(KviKvsVariant *)) * m_uAllocSize);
+			m_pData = (KviKvsVariant **)std::malloc((sizeof(KviKvsVariant *)) * m_uAllocSize);
 
 		for(kvs_uint_t u = m_uSize; u < uIdx; u++)
 			m_pData[u] = nullptr;

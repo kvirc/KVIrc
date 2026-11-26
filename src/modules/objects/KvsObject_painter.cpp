@@ -32,7 +32,7 @@
 #include "KviLocale.h"
 #include "KviError.h"
 #include "KviIconManager.h"
-#include "KviMemory.h"
+#include <cstdlib>
 #include <QPrintDialog>
 #include <QTextDocument>
 #include <QIcon>

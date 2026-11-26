@@ -33,7 +33,6 @@
 #include "KviIconManager.h"
 #include "KviModuleManager.h"
 #include "KviModule.h"
-#include "KviMemory.h"
 #include "KviWindowToolWidget.h"
 #include "KviPointerHashTable.h"
 

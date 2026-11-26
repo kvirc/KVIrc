@@ -36,9 +36,10 @@
 #include "KviInput.h"
 #include "KviIconManager.h"
 #include "KviModuleManager.h"
-#include "KviMemory.h"
 #include "KviChannelWindow.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <QTimer>
 #include <map>
 #include <vector>
@@ -1421,8 +1422,8 @@ static bool initializeCryptEngine(KviCryptEngine * eng, KviCString & szEncryptKe
 	int encKeyLen = szEncryptKey.hexToBuffer(&tmpKey, false);
 	if(encKeyLen > 0)
 	{
-		encKey = (char *)KviMemory::allocate(encKeyLen);
-		KviMemory::move(encKey, tmpKey, encKeyLen);
+		encKey = (char *)std::malloc(encKeyLen);
+		std::memmove(encKey, tmpKey, encKeyLen);
 		KviCString::freeBuffer(tmpKey);
 	}
 	else
@@ -1436,24 +1437,24 @@ static bool initializeCryptEngine(KviCryptEngine * eng, KviCString & szEncryptKe
 	int decKeyLen = szDecryptKey.hexToBuffer(&tmpKey, false);
 	if(decKeyLen > 0)
 	{
-		decKey = (char *)KviMemory::allocate(decKeyLen);
-		KviMemory::move(decKey, tmpKey, decKeyLen);
+		decKey = (char *)std::malloc(decKeyLen);
+		std::memmove(decKey, tmpKey, decKeyLen);
 		KviCString::freeBuffer(tmpKey);
 	}
 	else
 	{
 		szError = __tr2qs("The decryption key wasn't a valid hexadecimal string");
 		if(encKey)
-			KviMemory::free(encKey);
+			std::free(encKey);
 		return false;
 	}
 	bool bRet = eng->init(encKey, encKeyLen, decKey, decKeyLen);
 	if(!bRet)
 		szError = eng->lastError();
 	if(encKey)
-		KviMemory::free(encKey);
+		std::free(encKey);
 	if(decKey)
-		KviMemory::free(decKey);
+		std::free(decKey);
 	return bRet;
 }
 #endif

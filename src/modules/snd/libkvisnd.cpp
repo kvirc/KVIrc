@@ -28,11 +28,12 @@
 #include "KviModule.h"
 #include "kvi_debug.h"
 #include "KviFileUtils.h"
-#include "KviMemory.h"
 #include "KviWindow.h"
 #include "kvi_out.h"
 #include "KviLocale.h"
 #include "KviQString.h"
+
+#include <cstdlib>
 
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 #include <QMediaPlayer>
@@ -484,7 +485,7 @@ void KviOssAudiofileSoundThread::play()
 
 	frameSize = afGetVirtualFrameSize(file, AF_DEFAULT_TRACK, 1);
 	channelCount = afGetVirtualChannels(file, AF_DEFAULT_TRACK);
-	buffer = KviMemory::allocate(int(BUFFER_FRAMES * frameSize));
+	buffer = std::malloc(int(BUFFER_FRAMES * frameSize));
 
 	int audiofd_c = open("/dev/dsp", O_WRONLY /*| O_EXCL | O_NDELAY*/);
 
@@ -536,7 +537,7 @@ exit_thread:
 	if(audiofd_c >= 0)
 		close(audiofd_c);
 	afCloseFile(file);
-	KviMemory::free(buffer);
+	std::free(buffer);
 }
 #endif //COMPILE_AUDIOFILE_SUPPORT
 

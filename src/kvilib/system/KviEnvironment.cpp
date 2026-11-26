@@ -26,7 +26,9 @@
 
 #include "KviEnvironment.h"
 #include "KviCString.h"
-#include "KviMemory.h"
+
+#include <cstdlib>
+#include <cstring>
 
 namespace KviEnvironment
 {
@@ -41,17 +43,17 @@ namespace KviEnvironment
 		return (setenv(name.data(), value.data(), 1) == 0);
 #else
 #ifdef HAVE_PUTENV
-		int iLen1 = name.length()
+		int iLen1 = name.length();
 		int iLen2 = value.length();
-		char * buf = (char *)KviMemory::allocate(iLen1 + iLen2 + 2);
-		KviMemory::move(buf, name.data(), iLen1);
+		char * buf = (char *)std::malloc(iLen1 + iLen2 + 2);
+		std::memmove(buf, name.data(), iLen1);
 		*(buf + iLen1) = '=';
-		KviMemory::move(buf + iLen1 + 1, value.data(), iLen2);
+		std::memmove(buf + iLen1 + 1, value.data(), iLen2);
 		*(buf + iLen1 + iLen2 + 1) = '\0';
 		int iRet = putenv(buf);
 		if(iRet != 0)
 		{
-			KviMemory::free(buf);
+			std::free(buf);
 			return false;
 		}
 		return true;
@@ -70,13 +72,13 @@ namespace KviEnvironment
 #else
 #ifdef HAVE_PUTENV
 		int iLen1 = name.length();
-		char * buf = (char *)KviMemory::allocate(iLen1 + 1);
-		KviMemory::move(buf, name.data(), iLen1);
+		char * buf = (char *)std::malloc(iLen1 + 1);
+		std::memmove(buf, name.data(), iLen1);
 		*(buf + iLen1) = '\0';
 		int iRet = putenv(buf);
 		if(iRet != 0)
 		{
-			KviMemory::free(buf);
+			std::free(buf);
 		}
 		else
 		{
@@ -85,7 +87,7 @@ namespace KviEnvironment
 			{
 				// ok, the string is not in the environment
 				// we can free it
-				KviMemory::free(buf);
+				std::free(buf);
 			} // else this system sux
 		}
 #else

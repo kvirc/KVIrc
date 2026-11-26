@@ -27,7 +27,6 @@
 #include "KviModule.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
-#include "KviMemory.h"
 #include "KviApplication.h"
 #include "KviOptions.h"
 #include "KviHttpRequest.h"

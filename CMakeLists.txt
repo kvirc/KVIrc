@@ -779,30 +779,6 @@ else()
 endif()
 
 ############################################################################
-# Memory profiling support
-############################################################################
-
-option(WANT_MEMORY_PROFILE "Compile memory profiling support" OFF)
-if(WANT_MEMORY_PROFILE)
-	set(COMPILE_MEMORY_PROFILE 1)
-	set(CMAKE_STATUS_MEMORY_PROFILE_SUPPORT "User enabled")
-else()
-	set(CMAKE_STATUS_MEMORY_PROFILE_SUPPORT "No")
-endif()
-
-############################################################################
-# Memory checks support
-############################################################################
-
-option(WANT_MEMORY_CHECKS "Compile memory checking support" OFF)
-if(WANT_MEMORY_CHECKS)
-	set(COMPILE_MEMORY_CHECKS 1)
-	set(CMAKE_STATUS_MEMORY_CHECKS_SUPPORT "User enabled")
-else()
-	set(CMAKE_STATUS_MEMORY_CHECKS_SUPPORT "No")
-endif()
-
-############################################################################
 # Platform Specific checks
 ############################################################################
 
@@ -1116,8 +1092,6 @@ message(STATUS "   Debug                       : ${CMAKE_STATUS_DEBUG_SUPPORT}")
 message(STATUS "   Verbose output              : ${CMAKE_STATUS_VERBOSE_SUPPORT}")
 message(STATUS "   Coexistence support         : ${CMAKE_STATUS_COEXISTENCE_VER}")
 message(STATUS "   Threading support           : ${CMAKE_STATUS_THREADS_SUPPORT}")
-message(STATUS "   Memory profile support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
-message(STATUS "   Memory checks support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
 message(STATUS "Features:")
 message(STATUS "   zlib compression            : ${CMAKE_STATUS_ZLIB_SUPPORT}")
 message(STATUS "   X11 support                 : ${CMAKE_STATUS_X11_SUPPORT}")

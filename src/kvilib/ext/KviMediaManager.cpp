@@ -39,7 +39,6 @@
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 #include <unistd.h>
-#include "KviMemory.h"
 #endif
 
 #ifndef S_ISDIR
@@ -60,8 +59,6 @@
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 #include <dirent.h>
-#else
-#include "KviMemory.h"
 #endif
 
 KviMediaManager::KviMediaManager()

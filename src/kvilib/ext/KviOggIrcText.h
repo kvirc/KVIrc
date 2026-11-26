@@ -24,6 +24,11 @@
 //
 //=============================================================================
 
+#include <ogg/ogg.h>
+
+#include <cstdlib>
+#include <cstring>
+
 /**
 * \file KviOggIrcText.h
 * \author Fabio Bas
@@ -98,8 +103,8 @@ namespace KviOggIrcText
 		oggpack_write(&ob, 0, 8); //version 0
 		oggpack_write(&ob, 1, 8); //subversion 1
 		int bytes = oggpack_bytes(&ob);
-		op->packet = (unsigned char *)KviMemory::allocate(bytes);
-		memcpy(op->packet, oggpack_get_buffer(&ob), bytes);
+		op->packet = (unsigned char *)std::malloc(bytes);
+		std::memcpy(op->packet, oggpack_get_buffer(&ob), bytes);
 		op->bytes = bytes;
 		oggpack_writeclear(&ob);
 		op->b_o_s = 1; //begins a logical bitstream
@@ -128,8 +133,8 @@ namespace KviOggIrcText
 
 		_tp_writebuffer(&ob, textPkt, textSize); //pre-encoded text
 		int bytes = oggpack_bytes(&ob);
-		op->packet = (unsigned char *)KviMemory::allocate(bytes);
-		memcpy(op->packet, oggpack_get_buffer(&ob), bytes);
+		op->packet = (unsigned char *)std::malloc(bytes);
+		std::memcpy(op->packet, oggpack_get_buffer(&ob), bytes);
 		op->bytes = bytes;
 		oggpack_writeclear(&ob);
 		op->b_o_s = 0;
@@ -154,9 +159,9 @@ namespace KviOggIrcText
 		ret = oggpack_read(&ob, 8);
 		if(ret != 0)
 			return 1;
-		char * buf = (char *)KviMemory::allocate(4);
-		_tp_readbuffer(&ob, buf, 4);
-		if(strncmp(buf, "irct", 4) != 0)
+		char buf[4];
+		_tp_readbuffer(&ob, buf, sizeof(buf));
+		if(std::strncmp(buf, "irct", sizeof(buf)) != 0)
 			return 1;
 		version = oggpack_read(&ob, 8);
 		subversion = oggpack_read(&ob, 8);
@@ -175,7 +180,7 @@ namespace KviOggIrcText
 		oggpack_buffer ob;
 		oggpack_readinit(&ob, op->packet, op->bytes);
 		*textSize = op->bytes;
-		*textPkt = (char *)KviMemory::allocate(*textSize);
+		*textPkt = (char *)std::malloc(*textSize);
 		_tp_readbuffer(&ob, *textPkt, *textSize);
 		return 0;
 	}

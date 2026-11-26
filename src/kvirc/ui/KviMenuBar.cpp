@@ -34,7 +34,6 @@
 #include "KviKvsScript.h"
 #include "KviLocale.h"
 #include "KviMainWindow.h"
-#include "KviMemory.h"
 #include "KviModuleExtension.h"
 #include "KviOptions.h"
 #include "KviShortcut.h"

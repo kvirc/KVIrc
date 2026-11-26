@@ -27,7 +27,6 @@
 #include "KviIconManager.h"
 #include "KviOptions.h"
 #include "KviLocale.h"
-#include "KviMemory.h"
 #include "KviMessageBox.h"
 #include "KviFileDialog.h"
 #include "KviApplication.h"
@@ -35,6 +34,8 @@
 #include "KviShortcut.h"
 #include "KviWindow.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
@@ -120,7 +121,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 	m_pFilterView->header()->hide();
 	pOptionsLayout->addWidget(m_pFilterView, 1, 0, 4, 2);
 
-	m_pFilterItems = (KviIrcMessageCheckListItem **)KviMemory::allocate(KVI_NUM_MSGTYPE_OPTIONS * sizeof(KviIrcMessageCheckListItem *));
+	m_pFilterItems = (KviIrcMessageCheckListItem **)std::malloc(KVI_NUM_MSGTYPE_OPTIONS * sizeof(KviIrcMessageCheckListItem *));
 
 	for(int i = 0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)
 	{
@@ -211,7 +212,7 @@ void KviIrcViewToolWidget::filterLoad()
 		if(f.open(QIODevice::ReadOnly))
 		{
 			char cBuffer[KVI_NUM_MSGTYPE_OPTIONS];
-			KviMemory::set(cBuffer, 0, KVI_NUM_MSGTYPE_OPTIONS);
+			std::memset(cBuffer, 0, KVI_NUM_MSGTYPE_OPTIONS);
 			f.read(cBuffer, KVI_NUM_MSGTYPE_OPTIONS);
 			f.close();
 			for(int i = 0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)

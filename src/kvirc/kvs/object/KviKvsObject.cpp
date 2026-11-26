@@ -34,7 +34,6 @@
 #include "KviError.h"
 #include "KviControlCodes.h"
 #include "KviIconManager.h"
-#include "KviMemory.h"
 #include "KviKvsObjectController.h"
 #include "KviKvsObjectFunctionCall.h"
 #include "KviKvsObjectFunctionHandlerImpl.h"

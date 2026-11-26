@@ -28,10 +28,10 @@
 
 #include "KviQString.h"
 #include "KviCString.h"
-#include "KviMemory.h"
 #include "KviLocale.h"
 #include "KviRegExp.h"
 
+#include <cstdlib>
 #include <cctype> // for tolower()
 #include <cstdio> // for sprintf()
 
@@ -645,7 +645,7 @@ namespace KviQString
 			return;
 		}
 
-		QChar * pBuffer = (QChar *)KviMemory::allocate(sizeof(QChar) * iAllocSize);
+		QChar * pBuffer = (QChar *)std::malloc(sizeof(QChar) * iAllocSize);
 		//QChar * p = (QChar *)s.unicode();
 
 		char * pcArgString;
@@ -662,14 +662,14 @@ namespace KviQString
 #define INCREMENT_MEM                                                                  \
 	{                                                                                  \
 		iAllocSize += MEMINCREMENT;                                                    \
-		pBuffer = (QChar *)KviMemory::reallocate(pBuffer, sizeof(QChar) * iAllocSize); \
+		pBuffer = (QChar *)std::realloc(pBuffer, sizeof(QChar) * iAllocSize); \
 		p = pBuffer + iRealLen;                                                        \
 	}
 
 #define INCREMENT_MEM_BY(numchars)                                                     \
 	{                                                                                  \
 		iAllocSize += numchars + MEMINCREMENT;                                         \
-		pBuffer = (QChar *)KviMemory::reallocate(pBuffer, sizeof(QChar) * iAllocSize); \
+		pBuffer = (QChar *)std::realloc(pBuffer, sizeof(QChar) * iAllocSize); \
 		p = pBuffer + iRealLen;                                                        \
 	}
 
@@ -922,7 +922,7 @@ namespace KviQString
 		}
 
 		szSrc.setUnicode(pBuffer, iRealLen);
-		KviMemory::free(pBuffer);
+		std::free(pBuffer);
 		//szSrc.squeeze();
 	}
 
@@ -1231,7 +1231,7 @@ namespace KviQString
 			QString szRet;
 			return szRet;
 		}
-		QChar * pBuffer = (QChar *)KviMemory::allocate(sizeof(QChar) * szSrc.length());
+		QChar * pBuffer = (QChar *)std::malloc(sizeof(QChar) * szSrc.length());
 		QChar * pB = pBuffer;
 		unsigned short usX = pC->unicode();
 		while(usX)
@@ -1245,7 +1245,7 @@ namespace KviQString
 			usX = pC->unicode();
 		}
 		QString szRet(pBuffer, szSrc.length());
-		KviMemory::free(pBuffer);
+		std::free(pBuffer);
 		return szRet;
 	}
 
@@ -1257,7 +1257,7 @@ namespace KviQString
 			QString szRet;
 			return szRet;
 		}
-		QChar * pBuffer = (QChar *)KviMemory::allocate(sizeof(QChar) * szSrc.length());
+		QChar * pBuffer = (QChar *)std::malloc(sizeof(QChar) * szSrc.length());
 		QChar * pB = pBuffer;
 		unsigned short usX = pC->unicode();
 		while(usX)
@@ -1273,7 +1273,7 @@ namespace KviQString
 			usX = pC->unicode();
 		}
 		QString szRet(pBuffer, szSrc.length());
-		KviMemory::free(pBuffer);
+		std::free(pBuffer);
 		return szRet;
 	}
 

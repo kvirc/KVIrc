@@ -41,7 +41,6 @@
 #include "KviNetUtils.h"
 #include "KviConsoleWindow.h"
 #include "KviMainWindow.h"
-#include "KviMemory.h"
 #include "KviThread.h"
 #include "KviIrcSocket.h"
 #include "kvi_settings.h"
@@ -53,6 +52,8 @@
 #include "KviControlCodes.h"
 #include "KviTalVBox.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <QEvent>
 #include <QResizeEvent>
 #include <QByteArray>
@@ -637,7 +638,7 @@ void DccChatThread::run()
 			}
 			if(bCanRead)
 			{
-				data.buffer = (char *)KviMemory::reallocate(data.buffer, (data.iLen + 512) * sizeof(char));
+				data.buffer = (char *)std::realloc(data.buffer, (data.iLen + 512) * sizeof(char));
 				int readLen;
 #ifdef COMPILE_SSL_SUPPORT
 				if(m_pSSL)
@@ -654,7 +655,7 @@ void DccChatThread::run()
 				if(readLen > 0)
 				{
 					data.iLen += readLen;
-					data.buffer = (char *)KviMemory::reallocate(data.buffer, data.iLen * sizeof(char));
+					data.buffer = (char *)std::realloc(data.buffer, data.iLen * sizeof(char));
 					if(!handleIncomingData(&data, false))
 						break; // non critical...
 				}
@@ -702,11 +703,11 @@ void DccChatThread::run()
 #endif
 					if(data.iLen > 0)
 					{
-						data.buffer = (char *)KviMemory::reallocate(data.buffer, data.iLen * sizeof(char));
+						data.buffer = (char *)std::realloc(data.buffer, data.iLen * sizeof(char));
 					}
 					else
 					{
-						KviMemory::free(data.buffer);
+						std::free(data.buffer);
 						data.buffer = nullptr;
 					}
 
@@ -726,7 +727,7 @@ void DccChatThread::run()
 out_of_the_loop:
 
 	if(data.iLen)
-		KviMemory::free(data.buffer);
+		std::free(data.buffer);
 
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
@@ -770,8 +771,8 @@ bool DccChatThread::handleIncomingData(KviDccThreadIncomingData * data, bool bCr
 			{
 				// memmove the remaining part to the beginning
 				// aux points after \n or \0
-				KviMemory::move(data->buffer, aux, data->iLen);
-				data->buffer = (char *)KviMemory::reallocate(data->buffer, data->iLen);
+				std::memmove(data->buffer, aux, data->iLen);
+				data->buffer = (char *)std::realloc(data->buffer, data->iLen);
 				end = data->buffer + data->iLen;
 				aux = data->buffer;
 			}
@@ -779,7 +780,7 @@ bool DccChatThread::handleIncomingData(KviDccThreadIncomingData * data, bool bCr
 			{
 				// no more data in the buffer
 				KVI_ASSERT(data->iLen == 0);
-				KviMemory::free(data->buffer);
+				std::free(data->buffer);
 				data->buffer = end = aux = nullptr;
 			}
 			postEvent(parent(), e);
@@ -801,7 +802,7 @@ bool DccChatThread::handleIncomingData(KviDccThreadIncomingData * data, bool bCr
 				s->cutRight(1);
 			e->setData(s);
 			data->iLen = 0;
-			KviMemory::free(data->buffer);
+			std::free(data->buffer);
 			data->buffer = nullptr;
 			postEvent(parent(), e);
 		}

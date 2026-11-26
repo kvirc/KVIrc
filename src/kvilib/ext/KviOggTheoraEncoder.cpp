@@ -24,13 +24,13 @@
 
 #ifndef COMPILE_DISABLE_OGG_THEORA
 
-#include "KviMemory.h"
 #include "KviOggTheoraEncoder.h"
 #include "KviOggIrcText.h"
 #include "KviDataBuffer.h"
 
+#include <cstring>
 #include <math.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <time.h>
 #include <QColor>
 

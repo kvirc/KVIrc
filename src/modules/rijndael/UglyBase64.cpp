@@ -24,7 +24,8 @@
 
 #include "UglyBase64.h"
 #include "KviCString.h"
-#include "KviMemory.h"
+
+#include <cstdlib>
 
 namespace UglyBase64
 {
@@ -123,7 +124,7 @@ namespace UglyBase64
 
 		*len = (int)(szText.len() * 2) / 3;
 
-		*buf = (unsigned char *)KviMemory::allocate(*len);
+		*buf = (unsigned char *)std::malloc(*len);
 		unsigned char * p = (unsigned char *)szText.ptr();
 		unsigned char * e = p + szText.len();
 		int i;

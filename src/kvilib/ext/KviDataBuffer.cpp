@@ -27,7 +27,9 @@
 #include "kvi_debug.h"
 
 #include "KviDataBuffer.h"
-#include "KviMemory.h"
+
+#include <cstdlib>
+#include <cstring>
 
 // FIXME: this could resize in chunks!...this would be damn faster :)
 
@@ -35,9 +37,9 @@ KviDataBuffer::KviDataBuffer(int uSize, const unsigned char * data)
 {
 	KVI_ASSERT(uSize > 0);
 	m_uSize = uSize;
-	m_pData = (unsigned char *)KviMemory::allocate(sizeof(unsigned char) * uSize);
+	m_pData = (unsigned char *)std::malloc(sizeof(unsigned char) * uSize);
 	if(data)
-		KviMemory::move(m_pData, data, uSize);
+		std::memmove(m_pData, data, uSize);
 }
 
 KviDataBuffer::KviDataBuffer()
@@ -51,7 +53,7 @@ KviDataBuffer::~KviDataBuffer()
 	if(m_pData)
 	{
 		KVI_ASSERT(m_uSize);
-		KviMemory::free(m_pData);
+		std::free(m_pData);
 	}
 }
 
@@ -109,12 +111,12 @@ void KviDataBuffer::remove(int uSize)
 
 	if(m_uSize > 0)
 	{
-		KviMemory::move(m_pData, m_pData + uSize, m_uSize);
-		m_pData = (unsigned char *)KviMemory::reallocate(m_pData, m_uSize * sizeof(unsigned char));
+		std::memmove(m_pData, m_pData + uSize, m_uSize);
+		m_pData = (unsigned char *)std::realloc(m_pData, m_uSize * sizeof(unsigned char));
 	}
 	else
 	{
-		KviMemory::free(m_pData);
+		std::free(m_pData);
 		m_pData = nullptr;
 	}
 }
@@ -124,11 +126,11 @@ void KviDataBuffer::resize(int uSize)
 	KVI_ASSERT(uSize >= 0);
 	if(uSize > 0)
 	{
-		m_pData = (unsigned char *)KviMemory::reallocate(m_pData, uSize * sizeof(unsigned char));
+		m_pData = (unsigned char *)std::realloc(m_pData, uSize * sizeof(unsigned char));
 	}
 	else
 	{
-		KviMemory::free(m_pData);
+		std::free(m_pData);
 		m_pData = nullptr;
 	}
 	m_uSize = uSize;
@@ -136,7 +138,7 @@ void KviDataBuffer::resize(int uSize)
 
 void KviDataBuffer::append(const unsigned char * data, int uSize)
 {
-	m_pData = (unsigned char *)KviMemory::reallocate(m_pData, m_uSize + uSize);
-	KviMemory::move(m_pData + m_uSize, data, uSize);
+	m_pData = (unsigned char *)std::realloc(m_pData, m_uSize + uSize);
+	std::memmove(m_pData + m_uSize, data, uSize);
 	m_uSize += uSize;
 }

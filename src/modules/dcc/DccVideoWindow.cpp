@@ -36,13 +36,14 @@
 #include "KviNetUtils.h"
 #include "KviOptions.h"
 #include "KviConsoleWindow.h"
-#include "KviMemory.h"
 #include "kvi_socket.h"
 #include "KviIrcConnection.h"
 #include "KviTalVBox.h"
 #include "KviControlCodes.h"
 #include "KviMainWindow.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <QToolTip>
 #include <QByteArray>
 #include <QBuffer>
@@ -200,7 +201,7 @@ bool DccVideoThread::textStep()
 		{
 			KviDccThreadIncomingData data;
 			data.iLen = m_textInSignalBuffer.size();
-			data.buffer = (char *)KviMemory::allocate(data.iLen);
+			data.buffer = (char *)std::malloc(data.iLen);
 			memcpy(data.buffer, m_textInSignalBuffer.data(), data.iLen);
 			handleIncomingData(&data, false);
 
@@ -254,8 +255,8 @@ bool DccVideoThread::handleIncomingData(KviDccThreadIncomingData * data, bool bC
 			{
 				// memmove the remaining part to the beginning
 				// aux points after \n or \0
-				KviMemory::move(data->buffer, aux, data->iLen);
-				data->buffer = (char *)KviMemory::reallocate(data->buffer, data->iLen);
+				std::memmove(data->buffer, aux, data->iLen);
+				data->buffer = (char *)std::realloc(data->buffer, data->iLen);
 				end = data->buffer + data->iLen;
 				aux = data->buffer;
 			}
@@ -263,7 +264,7 @@ bool DccVideoThread::handleIncomingData(KviDccThreadIncomingData * data, bool bC
 			{
 				// no more data in the buffer
 				KVI_ASSERT(data->iLen == 0);
-				KviMemory::free(data->buffer);
+				std::free(data->buffer);
 				data->buffer = end = aux = nullptr;
 			}
 			postEvent(parent(), e);
@@ -285,7 +286,7 @@ bool DccVideoThread::handleIncomingData(KviDccThreadIncomingData * data, bool bC
 				s->cutRight(1);
 			e->setData(s);
 			data->iLen = 0;
-			KviMemory::free(data->buffer);
+			std::free(data->buffer);
 			data->buffer = nullptr;
 			postEvent(parent(), e);
 		}

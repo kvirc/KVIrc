@@ -23,7 +23,6 @@
 //=============================================================================
 
 #include "KviMessageBox.h"
-#include "KviMemory.h"
 #include "KviCString.h"
 #include "KviLocale.h"
 

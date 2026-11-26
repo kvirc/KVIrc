@@ -25,8 +25,9 @@
 #include "KviSASL.h"
 
 #include "KviCString.h"
-#include "KviMemory.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <QByteArray>
 #include <QStringList>
 
@@ -45,7 +46,7 @@ namespace KviSASL
 		if(szIn == "+")
 		{
 			int answerLen = 2 + (2 * baNick.size()) + baPass.size();
-			char * answer = (char *)KviMemory::allocate(answerLen);
+			char * answer = (char *)std::malloc(answerLen);
 			char * answer2 = answer;
 
 			memcpy(answer, baNick.data(), baNick.size());
@@ -61,7 +62,7 @@ namespace KviSASL
 			memcpy(answer, baPass.data(), baPass.size());
 
 			szOut.bufferToBase64(answer2, answerLen);
-			KviMemory::free(answer2);
+			std::free(answer2);
 
 			return true;
 		}

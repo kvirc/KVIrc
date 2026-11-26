@@ -41,7 +41,6 @@
 #include "KviWindowListBase.h"
 #include "KviLocale.h"
 #include "KviIrcView.h"
-#include "KviMemory.h"
 #include "KviInput.h"
 #include "KviFileUtils.h"
 #include "KviOptions.h"

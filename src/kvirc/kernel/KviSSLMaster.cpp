@@ -24,6 +24,8 @@
 
 #include "KviSSLMaster.h"
 
+#include <cstdlib>
+
 #ifdef COMPILE_SSL_SUPPORT
 
 #include "KviWindow.h"
@@ -273,7 +275,7 @@ namespace KviSSLMaster
 			char * szTmp = pCert->getX509Base64();
 			QString szBase64(szTmp);
 			pRetBuffer->setString(szBase64);
-			KviMemory::free(szTmp);
+			std::free(szTmp);
 			return true;
 		}
 		if(szQuery.compare("version") == 0)

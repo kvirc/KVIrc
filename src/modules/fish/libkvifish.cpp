@@ -33,6 +33,8 @@
 #include "KviCString.h"
 #include "kvi_out.h"
 
+#include <cstdlib>
+
 /*
 	@doc: fish
 	@type:
@@ -46,7 +48,6 @@
 */
 
 #ifdef COMPILE_CRYPT_SUPPORT
-#include "KviMemory.h"
 #include "KviPointerList.h"
 #include "KviCryptEngine.h"
 #include "KviCryptController.h"
@@ -98,7 +99,7 @@ static bool fish_DH1080_gen(unsigned char ** szPubKey, int * iLen)
 	DH_get0_key(g_fish_dh, &pub_key, nullptr);
 
 	*iLen = BN_num_bytes(pub_key);
-	*szPubKey = (unsigned char *)KviMemory::allocate(*iLen);
+	*szPubKey = (unsigned char *)std::malloc(*iLen);
 	BN_bn2bin(pub_key, *szPubKey);
 
 	return true;
@@ -210,7 +211,7 @@ bool fish_event_onQueryNotice(KviKvsModuleEventCall * c)
 	KviCString szFinalKey;
 
 #if defined(COMPILE_SSL_SUPPORT)
-	unsigned char * secret = (unsigned char *)KviMemory::allocate(DH_size(g_fish_dh));
+	unsigned char * secret = (unsigned char *)std::malloc(DH_size(g_fish_dh));
 	int secretLen;
 	BIGNUM * bn = BN_bin2bn((unsigned char *)szHisPubKey.data(), szHisPubKey.size(), nullptr);
 	if(-1 == (secretLen = DH_compute_key(secret, bn, g_fish_dh)))
@@ -221,16 +222,16 @@ bool fish_event_onQueryNotice(KviKvsModuleEventCall * c)
 	BN_zero(bn);
 	BN_free(bn);
 
-	unsigned char * hashedSecret = (unsigned char *)KviMemory::allocate(SHA256_LEN);
+	unsigned char * hashedSecret = (unsigned char *)std::malloc(SHA256_LEN);
 	SHA256(secret, secretLen, hashedSecret);
 
-	KviMemory::free(secret);
+	std::free(secret);
 
 	szFinalKey.bufferToBase64((char *)hashedSecret, SHA256_LEN);
 	//strip the trailing =
 	szFinalKey.stripRight('=');
 
-	KviMemory::free(hashedSecret);
+	std::free(hashedSecret);
 #else
 	c->warning(__tr2qs("FiSH has been compiled without SSL support, unable to proceed"));
 	return false;

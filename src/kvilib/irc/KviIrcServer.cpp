@@ -24,7 +24,6 @@
 
 #include "KviIrcServer.h"
 #include "KviIrcServerReconnectInfo.h"
-#include "KviMemory.h"
 #include "KviConfigurationFile.h"
 #include "KviNickServRuleSet.h"
 #include "KviTimeUtils.h"

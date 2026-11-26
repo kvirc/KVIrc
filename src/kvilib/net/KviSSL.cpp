@@ -26,10 +26,12 @@
 #include "KviLocale.h"
 #include "kvi_socket.h"
 
+#include <cstdlib>
+#include <cstring>
+
 #ifdef COMPILE_SSL_SUPPORT
 
 #include "KviThread.h"
-#include "KviMemory.h"
 
 #include <openssl/asn1.h>
 #include <openssl/bn.h>
@@ -289,12 +291,12 @@ KviSSL::~KviSSL()
 
 void * KviSSL::operator new(size_t tSize)
 {
-	return KviMemory::allocate(tSize);
+	return std::malloc(tSize);
 }
 
 void KviSSL::operator delete(void * p)
 {
-	KviMemory::free(p);
+	std::free(p);
 }
 
 #endif
@@ -404,7 +406,7 @@ static int cb(char * buf, int size, int, void * u)
 	int len = p->len();
 	if(len >= size)
 		return 0;
-	KviMemory::move(buf, p->ptr(), len + 1);
+	std::memmove(buf, p->ptr(), len + 1);
 	//qDebug("PASS REQYESTED: %s",p->ptr());
 	return len;
 }
@@ -661,8 +663,8 @@ char * KviSSLCertificate::getX509Base64()
 	BIO * mem = BIO_new(BIO_s_mem());
 	PEM_write_bio_X509(mem, m_pX509);
 	int iLen = BIO_get_mem_data(mem, &bptr);
-	char * szTmp = (char *)KviMemory::allocate(iLen + 1);
-	KviMemory::copy(szTmp, bptr, iLen);
+	char * szTmp = (char *)std::malloc(iLen + 1);
+	std::memcpy(szTmp, bptr, iLen);
 	*(szTmp + iLen) = '\0';
 	BIO_free_all(mem);
 	return szTmp;
@@ -678,12 +680,12 @@ char * KviSSLCertificate::getX509Base64()
 
 void * KviSSLCertificate::operator new(size_t tSize)
 {
-	return KviMemory::allocate(tSize);
+	return std::malloc(tSize);
 }
 
 void KviSSLCertificate::operator delete(void * p)
 {
-	KviMemory::free(p);
+	std::free(p);
 }
 
 #endif
@@ -936,12 +938,12 @@ KviSSLCipherInfo::~KviSSLCipherInfo()
 
 void * KviSSLCipherInfo::operator new(size_t tSize)
 {
-	return KviMemory::allocate(tSize);
+	return std::malloc(tSize);
 }
 
 void KviSSLCipherInfo::operator delete(void * p)
 {
-	KviMemory::free(p);
+	std::free(p);
 }
 
 #endif

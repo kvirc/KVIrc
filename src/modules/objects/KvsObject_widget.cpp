@@ -26,7 +26,6 @@
 #include "KvsObject_widget.h"
 #include "KvsObject_pixmap.h"
 
-#include "KviMemory.h"
 #include "kvi_debug.h"
 #include "KviError.h"
 #include "KviLocale.h"

@@ -46,7 +46,6 @@
 #include "KviInternalCommand.h"
 #include "KviMainWindow.h"
 #include "KviMexLinkFilter.h"
-#include "KviMemory.h"
 #include "kvi_debug.h"
 #include "KviChannelWindow.h"
 #include "KviQueryWindow.h"
@@ -67,6 +66,8 @@
 #include "KviNickColors.h"
 #include "KviIrcNetwork.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <QTimer>
 #include <QTextCodec>
 #include <QtGlobal>
@@ -857,7 +858,7 @@ bool KviIrcConnection::sendData(const char * pcBuffer, int iBuflen)
 	}
 
 	KviDataBuffer * pData = new KviDataBuffer(iBuflen + 2);
-	KviMemory::move(pData->data(), pcBuffer, iBuflen);
+	std::memmove(pData->data(), pcBuffer, iBuflen);
 	*(pData->data() + iBuflen) = '\r';
 	*(pData->data() + iBuflen + 1) = '\n';
 

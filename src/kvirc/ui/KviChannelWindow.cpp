@@ -34,7 +34,6 @@
 #include "KviLocale.h"
 #include "KviTopicWidget.h"
 #include "KviIrcSocket.h"
-#include "KviMemory.h"
 #include "KviWindowListBase.h"
 #include "KviMainWindow.h"
 #include "KviConfigurationFile.h"

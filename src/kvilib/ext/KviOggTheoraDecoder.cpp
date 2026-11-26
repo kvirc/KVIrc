@@ -37,10 +37,10 @@
 
 #ifndef COMPILE_DISABLE_OGG_THEORA
 
-#include <string.h>
+#include <cstdlib>
+#include <cstring>
 #include <sys/time.h>
 
-#include "KviMemory.h"
 #include "KviOggTheoraDecoder.h"
 #include "KviOggIrcText.h"
 #include "KviDataBuffer.h"

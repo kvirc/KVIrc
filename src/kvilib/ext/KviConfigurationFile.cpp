@@ -27,9 +27,10 @@
 #include "KviPixmap.h"
 #include "KviMessageTypeSettings.h"
 #include "KviStringConversion.h"
-#include "KviMemory.h"
 #include "KviFile.h"
 
+#include <cstdlib>
+#include <cstring>
 #include <QColor>
 #include <QRect>
 #include <QSaveFile>
@@ -110,7 +111,7 @@ bool KviConfigurationFile::load()
 
 	int iLoadBlockSize = LOAD_BLOCK_SIZE;
 
-	char * buffer = (char *)KviMemory::allocate(iLoadBlockSize * sizeof(char));
+	char * buffer = (char *)std::malloc(iLoadBlockSize * sizeof(char));
 
 	int toRead;
 	int readedLen;
@@ -127,7 +128,7 @@ bool KviConfigurationFile::load()
 			// ops... a string longer than iLoadBlockSize - 1 chars
 			iLoadBlockSize += LOAD_BLOCK_SIZE;
 			int iOffset = p - buffer;
-			buffer = (char *)KviMemory::reallocate(buffer, iLoadBlockSize * sizeof(char));
+			buffer = (char *)std::realloc(buffer, iLoadBlockSize * sizeof(char));
 			p = buffer + iOffset;
 			toRead += LOAD_BLOCK_SIZE;
 		}
@@ -143,7 +144,7 @@ bool KviConfigurationFile::load()
 				{
 					// error at all
 					f.close();
-					KviMemory::free(buffer);
+					std::free(buffer);
 					return true; // nothing more to parse anyway
 				}
 				else
@@ -153,7 +154,7 @@ bool KviConfigurationFile::load()
 					{
 						// there was nothing in the buffer
 						f.close(); // nothing to parse anyway
-						KviMemory::free(buffer);
+						std::free(buffer);
 						return true;
 					}
 					// there is something in the buffer but we have readed 0 bytes
@@ -321,7 +322,7 @@ bool KviConfigurationFile::load()
 			remainingLen = endp - begin;
 			if(buffer != begin)
 			{
-				KviMemory::move(buffer, begin, remainingLen);
+				std::memmove(buffer, begin, remainingLen);
 				p = buffer + remainingLen;
 			} // else p remains where it is
 		}
@@ -332,7 +333,7 @@ bool KviConfigurationFile::load()
 	} while(readedLen == toRead);
 
 	f.close();
-	KviMemory::free(buffer);
+	std::free(buffer);
 	return true;
 }
 

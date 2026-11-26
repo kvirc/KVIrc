@@ -27,7 +27,6 @@
 #include "kvi_debug.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
-#include "KviMemory.h"
 
 #include <QTextBlock>
 #include <QFile>
