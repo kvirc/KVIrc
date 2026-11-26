@@ -43,8 +43,6 @@
 #include <QStringList>
 #include <QTimer>
 
-//#include <zlib.h>
-
 class KviHttpRequestPrivate
 {
 public:

@@ -505,7 +505,12 @@ void KviWindow::getConfigGroupName(QString & szBuffer)
 
 void KviWindow::getDefaultLogFileName(QString & szBuffer)
 {
-	return getDefaultLogFileName(szBuffer, QDate::currentDate(), KVI_OPTION_BOOL(KviOption_boolGzipLogs),
+#ifdef COMPILE_ZLIB_SUPPORT
+	bool bGzip = KVI_OPTION_BOOL(KviOption_boolGzipLogs);
+#else
+	bool bGzip = false;
+#endif
+	getDefaultLogFileName(szBuffer, QDate::currentDate(), bGzip,
 		KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat));
 }
 
@@ -1513,6 +1518,11 @@ enough:
 
 QByteArray KviWindow::loadLogFile(const QString & szFileName, bool bGzip)
 {
+#ifndef COMPILE_ZLIB_SUPPORT
+	if(bGzip)
+		return {};
+#endif
+
 	QByteArray data;
 
 #ifdef COMPILE_ZLIB_SUPPORT
