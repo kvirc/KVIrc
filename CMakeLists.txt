@@ -1152,26 +1152,7 @@ endif()
 # inside the sources to include kvi_sysbuildinfo.h in only ONE file (so only
 # linking of kvilib is done if only kvi_sysbuildinfo.h changes.
 
-if(EXISTS ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
-	# an old config exists; let's check if it's actual:
-	configure_file(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
-	file(READ ${PROJECT_BINARY_DIR}/kvi_sysconfig.h OLD_CONFIG_CONTENTS)
-	file(READ ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new NEW_CONFIG_CONTENTS)
-	string(COMPARE EQUAL "${OLD_CONFIG_CONTENTS}" "${NEW_CONFIG_CONTENTS}" CONFIG_IS_UPTODATE)
-	if(${CONFIG_IS_UPTODATE})
-		# we don't overwrite the kvi_sysconfig.h file to gain compilation time
-		file(REMOVE ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
-	else()
-		# let's overwrite the kvi_sysconfig.h file (config has changed)
-		# FIXME: this is tricky, better use ${CMAKE_COMMAND} -E
-		file(REMOVE ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
-		configure_file(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
-	endif()
-else()
-	# no old config
-	configure_file(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
-endif()
-
+configure_file(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
 configure_file(${PROJECT_SOURCE_DIR}/cmake/kvi_sysbuildinfo.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysbuildinfo.h)
 
 if(WIN32)
@@ -1275,9 +1256,6 @@ add_subdirectory(src)
 
 message(STATUS " ")
 message(STATUS "OK, this is the configuration I've worked out:")
-if(${CONFIG_IS_UPTODATE})
-	message(STATUS "(I found an old config that was exactly the same and kept it to save compilation time)")
-endif()
 message(STATUS " ")
 message(STATUS "Paths:")
 message(STATUS "   Binary path                 : ${KVIRC_BIN_PATH}")
