@@ -26,7 +26,6 @@
 
 #include "kvi_settings.h"
 #include "KviError.h"
-#include "KviHeapObject.h"
 
 #include <QObject>
 #include <QString>
@@ -34,7 +33,7 @@
 
 class KviDnsResolverThread;
 
-class KVILIB_API KviDnsResolverResult : public KviHeapObject
+class KVILIB_API KviDnsResolverResult
 {
 	friend class KviDnsResolver;
 	friend class KviDnsResolverThread;
@@ -86,7 +85,7 @@ protected:
 
 #include <QObject>
 
-class KVILIB_API KviDnsResolver : public QObject, public KviHeapObject
+class KVILIB_API KviDnsResolver : public QObject
 {
 	Q_OBJECT
 	Q_PROPERTY(bool blockingDelete READ isRunning)

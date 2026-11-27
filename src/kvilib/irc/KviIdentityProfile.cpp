@@ -26,7 +26,6 @@
 #include "KviConfigurationFile.h"
 
 KviIdentityProfile::KviIdentityProfile()
-    : KviHeapObject()
 {
 }
 

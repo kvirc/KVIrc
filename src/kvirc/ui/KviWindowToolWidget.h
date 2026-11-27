@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-#include "KviHeapObject.h"
 #include "KviIconManager.h"
 
 #include <QToolButton>

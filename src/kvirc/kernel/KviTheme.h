@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "kvi_fileextensions.h"
 #include "KviApplication.h"
 #include "KviFileUtils.h"
@@ -54,7 +53,7 @@
 /// KVIrc configuration file (which is usually named
 /// themeinfo.kvc but this is not strictly necessary).
 ///
-class KVIRC_API KviThemeInfo : public KviHeapObject
+class KVIRC_API KviThemeInfo
 {
 public:
 	KviThemeInfo();

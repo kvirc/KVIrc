@@ -27,7 +27,7 @@
 #include <utility>
 
 KviKvsEventHandler::KviKvsEventHandler(Type t)
-    : KviHeapObject(), m_type(t)
+    : m_type(t)
 {
 }
 

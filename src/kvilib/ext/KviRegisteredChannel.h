@@ -25,13 +25,12 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviPointerList.h"
 
 #include <QHash>
 #include <QString>
 
-class KVILIB_API KviRegisteredChannel : public KviHeapObject
+class KVILIB_API KviRegisteredChannel
 {
 	friend class KviRegisteredChannelDataBase;
 

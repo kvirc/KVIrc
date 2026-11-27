@@ -27,14 +27,13 @@
 // this file was originally part of KviPixmap.h
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviPointerList.h"
 
 #include <QString>
 
 #include <time.h>
 
-class KVILIB_API KviSharedFile : public KviHeapObject
+class KVILIB_API KviSharedFile
 {
 public:
 	KviSharedFile(const QString & szName, const QString & szAbsPath, const QString & szUserMask, time_t expireTime, unsigned int uFileSize);

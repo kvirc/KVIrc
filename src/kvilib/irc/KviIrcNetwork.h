@@ -31,7 +31,6 @@
 */
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviPointerList.h"
 
 #include <QString>
@@ -44,7 +43,7 @@ class KviIrcServer;
 * \class KviIrcNetwork
 * \brief Network handling class
 */
-class KVILIB_API KviIrcNetwork : public KviHeapObject
+class KVILIB_API KviIrcNetwork
 {
 	friend class KviIrcServerDataBase;
 

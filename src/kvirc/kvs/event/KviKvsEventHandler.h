@@ -28,9 +28,8 @@
 #include "KviKvsScript.h"
 #include "KviQString.h"
 #include "KviKvsModuleInterface.h"
-#include "KviHeapObject.h"
 
-class KVIRC_API KviKvsEventHandler : public KviHeapObject
+class KVIRC_API KviKvsEventHandler
 {
 public:
 	enum Type
@@ -70,10 +69,6 @@ public:
 	bool isEnabled() { return m_bEnabled; };
 	void setEnabled(bool bEnabled) { m_bEnabled = bEnabled; };
 
-	// Static allocator function.
-	// This MUST be used by the modules to allocate event structures
-	// instead of the new operator.
-	// See KviHeapObject.cpp for an explanation.
 	static KviKvsScriptEventHandler * createInstance(const QString & szHandlerName, const QString & szContextName, const QString & szCode, bool bEnabled = true);
 };
 

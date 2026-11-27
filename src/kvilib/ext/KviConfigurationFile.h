@@ -27,7 +27,6 @@
 
 #include "kvi_settings.h"
 #include "KviCString.h"
-#include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
 
 #include <QList>
@@ -46,7 +45,7 @@ typedef KviPointerHashTable<QString, QString> KviConfigurationFileGroup;
 typedef KviPointerHashTableIterator<QString, QString> KviConfigurationFileGroupIterator;
 typedef KviPointerHashTableIterator<QString, KviConfigurationFileGroup> KviConfigurationFileIterator;
 
-class KVILIB_API KviConfigurationFile : public KviHeapObject
+class KVILIB_API KviConfigurationFile
 {
 public:
 	enum FileMode

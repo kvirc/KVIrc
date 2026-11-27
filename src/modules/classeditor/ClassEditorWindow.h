@@ -33,7 +33,6 @@
 #include "KviWindow.h"
 #include "KviCString.h"
 #include "KviPointerList.h"
-#include "KviHeapObject.h"
 #include "KviKvsObjectClass.h"
 
 #include <QWidget>
@@ -88,7 +87,7 @@ signals:
 * \class ClassEditorTreeWidgetItem
 * \brief Describes an item inside the class editor tree widget
 */
-class ClassEditorTreeWidgetItem : public QTreeWidgetItem, public KviHeapObject
+class ClassEditorTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	/**

@@ -24,12 +24,11 @@
 //
 //=============================================================================
 
-#include "KviHeapObject.h"
 #include "kvi_inttypes.h"
 
 #include <QString>
 
-class KVILIB_API KviUrl : public KviHeapObject
+class KVILIB_API KviUrl
 {
 public:
 	KviUrl();

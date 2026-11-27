@@ -36,7 +36,6 @@
 #include "KviPointerList.h"
 #include "KviKvsVariant.h"
 #include "KviKvsVariantList.h"
-#include "KviHeapObject.h"
 
 class KviKvsTreeNodeInstruction;
 class KviKvsExtendedRunTimeData;
@@ -56,7 +55,7 @@ class KviKvsRunTimeContext;
 * \class KviKvsScript
 * \brief The KVIrc Script class
 */
-class KVIRC_API KviKvsScript : public KviHeapObject
+class KVIRC_API KviKvsScript
 {
 	friend class KviKvsObject;
 	friend class KviKvsParser;

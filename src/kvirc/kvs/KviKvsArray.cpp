@@ -29,7 +29,6 @@
 #define KVI_KVS_ARRAY_ALLOC_CHUNK 8
 
 KviKvsArray::KviKvsArray()
-    : KviHeapObject()
 {
 	m_pData = nullptr;
 	m_uSize = 0;
@@ -37,7 +36,6 @@ KviKvsArray::KviKvsArray()
 }
 
 KviKvsArray::KviKvsArray(const KviKvsArray & array)
-    : KviHeapObject()
 {
 	m_uSize = array.m_uSize;
 	m_uAllocSize = array.m_uAllocSize;

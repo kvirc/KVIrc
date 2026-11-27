@@ -61,7 +61,6 @@
 // FIXME: The doc above is a bit outdated, fix it
 
 KviNickServRuleSet::KviNickServRuleSet()
-    : KviHeapObject()
 {
 	m_bEnabled = false;
 	m_pRules = nullptr;

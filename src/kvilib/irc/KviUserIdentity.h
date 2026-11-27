@@ -30,7 +30,6 @@
 * \brief User identity handling
 */
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviPixmap.h"
 
 #include <QString>
@@ -41,7 +40,7 @@ class KviConfigurationFile;
 * \class KviUserIdentity
 * \brief User identity handling class
 */
-class KVILIB_API KviUserIdentity : public KviHeapObject
+class KVILIB_API KviUserIdentity
 {
 	friend class KviUserIdentityManager;
 

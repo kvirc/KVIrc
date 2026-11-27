@@ -31,7 +31,6 @@
 */
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviPointerList.h"
 #include "kvi_inttypes.h"
 
@@ -46,7 +45,7 @@ class QByteArray;
 * \class KviFile
 * \brief KVIrc File class
 */
-class KVILIB_API KviFile : public QFile, public KviHeapObject
+class KVILIB_API KviFile : public QFile
 {
 public:
 	/**

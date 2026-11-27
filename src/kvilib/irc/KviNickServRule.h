@@ -25,14 +25,13 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 
 #include <QString>
 
 class KviConfigurationFile;
 class KviIrcMask;
 
-class KVILIB_API KviNickServRule : public KviHeapObject
+class KVILIB_API KviNickServRule
 {
 protected:
 	QString m_szRegisteredNick;  // my registered nickname
@@ -41,15 +40,14 @@ protected:
 	QString m_szIdentifyCommand; // the IDENTIFY command to send to server
 	QString m_szServerMask;      // the mask that the server must match (not used in per-network rules)
 public:
-	KviNickServRule() : KviHeapObject(){};
+	KviNickServRule() = default;
 	KviNickServRule(
 	    const QString & szRegisteredNick,
 	    const QString & szNickServMask,
 	    const QString & szMessageRegexp,
 	    const QString & szIdentifyCommand,
 	    const QString & szServerMask = QString())
-	    : KviHeapObject(),
-	      m_szRegisteredNick(szRegisteredNick),
+	    : m_szRegisteredNick(szRegisteredNick),
 	      m_szNickServMask(szNickServMask),
 	      m_szMessageRegexp(szMessageRegexp),
 	      m_szIdentifyCommand(szIdentifyCommand),

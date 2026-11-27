@@ -27,7 +27,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 
 template <typename A, typename B>
 class KviPointerHashTable;
@@ -43,7 +42,7 @@ class QTextCodec;
 *
 * This file was originally part of KviLocale.h
 */
-class KVILIB_API KviMessageCatalogue : public KviHeapObject
+class KVILIB_API KviMessageCatalogue
 {
 public:
 	/**

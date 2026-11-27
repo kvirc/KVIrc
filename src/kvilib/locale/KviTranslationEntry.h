@@ -36,7 +36,6 @@
 
 #include "kvi_settings.h"
 #include "KviCString.h"
-#include "KviHeapObject.h"
 
 class QString;
 
@@ -46,7 +45,7 @@ class QString;
 *
 * This class holds the translation
 */
-class KVILIB_API KviTranslationEntry : public KviHeapObject
+class KVILIB_API KviTranslationEntry
 {
 	friend class KviMessageCatalogue;
 

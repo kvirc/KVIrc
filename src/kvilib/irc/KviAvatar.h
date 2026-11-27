@@ -32,7 +32,6 @@
 
 #include "kvi_settings.h"
 #include "KviAnimatedPixmap.h"
-#include "KviHeapObject.h"
 
 #include <QHash>
 #include <QPixmap>
@@ -50,7 +49,7 @@ inline uint qHash(const QSize & s) { return uint(s.width() | s.height()); }
 * \class KviAvatar
 * \brief Avatar class
 */
-class KVILIB_API KviAvatar : public KviHeapObject
+class KVILIB_API KviAvatar
 {
 public:
 	/**

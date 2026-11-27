@@ -31,7 +31,6 @@
 */
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviIdentityProfile.h"
 #include "KviPointerList.h"
 
@@ -41,7 +40,7 @@ class KviConfigurationFile;
 * \class KviIdentityProfileSet
 * \brief Class which manages the list of identity profiles
 */
-class KVILIB_API KviIdentityProfileSet : public KviHeapObject
+class KVILIB_API KviIdentityProfileSet
 {
 public:
 	/**

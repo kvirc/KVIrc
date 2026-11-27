@@ -27,7 +27,6 @@
 #include "kvi_settings.h"
 #include "KviCString.h"
 #include "KviPointerList.h"
-#include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
 
 #include <QVariant>
@@ -129,7 +128,7 @@ private:
 	KviModuleExtensionDescriptorList * allocateExtensionGetDescriptorList(const KviCString & szType, const QString & preloadModule);
 };
 
-class KVIRC_API KviModuleExtension : public KviHeapObject
+class KVIRC_API KviModuleExtension
 {
 public:
 	KviModuleExtension(KviModuleExtensionDescriptor * d);
@@ -141,7 +140,7 @@ private:
 public:
 	static KviModuleExtensionManager * manager() { return g_pModuleExtensionManager; };
 	KviModuleExtensionDescriptor * descriptor() { return m_pDescriptor; };
-	// A module extension MUST implement die() as "delete this" <-- FIXME: this should be no longer necessary with KviHeapObject
+	// Implement die() to destroy the extension before its module is unloaded.
 	virtual void die() = 0;
 };
 

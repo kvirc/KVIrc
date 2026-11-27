@@ -36,7 +36,6 @@
 */
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 
 #include <QString>
 
@@ -44,7 +43,7 @@
 * \class KviIrcMask
 * \brief Irc user mask handling
 */
-class KVILIB_API KviIrcMask : public KviHeapObject
+class KVILIB_API KviIrcMask
 {
 	friend class KviIrcUserList;
 	friend class KviIrcUserChanList;

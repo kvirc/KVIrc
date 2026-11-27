@@ -39,7 +39,6 @@
 
 #include "kvi_inttypes.h"
 #include "kvi_stdarg.h"
-#include "KviHeapObject.h"
 
 //
 //  IRC is not UNICODE ...(yet) :(
@@ -98,7 +97,7 @@ __KVI_EXTERN KVILIB_API int kvi_wvsnprintf(kvi_wchar_t * buffer, kvi_wslen_t len
 // WARNING : Handle with care and use at own risk :)<br>
 //
 
-class KVILIB_API KviCString : public KviHeapObject
+class KVILIB_API KviCString
 {
 public:
 	// No particular reason for these two names...

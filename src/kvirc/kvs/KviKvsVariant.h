@@ -32,7 +32,6 @@
 
 #include "kvi_settings.h"
 #include "KviQString.h"
-#include "KviHeapObject.h"
 #include "KviKvsTypes.h"
 
 class KviKvsVariant;
@@ -348,7 +347,7 @@ public:
 * \warning This class must NOT have virtual functions nor destructor otherwise it will happily
 * crash on windows when it is allocated in modules and destroyed anywhere else around...
 */
-class KVIRC_API KviKvsVariant : public KviHeapObject
+class KVIRC_API KviKvsVariant
 {
 	friend class KviKvsVariantComparison;
 

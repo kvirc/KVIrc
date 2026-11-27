@@ -62,7 +62,6 @@
 #include <QDateTime>
 
 KviStatusBarAppletDescriptor::KviStatusBarAppletDescriptor(const QString & szVisibleName, const QString & szInternalName, CreateAppletCallback pProc, const QString & szPreloadModule, const QPixmap & pixIcon)
-    : KviHeapObject()
 {
 	static int s_iAppletDescriptorUniqueId = 0;
 	m_iId = s_iAppletDescriptorUniqueId;

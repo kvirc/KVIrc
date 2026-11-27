@@ -32,7 +32,6 @@
 */
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviMessageCatalogue.h"
 
 class KviCString;
@@ -56,7 +55,7 @@ class QTextCodec;
 * \class KviLocale
 * \brief Holds the localization functions
 */
-class KVILIB_API KviLocale : public KviHeapObject
+class KVILIB_API KviLocale
 {
 public:
 	/**

@@ -34,7 +34,6 @@
 // similar stuff...
 //
 
-#include "KviHeapObject.h"
 
 #include <QObject>
 
@@ -50,7 +49,7 @@ typedef void (*crypt_engine_deallocator_func)(KviCryptEngine *);
 // we must include this declaration to make moc happy even
 // if we're not compiling the crypt support
 
-class KVILIB_API KviCryptEngine : public QObject, public KviHeapObject
+class KVILIB_API KviCryptEngine : public QObject
 {
 	Q_OBJECT
 	friend class KviCryptEngineManager;

@@ -36,7 +36,6 @@
 */
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
 #include "KviPointerList.h"
 #include "KviTalHBox.h"
@@ -63,7 +62,7 @@ class QTimer;
 * \class KviStatusBarMessage
 * \brief A class that hold the statusbar message
 */
-class KVIRC_API KviStatusBarMessage : public KviHeapObject
+class KVIRC_API KviStatusBarMessage
 {
 	friend class KviStatusBar;
 
@@ -81,7 +80,7 @@ public:
 	* \return KviStatusBarMessage
 	*/
 	KviStatusBarMessage(const QString & szText, unsigned int uTimeout = 8000, unsigned int uPriority = 0)
-	    : KviHeapObject(), m_szText(szText), m_uTimeout(uTimeout), m_uPriority(uPriority){};
+	    : m_szText(szText), m_uTimeout(uTimeout), m_uPriority(uPriority){};
 
 	/**
 	* \brief Destroys the statusbar message object

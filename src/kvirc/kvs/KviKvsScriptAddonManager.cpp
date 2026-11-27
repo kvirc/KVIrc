@@ -42,8 +42,7 @@ KviKvsScriptAddon::KviKvsScriptAddon(
     const QString & szDescriptionCode,
     const QString & szUninstallCallbackCode,
     QString szIconId)
-    : KviHeapObject()
-    , m_szName(std::move(szName))
+    : m_szName(std::move(szName))
     , m_szVersion(std::move(szVersion))
     , m_szIconId(std::move(szIconId))
 {
@@ -53,7 +52,6 @@ KviKvsScriptAddon::KviKvsScriptAddon(
 }
 
 KviKvsScriptAddon::KviKvsScriptAddon(const KviKvsScriptAddon & a)
-    : KviHeapObject()
 {
 	m_szName = a.m_szName;
 	m_szVersion = a.m_szVersion;
@@ -66,7 +64,6 @@ KviKvsScriptAddon::KviKvsScriptAddon(const KviKvsScriptAddon & a)
 }
 
 KviKvsScriptAddon::KviKvsScriptAddon()
-    : KviHeapObject()
 {
 	m_pVisibleNameScript = nullptr;
 	m_pDescriptionScript = nullptr;
