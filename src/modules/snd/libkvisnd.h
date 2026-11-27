@@ -80,13 +80,6 @@ protected:
 #endif //COMPILE_OSS_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
-#ifdef COMPILE_PHONON_SUPPORT
-namespace Phonon
-{
-	class MediaObject;
-}
-#endif //!COMPILE_PHONON_SUPPORT
-
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 	class QMediaPlayer;
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
@@ -145,9 +138,6 @@ public:
 protected:
 	KviPointerList<KviSoundThread> * m_pThreadList;
 	KviPointerHashTable<QString, KviSoundPlayerEntry> * m_pSoundSystemDict;
-#ifdef COMPILE_PHONON_SUPPORT
-	std::unique_ptr<Phonon::MediaObject> m_pPhononPlayer;
-#endif //!COMPILE_PHONON_SUPPORT
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 	std::unique_ptr<QMediaPlayer> m_pMediaPlayer;
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
@@ -164,10 +154,6 @@ protected:
 protected:
 	void stopAllSoundThreads();
 	void cleanupAfterLastPlayerEntry();
-#ifdef COMPILE_PHONON_SUPPORT
-	bool playPhonon(const QString & szFileName);
-	void cleanupPhonon();
-#endif //!COMPILE_PHONON_SUPPORT
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	bool playWinmm(const QString & szFileName);
 	void cleanupWinmm();

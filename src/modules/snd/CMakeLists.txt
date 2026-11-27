@@ -1,9 +1,5 @@
 # CMakeLists for src/modules/snd
 
-if(COMPILE_PHONON_SUPPORT)
-	include_directories(${PHONON_INCLUDE_DIR})
-endif()
-
 if(MINGW)
 	list(APPEND LIBS -lwinmm)
 endif()
