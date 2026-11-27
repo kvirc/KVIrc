@@ -42,7 +42,7 @@ KviKvsTreeNodeSpecialCommandClassFunctionDefinition::KviKvsTreeNodeSpecialComman
 void KviKvsTreeNodeSpecialCommandClassFunctionDefinition::dump(const char * prefix)
 {
 	qDebug("%s SpecialCommandClassFunctionDefinition(%s)", prefix, m_szName.toUtf8().data());
-	qDebug("%s    (command buffer with %d characters)", prefix, m_szBuffer.length());
+	qDebug("%s    (command buffer with %lld characters)", prefix, static_cast<long long>(m_szBuffer.length()));
 }
 
 void KviKvsTreeNodeSpecialCommandClassFunctionDefinition::contextDescription(QString & szBuffer)

@@ -519,7 +519,11 @@ KVSO_CLASS_FUNCTION(socket, write)
 		else
 		{
 			KviFile f(szData);
-			f.open(QIODevice::ReadOnly);
+			if(!f.open(QIODevice::ReadOnly))
+			{
+				c->warning(__tr2qs_ctx("Could not open the file: %Q", "objects"), &szData);
+				return true;
+			}
 			QByteArray ar = f.readAll();
 			m_pSocket->write((const char *)ar.data(), ar.size());
 			f.close();

@@ -84,7 +84,7 @@ bool kvi_signalHandlerSetup()
 void KviSignalHandler::unixSignalHandler(int)
 {
 	char a = 1;
-	(void)::write(fd[0], &a, sizeof(a));
+	[[maybe_unused]] const auto written = ::write(fd[0], &a, sizeof(a));
 }
 
 // In the slot functions connected to the QSocketNotifier::activated()
@@ -96,7 +96,7 @@ void KviSignalHandler::handleSignal()
 {
 	sn->setEnabled(false);
 	char tmp;
-	(void)::read(fd[1], &tmp, sizeof(tmp));
+	[[maybe_unused]] const auto bytesRead = ::read(fd[1], &tmp, sizeof(tmp));
 
 	// do Qt stuff
 	QCoreApplication::quit();

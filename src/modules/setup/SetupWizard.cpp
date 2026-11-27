@@ -41,6 +41,7 @@ bool g_bFoundMirc;
 
 #include <QTextEdit>
 #include <QMessageBox>
+#include <QDebug>
 #include <QDir>
 #include <QPushButton>
 #include <QValidator>
@@ -1012,7 +1013,8 @@ void SetupWizard::accept()
 		// Make local->global link
 		QString localPath = QString("%1/global").arg(g_pApp->m_szLocalKvircDir);
 		unlink(localPath.toUtf8().data());
-		(void)symlink(g_pApp->m_szGlobalKvircDir.toUtf8().data(), localPath.toUtf8().data());
+		if(::symlink(g_pApp->m_szGlobalKvircDir.toUtf8().constData(), localPath.toUtf8().constData()) == -1)
+			qWarning() << "Could not create the global data link:" << localPath;
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT
