@@ -34,7 +34,6 @@
 #include "KviPointerHashTable.h"
 #include "KviQString.h"
 #include "KviKvsVariant.h"
-#include "KviHeapObject.h"
 
 typedef KVIRC_API_TYPEDEF KviPointerHashTableIterator<QString, KviKvsVariant> KviKvsHashIterator;
 
@@ -44,7 +43,7 @@ typedef KVIRC_API_TYPEDEF KviPointerHashTableIterator<QString, KviKvsVariant> Kv
 * \warning This class must not have virtual functions nor destructor. Otherwise it will happily
 * crash on windows when it is allocated in modules and destroyed anywhere else around
 */
-class KVIRC_API KviKvsHash : public KviHeapObject
+class KVIRC_API KviKvsHash
 {
 public:
 	/**

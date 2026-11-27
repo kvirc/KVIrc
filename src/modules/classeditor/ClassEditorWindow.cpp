@@ -91,7 +91,7 @@ void ClassEditorTreeWidget::mousePressEvent(QMouseEvent * e)
 }
 
 ClassEditorTreeWidgetItem::ClassEditorTreeWidgetItem(QTreeWidget * pTreeWidget, Type eType, const QString & szName)
-    : QTreeWidgetItem(pTreeWidget), KviHeapObject(), m_eType(eType)
+    : QTreeWidgetItem(pTreeWidget), m_eType(eType)
 {
 	setName(szName);
 	m_szInheritsClassName = "";

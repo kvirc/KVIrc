@@ -33,7 +33,6 @@
 
 #include <QTextStream> // with automoc we need this to be included before the other files
 
-#include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
 #include "KviUrl.h"
 
@@ -54,7 +53,7 @@ class KviDataBuffer;
 
 class KviHttpRequestPrivate;
 
-class KVILIB_API KviHttpRequest : public QObject, public KviHeapObject
+class KVILIB_API KviHttpRequest : public QObject
 {
 	Q_OBJECT
 public:

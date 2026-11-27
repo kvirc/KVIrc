@@ -27,11 +27,10 @@
 // this file was originally part of KviRegisteredUserDataBase.h
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 
 #include <QString>
 
-class KVILIB_API KviRegisteredUserGroup : public KviHeapObject
+class KVILIB_API KviRegisteredUserGroup
 {
 	friend class KviRegisteredUserDataBase;
 

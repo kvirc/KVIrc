@@ -27,7 +27,6 @@
 #include "KviWindow.h"
 #include "KviCString.h"
 #include "KviPointerList.h"
-#include "KviHeapObject.h"
 
 #include <QWidget>
 #include <QLineEdit>
@@ -40,7 +39,7 @@
 class QSplitter;
 class KviScriptEditor;
 
-class AliasEditorTreeWidgetItem : public QTreeWidgetItem, public KviHeapObject
+class AliasEditorTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	enum Type

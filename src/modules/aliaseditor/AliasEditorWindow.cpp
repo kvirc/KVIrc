@@ -61,7 +61,7 @@ extern AliasEditorWindow * g_pAliasEditorWindow;
 extern KviModule * g_pAliasEditorModule;
 
 AliasEditorTreeWidgetItem::AliasEditorTreeWidgetItem(QTreeWidget * pTreeWidget, Type eType, const QString & szName)
-    : QTreeWidgetItem(pTreeWidget), KviHeapObject(), m_eType(eType), m_pParentItem(nullptr)
+    : QTreeWidgetItem(pTreeWidget), m_eType(eType), m_pParentItem(nullptr)
 {
 	setName(szName);
 	m_cPos = 0;

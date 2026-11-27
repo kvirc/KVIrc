@@ -33,11 +33,10 @@
 #ifdef COMPILE_CRYPT_SUPPORT
 
 #include "KviCryptEngine.h"
-#include "KviHeapObject.h"
 
 #include <QString>
 
-class KVILIB_API KviCryptEngineDescription : public KviHeapObject
+class KVILIB_API KviCryptEngineDescription
 {
 public:
         KviCryptEngineDescription() = default;

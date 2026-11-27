@@ -26,13 +26,12 @@
 
 #include "kvi_settings.h"
 #include "KviQString.h"
-#include "KviHeapObject.h"
 
 class KviIrcNetwork;
 class KviIrcServer;
 class KviProxy;
 
-class KVIRC_API KviIrcConnectionTarget : public KviHeapObject
+class KVIRC_API KviIrcConnectionTarget
 {
 	friend class KviIrcConnectionTargetResolver;
 

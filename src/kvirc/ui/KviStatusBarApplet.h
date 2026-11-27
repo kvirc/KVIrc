@@ -27,7 +27,6 @@
 
 #include "kvi_settings.h"
 #include "KviPointerList.h"
-#include "KviHeapObject.h"
 #include "KviStatusBar.h"
 #include "KviPointerHashTable.h"
 #include "KviHttpRequest.h"
@@ -49,7 +48,7 @@ class KviStatusBarAppletDescriptor;
 
 typedef KviStatusBarApplet * (*CreateAppletCallback)(KviStatusBar *, KviStatusBarAppletDescriptor *);
 
-class KVIRC_API KviStatusBarAppletDescriptor : public KviHeapObject
+class KVIRC_API KviStatusBarAppletDescriptor
 {
 	friend class KviStatusBar;
 	friend class KviStatusBarApplet;

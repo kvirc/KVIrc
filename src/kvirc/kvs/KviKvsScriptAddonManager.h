@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviQString.h"
 #include "KviPointerHashTable.h"
 
@@ -36,7 +35,7 @@ class KviKvsScript;
 class KviWindow;
 class QPixmap;
 
-class KVIRC_API KviKvsScriptAddon : public KviHeapObject
+class KVIRC_API KviKvsScriptAddon
 {
 	friend class KviKvsScriptAddonManager;
 

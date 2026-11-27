@@ -25,11 +25,10 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 
 class KviIrcContext;
 
-class KVIRC_API KviIrcDataStreamMonitor : public KviHeapObject
+class KVIRC_API KviIrcDataStreamMonitor
 {
 public:
 	KviIrcDataStreamMonitor(KviIrcContext * pContext);

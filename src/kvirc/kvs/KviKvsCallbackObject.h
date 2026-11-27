@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 
 #include "KviWindow.h"
 #include "KviQString.h"
@@ -39,7 +38,7 @@
 //
 //
 
-class KVIRC_API KviKvsCallbackObject : public KviHeapObject
+class KVIRC_API KviKvsCallbackObject
 {
 public:
 	enum CallbackFlags

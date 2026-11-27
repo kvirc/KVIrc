@@ -25,9 +25,8 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 
-class KVILIB_API KviDataBuffer : public KviHeapObject
+class KVILIB_API KviDataBuffer
 {
 public:
 	// uSize MUST be greater than 0

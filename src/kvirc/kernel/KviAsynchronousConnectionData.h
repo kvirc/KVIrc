@@ -26,10 +26,9 @@
 
 #include "kvi_settings.h"
 #include "KviQString.h"
-#include "KviHeapObject.h"
 #include "KviIrcServer.h"
 
-class KviAsynchronousConnectionData : public KviHeapObject
+class KviAsynchronousConnectionData
 {
 public:
 	KviAsynchronousConnectionData();

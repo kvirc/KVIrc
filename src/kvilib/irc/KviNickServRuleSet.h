@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviNickServRule.h"
 #include "KviPointerList.h"
 
@@ -34,7 +33,7 @@ class KviIrcMask;
 
 class QString;
 
-class KVILIB_API KviNickServRuleSet : public KviHeapObject
+class KVILIB_API KviNickServRuleSet
 {
 public:
 	KviNickServRuleSet();

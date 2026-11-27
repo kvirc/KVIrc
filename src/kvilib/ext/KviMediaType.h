@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviCString.h"
 
 //
@@ -46,7 +45,7 @@ struct KviDefaultMediaType
 	const char * commandline;
 };
 
-class KVILIB_API KviMediaType : public KviHeapObject
+class KVILIB_API KviMediaType
 {
 public:
 	KviMediaType(){};

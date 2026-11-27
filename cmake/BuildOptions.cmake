@@ -68,6 +68,11 @@ endif()
 function(kvirc_apply_build_options target)
 	target_compile_definitions(${target} PRIVATE "$<${KVIRC_DEBUG_CONFIG}:COMPILE_DEBUG_MODE=1>")
 
+	if(MSVC)
+		# The executable, kvilib and modules exchange objects across DLL boundaries.
+		set_property(TARGET ${target} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
+	endif()
+
 	if(NOT WANT_ENV_FLAGS)
 		if(MSVC)
 			target_compile_options(${target} PRIVATE

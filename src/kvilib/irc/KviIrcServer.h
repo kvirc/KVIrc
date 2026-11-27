@@ -32,7 +32,6 @@
 
 #include "kvi_settings.h"
 #include "kvi_inttypes.h"
-#include "KviHeapObject.h"
 #include "KviPointerList.h"
 
 #include <QString>
@@ -48,7 +47,7 @@ class KviIrcServerReconnectInfo;
 * \class KviIrcServer
 * \brief The class which manages the irc servers
 */
-class KVILIB_API KviIrcServer : public KviHeapObject
+class KVILIB_API KviIrcServer
 {
 public:
 	/**

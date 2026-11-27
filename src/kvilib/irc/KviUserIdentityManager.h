@@ -33,7 +33,6 @@
 */
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
 
 #include <QString>
@@ -44,7 +43,7 @@ class KviUserIdentity;
 * \class KviUserIdentityManager
 * \brief The class to manage the user identity
 */
-class KVILIB_API KviUserIdentityManager : public KviHeapObject
+class KVILIB_API KviUserIdentityManager
 {
 protected:
 	/**

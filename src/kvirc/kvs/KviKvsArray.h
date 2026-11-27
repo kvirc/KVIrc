@@ -32,7 +32,6 @@
 
 #include "kvi_settings.h"
 #include "KviKvsVariant.h"
-#include "KviHeapObject.h"
 
 /**
 * \class KviKvsArray
@@ -40,7 +39,7 @@
 * \warning This class must not have virtual functions nor destructor. Otherwise it will happily
 * crash on windows when it is allocated in modules and destroyed anywhere else around
 */
-class KVIRC_API KviKvsArray : public KviHeapObject
+class KVIRC_API KviKvsArray
 {
 public:
 	/**

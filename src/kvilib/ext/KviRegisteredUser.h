@@ -29,14 +29,13 @@
 //
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
 #include "KviPointerList.h"
 
 class KviIrcMask;
 class QString;
 
-class KVILIB_API KviRegisteredUser : public KviHeapObject
+class KVILIB_API KviRegisteredUser
 {
 	friend class KviRegisteredUserDataBase;
 

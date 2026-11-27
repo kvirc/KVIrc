@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviPointerList.h"
 
 #include <QObject>
@@ -143,7 +142,7 @@ inline bool kvi_threadCreate(kvi_thread_t * t, void * (*start_routine)(void *), 
 #endif
 #endif
 
-class KVILIB_API KviMutex : public KviHeapObject
+class KVILIB_API KviMutex
 {
 private:
 	kvi_mutex_t m_mutex;
@@ -179,7 +178,7 @@ public:
 // simple thread class implementation
 // this is also called "Blind" thread class
 
-class KVILIB_API KviThread : public KviHeapObject
+class KVILIB_API KviThread
 {
 public:
 	KviThread();
@@ -273,7 +272,7 @@ private:
 // #warning "Get rid of the m_szMessage member of KviThreadEvent : eventual data should be passed with a KviThreadDataEvent"
 
 // Base class for all thread events
-class KVILIB_API KviThreadEvent : public QEvent, public KviHeapObject
+class KVILIB_API KviThreadEvent : public QEvent
 {
 protected:
 	int m_eventId;

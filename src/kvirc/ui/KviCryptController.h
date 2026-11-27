@@ -29,7 +29,6 @@
 #if defined(COMPILE_CRYPT_SUPPORT)
 #include "KviCryptEngineDescription.h"
 #include "KviCryptEngineManager.h"
-#include "KviHeapObject.h"
 #include "KviTalListWidget.h"
 #include "KviWindowToolWidget.h"
 
@@ -44,7 +43,7 @@ class QPushButton;
 class QTextEdit;
 class QWidget;
 
-class KVIRC_API KviCryptSessionInfo : public KviHeapObject
+class KVIRC_API KviCryptSessionInfo
 {
 public:
 	KviCryptEngine * m_pEngine;
