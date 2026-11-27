@@ -29,7 +29,6 @@
 
 #ifdef COMPILE_PYTHON_SUPPORT
 #include "../pythoncore/pythoncoreinterface.h"
-#include "../pythoncore/pythonheaderwrapper.h"
 
 static KviModule * g_pPythonCoreModule = nullptr;
 
