@@ -27,7 +27,6 @@
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
-#include <QTextCodec>
 
 #include "KviLocale.h"
 #include "KviModule.h"
@@ -163,12 +162,12 @@
 #define KVIRC_WM_USER_GETFILE 10000
 #define KVIRC_WM_USER_TRANSFER 15000
 
-static QTextCodec * mediaplayer_get_codec()
+static KviTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8());
+	KviTextCodec * pCodec = KviLocale::instance()->codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8());
 
 	if(!pCodec)
-		pCodec = QTextCodec::codecForLocale();
+		pCodec = KviLocale::instance()->codecForName("UTF-8");
 	return pCodec;
 }
 
@@ -326,7 +325,7 @@ QString KviWinampInterface::mrl()
 				szBuffer[i] = SendMessage(hWinamp, WM_USER, KVIRC_WM_USER, KVIRC_WM_USER_TRANSFER + i);
 			}
 			szBuffer[len] = '\0';
-			QTextCodec * c = mediaplayer_get_codec();
+			KviTextCodec * c = mediaplayer_get_codec();
 			if(c)
 				ret = c->toUnicode(szBuffer);
 			else
@@ -363,7 +362,7 @@ QString KviWinampInterface::nowPlaying()
 			}
 			szBuffer[len] = '\0';
 
-			QTextCodec * c = mediaplayer_get_codec();
+			KviTextCodec * c = mediaplayer_get_codec();
 			if(c)
 				ret = c->toUnicode(szBuffer);
 			else
@@ -378,7 +377,7 @@ bool KviWinampInterface::playMrl(const QString & mrl)
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-		QTextCodec * c = mediaplayer_get_codec();
+		KviTextCodec * c = mediaplayer_get_codec();
 		KviCString szMrl = c ? c->fromUnicode(mrl) : mrl.toUtf8();
 		COPYDATASTRUCT cds;
 		cds.dwData = IPC_PLAYFILE;

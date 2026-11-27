@@ -43,13 +43,12 @@
 #include <QFrame>
 #include <QWidget>
 #include <QToolButton>
-#include <QTextEncoder>
 #include <QByteArray>
 #include <QDateTime>
 
 class QPushButton;
 class QPixmap;
-class QTextCodec;
+class KviTextCodec;
 class KviMainWindow;
 class KviWindowListItem;
 class KviConfigurationFile;
@@ -197,7 +196,7 @@ protected:            // almost private: don't touch :D
 	static const char * m_typeTable[TypeCount];
 	// text encoding and decoding
 	//unsigned int              m_uTextEncoding;
-	QTextCodec * m_pTextCodec;
+	KviTextCodec * m_pTextCodec;
 	//KviToolWindowsContainer * m_pEditorsContainer;
 	bool m_bIsDocked;
 	bool m_bProcessingInputEvent;
@@ -270,8 +269,8 @@ public:
 	*/
 	virtual const char * typeString();
 
-	QTextCodec * textCodec() { return m_pTextCodec ? m_pTextCodec : defaultTextCodec(); }
-	void forceTextCodec(QTextCodec * pCodec);
+	KviTextCodec * textCodec() { return m_pTextCodec ? m_pTextCodec : defaultTextCodec(); }
+	void forceTextCodec(KviTextCodec * pCodec);
 
 	/**
 	* \brief Returns the KviIrcView of this window
@@ -364,12 +363,10 @@ public:
 	// returns true if the encoding could be successfully set
 	bool setTextEncoding(const QString & szTextEncoding);
 	// this must return a default text codec suitable for this window
-	virtual QTextCodec * defaultTextCodec();
+	virtual KviTextCodec * defaultTextCodec();
 	// encode the text from szSource by using m_uTextEncoding
 	QByteArray encodeText(const QString & szText);
 	QString decodeText(const char * pcText);
-	//return a text encoder
-	QTextEncoder * makeEncoder();
 
 	void contextPopup();
 	// Raises the window (after a light delay to prevent focus pingpongs)
@@ -535,21 +532,5 @@ signals:
 //   you're running very early at startup or very late at shutdown
 extern KVIRC_API KviWindow * g_pActiveWindow;
 #endif
-
-inline QByteArray KviWindow::encodeText(const QString & szText)
-{
-	if(m_pTextCodec)
-		return m_pTextCodec->fromUnicode(szText);
-	else
-		return defaultTextCodec()->fromUnicode(szText);
-}
-
-inline QString KviWindow::decodeText(const char * pcText)
-{
-	if(m_pTextCodec)
-		return m_pTextCodec->toUnicode(pcText);
-	else
-		return defaultTextCodec()->toUnicode(pcText);
-}
 
 #endif //_KVI_WINDOW_H_

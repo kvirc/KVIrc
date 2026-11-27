@@ -27,7 +27,6 @@
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
-#include <QTextCodec>
 
 #include "KviLocale.h"
 #include "KviModule.h"
@@ -92,13 +91,13 @@ static bool loadAmipDll()
 	return true;
 };
 
-static QTextCodec * mediaplayer_get_codec()
+static KviTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * pCodec = nullptr;
-	pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8());
+	KviTextCodec * pCodec = nullptr;
+	pCodec = KviLocale::instance()->codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8());
 
 	if(!pCodec)
-		pCodec = QTextCodec::codecForLocale();
+		pCodec = KviLocale::instance()->codecForName("UTF-8");
 	return pCodec;
 }
 
@@ -238,7 +237,7 @@ QString MpAmipInterface::mrl()
 {
 	QString szRet;
 	QString szFn = eval_str("var_fn");
-	QTextCodec * pCodec = mediaplayer_get_codec();
+	KviTextCodec * pCodec = mediaplayer_get_codec();
 	if(pCodec)
 	{
 		szRet = pCodec->toUnicode(szFn.toUtf8());
@@ -258,7 +257,7 @@ QString getAmipString(const char * var)
 {
 	QString szRet;
 	QString szString = eval_str(var);
-	QTextCodec * pCodec = mediaplayer_get_codec();
+	KviTextCodec * pCodec = mediaplayer_get_codec();
 	if(pCodec)
 	{
 		szRet = pCodec->toUnicode(szString.toUtf8());
@@ -413,7 +412,7 @@ bool MpAmipInterface::amipExec(const QString & cmd)
 {
 	if(!amip_dll)
 		return false;
-	QTextCodec * c = mediaplayer_get_codec();
+	KviTextCodec * c = mediaplayer_get_codec();
 	KviCString szCmd = c ? c->fromUnicode(cmd) : cmd.toUtf8();
 	return (ac_exec(szCmd) == AC_ERR_NOERROR);
 }
@@ -423,13 +422,13 @@ QString MpAmipInterface::amipEval(const QString & cmd)
 	QString ret;
 	if(!amip_dll)
 		return ret;
-	QTextCodec * c = mediaplayer_get_codec();
+	KviTextCodec * c = mediaplayer_get_codec();
 	KviCString szCmd = c ? c->fromUnicode(cmd) : cmd.toUtf8();
 	char buff[AC_BUFFER_SIZE];
 	if((ac_eval(szCmd, buff) == AC_ERR_NOERROR))
 	{
 		QString s = buff;
-		QTextCodec * c = mediaplayer_get_codec();
+		KviTextCodec * c = mediaplayer_get_codec();
 		if(c)
 			ret = c->toUnicode(s.toLatin1());
 		else

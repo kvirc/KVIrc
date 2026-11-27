@@ -28,13 +28,12 @@
 #include "KviOptions.h"
 #include "KviLocale.h"
 
-#include <QTextCodec>
 
-static QTextCodec * mediaplayer_get_codec()
+static KviTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * c = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8().data());
+	KviTextCodec * c = KviLocale::instance()->codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8().data());
 	if(!c)
-		c = QTextCodec::codecForLocale();
+		c = KviLocale::instance()->codecForName("UTF-8");
 	return c;
 }
 
@@ -104,7 +103,7 @@ QString MpInterface::amipEval(const QString &)
 	mp3info mp3;                \
 	if(!scan_mp3_file(f, &mp3)) \
 		return QString();       \
-	[[maybe_unused]] QTextCodec * pCodec = mediaplayer_get_codec();
+	[[maybe_unused]] KviTextCodec * pCodec = mediaplayer_get_codec();
 
 #define SCAN_MP3_FILE_RET_INT   \
 	QString f = getLocalFile(); \

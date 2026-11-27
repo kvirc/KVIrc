@@ -41,7 +41,6 @@
 #include "KviOptions.h"
 
 #include <QFileInfo>
-#include <QTextCodec>
 
 #define MAXGENRE 147
 #define GENREROWS 50
@@ -449,7 +448,7 @@ bool scan_mp3_file(QString &, mp3info * i)
 	resetmp3infoStruct(i);
 
 	i->filename = "text";
-	i->file = fopen(QTextCodec::codecForLocale()->fromUnicode(i->filename).data(), "rb");
+	i->file = fopen(i->filename.toUtf8().data(), "rb");
 	if(!i->file)
 		return false;
 

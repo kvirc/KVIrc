@@ -34,22 +34,36 @@
 #include "kvi_settings.h"
 #include "KviMessageCatalogue.h"
 
+#include <QByteArray>
+
 class KviCString;
 class QApplication;
 class QString;
-class QTextCodec;
+class KVILIB_API KviTextCodec
+{
+public:
+	const QByteArray & name() const { return m_name; }
+	QByteArray fromUnicode(const QString & text) const;
+	QString toUnicode(const QByteArray & bytes) const;
+
+private:
+	friend class KviLocale;
+
+	KviTextCodec(const QByteArray & name, const QByteArray & receiveEncoding, bool smart, bool sendUtf8)
+	    : m_name(name), m_receiveEncoding(receiveEncoding), m_smart(smart), m_sendUtf8(sendUtf8)
+	{
+	}
+
+	QByteArray m_name;
+	QByteArray m_receiveEncoding;
+	bool m_smart;
+	bool m_sendUtf8;
+};
 
 /**
-* \def KVI_NUM_ENCODINGS The number of charset encodings
 * \def KVI_NUM_ENCODING_GROUPS The number of charset groups
 */
-#ifndef QT_NO_BIG_CODECS
-#define KVI_NUM_ENCODINGS 112
 #define KVI_NUM_ENCODING_GROUPS 8
-#else
-#define KVI_NUM_ENCODINGS 85
-#define KVI_NUM_ENCODING_GROUPS 5
-#endif
 
 /**
 * \class KviLocale
@@ -147,9 +161,9 @@ public:
 	/**
 	* \brief Returns the codec associated to the given translation
 	* \param pcName The name of the translation
-	* \return QTextCodec *
+	* \return KviTextCodec *
 	*/
-	QTextCodec * codecForName(const char * pcName);
+	KviTextCodec * codecForName(const char * pcName);
 
 	/**
 	* \brief Finds the catalogue

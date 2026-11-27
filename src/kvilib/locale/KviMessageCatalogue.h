@@ -33,7 +33,6 @@ class KviPointerHashTable;
 
 class KviTranslationEntry;
 class QString;
-class QTextCodec;
 
 /**
 * \class KviMessageCatalogue
@@ -58,7 +57,6 @@ public:
 
 protected:
 	KviPointerHashTable<const char *, KviTranslationEntry> * m_pMessages;
-	QTextCodec * m_pTextCodec;
 
 public:
 	/**

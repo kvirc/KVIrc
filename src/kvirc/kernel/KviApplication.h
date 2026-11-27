@@ -64,7 +64,7 @@ class KviRegisteredUser;
 class KviIrcConnection;
 class KviIrcServerDataBase;
 class QPixmap;
-class QTextCodec;
+class KviTextCodec;
 class QDomElement;
 #include <QStringList>
 
@@ -245,8 +245,8 @@ public:
 	void getTmpFileName(QString & szBuffer, const QString & szEndingFileName = QString());
 	void getChannelDumpLogFileName(QString & str);
 
-	static QTextCodec * defaultTextCodec();
-	static QTextCodec * defaultSrvCodec();
+	static KviTextCodec * defaultTextCodec();
+	static KviTextCodec * defaultSrvCodec();
 
 	bool findImageInImageSearchPath(QString & szRetPath, const QString & filename);
 

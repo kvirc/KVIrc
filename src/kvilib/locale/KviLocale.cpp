@@ -42,14 +42,20 @@
 #include <QDir>
 #include <QLocale>
 #include <QString>
+#include <QHash>
+#include <QSharedPointer>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <QStringConverter>
+#else
 #include <QTextCodec>
+#endif
 #include <QtGlobal>
 
 KVILIB_API KviMessageCatalogue * g_pMainCatalogue = nullptr;
 
 static KviTranslator * g_pTranslator = nullptr;
 static KviPointerHashTable<const char *, KviMessageCatalogue> * g_pCatalogueDict = nullptr;
-static QTextCodec * g_pUtf8TextCodec = nullptr;
+
 static QString g_szDefaultLocalePath; // FIXME: Convert this to a search path list
 
 //
@@ -244,58 +250,32 @@ static bool g_utf8_validate(const char * str, int max_len, const char ** end)
 //   End of gutf8.c
 //
 
-class KviSmartTextCodec : public QTextCodec
+QByteArray KviTextCodec::fromUnicode(const QString & text) const
 {
-private:
-	QByteArray m_szName;
-	QTextCodec * m_pRecvCodec;
-	QTextCodec * m_pSendCodec;
+	if(m_sendUtf8)
+		return text.toUtf8();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	QStringEncoder encoder(m_receiveEncoding.constData(), QStringConverter::Flag::Stateless);
+	return encoder(text);
+#else
+	return QTextCodec::codecForName(m_receiveEncoding)->fromUnicode(text);
+#endif
+}
 
-public:
-	KviSmartTextCodec(const char * szName, QTextCodec * pChildCodec, bool bSendInUtf8)
-	    : QTextCodec()
-	{
-		Q_ASSERT(pChildCodec);
+QString KviTextCodec::toUnicode(const QByteArray & bytes) const
+{
+	if(m_smart && g_utf8_validate(bytes.constData(), bytes.size(), nullptr))
+		return QString::fromUtf8(bytes);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	QStringDecoder decoder(m_receiveEncoding.constData(), QStringConverter::Flag::Stateless);
+	return decoder(bytes);
+#else
+	return QTextCodec::codecForName(m_receiveEncoding)->toUnicode(bytes);
+#endif
+}
 
-		m_pRecvCodec = pChildCodec;
-		m_szName = szName;
-
-		if(!g_pUtf8TextCodec)
-		{
-			g_pUtf8TextCodec = QTextCodec::codecForName("UTF-8");
-			if(!g_pUtf8TextCodec)
-			{
-				qDebug("Can't find the global UTF-8 text codec!");
-				g_pUtf8TextCodec = QTextCodec::codecForLocale(); // try anything else...
-				if(!g_pUtf8TextCodec)
-					qDebug("Argh! Have no UTF-8 text codec: we're in trouble.");
-			}
-		}
-
-		m_pSendCodec = bSendInUtf8 ? g_pUtf8TextCodec : pChildCodec;
-	}
-
-public:
-	bool ok() { return m_pRecvCodec && g_pUtf8TextCodec; };
-
-	int mibEnum() const override { return 0; };
-
-	QByteArray name() const override { return m_szName; };
-protected:
-	QByteArray convertFromUnicode(const QChar * input, int number, ConverterState * state) const override
-	{
-		return m_pSendCodec->fromUnicode(input, number, state);
-	}
-	QString convertToUnicode(const char * chars, int len, ConverterState * state) const override
-	{
-		if(g_utf8_validate(chars, len, nullptr))
-			return g_pUtf8TextCodec->toUnicode(chars, len, state);
-
-		return m_pRecvCodec->toUnicode(chars, len, state);
-	}
-};
-
-static KviPointerHashTable<const char *, KviSmartTextCodec> * g_pSmartCodecDict = nullptr;
+static QHash<QByteArray, QSharedPointer<KviTextCodec>> g_textCodecs;
+static QList<KviLocale::EncodingDescription *> g_availableEncodings;
 
 static const char * encoding_groups[] = {
 	"Unicode",
@@ -303,11 +283,9 @@ static const char * encoding_groups[] = {
 	"East European",
 	"Cyrillic",
 	"Middle Eastern",
-#ifndef QT_NO_BIG_CODECS
 	"Chinese",
 	"Japanese",
 	"Other Asiatic",
-#endif
 	nullptr
 };
 
@@ -348,7 +326,6 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	// Other Asiatic
 	{ "TIS-620"              , 0 , 0 , 7, "Thai" },
 	{ "CP874"                , 0 , 0 , 7, "Thai Codepage" },
-#ifndef QT_NO_BIG_CODECS
 	// Chinese
 	{ "Big5"                 , 0 , 0 , 5, "Chinese Traditional" },
 	{ "Big5-HKSCS"           , 0 , 0 , 5, "Chinese Traditional, Hong Kong" },
@@ -359,9 +336,7 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	{ "EUC-JP"               , 0 , 0 , 6, "Japanese (EUC-JP)" },
 	// Other Asiatic
 	{ "EUC-KR"               , 0 , 0 , 7, "Korean" },
-	{ "TSCII"                , 0 , 0 , 7, "Tamil" },
 	{ "CP-949"               , 0 , 0 , 7, "Korean Codepage" },
-#endif
 
 	// smart codecs that send in the local charset
 	// West European
@@ -397,7 +372,6 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	// Other Asiatic
 	{ "TIS-620 [UTF-8]"      , 1 , 0 , 7, "Thai - Unicode" },
 	{ "CP874 [UTF-8]"        , 1 , 0 , 7, "Thai Codepage - Unicode" },
-#ifndef QT_NO_BIG_CODECS
 	// Chinese
 	{ "Big5 [UTF-8]"         , 1 , 0 , 5, "Chinese Traditional - Unicode" },
 	{ "Big5-HKSCS [UTF-8]"   , 1 , 0 , 5, "Chinese Traditional, Hong Kong - Unicode" },
@@ -408,9 +382,7 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	{ "EUC-JP [UTF-8]"       , 1 , 0 , 6, "Japanese (EUC-JP) - Unicode" },
 	// Other Asiatic
 	{ "EUC-KR [UTF-8]"       , 1 , 0 , 7, "Korean - Unicode" },
-	{ "TSCII [UTF-8]"        , 1 , 0 , 7, "Tamil - Unicode" },
 	{ "CP-949 [UTF-8]"       , 1 , 0 , 7, "Korean Codepage - Unicode" },
-#endif
 
 	// smart codecs that send in utf8
 	// West European
@@ -446,7 +418,6 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	// Other Asiatic
 	{ "UTF-8 [TIS-620]"      , 1 , 1 , 7, "Unicode - Thai" },
 	{ "UTF-8 [CP874]"        , 1 , 1 , 7, "Unicode - Thai Codepage" },
-#ifndef QT_NO_BIG_CODECS
 	// Chinese
 	{ "UTF-8 [Big5]"         , 1 , 1 , 5, "Unicode - Chinese Traditional" },
 	{ "UTF-8 [Big5-HKSCS]"   , 1 , 1 , 5, "Unicode - Chinese Traditional, Hong Kong" },
@@ -457,9 +428,7 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	{ "UTF-8 [EUC-JP]"       , 1 , 1 , 6, "Unicode - Japanese (EUC-JP)" },
 	// Other Asiatic
 	{ "UTF-8 [EUC-KR]"       , 1 , 1 , 7, "Unicode - Korean" },
-	{ "UTF-8 [TSCII]"        , 1 , 1 , 7, "Unicode - Tamil" },
 	{ "UTF-8 [CP-949]"       , 1 , 1 , 7, "Unicode - Korean Codepage" },
-#endif
 	{ nullptr                      , 0 , 0 , 0 , nullptr }
 	// clang-format on
 };
@@ -500,11 +469,11 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 	g_pCatalogueDict = new KviPointerHashTable<const char *, KviMessageCatalogue>;
 	g_pCatalogueDict->setAutoDelete(true);
 
-	// the smart codec dict
-	g_pSmartCodecDict = new KviPointerHashTable<const char *, KviSmartTextCodec>;
-	// the Qt docs explicitly state that we shouldn't delete
-	// the codecs by ourselves...
-	g_pSmartCodecDict->setAutoDelete(false);
+	for(auto & encoding : supported_encodings)
+	{
+		if(!encoding.pcName || codecForName(encoding.pcName))
+			g_availableEncodings.append(&encoding);
+	}
 
 	if(!g_szLang.isEmpty())
 	{
@@ -543,10 +512,10 @@ KviLocale::~KviLocale()
 {
 	delete g_pMainCatalogue;
 	delete g_pCatalogueDict;
-	delete g_pSmartCodecDict;
+	g_availableEncodings.clear();
+	g_textCodecs.clear();
 	g_pMainCatalogue = nullptr;
 	g_pCatalogueDict = nullptr;
-	g_pSmartCodecDict = nullptr;
 	if(g_pTranslator)
 	{
 		m_pApp->removeTranslator(g_pTranslator);
@@ -571,55 +540,51 @@ void KviLocale::done()
 	}
 }
 
-QTextCodec * KviLocale::codecForName(const char * pcName)
+KviTextCodec * KviLocale::codecForName(const char * pcName)
 {
-	KviCString szTmp = pcName;
-	bool bSendUtf8;
+	const QByteArray name = QByteArray(pcName).trimmed();
+	if(name.isEmpty())
+		return nullptr;
 
-	int iIdx = szTmp.findFirstIdx('[');
-	if(iIdx != -1)
+	const QByteArray key = name.toLower();
+	if(const auto cached = g_textCodecs.value(key))
+		return cached.data();
+
+	const bool sendsUtf8 = key.startsWith("utf-8 [") && key.endsWith(']');
+	const bool receivesUtf8 = key.endsWith(" [utf-8]");
+	const bool smart = sendsUtf8 || receivesUtf8;
+	QByteArray encoding = name;
+	if(sendsUtf8)
+		encoding = name.mid(7, name.size() - 8);
+	else if(receivesUtf8)
+		encoding.chop(8);
+
+	if(encoding.isEmpty() || encoding.toLower() == "tscii")
+		return nullptr;
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	const QStringEncoder encoder(encoding.constData());
+	const QStringDecoder decoder(encoding.constData());
+	if(!encoder.isValid() || !decoder.isValid())
+		return nullptr;
+	const QByteArray canonicalName(encoder.name());
+#else
+	const auto * codec = QTextCodec::codecForName(encoding);
+	if(!codec)
+		return nullptr;
+	const QByteArray canonicalName = codec->name();
+#endif
+
+	const QByteArray canonicalKey = (smart || canonicalName.isEmpty()) ? key : canonicalName.toLower();
+	auto result = g_textCodecs.value(canonicalKey);
+	if(!result)
 	{
-		// Might be a composite codec: either UTF-8 [child codec] or child codec [UTF-8]
-		KviSmartTextCodec * pCodec = g_pSmartCodecDict->find(pcName);
-		if(pCodec)
-			return pCodec; // got cached copy
-
-		if(kvi_strEqualCIN("UTF-8 [", pcName, 7))
-		{
-			// Likely a smart codec that sends UTF-8
-			szTmp.replaceAll("UTF-8 [", "");
-			szTmp.replaceAll("]", "");
-			bSendUtf8 = true;
-		}
-		else
-		{
-			// Likely a smart codec that sends child encoding ?
-			szTmp.cutFromFirst(' ');
-			bSendUtf8 = false;
-		}
-
-		QTextCodec * pChildCodec = QTextCodec::codecForName(szTmp.ptr());
-		if(pChildCodec)
-		{
-			pCodec = new KviSmartTextCodec(pcName, pChildCodec, bSendUtf8);
-
-			if(pCodec->ok())
-			{
-				g_pSmartCodecDict->replace(pcName, pCodec);
-				return pCodec;
-			}
-
-			delete pCodec;
-		}
-		else
-		{
-			// The name of the child codec was invalid: can't create such a smart codec.
-			// We probably screwed up the guess above related to the [ char.
-			// This code path is also triggered by the yircfuzzer by specifying completely invalid codec names.
-		}
+		result.reset(new KviTextCodec(smart ? name : encoding, encoding, smart,
+		    sendsUtf8 || canonicalName.toLower() == "utf-8"));
+		g_textCodecs.insert(canonicalKey, result);
 	}
-
-	return QTextCodec::codecForName(pcName);
+	g_textCodecs.insert(key, result);
+	return result.data();
 }
 
 bool KviLocale::findCatalogue(QString & szBuffer, const QString & szName, const QString & szLocaleDir)
@@ -716,9 +681,9 @@ const char * KviLocale::encodingGroup(int iIdx)
 
 KviLocale::EncodingDescription * KviLocale::encodingDescription(int iIdx)
 {
-	if(iIdx > KVI_NUM_ENCODINGS)
-		return &(supported_encodings[KVI_NUM_ENCODINGS]);
-	return &(supported_encodings[iIdx]);
+	if(iIdx < 0 || iIdx >= g_availableEncodings.size())
+		return &supported_encodings[sizeof(supported_encodings) / sizeof(supported_encodings[0]) - 1];
+	return g_availableEncodings[iIdx];
 }
 
 const char * KviLocale::translate(const char * pcText, const char * pcContext)

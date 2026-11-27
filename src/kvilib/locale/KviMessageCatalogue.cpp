@@ -59,7 +59,6 @@
 
 #include <cstdlib>
 #include <QString>
-#include <QTextCodec>
 
 #include <cstdio>
 
@@ -129,9 +128,6 @@ int kvi_getFirstBiggerPrime(int iNumber)
 
 KviMessageCatalogue::KviMessageCatalogue()
 {
-	//m_uEncoding = 0;
-	m_pTextCodec = QTextCodec::codecForName("UTF-8");
-
 	//m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(1123,true,false); // dictSize, case sensitive, don't copy keys
 	m_pMessages = new KviPointerHashTable<const char *, KviTranslationEntry>(32, true, false); // dictSize, case sensitive, don't copy keys
 	m_pMessages->setAutoDelete(true);
@@ -298,12 +294,12 @@ const QString & KviMessageCatalogue::translateToQString(const char * pcText)
 	{
 		if(pAux->m_pTranslation)
 			return *(pAux->m_pTranslation);
-		pAux->m_pTranslation = new QString(m_pTextCodec->toUnicode(pAux->m_szEncodedTranslation.ptr()));
+		pAux->m_pTranslation = new QString(QString::fromUtf8(pAux->m_szEncodedTranslation.ptr()));
 		return *(pAux->m_pTranslation);
 	}
 	// no translation is available: let's avoid continuous string decoding
 	pAux = new KviTranslationEntry(pcText);
 	m_pMessages->insert(pAux->m_szKey.ptr(), pAux);
-	pAux->m_pTranslation = new QString(m_pTextCodec->toUnicode(pAux->m_szEncodedTranslation.ptr()));
+	pAux->m_pTranslation = new QString(QString::fromUtf8(pAux->m_szEncodedTranslation.ptr()));
 	return *(pAux->m_pTranslation);
 }

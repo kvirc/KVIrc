@@ -62,7 +62,6 @@
 
 #include <QPixmap>
 #include <QDateTime>
-#include <QTextCodec>
 #include <QByteArray>
 #include <QLocale>
 
