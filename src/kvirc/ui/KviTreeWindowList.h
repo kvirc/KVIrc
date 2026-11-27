@@ -53,7 +53,7 @@ public:
 
 protected:
 	void setActive(bool bActive);
-	bool operator<(const QTreeWidgetItem & other) const
+	bool operator<(const QTreeWidgetItem & other) const override
 	{
 		return key() < ((KviTreeWindowListItem *)&other)->key();
 	}

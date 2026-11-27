@@ -2166,7 +2166,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 							_snprintf(numberBuffer, sizeof(numberBuffer), fmtbuffer, argRValue);
 #else
-							::sprintf(numberBuffer, fmtbuffer, argRValue);
+							::snprintf(numberBuffer, sizeof(numberBuffer), fmtbuffer, argRValue);
 #endif
 							//copy now....
 							argValue = kvi_strLen(numberBuffer);

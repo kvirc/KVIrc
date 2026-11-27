@@ -1408,7 +1408,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 				QPixmap * pPix = g_pIconManager->getImage(szStr);
 				if(pPix)
 				{
-					if(vvType == QVariant::Pixmap)
+					if(vvType == QMetaType::QPixmap)
 						m_pObject->setProperty(szName.toUtf8().data(), QVariant(*pPix));
 					else
 						m_pObject->setProperty(szName.toUtf8().data(), QVariant(QIcon(*pPix)));

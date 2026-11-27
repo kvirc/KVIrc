@@ -596,7 +596,7 @@ namespace KviQString
 		cBuffer.setNum(dReal, 'f');
 #else
 		char cBuffer[512];
-		::sprintf(cBuffer, "%f", dReal);
+		::snprintf(cBuffer, sizeof(cBuffer), "%f", dReal);
 #endif
 		szSrc.append(cBuffer);
 	}
@@ -604,28 +604,28 @@ namespace KviQString
 	void appendNumber(QString & szSrc, int iInteger)
 	{
 		char cBuffer[64];
-		::sprintf(cBuffer, "%d", iInteger);
+		::snprintf(cBuffer, sizeof(cBuffer), "%d", iInteger);
 		szSrc.append(cBuffer);
 	}
 
 	void appendNumber(QString & szSrc, kvi_i64_t iInteger)
 	{
 		char cBuffer[64];
-		::sprintf(cBuffer, "%lld", (long long int)iInteger);
+		::snprintf(cBuffer, sizeof(cBuffer), "%lld", (long long int)iInteger);
 		szSrc.append(cBuffer);
 	}
 
 	void appendNumber(QString & szSrc, kvi_u64_t uInteger)
 	{
 		char cBuffer[64];
-		::sprintf(cBuffer, "%llu", (long long unsigned int)uInteger);
+		::snprintf(cBuffer, sizeof(cBuffer), "%llu", (long long unsigned int)uInteger);
 		szSrc.append(cBuffer);
 	}
 
 	void appendNumber(QString & szSrc, unsigned int uInteger)
 	{
 		char cBuffer[64];
-		::sprintf(cBuffer, "%u", uInteger);
+		::snprintf(cBuffer, sizeof(cBuffer), "%u", uInteger);
 		szSrc.append(cBuffer);
 	}
 
