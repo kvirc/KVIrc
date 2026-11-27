@@ -24,13 +24,17 @@ jobs:
       - name: Setup devcmd
         uses: ilammy/msvc-dev-cmd@v1
 
-      # https://learn.microsoft.com/en-us/vcpkg/users/binarycaching#gha
-      - name: Set variables for vcpkg
-        uses: actions/github-script@v7
+      - name: Identify the runner image for the vcpkg cache
+        id: vcpkg-image
+        run: '"version=$env:ImageVersion" >> $env:GITHUB_OUTPUT'
+
+      - name: Restore vcpkg binary archives
+        id: vcpkg-cache
+        uses: actions/cache/restore@v4
         with:
-          script: |
-            core.exportVariable('ACTIONS_CACHE_URL', (process.env.ACTIONS_CACHE_URL || ''));
-            core.exportVariable('ACTIONS_RUNTIME_TOKEN', (process.env.ACTIONS_RUNTIME_TOKEN || ''));
+          path: ${{ runner.temp }}/vcpkg-archives
+          key: vcpkg-archives-v1-${{ github.job }}-${{ runner.arch }}-${{ steps.vcpkg-image.outputs.version }}-${{ hashFiles('.github/workflows/build_windows.yml') }}
+          restore-keys: vcpkg-archives-v1-${{ github.job }}-${{ runner.arch }}-
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
@@ -41,6 +45,9 @@ jobs:
 
       - name: Install dependencies with vcpkg
         run: |
+          $binaryCache = Join-Path $env:RUNNER_TEMP 'vcpkg-archives'
+          New-Item -ItemType Directory -Path $binaryCache -Force | Out-Null
+
           # create our own triplet
           New-Item `
             -Force `
@@ -53,12 +60,19 @@ jobs:
               "set(VCPKG_CRT_LINKAGE dynamic)",
               "set(VCPKG_BUILD_TYPE release)")
           c:/vcpkg/vcpkg.exe install `
-            --binarysource="clear;x-gha,readwrite" `
+            --binarysource="clear;files,$binaryCache,readwrite" `
             --clean-after-build `
             --overlay-triplets="${{ env.vcpkg_path }}/triplets_overlay" `
             gettext[core,tools]:x64-windows-release `
             openssl:x64-windows-release `
             zlib:x64-windows-release
+
+      - name: Save vcpkg binary archives
+        if: steps.vcpkg-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/vcpkg-archives
+          key: ${{ steps.vcpkg-cache.outputs.cache-primary-key }}
 
       - name: Patch Perl for MSVC support
         run: |
