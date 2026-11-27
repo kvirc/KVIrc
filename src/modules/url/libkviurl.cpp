@@ -44,6 +44,7 @@
 #include <QMessageBox>
 #include <QCursor>
 #include <QDateTime>
+#include <QDebug>
 #include <QHeaderView>
 #include <QTextStream>
 #include <QMouseEvent>
@@ -494,7 +495,11 @@ void saveUrlList()
 	urllist += g_pUrlListFilename;
 	QFile file;
 	file.setFileName(urllist);
-	file.open(QIODevice::WriteOnly);
+	if(!file.open(QIODevice::WriteOnly))
+	{
+		qWarning() << "Could not save" << file.fileName() << ':' << file.errorString();
+		return;
+	}
 
 	QTextStream stream(&file);
 
@@ -564,7 +569,11 @@ void saveBanList()
 	banlist += g_pBanListFilename;
 	QFile file;
 	file.setFileName(banlist);
-	file.open(QIODevice::WriteOnly);
+	if(!file.open(QIODevice::WriteOnly))
+	{
+		qWarning() << "Could not save" << file.fileName() << ':' << file.errorString();
+		return;
+	}
 
 	QTextStream stream(&file);
 

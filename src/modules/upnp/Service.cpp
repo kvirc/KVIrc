@@ -218,7 +218,7 @@ namespace UPnP
 
 		if(!reply)
 		{
-			qWarning() << "UPnP::Service - HTTP Request failed: " << reply->errorString() << Qt::endl;
+			qWarning() << "UPnP::Service - HTTP request finished without a network reply";
 			m_iPendingRequests--;
 			emit queryFinished(true);
 			return;

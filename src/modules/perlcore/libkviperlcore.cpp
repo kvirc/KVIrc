@@ -79,6 +79,7 @@ static KviCString g_szLastReturnValue("");
 static QStringList g_lWarningList;
 
 // this is why we can't have nice things -- part of perl 5.17.1+
+#undef dNOOP
 #ifdef __cplusplus
 #define dNOOP (void)0
 #else

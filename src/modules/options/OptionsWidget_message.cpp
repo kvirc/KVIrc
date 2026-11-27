@@ -38,6 +38,7 @@
 #include <QLayout>
 #include <QPushButton>
 #include <QCursor>
+#include <QDebug>
 #include <QPainter>
 #include <QWidgetAction>
 
@@ -619,7 +620,7 @@ void OptionsWidget_messageColors::save()
 	}
 }
 
-//#include <errno.h>
+#include <cerrno>
 
 void OptionsWidget_messageColors::load()
 {
@@ -634,10 +635,8 @@ void OptionsWidget_messageColors::load()
 	g_pApp->getGlobalKvircDirectory(szGlobal, KviApplication::MsgColors);
 	QString szLocal;
 	g_pApp->getLocalKvircDirectory(szLocal, KviApplication::MsgColors, "presets");
-	//qDebug("SYMLINKING %s to %s",szGlobal.ptr(),szLocal.ptr());
-	//qDebug("SYMLINK RETURNS %d (%d)",::symlink(szGlobal.ptr(),szLocal.ptr()));
-	//qDebug("ERRNO (%d)",errno);
-	(void)symlink(szGlobal.toLocal8Bit().data(), szLocal.toLocal8Bit().data());
+	if(::symlink(szGlobal.toLocal8Bit().constData(), szLocal.toLocal8Bit().constData()) == -1 && errno != EEXIST)
+		qWarning() << "Could not create message presets link:" << szLocal;
 // FIXME: Do it also on windows...
 #endif
 

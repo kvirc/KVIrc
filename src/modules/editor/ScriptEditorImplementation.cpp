@@ -50,6 +50,7 @@
 #include <QMessageBox>
 #include <QTimer>
 #include <QCursor>
+#include <QDebug>
 #include <QFont>
 #include <QRect>
 #include <QEvent>
@@ -213,9 +214,9 @@ void ScriptEditorWidget::asyncCompleterCreation()
 		KviKvsKernel::instance()->getAllFunctionsCommandsCore(m_pListCompletition);
 		QString szBuffer = m_pListCompletition->join(",");
 		QFile f(szPath);
-		f.open(QIODevice::WriteOnly);
-		f.write(szBuffer.toUtf8());
-		f.close();
+		const QByteArray data = szBuffer.toUtf8();
+		if(!f.open(QIODevice::WriteOnly) || f.write(data) != data.size() || !f.flush())
+			qWarning() << "Could not save the script completion index:" << f.errorString();
 		createCompleter(*m_pListCompletition);
 		iIndex = 0;
 		iModulesCount = 0;
@@ -233,7 +234,11 @@ void ScriptEditorWidget::loadCompleterFromFile()
 	g_pApp->getLocalKvircDirectory(szPath, KviApplication::ConfigPlugins, szTmp);
 	QString szBuffer;
 	QFile f(szPath);
-	f.open(QIODevice::ReadOnly);
+	if(!f.open(QIODevice::ReadOnly))
+	{
+		qWarning() << "Could not open the script completion index:" << f.errorString();
+		return;
+	}
 	szBuffer = f.readAll();
 	f.close();
 	szListFunctionsCommand = szBuffer.split(',');
