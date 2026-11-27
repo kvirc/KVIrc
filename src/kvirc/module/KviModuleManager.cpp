@@ -175,6 +175,11 @@ bool KviModuleManager::loadModule(const QString & modName)
 	}
 
 	QLibrary * pLibrary = new QLibrary(tmp);
+#ifdef COMPILE_PYTHON_SUPPORT
+	// Python native extensions need to resolve symbols from the embedded interpreter.
+	if(modName.compare(QLatin1String("pythoncore"), Qt::CaseInsensitive) == 0)
+		pLibrary->setLoadHints(QLibrary::ExportExternalSymbolsHint);
+#endif
 	if(!pLibrary->load())
 	{
 		m_szLastError = pLibrary->errorString();
