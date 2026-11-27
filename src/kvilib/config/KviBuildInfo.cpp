@@ -62,9 +62,6 @@ const QStringList feature_list{
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	"Transparency",
 #endif
-#ifdef COMPILE_PHONON_SUPPORT
-	"Phonon",
-#endif
 #ifdef COMPILE_WEBENGINE_SUPPORT
 	"WebEngine",
 #endif

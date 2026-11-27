@@ -37,17 +37,11 @@
 
 #ifdef COMPILE_QTMULTIMEDIA_SUPPORT
 #include <QMediaPlayer>
+#include <QUrl>
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
 #include <QAudioOutput>
 #endif
 #endif //!COMPILE_QTMULTIMEDIA_SUPPORT
-
-#ifdef COMPILE_PHONON_SUPPORT
-#include <phonon/mediaobject.h>
-#include <phonon/mediasource.h>
-#include <phonon/path.h>
-#include <QUrl>
-#endif //!COMPILE_PHONON_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <mmsystem.h>
@@ -92,10 +86,6 @@ KviSoundPlayer::KviSoundPlayer()
 
 	m_pSoundSystemDict = new KviPointerHashTable<QString, KviSoundPlayerEntry>(17, false);
 	m_pSoundSystemDict->setAutoDelete(true);
-
-#ifdef COMPILE_PHONON_SUPPORT
-	m_pSoundSystemDict->insert("phonon", new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playPhonon), KVI_PTR2MEMBER(KviSoundPlayer::cleanupPhonon)));
-#endif //!COMPILE_PHONON_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_pSoundSystemDict->insert("winmm", new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playWinmm), KVI_PTR2MEMBER(KviSoundPlayer::cleanupWinmm)));
@@ -179,11 +169,6 @@ bool KviSoundPlayer::havePlayingSounds()
 			return true;
 #endif
 
-#ifdef COMPILE_PHONON_SUPPORT
-	if(m_pPhononPlayer)
-		if(m_pPhononPlayer->state() == Phonon::PlayingState)
-			return true;
-#endif //COMPILE_PHONON_SUPPORT
 	return false;
 }
 
@@ -220,10 +205,6 @@ bool KviSoundPlayer::detectSoundSystem(QString & szSoundSystem)
 	szSoundSystem = "qt";
 	return true;
 #endif
-#ifdef COMPILE_PHONON_SUPPORT
-	szSoundSystem = "phonon";
-	return true;
-#endif //!COMPILE_PHONON_SUPPORT
 #ifdef COMPILE_OSS_SUPPORT
 #ifdef COMPILE_AUDIOFILE_SUPPORT
 	szSoundSystem = "oss+audiofile";
@@ -236,46 +217,6 @@ bool KviSoundPlayer::detectSoundSystem(QString & szSoundSystem)
 	szSoundSystem = "null";
 	return false;
 }
-
-#ifdef COMPILE_PHONON_SUPPORT
-bool KviSoundPlayer::playPhonon(const QString & szFileName)
-{
-	if(isMuted())
-		return true;
-
-	Phonon::MediaSource media(QUrl::fromLocalFile(szFileName));
-
-	if(!m_pPhononPlayer)
-		m_pPhononPlayer	= std::unique_ptr<Phonon::MediaObject>(Phonon::createPlayer(Phonon::MusicCategory, media));
-	else
-		m_pPhononPlayer->setCurrentSource(media);
-
-	m_pPhononPlayer->setTransitionTime(2000); // this fixes playback with the (very buggy) xine backend
-
-	if(m_pPhononPlayer->state() == Phonon::ErrorState)
-	{
-		QString szError = m_pPhononPlayer->errorString();
-		if(szError.isEmpty())
-			qDebug("Phonon player in error state: can't play media '%s'", szFileName.isEmpty() ? "" : szFileName.toUtf8().data());
-		else
-			qDebug("Phonon player in error state: %s (can't play media '%s')", szError.toUtf8().data(), szFileName.isEmpty() ? "" : szFileName.toUtf8().data());
-
-		return false;
-	}
-
-	m_pPhononPlayer->play();
-
-	return true;
-}
-
-void KviSoundPlayer::cleanupPhonon()
-{
-	if(!m_pPhononPlayer)
-		return;
-	m_pPhononPlayer->stop();
-	m_pPhononPlayer.reset();
-}
-#endif //!COMPILE_PHONON_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 bool KviSoundPlayer::playWinmm(const QString & szFileName)
@@ -650,13 +591,9 @@ exit_thread:
 		snd.play [-q|quiet] <filename:string>
 	@description:
 		Play a file, using the sound system specified by the user in the options.[br]
-		The supported file formats vary from one sound system to another, but the best
-		bet could be Au Law (.au) files. Phonon, EsounD and Linux/OSS with audiofile support also
-		support other formats like .wav files but in OSS without audiofile only .au files are
-		supported.
-		On windows the supported file formats are determined by the drivers installed.
-		You should be able to play at least *.wav files.[br]
-		(This is a task where the Windows interface is really well done, I must say that :)
+		The supported file formats depend on the selected sound system. Qt Multimedia and
+		OSS with audiofile support can play WAV files. OSS without audiofile support can
+		play AU files. On Windows the supported formats depend on the installed drivers.
 	@switches:
 		!sw: -q | --quiet
 		Causes the command to run quietly (no complains about missing files, invalid formats...

@@ -321,12 +321,6 @@ option(WANT_QTSVG "Whether to compile Qt SVG support" ON)
 # May be re-set below, if the proper libs are found.
 set(CMAKE_STATUS_QX11INFO_SUPPORT "Not available")
 
-# QTextCodec is provided by Core5Compat on Qt 6.
-if(QT_VERSION_MAJOR EQUAL 6)
-	find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
-	list(APPEND qt_kvirc_modules Qt::Core5Compat)
-endif()
-
 # Qt Multimedia
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Multimedia)
 if(Qt${QT_VERSION_MAJOR}Multimedia_FOUND)
@@ -476,17 +470,6 @@ if(UNIX)
 	endif()
 else()
 	set(CMAKE_STATUS_X11_SUPPORT "Not needed")
-endif()
-
-# Phonon support
-option(WANT_PHONON "Whether to compile Phonon support" ON)
-if(WANT_PHONON)
-	find_package(Phonon4Qt${QT_VERSION_MAJOR} NO_MODULE)
-	if(Phonon4Qt${QT_VERSION_MAJOR}_FOUND)
-		set(COMPILE_PHONON_SUPPORT 1)
-		list(APPEND LIBS ${PHONON_LIBRARY})
-		list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Phonon")
-	endif()
 endif()
 
 # this is a no-op - not nice i know, but real no point in making it optional...
