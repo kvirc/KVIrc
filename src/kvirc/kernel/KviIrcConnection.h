@@ -43,7 +43,7 @@
 #include <vector>
 
 class QTimer;
-class QTextCodec;
+class KviTextCodec;
 class KviConsoleWindow;
 class KviIrcNetworkData;
 class KviIrcServer;
@@ -179,8 +179,8 @@ private:
 
 	KviDnsResolver * m_pLocalhostDns = nullptr; // FIXME: this should go to an aux structure
 
-	QTextCodec * m_pSrvCodec;                       // connection codec: never null
-	QTextCodec * m_pTextCodec;                      // connection codec: never null
+	KviTextCodec * m_pSrvCodec;                       // connection codec: never null
+	KviTextCodec * m_pTextCodec;                      // connection codec: never null
 	KviIrcConnectionRequestQueue * m_pRequestQueue; // owned, never null
 public:
 	/**
@@ -665,18 +665,18 @@ public:
 	*
 	* This codec is a global setting and may be overridden by specific
 	* windows. The returned pointer may be null if things really went wrong.
-	* \return QTextCodec *
+	* \return KviTextCodec *
 	*/
-	QTextCodec * textCodec() const { return m_pTextCodec; }
+	KviTextCodec * textCodec() const { return m_pTextCodec; }
 
 	/**
 	* \brief Returns a pointer to the current global codec for inbound data.
 	*
 	* This codec is a global setting and may be overridden by specific
 	* windows. The returned pointer may be null if things really went wrong.
-	* \return QTextCodec *
+	* \return KviTextCodec *
 	*/
-	QTextCodec * serverCodec() const { return m_pSrvCodec; }
+	KviTextCodec * serverCodec() const { return m_pSrvCodec; }
 
 	/**
 	* \brief Sets the global encoding for this connection.

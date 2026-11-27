@@ -613,7 +613,6 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 		 * and sszEnd each message part as a different PRIVMSG
 		 * Due to encoding stuff, this is frikin'time eater
 		 */
-		QTextEncoder * pEncoder = makeEncoder(); // our temp encoder
 		QByteArray szTmp;                        // used to calculate the length of an encoded message
 		int iPos;                                // contains the index where to truncate szTmpBuffer
 		int iC;                                  // cycles counter (debugging/profiling purpose)
@@ -632,7 +631,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 			while(true)
 			{
 				iC++;
-				szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
+				szTmp = encodeText(szTmpBuffer.left(iPos));
 
 				if(szTmp.length() <= iMaxMsgLen)
 					break;
@@ -651,7 +650,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 			{
 				iC++;
 
-				szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
+				szTmp = encodeText(szTmpBuffer.left(iPos));
 
 				// perfect match
 				if(iPos == szTmpBuffer.length())
@@ -661,7 +660,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 				{
 					// overflowed.. last one was the good one
 					iPos--;
-					szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
+					szTmp = encodeText(szTmpBuffer.left(iPos));
 					break;
 				}
 				else

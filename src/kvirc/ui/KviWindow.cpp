@@ -60,7 +60,6 @@
 #include <QSplitter>
 #include <QMetaObject>
 #include <QDateTime>
-#include <QTextCodec>
 #include <QPushButton>
 #include <QVariant>
 #include <QMessageBox>
@@ -243,12 +242,12 @@ bool KviWindow::focusNextPrevChild(bool bNext)
 	return QWidget::focusNextPrevChild(bNext);
 }
 
-void KviWindow::forceTextCodec(QTextCodec * pCodec)
+void KviWindow::forceTextCodec(KviTextCodec * pCodec)
 {
 	if(!pCodec)
 		return;
 	m_pTextCodec = pCodec;
-	QTextCodec * pDefault = defaultTextCodec();
+	KviTextCodec * pDefault = defaultTextCodec();
 	if(pDefault != pCodec)
 		m_szTextEncoding = pCodec->name();
 	else
@@ -274,11 +273,20 @@ bool KviWindow::setTextEncoding(const QString & szTextEncoding)
 	return false;
 }
 
-QTextEncoder * KviWindow::makeEncoder()
+QByteArray KviWindow::encodeText(const QString & szText)
 {
-	if(!m_pTextCodec)
-		return defaultTextCodec()->makeEncoder();
-	return m_pTextCodec->makeEncoder();
+	if(m_pTextCodec)
+		return m_pTextCodec->fromUnicode(szText);
+	else
+		return defaultTextCodec()->fromUnicode(szText);
+}
+
+QString KviWindow::decodeText(const char * pcText)
+{
+	if(m_pTextCodec)
+		return m_pTextCodec->toUnicode(pcText);
+	else
+		return defaultTextCodec()->toUnicode(pcText);
 }
 
 bool KviWindow::activityMeter(unsigned int *, unsigned int *)
@@ -578,7 +586,7 @@ void KviWindow::saveProperties(KviConfigurationFile * pCfg)
 {
 	// store only the non-default text encoding.
 	QString szCodec = m_szTextEncoding;
-	QTextCodec * pCodec = defaultTextCodec();
+	KviTextCodec * pCodec = defaultTextCodec();
 	if(pCodec && m_pTextCodec)
 	{
 		if(KviQString::equalCI(szCodec, pCodec->name().data()))
@@ -676,7 +684,7 @@ void KviWindow::createSystemTextEncodingPopup()
 		g_pMdiWindowSystemTextEncodingActionGroup = new QActionGroup(g_pMdiWindowSystemTextEncodingPopup);
 
 		//default action
-		QTextCodec * pCodec = defaultTextCodec();
+		KviTextCodec * pCodec = defaultTextCodec();
 		QString szTmp = __tr2qs("Use Default Encoding");
 		if(pCodec)
 		{
@@ -756,7 +764,7 @@ void KviWindow::createSystemTextEncodingPopup()
 	else
 	{
 		//default action: refresh the name
-		QTextCodec * pCodec = defaultTextCodec();
+		KviTextCodec * pCodec = defaultTextCodec();
 		QString szTmp = __tr2qs("Use Default Encoding");
 		if(pCodec)
 		{
@@ -1365,12 +1373,12 @@ void KviWindow::preprocessMessage(QString & szMessage)
 	szMessage = strings.join(" ");
 }
 
-QTextCodec * KviWindow::defaultTextCodec()
+KviTextCodec * KviWindow::defaultTextCodec()
 {
 	// if we have a connection try to inherit from there...
 	if(connection())
 	{
-		QTextCodec * pCodec = connection()->textCodec();
+		KviTextCodec * pCodec = connection()->textCodec();
 		if(pCodec)
 			return pCodec;
 	}

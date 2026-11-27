@@ -41,7 +41,6 @@
 #include <QFileInfo>
 #include <QFile>
 #include <QDateTime>
-#include <QTextCodec>
 #include <QLocale>
 
 void KviIrcView::stopLogging()
@@ -62,7 +61,7 @@ void KviIrcView::stopLogging()
 				m_pLogFile->close();
 				QFileInfo fi(*m_pLogFile);
 				QString szFname = fi.absolutePath() + QString("/") + fi.completeBaseName();
-				gzFile file = gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(), "ab9");
+				gzFile file = gzopen(szFname.toUtf8().data(), "ab9");
 				if(file)
 				{
 					gzwrite(file, bytes.data(), bytes.size());
@@ -115,7 +114,7 @@ void KviIrcView::flushLog()
 				m_pLogFile->close();
 				QFileInfo fi(*m_pLogFile);
 				QString szFname = fi.absolutePath() + QString("/") + fi.completeBaseName();
-				gzFile file = gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(), "ab9");
+				gzFile file = gzopen(szFname.toUtf8().data(), "ab9");
 				if(file)
 				{
 					gzwrite(file, bytes.data(), bytes.size());

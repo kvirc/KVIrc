@@ -44,7 +44,6 @@ bool g_bFoundMirc;
 #include <QDir>
 #include <QPushButton>
 #include <QValidator>
-#include <QTextCodec>
 #include <QLayout>
 #include <QScreen>
 
@@ -260,7 +259,7 @@ SetupWizard::SetupWizard()
 	m_pNewPathBox->setStretchFactor(m_pDataPathEdit, 1);
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	tmp = QTextCodec::codecForLocale()->toUnicode(getenv("APPDATA"));
+	tmp = qEnvironmentVariable("APPDATA");
 	if(tmp.isEmpty())
 		tmp = QDir::homePath();
 #else
@@ -835,15 +834,12 @@ void SetupWizard::makeLink()
 		// saving the shell link in persistent storage.
 		if(psl->QueryInterface(IID_IPersistFile, (void **)&ppf) == S_OK)
 		{
-			WORD wsz[MAX_PATH];
 			// Set the path to the shell link target.
 			psl->SetPath(szKvircExec.toStdWString().c_str());
 			// Set the description of the shell link.
 			psl->SetDescription(TEXT("kvirc"));
-			// Ensure string is ANSI.
-			MultiByteToWideChar(CP_ACP, 0, QTextCodec::codecForLocale()->fromUnicode(szLinkTarget).data(), -1, (LPWSTR)wsz, MAX_PATH);
 			// Save the link via the IPersistFile::Save method.
-			ppf->Save((LPCOLESTR)wsz, true);
+			ppf->Save(szLinkTarget.toStdWString().c_str(), true);
 			ppf->Release();
 		}
 		psl->Release();
@@ -921,7 +917,7 @@ void SetupWizard::setUrlHandlers()
 	szKvircExec.append("\\kvirc.exe");
 	szKvircExec.replace("\\", "\\\\");
 
-	szReg.replace("@KVIRCEXECUTABLE@", QTextCodec::codecForLocale()->fromUnicode(szKvircExec));
+	szReg.replace("@KVIRCEXECUTABLE@", szKvircExec);
 
 	QString szRegFile = g_pApp->m_szGlobalKvircDir;
 	szRegFile.append("\\kvirc.reg");
@@ -932,7 +928,7 @@ void SetupWizard::setUrlHandlers()
 	szCmd += szRegFile;
 	szCmd += "\"";
 
-	WinExec(QTextCodec::codecForLocale()->fromUnicode(szCmd).data(), SW_SHOW);
+	WinExec(szCmd.toLocal8Bit().constData(), SW_SHOW);
 #endif
 }
 
@@ -1015,8 +1011,8 @@ void SetupWizard::accept()
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 		// Make local->global link
 		QString localPath = QString("%1/global").arg(g_pApp->m_szLocalKvircDir);
-		unlink(QTextCodec::codecForLocale()->fromUnicode(localPath).data());
-		(void)symlink(QTextCodec::codecForLocale()->fromUnicode(g_pApp->m_szGlobalKvircDir).data(), QTextCodec::codecForLocale()->fromUnicode(localPath).data());
+		unlink(localPath.toUtf8().data());
+		(void)symlink(g_pApp->m_szGlobalKvircDir.toUtf8().data(), localPath.toUtf8().data());
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT

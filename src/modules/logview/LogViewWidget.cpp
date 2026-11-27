@@ -32,7 +32,6 @@
 
 #include <QLayout>
 #include <QDir>
-#include <QTextCodec>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 #include <zlib.h>

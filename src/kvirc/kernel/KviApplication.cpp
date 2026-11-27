@@ -109,7 +109,9 @@
 #include <QSplitter>
 #include <QClipboard>
 #include <QMessageBox>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QTextCodec>
+#endif
 #include <QMetaObject>
 #include <QCommonStyle>
 
@@ -285,14 +287,10 @@ void KviApplication::setup()
 //qDebug("%1",loader.isLoaded());
 #endif
 
-	// Make sure that the C strings are translated to utf8
-	// This is a fallback solution anyway: we should use the appropriate
-	// encoding every time.
-	QTextCodec * pUTF8Codec = KviLocale::instance()->codecForName("UTF-8");
-	if(pUTF8Codec)
-		QTextCodec::setCodecForLocale(pUTF8Codec);
-	else
-		qDebug("Aaargh... have no UTF-8 codec?");
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	// Qt 5 uses its locale codec for default QTextStream conversions.
+	QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+#endif
 
 	QString szTmp;
 
@@ -899,40 +897,20 @@ void KviApplication::showParentFrame()
 	g_pMainWindow->showMaximized();
 }
 
-QTextCodec * KviApplication::defaultTextCodec()
+KviTextCodec * KviApplication::defaultTextCodec()
 {
-	QTextCodec * pCodec = nullptr;
-	if(!KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).isEmpty())
-	{
-		pCodec = KviLocale::instance()->codecForName(KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).toLatin1());
-		if(pCodec)
-			return pCodec;
-	}
-	pCodec = QTextCodec::codecForLocale();
-	if(pCodec)
-		return pCodec;
-	pCodec = KviLocale::instance()->codecForName("UTF-8");
-	if(!pCodec)
-		qDebug("KviApplication::defaultTextCodec(): can't find a suitable text codec for locale :/");
-	return pCodec;
+	auto * locale = KviLocale::instance();
+	if(auto * codec = locale->codecForName(KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).toLatin1()))
+		return codec;
+	return locale->codecForName("UTF-8");
 }
 
-QTextCodec * KviApplication::defaultSrvCodec()
+KviTextCodec * KviApplication::defaultSrvCodec()
 {
-	QTextCodec * pCodec = nullptr;
-	if(!KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding).isEmpty())
-	{
-		pCodec = KviLocale::instance()->codecForName(KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding).toLatin1());
-		if(pCodec)
-			return pCodec;
-	}
-	pCodec = QTextCodec::codecForLocale();
-	if(pCodec)
-		return pCodec;
-	pCodec = KviLocale::instance()->codecForName("UTF-8");
-	if(!pCodec)
-		qDebug("KviApplication::defaultSrcCodec(): can't find a suitable text codec for locale :/");
-	return pCodec;
+	auto * locale = KviLocale::instance();
+	if(auto * codec = locale->codecForName(KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding).toLatin1()))
+		return codec;
+	return locale->codecForName("UTF-8");
 }
 
 void KviApplication::loadDefaultScript(QString szItem)

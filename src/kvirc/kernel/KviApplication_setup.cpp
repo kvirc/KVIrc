@@ -46,7 +46,6 @@
 #endif
 #endif
 
-#include <QTextCodec>
 #include <QFile>
 #include <QTextStream>
 #include <QDir>
@@ -487,7 +486,6 @@ void KviApplication::saveKvircDirectory()
 	QString szF = QDir::homePath();
 	if(!m_szConfigFile.isEmpty())
 	{
-		//Must be changed from QString::fromLocal8Bit to QTextCodec::codecForLocale()
 		QString szConfig = m_szConfigFile;
 		if(QDir::isRelativePath(szConfig))
 		{
