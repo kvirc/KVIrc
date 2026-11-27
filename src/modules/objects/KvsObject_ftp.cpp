@@ -160,7 +160,7 @@ KVSO_CLASS_FUNCTION(ftp, get)
 	KVSO_PARAMETERS_END(c)
 	QFile * pFile;
 	pFile = new QFile(szDest);
-	pFile->open(QIODevice::WriteOnly);
+	[[maybe_unused]] const bool opened = pFile->open(QIODevice::WriteOnly);
 	int id = m_pFtp->get(szFile, pFile);
 	c->returnValue()->setInteger(id);
 	return true;
@@ -175,7 +175,7 @@ KVSO_CLASS_FUNCTION(ftp, put)
 	KVSO_PARAMETERS_END(c)
 	QFile * pFile;
 	pFile = new QFile(szLocaleFile);
-	pFile->open(QIODevice::ReadOnly);
+	[[maybe_unused]] const bool opened = pFile->open(QIODevice::ReadOnly);
 	int id = m_pFtp->put(pFile, szRemoteFile);
 	c->returnValue()->setInteger(id);
 	return true;

@@ -166,6 +166,8 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 						delete pDialog;
 						return true;
 						break;
+					default:
+						break;
 				}
 			}
 			else

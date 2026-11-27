@@ -296,7 +296,7 @@ bool KvsObject_http::functionGet(KviKvsObjectFunctionCall * c)
 		pFile = new QFile(szDest);
 		if(pFile)
 		{
-			pFile->open(QIODevice::WriteOnly);
+			[[maybe_unused]] const bool opened = pFile->open(QIODevice::WriteOnly);
 		}
 		else
 		{
@@ -329,7 +329,7 @@ bool KvsObject_http::functionPost(KviKvsObjectFunctionCall * c)
 		pFile = new QFile(szDest);
 		if(pFile)
 		{
-			pFile->open(QIODevice::WriteOnly);
+			[[maybe_unused]] const bool opened = pFile->open(QIODevice::WriteOnly);
 		}
 	}
 	if(szPath.isEmpty())
@@ -475,7 +475,7 @@ void KvsObject_http::redirect(QString & file, const QHttpResponseHeader & r)
 	m_pHttp->setHost(url.host());
 	QFile * pFile = nullptr;
 	pFile = new QFile(file);
-	pFile->open(QIODevice::WriteOnly);
+	[[maybe_unused]] const bool opened = pFile->open(QIODevice::WriteOnly);
 	int id = m_pHttp->get(url.path(), pFile);
 	getDict[id] = pFile;
 }

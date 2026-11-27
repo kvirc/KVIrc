@@ -199,9 +199,9 @@ void KviWebPackageManagementDialog::setPackagePageUrl(const QString & szUrl)
 			QJsonDocument jsonResponse = QJsonDocument::fromJson(szJsonData, &jsonError);
 
 			if (jsonError.error == QJsonParseError::NoError && jsonResponse.isArray()) {
-				QJsonArray jsonArray = jsonResponse.array();
+				const QJsonArray jsonArray = jsonResponse.array();
 
-				foreach(QJsonValue jsonValue, jsonArray)
+				for(const QJsonValue jsonValue : jsonArray)
 				{
 					if(!jsonValue.isObject())
 						continue;

@@ -126,7 +126,7 @@ void KviIrcView::flushLog()
 					qDebug("Can't open compressed stream");
 				}
 			}
-			m_pLogFile->open(QIODevice::Append | QIODevice::WriteOnly);
+			[[maybe_unused]] const bool reopened = m_pLogFile->open(QIODevice::Append | QIODevice::WriteOnly);
 		}
 		else
 #endif
