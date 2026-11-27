@@ -42,7 +42,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QToolBar>
-#include <QFile>
+#include <QTemporaryFile>
 #include <QProgressBar>
 #include <QDir>
 #include <QUrl>
@@ -307,33 +307,26 @@ void KviWebPackageManagementDialog::slotDownloadFinished()
 
 	if(pReply->error() != QNetworkReply::NoError)
 	{
-		// get http status code
-		int httpStatus = pReply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
 		KviMessageBox::information(__tr2qs("Download failed: %1").arg(pReply->errorString()));
-		pReply->deleteLater();
-		return;
 	}
-
-	// read data from reply
-	QString szUrl = pReply->url().toString();
-	int iIdx = szUrl.lastIndexOf("/");
-	QString szFile = szUrl.right(szUrl.length() - iIdx - 1);
-	QFile tmpFile;
-	g_pApp->getLocalKvircDirectory(m_szLocalTemporaryPath, KviApplication::Tmp, szFile);
-	tmpFile.setFileName(m_szLocalTemporaryPath);
-	tmpFile.open(QIODevice::ReadWrite);
-	tmpFile.write(pReply->readAll());
-	tmpFile.close();
-
-	QString szError;
-	if(!installPackage(m_szLocalTemporaryPath, szError))
+	else
 	{
-		KviMessageBox::information(szError);
+		QString path;
+		g_pApp->getLocalKvircDirectory(path, KviApplication::Tmp, "download");
+		QTemporaryFile file(path);
+		const QByteArray data = pReply->readAll();
+		if(!file.open() || file.write(data) != data.size() || !file.flush())
+		{
+			KviMessageBox::information(__tr2qs("Could not save the downloaded package: %1").arg(file.errorString()));
+		}
+		else
+		{
+			file.close();
+			QString error;
+			if(!installPackage(file.fileName(), error))
+				KviMessageBox::information(error);
+		}
 	}
-	QFileInfo info(m_szLocalTemporaryPath);
-
-	if(info.exists())
-		KviFileUtils::removeFile(m_szLocalTemporaryPath);
 
 	m_bBusy = false;
 	enableDisableButtons();
