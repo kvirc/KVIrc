@@ -93,7 +93,6 @@ private:
 	bool m_bBusy;
 	QProgressBar * m_pProgressBar;
 	QString m_szPackagePageUrl;
-	QString m_szLocalTemporaryPath;
 	QMenu * m_pContextPopup;
 	QToolButton * m_pPreviewButton;
 	QToolButton * m_pDeleteButton;
