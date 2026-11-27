@@ -33,7 +33,8 @@
 #include "KviCString.h"
 #include "kvi_out.h"
 
-#include <cstdlib>
+#include <array>
+#include <memory>
 
 /*
 	@doc: fish
@@ -57,55 +58,131 @@ extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 #if defined(COMPILE_SSL_SUPPORT)
 
 #include "KviSSL.h"
-#include <openssl/blowfish.h>
 #include <openssl/bn.h>
-#include <openssl/dh.h>
-#include <openssl/err.h>
-#include <openssl/ssl.h>
+#include <openssl/evp.h>
 #include <openssl/sha.h>
+#if OPENSSL_VERSION_NUMBER >= 0x30000000L
+#include <openssl/core_names.h>
+#include <openssl/param_build.h>
+#else
+#include <openssl/dh.h>
+#endif
 
-DH * g_fish_dh = nullptr;
+using FishKey = std::unique_ptr<EVP_PKEY, decltype(&EVP_PKEY_free)>;
+using FishKeyContext = std::unique_ptr<EVP_PKEY_CTX, decltype(&EVP_PKEY_CTX_free)>;
+using FishNumber = std::unique_ptr<BIGNUM, decltype(&BN_free)>;
+static FishKey g_fishKey(nullptr, EVP_PKEY_free);
 
 // ### new sophie-germain 1080bit prime number ###
 // const char *g_fish_prime1080_bin="++ECLiPSE+is+proud+to+present+latest+FiSH+release+featuring+even+more+security+for+you+++shouts+go+out+to+TMG+for+helping+to+generate+this+cool+sophie+germain+prime+number++++/C32L";
 const char * g_fish_prime1080_hex = "FBE1022E23D213E8ACFA9AE8B9DFADA3EA6B7AC7A7B7E95AB5EB2DF858921FEADE95E6AC7BE7DE6ADBAB8A783E7AF7A7FA6A2B7BEB1E72EAE2B72F9FA2BFB2A2EFBEFAC868BADB3E828FA8BADFADA3E4CC1BE7E8AFE85E9698A783EB68FA07A77AB6AD7BEB618ACF9CA2897EB28A6189EFA07AB99A8A7FA9AE299EFA7BA66DEAFEFBEFBF0B7D8B";
 // const char *g_fish_prime1080_dec="12745216229761186769575009943944198619149164746831579719941140425076456621824834322853258804883232842877311723249782818608677050956745409379781245497526069657222703636504651898833151008222772087491045206203033063108075098874712912417029101508315117935752962862335062591404043092163187352352197487303798807791605274487594646923";
-const char * g_fish_generator = "2";
+// The peer key and key generation must use the same DH1080 parameters.
+static FishKey fish_DH1080_parameters(FishNumber publicKey)
+{
+	FishKey key(nullptr, EVP_PKEY_free);
+	BIGNUM * rawPrime = nullptr;
+	const int primeLength = BN_hex2bn(&rawPrime, g_fish_prime1080_hex);
+	FishNumber prime(rawPrime, BN_free);
+	FishNumber generator(BN_new(), BN_free);
+	if(!primeLength || !generator || !BN_set_word(generator.get(), 2))
+		return key;
+
+#if OPENSSL_VERSION_NUMBER >= 0x30000000L
+	FishKeyContext context(EVP_PKEY_CTX_new_from_name(nullptr, "DH", nullptr), EVP_PKEY_CTX_free);
+	std::unique_ptr<OSSL_PARAM_BLD, decltype(&OSSL_PARAM_BLD_free)> builder(OSSL_PARAM_BLD_new(), OSSL_PARAM_BLD_free);
+	if(!context || !builder ||
+	    !OSSL_PARAM_BLD_push_BN(builder.get(), OSSL_PKEY_PARAM_FFC_P, prime.get()) ||
+	    !OSSL_PARAM_BLD_push_BN(builder.get(), OSSL_PKEY_PARAM_FFC_G, generator.get()) ||
+	    (publicKey && !OSSL_PARAM_BLD_push_BN(builder.get(), OSSL_PKEY_PARAM_PUB_KEY, publicKey.get())))
+		return key;
+
+	std::unique_ptr<OSSL_PARAM, decltype(&OSSL_PARAM_free)> params(OSSL_PARAM_BLD_to_param(builder.get()), OSSL_PARAM_free);
+	EVP_PKEY * rawKey = nullptr;
+	const int selection = publicKey ? EVP_PKEY_PUBLIC_KEY : EVP_PKEY_KEY_PARAMETERS;
+	if(params && EVP_PKEY_fromdata_init(context.get()) > 0 &&
+	    EVP_PKEY_fromdata(context.get(), &rawKey, selection, params.get()) > 0)
+		key.reset(rawKey);
+#else
+	std::unique_ptr<DH, decltype(&DH_free)> dh(DH_new(), DH_free);
+	// The DH_set0_* functions take ownership of the BIGNUMs on success.
+	// Release each unique_ptr only after success so DH_free() can free its BIGNUM.
+	if(!dh || !DH_set0_pqg(dh.get(), prime.get(), nullptr, generator.get()))
+		return key;
+	prime.release();
+	generator.release();
+	if(publicKey)
+	{
+		if(!DH_set0_key(dh.get(), publicKey.get(), nullptr))
+			return key;
+		publicKey.release();
+	}
+	key.reset(EVP_PKEY_new());
+	if(!key || !EVP_PKEY_set1_DH(key.get(), dh.get()))
+		key.reset();
+#endif
+	return key;
+}
+
+static QByteArray fish_DH1080_secret(const QByteArray & peerBytes)
+{
+	if(peerBytes.isEmpty() || !g_fishKey)
+		return {};
+	FishNumber publicKey(BN_bin2bn(reinterpret_cast<const unsigned char *>(peerBytes.constData()), peerBytes.size(), nullptr), BN_free);
+	if(!publicKey)
+		return {};
+	auto peer = fish_DH1080_parameters(std::move(publicKey));
+	FishKeyContext context(EVP_PKEY_CTX_new(g_fishKey.get(), nullptr), EVP_PKEY_CTX_free);
+	if(!peer || !context || EVP_PKEY_derive_init(context.get()) <= 0 || EVP_PKEY_derive_set_peer(context.get(), peer.get()) <= 0)
+		return {};
+
+	// FiSH hashes the unpadded shared secret.
+	size_t length = 0;
+	if(EVP_PKEY_derive(context.get(), nullptr, &length) <= 0)
+		return {};
+	QByteArray secret(static_cast<int>(length), Qt::Uninitialized);
+	if(EVP_PKEY_derive(context.get(), reinterpret_cast<unsigned char *>(secret.data()), &length) <= 0)
+		return {};
+	secret.resize(static_cast<int>(length));
+	return secret;
+}
 #endif
 
 #define FISH_KEYLEN 180
-#define SHA256_LEN 32
 
-static bool fish_DH1080_gen(unsigned char ** szPubKey, int * iLen)
+static QByteArray fish_DH1080_gen()
 {
 #if defined(COMPILE_SSL_SUPPORT)
-	if(!g_fish_dh)
+	if(!g_fishKey)
 	{
-		BIGNUM * dhp = BN_new();
-		if(!BN_hex2bn(&dhp, g_fish_prime1080_hex))
-			return false;
-
-		BIGNUM * dhg = BN_new();
-		if(!BN_hex2bn(&dhg, g_fish_generator))
-			return false;
-
-		g_fish_dh = DH_new();
-		DH_set0_pqg(g_fish_dh, dhp, nullptr, dhg);
-
-		DH_generate_key(g_fish_dh);
+		auto parameters = fish_DH1080_parameters(FishNumber(nullptr, BN_free));
+		if(!parameters)
+			return {};
+		FishKeyContext context(EVP_PKEY_CTX_new(parameters.get(), nullptr), EVP_PKEY_CTX_free);
+		EVP_PKEY * key = nullptr;
+		if(!context || EVP_PKEY_keygen_init(context.get()) <= 0 || EVP_PKEY_keygen(context.get(), &key) <= 0)
+			return {};
+		g_fishKey.reset(key);
 	}
 
-	const BIGNUM* pub_key;
-	DH_get0_key(g_fish_dh, &pub_key, nullptr);
-
-	*iLen = BN_num_bytes(pub_key);
-	*szPubKey = (unsigned char *)std::malloc(*iLen);
-	BN_bn2bin(pub_key, *szPubKey);
-
-	return true;
+#if OPENSSL_VERSION_NUMBER >= 0x30000000L
+	BIGNUM * number = nullptr;
+	if(!EVP_PKEY_get_bn_param(g_fishKey.get(), OSSL_PKEY_PARAM_PUB_KEY, &number))
+		return {};
+	FishNumber publicKey(number, BN_free);
+	const BIGNUM * pub = publicKey.get();
+#else
+	const BIGNUM * pub = nullptr;
+	DH_get0_key(EVP_PKEY_get0_DH(g_fishKey.get()), &pub, nullptr);
+#endif
+	if(!pub)
+		return {};
+	QByteArray bytes(BN_num_bytes(pub), Qt::Uninitialized);
+	BN_bn2bin(pub, reinterpret_cast<unsigned char *>(bytes.data()));
+	return bytes;
 #else
 	qDebug("%s", __tr2qs("FiSH has been compiled without SSL support, unable to proceed").toUtf8().data());
-	return false;
+	return {};
 #endif
 }
 
@@ -129,10 +206,9 @@ bool fish_event_onQueryNotice(KviKvsModuleEventCall * c)
 	if(!szMessage.startsWith("DH1080_", Qt::CaseSensitive))
 		return true;
 
-	unsigned char * szMyPubKey = nullptr;
+	const QByteArray szMyPubKey = fish_DH1080_gen();
 	QByteArray szHisPubKey, szTmp;
-	int iMyPubKeyLen, *pMyPubKeyLen = &iMyPubKeyLen;
-	if(!fish_DH1080_gen(&szMyPubKey, pMyPubKeyLen))
+	if(szMyPubKey.isEmpty())
 	{
 #if !defined(COMPILE_SSL_SUPPORT)
 		c->warning(__tr2qs("FiSH has been compiled without SSL support, unable to proceed"));
@@ -152,7 +228,7 @@ bool fish_event_onQueryNotice(KviKvsModuleEventCall * c)
 		szHisPubKey.truncate(FISH_KEYLEN);
 		szHisPubKey = QByteArray::fromBase64(szHisPubKey);
 
-		szTmp = QByteArray((char *)szMyPubKey, iMyPubKeyLen).toBase64();
+		szTmp = szMyPubKey.toBase64();
 		if(szMessage.startsWith("DH1080_INIT_cbc ", Qt::CaseSensitive))
 		{
 			c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_FINISH_cbc %sA",
@@ -211,27 +287,16 @@ bool fish_event_onQueryNotice(KviKvsModuleEventCall * c)
 	KviCString szFinalKey;
 
 #if defined(COMPILE_SSL_SUPPORT)
-	unsigned char * secret = (unsigned char *)std::malloc(DH_size(g_fish_dh));
-	int secretLen;
-	BIGNUM * bn = BN_bin2bn((unsigned char *)szHisPubKey.data(), szHisPubKey.size(), nullptr);
-	if(-1 == (secretLen = DH_compute_key(secret, bn, g_fish_dh)))
+	const QByteArray secret = fish_DH1080_secret(szHisPubKey);
+	if(secret.isEmpty())
 	{
 		c->warning(__tr2qs("FiSH: error verifying peer public key (size=%1)").arg(szHisPubKey.size()));
 		return false;
 	}
-	BN_zero(bn);
-	BN_free(bn);
-
-	unsigned char * hashedSecret = (unsigned char *)std::malloc(SHA256_LEN);
-	SHA256(secret, secretLen, hashedSecret);
-
-	std::free(secret);
-
-	szFinalKey.bufferToBase64((char *)hashedSecret, SHA256_LEN);
-	//strip the trailing =
+	std::array<unsigned char, SHA256_DIGEST_LENGTH> hash;
+	SHA256(reinterpret_cast<const unsigned char *>(secret.constData()), secret.size(), hash.data());
+	szFinalKey.bufferToBase64(reinterpret_cast<const char *>(hash.data()), hash.size());
 	szFinalKey.stripRight('=');
-
-	std::free(hashedSecret);
 #else
 	c->warning(__tr2qs("FiSH has been compiled without SSL support, unable to proceed"));
 	return false;
@@ -275,16 +340,14 @@ static bool fish_cmd_keyx(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szTarget)
 	KVSM_PARAMETERS_END(c)
 
-	unsigned char * szMyPubKey = nullptr;
-	KviCString szHisPubKey, szTmp;
-	int iMyPubKeyLen, *pMyPubKeyLen = &iMyPubKeyLen;
-	if(!fish_DH1080_gen(&szMyPubKey, pMyPubKeyLen))
+	const QByteArray szMyPubKey = fish_DH1080_gen();
+	if(szMyPubKey.isEmpty())
 		return false;
 
-	szTmp.bufferToBase64((char *)szMyPubKey, iMyPubKeyLen);
+	const QByteArray szTmp = szMyPubKey.toBase64();
 	c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_INIT %sA",
 	    c->window()->console()->connection()->encodeText(szTarget).data(),
-	    szTmp.ptr());
+	    szTmp.constData());
 
 	c->window()->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("FiSH: sent my DH1080 public key to %1, waiting for reply...").arg(szTarget));
 	return true;
@@ -313,6 +376,9 @@ static bool fish_module_init(KviModule * m)
 
 static bool fish_module_cleanup(KviModule *)
 {
+#if defined(COMPILE_CRYPT_SUPPORT) && defined(COMPILE_SSL_SUPPORT)
+	g_fishKey.reset();
+#endif
 	return true;
 }
 
